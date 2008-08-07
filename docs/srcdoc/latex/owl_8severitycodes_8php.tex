@@ -1,0 +1,46 @@
+\hypertarget{owl_8severitycodes_8php}{
+\section{/home/oscar/work/eclipse/owl-php/src/lib/owl.severitycodes.php File Reference}
+\label{owl_8severitycodes_8php}\index{/home/oscar/work/eclipse/owl-php/src/lib/owl.severitycodes.php@{/home/oscar/work/eclipse/owl-php/src/lib/owl.severitycodes.php}}
+}
+\subsection*{Enumerations}
+\begin{Indent}{\bf }\par
+\begin{CompactItemize}
+\item 
+enum \hyperlink{owl_8severitycodes_8php_bc72c053cfd10025fe57797c41eab18e}{OWL\_\-OK} 
+\item 
+enum \hyperlink{owl_8severitycodes_8php_ce886152e2e86cd2e91cb833fd495adb}{OWL\_\-WARNING} 
+\item 
+enum \hyperlink{owl_8severitycodes_8php_b57d46c4dff0628f7f46aa11db9325c9}{OWL\_\-ERROR} 
+\end{CompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+This file defines the Severity codes that all objects can have. It must be the very first file that is inluded, since these codes are used from step 1. \begin{Desc}
+\item[Version:]\$Id\$ \end{Desc}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{owl_8severitycodes_8php_b57d46c4dff0628f7f46aa11db9325c9}{
+\index{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\-ERROR@{OWL\_\-ERROR}}
+\index{OWL\_\-ERROR@{OWL\_\-ERROR}!owl.severitycodes.php@{owl.severitycodes.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-ERROR}}}
+\label{owl_8severitycodes_8php_b57d46c4dff0628f7f46aa11db9325c9}
+
+
+\hypertarget{owl_8severitycodes_8php_bc72c053cfd10025fe57797c41eab18e}{
+\index{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\-OK@{OWL\_\-OK}}
+\index{OWL\_\-OK@{OWL\_\-OK}!owl.severitycodes.php@{owl.severitycodes.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-OK}}}
+\label{owl_8severitycodes_8php_bc72c053cfd10025fe57797c41eab18e}
+
+
+Define the Severity values for all status codes as returned by \hyperlink{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}{\_\-OWL::severity()}. This severity is specified by the last 2 bits of the status code:\begin{itemize}
+\item 00: success (0x0, 0x4, 0x8, 0xc)\item 01: warning (0x1, 0x5, 0x9, 0xd); returned when an error occured that can be fixed by the user (typos/formdata not filled in properly etc.) or have any other temporary condition (e.g. network time-outs).\item 10: error (0x2, 0x6, 0xa, 0xe); returned when a condition occured that should be fixed either in the software (incl. server-side configuration), or in the database.\item 11: (reserved, currently handled as an error)(0x3, 0x7, 0xb, 0xf) \end{itemize}
+\hypertarget{owl_8severitycodes_8php_ce886152e2e86cd2e91cb833fd495adb}{
+\index{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\-WARNING@{OWL\_\-WARNING}}
+\index{OWL\_\-WARNING@{OWL\_\-WARNING}!owl.severitycodes.php@{owl.severitycodes.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-WARNING}}}
+\label{owl_8severitycodes_8php_ce886152e2e86cd2e91cb833fd495adb}
+
+

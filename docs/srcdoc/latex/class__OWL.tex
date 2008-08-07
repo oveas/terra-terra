@@ -1,0 +1,144 @@
+\hypertarget{class__OWL}{
+\section{\_\-OWL Class Reference}
+\label{class__OWL}\index{\_\-OWL@{\_\-OWL}}
+}
+Inheritance diagram for \_\-OWL:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=400pt]{class__OWL__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class__OWL_99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
+\item 
+\hyperlink{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}{signal} (\$level=0)
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
+\item 
+\hyperlink{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}{severity} ()
+\item 
+\hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\item 
+\hyperlink{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class__OWL_f37a011667dda12fc417a68a6f3077d1}{\$config}
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class__OWL_af448f6bc8a90e20c09e9e2b8fe46eb5}{\$status}
+\item 
+\hyperlink{class__OWL_9cd573fffbb55aa42f29d83b39308528}{\$message\_\-params}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This is the main class for all OWL objects. It contains some methods that have to be available to all objects. Some of them can be reimplemented. \begin{Desc}
+\item[Author:]Oscar van Eijk, Oveas Functionality Provider \end{Desc}
+\begin{Desc}
+\item[Version:]May 15, 2007 -- O van Eijk -- initial version \end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
+\index{\_\-OWL@{\_\-OWL}!init@{init}}
+\index{init@{init}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
+
+
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}{
+\index{\_\-OWL@{\_\-OWL}!severity@{severity}}
+\index{severity@{severity}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::severity ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}
+
+
+Check the status of the given object and return its severity. \hypertarget{class__OWL_2f2a042bcf31965194c03033df0edc9b}{
+\index{\_\-OWL@{\_\-OWL}!reset@{reset}}
+\index{reset@{reset}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class__OWL_2f2a042bcf31965194c03033df0edc9b}
+
+
+General reset function for all objects. Should be called after each non-fatal error 
+
+Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbHandler}.\hypertarget{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}{
+\index{\_\-OWL@{\_\-OWL}!set\_\-status@{set\_\-status}}
+\index{set\_\-status@{set\_\-status}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \$ {\em params} = {\tt array~()})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}
+
+
+Set the current object status to the specified value.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$status}]OWL status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{description}
+\end{Desc}
+\hypertarget{class__OWL_99ec771fa2c5c279f80152cc09e489a8}{
+\index{\_\-OWL@{\_\-OWL}!get\_\-status@{get\_\-status}}
+\index{get\_\-status@{get\_\-status}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()}}
+\label{class__OWL_99ec771fa2c5c279f80152cc09e489a8}
+
+
+Get the current object status.
+
+\begin{Desc}
+\item[Returns:]Object's status code \end{Desc}
+\hypertarget{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}{
+\index{\_\-OWL@{\_\-OWL}!signal@{signal}}
+\index{signal@{signal}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\tt 0})}}
+\label{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}
+
+
+Display the message for the current object status
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The severity level for this object \end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class__OWL_af448f6bc8a90e20c09e9e2b8fe46eb5}{
+\index{\_\-OWL@{\_\-OWL}!\$status@{\$status}}
+\index{\$status@{\$status}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$status\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{class__OWL_af448f6bc8a90e20c09e9e2b8fe46eb5}
+
+
+Current object status \hypertarget{class__OWL_9cd573fffbb55aa42f29d83b39308528}{
+\index{\_\-OWL@{\_\-OWL}!\$message\_\-params@{\$message\_\-params}}
+\index{\$message\_\-params@{\$message\_\-params}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$message\_\-params\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{class__OWL_9cd573fffbb55aa42f29d83b39308528}
+
+
+Array with parameters that will be substituted in message text \hypertarget{class__OWL_f37a011667dda12fc417a68a6f3077d1}{
+\index{\_\-OWL@{\_\-OWL}!\$config@{\$config}}
+\index{\$config@{\$config}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$config\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class__OWL_f37a011667dda12fc417a68a6f3077d1}
+
+
+The global Config array is referenced from every object 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/oscar/work/eclipse/owl-php/src/inc/\hyperlink{class_8__OWL_8php}{class.\_\-OWL.php}\end{CompactItemize}

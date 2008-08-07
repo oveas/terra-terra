@@ -1,0 +1,90 @@
+\hypertarget{class_8dbhandler_8php}{
+\section{/home/oscar/work/eclipse/owl-php/src/inc/class.dbhandler.php File Reference}
+\label{class_8dbhandler_8php}\index{/home/oscar/work/eclipse/owl-php/src/inc/class.dbhandler.php@{/home/oscar/work/eclipse/owl-php/src/inc/class.dbhandler.php}}
+}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classDbHandler}{DbHandler}
+\begin{CompactList}\small\item\em Database handler. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{Indent}{\bf Return Flags}\par
+{\em These flags that define what value should be returned by read() }\begin{CompactItemize}
+\item 
+enum \hyperlink{class_8dbhandler_8php_cc5178c2a582eafa4ef488ed3394b725}{DBHANDLE\_\-DATA} 
+\begin{CompactList}\small\item\em Return the read values (default). \item\end{CompactList}\item 
+enum \hyperlink{class_8dbhandler_8php_4752b0fc86256fd568adf6ef216418c7}{DBHANDLE\_\-SINGLEFIELD} 
+\begin{CompactList}\small\item\em Return the read value as a single field (i.s.o. a 2D array). \item\end{CompactList}\item 
+enum \hyperlink{class_8dbhandler_8php_5c8464b7bfbb63bd605046e8b615dbbe}{DBHANDLE\_\-SINGLEROW} 
+\begin{CompactList}\small\item\em Return the read value as a single row (a 1D array). \item\end{CompactList}\item 
+enum \hyperlink{class_8dbhandler_8php_c904f05455a162c07c216c330ad7c5c6}{DBHANDLE\_\-ROWCOUNT} 
+\begin{CompactList}\small\item\em Return the number of rows. \item\end{CompactList}\item 
+enum \hyperlink{class_8dbhandler_8php_fda554c4527b03446f287291626c12ad}{DBHANDLE\_\-FIELDCOUNT} 
+\begin{CompactList}\small\item\em Return the number of fields per row. \item\end{CompactList}\item 
+enum \hyperlink{class_8dbhandler_8php_a74936d65eaded5fe8d34047a73e4cea}{DBHANDLE\_\-TOTALFIELDCOUNT} 
+\begin{CompactList}\small\item\em Return the total number of fields. \item\end{CompactList}\end{CompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+This file defines the Database Handler class \begin{Desc}
+\item[Version:]\end{Desc}
+\begin{Desc}
+\item[Id]class.dbhandle.php,v 1.1.1.1 2007/05/18 10:22:28 oscar Exp \end{Desc}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{class_8dbhandler_8php_cc5178c2a582eafa4ef488ed3394b725}{
+\index{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\-DATA@{DBHANDLE\_\-DATA}}
+\index{DBHANDLE\_\-DATA@{DBHANDLE\_\-DATA}!class.dbhandler.php@{class.dbhandler.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBHANDLE\_\-DATA}}}
+\label{class_8dbhandler_8php_cc5178c2a582eafa4ef488ed3394b725}
+
+
+Return the read values (default). 
+
+\hypertarget{class_8dbhandler_8php_fda554c4527b03446f287291626c12ad}{
+\index{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\-FIELDCOUNT@{DBHANDLE\_\-FIELDCOUNT}}
+\index{DBHANDLE\_\-FIELDCOUNT@{DBHANDLE\_\-FIELDCOUNT}!class.dbhandler.php@{class.dbhandler.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBHANDLE\_\-FIELDCOUNT}}}
+\label{class_8dbhandler_8php_fda554c4527b03446f287291626c12ad}
+
+
+Return the number of fields per row. 
+
+\hypertarget{class_8dbhandler_8php_c904f05455a162c07c216c330ad7c5c6}{
+\index{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\-ROWCOUNT@{DBHANDLE\_\-ROWCOUNT}}
+\index{DBHANDLE\_\-ROWCOUNT@{DBHANDLE\_\-ROWCOUNT}!class.dbhandler.php@{class.dbhandler.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBHANDLE\_\-ROWCOUNT}}}
+\label{class_8dbhandler_8php_c904f05455a162c07c216c330ad7c5c6}
+
+
+Return the number of rows. 
+
+\hypertarget{class_8dbhandler_8php_4752b0fc86256fd568adf6ef216418c7}{
+\index{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\-SINGLEFIELD@{DBHANDLE\_\-SINGLEFIELD}}
+\index{DBHANDLE\_\-SINGLEFIELD@{DBHANDLE\_\-SINGLEFIELD}!class.dbhandler.php@{class.dbhandler.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBHANDLE\_\-SINGLEFIELD}}}
+\label{class_8dbhandler_8php_4752b0fc86256fd568adf6ef216418c7}
+
+
+Return the read value as a single field (i.s.o. a 2D array). 
+
+\hypertarget{class_8dbhandler_8php_5c8464b7bfbb63bd605046e8b615dbbe}{
+\index{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\-SINGLEROW@{DBHANDLE\_\-SINGLEROW}}
+\index{DBHANDLE\_\-SINGLEROW@{DBHANDLE\_\-SINGLEROW}!class.dbhandler.php@{class.dbhandler.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBHANDLE\_\-SINGLEROW}}}
+\label{class_8dbhandler_8php_5c8464b7bfbb63bd605046e8b615dbbe}
+
+
+Return the read value as a single row (a 1D array). 
+
+\hypertarget{class_8dbhandler_8php_a74936d65eaded5fe8d34047a73e4cea}{
+\index{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\-TOTALFIELDCOUNT@{DBHANDLE\_\-TOTALFIELDCOUNT}}
+\index{DBHANDLE\_\-TOTALFIELDCOUNT@{DBHANDLE\_\-TOTALFIELDCOUNT}!class.dbhandler.php@{class.dbhandler.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBHANDLE\_\-TOTALFIELDCOUNT}}}
+\label{class_8dbhandler_8php_a74936d65eaded5fe8d34047a73e4cea}
+
+
+Return the total number of fields. 
+
