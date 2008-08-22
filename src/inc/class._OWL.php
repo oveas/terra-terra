@@ -1,11 +1,11 @@
 <?php
 /**
  * \file
- * This file defines the CargoByte main class
- * \version $Id: class._OWL.php,v 1.1 2008-08-07 10:21:21 oscar Exp $
+ * This file defines the Oveas Web Library main class
+ * \version $Id: class._OWL.php,v 1.2 2008-08-22 12:02:10 oscar Exp $
  */
 
-require_once (OWL_ROOT . '/config.php');
+require_once (OWL_INCLUDE . '/class.statushandler.php');
 
 /**
  * This is the main class for all OWL objects. It contains some methods that have to be available
@@ -14,11 +14,6 @@ require_once (OWL_ROOT . '/config.php');
  * \version May 15, 2007 -- O van Eijk -- initial version
  */
 abstract class _OWL
-/*
- * NOTE the init() funcion MUST be called by ALL constructors !
- * Although it might look like 'no big deal' at the moment, this will change
- * in feature releases.
- */
 {
 	/**
 	 * Current object status
@@ -27,10 +22,16 @@ abstract class _OWL
 	private $status;
 
 	/**
-	 * Array with parameters that will be substituted in message text
-	 * \private 
+	 * Pointer to the object which holds the last nonsuccessfull (>= OWL_WARNING) status
+	 * \private
 	 */
-	private $message_params;
+	private $pstatus;
+	
+	/**
+	 * Severity level of the current object status
+	 * \private
+	 */
+	private $severity;
 
 	/**
 	 * The global Config array is referenced from every object
@@ -46,39 +47,11 @@ abstract class _OWL
 	 * something went wrong.
 	 * \protected
 	 */
-	protected function init ()
+	protected final function init ()
 	{
-		$this->status = OWL_STATUS_WARNING; // Must be set currect after full initialisation
+		$this->status =& new OWLStatus();
 		$this->config = $GLOBALS['config'];
-	}
-	
-	/**
-	 * Check the status of the given object and return its severity.
-	 * \protected
-	 */
-	protected function severity ()
-	{
-		$_severity = ($this->status & 3);
-		switch ($_severity) {
-			case (0):
-				return (OWL_OK);
-				break;
-			case (1):
-				return (OWL_WARNING);
-				break;
-			case (2):
-				return (OWL_ERROR);
-				break;
-			case (3):
-				// Reserved severity, for now that's an error....
-				return (OWL_ERROR);
-				break;
-			default :
-				// Can't ever happen....
-				return (OWL_ERROR);
-				break;
-			
-		}
+		$this->pstatus =& $this;
 	}
 
 	/**
@@ -88,8 +61,44 @@ abstract class _OWL
 	 */
 	protected function reset ()
 	{
-	 	$this->status = OWL_STATUS_OK;
-	 	$this->message_params = array ();
+	 	$this->reset_calltree();
+	}
+
+	/**
+	 * Reset the status in the complete calltree
+	 * \private
+	 * \param[in] $depth Keep track of the depth in recusrive calls. Should be empty
+	 * in the first call.
+	 */
+	final private function reset_calltree ($depth = 0)
+	{
+		if ($this->pstatus !== $this) {
+			$this->pstatus->reset_calltree (++$depth);
+		}
+		// Continue here on the way back...
+	 	$this->pstatus =& $this;
+	 	$this->status->reset();
+//echo "Object ".get_class($this)." reset<br>";
+	}
+
+	/**
+	 * This is a helper function for lazy developers.
+	 * Some checks have to me made quite often, this is a kinda macro to handle that. It 
+	 * compares the own severity level with that of a given object. If the highest level
+	 * is above a given max, a traceback and reset are performed.
+	 * \protected
+	 * \param[in] $object Pointer to an object to check against
+	 * \param[in] $level The maximum severity level
+	 * \return True if the severity level was correct ( below the max), otherwise false
+	 */
+	protected function check (&$object, $level)
+	{
+		if ($this->set_high_severity($object) > OWL_WARNING) {
+			$this->traceback();
+			$this->reset();
+			return (false);
+		}
+		return (true);
 	}
 
 	/**
@@ -98,14 +107,28 @@ abstract class _OWL
 	 * \param[in] $status OWL status code
 	 * \param[in] $params
 	 */
-	protected function set_status ($status, $params = array ())
+	protected final function set_status ($status, $params = array ())
 	{
-	 	$this->status = $status;
-	 	if (is_array ($params)) {
-	 		$this->message_params = $params;
-	 	} else {
-	 		$this->message_params = array ($params);
-	 	}
+		static $loopdetect = 0;
+		$loopdetect++;
+		if ($loopdetect > 1) {
+			die ('Fatal error - loop detected while handling the status: ' . Register::get_code($status));
+		}
+		$this->severity = $this->status->set_code($status);
+		if (is_array ($params)) {
+			$this->status->set_params ($params);
+		} else {
+			$this->status->set_params (array ($params));
+		}
+		if ($this->severity >= $GLOBALS['logging']['level']) {
+			$this->signal (0, &$msg);
+			$GLOBALS['logger']->log ($msg);
+		}
+		if ($GLOBALS['config']['throw_level'] >= 0 && $this->severity >= $GLOBALS['config']['throw_level']) {
+			$this->signal (0, &$msg);
+			throw new OWLException ($msg, $status);
+		}
+		$loopdetect = 0;
 	}
 
 	/**
@@ -115,7 +138,35 @@ abstract class _OWL
 	 */
 	public function get_status ()
 	{
-	 	return $this->status;
+	 	return ($this->status->get_code());
+	}
+
+	/**
+	 * Get the current object severity level.
+	 * \public
+	 * \return Status severity level
+	 */
+	public function get_severity ()
+	{
+	 	return ($this->status->get_severity());
+	}
+
+	/**
+	 * Compare the severity level of the current object with a given one and set
+	 * my statuspointer to the object with the highest level.
+	 * \protected
+	 */
+	protected function set_high_severity (&$object = null)
+	{
+		$_current = $this->pstatus->get_severity();
+		$_given = $object->pstatus->get_severity();
+
+		if ($_given >= $_current)
+		{
+			$this->pstatus = $object;
+			return ($_given);
+		}
+		return ($_current);
 	}
 
 	/**
@@ -123,28 +174,87 @@ abstract class _OWL
 	 * \public
 	 * \param[in] $level An optional severity level; message will only be displayed when
 	 * it is at least of this level.
+	 * \param[out] $text If this parameter is given, the message text is returned in this string
+	 * instead of echood.
 	 * \return The severity level for this object
 	 */
-	public function signal ($level = 0)
+	public function signal ($level = 0, &$text = false)
 	{
-		$_search = array();
-
-		if (($_severity = $this->severity()) < $level) {
-			return $_severity;
+		if (($_severity = $this->status->get_severity()) >= $level) {
+			if ($text === false) {
+				echo '<strong>OWL Message</strong>: ' . $this->status->get_message ($level) . ' <br />';
+			} else {
+				$text = $this->status->get_message ($level);
+			}
 		}
-		if (array_key_exists ($this->status, $GLOBALS['messages'])) {
-			$_msg = $GLOBALS['messages'][$this->status];	
+		return ($_severity);
+	}
+	
+	/**
+	 * If somehwere in the nested calls an error occured, we can traceback the original
+	 * failing object with this function and signal the message.
+	 * \public
+	 * \param[out] $text Optional variable in which the message text can be stored. If not given,
+	 * the text will be written to standard output
+	 * \param[in] $depth This paramater should be initially empty. It calculates the depth in
+	 * recursive calls.
+	 */
+	public function traceback (&$text = false, $depth = 0)
+	{
+		if ($this->pstatus !== $this) {
+			$this->pstatus->traceback ($text, ++$depth);
 		} else {
-			$_msg = 'No message found for code ' . $this->status;
+//echo "Depth is now: $depth<br/>";
+			$this->signal (0, $text);
 		}
-		for ($_i = 0; $_i < count ($this->message_params); $_i++) {
-			$_search[] = '$p' . ($_i + 1) . '$';
-		}
-		if ($_i > 0) {
-			$_msg = str_replace ($_search, $this->message_params, $_msg);
-		}
-
-		echo "<strong>OWL Message</strong>: $_msg <br />";
-		return $_severity;
 	}
 }
+
+/*
+ * Register this class and all status codes
+ */
+Register::register_app ('OWL-PHP', 0xff000000);
+
+
+//Register::set_severity (OWL_DEBUG);
+//Register::set_severity (OWL_INFO);
+
+Register::set_severity (OWL_OK);
+Register::register_code ('OWL_STATUS_OK');
+
+//Register::set_severity (OWL_SUCCESS);
+
+Register::set_severity (OWL_WARNING);
+Register::register_code ('OWL_STATUS_WARNING');
+Register::register_code ('OWL_STATUS_FNF');
+Register::register_code ('OWL_STATUS_ROPENERR');
+Register::register_code ('OWL_STATUS_WOPENERR');
+
+//Register::set_severity (OWL_BUG);
+
+Register::set_severity (OWL_WARNING);
+Register::register_code ('OWL_STATUS_BUG');
+
+Register::set_severity (OWL_ERROR);
+Register::register_code ('OWL_STATUS_ERROR');
+Register::register_code ('OWL_STATUS_BUG');
+Register::register_code ('OWL_STATUS_NOKEY');
+Register::register_code ('OWL_STATUS_IVKEY');
+
+//Register::set_severity (OWL_FATAL);
+//Register::set_severity (OWL_CRITICAL);
+
+/*
+ * Register all severity levels.
+ * NOTE; these must match the levels specified in owl.severitycodes.php!
+ */
+Register::register_severity (OWL_DEBUG,		'DEBUG');
+Register::register_severity (OWL_INFO,		'INFO');
+Register::register_severity (OWL_OK,		'OK');
+Register::register_severity (OWL_SUCCESS,	'SUCCESS');
+Register::register_severity (OWL_WARNING,	'WARNING');
+Register::register_severity (OWL_BUG,		'BUG');
+Register::register_severity (OWL_ERROR,		'ERROR');
+Register::register_severity (OWL_FATAL,		'FATAL');
+Register::register_severity (OWL_CRITICAL,	'CRITICAL');
+ 

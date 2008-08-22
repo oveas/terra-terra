@@ -2,12 +2,12 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.1 2008-08-07 10:21:21 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.2 2008-08-22 12:02:10 oscar Exp $
  */
 
 /**
  * \name Query preparation tools
- * These flags what type of queries can be prepared
+ * These flags define what type of queries can be prepared
  * @{
  */
 //! Default value; no query prepared yet
@@ -70,7 +70,7 @@ class DataHandler extends _OWL
 	 * Array with variable names that are used in WHERE clauses on updates
 	 * \private
 	 */	
-	private $owl_locks;
+	private $owl_keys;
 
 	/**
 	 * All variable names are expected to be fields in a database as well.
@@ -103,10 +103,10 @@ class DataHandler extends _OWL
 	 */
 	public function __construct ($dblink = null, $tablename = '')
 	{
-		parent::init();
+		_OWL::init();
 		$this->owl_data = array();
 		$this->owl_joins = array();
-		$this->owl_locks = array();
+		$this->owl_keys = array();
 		$this->owl_tablename = $tablename;
 		$this->owl_database = $dblink;
 		$this->owl_prepared = DATA_UNPREPARED;
@@ -129,7 +129,7 @@ class DataHandler extends _OWL
 				$this->owl_data = array();
 			case DATA_RESET_META:
 				$this->owl_joins = array();
-				$this->owl_locks = array();
+				$this->owl_keys = array();
 			case DATA_RESET_PREPARE:
 				$this->database->reset();
 				$this->owl_prepared = DATA_UNPREPARED;
@@ -159,9 +159,9 @@ class DataHandler extends _OWL
 				$this->set_status (DATA_IVARRAY);
 				return;
 			}
-			$this->owl_data[$value[1] . '_' . $variable] = $value[0];
+			$this->owl_data[$value[1] . '#' . $variable] = $value[0];
 		} else {
-			$this->owl_data[$this->owl_tablename . '_' . $variable] = $value;
+			$this->owl_data[$this->owl_tablename . '#' . $variable] = $value;
 		}
 	}
 
@@ -169,27 +169,28 @@ class DataHandler extends _OWL
 	 * Lock variables for update by adding them to an array. Fields in this array will not
 	 * be overwritten on updates, but used in WHERE clauses.
 	 * \param[in] $variable Variable name to lock, optionally as an array (table, field)
-	 * \return True on succes, False otherwise
+	 * \return Severity level
 	 */
-	public function lock ($variable)
+	public function set_key ($variable)
 	{
 		if (is_array ($variable)) {
 			if (count ($variable, 0) != 2) {
 				$this->set_status (DATA_IVARRAY);
-				return false;
+				return ($this->severity);
 			}
-			$_var = $variable[0] . '_' . $variable[1];
+			$_var = $variable[0] . '#' . $variable[1];
 		} else {
-			$_var = $this->owl_tablename . '_' . $variable;
+			$_var = $this->owl_tablename . '#' . $variable;
 		}
-		if (!in_array ($_var, $this->owl_locks)) {
-			$this->owl_locks[] = $_var;
+		if (!in_array ($_var, $this->owl_keys)) {
+			$this->owl_keys[] = $_var;
 		}
-		return true;
+		$this->set_status (DATA_KEYSET, $variable);
+		return ($this->get_severity());
 	}
 
 	/**
-	 * Try to exand a field to a fully qualified 'table_field' name
+	 * Try to exand a field to a fully qualified 'table\#field' name
 	 * \private
 	 * \param[in] $fld The fieldname that has to be expanded
 	 * \param[out] $expanded An array with all matching fully qualified fieldnames.
@@ -201,18 +202,18 @@ class DataHandler extends _OWL
 		$_fields = array();
 
 		foreach ($this->owl_data as $_k => $_v) {
-			list ($_tbl, $_fld) = split ('_', $_k, 2);
+			list ($_tbl, $_fld) = explode ('#', $_k, 2);
 			if ($_fld == $fld) {
 				$_fields[] = $_k;
 				$_matches++;
 			}
 		}
-		return $_matches;
+		return ($_matches);
 	}
 
 	/**
 	 * Retrieve a value from the data array. The variable name can be a
-	 * fully qualified table/fieldname (format "table_field"), or only
+	 * fully qualified table/fieldname (format "table#field"), or only
 	 * a field name, in which case it has to be unique.
 	 * If the fieldname cannot be found directly, the array is scanned to
 	 * find a matching field. It more matches are found, the object status
@@ -224,19 +225,19 @@ class DataHandler extends _OWL
 	public function __get ($variable)
 	{
 		if (array_key_exists ($variable, $this->owl_data)) {
-			return $this->owl_data[$variable];
+			return ($this->owl_data[$variable]);
 		} else {
-			switch ($this->find_field($variable, $_k)) {
+			switch ($this->find_field($variable, &$_k)) {
 				case 0:
 					$this->set_status (DATA_NOTFOUND, $variable);
-					return null;
+					return (null);
 					break;
 				case 1:
-					return $this->owl_data[$_k[0]];
+					return ($this->owl_data[$_k[0]]);
 					break;
 				default:
 					$this->set_status (DATA_AMBFIELD, $variable);
-					return null;
+					return (null);
 					break;
 			}
 		}
@@ -250,39 +251,41 @@ class DataHandler extends _OWL
 	 * \param[in] $rvalue Right value as array(table, field)
 	 * \param[in] $linktype How are the fields linked. Can be any binary
 	 * operator as recognized by SQL.
-	 * \return True on success, otherwise False.
+	 * \return Severity level
 	 */
 	public function set_join ($lvalue, $rvalue, $linktype = '=')
 	{
 		if (is_array ($lvalue)) {
 			if (count ($lvalue, 0) != 2) {
 				$this->set_status (DATA_IVARRAY, 'lvalue');
-				return false;
+				return ($this->severity);
 			}
-			$lvalue = $lvalue[0] . '_' . $lvalue[1];
+			$lvalue = $lvalue[0] . '#' . $lvalue[1];
 		} else {
-			$lvalue = $this->owl_tablename . '_' . $lvalue;
+			$lvalue = $this->owl_tablename . '#' . $lvalue;
 		}
 
 		if (is_array ($rvalue)) {
 			if (count ($rvalue, 0) != 2) {
 				$this->set_status (DATA_IVARRAY, 'rvalue');
-				return false;
+				return ($this->severity);
 			}
-			$rvalue = $rvalue[0] . '_' . $rvalue[1];
+			$rvalue = $rvalue[0] . '#' . $rvalue[1];
 		} else {
-			$rvalue = $this->owl_tablename . '_' . $rvalue;
+			$rvalue = $this->owl_tablename . '#' . $rvalue;
 		}
 
 		if (!array_key_exists ($lvalue, $this->data)) {
-			$this->set_status (DATA_IVARRAY, $lvalue);
-			return false;
+			$this->set_status (DATA_NOSUCHFLD, $lvalue);
+			return ($this->severity);
 		}
 		if (!array_key_exists ($rvalue, $this->data)) {
-			$this->set_status (DATA_IVARRAY, $rvalue);
-			return false;
+			$this->set_status (DATA_NOSUCHFLD, $rvalue);
+			return ($this->severity);
 		}
-		$this->joins[] = array ($lvalue, $linktype, $rvalue);
+		$this->owl_joins[] = array ($lvalue, $linktype, $rvalue);
+		$this->set_status (DATA_JOINSET, array($linktype, $lvalue, $rvalue));
+		return ($this->severity);
 	}
 
 	/**
@@ -311,17 +314,17 @@ class DataHandler extends _OWL
 	 *   - DATA_READ (default); Read data from the database 
 	 *   - DATA_WRITE; Write new data to the database
 	 *   - DATA_UPDATE; Update data in the database
-	 * \return True on success, False otherwise
+	 * \return Severity level
 	 */
 	public function prepare ($type = DATA_READ)
 	{
 		if ($this->owl_database == null) {
 			$this->set_status (DATA_NODBLINK);
-			return false;
+			return ($this->severity);
 		}
 		if (count ($this->owl_data) == 0){
 			$this->set_status (DATA_NOSELECT);
-			return false;
+			return ($this->severity);
 		}
 
 		switch ($type) {
@@ -335,49 +338,83 @@ class DataHandler extends _OWL
 					} else {
 						$_set[$_field] = $_value;
 					}
-					list ($_t, $_f) = split ('_', $_field, 2);
+					list ($_t, $_f) = explode ('#', $_field, 2);
 					if (!in_array ($_t, $_table)) {
 						$_table[] = $_t;
 					}
 				}
-				$this->owl_database->prepare_read ($_unset, $_table, $_set, $this->joins);
+				$this->owl_database->prepare_read ($_unset, $_table, $_set, $this->owl_joins);
+				$this->set_status (DATA_PREPARED, 'read');
 				break;
 			case DATA_WRITE:
+				$this->owl_database->prepare_insert ($this->owl_data);
+				$this->set_status (DATA_PREPARED, 'write');
 				break;
 			case DATA_UPDATE:
-				$this->owl_database->prepare_update ($this->owl_data, $this->owl_locks, $this->joins);
+				$this->owl_database->prepare_update ($this->owl_data, $this->owl_keys, $this->owl_joins);
+				$this->set_status (DATA_PREPARED, 'update');
 				break;
 			case DATA_UNPREPARED:
 			default:
 				$this->set_status (DATA_IVPREPARE, $type);
-				return false;
+//				return ($this->severity);
 				break;
 		}
 		$this->owl_prepared = $type;
-		return true;
+		return ($this->set_high_severity ($this->owl_database));
 	}
 	
 	/**
 	 * Forward a call to the DBHandler object (which is private in this DataHandler)
 	 * \public
+	 * \param[out] $data The result of DBHandler function, or false when no query was prepared yet 
 	 * \param[in] $line Line number of this call
 	 * \param[in] $file File that made the call to this method
-	 * \return The result of DBHandler function, or false when no query was prepared yet
+	 * \return Severity level
 	 */
-	public function db ($line = 0, $file = '[unknown]')
+	public function db (&$data = false, $line = 0, $file = '[unknown]')
 	{
-		$_return = OWL_STATUS_OK;
 		switch ($this->owl_prepared) {
 			case DATA_READ:
-				$_return = $this->owl_database->read (DBHANDLE_DATA, '', $line, $file);
+				$this->owl_database->read (DBHANDLE_DATA, $data, '', $line, $file);
 				break;
 			case DATA_WRITE:
 			case DATA_UPDATE:
-				$_return = $this->owl_database->write ($line, $file);
+				$this->owl_database->write ($data, $line, $file);
 				break;
 		}
-
-		$this->owl_database->signal ($GLOBALS['config']['default_signal_level']);
-		return ($_return);
+		return ($this->set_high_severity ($this->owl_database));
 	}
 }
+
+/*
+ * Register this class and all status codes
+ */
+
+Register::register_class ('DataHandler');
+
+Register::set_severity (OWL_DEBUG);
+Register::register_code ('DATA_KEYSET');
+Register::register_code ('DATA_JOINSET');
+Register::register_code ('DATA_PREPARED');
+
+//Register::set_severity (OWL_INFO);
+//Register::set_severity (OWL_OK);
+//Register::set_severity (OWL_SUCCESS);
+
+Register::set_severity (OWL_WARNING);
+Register::register_code ('DATA_NOTFOUND');
+Register::register_code ('DATA_NOSELECT');
+Register::register_code ('DATA_AMBFIELD');
+
+Register::set_severity (OWL_BUG);
+Register::register_code ('DATA_IVARRAY');
+Register::register_code ('DATA_NOSUCHFLD');
+Register::register_code ('DATA_IVPREPARE');
+
+Register::set_severity (OWL_ERROR);
+Register::register_code ('DATA_NODBLINK');
+Register::register_code ('DATA_IVRESET');
+
+//Register::set_severity (OWL_FATAL);
+//Register::set_severity (OWL_CRITICAL);

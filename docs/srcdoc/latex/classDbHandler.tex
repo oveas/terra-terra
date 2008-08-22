@@ -32,30 +32,22 @@ Collaboration diagram for DbHandler:\nopagebreak
 \item 
 \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{reset} ()
 \item 
-\hyperlink{classDbHandler_f7fd704b72b00e315aafa08e47e90991}{table\_\-description} (\$tablename)
+\hyperlink{classDbHandler_00402b0e3e677108716714fbf94bea40}{table\_\-description} (\$tablename, \&\$data)
 \item 
 \hyperlink{classDbHandler_baca15a312800e5522b3efd9dff036f5}{tablename} (\$tablename)
 \item 
 \hyperlink{classDbHandler_305a3225c4760a88a06b0d55d0893962}{set\_\-query} (\$qry)
 \item 
-\hyperlink{classDbHandler_fb193ff3fde35c7968d2e2fe4f8546be}{read} (\$flag=\hyperlink{class_8dbhandler_8php_cc5178c2a582eafa4ef488ed3394b725}{DBHANDLE\_\-DATA}, \$quick\_\-query= '', \$line=0, \$file= '\mbox{[}unknown\mbox{]}')
+\hyperlink{classDbHandler_5ebfdc2acfcb0e9cbc2861fc55c7127c}{read} (\$flag=\hyperlink{class_8dbhandler_8php_cc5178c2a582eafa4ef488ed3394b725}{DBHANDLE\_\-DATA}, \&\$data, \$quick\_\-query= '', \$line=0, \$file= '\mbox{[}unknown\mbox{]}')
 \item 
 \hyperlink{classDbHandler_67d77702ff6db70f89123d3f947af143}{escape\_\-string} (\$string)
 \item 
 \hyperlink{classDbHandler_27c604b14c39913d34630e5504979b15}{unescape\_\-string} (\$string)
-\item 
-\hyperlink{class__OWL_99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
-\item 
-\hyperlink{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}{signal} (\$level=0)
 \end{CompactItemize}
 \subsection*{Protected Member Functions}
 \begin{CompactItemize}
 \item 
 \hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
-\item 
-\hyperlink{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}{severity} ()
-\item 
-\hyperlink{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
 \end{CompactItemize}
 \subsection*{Protected Attributes}
 \begin{CompactItemize}
@@ -82,7 +74,7 @@ Collaboration diagram for DbHandler:\nopagebreak
 \item 
 \hyperlink{classDbHandler_56a7ae4bd7d842c85f3fe8052aecbfef}{\$rowcount}
 \item 
-\hyperlink{classDbHandler_e159a609794f8ef7451e2dbb597506e8}{\$open}
+\hyperlink{classDbHandler_71e36ffbff0d157b1d91dc000bc6f821}{\$opened}
 \item 
 \hyperlink{classDbHandler_19af96598e7f72673fc5da26ad77731b}{\$db\_\-prefix}
 \item 
@@ -136,7 +128,7 @@ Class destructor; closes the database connection
 Create a new database
 
 \begin{Desc}
-\item[Returns:]True on succes, False otherwise \end{Desc}
+\item[Returns:]Severity level \end{Desc}
 \hypertarget{classDbHandler_9cf52ba614981a0082063d57290d3b7c}{
 \index{DbHandler@{DbHandler}!connect@{connect}}
 \index{connect@{connect}!DbHandler@{DbHandler}}
@@ -158,7 +150,7 @@ Connect to the database server
 Opens the database connection.
 
 \begin{Desc}
-\item[Returns:]True on success, otherwise False \end{Desc}
+\item[Returns:]Severity level \end{Desc}
 \hypertarget{classDbHandler_9982df4830f05803935bb31bac7fae3d}{
 \index{DbHandler@{DbHandler}!reset@{reset}}
 \index{reset@{reset}!DbHandler@{DbHandler}}
@@ -168,11 +160,11 @@ Opens the database connection.
 
 Reset the object 
 
-Reimplemented from \hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{\_\-OWL}.\hypertarget{classDbHandler_f7fd704b72b00e315aafa08e47e90991}{
+Reimplemented from \hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{\_\-OWL}.\hypertarget{classDbHandler_00402b0e3e677108716714fbf94bea40}{
 \index{DbHandler@{DbHandler}!table\_\-description@{table\_\-description}}
 \index{table\_\-description@{table\_\-description}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::table\_\-description (\$ {\em tablename})}}
-\label{classDbHandler_f7fd704b72b00e315aafa08e47e90991}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::table\_\-description (\$ {\em tablename}, \&\$ {\em data})}}
+\label{classDbHandler_00402b0e3e677108716714fbf94bea40}
 
 
 Get a description of a database table
@@ -180,7 +172,7 @@ Get a description of a database table
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$tablename}]The tablename \end{description}
+\item[\mbox{$\leftarrow$} {\em \$tablename}]The tablename \item[\mbox{$\rightarrow$} {\em \$data}]Indexed array holding all fields =$>$ datatypes \end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]Indexed array holding all fields =$>$ datatypes \end{Desc}
@@ -214,11 +206,11 @@ Set the database query. This function should only be used if the query is too co
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$qry}]A complete database query. All tablenames must be prefixed (with the \hyperlink{classDbHandler_baca15a312800e5522b3efd9dff036f5}{tablename()} function)! \end{description}
 \end{Desc}
-\hypertarget{classDbHandler_fb193ff3fde35c7968d2e2fe4f8546be}{
+\hypertarget{classDbHandler_5ebfdc2acfcb0e9cbc2861fc55c7127c}{
 \index{DbHandler@{DbHandler}!read@{read}}
 \index{read@{read}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::read (\$ {\em flag} = {\tt {\bf DBHANDLE\_\-DATA}}, \$ {\em quick\_\-query} = {\tt ''}, \$ {\em line} = {\tt 0}, \$ {\em file} = {\tt '\mbox{[}unknown\mbox{]}'})}}
-\label{classDbHandler_fb193ff3fde35c7968d2e2fe4f8546be}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::read (\$ {\em flag} = {\tt {\bf DBHANDLE\_\-DATA}}, \&\$ {\em data}, \$ {\em quick\_\-query} = {\tt ''}, \$ {\em line} = {\tt 0}, \$ {\em file} = {\tt '\mbox{[}unknown\mbox{]}'})}}
+\label{classDbHandler_5ebfdc2acfcb0e9cbc2861fc55c7127c}
 
 
 Read from the database. The return value depends on the flag. By default, the selected rows(s) are returned in a 2d array.
@@ -226,12 +218,12 @@ Read from the database. The return value depends on the flag. By default, the se
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$flag}]Flag that identifies how data should be returned; as data (default) or the number of rows \item[\mbox{$\leftarrow$} {\em \$quick\_\-query}]Database query string. If empty, \$this-$>$query is used \item[\mbox{$\leftarrow$} {\em \$line}]Line number of this call \item[\mbox{$\leftarrow$} {\em \$file}]File that made the call to this method \end{description}
+\item[\mbox{$\leftarrow$} {\em \$flag}]Flag that identifies how data should be returned; as data (default) or the number of rows \item[\mbox{$\rightarrow$} {\em \$data}]The retrieved value in a formatt depending on the flag:\begin{itemize}
+\item DBHANDLE\_\-ROWCOUNT; Number of matching rows\item DBHANDLE\_\-FIELDCOUNT; Number of fields per rows\item DBHANDLE\_\-TOTALFIELDCOUNT; Total number op fields\item DBHANDLE\_\-DATA (default); A 2D array with all data\item DBHANDLE\_\-SINGLEROW; The first matching row in a 1D array\item DBHANDLE\_\-SINGLEFIELD; The first matching field \end{itemize}
+\item[\mbox{$\leftarrow$} {\em \$quick\_\-query}]Database query string. If empty, \$this-$>$query is used \item[\mbox{$\leftarrow$} {\em \$line}]Line number of this call \item[\mbox{$\leftarrow$} {\em \$file}]File that made the call to this method \end{description}
 \end{Desc}
 \begin{Desc}
-\item[Returns:]The return value depends on the flag:\begin{itemize}
-\item DBHANDLE\_\-ROWCOUNT; Number of matching rows\item DBHANDLE\_\-FIELDCOUNT; Number of fields per rows\item DBHANDLE\_\-TOTALFIELDCOUNT; Total number op fields\item DBHANDLE\_\-DATA (default); A 2D array with all data\item DBHANDLE\_\-SINGLEROW; The first matching row in a 1D array\item DBHANDLE\_\-SINGLEFIELD; The first matching field \end{itemize}
-\end{Desc}
+\item[Returns:]Severity level \end{Desc}
 \hypertarget{classDbHandler_130e49aa639fecb46ce6719ddcb0d72f}{
 \index{DbHandler@{DbHandler}!dbread@{dbread}}
 \index{dbread@{dbread}!DbHandler@{DbHandler}}
@@ -283,59 +275,11 @@ Call the current DBtype's unescape function for character strings.
 \hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
 \index{DbHandler@{DbHandler}!init@{init}}
 \index{init@{init}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}final, protected, inherited\mbox{]}}}}
 \label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
 
 
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}{
-\index{DbHandler@{DbHandler}!severity@{severity}}
-\index{severity@{severity}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::severity ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
-\label{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}
-
-
-Check the status of the given object and return its severity. \hypertarget{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}{
-\index{DbHandler@{DbHandler}!set\_\-status@{set\_\-status}}
-\index{set\_\-status@{set\_\-status}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \$ {\em params} = {\tt array~()})\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
-\label{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}
-
-
-Set the current object status to the specified value.
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$status}]OWL status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{description}
-\end{Desc}
-\hypertarget{class__OWL_99ec771fa2c5c279f80152cc09e489a8}{
-\index{DbHandler@{DbHandler}!get\_\-status@{get\_\-status}}
-\index{get\_\-status@{get\_\-status}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\tt  \mbox{[}inherited\mbox{]}}}}
-\label{class__OWL_99ec771fa2c5c279f80152cc09e489a8}
-
-
-Get the current object status.
-
-\begin{Desc}
-\item[Returns:]Object's status code \end{Desc}
-\hypertarget{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}{
-\index{DbHandler@{DbHandler}!signal@{signal}}
-\index{signal@{signal}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\tt 0})\hspace{0.3cm}{\tt  \mbox{[}inherited\mbox{]}}}}
-\label{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}
-
-
-Display the message for the current object status
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]The severity level for this object \end{Desc}
-
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
 \subsection{Member Data Documentation}
 \hypertarget{classDbHandler_d38e1c3312815c8ad4093957881092ff}{
@@ -373,11 +317,11 @@ array - Database location and authorization indo \hypertarget{classDbHandler_56a
 \label{classDbHandler_56a7ae4bd7d842c85f3fe8052aecbfef}
 
 
-integer - Row counter \hypertarget{classDbHandler_e159a609794f8ef7451e2dbb597506e8}{
-\index{DbHandler@{DbHandler}!\$open@{\$open}}
-\index{\$open@{\$open}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$open\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classDbHandler_e159a609794f8ef7451e2dbb597506e8}
+integer - Row counter \hypertarget{classDbHandler_71e36ffbff0d157b1d91dc000bc6f821}{
+\index{DbHandler@{DbHandler}!\$opened@{\$opened}}
+\index{\$opened@{\$opened}!DbHandler@{DbHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$opened\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classDbHandler_71e36ffbff0d157b1d91dc000bc6f821}
 
 
 boolean - True if the database is opened \hypertarget{classDbHandler_19af96598e7f72673fc5da26ad77731b}{

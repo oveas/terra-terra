@@ -6,38 +6,34 @@ Inheritance diagram for \_\-OWL:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=400pt]{class__OWL__inherit__graph}
+\includegraphics[width=400pt]{class__OWL__inherit__graph}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
-\begin{CompactItemize}
-\item 
-\hyperlink{class__OWL_99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
-\item 
-\hyperlink{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}{signal} (\$level=0)
-\end{CompactItemize}
 \subsection*{Protected Member Functions}
 \begin{CompactItemize}
 \item 
 \hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
-\hyperlink{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}{severity} ()
-\item 
 \hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{reset} ()
-\item 
-\hyperlink{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
 \end{CompactItemize}
 \subsection*{Protected Attributes}
 \begin{CompactItemize}
 \item 
 \hyperlink{class__OWL_f37a011667dda12fc417a68a6f3077d1}{\$config}
 \end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class__OWL_91389e63fc76f6513147f302cbd92a2e}{reset\_\-calltree} (\$depth=0)
+\end{CompactItemize}
 \subsection*{Private Attributes}
 \begin{CompactItemize}
 \item 
 \hyperlink{class__OWL_af448f6bc8a90e20c09e9e2b8fe46eb5}{\$status}
 \item 
-\hyperlink{class__OWL_9cd573fffbb55aa42f29d83b39308528}{\$message\_\-params}
+\hyperlink{class__OWL_f30c6ce2c59df6da2ef0f7059be9231e}{\$pstatus}
+\item 
+\hyperlink{class__OWL_d26b40a9dbbacb33e299b17826f8327c}{\$severity}
 \end{CompactItemize}
 
 
@@ -52,18 +48,11 @@ This is the main class for all OWL objects. It contains some methods that have t
 \hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
 \index{\_\-OWL@{\_\-OWL}!init@{init}}
 \index{init@{init}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}final, protected\mbox{]}}}}
 \label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
 
 
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}{
-\index{\_\-OWL@{\_\-OWL}!severity@{severity}}
-\index{severity@{severity}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::severity ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
-\label{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}
-
-
-Check the status of the given object and return its severity. \hypertarget{class__OWL_2f2a042bcf31965194c03033df0edc9b}{
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_2f2a042bcf31965194c03033df0edc9b}{
 \index{\_\-OWL@{\_\-OWL}!reset@{reset}}
 \index{reset@{reset}!_OWL@{\_\-OWL}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
@@ -72,47 +61,20 @@ Check the status of the given object and return its severity. \hypertarget{class
 
 General reset function for all objects. Should be called after each non-fatal error 
 
-Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbHandler}.\hypertarget{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}{
-\index{\_\-OWL@{\_\-OWL}!set\_\-status@{set\_\-status}}
-\index{set\_\-status@{set\_\-status}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \$ {\em params} = {\tt array~()})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
-\label{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}
+Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbHandler}.\hypertarget{class__OWL_91389e63fc76f6513147f302cbd92a2e}{
+\index{\_\-OWL@{\_\-OWL}!reset\_\-calltree@{reset\_\-calltree}}
+\index{reset\_\-calltree@{reset\_\-calltree}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset\_\-calltree (\$ {\em depth} = {\tt 0})\hspace{0.3cm}{\tt  \mbox{[}final, private\mbox{]}}}}
+\label{class__OWL_91389e63fc76f6513147f302cbd92a2e}
 
 
-Set the current object status to the specified value.
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$status}]OWL status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{description}
-\end{Desc}
-\hypertarget{class__OWL_99ec771fa2c5c279f80152cc09e489a8}{
-\index{\_\-OWL@{\_\-OWL}!get\_\-status@{get\_\-status}}
-\index{get\_\-status@{get\_\-status}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()}}
-\label{class__OWL_99ec771fa2c5c279f80152cc09e489a8}
-
-
-Get the current object status.
-
-\begin{Desc}
-\item[Returns:]Object's status code \end{Desc}
-\hypertarget{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}{
-\index{\_\-OWL@{\_\-OWL}!signal@{signal}}
-\index{signal@{signal}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\tt 0})}}
-\label{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}
-
-
-Display the message for the current object status
+Reset the status in the complete calltree
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \end{description}
+\item[\mbox{$\leftarrow$} {\em \$depth}]Keep track of the depth in recusrive calls. Should be empty in the first call. \end{description}
 \end{Desc}
-\begin{Desc}
-\item[Returns:]The severity level for this object \end{Desc}
 
 
 \subsection{Member Data Documentation}
@@ -123,14 +85,21 @@ Display the message for the current object status
 \label{class__OWL_af448f6bc8a90e20c09e9e2b8fe46eb5}
 
 
-Current object status \hypertarget{class__OWL_9cd573fffbb55aa42f29d83b39308528}{
-\index{\_\-OWL@{\_\-OWL}!\$message\_\-params@{\$message\_\-params}}
-\index{\$message\_\-params@{\$message\_\-params}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$message\_\-params\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{class__OWL_9cd573fffbb55aa42f29d83b39308528}
+Current object status \hypertarget{class__OWL_f30c6ce2c59df6da2ef0f7059be9231e}{
+\index{\_\-OWL@{\_\-OWL}!\$pstatus@{\$pstatus}}
+\index{\$pstatus@{\$pstatus}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$pstatus\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{class__OWL_f30c6ce2c59df6da2ef0f7059be9231e}
 
 
-Array with parameters that will be substituted in message text \hypertarget{class__OWL_f37a011667dda12fc417a68a6f3077d1}{
+Pointer to the object which holds the last nonsuccessfull ($>$= OWL\_\-WARNING) status \hypertarget{class__OWL_d26b40a9dbbacb33e299b17826f8327c}{
+\index{\_\-OWL@{\_\-OWL}!\$severity@{\$severity}}
+\index{\$severity@{\$severity}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{class__OWL_d26b40a9dbbacb33e299b17826f8327c}
+
+
+Severity level of the current object status \hypertarget{class__OWL_f37a011667dda12fc417a68a6f3077d1}{
 \index{\_\-OWL@{\_\-OWL}!\$config@{\$config}}
 \index{\$config@{\$config}!_OWL@{\_\-OWL}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$config\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}

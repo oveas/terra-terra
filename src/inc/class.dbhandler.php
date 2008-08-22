@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.1 2008-08-07 10:21:21 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.2 2008-08-22 12:02:10 oscar Exp $
  */
 
 /**
@@ -77,7 +77,7 @@ class DbHandler extends _OWL
 	 * boolean - True if the database is opened
 	 * \private
 	 */
-	private $open;
+	private $opened;
 
 	/**
 	 * string - database prefix
@@ -106,20 +106,18 @@ class DbHandler extends _OWL
 			,  $pwd = ''
 			,  $dbtype = 'MySQL')
 	{
-		parent::init();
+		_OWL::init();
 		$this->database['server']   = $srv;
 		$this->database['name']     = $db;
 		$this->database['username'] = $usr;
 		$this->database['password'] = $pwd;
 		$this->database['engine']   = $dbtype;
 
-		$this->open = False;
+		$this->opened = false;
 		$this->errno = 0;
 		$this->error = '';
 		$this->db_prefix = $this->config['dbprefix'];
-		$this->open = True;
 		$this->set_status (OWL_STATUS_OK);
-
 	}
 
 	/**
@@ -131,31 +129,25 @@ class DbHandler extends _OWL
 		$this->close();
 	}
 
-
 	/**
 	 * Create a new database
 	 * \public
-	 * \return True on succes, False otherwise
+	 * \return Severity level
 	 */
 	public function create ()
 	{
-		$_return = false;
-
-		if (!$this->connect ()) {
-			return $_return;
+		if ($this->connect ()) {
+			if (!@mysql_query ('CREATE DATABASE ' . $this->database['name'])) {
+				$this->set_status (DBHANDLE_CREATERR, array (
+								  $this->database['name']
+								, mysql_errno ($this->id)
+								, mysql_error ($this->id)
+							));
+			}
 		}
 
-		if (!@mysql_query ('CREATE DATABASE ' . $this->database['name'])) {
-			$this->set_status (DBHANDLE_CREATERR, array (
-							  $this->database['name']
-							, mysql_errno ($this->id)
-							, mysql_error ($this->id)
-						));
-		} else {
-			$_return = true;
-		}
 		$this->close();
-		return $_return;
+		return ($this->severity);
 	}
 
 	/**
@@ -171,25 +163,26 @@ class DbHandler extends _OWL
 			$this->set_status (DBHANDLE_CONNECTERR, array (
 					  $this->database['server']
 					, $this->database['username']
+					, ($GLOBALS['config']['logging']['hide_passwords'] ? '*****' : $this->database['password'])
 				  ));
-			return false;
+			return (false);
 		}
-		return true;		
+		return (true);
 	}
 
 	/**
 	 * Opens the database connection.
 	 * \public
-	 * \return True on success, otherwise False
+	 * \return Severity level
 	 */
 	public function open ()
 	{
-		if ($this->open) {
-			return true; // This is not an error
+		if ($this->opened) {
+			return (OWL_OK); // This is not an error
 		}
 
 		if (!$this->connect ()) {
-			return false;
+			return ($this->severity);
 		}
 
 		if (!(mysql_select_db ($this->database['name'], $this->id))) {
@@ -200,13 +193,13 @@ class DbHandler extends _OWL
 						));
 		}
 
-		$this->open = true;
+		$this->opened = true;
 
-//		if ($this->config['debug']) {
-			echo ('Database [' . $this->database['name'] . "] selected as [$this->id]<br />");
-//		}
-
-		return true;
+		$this->set_status (DBHANDLE_OPENED, array (
+						  $this->database['name']
+						, $this->id
+					));
+		return ($this->severity);
 	}
 
 	/**
@@ -224,45 +217,49 @@ class DbHandler extends _OWL
 	 * Get a description of a database table
 	 * \public
 	 * \param[in] $tablename The tablename
+	 * \param[out] $data Indexed array holding all fields => datatypes
 	 * \return Indexed array holding all fields => datatypes
 	 */
-	public function table_description ($tablename)
+	public function table_description ($tablename, &$data)
 	{
-		$__query = $this->query;
-		$__data  = array ();
-		$__descr = array ();
+		$_query = $this->query;
+		$_data  = array ();
+		$_descr = array ();
 
 		if ($this->dbtype == 'MySQL') {
 			// Currently the only type supported
 			//
 			$this->query = 'SHOW COLUMNS FROM ' . $this->db_prefix . $tablename;
 
-			$__data = $this->read (DBHANDLE_DATA);
-			foreach ($__data as $__record) {
+			$_data = $this->read (DBHANDLE_DATA);
+			foreach ($_data as $_record) {
 
-				$__descr[$__record[0]]['numeric'] = preg_match("/(int|float|double|dec|real|numeric)/i", $__record[1]) ? True : False;
-				if (preg_match("/\(\d+\)/", $__record[1], $__matches)) {
-					$__descr[$__record[0]]['length'] = $__matches[0];
+				$_descr[$_record[0]]['numeric'] = preg_match("/(int|float|double|dec|real|numeric)/i", $_record[1]) ? True : False;
+				if (preg_match("/\(\d+\)/", $_record[1], $_matches)) {
+					$_descr[$_record[0]]['length'] = $_matches[0];
 				}
-				$__descr[$__record[0]]['null']     = ($__record[2] == 'YES');
-				$__descr[$__record[0]]['auto_inc'] = (preg_match("/auto_inc/i", $__record[5]));
+				$_descr[$_record[0]]['null']     = ($_record[2] == 'YES');
+				$_descr[$_record[0]]['auto_inc'] = (preg_match("/auto_inc/i", $_record[5]));
 
-				if (preg_match("/\((.+),?\)/", $__record[1], $__matches)) {
+				if (preg_match("/\((.+),?\)/", $_record[1], $_matches)) {
 					// Value list for ENUM and SET type
-					$__descr[$__record[0]]['options_list']   = array_shift ($__matches);
-					$__descr[$__record[0]]['options_array']  = $__matches;
+					$_descr[$_record[0]]['options_list']   = array_shift ($_matches);
+					$_descr[$_record[0]]['options_array']  = $_matches;
 				}
 
-				$__descr[$__record[0]]['default'] = ($__record[4] == 'NULL') ? '' : $__record[4];
-				$__descr[$__record[0]]['index'] = $__record[3]; // PRI, UNI or MUL
+				$_descr[$_record[0]]['default'] = ($_record[4] == 'NULL') ? '' : $_record[4];
+				$_descr[$_record[0]]['index'] = $_record[3]; // PRI, UNI or MUL
 			}
 		}
 
-		$this->query = $__query;
-		if (count($__descr) == 0) {
+		$this->query = $_query;
+		if (count($_descr) == 0) {
 			$this->set_status (DBHANDLE_IVTABLE, $tablename);
+		} else {
+			$this->set_status (OWL_STATUS_OK);
 		}
-		return ($__descr);
+		$data = $_descr;
+		return ($this->severity);
 	}
 
 	/**
@@ -293,24 +290,25 @@ class DbHandler extends _OWL
 	 * the selected rows(s) are returned in a 2d array.
 	 * \public
 	 * \param[in] $flag Flag that identifies how data should be returned; as data (default) or the number of rows
-	 * \param[in] $quick_query Database query string. If empty, $this->query is used
-	 * \param[in] $line Line number of this call
-	 * \param[in] $file File that made the call to this method
-	 * \return The return value depends on the flag:
+	 * \param[out] $data The retrieved value in a formatt depending on the flag:
 	 *   - DBHANDLE_ROWCOUNT; Number of matching rows
 	 *   - DBHANDLE_FIELDCOUNT; Number of fields per rows
 	 *   - DBHANDLE_TOTALFIELDCOUNT; Total number op fields
 	 *   - DBHANDLE_DATA (default); A 2D array with all data
 	 *   - DBHANDLE_SINGLEROW; The first matching row in a 1D array
 	 *   - DBHANDLE_SINGLEFIELD; The first matching field
+	 * \param[in] $quick_query Database query string. If empty, $this->query is used
+	 * \param[in] $line Line number of this call
+	 * \param[in] $file File that made the call to this method
+	 * \return Severity level
 	 */
-	public function read ($flag = DBHANDLE_DATA, $quick_query = '', $line = 0, $file = '[unknown]')
+	public function read ($flag = DBHANDLE_DATA, &$data, $quick_query = '', $line = 0, $file = '[unknown]')
 	{
 		$_fieldcnt = 0;
 
-		if (!$this->open) {
+		if (!$this->opened) {
 			$this->set_status (DBHANDLE_DBCLOSED);
-			return;
+			return ($this->severity);
 		}
 
 		if ($quick_query == '') {
@@ -319,45 +317,44 @@ class DbHandler extends _OWL
 			$_query = $quick_query;
 		}
 
-		if ($this->config['debug']) {
-			echo ("Reading from database [$this->id]:<br />\n$__query<br />\n");
-		}
-
 		if (($_data = $this->dbread ($_query, $this->rowcount, $_fieldcnt)) === false) {
 			$this->set_status (DBHANDLE_QUERYERR, array (
 					  $_query
 					, $line
 					, $file
 				));
-			return;
+			return ($this->severity);
 		}
 
-		if ($this->config['debug']) {
-			echo ("Query return $this->rowcount rows<br />\n");
-		}
+		$this->set_status (DBHANDLE_ROWSREAD, array (
+				  $_query
+				, $this->rowcount
+				, $line
+				, $file
+			));
 
 		if ($this->rowcount == 0) {
 			$this->set_status (DBHANDLE_NODATA, array (
 					  $line
 					, $file
 				));
-			return (0);
+			return ($this->severity);
 		}
-		$this->set_status (OWL_STATUS_OK);
 
 		if ($flag == DBHANDLE_ROWCOUNT) {
-			return ($this->rowcount);
+			$data = $this->rowcount;
 		} elseif ($flag == DBHANDLE_FIELDCOUNT) {
-			return ($_fieldcnt);
+			$data = $_fieldcnt;
 		} elseif ($flag == DBHANDLE_TOTALFIELDCOUNT) {
-			return ($this->rowcount * $_fieldcnt);
+			$data = ($this->rowcount * $_fieldcnt);
 		} else if ($flag == DBHANDLE_SINGLEFIELD) {
-			return ($_data[0][key($_data[0])]);
+			$data = $_data[0][key($_data[0])];
 		} elseif ($flag == DBHANDLE_SINGLEROW) {
-			return ($_data[0]);
+			$data = $_data[0];
 		} else { // default: DBHANDLE_DATA
-			return ($_data);
+			$data = $_data;
 		}
+		return ($this->severity);
 	}
 
 	/**
@@ -370,9 +367,8 @@ class DbHandler extends _OWL
 	 */
 	private function dbread ($qry, &$rows, &$fields)
 	{
-echo "<br>Open: $this->open / ID: $this->id<br>";
-		if (!($__result = mysql_query ($qry, $this->id))) {
-			return false;
+		if (($__result = mysql_query ($qry, $this->id)) === false) {
+			return (false);
 		}
 
 		$rows = mysql_num_rows($__result);
@@ -388,7 +384,7 @@ echo "<br>Open: $this->open / ID: $this->id<br>";
 			$data_set[$rows++] = $__row;
 		}
 		mysql_free_result ($__result);
-		return $data_set;
+		return ($data_set);
 	}
 
 
@@ -425,14 +421,15 @@ echo "<br>Open: $this->open / ID: $this->id<br>";
 	}
 
 	/**
-	 * Change a fieldname in the format 'table_field' to the format '`[prefix]table.field`'
+	 * Change a fieldname in the format 'table#field' to the format '`[prefix]table.field`'
 	 * \param[in,out] $field Fieldname to expand
 	 * \param[in] $quotes If true, add backquotes
 	 */
 	private function expand_field (&$field, $quotes = false)
 	{
-		list ($_t, $_f) = split ('_', $field, 2);
+		list ($_t, $_f) = explode ('#', $field, 2);
 		$field = ($quotes ? '`' : '') . $this->tablename ($_t) . '.' . $_f . ($quotes ? '`' : '');
+
 	}
 
 	/**
@@ -513,7 +510,7 @@ echo "<br>Open: $this->open / ID: $this->id<br>";
 
 	/**
 	 * Create an array with unique tablenames as extracted from an array of fields in
-	 * the format (table_field => value, ...)
+	 * the format (table#field => value, ...)
 	 * \param[in] $fields An array with fields
 	 * \return Array with tablenames
 	 */
@@ -521,7 +518,7 @@ echo "<br>Open: $this->open / ID: $this->id<br>";
 	{
 		$_table = array();
 		foreach ($fields as $_field => $_value) {
-			list ($_t, $_f) = split ('_', $_field, 2);
+			list ($_t, $_f) = explode ('#', $_field, 2);
 			if (!in_array ($_t, $_table)) {
 				$_table[] = $_t;
 			}
@@ -531,13 +528,13 @@ echo "<br>Open: $this->open / ID: $this->id<br>";
 
 	/**
 	 * Prepare a read query. Data is taken from the arrays that are passed to this function.
-	 * All fieldnames are in the format 'table_field', where the table is not yet prefixed.
+	 * All fieldnames are in the format 'table#field', where the table is not yet prefixed.
 	 * \public
 	 * \param[in] $values Values that will be read
 	 * \param[in] $tables Tables from which will be read
 	 * \param[in] $searches Given values that have to match
 	 * \param[in] $values Joins on the given tables
-	 * \return True on succes, False otherwise
+	 * \return Severity level
 	 */
 	public function prepare_read ($values = array(), $tables = array(), $searches = array(), $joins = array())
 	{
@@ -554,19 +551,21 @@ echo "<br>Open: $this->open / ID: $this->id<br>";
 
 		$this->query .= 'FROM ' . $this->tablelist ($tables);
 		$this->query .= 'WHERE ' . $this->where_clause ($searches, $joins);
-echo "Prepared: <b>$this->query</b><br />";
-		return true;
+
+		$this->set_status (DBHANDLE_QPREPARED, array('read', $this->query));
+//echo ("Prepared query: <i>$this->query</i><br />");
+		return ($this->severity);
 	}
 
 	/**
 	 * Prepare an update query. Data is taken from the arrays that are passed to this function.
-	 * All fieldnames are in the format 'table_field', where the table is not yet prefixed.
+	 * All fieldnames are in the format 'table#field', where the table is not yet prefixed.
 	 * \public
 	 * \param[in] $values Given database values
 	 * \param[in] $searched List of fieldnames that will be used in the where clause. All fields not
 	 * in this array will be updated!
 	 * \param[in] $values Joins on the given tables
-	 * \return True on succes, False otherwise
+	 * \return Severity level
 	 */
 	public function prepare_update ($values = array(), $searches = array(), $joins = array())
 	{
@@ -582,30 +581,66 @@ echo "Prepared: <b>$this->query</b><br />";
 				$_updates[$_fld] = $_val;
 			}
 		}
-
 		$this->query = 'UPDATE ' . $this->tablelist ($_tables) . ' '
 					 . $this->update_list ($_updates)
 					 . 'WHERE ' . $this->where_clause ($_searches, $joins);
 
-echo "Prepared: <b>$this->query</b><br />";
-		return true;
+		$this->set_status (DBHANDLE_QPREPARED, array('update', $this->query));
+//echo ("Prepared query: <i>$this->query</i><br />");
+		return ($this->severity);
+	}
+
+	/**
+	 * Prepare an insert query. Data is taken from the arrays that are passed to this function.
+	 * All fieldnames are in the format 'table#field', where the table is not yet prefixed.
+	 * \public
+	 * \param[in] $values Given database values
+	 * \param[in] $searched List of fieldnames that will be used in the where clause. All fields not
+	 * in this array will be updated!
+	 * \param[in] $values Joins on the given tables
+	 * \return Severity level
+	 */
+	public function prepare_insert ($values = array())
+	{
+// TODO:  Check on empty arrays!!!
+		$_fld = array();
+		$_val = array();
+		$_tables = $this->extract_tablelist ($values);
+
+		foreach ($values as $_f => $_v) {
+			$this->expand_field ($_f);
+			$_fld[] = $_f;
+			$_val[] = ($_v === null ? 'NULL' : "'$_v'");
+		}
+	
+		if (count ($_tables) > 1) {
+			// TODO: Make $this->query an array with a transaction (commit/rollback)
+		} else {
+			$this->query = 'INSERT INTO ' . $this->tablename ($_tables[0]) . ' '
+						 . ' (' . join (', ', $_fld) . ') ' 
+						 . ' VALUES (' . join (', ', $_val) . ') '; 
+		}
+		$this->set_status (DBHANDLE_QPREPARED, array('write', $this->query));
+//echo ("Prepared query: <i>$this->query</i><br />");
+		return ($this->severity);
 	}
 
 	/**
 	 * Database inserts and updates. The number of affected rows is stored in $this->rowcount
 	 * \public
-	 * \param $line Line number of this call
-	 * \param $file File that made the call to this method
-	 * \return The number of affected rows
+	 * \param[out] $rows (optional) The number of affected rows
+	 * \param[in] $line Line number of this call
+	 * \param[in] $file File that made the call to this method
+	 * \return Severity level
 	 */
-	public function write ($line = 0, $file = '[unknown]')
+	public function write ($rows = false, $line = 0, $file = '[unknown]')
 	{
-		if ($this->config['debug']) {
-			echo ("Writing to database [$this->id]:<br />$this->query<br />\n");
-		}
-		if (!$this->open) {
+//		if ($this->config['debug']) {
+//			echo ("Writing to database [$this->id]:<br />$this->query<br />\n");
+//		}
+		if (!$this->opened) {
 			$this->set_status (DBHANDLE_DBCLOSED);
-			return;
+			return ($this->severity);
 		}
 		if (!@mysql_query ($this->query, $this->id)) {
 			$this->set_status (DBHANDLE_QUERYERR, array (
@@ -613,14 +648,20 @@ echo "Prepared: <b>$this->query</b><br />";
 					, $line
 					, $file
 				));
-			return 0;
-			
+			return ($this->severity);
 		}
+
 		$_cnt = mysql_affected_rows();
-		if ($this->config['debug']) {
-			echo ("Number of updates rows: $cnt<br />\n");
+		$this->set_status (DBHANDLE_UPDATED, array ('written', $_cnt));
+		if ($rows !== false) {
+			$rows = $_cnt;
 		}
-		return $_cnt;
+		
+//		if ($this->config['debug']) {
+//			echo ("Number of updates rows: $cnt<br />\n");
+//		}
+
+		return ($this->severity);
 	}
 
 	/**
@@ -637,15 +678,46 @@ echo "Prepared: <b>$this->query</b><br />";
 	 * Close the database and disconnect from the server.
 	 * This function is called on program shutdown.
 	 * Although the database will be closed already by PHP, this function
-	 * might be called at any time manually; is also updates the 'open'
+	 * might be called at any time manually; is also updates the 'opened'
 	 * variable.
 	 * \public
 	 */
 	public function close () 
 	{
-		if ($this->open) {
+		if ($this->opened) {
 			@mysql_close ($this->id);
-			$this->open = False;
+			$this->opened = false;
 		}
 	}
 }
+
+/*
+ * Register this class and all status codes
+ */
+Register::register_class ('DbHandler');
+
+Register::set_severity (OWL_DEBUG);
+Register::register_code ('DBHANDLE_QPREPARED');
+Register::register_code ('DBHANDLE_ROWSREAD');
+
+//Register::set_severity (OWL_INFO);
+//Register::set_severity (OWL_OK);
+Register::set_severity (OWL_SUCCESS);
+Register::register_code ('DBHANDLE_OPENED');
+Register::register_code ('DBHANDLE_UPDATED');
+Register::register_code ('DBHANDLE_NODATA');
+
+Register::set_severity (OWL_WARNING);
+Register::register_code ('DBHANDLE_IVTABLE');
+
+//Register::set_severity (OWL_BUG);
+
+Register::set_severity (OWL_ERROR);
+Register::register_code ('DBHANDLE_CONNECTERR');
+Register::register_code ('DBHANDLE_OPENERR');
+Register::register_code ('DBHANDLE_DBCLOSED');
+Register::register_code ('DBHANDLE_QUERYERR');
+Register::register_code ('DBHANDLE_CREATERR');
+
+//Register::set_severity (OWL_FATAL);
+//Register::set_severity (OWL_CRITICAL);

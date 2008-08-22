@@ -28,26 +28,18 @@ Collaboration diagram for DataHandler:\nopagebreak
 \item 
 \hyperlink{classDataHandler_16c81c9564a7feaf530ce5d51ed99df7}{\_\-\_\-set} (\$variable, \$value)
 \item 
-\hyperlink{classDataHandler_1229b35655a939fd3c1fe31184057632}{lock} (\$variable)
+\hyperlink{classDataHandler_32ce223478b78a4ea9838a3c6ac7440c}{set\_\-key} (\$variable)
 \item 
 \hyperlink{classDataHandler_f58cbd10b032e4904fa15ce950d521e2}{\_\-\_\-get} (\$variable)
 \item 
 \hyperlink{classDataHandler_9b77733f02e9d6281fc40df110c0ba70}{set\_\-join} (\$lvalue, \$rvalue, \$linktype= '=')
-\item 
-\hyperlink{class__OWL_99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
-\item 
-\hyperlink{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}{signal} (\$level=0)
 \end{CompactItemize}
 \subsection*{Protected Member Functions}
 \begin{CompactItemize}
 \item 
 \hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
-\hyperlink{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}{severity} ()
-\item 
 \hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{reset} ()
-\item 
-\hyperlink{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
 \end{CompactItemize}
 \subsection*{Protected Attributes}
 \begin{CompactItemize}
@@ -66,7 +58,7 @@ Collaboration diagram for DataHandler:\nopagebreak
 \item 
 \hyperlink{classDataHandler_da9b697f81ea82d269077f9c7445791d}{\$owl\_\-joins}
 \item 
-\hyperlink{classDataHandler_8c362014ccc2c85335cc56afe3966ee6}{\$owl\_\-locks}
+\hyperlink{classDataHandler_8d398720bce975159b2d13ad7a941bc7}{\$owl\_\-keys}
 \item 
 \hyperlink{classDataHandler_24620784bde262bdd02227962d3b9605}{\$owl\_\-tablename}
 \item 
@@ -129,11 +121,11 @@ Define or override a variable in the data array
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$variable}]The name of the variable that should be set \item[\mbox{$\leftarrow$} {\em \$value}]Value to set the variable to. If this is an array, the second field in the array has to be the tablename where the fieldname is found. The value itself van NEVER be an array! \end{description}
 \end{Desc}
-\hypertarget{classDataHandler_1229b35655a939fd3c1fe31184057632}{
-\index{DataHandler@{DataHandler}!lock@{lock}}
-\index{lock@{lock}!DataHandler@{DataHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DataHandler::lock (\$ {\em variable})}}
-\label{classDataHandler_1229b35655a939fd3c1fe31184057632}
+\hypertarget{classDataHandler_32ce223478b78a4ea9838a3c6ac7440c}{
+\index{DataHandler@{DataHandler}!set\_\-key@{set\_\-key}}
+\index{set\_\-key@{set\_\-key}!DataHandler@{DataHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set\_\-key (\$ {\em variable})}}
+\label{classDataHandler_32ce223478b78a4ea9838a3c6ac7440c}
 
 
 Lock variables for update by adding them to an array. Fields in this array will not be overwritten on updates, but used in WHERE clauses. \begin{Desc}
@@ -142,7 +134,7 @@ Lock variables for update by adding them to an array. Fields in this array will 
 \item[\mbox{$\leftarrow$} {\em \$variable}]Variable name to lock, optionally as an array (table, field) \end{description}
 \end{Desc}
 \begin{Desc}
-\item[Returns:]True on succes, False otherwise \end{Desc}
+\item[Returns:]Severity level \end{Desc}
 \hypertarget{classDataHandler_1e4789e22370c96ae479bc3a58f30984}{
 \index{DataHandler@{DataHandler}!find\_\-field@{find\_\-field}}
 \index{find\_\-field@{find\_\-field}!DataHandler@{DataHandler}}
@@ -150,7 +142,7 @@ Lock variables for update by adding them to an array. Fields in this array will 
 \label{classDataHandler_1e4789e22370c96ae479bc3a58f30984}
 
 
-Try to exand a field to a fully qualified 'table\_\-field' name
+Try to exand a field to a fully qualified 'table\#field' name
 
 \begin{Desc}
 \item[Parameters:]
@@ -166,7 +158,7 @@ Try to exand a field to a fully qualified 'table\_\-field' name
 \label{classDataHandler_f58cbd10b032e4904fa15ce950d521e2}
 
 
-Retrieve a value from the data array. The variable name can be a fully qualified table/fieldname (format \char`\"{}table\_\-field\char`\"{}), or only a field name, in which case it has to be unique. If the fieldname cannot be found directly, the array is scanned to find a matching field. It more matches are found, the object status is set to DATA\_\-AMBFIELD.
+Retrieve a value from the data array. The variable name can be a fully qualified table/fieldname (format \char`\"{}table\#field\char`\"{}), or only a field name, in which case it has to be unique. If the fieldname cannot be found directly, the array is scanned to find a matching field. It more matches are found, the object status is set to DATA\_\-AMBFIELD.
 
 \begin{Desc}
 \item[Parameters:]
@@ -190,22 +182,15 @@ Define a link between 2 fields that will be recognized when the database query i
 \item[\mbox{$\leftarrow$} {\em \$lvalue}]Left value as array(table, field) \item[\mbox{$\leftarrow$} {\em \$rvalue}]Right value as array(table, field) \item[\mbox{$\leftarrow$} {\em \$linktype}]How are the fields linked. Can be any binary operator as recognized by SQL. \end{description}
 \end{Desc}
 \begin{Desc}
-\item[Returns:]True on success, otherwise False. \end{Desc}
+\item[Returns:]Severity level \end{Desc}
 \hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
 \index{DataHandler@{DataHandler}!init@{init}}
 \index{init@{init}!DataHandler@{DataHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}final, protected, inherited\mbox{]}}}}
 \label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
 
 
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}{
-\index{DataHandler@{DataHandler}!severity@{severity}}
-\index{severity@{severity}!DataHandler@{DataHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::severity ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
-\label{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}
-
-
-Check the status of the given object and return its severity. \hypertarget{class__OWL_2f2a042bcf31965194c03033df0edc9b}{
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_2f2a042bcf31965194c03033df0edc9b}{
 \index{DataHandler@{DataHandler}!reset@{reset}}
 \index{reset@{reset}!DataHandler@{DataHandler}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
@@ -214,48 +199,7 @@ Check the status of the given object and return its severity. \hypertarget{class
 
 General reset function for all objects. Should be called after each non-fatal error 
 
-Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbHandler}.\hypertarget{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}{
-\index{DataHandler@{DataHandler}!set\_\-status@{set\_\-status}}
-\index{set\_\-status@{set\_\-status}!DataHandler@{DataHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \$ {\em params} = {\tt array~()})\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
-\label{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}
-
-
-Set the current object status to the specified value.
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$status}]OWL status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{description}
-\end{Desc}
-\hypertarget{class__OWL_99ec771fa2c5c279f80152cc09e489a8}{
-\index{DataHandler@{DataHandler}!get\_\-status@{get\_\-status}}
-\index{get\_\-status@{get\_\-status}!DataHandler@{DataHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\tt  \mbox{[}inherited\mbox{]}}}}
-\label{class__OWL_99ec771fa2c5c279f80152cc09e489a8}
-
-
-Get the current object status.
-
-\begin{Desc}
-\item[Returns:]Object's status code \end{Desc}
-\hypertarget{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}{
-\index{DataHandler@{DataHandler}!signal@{signal}}
-\index{signal@{signal}!DataHandler@{DataHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\tt 0})\hspace{0.3cm}{\tt  \mbox{[}inherited\mbox{]}}}}
-\label{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}
-
-
-Display the message for the current object status
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]The severity level for this object \end{Desc}
-
+Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbHandler}.
 
 \subsection{Member Data Documentation}
 \hypertarget{classDataHandler_329b5524c379e0db6c4d5ce59f3c414f}{
@@ -272,11 +216,11 @@ Indexed array holding all data values. \hypertarget{classDataHandler_da9b697f81e
 \label{classDataHandler_da9b697f81ea82d269077f9c7445791d}
 
 
-2D Array holding all relationships between the data. \hypertarget{classDataHandler_8c362014ccc2c85335cc56afe3966ee6}{
-\index{DataHandler@{DataHandler}!\$owl\_\-locks@{\$owl\_\-locks}}
-\index{\$owl\_\-locks@{\$owl\_\-locks}!DataHandler@{DataHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DataHandler::\$owl\_\-locks\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classDataHandler_8c362014ccc2c85335cc56afe3966ee6}
+2D Array holding all relationships between the data. \hypertarget{classDataHandler_8d398720bce975159b2d13ad7a941bc7}{
+\index{DataHandler@{DataHandler}!\$owl\_\-keys@{\$owl\_\-keys}}
+\index{\$owl\_\-keys@{\$owl\_\-keys}!DataHandler@{DataHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DataHandler::\$owl\_\-keys\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classDataHandler_8d398720bce975159b2d13ad7a941bc7}
 
 
 Array with variable names that are used in WHERE clauses on updates \hypertarget{classDataHandler_24620784bde262bdd02227962d3b9605}{

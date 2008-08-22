@@ -1,0 +1,167 @@
+\hypertarget{classLogHandler}{
+\section{LogHandler Class Reference}
+\label{classLogHandler}\index{LogHandler@{LogHandler}}
+}
+Log handler.  
+
+
+Inheritance diagram for LogHandler:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=70pt]{classLogHandler__inherit__graph}
+\end{center}
+\end{figure}
+Collaboration diagram for LogHandler:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=70pt]{classLogHandler__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classLogHandler_acca49c4394109f4ccc494048a0b2cab}{\_\-\_\-construct} ()
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
+\item 
+\hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class__OWL_f37a011667dda12fc417a68a6f3077d1}{\$config}
+\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classLogHandler_65ef4f1c6ab4cff4057f5f5932cc690e}{set\_\-filename} ()
+\item 
+\hyperlink{classLogHandler_af324e5156bf8ea83e5b4e990ea99e2d}{open\_\-logfile} ()
+\item 
+\hyperlink{classLogHandler_1a3b03d9bb97404a4f746bd2aacc5a8c}{close\_\-logfile} ()
+\item 
+\hyperlink{classLogHandler_e0cd68fb6f068e47f899a1e4c7f29ba9}{write\_\-logfile} (\$msg)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{classLogHandler_956e7e71a9ff96c6301d1f41a5bf207e}{\$opened}
+\item 
+\hyperlink{classLogHandler_b51c12bcd654093b9d0153ab38ebad8c}{\$filename}
+\item 
+\hyperlink{classLogHandler_d65c8954bda40d8a33828f0a0a2cbf5b}{\$fpointer}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Log handler. 
+
+This class handles all OWL logging \begin{Desc}
+\item[Author:]Oscar van Eijk, Oveas Functionality Provider \end{Desc}
+\begin{Desc}
+\item[Version:]Aug 13, 2008 -- O van Eijk -- initial version \end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLogHandler_acca49c4394109f4ccc494048a0b2cab}{
+\index{LogHandler@{LogHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!LogHandler@{LogHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\_\-\_\-construct ()}}
+\label{classLogHandler_acca49c4394109f4ccc494048a0b2cab}
+
+
+Class constructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLogHandler_65ef4f1c6ab4cff4057f5f5932cc690e}{
+\index{LogHandler@{LogHandler}!set\_\-filename@{set\_\-filename}}
+\index{set\_\-filename@{set\_\-filename}!LogHandler@{LogHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}LogHandler::set\_\-filename ()\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLogHandler_65ef4f1c6ab4cff4057f5f5932cc690e}
+
+
+Find out what the filename of the logfile should be \hypertarget{classLogHandler_af324e5156bf8ea83e5b4e990ea99e2d}{
+\index{LogHandler@{LogHandler}!open\_\-logfile@{open\_\-logfile}}
+\index{open\_\-logfile@{open\_\-logfile}!LogHandler@{LogHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}LogHandler::open\_\-logfile ()\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLogHandler_af324e5156bf8ea83e5b4e990ea99e2d}
+
+
+Open the logfile for write \hypertarget{classLogHandler_1a3b03d9bb97404a4f746bd2aacc5a8c}{
+\index{LogHandler@{LogHandler}!close\_\-logfile@{close\_\-logfile}}
+\index{close\_\-logfile@{close\_\-logfile}!LogHandler@{LogHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}LogHandler::close\_\-logfile ()\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLogHandler_1a3b03d9bb97404a4f746bd2aacc5a8c}
+
+
+Close the logfile \hypertarget{classLogHandler_e0cd68fb6f068e47f899a1e4c7f29ba9}{
+\index{LogHandler@{LogHandler}!write\_\-logfile@{write\_\-logfile}}
+\index{write\_\-logfile@{write\_\-logfile}!LogHandler@{LogHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}LogHandler::write\_\-logfile (\$ {\em msg})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLogHandler_e0cd68fb6f068e47f899a1e4c7f29ba9}
+
+
+Write a message to the logfile
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$msg}]The complete log message \end{description}
+\end{Desc}
+\hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
+\index{LogHandler@{LogHandler}!init@{init}}
+\index{init@{init}!LogHandler@{LogHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}final, protected, inherited\mbox{]}}}}
+\label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
+
+
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_2f2a042bcf31965194c03033df0edc9b}{
+\index{LogHandler@{LogHandler}!reset@{reset}}
+\index{reset@{reset}!LogHandler@{LogHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
+\label{class__OWL_2f2a042bcf31965194c03033df0edc9b}
+
+
+General reset function for all objects. Should be called after each non-fatal error 
+
+Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbHandler}.
+
+\subsection{Member Data Documentation}
+\hypertarget{classLogHandler_956e7e71a9ff96c6301d1f41a5bf207e}{
+\index{LogHandler@{LogHandler}!\$opened@{\$opened}}
+\index{\$opened@{\$opened}!LogHandler@{LogHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\$opened\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLogHandler_956e7e71a9ff96c6301d1f41a5bf207e}
+
+
+Boolean to keep track of the logfile status \hypertarget{classLogHandler_b51c12bcd654093b9d0153ab38ebad8c}{
+\index{LogHandler@{LogHandler}!\$filename@{\$filename}}
+\index{\$filename@{\$filename}!LogHandler@{LogHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\$filename\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLogHandler_b51c12bcd654093b9d0153ab38ebad8c}
+
+
+Name of the logfile \hypertarget{classLogHandler_d65c8954bda40d8a33828f0a0a2cbf5b}{
+\index{LogHandler@{LogHandler}!\$fpointer@{\$fpointer}}
+\index{\$fpointer@{\$fpointer}!LogHandler@{LogHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\$fpointer\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLogHandler_d65c8954bda40d8a33828f0a0a2cbf5b}
+
+
+File pointer \hypertarget{class__OWL_f37a011667dda12fc417a68a6f3077d1}{
+\index{LogHandler@{LogHandler}!\$config@{\$config}}
+\index{\$config@{\$config}!LogHandler@{LogHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$config\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
+\label{class__OWL_f37a011667dda12fc417a68a6f3077d1}
+
+
+The global Config array is referenced from every object 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/oscar/work/eclipse/owl-php/src/inc/\hyperlink{class_8loghandler_8php}{class.loghandler.php}\end{CompactItemize}

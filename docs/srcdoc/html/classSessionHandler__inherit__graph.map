@@ -1,1 +1,1 @@
-<area shape="rect" href="$class__OWL.html" title="{_OWL\n|# $config\l&#45; $status\l&#45; $message_params\l|+ get_status()\l+ signal()\l# init()\l# severity()\l# reset()\l# set_status()\l}" alt="" coords="5,6,157,208">
+<area shape="rect" href="$class__OWL.html" title="{_OWL\n|# $config\l&#45; $status\l&#45; $pstatus\l&#45; $severity\l|# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="5,5,133,173">

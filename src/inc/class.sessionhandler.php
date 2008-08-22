@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.1 2008-08-07 10:21:21 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.2 2008-08-22 12:02:10 oscar Exp $
  */
 
 require_once (OWL_INCLUDE . '/class._OWL.php');
@@ -30,13 +30,13 @@ class SessionHandler extends _OWL
 	 */
 	public function __construct (&$datalink = null)
 	{
-		parent::init();
+		_OWL::init();
 
 		if (($this->dataset = $datalink) == null) {
 			$this->set_status (SESSION_NODATASET);
 			return;
 		}
-		$this->dataset->set_tablename('sessiondata');
+		$this->dataset->set_tablename('owl_sessiondata');
 
 		// TODO; Tune the settings below depending on server load.
 		// The outcommented values are the system default (1%)
@@ -46,6 +46,7 @@ class SessionHandler extends _OWL
 //		ini_set ('session.gc_maxlifetime', 1440);
 
 		ini_set ('session.save_handler', 'user');
+		ini_set ('session.use_trans_sid', true);
 
 		session_set_save_handler (
 				array (&$this, 'open'),
@@ -57,6 +58,15 @@ class SessionHandler extends _OWL
 			);
 
 		$this->set_status (OWL_STATUS_OK);
+	}
+
+	/**
+	 * Write the session data back to the database
+	 * \public
+	 */
+	public function __destruct ()
+	{
+//		session_write_close ();
 	}
 
 	/**
@@ -91,9 +101,12 @@ class SessionHandler extends _OWL
 		$this->dataset->sdata = null;
 
 		$this->dataset->prepare (DATA_READ);
-		$_data = $this->dataset->db (__LINE__, __FILE__);
-
-		return ($_data);
+		$this->dataset->db (&$_data, __LINE__, __FILE__);
+		if ($this->set_high_severity($this->dataset) > OWL_WARNING) {
+			$this->traceback();
+		}
+		$this->reset();
+		return ($_data[0]['sdata']);
 	}
 
 	/**
@@ -108,27 +121,27 @@ class SessionHandler extends _OWL
 		$this->dataset->sid = $GLOBALS['db']->escape_string($id);
 		
 		// First, check if this session already exists in the db
-		$this->dataset->sid = $GLOBALS['db']->escape_string($id);
-
 		$this->dataset->prepare (DATA_READ);
-		$_data = $this->dataset->db (__LINE__, __FILE__);
+		$this->dataset->db (&$_data, __LINE__, __FILE__);
 		
 		// Set or overwrite the values
 		$this->dataset->sdata = $GLOBALS['db']->escape_string($data);
 		$this->dataset->stimestamp = time();
 
 		if (count ($_data) == 0) {
-			echo "NEWNEWNEW";
-//			$this->dataset->prepare (DATA_WRITE);
+			$this->dataset->prepare (DATA_WRITE);
 		} else {
-			if (!$this->dataset->lock('sid')) {
-				$this->dataset->signal();
+			$this->dataset->set_key ('sid');
+			if (!$this->check ($this->dataset, OWL_WARNING)) {
 				return (false);
 			}
 			$this->dataset->prepare (DATA_UPDATE);
+			if (!$this->check ($this->dataset, OWL_WARNING)) {
+				return (false);
+			}
 		}
 
-		$_data = $this->dataset->db (__LINE__, __FILE__);
+		$this->dataset->db (&$_data, __LINE__, __FILE__);
 		return (true);
 	}
 
@@ -140,6 +153,15 @@ class SessionHandler extends _OWL
 	 */
 	public function destroy ($id)
 	{
+
+		// Empty all data
+		$_SESSION = array();
+
+		// If a session cookie exists, make sure it's deleted
+		if (isset($_COOKIE[session_name()])) {
+			setcookie(session_name(), '', time()-42000, '/');
+		}
+
 		$GLOBALS['db']->query =
 			  'DELETE FROM ' . $GLOBALS['db']->tablename ('sessiondata')
 			. " WHERE sid = '" . $GLOBALS['db']->escape_string($id) . "'";
@@ -164,3 +186,29 @@ class SessionHandler extends _OWL
 		return $GLOBALS['db']->write (__LINE__, __FILE__);
 	}
 }
+
+/*
+ * Register this class and all status codes
+ */
+Register::register_class('SessionHandler');
+
+//Register::set_severity (OWL_DEBUG);
+//Register::set_severity (OWL_INFO);
+//Register::set_severity (OWL_OK);
+//Register::set_severity (OWL_SUCCESS);
+
+Register::set_severity (OWL_WARNING);
+Register::register_code ('SESSION_INVUSERNAME');
+Register::register_code ('SESSION_INVPASSWORD');
+Register::register_code ('SESSION_TIMEOUT');
+Register::register_code ('SESSION_NOACCESS');
+Register::register_code ('SESSION_DISABLED');
+Register::register_code ('SESSION_IVSESSION');
+
+//Register::set_severity (OWL_BUG);
+
+Register::set_severity (OWL_ERROR);
+Register::register_code ('SESSION_NODATASET');
+
+//Register::set_severity (OWL_FATAL);
+//Register::set_severity (OWL_CRITICAL);

@@ -1,37 +1,40 @@
 <?php
-/****?* cargobyte/config
- * NAME
- * config.php 
- *
- * SYNOPSIS
- * CargoByte configuration
- * 
- * DESCRIPTION
- * <Long description>
- *
- * AUTHOR
- *  Oscar van Eijk, Oveas Functionality Provider
- *
- * COPYRIGHT
- *  (c) 2007 -- by Oscar van Eijk/Oveas Functionality Provider 
- *
- * HISTORY
- *   date          author         changes
- *   --------------------------------------------------------
- *   Jun 26, 2008  oscar          initial version
- * 
- ***
- * $Id: config.php,v 1.1 2008-08-07 10:21:21 oscar Exp $
+/**
+ * \file
+ * Configuration basics file for OWL; it stores some fixed configuration in a global
+ * data structure 
+ * \version $Id: config.php,v 1.2 2008-08-22 12:02:13 oscar Exp $
  */
 
-$GLOBALS['config']['dbprefix'] = 'owl_';
-$GLOBALS['config']['dbserver'] = 'localhost';
-$GLOBALS['config']['dbname'] = 'owl';
-$GLOBALS['config']['dbuser'] = 'oscar';
-$GLOBALS['config']['dbpasswd'] = 'cosyro';
 
-//$GLOBALS['config']['default_signal_level'] = OWL_WARNING;
-$GLOBALS['config']['default_signal_level'] = -1;
+$GLOBALS['register'] = array (
+					  'applications'	=> array()
+					, 'classes'			=> array()
+				);
+
+//$GLOBALS['config']['logging'] = array (
+//			  'multiple_file'	=> false
+//			, 'persistant'		=> true
+//			, 'filename'		=> '/tmp/owl.log'
+//			, 'level'			=> OWL_DEBUG
+//			, 'hide_passwords'	=> true
+//		);
+//
+//$GLOBALS['config']['exception'] = array (
+//			  'show_in_browser'	=> false
+//			, 'show_values'		=> true
+//			, 'max_value_len'	=> 15
+//		);
+//
+//$GLOBALS['config']['locale'] = array (
+//			  'date'		=> 'd-M-Y'
+//			, 'time'		=> 'H:i'
+//			, 'log_date'	=> 'd-m-Y'
+//			, 'log_time'	=> 'H:i:s.u'
+//			, 'lang'		=> 'en-uk'
+//		); 
+
+$GLOBALS['config']['configfiles']['owl'] = OWL_ROOT . '/owl_config.cfg';
 
 /*
  *  List some known filetypes.
@@ -40,6 +43,7 @@ $GLOBALS['config']['image_types'] = '/gif/jpg/jpeg/png/swf/psd/bmp/';
 $GLOBALS['config']['archive_types']  = '/gzip/gz/Z/zip/arj/zoo/tar/bzip2/';
 $GLOBALS['config']['webdocument_types'] = '/html/php/';
 $GLOBALS['config']['script_types']  = '/php/';
+
 
 /*
 * List the ASCII and Binary file types. Not all types have to be
@@ -50,4 +54,3 @@ $GLOBALS['config']['script_types']  = '/php/';
 */
 $GLOBALS['config']['binary_files'] = '/zip/gz/tar/arj/gif/jpg/jpeg/png/swf/psd/bmp/pdf/exe/';
 $GLOBALS['config']['ascii_files']  = '/txt/html/php/js/asp/phtml/xhtml/';
-

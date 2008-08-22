@@ -3,44 +3,99 @@
 \label{owl_8severitycodes_8php}\index{/home/oscar/work/eclipse/owl-php/src/lib/owl.severitycodes.php@{/home/oscar/work/eclipse/owl-php/src/lib/owl.severitycodes.php}}
 }
 \subsection*{Enumerations}
-\begin{Indent}{\bf }\par
-\begin{CompactItemize}
+\begin{Indent}{\bf Severity codes}\par
+{\em Define the Severity values for all status codes as returned by \_\-OWL::severity(). }\begin{CompactItemize}
+\item 
+enum \hyperlink{owl_8severitycodes_8php_df6a439e74801dd83160f085e9af5546}{OWL\_\-DEBUG} 
+\item 
+enum \hyperlink{owl_8severitycodes_8php_139328861128689f2f4def6a399d9057}{OWL\_\-INFO} 
 \item 
 enum \hyperlink{owl_8severitycodes_8php_bc72c053cfd10025fe57797c41eab18e}{OWL\_\-OK} 
 \item 
+enum \hyperlink{owl_8severitycodes_8php_96223f06ba27bf5cbefa6e9d702897c2}{OWL\_\-SUCCESS} 
+\item 
 enum \hyperlink{owl_8severitycodes_8php_ce886152e2e86cd2e91cb833fd495adb}{OWL\_\-WARNING} 
 \item 
+enum \hyperlink{owl_8severitycodes_8php_97e9838587d4386a48d7e40020bf0a7f}{OWL\_\-BUG} 
+\item 
 enum \hyperlink{owl_8severitycodes_8php_b57d46c4dff0628f7f46aa11db9325c9}{OWL\_\-ERROR} 
+\item 
+enum \hyperlink{owl_8severitycodes_8php_4c27106ebf80027ef1ebf953ed172e76}{OWL\_\-FATAL} 
+\item 
+enum \hyperlink{owl_8severitycodes_8php_4628d2e3b0d08692a62a1b8cad05465b}{OWL\_\-CRITICAL} 
 \end{CompactItemize}
 \end{Indent}
 
 
 \subsection{Detailed Description}
 This file defines the Severity codes that all objects can have. It must be the very first file that is inluded, since these codes are used from step 1. \begin{Desc}
-\item[Version:]\$Id\$ \end{Desc}
+\item[Version:]\end{Desc}
+\begin{Desc}
+\item[Id]\hyperlink{owl_8severitycodes_8php}{owl.severitycodes.php},v 1.1 2008-08-07 10:21:21 oscar Exp \end{Desc}
 
 
 \subsection{Enumeration Type Documentation}
-\hypertarget{owl_8severitycodes_8php_b57d46c4dff0628f7f46aa11db9325c9}{
+\hypertarget{owl_8severitycodes_8php_97e9838587d4386a48d7e40020bf0a7f}{
+\index{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\-BUG@{OWL\_\-BUG}}
+\index{OWL\_\-BUG@{OWL\_\-BUG}!owl.severitycodes.php@{owl.severitycodes.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-BUG}}}
+\label{owl_8severitycodes_8php_97e9838587d4386a48d7e40020bf0a7f}
+
+
+Something weird happened, this might be a bug \hypertarget{owl_8severitycodes_8php_4628d2e3b0d08692a62a1b8cad05465b}{
+\index{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\-CRITICAL@{OWL\_\-CRITICAL}}
+\index{OWL\_\-CRITICAL@{OWL\_\-CRITICAL}!owl.severitycodes.php@{owl.severitycodes.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-CRITICAL}}}
+\label{owl_8severitycodes_8php_4628d2e3b0d08692a62a1b8cad05465b}
+
+
+Pack your backs and start running. This status is reserved \hypertarget{owl_8severitycodes_8php_df6a439e74801dd83160f085e9af5546}{
+\index{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\-DEBUG@{OWL\_\-DEBUG}}
+\index{OWL\_\-DEBUG@{OWL\_\-DEBUG}!owl.severitycodes.php@{owl.severitycodes.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-DEBUG}}}
+\label{owl_8severitycodes_8php_df6a439e74801dd83160f085e9af5546}
+
+
+Status that can be logged in debug mode \hypertarget{owl_8severitycodes_8php_b57d46c4dff0628f7f46aa11db9325c9}{
 \index{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\-ERROR@{OWL\_\-ERROR}}
 \index{OWL\_\-ERROR@{OWL\_\-ERROR}!owl.severitycodes.php@{owl.severitycodes.php}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-ERROR}}}
 \label{owl_8severitycodes_8php_b57d46c4dff0628f7f46aa11db9325c9}
 
 
-\hypertarget{owl_8severitycodes_8php_bc72c053cfd10025fe57797c41eab18e}{
+Last operational ended with an error; current object cannot be trusted anymore \hypertarget{owl_8severitycodes_8php_4c27106ebf80027ef1ebf953ed172e76}{
+\index{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\-FATAL@{OWL\_\-FATAL}}
+\index{OWL\_\-FATAL@{OWL\_\-FATAL}!owl.severitycodes.php@{owl.severitycodes.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-FATAL}}}
+\label{owl_8severitycodes_8php_4c27106ebf80027ef1ebf953ed172e76}
+
+
+Last operation had a fatal status; OWL environment cannot be trusted anymore \hypertarget{owl_8severitycodes_8php_139328861128689f2f4def6a399d9057}{
+\index{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\-INFO@{OWL\_\-INFO}}
+\index{OWL\_\-INFO@{OWL\_\-INFO}!owl.severitycodes.php@{owl.severitycodes.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-INFO}}}
+\label{owl_8severitycodes_8php_139328861128689f2f4def6a399d9057}
+
+
+Holds neutral informarion about the current object status \hypertarget{owl_8severitycodes_8php_bc72c053cfd10025fe57797c41eab18e}{
 \index{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\-OK@{OWL\_\-OK}}
 \index{OWL\_\-OK@{OWL\_\-OK}!owl.severitycodes.php@{owl.severitycodes.php}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-OK}}}
 \label{owl_8severitycodes_8php_bc72c053cfd10025fe57797c41eab18e}
 
 
-Define the Severity values for all status codes as returned by \hyperlink{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}{\_\-OWL::severity()}. This severity is specified by the last 2 bits of the status code:\begin{itemize}
-\item 00: success (0x0, 0x4, 0x8, 0xc)\item 01: warning (0x1, 0x5, 0x9, 0xd); returned when an error occured that can be fixed by the user (typos/formdata not filled in properly etc.) or have any other temporary condition (e.g. network time-outs).\item 10: error (0x2, 0x6, 0xa, 0xe); returned when a condition occured that should be fixed either in the software (incl. server-side configuration), or in the database.\item 11: (reserved, currently handled as an error)(0x3, 0x7, 0xb, 0xf) \end{itemize}
-\hypertarget{owl_8severitycodes_8php_ce886152e2e86cd2e91cb833fd495adb}{
+General normal status \hypertarget{owl_8severitycodes_8php_96223f06ba27bf5cbefa6e9d702897c2}{
+\index{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\-SUCCESS@{OWL\_\-SUCCESS}}
+\index{OWL\_\-SUCCESS@{OWL\_\-SUCCESS}!owl.severitycodes.php@{owl.severitycodes.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-SUCCESS}}}
+\label{owl_8severitycodes_8php_96223f06ba27bf5cbefa6e9d702897c2}
+
+
+Last operation ended successful \hypertarget{owl_8severitycodes_8php_ce886152e2e86cd2e91cb833fd495adb}{
 \index{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\-WARNING@{OWL\_\-WARNING}}
 \index{OWL\_\-WARNING@{OWL\_\-WARNING}!owl.severitycodes.php@{owl.severitycodes.php}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-WARNING}}}
 \label{owl_8severitycodes_8php_ce886152e2e86cd2e91cb833fd495adb}
 
 
+Last operation ended with a warning; this might be a temportaty status (e.g. network issue) or a. user error 

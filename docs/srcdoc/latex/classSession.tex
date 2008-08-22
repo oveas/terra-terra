@@ -1,0 +1,121 @@
+\hypertarget{classSession}{
+\section{Session Class Reference}
+\label{classSession}\index{Session@{Session}}
+}
+the OWL-PHP session object  
+
+
+Inheritance diagram for Session:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=72pt]{classSession__inherit__graph}
+\end{center}
+\end{figure}
+Collaboration diagram for Session:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=72pt]{classSession__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classSession_36373ba15d6c8f932aeea02d7320d7c8}{\_\-\_\-construct} ()
+\item 
+\hyperlink{classSession_a498272c85524e4700abc3363883165b}{\_\-\_\-destruct} ()
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
+\item 
+\hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class__OWL_f37a011667dda12fc417a68a6f3077d1}{\$config}
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{classSession_ebcff26e749269269d3513336f17eaf1}{\$sessiondata}
+\item 
+\hyperlink{classSession_8ce7c23ff67100e8c62bb187cdf4921c}{\$sessionhandler}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+the OWL-PHP session object 
+
+This class handles the OWL session \begin{Desc}
+\item[Author:]Oscar van Eijk, Oveas Functionality Provider \end{Desc}
+\begin{Desc}
+\item[Version:]Aug 13, 2008 -- O van Eijk -- initial version \end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSession_36373ba15d6c8f932aeea02d7320d7c8}{
+\index{Session@{Session}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!Session@{Session}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Session::\_\-\_\-construct ()}}
+\label{classSession_36373ba15d6c8f932aeea02d7320d7c8}
+
+
+When a new run is initialised, restore an older session or create a new one \hypertarget{classSession_a498272c85524e4700abc3363883165b}{
+\index{Session@{Session}!\_\-\_\-destruct@{\_\-\_\-destruct}}
+\index{\_\-\_\-destruct@{\_\-\_\-destruct}!Session@{Session}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Session::\_\-\_\-destruct ()}}
+\label{classSession_a498272c85524e4700abc3363883165b}
+
+
+When a run ends, write the sessiondata 
+
+\subsection{Member Function Documentation}
+\hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
+\index{Session@{Session}!init@{init}}
+\index{init@{init}!Session@{Session}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}final, protected, inherited\mbox{]}}}}
+\label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
+
+
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_2f2a042bcf31965194c03033df0edc9b}{
+\index{Session@{Session}!reset@{reset}}
+\index{reset@{reset}!Session@{Session}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
+\label{class__OWL_2f2a042bcf31965194c03033df0edc9b}
+
+
+General reset function for all objects. Should be called after each non-fatal error 
+
+Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbHandler}.
+
+\subsection{Member Data Documentation}
+\hypertarget{classSession_ebcff26e749269269d3513336f17eaf1}{
+\index{Session@{Session}!\$sessiondata@{\$sessiondata}}
+\index{\$sessiondata@{\$sessiondata}!Session@{Session}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Session::\$sessiondata\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classSession_ebcff26e749269269d3513336f17eaf1}
+
+
+Reference to the datahandler object used for this session \hypertarget{classSession_8ce7c23ff67100e8c62bb187cdf4921c}{
+\index{Session@{Session}!\$sessionhandler@{\$sessionhandler}}
+\index{\$sessionhandler@{\$sessionhandler}!Session@{Session}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Session::\$sessionhandler\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classSession_8ce7c23ff67100e8c62bb187cdf4921c}
+
+
+Reference to the PHP session handler \hypertarget{class__OWL_f37a011667dda12fc417a68a6f3077d1}{
+\index{Session@{Session}!\$config@{\$config}}
+\index{\$config@{\$config}!Session@{Session}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$config\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
+\label{class__OWL_f37a011667dda12fc417a68a6f3077d1}
+
+
+The global Config array is referenced from every object 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/oscar/work/eclipse/owl-php/src/inc/\hyperlink{class_8session_8php}{class.session.php}\end{CompactItemize}

@@ -9,33 +9,22 @@ Inheritance diagram for SessionHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=79pt]{classSessionHandler__inherit__graph}
+\includegraphics[width=70pt]{classSessionHandler__inherit__graph}
 \end{center}
 \end{figure}
 Collaboration diagram for SessionHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=79pt]{classSessionHandler__coll__graph}
+\includegraphics[width=70pt]{classSessionHandler__coll__graph}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
-\begin{CompactItemize}
-\item 
-\hyperlink{class__OWL_99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
-\item 
-\hyperlink{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}{signal} (\$level=0)
-\end{CompactItemize}
 \subsection*{Protected Member Functions}
 \begin{CompactItemize}
 \item 
 \hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
-\hyperlink{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}{severity} ()
-\item 
 \hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{reset} ()
-\item 
-\hyperlink{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
 \end{CompactItemize}
 \subsection*{Protected Attributes}
 \begin{CompactItemize}
@@ -62,18 +51,11 @@ This class saves and (re)stores the user sessions \begin{Desc}
 \hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
 \index{SessionHandler@{SessionHandler}!init@{init}}
 \index{init@{init}!SessionHandler@{SessionHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}final, protected, inherited\mbox{]}}}}
 \label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
 
 
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}{
-\index{SessionHandler@{SessionHandler}!severity@{severity}}
-\index{severity@{severity}!SessionHandler@{SessionHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::severity ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
-\label{class__OWL_5b88d497ccf2305fa411b9bd3f4bfe6f}
-
-
-Check the status of the given object and return its severity. \hypertarget{class__OWL_2f2a042bcf31965194c03033df0edc9b}{
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_2f2a042bcf31965194c03033df0edc9b}{
 \index{SessionHandler@{SessionHandler}!reset@{reset}}
 \index{reset@{reset}!SessionHandler@{SessionHandler}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
@@ -82,48 +64,7 @@ Check the status of the given object and return its severity. \hypertarget{class
 
 General reset function for all objects. Should be called after each non-fatal error 
 
-Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbHandler}.\hypertarget{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}{
-\index{SessionHandler@{SessionHandler}!set\_\-status@{set\_\-status}}
-\index{set\_\-status@{set\_\-status}!SessionHandler@{SessionHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \$ {\em params} = {\tt array~()})\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
-\label{class__OWL_ea912d0ede9b3c2a69b79072d94d4787}
-
-
-Set the current object status to the specified value.
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$status}]OWL status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{description}
-\end{Desc}
-\hypertarget{class__OWL_99ec771fa2c5c279f80152cc09e489a8}{
-\index{SessionHandler@{SessionHandler}!get\_\-status@{get\_\-status}}
-\index{get\_\-status@{get\_\-status}!SessionHandler@{SessionHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\tt  \mbox{[}inherited\mbox{]}}}}
-\label{class__OWL_99ec771fa2c5c279f80152cc09e489a8}
-
-
-Get the current object status.
-
-\begin{Desc}
-\item[Returns:]Object's status code \end{Desc}
-\hypertarget{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}{
-\index{SessionHandler@{SessionHandler}!signal@{signal}}
-\index{signal@{signal}!SessionHandler@{SessionHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\tt 0})\hspace{0.3cm}{\tt  \mbox{[}inherited\mbox{]}}}}
-\label{class__OWL_61c04b80fe17e2f1e339a6d6a89e45f3}
-
-
-Display the message for the current object status
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]The severity level for this object \end{Desc}
-
+Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbHandler}.
 
 \subsection{Member Data Documentation}
 \hypertarget{classSessionHandler_74c46fcfbadd4c4e6bacc73ddf350056}{

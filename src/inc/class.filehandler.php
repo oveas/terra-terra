@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the FileHandler class
- * \version $Id: class.filehandler.php,v 1.1 2008-08-07 10:21:21 oscar Exp $
+ * \version $Id: class.filehandler.php,v 1.2 2008-08-22 12:02:10 oscar Exp $
  */
 
 define ('FILE_NOTRIM',	0); // Don't trim
@@ -44,7 +44,7 @@ class FileHandler extends _CargoByte
 	{
 		// Initialize
 		//
-		parent::init();
+		_OWL::init();
 		$this->type = OBJECT_FILE;
 		$this->name = realpath($name);
 		$this->opened = false;
@@ -139,3 +139,30 @@ class FileHandler extends _CargoByte
 		fpassthru($fp);
 	}
 }
+
+
+
+/*
+ * Register this class and all status codes
+ */
+Register::register_class('FileHandler');
+
+//Register::set_severity (OWL_DEBUG);
+//Register::set_severity (OWL_INFO);
+//Register::set_severity (OWL_OK);
+
+Register::set_severity (OWL_SUCCESS);
+Register::register_code ('FILE_OPENOPENED');
+Register::register_code ('FILE_CLOSECLOSED');
+
+Register::set_severity (OWL_WARNING);
+Register::register_code ('FILE_NOSUCHFILE');
+Register::register_code ('FILE_ENDOFFILE');
+
+//Register::set_severity (OWL_BUG);
+
+Register::set_severity (OWL_ERROR);
+Register::register_code ('FILE_OPENERR');
+
+//Register::set_severity (OWL_FATAL);
+//Register::set_severity (OWL_CRITICAL);

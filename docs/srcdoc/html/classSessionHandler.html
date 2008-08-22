@@ -31,32 +31,23 @@ Inheritance diagram for SessionHandler:</div>
 <div class="dynsection">
 <p><center><img src="classSessionHandler__inherit__graph.png" border="0" usemap="#SessionHandler__inherit__map" alt="Inheritance graph"></center>
 <map name="SessionHandler__inherit__map">
-<area shape="rect" href="class__OWL.html" title="{_OWL\n|# $config\l&#45; $status\l&#45; $message_params\l|+ get_status()\l+ signal()\l# init()\l# severity()\l# reset()\l# set_status()\l}" alt="" coords="5,6,157,208"></map>
+<area shape="rect" href="class__OWL.html" title="{_OWL\n|# $config\l&#45; $status\l&#45; $pstatus\l&#45; $severity\l|# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="5,5,133,173"></map>
 <center><font size="2">[<a target="top" href="graph_legend.html">legend</a>]</font></center></div>
 <div class="dynheader">
 Collaboration diagram for SessionHandler:</div>
 <div class="dynsection">
 <p><center><img src="classSessionHandler__coll__graph.png" border="0" usemap="#SessionHandler__coll__map" alt="Collaboration graph"></center>
 <map name="SessionHandler__coll__map">
-<area shape="rect" href="class__OWL.html" title="{_OWL\n|# $config\l&#45; $status\l&#45; $message_params\l|+ get_status()\l+ signal()\l# init()\l# severity()\l# reset()\l# set_status()\l}" alt="" coords="5,6,157,208"></map>
+<area shape="rect" href="class__OWL.html" title="{_OWL\n|# $config\l&#45; $status\l&#45; $pstatus\l&#45; $severity\l|# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="5,5,133,173"></map>
 <center><font size="2">[<a target="top" href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
 <a href="classSessionHandler-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
-<tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#99ec771fa2c5c279f80152cc09e489a8">get_status</a> ()</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#61c04b80fe17e2f1e339a6d6a89e45f3">signal</a> ($level=0)</td></tr>
-
 <tr><td colspan="2"><br><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#e0ef3ded56e8a6b34b6461e5a721cd3e">init</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#5b88d497ccf2305fa411b9bd3f4bfe6f">severity</a> ()</td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#2f2a042bcf31965194c03033df0edc9b">reset</a> ()</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#ea912d0ede9b3c2a69b79072d94d4787">set_status</a> ($status, $params=array())</td></tr>
 
 <tr><td colspan="2"><br><h2>Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#f37a011667dda12fc417a68a6f3077d1">$config</a></td></tr>
@@ -80,7 +71,7 @@ This class saves and (re)stores the user sessions <dl class="author" compact><dt
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td width="100%"><code> [protected, inherited]</code></td>
+          <td width="100%"><code> [final, protected, inherited]</code></td>
         </tr>
       </table>
 </div>
@@ -88,25 +79,6 @@ This class saves and (re)stores the user sessions <dl class="author" compact><dt
 
 <p>
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this *might* indicate something went wrong. 
-</div>
-</div><p>
-<a class="anchor" name="5b88d497ccf2305fa411b9bd3f4bfe6f"></a><!-- doxytag: member="SessionHandler::severity" ref="5b88d497ccf2305fa411b9bd3f4bfe6f" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">_OWL::severity           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"><code> [protected, inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Check the status of the given object and return its severity. 
 </div>
 </div><p>
 <a class="anchor" name="2f2a042bcf31965194c03033df0edc9b"></a><!-- doxytag: member="SessionHandler::reset" ref="2f2a042bcf31965194c03033df0edc9b" args="()" -->
@@ -127,90 +99,6 @@ Check the status of the given object and return its severity.
 <p>
 General reset function for all objects. Should be called after each non-fatal error 
 <p>Reimplemented in <a class="el" href="classDbHandler.html#9982df4830f05803935bb31bac7fae3d">DbHandler</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="ea912d0ede9b3c2a69b79072d94d4787"></a><!-- doxytag: member="SessionHandler::set_status" ref="ea912d0ede9b3c2a69b79072d94d4787" args="($status, $params=array())" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">_OWL::set_status           </td>
-          <td>(</td>
-          <td class="paramtype">$&nbsp;</td>
-          <td class="paramname"> <em>status</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">$&nbsp;</td>
-          <td class="paramname"> <em>params</em> = <code>array&nbsp;()</code></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td width="100%"><code> [protected, inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Set the current object status to the specified value.<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$status</em>&nbsp;</td><td>OWL status code </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$params</em>&nbsp;</td><td></td></tr>
-  </table>
-</dl>
-
-</div>
-</div><p>
-<a class="anchor" name="99ec771fa2c5c279f80152cc09e489a8"></a><!-- doxytag: member="SessionHandler::get_status" ref="99ec771fa2c5c279f80152cc09e489a8" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">_OWL::get_status           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"><code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Get the current object status.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>Object's status code </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="61c04b80fe17e2f1e339a6d6a89e45f3"></a><!-- doxytag: member="SessionHandler::signal" ref="61c04b80fe17e2f1e339a6d6a89e45f3" args="($level=0)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">_OWL::signal           </td>
-          <td>(</td>
-          <td class="paramtype">$&nbsp;</td>
-          <td class="paramname"> <em>level</em> = <code>0</code>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"><code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Display the message for the current object status<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$level</em>&nbsp;</td><td>An optional severity level; message will only be displayed when it is at least of this level. </td></tr>
-  </table>
-</dl>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>The severity level for this object </dd></dl>
 
 </div>
 </div><p>
@@ -247,7 +135,7 @@ The global Config array is referenced from every object
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
 <li>/home/oscar/work/eclipse/owl-php/src/inc/<a class="el" href="class_8sessionhandler_8php.html">class.sessionhandler.php</a></ul>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Aug 7 12:18:51 2008 for OWL-PHP by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Aug 22 14:04:49 2008 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

@@ -1,0 +1,61 @@
+\hypertarget{class_8register_8php}{
+\section{/home/oscar/work/eclipse/owl-php/src/inc/class.register.php File Reference}
+\label{class_8register_8php}\index{/home/oscar/work/eclipse/owl-php/src/inc/class.register.php@{/home/oscar/work/eclipse/owl-php/src/inc/class.register.php}}
+}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classRegister}{Register}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{Indent}{\bf Bitmaps}\par
+{\em These bitmaps define the layout of status codes. They are used to extract information from the code }\begin{CompactItemize}
+\item 
+enum \hyperlink{class_8register_8php_22359c406b8745e8fa2412ec96d5e74c}{OWL\_\-APPLICATION\_\-PATTERN} 
+\item 
+enum \hyperlink{class_8register_8php_ac5ed52fb1bbffdff69e9a24c40962f5}{OWL\_\-OBJECT\_\-PATTERN} 
+\item 
+enum \hyperlink{class_8register_8php_0a8649e9ad7fa654df2c41aa4ba1283c}{OWL\_\-STATUS\_\-PATTERN} 
+\item 
+enum \hyperlink{class_8register_8php_eb9363fcaa1cd911762ff88518a9d973}{OWL\_\-SEVERITY\_\-PATTERN} 
+\end{CompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Define the abstract \hyperlink{classRegister}{Register} class. \begin{Desc}
+\item[Version:]\end{Desc}
+\begin{Desc}
+\item[Id]\hyperlink{class_8dbhandler_8php}{class.dbhandler.php},v 1.1 2008-08-07 10:21:21 oscar Exp \end{Desc}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{class_8register_8php_22359c406b8745e8fa2412ec96d5e74c}{
+\index{class.register.php@{class.register.php}!OWL\_\-APPLICATION\_\-PATTERN@{OWL\_\-APPLICATION\_\-PATTERN}}
+\index{OWL\_\-APPLICATION\_\-PATTERN@{OWL\_\-APPLICATION\_\-PATTERN}!class.register.php@{class.register.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-APPLICATION\_\-PATTERN}}}
+\label{class_8register_8php_22359c406b8745e8fa2412ec96d5e74c}
+
+
+Bits 1-8 define the application. Application identifiers with the first bit set (0x40 - 0xff) are reserved for Oveas. 0xff is the OWL Identifier. \hypertarget{class_8register_8php_ac5ed52fb1bbffdff69e9a24c40962f5}{
+\index{class.register.php@{class.register.php}!OWL\_\-OBJECT\_\-PATTERN@{OWL\_\-OBJECT\_\-PATTERN}}
+\index{OWL\_\-OBJECT\_\-PATTERN@{OWL\_\-OBJECT\_\-PATTERN}!class.register.php@{class.register.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-OBJECT\_\-PATTERN}}}
+\label{class_8register_8php_ac5ed52fb1bbffdff69e9a24c40962f5}
+
+
+Bits 9-20 define the object type of an application \hypertarget{class_8register_8php_eb9363fcaa1cd911762ff88518a9d973}{
+\index{class.register.php@{class.register.php}!OWL\_\-SEVERITY\_\-PATTERN@{OWL\_\-SEVERITY\_\-PATTERN}}
+\index{OWL\_\-SEVERITY\_\-PATTERN@{OWL\_\-SEVERITY\_\-PATTERN}!class.register.php@{class.register.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-SEVERITY\_\-PATTERN}}}
+\label{class_8register_8php_eb9363fcaa1cd911762ff88518a9d973}
+
+
+Bits 29-32 define the severity \hypertarget{class_8register_8php_0a8649e9ad7fa654df2c41aa4ba1283c}{
+\index{class.register.php@{class.register.php}!OWL\_\-STATUS\_\-PATTERN@{OWL\_\-STATUS\_\-PATTERN}}
+\index{OWL\_\-STATUS\_\-PATTERN@{OWL\_\-STATUS\_\-PATTERN}!class.register.php@{class.register.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-STATUS\_\-PATTERN}}}
+\label{class_8register_8php_0a8649e9ad7fa654df2c41aa4ba1283c}
+
+
+Bits 21-28 defines the (object specific) status code 
