@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.2 2008-08-22 12:02:10 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
  */
 
 /**
@@ -46,7 +46,7 @@ define ('DATA_RESET_FULL',		3);
 require_once (OWL_INCLUDE . '/class._OWL.php');
 
 /**
- * \ingroup OWL_BO_LAYER
+ * \ingroup OWL_SO_LAYER
  * This class contains DB datasets
  * \brief The OWL Data object 
  * \author Oscar van Eijk, Oveas Functionality Provider

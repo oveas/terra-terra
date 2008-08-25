@@ -2,18 +2,18 @@
 /**
  * \file
  * This file defines status object that's user for all objects
- * \version $Id: class.statushandler.php,v 1.1 2008-08-22 12:02:10 oscar Exp $
+ * \version $Id: class.statushandler.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
  */
 
 /**
- * \ingroup OWL_BO_LAYER
+ * \ingroup OWL_SO_LAYER
  * Each object, when initialised, gets a status object which olds information
  * about the last action that was performed.
  * \brief Status object 
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 11, 2008 -- O van Eijk -- Initial version
  */
-class OWLStatus
+class StatusHandler
 {
 	/**
 	 * Current object status

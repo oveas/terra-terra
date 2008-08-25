@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.2 2008-08-22 12:02:10 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
  */
 
 /**

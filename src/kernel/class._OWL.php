@@ -2,10 +2,10 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._OWL.php,v 1.2 2008-08-22 12:02:10 oscar Exp $
+ * \version $Id: class._OWL.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
  */
 
-require_once (OWL_INCLUDE . '/class.statushandler.php');
+require_once (OWL_SO_INC . '/class.statushandler.php');
 
 /**
  * This is the main class for all OWL objects. It contains some methods that have to be available
@@ -49,7 +49,7 @@ abstract class _OWL
 	 */
 	protected final function init ()
 	{
-		$this->status =& new OWLStatus();
+		$this->status =& new StatusHandler();
 		$this->config = $GLOBALS['config'];
 		$this->pstatus =& $this;
 	}

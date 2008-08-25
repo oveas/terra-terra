@@ -3,11 +3,14 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment
- * \version $Id: OWLloader.php,v 1.1 2008-08-22 12:02:13 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.2 2008-08-25 05:30:44 oscar Exp $
  */
 
-define ('OWL_INCLUDE', OWL_ROOT . '/inc');
-define ('OWL_LIBRARY', OWL_ROOT . '/lib');
+define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
+define ('OWL_SO_INC',	OWL_ROOT . '/kernel/so');
+define ('OWL_BO_INC',	OWL_ROOT . '/kernel/bo');
+define ('OWL_UI_INC',	OWL_ROOT . '/kernel/ui');
+define ('OWL_LIBRARY',	OWL_ROOT . '/lib');
 
 /**
  * \defgroup OWL_UI_LAYER Presentation modules
@@ -18,19 +21,20 @@ define ('OWL_LIBRARY', OWL_ROOT . '/lib');
 require_once (OWL_LIBRARY . '/owl.severitycodes.php');
 require_once (OWL_ROOT . '/config.php');
 
-require_once (OWL_INCLUDE . '/class.exceptionhandler.php');
-require_once (OWL_INCLUDE . '/class.register.php');
-
 // SO Layer
-require_once (OWL_INCLUDE . '/class.confighandler.php');
-require_once (OWL_INCLUDE . '/class.loghandler.php');
-require_once (OWL_INCLUDE . '/class.dbhandler.php');
-require_once (OWL_INCLUDE . '/class.sessionhandler.php');
-require_once (OWL_INCLUDE . '/class.datahandler.php');
+require_once (OWL_SO_INC . '/class.exceptionhandler.php');
+require_once (OWL_SO_INC . '/class.register.php');
+
+require_once (OWL_SO_INC . '/class.confighandler.php');
+require_once (OWL_SO_INC . '/class.loghandler.php');
+require_once (OWL_SO_INC . '/class.dbhandler.php');
+require_once (OWL_SO_INC . '/class.sessionhandler.php');
+require_once (OWL_SO_INC . '/class.datahandler.php');
 
 // BO Layer
-require_once (OWL_INCLUDE . '/class.session.php');
+require_once (OWL_BO_INC . '/class.session.php');
 
+// BO Layer
 
 ConfigHandler::read_config ($GLOBALS['config']['configfiles']['owl']);
 if (array_key_exists ('app', $GLOBALS['config']['configfiles'])) {

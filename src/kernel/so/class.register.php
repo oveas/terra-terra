@@ -2,7 +2,7 @@
 /**
  * \file
  * Define the abstract Register class.
- * \version $Id: class.register.php,v 1.1 2008-08-22 12:02:10 oscar Exp $
+ * \version $Id: class.register.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
  */
 
 

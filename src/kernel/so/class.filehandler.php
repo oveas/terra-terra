@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the FileHandler class
- * \version $Id: class.filehandler.php,v 1.2 2008-08-22 12:02:10 oscar Exp $
+ * \version $Id: class.filehandler.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
  */
 
 define ('FILE_NOTRIM',	0); // Don't trim
@@ -13,7 +13,7 @@ define ('FILE_TRIM_C',	3); // Replace all multiple spaces in a line read with a 
 require_once ('class._OWL.php');
 
 /**
- * \ingroup OWL_BO_LAYER
+ * \ingroup OWL_SO_LAYER
  * Handle all files
  * \brief File handler 
  * \author Oscar van Eijk, Oveas Functionality Provider

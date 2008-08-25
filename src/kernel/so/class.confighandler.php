@@ -2,7 +2,7 @@
 /**
  * \file
  * Define a class for config handling
- * \version $Id: class.confighandler.php,v 1.1 2008-08-22 12:02:10 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
  */
 
 /**
