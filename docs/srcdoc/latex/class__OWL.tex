@@ -9,17 +9,17 @@ Inheritance diagram for \_\-OWL:\nopagebreak
 \includegraphics[width=400pt]{class__OWL__inherit__graph}
 \end{center}
 \end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class__OWL_44fd2222476a3109286cc82d92b6bbcc}{\_\-\_\-destruct} ()
+\end{CompactItemize}
 \subsection*{Protected Member Functions}
 \begin{CompactItemize}
 \item 
 \hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
 \hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{reset} ()
-\end{CompactItemize}
-\subsection*{Protected Attributes}
-\begin{CompactItemize}
-\item 
-\hyperlink{class__OWL_f37a011667dda12fc417a68a6f3077d1}{\$config}
 \end{CompactItemize}
 \subsection*{Private Member Functions}
 \begin{CompactItemize}
@@ -38,17 +38,29 @@ Inheritance diagram for \_\-OWL:\nopagebreak
 
 
 \subsection{Detailed Description}
-This is the main class for all OWL objects. It contains some methods that have to be available to all objects. Some of them can be reimplemented. \begin{Desc}
+This is the main class for all \hyperlink{classOWL}{OWL} objects. It contains some methods that have to be available to all objects. Some of them can be reimplemented. \begin{Desc}
 \item[Author:]Oscar van Eijk, Oveas Functionality Provider \end{Desc}
 \begin{Desc}
 \item[Version:]May 15, 2007 -- O van Eijk -- initial version \end{Desc}
 
 
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class__OWL_44fd2222476a3109286cc82d92b6bbcc}{
+\index{\_\-OWL@{\_\-OWL}!\_\-\_\-destruct@{\_\-\_\-destruct}}
+\index{\_\-\_\-destruct@{\_\-\_\-destruct}!_OWL@{\_\-OWL}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\_\-\_\-destruct ()}}
+\label{class__OWL_44fd2222476a3109286cc82d92b6bbcc}
+
+
+Default class destructor; has to exist but can (should?) be reimplemented 
+
+Reimplemented in \hyperlink{classSession_a498272c85524e4700abc3363883165b}{Session}, \hyperlink{classUser_ccd20149a7414612c1505e022eb63ffc}{User}, \hyperlink{classDbHandler_7cd6bd727d1f296eb5dbfae6ca36ab3f}{DbHandler}, \hyperlink{classLogHandler_acd0c653489cf221423b9edd62e81458}{LogHandler}, \hyperlink{classSessionHandler_461097c3ee6b1aecf833ce1225d02329}{SessionHandler}, and \hyperlink{classUserHandler_3e1f6381ed79caf6e1a255fb0a9cc386}{UserHandler}.
+
 \subsection{Member Function Documentation}
 \hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
 \index{\_\-OWL@{\_\-OWL}!init@{init}}
 \index{init@{init}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}final, protected\mbox{]}}}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
 \label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
 
 
@@ -99,15 +111,8 @@ Pointer to the object which holds the last nonsuccessfull ($>$= OWL\_\-WARNING) 
 \label{class__OWL_d26b40a9dbbacb33e299b17826f8327c}
 
 
-Severity level of the current object status \hypertarget{class__OWL_f37a011667dda12fc417a68a6f3077d1}{
-\index{\_\-OWL@{\_\-OWL}!\$config@{\$config}}
-\index{\$config@{\$config}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$config\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
-\label{class__OWL_f37a011667dda12fc417a68a6f3077d1}
-
-
-The global Config array is referenced from every object 
+Severity level of the current object status 
 
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-/home/oscar/work/eclipse/owl-php/src/inc/\hyperlink{class_8__OWL_8php}{class.\_\-OWL.php}\end{CompactItemize}
+/home/oscar/work/eclipse/owl-php/src/kernel/\hyperlink{class_8__OWL_8php}{class.\_\-OWL.php}\end{CompactItemize}

@@ -40,6 +40,7 @@
     <li><a href="#index_i"><span>i</span></a></li>
     <li><a href="#index_l"><span>l</span></a></li>
     <li><a href="#index_o"><span>o</span></a></li>
+    <li><a href="#index_p"><span>p</span></a></li>
     <li><a href="#index_r"><span>r</span></a></li>
     <li><a href="#index_s"><span>s</span></a></li>
     <li><a href="#index_t"><span>t</span></a></li>
@@ -55,13 +56,12 @@ Here is a list of all class members with links to the classes they belong to:
 <li>$caller
 : <a class="el" href="classOWLException.html#f59d0890c1de1187f43084ec617545f1">OWLException</a>
 <li>$code
-: <a class="el" href="classOWLStatus.html#3c7c81c1d348dce97be39f5c90472b45">OWLStatus</a>
-<li>$config
-: <a class="el" href="class__OWL.html#f37a011667dda12fc417a68a6f3077d1">_OWL</a>
+: <a class="el" href="classStatusHandler.html#b74e826d2401345eb20b11fe7d78aa45">StatusHandler</a>
 <li>$database
 : <a class="el" href="classDbHandler.html#faac5248f9ee59786b48a7b51f318940">DbHandler</a>
 <li>$dataset
 : <a class="el" href="classSessionHandler.html#74c46fcfbadd4c4e6bacc73ddf350056">SessionHandler</a>
+, <a class="el" href="classUserHandler.html#c38c1ea50b2820ed03781bdbe8eb2e08">UserHandler</a>
 <li>$db_prefix
 : <a class="el" href="classDbHandler.html#19af96598e7f72673fc5da26ad77731b">DbHandler</a>
 <li>$errno
@@ -87,22 +87,22 @@ Here is a list of all class members with links to the classes they belong to:
 : <a class="el" href="classDataHandler.html#da9b697f81ea82d269077f9c7445791d">DataHandler</a>
 <li>$owl_keys
 : <a class="el" href="classDataHandler.html#8d398720bce975159b2d13ad7a941bc7">DataHandler</a>
+<li>$owl_multivalues
+: <a class="el" href="classFormHandler.html#7aa914557e2c76b46e4e0601c5dd75d5">FormHandler</a>
 <li>$owl_prepared
 : <a class="el" href="classDataHandler.html#e6093d21291ed3ab3183e11962452928">DataHandler</a>
 <li>$owl_tablename
 : <a class="el" href="classDataHandler.html#24620784bde262bdd02227962d3b9605">DataHandler</a>
 <li>$params
-: <a class="el" href="classOWLStatus.html#7d2291be414fbec260732b1c233db5dc">OWLStatus</a>
+: <a class="el" href="classStatusHandler.html#599f9c9284340399fdcb7dac9cb7856f">StatusHandler</a>
 <li>$pstatus
 : <a class="el" href="class__OWL.html#f30c6ce2c59df6da2ef0f7059be9231e">_OWL</a>
 <li>$query
 : <a class="el" href="classDbHandler.html#d671b5596b37dac6d48a660a07775965">DbHandler</a>
 <li>$rowcount
 : <a class="el" href="classDbHandler.html#56a7ae4bd7d842c85f3fe8052aecbfef">DbHandler</a>
-<li>$sessiondata
-: <a class="el" href="classSession.html#ebcff26e749269269d3513336f17eaf1">Session</a>
-<li>$sessionhandler
-: <a class="el" href="classSession.html#8ce7c23ff67100e8c62bb187cdf4921c">Session</a>
+<li>$session
+: <a class="el" href="classUserHandler.html#f097b7fd1ee085b46a6c34e071508a7f">UserHandler</a>
 <li>$severity
 : <a class="el" href="class__OWL.html#d26b40a9dbbacb33e299b17826f8327c">_OWL</a>
 <li>$status
@@ -110,36 +110,51 @@ Here is a list of all class members with links to the classes they belong to:
 </ul>
 <h3><a class="anchor" name="index__">- _ -</a></h3><ul>
 <li>__construct()
-: <a class="el" href="classDataHandler.html#4eef16167dd9a5bc94bd0cb40ce1b180">DataHandler</a>
-, <a class="el" href="classDbHandler.html#e54e9d4643f41a9296167086f6a769fc">DbHandler</a>
-, <a class="el" href="classFileHandler.html#fe961e704bc637605512d72e6eb2ef82">FileHandler</a>
+: <a class="el" href="classSession.html#36373ba15d6c8f932aeea02d7320d7c8">Session</a>
+, <a class="el" href="classUser.html#16b171e344993f5d4c3aa8cddcfc8050">User</a>
+, <a class="el" href="classDataHandler.html#4eef16167dd9a5bc94bd0cb40ce1b180">DataHandler</a>
+, <a class="el" href="classFormHandler.html#1ef7ad4fe143dd8339c8ab66423a1934">FormHandler</a>
 , <a class="el" href="classLogHandler.html#acca49c4394109f4ccc494048a0b2cab">LogHandler</a>
+, <a class="el" href="classDbHandler.html#e54e9d4643f41a9296167086f6a769fc">DbHandler</a>
+, <a class="el" href="classSessionHandler.html#546ba6d31a1ce532de13f65aadc3be0e">SessionHandler</a>
+, <a class="el" href="classStatusHandler.html#5cb2ad461aa4afc7ec9115c176eb354e">StatusHandler</a>
+, <a class="el" href="classOWL.html#9240437570d0787f35b7a1102ee39cc6">OWL</a>
 , <a class="el" href="classOWLException.html#02821b324b42b7818c3fefe7638444e7">OWLException</a>
-, <a class="el" href="classSession.html#36373ba15d6c8f932aeea02d7320d7c8">Session</a>
-<li>__constructor()
-: <a class="el" href="classOWLStatus.html#ff9ed27ec31da2d4f5719aa1d522fea6">OWLStatus</a>
+, <a class="el" href="classUserHandler.html#624054e9693139a3fe5af0ef3b757f04">UserHandler</a>
+, <a class="el" href="classFileHandler.html#fe961e704bc637605512d72e6eb2ef82">FileHandler</a>
 <li>__destruct()
 : <a class="el" href="classDbHandler.html#7cd6bd727d1f296eb5dbfae6ca36ab3f">DbHandler</a>
-, <a class="el" href="classSession.html#a498272c85524e4700abc3363883165b">Session</a>
+, <a class="el" href="classSessionHandler.html#461097c3ee6b1aecf833ce1225d02329">SessionHandler</a>
 , <a class="el" href="classFileHandler.html#734859e8962992da99dd8f853da5ae43">FileHandler</a>
+, <a class="el" href="classLogHandler.html#acd0c653489cf221423b9edd62e81458">LogHandler</a>
+, <a class="el" href="classUserHandler.html#3e1f6381ed79caf6e1a255fb0a9cc386">UserHandler</a>
+, <a class="el" href="classUser.html#ccd20149a7414612c1505e022eb63ffc">User</a>
+, <a class="el" href="class__OWL.html#44fd2222476a3109286cc82d92b6bbcc">_OWL</a>
+, <a class="el" href="classSession.html#a498272c85524e4700abc3363883165b">Session</a>
 <li>__get()
-: <a class="el" href="classDataHandler.html#f58cbd10b032e4904fa15ce950d521e2">DataHandler</a>
+: <a class="el" href="classFormHandler.html#371b8ded5110c6d66bc3a0c3e08fe085">FormHandler</a>
+, <a class="el" href="classDataHandler.html#f58cbd10b032e4904fa15ce950d521e2">DataHandler</a>
 <li>__set()
 : <a class="el" href="classDataHandler.html#16c81c9564a7feaf530ce5d51ed99df7">DataHandler</a>
 </ul>
 <h3><a class="anchor" name="index_c">- c -</a></h3><ul>
 <li>close()
 : <a class="el" href="classFileHandler.html#a48e7c3b67346e29b194d2f0ac5dd1f8">FileHandler</a>
+, <a class="el" href="classSessionHandler.html#335ced83731c7e3e685b7e0df2989c79">SessionHandler</a>
 <li>close_logfile()
 : <a class="el" href="classLogHandler.html#1a3b03d9bb97404a4f746bd2aacc5a8c">LogHandler</a>
 <li>connect()
 : <a class="el" href="classDbHandler.html#9cf52ba614981a0082063d57290d3b7c">DbHandler</a>
+<li>convert()
+: <a class="el" href="classConfigHandler.html#df3dd923bfd38e0274dc86ebd0caed92">ConfigHandler</a>
 <li>create()
 : <a class="el" href="classDbHandler.html#c9e93cb0ab57f03b2719eebd0c0ee2ef">DbHandler</a>
 </ul>
 <h3><a class="anchor" name="index_d">- d -</a></h3><ul>
 <li>dbread()
 : <a class="el" href="classDbHandler.html#130e49aa639fecb46ce6719ddcb0d72f">DbHandler</a>
+<li>destroy()
+: <a class="el" href="classSessionHandler.html#4e43712ef307979de1b12039ef801adb">SessionHandler</a>
 <li>download()
 : <a class="el" href="classFileHandler.html#c17edc9b92643c32ae6040b1235c64dd">FileHandler</a>
 </ul>
@@ -154,20 +169,27 @@ Here is a list of all class members with links to the classes they belong to:
 : <a class="el" href="classDataHandler.html#1e4789e22370c96ae479bc3a58f30984">DataHandler</a>
 </ul>
 <h3><a class="anchor" name="index_g">- g -</a></h3><ul>
+<li>gc()
+: <a class="el" href="classSessionHandler.html#c33097332375ae3f8a43c31cef6db0e8">SessionHandler</a>
+<li>get()
+: <a class="el" href="classConfigHandler.html#e55c0b4508da28ff46299bb7111435cf">ConfigHandler</a>
 <li>get_code()
-: <a class="el" href="classRegister.html#363389530273f40c3b20666bbff75e05">Register</a>
-, <a class="el" href="classOWLStatus.html#efb4d156f33c9197d9691ab9423660fa">OWLStatus</a>
+: <a class="el" href="classStatusHandler.html#d39bc4e6a56b6d418a252957da9b4417">StatusHandler</a>
+, <a class="el" href="classRegister.html#363389530273f40c3b20666bbff75e05">Register</a>
 <li>get_message()
-: <a class="el" href="classOWLStatus.html#f5711d10793d0cf375c3aa9b1a298f94">OWLStatus</a>
+: <a class="el" href="classStatusHandler.html#79170bca79bfd82e3f707e1294e7c916">StatusHandler</a>
 <li>get_run_id()
 : <a class="el" href="classRegister.html#041706fafb409a31f125d2075501e82e">Register</a>
 <li>get_severity()
-: <a class="el" href="classRegister.html#e71e10bddb03483b54ad22b9edb95b7c">Register</a>
-, <a class="el" href="classOWLStatus.html#aa7e66cc43cb91798bba0599a3eef435">OWLStatus</a>
+: <a class="el" href="classStatusHandler.html#32c76648dd45915d1be9b78bebc410b1">StatusHandler</a>
+, <a class="el" href="classRegister.html#e71e10bddb03483b54ad22b9edb95b7c">Register</a>
 <li>get_severity_level()
 : <a class="el" href="classRegister.html#70490e59a4a3b910d259b8a4287c3e91">Register</a>
 <li>get_trace()
 : <a class="el" href="classOWLException.html#bec096884c369f08040443561ac3b164">OWLException</a>
+<li>get_username()
+: <a class="el" href="classUser.html#1348ddf190d4df2518665fb51305a902">User</a>
+, <a class="el" href="classUserHandler.html#76e8c8b88c8d92f2d03645e810b9253c">UserHandler</a>
 </ul>
 <h3><a class="anchor" name="index_h">- h -</a></h3><ul>
 <li>handle_exception()
@@ -181,17 +203,26 @@ Here is a list of all class members with links to the classes they belong to:
 <h3><a class="anchor" name="index_l">- l -</a></h3><ul>
 <li>log_exception()
 : <a class="el" href="classOWLExceptionHandler.html#760bf3e7d648a7714abf5720f39369d8">OWLExceptionHandler</a>
+<li>logout()
+: <a class="el" href="classUserHandler.html#8000feaceda9d3c37fc56b6d1969b8f7">UserHandler</a>
+, <a class="el" href="classUser.html#06ed977c877b02b420233d4f18a6a668">User</a>
 </ul>
 <h3><a class="anchor" name="index_o">- o -</a></h3><ul>
 <li>open()
 : <a class="el" href="classDbHandler.html#fccbfc69ead84f8445116e050d1cfc2d">DbHandler</a>
 , <a class="el" href="classFileHandler.html#2a650b033c4eb1f98ba47fb05ce7b454">FileHandler</a>
+, <a class="el" href="classSessionHandler.html#50aa0b123f53d99de350a0eb02b4bfa5">SessionHandler</a>
 <li>open_logfile()
 : <a class="el" href="classLogHandler.html#af324e5156bf8ea83e5b4e990ea99e2d">LogHandler</a>
+</ul>
+<h3><a class="anchor" name="index_p">- p -</a></h3><ul>
+<li>parse_formdata()
+: <a class="el" href="classFormHandler.html#ef73c198dbc5de4e84f6c2a23b8b294c">FormHandler</a>
 </ul>
 <h3><a class="anchor" name="index_r">- r -</a></h3><ul>
 <li>read()
 : <a class="el" href="classDbHandler.html#5ebfdc2acfcb0e9cbc2861fc55c7127c">DbHandler</a>
+, <a class="el" href="classSessionHandler.html#58cc3e5bf5b14e7bfbc73162de1f5d2b">SessionHandler</a>
 <li>read_config()
 : <a class="el" href="classConfigHandler.html#75a7f03f156cd0f315f91ec4bbddfbb6">ConfigHandler</a>
 <li>read_data()
@@ -207,20 +238,22 @@ Here is a list of all class members with links to the classes they belong to:
 <li>register_severity()
 : <a class="el" href="classRegister.html#c22a104eefa471675cb28ee20821eaad">Register</a>
 <li>reset()
-: <a class="el" href="class__OWL.html#2f2a042bcf31965194c03033df0edc9b">_OWL</a>
+: <a class="el" href="classStatusHandler.html#8b0a327d3272ae49032a596518d47164">StatusHandler</a>
 , <a class="el" href="classDbHandler.html#9982df4830f05803935bb31bac7fae3d">DbHandler</a>
+, <a class="el" href="class__OWL.html#2f2a042bcf31965194c03033df0edc9b">_OWL</a>
 , <a class="el" href="classDataHandler.html#b89e1aaad9cd0a37f1c7f13c1d9c0d57">DataHandler</a>
-, <a class="el" href="classOWLStatus.html#f3fedee6b36500fe4ecf31e1d51fe5ff">OWLStatus</a>
 <li>reset_calltree()
 : <a class="el" href="class__OWL.html#91389e63fc76f6513147f302cbd92a2e">_OWL</a>
 </ul>
 <h3><a class="anchor" name="index_s">- s -</a></h3><ul>
+<li>s()
+: <a class="el" href="classOWL.html#4adf6bbba0af73025bdf9cfac01242fa">OWL</a>
 <li>set_application()
 : <a class="el" href="classRegister.html#d4d61787414f7d64d1e3420f0fdf3f91">Register</a>
 <li>set_class()
 : <a class="el" href="classRegister.html#58e49ccb1fe4e441d0329e879c922aa0">Register</a>
 <li>set_code()
-: <a class="el" href="classOWLStatus.html#1082207e060022757110d0aedbb524b1">OWLStatus</a>
+: <a class="el" href="classStatusHandler.html#748d462386322a552aa798f951258c91">StatusHandler</a>
 <li>set_filename()
 : <a class="el" href="classLogHandler.html#65ef4f1c6ab4cff4057f5f5932cc690e">LogHandler</a>
 <li>set_join()
@@ -228,7 +261,7 @@ Here is a list of all class members with links to the classes they belong to:
 <li>set_key()
 : <a class="el" href="classDataHandler.html#32ce223478b78a4ea9838a3c6ac7440c">DataHandler</a>
 <li>set_params()
-: <a class="el" href="classOWLStatus.html#65bcaa74291e21685b0ea148dd05cb65">OWLStatus</a>
+: <a class="el" href="classStatusHandler.html#c35544d3ad8a435f69db0965ed674428">StatusHandler</a>
 <li>set_query()
 : <a class="el" href="classDbHandler.html#305a3225c4760a88a06b0d55d0893962">DbHandler</a>
 <li>set_severity()
@@ -249,10 +282,12 @@ Here is a list of all class members with links to the classes they belong to:
 : <a class="el" href="classDbHandler.html#27c604b14c39913d34630e5504979b15">DbHandler</a>
 </ul>
 <h3><a class="anchor" name="index_w">- w -</a></h3><ul>
+<li>write()
+: <a class="el" href="classSessionHandler.html#b59071ef0d3deee2472c6916471bd9f5">SessionHandler</a>
 <li>write_logfile()
 : <a class="el" href="classLogHandler.html#e0cd68fb6f068e47f899a1e4c7f29ba9">LogHandler</a>
 </ul>
-<hr size="1"><address style="text-align: right;"><small>Generated on Fri Aug 22 14:04:49 2008 for OWL-PHP by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Aug 28 20:15:08 2008 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

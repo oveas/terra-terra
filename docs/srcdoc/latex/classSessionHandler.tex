@@ -9,7 +9,7 @@ Inheritance diagram for SessionHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=70pt]{classSessionHandler__inherit__graph}
+\includegraphics[height=400pt]{classSessionHandler__inherit__graph}
 \end{center}
 \end{figure}
 Collaboration diagram for SessionHandler:\nopagebreak
@@ -19,19 +19,33 @@ Collaboration diagram for SessionHandler:\nopagebreak
 \includegraphics[width=70pt]{classSessionHandler__coll__graph}
 \end{center}
 \end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classSessionHandler_461097c3ee6b1aecf833ce1225d02329}{\_\-\_\-destruct} ()
+\item 
+\hyperlink{classSessionHandler_50aa0b123f53d99de350a0eb02b4bfa5}{open} ()
+\item 
+\hyperlink{classSessionHandler_335ced83731c7e3e685b7e0df2989c79}{close} ()
+\item 
+\hyperlink{classSessionHandler_58cc3e5bf5b14e7bfbc73162de1f5d2b}{read} (\$id)
+\item 
+\hyperlink{classSessionHandler_b59071ef0d3deee2472c6916471bd9f5}{write} (\$id, \$data)
+\item 
+\hyperlink{classSessionHandler_4e43712ef307979de1b12039ef801adb}{destroy} (\$id)
+\item 
+\hyperlink{classSessionHandler_c33097332375ae3f8a43c31cef6db0e8}{gc} (\$lifetime)
+\end{CompactItemize}
 \subsection*{Protected Member Functions}
 \begin{CompactItemize}
+\item 
+\hyperlink{classSessionHandler_546ba6d31a1ce532de13f65aadc3be0e}{\_\-\_\-construct} ()
 \item 
 \hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
 \hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{reset} ()
 \end{CompactItemize}
 \subsection*{Protected Attributes}
-\begin{CompactItemize}
-\item 
-\hyperlink{class__OWL_f37a011667dda12fc417a68a6f3077d1}{\$config}
-\end{CompactItemize}
-\subsection*{Private Attributes}
 \begin{CompactItemize}
 \item 
 \hyperlink{classSessionHandler_74c46fcfbadd4c4e6bacc73ddf350056}{\$dataset}
@@ -47,11 +61,120 @@ This class saves and (re)stores the user sessions \begin{Desc}
 \item[Version:]Jul 29, 2008 -- O van Eijk -- initial version \end{Desc}
 
 
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSessionHandler_546ba6d31a1ce532de13f65aadc3be0e}{
+\index{SessionHandler@{SessionHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!SessionHandler@{SessionHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::\_\-\_\-construct ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classSessionHandler_546ba6d31a1ce532de13f65aadc3be0e}
+
+
+Class constructor; set the save\_\-handler 
+
+Reimplemented in \hyperlink{classSession_36373ba15d6c8f932aeea02d7320d7c8}{Session}.\hypertarget{classSessionHandler_461097c3ee6b1aecf833ce1225d02329}{
+\index{SessionHandler@{SessionHandler}!\_\-\_\-destruct@{\_\-\_\-destruct}}
+\index{\_\-\_\-destruct@{\_\-\_\-destruct}!SessionHandler@{SessionHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::\_\-\_\-destruct ()}}
+\label{classSessionHandler_461097c3ee6b1aecf833ce1225d02329}
+
+
+Write the session data back to the database 
+
+Reimplemented from \hyperlink{class__OWL_44fd2222476a3109286cc82d92b6bbcc}{\_\-OWL}.
+
+Reimplemented in \hyperlink{classSession_a498272c85524e4700abc3363883165b}{Session}.
+
 \subsection{Member Function Documentation}
+\hypertarget{classSessionHandler_50aa0b123f53d99de350a0eb02b4bfa5}{
+\index{SessionHandler@{SessionHandler}!open@{open}}
+\index{open@{open}!SessionHandler@{SessionHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::open ()}}
+\label{classSessionHandler_50aa0b123f53d99de350a0eb02b4bfa5}
+
+
+Open the session
+
+\begin{Desc}
+\item[Returns:]bool \end{Desc}
+\hypertarget{classSessionHandler_335ced83731c7e3e685b7e0df2989c79}{
+\index{SessionHandler@{SessionHandler}!close@{close}}
+\index{close@{close}!SessionHandler@{SessionHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::close ()}}
+\label{classSessionHandler_335ced83731c7e3e685b7e0df2989c79}
+
+
+Close the session
+
+\begin{Desc}
+\item[Returns:]bool \end{Desc}
+\hypertarget{classSessionHandler_58cc3e5bf5b14e7bfbc73162de1f5d2b}{
+\index{SessionHandler@{SessionHandler}!read@{read}}
+\index{read@{read}!SessionHandler@{SessionHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::read (\$ {\em id})}}
+\label{classSessionHandler_58cc3e5bf5b14e7bfbc73162de1f5d2b}
+
+
+Read the session
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$id}]session id \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]\hyperlink{classSession}{Session} data \end{Desc}
+\hypertarget{classSessionHandler_b59071ef0d3deee2472c6916471bd9f5}{
+\index{SessionHandler@{SessionHandler}!write@{write}}
+\index{write@{write}!SessionHandler@{SessionHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::write (\$ {\em id}, \$ {\em data})}}
+\label{classSessionHandler_b59071ef0d3deee2472c6916471bd9f5}
+
+
+Write the session
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$id}]\hyperlink{classSession}{Session} id \item[\mbox{$\leftarrow$} {\em \$data}]\hyperlink{classSession}{Session} data \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]True on success, Failure otherwise \end{Desc}
+\hypertarget{classSessionHandler_4e43712ef307979de1b12039ef801adb}{
+\index{SessionHandler@{SessionHandler}!destroy@{destroy}}
+\index{destroy@{destroy}!SessionHandler@{SessionHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::destroy (\$ {\em id})}}
+\label{classSessionHandler_4e43712ef307979de1b12039ef801adb}
+
+
+Destroy a session
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$id}]ID of the session to destroy \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Boolean indicating success (true) or failure (false) \end{Desc}
+\hypertarget{classSessionHandler_c33097332375ae3f8a43c31cef6db0e8}{
+\index{SessionHandler@{SessionHandler}!gc@{gc}}
+\index{gc@{gc}!SessionHandler@{SessionHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::gc (\$ {\em lifetime})}}
+\label{classSessionHandler_c33097332375ae3f8a43c31cef6db0e8}
+
+
+Garbage Collector. By default, this has a 1\% change of being executed (session.gc\_\-probability/session.gc\_\-divisor). The values can be changed in the constructor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$lifetime}]\hyperlink{classSession}{Session} lifetime in seconds. By default, 1440 seconds. This can be changes in the constructor \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Status code \end{Desc}
 \hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
 \index{SessionHandler@{SessionHandler}!init@{init}}
 \index{init@{init}!SessionHandler@{SessionHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}final, protected, inherited\mbox{]}}}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
 \label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
 
 
@@ -70,19 +193,12 @@ Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbH
 \hypertarget{classSessionHandler_74c46fcfbadd4c4e6bacc73ddf350056}{
 \index{SessionHandler@{SessionHandler}!\$dataset@{\$dataset}}
 \index{\$dataset@{\$dataset}!SessionHandler@{SessionHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::\$dataset\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::\$dataset\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
 \label{classSessionHandler_74c46fcfbadd4c4e6bacc73ddf350056}
 
 
-Link to a datahandler object. This dataset is used as an interface to all database IO. \hypertarget{class__OWL_f37a011667dda12fc417a68a6f3077d1}{
-\index{SessionHandler@{SessionHandler}!\$config@{\$config}}
-\index{\$config@{\$config}!SessionHandler@{SessionHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$config\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
-\label{class__OWL_f37a011667dda12fc417a68a6f3077d1}
-
-
-The global Config array is referenced from every object 
+Link to a datahandler object. This dataset is used as an interface to all database IO. 
 
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-/home/oscar/work/eclipse/owl-php/src/inc/\hyperlink{class_8sessionhandler_8php}{class.sessionhandler.php}\end{CompactItemize}
+/home/oscar/work/eclipse/owl-php/src/kernel/so/\hyperlink{class_8sessionhandler_8php}{class.sessionhandler.php}\end{CompactItemize}

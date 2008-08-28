@@ -18,18 +18,45 @@
 <tr><td colspan="2"><br><h2>Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#4d33a8f2fcc9c83cbeea921c4cb23a7f">OWL_INCLUDE</a> </td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#75dffdef5ba58a0ba5f21ed40627897f">OWL_SO_INC</a> </td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#ca50646bc73c3addf0e0f25081eae0ae">OWL_BO_INC</a> </td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#2e11101c70f011a91d0d9c7f8e217738">OWL_UI_INC</a> </td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#74eed08508c8b70677c4167acf49e427">OWL_LIBRARY</a> </td></tr>
 
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#b1ba2f4786a45be835910188036c4cf3">$GLOBALS</a> ['owl_object'] = new <a class="el" href="classOWL.html">OWL</a>()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#65f2996116eed36e9ab25f254a470259">$GLOBALS</a> ['messages'] = array ()</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#14159e18d9b64fd1e16054f784eda311">$GLOBALS</a> ['db']</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#95ec104c636100b9022c09964e2b0725">$GLOBALS</a> ['session'] = &amp; new <a class="el" href="classSession.html">Session</a>()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#4c382a365fdd6a17e22f8ee2ee727eb4">$GLOBALS</a> ['form'] = &amp; new <a class="el" href="classFormHandler.html">FormHandler</a>()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#6ca8a3deb7e1b32adc92d8cb72617832">$GLOBALS</a> ['user'] = &amp; new <a class="el" href="classUser.html">User</a>()</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-This file loads the OWL environment <dl class="version" compact><dt><b>Version:</b></dt><dd></dd></dl>
-<dl class="rcs" compact><dt><b>Id</b></dt><dd>owl.statuscodes.php,v 1.1 2008-08-07 10:21:21 oscar Exp </dd></dl>
+This file loads the <a class="el" href="classOWL.html">OWL</a> environment in intialises some singletons <dl class="version" compact><dt><b>Version:</b></dt><dd></dd></dl>
+<dl class="rcs" compact><dt><b>Id</b></dt><dd><a class="el" href="OWLloader_8php.html">OWLloader.php</a>,v 1.2 2008-08-25 05:30:44 oscar Exp </dd></dl>
 <hr><h2>Enumeration Type Documentation</h2>
+<a class="anchor" name="ca50646bc73c3addf0e0f25081eae0ae"></a><!-- doxytag: member="OWLloader.php::OWL_BO_INC" ref="ca50646bc73c3addf0e0f25081eae0ae" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="OWLloader_8php.html#ca50646bc73c3addf0e0f25081eae0ae">OWL_BO_INC</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
 <a class="anchor" name="4d33a8f2fcc9c83cbeea921c4cb23a7f"></a><!-- doxytag: member="OWLloader.php::OWL_INCLUDE" ref="4d33a8f2fcc9c83cbeea921c4cb23a7f" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -60,13 +87,58 @@ This file loads the OWL environment <dl class="version" compact><dt><b>Version:<
 
 </div>
 </div><p>
-<hr><h2>Variable Documentation</h2>
-<a class="anchor" name="95ec104c636100b9022c09964e2b0725"></a><!-- doxytag: member="OWLloader.php::$GLOBALS" ref="95ec104c636100b9022c09964e2b0725" args="['session']" -->
+<a class="anchor" name="75dffdef5ba58a0ba5f21ed40627897f"></a><!-- doxytag: member="OWLloader.php::OWL_SO_INC" ref="75dffdef5ba58a0ba5f21ed40627897f" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$GLOBALS['session'] = &amp; new <a class="el" href="classSession.html">Session</a>()          </td>
+          <td class="memname">enum <a class="el" href="OWLloader_8php.html#75dffdef5ba58a0ba5f21ed40627897f">OWL_SO_INC</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="2e11101c70f011a91d0d9c7f8e217738"></a><!-- doxytag: member="OWLloader.php::OWL_UI_INC" ref="2e11101c70f011a91d0d9c7f8e217738" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="OWLloader_8php.html#2e11101c70f011a91d0d9c7f8e217738">OWL_UI_INC</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Variable Documentation</h2>
+<a class="anchor" name="6ca8a3deb7e1b32adc92d8cb72617832"></a><!-- doxytag: member="OWLloader.php::$GLOBALS" ref="6ca8a3deb7e1b32adc92d8cb72617832" args="['user']" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$GLOBALS['user'] = &amp; new <a class="el" href="classUser.html">User</a>()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="4c382a365fdd6a17e22f8ee2ee727eb4"></a><!-- doxytag: member="OWLloader.php::$GLOBALS" ref="4c382a365fdd6a17e22f8ee2ee727eb4" args="['form']" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$GLOBALS['form'] = &amp; new <a class="el" href="classFormHandler.html">FormHandler</a>()          </td>
         </tr>
       </table>
 </div>
@@ -89,14 +161,44 @@ This file loads the OWL environment <dl class="version" compact><dt><b>Version:<
 
 <p>
 <b>Initial value:</b><div class="fragment"><pre class="fragment">&amp; <span class="keyword">new</span> DBHandler(
-                          <a class="code" href="config_8php.html#6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>['config']['dbserver']
-                        , <a class="code" href="config_8php.html#6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>['config']['dbname']
-                        , <a class="code" href="config_8php.html#6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>['config']['dbuser']
-                        , <a class="code" href="config_8php.html#6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>['config']['dbpasswd'])
+                          <a class="code" href="classConfigHandler.html#e55c0b4508da28ff46299bb7111435cf">ConfigHandler::get</a> ('dbserver')
+                        , <a class="code" href="classConfigHandler.html#e55c0b4508da28ff46299bb7111435cf">ConfigHandler::get</a> ('dbname')
+                        , <a class="code" href="classConfigHandler.html#e55c0b4508da28ff46299bb7111435cf">ConfigHandler::get</a> ('dbuser')
+                        , <a class="code" href="classConfigHandler.html#e55c0b4508da28ff46299bb7111435cf">ConfigHandler::get</a> ('dbpasswd'))
 </pre></div>
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Fri Aug 22 14:04:49 2008 for OWL-PHP by&nbsp;
+<a class="anchor" name="65f2996116eed36e9ab25f254a470259"></a><!-- doxytag: member="OWLloader.php::$GLOBALS" ref="65f2996116eed36e9ab25f254a470259" args="['messages']" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$GLOBALS['messages'] = array ()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b1ba2f4786a45be835910188036c4cf3"></a><!-- doxytag: member="OWLloader.php::$GLOBALS" ref="b1ba2f4786a45be835910188036c4cf3" args="['owl_object']" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$GLOBALS['owl_object'] = new <a class="el" href="classOWL.html">OWL</a>()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Aug 28 20:15:08 2008 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

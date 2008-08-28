@@ -2,16 +2,27 @@
 /**
  * \file
  * This is the entry point for OWL-PHP teststub
- * \version $Id: index.php,v 1.2 2008-08-22 12:02:13 oscar Exp $
+ * \version $Id: index.php,v 1.3 2008-08-28 18:12:52 oscar Exp $
  */
 
 define ('OWL_ROOT', '/home/oscar/work/eclipse/owl-php/src');
 require_once (OWL_ROOT . '/OWLloader.php');
 
 //echo '<pre>';
-//print_r ($GLOBALS['register']);
+//print_r ($GLOBALS['config']);
 //echo '</pre>';
 
+//echo '<pre>';
+//print_r ($GLOBALS['form']);
+//echo '</pre>';
+
+//echo '<pre>';
+//print_r ($_SESSION);
+//echo '</pre>';
+
+if ($GLOBALS['form']->a == 'logout') {
+	$GLOBALS['user']->logout();
+}
 // Testcases :-)
 ?>
 <html>
@@ -19,7 +30,7 @@ require_once (OWL_ROOT . '/OWLloader.php');
 <title>OWL-PHP</title>
 </head>
 <body>
-Hello World<br />
+Hello <?php echo ($GLOBALS['user']->get_username()); ?><br />
 <?php
 if (!array_key_exists('c', $_SESSION)) {
 	$_SESSION['c'] = 1;
@@ -28,10 +39,13 @@ if (!array_key_exists('c', $_SESSION)) {
 }
 ?>
 You've been here <?php echo $_SESSION['c']; ?> times.<br />
-<a href="<?php echo ($PHP_SELF); ?>">Continue</a>
+<a href="<?php echo ($_SERVER['PHP_SELF']); ?>">Continue</a><br />
+<a href="<?php echo ($_SERVER['PHP_SELF']); ?>?a=logout">Logout</a><br />
+
 </body>
 </html>
 <?php
 
-phpinfo();
+//phpinfo();
+require_once (OWL_ROOT . '/OWLrundown.php');
 ?>

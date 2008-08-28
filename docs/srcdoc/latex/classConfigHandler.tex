@@ -9,6 +9,13 @@ Configuration handler.
 \begin{CompactItemize}
 \item 
 \hyperlink{classConfigHandler_75a7f03f156cd0f315f91ec4bbddfbb6}{read\_\-config} (\$file= '')
+\item 
+\hyperlink{classConfigHandler_e55c0b4508da28ff46299bb7111435cf}{get} (\$item)
+\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classConfigHandler_df3dd923bfd38e0274dc86ebd0caed92}{convert} (\$val)
 \end{CompactItemize}
 
 
@@ -29,8 +36,40 @@ This abstract class reads configution from file ort database, and fills and read
 \label{classConfigHandler_75a7f03f156cd0f315f91ec4bbddfbb6}
 
 
-Find out what the filename of the logfile should be 
+Find out what the filename of the logfile should be \hypertarget{classConfigHandler_df3dd923bfd38e0274dc86ebd0caed92}{
+\index{ConfigHandler@{ConfigHandler}!convert@{convert}}
+\index{convert@{convert}!ConfigHandler@{ConfigHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::convert (\$ {\em val})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classConfigHandler_df3dd923bfd38e0274dc86ebd0caed92}
+
+
+Convert values in character string format to a known value
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$val}]The value as read from the config file \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Value in the desired format (or as is if nothing set) \end{Desc}
+\hypertarget{classConfigHandler_e55c0b4508da28ff46299bb7111435cf}{
+\index{ConfigHandler@{ConfigHandler}!get@{get}}
+\index{get@{get}!ConfigHandler@{ConfigHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::get (\$ {\em item})}}
+\label{classConfigHandler_e55c0b4508da28ff46299bb7111435cf}
+
+
+Return a configuration value. Note! In order to use hidden values properly, this is the ONLY way configuration values should be retrieved!
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$item}]The configuration item in the same format as it appears in the configuration file (e.g. 'group$|$subject$|$item') \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Corresponding value of null when nothing was found \end{Desc}
+
 
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-/home/oscar/work/eclipse/owl-php/src/inc/\hyperlink{class_8confighandler_8php}{class.confighandler.php}\end{CompactItemize}
+/home/oscar/work/eclipse/owl-php/src/kernel/so/\hyperlink{class_8confighandler_8php}{class.confighandler.php}\end{CompactItemize}

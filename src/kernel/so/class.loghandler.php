@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Loghandler class
- * \version $Id: class.loghandler.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
+ * \version $Id: class.loghandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
  */
 
 require_once (OWL_INCLUDE . '/class._OWL.php');
@@ -44,10 +44,20 @@ class LogHandler extends _OWL
 		$this->opened = false;
 		$this->created = false;
 		$this->set_filename();
-		if ($GLOBALS['config']['logging']['multiple_file'] ||
-			$GLOBALS['config']['logging']['persistant']) {
+		if (ConfigHandler::get ('logging|multiple_file') ||
+			ConfigHandler::get ('logging|persistant')) {
 			$this->open_logfile();
 		}
+	}
+
+	/**
+	 * Class destructor
+	 * \public
+	 */
+	public function __destruct ()
+	{
+		$this->close_logfile();
+		parent::__destruct();
 	}
 
 	/**
@@ -56,11 +66,11 @@ class LogHandler extends _OWL
 	 */
 	private function set_filename ()
 	{
-		if ($GLOBALS['config']['logging']['multiple_file']) {
-			$this->filename = $GLOBALS['config']['logging']['filename']
+		if (ConfigHandler::get ('logging|multiple_file')) {
+			$this->filename = ConfigHandler::get ('logging|filename')
 							. '.' . Register::get_run_id();
 		} else {
-			$this->filename = $GLOBALS['config']['logging']['filename'];
+			$this->filename = ConfigHandler::get ('logging|filename');
 		}
 		
 	}
@@ -74,7 +84,7 @@ class LogHandler extends _OWL
 		if (($this->fpointer = @fopen ($this->filename, 'a')) === false) {
 			$this->set_status (LOGGING_OPENERR, $this->filename);
 		}
-		$this_opened = true;
+		$this->opened = true;
 	}
 
 	/**
@@ -83,8 +93,10 @@ class LogHandler extends _OWL
 	 */
 	private function close_logfile ()
 	{
-		@fclose ($this->fpointer);
-		$this_opened = true;
+		if ($this->opened) {
+			@fclose ($this->fpointer);
+			$this->opened = false;
+		}
 	}
 
 	/**
@@ -105,9 +117,9 @@ class LogHandler extends _OWL
 	 */
 	private function compose_message (&$msg)
 	{
-		$_prefix = date ($GLOBALS['config']['locale']['log_date']) . ':'
-				 . date ($GLOBALS['config']['locale']['log_time']); 
-		if (!$GLOBALS['config']['logging']['multiple_file']) {
+		$_prefix = date (ConfigHandler::get ('locale|log_date')) . ':'
+				 . date (ConfigHandler::get ('locale|log_time')); 
+		if (!ConfigHandler::get ('logging|multiple_file')) {
 			$_prefix .= ' [' . Register::get_run_id() . ']';
 		}
 		$msg = $_prefix . ' ' . $msg;
@@ -126,8 +138,8 @@ class LogHandler extends _OWL
 		$this->compose_message ($msg);
 
 		$this->write_logfile ($msg);
-		if (!$GLOBALS['config']['logging']['multiple_file'] &&
-			!$GLOBALS['config']['logging']['persistant']) {
+		if (!ConfigHandler::get ('logging|multiple_file') &&
+			!ConfigHandler::get ('logging|persistant')) {
 			$this->close_logfile();
 		}
 	}

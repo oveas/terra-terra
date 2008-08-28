@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._OWL.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
+ * \version $Id: class._OWL.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
  */
 
 require_once (OWL_SO_INC . '/class.statushandler.php');
@@ -34,12 +34,6 @@ abstract class _OWL
 	private $severity;
 
 	/**
-	 * The global Config array is referenced from every object
-	 * \protected
-	 */
-	protected $config;
-
-	/**
 	 * This function should be called by all constuctors. It initializes
 	 * the general characteristics.
 	 * Status is 'warning' by default, it's up to the contructor to set
@@ -47,11 +41,18 @@ abstract class _OWL
 	 * something went wrong.
 	 * \protected
 	 */
-	protected final function init ()
+	protected function init ()
 	{
 		$this->status =& new StatusHandler();
-		$this->config = $GLOBALS['config'];
 		$this->pstatus =& $this;
+	}
+
+	/**
+	 * Default class destructor; has to exist but can (should?) be reimplemented
+	 * \public
+	 */
+	public function __destruct ()
+	{
 	}
 
 	/**
@@ -114,6 +115,7 @@ abstract class _OWL
 		if ($loopdetect > 1) {
 			die ('Fatal error - loop detected while handling the status: ' . Register::get_code($status));
 		}
+if (!is_object($this->status)) { throw new OWLException (0); }
 		$this->severity = $this->status->set_code($status);
 		if (is_array ($params)) {
 			$this->status->set_params ($params);
@@ -124,7 +126,8 @@ abstract class _OWL
 			$this->signal (0, &$msg);
 			$GLOBALS['logger']->log ($msg);
 		}
-		if ($GLOBALS['config']['throw_level'] >= 0 && $this->severity >= $GLOBALS['config']['throw_level']) {
+		if (ConfigHandler::get ('exception|throw_level') >= 0
+				&& $this->severity >= ConfigHandler::get ('exception|throw_level')) {
 			$this->signal (0, &$msg);
 			throw new OWLException ($msg, $status);
 		}
@@ -257,4 +260,26 @@ Register::register_severity (OWL_BUG,		'BUG');
 Register::register_severity (OWL_ERROR,		'ERROR');
 Register::register_severity (OWL_FATAL,		'FATAL');
 Register::register_severity (OWL_CRITICAL,	'CRITICAL');
- 
+
+/*
+ *  Dummy class that allows abstract classes to set a status
+ */
+class OWL extends _OWL {
+	/**
+	 * Constructor
+	 */	
+	public function __construct ()
+	{ 
+		parent::init();
+	}
+	/**
+	 * Call to set_status()
+	 * \param[in] $a First parameter for passthrough
+	 * \param[in] $b Second parameter for passthrough
+	 */
+	public function s ($a, $b = array())
+	{
+		parent::set_status ($a, $b);
+	}
+}
+

@@ -49,11 +49,6 @@ Collaboration diagram for DbHandler:\nopagebreak
 \item 
 \hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \end{CompactItemize}
-\subsection*{Protected Attributes}
-\begin{CompactItemize}
-\item 
-\hyperlink{class__OWL_f37a011667dda12fc417a68a6f3077d1}{\$config}
-\end{CompactItemize}
 \subsection*{Private Member Functions}
 \begin{CompactItemize}
 \item 
@@ -90,7 +85,7 @@ Handler for all database I/O. This class uses an (abstract) class for the actual
 \begin{Desc}
 \item[Version:]May 15, 2007 -- O van Eijk -- initial version for Terra-Terra 
 
-Jul 29, 2008 -- O van Eijk -- Modified version for OWL \end{Desc}
+Jul 29, 2008 -- O van Eijk -- Modified version for \hyperlink{classOWL}{OWL} \end{Desc}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -116,6 +111,8 @@ Class constructor; opens the database connection.
 
 
 Class destructor; closes the database connection 
+
+Reimplemented from \hyperlink{class__OWL_44fd2222476a3109286cc82d92b6bbcc}{\_\-OWL}.
 
 \subsection{Member Function Documentation}
 \hypertarget{classDbHandler_c9e93cb0ab57f03b2719eebd0c0ee2ef}{
@@ -275,7 +272,7 @@ Call the current DBtype's unescape function for character strings.
 \hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
 \index{DbHandler@{DbHandler}!init@{init}}
 \index{init@{init}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}final, protected, inherited\mbox{]}}}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
 \label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
 
 
@@ -338,15 +335,8 @@ string - database prefix \hypertarget{classDbHandler_d671b5596b37dac6d48a660a077
 \label{classDbHandler_d671b5596b37dac6d48a660a07775965}
 
 
-string - Query string \hypertarget{class__OWL_f37a011667dda12fc417a68a6f3077d1}{
-\index{DbHandler@{DbHandler}!\$config@{\$config}}
-\index{\$config@{\$config}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$config\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
-\label{class__OWL_f37a011667dda12fc417a68a6f3077d1}
-
-
-The global Config array is referenced from every object 
+string - Query string 
 
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-/home/oscar/work/eclipse/owl-php/src/inc/\hyperlink{class_8dbhandler_8php}{class.dbhandler.php}\end{CompactItemize}
+/home/oscar/work/eclipse/owl-php/src/kernel/so/\hyperlink{class_8dbhandler_8php}{class.dbhandler.php}\end{CompactItemize}

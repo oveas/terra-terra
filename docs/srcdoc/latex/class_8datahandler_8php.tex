@@ -1,12 +1,12 @@
 \hypertarget{class_8datahandler_8php}{
-\section{/home/oscar/work/eclipse/owl-php/src/inc/class.datahandler.php File Reference}
-\label{class_8datahandler_8php}\index{/home/oscar/work/eclipse/owl-php/src/inc/class.datahandler.php@{/home/oscar/work/eclipse/owl-php/src/inc/class.datahandler.php}}
+\section{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.datahandler.php File Reference}
+\label{class_8datahandler_8php}\index{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.datahandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.datahandler.php}}
 }
 \subsection*{Classes}
 \begin{CompactItemize}
 \item 
 class \hyperlink{classDataHandler}{DataHandler}
-\begin{CompactList}\small\item\em The OWL Data object. \item\end{CompactList}\end{CompactItemize}
+\begin{CompactList}\small\item\em The \hyperlink{classOWL}{OWL} Data object. \item\end{CompactList}\end{CompactItemize}
 \subsection*{Enumerations}
 \begin{Indent}{\bf Query preparation tools}\par
 {\em These flags define what type of queries can be prepared }\begin{CompactItemize}
@@ -18,7 +18,9 @@ enum \hyperlink{class_8datahandler_8php_c28f74b49007773d24ca2207baac6d32}{DATA\_
 enum \hyperlink{class_8datahandler_8php_5d8b54a2eb4767a05a2e577c2db9193a}{DATA\_\-WRITE} 
 \begin{CompactList}\small\item\em Write new data to the database. \item\end{CompactList}\item 
 enum \hyperlink{class_8datahandler_8php_9a817a8e9190bfc1eb884f9b4c3cb7c8}{DATA\_\-UPDATE} 
-\begin{CompactList}\small\item\em Update data in the database. \item\end{CompactList}\end{CompactItemize}
+\begin{CompactList}\small\item\em Update data in the database. \item\end{CompactList}\item 
+enum \hyperlink{class_8datahandler_8php_b4fa180fa2d24c38e425ff9ca4c913fa}{DATA\_\-DELETE} 
+\begin{CompactList}\small\item\em Remove data from the database. \item\end{CompactList}\end{CompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Reset flags}\par
 {\em These flags how an object should be performed. All values includes all lower values as well! }\begin{CompactItemize}
@@ -38,10 +40,19 @@ enum \hyperlink{class_8datahandler_8php_2a28429433990da242faa223d5a49f0a}{DATA\_
 This file defines the \hyperlink{classDataHandler}{DataHandler} class \begin{Desc}
 \item[Version:]\end{Desc}
 \begin{Desc}
-\item[Id]\hyperlink{class_8datahandler_8php}{class.datahandler.php},v 1.1 2008-08-07 10:21:21 oscar Exp \end{Desc}
+\item[Id]\hyperlink{class_8datahandler_8php}{class.datahandler.php},v 1.1 2008-08-25 05:30:44 oscar Exp \end{Desc}
 
 
 \subsection{Enumeration Type Documentation}
+\hypertarget{class_8datahandler_8php_b4fa180fa2d24c38e425ff9ca4c913fa}{
+\index{class.datahandler.php@{class.datahandler.php}!DATA\_\-DELETE@{DATA\_\-DELETE}}
+\index{DATA\_\-DELETE@{DATA\_\-DELETE}!class.datahandler.php@{class.datahandler.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-DELETE}}}
+\label{class_8datahandler_8php_b4fa180fa2d24c38e425ff9ca4c913fa}
+
+
+Remove data from the database. 
+
 \hypertarget{class_8datahandler_8php_c28f74b49007773d24ca2207baac6d32}{
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-READ@{DATA\_\-READ}}
 \index{DATA\_\-READ@{DATA\_\-READ}!class.datahandler.php@{class.datahandler.php}}

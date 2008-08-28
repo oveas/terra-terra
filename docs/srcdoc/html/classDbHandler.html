@@ -31,14 +31,14 @@ Inheritance diagram for DbHandler:</div>
 <div class="dynsection">
 <p><center><img src="classDbHandler__inherit__graph.png" border="0" usemap="#DbHandler__inherit__map" alt="Inheritance graph"></center>
 <map name="DbHandler__inherit__map">
-<area shape="rect" href="class__OWL.html" title="{_OWL\n|# $config\l&#45; $status\l&#45; $pstatus\l&#45; $severity\l|# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="19,6,147,174"></map>
+<area shape="rect" href="class__OWL.html" title="{_OWL\n|&#45; $status\l&#45; $pstatus\l&#45; $severity\l|+ __destruct()\l# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="19,6,147,174"></map>
 <center><font size="2">[<a target="top" href="graph_legend.html">legend</a>]</font></center></div>
 <div class="dynheader">
 Collaboration diagram for DbHandler:</div>
 <div class="dynsection">
 <p><center><img src="classDbHandler__coll__graph.png" border="0" usemap="#DbHandler__coll__map" alt="Collaboration graph"></center>
 <map name="DbHandler__coll__map">
-<area shape="rect" href="class__OWL.html" title="{_OWL\n|# $config\l&#45; $status\l&#45; $pstatus\l&#45; $severity\l|# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="19,6,147,174"></map>
+<area shape="rect" href="class__OWL.html" title="{_OWL\n|&#45; $status\l&#45; $pstatus\l&#45; $severity\l|+ __destruct()\l# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="19,6,147,174"></map>
 <center><font size="2">[<a target="top" href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -70,9 +70,6 @@ Collaboration diagram for DbHandler:</div>
 <tr><td colspan="2"><br><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#e0ef3ded56e8a6b34b6461e5a721cd3e">init</a> ()</td></tr>
 
-<tr><td colspan="2"><br><h2>Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#f37a011667dda12fc417a68a6f3077d1">$config</a></td></tr>
-
 <tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbHandler.html#9cf52ba614981a0082063d57290d3b7c">connect</a> ()</td></tr>
 
@@ -101,7 +98,7 @@ Database handler.
 <p>
 Handler for all database I/O. This class uses an (abstract) class for the actual storage. <dl class="author" compact><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="version" compact><dt><b>Version:</b></dt><dd>May 15, 2007 -- O van Eijk -- initial version for Terra-Terra <p>
-Jul 29, 2008 -- O van Eijk -- Modified version for OWL </dd></dl>
+Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.html">OWL</a> </dd></dl>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="e54e9d4643f41a9296167086f6a769fc"></a><!-- doxytag: member="DbHandler::__construct" ref="e54e9d4643f41a9296167086f6a769fc" args="($srv= 'localhost', $db= '', $usr= '', $pwd= '', $dbtype= 'MySQL')" -->
 <div class="memitem">
@@ -177,6 +174,8 @@ Class constructor; opens the database connection.<p>
 
 <p>
 Class destructor; closes the database connection 
+<p>Reimplemented from <a class="el" href="class__OWL.html#44fd2222476a3109286cc82d92b6bbcc">_OWL</a>.</p>
+
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -521,7 +520,7 @@ Call the current DBtype's unescape function for character strings.<p>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td width="100%"><code> [final, protected, inherited]</code></td>
+          <td width="100%"><code> [protected, inherited]</code></td>
         </tr>
       </table>
 </div>
@@ -652,24 +651,9 @@ string - database prefix
 string - Query string 
 </div>
 </div><p>
-<a class="anchor" name="f37a011667dda12fc417a68a6f3077d1"></a><!-- doxytag: member="DbHandler::$config" ref="f37a011667dda12fc417a68a6f3077d1" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">_OWL::$config<code> [protected, inherited]</code>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-The global Config array is referenced from every object 
-</div>
-</div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>/home/oscar/work/eclipse/owl-php/src/inc/<a class="el" href="class_8dbhandler_8php.html">class.dbhandler.php</a></ul>
-<hr size="1"><address style="text-align: right;"><small>Generated on Fri Aug 22 14:04:49 2008 for OWL-PHP by&nbsp;
+<li>/home/oscar/work/eclipse/owl-php/src/kernel/so/<a class="el" href="class_8dbhandler_8php.html">class.dbhandler.php</a></ul>
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Aug 28 20:15:11 2008 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

@@ -3,7 +3,7 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
+ * \version $Id: class.exceptionhandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
  */
 
 
@@ -170,12 +170,12 @@ class OWLException extends Exception
 								if ($textmode) {
 									$_text .= $value;
 								} else {
-									if ($GLOBALS['config']['exception']['show_values']) {
-										if (strlen ($value) > $GLOBALS['config']['exception']['max_value_len']) {
+									if (ConfigHandler::get ('exception|show_values')) {
+										if (strlen ($value) > ConfigHandler::get ('exception|max_value_len')) {
 											$_text .= substr (
 														  $value
 														, 0
-														, $GLOBALS['config']['exception']['max_value_len']
+														, ConfigHandler::get ('exception|max_value_len')
 													) . '...';
 										} else {
 											$_text .= $value;
@@ -200,12 +200,12 @@ class OWLException extends Exception
 							if ($textmode) {
 								$_text .= "'$value'";
 							} else {
-								if ($GLOBALS['config']['exception']['show_values']) {
-									if (strlen ($value) > $GLOBALS['config']['exception']['max_value_len']) {
+								if (ConfigHandler::get ('exception|show_values')) {
+									if (strlen ($value) > ConfigHandler::get ('exception|max_value_len')) {
 										$_text .= substr (
 													  $value
 													, 0
-													, $GLOBALS['config']['exception']['max_value_len']
+													, ConfigHandler::get ('exception|max_value_len')
 												) . '...';
 									} else {
 										$_text .= $value;
@@ -259,7 +259,7 @@ class OWLExceptionHandler
 	{
 		$GLOBALS['logger']->log ($exception->stack_dump(true));
 
-		if ($GLOBALS['config']['exception']['show_in_browser']) {		
+		if (ConfigHandler::get ('exception|show_in_browser')) {		
 			echo ($exception->stack_dump(false));
 		} else {
 			echo ('<p class="exception"><b>An exception was thrown</b><br/>'

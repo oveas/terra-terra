@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
  */
 
 /**
@@ -21,6 +21,9 @@ define ('DATA_WRITE',		1);
 
 //! Update data in the database
 define ('DATA_UPDATE',		2);
+
+//! Remove data from the database
+define ('DATA_DELETE',		3);
 
 //! @}
 
@@ -42,8 +45,6 @@ define ('DATA_RESET_META',		2);
 define ('DATA_RESET_FULL',		3);
 
 //! @}
-
-require_once (OWL_INCLUDE . '/class._OWL.php');
 
 /**
  * \ingroup OWL_SO_LAYER
@@ -112,6 +113,7 @@ class DataHandler extends _OWL
 		$this->owl_prepared = DATA_UNPREPARED;
 		$this->set_status (OWL_STATUS_OK);
 	}
+
 
 	/**
 	 * Reset the object
@@ -199,12 +201,12 @@ class DataHandler extends _OWL
 	private function find_field ($fld, &$expanded)
 	{
 		$_matches = 0;
-		$_fields = array();
+		$expanded = array();
 
 		foreach ($this->owl_data as $_k => $_v) {
 			list ($_tbl, $_fld) = explode ('#', $_k, 2);
 			if ($_fld == $fld) {
-				$_fields[] = $_k;
+				$expanded[] = $_k;
 				$_matches++;
 			}
 		}
@@ -354,6 +356,10 @@ class DataHandler extends _OWL
 				$this->owl_database->prepare_update ($this->owl_data, $this->owl_keys, $this->owl_joins);
 				$this->set_status (DATA_PREPARED, 'update');
 				break;
+			case DATA_DELETE:
+				$this->owl_database->prepare_delete ($this->owl_data, $this->owl_keys, $this->owl_joins);
+				$this->set_status (DATA_PREPARED, 'delete');
+				break;
 			case DATA_UNPREPARED:
 			default:
 				$this->set_status (DATA_IVPREPARE, $type);
@@ -379,6 +385,7 @@ class DataHandler extends _OWL
 				$this->owl_database->read (DBHANDLE_DATA, $data, '', $line, $file);
 				break;
 			case DATA_WRITE:
+			case DATA_DELETE:
 			case DATA_UPDATE:
 				$this->owl_database->write ($data, $line, $file);
 				break;

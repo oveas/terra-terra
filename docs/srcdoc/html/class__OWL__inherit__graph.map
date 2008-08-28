@@ -1,5 +1,9 @@
-<area shape="rect" href="$classDataHandler.html" title="The OWL Data object." alt="" coords="5,291,139,560">
-<area shape="rect" href="$classDbHandler.html" title="Database handler." alt="" coords="163,223,317,628">
-<area shape="rect" href="$classLogHandler.html" title="Log handler." alt="" coords="341,334,464,518">
-<area shape="rect" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="488,367,621,484">
-<area shape="rect" href="$classSessionHandler.html" title="the PHP session object" alt="" coords="645,384,765,467">
+<area shape="rect" href="$classDataHandler.html" title="The OWL Data object." alt="" coords="9,291,143,560">
+<area shape="rect" href="$classDbHandler.html" title="Database handler." alt="" coords="167,223,321,628">
+<area shape="rect" href="$classLogHandler.html" title="Log handler." alt="" coords="345,324,468,527">
+<area shape="rect" href="$classOWL.html" title="{OWL\n||+ __construct()\l+ s()\l}" alt="" coords="492,375,612,476">
+<area shape="rect" href="$classSessionHandler.html" title="the PHP session object" alt="" coords="636,324,756,527">
+<area shape="rect" href="$classUserHandler.html" title="the user object" alt="" coords="780,350,919,502">
+<area shape="rect" href="$classFormHandler.html" title="Formhandler." alt="" coords="5,687,147,804">
+<area shape="rect" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="636,695,756,796">
+<area shape="rect" href="$classUser.html" title="the OWL&#45;PHP session object" alt="" coords="780,679,919,812">

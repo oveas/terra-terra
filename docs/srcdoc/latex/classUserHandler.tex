@@ -1,0 +1,144 @@
+\hypertarget{classUserHandler}{
+\section{UserHandler Class Reference}
+\label{classUserHandler}\index{UserHandler@{UserHandler}}
+}
+the user object  
+
+
+Inheritance diagram for UserHandler:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=400pt]{classUserHandler__inherit__graph}
+\end{center}
+\end{figure}
+Collaboration diagram for UserHandler:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=74pt]{classUserHandler__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classUserHandler_624054e9693139a3fe5af0ef3b757f04}{\_\-\_\-construct} (\$username)
+\item 
+\hyperlink{classUserHandler_3e1f6381ed79caf6e1a255fb0a9cc386}{\_\-\_\-destruct} ()
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classUserHandler_8000feaceda9d3c37fc56b6d1969b8f7}{logout} ()
+\item 
+\hyperlink{classUserHandler_76e8c8b88c8d92f2d03645e810b9253c}{get\_\-username} ()
+\item 
+\hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
+\item 
+\hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{classUserHandler_f097b7fd1ee085b46a6c34e071508a7f}{\$session}
+\item 
+\hyperlink{classUserHandler_c38c1ea50b2820ed03781bdbe8eb2e08}{\$dataset}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+the user object 
+
+This class creates user sessions and handles logging in and out \begin{Desc}
+\item[Author:]Oscar van Eijk, Oveas Functionality Provider \end{Desc}
+\begin{Desc}
+\item[Version:]Aug 27, 2008 -- O van Eijk -- initial version \end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classUserHandler_624054e9693139a3fe5af0ef3b757f04}{
+\index{UserHandler@{UserHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\_\-\_\-construct (\$ {\em username})}}
+\label{classUserHandler_624054e9693139a3fe5af0ef3b757f04}
+
+
+Class constructor; setup the user environment
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$username}]Username. \end{description}
+\end{Desc}
+
+
+Reimplemented in \hyperlink{classUser_16b171e344993f5d4c3aa8cddcfc8050}{User}.\hypertarget{classUserHandler_3e1f6381ed79caf6e1a255fb0a9cc386}{
+\index{UserHandler@{UserHandler}!\_\-\_\-destruct@{\_\-\_\-destruct}}
+\index{\_\-\_\-destruct@{\_\-\_\-destruct}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\_\-\_\-destruct ()}}
+\label{classUserHandler_3e1f6381ed79caf6e1a255fb0a9cc386}
+
+
+Class destructor 
+
+Reimplemented from \hyperlink{class__OWL_44fd2222476a3109286cc82d92b6bbcc}{\_\-OWL}.
+
+Reimplemented in \hyperlink{classUser_ccd20149a7414612c1505e022eb63ffc}{User}.
+
+\subsection{Member Function Documentation}
+\hypertarget{classUserHandler_8000feaceda9d3c37fc56b6d1969b8f7}{
+\index{UserHandler@{UserHandler}!logout@{logout}}
+\index{logout@{logout}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::logout ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classUserHandler_8000feaceda9d3c37fc56b6d1969b8f7}
+
+
+Log out the current user 
+
+Reimplemented in \hyperlink{classUser_06ed977c877b02b420233d4f18a6a668}{User}.\hypertarget{classUserHandler_76e8c8b88c8d92f2d03645e810b9253c}{
+\index{UserHandler@{UserHandler}!get\_\-username@{get\_\-username}}
+\index{get\_\-username@{get\_\-username}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::get\_\-username ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classUserHandler_76e8c8b88c8d92f2d03645e810b9253c}
+
+
+Return the username of the current session 
+
+Reimplemented in \hyperlink{classUser_1348ddf190d4df2518665fb51305a902}{User}.\hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
+\index{UserHandler@{UserHandler}!init@{init}}
+\index{init@{init}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
+\label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
+
+
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_2f2a042bcf31965194c03033df0edc9b}{
+\index{UserHandler@{UserHandler}!reset@{reset}}
+\index{reset@{reset}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
+\label{class__OWL_2f2a042bcf31965194c03033df0edc9b}
+
+
+General reset function for all objects. Should be called after each non-fatal error 
+
+Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbHandler}.
+
+\subsection{Member Data Documentation}
+\hypertarget{classUserHandler_f097b7fd1ee085b46a6c34e071508a7f}{
+\index{UserHandler@{UserHandler}!\$session@{\$session}}
+\index{\$session@{\$session}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\$session\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classUserHandler_f097b7fd1ee085b46a6c34e071508a7f}
+
+
+The PHP session object \hypertarget{classUserHandler_c38c1ea50b2820ed03781bdbe8eb2e08}{
+\index{UserHandler@{UserHandler}!\$dataset@{\$dataset}}
+\index{\$dataset@{\$dataset}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\$dataset\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classUserHandler_c38c1ea50b2820ed03781bdbe8eb2e08}
+
+
+Link to a datahandler object. This dataset is used as an interface to all database IO. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/oscar/work/eclipse/owl-php/src/kernel/so/\hyperlink{class_8userhandler_8php}{class.userhandler.php}\end{CompactItemize}

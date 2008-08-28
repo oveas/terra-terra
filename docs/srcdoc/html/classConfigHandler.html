@@ -33,6 +33,11 @@
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#75a7f03f156cd0f315f91ec4bbddfbb6">read_config</a> ($file= '')</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#e55c0b4508da28ff46299bb7111435cf">get</a> ($item)</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#df3dd923bfd38e0274dc86ebd0caed92">convert</a> ($val)</td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Configuration handler. 
@@ -60,9 +65,63 @@ This abstract class reads configution from file ort database, and fills and read
 Find out what the filename of the logfile should be 
 </div>
 </div><p>
+<a class="anchor" name="df3dd923bfd38e0274dc86ebd0caed92"></a><!-- doxytag: member="ConfigHandler::convert" ref="df3dd923bfd38e0274dc86ebd0caed92" args="($val)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConfigHandler::convert           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>val</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Convert values in character string format to a known value<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$val</em>&nbsp;</td><td>The value as read from the config file </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>Value in the desired format (or as is if nothing set) </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="e55c0b4508da28ff46299bb7111435cf"></a><!-- doxytag: member="ConfigHandler::get" ref="e55c0b4508da28ff46299bb7111435cf" args="($item)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConfigHandler::get           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>item</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Return a configuration value. Note! In order to use hidden values properly, this is the ONLY way configuration values should be retrieved!<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$item</em>&nbsp;</td><td>The configuration item in the same format as it appears in the configuration file (e.g. 'group|subject|item') </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>Corresponding value of null when nothing was found </dd></dl>
+
+</div>
+</div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>/home/oscar/work/eclipse/owl-php/src/inc/<a class="el" href="class_8confighandler_8php.html">class.confighandler.php</a></ul>
-<hr size="1"><address style="text-align: right;"><small>Generated on Fri Aug 22 14:04:49 2008 for OWL-PHP by&nbsp;
+<li>/home/oscar/work/eclipse/owl-php/src/kernel/so/<a class="el" href="class_8confighandler_8php.html">class.confighandler.php</a></ul>
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Aug 28 20:15:10 2008 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

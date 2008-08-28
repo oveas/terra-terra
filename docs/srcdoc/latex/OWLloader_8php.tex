@@ -7,25 +7,44 @@
 \item 
 enum \hyperlink{OWLloader_8php_4d33a8f2fcc9c83cbeea921c4cb23a7f}{OWL\_\-INCLUDE} 
 \item 
+enum \hyperlink{OWLloader_8php_75dffdef5ba58a0ba5f21ed40627897f}{OWL\_\-SO\_\-INC} 
+\item 
+enum \hyperlink{OWLloader_8php_ca50646bc73c3addf0e0f25081eae0ae}{OWL\_\-BO\_\-INC} 
+\item 
+enum \hyperlink{OWLloader_8php_2e11101c70f011a91d0d9c7f8e217738}{OWL\_\-UI\_\-INC} 
+\item 
 enum \hyperlink{OWLloader_8php_74eed08508c8b70677c4167acf49e427}{OWL\_\-LIBRARY} 
 \end{CompactItemize}
 \subsection*{Variables}
 \begin{CompactItemize}
 \item 
+\hyperlink{OWLloader_8php_b1ba2f4786a45be835910188036c4cf3}{\$GLOBALS} \mbox{[}'owl\_\-object'\mbox{]} = new \hyperlink{classOWL}{OWL}()
+\item 
+\hyperlink{OWLloader_8php_65f2996116eed36e9ab25f254a470259}{\$GLOBALS} \mbox{[}'messages'\mbox{]} = array ()
+\item 
 \hyperlink{OWLloader_8php_14159e18d9b64fd1e16054f784eda311}{\$GLOBALS} \mbox{[}'db'\mbox{]}
 \item 
-\hyperlink{OWLloader_8php_95ec104c636100b9022c09964e2b0725}{\$GLOBALS} \mbox{[}'session'\mbox{]} = \& new \hyperlink{classSession}{Session}()
+\hyperlink{OWLloader_8php_4c382a365fdd6a17e22f8ee2ee727eb4}{\$GLOBALS} \mbox{[}'form'\mbox{]} = \& new \hyperlink{classFormHandler}{FormHandler}()
+\item 
+\hyperlink{OWLloader_8php_6ca8a3deb7e1b32adc92d8cb72617832}{\$GLOBALS} \mbox{[}'user'\mbox{]} = \& new \hyperlink{classUser}{User}()
 \end{CompactItemize}
 
 
 \subsection{Detailed Description}
-This file loads the OWL environment \begin{Desc}
+This file loads the \hyperlink{classOWL}{OWL} environment in intialises some singletons \begin{Desc}
 \item[Version:]\end{Desc}
 \begin{Desc}
-\item[Id]owl.statuscodes.php,v 1.1 2008-08-07 10:21:21 oscar Exp \end{Desc}
+\item[Id]\hyperlink{OWLloader_8php}{OWLloader.php},v 1.2 2008-08-25 05:30:44 oscar Exp \end{Desc}
 
 
 \subsection{Enumeration Type Documentation}
+\hypertarget{OWLloader_8php_ca50646bc73c3addf0e0f25081eae0ae}{
+\index{OWLloader.php@{OWLloader.php}!OWL\_\-BO\_\-INC@{OWL\_\-BO\_\-INC}}
+\index{OWL\_\-BO\_\-INC@{OWL\_\-BO\_\-INC}!OWLloader.php@{OWLloader.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-BO\_\-INC}}}
+\label{OWLloader_8php_ca50646bc73c3addf0e0f25081eae0ae}
+
+
 \hypertarget{OWLloader_8php_4d33a8f2fcc9c83cbeea921c4cb23a7f}{
 \index{OWLloader.php@{OWLloader.php}!OWL\_\-INCLUDE@{OWL\_\-INCLUDE}}
 \index{OWL\_\-INCLUDE@{OWL\_\-INCLUDE}!OWLloader.php@{OWLloader.php}}
@@ -40,14 +59,35 @@ This file loads the OWL environment \begin{Desc}
 \label{OWLloader_8php_74eed08508c8b70677c4167acf49e427}
 
 
+\hypertarget{OWLloader_8php_75dffdef5ba58a0ba5f21ed40627897f}{
+\index{OWLloader.php@{OWLloader.php}!OWL\_\-SO\_\-INC@{OWL\_\-SO\_\-INC}}
+\index{OWL\_\-SO\_\-INC@{OWL\_\-SO\_\-INC}!OWLloader.php@{OWLloader.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-SO\_\-INC}}}
+\label{OWLloader_8php_75dffdef5ba58a0ba5f21ed40627897f}
+
+
+\hypertarget{OWLloader_8php_2e11101c70f011a91d0d9c7f8e217738}{
+\index{OWLloader.php@{OWLloader.php}!OWL\_\-UI\_\-INC@{OWL\_\-UI\_\-INC}}
+\index{OWL\_\-UI\_\-INC@{OWL\_\-UI\_\-INC}!OWLloader.php@{OWLloader.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-UI\_\-INC}}}
+\label{OWLloader_8php_2e11101c70f011a91d0d9c7f8e217738}
+
+
 
 
 \subsection{Variable Documentation}
-\hypertarget{OWLloader_8php_95ec104c636100b9022c09964e2b0725}{
+\hypertarget{OWLloader_8php_6ca8a3deb7e1b32adc92d8cb72617832}{
 \index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
 \index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'session'\mbox{]} = \& new {\bf Session}()}}
-\label{OWLloader_8php_95ec104c636100b9022c09964e2b0725}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'user'\mbox{]} = \& new {\bf User}()}}
+\label{OWLloader_8php_6ca8a3deb7e1b32adc92d8cb72617832}
+
+
+\hypertarget{OWLloader_8php_4c382a365fdd6a17e22f8ee2ee727eb4}{
+\index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
+\index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'form'\mbox{]} = \& new {\bf FormHandler}()}}
+\label{OWLloader_8php_4c382a365fdd6a17e22f8ee2ee727eb4}
 
 
 \hypertarget{OWLloader_8php_14159e18d9b64fd1e16054f784eda311}{
@@ -60,9 +100,23 @@ This file loads the OWL environment \begin{Desc}
 \textbf{Initial value:}
 
 \begin{Code}\begin{verbatim}& new DBHandler(
-                          $GLOBALS['config']['dbserver']
-                        , $GLOBALS['config']['dbname']
-                        , $GLOBALS['config']['dbuser']
-                        , $GLOBALS['config']['dbpasswd'])
+                          ConfigHandler::get ('dbserver')
+                        , ConfigHandler::get ('dbname')
+                        , ConfigHandler::get ('dbuser')
+                        , ConfigHandler::get ('dbpasswd'))
 \end{verbatim}
 \end{Code}
+\hypertarget{OWLloader_8php_65f2996116eed36e9ab25f254a470259}{
+\index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
+\index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'messages'\mbox{]} = array ()}}
+\label{OWLloader_8php_65f2996116eed36e9ab25f254a470259}
+
+
+\hypertarget{OWLloader_8php_b1ba2f4786a45be835910188036c4cf3}{
+\index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
+\index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'owl\_\-object'\mbox{]} = new {\bf OWL}()}}
+\label{OWLloader_8php_b1ba2f4786a45be835910188036c4cf3}
+
+

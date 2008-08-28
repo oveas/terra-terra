@@ -2,15 +2,13 @@
 /**
  * \file
  * This file defines the FileHandler class
- * \version $Id: class.filehandler.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
+ * \version $Id: class.filehandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
  */
 
 define ('FILE_NOTRIM',	0); // Don't trim
 define ('FILE_TRIM_L',	1); // Trim left part of a line read
 define ('FILE_TRIM_R',	2); // Trim right part of a line read
 define ('FILE_TRIM_C',	3); // Replace all multiple spaces in a line read with a single space
-
-require_once ('class._OWL.php');
 
 /**
  * \ingroup OWL_SO_LAYER

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
  */
 
 /**
@@ -29,8 +29,6 @@ define ('DBHANDLE_FIELDCOUNT',		4);
 define ('DBHANDLE_TOTALFIELDCOUNT', 5);
 
 //! @}
-
-require_once (OWL_INCLUDE . '/class._OWL.php');
 
 /**
  * \ingroup OWL_SO_LAYER
@@ -116,7 +114,7 @@ class DbHandler extends _OWL
 		$this->opened = false;
 		$this->errno = 0;
 		$this->error = '';
-		$this->db_prefix = $this->config['dbprefix'];
+		$this->db_prefix = ConfigHandler::get ('dbprefix');
 		$this->set_status (OWL_STATUS_OK);
 	}
 
@@ -163,7 +161,7 @@ class DbHandler extends _OWL
 			$this->set_status (DBHANDLE_CONNECTERR, array (
 					  $this->database['server']
 					, $this->database['username']
-					, ($GLOBALS['config']['logging']['hide_passwords'] ? '*****' : $this->database['password'])
+					, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->database['password'])
 				  ));
 			return (false);
 		}
@@ -421,7 +419,7 @@ class DbHandler extends _OWL
 	}
 
 	/**
-	 * Change a fieldname in the format 'table#field' to the format '`[prefix]table.field`'
+	 * Change a fieldname in the format 'table\#field' to the format '`[prefix]table.field`'
 	 * \param[in,out] $field Fieldname to expand
 	 * \param[in] $quotes If true, add backquotes
 	 */
@@ -528,7 +526,7 @@ class DbHandler extends _OWL
 
 	/**
 	 * Prepare a read query. Data is taken from the arrays that are passed to this function.
-	 * All fieldnames are in the format 'table#field', where the table is not yet prefixed.
+	 * All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
 	 * \public
 	 * \param[in] $values Values that will be read
 	 * \param[in] $tables Tables from which will be read
@@ -558,8 +556,28 @@ class DbHandler extends _OWL
 	}
 
 	/**
+	 * Prepare a delete query. Data is taken from the arrays that are passed to this function.
+	 * All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
+	 * \public
+	 * \param[in] $searches Given values that have to match
+	 * \return Severity level
+	 */
+	public function prepare_delete ($searches = array())
+	{
+// TODO: Check on empty tablelist
+
+		$_tables = $this->extract_tablelist ($searches);
+
+		$this->query = 'DELETE FROM ' . $this->tablelist ($_tables);
+		$this->query .= 'WHERE ' . $this->where_clause ($searches, array());
+
+		$this->set_status (DBHANDLE_QPREPARED, array('delete', $this->query));
+		return ($this->severity);
+	}
+
+	/**
 	 * Prepare an update query. Data is taken from the arrays that are passed to this function.
-	 * All fieldnames are in the format 'table#field', where the table is not yet prefixed.
+	 * All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
 	 * \public
 	 * \param[in] $values Given database values
 	 * \param[in] $searched List of fieldnames that will be used in the where clause. All fields not
@@ -592,7 +610,7 @@ class DbHandler extends _OWL
 
 	/**
 	 * Prepare an insert query. Data is taken from the arrays that are passed to this function.
-	 * All fieldnames are in the format 'table#field', where the table is not yet prefixed.
+	 * All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
 	 * \public
 	 * \param[in] $values Given database values
 	 * \param[in] $searched List of fieldnames that will be used in the where clause. All fields not
@@ -635,9 +653,6 @@ class DbHandler extends _OWL
 	 */
 	public function write ($rows = false, $line = 0, $file = '[unknown]')
 	{
-//		if ($this->config['debug']) {
-//			echo ("Writing to database [$this->id]:<br />$this->query<br />\n");
-//		}
 		if (!$this->opened) {
 			$this->set_status (DBHANDLE_DBCLOSED);
 			return ($this->severity);
@@ -657,10 +672,6 @@ class DbHandler extends _OWL
 			$rows = $_cnt;
 		}
 		
-//		if ($this->config['debug']) {
-//			echo ("Number of updates rows: $cnt<br />\n");
-//		}
-
 		return ($this->severity);
 	}
 

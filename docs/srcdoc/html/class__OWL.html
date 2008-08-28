@@ -25,19 +25,19 @@ Inheritance diagram for _OWL:</div>
 <div class="dynsection">
 <p><center><img src="class__OWL__inherit__graph.png" border="0" usemap="#__OWL__inherit__map" alt="Inheritance graph"></center>
 <map name="__OWL__inherit__map">
-<area shape="rect" href="classDataHandler.html" title="The OWL Data object." alt="" coords="5,291,139,560"><area shape="rect" href="classDbHandler.html" title="Database handler." alt="" coords="163,223,317,628"><area shape="rect" href="classLogHandler.html" title="Log handler." alt="" coords="341,334,464,518"><area shape="rect" href="classSession.html" title="the OWL&#45;PHP session object" alt="" coords="488,367,621,484"><area shape="rect" href="classSessionHandler.html" title="the PHP session object" alt="" coords="645,384,765,467"></map>
+<area shape="rect" href="classDataHandler.html" title="The OWL Data object." alt="" coords="9,291,143,560"><area shape="rect" href="classDbHandler.html" title="Database handler." alt="" coords="167,223,321,628"><area shape="rect" href="classLogHandler.html" title="Log handler." alt="" coords="345,324,468,527"><area shape="rect" href="classOWL.html" title="{OWL\n||+ __construct()\l+ s()\l}" alt="" coords="492,375,612,476"><area shape="rect" href="classSessionHandler.html" title="the PHP session object" alt="" coords="636,324,756,527"><area shape="rect" href="classUserHandler.html" title="the user object" alt="" coords="780,350,919,502"><area shape="rect" href="classFormHandler.html" title="Formhandler." alt="" coords="5,687,147,804"><area shape="rect" href="classSession.html" title="the OWL&#45;PHP session object" alt="" coords="636,695,756,796"><area shape="rect" href="classUser.html" title="the OWL&#45;PHP session object" alt="" coords="780,679,919,812"></map>
 <center><font size="2">[<a target="top" href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
 <a href="class__OWL-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#44fd2222476a3109286cc82d92b6bbcc">__destruct</a> ()</td></tr>
+
 <tr><td colspan="2"><br><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#e0ef3ded56e8a6b34b6461e5a721cd3e">init</a> ()</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#2f2a042bcf31965194c03033df0edc9b">reset</a> ()</td></tr>
-
-<tr><td colspan="2"><br><h2>Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#f37a011667dda12fc417a68a6f3077d1">$config</a></td></tr>
 
 <tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#91389e63fc76f6513147f302cbd92a2e">reset_calltree</a> ($depth=0)</td></tr>
@@ -51,8 +51,30 @@ Inheritance diagram for _OWL:</div>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-This is the main class for all OWL objects. It contains some methods that have to be available to all objects. Some of them can be reimplemented. <dl class="author" compact><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+This is the main class for all <a class="el" href="classOWL.html">OWL</a> objects. It contains some methods that have to be available to all objects. Some of them can be reimplemented. <dl class="author" compact><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="version" compact><dt><b>Version:</b></dt><dd>May 15, 2007 -- O van Eijk -- initial version </dd></dl>
+<hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="44fd2222476a3109286cc82d92b6bbcc"></a><!-- doxytag: member="_OWL::__destruct" ref="44fd2222476a3109286cc82d92b6bbcc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_OWL::__destruct           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Default class destructor; has to exist but can (should?) be reimplemented 
+<p>Reimplemented in <a class="el" href="classSession.html#a498272c85524e4700abc3363883165b">Session</a>, <a class="el" href="classUser.html#ccd20149a7414612c1505e022eb63ffc">User</a>, <a class="el" href="classDbHandler.html#7cd6bd727d1f296eb5dbfae6ca36ab3f">DbHandler</a>, <a class="el" href="classLogHandler.html#acd0c653489cf221423b9edd62e81458">LogHandler</a>, <a class="el" href="classSessionHandler.html#461097c3ee6b1aecf833ce1225d02329">SessionHandler</a>, and <a class="el" href="classUserHandler.html#3e1f6381ed79caf6e1a255fb0a9cc386">UserHandler</a>.</p>
+
+</div>
+</div><p>
 <hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="e0ef3ded56e8a6b34b6461e5a721cd3e"></a><!-- doxytag: member="_OWL::init" ref="e0ef3ded56e8a6b34b6461e5a721cd3e" args="()" -->
 <div class="memitem">
@@ -63,7 +85,7 @@ This is the main class for all OWL objects. It contains some methods that have t
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td width="100%"><code> [final, protected]</code></td>
+          <td width="100%"><code> [protected]</code></td>
         </tr>
       </table>
 </div>
@@ -166,24 +188,9 @@ Pointer to the object which holds the last nonsuccessfull (&gt;= OWL_WARNING) st
 Severity level of the current object status 
 </div>
 </div><p>
-<a class="anchor" name="f37a011667dda12fc417a68a6f3077d1"></a><!-- doxytag: member="_OWL::$config" ref="f37a011667dda12fc417a68a6f3077d1" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">_OWL::$config<code> [protected]</code>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-The global Config array is referenced from every object 
-</div>
-</div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>/home/oscar/work/eclipse/owl-php/src/inc/<a class="el" href="class_8__OWL_8php.html">class._OWL.php</a></ul>
-<hr size="1"><address style="text-align: right;"><small>Generated on Fri Aug 22 14:04:49 2008 for OWL-PHP by&nbsp;
+<li>/home/oscar/work/eclipse/owl-php/src/kernel/<a class="el" href="class_8__OWL_8php.html">class._OWL.php</a></ul>
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Aug 28 20:15:10 2008 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

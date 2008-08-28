@@ -2,7 +2,7 @@
 \section{DataHandler Class Reference}
 \label{classDataHandler}\index{DataHandler@{DataHandler}}
 }
-The OWL Data object.  
+The \hyperlink{classOWL}{OWL} Data object.  
 
 
 Inheritance diagram for DataHandler:\nopagebreak
@@ -41,11 +41,6 @@ Collaboration diagram for DataHandler:\nopagebreak
 \item 
 \hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{reset} ()
 \end{CompactItemize}
-\subsection*{Protected Attributes}
-\begin{CompactItemize}
-\item 
-\hyperlink{class__OWL_f37a011667dda12fc417a68a6f3077d1}{\$config}
-\end{CompactItemize}
 \subsection*{Private Member Functions}
 \begin{CompactItemize}
 \item 
@@ -69,7 +64,7 @@ Collaboration diagram for DataHandler:\nopagebreak
 
 
 \subsection{Detailed Description}
-The OWL Data object. 
+The \hyperlink{classOWL}{OWL} Data object. 
 
 This class contains DB datasets \begin{Desc}
 \item[Author:]Oscar van Eijk, Oveas Functionality Provider \end{Desc}
@@ -167,7 +162,9 @@ Retrieve a value from the data array. The variable name can be a fully qualified
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The value, or NULL when the value was not found or abigious. \end{Desc}
-\hypertarget{classDataHandler_9b77733f02e9d6281fc40df110c0ba70}{
+
+
+Reimplemented in \hyperlink{classFormHandler_371b8ded5110c6d66bc3a0c3e08fe085}{FormHandler}.\hypertarget{classDataHandler_9b77733f02e9d6281fc40df110c0ba70}{
 \index{DataHandler@{DataHandler}!set\_\-join@{set\_\-join}}
 \index{set\_\-join@{set\_\-join}!DataHandler@{DataHandler}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set\_\-join (\$ {\em lvalue}, \$ {\em rvalue}, \$ {\em linktype} = {\tt '='})}}
@@ -186,7 +183,7 @@ Define a link between 2 fields that will be recognized when the database query i
 \hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
 \index{DataHandler@{DataHandler}!init@{init}}
 \index{init@{init}!DataHandler@{DataHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}final, protected, inherited\mbox{]}}}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
 \label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
 
 
@@ -244,15 +241,8 @@ An optional link to a database object. This has to be specified if the data need
 \label{classDataHandler_e6093d21291ed3ab3183e11962452928}
 
 
-Boolean that indicates of a query has been prepared \hypertarget{class__OWL_f37a011667dda12fc417a68a6f3077d1}{
-\index{DataHandler@{DataHandler}!\$config@{\$config}}
-\index{\$config@{\$config}!DataHandler@{DataHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$config\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
-\label{class__OWL_f37a011667dda12fc417a68a6f3077d1}
-
-
-The global Config array is referenced from every object 
+Boolean that indicates of a query has been prepared 
 
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-/home/oscar/work/eclipse/owl-php/src/inc/\hyperlink{class_8datahandler_8php}{class.datahandler.php}\end{CompactItemize}
+/home/oscar/work/eclipse/owl-php/src/kernel/so/\hyperlink{class_8datahandler_8php}{class.datahandler.php}\end{CompactItemize}

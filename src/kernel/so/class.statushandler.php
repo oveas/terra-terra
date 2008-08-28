@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines status object that's user for all objects
- * \version $Id: class.statushandler.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
+ * \version $Id: class.statushandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
  */
 
 /**
@@ -34,7 +34,7 @@ class StatusHandler
 	 * \public
 	 * \param[in] $code The status code
 	 */
-	public function __constructor ($code = OWL_STATUS_WARNING)
+	public function __construct ($code = OWL_STATUS_WARNING)
 	{
 		$this->code = $code;
 	}

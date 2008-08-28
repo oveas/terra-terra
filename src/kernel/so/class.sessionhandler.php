@@ -2,10 +2,8 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
  */
-
-require_once (OWL_INCLUDE . '/class._OWL.php');
 
 /**
  * \ingroup OWL_SO_LAYER
@@ -16,26 +14,21 @@ require_once (OWL_INCLUDE . '/class._OWL.php');
  */
 class SessionHandler extends _OWL
 {
-	
+
 	/**
 	 * Link to a datahandler object. This dataset is used as an interface to all database IO.
 	 * \private
 	 */	
-	private $dataset;
+	protected $dataset;
 
 	/**
 	 * Class constructor; set the save_handler
 	 * \public
-	 * 
 	 */
-	public function __construct (&$datalink = null)
+	protected function __construct ()
 	{
 		_OWL::init();
 
-		if (($this->dataset = $datalink) == null) {
-			$this->set_status (SESSION_NODATASET);
-			return;
-		}
 		$this->dataset->set_tablename('owl_sessiondata');
 
 		// TODO; Tune the settings below depending on server load.
@@ -66,7 +59,7 @@ class SessionHandler extends _OWL
 	 */
 	public function __destruct ()
 	{
-//		session_write_close ();
+
 	}
 
 	/**
@@ -118,6 +111,12 @@ class SessionHandler extends _OWL
 	 */
 	public function write ($id, $data)
 	{
+		if (!is_object ($GLOBALS['db'])) {
+			// When calling from __destruct(), the db object might already be gone
+			// TODO:  somehow, the explicit destructs in OWLrundown don't seem to work??
+			return (false);
+		}
+
 		$this->dataset->sid = $GLOBALS['db']->escape_string($id);
 		
 		// First, check if this session already exists in the db
@@ -153,20 +152,19 @@ class SessionHandler extends _OWL
 	 */
 	public function destroy ($id)
 	{
-
-		// Empty all data
-		$_SESSION = array();
+		// Erase all session data
+		session_unset();
 
 		// If a session cookie exists, make sure it's deleted
 		if (isset($_COOKIE[session_name()])) {
 			setcookie(session_name(), '', time()-42000, '/');
 		}
 
-		$GLOBALS['db']->query =
-			  'DELETE FROM ' . $GLOBALS['db']->tablename ('sessiondata')
-			. " WHERE sid = '" . $GLOBALS['db']->escape_string($id) . "'";
-			
-		return ($GLOBALS['db']->write (__LINE__, __FILE__) == 1);
+		$this->dataset->set_key ('sid');
+		$this->dataset->prepare (DATA_DELETE);
+
+		$this->dataset->db (&$_data, __LINE__, __FILE__);
+		return (true);
 	}
 
 	/**

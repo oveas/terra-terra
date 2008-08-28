@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in UK English
- * \version $Id: owl.messages.php,v 1.1 2008-08-22 12:02:13 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -16,6 +16,7 @@ $GLOBALS['messages'] = array (
 	, OWL_STATUS_WOPENERR	=> 'Error openening $p1$ for write'
 	, OWL_STATUS_NOKEY		=> 'No security key could be found'
 	, OWL_STATUS_IVKEY		=> 'Given security key does not match with this server'
+	, CONFIG_NOVALUE		=> 'Nonexising config value <i>$p1$</i> requested'
 	, LOGGING_OPENERR		=> 'Cannot open logfile <i>$p1$</i> for write'
 	, SESSION_INVUSERNAME	=> 'Username does not exist'
 	, SESSION_NODATASET		=> 'Session was created without a dataset'
@@ -26,7 +27,7 @@ $GLOBALS['messages'] = array (
 	, SESSION_IVSESSION		=> 'SESSION_IVSESSION'
 	, DBHANDLE_OPENED		=> 'Database $p1$ opened with ID $p2$'
 	, DBHANDLE_QPREPARED	=> 'Prepared SQL statement for $p1$: <i>$p2$</i>'
-	, DBHANDLE_ROWSREAD		=> '$p2$ rows returned to $p4$ (line $p3$) with query: <i>$P1$</i>'
+	, DBHANDLE_ROWSREAD		=> '$p2$ rows returned to $p4$ (line $p3$) with query: <i>$p1$</i>'
 	, DBHANDLE_ROWCOUNT		=> '$p2$ rows where successfully $p1$'
 	, DBHANDLE_CONNECTERR	=> 'Error connecting to database server $p1$ with username $p2$ and password $p3$'
 	, DBHANDLE_OPENERR		=> 'Error ($p2$) opening database $p1$: <i>$p3$</i>'

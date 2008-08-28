@@ -2,10 +2,8 @@
 /**
  * \file
  * This file defines the Session class
- * \version $Id: class.session.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
+ * \version $Id: class.session.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
  */
-
-require_once (OWL_INCLUDE . '/class._OWL.php');
 
 /**
  * \ingroup OWL_BO_LAYER
@@ -14,29 +12,16 @@ require_once (OWL_INCLUDE . '/class._OWL.php');
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 13, 2008 -- O van Eijk -- initial version
  */
-class Session extends _OWL
+class Session extends SessionHandler
 {
-
-	/**
-	 * Reference to the datahandler object used for this session
-	 * \private
-	 */
-	private $sessiondata;
-
-	/**
-	 * Reference to the PHP session handler
-	 * \private
-	 */
-	private $sessionhandler;
-
 	/**
 	 * When a new run is initialised, restore an older session or create a new one
 	 * \public 
 	 */
 	public function __construct ()
 	{
-		$this->sessiondata =& new DataHandler (&$GLOBALS['db']);
-		$this->sessionhandler =& new SessionHandler(&$this->sessiondata);
+		$this->dataset =& new DataHandler (&$GLOBALS['db']);
+		parent::__construct ();
 		if (session_id() == '') {
 			session_start ();
 			header ('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"'); //Fix for IE6
@@ -50,5 +35,10 @@ class Session extends _OWL
 	public function __destruct ()
 	{
 		session_write_close ();
+		if (is_object ($this->dataset)){
+			$this->dataset->__destruct();
+			unset ($this->dataset);
+		}
+		parent::__destruct();
 	}
 }
