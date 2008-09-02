@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment in intialises some singletons
- * \version $Id: OWLloader.php,v 1.3 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.4 2008-09-02 05:16:53 oscar Exp $
  */
 
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
@@ -84,5 +84,5 @@ $GLOBALS['db'] =& new DBHandler(
 //}
 
 $GLOBALS['db']->open();
-$GLOBALS['form'] =& new FormHandler();
+$GLOBALS['formdata'] =& new FormHandler();
 $GLOBALS['user'] =& new User();

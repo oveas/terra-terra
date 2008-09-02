@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.1 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.2 2008-09-02 05:16:53 oscar Exp $
  */
 
 /**
@@ -52,6 +52,10 @@ class UserHandler extends _OWL
 	 */
 	protected function logout ()
 	{
+		// Erase all session data
+		// TODO: Doesn't seem to work in the same run ???
+		session_unset();
+		$_SESSION = array();
 		session_destroy();
 		$this->session->__destruct();
 		unset ($this->session);

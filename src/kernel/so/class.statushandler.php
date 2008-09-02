@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines status object that's user for all objects
- * \version $Id: class.statushandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: class.statushandler.php,v 1.3 2008-09-02 05:16:53 oscar Exp $
  */
 
 /**
@@ -75,11 +75,14 @@ class StatusHandler
 	/**
 	 * Check the status of the given object and return its severity.
 	 * \public
+	 * \param[in] $status An optional parameter to check an other status code i.s.o the
+	 * object's current status.
 	 * \return The severity level of the current status
 	 */
-	public function get_severity ()
+	public function get_severity ($status = null)
 	{
-		return ($this->code & OWL_SEVERITY_PATTERN); 
+		$_stat = ($status === null ? $this->code : $status);
+		return ($_stat & OWL_SEVERITY_PATTERN); 
 	}
 
 	/**

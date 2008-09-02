@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Formhandler class
- * \version $Id: class.formhandler.php,v 1.1 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: class.formhandler.php,v 1.2 2008-09-02 05:16:53 oscar Exp $
  */
 
 /**
@@ -15,7 +15,8 @@
 class FormHandler extends DataHandler
 {
 	/**
-	 * Create an array which will hold multi-select values; 
+	 * Create an array which will hold multi-select values
+	 * \private
 	 */
 	private $owl_multivalues;
 
@@ -65,7 +66,7 @@ class FormHandler extends DataHandler
 			}
 		}
 		if (ConfigHandler::get ('debug') === true) {
-			$this->set_status ('FORM_STORVALUE', array ($_k, $_v));
+			$this->set_status (FORM_STORVALUE, array ($_k, $_v));
 		}
 	}
 
@@ -83,10 +84,14 @@ class FormHandler extends DataHandler
 			$_val = $this->owl_multivalues[$variable];
 		} else {
 			$_val = parent::__get ($variable);
+			if ($this->get_status() == DATA_NOTFOUND) {
+				parent::reset (DATA_RESET_STATUS);
+				$this->set_status (FORM_NOVALUE, $variable);
+			}
 		}
 
 		if (ConfigHandler::get ('debug') === true) {
-			$this->set_status ('FORM_RETVALUE', array ($_val, $variable));
+			$this->set_status (FORM_RETVALUE, array ($variable, $_val));
 		}
 		return ($_val);
 	}

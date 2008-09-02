@@ -2,7 +2,7 @@
 /**
  * \file
  * This is the entry point for OWL-PHP teststub
- * \version $Id: index.php,v 1.3 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: index.php,v 1.4 2008-09-02 05:16:53 oscar Exp $
  */
 
 define ('OWL_ROOT', '/home/oscar/work/eclipse/owl-php/src');
@@ -17,10 +17,14 @@ require_once (OWL_ROOT . '/OWLloader.php');
 //echo '</pre>';
 
 //echo '<pre>';
+//print_r ($GLOBALS['register']);
+//echo '</pre>';
+
+//echo '<pre>';
 //print_r ($_SESSION);
 //echo '</pre>';
 
-if ($GLOBALS['form']->a == 'logout') {
+if ($GLOBALS['formdata']->a == 'logout') {
 	$GLOBALS['user']->logout();
 }
 // Testcases :-)

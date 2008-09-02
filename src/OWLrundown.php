@@ -3,12 +3,12 @@
  * \file
  * \ingroup OWL_LIBRARY
  * Make sure all objects are destroyed in the proper order
- * \version $Id: OWLrundown.php,v 1.1 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: OWLrundown.php,v 1.2 2008-09-02 05:16:53 oscar Exp $
  */
 
 // Destroy the Formhandler singleton
-$GLOBALS['form']->__destruct();
-unset ($GLOBALS['form']);
+$GLOBALS['formdata']->__destruct();
+unset ($GLOBALS['formdata']);
 
 // Destroy the user and session
 $GLOBALS['user']->__destruct();

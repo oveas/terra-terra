@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._OWL.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: class._OWL.php,v 1.3 2008-09-02 05:16:54 oscar Exp $
  */
 
 require_once (OWL_SO_INC . '/class.statushandler.php');
@@ -115,16 +115,16 @@ abstract class _OWL
 		if ($loopdetect > 1) {
 			die ('Fatal error - loop detected while handling the status: ' . Register::get_code($status));
 		}
-if (!is_object($this->status)) { throw new OWLException (0); }
+//		$this->reset();
 		$this->severity = $this->status->set_code($status);
 		if (is_array ($params)) {
 			$this->status->set_params ($params);
 		} else {
 			$this->status->set_params (array ($params));
 		}
-		if ($this->severity >= $GLOBALS['logging']['level']) {
+		if ($this->severity >= ConfigHandler::get ('logging|log_level')) {
 			$this->signal (0, &$msg);
-			$GLOBALS['logger']->log ($msg);
+			$GLOBALS['logger']->log ($msg, $status);
 		}
 		if (ConfigHandler::get ('exception|throw_level') >= 0
 				&& $this->severity >= ConfigHandler::get ('exception|throw_level')) {
@@ -139,7 +139,7 @@ if (!is_object($this->status)) { throw new OWLException (0); }
 	 * \public
 	 * \return Object's status code
 	 */
-	public function get_status ()
+	public final function get_status ()
 	{
 	 	return ($this->status->get_code());
 	}
@@ -147,11 +147,13 @@ if (!is_object($this->status)) { throw new OWLException (0); }
 	/**
 	 * Get the current object severity level.
 	 * \public
+	 * \param[in] $status An optional parameter to check an other status code i.s.o the
+	 * object's current status.
 	 * \return Status severity level
 	 */
-	public function get_severity ()
+	public function get_severity ($status = null)
 	{
-	 	return ($this->status->get_severity());
+	 	return ($this->status->get_severity($status));
 	}
 
 	/**

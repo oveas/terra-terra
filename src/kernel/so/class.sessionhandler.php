@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.3 2008-09-02 05:16:53 oscar Exp $
  */
 
 /**
@@ -152,9 +152,6 @@ class SessionHandler extends _OWL
 	 */
 	public function destroy ($id)
 	{
-		// Erase all session data
-		session_unset();
-
 		// If a session cookie exists, make sure it's deleted
 		if (isset($_COOKIE[session_name()])) {
 			setcookie(session_name(), '', time()-42000, '/');

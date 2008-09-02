@@ -3,7 +3,7 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: class.exceptionhandler.php,v 1.3 2008-09-02 05:16:53 oscar Exp $
  */
 
 
@@ -23,6 +23,11 @@ class OWLException extends Exception
 	private $caller;
 
 	/**
+	 * Store the error code to allow the logger to retrieve it
+	 */
+	public $thrown_code;
+
+	/**
 	 * Create the Exception handler object
 	 * \public
 	 * \param[in] $msg Message text
@@ -33,9 +38,10 @@ class OWLException extends Exception
 	{
 		parent::__construct($msg, $code);
 		$this->caller = $caller;
+		$this->thrown_code = $code;
 	}
   
-//	public function getCaller()
+//	public function get_caller()
 //	{
 //		return $this->caller;
 //	}
@@ -257,7 +263,7 @@ class OWLExceptionHandler
 	 */ 
 	public static function log_exception(OWLException $exception)
 	{
-		$GLOBALS['logger']->log ($exception->stack_dump(true));
+		$GLOBALS['logger']->log ($exception->stack_dump(true), $exception->thrown_code);
 
 		if (ConfigHandler::get ('exception|show_in_browser')) {		
 			echo ($exception->stack_dump(false));

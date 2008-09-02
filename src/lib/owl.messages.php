@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in UK English
- * \version $Id: owl.messages.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.3 2008-09-02 05:16:54 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -47,6 +47,10 @@ $GLOBALS['messages'] = array (
 	, DATA_NODBLINK			=> 'A database query shoukld be prepared, but there is no database handler set yet'
 	, DATA_IVPREPARE		=> 'A database query was prepared with an invalid prepare flag'
 	, DATA_IVRESET			=> 'The object was reset with an invalid reset flag'
+	, FORM_RETVALUE			=> 'Retrieve value $p2 for formvariable $p1'
+	, FORM_STORVALUE		=> 'Storing formvariable $p1 with value $p2'
+	, FORM_PARSE			=> 'Start parsing the incoming formdata'
+	, FORM_NOVALUE			=> 'No value found for formvariable $p1'
 	, FILE_NOSUCHFILE		=> ''
 	, FILE_ENDOFFILE		=> ''
 	, FILE_OPENOPENED		=> ''
