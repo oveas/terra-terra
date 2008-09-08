@@ -2,7 +2,7 @@
 /**
  * \file
  * This is the entry point for OWL-PHP teststub
- * \version $Id: index.php,v 1.4 2008-09-02 05:16:53 oscar Exp $
+ * \version $Id: index.php,v 1.5 2008-09-08 12:27:55 oscar Exp $
  */
 
 define ('OWL_ROOT', '/home/oscar/work/eclipse/owl-php/src');
@@ -27,6 +27,14 @@ require_once (OWL_ROOT . '/OWLloader.php');
 if ($GLOBALS['formdata']->a == 'logout') {
 	$GLOBALS['user']->logout();
 }
+
+if ($GLOBALS['formdata']->u !== null && $GLOBALS['formdata']->p) {
+	if (!$GLOBALS['user']->login($GLOBALS['formdata']->u, $GLOBALS['formdata']->p)) {
+		$GLOBALS['user']->signal();
+	}
+}
+
+
 // Testcases :-)
 ?>
 <html>
@@ -34,7 +42,7 @@ if ($GLOBALS['formdata']->a == 'logout') {
 <title>OWL-PHP</title>
 </head>
 <body>
-Hello <?php echo ($GLOBALS['user']->get_username()); ?><br />
+Hello <?php echo ($GLOBALS['user']->get_username()); ?> (<?php echo ($GLOBALS['user']->user_data['email']); ?>)<br />
 <?php
 if (!array_key_exists('c', $_SESSION)) {
 	$_SESSION['c'] = 1;

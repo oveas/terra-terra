@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.3 2008-09-08 12:27:55 oscar Exp $
  */
 
 /**
@@ -133,7 +133,7 @@ class DataHandler extends _OWL
 				$this->owl_joins = array();
 				$this->owl_keys = array();
 			case DATA_RESET_PREPARE:
-				$this->database->reset();
+				$this->owl_database->reset();
 				$this->owl_prepared = DATA_UNPREPARED;
 			case DATA_RESET_STATUS:
 				parent::reset();
@@ -299,6 +299,7 @@ class DataHandler extends _OWL
 	{
 		$this->owl_database = $dblink;
 	}
+
 	/**
 	 * Set or overwrite the default table name
 	 * \public
@@ -391,6 +392,16 @@ class DataHandler extends _OWL
 				break;
 		}
 		return ($this->set_high_severity ($this->owl_database));
+	}
+	
+	/**
+	 * Return the last status of the database
+	 * \public
+	 * \return Current status of the database object
+	 */
+	public function db_status ()
+	{
+		return ($this->owl_database->get_status());
 	}
 }
 

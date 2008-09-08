@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Formhandler class
- * \version $Id: class.formhandler.php,v 1.2 2008-09-02 05:16:53 oscar Exp $
+ * \version $Id: class.formhandler.php,v 1.3 2008-09-08 12:27:55 oscar Exp $
  */
 
 /**
@@ -85,7 +85,7 @@ class FormHandler extends DataHandler
 		} else {
 			$_val = parent::__get ($variable);
 			if ($this->get_status() == DATA_NOTFOUND) {
-				parent::reset (DATA_RESET_STATUS);
+//				parent::reset (DATA_RESET_STATUS);
 				$this->set_status (FORM_NOVALUE, $variable);
 			}
 		}

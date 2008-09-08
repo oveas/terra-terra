@@ -1,10 +1,13 @@
-<area shape="rect" href="$class__OWL.html" title="_OWL" alt="" coords="5,132,61,159">
-<area shape="rect" href="$classDataHandler.html" title="The OWL Data object." alt="" coords="120,6,221,32">
-<area shape="rect" href="$classDbHandler.html" title="Database handler." alt="" coords="127,56,215,83">
-<area shape="rect" href="$classLogHandler.html" title="Log handler." alt="" coords="124,107,217,134">
-<area shape="rect" href="$classOWL.html" title="OWL" alt="" coords="147,158,195,184">
-<area shape="rect" href="$classSessionHandler.html" title="the PHP session object" alt="" coords="111,208,231,235">
-<area shape="rect" href="$classUserHandler.html" title="the user object" alt="" coords="120,259,221,286">
-<area shape="rect" href="$classFormHandler.html" title="Formhandler." alt="" coords="280,6,384,32">
-<area shape="rect" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="296,208,368,235">
-<area shape="rect" href="$classUser.html" title="the OWL&#45;PHP session object" alt="" coords="307,259,357,286">
+<area shape="rect" href="$class__OWL.html" title="_OWL" alt="" coords="5,157,61,184">
+<area shape="rect" href="$classDataHandler.html" title="The OWL Data object." alt="" coords="120,5,221,32">
+<area shape="rect" href="$classDbHandler.html" title="Database handler." alt="" coords="127,56,215,82">
+<area shape="rect" href="$classDOMElement.html" title="DOM Element base class." alt="" coords="119,106,223,133">
+<area shape="rect" href="$classLogHandler.html" title="Log handler." alt="" coords="124,157,217,184">
+<area shape="rect" href="$classOWL.html" title="OWL" alt="" coords="147,208,195,234">
+<area shape="rect" href="$classSessionHandler.html" title="the PHP session object" alt="" coords="111,258,231,285">
+<area shape="rect" href="$classUserHandler.html" title="the user object" alt="" coords="120,309,221,336">
+<area shape="rect" href="$classFormHandler.html" title="Formhandler." alt="" coords="283,5,387,32">
+<area shape="rect" href="$classForm.html" title="Form Element class." alt="" coords="308,81,361,108">
+<area shape="rect" href="$classFormElement.html" title="Form element." alt="" coords="281,132,388,158">
+<area shape="rect" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="299,258,371,285">
+<area shape="rect" href="$classUser.html" title="the OWL&#45;PHP session object" alt="" coords="309,309,360,336">

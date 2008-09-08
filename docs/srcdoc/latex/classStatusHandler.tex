@@ -16,7 +16,7 @@ Status object.
 \item 
 \hyperlink{classStatusHandler_c35544d3ad8a435f69db0965ed674428}{set\_\-params} (\$params)
 \item 
-\hyperlink{classStatusHandler_32c76648dd45915d1be9b78bebc410b1}{get\_\-severity} ()
+\hyperlink{classStatusHandler_cadd0806c17eb02abcc92882e8588d4e}{get\_\-severity} (\$status=null)
 \item 
 \hyperlink{classStatusHandler_d39bc4e6a56b6d418a252957da9b4417}{get\_\-code} ()
 \item 
@@ -95,15 +95,20 @@ If the status was set with optional parameters, they will be set in this subject
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$params}]An array with parameters \end{description}
 \end{Desc}
-\hypertarget{classStatusHandler_32c76648dd45915d1be9b78bebc410b1}{
+\hypertarget{classStatusHandler_cadd0806c17eb02abcc92882e8588d4e}{
 \index{StatusHandler@{StatusHandler}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!StatusHandler@{StatusHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::get\_\-severity ()}}
-\label{classStatusHandler_32c76648dd45915d1be9b78bebc410b1}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::get\_\-severity (\$ {\em status} = {\tt null})}}
+\label{classStatusHandler_cadd0806c17eb02abcc92882e8588d4e}
 
 
 Check the status of the given object and return its severity.
 
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{description}
+\end{Desc}
 \begin{Desc}
 \item[Returns:]The severity level of the current status \end{Desc}
 \hypertarget{classStatusHandler_d39bc4e6a56b6d418a252957da9b4417}{

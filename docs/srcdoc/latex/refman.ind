@@ -1,0 +1,719 @@
+\begin{theindex}
+
+  \item {/home/oscar/work/eclipse/owl-php/src/OWLloader.php}, 
+		\hyperpage{107}
+  \item {/home/oscar/work/eclipse/owl-php/src/OWLrundown.php}, 
+		\hyperpage{109}
+  \item {/home/oscar/work/eclipse/owl-php/src/config.php}, 
+		\hyperpage{79}
+  \item {/home/oscar/work/eclipse/owl-php/src/index.php}, 
+		\hyperpage{81}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/bo/class.form.php}, 
+		\hyperpage{82}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/bo/class.session.php}, 
+		\hyperpage{83}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/bo/class.user.php}, 
+		\hyperpage{84}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/class.\_\discretionary {-}{}{}OWL.php}, 
+		\hyperpage{85}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/so/class.confighandler.php}, 
+		\hyperpage{86}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/so/class.datahandler.php}, 
+		\hyperpage{87}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/so/class.dbhandler.php}, 
+		\hyperpage{90}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/so/class.exceptionhandler.php}, 
+		\hyperpage{92}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/so/class.filehandler.php}, 
+		\hyperpage{93}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/so/class.formhandler.php}, 
+		\hyperpage{94}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/so/class.loghandler.php}, 
+		\hyperpage{95}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/so/class.register.php}, 
+		\hyperpage{96}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/so/class.sessionhandler.php}, 
+		\hyperpage{98}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/so/class.statushandler.php}, 
+		\hyperpage{99}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/so/class.userhandler.php}, 
+		\hyperpage{100}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/ui/class.domelement.php}, 
+		\hyperpage{101}
+  \item {/home/oscar/work/eclipse/owl-php/src/kernel/ui/class.formelement.php}, 
+		\hyperpage{102}
+  \item {/home/oscar/work/eclipse/owl-php/src/lib/owl.messages.en-uk.php}, 
+		\hyperpage{103}
+  \item {/home/oscar/work/eclipse/owl-php/src/lib/owl.messages.php}, 
+		\hyperpage{104}
+  \item {/home/oscar/work/eclipse/owl-php/src/lib/owl.severitycodes.php}, 
+		\hyperpage{105}
+  \item {\$GLOBALS}
+    \subitem {config.php}, \hyperpage{79, 80}
+    \subitem {owl.messages.en-uk.php}, \hyperpage{103}
+    \subitem {owl.messages.php}, \hyperpage{104}
+    \subitem {OWLloader.php}, \hyperpage{108}
+  \item {\$caller}
+    \subitem {OWLException}, \hyperpage{51}
+  \item {\$code}
+    \subitem {StatusHandler}, \hyperpage{68}
+  \item {\$database}
+    \subitem {DbHandler}, \hyperpage{30}
+  \item {\$dataset}
+    \subitem {Session}, \hyperpage{60}
+    \subitem {SessionHandler}, \hyperpage{65}
+    \subitem {User}, \hyperpage{73}
+    \subitem {UserHandler}, \hyperpage{78}
+  \item {\$db\_\discretionary {-}{}{}prefix}
+    \subitem {DbHandler}, \hyperpage{30}
+  \item {\$errno}
+    \subitem {DbHandler}, \hyperpage{30}
+  \item {\$error}
+    \subitem {DbHandler}, \hyperpage{30}
+  \item {\$filename}
+    \subitem {LogHandler}, \hyperpage{46}
+  \item {\$fpointer}
+    \subitem {LogHandler}, \hyperpage{46}
+  \item {\$id}
+    \subitem {DbHandler}, \hyperpage{30}
+  \item {\$opened}
+    \subitem {DbHandler}, \hyperpage{30}
+    \subitem {LogHandler}, \hyperpage{46}
+  \item {\$original\_\discretionary {-}{}{}name}
+    \subitem {FileHandler}, \hyperpage{34}
+  \item {\$owl\_\discretionary {-}{}{}data}
+    \subitem {DataHandler}, \hyperpage{22}
+  \item {\$owl\_\discretionary {-}{}{}database}
+    \subitem {DataHandler}, \hyperpage{23}
+  \item {\$owl\_\discretionary {-}{}{}joins}
+    \subitem {DataHandler}, \hyperpage{22}
+  \item {\$owl\_\discretionary {-}{}{}keys}
+    \subitem {DataHandler}, \hyperpage{23}
+  \item {\$owl\_\discretionary {-}{}{}multivalues}
+    \subitem {FormHandler}, \hyperpage{43}
+  \item {\$owl\_\discretionary {-}{}{}prepared}
+    \subitem {DataHandler}, \hyperpage{23}
+  \item {\$owl\_\discretionary {-}{}{}tablename}
+    \subitem {DataHandler}, \hyperpage{23}
+  \item {\$params}
+    \subitem {StatusHandler}, \hyperpage{68}
+  \item {\$pstatus}
+    \subitem {\_\discretionary {-}{}{}OWL}, \hyperpage{15}
+  \item {\$query}
+    \subitem {DbHandler}, \hyperpage{30}
+  \item {\$rowcount}
+    \subitem {DbHandler}, \hyperpage{30}
+  \item {\$session}
+    \subitem {User}, \hyperpage{73}
+    \subitem {UserHandler}, \hyperpage{78}
+  \item {\$severity}
+    \subitem {\_\discretionary {-}{}{}OWL}, \hyperpage{15}
+  \item {\$status}
+    \subitem {\_\discretionary {-}{}{}OWL}, \hyperpage{15}
+  \item {\$thrown\_\discretionary {-}{}{}code}
+    \subitem {OWLException}, \hyperpage{51}
+  \item {\$user\_\discretionary {-}{}{}data}
+    \subitem {User}, \hyperpage{73}
+    \subitem {UserHandler}, \hyperpage{78}
+  \item {\_\discretionary {-}{}{}OWL}, \hyperpage{13}
+    \subitem {\$pstatus}, \hyperpage{15}
+    \subitem {\$severity}, \hyperpage{15}
+    \subitem {\$status}, \hyperpage{15}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}, 
+		\hyperpage{14}
+    \subitem {init}, \hyperpage{14}
+    \subitem {reset}, \hyperpage{14}
+    \subitem {reset\_\discretionary {-}{}{}calltree}, \hyperpage{15}
+  \item {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}
+    \subitem {DataHandler}, \hyperpage{20}
+    \subitem {DbHandler}, \hyperpage{26}
+    \subitem {DOMElement}, \hyperpage{32}
+    \subitem {FileHandler}, \hyperpage{33}
+    \subitem {Form}, \hyperpage{36}
+    \subitem {FormElement}, \hyperpage{38}
+    \subitem {FormHandler}, \hyperpage{41}
+    \subitem {LogHandler}, \hyperpage{45}
+    \subitem {OWL}, \hyperpage{49}
+    \subitem {OWLException}, \hyperpage{50}
+    \subitem {Session}, \hyperpage{58}
+    \subitem {SessionHandler}, \hyperpage{63}
+    \subitem {StatusHandler}, \hyperpage{66}
+    \subitem {User}, \hyperpage{71}
+    \subitem {UserHandler}, \hyperpage{76}
+  \item {\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}
+    \subitem {\_\discretionary {-}{}{}OWL}, \hyperpage{14}
+    \subitem {DbHandler}, \hyperpage{26}
+    \subitem {FileHandler}, \hyperpage{33}
+    \subitem {LogHandler}, \hyperpage{45}
+    \subitem {Session}, \hyperpage{58}
+    \subitem {SessionHandler}, \hyperpage{63}
+    \subitem {User}, \hyperpage{71}
+    \subitem {UserHandler}, \hyperpage{76}
+  \item {\_\discretionary {-}{}{}\_\discretionary {-}{}{}get}
+    \subitem {DataHandler}, \hyperpage{21}
+    \subitem {FormHandler}, \hyperpage{41}
+  \item {\_\discretionary {-}{}{}\_\discretionary {-}{}{}set}
+    \subitem {DataHandler}, \hyperpage{21}
+    \subitem {FormHandler}, \hyperpage{42}
+
+  \indexspace
+
+  \item {Business Object modules}, \hyperpage{10}
+
+  \indexspace
+
+  \item {class.datahandler.php}
+    \subitem {DATA\_\discretionary {-}{}{}DELETE}, \hyperpage{88}
+    \subitem {DATA\_\discretionary {-}{}{}READ}, \hyperpage{88}
+    \subitem {DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}FULL}, 
+		\hyperpage{88}
+    \subitem {DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}META}, 
+		\hyperpage{88}
+    \subitem {DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}PREPARE}, 
+		\hyperpage{88}
+    \subitem {DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}STATUS}, 
+		\hyperpage{88}
+    \subitem {DATA\_\discretionary {-}{}{}UNPREPARED}, \hyperpage{88}
+    \subitem {DATA\_\discretionary {-}{}{}UPDATE}, \hyperpage{89}
+    \subitem {DATA\_\discretionary {-}{}{}WRITE}, \hyperpage{89}
+  \item {class.dbhandler.php}
+    \subitem {DBHANDLE\_\discretionary {-}{}{}DATA}, \hyperpage{90}
+    \subitem {DBHANDLE\_\discretionary {-}{}{}FIELDCOUNT}, 
+		\hyperpage{91}
+    \subitem {DBHANDLE\_\discretionary {-}{}{}ROWCOUNT}, \hyperpage{91}
+    \subitem {DBHANDLE\_\discretionary {-}{}{}SINGLEFIELD}, 
+		\hyperpage{91}
+    \subitem {DBHANDLE\_\discretionary {-}{}{}SINGLEROW}, 
+		\hyperpage{91}
+    \subitem {DBHANDLE\_\discretionary {-}{}{}TOTALFIELDCOUNT}, 
+		\hyperpage{91}
+  \item {class.filehandler.php}
+    \subitem {FILE\_\discretionary {-}{}{}NOTRIM}, \hyperpage{93}
+    \subitem {FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}C}, 
+		\hyperpage{93}
+    \subitem {FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}L}, 
+		\hyperpage{93}
+    \subitem {FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}R}, 
+		\hyperpage{93}
+  \item {class.register.php}
+    \subitem {OWL\_\discretionary {-}{}{}APPLICATION\_\discretionary {-}{}{}PATTERN}, 
+		\hyperpage{96}
+    \subitem {OWL\_\discretionary {-}{}{}OBJECT\_\discretionary {-}{}{}PATTERN}, 
+		\hyperpage{96}
+    \subitem {OWL\_\discretionary {-}{}{}SEVERITY\_\discretionary {-}{}{}PATTERN}, 
+		\hyperpage{96}
+    \subitem {OWL\_\discretionary {-}{}{}STATUS\_\discretionary {-}{}{}PATTERN}, 
+		\hyperpage{96}
+  \item {close}
+    \subitem {FileHandler}, \hyperpage{34}
+    \subitem {Session}, \hyperpage{58}
+    \subitem {SessionHandler}, \hyperpage{63}
+  \item {close\_\discretionary {-}{}{}logfile}
+    \subitem {LogHandler}, \hyperpage{46}
+  \item {config.php}
+    \subitem {\$GLOBALS}, \hyperpage{79, 80}
+  \item {ConfigHandler}, \hyperpage{16}
+    \subitem {convert}, \hyperpage{16}
+    \subitem {get}, \hyperpage{16}
+    \subitem {read\_\discretionary {-}{}{}config}, \hyperpage{16}
+  \item {connect}
+    \subitem {DbHandler}, \hyperpage{27}
+  \item {convert}
+    \subitem {ConfigHandler}, \hyperpage{16}
+  \item {create}
+    \subitem {DbHandler}, \hyperpage{27}
+
+  \indexspace
+
+  \item {DATA\_\discretionary {-}{}{}DELETE}
+    \subitem {class.datahandler.php}, \hyperpage{88}
+  \item {DATA\_\discretionary {-}{}{}READ}
+    \subitem {class.datahandler.php}, \hyperpage{88}
+  \item {DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}FULL}
+    \subitem {class.datahandler.php}, \hyperpage{88}
+  \item {DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}META}
+    \subitem {class.datahandler.php}, \hyperpage{88}
+  \item {DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}PREPARE}
+    \subitem {class.datahandler.php}, \hyperpage{88}
+  \item {DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}STATUS}
+    \subitem {class.datahandler.php}, \hyperpage{88}
+  \item {DATA\_\discretionary {-}{}{}UNPREPARED}
+    \subitem {class.datahandler.php}, \hyperpage{88}
+  \item {DATA\_\discretionary {-}{}{}UPDATE}
+    \subitem {class.datahandler.php}, \hyperpage{89}
+  \item {DATA\_\discretionary {-}{}{}WRITE}
+    \subitem {class.datahandler.php}, \hyperpage{89}
+  \item {DataHandler}, \hyperpage{18}
+    \subitem {\$owl\_\discretionary {-}{}{}data}, \hyperpage{22}
+    \subitem {\$owl\_\discretionary {-}{}{}database}, \hyperpage{23}
+    \subitem {\$owl\_\discretionary {-}{}{}joins}, \hyperpage{22}
+    \subitem {\$owl\_\discretionary {-}{}{}keys}, \hyperpage{23}
+    \subitem {\$owl\_\discretionary {-}{}{}prepared}, \hyperpage{23}
+    \subitem {\$owl\_\discretionary {-}{}{}tablename}, \hyperpage{23}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{20}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}get}, 
+		\hyperpage{21}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}set}, 
+		\hyperpage{21}
+    \subitem {find\_\discretionary {-}{}{}field}, \hyperpage{21}
+    \subitem {init}, \hyperpage{22}
+    \subitem {reset}, \hyperpage{20}, \hyperpage{22}
+    \subitem {set\_\discretionary {-}{}{}join}, \hyperpage{22}
+    \subitem {set\_\discretionary {-}{}{}key}, \hyperpage{21}
+  \item {DBHANDLE\_\discretionary {-}{}{}DATA}
+    \subitem {class.dbhandler.php}, \hyperpage{90}
+  \item {DBHANDLE\_\discretionary {-}{}{}FIELDCOUNT}
+    \subitem {class.dbhandler.php}, \hyperpage{91}
+  \item {DBHANDLE\_\discretionary {-}{}{}ROWCOUNT}
+    \subitem {class.dbhandler.php}, \hyperpage{91}
+  \item {DBHANDLE\_\discretionary {-}{}{}SINGLEFIELD}
+    \subitem {class.dbhandler.php}, \hyperpage{91}
+  \item {DBHANDLE\_\discretionary {-}{}{}SINGLEROW}
+    \subitem {class.dbhandler.php}, \hyperpage{91}
+  \item {DBHANDLE\_\discretionary {-}{}{}TOTALFIELDCOUNT}
+    \subitem {class.dbhandler.php}, \hyperpage{91}
+  \item {DbHandler}, \hyperpage{24}
+    \subitem {\$database}, \hyperpage{30}
+    \subitem {\$db\_\discretionary {-}{}{}prefix}, \hyperpage{30}
+    \subitem {\$errno}, \hyperpage{30}
+    \subitem {\$error}, \hyperpage{30}
+    \subitem {\$id}, \hyperpage{30}
+    \subitem {\$opened}, \hyperpage{30}
+    \subitem {\$query}, \hyperpage{30}
+    \subitem {\$rowcount}, \hyperpage{30}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{26}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}, 
+		\hyperpage{26}
+    \subitem {connect}, \hyperpage{27}
+    \subitem {create}, \hyperpage{27}
+    \subitem {dbread}, \hyperpage{29}
+    \subitem {escape\_\discretionary {-}{}{}string}, \hyperpage{29}
+    \subitem {init}, \hyperpage{29}
+    \subitem {open}, \hyperpage{27}
+    \subitem {read}, \hyperpage{28}
+    \subitem {reset}, \hyperpage{27}
+    \subitem {set\_\discretionary {-}{}{}query}, \hyperpage{28}
+    \subitem {table\_\discretionary {-}{}{}description}, \hyperpage{27}
+    \subitem {tablename}, \hyperpage{28}
+    \subitem {unescape\_\discretionary {-}{}{}string}, \hyperpage{29}
+  \item {dbread}
+    \subitem {DbHandler}, \hyperpage{29}
+  \item {destroy}
+    \subitem {Session}, \hyperpage{59}
+    \subitem {SessionHandler}, \hyperpage{64}
+  \item {DOMElement}, \hyperpage{31}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{32}
+    \subitem {init}, \hyperpage{32}
+    \subitem {reset}, \hyperpage{32}
+  \item {download}
+    \subitem {FileHandler}, \hyperpage{34}
+
+  \indexspace
+
+  \item {encode}
+    \subitem {FileHandler}, \hyperpage{34}
+  \item {escape\_\discretionary {-}{}{}string}
+    \subitem {DbHandler}, \hyperpage{29}
+
+  \indexspace
+
+  \item {FILE\_\discretionary {-}{}{}NOTRIM}
+    \subitem {class.filehandler.php}, \hyperpage{93}
+  \item {FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}C}
+    \subitem {class.filehandler.php}, \hyperpage{93}
+  \item {FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}L}
+    \subitem {class.filehandler.php}, \hyperpage{93}
+  \item {FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}R}
+    \subitem {class.filehandler.php}, \hyperpage{93}
+  \item {FileHandler}, \hyperpage{33}
+    \subitem {\$original\_\discretionary {-}{}{}name}, \hyperpage{34}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{33}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}, 
+		\hyperpage{33}
+    \subitem {close}, \hyperpage{34}
+    \subitem {download}, \hyperpage{34}
+    \subitem {encode}, \hyperpage{34}
+    \subitem {open}, \hyperpage{33}
+    \subitem {read\_\discretionary {-}{}{}data}, \hyperpage{34}
+    \subitem {read\_\discretionary {-}{}{}line}, \hyperpage{34}
+  \item {find\_\discretionary {-}{}{}field}
+    \subitem {DataHandler}, \hyperpage{21}
+  \item {Form}, \hyperpage{35}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{36}
+    \subitem {init}, \hyperpage{36}
+    \subitem {reset}, \hyperpage{36}
+  \item {FormElement}, \hyperpage{37}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{38}
+    \subitem {init}, \hyperpage{38}
+    \subitem {reset}, \hyperpage{38}
+  \item {FormHandler}, \hyperpage{39}
+    \subitem {\$owl\_\discretionary {-}{}{}multivalues}, \hyperpage{43}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{41}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}get}, 
+		\hyperpage{41}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}set}, 
+		\hyperpage{42}
+    \subitem {init}, \hyperpage{43}
+    \subitem {parse\_\discretionary {-}{}{}formdata}, \hyperpage{41}
+    \subitem {reset}, \hyperpage{42}
+    \subitem {set\_\discretionary {-}{}{}join}, \hyperpage{42}
+    \subitem {set\_\discretionary {-}{}{}key}, \hyperpage{42}
+
+  \indexspace
+
+  \item {gc}
+    \subitem {Session}, \hyperpage{59}
+    \subitem {SessionHandler}, \hyperpage{64}
+  \item {get}
+    \subitem {ConfigHandler}, \hyperpage{16}
+  \item {get\_\discretionary {-}{}{}code}
+    \subitem {Register}, \hyperpage{55}
+    \subitem {StatusHandler}, \hyperpage{67}
+  \item {get\_\discretionary {-}{}{}message}
+    \subitem {StatusHandler}, \hyperpage{68}
+  \item {get\_\discretionary {-}{}{}run\_\discretionary {-}{}{}id}
+    \subitem {Register}, \hyperpage{55}
+  \item {get\_\discretionary {-}{}{}severity}
+    \subitem {Register}, \hyperpage{54}
+    \subitem {StatusHandler}, \hyperpage{67}
+  \item {get\_\discretionary {-}{}{}severity\_\discretionary {-}{}{}level}
+    \subitem {Register}, \hyperpage{54}
+  \item {get\_\discretionary {-}{}{}trace}
+    \subitem {OWLException}, \hyperpage{51}
+  \item {get\_\discretionary {-}{}{}username}
+    \subitem {User}, \hyperpage{72}
+    \subitem {UserHandler}, \hyperpage{77}
+
+  \indexspace
+
+  \item {handle\_\discretionary {-}{}{}exception}
+    \subitem {OWLExceptionHandler}, \hyperpage{52}
+  \item {hash\_\discretionary {-}{}{}password}
+    \subitem {UserHandler}, \hyperpage{77}
+
+  \indexspace
+
+  \item {index.php}
+    \subitem {OWL\_\discretionary {-}{}{}ROOT}, \hyperpage{81}
+  \item {init}
+    \subitem {\_\discretionary {-}{}{}OWL}, \hyperpage{14}
+    \subitem {DataHandler}, \hyperpage{22}
+    \subitem {DbHandler}, \hyperpage{29}
+    \subitem {DOMElement}, \hyperpage{32}
+    \subitem {Form}, \hyperpage{36}
+    \subitem {FormElement}, \hyperpage{38}
+    \subitem {FormHandler}, \hyperpage{43}
+    \subitem {LogHandler}, \hyperpage{46}
+    \subitem {OWL}, \hyperpage{49}
+    \subitem {Register}, \hyperpage{53}
+    \subitem {Session}, \hyperpage{60}
+    \subitem {SessionHandler}, \hyperpage{64}
+    \subitem {User}, \hyperpage{72}
+    \subitem {UserHandler}, \hyperpage{77}
+
+  \indexspace
+
+  \item {Library (codes, messages files etc.)}, \hyperpage{12}
+  \item {log\_\discretionary {-}{}{}exception}
+    \subitem {OWLExceptionHandler}, \hyperpage{52}
+  \item {LogHandler}, \hyperpage{44}
+    \subitem {\$filename}, \hyperpage{46}
+    \subitem {\$fpointer}, \hyperpage{46}
+    \subitem {\$opened}, \hyperpage{46}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{45}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}, 
+		\hyperpage{45}
+    \subitem {close\_\discretionary {-}{}{}logfile}, \hyperpage{46}
+    \subitem {init}, \hyperpage{46}
+    \subitem {open\_\discretionary {-}{}{}logfile}, \hyperpage{46}
+    \subitem {reset}, \hyperpage{46}
+    \subitem {set\_\discretionary {-}{}{}filename}, \hyperpage{46}
+    \subitem {write\_\discretionary {-}{}{}logfile}, \hyperpage{46}
+  \item {login}
+    \subitem {User}, \hyperpage{71, 72}
+    \subitem {UserHandler}, \hyperpage{76}
+  \item {logout}
+    \subitem {User}, \hyperpage{72}
+    \subitem {UserHandler}, \hyperpage{76}
+
+  \indexspace
+
+  \item {open}
+    \subitem {DbHandler}, \hyperpage{27}
+    \subitem {FileHandler}, \hyperpage{33}
+    \subitem {Session}, \hyperpage{58}
+    \subitem {SessionHandler}, \hyperpage{63}
+  \item {open\_\discretionary {-}{}{}logfile}
+    \subitem {LogHandler}, \hyperpage{46}
+  \item {OWL}, \hyperpage{48}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{49}
+    \subitem {init}, \hyperpage{49}
+    \subitem {reset}, \hyperpage{49}
+    \subitem {s}, \hyperpage{49}
+  \item {owl.messages.en-uk.php}
+    \subitem {\$GLOBALS}, \hyperpage{103}
+  \item {owl.messages.php}
+    \subitem {\$GLOBALS}, \hyperpage{104}
+  \item {owl.severitycodes.php}
+    \subitem {OWL\_\discretionary {-}{}{}BUG}, \hyperpage{105}
+    \subitem {OWL\_\discretionary {-}{}{}CRITICAL}, \hyperpage{105}
+    \subitem {OWL\_\discretionary {-}{}{}DEBUG}, \hyperpage{105}
+    \subitem {OWL\_\discretionary {-}{}{}ERROR}, \hyperpage{105}
+    \subitem {OWL\_\discretionary {-}{}{}FATAL}, \hyperpage{106}
+    \subitem {OWL\_\discretionary {-}{}{}INFO}, \hyperpage{106}
+    \subitem {OWL\_\discretionary {-}{}{}OK}, \hyperpage{106}
+    \subitem {OWL\_\discretionary {-}{}{}SUCCESS}, \hyperpage{106}
+    \subitem {OWL\_\discretionary {-}{}{}WARNING}, \hyperpage{106}
+  \item {OWL\_\discretionary {-}{}{}APPLICATION\_\discretionary {-}{}{}PATTERN}
+    \subitem {class.register.php}, \hyperpage{96}
+  \item {OWL\_\discretionary {-}{}{}BO\_\discretionary {-}{}{}INC}
+    \subitem {OWLloader.php}, \hyperpage{107}
+  \item {OWL\_\discretionary {-}{}{}BUG}
+    \subitem {owl.severitycodes.php}, \hyperpage{105}
+  \item {OWL\_\discretionary {-}{}{}CRITICAL}
+    \subitem {owl.severitycodes.php}, \hyperpage{105}
+  \item {OWL\_\discretionary {-}{}{}DEBUG}
+    \subitem {owl.severitycodes.php}, \hyperpage{105}
+  \item {OWL\_\discretionary {-}{}{}ERROR}
+    \subitem {owl.severitycodes.php}, \hyperpage{105}
+  \item {OWL\_\discretionary {-}{}{}FATAL}
+    \subitem {owl.severitycodes.php}, \hyperpage{106}
+  \item {OWL\_\discretionary {-}{}{}INCLUDE}
+    \subitem {OWLloader.php}, \hyperpage{107}
+  \item {OWL\_\discretionary {-}{}{}INFO}
+    \subitem {owl.severitycodes.php}, \hyperpage{106}
+  \item {OWL\_\discretionary {-}{}{}LIBRARY}
+    \subitem {OWLloader.php}, \hyperpage{107}
+  \item {OWL\_\discretionary {-}{}{}OBJECT\_\discretionary {-}{}{}PATTERN}
+    \subitem {class.register.php}, \hyperpage{96}
+  \item {OWL\_\discretionary {-}{}{}OK}
+    \subitem {owl.severitycodes.php}, \hyperpage{106}
+  \item {OWL\_\discretionary {-}{}{}ROOT}
+    \subitem {index.php}, \hyperpage{81}
+  \item {OWL\_\discretionary {-}{}{}SEVERITY\_\discretionary {-}{}{}PATTERN}
+    \subitem {class.register.php}, \hyperpage{96}
+  \item {OWL\_\discretionary {-}{}{}SO\_\discretionary {-}{}{}INC}
+    \subitem {OWLloader.php}, \hyperpage{107}
+  \item {OWL\_\discretionary {-}{}{}STATUS\_\discretionary {-}{}{}PATTERN}
+    \subitem {class.register.php}, \hyperpage{96}
+  \item {OWL\_\discretionary {-}{}{}SUCCESS}
+    \subitem {owl.severitycodes.php}, \hyperpage{106}
+  \item {OWL\_\discretionary {-}{}{}UI\_\discretionary {-}{}{}INC}
+    \subitem {OWLloader.php}, \hyperpage{108}
+  \item {OWL\_\discretionary {-}{}{}WARNING}
+    \subitem {owl.severitycodes.php}, \hyperpage{106}
+  \item {OWLException}, \hyperpage{50}
+    \subitem {\$caller}, \hyperpage{51}
+    \subitem {\$thrown\_\discretionary {-}{}{}code}, \hyperpage{51}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{50}
+    \subitem {get\_\discretionary {-}{}{}trace}, \hyperpage{51}
+    \subitem {stack\_\discretionary {-}{}{}dump}, \hyperpage{51}
+    \subitem {traceback}, \hyperpage{51}
+  \item {OWLExceptionHandler}, \hyperpage{52}
+    \subitem {handle\_\discretionary {-}{}{}exception}, \hyperpage{52}
+    \subitem {log\_\discretionary {-}{}{}exception}, \hyperpage{52}
+  \item {OWLloader.php}
+    \subitem {\$GLOBALS}, \hyperpage{108}
+    \subitem {OWL\_\discretionary {-}{}{}BO\_\discretionary {-}{}{}INC}, 
+		\hyperpage{107}
+    \subitem {OWL\_\discretionary {-}{}{}INCLUDE}, \hyperpage{107}
+    \subitem {OWL\_\discretionary {-}{}{}LIBRARY}, \hyperpage{107}
+    \subitem {OWL\_\discretionary {-}{}{}SO\_\discretionary {-}{}{}INC}, 
+		\hyperpage{107}
+    \subitem {OWL\_\discretionary {-}{}{}UI\_\discretionary {-}{}{}INC}, 
+		\hyperpage{108}
+
+  \indexspace
+
+  \item {parse\_\discretionary {-}{}{}formdata}
+    \subitem {FormHandler}, \hyperpage{41}
+  \item {Presentation modules}, \hyperpage{9}
+
+  \indexspace
+
+  \item {read}
+    \subitem {DbHandler}, \hyperpage{28}
+    \subitem {Session}, \hyperpage{59}
+    \subitem {SessionHandler}, \hyperpage{63}
+  \item {read\_\discretionary {-}{}{}config}
+    \subitem {ConfigHandler}, \hyperpage{16}
+  \item {read\_\discretionary {-}{}{}data}
+    \subitem {FileHandler}, \hyperpage{34}
+  \item {read\_\discretionary {-}{}{}line}
+    \subitem {FileHandler}, \hyperpage{34}
+  \item {read\_\discretionary {-}{}{}userdata}
+    \subitem {UserHandler}, \hyperpage{77}
+  \item {Register}, \hyperpage{53}
+    \subitem {get\_\discretionary {-}{}{}code}, \hyperpage{55}
+    \subitem {get\_\discretionary {-}{}{}run\_\discretionary {-}{}{}id}, 
+		\hyperpage{55}
+    \subitem {get\_\discretionary {-}{}{}severity}, \hyperpage{54}
+    \subitem {get\_\discretionary {-}{}{}severity\_\discretionary {-}{}{}level}, 
+		\hyperpage{54}
+    \subitem {init}, \hyperpage{53}
+    \subitem {register\_\discretionary {-}{}{}app}, \hyperpage{53}
+    \subitem {register\_\discretionary {-}{}{}class}, \hyperpage{53}
+    \subitem {register\_\discretionary {-}{}{}code}, \hyperpage{54}
+    \subitem {register\_\discretionary {-}{}{}severity}, \hyperpage{54}
+    \subitem {set\_\discretionary {-}{}{}application}, \hyperpage{55}
+    \subitem {set\_\discretionary {-}{}{}class}, \hyperpage{55}
+    \subitem {set\_\discretionary {-}{}{}severity}, \hyperpage{55}
+  \item {register\_\discretionary {-}{}{}app}
+    \subitem {Register}, \hyperpage{53}
+  \item {register\_\discretionary {-}{}{}class}
+    \subitem {Register}, \hyperpage{53}
+  \item {register\_\discretionary {-}{}{}code}
+    \subitem {Register}, \hyperpage{54}
+  \item {register\_\discretionary {-}{}{}severity}
+    \subitem {Register}, \hyperpage{54}
+  \item {reset}
+    \subitem {\_\discretionary {-}{}{}OWL}, \hyperpage{14}
+    \subitem {DataHandler}, \hyperpage{20}, \hyperpage{22}
+    \subitem {DbHandler}, \hyperpage{27}
+    \subitem {DOMElement}, \hyperpage{32}
+    \subitem {Form}, \hyperpage{36}
+    \subitem {FormElement}, \hyperpage{38}
+    \subitem {FormHandler}, \hyperpage{42}
+    \subitem {LogHandler}, \hyperpage{46}
+    \subitem {OWL}, \hyperpage{49}
+    \subitem {Session}, \hyperpage{60}
+    \subitem {SessionHandler}, \hyperpage{64}
+    \subitem {StatusHandler}, \hyperpage{67}
+    \subitem {User}, \hyperpage{72}
+    \subitem {UserHandler}, \hyperpage{77}
+  \item {reset\_\discretionary {-}{}{}calltree}
+    \subitem {\_\discretionary {-}{}{}OWL}, \hyperpage{15}
+
+  \indexspace
+
+  \item {s}
+    \subitem {OWL}, \hyperpage{49}
+  \item {Session}, \hyperpage{56}
+    \subitem {\$dataset}, \hyperpage{60}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{58}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}, 
+		\hyperpage{58}
+    \subitem {close}, \hyperpage{58}
+    \subitem {destroy}, \hyperpage{59}
+    \subitem {gc}, \hyperpage{59}
+    \subitem {init}, \hyperpage{60}
+    \subitem {open}, \hyperpage{58}
+    \subitem {read}, \hyperpage{59}
+    \subitem {reset}, \hyperpage{60}
+    \subitem {write}, \hyperpage{59}
+  \item {SessionHandler}, \hyperpage{61}
+    \subitem {\$dataset}, \hyperpage{65}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{63}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}, 
+		\hyperpage{63}
+    \subitem {close}, \hyperpage{63}
+    \subitem {destroy}, \hyperpage{64}
+    \subitem {gc}, \hyperpage{64}
+    \subitem {init}, \hyperpage{64}
+    \subitem {open}, \hyperpage{63}
+    \subitem {read}, \hyperpage{63}
+    \subitem {reset}, \hyperpage{64}
+    \subitem {write}, \hyperpage{64}
+  \item {set\_\discretionary {-}{}{}application}
+    \subitem {Register}, \hyperpage{55}
+  \item {set\_\discretionary {-}{}{}class}
+    \subitem {Register}, \hyperpage{55}
+  \item {set\_\discretionary {-}{}{}code}
+    \subitem {StatusHandler}, \hyperpage{67}
+  \item {set\_\discretionary {-}{}{}filename}
+    \subitem {LogHandler}, \hyperpage{46}
+  \item {set\_\discretionary {-}{}{}join}
+    \subitem {DataHandler}, \hyperpage{22}
+    \subitem {FormHandler}, \hyperpage{42}
+  \item {set\_\discretionary {-}{}{}key}
+    \subitem {DataHandler}, \hyperpage{21}
+    \subitem {FormHandler}, \hyperpage{42}
+  \item {set\_\discretionary {-}{}{}params}
+    \subitem {StatusHandler}, \hyperpage{67}
+  \item {set\_\discretionary {-}{}{}query}
+    \subitem {DbHandler}, \hyperpage{28}
+  \item {set\_\discretionary {-}{}{}severity}
+    \subitem {Register}, \hyperpage{55}
+  \item {set\_\discretionary {-}{}{}username}
+    \subitem {User}, \hyperpage{72}
+    \subitem {UserHandler}, \hyperpage{77}
+  \item {stack\_\discretionary {-}{}{}dump}
+    \subitem {OWLException}, \hyperpage{51}
+  \item {StatusHandler}, \hyperpage{66}
+    \subitem {\$code}, \hyperpage{68}
+    \subitem {\$params}, \hyperpage{68}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{66}
+    \subitem {get\_\discretionary {-}{}{}code}, \hyperpage{67}
+    \subitem {get\_\discretionary {-}{}{}message}, \hyperpage{68}
+    \subitem {get\_\discretionary {-}{}{}severity}, \hyperpage{67}
+    \subitem {reset}, \hyperpage{67}
+    \subitem {set\_\discretionary {-}{}{}code}, \hyperpage{67}
+    \subitem {set\_\discretionary {-}{}{}params}, \hyperpage{67}
+  \item {Storage Object modules}, \hyperpage{11}
+
+  \indexspace
+
+  \item {table\_\discretionary {-}{}{}description}
+    \subitem {DbHandler}, \hyperpage{27}
+  \item {tablename}
+    \subitem {DbHandler}, \hyperpage{28}
+  \item {traceback}
+    \subitem {OWLException}, \hyperpage{51}
+
+  \indexspace
+
+  \item {unescape\_\discretionary {-}{}{}string}
+    \subitem {DbHandler}, \hyperpage{29}
+  \item {User}, \hyperpage{69}
+    \subitem {\$dataset}, \hyperpage{73}
+    \subitem {\$session}, \hyperpage{73}
+    \subitem {\$user\_\discretionary {-}{}{}data}, \hyperpage{73}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{71}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}, 
+		\hyperpage{71}
+    \subitem {get\_\discretionary {-}{}{}username}, \hyperpage{72}
+    \subitem {init}, \hyperpage{72}
+    \subitem {login}, \hyperpage{71, 72}
+    \subitem {logout}, \hyperpage{72}
+    \subitem {reset}, \hyperpage{72}
+    \subitem {set\_\discretionary {-}{}{}username}, \hyperpage{72}
+  \item {UserHandler}, \hyperpage{74}
+    \subitem {\$dataset}, \hyperpage{78}
+    \subitem {\$session}, \hyperpage{78}
+    \subitem {\$user\_\discretionary {-}{}{}data}, \hyperpage{78}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}, 
+		\hyperpage{76}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}, 
+		\hyperpage{76}
+    \subitem {get\_\discretionary {-}{}{}username}, \hyperpage{77}
+    \subitem {hash\_\discretionary {-}{}{}password}, \hyperpage{77}
+    \subitem {init}, \hyperpage{77}
+    \subitem {login}, \hyperpage{76}
+    \subitem {logout}, \hyperpage{76}
+    \subitem {read\_\discretionary {-}{}{}userdata}, \hyperpage{77}
+    \subitem {reset}, \hyperpage{77}
+    \subitem {set\_\discretionary {-}{}{}username}, \hyperpage{77}
+
+  \indexspace
+
+  \item {write}
+    \subitem {Session}, \hyperpage{59}
+    \subitem {SessionHandler}, \hyperpage{64}
+  \item {write\_\discretionary {-}{}{}logfile}
+    \subitem {LogHandler}, \hyperpage{46}
+
+\end{theindex}

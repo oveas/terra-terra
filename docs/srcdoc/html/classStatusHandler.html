@@ -39,7 +39,7 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#c35544d3ad8a435f69db0965ed674428">set_params</a> ($params)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#32c76648dd45915d1be9b78bebc410b1">get_severity</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#cadd0806c17eb02abcc92882e8588d4e">get_severity</a> ($status=null)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#d39bc4e6a56b6d418a252957da9b4417">get_code</a> ()</td></tr>
 
@@ -156,14 +156,15 @@ If the status was set with optional parameters, they will be set in this subject
 
 </div>
 </div><p>
-<a class="anchor" name="32c76648dd45915d1be9b78bebc410b1"></a><!-- doxytag: member="StatusHandler::get_severity" ref="32c76648dd45915d1be9b78bebc410b1" args="()" -->
+<a class="anchor" name="cadd0806c17eb02abcc92882e8588d4e"></a><!-- doxytag: member="StatusHandler::get_severity" ref="cadd0806c17eb02abcc92882e8588d4e" args="($status=null)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">StatusHandler::get_severity           </td>
           <td>(</td>
-          <td class="paramname">          </td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>status</em> = <code>null</code>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td width="100%"></td>
         </tr>
@@ -173,6 +174,11 @@ If the status was set with optional parameters, they will be set in this subject
 
 <p>
 Check the status of the given object and return its severity.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$status</em>&nbsp;</td><td>An optional parameter to check an other status code i.s.o the object's current status. </td></tr>
+  </table>
+</dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>The severity level of the current status </dd></dl>
 
 </div>
@@ -252,7 +258,7 @@ Array with parameters that will be substituted in message text
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
 <li>/home/oscar/work/eclipse/owl-php/src/kernel/so/<a class="el" href="class_8statushandler_8php.html">class.statushandler.php</a></ul>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Aug 28 20:15:14 2008 for OWL-PHP by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Sep 8 14:26:32 2008 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

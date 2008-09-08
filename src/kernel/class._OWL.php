@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._OWL.php,v 1.3 2008-09-02 05:16:54 oscar Exp $
+ * \version $Id: class._OWL.php,v 1.4 2008-09-08 12:27:55 oscar Exp $
  */
 
 require_once (OWL_SO_INC . '/class.statushandler.php');
@@ -115,7 +115,7 @@ abstract class _OWL
 		if ($loopdetect > 1) {
 			die ('Fatal error - loop detected while handling the status: ' . Register::get_code($status));
 		}
-//		$this->reset();
+		self::reset();
 		$this->severity = $this->status->set_code($status);
 		if (is_array ($params)) {
 			$this->status->set_params ($params);
@@ -203,6 +203,7 @@ abstract class _OWL
 	 * the text will be written to standard output
 	 * \param[in] $depth This paramater should be initially empty. It calculates the depth in
 	 * recursive calls.
+	 * \return Severity code of the failing object
 	 */
 	public function traceback (&$text = false, $depth = 0)
 	{
@@ -210,7 +211,7 @@ abstract class _OWL
 			$this->pstatus->traceback ($text, ++$depth);
 		} else {
 //echo "Depth is now: $depth<br/>";
-			$this->signal (0, $text);
+			return ($this->signal (0, $text));
 		}
 	}
 }

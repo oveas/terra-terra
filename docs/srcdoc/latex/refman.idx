@@ -1,0 +1,477 @@
+\indexentry{Presentation modules@{Presentation modules}|hyperpage}{9}
+\indexentry{Business Object modules@{Business Object modules}|hyperpage}{10}
+\indexentry{Storage Object modules@{Storage Object modules}|hyperpage}{11}
+\indexentry{Library (codes, messages files etc.)@{Library (codes, messages files etc.)}|hyperpage}{12}
+\indexentry{\_\discretionary {-}{}{}OWL@{\_\discretionary {-}{}{}OWL}|hyperpage}{13}
+\indexentry{\_\discretionary {-}{}{}OWL@{\_\discretionary {-}{}{}OWL}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}|hyperpage}{14}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}!_OWL@{\_\discretionary {-}{}{}OWL}|hyperpage}{14}
+\indexentry{\_\discretionary {-}{}{}OWL@{\_\discretionary {-}{}{}OWL}!init@{init}|hyperpage}{14}
+\indexentry{init@{init}!_OWL@{\_\discretionary {-}{}{}OWL}|hyperpage}{14}
+\indexentry{\_\discretionary {-}{}{}OWL@{\_\discretionary {-}{}{}OWL}!reset@{reset}|hyperpage}{14}
+\indexentry{reset@{reset}!_OWL@{\_\discretionary {-}{}{}OWL}|hyperpage}{14}
+\indexentry{\_\discretionary {-}{}{}OWL@{\_\discretionary {-}{}{}OWL}!reset\_\discretionary {-}{}{}calltree@{reset\_\discretionary {-}{}{}calltree}|hyperpage}{15}
+\indexentry{reset\_\discretionary {-}{}{}calltree@{reset\_\discretionary {-}{}{}calltree}!_OWL@{\_\discretionary {-}{}{}OWL}|hyperpage}{15}
+\indexentry{\_\discretionary {-}{}{}OWL@{\_\discretionary {-}{}{}OWL}!\$status@{\$status}|hyperpage}{15}
+\indexentry{\$status@{\$status}!_OWL@{\_\discretionary {-}{}{}OWL}|hyperpage}{15}
+\indexentry{\_\discretionary {-}{}{}OWL@{\_\discretionary {-}{}{}OWL}!\$pstatus@{\$pstatus}|hyperpage}{15}
+\indexentry{\$pstatus@{\$pstatus}!_OWL@{\_\discretionary {-}{}{}OWL}|hyperpage}{15}
+\indexentry{\_\discretionary {-}{}{}OWL@{\_\discretionary {-}{}{}OWL}!\$severity@{\$severity}|hyperpage}{15}
+\indexentry{\$severity@{\$severity}!_OWL@{\_\discretionary {-}{}{}OWL}|hyperpage}{15}
+\indexentry{ConfigHandler@{ConfigHandler}|hyperpage}{16}
+\indexentry{ConfigHandler@{ConfigHandler}!read\_\discretionary {-}{}{}config@{read\_\discretionary {-}{}{}config}|hyperpage}{16}
+\indexentry{read\_\discretionary {-}{}{}config@{read\_\discretionary {-}{}{}config}!ConfigHandler@{ConfigHandler}|hyperpage}{16}
+\indexentry{ConfigHandler@{ConfigHandler}!convert@{convert}|hyperpage}{16}
+\indexentry{convert@{convert}!ConfigHandler@{ConfigHandler}|hyperpage}{16}
+\indexentry{ConfigHandler@{ConfigHandler}!get@{get}|hyperpage}{16}
+\indexentry{get@{get}!ConfigHandler@{ConfigHandler}|hyperpage}{16}
+\indexentry{DataHandler@{DataHandler}|hyperpage}{18}
+\indexentry{DataHandler@{DataHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{20}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!DataHandler@{DataHandler}|hyperpage}{20}
+\indexentry{DataHandler@{DataHandler}!reset@{reset}|hyperpage}{20}
+\indexentry{reset@{reset}!DataHandler@{DataHandler}|hyperpage}{20}
+\indexentry{DataHandler@{DataHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}set@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}set}|hyperpage}{21}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}set@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}set}!DataHandler@{DataHandler}|hyperpage}{21}
+\indexentry{DataHandler@{DataHandler}!set\_\discretionary {-}{}{}key@{set\_\discretionary {-}{}{}key}|hyperpage}{21}
+\indexentry{set\_\discretionary {-}{}{}key@{set\_\discretionary {-}{}{}key}!DataHandler@{DataHandler}|hyperpage}{21}
+\indexentry{DataHandler@{DataHandler}!find\_\discretionary {-}{}{}field@{find\_\discretionary {-}{}{}field}|hyperpage}{21}
+\indexentry{find\_\discretionary {-}{}{}field@{find\_\discretionary {-}{}{}field}!DataHandler@{DataHandler}|hyperpage}{21}
+\indexentry{DataHandler@{DataHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}get@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}get}|hyperpage}{21}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}get@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}get}!DataHandler@{DataHandler}|hyperpage}{21}
+\indexentry{DataHandler@{DataHandler}!set\_\discretionary {-}{}{}join@{set\_\discretionary {-}{}{}join}|hyperpage}{22}
+\indexentry{set\_\discretionary {-}{}{}join@{set\_\discretionary {-}{}{}join}!DataHandler@{DataHandler}|hyperpage}{22}
+\indexentry{DataHandler@{DataHandler}!init@{init}|hyperpage}{22}
+\indexentry{init@{init}!DataHandler@{DataHandler}|hyperpage}{22}
+\indexentry{DataHandler@{DataHandler}!reset@{reset}|hyperpage}{22}
+\indexentry{reset@{reset}!DataHandler@{DataHandler}|hyperpage}{22}
+\indexentry{DataHandler@{DataHandler}!\$owl\_\discretionary {-}{}{}data@{\$owl\_\discretionary {-}{}{}data}|hyperpage}{22}
+\indexentry{\$owl\_\discretionary {-}{}{}data@{\$owl\_\discretionary {-}{}{}data}!DataHandler@{DataHandler}|hyperpage}{22}
+\indexentry{DataHandler@{DataHandler}!\$owl\_\discretionary {-}{}{}joins@{\$owl\_\discretionary {-}{}{}joins}|hyperpage}{22}
+\indexentry{\$owl\_\discretionary {-}{}{}joins@{\$owl\_\discretionary {-}{}{}joins}!DataHandler@{DataHandler}|hyperpage}{22}
+\indexentry{DataHandler@{DataHandler}!\$owl\_\discretionary {-}{}{}keys@{\$owl\_\discretionary {-}{}{}keys}|hyperpage}{23}
+\indexentry{\$owl\_\discretionary {-}{}{}keys@{\$owl\_\discretionary {-}{}{}keys}!DataHandler@{DataHandler}|hyperpage}{23}
+\indexentry{DataHandler@{DataHandler}!\$owl\_\discretionary {-}{}{}tablename@{\$owl\_\discretionary {-}{}{}tablename}|hyperpage}{23}
+\indexentry{\$owl\_\discretionary {-}{}{}tablename@{\$owl\_\discretionary {-}{}{}tablename}!DataHandler@{DataHandler}|hyperpage}{23}
+\indexentry{DataHandler@{DataHandler}!\$owl\_\discretionary {-}{}{}database@{\$owl\_\discretionary {-}{}{}database}|hyperpage}{23}
+\indexentry{\$owl\_\discretionary {-}{}{}database@{\$owl\_\discretionary {-}{}{}database}!DataHandler@{DataHandler}|hyperpage}{23}
+\indexentry{DataHandler@{DataHandler}!\$owl\_\discretionary {-}{}{}prepared@{\$owl\_\discretionary {-}{}{}prepared}|hyperpage}{23}
+\indexentry{\$owl\_\discretionary {-}{}{}prepared@{\$owl\_\discretionary {-}{}{}prepared}!DataHandler@{DataHandler}|hyperpage}{23}
+\indexentry{DbHandler@{DbHandler}|hyperpage}{24}
+\indexentry{DbHandler@{DbHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{26}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!DbHandler@{DbHandler}|hyperpage}{26}
+\indexentry{DbHandler@{DbHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}|hyperpage}{26}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}!DbHandler@{DbHandler}|hyperpage}{26}
+\indexentry{DbHandler@{DbHandler}!create@{create}|hyperpage}{27}
+\indexentry{create@{create}!DbHandler@{DbHandler}|hyperpage}{27}
+\indexentry{DbHandler@{DbHandler}!connect@{connect}|hyperpage}{27}
+\indexentry{connect@{connect}!DbHandler@{DbHandler}|hyperpage}{27}
+\indexentry{DbHandler@{DbHandler}!open@{open}|hyperpage}{27}
+\indexentry{open@{open}!DbHandler@{DbHandler}|hyperpage}{27}
+\indexentry{DbHandler@{DbHandler}!reset@{reset}|hyperpage}{27}
+\indexentry{reset@{reset}!DbHandler@{DbHandler}|hyperpage}{27}
+\indexentry{DbHandler@{DbHandler}!table\_\discretionary {-}{}{}description@{table\_\discretionary {-}{}{}description}|hyperpage}{27}
+\indexentry{table\_\discretionary {-}{}{}description@{table\_\discretionary {-}{}{}description}!DbHandler@{DbHandler}|hyperpage}{27}
+\indexentry{DbHandler@{DbHandler}!tablename@{tablename}|hyperpage}{28}
+\indexentry{tablename@{tablename}!DbHandler@{DbHandler}|hyperpage}{28}
+\indexentry{DbHandler@{DbHandler}!set\_\discretionary {-}{}{}query@{set\_\discretionary {-}{}{}query}|hyperpage}{28}
+\indexentry{set\_\discretionary {-}{}{}query@{set\_\discretionary {-}{}{}query}!DbHandler@{DbHandler}|hyperpage}{28}
+\indexentry{DbHandler@{DbHandler}!read@{read}|hyperpage}{28}
+\indexentry{read@{read}!DbHandler@{DbHandler}|hyperpage}{28}
+\indexentry{DbHandler@{DbHandler}!dbread@{dbread}|hyperpage}{29}
+\indexentry{dbread@{dbread}!DbHandler@{DbHandler}|hyperpage}{29}
+\indexentry{DbHandler@{DbHandler}!escape\_\discretionary {-}{}{}string@{escape\_\discretionary {-}{}{}string}|hyperpage}{29}
+\indexentry{escape\_\discretionary {-}{}{}string@{escape\_\discretionary {-}{}{}string}!DbHandler@{DbHandler}|hyperpage}{29}
+\indexentry{DbHandler@{DbHandler}!unescape\_\discretionary {-}{}{}string@{unescape\_\discretionary {-}{}{}string}|hyperpage}{29}
+\indexentry{unescape\_\discretionary {-}{}{}string@{unescape\_\discretionary {-}{}{}string}!DbHandler@{DbHandler}|hyperpage}{29}
+\indexentry{DbHandler@{DbHandler}!init@{init}|hyperpage}{29}
+\indexentry{init@{init}!DbHandler@{DbHandler}|hyperpage}{29}
+\indexentry{DbHandler@{DbHandler}!\$id@{\$id}|hyperpage}{30}
+\indexentry{\$id@{\$id}!DbHandler@{DbHandler}|hyperpage}{30}
+\indexentry{DbHandler@{DbHandler}!\$errno@{\$errno}|hyperpage}{30}
+\indexentry{\$errno@{\$errno}!DbHandler@{DbHandler}|hyperpage}{30}
+\indexentry{DbHandler@{DbHandler}!\$error@{\$error}|hyperpage}{30}
+\indexentry{\$error@{\$error}!DbHandler@{DbHandler}|hyperpage}{30}
+\indexentry{DbHandler@{DbHandler}!\$database@{\$database}|hyperpage}{30}
+\indexentry{\$database@{\$database}!DbHandler@{DbHandler}|hyperpage}{30}
+\indexentry{DbHandler@{DbHandler}!\$rowcount@{\$rowcount}|hyperpage}{30}
+\indexentry{\$rowcount@{\$rowcount}!DbHandler@{DbHandler}|hyperpage}{30}
+\indexentry{DbHandler@{DbHandler}!\$opened@{\$opened}|hyperpage}{30}
+\indexentry{\$opened@{\$opened}!DbHandler@{DbHandler}|hyperpage}{30}
+\indexentry{DbHandler@{DbHandler}!\$db\_\discretionary {-}{}{}prefix@{\$db\_\discretionary {-}{}{}prefix}|hyperpage}{30}
+\indexentry{\$db\_\discretionary {-}{}{}prefix@{\$db\_\discretionary {-}{}{}prefix}!DbHandler@{DbHandler}|hyperpage}{30}
+\indexentry{DbHandler@{DbHandler}!\$query@{\$query}|hyperpage}{30}
+\indexentry{\$query@{\$query}!DbHandler@{DbHandler}|hyperpage}{30}
+\indexentry{DOMElement@{DOMElement}|hyperpage}{31}
+\indexentry{DOMElement@{DOMElement}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{32}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!DOMElement@{DOMElement}|hyperpage}{32}
+\indexentry{DOMElement@{DOMElement}!init@{init}|hyperpage}{32}
+\indexentry{init@{init}!DOMElement@{DOMElement}|hyperpage}{32}
+\indexentry{DOMElement@{DOMElement}!reset@{reset}|hyperpage}{32}
+\indexentry{reset@{reset}!DOMElement@{DOMElement}|hyperpage}{32}
+\indexentry{FileHandler@{FileHandler}|hyperpage}{33}
+\indexentry{FileHandler@{FileHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{33}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!FileHandler@{FileHandler}|hyperpage}{33}
+\indexentry{FileHandler@{FileHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}|hyperpage}{33}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}!FileHandler@{FileHandler}|hyperpage}{33}
+\indexentry{FileHandler@{FileHandler}!open@{open}|hyperpage}{33}
+\indexentry{open@{open}!FileHandler@{FileHandler}|hyperpage}{33}
+\indexentry{FileHandler@{FileHandler}!close@{close}|hyperpage}{34}
+\indexentry{close@{close}!FileHandler@{FileHandler}|hyperpage}{34}
+\indexentry{FileHandler@{FileHandler}!read\_\discretionary {-}{}{}data@{read\_\discretionary {-}{}{}data}|hyperpage}{34}
+\indexentry{read\_\discretionary {-}{}{}data@{read\_\discretionary {-}{}{}data}!FileHandler@{FileHandler}|hyperpage}{34}
+\indexentry{FileHandler@{FileHandler}!read\_\discretionary {-}{}{}line@{read\_\discretionary {-}{}{}line}|hyperpage}{34}
+\indexentry{read\_\discretionary {-}{}{}line@{read\_\discretionary {-}{}{}line}!FileHandler@{FileHandler}|hyperpage}{34}
+\indexentry{FileHandler@{FileHandler}!encode@{encode}|hyperpage}{34}
+\indexentry{encode@{encode}!FileHandler@{FileHandler}|hyperpage}{34}
+\indexentry{FileHandler@{FileHandler}!download@{download}|hyperpage}{34}
+\indexentry{download@{download}!FileHandler@{FileHandler}|hyperpage}{34}
+\indexentry{FileHandler@{FileHandler}!\$original\_\discretionary {-}{}{}name@{\$original\_\discretionary {-}{}{}name}|hyperpage}{34}
+\indexentry{\$original\_\discretionary {-}{}{}name@{\$original\_\discretionary {-}{}{}name}!FileHandler@{FileHandler}|hyperpage}{34}
+\indexentry{Form@{Form}|hyperpage}{35}
+\indexentry{Form@{Form}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{36}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!Form@{Form}|hyperpage}{36}
+\indexentry{Form@{Form}!init@{init}|hyperpage}{36}
+\indexentry{init@{init}!Form@{Form}|hyperpage}{36}
+\indexentry{Form@{Form}!reset@{reset}|hyperpage}{36}
+\indexentry{reset@{reset}!Form@{Form}|hyperpage}{36}
+\indexentry{FormElement@{FormElement}|hyperpage}{37}
+\indexentry{FormElement@{FormElement}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{38}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!FormElement@{FormElement}|hyperpage}{38}
+\indexentry{FormElement@{FormElement}!init@{init}|hyperpage}{38}
+\indexentry{init@{init}!FormElement@{FormElement}|hyperpage}{38}
+\indexentry{FormElement@{FormElement}!reset@{reset}|hyperpage}{38}
+\indexentry{reset@{reset}!FormElement@{FormElement}|hyperpage}{38}
+\indexentry{FormHandler@{FormHandler}|hyperpage}{39}
+\indexentry{FormHandler@{FormHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{41}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!FormHandler@{FormHandler}|hyperpage}{41}
+\indexentry{FormHandler@{FormHandler}!parse\_\discretionary {-}{}{}formdata@{parse\_\discretionary {-}{}{}formdata}|hyperpage}{41}
+\indexentry{parse\_\discretionary {-}{}{}formdata@{parse\_\discretionary {-}{}{}formdata}!FormHandler@{FormHandler}|hyperpage}{41}
+\indexentry{FormHandler@{FormHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}get@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}get}|hyperpage}{41}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}get@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}get}!FormHandler@{FormHandler}|hyperpage}{41}
+\indexentry{FormHandler@{FormHandler}!reset@{reset}|hyperpage}{42}
+\indexentry{reset@{reset}!FormHandler@{FormHandler}|hyperpage}{42}
+\indexentry{FormHandler@{FormHandler}!reset@{reset}|hyperpage}{42}
+\indexentry{reset@{reset}!FormHandler@{FormHandler}|hyperpage}{42}
+\indexentry{FormHandler@{FormHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}set@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}set}|hyperpage}{42}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}set@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}set}!FormHandler@{FormHandler}|hyperpage}{42}
+\indexentry{FormHandler@{FormHandler}!set\_\discretionary {-}{}{}key@{set\_\discretionary {-}{}{}key}|hyperpage}{42}
+\indexentry{set\_\discretionary {-}{}{}key@{set\_\discretionary {-}{}{}key}!FormHandler@{FormHandler}|hyperpage}{42}
+\indexentry{FormHandler@{FormHandler}!set\_\discretionary {-}{}{}join@{set\_\discretionary {-}{}{}join}|hyperpage}{42}
+\indexentry{set\_\discretionary {-}{}{}join@{set\_\discretionary {-}{}{}join}!FormHandler@{FormHandler}|hyperpage}{42}
+\indexentry{FormHandler@{FormHandler}!init@{init}|hyperpage}{43}
+\indexentry{init@{init}!FormHandler@{FormHandler}|hyperpage}{43}
+\indexentry{FormHandler@{FormHandler}!\$owl\_\discretionary {-}{}{}multivalues@{\$owl\_\discretionary {-}{}{}multivalues}|hyperpage}{43}
+\indexentry{\$owl\_\discretionary {-}{}{}multivalues@{\$owl\_\discretionary {-}{}{}multivalues}!FormHandler@{FormHandler}|hyperpage}{43}
+\indexentry{LogHandler@{LogHandler}|hyperpage}{44}
+\indexentry{LogHandler@{LogHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{45}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!LogHandler@{LogHandler}|hyperpage}{45}
+\indexentry{LogHandler@{LogHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}|hyperpage}{45}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}!LogHandler@{LogHandler}|hyperpage}{45}
+\indexentry{LogHandler@{LogHandler}!set\_\discretionary {-}{}{}filename@{set\_\discretionary {-}{}{}filename}|hyperpage}{46}
+\indexentry{set\_\discretionary {-}{}{}filename@{set\_\discretionary {-}{}{}filename}!LogHandler@{LogHandler}|hyperpage}{46}
+\indexentry{LogHandler@{LogHandler}!open\_\discretionary {-}{}{}logfile@{open\_\discretionary {-}{}{}logfile}|hyperpage}{46}
+\indexentry{open\_\discretionary {-}{}{}logfile@{open\_\discretionary {-}{}{}logfile}!LogHandler@{LogHandler}|hyperpage}{46}
+\indexentry{LogHandler@{LogHandler}!close\_\discretionary {-}{}{}logfile@{close\_\discretionary {-}{}{}logfile}|hyperpage}{46}
+\indexentry{close\_\discretionary {-}{}{}logfile@{close\_\discretionary {-}{}{}logfile}!LogHandler@{LogHandler}|hyperpage}{46}
+\indexentry{LogHandler@{LogHandler}!write\_\discretionary {-}{}{}logfile@{write\_\discretionary {-}{}{}logfile}|hyperpage}{46}
+\indexentry{write\_\discretionary {-}{}{}logfile@{write\_\discretionary {-}{}{}logfile}!LogHandler@{LogHandler}|hyperpage}{46}
+\indexentry{LogHandler@{LogHandler}!init@{init}|hyperpage}{46}
+\indexentry{init@{init}!LogHandler@{LogHandler}|hyperpage}{46}
+\indexentry{LogHandler@{LogHandler}!reset@{reset}|hyperpage}{46}
+\indexentry{reset@{reset}!LogHandler@{LogHandler}|hyperpage}{46}
+\indexentry{LogHandler@{LogHandler}!\$opened@{\$opened}|hyperpage}{46}
+\indexentry{\$opened@{\$opened}!LogHandler@{LogHandler}|hyperpage}{46}
+\indexentry{LogHandler@{LogHandler}!\$filename@{\$filename}|hyperpage}{46}
+\indexentry{\$filename@{\$filename}!LogHandler@{LogHandler}|hyperpage}{46}
+\indexentry{LogHandler@{LogHandler}!\$fpointer@{\$fpointer}|hyperpage}{46}
+\indexentry{\$fpointer@{\$fpointer}!LogHandler@{LogHandler}|hyperpage}{46}
+\indexentry{OWL@{OWL}|hyperpage}{48}
+\indexentry{OWL@{OWL}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{49}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!OWL@{OWL}|hyperpage}{49}
+\indexentry{OWL@{OWL}!s@{s}|hyperpage}{49}
+\indexentry{s@{s}!OWL@{OWL}|hyperpage}{49}
+\indexentry{OWL@{OWL}!init@{init}|hyperpage}{49}
+\indexentry{init@{init}!OWL@{OWL}|hyperpage}{49}
+\indexentry{OWL@{OWL}!reset@{reset}|hyperpage}{49}
+\indexentry{reset@{reset}!OWL@{OWL}|hyperpage}{49}
+\indexentry{OWLException@{OWLException}|hyperpage}{50}
+\indexentry{OWLException@{OWLException}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{50}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!OWLException@{OWLException}|hyperpage}{50}
+\indexentry{OWLException@{OWLException}!get\_\discretionary {-}{}{}trace@{get\_\discretionary {-}{}{}trace}|hyperpage}{51}
+\indexentry{get\_\discretionary {-}{}{}trace@{get\_\discretionary {-}{}{}trace}!OWLException@{OWLException}|hyperpage}{51}
+\indexentry{OWLException@{OWLException}!stack\_\discretionary {-}{}{}dump@{stack\_\discretionary {-}{}{}dump}|hyperpage}{51}
+\indexentry{stack\_\discretionary {-}{}{}dump@{stack\_\discretionary {-}{}{}dump}!OWLException@{OWLException}|hyperpage}{51}
+\indexentry{OWLException@{OWLException}!traceback@{traceback}|hyperpage}{51}
+\indexentry{traceback@{traceback}!OWLException@{OWLException}|hyperpage}{51}
+\indexentry{OWLException@{OWLException}!\$caller@{\$caller}|hyperpage}{51}
+\indexentry{\$caller@{\$caller}!OWLException@{OWLException}|hyperpage}{51}
+\indexentry{OWLException@{OWLException}!\$thrown\_\discretionary {-}{}{}code@{\$thrown\_\discretionary {-}{}{}code}|hyperpage}{51}
+\indexentry{\$thrown\_\discretionary {-}{}{}code@{\$thrown\_\discretionary {-}{}{}code}!OWLException@{OWLException}|hyperpage}{51}
+\indexentry{OWLExceptionHandler@{OWLExceptionHandler}|hyperpage}{52}
+\indexentry{OWLExceptionHandler@{OWLExceptionHandler}!log\_\discretionary {-}{}{}exception@{log\_\discretionary {-}{}{}exception}|hyperpage}{52}
+\indexentry{log\_\discretionary {-}{}{}exception@{log\_\discretionary {-}{}{}exception}!OWLExceptionHandler@{OWLExceptionHandler}|hyperpage}{52}
+\indexentry{OWLExceptionHandler@{OWLExceptionHandler}!handle\_\discretionary {-}{}{}exception@{handle\_\discretionary {-}{}{}exception}|hyperpage}{52}
+\indexentry{handle\_\discretionary {-}{}{}exception@{handle\_\discretionary {-}{}{}exception}!OWLExceptionHandler@{OWLExceptionHandler}|hyperpage}{52}
+\indexentry{Register@{Register}|hyperpage}{53}
+\indexentry{Register@{Register}!init@{init}|hyperpage}{53}
+\indexentry{init@{init}!Register@{Register}|hyperpage}{53}
+\indexentry{Register@{Register}!register\_\discretionary {-}{}{}app@{register\_\discretionary {-}{}{}app}|hyperpage}{53}
+\indexentry{register\_\discretionary {-}{}{}app@{register\_\discretionary {-}{}{}app}!Register@{Register}|hyperpage}{53}
+\indexentry{Register@{Register}!register\_\discretionary {-}{}{}class@{register\_\discretionary {-}{}{}class}|hyperpage}{53}
+\indexentry{register\_\discretionary {-}{}{}class@{register\_\discretionary {-}{}{}class}!Register@{Register}|hyperpage}{53}
+\indexentry{Register@{Register}!register\_\discretionary {-}{}{}code@{register\_\discretionary {-}{}{}code}|hyperpage}{54}
+\indexentry{register\_\discretionary {-}{}{}code@{register\_\discretionary {-}{}{}code}!Register@{Register}|hyperpage}{54}
+\indexentry{Register@{Register}!register\_\discretionary {-}{}{}severity@{register\_\discretionary {-}{}{}severity}|hyperpage}{54}
+\indexentry{register\_\discretionary {-}{}{}severity@{register\_\discretionary {-}{}{}severity}!Register@{Register}|hyperpage}{54}
+\indexentry{Register@{Register}!get\_\discretionary {-}{}{}severity@{get\_\discretionary {-}{}{}severity}|hyperpage}{54}
+\indexentry{get\_\discretionary {-}{}{}severity@{get\_\discretionary {-}{}{}severity}!Register@{Register}|hyperpage}{54}
+\indexentry{Register@{Register}!get\_\discretionary {-}{}{}severity\_\discretionary {-}{}{}level@{get\_\discretionary {-}{}{}severity\_\discretionary {-}{}{}level}|hyperpage}{54}
+\indexentry{get\_\discretionary {-}{}{}severity\_\discretionary {-}{}{}level@{get\_\discretionary {-}{}{}severity\_\discretionary {-}{}{}level}!Register@{Register}|hyperpage}{54}
+\indexentry{Register@{Register}!get\_\discretionary {-}{}{}run\_\discretionary {-}{}{}id@{get\_\discretionary {-}{}{}run\_\discretionary {-}{}{}id}|hyperpage}{55}
+\indexentry{get\_\discretionary {-}{}{}run\_\discretionary {-}{}{}id@{get\_\discretionary {-}{}{}run\_\discretionary {-}{}{}id}!Register@{Register}|hyperpage}{55}
+\indexentry{Register@{Register}!get\_\discretionary {-}{}{}code@{get\_\discretionary {-}{}{}code}|hyperpage}{55}
+\indexentry{get\_\discretionary {-}{}{}code@{get\_\discretionary {-}{}{}code}!Register@{Register}|hyperpage}{55}
+\indexentry{Register@{Register}!set\_\discretionary {-}{}{}application@{set\_\discretionary {-}{}{}application}|hyperpage}{55}
+\indexentry{set\_\discretionary {-}{}{}application@{set\_\discretionary {-}{}{}application}!Register@{Register}|hyperpage}{55}
+\indexentry{Register@{Register}!set\_\discretionary {-}{}{}class@{set\_\discretionary {-}{}{}class}|hyperpage}{55}
+\indexentry{set\_\discretionary {-}{}{}class@{set\_\discretionary {-}{}{}class}!Register@{Register}|hyperpage}{55}
+\indexentry{Register@{Register}!set\_\discretionary {-}{}{}severity@{set\_\discretionary {-}{}{}severity}|hyperpage}{55}
+\indexentry{set\_\discretionary {-}{}{}severity@{set\_\discretionary {-}{}{}severity}!Register@{Register}|hyperpage}{55}
+\indexentry{Session@{Session}|hyperpage}{56}
+\indexentry{Session@{Session}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{58}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!Session@{Session}|hyperpage}{58}
+\indexentry{Session@{Session}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}|hyperpage}{58}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}!Session@{Session}|hyperpage}{58}
+\indexentry{Session@{Session}!open@{open}|hyperpage}{58}
+\indexentry{open@{open}!Session@{Session}|hyperpage}{58}
+\indexentry{Session@{Session}!close@{close}|hyperpage}{58}
+\indexentry{close@{close}!Session@{Session}|hyperpage}{58}
+\indexentry{Session@{Session}!read@{read}|hyperpage}{59}
+\indexentry{read@{read}!Session@{Session}|hyperpage}{59}
+\indexentry{Session@{Session}!write@{write}|hyperpage}{59}
+\indexentry{write@{write}!Session@{Session}|hyperpage}{59}
+\indexentry{Session@{Session}!destroy@{destroy}|hyperpage}{59}
+\indexentry{destroy@{destroy}!Session@{Session}|hyperpage}{59}
+\indexentry{Session@{Session}!gc@{gc}|hyperpage}{59}
+\indexentry{gc@{gc}!Session@{Session}|hyperpage}{59}
+\indexentry{Session@{Session}!init@{init}|hyperpage}{60}
+\indexentry{init@{init}!Session@{Session}|hyperpage}{60}
+\indexentry{Session@{Session}!reset@{reset}|hyperpage}{60}
+\indexentry{reset@{reset}!Session@{Session}|hyperpage}{60}
+\indexentry{Session@{Session}!\$dataset@{\$dataset}|hyperpage}{60}
+\indexentry{\$dataset@{\$dataset}!Session@{Session}|hyperpage}{60}
+\indexentry{SessionHandler@{SessionHandler}|hyperpage}{61}
+\indexentry{SessionHandler@{SessionHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{63}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!SessionHandler@{SessionHandler}|hyperpage}{63}
+\indexentry{SessionHandler@{SessionHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}|hyperpage}{63}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}!SessionHandler@{SessionHandler}|hyperpage}{63}
+\indexentry{SessionHandler@{SessionHandler}!open@{open}|hyperpage}{63}
+\indexentry{open@{open}!SessionHandler@{SessionHandler}|hyperpage}{63}
+\indexentry{SessionHandler@{SessionHandler}!close@{close}|hyperpage}{63}
+\indexentry{close@{close}!SessionHandler@{SessionHandler}|hyperpage}{63}
+\indexentry{SessionHandler@{SessionHandler}!read@{read}|hyperpage}{63}
+\indexentry{read@{read}!SessionHandler@{SessionHandler}|hyperpage}{63}
+\indexentry{SessionHandler@{SessionHandler}!write@{write}|hyperpage}{64}
+\indexentry{write@{write}!SessionHandler@{SessionHandler}|hyperpage}{64}
+\indexentry{SessionHandler@{SessionHandler}!destroy@{destroy}|hyperpage}{64}
+\indexentry{destroy@{destroy}!SessionHandler@{SessionHandler}|hyperpage}{64}
+\indexentry{SessionHandler@{SessionHandler}!gc@{gc}|hyperpage}{64}
+\indexentry{gc@{gc}!SessionHandler@{SessionHandler}|hyperpage}{64}
+\indexentry{SessionHandler@{SessionHandler}!init@{init}|hyperpage}{64}
+\indexentry{init@{init}!SessionHandler@{SessionHandler}|hyperpage}{64}
+\indexentry{SessionHandler@{SessionHandler}!reset@{reset}|hyperpage}{64}
+\indexentry{reset@{reset}!SessionHandler@{SessionHandler}|hyperpage}{64}
+\indexentry{SessionHandler@{SessionHandler}!\$dataset@{\$dataset}|hyperpage}{65}
+\indexentry{\$dataset@{\$dataset}!SessionHandler@{SessionHandler}|hyperpage}{65}
+\indexentry{StatusHandler@{StatusHandler}|hyperpage}{66}
+\indexentry{StatusHandler@{StatusHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{66}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!StatusHandler@{StatusHandler}|hyperpage}{66}
+\indexentry{StatusHandler@{StatusHandler}!set\_\discretionary {-}{}{}code@{set\_\discretionary {-}{}{}code}|hyperpage}{67}
+\indexentry{set\_\discretionary {-}{}{}code@{set\_\discretionary {-}{}{}code}!StatusHandler@{StatusHandler}|hyperpage}{67}
+\indexentry{StatusHandler@{StatusHandler}!reset@{reset}|hyperpage}{67}
+\indexentry{reset@{reset}!StatusHandler@{StatusHandler}|hyperpage}{67}
+\indexentry{StatusHandler@{StatusHandler}!set\_\discretionary {-}{}{}params@{set\_\discretionary {-}{}{}params}|hyperpage}{67}
+\indexentry{set\_\discretionary {-}{}{}params@{set\_\discretionary {-}{}{}params}!StatusHandler@{StatusHandler}|hyperpage}{67}
+\indexentry{StatusHandler@{StatusHandler}!get\_\discretionary {-}{}{}severity@{get\_\discretionary {-}{}{}severity}|hyperpage}{67}
+\indexentry{get\_\discretionary {-}{}{}severity@{get\_\discretionary {-}{}{}severity}!StatusHandler@{StatusHandler}|hyperpage}{67}
+\indexentry{StatusHandler@{StatusHandler}!get\_\discretionary {-}{}{}code@{get\_\discretionary {-}{}{}code}|hyperpage}{67}
+\indexentry{get\_\discretionary {-}{}{}code@{get\_\discretionary {-}{}{}code}!StatusHandler@{StatusHandler}|hyperpage}{67}
+\indexentry{StatusHandler@{StatusHandler}!get\_\discretionary {-}{}{}message@{get\_\discretionary {-}{}{}message}|hyperpage}{68}
+\indexentry{get\_\discretionary {-}{}{}message@{get\_\discretionary {-}{}{}message}!StatusHandler@{StatusHandler}|hyperpage}{68}
+\indexentry{StatusHandler@{StatusHandler}!\$code@{\$code}|hyperpage}{68}
+\indexentry{\$code@{\$code}!StatusHandler@{StatusHandler}|hyperpage}{68}
+\indexentry{StatusHandler@{StatusHandler}!\$params@{\$params}|hyperpage}{68}
+\indexentry{\$params@{\$params}!StatusHandler@{StatusHandler}|hyperpage}{68}
+\indexentry{User@{User}|hyperpage}{69}
+\indexentry{User@{User}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{71}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!User@{User}|hyperpage}{71}
+\indexentry{User@{User}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}|hyperpage}{71}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}!User@{User}|hyperpage}{71}
+\indexentry{User@{User}!login@{login}|hyperpage}{71}
+\indexentry{login@{login}!User@{User}|hyperpage}{71}
+\indexentry{User@{User}!logout@{logout}|hyperpage}{72}
+\indexentry{logout@{logout}!User@{User}|hyperpage}{72}
+\indexentry{User@{User}!get\_\discretionary {-}{}{}username@{get\_\discretionary {-}{}{}username}|hyperpage}{72}
+\indexentry{get\_\discretionary {-}{}{}username@{get\_\discretionary {-}{}{}username}!User@{User}|hyperpage}{72}
+\indexentry{User@{User}!login@{login}|hyperpage}{72}
+\indexentry{login@{login}!User@{User}|hyperpage}{72}
+\indexentry{User@{User}!set\_\discretionary {-}{}{}username@{set\_\discretionary {-}{}{}username}|hyperpage}{72}
+\indexentry{set\_\discretionary {-}{}{}username@{set\_\discretionary {-}{}{}username}!User@{User}|hyperpage}{72}
+\indexentry{User@{User}!init@{init}|hyperpage}{72}
+\indexentry{init@{init}!User@{User}|hyperpage}{72}
+\indexentry{User@{User}!reset@{reset}|hyperpage}{72}
+\indexentry{reset@{reset}!User@{User}|hyperpage}{72}
+\indexentry{User@{User}!\$session@{\$session}|hyperpage}{73}
+\indexentry{\$session@{\$session}!User@{User}|hyperpage}{73}
+\indexentry{User@{User}!\$dataset@{\$dataset}|hyperpage}{73}
+\indexentry{\$dataset@{\$dataset}!User@{User}|hyperpage}{73}
+\indexentry{User@{User}!\$user\_\discretionary {-}{}{}data@{\$user\_\discretionary {-}{}{}data}|hyperpage}{73}
+\indexentry{\$user\_\discretionary {-}{}{}data@{\$user\_\discretionary {-}{}{}data}!User@{User}|hyperpage}{73}
+\indexentry{UserHandler@{UserHandler}|hyperpage}{74}
+\indexentry{UserHandler@{UserHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}|hyperpage}{76}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}!UserHandler@{UserHandler}|hyperpage}{76}
+\indexentry{UserHandler@{UserHandler}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}|hyperpage}{76}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}!UserHandler@{UserHandler}|hyperpage}{76}
+\indexentry{UserHandler@{UserHandler}!logout@{logout}|hyperpage}{76}
+\indexentry{logout@{logout}!UserHandler@{UserHandler}|hyperpage}{76}
+\indexentry{UserHandler@{UserHandler}!login@{login}|hyperpage}{76}
+\indexentry{login@{login}!UserHandler@{UserHandler}|hyperpage}{76}
+\indexentry{UserHandler@{UserHandler}!read\_\discretionary {-}{}{}userdata@{read\_\discretionary {-}{}{}userdata}|hyperpage}{77}
+\indexentry{read\_\discretionary {-}{}{}userdata@{read\_\discretionary {-}{}{}userdata}!UserHandler@{UserHandler}|hyperpage}{77}
+\indexentry{UserHandler@{UserHandler}!hash\_\discretionary {-}{}{}password@{hash\_\discretionary {-}{}{}password}|hyperpage}{77}
+\indexentry{hash\_\discretionary {-}{}{}password@{hash\_\discretionary {-}{}{}password}!UserHandler@{UserHandler}|hyperpage}{77}
+\indexentry{UserHandler@{UserHandler}!set\_\discretionary {-}{}{}username@{set\_\discretionary {-}{}{}username}|hyperpage}{77}
+\indexentry{set\_\discretionary {-}{}{}username@{set\_\discretionary {-}{}{}username}!UserHandler@{UserHandler}|hyperpage}{77}
+\indexentry{UserHandler@{UserHandler}!get\_\discretionary {-}{}{}username@{get\_\discretionary {-}{}{}username}|hyperpage}{77}
+\indexentry{get\_\discretionary {-}{}{}username@{get\_\discretionary {-}{}{}username}!UserHandler@{UserHandler}|hyperpage}{77}
+\indexentry{UserHandler@{UserHandler}!init@{init}|hyperpage}{77}
+\indexentry{init@{init}!UserHandler@{UserHandler}|hyperpage}{77}
+\indexentry{UserHandler@{UserHandler}!reset@{reset}|hyperpage}{77}
+\indexentry{reset@{reset}!UserHandler@{UserHandler}|hyperpage}{77}
+\indexentry{UserHandler@{UserHandler}!\$session@{\$session}|hyperpage}{78}
+\indexentry{\$session@{\$session}!UserHandler@{UserHandler}|hyperpage}{78}
+\indexentry{UserHandler@{UserHandler}!\$dataset@{\$dataset}|hyperpage}{78}
+\indexentry{\$dataset@{\$dataset}!UserHandler@{UserHandler}|hyperpage}{78}
+\indexentry{UserHandler@{UserHandler}!\$user\_\discretionary {-}{}{}data@{\$user\_\discretionary {-}{}{}data}|hyperpage}{78}
+\indexentry{\$user\_\discretionary {-}{}{}data@{\$user\_\discretionary {-}{}{}data}!UserHandler@{UserHandler}|hyperpage}{78}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/config.php@{/home/oscar/work/eclipse/owl-php/src/config.php}|hyperpage}{79}
+\indexentry{config.php@{config.php}!\$GLOBALS@{\$GLOBALS}|hyperpage}{79}
+\indexentry{\$GLOBALS@{\$GLOBALS}!config.php@{config.php}|hyperpage}{79}
+\indexentry{config.php@{config.php}!\$GLOBALS@{\$GLOBALS}|hyperpage}{79}
+\indexentry{\$GLOBALS@{\$GLOBALS}!config.php@{config.php}|hyperpage}{79}
+\indexentry{config.php@{config.php}!\$GLOBALS@{\$GLOBALS}|hyperpage}{79}
+\indexentry{\$GLOBALS@{\$GLOBALS}!config.php@{config.php}|hyperpage}{79}
+\indexentry{config.php@{config.php}!\$GLOBALS@{\$GLOBALS}|hyperpage}{80}
+\indexentry{\$GLOBALS@{\$GLOBALS}!config.php@{config.php}|hyperpage}{80}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/index.php@{/home/oscar/work/eclipse/owl-php/src/index.php}|hyperpage}{81}
+\indexentry{index.php@{index.php}!OWL\_\discretionary {-}{}{}ROOT@{OWL\_\discretionary {-}{}{}ROOT}|hyperpage}{81}
+\indexentry{OWL\_\discretionary {-}{}{}ROOT@{OWL\_\discretionary {-}{}{}ROOT}!index.php@{index.php}|hyperpage}{81}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/bo/class.form.php@{/home/oscar/work/eclipse/owl-php/src/kernel/bo/class.form.php}|hyperpage}{82}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/bo/class.session.php@{/home/oscar/work/eclipse/owl-php/src/kernel/bo/class.session.php}|hyperpage}{83}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/bo/class.user.php@{/home/oscar/work/eclipse/owl-php/src/kernel/bo/class.user.php}|hyperpage}{84}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/class.\_\discretionary {-}{}{}OWL.php@{/home/oscar/work/eclipse/owl-php/src/kernel/class.\_\discretionary {-}{}{}OWL.php}|hyperpage}{85}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.confighandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.confighandler.php}|hyperpage}{86}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.datahandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.datahandler.php}|hyperpage}{87}
+\indexentry{class.datahandler.php@{class.datahandler.php}!DATA\_\discretionary {-}{}{}DELETE@{DATA\_\discretionary {-}{}{}DELETE}|hyperpage}{88}
+\indexentry{DATA\_\discretionary {-}{}{}DELETE@{DATA\_\discretionary {-}{}{}DELETE}!class.datahandler.php@{class.datahandler.php}|hyperpage}{88}
+\indexentry{class.datahandler.php@{class.datahandler.php}!DATA\_\discretionary {-}{}{}READ@{DATA\_\discretionary {-}{}{}READ}|hyperpage}{88}
+\indexentry{DATA\_\discretionary {-}{}{}READ@{DATA\_\discretionary {-}{}{}READ}!class.datahandler.php@{class.datahandler.php}|hyperpage}{88}
+\indexentry{class.datahandler.php@{class.datahandler.php}!DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}FULL@{DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}FULL}|hyperpage}{88}
+\indexentry{DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}FULL@{DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}FULL}!class.datahandler.php@{class.datahandler.php}|hyperpage}{88}
+\indexentry{class.datahandler.php@{class.datahandler.php}!DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}META@{DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}META}|hyperpage}{88}
+\indexentry{DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}META@{DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}META}!class.datahandler.php@{class.datahandler.php}|hyperpage}{88}
+\indexentry{class.datahandler.php@{class.datahandler.php}!DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}PREPARE@{DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}PREPARE}|hyperpage}{88}
+\indexentry{DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}PREPARE@{DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}PREPARE}!class.datahandler.php@{class.datahandler.php}|hyperpage}{88}
+\indexentry{class.datahandler.php@{class.datahandler.php}!DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}STATUS@{DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}STATUS}|hyperpage}{88}
+\indexentry{DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}STATUS@{DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}STATUS}!class.datahandler.php@{class.datahandler.php}|hyperpage}{88}
+\indexentry{class.datahandler.php@{class.datahandler.php}!DATA\_\discretionary {-}{}{}UNPREPARED@{DATA\_\discretionary {-}{}{}UNPREPARED}|hyperpage}{88}
+\indexentry{DATA\_\discretionary {-}{}{}UNPREPARED@{DATA\_\discretionary {-}{}{}UNPREPARED}!class.datahandler.php@{class.datahandler.php}|hyperpage}{88}
+\indexentry{class.datahandler.php@{class.datahandler.php}!DATA\_\discretionary {-}{}{}UPDATE@{DATA\_\discretionary {-}{}{}UPDATE}|hyperpage}{89}
+\indexentry{DATA\_\discretionary {-}{}{}UPDATE@{DATA\_\discretionary {-}{}{}UPDATE}!class.datahandler.php@{class.datahandler.php}|hyperpage}{89}
+\indexentry{class.datahandler.php@{class.datahandler.php}!DATA\_\discretionary {-}{}{}WRITE@{DATA\_\discretionary {-}{}{}WRITE}|hyperpage}{89}
+\indexentry{DATA\_\discretionary {-}{}{}WRITE@{DATA\_\discretionary {-}{}{}WRITE}!class.datahandler.php@{class.datahandler.php}|hyperpage}{89}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.dbhandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.dbhandler.php}|hyperpage}{90}
+\indexentry{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\discretionary {-}{}{}DATA@{DBHANDLE\_\discretionary {-}{}{}DATA}|hyperpage}{90}
+\indexentry{DBHANDLE\_\discretionary {-}{}{}DATA@{DBHANDLE\_\discretionary {-}{}{}DATA}!class.dbhandler.php@{class.dbhandler.php}|hyperpage}{90}
+\indexentry{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\discretionary {-}{}{}FIELDCOUNT@{DBHANDLE\_\discretionary {-}{}{}FIELDCOUNT}|hyperpage}{91}
+\indexentry{DBHANDLE\_\discretionary {-}{}{}FIELDCOUNT@{DBHANDLE\_\discretionary {-}{}{}FIELDCOUNT}!class.dbhandler.php@{class.dbhandler.php}|hyperpage}{91}
+\indexentry{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\discretionary {-}{}{}ROWCOUNT@{DBHANDLE\_\discretionary {-}{}{}ROWCOUNT}|hyperpage}{91}
+\indexentry{DBHANDLE\_\discretionary {-}{}{}ROWCOUNT@{DBHANDLE\_\discretionary {-}{}{}ROWCOUNT}!class.dbhandler.php@{class.dbhandler.php}|hyperpage}{91}
+\indexentry{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\discretionary {-}{}{}SINGLEFIELD@{DBHANDLE\_\discretionary {-}{}{}SINGLEFIELD}|hyperpage}{91}
+\indexentry{DBHANDLE\_\discretionary {-}{}{}SINGLEFIELD@{DBHANDLE\_\discretionary {-}{}{}SINGLEFIELD}!class.dbhandler.php@{class.dbhandler.php}|hyperpage}{91}
+\indexentry{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\discretionary {-}{}{}SINGLEROW@{DBHANDLE\_\discretionary {-}{}{}SINGLEROW}|hyperpage}{91}
+\indexentry{DBHANDLE\_\discretionary {-}{}{}SINGLEROW@{DBHANDLE\_\discretionary {-}{}{}SINGLEROW}!class.dbhandler.php@{class.dbhandler.php}|hyperpage}{91}
+\indexentry{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\discretionary {-}{}{}TOTALFIELDCOUNT@{DBHANDLE\_\discretionary {-}{}{}TOTALFIELDCOUNT}|hyperpage}{91}
+\indexentry{DBHANDLE\_\discretionary {-}{}{}TOTALFIELDCOUNT@{DBHANDLE\_\discretionary {-}{}{}TOTALFIELDCOUNT}!class.dbhandler.php@{class.dbhandler.php}|hyperpage}{91}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.exceptionhandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.exceptionhandler.php}|hyperpage}{92}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.filehandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.filehandler.php}|hyperpage}{93}
+\indexentry{class.filehandler.php@{class.filehandler.php}!FILE\_\discretionary {-}{}{}NOTRIM@{FILE\_\discretionary {-}{}{}NOTRIM}|hyperpage}{93}
+\indexentry{FILE\_\discretionary {-}{}{}NOTRIM@{FILE\_\discretionary {-}{}{}NOTRIM}!class.filehandler.php@{class.filehandler.php}|hyperpage}{93}
+\indexentry{class.filehandler.php@{class.filehandler.php}!FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}C@{FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}C}|hyperpage}{93}
+\indexentry{FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}C@{FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}C}!class.filehandler.php@{class.filehandler.php}|hyperpage}{93}
+\indexentry{class.filehandler.php@{class.filehandler.php}!FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}L@{FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}L}|hyperpage}{93}
+\indexentry{FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}L@{FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}L}!class.filehandler.php@{class.filehandler.php}|hyperpage}{93}
+\indexentry{class.filehandler.php@{class.filehandler.php}!FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}R@{FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}R}|hyperpage}{93}
+\indexentry{FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}R@{FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}R}!class.filehandler.php@{class.filehandler.php}|hyperpage}{93}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.formhandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.formhandler.php}|hyperpage}{94}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.loghandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.loghandler.php}|hyperpage}{95}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.register.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.register.php}|hyperpage}{96}
+\indexentry{class.register.php@{class.register.php}!OWL\_\discretionary {-}{}{}APPLICATION\_\discretionary {-}{}{}PATTERN@{OWL\_\discretionary {-}{}{}APPLICATION\_\discretionary {-}{}{}PATTERN}|hyperpage}{96}
+\indexentry{OWL\_\discretionary {-}{}{}APPLICATION\_\discretionary {-}{}{}PATTERN@{OWL\_\discretionary {-}{}{}APPLICATION\_\discretionary {-}{}{}PATTERN}!class.register.php@{class.register.php}|hyperpage}{96}
+\indexentry{class.register.php@{class.register.php}!OWL\_\discretionary {-}{}{}OBJECT\_\discretionary {-}{}{}PATTERN@{OWL\_\discretionary {-}{}{}OBJECT\_\discretionary {-}{}{}PATTERN}|hyperpage}{96}
+\indexentry{OWL\_\discretionary {-}{}{}OBJECT\_\discretionary {-}{}{}PATTERN@{OWL\_\discretionary {-}{}{}OBJECT\_\discretionary {-}{}{}PATTERN}!class.register.php@{class.register.php}|hyperpage}{96}
+\indexentry{class.register.php@{class.register.php}!OWL\_\discretionary {-}{}{}SEVERITY\_\discretionary {-}{}{}PATTERN@{OWL\_\discretionary {-}{}{}SEVERITY\_\discretionary {-}{}{}PATTERN}|hyperpage}{96}
+\indexentry{OWL\_\discretionary {-}{}{}SEVERITY\_\discretionary {-}{}{}PATTERN@{OWL\_\discretionary {-}{}{}SEVERITY\_\discretionary {-}{}{}PATTERN}!class.register.php@{class.register.php}|hyperpage}{96}
+\indexentry{class.register.php@{class.register.php}!OWL\_\discretionary {-}{}{}STATUS\_\discretionary {-}{}{}PATTERN@{OWL\_\discretionary {-}{}{}STATUS\_\discretionary {-}{}{}PATTERN}|hyperpage}{96}
+\indexentry{OWL\_\discretionary {-}{}{}STATUS\_\discretionary {-}{}{}PATTERN@{OWL\_\discretionary {-}{}{}STATUS\_\discretionary {-}{}{}PATTERN}!class.register.php@{class.register.php}|hyperpage}{96}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.sessionhandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.sessionhandler.php}|hyperpage}{98}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.statushandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.statushandler.php}|hyperpage}{99}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.userhandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.userhandler.php}|hyperpage}{100}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/ui/class.domelement.php@{/home/oscar/work/eclipse/owl-php/src/kernel/ui/class.domelement.php}|hyperpage}{101}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/kernel/ui/class.formelement.php@{/home/oscar/work/eclipse/owl-php/src/kernel/ui/class.formelement.php}|hyperpage}{102}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/lib/owl.messages.en-uk.php@{/home/oscar/work/eclipse/owl-php/src/lib/owl.messages.en-uk.php}|hyperpage}{103}
+\indexentry{owl.messages.en-uk.php@{owl.messages.en-uk.php}!\$GLOBALS@{\$GLOBALS}|hyperpage}{103}
+\indexentry{\$GLOBALS@{\$GLOBALS}!owl.messages.en-uk.php@{owl.messages.en-uk.php}|hyperpage}{103}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/lib/owl.messages.php@{/home/oscar/work/eclipse/owl-php/src/lib/owl.messages.php}|hyperpage}{104}
+\indexentry{owl.messages.php@{owl.messages.php}!\$GLOBALS@{\$GLOBALS}|hyperpage}{104}
+\indexentry{\$GLOBALS@{\$GLOBALS}!owl.messages.php@{owl.messages.php}|hyperpage}{104}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/lib/owl.severitycodes.php@{/home/oscar/work/eclipse/owl-php/src/lib/owl.severitycodes.php}|hyperpage}{105}
+\indexentry{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\discretionary {-}{}{}BUG@{OWL\_\discretionary {-}{}{}BUG}|hyperpage}{105}
+\indexentry{OWL\_\discretionary {-}{}{}BUG@{OWL\_\discretionary {-}{}{}BUG}!owl.severitycodes.php@{owl.severitycodes.php}|hyperpage}{105}
+\indexentry{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\discretionary {-}{}{}CRITICAL@{OWL\_\discretionary {-}{}{}CRITICAL}|hyperpage}{105}
+\indexentry{OWL\_\discretionary {-}{}{}CRITICAL@{OWL\_\discretionary {-}{}{}CRITICAL}!owl.severitycodes.php@{owl.severitycodes.php}|hyperpage}{105}
+\indexentry{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\discretionary {-}{}{}DEBUG@{OWL\_\discretionary {-}{}{}DEBUG}|hyperpage}{105}
+\indexentry{OWL\_\discretionary {-}{}{}DEBUG@{OWL\_\discretionary {-}{}{}DEBUG}!owl.severitycodes.php@{owl.severitycodes.php}|hyperpage}{105}
+\indexentry{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\discretionary {-}{}{}ERROR@{OWL\_\discretionary {-}{}{}ERROR}|hyperpage}{105}
+\indexentry{OWL\_\discretionary {-}{}{}ERROR@{OWL\_\discretionary {-}{}{}ERROR}!owl.severitycodes.php@{owl.severitycodes.php}|hyperpage}{105}
+\indexentry{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\discretionary {-}{}{}FATAL@{OWL\_\discretionary {-}{}{}FATAL}|hyperpage}{106}
+\indexentry{OWL\_\discretionary {-}{}{}FATAL@{OWL\_\discretionary {-}{}{}FATAL}!owl.severitycodes.php@{owl.severitycodes.php}|hyperpage}{106}
+\indexentry{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\discretionary {-}{}{}INFO@{OWL\_\discretionary {-}{}{}INFO}|hyperpage}{106}
+\indexentry{OWL\_\discretionary {-}{}{}INFO@{OWL\_\discretionary {-}{}{}INFO}!owl.severitycodes.php@{owl.severitycodes.php}|hyperpage}{106}
+\indexentry{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\discretionary {-}{}{}OK@{OWL\_\discretionary {-}{}{}OK}|hyperpage}{106}
+\indexentry{OWL\_\discretionary {-}{}{}OK@{OWL\_\discretionary {-}{}{}OK}!owl.severitycodes.php@{owl.severitycodes.php}|hyperpage}{106}
+\indexentry{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\discretionary {-}{}{}SUCCESS@{OWL\_\discretionary {-}{}{}SUCCESS}|hyperpage}{106}
+\indexentry{OWL\_\discretionary {-}{}{}SUCCESS@{OWL\_\discretionary {-}{}{}SUCCESS}!owl.severitycodes.php@{owl.severitycodes.php}|hyperpage}{106}
+\indexentry{owl.severitycodes.php@{owl.severitycodes.php}!OWL\_\discretionary {-}{}{}WARNING@{OWL\_\discretionary {-}{}{}WARNING}|hyperpage}{106}
+\indexentry{OWL\_\discretionary {-}{}{}WARNING@{OWL\_\discretionary {-}{}{}WARNING}!owl.severitycodes.php@{owl.severitycodes.php}|hyperpage}{106}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/OWLloader.php@{/home/oscar/work/eclipse/owl-php/src/OWLloader.php}|hyperpage}{107}
+\indexentry{OWLloader.php@{OWLloader.php}!OWL\_\discretionary {-}{}{}BO\_\discretionary {-}{}{}INC@{OWL\_\discretionary {-}{}{}BO\_\discretionary {-}{}{}INC}|hyperpage}{107}
+\indexentry{OWL\_\discretionary {-}{}{}BO\_\discretionary {-}{}{}INC@{OWL\_\discretionary {-}{}{}BO\_\discretionary {-}{}{}INC}!OWLloader.php@{OWLloader.php}|hyperpage}{107}
+\indexentry{OWLloader.php@{OWLloader.php}!OWL\_\discretionary {-}{}{}INCLUDE@{OWL\_\discretionary {-}{}{}INCLUDE}|hyperpage}{107}
+\indexentry{OWL\_\discretionary {-}{}{}INCLUDE@{OWL\_\discretionary {-}{}{}INCLUDE}!OWLloader.php@{OWLloader.php}|hyperpage}{107}
+\indexentry{OWLloader.php@{OWLloader.php}!OWL\_\discretionary {-}{}{}LIBRARY@{OWL\_\discretionary {-}{}{}LIBRARY}|hyperpage}{107}
+\indexentry{OWL\_\discretionary {-}{}{}LIBRARY@{OWL\_\discretionary {-}{}{}LIBRARY}!OWLloader.php@{OWLloader.php}|hyperpage}{107}
+\indexentry{OWLloader.php@{OWLloader.php}!OWL\_\discretionary {-}{}{}SO\_\discretionary {-}{}{}INC@{OWL\_\discretionary {-}{}{}SO\_\discretionary {-}{}{}INC}|hyperpage}{107}
+\indexentry{OWL\_\discretionary {-}{}{}SO\_\discretionary {-}{}{}INC@{OWL\_\discretionary {-}{}{}SO\_\discretionary {-}{}{}INC}!OWLloader.php@{OWLloader.php}|hyperpage}{107}
+\indexentry{OWLloader.php@{OWLloader.php}!OWL\_\discretionary {-}{}{}UI\_\discretionary {-}{}{}INC@{OWL\_\discretionary {-}{}{}UI\_\discretionary {-}{}{}INC}|hyperpage}{108}
+\indexentry{OWL\_\discretionary {-}{}{}UI\_\discretionary {-}{}{}INC@{OWL\_\discretionary {-}{}{}UI\_\discretionary {-}{}{}INC}!OWLloader.php@{OWLloader.php}|hyperpage}{108}
+\indexentry{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}|hyperpage}{108}
+\indexentry{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}|hyperpage}{108}
+\indexentry{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}|hyperpage}{108}
+\indexentry{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}|hyperpage}{108}
+\indexentry{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}|hyperpage}{108}
+\indexentry{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}|hyperpage}{108}
+\indexentry{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}|hyperpage}{108}
+\indexentry{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}|hyperpage}{108}
+\indexentry{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}|hyperpage}{108}
+\indexentry{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}|hyperpage}{108}
+\indexentry{/home/oscar/work/eclipse/owl-php/src/OWLrundown.php@{/home/oscar/work/eclipse/owl-php/src/OWLrundown.php}|hyperpage}{109}

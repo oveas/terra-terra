@@ -26,10 +26,19 @@ Collaboration diagram for UserHandler:\nopagebreak
 \item 
 \hyperlink{classUserHandler_3e1f6381ed79caf6e1a255fb0a9cc386}{\_\-\_\-destruct} ()
 \end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{classUserHandler_e7a2d59eee65560ac96b860e828bb445}{\$user\_\-data}
+\end{CompactItemize}
 \subsection*{Protected Member Functions}
 \begin{CompactItemize}
 \item 
 \hyperlink{classUserHandler_8000feaceda9d3c37fc56b6d1969b8f7}{logout} ()
+\item 
+\hyperlink{classUserHandler_7a0b269a54d9430f48d6490c1fe14ecd}{login} (\$password)
+\item 
+\hyperlink{classUserHandler_fbcc9a275b547cca0bd4cff567b054a0}{set\_\-username} (\$username)
 \item 
 \hyperlink{classUserHandler_76e8c8b88c8d92f2d03645e810b9253c}{get\_\-username} ()
 \item 
@@ -43,6 +52,13 @@ Collaboration diagram for UserHandler:\nopagebreak
 \hyperlink{classUserHandler_f097b7fd1ee085b46a6c34e071508a7f}{\$session}
 \item 
 \hyperlink{classUserHandler_c38c1ea50b2820ed03781bdbe8eb2e08}{\$dataset}
+\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classUserHandler_4e9fb2f7763124ea84ebaf3b744d2d88}{read\_\-userdata} ()
+\item 
+\hyperlink{classUserHandler_6b2bbbdb4f1a08578c219a933880a1de}{hash\_\-password} (\$password)
 \end{CompactItemize}
 
 
@@ -72,7 +88,7 @@ Class constructor; setup the user environment
 \end{Desc}
 
 
-Reimplemented in \hyperlink{classUser_16b171e344993f5d4c3aa8cddcfc8050}{User}.\hypertarget{classUserHandler_3e1f6381ed79caf6e1a255fb0a9cc386}{
+Reimplemented in \hyperlink{classUser_b8a717f17626301cc8b7815a43ea5b5b}{User}.\hypertarget{classUserHandler_3e1f6381ed79caf6e1a255fb0a9cc386}{
 \index{UserHandler@{UserHandler}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!UserHandler@{UserHandler}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\_\-\_\-destruct ()}}
@@ -95,7 +111,58 @@ Reimplemented in \hyperlink{classUser_ccd20149a7414612c1505e022eb63ffc}{User}.
 
 Log out the current user 
 
-Reimplemented in \hyperlink{classUser_06ed977c877b02b420233d4f18a6a668}{User}.\hypertarget{classUserHandler_76e8c8b88c8d92f2d03645e810b9253c}{
+Reimplemented in \hyperlink{classUser_06ed977c877b02b420233d4f18a6a668}{User}.\hypertarget{classUserHandler_7a0b269a54d9430f48d6490c1fe14ecd}{
+\index{UserHandler@{UserHandler}!login@{login}}
+\index{login@{login}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::login (\$ {\em password})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classUserHandler_7a0b269a54d9430f48d6490c1fe14ecd}
+
+
+Attempt to log in with the current user and the given password
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$password}]The user provided password \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]True on success, False otherwise \end{Desc}
+\hypertarget{classUserHandler_4e9fb2f7763124ea84ebaf3b744d2d88}{
+\index{UserHandler@{UserHandler}!read\_\-userdata@{read\_\-userdata}}
+\index{read\_\-userdata@{read\_\-userdata}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::read\_\-userdata ()\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classUserHandler_4e9fb2f7763124ea84ebaf3b744d2d88}
+
+
+When a new session starts for a use that was logged in before retrieve the userdata back from the database \hypertarget{classUserHandler_6b2bbbdb4f1a08578c219a933880a1de}{
+\index{UserHandler@{UserHandler}!hash\_\-password@{hash\_\-password}}
+\index{hash\_\-password@{hash\_\-password}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::hash\_\-password (\$ {\em password})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classUserHandler_6b2bbbdb4f1a08578c219a933880a1de}
+
+
+Encrypt a given password
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$password}]Given password in plain text format \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The encrypted password \end{Desc}
+\hypertarget{classUserHandler_fbcc9a275b547cca0bd4cff567b054a0}{
+\index{UserHandler@{UserHandler}!set\_\-username@{set\_\-username}}
+\index{set\_\-username@{set\_\-username}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::set\_\-username (\$ {\em username})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classUserHandler_fbcc9a275b547cca0bd4cff567b054a0}
+
+
+Set the username \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$username}]Username \end{description}
+\end{Desc}
+\hypertarget{classUserHandler_76e8c8b88c8d92f2d03645e810b9253c}{
 \index{UserHandler@{UserHandler}!get\_\-username@{get\_\-username}}
 \index{get\_\-username@{get\_\-username}!UserHandler@{UserHandler}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::get\_\-username ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
@@ -137,7 +204,14 @@ The PHP session object \hypertarget{classUserHandler_c38c1ea50b2820ed03781bdbe8e
 \label{classUserHandler_c38c1ea50b2820ed03781bdbe8eb2e08}
 
 
-Link to a datahandler object. This dataset is used as an interface to all database IO. 
+Link to a datahandler object. This dataset is used as an interface to all database IO. \hypertarget{classUserHandler_e7a2d59eee65560ac96b860e828bb445}{
+\index{UserHandler@{UserHandler}!\$user\_\-data@{\$user\_\-data}}
+\index{\$user\_\-data@{\$user\_\-data}!UserHandler@{UserHandler}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\$user\_\-data}}
+\label{classUserHandler_e7a2d59eee65560ac96b860e828bb445}
+
+
+An indexed array with the user information as take from the database 
 
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 

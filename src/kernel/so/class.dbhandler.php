@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.3 2008-09-08 12:27:55 oscar Exp $
  */
 
 /**
@@ -539,7 +539,7 @@ class DbHandler extends _OWL
 // TODO: Check on empty tablelist
 		$this->query = 'SELECT ';
 		if (count ($values) == 0) {
-			$this->query .= '*';
+			$this->query .= '* ';
 		} else {
 			for ($_i = 0; $_i < count ($values); $_i++) {
 				$this->expand_field (&$values[$_i]);

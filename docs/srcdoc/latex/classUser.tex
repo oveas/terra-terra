@@ -22,16 +22,27 @@ Collaboration diagram for User:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{CompactItemize}
 \item 
-\hyperlink{classUser_16b171e344993f5d4c3aa8cddcfc8050}{\_\-\_\-construct} (\$username= 'anonymous')
+\hyperlink{classUser_b8a717f17626301cc8b7815a43ea5b5b}{\_\-\_\-construct} (\$username=null)
 \item 
 \hyperlink{classUser_ccd20149a7414612c1505e022eb63ffc}{\_\-\_\-destruct} ()
+\item 
+\hyperlink{classUser_2c4fae5935ebf84e787126795bf42988}{login} (\$username, \$password)
 \item 
 \hyperlink{classUser_06ed977c877b02b420233d4f18a6a668}{logout} ()
 \item 
 \hyperlink{classUser_1348ddf190d4df2518665fb51305a902}{get\_\-username} ()
 \end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{classUserHandler_e7a2d59eee65560ac96b860e828bb445}{\$user\_\-data}
+\end{CompactItemize}
 \subsection*{Protected Member Functions}
 \begin{CompactItemize}
+\item 
+\hyperlink{classUserHandler_7a0b269a54d9430f48d6490c1fe14ecd}{login} (\$password)
+\item 
+\hyperlink{classUserHandler_fbcc9a275b547cca0bd4cff567b054a0}{set\_\-username} (\$username)
 \item 
 \hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
@@ -56,11 +67,11 @@ This class handles the \hyperlink{classOWL}{OWL} users \begin{Desc}
 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classUser_16b171e344993f5d4c3aa8cddcfc8050}{
+\hypertarget{classUser_b8a717f17626301cc8b7815a43ea5b5b}{
 \index{User@{User}!\_\-\_\-construct@{\_\-\_\-construct}}
 \index{\_\-\_\-construct@{\_\-\_\-construct}!User@{User}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}User::\_\-\_\-construct (\$ {\em username} = {\tt 'anonymous'})}}
-\label{classUser_16b171e344993f5d4c3aa8cddcfc8050}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}User::\_\-\_\-construct (\$ {\em username} = {\tt null})}}
+\label{classUser_b8a717f17626301cc8b7815a43ea5b5b}
 
 
 Class constructor; create a new user environment
@@ -84,6 +95,22 @@ When a run ends, write the sessiondata
 Reimplemented from \hyperlink{classUserHandler_3e1f6381ed79caf6e1a255fb0a9cc386}{UserHandler}.
 
 \subsection{Member Function Documentation}
+\hypertarget{classUser_2c4fae5935ebf84e787126795bf42988}{
+\index{User@{User}!login@{login}}
+\index{login@{login}!User@{User}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}User::login (\$ {\em username}, \$ {\em password})}}
+\label{classUser_2c4fae5935ebf84e787126795bf42988}
+
+
+Log in
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$username}]Given username \item[\mbox{$\leftarrow$} {\em \$password}]Given password \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]True on success, False otherwise \end{Desc}
 \hypertarget{classUser_06ed977c877b02b420233d4f18a6a668}{
 \index{User@{User}!logout@{logout}}
 \index{logout@{logout}!User@{User}}
@@ -102,7 +129,35 @@ Reimplemented from \hyperlink{classUserHandler_8000feaceda9d3c37fc56b6d1969b8f7}
 
 Return the username of the current session 
 
-Reimplemented from \hyperlink{classUserHandler_76e8c8b88c8d92f2d03645e810b9253c}{UserHandler}.\hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
+Reimplemented from \hyperlink{classUserHandler_76e8c8b88c8d92f2d03645e810b9253c}{UserHandler}.\hypertarget{classUserHandler_7a0b269a54d9430f48d6490c1fe14ecd}{
+\index{User@{User}!login@{login}}
+\index{login@{login}!User@{User}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::login (\$ {\em password})\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
+\label{classUserHandler_7a0b269a54d9430f48d6490c1fe14ecd}
+
+
+Attempt to log in with the current user and the given password
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$password}]The user provided password \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]True on success, False otherwise \end{Desc}
+\hypertarget{classUserHandler_fbcc9a275b547cca0bd4cff567b054a0}{
+\index{User@{User}!set\_\-username@{set\_\-username}}
+\index{set\_\-username@{set\_\-username}!User@{User}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::set\_\-username (\$ {\em username})\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
+\label{classUserHandler_fbcc9a275b547cca0bd4cff567b054a0}
+
+
+Set the username \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$username}]Username \end{description}
+\end{Desc}
+\hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
 \index{User@{User}!init@{init}}
 \index{init@{init}!User@{User}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
@@ -135,7 +190,14 @@ The PHP session object \hypertarget{classUserHandler_c38c1ea50b2820ed03781bdbe8e
 \label{classUserHandler_c38c1ea50b2820ed03781bdbe8eb2e08}
 
 
-Link to a datahandler object. This dataset is used as an interface to all database IO. 
+Link to a datahandler object. This dataset is used as an interface to all database IO. \hypertarget{classUserHandler_e7a2d59eee65560ac96b860e828bb445}{
+\index{User@{User}!\$user\_\-data@{\$user\_\-data}}
+\index{\$user\_\-data@{\$user\_\-data}!User@{User}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\$user\_\-data\hspace{0.3cm}{\tt  \mbox{[}inherited\mbox{]}}}}
+\label{classUserHandler_e7a2d59eee65560ac96b860e828bb445}
+
+
+An indexed array with the user information as take from the database 
 
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 

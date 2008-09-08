@@ -31,14 +31,14 @@ Inheritance diagram for UserHandler:</div>
 <div class="dynsection">
 <p><center><img src="classUserHandler__inherit__graph.png" border="0" usemap="#UserHandler__inherit__map" alt="Inheritance graph"></center>
 <map name="UserHandler__inherit__map">
-<area shape="rect" href="classUser.html" title="the OWL&#45;PHP session object" alt="" coords="5,423,144,556"><area shape="rect" href="class__OWL.html" title="{_OWL\n|&#45; $status\l&#45; $pstatus\l&#45; $severity\l|+ __destruct()\l# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="11,6,139,174"></map>
+<area shape="rect" href="classUser.html" title="the OWL&#45;PHP session object" alt="" coords="5,507,144,659"><area shape="rect" href="class__OWL.html" title="{_OWL\n|&#45; $status\l&#45; $pstatus\l&#45; $severity\l|+ __destruct()\l# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="11,5,139,173"></map>
 <center><font size="2">[<a target="top" href="graph_legend.html">legend</a>]</font></center></div>
 <div class="dynheader">
 Collaboration diagram for UserHandler:</div>
 <div class="dynsection">
 <p><center><img src="classUserHandler__coll__graph.png" border="0" usemap="#UserHandler__coll__map" alt="Collaboration graph"></center>
 <map name="UserHandler__coll__map">
-<area shape="rect" href="class__OWL.html" title="{_OWL\n|&#45; $status\l&#45; $pstatus\l&#45; $severity\l|+ __destruct()\l# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="11,6,139,174"></map>
+<area shape="rect" href="class__OWL.html" title="{_OWL\n|&#45; $status\l&#45; $pstatus\l&#45; $severity\l|+ __destruct()\l# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="11,5,139,173"></map>
 <center><font size="2">[<a target="top" href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -49,8 +49,15 @@ Collaboration diagram for UserHandler:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserHandler.html#3e1f6381ed79caf6e1a255fb0a9cc386">__destruct</a> ()</td></tr>
 
+<tr><td colspan="2"><br><h2>Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserHandler.html#e7a2d59eee65560ac96b860e828bb445">$user_data</a></td></tr>
+
 <tr><td colspan="2"><br><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserHandler.html#8000feaceda9d3c37fc56b6d1969b8f7">logout</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserHandler.html#7a0b269a54d9430f48d6490c1fe14ecd">login</a> ($password)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserHandler.html#fbcc9a275b547cca0bd4cff567b054a0">set_username</a> ($username)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserHandler.html#76e8c8b88c8d92f2d03645e810b9253c">get_username</a> ()</td></tr>
 
@@ -62,6 +69,11 @@ Collaboration diagram for UserHandler:</div>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserHandler.html#f097b7fd1ee085b46a6c34e071508a7f">$session</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserHandler.html#c38c1ea50b2820ed03781bdbe8eb2e08">$dataset</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserHandler.html#4e9fb2f7763124ea84ebaf3b744d2d88">read_userdata</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserHandler.html#6b2bbbdb4f1a08578c219a933880a1de">hash_password</a> ($password)</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
@@ -94,7 +106,7 @@ Class constructor; setup the user environment<p>
   </table>
 </dl>
 
-<p>Reimplemented in <a class="el" href="classUser.html#16b171e344993f5d4c3aa8cddcfc8050">User</a>.</p>
+<p>Reimplemented in <a class="el" href="classUser.html#b8a717f17626301cc8b7815a43ea5b5b">User</a>.</p>
 
 </div>
 </div><p>
@@ -140,6 +152,104 @@ Class destructor
 <p>
 Log out the current user 
 <p>Reimplemented in <a class="el" href="classUser.html#06ed977c877b02b420233d4f18a6a668">User</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7a0b269a54d9430f48d6490c1fe14ecd"></a><!-- doxytag: member="UserHandler::login" ref="7a0b269a54d9430f48d6490c1fe14ecd" args="($password)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UserHandler::login           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>password</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Attempt to log in with the current user and the given password<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$password</em>&nbsp;</td><td>The user provided password </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>True on success, False otherwise </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="4e9fb2f7763124ea84ebaf3b744d2d88"></a><!-- doxytag: member="UserHandler::read_userdata" ref="4e9fb2f7763124ea84ebaf3b744d2d88" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UserHandler::read_userdata           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+When a new session starts for a use that was logged in before retrieve the userdata back from the database 
+</div>
+</div><p>
+<a class="anchor" name="6b2bbbdb4f1a08578c219a933880a1de"></a><!-- doxytag: member="UserHandler::hash_password" ref="6b2bbbdb4f1a08578c219a933880a1de" args="($password)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UserHandler::hash_password           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>password</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Encrypt a given password<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$password</em>&nbsp;</td><td>Given password in plain text format </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>The encrypted password </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="fbcc9a275b547cca0bd4cff567b054a0"></a><!-- doxytag: member="UserHandler::set_username" ref="fbcc9a275b547cca0bd4cff567b054a0" args="($username)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UserHandler::set_username           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>username</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Set the username <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$username</em>&nbsp;</td><td>Username </td></tr>
+  </table>
+</dl>
 
 </div>
 </div><p>
@@ -235,9 +345,24 @@ The PHP session object
 Link to a datahandler object. This dataset is used as an interface to all database IO. 
 </div>
 </div><p>
+<a class="anchor" name="e7a2d59eee65560ac96b860e828bb445"></a><!-- doxytag: member="UserHandler::$user_data" ref="e7a2d59eee65560ac96b860e828bb445" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UserHandler::$user_data          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+An indexed array with the user information as take from the database 
+</div>
+</div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
 <li>/home/oscar/work/eclipse/owl-php/src/kernel/so/<a class="el" href="class_8userhandler_8php.html">class.userhandler.php</a></ul>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Aug 28 20:15:15 2008 for OWL-PHP by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Sep 8 14:26:33 2008 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

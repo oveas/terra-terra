@@ -1,9 +1,12 @@
 <area shape="rect" href="$classDataHandler.html" title="The OWL Data object." alt="" coords="9,291,143,560">
 <area shape="rect" href="$classDbHandler.html" title="Database handler." alt="" coords="167,223,321,628">
-<area shape="rect" href="$classLogHandler.html" title="Log handler." alt="" coords="345,324,468,527">
-<area shape="rect" href="$classOWL.html" title="{OWL\n||+ __construct()\l+ s()\l}" alt="" coords="492,375,612,476">
-<area shape="rect" href="$classSessionHandler.html" title="the PHP session object" alt="" coords="636,324,756,527">
-<area shape="rect" href="$classUserHandler.html" title="the user object" alt="" coords="780,350,919,502">
-<area shape="rect" href="$classFormHandler.html" title="Formhandler." alt="" coords="5,687,147,804">
-<area shape="rect" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="636,695,756,796">
-<area shape="rect" href="$classUser.html" title="the OWL&#45;PHP session object" alt="" coords="780,679,919,812">
+<area shape="rect" href="$classDOMElement.html" title="DOM Element base class." alt="" coords="345,384,465,467">
+<area shape="rect" href="$classLogHandler.html" title="Log handler." alt="" coords="489,324,612,527">
+<area shape="rect" href="$classOWL.html" title="{OWL\n||+ __construct()\l+ s()\l}" alt="" coords="636,375,756,476">
+<area shape="rect" href="$classSessionHandler.html" title="the PHP session object" alt="" coords="780,324,900,527">
+<area shape="rect" href="$classUserHandler.html" title="the user object" alt="" coords="924,308,1063,543">
+<area shape="rect" href="$classFormHandler.html" title="Formhandler." alt="" coords="5,695,147,812">
+<area shape="rect" href="$classForm.html" title="Form Element class." alt="" coords="273,712,393,795">
+<area shape="rect" href="$classFormElement.html" title="Form element." alt="" coords="417,712,537,795">
+<area shape="rect" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="780,703,900,804">
+<area shape="rect" href="$classUser.html" title="the OWL&#45;PHP session object" alt="" coords="924,678,1063,830">

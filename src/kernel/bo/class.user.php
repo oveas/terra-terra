@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the User class
- * \version $Id: class.user.php,v 1.1 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: class.user.php,v 1.2 2008-09-08 12:27:55 oscar Exp $
  */
 
 /**
@@ -19,9 +19,12 @@ class User extends UserHandler
 	 * \public 
 	 * \param[in] $username Username when logged in. Default username is 'anonymous'
 	 */
-	public function __construct ($username = 'anonymous')
+	public function __construct ($username = null)
 	{
 		$this->dataset =& new DataHandler (&$GLOBALS['db']);
+		if ($username == null) {
+			$username = ConfigHandler::get ('session|default_user');
+		}
 		parent::__construct ($username);
 	}
 	
@@ -39,13 +42,30 @@ class User extends UserHandler
 	}
 
 	/**
+	 * Log in
+	 * \public
+	 * \param[in] $username Given username
+	 * \param[in] $password Given password
+	 * \return True on success, False otherwise
+	 */
+	public function login ($username, $password)
+	{
+		$this->set_username ($username);
+		if (parent::login ($password) !== true) {
+			self::logout();
+			return (false);
+		}
+		return (true);
+	}
+
+	/**
 	 * Log out the current user
 	 * \public
 	 */
 	public function logout ()
 	{
 		parent::logout();
-		parent::__construct ('anonymous');
+		$this->set_username (ConfigHandler::get ('session|default_user'));
 	}
 
 
