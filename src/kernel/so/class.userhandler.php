@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.3 2008-09-08 12:27:55 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.4 2009-02-02 20:13:39 oscar Exp $
  */
 
 /**
@@ -69,6 +69,11 @@ class UserHandler extends _OWL
 				$this->user_data[$_k] = '';
 			}
 		}
+// TODO
+// Find out why, after a logout, the session is not reinitialised, but
+// the next run *after* the logout does this....????
+
+		$this->session =& new Session();
 	}
 
 	/**

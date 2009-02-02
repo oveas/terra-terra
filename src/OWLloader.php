@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment in intialises some singletons
- * \version $Id: OWLloader.php,v 1.4 2008-09-02 05:16:53 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.5 2009-02-02 20:13:39 oscar Exp $
  */
 
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
@@ -20,6 +20,11 @@ define ('OWL_LIBRARY',	OWL_ROOT . '/lib');
  */
 require_once (OWL_LIBRARY . '/owl.severitycodes.php');
 require_once (OWL_ROOT . '/config.php');
+if ($GLOBALS['config']['debug']) {
+	require_once (OWL_INCLUDE . '/owl.debug.functions.php');
+} else {
+	require_once (OWL_INCLUDE . '/owl.nodebug.functions.php');
+}
 
 // Abstract classes
 require_once (OWL_SO_INC . '/class.exceptionhandler.php');
