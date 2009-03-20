@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.4 2009-02-02 20:13:39 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.5 2009-03-20 10:56:30 oscar Exp $
  */
 
 /**
@@ -66,13 +66,14 @@ class UserHandler extends _OWL
 		$this->dataset->reset (DATA_RESET_FULL);
 		if (is_array ($this->user_data)) {
 			foreach ($this->user_data as $_k => $_v) {
-				$this->user_data[$_k] = '';
+//				$this->user_data[$_k] = '';
+				unset ($this->user_data[$_k]);
 			}
 		}
 // TODO
 // Find out why, after a logout, the session is not reinitialised, but
 // the next run *after* the logout does this....????
-
+//		session_regenerate_id(true);
 		$this->session =& new Session();
 	}
 

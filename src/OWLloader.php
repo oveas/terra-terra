@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment in intialises some singletons
- * \version $Id: OWLloader.php,v 1.5 2009-02-02 20:13:39 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.6 2009-03-20 10:56:29 oscar Exp $
  */
 
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
@@ -42,6 +42,7 @@ require_once (OWL_SO_INC . '/class.dbhandler.php');
 require_once (OWL_SO_INC . '/class.datahandler.php');
 require_once (OWL_SO_INC . '/class.formhandler.php');
 require_once (OWL_SO_INC . '/class.userhandler.php');
+require_once (OWL_SO_INC . '/class.filehandler.php');
 
 // BO Layer
 require_once (OWL_BO_INC . '/class.session.php');

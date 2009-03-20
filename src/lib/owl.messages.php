@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in UK English
- * \version $Id: owl.messages.php,v 1.4 2008-09-08 12:27:55 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.5 2009-03-20 10:56:29 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -54,9 +54,11 @@ $GLOBALS['messages'] = array (
 	, USER_LOGINFAIL		=> 'Error logging in with username $p1$ and password $p2$'
 	, USER_LOGGEDIN			=> 'User $p1$ logged in with password $p2$'
 	, USER_RESTORERR		=> 'Error restoring data for user ID $p1$'
+	, FILE_NEWFILE			=> ''
 	, FILE_NOSUCHFILE		=> ''
 	, FILE_ENDOFFILE		=> ''
-	, FILE_OPENOPENED		=> ''
-	, FILE_CLOSECLOSED		=> ''
+	, FILE_CREATED			=> ''
+	, FILE_OPENED			=> ''
+	, FILE_CLOSED			=> ''
 	, FILE_OPENERR			=> ''
 );

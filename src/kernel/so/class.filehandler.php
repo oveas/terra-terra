@@ -2,13 +2,27 @@
 /**
  * \file
  * This file defines the FileHandler class
- * \version $Id: class.filehandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: class.filehandler.php,v 1.3 2009-03-20 10:56:30 oscar Exp $
  */
 
-define ('FILE_NOTRIM',	0); // Don't trim
-define ('FILE_TRIM_L',	1); // Trim left part of a line read
-define ('FILE_TRIM_R',	2); // Trim right part of a line read
-define ('FILE_TRIM_C',	3); // Replace all multiple spaces in a line read with a single space
+/**
+ * \name Dataline trim flags
+ * These flags define how datalines should be trimmed when read from a file
+ * @{
+ */
+//! Don't trim
+define ('FILE_NOTRIM',	0);
+
+//! Trim left part of a line read
+define ('FILE_TRIM_L',	1);
+
+//! Trim right part of a line read
+define ('FILE_TRIM_R',	2);
+
+//! Replace all multiple spaces in a line read with a single space
+define ('FILE_TRIM_C',	3);
+
+//! @}
 
 /**
  * \ingroup OWL_SO_LAYER
@@ -18,10 +32,14 @@ define ('FILE_TRIM_C',	3); // Replace all multiple spaces in a line read with a 
  * \version May 15, 2007 -- O van Eijk -- initial version for Terra-Terra (based on an old OFM module)
  * \version Jul 30, 2008 -- O van Eijk -- Modified version for OWL-PHP
  */
-class FileHandler extends _CargoByte 
+class FileHandler extends _OWL 
 {
 
-//	var $name;			// Full filename as stored on the file system
+	/**
+	 * Full filename as stored on the file system
+	 * \private
+	 */	
+	private $name; 
 	var $original_name;	// Original filename
 //	var $location;		// the file's location on the file system
 //	var $file_ext;		// Original file type
@@ -33,86 +51,129 @@ class FileHandler extends _CargoByte
 //	var $px_width;		// Width in pixels (for images)
 //	var $px_heigth;		// Heigth in pixels (for images)
 
-//	var $fpointer;
-//	var $opened;
+	/**
+	 * Pointer to te file when opened
+	 * \private
+	 */	
+	private $fpointer;
+
+	/**
+	 * Boolean that's true when the file is opened
+	 * \private
+	 */	
+	private $opened;
+
 //	var $localfile;		// Boolean that indicates a local file when TRUE
 //	var $myfile;		// Boolean that indicates a file owned by me when TRUE
 
-	public function __construct ($name = '')
+
+	/**
+	 * Class constructor; setup the file characteristics
+	 * \public
+	 * \param[in] $name Filename
+	 * \param[in] $req True is the file must exist at object create time
+	 */
+	public function __construct ($name, $req = false)
 	{
-		// Initialize
-		//
 		_OWL::init();
-		$this->type = OBJECT_FILE;
+
 		$this->name = realpath($name);
 		$this->opened = false;
-		if (empty($this->name)) {
-			$this->size = 0;
-			$this->localfile = false;
-			$this->myfile = false;
-		} else {
-			if (!file_exists($this->name)) {
-				$this->status = FILE_NOSUCHFILE;
-				return;
+
+		if (!file_exists($this->name)) {
+			if ($req) {
+				$this->set_status (FILE_NEWFILE, array (
+					$this->name
+				));
+			} else {
+				$this->set_status (FILE_NOSUCHFILE, array (
+					$this->name
+				));
 			}
-			$this->size = filesize($this->name);
-			$this->localfile = !eregi("^([a-z]+)://", $this->name);
-			$this->myfile = (fileowner($this->name) == getmyuid());
+			return;
 		}
+		$this->size = filesize($this->name);
+		$this->localfile = !eregi("^([a-z]+)://", $this->name);
+		$this->myfile = (fileowner($this->name) == getmyuid());
 
-		$this->status = TT_STATUS_OK;
-		$this->revision = parent::get_revision("$Revision");
-
-		parent::declare_destruct ();
+		$this->set_status (OWL_STATUS_OK);
 	}
 
 	public function __destruct ()
 	{
-		if ($this->opened) {
-			fclose($this->fpointer);
-			$this->opened = false;
-		}
+		$this->close();
 	}
 
-	public function open ($mode = 'r')
+	/**
+	 * Open the file
+	 * \protected
+	 * \param[in] $mode Mode in which the file should be opened: 
+	 *    - 'r'  	Open for reading only; place the file pointer at the beginning of the file.
+	 *    - 'r+' 	Open for reading and writing; place the file pointer at the beginning of the file.
+	 *    - 'w' 	Open for writing only; place the file pointer at the beginning of the file and truncate the file to zero length. If the file does not exist, attempt to create it.
+	 *    - 'w+' 	Open for reading and writing; place the file pointer at the beginning of the file and truncate the file to zero length. If the file does not exist, attempt to create it.
+	 *    - 'a' 	Open for writing only; place the file pointer at the end of the file. If the file does not exist, attempt to create it.
+	 *    - 'a+' 	Open for reading and writing; place the file pointer at the end of the file. If the file does not exist, attempt to create it. 
+	 */
+	protected function open ($mode = 'r')
 	{
-		if ($this->opened) {
-			$this->status = FILE_OPENOPENED;
-		} else {
+		if (!$this->opened) {
 			if (!($this->fpointer = fopen ($this->name, $mode))) {
-				$this->status = FILE_OPENERR;
+				$this->set_status (FILE_OPENERR, array (
+					$this->name
+				));
 			} else {
+				$this->set_status (FILE_OPENED, array (
+					$this->name
+				));
 				$this->opened = true;
 			}
 		}
 	}
 
-	public function close ()
+	/**
+	 * Close the file
+	 * \protected
+	 */
+	protected function close ()
 	{
-		if (!$this->opened) {
-			$this->status = FILE_CLOSECLOSED;
-		} else {
+		if ($this->opened) {
 			fclose($this->fpointer);
 			$this->opened = false;
-			if ($this->status == FILE_ENDOFFILE) {
-				$this->status = TT_STATUS_OK;
-			}
+			$this->set_status (FILE_CLOSED, array (
+				$this->name
+			));
 		}
 	}
 
-	public function read_data ()
+	/**
+	 * Read the file contents and return as one dataset
+	 * \protected
+	 */
+	protected function read_data ()
 	{
-		$this->open ("rb");
+		$this->open ('rb');
 		$__data = fread ($this->fpointer, $this->size);
 		$this->close ();
 		return ($__data);
 	}
 
-	public function read_line ($trim = FILE_NOTRIM)
+	/**
+	 * Read a single line from the file. File must be opened before
+	 * \protected
+	 * \param[in] $trim specify how the returned line should be trimmed:
+	 *    - FILE_NOTRIM
+	 *    - FILE_TRIM_L
+	 *    - FILE_TRIM_R
+	 *    - FILE_TRIM_C
+	 */
+	protected function read_line ($trim = FILE_NOTRIM)
 	{
 		$__data = fgets ($this->fpointer, 4096);
 		if (feof($this->fpointer)) {
-			$this->status = FILE_ENDOFFILE;
+			$this->set_status (FILE_ENDOFFILE, array (
+				$this->name
+			));
 		}
 		if ($trim & FILE_TRIM_L) {
 			$__data = rtrim ($__data);
@@ -146,12 +207,15 @@ class FileHandler extends _CargoByte
 Register::register_class('FileHandler');
 
 //Register::set_severity (OWL_DEBUG);
-//Register::set_severity (OWL_INFO);
+Register::set_severity (OWL_INFO);
+Register::register_code ('FILE_NEWFILE');
+
 //Register::set_severity (OWL_OK);
 
 Register::set_severity (OWL_SUCCESS);
-Register::register_code ('FILE_OPENOPENED');
-Register::register_code ('FILE_CLOSECLOSED');
+Register::register_code ('FILE_CREATED');
+Register::register_code ('FILE_OPENED');
+Register::register_code ('FILE_CLOSED');
 
 Register::set_severity (OWL_WARNING);
 Register::register_code ('FILE_NOSUCHFILE');
