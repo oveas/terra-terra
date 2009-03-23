@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in UK English
- * \version $Id: owl.messages.en-uk.php,v 1.6 2009-03-20 10:56:29 oscar Exp $
+ * \version $Id: owl.messages.en-uk.php,v 1.7 2009-03-23 20:14:59 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -32,7 +32,7 @@ $GLOBALS['messages'] = array (
 	, DBHANDLE_CONNECTERR	=> 'Error connecting to database server $p1$ with username $p2$ and password $p3$'
 	, DBHANDLE_OPENERR		=> 'Error ($p2$) opening database $p1$: <i>$p3$</i>'
 	, DBHANDLE_DBCLOSED		=> 'Attemt to read from a closed database'
-	, DBHANDLE_QUERYERR		=> 'Invalid SQL Query in $p3$ at line $p2$: <i>$p1$</i>'
+	, DBHANDLE_QUERYERR		=> 'Invalid SQL Query in $p4$ at line $p3$: <i>$p1$</i><br />Message was: <b>$p2$</b>'
 	, DBHANDLE_CREATERR		=> 'Error ($p2$) creating database $p1$: <i>$p3$</i>'
 	, DBHANDLE_NODATA		=> 'Query had no results'
 	, DBHANDLE_IVTABLE		=> 'Attemt to read from a non- existing database table'

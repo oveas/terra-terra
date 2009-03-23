@@ -2,10 +2,10 @@
 /**
  * \file
  * This is the entry point for OWL-PHP teststub
- * \version $Id: index.php,v 1.6 2009-02-02 20:13:39 oscar Exp $
+ * \version $Id: index.php,v 1.7 2009-03-23 20:14:59 oscar Exp $
  */
 
-define ('OWL_ROOT', '/home/oscar/work/eclipse/owl-php/src');
+define ('OWL_ROOT', '/home/oscar/projects/Oveas/owl-php/src');
 require_once (OWL_ROOT . '/OWLloader.php');
 
 DBG_dumpval ($GLOBALS['config']);

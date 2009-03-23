@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.3 2008-09-08 12:27:55 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.4 2009-03-23 20:14:59 oscar Exp $
  */
 
 /**
@@ -157,7 +157,9 @@ class DbHandler extends _OWL
 	{
 		if (!($this->id = @mysql_connect ($this->database['server']
 				, $this->database['username']
-				, $this->database['password']))) {
+				, $this->database['password']
+				, true // Allow more databases on the same server to be opened
+			))) {
 			$this->set_status (DBHANDLE_CONNECTERR, array (
 					  $this->database['server']
 					, $this->database['username']
@@ -190,7 +192,8 @@ class DbHandler extends _OWL
 							, mysql_error ($this->id)
 						));
 		}
-
+		
+//echo ("ID for ".$this->database['name'].": $this->id<br/>");
 		$this->opened = true;
 
 		$this->set_status (DBHANDLE_OPENED, array (
@@ -280,7 +283,8 @@ class DbHandler extends _OWL
 	 */
 	public function set_query ($qry)
 	{
-		return $this->query . $qry;
+		$this->query = $qry;
+//		return $this->query . $qry;
 	}
 
 	/**
@@ -318,6 +322,7 @@ class DbHandler extends _OWL
 		if (($_data = $this->dbread ($_query, $this->rowcount, $_fieldcnt)) === false) {
 			$this->set_status (DBHANDLE_QUERYERR, array (
 					  $_query
+					, $this->error
 					, $line
 					, $file
 				));
@@ -366,6 +371,8 @@ class DbHandler extends _OWL
 	private function dbread ($qry, &$rows, &$fields)
 	{
 		if (($__result = mysql_query ($qry, $this->id)) === false) {
+			$this->error = mysql_error($this->id);
+			$this->errno = mysql_errno($this->id);
 			return (false);
 		}
 
@@ -658,8 +665,11 @@ class DbHandler extends _OWL
 			return ($this->severity);
 		}
 		if (!@mysql_query ($this->query, $this->id)) {
+			$this->error = mysql_error($this->id);
+			$this->errno = mysql_errno($this->id);
 			$this->set_status (DBHANDLE_QUERYERR, array (
 					  $this->query
+					, $this->error
 					, $line
 					, $file
 				));
