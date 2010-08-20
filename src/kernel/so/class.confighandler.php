@@ -2,7 +2,7 @@
 /**
  * \file
  * Define a class for config handling
- * \version $Id: class.confighandler.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.3 2010-08-20 08:39:54 oscar Exp $
  */
 
 /**
@@ -17,8 +17,9 @@ abstract class ConfigHandler
 {
 
 	/**
-	 * Find out what the filename of the logfile should be
-	 * \private
+	 * Parse the given configuration file
+	 * \public
+	 * \param[in] $file Full path to the configuration file
 	 */
 	public function read_config ($file = '')
 	{

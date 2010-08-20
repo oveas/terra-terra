@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Session class
- * \version $Id: class.session.php,v 1.2 2008-08-28 18:12:52 oscar Exp $
+ * \version $Id: class.session.php,v 1.3 2010-08-20 08:39:55 oscar Exp $
  */
 
 /**
@@ -34,11 +34,71 @@ class Session extends SessionHandler
 	 */
 	public function __destruct ()
 	{
+		parent::__destruct();
 		session_write_close ();
-		if (is_object ($this->dataset)){
+		if (@is_object ($this->dataset)){
 			$this->dataset->__destruct();
 			unset ($this->dataset);
 		}
-		parent::__destruct();
+	}
+
+	/**
+	 * Set a session variable
+	 * \public
+	 * \param[in] $var Variable name
+	 * \param[in] $val Variable value (default 0)
+	 * \param[in] $flg How to handle the value. Default SESSIONVAR_SET
+	 */
+	public function set_session_var ($var, $val = 0, $flg = SESSIONVAR_SET)
+	{
+		switch ($flg) {
+			case (SESSIONVAR_UNSET):
+				if (array_key_exists($var, $_SESSION)) {
+					unset ($_SESSION[$var]);
+				}
+				break;
+			case (SESSIONVAR_INCR):
+				if (array_key_exists($var, $_SESSION)) {
+					$_SESSION[$var]++;
+				} else {
+					$_SESSION[$var] = $val;
+				}
+				break;
+			case (SESSIONVAR_DECR):
+				if (array_key_exists($var, $_SESSION)) {
+					$_SESSION[$var]--;
+				} else {
+					$_SESSION[$var] = $val;
+				}
+				break;
+			case (SESSIONVAR_ARRAY):
+				if (array_key_exists($var, $_SESSION)) {
+					$_val = $_SESSION[$var];
+					$_SESSION[$var] = array($_val, $val);
+				} else {
+					$_SESSION[$var] = array($val);
+				}
+				break;
+			case (SESSIONVAR_SET):
+			default:
+				$_SESSION[$var] = $val;
+				break;
+		}
+	}
+
+	/**
+	 * Get a session variable
+	 * \public
+	 * \param[in] $var Variable name
+	 * \param[in] $default Default value to return if the variable was not set (default null)
+	 * \return The value from the session, null if not set
+	 */
+	public function get_session_var ($var, $default = null)
+	{
+		if (array_key_exists($var, $_SESSION)) {
+			return $_SESSION[$var];
+		} else {
+			return $default;
+		}
 	}
 }

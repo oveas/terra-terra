@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.4 2009-03-23 20:14:59 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.5 2010-08-20 08:39:54 oscar Exp $
  */
 
 /**
@@ -124,6 +124,9 @@ class DbHandler extends _OWL
 	 */
 	public function __destruct ()
 	{
+		if (parent::__destruct() === false) {
+			return;
+		}
 		$this->close();
 	}
 
@@ -227,7 +230,7 @@ class DbHandler extends _OWL
 		$_data  = array ();
 		$_descr = array ();
 
-		if ($this->dbtype == 'MySQL') {
+		if ($this->database['engine'] == 'MySQL') {
 			// Currently the only type supported
 			//
 			$this->query = 'SHOW COLUMNS FROM ' . $this->db_prefix . $tablename;
@@ -401,7 +404,7 @@ class DbHandler extends _OWL
 	 */
 	public function escape_string ($string)
 	{
-		if ($this->dbtype == 'MySQL') {
+		if ($this->database['engine'] == 'MySQL') {
 			// Currently the only type supported
 			//
 			if (function_exists('mysql_real_escape_string')) {

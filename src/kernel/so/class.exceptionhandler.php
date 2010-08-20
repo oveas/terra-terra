@@ -3,7 +3,7 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.3 2008-09-02 05:16:53 oscar Exp $
+ * \version $Id: class.exceptionhandler.php,v 1.4 2010-08-20 08:39:54 oscar Exp $
  */
 
 
@@ -115,7 +115,9 @@ class OWLException extends Exception
 			$_text .= $this->traceback($_stack[$_calls], ++$_count, $textmode);
 		}
 
-		$_html .= "</span></p>";
+		if (!$textmode) {
+			$_text .= "</span></p>";
+		}
 		return ($_text);
 	}
 

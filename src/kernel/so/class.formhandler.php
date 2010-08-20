@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Formhandler class
- * \version $Id: class.formhandler.php,v 1.3 2008-09-08 12:27:55 oscar Exp $
+ * \version $Id: class.formhandler.php,v 1.4 2010-08-20 08:39:54 oscar Exp $
  */
 
 /**
@@ -37,14 +37,14 @@ class FormHandler extends DataHandler
 	}
 
 	/**
-	 * Parse a given form ans store all data in the parent class, except values that
+	 * Parse a given form and store all data in the parent class, except values that
 	 * come from a multiple select; they will be stored locally.
 	 * \private
 	 * \param[in] $data The formdata array. 
 	 */
 	private function parse_formdata ($data = null)
 	{
-		if ($data === null) {
+		if ($data === null || empty($data)) {
 			return;
 		}
 		foreach ($data as $_k => $_v) {
@@ -65,14 +65,23 @@ class FormHandler extends DataHandler
 				}
 			}
 		}
+
 		if (ConfigHandler::get ('debug') === true) {
-			$this->set_status (FORM_STORVALUE, array ($_k, $_v));
+			$this->set_status (FORM_STORVALUE,
+				array ($this->$_k
+						, (
+							array_key_exists ($_k, $this->owl_multivalues)
+								? implode ('#', $this->owl_multivalues[$_k])
+								: $this->$_v
+						)
+				)
+			);
 		}
 	}
 
 	/**
 	 * Reimplement of the __get magic method; the parent's __get will only be called
-	 * of the requested variable name is not in the 'local' array where multi-values
+	 * if the requested variable name is not in the 'local' array where multi-values
 	 * are stored.
 	 * \public
 	 * \param[in] $variable The variable name who's value should be returned

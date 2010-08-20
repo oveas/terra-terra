@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the FileHandler class
- * \version $Id: class.filehandler.php,v 1.3 2009-03-20 10:56:30 oscar Exp $
+ * \version $Id: class.filehandler.php,v 1.4 2010-08-20 08:39:54 oscar Exp $
  */
 
 /**
@@ -101,7 +101,11 @@ class FileHandler extends _OWL
 
 	public function __destruct ()
 	{
+		if (parent::__destruct() === false) {
+			return false; // Skip the rest
+		}
 		$this->close();
+		return true;
 	}
 
 	/**

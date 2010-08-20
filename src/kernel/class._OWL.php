@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._OWL.php,v 1.4 2008-09-08 12:27:55 oscar Exp $
+ * \version $Id: class._OWL.php,v 1.5 2010-08-20 08:39:55 oscar Exp $
  */
 
 require_once (OWL_SO_INC . '/class.statushandler.php');
@@ -31,8 +31,8 @@ abstract class _OWL
 	 * Severity level of the current object status
 	 * \private
 	 */
-	private $severity;
-
+	protected $severity;
+//private $_i=0;
 	/**
 	 * This function should be called by all constuctors. It initializes
 	 * the general characteristics.
@@ -53,6 +53,8 @@ abstract class _OWL
 	 */
 	public function __destruct ()
 	{
+//echo "($this->_i)Destruct object " .get_class($this)."<br/>";
+//$this->_i++;
 	}
 
 	/**
@@ -124,12 +126,23 @@ abstract class _OWL
 		}
 		if ($this->severity >= ConfigHandler::get ('logging|log_level')) {
 			$this->signal (0, &$msg);
-			$GLOBALS['logger']->log ($msg, $status);
+			if (@is_object($GLOBALS['logger'])) {
+				$GLOBALS['logger']->log ($msg, $status);
+			}
 		}
 		if (ConfigHandler::get ('exception|throw_level') >= 0
 				&& $this->severity >= ConfigHandler::get ('exception|throw_level')) {
 			$this->signal (0, &$msg);
-			throw new OWLException ($msg, $status);
+			try {
+				throw new OWLException ($msg, $status);
+			}
+			catch (Exception $e) {
+				echo ($msg.'<br/>');
+				// Can't call myself anymore but we wanna see this message.
+				$this->severity = $this->status->set_code(OWL_STATUS_THROWERR);
+				$this->signal (0, &$msg);
+				die ($msg);
+			}
 		}
 		$loopdetect = 0;
 	}
@@ -187,7 +200,13 @@ abstract class _OWL
 	{
 		if (($_severity = $this->status->get_severity()) >= $level) {
 			if ($text === false) {
-				echo '<strong>OWL Message</strong>: ' . $this->status->get_message ($level) . ' <br />';
+				if (ConfigHandler::get ('js_signal') === true) {
+					echo '<script language="javascript">'
+						. 'alert("' . $this->status->get_message ($level) . '");'
+						. '</script>';
+				} else {
+					echo '<strong>OWL Message</strong>: ' . $this->status->get_message ($level) . ' <br />';
+				}
 			} else {
 				$text = $this->status->get_message ($level);
 			}
@@ -243,11 +262,12 @@ Register::register_code ('OWL_STATUS_BUG');
 
 Register::set_severity (OWL_ERROR);
 Register::register_code ('OWL_STATUS_ERROR');
-Register::register_code ('OWL_STATUS_BUG');
+//Register::register_code ('OWL_STATUS_BUG');
 Register::register_code ('OWL_STATUS_NOKEY');
 Register::register_code ('OWL_STATUS_IVKEY');
 
-//Register::set_severity (OWL_FATAL);
+Register::set_severity (OWL_FATAL);
+Register::register_code ('OWL_STATUS_THROWERR');
 //Register::set_severity (OWL_CRITICAL);
 
 /*

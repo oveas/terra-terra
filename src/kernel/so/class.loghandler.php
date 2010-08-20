@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Loghandler class
- * \version $Id: class.loghandler.php,v 1.3 2008-09-02 05:16:53 oscar Exp $
+ * \version $Id: class.loghandler.php,v 1.4 2010-08-20 08:39:54 oscar Exp $
  */
 
 require_once (OWL_INCLUDE . '/class._OWL.php');
@@ -56,8 +56,11 @@ class LogHandler extends _OWL
 	 */
 	public function __destruct ()
 	{
+		if (parent::__destruct() === false) {
+			return false; // Skip the rest
+		}
 		$this->close_logfile();
-		parent::__destruct();
+		return true;
 	}
 
 	/**

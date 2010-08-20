@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment in intialises some singletons
- * \version $Id: OWLloader.php,v 1.6 2009-03-20 10:56:29 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.7 2010-08-20 08:39:54 oscar Exp $
  */
 
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
@@ -20,11 +20,6 @@ define ('OWL_LIBRARY',	OWL_ROOT . '/lib');
  */
 require_once (OWL_LIBRARY . '/owl.severitycodes.php');
 require_once (OWL_ROOT . '/config.php');
-if ($GLOBALS['config']['debug']) {
-	require_once (OWL_INCLUDE . '/owl.debug.functions.php');
-} else {
-	require_once (OWL_INCLUDE . '/owl.nodebug.functions.php');
-}
 
 // Abstract classes
 require_once (OWL_SO_INC . '/class.exceptionhandler.php');
@@ -63,6 +58,15 @@ if (array_key_exists ('app', ConfigHandler::get ('configfiles'))) {
 		ConfigHandler::read_config (ConfigHandler::get ('configfiles|app'));
 	}
 }
+
+// Select the (no)debug function libraries. This can be loaded only
+// after the configuration has been parsed (where 'config|debug' is set).
+if ($GLOBALS['config']['debug']) {
+	require_once (OWL_INCLUDE . '/owl.debug.functions.php');
+} else {
+	require_once (OWL_INCLUDE . '/owl.nodebug.functions.php');
+}
+
 // Load the message file
 if (file_exists (OWL_LIBRARY . '/owl.messages.'
 				. ConfigHandler::get ('locale|lang')
@@ -77,7 +81,6 @@ if (file_exists (OWL_LIBRARY . '/owl.messages.'
 // Singeltons
 $GLOBALS['logger'] =& new LogHandler();
 
-//print_r ($GLOBALS['messages']);
 $GLOBALS['db'] =& new DBHandler(
 			  ConfigHandler::get ('dbserver')
 			, ConfigHandler::get ('dbname')

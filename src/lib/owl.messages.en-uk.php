@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in UK English
- * \version $Id: owl.messages.en-uk.php,v 1.7 2009-03-23 20:14:59 oscar Exp $
+ * \version $Id: owl.messages.en-uk.php,v 1.8 2010-08-20 08:39:55 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -16,6 +16,7 @@ $GLOBALS['messages'] = array (
 	, OWL_STATUS_WOPENERR	=> 'Error openening $p1$ for write'
 	, OWL_STATUS_NOKEY		=> 'No security key could be found'
 	, OWL_STATUS_IVKEY		=> 'Given security key does not match with this server'
+	, OWL_STATUS_THROWERR	=> 'Fatal error - no context to throw an exception'
 	, CONFIG_NOVALUE		=> 'Nonexising config value <i>$p1$</i> requested'
 	, LOGGING_OPENERR		=> 'Cannot open logfile <i>$p1$</i> for write'
 	, SESSION_INVUSERNAME	=> 'Username does not exist'
@@ -25,6 +26,7 @@ $GLOBALS['messages'] = array (
 	, SESSION_NOACCESS		=> 'You have no access to this resource'
 	, SESSION_DISABLED		=> 'SESSION_DISABLED'
 	, SESSION_IVSESSION		=> 'SESSION_IVSESSION'
+	, SESSION_WRITEERR		=> 'Session data could not be written - database object is already destroyed'
 	, DBHANDLE_OPENED		=> 'Database $p1$ opened with ID $p2$'
 	, DBHANDLE_QPREPARED	=> 'Prepared SQL statement for $p1$: <i>$p2$</i>'
 	, DBHANDLE_ROWSREAD		=> '$p2$ rows returned to $p4$ (line $p3$) with query: <i>$p1$</i>'

@@ -2,7 +2,7 @@
 /**
  * \file
  * Define the abstract Register class.
- * \version $Id: class.register.php,v 1.1 2008-08-25 05:30:44 oscar Exp $
+ * \version $Id: class.register.php,v 1.2 2010-08-20 08:39:54 oscar Exp $
  */
 
 
@@ -54,6 +54,10 @@ abstract class Register
 	{
 
 		$_mtime = microtime(true);
+		if (strpos($_mtime, '.') === false) {
+			$_mtime .= '.0';
+		}
+		
 		list ($_s, $_m) = explode ('.', $_mtime);
 		$_s = sprintf ('%X', $_s);
 		$_m = sprintf ('%X', $_m);

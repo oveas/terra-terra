@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.5 2009-03-20 10:56:30 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.6 2010-08-20 08:39:54 oscar Exp $
  */
 
 /**
@@ -54,26 +54,13 @@ class UserHandler extends _OWL
 	}
 
 	/**
-	 * Log out the current user
+	 * Log out the current user.
 	 * \protected
 	 */
 	protected function logout ()
 	{
-		session_unset();
 		session_destroy();
-		$this->session->__destruct();
-		unset ($this->session);
 		$this->dataset->reset (DATA_RESET_FULL);
-		if (is_array ($this->user_data)) {
-			foreach ($this->user_data as $_k => $_v) {
-//				$this->user_data[$_k] = '';
-				unset ($this->user_data[$_k]);
-			}
-		}
-// TODO
-// Find out why, after a logout, the session is not reinitialised, but
-// the next run *after* the logout does this....????
-//		session_regenerate_id(true);
 		$this->session =& new Session();
 	}
 
@@ -95,7 +82,7 @@ class UserHandler extends _OWL
 		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
 			$this->set_status (USER_LOGINFAIL, array (
 				  $_SESSION['username']
-				, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $password)
+				, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->password)
 			));
 		} elseif ($_dbstat === DBHANDLE_ROWSREAD) {
 			$this->user_data = $this->user_data[0]; // Shift up one level
@@ -104,7 +91,7 @@ class UserHandler extends _OWL
 			$_SESSION['uid'] = $this->user_data['uid'];
 			$this->set_status (USER_LOGGEDIN, array (
 				  $_SESSION['username']
-				, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $password)
+				, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->password)
 			));
 			return (true);
 		} else {
@@ -171,10 +158,12 @@ class UserHandler extends _OWL
 	 */
 	public function __destruct()
 	{
-		if (is_object ($this->session)) {
+		parent::__destruct();
+		if (@is_object ($this->session)) {
 			$this->session->__destruct();
 			unset ($this->session);
 		}
+		return true;
 	}
 }
 

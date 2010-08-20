@@ -2,8 +2,30 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.3 2008-09-02 05:16:53 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.4 2010-08-20 08:39:54 oscar Exp $
  */
+
+/**
+ * \name Session variable Flags
+ * These flags that define how to treat values when setting session variables
+ * @{
+ */
+//! Set variable to the given value (default)
+define ('SESSIONVAR_SET',		0);
+
+//! Unset the variable
+define ('SESSIONVAR_UNSET',		1);
+
+//! Increase the variable or set as the given value if not yet existing
+define ('SESSIONVAR_INCR',		2);
+
+//! Decrease the variable or set as the given value if not yet existing
+define ('SESSIONVAR_DECR',		3);
+
+//! Add the variable to an array. If a value already exists, it will be the first element
+define ('SESSIONVAR_ARRAY',		4);
+
+//! @}
 
 /**
  * \ingroup OWL_SO_LAYER
@@ -36,7 +58,7 @@ class SessionHandler extends _OWL
 //		ini_set ('session.gc_probability', 1);
 //		ini_set ('session.gc_divisor', 100);
 
-//		ini_set ('session.gc_maxlifetime', 1440);
+//		ini_set ('session.gc_maxlifetime', ConfigHandler::get ('session|lifetime'));
 
 		ini_set ('session.save_handler', 'user');
 		ini_set ('session.use_trans_sid', true);
@@ -59,7 +81,7 @@ class SessionHandler extends _OWL
 	 */
 	public function __destruct ()
 	{
-
+		parent::__destruct();
 	}
 
 	/**
@@ -79,7 +101,7 @@ class SessionHandler extends _OWL
 	 */
 	public function close ()
 	{
-	    return (true);
+		return (true);
 	}
 
 	/**
@@ -111,9 +133,11 @@ class SessionHandler extends _OWL
 	 */
 	public function write ($id, $data)
 	{
-		if (!is_object ($GLOBALS['db'])) {
+//		if (!array_key_exists ('db', $GLOBALS)) {
+		if (@!is_object ($GLOBALS['db'])) {
+			$this->set_status(SESSION_WRITEERR);
+			
 			// When calling from __destruct(), the db object might already be gone
-			// TODO:  somehow, the explicit destructs in OWLrundown don't seem to work??
 			return (false);
 		}
 
@@ -139,7 +163,7 @@ class SessionHandler extends _OWL
 				return (false);
 			}
 		}
-
+		
 		$this->dataset->db (&$_data, __LINE__, __FILE__);
 		return (true);
 	}
@@ -170,7 +194,7 @@ class SessionHandler extends _OWL
 	 * in the constructor.
 	 * \public
 	 * \param[in] $lifetime Session lifetime in seconds.
-	 * By default, 1440 seconds. This can be changes in the constructor
+	 * By default, 1440 seconds. This can be changed in the constructor
 	 * \return Status code
 	 */
 	public function gc ($lifetime)
@@ -204,6 +228,7 @@ Register::register_code ('SESSION_IVSESSION');
 
 Register::set_severity (OWL_ERROR);
 Register::register_code ('SESSION_NODATASET');
+Register::register_code ('SESSION_WRITEERR');
 
 //Register::set_severity (OWL_FATAL);
 //Register::set_severity (OWL_CRITICAL);
