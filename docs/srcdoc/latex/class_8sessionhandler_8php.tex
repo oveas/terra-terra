@@ -1,16 +1,70 @@
-\hypertarget{class_8sessionhandler_8php}{
-\section{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.sessionhandler.php File Reference}
-\label{class_8sessionhandler_8php}\index{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.sessionhandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.sessionhandler.php}}
-}
+\section{/home/oscar/projects/owl-\/php/src/kernel/so/class.sessionhandler.php File Reference}
+\label{class_8sessionhandler_8php}\index{/home/oscar/projects/owl-\/php/src/kernel/so/class.sessionhandler.php@{/home/oscar/projects/owl-\/php/src/kernel/so/class.sessionhandler.php}}
 \subsection*{Classes}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
 class \hyperlink{classSessionHandler}{SessionHandler}
-\begin{CompactList}\small\item\em the PHP session object \item\end{CompactList}\end{CompactItemize}
+\begin{DoxyCompactList}\small\item\em the PHP session object \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{Indent}{\bf Session variable Flags}\par
+{\em \label{_amgrp00dccbff5c763c2e3fd2c704f969c7a3}
+ These flags that define how to treat values when setting session variables }\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_8sessionhandler_8php_af9e860b1663497a46177b0ec35d6a9f5}{SESSIONVAR\_\-SET} 
+\begin{DoxyCompactList}\small\item\em Set variable to the given value (default). \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8sessionhandler_8php_a5ac16a9e50c48935c45ceae46ffdc598}{SESSIONVAR\_\-UNSET} 
+\begin{DoxyCompactList}\small\item\em Unset the variable. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8sessionhandler_8php_acf42fdbedc1bd30daaebadb12f63c75c}{SESSIONVAR\_\-INCR} 
+\begin{DoxyCompactList}\small\item\em Increase the variable or set as the given value if not yet existing. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8sessionhandler_8php_a25d82db99af8d3372efbccb0917f33cb}{SESSIONVAR\_\-DECR} 
+\begin{DoxyCompactList}\small\item\em Decrease the variable or set as the given value if not yet existing. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8sessionhandler_8php_a37ebf617beca75ce8d60f06b8c37423a}{SESSIONVAR\_\-ARRAY} 
+\begin{DoxyCompactList}\small\item\em Add the variable to an array. If a value already exists, it will be the first element. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
 
 
 \subsection{Detailed Description}
-This file defines the \hyperlink{classSessionHandler}{SessionHandler} class \begin{Desc}
-\item[Version:]\end{Desc}
-\begin{Desc}
-\item[Id]\hyperlink{class_8sessionhandler_8php}{class.sessionhandler.php},v 1.3 2008-09-02 05:16:53 oscar Exp \end{Desc}
+This file defines the \hyperlink{classSessionHandler}{SessionHandler} class \begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyParagraph}{Id}
+\hyperlink{class_8sessionhandler_8php}{class.sessionhandler.php},v 1.4 2010-\/08-\/20 08:39:54 oscar Exp 
+\end{DoxyParagraph}
+
+
+\subsection{Enumeration Type Documentation}
+\index{class.sessionhandler.php@{class.sessionhandler.php}!SESSIONVAR\_\-ARRAY@{SESSIONVAR\_\-ARRAY}}
+\index{SESSIONVAR\_\-ARRAY@{SESSIONVAR\_\-ARRAY}!class.sessionhandler.php@{class.sessionhandler.php}}
+\subsubsection[{SESSIONVAR\_\-ARRAY}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SESSIONVAR\_\-ARRAY}}\label{class_8sessionhandler_8php_a37ebf617beca75ce8d60f06b8c37423a}
+
+
+Add the variable to an array. If a value already exists, it will be the first element. 
+
+\index{class.sessionhandler.php@{class.sessionhandler.php}!SESSIONVAR\_\-DECR@{SESSIONVAR\_\-DECR}}
+\index{SESSIONVAR\_\-DECR@{SESSIONVAR\_\-DECR}!class.sessionhandler.php@{class.sessionhandler.php}}
+\subsubsection[{SESSIONVAR\_\-DECR}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SESSIONVAR\_\-DECR}}\label{class_8sessionhandler_8php_a25d82db99af8d3372efbccb0917f33cb}
+
+
+Decrease the variable or set as the given value if not yet existing. 
+
+\index{class.sessionhandler.php@{class.sessionhandler.php}!SESSIONVAR\_\-INCR@{SESSIONVAR\_\-INCR}}
+\index{SESSIONVAR\_\-INCR@{SESSIONVAR\_\-INCR}!class.sessionhandler.php@{class.sessionhandler.php}}
+\subsubsection[{SESSIONVAR\_\-INCR}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SESSIONVAR\_\-INCR}}\label{class_8sessionhandler_8php_acf42fdbedc1bd30daaebadb12f63c75c}
+
+
+Increase the variable or set as the given value if not yet existing. 
+
+\index{class.sessionhandler.php@{class.sessionhandler.php}!SESSIONVAR\_\-SET@{SESSIONVAR\_\-SET}}
+\index{SESSIONVAR\_\-SET@{SESSIONVAR\_\-SET}!class.sessionhandler.php@{class.sessionhandler.php}}
+\subsubsection[{SESSIONVAR\_\-SET}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SESSIONVAR\_\-SET}}\label{class_8sessionhandler_8php_af9e860b1663497a46177b0ec35d6a9f5}
+
+
+Set variable to the given value (default). 
+
+\index{class.sessionhandler.php@{class.sessionhandler.php}!SESSIONVAR\_\-UNSET@{SESSIONVAR\_\-UNSET}}
+\index{SESSIONVAR\_\-UNSET@{SESSIONVAR\_\-UNSET}!class.sessionhandler.php@{class.sessionhandler.php}}
+\subsubsection[{SESSIONVAR\_\-UNSET}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SESSIONVAR\_\-UNSET}}\label{class_8sessionhandler_8php_a5ac16a9e50c48935c45ceae46ffdc598}
+
+
+Unset the variable. 
+

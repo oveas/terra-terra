@@ -1,117 +1,139 @@
-\hypertarget{classOWLException}{
 \section{OWLException Class Reference}
 \label{classOWLException}\index{OWLException@{OWLException}}
-}
+
+
 Exception handler.  
 
 
 \subsection*{Public Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classOWLException_02821b324b42b7818c3fefe7638444e7}{\_\-\_\-construct} (\$msg=null, \$code=0, \hyperlink{classOWLException}{OWLException} \$caller=null)
+\hyperlink{classOWLException_a02821b324b42b7818c3fefe7638444e7}{\_\-\_\-construct} (\$msg=null, \$code=0, \hyperlink{classOWLException}{OWLException} \$caller=null)
 \item 
-\hyperlink{classOWLException_bec096884c369f08040443561ac3b164}{get\_\-trace} ()
+\hyperlink{classOWLException_abec096884c369f08040443561ac3b164}{get\_\-trace} ()
 \item 
-\hyperlink{classOWLException_cf2b94859fdebcefc22e8a75ac1a670d}{stack\_\-dump} (\$textmode=true)
-\end{CompactItemize}
+\hyperlink{classOWLException_acf2b94859fdebcefc22e8a75ac1a670d}{stack\_\-dump} (\$textmode=true)
+\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classOWLException_bd34d579d5f578f2e08a04c987dbea1a}{\$thrown\_\-code}
-\end{CompactItemize}
+\hyperlink{classOWLException_abd34d579d5f578f2e08a04c987dbea1a}{\$thrown\_\-code}
+\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classOWLException_6e857cc079ee29428791e4926fe1677a}{traceback} (\$trace, \$step, \$textmode)
-\end{CompactItemize}
+\hyperlink{classOWLException_ad5e675e393079574ff85ac862262baa0}{check\_\-hide} (\$trace)
+\item 
+\hyperlink{classOWLException_a6e857cc079ee29428791e4926fe1677a}{traceback} (\$trace, \$step, \$textmode)
+\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classOWLException_f59d0890c1de1187f43084ec617545f1}{\$caller}
-\end{CompactItemize}
+\hyperlink{classOWLException_af59d0890c1de1187f43084ec617545f1}{\$caller}
+\item 
+\hyperlink{classOWLException_a6f55c054dd20e494abe9db9a9494bdda}{\$hidden\_\-args}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Exception handler. 
-
-Extend the default PHP Exception handler . \begin{Desc}
-\item[Author:]Oscar van Eijk, Oveas Functionality Provider \end{Desc}
-\begin{Desc}
-\item[Version:]Jul 29, 2008 -- O van Eijk -- Initial version \end{Desc}
+Exception handler. Extend the default PHP Exception handler . \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Jul 29, 2008 -\/-\/ O van Eijk -\/-\/ Initial version 
+\end{DoxyVersion}
 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classOWLException_02821b324b42b7818c3fefe7638444e7}{
 \index{OWLException@{OWLException}!\_\-\_\-construct@{\_\-\_\-construct}}
 \index{\_\-\_\-construct@{\_\-\_\-construct}!OWLException@{OWLException}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}OWLException::\_\-\_\-construct (\$ {\em msg} = {\tt null}, \$ {\em code} = {\tt 0}, {\bf OWLException} \$ {\em caller} = {\tt null})}}
-\label{classOWLException_02821b324b42b7818c3fefe7638444e7}
-
-
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::\_\-\_\-construct (\$ {\em msg} = {\ttfamily null}, \/  \$ {\em code} = {\ttfamily 0}, \/  {\bf OWLException} \$ {\em caller} = {\ttfamily null})}\label{classOWLException_a02821b324b42b7818c3fefe7638444e7}
 Create the Exception handler object
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$msg}]Message text \item[\mbox{$\leftarrow$} {\em \$code}]Code of the event \item[\mbox{$\leftarrow$} {\em \$caller}]Backlink to the calling object \end{description}
-\end{Desc}
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$msg}]Message text \item[\mbox{$\leftarrow$} {\em \$code}]Code of the event \item[\mbox{$\leftarrow$} {\em \$caller}]Backlink to the calling object \end{DoxyParams}
+
+
+References \$caller, and ConfigHandler::get().
+
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classOWLException_bec096884c369f08040443561ac3b164}{
+\index{OWLException@{OWLException}!check\_\-hide@{check\_\-hide}}
+\index{check\_\-hide@{check\_\-hide}!OWLException@{OWLException}}
+\subsubsection[{check\_\-hide}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::check\_\-hide (\$ {\em trace})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classOWLException_ad5e675e393079574ff85ac862262baa0}
+Check if this traced call has arguments that should be hidden in the stackdump. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$trace}]The call \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer holding the argument index that should be hidden, of -\/1 if nothing has to be hidden. 
+\end{DoxyReturn}
+
+
+References ConfigHandler::get().
+
+
+
+Referenced by traceback().
+
 \index{OWLException@{OWLException}!get\_\-trace@{get\_\-trace}}
 \index{get\_\-trace@{get\_\-trace}!OWLException@{OWLException}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}OWLException::get\_\-trace ()}}
-\label{classOWLException_bec096884c369f08040443561ac3b164}
+\subsubsection[{get\_\-trace}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::get\_\-trace ()}\label{classOWLException_abec096884c369f08040443561ac3b164}
+Trace back the previous object in the stack 
 
+Referenced by stack\_\-dump().
 
-Trace back the previous object in the stack \hypertarget{classOWLException_cf2b94859fdebcefc22e8a75ac1a670d}{
 \index{OWLException@{OWLException}!stack\_\-dump@{stack\_\-dump}}
 \index{stack\_\-dump@{stack\_\-dump}!OWLException@{OWLException}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}OWLException::stack\_\-dump (\$ {\em textmode} = {\tt true})}}
-\label{classOWLException_cf2b94859fdebcefc22e8a75ac1a670d}
-
-
+\subsubsection[{stack\_\-dump}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::stack\_\-dump (\$ {\em textmode} = {\ttfamily true})}\label{classOWLException_acf2b94859fdebcefc22e8a75ac1a670d}
 Create an overview of the calling stack
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$textmode}]specify the format in which the stackdump should be returned; text (true, default) of HTML (false). \end{description}
-\end{Desc}
-\hypertarget{classOWLException_6e857cc079ee29428791e4926fe1677a}{
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$textmode}]specify the format in which the stackdump should be returned; text (true, default) of HTML (false). \end{DoxyParams}
+
+
+References Register::get\_\-code(), Register::get\_\-severity(), get\_\-trace(), and traceback().
+
+
+
+Referenced by OWLExceptionHandler::log\_\-exception().
+
 \index{OWLException@{OWLException}!traceback@{traceback}}
 \index{traceback@{traceback}!OWLException@{OWLException}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}OWLException::traceback (\$ {\em trace}, \$ {\em step}, \$ {\em textmode})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classOWLException_6e857cc079ee29428791e4926fe1677a}
-
-
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::traceback (\$ {\em trace}, \/  \$ {\em step}, \/  \$ {\em textmode})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classOWLException_a6e857cc079ee29428791e4926fe1677a}
 Trace a single call from the stack
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$trace}]The call \item[\mbox{$\leftarrow$} {\em \$step}]Number of the call \item[\mbox{$\leftarrow$} {\em \$textmode}]True if the stackdump is created as ASCII text, False for HTML \end{description}
-\end{Desc}
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$trace}]The call \item[\mbox{$\leftarrow$} {\em \$step}]Number of the call \item[\mbox{$\leftarrow$} {\em \$textmode}]True if the stackdump is created as ASCII text, False for HTML \end{DoxyParams}
+
+
+References check\_\-hide(), and ConfigHandler::get().
+
+
+
+Referenced by stack\_\-dump().
+
 
 
 \subsection{Member Data Documentation}
-\hypertarget{classOWLException_f59d0890c1de1187f43084ec617545f1}{
 \index{OWLException@{OWLException}!\$caller@{\$caller}}
 \index{\$caller@{\$caller}!OWLException@{OWLException}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}OWLException::\$caller\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classOWLException_f59d0890c1de1187f43084ec617545f1}
+\subsubsection[{\$caller}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::\$caller\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classOWLException_af59d0890c1de1187f43084ec617545f1}
+Backlink to the calling object 
 
+Referenced by \_\-\_\-construct().
 
-Backlink to the calling object \hypertarget{classOWLException_bd34d579d5f578f2e08a04c987dbea1a}{
-\index{OWLException@{OWLException}!\$thrown\_\-code@{\$thrown\_\-code}}
+\index{OWLException@{OWLException}!\$hidden\_\-args@{\$hidden\_\-args}}
+\index{\$hidden\_\-args@{\$hidden\_\-args}!OWLException@{OWLException}}
+\subsubsection[{\$hidden\_\-args}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::\$hidden\_\-args\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classOWLException_a6f55c054dd20e494abe9db9a9494bdda}
+Array with function call info of which arguments should be hidden \index{OWLException@{OWLException}!\$thrown\_\-code@{\$thrown\_\-code}}
 \index{\$thrown\_\-code@{\$thrown\_\-code}!OWLException@{OWLException}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}OWLException::\$thrown\_\-code}}
-\label{classOWLException_bd34d579d5f578f2e08a04c987dbea1a}
-
-
+\subsubsection[{\$thrown\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::\$thrown\_\-code}\label{classOWLException_abd34d579d5f578f2e08a04c987dbea1a}
 Store the error code to allow the logger to retrieve it 
 
-The documentation for this class was generated from the following file:\begin{CompactItemize}
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/work/eclipse/owl-php/src/kernel/so/\hyperlink{class_8exceptionhandler_8php}{class.exceptionhandler.php}\end{CompactItemize}
+/home/oscar/projects/owl-\/php/src/kernel/so/\hyperlink{class_8exceptionhandler_8php}{class.exceptionhandler.php}\end{DoxyCompactItemize}

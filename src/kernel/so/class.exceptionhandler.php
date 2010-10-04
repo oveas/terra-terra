@@ -3,7 +3,7 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.4 2010-08-20 08:39:54 oscar Exp $
+ * \version $Id: class.exceptionhandler.php,v 1.5 2010-10-04 17:40:40 oscar Exp $
  */
 
 
@@ -23,6 +23,12 @@ class OWLException extends Exception
 	private $caller;
 
 	/**
+	 * Array with function call info of which arguments should be hidden
+	 * \private
+	 */
+	private $hidden_args;
+
+		/**
 	 * Store the error code to allow the logger to retrieve it
 	 */
 	public $thrown_code;
@@ -39,8 +45,23 @@ class OWLException extends Exception
 		parent::__construct($msg, $code);
 		$this->caller = $caller;
 		$this->thrown_code = $code;
+
+		$this->hidden_args = array();
+		$_hide_arguments = ConfigHandler::get ('exception|hide_arguments', 0);
+		if ($_hide_arguments !== 0) {
+			$_hidden_args = split (',', $_hide_arguments);
+			foreach ($_hidden_args as $_argument) {
+				$_call = split (':', $_argument);
+				$_method = split ('->', $_call[0]);
+				$this->hidden_args[] = array(
+						 'class' => $_method[0]
+						,'function' => $_method[1]
+						,'argument' => $_call[1]
+					);
+			}
+		}
 	}
-  
+
 //	public function get_caller()
 //	{
 //		return $this->caller;
@@ -122,6 +143,33 @@ class OWLException extends Exception
 	}
 
 	/**
+	 * Check if this traced call has arguments that should be hidden in the stackdump.
+	 * \param[in] $trace The call
+	 * \return integer holding the argument index that should be hidden, of -1 if nothing
+	 * has to be hidden.
+	 */
+	private function check_hide ($trace)
+	{
+		if (!ConfigHandler::get ('exception|show_values', false)) {
+			return -1; // Won't be shown anyway
+		}
+		if (count($this->hidden_args) == 0) {
+			return -1;
+		}
+		if (!array_key_exists ('class', $trace) || !array_key_exists ('function', $trace)) {
+			return -1;
+		}
+
+		foreach ($this->hidden_args as $_arg) {
+			if ($trace['class'] == $_arg['class'] && 
+				$trace['function'] == $_arg['function']) {
+					return ($_arg['argument'] - 1); // We want an array index
+			}
+		}
+		return -1;
+	}
+
+	/**
 	 * Trace a single call from the stack
 	 * \private
 	 * \param[in] $trace The call
@@ -163,6 +211,10 @@ class OWLException extends Exception
 					if ($_i > 0) {
 						$_text .= ', ';
 					}
+					if ($this->check_hide($trace) == $_i) {
+						$_text .= '*****';
+						continue;
+					}
 					switch ($type) {
 						case 'boolean':
 							if ($value) {
@@ -178,12 +230,12 @@ class OWLException extends Exception
 								if ($textmode) {
 									$_text .= $value;
 								} else {
-									if (ConfigHandler::get ('exception|show_values')) {
-										if (strlen ($value) > ConfigHandler::get ('exception|max_value_len')) {
+									if (ConfigHandler::get ('exception|show_values', false)) {
+										if (strlen ($value) > ConfigHandler::get ('exception|max_value_len', 30)) {
 											$_text .= substr (
 														  $value
 														, 0
-														, ConfigHandler::get ('exception|max_value_len')
+														, ConfigHandler::get ('exception|max_value_len', 30)
 													) . '...';
 										} else {
 											$_text .= $value;
@@ -208,12 +260,12 @@ class OWLException extends Exception
 							if ($textmode) {
 								$_text .= "'$value'";
 							} else {
-								if (ConfigHandler::get ('exception|show_values')) {
-									if (strlen ($value) > ConfigHandler::get ('exception|max_value_len')) {
+								if (ConfigHandler::get ('exception|show_values', false)) {
+									if (strlen ($value) > ConfigHandler::get ('exception|max_value_len', 30)) {
 										$_text .= substr (
 													  $value
 													, 0
-													, ConfigHandler::get ('exception|max_value_len')
+													, ConfigHandler::get ('exception|max_value_len', 30)
 												) . '...';
 									} else {
 										$_text .= $value;

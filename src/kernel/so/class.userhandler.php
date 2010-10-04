@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.6 2010-08-20 08:39:54 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.7 2010-10-04 17:40:40 oscar Exp $
  */
 
 /**
@@ -179,11 +179,11 @@ Register::set_severity (OWL_SUCCESS);
 Register::register_code ('USER_LOGGEDIN');
 
 Register::set_severity (OWL_WARNING);
-Register::register_code ('USER_LOGINFAIL');
 Register::register_code ('USER_INVUSERNAME');
 Register::register_code ('USER_INVPASSWORD');
+Register::register_code ('USER_LOGINFAIL');
 
-//Register::set_severity (OWL_BUG);
+Register::set_severity (OWL_BUG);
 
 Register::set_severity (OWL_ERROR);
 Register::register_code ('USER_NODATASET');

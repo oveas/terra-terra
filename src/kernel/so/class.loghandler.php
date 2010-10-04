@@ -2,14 +2,14 @@
 /**
  * \file
  * This file defines the Loghandler class
- * \version $Id: class.loghandler.php,v 1.4 2010-08-20 08:39:54 oscar Exp $
+ * \version $Id: class.loghandler.php,v 1.5 2010-10-04 17:40:40 oscar Exp $
  */
 
-require_once (OWL_INCLUDE . '/class._OWL.php');
+//require_once (OWL_INCLUDE . '/class._OWL.php');
 
 /**
  * \ingroup OWL_SO_LAYER
- * This class handles all OWL logging 
+ * This singleton class handles all OWL logging 
  * \brief Log handler 
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 13, 2008 -- O van Eijk -- initial version
@@ -35,10 +35,17 @@ class LogHandler extends _OWL
 	private $fpointer;
 
 	/**
-	 * Class constructor
-	 * \public
+	 * integer - self reference
+	 * \private
+	 * \static
 	 */
-	public function __construct ()
+	private static $instance;
+
+	/**
+	 * Class constructor
+	 * \private
+	 */
+	private function __construct ()
 	{
 		_OWL::init();
 		$this->opened = false;
@@ -61,6 +68,29 @@ class LogHandler extends _OWL
 		}
 		$this->close_logfile();
 		return true;
+	}
+
+	/**
+	 * Implementation of the __clone() function to prevent cloning of this singleton;
+	 * it triggers a fatal (user)error
+	 * \public
+	 */
+	public function __clone ()
+	{
+		trigger_error('invalid object cloning');
+	}
+
+	/**
+	 * Return a reference to my implementation. If necessary, create that implementation first.
+	 * \public
+	 * \return Severity level
+	 */
+	public static function get_instance()
+	{
+		if (!LogHandler::$instance instanceof self) {
+			LogHandler::$instance = new self();
+		}
+		return LogHandler::$instance;
 	}
 
 	/**

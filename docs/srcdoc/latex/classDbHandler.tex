@@ -1,8 +1,10 @@
-\hypertarget{classDbHandler}{
 \section{DbHandler Class Reference}
 \label{classDbHandler}\index{DbHandler@{DbHandler}}
-}
+
+
 Database handler.  
+
+
 
 
 Inheritance diagram for DbHandler:\nopagebreak
@@ -12,6 +14,8 @@ Inheritance diagram for DbHandler:\nopagebreak
 \includegraphics[height=400pt]{classDbHandler__inherit__graph}
 \end{center}
 \end{figure}
+
+
 Collaboration diagram for DbHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -20,323 +24,673 @@ Collaboration diagram for DbHandler:\nopagebreak
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classDbHandler_e54e9d4643f41a9296167086f6a769fc}{\_\-\_\-construct} (\$srv= 'localhost', \$db= '', \$usr= '', \$pwd= '', \$dbtype= 'MySQL')
+\hyperlink{classDbHandler_a7cd6bd727d1f296eb5dbfae6ca36ab3f}{\_\-\_\-destruct} ()
 \item 
-\hyperlink{classDbHandler_7cd6bd727d1f296eb5dbfae6ca36ab3f}{\_\-\_\-destruct} ()
+\hyperlink{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}{\_\-\_\-clone} ()
 \item 
-\hyperlink{classDbHandler_c9e93cb0ab57f03b2719eebd0c0ee2ef}{create} ()
+\hyperlink{classDbHandler_ac9e93cb0ab57f03b2719eebd0c0ee2ef}{create} ()
 \item 
-\hyperlink{classDbHandler_fccbfc69ead84f8445116e050d1cfc2d}{open} ()
+\hyperlink{classDbHandler_aa342b2bd73c5f8ce05cadcba02f9cf5a}{is\_\-open} ()
 \item 
-\hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{reset} ()
+\hyperlink{classDbHandler_afccbfc69ead84f8445116e050d1cfc2d}{open} ()
 \item 
-\hyperlink{classDbHandler_00402b0e3e677108716714fbf94bea40}{table\_\-description} (\$tablename, \&\$data)
+\hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{reset} ()
 \item 
-\hyperlink{classDbHandler_baca15a312800e5522b3efd9dff036f5}{tablename} (\$tablename)
+\hyperlink{classDbHandler_a00402b0e3e677108716714fbf94bea40}{table\_\-description} (\$tablename, \&\$data)
 \item 
-\hyperlink{classDbHandler_305a3225c4760a88a06b0d55d0893962}{set\_\-query} (\$qry)
+\hyperlink{classDbHandler_abaca15a312800e5522b3efd9dff036f5}{tablename} (\$tablename)
 \item 
-\hyperlink{classDbHandler_5ebfdc2acfcb0e9cbc2861fc55c7127c}{read} (\$flag=\hyperlink{class_8dbhandler_8php_cc5178c2a582eafa4ef488ed3394b725}{DBHANDLE\_\-DATA}, \&\$data, \$quick\_\-query= '', \$line=0, \$file= '\mbox{[}unknown\mbox{]}')
+\hyperlink{classDbHandler_a305a3225c4760a88a06b0d55d0893962}{set\_\-query} (\$qry)
 \item 
-\hyperlink{classDbHandler_67d77702ff6db70f89123d3f947af143}{escape\_\-string} (\$string)
+\hyperlink{classDbHandler_a5ebfdc2acfcb0e9cbc2861fc55c7127c}{read} (\$flag=\hyperlink{class_8dbhandler_8php_acc5178c2a582eafa4ef488ed3394b725}{DBHANDLE\_\-DATA}, \&\$data, \$quick\_\-query= '', \$line=0, \$file= '\mbox{[}unknown\mbox{]}')
 \item 
-\hyperlink{classDbHandler_27c604b14c39913d34630e5504979b15}{unescape\_\-string} (\$string)
-\end{CompactItemize}
+\hyperlink{classDbHandler_a67d77702ff6db70f89123d3f947af143}{escape\_\-string} (\$string)
+\item 
+\hyperlink{classDbHandler_a27c604b14c39913d34630e5504979b15}{unescape\_\-string} (\$string)
+\item 
+\hyperlink{classDbHandler_a3f9a0832d2de73e1f698b6d3c33569e6}{prepare\_\-read} (\$values=array(), \$tables=array(), \$searches=array(), \$joins=array())
+\item 
+\hyperlink{classDbHandler_a973e07b361c889b6ff44e93cc7665ca4}{prepare\_\-delete} (\$searches=array())
+\item 
+\hyperlink{classDbHandler_a9bddaca38be2544f6fdd4d82b3cd1c50}{prepare\_\-update} (\$values=array(), \$searches=array(), \$joins=array())
+\item 
+\hyperlink{classDbHandler_a79e3237271c150c4f4f6c2593060567e}{prepare\_\-insert} (\$values=array())
+\item 
+\hyperlink{classDbHandler_a654166283f0f61f918cc34a5071f838c}{write} (\$rows=false, \$line=0, \$file= '\mbox{[}unknown\mbox{]}')
+\item 
+\hyperlink{classDbHandler_ad6be57a8dbb86dc1648c79b96128fc97}{last\_\-inserted\_\-id} ()
+\item 
+\hyperlink{classDbHandler_ad3d2853bbd2d1962710907e34afb424f}{close} ()
+\item 
+\hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
+\item 
+\hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
+\item 
+\hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
+\item 
+\hyperlink{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}{traceback} (\&\$text=false, \$depth=0)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classDbHandler_ae9bfc8bdc6a8077adb342702aaffc9af}{get\_\-instance} ()
+\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
-\end{CompactItemize}
+\hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
+\item 
+\hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
+\item 
+\hyperlink{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
+\item 
+\hyperlink{class__OWL_a576829692a3b66e3d518853bf43abae3}{set\_\-high\_\-severity} (\&\$object=null)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}{\$severity}
+\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classDbHandler_9cf52ba614981a0082063d57290d3b7c}{connect} ()
+\hyperlink{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}{\_\-\_\-construct} (\$srv= 'localhost', \$db= '', \$usr= '', \$pwd= '', \$dbtype= 'MySQL')
 \item 
-\hyperlink{classDbHandler_130e49aa639fecb46ce6719ddcb0d72f}{dbread} (\$qry, \&\$rows, \&\$fields)
-\end{CompactItemize}
+\hyperlink{classDbHandler_a9cf52ba614981a0082063d57290d3b7c}{connect} ()
+\item 
+\hyperlink{classDbHandler_a130e49aa639fecb46ce6719ddcb0d72f}{dbread} (\$qry, \&\$rows, \&\$fields)
+\item 
+\hyperlink{classDbHandler_a7896419cf143412ad74ca8fccb11fb6e}{expand\_\-field} (\&\$field, \$quotes=false)
+\item 
+\hyperlink{classDbHandler_a2b6376ab821eb4aa2f086d852099c6c1}{tablelist} (\$tables)
+\item 
+\hyperlink{classDbHandler_a7715991ea990f6610a95844bebd75800}{where\_\-clause} (\$searches, \$joins)
+\item 
+\hyperlink{classDbHandler_aa734a4d3767057b811be5b4621d55cdd}{update\_\-list} (\$updates)
+\item 
+\hyperlink{classDbHandler_af7a315d2a47dc9f2d2f897ca87981c00}{extract\_\-tablelist} (\$fields)
+\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classDbHandler_d38e1c3312815c8ad4093957881092ff}{\$id}
+\hyperlink{classDbHandler_ad38e1c3312815c8ad4093957881092ff}{\$id}
 \item 
-\hyperlink{classDbHandler_f6e9f493be56617cb533763bb2a0e85a}{\$errno}
+\hyperlink{classDbHandler_af6e9f493be56617cb533763bb2a0e85a}{\$errno}
 \item 
-\hyperlink{classDbHandler_de79e11156abbfc180864beb5b9df377}{\$error}
+\hyperlink{classDbHandler_ade79e11156abbfc180864beb5b9df377}{\$error}
 \item 
-\hyperlink{classDbHandler_faac5248f9ee59786b48a7b51f318940}{\$database}
+\hyperlink{classDbHandler_afaac5248f9ee59786b48a7b51f318940}{\$database}
 \item 
-\hyperlink{classDbHandler_56a7ae4bd7d842c85f3fe8052aecbfef}{\$rowcount}
+\hyperlink{classDbHandler_a56a7ae4bd7d842c85f3fe8052aecbfef}{\$rowcount}
 \item 
-\hyperlink{classDbHandler_71e36ffbff0d157b1d91dc000bc6f821}{\$opened}
+\hyperlink{classDbHandler_a71e36ffbff0d157b1d91dc000bc6f821}{\$opened}
 \item 
-\hyperlink{classDbHandler_19af96598e7f72673fc5da26ad77731b}{\$db\_\-prefix}
+\hyperlink{classDbHandler_a19af96598e7f72673fc5da26ad77731b}{\$db\_\-prefix}
 \item 
-\hyperlink{classDbHandler_d671b5596b37dac6d48a660a07775965}{\$query}
-\end{CompactItemize}
+\hyperlink{classDbHandler_ad671b5596b37dac6d48a660a07775965}{\$query}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classDbHandler_a0859a862eac3e8ba14c6d04de0396710}{\$instance}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Database handler. 
+Database handler. Handler for all database I/O. This singleton class uses an (abstract) class for the actual storage. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+May 15, 2007 -\/-\/ O van Eijk -\/-\/ initial version for Terra-\/Terra 
 
-Handler for all database I/O. This class uses an (abstract) class for the actual storage. \begin{Desc}
-\item[Author:]Oscar van Eijk, Oveas Functionality Provider \end{Desc}
-\begin{Desc}
-\item[Version:]May 15, 2007 -- O van Eijk -- initial version for Terra-Terra 
-
-Jul 29, 2008 -- O van Eijk -- Modified version for \hyperlink{classOWL}{OWL} \end{Desc}
+Jul 29, 2008 -\/-\/ O van Eijk -\/-\/ Modified version for \hyperlink{classOWL}{OWL} 
+\end{DoxyVersion}
 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classDbHandler_e54e9d4643f41a9296167086f6a769fc}{
 \index{DbHandler@{DbHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
 \index{\_\-\_\-construct@{\_\-\_\-construct}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\_\-\_\-construct (\$ {\em srv} = {\tt 'localhost'}, \$ {\em db} = {\tt ''}, \$ {\em usr} = {\tt ''}, \$ {\em pwd} = {\tt ''}, \$ {\em dbtype} = {\tt 'MySQL'})}}
-\label{classDbHandler_e54e9d4643f41a9296167086f6a769fc}
-
-
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\_\-\_\-construct (\$ {\em srv} = {\ttfamily 'localhost'}, \/  \$ {\em db} = {\ttfamily ''}, \/  \$ {\em usr} = {\ttfamily ''}, \/  \$ {\em pwd} = {\ttfamily ''}, \/  \$ {\em dbtype} = {\ttfamily 'MySQL'})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}
 Class constructor; opens the database connection.
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$srv}]Database server \item[\mbox{$\leftarrow$} {\em \$db}]Database name \item[\mbox{$\leftarrow$} {\em \$usr}]Username to connect with \item[\mbox{$\leftarrow$} {\em \$pwd}]Password to use for connection \item[\mbox{$\leftarrow$} {\em \$dbtype}]Database type (reserved for future use, currently only MySQL is implemented) \end{description}
-\end{Desc}
-\hypertarget{classDbHandler_7cd6bd727d1f296eb5dbfae6ca36ab3f}{
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$srv}]Database server \item[\mbox{$\leftarrow$} {\em \$db}]Database name \item[\mbox{$\leftarrow$} {\em \$usr}]Username to connect with \item[\mbox{$\leftarrow$} {\em \$pwd}]Password to use for connection \item[\mbox{$\leftarrow$} {\em \$dbtype}]Database type (reserved for future use, currently only MySQL is implemented) \end{DoxyParams}
+
+
+References ConfigHandler::get(), \_\-OWL::init(), and \_\-OWL::set\_\-status().
+
 \index{DbHandler@{DbHandler}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\_\-\_\-destruct ()}}
-\label{classDbHandler_7cd6bd727d1f296eb5dbfae6ca36ab3f}
-
-
+\subsubsection[{\_\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\_\-\_\-destruct ()}\label{classDbHandler_a7cd6bd727d1f296eb5dbfae6ca36ab3f}
 Class destructor; closes the database connection 
 
-Reimplemented from \hyperlink{class__OWL_44fd2222476a3109286cc82d92b6bbcc}{\_\-OWL}.
+Reimplemented from \hyperlink{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}{\_\-OWL}.
+
+
+
+References close().
+
+
 
 \subsection{Member Function Documentation}
-\hypertarget{classDbHandler_c9e93cb0ab57f03b2719eebd0c0ee2ef}{
-\index{DbHandler@{DbHandler}!create@{create}}
-\index{create@{create}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::create ()}}
-\label{classDbHandler_c9e93cb0ab57f03b2719eebd0c0ee2ef}
+\index{DbHandler@{DbHandler}!\_\-\_\-clone@{\_\-\_\-clone}}
+\index{\_\-\_\-clone@{\_\-\_\-clone}!DbHandler@{DbHandler}}
+\subsubsection[{\_\-\_\-clone}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\_\-\_\-clone ()}\label{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}
+Implementation of the \hyperlink{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}{\_\-\_\-clone()} function to prevent cloning of this singleton; it triggers a fatal (user)error \index{DbHandler@{DbHandler}!check@{check}}
+\index{check@{check}!DbHandler@{DbHandler}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
 
 
-Create a new database
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the severity level was correct ( below the max), otherwise false 
+\end{DoxyReturn}
 
-\begin{Desc}
-\item[Returns:]Severity level \end{Desc}
-\hypertarget{classDbHandler_9cf52ba614981a0082063d57290d3b7c}{
+
+References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::traceback().
+
+
+
+Referenced by SessionHandler::write().
+
+\index{DbHandler@{DbHandler}!close@{close}}
+\index{close@{close}!DbHandler@{DbHandler}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::close ()}\label{classDbHandler_ad3d2853bbd2d1962710907e34afb424f}
+Close the database and disconnect from the server. This function is called on program shutdown. Although the database will be closed already by PHP, this function might be called at any time manually; is also updates the 'opened' variable. 
+
+Referenced by \_\-\_\-destruct(), and create().
+
 \index{DbHandler@{DbHandler}!connect@{connect}}
 \index{connect@{connect}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::connect ()\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classDbHandler_9cf52ba614981a0082063d57290d3b7c}
-
-
+\subsubsection[{connect}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::connect ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a9cf52ba614981a0082063d57290d3b7c}
 Connect to the database server
 
-\begin{Desc}
-\item[Returns:]True on success, otherwise False \end{Desc}
-\hypertarget{classDbHandler_fccbfc69ead84f8445116e050d1cfc2d}{
-\index{DbHandler@{DbHandler}!open@{open}}
-\index{open@{open}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::open ()}}
-\label{classDbHandler_fccbfc69ead84f8445116e050d1cfc2d}
+\begin{DoxyReturn}{Returns}
+True on success, otherwise False 
+\end{DoxyReturn}
 
 
-Opens the database connection.
-
-\begin{Desc}
-\item[Returns:]Severity level \end{Desc}
-\hypertarget{classDbHandler_9982df4830f05803935bb31bac7fae3d}{
-\index{DbHandler@{DbHandler}!reset@{reset}}
-\index{reset@{reset}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::reset ()}}
-\label{classDbHandler_9982df4830f05803935bb31bac7fae3d}
+References ConfigHandler::get(), and \_\-OWL::set\_\-status().
 
 
-Reset the object 
 
-Reimplemented from \hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{\_\-OWL}.\hypertarget{classDbHandler_00402b0e3e677108716714fbf94bea40}{
-\index{DbHandler@{DbHandler}!table\_\-description@{table\_\-description}}
-\index{table\_\-description@{table\_\-description}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::table\_\-description (\$ {\em tablename}, \&\$ {\em data})}}
-\label{classDbHandler_00402b0e3e677108716714fbf94bea40}
+Referenced by create(), and open().
 
+\index{DbHandler@{DbHandler}!create@{create}}
+\index{create@{create}!DbHandler@{DbHandler}}
+\subsubsection[{create}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::create ()}\label{classDbHandler_ac9e93cb0ab57f03b2719eebd0c0ee2ef}
+Create a new database
 
-Get a description of a database table
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$tablename}]The tablename \item[\mbox{$\rightarrow$} {\em \$data}]Indexed array holding all fields =$>$ datatypes \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]Indexed array holding all fields =$>$ datatypes \end{Desc}
-\hypertarget{classDbHandler_baca15a312800e5522b3efd9dff036f5}{
-\index{DbHandler@{DbHandler}!tablename@{tablename}}
-\index{tablename@{tablename}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::tablename (\$ {\em tablename})}}
-\label{classDbHandler_baca15a312800e5522b3efd9dff036f5}
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
 
 
-Extend a tablename with the database prefix
+References close(), connect(), and \_\-OWL::set\_\-status().
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$tablename}]Table name to extend \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]Extended table name \end{Desc}
-\hypertarget{classDbHandler_305a3225c4760a88a06b0d55d0893962}{
-\index{DbHandler@{DbHandler}!set\_\-query@{set\_\-query}}
-\index{set\_\-query@{set\_\-query}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::set\_\-query (\$ {\em qry})}}
-\label{classDbHandler_305a3225c4760a88a06b0d55d0893962}
-
-
-Set the database query. This function should only be used if the query is too complex to be set with any of the prepare() functions.
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$qry}]A complete database query. All tablenames must be prefixed (with the \hyperlink{classDbHandler_baca15a312800e5522b3efd9dff036f5}{tablename()} function)! \end{description}
-\end{Desc}
-\hypertarget{classDbHandler_5ebfdc2acfcb0e9cbc2861fc55c7127c}{
-\index{DbHandler@{DbHandler}!read@{read}}
-\index{read@{read}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::read (\$ {\em flag} = {\tt {\bf DBHANDLE\_\-DATA}}, \&\$ {\em data}, \$ {\em quick\_\-query} = {\tt ''}, \$ {\em line} = {\tt 0}, \$ {\em file} = {\tt '\mbox{[}unknown\mbox{]}'})}}
-\label{classDbHandler_5ebfdc2acfcb0e9cbc2861fc55c7127c}
-
-
-Read from the database. The return value depends on the flag. By default, the selected rows(s) are returned in a 2d array.
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$flag}]Flag that identifies how data should be returned; as data (default) or the number of rows \item[\mbox{$\rightarrow$} {\em \$data}]The retrieved value in a formatt depending on the flag:\begin{itemize}
-\item DBHANDLE\_\-ROWCOUNT; Number of matching rows\item DBHANDLE\_\-FIELDCOUNT; Number of fields per rows\item DBHANDLE\_\-TOTALFIELDCOUNT; Total number op fields\item DBHANDLE\_\-DATA (default); A 2D array with all data\item DBHANDLE\_\-SINGLEROW; The first matching row in a 1D array\item DBHANDLE\_\-SINGLEFIELD; The first matching field \end{itemize}
-\item[\mbox{$\leftarrow$} {\em \$quick\_\-query}]Database query string. If empty, \$this-$>$query is used \item[\mbox{$\leftarrow$} {\em \$line}]Line number of this call \item[\mbox{$\leftarrow$} {\em \$file}]File that made the call to this method \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]Severity level \end{Desc}
-\hypertarget{classDbHandler_130e49aa639fecb46ce6719ddcb0d72f}{
 \index{DbHandler@{DbHandler}!dbread@{dbread}}
 \index{dbread@{dbread}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::dbread (\$ {\em qry}, \&\$ {\em rows}, \&\$ {\em fields})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classDbHandler_130e49aa639fecb46ce6719ddcb0d72f}
-
-
+\subsubsection[{dbread}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::dbread (\$ {\em qry}, \/  \&\$ {\em rows}, \/  \&\$ {\em fields})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a130e49aa639fecb46ce6719ddcb0d72f}
 Read from the database.
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$qry}]Database query string. \item[\mbox{$\rightarrow$} {\em \$rows}]Number of rows matched \item[\mbox{$\rightarrow$} {\em \$fields}]Number of fields per row \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]A 2D array with all data, or false on failures \end{Desc}
-\hypertarget{classDbHandler_67d77702ff6db70f89123d3f947af143}{
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$qry}]Database query string. \item[\mbox{$\rightarrow$} {\em \$rows}]Number of rows matched \item[\mbox{$\rightarrow$} {\em \$fields}]Number of fields per row \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A 2D array with all data, or false on failures 
+\end{DoxyReturn}
+
+
+Referenced by read().
+
 \index{DbHandler@{DbHandler}!escape\_\-string@{escape\_\-string}}
 \index{escape\_\-string@{escape\_\-string}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::escape\_\-string (\$ {\em string})}}
-\label{classDbHandler_67d77702ff6db70f89123d3f947af143}
-
-
+\subsubsection[{escape\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::escape\_\-string (\$ {\em string})}\label{classDbHandler_a67d77702ff6db70f89123d3f947af143}
 Call the current DBtype's escape function for character strings.
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[{\em \$string}]The string that should be escaped \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]The escaped string \end{Desc}
-\hypertarget{classDbHandler_27c604b14c39913d34630e5504979b15}{
-\index{DbHandler@{DbHandler}!unescape\_\-string@{unescape\_\-string}}
-\index{unescape\_\-string@{unescape\_\-string}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::unescape\_\-string (\$ {\em string})}}
-\label{classDbHandler_27c604b14c39913d34630e5504979b15}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \$string}]The string that should be escaped \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The escaped string 
+\end{DoxyReturn}
+\index{DbHandler@{DbHandler}!expand\_\-field@{expand\_\-field}}
+\index{expand\_\-field@{expand\_\-field}!DbHandler@{DbHandler}}
+\subsubsection[{expand\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::expand\_\-field (\&\$ {\em field}, \/  \$ {\em quotes} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a7896419cf143412ad74ca8fccb11fb6e}
+Change a fieldname in the format 'table\#field' to the format '`\mbox{[}prefix\mbox{]}table.field`' 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftrightarrow$} {\em \$field}]Fieldname to expand \item[\mbox{$\leftarrow$} {\em \$quotes}]If true, add backquotes \end{DoxyParams}
 
 
-Call the current DBtype's unescape function for character strings.
+References tablename().
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[{\em \$string}]The string that should be unescaped \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]The unescaped string \end{Desc}
-\hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
+
+
+Referenced by prepare\_\-insert(), prepare\_\-read(), update\_\-list(), and where\_\-clause().
+
+\index{DbHandler@{DbHandler}!extract\_\-tablelist@{extract\_\-tablelist}}
+\index{extract\_\-tablelist@{extract\_\-tablelist}!DbHandler@{DbHandler}}
+\subsubsection[{extract\_\-tablelist}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::extract\_\-tablelist (\$ {\em fields})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_af7a315d2a47dc9f2d2f897ca87981c00}
+Create an array with unique tablenames as extracted from an array of fields in the format (table::field =$>$ value, ...) 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$fields}]An array with fields \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array with tablenames 
+\end{DoxyReturn}
+
+
+Referenced by prepare\_\-delete(), prepare\_\-insert(), and prepare\_\-update().
+
+\index{DbHandler@{DbHandler}!get\_\-instance@{get\_\-instance}}
+\index{get\_\-instance@{get\_\-instance}!DbHandler@{DbHandler}}
+\subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static DbHandler::get\_\-instance ()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classDbHandler_ae9bfc8bdc6a8077adb342702aaffc9af}
+Return a reference to my implementation. If necessary, create that implementation first.
+
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References \$instance, and ConfigHandler::get().
+
+
+
+Referenced by SessionHandler::\_\-\_\-construct(), and DataHandler::DataHandler().
+
+\index{DbHandler@{DbHandler}!get\_\-severity@{get\_\-severity}}
+\index{get\_\-severity@{get\_\-severity}!DbHandler@{DbHandler}}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+Get the current object severity level.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status severity level 
+\end{DoxyReturn}
+
+
+References \_\-OWL::\$status.
+
+
+
+Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandler::set\_\-key().
+
+\index{DbHandler@{DbHandler}!get\_\-status@{get\_\-status}}
+\index{get\_\-status@{get\_\-status}!DbHandler@{DbHandler}}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+Get the current object status.
+
+\begin{DoxyReturn}{Returns}
+Object's status code 
+\end{DoxyReturn}
+
+
+Referenced by FormHandler::\_\-\_\-get().
+
 \index{DbHandler@{DbHandler}!init@{init}}
 \index{init@{init}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
-\label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
-
-
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
+References OWL::factory().
+
+
+
+Referenced by DOMElement::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), OWL::\_\-\_\-construct(), and DataHandler::DataHandler().
+
+\index{DbHandler@{DbHandler}!is\_\-open@{is\_\-open}}
+\index{is\_\-open@{is\_\-open}!DbHandler@{DbHandler}}
+\subsubsection[{is\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::is\_\-open ()}\label{classDbHandler_aa342b2bd73c5f8ce05cadcba02f9cf5a}
+Let other objects check if th database connection is opened
+
+\begin{DoxyReturn}{Returns}
+boolean, True when opened 
+\end{DoxyReturn}
+\index{DbHandler@{DbHandler}!last\_\-inserted\_\-id@{last\_\-inserted\_\-id}}
+\index{last\_\-inserted\_\-id@{last\_\-inserted\_\-id}!DbHandler@{DbHandler}}
+\subsubsection[{last\_\-inserted\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::last\_\-inserted\_\-id ()}\label{classDbHandler_ad6be57a8dbb86dc1648c79b96128fc97}
+Return the last ID after a newly inserted record holding an AUTO\_\-INCREMENT field
+
+\begin{DoxyReturn}{Returns}
+The number that was last inserted 
+\end{DoxyReturn}
+\index{DbHandler@{DbHandler}!open@{open}}
+\index{open@{open}!DbHandler@{DbHandler}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::open ()}\label{classDbHandler_afccbfc69ead84f8445116e050d1cfc2d}
+Opens the database connection.
+
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References connect(), and \_\-OWL::set\_\-status().
+
+
+
+Referenced by read().
+
+\index{DbHandler@{DbHandler}!prepare\_\-delete@{prepare\_\-delete}}
+\index{prepare\_\-delete@{prepare\_\-delete}!DbHandler@{DbHandler}}
+\subsubsection[{prepare\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::prepare\_\-delete (\$ {\em searches} = {\ttfamily array()})}\label{classDbHandler_a973e07b361c889b6ff44e93cc7665ca4}
+Prepare a delete query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$searches}]Given values that have to match \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References extract\_\-tablelist(), \_\-OWL::set\_\-status(), tablelist(), and where\_\-clause().
+
+\index{DbHandler@{DbHandler}!prepare\_\-insert@{prepare\_\-insert}}
+\index{prepare\_\-insert@{prepare\_\-insert}!DbHandler@{DbHandler}}
+\subsubsection[{prepare\_\-insert}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::prepare\_\-insert (\$ {\em values} = {\ttfamily array()})}\label{classDbHandler_a79e3237271c150c4f4f6c2593060567e}
+Prepare an insert query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$values}]Given database values \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References expand\_\-field(), extract\_\-tablelist(), \_\-OWL::set\_\-status(), and tablename().
+
+\index{DbHandler@{DbHandler}!prepare\_\-read@{prepare\_\-read}}
+\index{prepare\_\-read@{prepare\_\-read}!DbHandler@{DbHandler}}
+\subsubsection[{prepare\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::prepare\_\-read (\$ {\em values} = {\ttfamily array()}, \/  \$ {\em tables} = {\ttfamily array()}, \/  \$ {\em searches} = {\ttfamily array()}, \/  \$ {\em joins} = {\ttfamily array()})}\label{classDbHandler_a3f9a0832d2de73e1f698b6d3c33569e6}
+Prepare a read query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$values}]Values that will be read \item[\mbox{$\leftarrow$} {\em \$tables}]Tables from which will be read \item[\mbox{$\leftarrow$} {\em \$searches}]Given values that have to match \item[\mbox{$\leftarrow$} {\em \$joins}]Joins on the given tables \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References expand\_\-field(), \_\-OWL::set\_\-status(), tablelist(), and where\_\-clause().
+
+\index{DbHandler@{DbHandler}!prepare\_\-update@{prepare\_\-update}}
+\index{prepare\_\-update@{prepare\_\-update}!DbHandler@{DbHandler}}
+\subsubsection[{prepare\_\-update}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::prepare\_\-update (\$ {\em values} = {\ttfamily array()}, \/  \$ {\em searches} = {\ttfamily array()}, \/  \$ {\em joins} = {\ttfamily array()})}\label{classDbHandler_a9bddaca38be2544f6fdd4d82b3cd1c50}
+Prepare an update query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$values}]Given database values \item[\mbox{$\leftarrow$} {\em \$searches}]List of fieldnames that will be used in the where clause. All fields not in this array will be updated! \item[\mbox{$\leftarrow$} {\em \$joins}]Joins on the given tables \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References extract\_\-tablelist(), \_\-OWL::set\_\-status(), tablelist(), update\_\-list(), and where\_\-clause().
+
+\index{DbHandler@{DbHandler}!read@{read}}
+\index{read@{read}!DbHandler@{DbHandler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::read (\$ {\em flag} = {\ttfamily {\bf DBHANDLE\_\-DATA}}, \/  \&\$ {\em data}, \/  \$ {\em quick\_\-query} = {\ttfamily ''}, \/  \$ {\em line} = {\ttfamily 0}, \/  \$ {\em file} = {\ttfamily '\mbox{[}unknown\mbox{]}'})}\label{classDbHandler_a5ebfdc2acfcb0e9cbc2861fc55c7127c}
+Read from the database. The return value depends on the flag. By default, the selected rows(s) are returned in a 2d array.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$flag}]Flag that identifies how data should be returned; as data (default) or the number of rows \item[\mbox{$\rightarrow$} {\em \$data}]The retrieved value in a formatt depending on the flag:
+\begin{DoxyItemize}
+\item DBHANDLE\_\-ROWCOUNT; Number of matching rows
+\item DBHANDLE\_\-FIELDCOUNT; Number of fields per rows
+\item DBHANDLE\_\-TOTALFIELDCOUNT; Total number op fields
+\item DBHANDLE\_\-DATA (default); A 2D array with all data
+\item DBHANDLE\_\-SINGLEROW; The first matching row in a 1D array
+\item DBHANDLE\_\-SINGLEFIELD; The first matching field 
+\end{DoxyItemize}\item[\mbox{$\leftarrow$} {\em \$quick\_\-query}]Database query string. If empty, \$this-\/$>$query is used \item[\mbox{$\leftarrow$} {\em \$line}]Line number of this call \item[\mbox{$\leftarrow$} {\em \$file}]File that made the call to this method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References dbread(), open(), and \_\-OWL::set\_\-status().
+
+
+
+Referenced by table\_\-description().
+
+\index{DbHandler@{DbHandler}!reset@{reset}}
+\index{reset@{reset}!DbHandler@{DbHandler}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::reset ()}\label{classDbHandler_a9982df4830f05803935bb31bac7fae3d}
+Reset the object 
+
+Reimplemented from \hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{\_\-OWL}.
+
+\index{DbHandler@{DbHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
+\index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!DbHandler@{DbHandler}}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+
+Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
+
+\index{DbHandler@{DbHandler}!set\_\-query@{set\_\-query}}
+\index{set\_\-query@{set\_\-query}!DbHandler@{DbHandler}}
+\subsubsection[{set\_\-query}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::set\_\-query (\$ {\em qry})}\label{classDbHandler_a305a3225c4760a88a06b0d55d0893962}
+Set the database query. This function should only be used if the query is too complex to be set with any of the prepare() functions.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$qry}]A complete database query. All tablenames must be prefixed (with the \hyperlink{classDbHandler_abaca15a312800e5522b3efd9dff036f5}{tablename()} function)! \end{DoxyParams}
+\index{DbHandler@{DbHandler}!set\_\-status@{set\_\-status}}
+\index{set\_\-status@{set\_\-status}!DbHandler@{DbHandler}}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+Set the current object status to the specified value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+
+
+References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
+
+
+
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), FormHandler::\_\-\_\-get(), DataHandler::\_\-\_\-get(), DataHandler::\_\-\_\-set(), FileHandler::close(), connect(), create(), DataHandler::DataHandler(), UserHandler::login(), FileHandler::open(), open(), LogHandler::open\_\-logfile(), FormHandler::parse\_\-formdata(), DataHandler::prepare(), prepare\_\-delete(), prepare\_\-insert(), prepare\_\-read(), prepare\_\-update(), read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), table\_\-description(), and write().
+
+\index{DbHandler@{DbHandler}!signal@{signal}}
+\index{signal@{signal}!DbHandler@{DbHandler}}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+Display the message for the current object status
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The severity level for this object 
+\end{DoxyReturn}
+
+
+References ConfigHandler::get().
+
+
+
+Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
+
+\index{DbHandler@{DbHandler}!table\_\-description@{table\_\-description}}
+\index{table\_\-description@{table\_\-description}!DbHandler@{DbHandler}}
+\subsubsection[{table\_\-description}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::table\_\-description (\$ {\em tablename}, \/  \&\$ {\em data})}\label{classDbHandler_a00402b0e3e677108716714fbf94bea40}
+Get a description of a database table
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$tablename}]The tablename \item[\mbox{$\rightarrow$} {\em \$data}]Indexed array holding all fields =$>$ datatypes \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Indexed array holding all fields =$>$ datatypes 
+\end{DoxyReturn}
+
+
+References read(), and \_\-OWL::set\_\-status().
+
+\index{DbHandler@{DbHandler}!tablelist@{tablelist}}
+\index{tablelist@{tablelist}!DbHandler@{DbHandler}}
+\subsubsection[{tablelist}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::tablelist (\$ {\em tables})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a2b6376ab821eb4aa2f086d852099c6c1}
+Create a list with tables, including prefixes, that can be interpreted by SQL
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$tables}]An array with tablenames \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The tablelist 
+\end{DoxyReturn}
+
+
+References tablename().
+
+
+
+Referenced by prepare\_\-delete(), prepare\_\-read(), and prepare\_\-update().
+
+\index{DbHandler@{DbHandler}!tablename@{tablename}}
+\index{tablename@{tablename}!DbHandler@{DbHandler}}
+\subsubsection[{tablename}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::tablename (\$ {\em tablename})}\label{classDbHandler_abaca15a312800e5522b3efd9dff036f5}
+Extend a tablename with the database prefix
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$tablename}]Table name to extend \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Extended table name 
+\end{DoxyReturn}
+
+
+Referenced by expand\_\-field(), prepare\_\-insert(), and tablelist().
+
+\index{DbHandler@{DbHandler}!traceback@{traceback}}
+\index{traceback@{traceback}!DbHandler@{DbHandler}}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity code of the failing object 
+\end{DoxyReturn}
+
+
+References \_\-OWL::signal().
+
+
+
+Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read().
+
+\index{DbHandler@{DbHandler}!unescape\_\-string@{unescape\_\-string}}
+\index{unescape\_\-string@{unescape\_\-string}!DbHandler@{DbHandler}}
+\subsubsection[{unescape\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::unescape\_\-string (\$ {\em string})}\label{classDbHandler_a27c604b14c39913d34630e5504979b15}
+Call the current DBtype's unescape function for character strings.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \$string}]The string that should be unescaped \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The unescaped string 
+\end{DoxyReturn}
+\index{DbHandler@{DbHandler}!update\_\-list@{update\_\-list}}
+\index{update\_\-list@{update\_\-list}!DbHandler@{DbHandler}}
+\subsubsection[{update\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::update\_\-list (\$ {\em updates})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_aa734a4d3767057b811be5b4621d55cdd}
+Create a string with 'field = value, ...' combinations in SQL format
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$updates}]Array with fields to update (fieldname =$>$ values) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The UPDATE statement 
+\end{DoxyReturn}
+
+
+References expand\_\-field().
+
+
+
+Referenced by prepare\_\-update().
+
+\index{DbHandler@{DbHandler}!where\_\-clause@{where\_\-clause}}
+\index{where\_\-clause@{where\_\-clause}!DbHandler@{DbHandler}}
+\subsubsection[{where\_\-clause}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::where\_\-clause (\$ {\em searches}, \/  \$ {\em joins})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a7715991ea990f6610a95844bebd75800}
+Create a WHERE clause that can be interpreted by SQL
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$searches}]Array with values (fieldname =$>$ values) \item[\mbox{$\leftarrow$} {\em \$joins}]Array of arrays with values (field, linktype, field) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The WHERE clause 
+\end{DoxyReturn}
+
+
+References expand\_\-field().
+
+
+
+Referenced by prepare\_\-delete(), prepare\_\-read(), and prepare\_\-update().
+
+\index{DbHandler@{DbHandler}!write@{write}}
+\index{write@{write}!DbHandler@{DbHandler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::write (\$ {\em rows} = {\ttfamily false}, \/  \$ {\em line} = {\ttfamily 0}, \/  \$ {\em file} = {\ttfamily '\mbox{[}unknown\mbox{]}'})}\label{classDbHandler_a654166283f0f61f918cc34a5071f838c}
+Database inserts and updates. The number of affected rows is stored in \$this-\/$>$rowcount
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\rightarrow$} {\em \$rows}](optional) The number of affected rows \item[\mbox{$\leftarrow$} {\em \$line}]Line number of this call \item[\mbox{$\leftarrow$} {\em \$file}]File that made the call to this method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References \_\-OWL::set\_\-status().
+
+
+
 \subsection{Member Data Documentation}
-\hypertarget{classDbHandler_d38e1c3312815c8ad4093957881092ff}{
-\index{DbHandler@{DbHandler}!\$id@{\$id}}
-\index{\$id@{\$id}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$id\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classDbHandler_d38e1c3312815c8ad4093957881092ff}
-
-
-integer - DB Handle ID \hypertarget{classDbHandler_f6e9f493be56617cb533763bb2a0e85a}{
-\index{DbHandler@{DbHandler}!\$errno@{\$errno}}
-\index{\$errno@{\$errno}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$errno\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classDbHandler_f6e9f493be56617cb533763bb2a0e85a}
-
-
-integer - Error ID \hypertarget{classDbHandler_de79e11156abbfc180864beb5b9df377}{
-\index{DbHandler@{DbHandler}!\$error@{\$error}}
-\index{\$error@{\$error}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$error\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classDbHandler_de79e11156abbfc180864beb5b9df377}
-
-
-string - Error text \hypertarget{classDbHandler_faac5248f9ee59786b48a7b51f318940}{
 \index{DbHandler@{DbHandler}!\$database@{\$database}}
 \index{\$database@{\$database}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$database\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classDbHandler_faac5248f9ee59786b48a7b51f318940}
+\subsubsection[{\$database}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$database\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_afaac5248f9ee59786b48a7b51f318940}
+array -\/ Database location and authorization indo \index{DbHandler@{DbHandler}!\$db\_\-prefix@{\$db\_\-prefix}}
+\index{\$db\_\-prefix@{\$db\_\-prefix}!DbHandler@{DbHandler}}
+\subsubsection[{\$db\_\-prefix}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$db\_\-prefix\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a19af96598e7f72673fc5da26ad77731b}
+string -\/ database prefix \index{DbHandler@{DbHandler}!\$errno@{\$errno}}
+\index{\$errno@{\$errno}!DbHandler@{DbHandler}}
+\subsubsection[{\$errno}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$errno\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_af6e9f493be56617cb533763bb2a0e85a}
+integer -\/ Error ID \index{DbHandler@{DbHandler}!\$error@{\$error}}
+\index{\$error@{\$error}!DbHandler@{DbHandler}}
+\subsubsection[{\$error}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$error\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_ade79e11156abbfc180864beb5b9df377}
+string -\/ Error text \index{DbHandler@{DbHandler}!\$id@{\$id}}
+\index{\$id@{\$id}!DbHandler@{DbHandler}}
+\subsubsection[{\$id}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$id\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_ad38e1c3312815c8ad4093957881092ff}
+integer -\/ DB Handle ID \index{DbHandler@{DbHandler}!\$instance@{\$instance}}
+\index{\$instance@{\$instance}!DbHandler@{DbHandler}}
+\subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$instance\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classDbHandler_a0859a862eac3e8ba14c6d04de0396710}
+integer -\/ self reference 
 
+Referenced by get\_\-instance().
 
-array - Database location and authorization indo \hypertarget{classDbHandler_56a7ae4bd7d842c85f3fe8052aecbfef}{
-\index{DbHandler@{DbHandler}!\$rowcount@{\$rowcount}}
-\index{\$rowcount@{\$rowcount}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$rowcount\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classDbHandler_56a7ae4bd7d842c85f3fe8052aecbfef}
-
-
-integer - Row counter \hypertarget{classDbHandler_71e36ffbff0d157b1d91dc000bc6f821}{
 \index{DbHandler@{DbHandler}!\$opened@{\$opened}}
 \index{\$opened@{\$opened}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$opened\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classDbHandler_71e36ffbff0d157b1d91dc000bc6f821}
-
-
-boolean - True if the database is opened \hypertarget{classDbHandler_19af96598e7f72673fc5da26ad77731b}{
-\index{DbHandler@{DbHandler}!\$db\_\-prefix@{\$db\_\-prefix}}
-\index{\$db\_\-prefix@{\$db\_\-prefix}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$db\_\-prefix\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classDbHandler_19af96598e7f72673fc5da26ad77731b}
-
-
-string - database prefix \hypertarget{classDbHandler_d671b5596b37dac6d48a660a07775965}{
-\index{DbHandler@{DbHandler}!\$query@{\$query}}
+\subsubsection[{\$opened}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$opened\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a71e36ffbff0d157b1d91dc000bc6f821}
+boolean -\/ True if the database is opened \index{DbHandler@{DbHandler}!\$query@{\$query}}
 \index{\$query@{\$query}!DbHandler@{DbHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$query\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classDbHandler_d671b5596b37dac6d48a660a07775965}
+\subsubsection[{\$query}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$query\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_ad671b5596b37dac6d48a660a07775965}
+string -\/ Query string \index{DbHandler@{DbHandler}!\$rowcount@{\$rowcount}}
+\index{\$rowcount@{\$rowcount}!DbHandler@{DbHandler}}
+\subsubsection[{\$rowcount}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$rowcount\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a56a7ae4bd7d842c85f3fe8052aecbfef}
+integer -\/ Row counter \index{DbHandler@{DbHandler}!\$severity@{\$severity}}
+\index{\$severity@{\$severity}!DbHandler@{DbHandler}}
+\subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
+Severity level of the current object status 
 
-
-string - Query string 
-
-The documentation for this class was generated from the following file:\begin{CompactItemize}
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/work/eclipse/owl-php/src/kernel/so/\hyperlink{class_8dbhandler_8php}{class.dbhandler.php}\end{CompactItemize}
+/home/oscar/projects/owl-\/php/src/kernel/so/\hyperlink{class_8dbhandler_8php}{class.dbhandler.php}\end{DoxyCompactItemize}

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Formhandler class
- * \version $Id: class.formhandler.php,v 1.4 2010-08-20 08:39:54 oscar Exp $
+ * \version $Id: class.formhandler.php,v 1.5 2010-10-04 17:40:40 oscar Exp $
  */
 
 /**
@@ -21,12 +21,19 @@ class FormHandler extends DataHandler
 	private $owl_multivalues;
 
 	/**
-	 * Class constructor; Parse the incoming formdata.
-	 * \public
+	 * integer - self reference
+	 * \private
+	 * \static
 	 */
-	public function __construct ()
+	private static $instance;
+
+	/**
+	 * Class constructor; Parse the incoming formdata.
+	 * \private
+	 */
+	private function __construct ()
 	{
-		parent::__construct();
+		parent::DataHandler();
 		$this->set_tablename ('_FORMDATA_'); // Use a dummy tablename
 
 		$this->owl_multivalues = array();
@@ -36,6 +43,19 @@ class FormHandler extends DataHandler
 		$this->set_status (OWL_STATUS_OK);
 	}
 
+	/**
+	 * Return a reference to my implementation. If necessary, create that implementation first.
+	 * \public
+	 * \return Severity level
+	 */
+	public static function get_instance()
+	{
+		if (!FormHandler::$instance instanceof self) {
+			FormHandler::$instance = new self();
+		}
+		return FormHandler::$instance;
+	}
+	
 	/**
 	 * Parse a given form and store all data in the parent class, except values that
 	 * come from a multiple select; they will be stored locally.

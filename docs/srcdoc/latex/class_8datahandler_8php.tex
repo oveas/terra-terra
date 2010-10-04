@@ -1,126 +1,110 @@
-\hypertarget{class_8datahandler_8php}{
-\section{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.datahandler.php File Reference}
-\label{class_8datahandler_8php}\index{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.datahandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.datahandler.php}}
-}
+\section{/home/oscar/projects/owl-\/php/src/kernel/so/class.datahandler.php File Reference}
+\label{class_8datahandler_8php}\index{/home/oscar/projects/owl-\/php/src/kernel/so/class.datahandler.php@{/home/oscar/projects/owl-\/php/src/kernel/so/class.datahandler.php}}
 \subsection*{Classes}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
 class \hyperlink{classDataHandler}{DataHandler}
-\begin{CompactList}\small\item\em The \hyperlink{classOWL}{OWL} Data object. \item\end{CompactList}\end{CompactItemize}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classOWL}{OWL} Data object. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{Indent}{\bf Query preparation tools}\par
-{\em These flags define what type of queries can be prepared }\begin{CompactItemize}
+{\em \label{_amgrpad8db5e6574bdedbb71390d7196cd25c}
+ These flags define what type of queries can be prepared }\begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{class_8datahandler_8php_21c8184f96d445f8f608321e0e8fffc9}{DATA\_\-UNPREPARED} 
-\begin{CompactList}\small\item\em Default value; no query prepared yet. \item\end{CompactList}\item 
-enum \hyperlink{class_8datahandler_8php_c28f74b49007773d24ca2207baac6d32}{DATA\_\-READ} 
-\begin{CompactList}\small\item\em Read data from the database. \item\end{CompactList}\item 
-enum \hyperlink{class_8datahandler_8php_5d8b54a2eb4767a05a2e577c2db9193a}{DATA\_\-WRITE} 
-\begin{CompactList}\small\item\em Write new data to the database. \item\end{CompactList}\item 
-enum \hyperlink{class_8datahandler_8php_9a817a8e9190bfc1eb884f9b4c3cb7c8}{DATA\_\-UPDATE} 
-\begin{CompactList}\small\item\em Update data in the database. \item\end{CompactList}\item 
-enum \hyperlink{class_8datahandler_8php_b4fa180fa2d24c38e425ff9ca4c913fa}{DATA\_\-DELETE} 
-\begin{CompactList}\small\item\em Remove data from the database. \item\end{CompactList}\end{CompactItemize}
+enum \hyperlink{class_8datahandler_8php_a21c8184f96d445f8f608321e0e8fffc9}{DATA\_\-UNPREPARED} 
+\begin{DoxyCompactList}\small\item\em Default value; no query prepared yet. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8datahandler_8php_ac28f74b49007773d24ca2207baac6d32}{DATA\_\-READ} 
+\begin{DoxyCompactList}\small\item\em Read data from the database. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8datahandler_8php_a5d8b54a2eb4767a05a2e577c2db9193a}{DATA\_\-WRITE} 
+\begin{DoxyCompactList}\small\item\em Write new data to the database. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8datahandler_8php_a9a817a8e9190bfc1eb884f9b4c3cb7c8}{DATA\_\-UPDATE} 
+\begin{DoxyCompactList}\small\item\em Update data in the database. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8datahandler_8php_ab4fa180fa2d24c38e425ff9ca4c913fa}{DATA\_\-DELETE} 
+\begin{DoxyCompactList}\small\item\em Remove data from the database. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Reset flags}\par
-{\em These flags how an object should be performed. All values includes all lower values as well! }\begin{CompactItemize}
+{\em \label{_amgrp143448a659afeaa8616ca6e3acdb751b}
+ These flags how an object should be performed. All values includes all lower values as well! }\begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{class_8datahandler_8php_9266811d651cb3ff8c5fdf00111e677b}{DATA\_\-RESET\_\-STATUS} 
-\begin{CompactList}\small\item\em Reset object status only. \item\end{CompactList}\item 
-enum \hyperlink{class_8datahandler_8php_19a99423705b41e563424ae76d7fe184}{DATA\_\-RESET\_\-PREPARE} 
-\begin{CompactList}\small\item\em Reset prepared queries as well. \item\end{CompactList}\item 
-enum \hyperlink{class_8datahandler_8php_3ce9f928f9ba75096925bd4157246bbb}{DATA\_\-RESET\_\-META} 
-\begin{CompactList}\small\item\em Remove all locks and joins. \item\end{CompactList}\item 
-enum \hyperlink{class_8datahandler_8php_2a28429433990da242faa223d5a49f0a}{DATA\_\-RESET\_\-FULL} 
-\begin{CompactList}\small\item\em Clean all data. \item\end{CompactList}\end{CompactItemize}
+enum \hyperlink{class_8datahandler_8php_a9266811d651cb3ff8c5fdf00111e677b}{DATA\_\-RESET\_\-STATUS} 
+\begin{DoxyCompactList}\small\item\em Reset object status only. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8datahandler_8php_a19a99423705b41e563424ae76d7fe184}{DATA\_\-RESET\_\-PREPARE} 
+\begin{DoxyCompactList}\small\item\em Reset prepared queries as well. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8datahandler_8php_a3ce9f928f9ba75096925bd4157246bbb}{DATA\_\-RESET\_\-META} 
+\begin{DoxyCompactList}\small\item\em Remove all locks and joins. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8datahandler_8php_a2a28429433990da242faa223d5a49f0a}{DATA\_\-RESET\_\-FULL} 
+\begin{DoxyCompactList}\small\item\em Clean all data. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 
 
 \subsection{Detailed Description}
-This file defines the \hyperlink{classDataHandler}{DataHandler} class \begin{Desc}
-\item[Version:]\end{Desc}
-\begin{Desc}
-\item[Id]\hyperlink{class_8datahandler_8php}{class.datahandler.php},v 1.2 2008-08-28 18:12:52 oscar Exp \end{Desc}
+This file defines the \hyperlink{classDataHandler}{DataHandler} class \begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyParagraph}{Id}
+\hyperlink{class_8datahandler_8php}{class.datahandler.php},v 1.3 2008-\/09-\/08 12:27:55 oscar Exp 
+\end{DoxyParagraph}
 
 
 \subsection{Enumeration Type Documentation}
-\hypertarget{class_8datahandler_8php_b4fa180fa2d24c38e425ff9ca4c913fa}{
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-DELETE@{DATA\_\-DELETE}}
 \index{DATA\_\-DELETE@{DATA\_\-DELETE}!class.datahandler.php@{class.datahandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-DELETE}}}
-\label{class_8datahandler_8php_b4fa180fa2d24c38e425ff9ca4c913fa}
+\subsubsection[{DATA\_\-DELETE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-DELETE}}\label{class_8datahandler_8php_ab4fa180fa2d24c38e425ff9ca4c913fa}
 
 
 Remove data from the database. 
 
-\hypertarget{class_8datahandler_8php_c28f74b49007773d24ca2207baac6d32}{
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-READ@{DATA\_\-READ}}
 \index{DATA\_\-READ@{DATA\_\-READ}!class.datahandler.php@{class.datahandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-READ}}}
-\label{class_8datahandler_8php_c28f74b49007773d24ca2207baac6d32}
+\subsubsection[{DATA\_\-READ}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-READ}}\label{class_8datahandler_8php_ac28f74b49007773d24ca2207baac6d32}
 
 
 Read data from the database. 
 
-\hypertarget{class_8datahandler_8php_2a28429433990da242faa223d5a49f0a}{
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-RESET\_\-FULL@{DATA\_\-RESET\_\-FULL}}
 \index{DATA\_\-RESET\_\-FULL@{DATA\_\-RESET\_\-FULL}!class.datahandler.php@{class.datahandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-RESET\_\-FULL}}}
-\label{class_8datahandler_8php_2a28429433990da242faa223d5a49f0a}
+\subsubsection[{DATA\_\-RESET\_\-FULL}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-RESET\_\-FULL}}\label{class_8datahandler_8php_a2a28429433990da242faa223d5a49f0a}
 
 
 Clean all data. 
 
-\hypertarget{class_8datahandler_8php_3ce9f928f9ba75096925bd4157246bbb}{
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-RESET\_\-META@{DATA\_\-RESET\_\-META}}
 \index{DATA\_\-RESET\_\-META@{DATA\_\-RESET\_\-META}!class.datahandler.php@{class.datahandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-RESET\_\-META}}}
-\label{class_8datahandler_8php_3ce9f928f9ba75096925bd4157246bbb}
+\subsubsection[{DATA\_\-RESET\_\-META}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-RESET\_\-META}}\label{class_8datahandler_8php_a3ce9f928f9ba75096925bd4157246bbb}
 
 
 Remove all locks and joins. 
 
-\hypertarget{class_8datahandler_8php_19a99423705b41e563424ae76d7fe184}{
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-RESET\_\-PREPARE@{DATA\_\-RESET\_\-PREPARE}}
 \index{DATA\_\-RESET\_\-PREPARE@{DATA\_\-RESET\_\-PREPARE}!class.datahandler.php@{class.datahandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-RESET\_\-PREPARE}}}
-\label{class_8datahandler_8php_19a99423705b41e563424ae76d7fe184}
+\subsubsection[{DATA\_\-RESET\_\-PREPARE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-RESET\_\-PREPARE}}\label{class_8datahandler_8php_a19a99423705b41e563424ae76d7fe184}
 
 
 Reset prepared queries as well. 
 
-\hypertarget{class_8datahandler_8php_9266811d651cb3ff8c5fdf00111e677b}{
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-RESET\_\-STATUS@{DATA\_\-RESET\_\-STATUS}}
 \index{DATA\_\-RESET\_\-STATUS@{DATA\_\-RESET\_\-STATUS}!class.datahandler.php@{class.datahandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-RESET\_\-STATUS}}}
-\label{class_8datahandler_8php_9266811d651cb3ff8c5fdf00111e677b}
+\subsubsection[{DATA\_\-RESET\_\-STATUS}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-RESET\_\-STATUS}}\label{class_8datahandler_8php_a9266811d651cb3ff8c5fdf00111e677b}
 
 
 Reset object status only. 
 
-\hypertarget{class_8datahandler_8php_21c8184f96d445f8f608321e0e8fffc9}{
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-UNPREPARED@{DATA\_\-UNPREPARED}}
 \index{DATA\_\-UNPREPARED@{DATA\_\-UNPREPARED}!class.datahandler.php@{class.datahandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-UNPREPARED}}}
-\label{class_8datahandler_8php_21c8184f96d445f8f608321e0e8fffc9}
+\subsubsection[{DATA\_\-UNPREPARED}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-UNPREPARED}}\label{class_8datahandler_8php_a21c8184f96d445f8f608321e0e8fffc9}
 
 
 Default value; no query prepared yet. 
 
-\hypertarget{class_8datahandler_8php_9a817a8e9190bfc1eb884f9b4c3cb7c8}{
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-UPDATE@{DATA\_\-UPDATE}}
 \index{DATA\_\-UPDATE@{DATA\_\-UPDATE}!class.datahandler.php@{class.datahandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-UPDATE}}}
-\label{class_8datahandler_8php_9a817a8e9190bfc1eb884f9b4c3cb7c8}
+\subsubsection[{DATA\_\-UPDATE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-UPDATE}}\label{class_8datahandler_8php_a9a817a8e9190bfc1eb884f9b4c3cb7c8}
 
 
 Update data in the database. 
 
-\hypertarget{class_8datahandler_8php_5d8b54a2eb4767a05a2e577c2db9193a}{
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-WRITE@{DATA\_\-WRITE}}
 \index{DATA\_\-WRITE@{DATA\_\-WRITE}!class.datahandler.php@{class.datahandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-WRITE}}}
-\label{class_8datahandler_8php_5d8b54a2eb4767a05a2e577c2db9193a}
+\subsubsection[{DATA\_\-WRITE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-WRITE}}\label{class_8datahandler_8php_a5d8b54a2eb4767a05a2e577c2db9193a}
 
 
 Write new data to the database. 

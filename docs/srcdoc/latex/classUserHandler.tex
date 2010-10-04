@@ -1,8 +1,10 @@
-\hypertarget{classUserHandler}{
 \section{UserHandler Class Reference}
 \label{classUserHandler}\index{UserHandler@{UserHandler}}
-}
+
+
 the user object  
+
+
 
 
 Inheritance diagram for UserHandler:\nopagebreak
@@ -12,207 +14,337 @@ Inheritance diagram for UserHandler:\nopagebreak
 \includegraphics[height=400pt]{classUserHandler__inherit__graph}
 \end{center}
 \end{figure}
+
+
 Collaboration diagram for UserHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=74pt]{classUserHandler__coll__graph}
+\includegraphics[height=400pt]{classUserHandler__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classUserHandler_624054e9693139a3fe5af0ef3b757f04}{\_\-\_\-construct} (\$username)
+\hyperlink{classUserHandler_a624054e9693139a3fe5af0ef3b757f04}{\_\-\_\-construct} (\$username)
 \item 
-\hyperlink{classUserHandler_3e1f6381ed79caf6e1a255fb0a9cc386}{\_\-\_\-destruct} ()
-\end{CompactItemize}
+\hyperlink{classUserHandler_a3e1f6381ed79caf6e1a255fb0a9cc386}{\_\-\_\-destruct} ()
+\item 
+\hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
+\item 
+\hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
+\item 
+\hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
+\item 
+\hyperlink{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}{traceback} (\&\$text=false, \$depth=0)
+\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classUserHandler_e7a2d59eee65560ac96b860e828bb445}{\$user\_\-data}
-\end{CompactItemize}
+\hyperlink{classUserHandler_ae7a2d59eee65560ac96b860e828bb445}{\$user\_\-data}
+\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classUserHandler_8000feaceda9d3c37fc56b6d1969b8f7}{logout} ()
+\hyperlink{classUserHandler_a8000feaceda9d3c37fc56b6d1969b8f7}{logout} ()
 \item 
-\hyperlink{classUserHandler_7a0b269a54d9430f48d6490c1fe14ecd}{login} (\$password)
+\hyperlink{classUserHandler_a7a0b269a54d9430f48d6490c1fe14ecd}{login} (\$password)
 \item 
-\hyperlink{classUserHandler_fbcc9a275b547cca0bd4cff567b054a0}{set\_\-username} (\$username)
+\hyperlink{classUserHandler_afbcc9a275b547cca0bd4cff567b054a0}{set\_\-username} (\$username)
 \item 
-\hyperlink{classUserHandler_76e8c8b88c8d92f2d03645e810b9253c}{get\_\-username} ()
+\hyperlink{classUserHandler_a76e8c8b88c8d92f2d03645e810b9253c}{get\_\-username} ()
 \item 
-\hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
+\hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
-\hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{reset} ()
-\end{CompactItemize}
+\hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\item 
+\hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
+\item 
+\hyperlink{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
+\item 
+\hyperlink{class__OWL_a576829692a3b66e3d518853bf43abae3}{set\_\-high\_\-severity} (\&\$object=null)
+\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classUserHandler_f097b7fd1ee085b46a6c34e071508a7f}{\$session}
+\hyperlink{classUserHandler_af097b7fd1ee085b46a6c34e071508a7f}{\$session}
 \item 
-\hyperlink{classUserHandler_c38c1ea50b2820ed03781bdbe8eb2e08}{\$dataset}
-\end{CompactItemize}
+\hyperlink{classUserHandler_ac38c1ea50b2820ed03781bdbe8eb2e08}{\$dataset}
+\item 
+\hyperlink{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}{\$severity}
+\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classUserHandler_4e9fb2f7763124ea84ebaf3b744d2d88}{read\_\-userdata} ()
+\hyperlink{classUserHandler_a4e9fb2f7763124ea84ebaf3b744d2d88}{read\_\-userdata} ()
 \item 
-\hyperlink{classUserHandler_6b2bbbdb4f1a08578c219a933880a1de}{hash\_\-password} (\$password)
-\end{CompactItemize}
+\hyperlink{classUserHandler_a6b2bbbdb4f1a08578c219a933880a1de}{hash\_\-password} (\$password)
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-the user object 
-
-This class creates user sessions and handles logging in and out \begin{Desc}
-\item[Author:]Oscar van Eijk, Oveas Functionality Provider \end{Desc}
-\begin{Desc}
-\item[Version:]Aug 27, 2008 -- O van Eijk -- initial version \end{Desc}
+the user object This class creates user sessions and handles logging in and out \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Aug 27, 2008 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classUserHandler_624054e9693139a3fe5af0ef3b757f04}{
 \index{UserHandler@{UserHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
 \index{\_\-\_\-construct@{\_\-\_\-construct}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\_\-\_\-construct (\$ {\em username})}}
-\label{classUserHandler_624054e9693139a3fe5af0ef3b757f04}
-
-
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\_\-\_\-construct (\$ {\em username})}\label{classUserHandler_a624054e9693139a3fe5af0ef3b757f04}
 Class constructor; setup the user environment
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$username}]Username. \end{description}
-\end{Desc}
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$username}]Username. \end{DoxyParams}
 
 
-Reimplemented in \hyperlink{classUser_b8a717f17626301cc8b7815a43ea5b5b}{User}.\hypertarget{classUserHandler_3e1f6381ed79caf6e1a255fb0a9cc386}{
+Reimplemented in \hyperlink{classUser_ab8a717f17626301cc8b7815a43ea5b5b}{User}.
+
+
+
+References \_\-OWL::init(), read\_\-userdata(), \_\-OWL::set\_\-status(), and set\_\-username().
+
 \index{UserHandler@{UserHandler}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\_\-\_\-destruct ()}}
-\label{classUserHandler_3e1f6381ed79caf6e1a255fb0a9cc386}
-
-
+\subsubsection[{\_\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\_\-\_\-destruct ()}\label{classUserHandler_a3e1f6381ed79caf6e1a255fb0a9cc386}
 Class destructor 
 
-Reimplemented from \hyperlink{class__OWL_44fd2222476a3109286cc82d92b6bbcc}{\_\-OWL}.
+Reimplemented from \hyperlink{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}{\_\-OWL}.
 
-Reimplemented in \hyperlink{classUser_ccd20149a7414612c1505e022eb63ffc}{User}.
+
+
+Reimplemented in \hyperlink{classUser_accd20149a7414612c1505e022eb63ffc}{User}.
+
+
 
 \subsection{Member Function Documentation}
-\hypertarget{classUserHandler_8000feaceda9d3c37fc56b6d1969b8f7}{
-\index{UserHandler@{UserHandler}!logout@{logout}}
-\index{logout@{logout}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::logout ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
-\label{classUserHandler_8000feaceda9d3c37fc56b6d1969b8f7}
+\index{UserHandler@{UserHandler}!check@{check}}
+\index{check@{check}!UserHandler@{UserHandler}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
 
 
-Log out the current user 
-
-Reimplemented in \hyperlink{classUser_06ed977c877b02b420233d4f18a6a668}{User}.\hypertarget{classUserHandler_7a0b269a54d9430f48d6490c1fe14ecd}{
-\index{UserHandler@{UserHandler}!login@{login}}
-\index{login@{login}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::login (\$ {\em password})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
-\label{classUserHandler_7a0b269a54d9430f48d6490c1fe14ecd}
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the severity level was correct ( below the max), otherwise false 
+\end{DoxyReturn}
 
 
-Attempt to log in with the current user and the given password
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$password}]The user provided password \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]True on success, False otherwise \end{Desc}
-\hypertarget{classUserHandler_4e9fb2f7763124ea84ebaf3b744d2d88}{
-\index{UserHandler@{UserHandler}!read\_\-userdata@{read\_\-userdata}}
-\index{read\_\-userdata@{read\_\-userdata}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::read\_\-userdata ()\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classUserHandler_4e9fb2f7763124ea84ebaf3b744d2d88}
+References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::traceback().
 
 
-When a new session starts for a use that was logged in before retrieve the userdata back from the database \hypertarget{classUserHandler_6b2bbbdb4f1a08578c219a933880a1de}{
-\index{UserHandler@{UserHandler}!hash\_\-password@{hash\_\-password}}
-\index{hash\_\-password@{hash\_\-password}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::hash\_\-password (\$ {\em password})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classUserHandler_6b2bbbdb4f1a08578c219a933880a1de}
+
+Referenced by SessionHandler::write().
+
+\index{UserHandler@{UserHandler}!get\_\-severity@{get\_\-severity}}
+\index{get\_\-severity@{get\_\-severity}!UserHandler@{UserHandler}}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+Get the current object severity level.
 
 
-Encrypt a given password
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$password}]Given password in plain text format \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]The encrypted password \end{Desc}
-\hypertarget{classUserHandler_fbcc9a275b547cca0bd4cff567b054a0}{
-\index{UserHandler@{UserHandler}!set\_\-username@{set\_\-username}}
-\index{set\_\-username@{set\_\-username}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::set\_\-username (\$ {\em username})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
-\label{classUserHandler_fbcc9a275b547cca0bd4cff567b054a0}
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status severity level 
+\end{DoxyReturn}
 
 
-Set the username \begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$username}]Username \end{description}
-\end{Desc}
-\hypertarget{classUserHandler_76e8c8b88c8d92f2d03645e810b9253c}{
+References \_\-OWL::\$status.
+
+
+
+Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandler::set\_\-key().
+
+\index{UserHandler@{UserHandler}!get\_\-status@{get\_\-status}}
+\index{get\_\-status@{get\_\-status}!UserHandler@{UserHandler}}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+Get the current object status.
+
+\begin{DoxyReturn}{Returns}
+Object's status code 
+\end{DoxyReturn}
+
+
+Referenced by FormHandler::\_\-\_\-get().
+
 \index{UserHandler@{UserHandler}!get\_\-username@{get\_\-username}}
 \index{get\_\-username@{get\_\-username}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::get\_\-username ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
-\label{classUserHandler_76e8c8b88c8d92f2d03645e810b9253c}
-
-
+\subsubsection[{get\_\-username}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::get\_\-username ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUserHandler_a76e8c8b88c8d92f2d03645e810b9253c}
 Return the username of the current session 
 
-Reimplemented in \hyperlink{classUser_1348ddf190d4df2518665fb51305a902}{User}.\hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
+Reimplemented in \hyperlink{classUser_a1348ddf190d4df2518665fb51305a902}{User}.
+
+\index{UserHandler@{UserHandler}!hash\_\-password@{hash\_\-password}}
+\index{hash\_\-password@{hash\_\-password}!UserHandler@{UserHandler}}
+\subsubsection[{hash\_\-password}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::hash\_\-password (\$ {\em password})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classUserHandler_a6b2bbbdb4f1a08578c219a933880a1de}
+Encrypt a given password
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$password}]Given password in plain text format \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The encrypted password 
+\end{DoxyReturn}
+
+
+References ConfigHandler::get().
+
+
+
+Referenced by login().
+
 \index{UserHandler@{UserHandler}!init@{init}}
 \index{init@{init}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
-\label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+
+References OWL::factory().
 
 
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_2f2a042bcf31965194c03033df0edc9b}{
+
+Referenced by DOMElement::\_\-\_\-construct(), \_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), and DataHandler::DataHandler().
+
+\index{UserHandler@{UserHandler}!login@{login}}
+\index{login@{login}!UserHandler@{UserHandler}}
+\subsubsection[{login}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::login (\$ {\em password})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUserHandler_a7a0b269a54d9430f48d6490c1fe14ecd}
+Attempt to log in with the current user and the given password
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$password}]The user provided password \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, False otherwise 
+\end{DoxyReturn}
+
+
+References ConfigHandler::get(), hash\_\-password(), \_\-OWL::set\_\-status(), set\_\-username(), and \_\-OWL::traceback().
+
+\index{UserHandler@{UserHandler}!logout@{logout}}
+\index{logout@{logout}!UserHandler@{UserHandler}}
+\subsubsection[{logout}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::logout ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUserHandler_a8000feaceda9d3c37fc56b6d1969b8f7}
+Log out the current user. 
+
+Reimplemented in \hyperlink{classUser_a06ed977c877b02b420233d4f18a6a668}{User}.
+
+\index{UserHandler@{UserHandler}!read\_\-userdata@{read\_\-userdata}}
+\index{read\_\-userdata@{read\_\-userdata}!UserHandler@{UserHandler}}
+\subsubsection[{read\_\-userdata}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::read\_\-userdata ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classUserHandler_a4e9fb2f7763124ea84ebaf3b744d2d88}
+When a new session starts for a use that was logged in before retrieve the userdata back from the database 
+
+References \_\-OWL::set\_\-status().
+
+
+
+Referenced by \_\-\_\-construct().
+
 \index{UserHandler@{UserHandler}!reset@{reset}}
 \index{reset@{reset}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\tt  \mbox{[}protected, inherited\mbox{]}}}}
-\label{class__OWL_2f2a042bcf31965194c03033df0edc9b}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
+General reset function for all objects. Should be called after each non-\/fatal error 
+
+Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}.
 
 
-General reset function for all objects. Should be called after each non-fatal error 
 
-Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbHandler}.
+References \_\-OWL::reset\_\-calltree().
+
+
+
+Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
+
+\index{UserHandler@{UserHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
+\index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!UserHandler@{UserHandler}}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+
+Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
+
+\index{UserHandler@{UserHandler}!set\_\-status@{set\_\-status}}
+\index{set\_\-status@{set\_\-status}!UserHandler@{UserHandler}}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+Set the current object status to the specified value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+
+
+References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
+
+
+
+Referenced by \_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-get(), DataHandler::\_\-\_\-get(), DataHandler::\_\-\_\-set(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), DataHandler::DataHandler(), login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), FormHandler::parse\_\-formdata(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), read\_\-userdata(), DataHandler::reset(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), DbHandler::table\_\-description(), and DbHandler::write().
+
+\index{UserHandler@{UserHandler}!set\_\-username@{set\_\-username}}
+\index{set\_\-username@{set\_\-username}!UserHandler@{UserHandler}}
+\subsubsection[{set\_\-username}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::set\_\-username (\$ {\em username})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUserHandler_afbcc9a275b547cca0bd4cff567b054a0}
+Set the username 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$username}]Username \end{DoxyParams}
+
+
+Referenced by \_\-\_\-construct(), login(), User::login(), and User::logout().
+
+\index{UserHandler@{UserHandler}!signal@{signal}}
+\index{signal@{signal}!UserHandler@{UserHandler}}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+Display the message for the current object status
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The severity level for this object 
+\end{DoxyReturn}
+
+
+References ConfigHandler::get().
+
+
+
+Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
+
+\index{UserHandler@{UserHandler}!traceback@{traceback}}
+\index{traceback@{traceback}!UserHandler@{UserHandler}}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity code of the failing object 
+\end{DoxyReturn}
+
+
+References \_\-OWL::signal().
+
+
+
+Referenced by \_\-OWL::check(), login(), and SessionHandler::read().
+
+
 
 \subsection{Member Data Documentation}
-\hypertarget{classUserHandler_f097b7fd1ee085b46a6c34e071508a7f}{
-\index{UserHandler@{UserHandler}!\$session@{\$session}}
-\index{\$session@{\$session}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\$session\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
-\label{classUserHandler_f097b7fd1ee085b46a6c34e071508a7f}
-
-
-The PHP session object \hypertarget{classUserHandler_c38c1ea50b2820ed03781bdbe8eb2e08}{
 \index{UserHandler@{UserHandler}!\$dataset@{\$dataset}}
 \index{\$dataset@{\$dataset}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\$dataset\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
-\label{classUserHandler_c38c1ea50b2820ed03781bdbe8eb2e08}
-
-
-Link to a datahandler object. This dataset is used as an interface to all database IO. \hypertarget{classUserHandler_e7a2d59eee65560ac96b860e828bb445}{
-\index{UserHandler@{UserHandler}!\$user\_\-data@{\$user\_\-data}}
+\subsubsection[{\$dataset}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\$dataset\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUserHandler_ac38c1ea50b2820ed03781bdbe8eb2e08}
+Link to a datahandler object. This dataset is used as an interface to all database IO. \index{UserHandler@{UserHandler}!\$session@{\$session}}
+\index{\$session@{\$session}!UserHandler@{UserHandler}}
+\subsubsection[{\$session}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\$session\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUserHandler_af097b7fd1ee085b46a6c34e071508a7f}
+The PHP session object \index{UserHandler@{UserHandler}!\$severity@{\$severity}}
+\index{\$severity@{\$severity}!UserHandler@{UserHandler}}
+\subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
+Severity level of the current object status \index{UserHandler@{UserHandler}!\$user\_\-data@{\$user\_\-data}}
 \index{\$user\_\-data@{\$user\_\-data}!UserHandler@{UserHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\$user\_\-data}}
-\label{classUserHandler_e7a2d59eee65560ac96b860e828bb445}
-
-
+\subsubsection[{\$user\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\$user\_\-data}\label{classUserHandler_ae7a2d59eee65560ac96b860e828bb445}
 An indexed array with the user information as take from the database 
 
-The documentation for this class was generated from the following file:\begin{CompactItemize}
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/work/eclipse/owl-php/src/kernel/so/\hyperlink{class_8userhandler_8php}{class.userhandler.php}\end{CompactItemize}
+/home/oscar/projects/owl-\/php/src/kernel/so/\hyperlink{class_8userhandler_8php}{class.userhandler.php}\end{DoxyCompactItemize}

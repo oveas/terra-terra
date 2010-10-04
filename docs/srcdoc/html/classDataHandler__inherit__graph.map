@@ -1,2 +1,4 @@
-<area shape="rect" href="$classFormHandler.html" title="Formhandler." alt="" coords="5,541,147,659">
-<area shape="rect" href="$class__OWL.html" title="{_OWL\n|&#45; $status\l&#45; $pstatus\l&#45; $severity\l|+ __destruct()\l# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="12,5,140,173">
+<map id="G" name="G">
+<area shape="rect" href="$classFormHandler.html" title="Formhandler." alt="" coords="12,800,140,963"/>
+<area shape="rect" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="5,5,147,317"/>
+</map>

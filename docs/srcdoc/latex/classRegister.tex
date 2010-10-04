@@ -1,202 +1,203 @@
-\hypertarget{classRegister}{
 \section{Register Class Reference}
 \label{classRegister}\index{Register@{Register}}
-}
 \subsection*{Static Public Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classRegister_5c34c30e9e6ce4dea2dbb02f55e9278a}{init} ()
+static \hyperlink{classRegister_a5c34c30e9e6ce4dea2dbb02f55e9278a}{init} ()
 \item 
-static \hyperlink{classRegister_c547568c4a7272fdaf65cb2825eccec3}{register\_\-app} (\$name, \$id)
+static \hyperlink{classRegister_ac547568c4a7272fdaf65cb2825eccec3}{register\_\-app} (\$name, \$id)
 \item 
-static \hyperlink{classRegister_58300f74d002f1306a03baf12af0f02c}{register\_\-class} (\$name)
+static \hyperlink{classRegister_a58300f74d002f1306a03baf12af0f02c}{register\_\-class} (\$name)
 \item 
-static \hyperlink{classRegister_875fd1f32f0746aa9e0e00b053c7389a}{register\_\-code} (\$code)
+static \hyperlink{classRegister_a875fd1f32f0746aa9e0e00b053c7389a}{register\_\-code} (\$code)
 \item 
-static \hyperlink{classRegister_c22a104eefa471675cb28ee20821eaad}{register\_\-severity} (\$level, \$name)
+static \hyperlink{classRegister_ac22a104eefa471675cb28ee20821eaad}{register\_\-severity} (\$level, \$name)
 \item 
-static \hyperlink{classRegister_e71e10bddb03483b54ad22b9edb95b7c}{get\_\-severity} (\$level)
+static \hyperlink{classRegister_ae71e10bddb03483b54ad22b9edb95b7c}{get\_\-severity} (\$level)
 \item 
-static \hyperlink{classRegister_70490e59a4a3b910d259b8a4287c3e91}{get\_\-severity\_\-level} (\$name)
+static \hyperlink{classRegister_a70490e59a4a3b910d259b8a4287c3e91}{get\_\-severity\_\-level} (\$name)
 \item 
-static \hyperlink{classRegister_041706fafb409a31f125d2075501e82e}{get\_\-run\_\-id} ()
+static \hyperlink{classRegister_a041706fafb409a31f125d2075501e82e}{get\_\-run\_\-id} ()
 \item 
-static \hyperlink{classRegister_363389530273f40c3b20666bbff75e05}{get\_\-code} (\$value)
+static \hyperlink{classRegister_a363389530273f40c3b20666bbff75e05}{get\_\-code} (\$value)
 \item 
-static \hyperlink{classRegister_d4d61787414f7d64d1e3420f0fdf3f91}{set\_\-application} (\$app\_\-id)
+static \hyperlink{classRegister_ad4d61787414f7d64d1e3420f0fdf3f91}{set\_\-application} (\$app\_\-id)
 \item 
-static \hyperlink{classRegister_58e49ccb1fe4e441d0329e879c922aa0}{set\_\-class} (\$class\_\-id)
+static \hyperlink{classRegister_a58e49ccb1fe4e441d0329e879c922aa0}{set\_\-class} (\$class\_\-id)
 \item 
-static \hyperlink{classRegister_0adde8d67d77b9b4d66156272cb48ae4}{set\_\-severity} (\$severity\_\-level)
-\end{CompactItemize}
+static \hyperlink{classRegister_a0adde8d67d77b9b4d66156272cb48ae4}{set\_\-severity} (\$severity\_\-level)
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 \hyperlink{classOWL}{OWL} keeps track of all running applications, their class and all status codes their instances (objects) can have. This is done in a global \hyperlink{classRegister}{Register}, which is maintained by this class. 
 
 \subsection{Member Function Documentation}
-\hypertarget{classRegister_5c34c30e9e6ce4dea2dbb02f55e9278a}{
-\index{Register@{Register}!init@{init}}
-\index{init@{init}!Register@{Register}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static Register::init ()\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
-\label{classRegister_5c34c30e9e6ce4dea2dbb02f55e9278a}
-
-
-Initialise the register array \hypertarget{classRegister_c547568c4a7272fdaf65cb2825eccec3}{
-\index{Register@{Register}!register\_\-app@{register\_\-app}}
-\index{register\_\-app@{register\_\-app}!Register@{Register}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-app (\$ {\em name}, \$ {\em id})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
-\label{classRegister_c547568c4a7272fdaf65cb2825eccec3}
-
-
-Store the specified application in the register
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$name}]Name of the class \item[\mbox{$\leftarrow$} {\em \$id}]Application ID \end{description}
-\end{Desc}
-\hypertarget{classRegister_58300f74d002f1306a03baf12af0f02c}{
-\index{Register@{Register}!register\_\-class@{register\_\-class}}
-\index{register\_\-class@{register\_\-class}!Register@{Register}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-class (\$ {\em name})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
-\label{classRegister_58300f74d002f1306a03baf12af0f02c}
-
-
-Store the specified class in the register, and setup an array to keep track of the codes
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$name}]Name of the class \end{description}
-\end{Desc}
-\hypertarget{classRegister_875fd1f32f0746aa9e0e00b053c7389a}{
-\index{Register@{Register}!register\_\-code@{register\_\-code}}
-\index{register\_\-code@{register\_\-code}!Register@{Register}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-code (\$ {\em code})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
-\label{classRegister_875fd1f32f0746aa9e0e00b053c7389a}
-
-
-Define a new statuscode
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$code}]Symbolic name of the status code \end{description}
-\end{Desc}
-\hypertarget{classRegister_c22a104eefa471675cb28ee20821eaad}{
-\index{Register@{Register}!register\_\-severity@{register\_\-severity}}
-\index{register\_\-severity@{register\_\-severity}!Register@{Register}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-severity (\$ {\em level}, \$ {\em name})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
-\label{classRegister_c22a104eefa471675cb28ee20821eaad}
-
-
-Store the known severitylevels in the register
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$level}]Symbolic name for the severity level \item[\mbox{$\leftarrow$} {\em \$name}]Human readable value \end{description}
-\end{Desc}
-\hypertarget{classRegister_e71e10bddb03483b54ad22b9edb95b7c}{
-\index{Register@{Register}!get\_\-severity@{get\_\-severity}}
-\index{get\_\-severity@{get\_\-severity}!Register@{Register}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-severity (\$ {\em level})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
-\label{classRegister_e71e10bddb03483b54ad22b9edb95b7c}
-
-
-Read a severity level from the register
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$level}]Hex value of the severity level \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]Human readable value \end{Desc}
-\hypertarget{classRegister_70490e59a4a3b910d259b8a4287c3e91}{
-\index{Register@{Register}!get\_\-severity\_\-level@{get\_\-severity\_\-level}}
-\index{get\_\-severity\_\-level@{get\_\-severity\_\-level}!Register@{Register}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-severity\_\-level (\$ {\em name})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
-\label{classRegister_70490e59a4a3b910d259b8a4287c3e91}
-
-
-This function is used by a config parse to translate a string value to the appropriate severity level
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$name}]The name of the severity level \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]Hex value of the severity level \end{Desc}
-\hypertarget{classRegister_041706fafb409a31f125d2075501e82e}{
-\index{Register@{Register}!get\_\-run\_\-id@{get\_\-run\_\-id}}
-\index{get\_\-run\_\-id@{get\_\-run\_\-id}!Register@{Register}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-run\_\-id ()\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
-\label{classRegister_041706fafb409a31f125d2075501e82e}
-
-
-Return the ID of the current run \hypertarget{classRegister_363389530273f40c3b20666bbff75e05}{
 \index{Register@{Register}!get\_\-code@{get\_\-code}}
 \index{get\_\-code@{get\_\-code}!Register@{Register}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-code (\$ {\em value})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
-\label{classRegister_363389530273f40c3b20666bbff75e05}
-
-
+\subsubsection[{get\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-code (\$ {\em value})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_a363389530273f40c3b20666bbff75e05}
 Translate an hex value code to the symbolic name
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$value}]Hex value of the status code \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]Human readable value \end{Desc}
-\hypertarget{classRegister_d4d61787414f7d64d1e3420f0fdf3f91}{
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$value}]Hex value of the status code \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Human readable value 
+\end{DoxyReturn}
+
+
+References \$GLOBALS.
+
+
+
+Referenced by LogHandler::compose\_\-message(), \_\-OWL::set\_\-status(), and OWLException::stack\_\-dump().
+
+\index{Register@{Register}!get\_\-run\_\-id@{get\_\-run\_\-id}}
+\index{get\_\-run\_\-id@{get\_\-run\_\-id}!Register@{Register}}
+\subsubsection[{get\_\-run\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-run\_\-id ()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_a041706fafb409a31f125d2075501e82e}
+Return the ID of the current run 
+
+References \$GLOBALS.
+
+
+
+Referenced by LogHandler::compose\_\-message(), and LogHandler::set\_\-filename().
+
+\index{Register@{Register}!get\_\-severity@{get\_\-severity}}
+\index{get\_\-severity@{get\_\-severity}!Register@{Register}}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-severity (\$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_ae71e10bddb03483b54ad22b9edb95b7c}
+Read a severity level from the register
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$level}]Hex value of the severity level \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Human readable value 
+\end{DoxyReturn}
+
+
+References \$GLOBALS.
+
+
+
+Referenced by OWLException::stack\_\-dump().
+
+\index{Register@{Register}!get\_\-severity\_\-level@{get\_\-severity\_\-level}}
+\index{get\_\-severity\_\-level@{get\_\-severity\_\-level}!Register@{Register}}
+\subsubsection[{get\_\-severity\_\-level}]{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-severity\_\-level (\$ {\em name})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_a70490e59a4a3b910d259b8a4287c3e91}
+This function is used by a config parse to translate a string value to the appropriate severity level
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$name}]The name of the severity level \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hex value of the severity level 
+\end{DoxyReturn}
+
+
+References \$GLOBALS.
+
+
+
+Referenced by ConfigHandler::convert().
+
+\index{Register@{Register}!init@{init}}
+\index{init@{init}!Register@{Register}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}static Register::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_a5c34c30e9e6ce4dea2dbb02f55e9278a}
+Initialise the register array 
+
+References \$GLOBALS.
+
+\index{Register@{Register}!register\_\-app@{register\_\-app}}
+\index{register\_\-app@{register\_\-app}!Register@{Register}}
+\subsubsection[{register\_\-app}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-app (\$ {\em name}, \/  \$ {\em id})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_ac547568c4a7272fdaf65cb2825eccec3}
+Store the specified application in the register
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$name}]Name of the class \item[\mbox{$\leftarrow$} {\em \$id}]Application ID \end{DoxyParams}
+
+
+References \$GLOBALS, and set\_\-application().
+
+\index{Register@{Register}!register\_\-class@{register\_\-class}}
+\index{register\_\-class@{register\_\-class}!Register@{Register}}
+\subsubsection[{register\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-class (\$ {\em name})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_a58300f74d002f1306a03baf12af0f02c}
+Store the specified class in the register, and setup an array to keep track of the codes
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$name}]Name of the class \end{DoxyParams}
+
+
+References \$GLOBALS.
+
+\index{Register@{Register}!register\_\-code@{register\_\-code}}
+\index{register\_\-code@{register\_\-code}!Register@{Register}}
+\subsubsection[{register\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-code (\$ {\em code})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_a875fd1f32f0746aa9e0e00b053c7389a}
+Define a new statuscode
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$code}]Symbolic name of the status code \end{DoxyParams}
+
+
+References \$GLOBALS.
+
+\index{Register@{Register}!register\_\-severity@{register\_\-severity}}
+\index{register\_\-severity@{register\_\-severity}!Register@{Register}}
+\subsubsection[{register\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-severity (\$ {\em level}, \/  \$ {\em name})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_ac22a104eefa471675cb28ee20821eaad}
+Store the known severitylevels in the register
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$level}]Symbolic name for the severity level \item[\mbox{$\leftarrow$} {\em \$name}]Human readable value \end{DoxyParams}
+
+
+References \$GLOBALS.
+
 \index{Register@{Register}!set\_\-application@{set\_\-application}}
 \index{set\_\-application@{set\_\-application}!Register@{Register}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static Register::set\_\-application (\$ {\em app\_\-id})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
-\label{classRegister_d4d61787414f7d64d1e3420f0fdf3f91}
-
-
+\subsubsection[{set\_\-application}]{\setlength{\rightskip}{0pt plus 5cm}static Register::set\_\-application (\$ {\em app\_\-id})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_ad4d61787414f7d64d1e3420f0fdf3f91}
 Point the register to the specified application.
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$app\_\-id}]Application ID \end{description}
-\end{Desc}
-\hypertarget{classRegister_58e49ccb1fe4e441d0329e879c922aa0}{
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$app\_\-id}]Application ID \end{DoxyParams}
+
+
+References \$GLOBALS.
+
+
+
+Referenced by register\_\-app().
+
 \index{Register@{Register}!set\_\-class@{set\_\-class}}
 \index{set\_\-class@{set\_\-class}!Register@{Register}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static Register::set\_\-class (\$ {\em class\_\-id})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
-\label{classRegister_58e49ccb1fe4e441d0329e879c922aa0}
-
-
+\subsubsection[{set\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}static Register::set\_\-class (\$ {\em class\_\-id})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_a58e49ccb1fe4e441d0329e879c922aa0}
 Point the register to the specified class.
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$class\_\-id}]Class ID \end{description}
-\end{Desc}
-\hypertarget{classRegister_0adde8d67d77b9b4d66156272cb48ae4}{
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$class\_\-id}]Class ID \end{DoxyParams}
+
+
+References \$GLOBALS.
+
 \index{Register@{Register}!set\_\-severity@{set\_\-severity}}
 \index{set\_\-severity@{set\_\-severity}!Register@{Register}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static Register::set\_\-severity (\$ {\em severity\_\-level})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
-\label{classRegister_0adde8d67d77b9b4d66156272cb48ae4}
-
-
+\subsubsection[{set\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}static Register::set\_\-severity (\$ {\em severity\_\-level})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_a0adde8d67d77b9b4d66156272cb48ae4}
 Set the current severity to the specified level in the \hyperlink{classRegister}{Register}
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$severity\_\-level}]Severity level \end{description}
-\end{Desc}
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$severity\_\-level}]Severity level \end{DoxyParams}
 
 
-The documentation for this class was generated from the following file:\begin{CompactItemize}
+References \$GLOBALS.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/work/eclipse/owl-php/src/kernel/so/\hyperlink{class_8register_8php}{class.register.php}\end{CompactItemize}
+/home/oscar/projects/owl-\/php/src/kernel/so/\hyperlink{class_8register_8php}{class.register.php}\end{DoxyCompactItemize}

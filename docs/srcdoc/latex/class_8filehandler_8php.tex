@@ -1,58 +1,61 @@
-\hypertarget{class_8filehandler_8php}{
-\section{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.filehandler.php File Reference}
-\label{class_8filehandler_8php}\index{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.filehandler.php@{/home/oscar/work/eclipse/owl-php/src/kernel/so/class.filehandler.php}}
-}
+\section{/home/oscar/projects/owl-\/php/src/kernel/so/class.filehandler.php File Reference}
+\label{class_8filehandler_8php}\index{/home/oscar/projects/owl-\/php/src/kernel/so/class.filehandler.php@{/home/oscar/projects/owl-\/php/src/kernel/so/class.filehandler.php}}
 \subsection*{Classes}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
 class \hyperlink{classFileHandler}{FileHandler}
-\begin{CompactList}\small\item\em File handler. \item\end{CompactList}\end{CompactItemize}
+\begin{DoxyCompactList}\small\item\em File handler. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
-\begin{CompactItemize}
+\begin{Indent}{\bf Dataline trim flags}\par
+{\em \label{_amgrp09e264f44360b2d7954f16ee5d28e654}
+ These flags define how datalines should be trimmed when read from a file }\begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{class_8filehandler_8php_3720f2e15eb9e16e29d8ecbb96763662}{FILE\_\-NOTRIM} 
-\item 
-enum \hyperlink{class_8filehandler_8php_080de95fd7cf2e8d8ac78ac7ad9471ee}{FILE\_\-TRIM\_\-L} 
-\item 
-enum \hyperlink{class_8filehandler_8php_7ee25ec88036b90f5a0ae8be7bc41769}{FILE\_\-TRIM\_\-R} 
-\item 
-enum \hyperlink{class_8filehandler_8php_2787c3a1ecef8697c863800d0b2848a4}{FILE\_\-TRIM\_\-C} 
-\end{CompactItemize}
+enum \hyperlink{class_8filehandler_8php_a3720f2e15eb9e16e29d8ecbb96763662}{FILE\_\-NOTRIM} 
+\begin{DoxyCompactList}\small\item\em Don't trim. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8filehandler_8php_a080de95fd7cf2e8d8ac78ac7ad9471ee}{FILE\_\-TRIM\_\-L} 
+\begin{DoxyCompactList}\small\item\em Trim left part of a line read. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8filehandler_8php_a7ee25ec88036b90f5a0ae8be7bc41769}{FILE\_\-TRIM\_\-R} 
+\begin{DoxyCompactList}\small\item\em Trim right part of a line read. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8filehandler_8php_a2787c3a1ecef8697c863800d0b2848a4}{FILE\_\-TRIM\_\-C} 
+\begin{DoxyCompactList}\small\item\em Replace all multiple spaces in a line read with a single space. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
 
 
 \subsection{Detailed Description}
-This file defines the \hyperlink{classFileHandler}{FileHandler} class \begin{Desc}
-\item[Version:]\end{Desc}
-\begin{Desc}
-\item[Id]\hyperlink{class_8filehandler_8php}{class.filehandler.php},v 1.2 2008-08-28 18:12:52 oscar Exp \end{Desc}
+This file defines the \hyperlink{classFileHandler}{FileHandler} class \begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyParagraph}{Id}
+\hyperlink{class_8filehandler_8php}{class.filehandler.php},v 1.4 2010-\/08-\/20 08:39:54 oscar Exp 
+\end{DoxyParagraph}
 
 
 \subsection{Enumeration Type Documentation}
-\hypertarget{class_8filehandler_8php_3720f2e15eb9e16e29d8ecbb96763662}{
 \index{class.filehandler.php@{class.filehandler.php}!FILE\_\-NOTRIM@{FILE\_\-NOTRIM}}
 \index{FILE\_\-NOTRIM@{FILE\_\-NOTRIM}!class.filehandler.php@{class.filehandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FILE\_\-NOTRIM}}}
-\label{class_8filehandler_8php_3720f2e15eb9e16e29d8ecbb96763662}
+\subsubsection[{FILE\_\-NOTRIM}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FILE\_\-NOTRIM}}\label{class_8filehandler_8php_a3720f2e15eb9e16e29d8ecbb96763662}
 
 
-\hypertarget{class_8filehandler_8php_2787c3a1ecef8697c863800d0b2848a4}{
+Don't trim. 
+
 \index{class.filehandler.php@{class.filehandler.php}!FILE\_\-TRIM\_\-C@{FILE\_\-TRIM\_\-C}}
 \index{FILE\_\-TRIM\_\-C@{FILE\_\-TRIM\_\-C}!class.filehandler.php@{class.filehandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FILE\_\-TRIM\_\-C}}}
-\label{class_8filehandler_8php_2787c3a1ecef8697c863800d0b2848a4}
+\subsubsection[{FILE\_\-TRIM\_\-C}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FILE\_\-TRIM\_\-C}}\label{class_8filehandler_8php_a2787c3a1ecef8697c863800d0b2848a4}
 
 
-\hypertarget{class_8filehandler_8php_080de95fd7cf2e8d8ac78ac7ad9471ee}{
+Replace all multiple spaces in a line read with a single space. 
+
 \index{class.filehandler.php@{class.filehandler.php}!FILE\_\-TRIM\_\-L@{FILE\_\-TRIM\_\-L}}
 \index{FILE\_\-TRIM\_\-L@{FILE\_\-TRIM\_\-L}!class.filehandler.php@{class.filehandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FILE\_\-TRIM\_\-L}}}
-\label{class_8filehandler_8php_080de95fd7cf2e8d8ac78ac7ad9471ee}
+\subsubsection[{FILE\_\-TRIM\_\-L}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FILE\_\-TRIM\_\-L}}\label{class_8filehandler_8php_a080de95fd7cf2e8d8ac78ac7ad9471ee}
 
 
-\hypertarget{class_8filehandler_8php_7ee25ec88036b90f5a0ae8be7bc41769}{
+Trim left part of a line read. 
+
 \index{class.filehandler.php@{class.filehandler.php}!FILE\_\-TRIM\_\-R@{FILE\_\-TRIM\_\-R}}
 \index{FILE\_\-TRIM\_\-R@{FILE\_\-TRIM\_\-R}!class.filehandler.php@{class.filehandler.php}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FILE\_\-TRIM\_\-R}}}
-\label{class_8filehandler_8php_7ee25ec88036b90f5a0ae8be7bc41769}
+\subsubsection[{FILE\_\-TRIM\_\-R}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FILE\_\-TRIM\_\-R}}\label{class_8filehandler_8php_a7ee25ec88036b90f5a0ae8be7bc41769}
 
+
+Trim right part of a line read. 
 

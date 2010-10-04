@@ -2,10 +2,8 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._OWL.php,v 1.5 2010-08-20 08:39:55 oscar Exp $
+ * \version $Id: class._owl.php,v 1.1 2010-10-04 17:40:40 oscar Exp $
  */
-
-require_once (OWL_SO_INC . '/class.statushandler.php');
 
 /**
  * This is the main class for all OWL objects. It contains some methods that have to be available
@@ -43,7 +41,7 @@ abstract class _OWL
 	 */
 	protected function init ()
 	{
-		$this->status =& new StatusHandler();
+		$this->status = OWL::factory('StatusHandler');
 		$this->pstatus =& $this;
 	}
 
@@ -53,7 +51,7 @@ abstract class _OWL
 	 */
 	public function __destruct ()
 	{
-//echo "($this->_i)Destruct object " .get_class($this)."<br/>";
+//echo "Destruct object " .get_class($this)."<br/>";
 //$this->_i++;
 	}
 
@@ -86,7 +84,7 @@ abstract class _OWL
 
 	/**
 	 * This is a helper function for lazy developers.
-	 * Some checks have to me made quite often, this is a kinda macro to handle that. It 
+	 * Some checks have to be made quite often, this is a kinda macro to handle that. It 
 	 * compares the own severity level with that of a given object. If the highest level
 	 * is above a given max, a traceback and reset are performed.
 	 * \protected
@@ -115,7 +113,7 @@ abstract class _OWL
 		static $loopdetect = 0;
 		$loopdetect++;
 		if ($loopdetect > 1) {
-			die ('Fatal error - loop detected while handling the status: ' . Register::get_code($status));
+			trigger_error ('Fatal error - loop detected while handling the status: ' . Register::get_code($status), E_USER_ERROR);
 		}
 		self::reset();
 		$this->severity = $this->status->set_code($status);
@@ -130,18 +128,20 @@ abstract class _OWL
 				$GLOBALS['logger']->log ($msg, $status);
 			}
 		}
+
 		if (ConfigHandler::get ('exception|throw_level') >= 0
 				&& $this->severity >= ConfigHandler::get ('exception|throw_level')) {
+
 			$this->signal (0, &$msg);
-			try {
-				throw new OWLException ($msg, $status);
-			}
-			catch (Exception $e) {
-				echo ($msg.'<br/>');
-				// Can't call myself anymore but we wanna see this message.
+			if (ConfigHandler::get('exception|block_throws', false)) {
+//				// Can't call myself anymore but we wanna see this message.
+				$_msg = $msg; // Save the original 
 				$this->severity = $this->status->set_code(OWL_STATUS_THROWERR);
 				$this->signal (0, &$msg);
-				die ($msg);
+				trigger_error($msg, E_USER_NOTICE);
+				trigger_error($_msg, E_USER_ERROR);
+			} else {
+				throw new OWLException ($msg, $status);
 			}
 		}
 		$loopdetect = 0;
@@ -196,7 +196,7 @@ abstract class _OWL
 	 * instead of echood.
 	 * \return The severity level for this object
 	 */
-	public function signal ($level = 0, &$text = false)
+	public function signal ($level = OWL_INFO, &$text = false)
 	{
 		if (($_severity = $this->status->get_severity()) >= $level) {
 			if ($text === false) {
@@ -283,26 +283,4 @@ Register::register_severity (OWL_BUG,		'BUG');
 Register::register_severity (OWL_ERROR,		'ERROR');
 Register::register_severity (OWL_FATAL,		'FATAL');
 Register::register_severity (OWL_CRITICAL,	'CRITICAL');
-
-/*
- *  Dummy class that allows abstract classes to set a status
- */
-class OWL extends _OWL {
-	/**
-	 * Constructor
-	 */	
-	public function __construct ()
-	{ 
-		parent::init();
-	}
-	/**
-	 * Call to set_status()
-	 * \param[in] $a First parameter for passthrough
-	 * \param[in] $b Second parameter for passthrough
-	 */
-	public function s ($a, $b = array())
-	{
-		parent::set_status ($a, $b);
-	}
-}
 

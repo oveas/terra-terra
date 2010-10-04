@@ -1,3 +1,5 @@
-<area shape="rect" href="$classForm.html" title="Form Element class." alt="" coords="5,356,125,438">
-<area shape="rect" href="$classFormElement.html" title="Form element." alt="" coords="149,356,269,438">
-<area shape="rect" href="$class__OWL.html" title="{_OWL\n|&#45; $status\l&#45; $pstatus\l&#45; $severity\l|+ __destruct()\l# init()\l# reset()\l&#45; reset_calltree()\l}" alt="" coords="73,5,201,173">
+<map id="G" name="G">
+<area shape="rect" href="$classForm.html" title="Form Element class." alt="" coords="5,501,115,589"/>
+<area shape="rect" href="$classFormElement.html" title="Form element." alt="" coords="139,501,248,589"/>
+<area shape="rect" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="56,5,197,317"/>
+</map>

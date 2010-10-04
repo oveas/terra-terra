@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.5 2010-08-20 08:39:54 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.6 2010-10-04 17:40:40 oscar Exp $
  */
 
 /**
@@ -32,8 +32,8 @@ define ('DBHANDLE_TOTALFIELDCOUNT', 5);
 
 /**
  * \ingroup OWL_SO_LAYER
- * Handler for all database I/O.  This class uses an (abstract) class for the actual
- * storage.
+ * Handler for all database I/O.  This singleton class uses an (abstract) class for the
+ * actual storage.
  * \brief Database handler 
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 15, 2007 -- O van Eijk -- initial version for Terra-Terra
@@ -90,14 +90,22 @@ class DbHandler extends _OWL
 	private $query;
 
 	/**
+	 * integer - self reference
+	 * \private
+	 * \static
+	 */
+	private static $instance;
+
+	/**
 	 * Class constructor; opens the database connection.
-	 * \public
+	 * \private
 	 * \param[in] $srv Database server
 	 * \param[in] $db Database name
 	 * \param[in] $usr Username to connect with
 	 * \param[in] $pwd Password to use for connection
 	 * \param[in] $dbtype Database type (reserved for future use, currently only MySQL is implemented)
 	 */
+	// TODO must be public for CMAIL_Intranet.... 
 	public function __construct ($srv = 'localhost'
 			,  $db = ''
 			,  $usr = ''
@@ -128,6 +136,35 @@ class DbHandler extends _OWL
 			return;
 		}
 		$this->close();
+	}
+
+	/**
+	 * Implementation of the __clone() function to prevent cloning of this singleton;
+	 * it triggers a fatal (user)error
+	 * \public
+	 */
+	public function __clone ()
+	{
+		trigger_error('invalid object cloning');
+	}
+
+	/**
+	 * Return a reference to my implementation. If necessary, create that implementation first.
+	 * \public
+	 * \return Severity level
+	 */
+	public static function get_instance()
+	{
+		if (!DbHandler::$instance instanceof self) {
+			DbHandler::$instance = new self(
+					  ConfigHandler::get ('dbserver')
+					, ConfigHandler::get ('dbname')
+					, ConfigHandler::get ('dbuser')
+					, ConfigHandler::get ('dbpasswd')
+			);
+			DbHandler::$instance->open();
+		}
+		return DbHandler::$instance;
 	}
 
 	/**
@@ -171,6 +208,16 @@ class DbHandler extends _OWL
 			return (false);
 		}
 		return (true);
+	}
+
+	/**
+	 * Let other objects check if th database connection is opened
+	 * \public
+	 * \return boolean, True when opened
+	 */
+	public function is_open()
+	{
+		return $this->opened;
 	}
 
 	/**
@@ -310,6 +357,7 @@ class DbHandler extends _OWL
 	public function read ($flag = DBHANDLE_DATA, &$data, $quick_query = '', $line = 0, $file = '[unknown]')
 	{
 		$_fieldcnt = 0;
+		$this->open();
 
 		if (!$this->opened) {
 			$this->set_status (DBHANDLE_DBCLOSED);
@@ -443,7 +491,7 @@ class DbHandler extends _OWL
 	/**
 	 * Create a list with tables, including prefixes, that can be interpreted by SQL
 	 * \private
-	 * \params[in] $tables An array with tablenames
+	 * \param[in] $tables An array with tablenames
 	 * \return The tablelist
 	 */
 	private function tablelist ($tables)
@@ -462,8 +510,8 @@ class DbHandler extends _OWL
 	/**
 	 * Create a WHERE clause that can be interpreted by SQL
 	 * \private
-	 * \params[in] $searches Array with values (fieldname => values)
-	 * \params[in] $joins Array of arrays with values (field, linktype, field)
+	 * \param[in] $searches Array with values (fieldname => values)
+	 * \param[in] $joins Array of arrays with values (field, linktype, field)
 	 * \return The WHERE clause
 	 */
 	private function where_clause ($searches, $joins)
@@ -497,7 +545,7 @@ class DbHandler extends _OWL
 	/**
 	 * Create a string with 'field = value, ...' combinations in SQL format
 	 * \private
-	 * \params[in] $updates Array with fields to update (fieldname => values)
+	 * \param[in] $updates Array with fields to update (fieldname => values)
 	 * \return The UPDATE statement
 	 */
 	private function update_list ($updates)
@@ -541,7 +589,7 @@ class DbHandler extends _OWL
 	 * \param[in] $values Values that will be read
 	 * \param[in] $tables Tables from which will be read
 	 * \param[in] $searches Given values that have to match
-	 * \param[in] $values Joins on the given tables
+	 * \param[in] $joins Joins on the given tables
 	 * \return Severity level
 	 */
 	public function prepare_read ($values = array(), $tables = array(), $searches = array(), $joins = array())
@@ -590,9 +638,9 @@ class DbHandler extends _OWL
 	 * All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
 	 * \public
 	 * \param[in] $values Given database values
-	 * \param[in] $searched List of fieldnames that will be used in the where clause. All fields not
+	 * \param[in] $searches List of fieldnames that will be used in the where clause. All fields not
 	 * in this array will be updated!
-	 * \param[in] $values Joins on the given tables
+	 * \param[in] $joins Joins on the given tables
 	 * \return Severity level
 	 */
 	public function prepare_update ($values = array(), $searches = array(), $joins = array())
@@ -623,9 +671,6 @@ class DbHandler extends _OWL
 	 * All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
 	 * \public
 	 * \param[in] $values Given database values
-	 * \param[in] $searched List of fieldnames that will be used in the where clause. All fields not
-	 * in this array will be updated!
-	 * \param[in] $values Joins on the given tables
 	 * \return Severity level
 	 */
 	public function prepare_insert ($values = array())

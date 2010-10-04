@@ -3,27 +3,32 @@
  * \file
  * \ingroup OWL_LIBRARY
  * Make sure all objects are destroyed in the proper order
- * \version $Id: OWLrundown.php,v 1.3 2010-08-20 08:39:54 oscar Exp $
+ * \version $Id: OWLrundown.php,v 1.4 2010-10-04 17:40:40 oscar Exp $
  */
+
+// Make sure no exceptions are thrown anymore from this point!
+ConfigHandler::set('exception|block_throws', true);
 
 //echo "Start rundown<br/>";
 // Destroy the Formhandler singleton
-$GLOBALS['formdata']->__destruct();
+$_form = OWL::factory('FormHandler');
+$_form->__destruct();
 //unset ($GLOBALS['formdata']);
 
 // Destroy the user and session
-$GLOBALS['user']->__destruct();
+//$GLOBALS['user']->__destruct();
 //unset ($GLOBALS['user']);
 
 // Destroy the database object
-$GLOBALS['db']->__destruct();
+//$_db = OWL::factory('DbHandler');
+//$_db->__destruct();
 //unset ($GLOBALS['db']);
 
 // Destroy the logger object
 $GLOBALS['logger']->__destruct();
 //unset ($GLOBALS['logger']);
 
-// Destroy the ('abstract') main class
-$GLOBALS['owl_object']->__destruct();
+// Destroy the main class
+//$GLOBALS['owl_object']->__destruct();
 //unset ($GLOBALS['owl_object']);
 //echo "rundown complete<br/>";

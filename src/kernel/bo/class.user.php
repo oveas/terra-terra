@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the User class
- * \version $Id: class.user.php,v 1.3 2010-08-20 08:39:55 oscar Exp $
+ * \version $Id: class.user.php,v 1.4 2010-10-04 17:40:40 oscar Exp $
  */
 
 /**
@@ -21,7 +21,7 @@ class User extends UserHandler
 	 */
 	public function __construct ($username = null)
 	{
-		$this->dataset =& new DataHandler (&$GLOBALS['db']);
+		$this->dataset =& new DataHandler ();
 		if ($username == null) {
 			$username = ConfigHandler::get ('session|default_user');
 		}
@@ -52,7 +52,8 @@ class User extends UserHandler
 	{
 		$this->set_username ($username);
 		if (parent::login ($password) !== true) {
-			self::logout();
+// TODO: logging out here resets the status code
+//			self::logout();
 			return (false);
 		}
 		return (true);
@@ -62,7 +63,7 @@ class User extends UserHandler
 	 * Log out the current user
 	 * Note: After logging out, the session still continues. The calling app must
 	 * take care of the forward (e.g. with a header('location: ' . $_SERVER['PHP_SELF'])
-	 * after a call to <user>->logout()).
+	 * after a call to User::logout()).
 	 * \public
 	 */
 	public function logout ()

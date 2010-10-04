@@ -1,7 +1,7 @@
-\hypertarget{class__OWL}{
 \section{\_\-OWL Class Reference}
 \label{class__OWL}\index{\_\-OWL@{\_\-OWL}}
-}
+
+
 Inheritance diagram for \_\-OWL:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -10,109 +10,237 @@ Inheritance diagram for \_\-OWL:\nopagebreak
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{class__OWL_44fd2222476a3109286cc82d92b6bbcc}{\_\-\_\-destruct} ()
-\end{CompactItemize}
+\hyperlink{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}{\_\-\_\-destruct} ()
+\item 
+\hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
+\item 
+\hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
+\item 
+\hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
+\item 
+\hyperlink{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}{traceback} (\&\$text=false, \$depth=0)
+\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
+\hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
-\hyperlink{class__OWL_2f2a042bcf31965194c03033df0edc9b}{reset} ()
-\end{CompactItemize}
+\hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\item 
+\hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
+\item 
+\hyperlink{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
+\item 
+\hyperlink{class__OWL_a576829692a3b66e3d518853bf43abae3}{set\_\-high\_\-severity} (\&\$object=null)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}{\$severity}
+\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{class__OWL_91389e63fc76f6513147f302cbd92a2e}{reset\_\-calltree} (\$depth=0)
-\end{CompactItemize}
+\hyperlink{class__OWL_a91389e63fc76f6513147f302cbd92a2e}{reset\_\-calltree} (\$depth=0)
+\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{class__OWL_af448f6bc8a90e20c09e9e2b8fe46eb5}{\$status}
+\hyperlink{class__OWL_aaf448f6bc8a90e20c09e9e2b8fe46eb5}{\$status}
 \item 
-\hyperlink{class__OWL_f30c6ce2c59df6da2ef0f7059be9231e}{\$pstatus}
-\item 
-\hyperlink{class__OWL_d26b40a9dbbacb33e299b17826f8327c}{\$severity}
-\end{CompactItemize}
+\hyperlink{class__OWL_af30c6ce2c59df6da2ef0f7059be9231e}{\$pstatus}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-This is the main class for all \hyperlink{classOWL}{OWL} objects. It contains some methods that have to be available to all objects. Some of them can be reimplemented. \begin{Desc}
-\item[Author:]Oscar van Eijk, Oveas Functionality Provider \end{Desc}
-\begin{Desc}
-\item[Version:]May 15, 2007 -- O van Eijk -- initial version \end{Desc}
+This is the main class for all \hyperlink{classOWL}{OWL} objects. It contains some methods that have to be available to all objects. Some of them can be reimplemented. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+May 15, 2007 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class__OWL_44fd2222476a3109286cc82d92b6bbcc}{
 \index{\_\-OWL@{\_\-OWL}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\_\-\_\-destruct ()}}
-\label{class__OWL_44fd2222476a3109286cc82d92b6bbcc}
-
-
+\subsubsection[{\_\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\_\-\_\-destruct ()}\label{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}
 Default class destructor; has to exist but can (should?) be reimplemented 
 
-Reimplemented in \hyperlink{classSession_a498272c85524e4700abc3363883165b}{Session}, \hyperlink{classUser_ccd20149a7414612c1505e022eb63ffc}{User}, \hyperlink{classDbHandler_7cd6bd727d1f296eb5dbfae6ca36ab3f}{DbHandler}, \hyperlink{classLogHandler_acd0c653489cf221423b9edd62e81458}{LogHandler}, \hyperlink{classSessionHandler_461097c3ee6b1aecf833ce1225d02329}{SessionHandler}, and \hyperlink{classUserHandler_3e1f6381ed79caf6e1a255fb0a9cc386}{UserHandler}.
+Reimplemented in \hyperlink{classSession_aa498272c85524e4700abc3363883165b}{Session}, \hyperlink{classUser_accd20149a7414612c1505e022eb63ffc}{User}, \hyperlink{classDbHandler_a7cd6bd727d1f296eb5dbfae6ca36ab3f}{DbHandler}, \hyperlink{classFileHandler_a734859e8962992da99dd8f853da5ae43}{FileHandler}, \hyperlink{classLogHandler_aacd0c653489cf221423b9edd62e81458}{LogHandler}, \hyperlink{classSessionHandler_a461097c3ee6b1aecf833ce1225d02329}{SessionHandler}, and \hyperlink{classUserHandler_a3e1f6381ed79caf6e1a255fb0a9cc386}{UserHandler}.
+
+
 
 \subsection{Member Function Documentation}
-\hypertarget{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{
+\index{\_\-OWL@{\_\-OWL}!check@{check}}
+\index{check@{check}!_OWL@{\_\-OWL}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the severity level was correct ( below the max), otherwise false 
+\end{DoxyReturn}
+
+
+References reset(), set\_\-high\_\-severity(), and traceback().
+
+
+
+Referenced by SessionHandler::write().
+
+\index{\_\-OWL@{\_\-OWL}!get\_\-severity@{get\_\-severity}}
+\index{get\_\-severity@{get\_\-severity}!_OWL@{\_\-OWL}}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+Get the current object severity level.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status severity level 
+\end{DoxyReturn}
+
+
+References \$status.
+
+
+
+Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandler::set\_\-key().
+
+\index{\_\-OWL@{\_\-OWL}!get\_\-status@{get\_\-status}}
+\index{get\_\-status@{get\_\-status}!_OWL@{\_\-OWL}}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+Get the current object status.
+
+\begin{DoxyReturn}{Returns}
+Object's status code 
+\end{DoxyReturn}
+
+
+Referenced by FormHandler::\_\-\_\-get().
+
 \index{\_\-OWL@{\_\-OWL}!init@{init}}
 \index{init@{init}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
-\label{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+
+References OWL::factory().
 
 
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \hypertarget{class__OWL_2f2a042bcf31965194c03033df0edc9b}{
+
+Referenced by DOMElement::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), and DataHandler::DataHandler().
+
 \index{\_\-OWL@{\_\-OWL}!reset@{reset}}
 \index{reset@{reset}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
-\label{class__OWL_2f2a042bcf31965194c03033df0edc9b}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
+General reset function for all objects. Should be called after each non-\/fatal error 
+
+Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}.
 
 
-General reset function for all objects. Should be called after each non-fatal error 
 
-Reimplemented in \hyperlink{classDbHandler_9982df4830f05803935bb31bac7fae3d}{DbHandler}.\hypertarget{class__OWL_91389e63fc76f6513147f302cbd92a2e}{
+References reset\_\-calltree().
+
+
+
+Referenced by check(), SessionHandler::read(), DataHandler::reset(), and set\_\-status().
+
 \index{\_\-OWL@{\_\-OWL}!reset\_\-calltree@{reset\_\-calltree}}
 \index{reset\_\-calltree@{reset\_\-calltree}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset\_\-calltree (\$ {\em depth} = {\tt 0})\hspace{0.3cm}{\tt  \mbox{[}final, private\mbox{]}}}}
-\label{class__OWL_91389e63fc76f6513147f302cbd92a2e}
-
-
+\subsubsection[{reset\_\-calltree}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset\_\-calltree (\$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}final, private\mbox{]}}}\label{class__OWL_a91389e63fc76f6513147f302cbd92a2e}
 Reset the status in the complete calltree
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$depth}]Keep track of the depth in recusrive calls. Should be empty in the first call. \end{description}
-\end{Desc}
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$depth}]Keep track of the depth in recusrive calls. Should be empty in the first call. \end{DoxyParams}
+
+
+Referenced by reset().
+
+\index{\_\-OWL@{\_\-OWL}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
+\index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!_OWL@{\_\-OWL}}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+
+Referenced by check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
+
+\index{\_\-OWL@{\_\-OWL}!set\_\-status@{set\_\-status}}
+\index{set\_\-status@{set\_\-status}!_OWL@{\_\-OWL}}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+Set the current object status to the specified value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+
+
+References \$GLOBALS, \$status, ConfigHandler::get(), Register::get\_\-code(), reset(), and signal().
+
+
+
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-get(), DataHandler::\_\-\_\-get(), DataHandler::\_\-\_\-set(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), DataHandler::DataHandler(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), FormHandler::parse\_\-formdata(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), DbHandler::table\_\-description(), and DbHandler::write().
+
+\index{\_\-OWL@{\_\-OWL}!signal@{signal}}
+\index{signal@{signal}!_OWL@{\_\-OWL}}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+Display the message for the current object status
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The severity level for this object 
+\end{DoxyReturn}
+
+
+References ConfigHandler::get().
+
+
+
+Referenced by set\_\-status(), and traceback().
+
+\index{\_\-OWL@{\_\-OWL}!traceback@{traceback}}
+\index{traceback@{traceback}!_OWL@{\_\-OWL}}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity code of the failing object 
+\end{DoxyReturn}
+
+
+References signal().
+
+
+
+Referenced by check(), UserHandler::login(), and SessionHandler::read().
+
 
 
 \subsection{Member Data Documentation}
-\hypertarget{class__OWL_af448f6bc8a90e20c09e9e2b8fe46eb5}{
-\index{\_\-OWL@{\_\-OWL}!\$status@{\$status}}
-\index{\$status@{\$status}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$status\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{class__OWL_af448f6bc8a90e20c09e9e2b8fe46eb5}
-
-
-Current object status \hypertarget{class__OWL_f30c6ce2c59df6da2ef0f7059be9231e}{
 \index{\_\-OWL@{\_\-OWL}!\$pstatus@{\$pstatus}}
 \index{\$pstatus@{\$pstatus}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$pstatus\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{class__OWL_f30c6ce2c59df6da2ef0f7059be9231e}
-
-
-Pointer to the object which holds the last nonsuccessfull ($>$= OWL\_\-WARNING) status \hypertarget{class__OWL_d26b40a9dbbacb33e299b17826f8327c}{
-\index{\_\-OWL@{\_\-OWL}!\$severity@{\$severity}}
+\subsubsection[{\$pstatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$pstatus\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{class__OWL_af30c6ce2c59df6da2ef0f7059be9231e}
+Pointer to the object which holds the last nonsuccessfull ($>$= OWL\_\-WARNING) status \index{\_\-OWL@{\_\-OWL}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!_OWL@{\_\-OWL}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{class__OWL_d26b40a9dbbacb33e299b17826f8327c}
+\subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
+Severity level of the current object status \index{\_\-OWL@{\_\-OWL}!\$status@{\$status}}
+\index{\$status@{\$status}!_OWL@{\_\-OWL}}
+\subsubsection[{\$status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$status\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{class__OWL_aaf448f6bc8a90e20c09e9e2b8fe46eb5}
+Current object status 
+
+Referenced by get\_\-severity(), and set\_\-status().
 
 
-Severity level of the current object status 
 
-The documentation for this class was generated from the following file:\begin{CompactItemize}
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/work/eclipse/owl-php/src/kernel/\hyperlink{class_8__OWL_8php}{class.\_\-OWL.php}\end{CompactItemize}
+/home/oscar/projects/owl-\/php/src/kernel/\hyperlink{class_8__owl_8php}{class.\_\-owl.php}\end{DoxyCompactItemize}

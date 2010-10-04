@@ -5,10 +5,10 @@
 #
 # Version 0.1 -- Initial version (2008-08-26)
 # (c) Oscar van Eijk, Oveas Functionality Provider
-# $Id: codescan.pl,v 1.1 2008-09-02 05:16:54 oscar Exp $
+# $Id: codescan.pl,v 1.2 2010-10-04 17:40:40 oscar Exp $
 #
 
-my $location = '/home/oscar/work/eclipse/owl-php/src';
+my $location = '/home/oscar/projects/owl-php/src';
 if ($ARGC > 0) {
 	$location = $ARGV[0];
 }

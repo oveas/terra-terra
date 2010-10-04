@@ -1,75 +1,100 @@
-\hypertarget{classConfigHandler}{
 \section{ConfigHandler Class Reference}
 \label{classConfigHandler}\index{ConfigHandler@{ConfigHandler}}
-}
+
+
 Configuration handler.  
 
 
 \subsection*{Public Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classConfigHandler_75a7f03f156cd0f315f91ec4bbddfbb6}{read\_\-config} (\$file= '')
+\hyperlink{classConfigHandler_a75a7f03f156cd0f315f91ec4bbddfbb6}{read\_\-config} (\$file= '')
 \item 
-\hyperlink{classConfigHandler_e55c0b4508da28ff46299bb7111435cf}{get} (\$item)
-\end{CompactItemize}
+\hyperlink{classConfigHandler_ab8a7633a5a352c40d5c1380e04ffd199}{get} (\$item, \$default=null)
+\item 
+\hyperlink{classConfigHandler_ac947c34c710d66558da03ff632c32075}{set} (\$item, \$value)
+\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classConfigHandler_df3dd923bfd38e0274dc86ebd0caed92}{convert} (\$val)
-\end{CompactItemize}
+\hyperlink{classConfigHandler_adf3dd923bfd38e0274dc86ebd0caed92}{convert} (\$val)
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Configuration handler. 
-
-This abstract class reads configution from file ort database, and fills and reads the global datastructure with config items \begin{Desc}
-\item[Author:]Oscar van Eijk, Oveas Functionality Provider \end{Desc}
-\begin{Desc}
-\item[Version:]Aug 20, 2008 -- O van Eijk -- initial version \end{Desc}
+Configuration handler. This abstract class reads configution from file ort database, and fills and reads the global datastructure with config items \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Aug 20, 2008 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classConfigHandler_75a7f03f156cd0f315f91ec4bbddfbb6}{
-\index{ConfigHandler@{ConfigHandler}!read\_\-config@{read\_\-config}}
-\index{read\_\-config@{read\_\-config}!ConfigHandler@{ConfigHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::read\_\-config (\$ {\em file} = {\tt ''})}}
-\label{classConfigHandler_75a7f03f156cd0f315f91ec4bbddfbb6}
-
-
-Find out what the filename of the logfile should be \hypertarget{classConfigHandler_df3dd923bfd38e0274dc86ebd0caed92}{
 \index{ConfigHandler@{ConfigHandler}!convert@{convert}}
 \index{convert@{convert}!ConfigHandler@{ConfigHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::convert (\$ {\em val})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classConfigHandler_df3dd923bfd38e0274dc86ebd0caed92}
-
-
+\subsubsection[{convert}]{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::convert (\$ {\em val})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classConfigHandler_adf3dd923bfd38e0274dc86ebd0caed92}
 Convert values in character string format to a known value
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$val}]The value as read from the config file \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]Value in the desired format (or as is if nothing set) \end{Desc}
-\hypertarget{classConfigHandler_e55c0b4508da28ff46299bb7111435cf}{
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$val}]The value as read from the config file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value in the desired format (or as is if nothing set) 
+\end{DoxyReturn}
+
+
+References Register::get\_\-severity\_\-level().
+
+
+
+Referenced by read\_\-config().
+
 \index{ConfigHandler@{ConfigHandler}!get@{get}}
 \index{get@{get}!ConfigHandler@{ConfigHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::get (\$ {\em item})}}
-\label{classConfigHandler_e55c0b4508da28ff46299bb7111435cf}
-
-
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::get (\$ {\em item}, \/  \$ {\em default} = {\ttfamily null})}\label{classConfigHandler_ab8a7633a5a352c40d5c1380e04ffd199}
 Return a configuration value. Note! In order to use hidden values properly, this is the ONLY way configuration values should be retrieved!
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$item}]The configuration item in the same format as it appears in the configuration file (e.g. 'group$|$subject$|$item') \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]Corresponding value of null when nothing was found \end{Desc}
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$item}]The configuration item in the same format as it appears in the configuration file (e.g. 'group$|$subject$|$item') \item[\mbox{$\leftarrow$} {\em \$default}]The default value to return if the config item was not set. This defaults to 'null'; if it is anything other than null, the CONFIG\_\-NOVALUE status will not be set \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Corresponding value of null when nothing was found 
+\end{DoxyReturn}
 
 
-The documentation for this class was generated from the following file:\begin{CompactItemize}
+References \$GLOBALS, and OWL::stat().
+
+
+
+Referenced by LogHandler::\_\-\_\-construct(), OWLException::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), User::\_\-\_\-construct(), FormHandler::\_\-\_\-get(), OWLException::check\_\-hide(), LogHandler::compose\_\-message(), DbHandler::connect(), DbHandler::get\_\-instance(), UserHandler::hash\_\-password(), LogHandler::log(), OWLExceptionHandler::log\_\-exception(), UserHandler::login(), User::logout(), FormHandler::parse\_\-formdata(), LogHandler::set\_\-filename(), \_\-OWL::set\_\-status(), \_\-OWL::signal(), and OWLException::traceback().
+
+\index{ConfigHandler@{ConfigHandler}!read\_\-config@{read\_\-config}}
+\index{read\_\-config@{read\_\-config}!ConfigHandler@{ConfigHandler}}
+\subsubsection[{read\_\-config}]{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::read\_\-config (\$ {\em file} = {\ttfamily ''})}\label{classConfigHandler_a75a7f03f156cd0f315f91ec4bbddfbb6}
+Parse the given configuration file
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$file}]Full path to the configuration file \end{DoxyParams}
+
+
+References \$GLOBALS, and convert().
+
+\index{ConfigHandler@{ConfigHandler}!set@{set}}
+\index{set@{set}!ConfigHandler@{ConfigHandler}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::set (\$ {\em item}, \/  \$ {\em value})}\label{classConfigHandler_ac947c34c710d66558da03ff632c32075}
+Set a configuration item. Existing values will be overwritten.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$item}]The configuration item in the same format as it appears in the configuration file (e.g. 'group$|$subject$|$item') \item[\mbox{$\leftarrow$} {\em \$value}]The new value of the item \end{DoxyParams}
+
+
+References \$GLOBALS.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/work/eclipse/owl-php/src/kernel/so/\hyperlink{class_8confighandler_8php}{class.confighandler.php}\end{CompactItemize}
+/home/oscar/projects/owl-\/php/src/kernel/so/\hyperlink{class_8confighandler_8php}{class.confighandler.php}\end{DoxyCompactItemize}

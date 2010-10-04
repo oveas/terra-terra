@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Session class
- * \version $Id: class.session.php,v 1.3 2010-08-20 08:39:55 oscar Exp $
+ * \version $Id: class.session.php,v 1.4 2010-10-04 17:40:40 oscar Exp $
  */
 
 /**
@@ -20,7 +20,7 @@ class Session extends SessionHandler
 	 */
 	public function __construct ()
 	{
-		$this->dataset =& new DataHandler (&$GLOBALS['db']);
+		$this->dataset =& new DataHandler ();
 		parent::__construct ();
 		if (session_id() == '') {
 			session_start ();

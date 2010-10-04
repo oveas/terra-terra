@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.4 2010-08-20 08:39:54 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.5 2010-10-04 17:40:40 oscar Exp $
  */
 
 /**
@@ -44,6 +44,12 @@ class SessionHandler extends _OWL
 	protected $dataset;
 
 	/**
+	 * Reference to the DB Singleton
+	 * \private
+	 */
+	private $db;
+	
+	/**
 	 * Class constructor; set the save_handler
 	 * \public
 	 */
@@ -52,6 +58,10 @@ class SessionHandler extends _OWL
 		_OWL::init();
 
 		$this->dataset->set_tablename('owl_sessiondata');
+
+		// We need a reference to DbHandler here to make sure the object
+		// can't go out of scope before the session data is written during rundown.
+		$this->db = OWL::factory('DbHandler');
 
 		// TODO; Tune the settings below depending on server load.
 		// The outcommented values are the system default (1%)
@@ -112,7 +122,7 @@ class SessionHandler extends _OWL
 	 */
 	public function read ($id)
 	{
-		$this->dataset->sid = $GLOBALS['db']->escape_string($id);
+		$this->dataset->sid = $this->db->escape_string($id);
 		$this->dataset->sdata = null;
 
 		$this->dataset->prepare (DATA_READ);
@@ -133,22 +143,19 @@ class SessionHandler extends _OWL
 	 */
 	public function write ($id, $data)
 	{
-//		if (!array_key_exists ('db', $GLOBALS)) {
-		if (@!is_object ($GLOBALS['db'])) {
-			$this->set_status(SESSION_WRITEERR);
-			
-			// When calling from __destruct(), the db object might already be gone
-			return (false);
+		// During rundown the dabase might have been closed aready, so reopen it.
+		if (!$this->db->is_open()) {
+			$this->db->open();
 		}
 
-		$this->dataset->sid = $GLOBALS['db']->escape_string($id);
+		$this->dataset->sid = $this->db->escape_string($id);
 		
 		// First, check if this session already exists in the db
 		$this->dataset->prepare (DATA_READ);
 		$this->dataset->db (&$_data, __LINE__, __FILE__);
 		
 		// Set or overwrite the values
-		$this->dataset->sdata = $GLOBALS['db']->escape_string($data);
+		$this->dataset->sdata = $this->db->escape_string($data);
 		$this->dataset->stimestamp = time();
 
 		if (count ($_data) == 0) {
@@ -199,10 +206,10 @@ class SessionHandler extends _OWL
 	 */
 	public function gc ($lifetime)
 	{
-		$GLOBALS['db']->query =
-			  'DELETE FROM ' . $GLOBALS['db']->tablename ('sessiondata')
+		$this->db->query =
+			  'DELETE FROM ' . $this->db->tablename ('sessiondata')
 			. ' WHERE stimestamp < ' . time() - $lifetime;
-		return $GLOBALS['db']->write (__LINE__, __FILE__);
+		return $this->db->write (__LINE__, __FILE__);
 	}
 }
 

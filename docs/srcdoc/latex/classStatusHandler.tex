@@ -1,157 +1,178 @@
-\hypertarget{classStatusHandler}{
 \section{StatusHandler Class Reference}
 \label{classStatusHandler}\index{StatusHandler@{StatusHandler}}
-}
+
+
 Status object.  
 
 
 \subsection*{Public Member Functions}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classStatusHandler_5cb2ad461aa4afc7ec9115c176eb354e}{\_\-\_\-construct} (\$code=OWL\_\-STATUS\_\-WARNING)
+\hyperlink{classStatusHandler_ae80418e7b0d469131e909dfcda4ad36e}{\_\-\_\-clone} ()
 \item 
-\hyperlink{classStatusHandler_748d462386322a552aa798f951258c91}{set\_\-code} (\$code=OWL\_\-STATUS\_\-BUG)
+\hyperlink{classStatusHandler_a748d462386322a552aa798f951258c91}{set\_\-code} (\$code=OWL\_\-STATUS\_\-BUG)
 \item 
-\hyperlink{classStatusHandler_8b0a327d3272ae49032a596518d47164}{reset} ()
+\hyperlink{classStatusHandler_a8b0a327d3272ae49032a596518d47164}{reset} ()
 \item 
-\hyperlink{classStatusHandler_c35544d3ad8a435f69db0965ed674428}{set\_\-params} (\$params)
+\hyperlink{classStatusHandler_ac35544d3ad8a435f69db0965ed674428}{set\_\-params} (\$params)
 \item 
-\hyperlink{classStatusHandler_cadd0806c17eb02abcc92882e8588d4e}{get\_\-severity} (\$status=null)
+\hyperlink{classStatusHandler_acadd0806c17eb02abcc92882e8588d4e}{get\_\-severity} (\$status=null)
 \item 
-\hyperlink{classStatusHandler_d39bc4e6a56b6d418a252957da9b4417}{get\_\-code} ()
+\hyperlink{classStatusHandler_ad39bc4e6a56b6d418a252957da9b4417}{get\_\-code} ()
 \item 
-\hyperlink{classStatusHandler_79170bca79bfd82e3f707e1294e7c916}{get\_\-message} ()
-\end{CompactItemize}
+\hyperlink{classStatusHandler_a79170bca79bfd82e3f707e1294e7c916}{get\_\-message} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classStatusHandler_a9d291ccaa6b4e6eed931e47025915b0e}{get\_\-instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStatusHandler_a5cb2ad461aa4afc7ec9115c176eb354e}{\_\-\_\-construct} (\$code=OWL\_\-STATUS\_\-WARNING)
+\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
-\begin{CompactItemize}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{classStatusHandler_b74e826d2401345eb20b11fe7d78aa45}{\$code}
+\hyperlink{classStatusHandler_ab74e826d2401345eb20b11fe7d78aa45}{\$code}
 \item 
-\hyperlink{classStatusHandler_599f9c9284340399fdcb7dac9cb7856f}{\$params}
-\end{CompactItemize}
+\hyperlink{classStatusHandler_a599f9c9284340399fdcb7dac9cb7856f}{\$params}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classStatusHandler_a93400d190e7612dd53fbf0be529a96ee}{\$instance}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Status object. 
-
-Each object, when initialised, gets a status object which olds information about the last action that was performed. \begin{Desc}
-\item[Author:]Oscar van Eijk, Oveas Functionality Provider \end{Desc}
-\begin{Desc}
-\item[Version:]Aug 11, 2008 -- O van Eijk -- Initial version \end{Desc}
+Status object. Each object, when initialised, gets a status object which olds information about the last action that was performed. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Aug 11, 2008 -\/-\/ O van Eijk -\/-\/ Initial version 
+\end{DoxyVersion}
 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classStatusHandler_5cb2ad461aa4afc7ec9115c176eb354e}{
 \index{StatusHandler@{StatusHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
 \index{\_\-\_\-construct@{\_\-\_\-construct}!StatusHandler@{StatusHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\_\-\_\-construct (\$ {\em code} = {\tt OWL\_\-STATUS\_\-WARNING})}}
-\label{classStatusHandler_5cb2ad461aa4afc7ec9115c176eb354e}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\_\-\_\-construct (\$ {\em code} = {\ttfamily OWL\_\-STATUS\_\-WARNING})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classStatusHandler_a5cb2ad461aa4afc7ec9115c176eb354e}
+Constructor; should be called only by \hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{\_\-OWL::init()}. The default status is initially a (generic) warning status. It should be set to any successfull status after object initialisation completed.
 
 
-Constructor; should be called only by \hyperlink{class__OWL_e0ef3ded56e8a6b34b6461e5a721cd3e}{\_\-OWL::init()}. The default status is initially a (generic) warning status. It should be set to any successfull status after object initialisation completed.
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$code}]The status code \end{DoxyParams}
 
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$code}]The status code \end{description}
-\end{Desc}
+
+References \$code.
+
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classStatusHandler_748d462386322a552aa798f951258c91}{
-\index{StatusHandler@{StatusHandler}!set\_\-code@{set\_\-code}}
-\index{set\_\-code@{set\_\-code}!StatusHandler@{StatusHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::set\_\-code (\$ {\em code} = {\tt OWL\_\-STATUS\_\-BUG})}}
-\label{classStatusHandler_748d462386322a552aa798f951258c91}
-
-
-Set the status of the owner object to the given value.
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$code}]The status code \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]The severity level of the code \end{Desc}
-\hypertarget{classStatusHandler_8b0a327d3272ae49032a596518d47164}{
-\index{StatusHandler@{StatusHandler}!reset@{reset}}
-\index{reset@{reset}!StatusHandler@{StatusHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::reset ()}}
-\label{classStatusHandler_8b0a327d3272ae49032a596518d47164}
-
-
-Reset the object status \hypertarget{classStatusHandler_c35544d3ad8a435f69db0965ed674428}{
-\index{StatusHandler@{StatusHandler}!set\_\-params@{set\_\-params}}
-\index{set\_\-params@{set\_\-params}!StatusHandler@{StatusHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::set\_\-params (\$ {\em params})}}
-\label{classStatusHandler_c35544d3ad8a435f69db0965ed674428}
-
-
-If the status was set with optional parameters, they will be set in this subject and substituted in the correct message
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$params}]An array with parameters \end{description}
-\end{Desc}
-\hypertarget{classStatusHandler_cadd0806c17eb02abcc92882e8588d4e}{
-\index{StatusHandler@{StatusHandler}!get\_\-severity@{get\_\-severity}}
-\index{get\_\-severity@{get\_\-severity}!StatusHandler@{StatusHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::get\_\-severity (\$ {\em status} = {\tt null})}}
-\label{classStatusHandler_cadd0806c17eb02abcc92882e8588d4e}
-
-
-Check the status of the given object and return its severity.
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{description}
-\end{Desc}
-\begin{Desc}
-\item[Returns:]The severity level of the current status \end{Desc}
-\hypertarget{classStatusHandler_d39bc4e6a56b6d418a252957da9b4417}{
-\index{StatusHandler@{StatusHandler}!get\_\-code@{get\_\-code}}
+\index{StatusHandler@{StatusHandler}!\_\-\_\-clone@{\_\-\_\-clone}}
+\index{\_\-\_\-clone@{\_\-\_\-clone}!StatusHandler@{StatusHandler}}
+\subsubsection[{\_\-\_\-clone}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\_\-\_\-clone ()}\label{classStatusHandler_ae80418e7b0d469131e909dfcda4ad36e}
+Implementation of the \hyperlink{classStatusHandler_ae80418e7b0d469131e909dfcda4ad36e}{\_\-\_\-clone()} function to prevent cloning of this singleton; it triggers a fatal (user)error \index{StatusHandler@{StatusHandler}!get\_\-code@{get\_\-code}}
 \index{get\_\-code@{get\_\-code}!StatusHandler@{StatusHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::get\_\-code ()}}
-\label{classStatusHandler_d39bc4e6a56b6d418a252957da9b4417}
-
-
+\subsubsection[{get\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::get\_\-code ()}\label{classStatusHandler_ad39bc4e6a56b6d418a252957da9b4417}
 Return the status code
 
-\begin{Desc}
-\item[Returns:]The status code \end{Desc}
-\hypertarget{classStatusHandler_79170bca79bfd82e3f707e1294e7c916}{
+\begin{DoxyReturn}{Returns}
+The status code 
+\end{DoxyReturn}
+\index{StatusHandler@{StatusHandler}!get\_\-instance@{get\_\-instance}}
+\index{get\_\-instance@{get\_\-instance}!StatusHandler@{StatusHandler}}
+\subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static StatusHandler::get\_\-instance ()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classStatusHandler_a9d291ccaa6b4e6eed931e47025915b0e}
+Return a reference to my implementation. If necessary, create that implementation first.
+
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References \$instance.
+
 \index{StatusHandler@{StatusHandler}!get\_\-message@{get\_\-message}}
 \index{get\_\-message@{get\_\-message}!StatusHandler@{StatusHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::get\_\-message ()}}
-\label{classStatusHandler_79170bca79bfd82e3f707e1294e7c916}
-
-
+\subsubsection[{get\_\-message}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::get\_\-message ()}\label{classStatusHandler_a79170bca79bfd82e3f707e1294e7c916}
 Retrieve the message that has been specified for the current object status. If parameters are set and wanted by the message text, replace them. If more parameters are available then used in the message, there's a quote with the unused parameter count added to the message.
 
-\begin{Desc}
-\item[Returns:]The message text \end{Desc}
+\begin{DoxyReturn}{Returns}
+The message text 
+\end{DoxyReturn}
+
+
+References \$GLOBALS.
+
+\index{StatusHandler@{StatusHandler}!get\_\-severity@{get\_\-severity}}
+\index{get\_\-severity@{get\_\-severity}!StatusHandler@{StatusHandler}}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::get\_\-severity (\$ {\em status} = {\ttfamily null})}\label{classStatusHandler_acadd0806c17eb02abcc92882e8588d4e}
+Check the status of the given object and return its severity.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The severity level of the current status 
+\end{DoxyReturn}
+\index{StatusHandler@{StatusHandler}!reset@{reset}}
+\index{reset@{reset}!StatusHandler@{StatusHandler}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::reset ()}\label{classStatusHandler_a8b0a327d3272ae49032a596518d47164}
+Reset the object status \index{StatusHandler@{StatusHandler}!set\_\-code@{set\_\-code}}
+\index{set\_\-code@{set\_\-code}!StatusHandler@{StatusHandler}}
+\subsubsection[{set\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::set\_\-code (\$ {\em code} = {\ttfamily OWL\_\-STATUS\_\-BUG})}\label{classStatusHandler_a748d462386322a552aa798f951258c91}
+Set the status of the owner object to the given value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$code}]The status code \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The severity level of the code 
+\end{DoxyReturn}
+
+
+References \$code.
+
+\index{StatusHandler@{StatusHandler}!set\_\-params@{set\_\-params}}
+\index{set\_\-params@{set\_\-params}!StatusHandler@{StatusHandler}}
+\subsubsection[{set\_\-params}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::set\_\-params (\$ {\em params})}\label{classStatusHandler_ac35544d3ad8a435f69db0965ed674428}
+If the status was set with optional parameters, they will be set in this subject and substituted in the correct message
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$params}]An array with parameters \end{DoxyParams}
+
+
+References \$params.
+
 
 
 \subsection{Member Data Documentation}
-\hypertarget{classStatusHandler_b74e826d2401345eb20b11fe7d78aa45}{
 \index{StatusHandler@{StatusHandler}!\$code@{\$code}}
 \index{\$code@{\$code}!StatusHandler@{StatusHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$code\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classStatusHandler_b74e826d2401345eb20b11fe7d78aa45}
+\subsubsection[{\$code}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$code\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classStatusHandler_ab74e826d2401345eb20b11fe7d78aa45}
+Current object status 
 
+Referenced by \_\-\_\-construct(), and set\_\-code().
 
-Current object status \hypertarget{classStatusHandler_599f9c9284340399fdcb7dac9cb7856f}{
+\index{StatusHandler@{StatusHandler}!\$instance@{\$instance}}
+\index{\$instance@{\$instance}!StatusHandler@{StatusHandler}}
+\subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$instance\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classStatusHandler_a93400d190e7612dd53fbf0be529a96ee}
+integer -\/ self reference 
+
+Referenced by get\_\-instance().
+
 \index{StatusHandler@{StatusHandler}!\$params@{\$params}}
 \index{\$params@{\$params}!StatusHandler@{StatusHandler}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$params\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
-\label{classStatusHandler_599f9c9284340399fdcb7dac9cb7856f}
-
-
+\subsubsection[{\$params}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$params\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classStatusHandler_a599f9c9284340399fdcb7dac9cb7856f}
 Array with parameters that will be substituted in message text 
 
-The documentation for this class was generated from the following file:\begin{CompactItemize}
+Referenced by set\_\-params().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/work/eclipse/owl-php/src/kernel/so/\hyperlink{class_8statushandler_8php}{class.statushandler.php}\end{CompactItemize}
+/home/oscar/projects/owl-\/php/src/kernel/so/\hyperlink{class_8statushandler_8php}{class.statushandler.php}\end{DoxyCompactItemize}

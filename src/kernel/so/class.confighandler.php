@@ -2,7 +2,7 @@
 /**
  * \file
  * Define a class for config handling
- * \version $Id: class.confighandler.php,v 1.3 2010-08-20 08:39:54 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.4 2010-10-04 17:40:40 oscar Exp $
  */
 
 /**
@@ -113,9 +113,11 @@ abstract class ConfigHandler
 	 * \public
 	 * \param[in] $item The configuration item in the same format as it appears in the
 	 * configuration file (e.g. 'group|subject|item')
+	 * \param[in] $default The default value to return if the config item was not set. This defaults
+	 * to 'null'; if it is anything other than null, the CONFIG_NOVALUE status will not be set
 	 * \return Corresponding value of null when nothing was found
 	 */
-	public function get ($item)
+	public function get ($item, $default = null)
 	{
 		if (isset ($GLOBALS['owl_cache']['cget'][$item])) {
 			return ($GLOBALS['owl_cache']['cget'][$item]);
@@ -134,8 +136,12 @@ abstract class ConfigHandler
 			$_h =& $_h[$item];
 		}
 		if (!isset ($_c)) {
-			$GLOBALS['owl_object']->s (CONFIG_NOVALUE, $item); 
-			return (null);
+			if ($default === null) {
+				OWL::stat (CONFIG_NOVALUE, $item); 
+				return (null);
+			} else {
+				return $default;
+			}
 		}
 		if ($_c === $GLOBALS['config']['hide']['value']) {
 			$_cache = $_h;
@@ -143,6 +149,40 @@ abstract class ConfigHandler
 			$_cache = $_c;
 		}
 		return ($_cache);
+	}
+
+
+	/**
+	 * Set a configuration item. Existing values will be overwritten.
+	 * \public
+	 * \param[in] $item The configuration item in the same format as it appears in the
+	 * configuration file (e.g. 'group|subject|item')
+	 * \param[in] $value The new value of the item
+	 */
+	public function set ($item, $value)
+	{
+		if (isset ($GLOBALS['owl_cache']['cget'][$item])) {
+			// Clean the cache
+			unset ($GLOBALS['owl_cache']['cget'][$item]);
+		}
+
+		// TODO; check if the original value had to be hidden. If so, hide again!
+		if (strpos ($item, '|') !== false) {
+			$_item = explode ('|', $item);
+			$_pointer =& $GLOBALS['config'];
+			foreach ($_item as $_k => $_v) {
+				if ($_k == (count ($_item)-1)) {
+					$_pointer[$_v] = $value;
+				} else {
+					if (!array_key_exists($_v, $_pointer)) {
+						$_pointer[$_v] = array();
+					}
+					$_pointer =& $_pointer[$_v];
+				}
+			}
+		} else {
+			$GLOBALS['config'][$_item] = $value;
+		}
 	}
 }
 

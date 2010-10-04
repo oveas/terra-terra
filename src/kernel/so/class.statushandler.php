@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines status object that's user for all objects
- * \version $Id: class.statushandler.php,v 1.3 2008-09-02 05:16:53 oscar Exp $
+ * \version $Id: class.statushandler.php,v 1.4 2010-10-04 17:40:40 oscar Exp $
  */
 
 /**
@@ -28,17 +28,47 @@ class StatusHandler
 	private $params;
 
 	/**
+	 * integer - self reference
+	 * \private
+	 * \static
+	 */
+	private static $instance;
+
+	/**
 	 * Constructor; should be called only by _OWL::init().
 	 * The default status is initially a (generic) warning status. It should be set to
 	 * any successfull status after object initialisation completed.  
 	 * \public
 	 * \param[in] $code The status code
 	 */
-	public function __construct ($code = OWL_STATUS_WARNING)
+	private function __construct ($code = OWL_STATUS_WARNING)
 	{
 		$this->code = $code;
 	}
-	
+
+	/**
+	 * Implementation of the __clone() function to prevent cloning of this singleton;
+	 * it triggers a fatal (user)error
+	 * \public
+	 */
+	public function __clone ()
+	{
+		trigger_error('invalid object cloning');
+	}
+
+	/**
+	 * Return a reference to my implementation. If necessary, create that implementation first.
+	 * \public
+	 * \return Severity level
+	 */
+	public static function get_instance()
+	{
+		if (!StatusHandler::$instance instanceof self) {
+			StatusHandler::$instance = new self();
+		}
+		return StatusHandler::$instance;
+	}
+
 	/**
 	 * Set the status of the owner object to the given value.
 	 * \public

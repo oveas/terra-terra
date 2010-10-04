@@ -2,8 +2,8 @@
 /**
  * \file
  * \ingroup OWL_LIBRARY
- * This file loads the OWL environment in intialises some singletons
- * \version $Id: OWLloader.php,v 1.7 2010-08-20 08:39:54 oscar Exp $
+ * This file loads the OWL environment and initialises some singletons
+ * \version $Id: OWLloader.php,v 1.8 2010-10-04 17:40:40 oscar Exp $
  */
 
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
@@ -26,7 +26,7 @@ require_once (OWL_SO_INC . '/class.exceptionhandler.php');
 require_once (OWL_SO_INC . '/class.register.php');
 
 // Base class
-require_once (OWL_INCLUDE . '/class._OWL.php');
+require_once (OWL_INCLUDE . '/class._owl.php');
 
 
 // SO Layer
@@ -40,12 +40,13 @@ require_once (OWL_SO_INC . '/class.userhandler.php');
 require_once (OWL_SO_INC . '/class.filehandler.php');
 
 // BO Layer
+require_once (OWL_BO_INC . '/class.owl.php');
 require_once (OWL_BO_INC . '/class.session.php');
 require_once (OWL_BO_INC . '/class.user.php');
 
 // UI Layer
 
-$GLOBALS['owl_object'] = new OWL();
+//$GLOBALS['owl_object'] = new OWL();
 $GLOBALS['messages'] = array ();
 
 ConfigHandler::read_config (ConfigHandler::get ('configfiles|owl'));
@@ -79,19 +80,24 @@ if (file_exists (OWL_LIBRARY . '/owl.messages.'
 }
 
 // Singeltons
-$GLOBALS['logger'] =& new LogHandler();
+$GLOBALS['logger'] = OWL::factory('LogHandler');
 
-$GLOBALS['db'] =& new DBHandler(
-			  ConfigHandler::get ('dbserver')
-			, ConfigHandler::get ('dbname')
-			, ConfigHandler::get ('dbuser')
-			, ConfigHandler::get ('dbpasswd'));
+
+
+//$_form = FormHandler::get_instance();
+//$_user =& new User();
+
+
+//$GLOBALS['db'] =& new DBHandler(
+//			  ConfigHandler::get ('dbserver')
+//			, ConfigHandler::get ('dbname')
+//			, ConfigHandler::get ('dbuser')
+//			, ConfigHandler::get ('dbpasswd'));
 
 //if (!$GLOBALS['db']->create()) {
 //	$GLOBALS['db']->signal ();
 //	die ("Fatal");
 //}
 
-$GLOBALS['db']->open();
-$GLOBALS['formdata'] =& new FormHandler();
-$GLOBALS['user'] =& new User();
+//$GLOBALS['formdata'] =& new FormHandler();
+//$GLOBALS['user'] =& new User();

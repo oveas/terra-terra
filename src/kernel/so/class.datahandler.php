@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.3 2008-09-08 12:27:55 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.4 2010-10-04 17:40:40 oscar Exp $
  */
 
 /**
@@ -97,19 +97,20 @@ class DataHandler extends _OWL
 	private $owl_prepared;
 
 	/**
-	 * Class constructor
-	 * \param[in] $dblink Database object
+	 * Class constructor. We don't use a standard constructor (__construct()) here,
+	 * since singleton classes (using private constructors) might derive from this class.
+	 * In stead we use the PHP4 compatible constructor.
 	 * \param[in] $tablename Default table name for this dataset
 	 * \public
 	 */
-	public function __construct ($dblink = null, $tablename = '')
+	public function DataHandler ($tablename = '')
 	{
 		_OWL::init();
 		$this->owl_data = array();
 		$this->owl_joins = array();
 		$this->owl_keys = array();
 		$this->owl_tablename = $tablename;
-		$this->owl_database = $dblink;
+		$this->owl_database = OWL::factory('DbHandler');
 		$this->owl_prepared = DATA_UNPREPARED;
 		$this->set_status (OWL_STATUS_OK);
 	}
@@ -189,6 +190,17 @@ class DataHandler extends _OWL
 		}
 		$this->set_status (DATA_KEYSET, $variable);
 		return ($this->get_severity());
+	}
+
+	/**
+	 * Interface to the DbHander::escape_string()
+	 * \public
+	 * \param[in] $string String to escape
+	 * \return Return value of DbHandler::escape_string()
+	 */
+	public function escape_string($string)
+	{
+		return $this->owl_database->escape_string($string);
 	}
 
 	/**
@@ -291,19 +303,9 @@ class DataHandler extends _OWL
 	}
 
 	/**
-	 * Set or overwrite a database link.
-	 * \public
-	 * \param[in] $dblink Link to the database object.
-	 */
-	public function set_database (&$dblink)
-	{
-		$this->owl_database = $dblink;
-	}
-
-	/**
 	 * Set or overwrite the default table name
 	 * \public
-	 * \param[in] $dblink Default table name
+	 * \param[in] $tblname Default table name
 	 */
 	public function set_tablename ($tblname)
 	{
