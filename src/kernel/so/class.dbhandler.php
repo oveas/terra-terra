@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.6 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.7 2010-10-15 10:51:54 oscar Exp $
  */
 
 /**
@@ -265,55 +265,6 @@ class DbHandler extends _OWL
 	}
 
 	/**
-	 * Get a description of a database table
-	 * \public
-	 * \param[in] $tablename The tablename
-	 * \param[out] $data Indexed array holding all fields => datatypes
-	 * \return Indexed array holding all fields => datatypes
-	 */
-	public function table_description ($tablename, &$data)
-	{
-		$_query = $this->query;
-		$_data  = array ();
-		$_descr = array ();
-
-		if ($this->database['engine'] == 'MySQL') {
-			// Currently the only type supported
-			//
-			$this->query = 'SHOW COLUMNS FROM ' . $this->db_prefix . $tablename;
-
-			$_data = $this->read (DBHANDLE_DATA);
-			foreach ($_data as $_record) {
-
-				$_descr[$_record[0]]['numeric'] = preg_match("/(int|float|double|dec|real|numeric)/i", $_record[1]) ? True : False;
-				if (preg_match("/\(\d+\)/", $_record[1], $_matches)) {
-					$_descr[$_record[0]]['length'] = $_matches[0];
-				}
-				$_descr[$_record[0]]['null']     = ($_record[2] == 'YES');
-				$_descr[$_record[0]]['auto_inc'] = (preg_match("/auto_inc/i", $_record[5]));
-
-				if (preg_match("/\((.+),?\)/", $_record[1], $_matches)) {
-					// Value list for ENUM and SET type
-					$_descr[$_record[0]]['options_list']   = array_shift ($_matches);
-					$_descr[$_record[0]]['options_array']  = $_matches;
-				}
-
-				$_descr[$_record[0]]['default'] = ($_record[4] == 'NULL') ? '' : $_record[4];
-				$_descr[$_record[0]]['index'] = $_record[3]; // PRI, UNI or MUL
-			}
-		}
-
-		$this->query = $_query;
-		if (count($_descr) == 0) {
-			$this->set_status (DBHANDLE_IVTABLE, $tablename);
-		} else {
-			$this->set_status (OWL_STATUS_OK);
-		}
-		$data = $_descr;
-		return ($this->severity);
-	}
-
-	/**
 	 * Extend a tablename with the database prefix
 	 * \public
 	 * \param[in] $tablename Table name to extend
@@ -427,9 +378,8 @@ class DbHandler extends _OWL
 			return (false);
 		}
 
-		$rows = mysql_num_rows($__result);
-
-		if ($rows == 0) {
+		if (mysql_num_rows($__result) == 0) {
+			$fields = 0;
 			return (array());
 		}
 
@@ -440,9 +390,22 @@ class DbHandler extends _OWL
 			$data_set[$rows++] = $__row;
 		}
 		mysql_free_result ($__result);
+		$fields = count($data_set[0]);
 		return ($data_set);
 	}
 
+	/**
+	 * Check if a table exists in the database
+	 * \param[in] $tablename Name of the table to check
+	 * \return True of the table exists
+	 */
+	public function table_exists($tablename)
+	{
+		$_rowcount;
+		$_fldcount;
+		$_matches = $this->dbread("SHOW TABLES LIKE '" . $this->tablename($tablename) . "'", $_rowcount, $_fieldcount);
+		return ($_rowcount > 0);
+	}
 
 	/**
 	 * Call the current DBtype's escape function for character strings.

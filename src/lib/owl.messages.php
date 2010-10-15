@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in UK English
- * \version $Id: owl.messages.php,v 1.8 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.9 2010-10-15 10:51:54 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -63,4 +63,16 @@ $GLOBALS['messages'] = array (
 	, FILE_OPENED			=> ''
 	, FILE_CLOSED			=> ''
 	, FILE_OPENERR			=> ''
-);
+	, SCHEMEHANDLE_NOTABLE	=> 'The table $p1$ does not exist'
+	, SCHEMEHANDLE_NOINDEX	=> 'The table $p1$ has no indexes'
+	, SCHEMEHANDLE_IVTABLE	=> 'Creating a table with an invalid or empty tablename'
+	, SCHEMEHANDLE_EMPTYTABLE	=> 'The tabl $p1$ exists but has no fields - this can\'t be possible :-/'
+	, SCHEMEHANDLE_INUSE	=> 'Cannot create a new table while $p1$ is in use - call reset() first'
+	, SCHEMEHANDLE_INUSE	=> 'No table in use to alter'
+	, SCHEMEHANDLE_NOINDEX	=> 'No index defined for scheme $p1$'
+	, SCHEMEHANDLE_MULAUTOINC	=> 'Multiple AUTO_INCREMENT fields defined for scheme $p1$'
+	, SCHEMEHANDLE_NOCOLIDX	=> 'No columns defined for index $p2$ on scheme  $p1$'
+	, SCHEMEHANDLE_IVCOLID	=> 'Column $p3$ for index $p2$ on scheme does not exist'
+	, SCHEMEHANDLE_NOCOLS	=> 'No columns defined for scheme $p1$'
+
+	);

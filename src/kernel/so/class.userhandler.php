@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.7 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.8 2010-10-15 10:51:55 oscar Exp $
  */
 
 /**
@@ -77,7 +77,7 @@ class UserHandler extends _OWL
 		$this->dataset->set_key ('username');
 		$this->dataset->set_key ('password');
 		$this->dataset->prepare ();
-		$this->dataset->db(&$this->user_data);
+		$this->dataset->db(&$this->user_data, __LINE__, __FILE__);
 		$_dbstat = $this->dataset->db_status();
 		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
 			$this->set_status (USER_LOGINFAIL, array (

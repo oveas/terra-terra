@@ -2,7 +2,7 @@
 /**
  * \file
  * This is the entry point for OWL-PHP teststub
- * \version $Id: index.php,v 1.9 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: index.php,v 1.10 2010-10-15 10:51:55 oscar Exp $
  */
 
 define ('OWL_ROOT', '/home/oscar/projects/owl-php/src');
@@ -59,10 +59,76 @@ You've been here <?php echo $_user->get_session_var('c', '?'); ?> times.<br />
 	</tr>
 </table>
 </form>
+
+<pre>
+<?php 
+OWLloader::getClass('schemehandler');
+$_scheme = SchemeHandler::get_instance();
+//$_data1 = array();
+//$_scheme->table_description('test2', $_data1);
+//$_data2 = array();
+//$_scheme->table_description('test', $_data2);
+//print_r($_scheme->compare($_data1,$_data2));
+$_table = array(
+	 'id' => array (
+			 'type' => 'INT'
+			,'length' => 11
+			,'auto_inc' => true
+			,'null' => false
+	)
+	,'name' => array (
+			 'type' => 'varchar'
+			,'length' => 24
+			,'auto_inc' => false
+			,'null' => false
+	)
+	,'address' => array (
+			 'type' => 'text'
+			,'length' => 0
+			,'null' => false
+	)
+	,'phone' => array (
+			 'type' => 'varchar'
+			,'length' => 16
+			,'null' => true
+	)
+	,'country' => array (
+			 'type' => 'enum'
+			,'length' => 0
+			,'auto_inc' => false
+			,'options' => array('NL', 'BE', 'DE', 'FR', 'ES')
+			,'default' => 'ES'
+			,'null' => false
+	)
+);
+$_index = array (
+	 'name' => array(
+			 'columns' => array ('name')
+			,'primary' => false
+			,'unique' => false
+			,'type' => null
+	)
+	,'address' => array(
+			 'columns' => array ('address')
+			,'primary' => false
+			,'unique' => false
+			,'type' => 'FULLTEXT'
+	)
+);
+$_scheme->create_scheme('person');
+$_scheme->define_scheme($_table);
+$_scheme->define_index($_index);
+$_scheme->scheme();
+$_scheme->table_description('person', $_data2);
+print_r($_data2);
+?>
+
+</pre>
 </body>
 </html>
 <?php
 
 //phpinfo();
-require_once (OWL_ROOT . '/OWLrundown.php');
+OWLloader::getClass('OWLrundown.php', OWL_ROOT);
+//require_once (OWL_ROOT . '/OWLrundown.php');
 ?>
