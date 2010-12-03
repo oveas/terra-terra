@@ -1,0 +1,277 @@
+\section{Dispatcher Class Reference}
+\label{classDispatcher}\index{Dispatcher@{Dispatcher}}
+
+
+\hyperlink{classDispatcher}{Dispatcher} singleton.  
+
+
+
+
+Inheritance diagram for Dispatcher:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=400pt]{classDispatcher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Dispatcher:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=400pt]{classDispatcher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDispatcher_a601d9fd6c9a2ccbfd77b43b6f7678ba3}{\_\-\_\-clone} ()
+\item 
+\hyperlink{classDispatcher_af79aa0f7056d4bc6765f940a9a0fb039}{dispatch} ()
+\item 
+\hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
+\item 
+\hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
+\item 
+\hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
+\item 
+\hyperlink{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}{traceback} (\&\$text=false, \$depth=0)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classDispatcher_af9998a41bc9dec229b58924e9d5e5e6a}{get\_\-instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
+\item 
+\hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\item 
+\hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
+\item 
+\hyperlink{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
+\item 
+\hyperlink{class__OWL_a576829692a3b66e3d518853bf43abae3}{set\_\-high\_\-severity} (\&\$object=null)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}{\$severity}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDispatcher_a62ba56a9c99d2b25616023812d965c32}{\_\-\_\-construct} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classDispatcher_a676b77546f23eb5bae93d28362664eb8}{\$instance}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classDispatcher}{Dispatcher} singleton. Define the dispatcher. This class calls the proper method based in the request or form data \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Nov 23, 2010 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Dispatcher@{Dispatcher}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!Dispatcher@{Dispatcher}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::\_\-\_\-construct ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDispatcher_a62ba56a9c99d2b25616023812d965c32}
+Constructor 
+
+References \_\-OWL::init().
+
+
+
+\subsection{Member Function Documentation}
+\index{Dispatcher@{Dispatcher}!\_\-\_\-clone@{\_\-\_\-clone}}
+\index{\_\-\_\-clone@{\_\-\_\-clone}!Dispatcher@{Dispatcher}}
+\subsubsection[{\_\-\_\-clone}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::\_\-\_\-clone ()}\label{classDispatcher_a601d9fd6c9a2ccbfd77b43b6f7678ba3}
+Implementation of the \hyperlink{classDispatcher_a601d9fd6c9a2ccbfd77b43b6f7678ba3}{\_\-\_\-clone()} function to prevent cloning of this singleton; it triggers a fatal (user)error \index{Dispatcher@{Dispatcher}!check@{check}}
+\index{check@{check}!Dispatcher@{Dispatcher}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the severity level was correct ( below the max), otherwise false 
+\end{DoxyReturn}
+
+
+References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::traceback().
+
+
+
+Referenced by SessionHandler::write().
+
+\index{Dispatcher@{Dispatcher}!dispatch@{dispatch}}
+\index{dispatch@{dispatch}!Dispatcher@{Dispatcher}}
+\subsubsection[{dispatch}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::dispatch ()}\label{classDispatcher_af79aa0f7056d4bc6765f940a9a0fb039}
+Get the dispatcher info from the formdata, load the specified classfile and call the method specified.
+
+\begin{DoxyReturn}{Returns}
+On errors during dispatch, the severity level, otherwise the return value of the given method 
+\end{DoxyReturn}
+
+
+References \$\_\-form, OWL::factory(), OWLloader::getClass(), and \_\-OWL::set\_\-status().
+
+\index{Dispatcher@{Dispatcher}!get\_\-instance@{get\_\-instance}}
+\index{get\_\-instance@{get\_\-instance}!Dispatcher@{Dispatcher}}
+\subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static Dispatcher::get\_\-instance ()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classDispatcher_af9998a41bc9dec229b58924e9d5e5e6a}
+Return a reference to my implementation. If necessary, create that implementation first.
+
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References \$instance.
+
+\index{Dispatcher@{Dispatcher}!get\_\-severity@{get\_\-severity}}
+\index{get\_\-severity@{get\_\-severity}!Dispatcher@{Dispatcher}}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+Get the current object severity level.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status severity level 
+\end{DoxyReturn}
+
+
+References \_\-OWL::\$status.
+
+
+
+Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandler::set\_\-key().
+
+\index{Dispatcher@{Dispatcher}!get\_\-status@{get\_\-status}}
+\index{get\_\-status@{get\_\-status}!Dispatcher@{Dispatcher}}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+Get the current object status.
+
+\begin{DoxyReturn}{Returns}
+Object's status code 
+\end{DoxyReturn}
+
+
+Referenced by SchemeHandler::compare().
+
+\index{Dispatcher@{Dispatcher}!init@{init}}
+\index{init@{init}!Dispatcher@{Dispatcher}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+
+References OWL::factory().
+
+
+
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), \_\-\_\-construct(), and DataHandler::DataHandler().
+
+\index{Dispatcher@{Dispatcher}!reset@{reset}}
+\index{reset@{reset}!Dispatcher@{Dispatcher}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
+General reset function for all objects. Should be called after each non-\/fatal error 
+
+Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
+
+
+
+References \_\-OWL::reset\_\-calltree().
+
+
+
+Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
+
+\index{Dispatcher@{Dispatcher}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
+\index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!Dispatcher@{Dispatcher}}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+
+Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
+
+\index{Dispatcher@{Dispatcher}!set\_\-status@{set\_\-status}}
+\index{set\_\-status@{set\_\-status}!Dispatcher@{Dispatcher}}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+Set the current object status to the specified value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+
+
+References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
+
+
+
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+
+\index{Dispatcher@{Dispatcher}!signal@{signal}}
+\index{signal@{signal}!Dispatcher@{Dispatcher}}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+Display the message for the current object status
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The severity level for this object 
+\end{DoxyReturn}
+
+
+References ConfigHandler::get().
+
+
+
+Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
+
+\index{Dispatcher@{Dispatcher}!traceback@{traceback}}
+\index{traceback@{traceback}!Dispatcher@{Dispatcher}}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity code of the failing object 
+\end{DoxyReturn}
+
+
+References \_\-OWL::signal().
+
+
+
+Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read().
+
+
+
+\subsection{Member Data Documentation}
+\index{Dispatcher@{Dispatcher}!\$instance@{\$instance}}
+\index{\$instance@{\$instance}!Dispatcher@{Dispatcher}}
+\subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::\$instance\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classDispatcher_a676b77546f23eb5bae93d28362664eb8}
+integer -\/ self reference 
+
+Referenced by get\_\-instance().
+
+\index{Dispatcher@{Dispatcher}!\$severity@{\$severity}}
+\index{\$severity@{\$severity}!Dispatcher@{Dispatcher}}
+\subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
+Severity level of the current object status 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/bo/\hyperlink{class_8dispatcher_8php}{class.dispatcher.php}\end{DoxyCompactItemize}

@@ -3,8 +3,11 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.9 2010-10-15 10:51:55 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.10 2010-12-03 12:07:43 oscar Exp $
  */
+
+// Error handling used during development
+error_reporting(E_ALL | E_STRICT);
 
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
 define ('OWL_SO_INC',	OWL_ROOT . '/kernel/so');
@@ -12,6 +15,7 @@ define ('OWL_BO_INC',	OWL_ROOT . '/kernel/bo');
 define ('OWL_UI_INC',	OWL_ROOT . '/kernel/ui');
 define ('OWL_LIBRARY',	OWL_ROOT . '/lib');
 
+define ('OWL_SITE_TOP', $_SERVER['DOCUMENT_ROOT'] . $_SERVER['REQUEST_URI']);
 /**
  * \defgroup OWL_UI_LAYER Presentation modules
  * \defgroup OWL_BO_LAYER Business Object modules
@@ -30,13 +34,19 @@ abstract class OWLloader
 {
 	/**
 	 * Load a PHP classfile
-	 * \param[in] $_className Name of the class; either file full name (<filename.php> or the identifying name ([class.]<name>[.php])
+	 * \param[in] $_className Name of the class; either file full name (&lt;filename.php&gt; or the identifying name ([class.]&lt;name&gt;[.php])
 	 * \param[in] $_classLocation (Array of) location(s) where to look for the class
 	 * \param[in] $_loadMultiple Boolean; by default, the first matching classname will be loaded. Set this to true to load all files with the same name from multiple locations
 	 * \return True on success
 	 */
-	public function getClass ($_className, $_classLocation = array(OWL_SO_INC, OWL_BO_INC, OWL_UI_INC), $_loadMultiple = false)
+	public static function getClass ($_className, $_classLocation = array(OWL_SO_INC, OWL_BO_INC, OWL_UI_INC), $_loadMultiple = false)
 	{
+
+		// FIXME This constuction will prevent duplicate names from several locations to load
+//		if (array_key_exists($_className, $GLOBALS['OWLCache']['classesLoaded'])) {
+//			return $GLOBALS['OWLCache']['classesLoaded'][$_className];
+//		}
+
 		if (!is_array($_classLocation)) {
 			return self::_tryLoad($_className, $_classLocation);
 		}
@@ -60,33 +70,35 @@ abstract class OWLloader
 	 * \param[in] $_classLocation Location where to tru loading it from
 	 * \return True on success
 	 */
-	private function _tryLoad ($_className, $_classLocation)
+	private static function _tryLoad ($_className, $_classLocation)
 	{
 		if (!file_exists($_classLocation . '/' . $_className)) {
-			// Try the classname wirg prefix 'class' and suffix 'php
+			// Try the classname with prefix 'class' and suffix 'php
 			$_className = 'class.'.$_className.'.php';
 			if (!file_exists($_classLocation . '/' . $_className)) {
+				$GLOBALS['OWLCache']['classesLoaded'][$_className] = false;
 				return false;
 			}
 		}
 		require_once ($_classLocation . '/' . $_className);
-		return;
+		$GLOBALS['OWLCache']['classesLoaded'][$_className] = true;
+		return true;
 	}
 }
+
+$GLOBALS['OWLCache'] = array (
+	 'classesLoaded' => array()
+);
+
 OWLloader::getClass('owl.severitycodes.php', OWL_LIBRARY);
 OWLloader::getClass('config.php', OWL_ROOT);
-//require_once (OWL_LIBRARY . '/owl.severitycodes.php');
-//require_once (OWL_ROOT . '/config.php');
 
 // Abstract classes
 OWLloader::getClass('exceptionhandler', OWL_SO_INC);
 OWLloader::getClass('register', OWL_SO_INC);
-//require_once (OWL_SO_INC . '/class.exceptionhandler.php');
-//require_once (OWL_SO_INC . '/class.register.php');
 
 // Base class
 OWLloader::getClass('_owl', OWL_INCLUDE);
-//require_once (OWL_INCLUDE . '/class._owl.php');
 
 
 // SO Layer
@@ -98,24 +110,15 @@ OWLloader::getClass('datahandler', OWL_SO_INC);
 OWLloader::getClass('formhandler', OWL_SO_INC);
 OWLloader::getClass('userhandler', OWL_SO_INC);
 OWLloader::getClass('filehandler', OWL_SO_INC);
-//require_once (OWL_SO_INC . '/class.confighandler.php');
-//require_once (OWL_SO_INC . '/class.loghandler.php');
-//require_once (OWL_SO_INC . '/class.sessionhandler.php');
-//require_once (OWL_SO_INC . '/class.dbhandler.php');
-//require_once (OWL_SO_INC . '/class.datahandler.php');
-//require_once (OWL_SO_INC . '/class.formhandler.php');
-//require_once (OWL_SO_INC . '/class.userhandler.php');
-//require_once (OWL_SO_INC . '/class.filehandler.php');
 
 // BO Layer
 OWLloader::getClass('owl', OWL_BO_INC);
 OWLloader::getClass('session', OWL_BO_INC);
 OWLloader::getClass('user', OWL_BO_INC);
-//require_once (OWL_BO_INC . '/class.owl.php');
-//require_once (OWL_BO_INC . '/class.session.php');
-//require_once (OWL_BO_INC . '/class.user.php');
+OWLloader::getClass('dispatcher', OWL_BO_INC);
 
 // UI Layer
+OWLloader::getClass('baseelement', OWL_UI_INC);
 
 //$GLOBALS['owl_object'] = new OWL();
 $GLOBALS['messages'] = array ();
@@ -131,13 +134,9 @@ if (array_key_exists ('app', ConfigHandler::get ('configfiles'))) {
 	}
 }
 
-// Select the (no)debug function libraries. This can be loaded only
-// after the configuration has been parsed (where 'config|debug' is set).
-if ($GLOBALS['config']['debug']) {
-	require_once (OWL_INCLUDE . '/owl.debug.functions.php');
-} else {
-	require_once (OWL_INCLUDE . '/owl.nodebug.functions.php');
-}
+// General helper functions. This can be loaded only after the configuration
+// has been parsed, since 'config|debug' is used to select the (no)debug library.
+require_once (OWL_LIBRARY . '/owl.helper.functions.php');
 
 // Load the message file
 if (file_exists (OWL_LIBRARY . '/owl.messages.'
@@ -156,10 +155,10 @@ $GLOBALS['logger'] = OWL::factory('LogHandler');
 
 
 //$_form = FormHandler::get_instance();
-//$_user =& new User();
+//$_user = new User();
 
 
-//$GLOBALS['db'] =& new DBHandler(
+//$GLOBALS['db'] = new DBHandler(
 //			  ConfigHandler::get ('dbserver')
 //			, ConfigHandler::get ('dbname')
 //			, ConfigHandler::get ('dbuser')
@@ -170,5 +169,5 @@ $GLOBALS['logger'] = OWL::factory('LogHandler');
 //	die ("Fatal");
 //}
 
-//$GLOBALS['formdata'] =& new FormHandler();
-//$GLOBALS['user'] =& new User();
+//$GLOBALS['formdata'] = new FormHandler();
+//$GLOBALS['user'] = new User();

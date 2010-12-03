@@ -71,12 +71,12 @@ Collaboration diagram for FileHandler:\nopagebreak
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{classFileHandler_a94903bd51b241928ed415ad271c38805}{\$name}
+\item 
 \hyperlink{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}{\$severity}
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
-\item 
-\hyperlink{classFileHandler_a94903bd51b241928ed415ad271c38805}{\$name}
 \item 
 \hyperlink{classFileHandler_aa0aa66fd3ad551b3f508b901a95c0c2d}{\$fpointer}
 \item 
@@ -104,6 +104,10 @@ Class constructor; setup the file characteristics
 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{$\leftarrow$} {\em \$name}]Filename \item[\mbox{$\leftarrow$} {\em \$req}]True is the file must exist at object create time \end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classImageHandler_aa61dc81d4cf98eed31b32e2197018309}{ImageHandler}.
+
 
 
 References \$name, \_\-OWL::init(), and \_\-OWL::set\_\-status().
@@ -191,7 +195,7 @@ Object's status code
 \end{DoxyReturn}
 
 
-Referenced by FormHandler::\_\-\_\-get().
+Referenced by SchemeHandler::compare().
 
 \index{FileHandler@{FileHandler}!init@{init}}
 \index{init@{init}!FileHandler@{FileHandler}}
@@ -202,7 +206,7 @@ References OWL::factory().
 
 
 
-Referenced by DOMElement::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), \_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), \_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{FileHandler@{FileHandler}!open@{open}}
 \index{open@{open}!FileHandler@{FileHandler}}
@@ -262,7 +266,7 @@ References \_\-OWL::set\_\-status().
 \subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
 General reset function for all objects. Should be called after each non-\/fatal error 
 
-Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}.
+Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
 
 
 
@@ -293,7 +297,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), \_\-\_\-construct(), DbHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-get(), DataHandler::\_\-\_\-get(), DataHandler::\_\-\_\-set(), close(), DbHandler::connect(), DbHandler::create(), DataHandler::DataHandler(), UserHandler::login(), open(), DbHandler::open(), LogHandler::open\_\-logfile(), FormHandler::parse\_\-formdata(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), DbHandler::table\_\-description(), and DbHandler::write().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), \_\-\_\-construct(), DbHandler::\_\-\_\-construct(), SchemeHandler::alter\_\-scheme(), close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{FileHandler@{FileHandler}!signal@{signal}}
 \index{signal@{signal}!FileHandler@{FileHandler}}
@@ -339,19 +343,35 @@ Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read()
 \index{FileHandler@{FileHandler}!\$fpointer@{\$fpointer}}
 \index{\$fpointer@{\$fpointer}!FileHandler@{FileHandler}}
 \subsubsection[{\$fpointer}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::\$fpointer\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFileHandler_aa0aa66fd3ad551b3f508b901a95c0c2d}
-Pointer to te file when opened \index{FileHandler@{FileHandler}!\$name@{\$name}}
+Pointer to te file when opened 
+
+Reimplemented in \hyperlink{classImageHandler_ac56acda82f7ece75d33f6c57845a727e}{ImageHandler}.
+
+\index{FileHandler@{FileHandler}!\$name@{\$name}}
 \index{\$name@{\$name}!FileHandler@{FileHandler}}
-\subsubsection[{\$name}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::\$name\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFileHandler_a94903bd51b241928ed415ad271c38805}
+\subsubsection[{\$name}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::\$name\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classFileHandler_a94903bd51b241928ed415ad271c38805}
 Full filename as stored on the file system 
+
+Reimplemented in \hyperlink{classImageHandler_a517b3d7ff8643cca1dc2080523bfe2d6}{ImageHandler}.
+
+
 
 Referenced by \_\-\_\-construct().
 
 \index{FileHandler@{FileHandler}!\$opened@{\$opened}}
 \index{\$opened@{\$opened}!FileHandler@{FileHandler}}
 \subsubsection[{\$opened}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::\$opened\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFileHandler_a061409b2bbd2e13bc47415527c0de720}
-Boolean that's true when the file is opened \index{FileHandler@{FileHandler}!\$original\_\-name@{\$original\_\-name}}
+Boolean that's true when the file is opened 
+
+Reimplemented in \hyperlink{classImageHandler_a6a87b3626bd0a457c6937b3e9b1cc69b}{ImageHandler}.
+
+\index{FileHandler@{FileHandler}!\$original\_\-name@{\$original\_\-name}}
 \index{\$original\_\-name@{\$original\_\-name}!FileHandler@{FileHandler}}
 \subsubsection[{\$original\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::\$original\_\-name}\label{classFileHandler_a477708585850c3c8725ccf56bfe0b4a8}
+
+
+Reimplemented in \hyperlink{classImageHandler_a1712c9444d65879aab111260767afaab}{ImageHandler}.
+
 \index{FileHandler@{FileHandler}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!FileHandler@{FileHandler}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}

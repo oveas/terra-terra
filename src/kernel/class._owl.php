@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._owl.php,v 1.1 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: class._owl.php,v 1.2 2010-12-03 12:07:42 oscar Exp $
  */
 
 /**
@@ -123,7 +123,7 @@ abstract class _OWL
 			$this->status->set_params (array ($params));
 		}
 		if ($this->severity >= ConfigHandler::get ('logging|log_level')) {
-			$this->signal (0, &$msg);
+			$this->signal (0, $msg);
 			if (@is_object($GLOBALS['logger'])) {
 				$GLOBALS['logger']->log ($msg, $status);
 			}
@@ -132,12 +132,12 @@ abstract class _OWL
 		if (ConfigHandler::get ('exception|throw_level') >= 0
 				&& $this->severity >= ConfigHandler::get ('exception|throw_level')) {
 
-			$this->signal (0, &$msg);
+			$this->signal (0, $msg);
 			if (ConfigHandler::get('exception|block_throws', false)) {
 //				// Can't call myself anymore but we wanna see this message.
 				$_msg = $msg; // Save the original 
 				$this->severity = $this->status->set_code(OWL_STATUS_THROWERR);
-				$this->signal (0, &$msg);
+				$this->signal (0, $msg);
 				trigger_error($msg, E_USER_NOTICE);
 				trigger_error($_msg, E_USER_ERROR);
 			} else {

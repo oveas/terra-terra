@@ -37,7 +37,7 @@ Inheritance diagram for DataHandler:</div>
 <div class="dynsection">
 <div class="center"><img src="classDataHandler__inherit__graph.png" border="0" usemap="#DataHandler_inherit__map" alt="Inheritance graph"/></div>
 <map name="DataHandler_inherit__map" id="DataHandler_inherit__map">
-<area shape="rect" href="classFormHandler.html" title="Formhandler." alt="" coords="12,800,140,963"/><area shape="rect" href="class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="5,5,147,317"/></map>
+<area shape="rect" href="class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="5,5,147,317"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for DataHandler:</div>
@@ -52,10 +52,10 @@ Collaboration diagram for DataHandler:</div>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#aed5b2eb4ca7b2e4b0c1563d817d73c16">DataHandler</a> ($tablename= '')</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#ab89e1aaad9cd0a37f1c7f13c1d9c0d57">reset</a> ($level=<a class="el" href="class_8datahandler_8php.html#a19a99423705b41e563424ae76d7fe184">DATA_RESET_PREPARE</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#a16c81c9564a7feaf530ce5d51ed99df7">__set</a> ($variable, $value)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#a296f26f5af1e46a49ae44110848fa031">set</a> ($variable, $value)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#a32ce223478b78a4ea9838a3c6ac7440c">set_key</a> ($variable)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#a435338a167a44a041af2895859abb0c9">escape_string</a> ($string)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#af58cbd10b032e4904fa15ce950d521e2">__get</a> ($variable)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#a7dcf85dac419f51ad4daa166c928a399">get</a> ($variable)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#a9b77733f02e9d6281fc40df110c0ba70">set_join</a> ($lvalue, $rvalue, $linktype= '=')</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#abcb68472abd7da8ee6296421f0a7f2e9">set_tablename</a> ($tblname)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#af3e7a17194e97300d499e9178f4913cb">prepare</a> ($type=<a class="el" href="class_8datahandler_8php.html#ac28f74b49007773d24ca2207baac6d32">DATA_READ</a>)</td></tr>
@@ -89,73 +89,6 @@ Collaboration diagram for DataHandler:</div>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>Aug 4, 2008 -- O van Eijk -- initial version </dd></dl>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="af58cbd10b032e4904fa15ce950d521e2"></a><!-- doxytag: member="DataHandler::__get" ref="af58cbd10b032e4904fa15ce950d521e2" args="($variable)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DataHandler::__get </td>
-          <td>(</td>
-          <td class="paramtype">$&nbsp;</td>
-          <td class="paramname"> <em>variable</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Retrieve a value from the data array. The variable name can be a fully qualified table/fieldname (format "table#field"), or only a field name, in which case it has to be unique. If the fieldname cannot be found directly, the array is scanned to find a matching field. It more matches are found, the object status is set to DATA_AMBFIELD.</p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$variable</em>&nbsp;</td><td>The name of the variable that should be retrieved </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>The value, or NULL when the value was not found or abigious. </dd></dl>
-
-<p>Reimplemented in <a class="el" href="classFormHandler.html#a371b8ded5110c6d66bc3a0c3e08fe085">FormHandler</a>.</p>
-
-<p>References <a class="el" href="class_8datahandler_8php_source.html#l00213">find_field()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a16c81c9564a7feaf530ce5d51ed99df7"></a><!-- doxytag: member="DataHandler::__set" ref="a16c81c9564a7feaf530ce5d51ed99df7" args="($variable, $value)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DataHandler::__set </td>
-          <td>(</td>
-          <td class="paramtype">$&nbsp;</td>
-          <td class="paramname"> <em>variable</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">$&nbsp;</td>
-          <td class="paramname"> <em>value</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Define or override a variable in the data array</p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$variable</em>&nbsp;</td><td>The name of the variable that should be set </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$value</em>&nbsp;</td><td>Value to set the variable to. If this is an array, the second field in the array has to be the tablename where the fieldname is found. The value itself van NEVER be an array! </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="ad6f4f6946f40199dd0333cf219fa500e"></a><!-- doxytag: member="DataHandler::check" ref="ad6f4f6946f40199dd0333cf219fa500e" args="(&amp;$object, $level)" -->
 <div class="memitem">
 <div class="memproto">
@@ -192,7 +125,7 @@ Collaboration diagram for DataHandler:</div>
 
 <p>References <a class="el" href="class_8__owl_8php_source.html#l00063">_OWL::reset()</a>, <a class="el" href="class_8__owl_8php_source.html#l00177">_OWL::set_high_severity()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00227">_OWL::traceback()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8sessionhandler_8php_source.html#l00144">SessionHandler::write()</a>.</p>
+<p>Referenced by <a class="el" href="class_8sessionhandler_8php_source.html#l00147">SessionHandler::write()</a>.</p>
 
 </div>
 </div>
@@ -219,9 +152,7 @@ Collaboration diagram for DataHandler:</div>
   </dd>
 </dl>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00155">DbHandler::get_instance()</a>, <a class="el" href="class_8__owl_8php_source.html#l00042">_OWL::init()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>.</p>
-
-<p>Referenced by <a class="el" href="class_8formhandler_8php_source.html#l00034">FormHandler::__construct()</a>.</p>
+<p>References <a class="el" href="class_8owl_8php_source.html#l00071">OWL::factory()</a>, <a class="el" href="class_8__owl_8php_source.html#l00042">_OWL::init()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>.</p>
 
 </div>
 </div>
@@ -349,7 +280,35 @@ Collaboration diagram for DataHandler:</div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of matches </dd></dl>
 
-<p>Referenced by <a class="el" href="class_8datahandler_8php_source.html#l00239">__get()</a>.</p>
+<p>Referenced by <a class="el" href="class_8datahandler_8php_source.html#l00239">get()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7dcf85dac419f51ad4daa166c928a399"></a><!-- doxytag: member="DataHandler::get" ref="a7dcf85dac419f51ad4daa166c928a399" args="($variable)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DataHandler::get </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>variable</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Retrieve a value from the data array. The variable name can be a fully qualified table/fieldname (format "table#field"), or only a field name, in which case it has to be unique. If the fieldname cannot be found directly, the array is scanned to find a matching field. If more matches are found, the object status is set to DATA_AMBFIELD.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$variable</em>&nbsp;</td><td>The name of the variable that should be retrieved </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The value, or NULL when the value was not found or abigious. </dd></dl>
+
+<p>References <a class="el" href="class_8datahandler_8php_source.html#l00213">find_field()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>.</p>
 
 </div>
 </div>
@@ -400,7 +359,7 @@ Collaboration diagram for DataHandler:</div>
 <p>Get the current object status.</p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object's status code </dd></dl>
 
-<p>Referenced by <a class="el" href="class_8formhandler_8php_source.html#l00110">FormHandler::__get()</a>.</p>
+<p>Referenced by <a class="el" href="class_8schemehandler_8php_source.html#l00280">SchemeHandler::compare()</a>.</p>
 
 </div>
 </div>
@@ -422,7 +381,7 @@ Collaboration diagram for DataHandler:</div>
 
 <p>References <a class="el" href="class_8owl_8php_source.html#l00071">OWL::factory()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8domelement_8php_source.html#l00022">DOMElement::__construct()</a>, <a class="el" href="class_8userhandler_8php_source.html#l00041">UserHandler::__construct()</a>, <a class="el" href="class_8sessionhandler_8php_source.html#l00056">SessionHandler::__construct()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00048">LogHandler::__construct()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00076">FileHandler::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00108">DbHandler::__construct()</a>, <a class="el" href="class_8owl_8php_source.html#l00025">OWL::__construct()</a>, and <a class="el" href="class_8datahandler_8php_source.html#l00106">DataHandler()</a>.</p>
+<p>Referenced by <a class="el" href="class_8userhandler_8php_source.html#l00041">UserHandler::__construct()</a>, <a class="el" href="class_8sessionhandler_8php_source.html#l00056">SessionHandler::__construct()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00058">SchemeHandler::__construct()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00048">LogHandler::__construct()</a>, <a class="el" href="class_8imagehandler_8php_source.html#l00076">ImageHandler::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00061">FormHandler::__construct()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00076">FileHandler::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00109">DbHandler::__construct()</a>, <a class="el" href="class_8owl_8php_source.html#l00025">OWL::__construct()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00027">Dispatcher::__construct()</a>, and <a class="el" href="class_8datahandler_8php_source.html#l00106">DataHandler()</a>.</p>
 
 </div>
 </div>
@@ -456,7 +415,7 @@ Collaboration diagram for DataHandler:</div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
 
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00177">_OWL::set_high_severity()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>.</p>
+<p>References <a class="el" href="index_8php_source.html#l00137">$_t</a>, <a class="el" href="index_8php_source.html#l00076">$_table</a>, <a class="el" href="class_8__owl_8php_source.html#l00177">_OWL::set_high_severity()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>.</p>
 
 </div>
 </div>
@@ -476,11 +435,11 @@ Collaboration diagram for DataHandler:</div>
 <div class="memdoc">
 <p>General reset function for all objects. Should be called after each non-fatal error </p>
 
-<p>Reimplemented in <a class="el" href="classDbHandler.html#a9982df4830f05803935bb31bac7fae3d">DbHandler</a>.</p>
+<p>Reimplemented in <a class="el" href="classDbHandler.html#a9982df4830f05803935bb31bac7fae3d">DbHandler</a>, and <a class="el" href="classSchemeHandler.html#aa25feb4a70d67b3d571904be4b2f50bc">SchemeHandler</a>.</p>
 
 <p>References <a class="el" href="class_8__owl_8php_source.html#l00074">_OWL::reset_calltree()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00095">_OWL::check()</a>, <a class="el" href="class_8sessionhandler_8php_source.html#l00123">SessionHandler::read()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00128">reset()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>.</p>
+<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00095">_OWL::check()</a>, <a class="el" href="class_8sessionhandler_8php_source.html#l00126">SessionHandler::read()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00128">reset()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>.</p>
 
 </div>
 </div>
@@ -518,6 +477,43 @@ Collaboration diagram for DataHandler:</div>
 
 </div>
 </div>
+<a class="anchor" id="a296f26f5af1e46a49ae44110848fa031"></a><!-- doxytag: member="DataHandler::set" ref="a296f26f5af1e46a49ae44110848fa031" args="($variable, $value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DataHandler::set </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>variable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>value</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Define or override a variable in the data array</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$variable</em>&nbsp;</td><td>The name of the variable that should be set </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$value</em>&nbsp;</td><td>Value to set the variable to. If this is an array, the second field in the array has to be the tablename where the fieldname is found. The value itself van NEVER be an array! </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>References <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a576829692a3b66e3d518853bf43abae3"></a><!-- doxytag: member="DataHandler::set_high_severity" ref="a576829692a3b66e3d518853bf43abae3" args="(&amp;$object=null)" -->
 <div class="memitem">
 <div class="memproto">
@@ -535,7 +531,7 @@ Collaboration diagram for DataHandler:</div>
 <div class="memdoc">
 <p>Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. </p>
 
-<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00095">_OWL::check()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00384">db()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00324">prepare()</a>, and <a class="el" href="class_8sessionhandler_8php_source.html#l00123">SessionHandler::read()</a>.</p>
+<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00095">_OWL::check()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00384">db()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00324">prepare()</a>, and <a class="el" href="class_8sessionhandler_8php_source.html#l00126">SessionHandler::read()</a>.</p>
 
 </div>
 </div>
@@ -647,7 +643,7 @@ Collaboration diagram for DataHandler:</div>
 
 <p>References <a class="el" href="config_8php_source.html#l00010">$GLOBALS</a>, <a class="el" href="class_8__owl_8php_source.html#l00020">_OWL::$status</a>, <a class="el" href="class_8confighandler_8php_source.html#l00120">ConfigHandler::get()</a>, <a class="el" href="class_8register_8php_source.html#l00218">Register::get_code()</a>, <a class="el" href="class_8__owl_8php_source.html#l00063">_OWL::reset()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00199">_OWL::signal()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8userhandler_8php_source.html#l00041">UserHandler::__construct()</a>, <a class="el" href="class_8sessionhandler_8php_source.html#l00056">SessionHandler::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00034">FormHandler::__construct()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00076">FileHandler::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00108">DbHandler::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00110">FormHandler::__get()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00239">__get()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00158">__set()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00142">FileHandler::close()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00195">DbHandler::connect()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00174">DbHandler::create()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00106">DataHandler()</a>, <a class="el" href="class_8userhandler_8php_source.html#l00073">UserHandler::login()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00122">FileHandler::open()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00227">DbHandler::open()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00115">LogHandler::open_logfile()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00065">FormHandler::parse_formdata()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00324">prepare()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00622">DbHandler::prepare_delete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00675">DbHandler::prepare_insert()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00594">DbHandler::prepare_read()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00645">DbHandler::prepare_update()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00356">DbHandler::read()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00174">FileHandler::read_line()</a>, <a class="el" href="class_8userhandler_8php_source.html#l00108">UserHandler::read_userdata()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00128">reset()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00270">set_join()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00177">set_key()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00273">DbHandler::table_description()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00708">DbHandler::write()</a>.</p>
+<p>Referenced by <a class="el" href="class_8userhandler_8php_source.html#l00041">UserHandler::__construct()</a>, <a class="el" href="class_8sessionhandler_8php_source.html#l00056">SessionHandler::__construct()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00058">SchemeHandler::__construct()</a>, <a class="el" href="class_8imagehandler_8php_source.html#l00076">ImageHandler::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00061">FormHandler::__construct()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00076">FileHandler::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00109">DbHandler::__construct()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00198">SchemeHandler::alter_scheme()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00142">FileHandler::close()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00197">DbHandler::connect()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00176">DbHandler::create()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00103">SchemeHandler::create_scheme()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00106">DataHandler()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00145">SchemeHandler::define_index()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00126">SchemeHandler::define_scheme()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00062">Dispatcher::dispatch()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00149">FormHandler::get()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00239">get()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00425">SchemeHandler::get_table_columns()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00468">SchemeHandler::get_table_indexes()</a>, <a class="el" href="class_8userhandler_8php_source.html#l00075">UserHandler::login()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00122">FileHandler::open()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00229">DbHandler::open()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00115">LogHandler::open_logfile()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00324">prepare()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00587">DbHandler::prepare_delete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00640">DbHandler::prepare_insert()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00559">DbHandler::prepare_read()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00610">DbHandler::prepare_update()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00309">DbHandler::read()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00174">FileHandler::read_line()</a>, <a class="el" href="class_8userhandler_8php_source.html#l00110">UserHandler::read_userdata()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00128">reset()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00174">SchemeHandler::scheme()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00110">FormHandler::set()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00158">set()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00270">set_join()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00177">set_key()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00494">SchemeHandler::table_description()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00216">SchemeHandler::validate_scheme()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00673">DbHandler::write()</a>.</p>
 
 </div>
 </div>
@@ -673,8 +669,6 @@ Collaboration diagram for DataHandler:</div>
   </table>
   </dd>
 </dl>
-
-<p>Referenced by <a class="el" href="class_8formhandler_8php_source.html#l00034">FormHandler::__construct()</a>.</p>
 
 </div>
 </div>
@@ -754,7 +748,7 @@ Collaboration diagram for DataHandler:</div>
 
 <p>References <a class="el" href="class_8__owl_8php_source.html#l00199">_OWL::signal()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00095">_OWL::check()</a>, <a class="el" href="class_8userhandler_8php_source.html#l00073">UserHandler::login()</a>, and <a class="el" href="class_8sessionhandler_8php_source.html#l00123">SessionHandler::read()</a>.</p>
+<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00095">_OWL::check()</a>, <a class="el" href="class_8userhandler_8php_source.html#l00075">UserHandler::login()</a>, and <a class="el" href="class_8sessionhandler_8php_source.html#l00126">SessionHandler::read()</a>.</p>
 
 </div>
 </div>
@@ -861,7 +855,7 @@ Collaboration diagram for DataHandler:</div>
 <li>/home/oscar/projects/owl-php/src/kernel/so/<a class="el" href="class_8datahandler_8php.html">class.datahandler.php</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Sep 1 17:14:10 2010 for OWL-PHP by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Dec 1 20:23:25 2010 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

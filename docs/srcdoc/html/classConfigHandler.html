@@ -35,12 +35,12 @@
 
 <p><a href="classConfigHandler-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
-<tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#a75a7f03f156cd0f315f91ec4bbddfbb6">read_config</a> ($file= '')</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#ab8a7633a5a352c40d5c1380e04ffd199">get</a> ($item, $default=null)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#ac947c34c710d66558da03ff632c32075">set</a> ($item, $value)</td></tr>
-<tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#adf3dd923bfd38e0274dc86ebd0caed92">convert</a> ($val)</td></tr>
+<tr><td colspan="2"><h2>Static Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#af61ee6f9f793e4cd0128c02e4e28bf90">read_config</a> ($file= '')</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#aa8f6a7516588561626efccb8be5875ce">get</a> ($item, $default=null)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#a82c10cf53f06169cee0bdc0716bc089a">set</a> ($item, $value)</td></tr>
+<tr><td colspan="2"><h2>Static Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#a9851c66d75db6a65c64aba5192173c14">convert</a> ($val)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Configuration handler. </p>
@@ -48,17 +48,17 @@
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>Aug 20, 2008 -- O van Eijk -- initial version </dd></dl>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="adf3dd923bfd38e0274dc86ebd0caed92"></a><!-- doxytag: member="ConfigHandler::convert" ref="adf3dd923bfd38e0274dc86ebd0caed92" args="($val)" -->
+<a class="anchor" id="a9851c66d75db6a65c64aba5192173c14"></a><!-- doxytag: member="ConfigHandler::convert" ref="a9851c66d75db6a65c64aba5192173c14" args="($val)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ConfigHandler::convert </td>
+          <td class="memname">static ConfigHandler::convert </td>
           <td>(</td>
           <td class="paramtype">$&nbsp;</td>
           <td class="paramname"> <em>val</em></td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [private]</code></td>
+          <td><code> [static, private]</code></td>
         </tr>
       </table>
 </div>
@@ -78,12 +78,12 @@
 
 </div>
 </div>
-<a class="anchor" id="ab8a7633a5a352c40d5c1380e04ffd199"></a><!-- doxytag: member="ConfigHandler::get" ref="ab8a7633a5a352c40d5c1380e04ffd199" args="($item, $default=null)" -->
+<a class="anchor" id="aa8f6a7516588561626efccb8be5875ce"></a><!-- doxytag: member="ConfigHandler::get" ref="aa8f6a7516588561626efccb8be5875ce" args="($item, $default=null)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ConfigHandler::get </td>
+          <td class="memname">static ConfigHandler::get </td>
           <td>(</td>
           <td class="paramtype">$&nbsp;</td>
           <td class="paramname"> <em>item</em>, </td>
@@ -97,7 +97,7 @@
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td><td></td>
+          <td></td><td></td><td><code> [static]</code></td>
         </tr>
       </table>
 </div>
@@ -114,21 +114,21 @@
 
 <p>References <a class="el" href="config_8php_source.html#l00010">$GLOBALS</a>, and <a class="el" href="class_8owl_8php_source.html#l00058">OWL::stat()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8loghandler_8php_source.html#l00048">LogHandler::__construct()</a>, <a class="el" href="class_8exceptionhandler_8php_source.html#l00043">OWLException::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00108">DbHandler::__construct()</a>, <a class="el" href="class_8user_8php_source.html#l00022">User::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00110">FormHandler::__get()</a>, <a class="el" href="class_8exceptionhandler_8php_source.html#l00151">OWLException::check_hide()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00152">LogHandler::compose_message()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00195">DbHandler::connect()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00155">DbHandler::get_instance()</a>, <a class="el" href="class_8userhandler_8php_source.html#l00132">UserHandler::hash_password()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00168">LogHandler::log()</a>, <a class="el" href="class_8exceptionhandler_8php_source.html#l00318">OWLExceptionHandler::log_exception()</a>, <a class="el" href="class_8userhandler_8php_source.html#l00073">UserHandler::login()</a>, <a class="el" href="class_8user_8php_source.html#l00069">User::logout()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00065">FormHandler::parse_formdata()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00100">LogHandler::set_filename()</a>, <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>, <a class="el" href="class_8__owl_8php_source.html#l00199">_OWL::signal()</a>, and <a class="el" href="class_8exceptionhandler_8php_source.html#l00180">OWLException::traceback()</a>.</p>
+<p>Referenced by <a class="el" href="class_8sessionhandler_8php_source.html#l00056">SessionHandler::__construct()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00048">LogHandler::__construct()</a>, <a class="el" href="class_8exceptionhandler_8php_source.html#l00043">OWLException::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00109">DbHandler::__construct()</a>, <a class="el" href="class_8user_8php_source.html#l00022">User::__construct()</a>, <a class="el" href="class_8exceptionhandler_8php_source.html#l00151">OWLException::check_hide()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00152">LogHandler::compose_message()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00197">DbHandler::connect()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00149">FormHandler::get()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00157">DbHandler::get_instance()</a>, <a class="el" href="class_8userhandler_8php_source.html#l00134">UserHandler::hash_password()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00168">LogHandler::log()</a>, <a class="el" href="class_8exceptionhandler_8php_source.html#l00318">OWLExceptionHandler::log_exception()</a>, <a class="el" href="class_8userhandler_8php_source.html#l00075">UserHandler::login()</a>, <a class="el" href="class_8user_8php_source.html#l00069">User::logout()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00110">FormHandler::set()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00100">LogHandler::set_filename()</a>, <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>, <a class="el" href="class_8__owl_8php_source.html#l00199">_OWL::signal()</a>, and <a class="el" href="class_8exceptionhandler_8php_source.html#l00180">OWLException::traceback()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a75a7f03f156cd0f315f91ec4bbddfbb6"></a><!-- doxytag: member="ConfigHandler::read_config" ref="a75a7f03f156cd0f315f91ec4bbddfbb6" args="($file= '')" -->
+<a class="anchor" id="af61ee6f9f793e4cd0128c02e4e28bf90"></a><!-- doxytag: member="ConfigHandler::read_config" ref="af61ee6f9f793e4cd0128c02e4e28bf90" args="($file= '')" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ConfigHandler::read_config </td>
+          <td class="memname">static ConfigHandler::read_config </td>
           <td>(</td>
           <td class="paramtype">$&nbsp;</td>
           <td class="paramname"> <em>file</em> = <code>''</code></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [static]</code></td>
         </tr>
       </table>
 </div>
@@ -145,12 +145,12 @@
 
 </div>
 </div>
-<a class="anchor" id="ac947c34c710d66558da03ff632c32075"></a><!-- doxytag: member="ConfigHandler::set" ref="ac947c34c710d66558da03ff632c32075" args="($item, $value)" -->
+<a class="anchor" id="a82c10cf53f06169cee0bdc0716bc089a"></a><!-- doxytag: member="ConfigHandler::set" ref="a82c10cf53f06169cee0bdc0716bc089a" args="($item, $value)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ConfigHandler::set </td>
+          <td class="memname">static ConfigHandler::set </td>
           <td>(</td>
           <td class="paramtype">$&nbsp;</td>
           <td class="paramname"> <em>item</em>, </td>
@@ -164,7 +164,7 @@
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td><td></td>
+          <td></td><td></td><td><code> [static]</code></td>
         </tr>
       </table>
 </div>
@@ -186,7 +186,7 @@
 <li>/home/oscar/projects/owl-php/src/kernel/so/<a class="el" href="class_8confighandler_8php.html">class.confighandler.php</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Sep 1 17:14:10 2010 for OWL-PHP by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Dec 1 20:23:25 2010 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

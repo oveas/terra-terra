@@ -1,0 +1,533 @@
+\section{SchemeHandler Class Reference}
+\label{classSchemeHandler}\index{SchemeHandler@{SchemeHandler}}
+
+
+Scheme handler.  
+
+
+
+
+Inheritance diagram for SchemeHandler:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=400pt]{classSchemeHandler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for SchemeHandler:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=400pt]{classSchemeHandler__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSchemeHandler_a3d786efe6ef92858de21438b59774226}{\_\-\_\-destruct} ()
+\item 
+\hyperlink{classSchemeHandler_af0a48894ea6bb36f3149ccd40bf37681}{\_\-\_\-clone} ()
+\item 
+\hyperlink{classSchemeHandler_ae00497936108b220b41af512774cfc16}{create\_\-scheme} (\$\_\-tblname)
+\item 
+\hyperlink{classSchemeHandler_a07f6b7c5ac78e88f32584b90da53776b}{define\_\-scheme} (\$\_\-scheme)
+\item 
+\hyperlink{classSchemeHandler_a92adefff835050da61337524b9ae907b}{define\_\-index} (\$\_\-index)
+\item 
+\hyperlink{classSchemeHandler_a1e843dc411d175818c7b2ab5374f021e}{scheme} (\$\_\-drops=false)
+\item 
+\hyperlink{classSchemeHandler_aa8948e6382f7d19302a255ff0619765c}{alter\_\-scheme} (\$\_\-field)
+\item 
+\hyperlink{classSchemeHandler_a236edc61301c6926449e68385cc59a99}{table\_\-description} (\$tablename, \&\$data)
+\item 
+\hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{reset} ()
+\item 
+\hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
+\item 
+\hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
+\item 
+\hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
+\item 
+\hyperlink{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}{traceback} (\&\$text=false, \$depth=0)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classSchemeHandler_a02edff8af08e3e33a7571e2da8f98cc7}{get\_\-instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
+\item 
+\hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
+\item 
+\hyperlink{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
+\item 
+\hyperlink{class__OWL_a576829692a3b66e3d518853bf43abae3}{set\_\-high\_\-severity} (\&\$object=null)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}{\$severity}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSchemeHandler_ae528fde31fe73647c614ef6f957c4caf}{\_\-\_\-construct} ()
+\item 
+\hyperlink{classSchemeHandler_a1d92dea6ea4643959609959bdce6f0d1}{validate\_\-scheme} ()
+\item 
+\hyperlink{classSchemeHandler_ae2a981feae465ef5e46782b4a18da1ad}{compare} ()
+\item 
+\hyperlink{classSchemeHandler_a87f623cc6ac1e44576d2415e36804218}{create\_\-table} ()
+\item 
+\hyperlink{classSchemeHandler_a7652ae28d0407f5be24fd67ad1b79e8d}{alter\_\-table} (\$\_\-diffs, \$\_\-drops)
+\item 
+\hyperlink{classSchemeHandler_a223d509509598fbc99741e910bda8cac}{\_\-define\_\-field} (\$\_\-desc)
+\item 
+\hyperlink{classSchemeHandler_ab8f222514c3aa614190201a6a8a9cedd}{get\_\-table\_\-columns} (\$\_\-tablename)
+\item 
+\hyperlink{classSchemeHandler_a23070e6253bcd9b0bc343bc582219638}{get\_\-table\_\-indexes} (\$\_\-tablename)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSchemeHandler_af297e966eae06ff1e38a143f93b4aeb9}{\$id}
+\item 
+\hyperlink{classSchemeHandler_abf3bf26e35b759ccd49f358dedc2dfd1}{\$db}
+\item 
+\hyperlink{classSchemeHandler_aeb6dfa54ebd11b0d6acc51b8244d598c}{\$scheme}
+\item 
+\hyperlink{classSchemeHandler_aea92c0f74dbb2e1efd07bdb472660e20}{\$table} = ''
+\item 
+\hyperlink{classSchemeHandler_a90e5b04603f86c04b1691b2ddf730104}{\$inuse} = false
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classSchemeHandler_a6f45c52527230b3f3b60d75a9b55e3c1}{\$instance}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Scheme handler. Handler for all database schemes. This singleton class handles all updates to db tables \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Oct 7, 2010 -\/-\/ O van Eijk -\/-\/ initial version for \hyperlink{classOWL}{OWL} 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{SchemeHandler@{SchemeHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\_\-\_\-construct ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_ae528fde31fe73647c614ef6f957c4caf}
+Class constructor 
+
+References get\_\-instance(), \_\-OWL::init(), and \_\-OWL::set\_\-status().
+
+\index{SchemeHandler@{SchemeHandler}!\_\-\_\-destruct@{\_\-\_\-destruct}}
+\index{\_\-\_\-destruct@{\_\-\_\-destruct}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{\_\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\_\-\_\-destruct ()}\label{classSchemeHandler_a3d786efe6ef92858de21438b59774226}
+Class destructor 
+
+Reimplemented from \hyperlink{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}{\_\-OWL}.
+
+
+
+\subsection{Member Function Documentation}
+\index{SchemeHandler@{SchemeHandler}!\_\-\_\-clone@{\_\-\_\-clone}}
+\index{\_\-\_\-clone@{\_\-\_\-clone}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{\_\-\_\-clone}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\_\-\_\-clone ()}\label{classSchemeHandler_af0a48894ea6bb36f3149ccd40bf37681}
+Implementation of the \hyperlink{classSchemeHandler_af0a48894ea6bb36f3149ccd40bf37681}{\_\-\_\-clone()} function to prevent cloning of this singleton; it triggers a fatal (user)error \index{SchemeHandler@{SchemeHandler}!\_\-define\_\-field@{\_\-define\_\-field}}
+\index{\_\-define\_\-field@{\_\-define\_\-field}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{\_\-define\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\_\-define\_\-field (\$ {\em \_\-desc})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_a223d509509598fbc99741e910bda8cac}
+Create the SQL code for a field definition 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-desc}]Indexed array with the field properties from scheme definition\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string SQL code 
+\end{DoxyReturn}
+
+
+Referenced by alter\_\-table(), and create\_\-table().
+
+\index{SchemeHandler@{SchemeHandler}!alter\_\-scheme@{alter\_\-scheme}}
+\index{alter\_\-scheme@{alter\_\-scheme}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{alter\_\-scheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::alter\_\-scheme (\$ {\em \_\-field})}\label{classSchemeHandler_aa8948e6382f7d19302a255ff0619765c}
+Modify 1 or more fields in an existing scheme definition 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-field}]Array holding 1 or more field descriptions \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classSchemeHandler_a07f6b7c5ac78e88f32584b90da53776b}{define\_\-scheme()}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+Boolean; false if the table description contains errors 
+\end{DoxyReturn}
+
+
+References scheme(), \_\-OWL::set\_\-status(), and validate\_\-scheme().
+
+\index{SchemeHandler@{SchemeHandler}!alter\_\-table@{alter\_\-table}}
+\index{alter\_\-table@{alter\_\-table}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{alter\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::alter\_\-table (\$ {\em \_\-diffs}, \/  \$ {\em \_\-drops})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_a7652ae28d0407f5be24fd67ad1b79e8d}
+Make changes to the table 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-diffs}]Changes to make \item[\mbox{$\leftarrow$} {\em \$\_\-drops}]True if existing fields should be dropped \end{DoxyParams}
+
+
+References \_\-define\_\-field().
+
+
+
+Referenced by scheme().
+
+\index{SchemeHandler@{SchemeHandler}!check@{check}}
+\index{check@{check}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the severity level was correct ( below the max), otherwise false 
+\end{DoxyReturn}
+
+
+References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::traceback().
+
+
+
+Referenced by SessionHandler::write().
+
+\index{SchemeHandler@{SchemeHandler}!compare@{compare}}
+\index{compare@{compare}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{compare}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::compare ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_ae2a981feae465ef5e46782b4a18da1ad}
+Compare the scheme with an existing database table
+
+\begin{DoxyReturn}{Returns}
+mixed True if there are no differences, False if the table does not exist or an array with differences 
+\end{DoxyReturn}
+
+
+References \_\-OWL::get\_\-status(), scheme(), and table\_\-description().
+
+
+
+Referenced by scheme().
+
+\index{SchemeHandler@{SchemeHandler}!create\_\-scheme@{create\_\-scheme}}
+\index{create\_\-scheme@{create\_\-scheme}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{create\_\-scheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::create\_\-scheme (\$ {\em \_\-tblname})}\label{classSchemeHandler_ae00497936108b220b41af512774cfc16}
+Set a new tablename 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-tblname}]Name of the table to create, check or modify \end{DoxyParams}
+
+
+References reset(), and \_\-OWL::set\_\-status().
+
+\index{SchemeHandler@{SchemeHandler}!create\_\-table@{create\_\-table}}
+\index{create\_\-table@{create\_\-table}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{create\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::create\_\-table ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_a87f623cc6ac1e44576d2415e36804218}
+Create the defined table 
+
+References \_\-define\_\-field(), and scheme().
+
+
+
+Referenced by scheme().
+
+\index{SchemeHandler@{SchemeHandler}!define\_\-index@{define\_\-index}}
+\index{define\_\-index@{define\_\-index}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{define\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::define\_\-index (\$ {\em \_\-index})}\label{classSchemeHandler_a92adefff835050da61337524b9ae907b}
+Define the indexes for a table 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-index}]Array holding the index description. This is a 2 dimensional array where the first level holds the indexname. The second array defines the attributes for each index:
+\begin{DoxyItemize}
+\item unique : Boolean; True for unique keys
+\item primary : Boolean; True for the primary key
+\item columns : Array; List with columnnames that will be indexed
+\item type : String (optional); Index type, currenty only supports 'FULLTEXT' 
+\end{DoxyItemize}\end{DoxyParams}
+
+
+References \$\_\-index, scheme(), \_\-OWL::set\_\-status(), and validate\_\-scheme().
+
+\index{SchemeHandler@{SchemeHandler}!define\_\-scheme@{define\_\-scheme}}
+\index{define\_\-scheme@{define\_\-scheme}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{define\_\-scheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::define\_\-scheme (\$ {\em \_\-scheme})}\label{classSchemeHandler_a07f6b7c5ac78e88f32584b90da53776b}
+Define the layout for a table 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-scheme}]Array holding the table description. This is a 2 dimensional array where the first level holds the fieldnames. The second array defines the attributes for each field:
+\begin{DoxyItemize}
+\item type : String; the field-\/type (INT$|$TINYINT$|$VARCHAR$|$MEDIUMTEXT$|$TEXT$|$LONGTEXT$|$BLOB$|$LONGBLOB$|$ENUM$|$SET)
+\item length : Integer; indicating the length for fieldtypes that use that (like INT and VARCHAR)
+\item null : Boolean; when true the value can be NULL
+\item auto-\/inc : Boolean; True for auto-\/increment values (will be set as primary key)
+\item default : Mixed; default value
+\item options : Array; for SET and ENUM types. the list of possible values
+\item comment : String; field comment 
+\end{DoxyItemize}\end{DoxyParams}
+
+
+References \$\_\-scheme, scheme(), \_\-OWL::set\_\-status(), and validate\_\-scheme().
+
+\index{SchemeHandler@{SchemeHandler}!get\_\-instance@{get\_\-instance}}
+\index{get\_\-instance@{get\_\-instance}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static SchemeHandler::get\_\-instance ()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classSchemeHandler_a02edff8af08e3e33a7571e2da8f98cc7}
+Return a reference to my implementation. If necessary, create that implementation first.
+
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References \$instance.
+
+
+
+Referenced by \_\-\_\-construct().
+
+\index{SchemeHandler@{SchemeHandler}!get\_\-severity@{get\_\-severity}}
+\index{get\_\-severity@{get\_\-severity}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+Get the current object severity level.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status severity level 
+\end{DoxyReturn}
+
+
+References \_\-OWL::\$status.
+
+
+
+Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandler::set\_\-key().
+
+\index{SchemeHandler@{SchemeHandler}!get\_\-status@{get\_\-status}}
+\index{get\_\-status@{get\_\-status}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+Get the current object status.
+
+\begin{DoxyReturn}{Returns}
+Object's status code 
+\end{DoxyReturn}
+
+
+Referenced by compare().
+
+\index{SchemeHandler@{SchemeHandler}!get\_\-table\_\-columns@{get\_\-table\_\-columns}}
+\index{get\_\-table\_\-columns@{get\_\-table\_\-columns}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{get\_\-table\_\-columns}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::get\_\-table\_\-columns (\$ {\em \_\-tablename})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_ab8f222514c3aa614190201a6a8a9cedd}
+Get the columns for a given table
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-tablename}]The tablename \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Indexed array holding all fields =$>$ datatypes, or null on errors 
+\end{DoxyReturn}
+
+
+References \_\-OWL::set\_\-status().
+
+
+
+Referenced by table\_\-description().
+
+\index{SchemeHandler@{SchemeHandler}!get\_\-table\_\-indexes@{get\_\-table\_\-indexes}}
+\index{get\_\-table\_\-indexes@{get\_\-table\_\-indexes}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{get\_\-table\_\-indexes}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::get\_\-table\_\-indexes (\$ {\em \_\-tablename})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_a23070e6253bcd9b0bc343bc582219638}
+Get the indexes for a given table
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-tablename}]The tablename \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Indexed array holding all fields =$>$ datatypes, or null on errors 
+\end{DoxyReturn}
+
+
+References \$\_\-index, and \_\-OWL::set\_\-status().
+
+
+
+Referenced by table\_\-description().
+
+\index{SchemeHandler@{SchemeHandler}!init@{init}}
+\index{init@{init}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+
+References OWL::factory().
+
+
+
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), \_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+
+\index{SchemeHandler@{SchemeHandler}!reset@{reset}}
+\index{reset@{reset}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::reset ()}\label{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}
+General reset function for all objects. Should be called after each non-\/fatal error 
+
+Reimplemented from \hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{\_\-OWL}.
+
+
+
+References scheme().
+
+
+
+Referenced by create\_\-scheme().
+
+\index{SchemeHandler@{SchemeHandler}!scheme@{scheme}}
+\index{scheme@{scheme}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{scheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::scheme (\$ {\em \_\-drops} = {\ttfamily false})}\label{classSchemeHandler_a1e843dc411d175818c7b2ab5374f021e}
+If the table does not exist, of differs from the defined scheme, create of modify the table 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-drops}]True if existing fields should be dropped; default false. If existing fields should be converted to new fields, call with DbScheme::scheme(false) first, then do the conversions, next call DbScheme::scheme(true). \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References alter\_\-table(), compare(), create\_\-table(), and \_\-OWL::set\_\-status().
+
+
+
+Referenced by alter\_\-scheme(), compare(), create\_\-table(), define\_\-index(), define\_\-scheme(), reset(), and validate\_\-scheme().
+
+\index{SchemeHandler@{SchemeHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
+\index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+
+Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
+
+\index{SchemeHandler@{SchemeHandler}!set\_\-status@{set\_\-status}}
+\index{set\_\-status@{set\_\-status}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+Set the current object status to the specified value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+
+
+References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
+
+
+
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), \_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), create\_\-scheme(), DataHandler::DataHandler(), define\_\-index(), define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), get\_\-table\_\-columns(), get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), table\_\-description(), validate\_\-scheme(), and DbHandler::write().
+
+\index{SchemeHandler@{SchemeHandler}!signal@{signal}}
+\index{signal@{signal}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+Display the message for the current object status
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The severity level for this object 
+\end{DoxyReturn}
+
+
+References ConfigHandler::get().
+
+
+
+Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
+
+\index{SchemeHandler@{SchemeHandler}!table\_\-description@{table\_\-description}}
+\index{table\_\-description@{table\_\-description}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{table\_\-description}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::table\_\-description (\$ {\em tablename}, \/  \&\$ {\em data})}\label{classSchemeHandler_a236edc61301c6926449e68385cc59a99}
+Get a description of a database table 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$tablename}]The tablename \item[\mbox{$\rightarrow$} {\em \$data}]Indexed array holding all fields =$>$ datatypes \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+
+
+References get\_\-table\_\-columns(), get\_\-table\_\-indexes(), and \_\-OWL::set\_\-status().
+
+
+
+Referenced by compare().
+
+\index{SchemeHandler@{SchemeHandler}!traceback@{traceback}}
+\index{traceback@{traceback}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity code of the failing object 
+\end{DoxyReturn}
+
+
+References \_\-OWL::signal().
+
+
+
+Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read().
+
+\index{SchemeHandler@{SchemeHandler}!validate\_\-scheme@{validate\_\-scheme}}
+\index{validate\_\-scheme@{validate\_\-scheme}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{validate\_\-scheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::validate\_\-scheme ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_a1d92dea6ea4643959609959bdce6f0d1}
+Validate the defined scheme. Some values will be modified to make sure the SQL statements can be prepared and \hyperlink{classSchemeHandler_ae2a981feae465ef5e46782b4a18da1ad}{compare()} won't find differences on case diffs
+
+\begin{DoxyReturn}{Returns}
+boolean False if there is an error in the scheme definition, True if no errors were found 
+\end{DoxyReturn}
+
+
+References scheme(), and \_\-OWL::set\_\-status().
+
+
+
+Referenced by alter\_\-scheme(), define\_\-index(), and define\_\-scheme().
+
+
+
+\subsection{Member Data Documentation}
+\index{SchemeHandler@{SchemeHandler}!\$db@{\$db}}
+\index{\$db@{\$db}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{\$db}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\$db\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_abf3bf26e35b759ccd49f358dedc2dfd1}
+integer -\/ Reference to the database class \index{SchemeHandler@{SchemeHandler}!\$id@{\$id}}
+\index{\$id@{\$id}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{\$id}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\$id\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_af297e966eae06ff1e38a143f93b4aeb9}
+integer -\/ Scheme Handle ID \index{SchemeHandler@{SchemeHandler}!\$instance@{\$instance}}
+\index{\$instance@{\$instance}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\$instance\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classSchemeHandler_a6f45c52527230b3f3b60d75a9b55e3c1}
+integer -\/ self reference 
+
+Referenced by get\_\-instance().
+
+\index{SchemeHandler@{SchemeHandler}!\$inuse@{\$inuse}}
+\index{\$inuse@{\$inuse}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{\$inuse}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\$inuse = false\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_a90e5b04603f86c04b1691b2ddf730104}
+boolean -\/ True when a scheme is filled with data and not yet used \index{SchemeHandler@{SchemeHandler}!\$scheme@{\$scheme}}
+\index{\$scheme@{\$scheme}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{\$scheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\$scheme\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_aeb6dfa54ebd11b0d6acc51b8244d598c}
+Array -\/ table description \index{SchemeHandler@{SchemeHandler}!\$severity@{\$severity}}
+\index{\$severity@{\$severity}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
+Severity level of the current object status \index{SchemeHandler@{SchemeHandler}!\$table@{\$table}}
+\index{\$table@{\$table}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{\$table}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\$table = ''\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSchemeHandler_aea92c0f74dbb2e1efd07bdb472660e20}
+Array -\/ table name 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/so/\hyperlink{class_8schemehandler_8php}{class.schemehandler.php}\end{DoxyCompactItemize}

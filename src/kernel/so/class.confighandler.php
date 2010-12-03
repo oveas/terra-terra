@@ -2,7 +2,7 @@
 /**
  * \file
  * Define a class for config handling
- * \version $Id: class.confighandler.php,v 1.4 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.5 2010-12-03 12:07:42 oscar Exp $
  */
 
 /**
@@ -21,14 +21,14 @@ abstract class ConfigHandler
 	 * \public
 	 * \param[in] $file Full path to the configuration file
 	 */
-	public function read_config ($file = '')
+	public static function read_config ($file = '')
 	{
 		if (($fpointer = fopen ($file, 'r')) === false) {
 			die ('Fatal error reading configuration file: ' . $file);
 		}
 		while (!feof($fpointer)) {
 			$_line = fgets ($fpointer, 8192);
-			$_line = preg_replace ('/^\s*#.*/', '', $_line);
+			$_line = preg_replace ('/^\s*;.*/', '', $_line);
 			$_line = trim ($_line);
 			if ($_line == '') {
 				continue;
@@ -92,7 +92,7 @@ abstract class ConfigHandler
 	 * \param[in] $val The value as read from the config file
 	 * \return Value in the desired format (or as is if nothing set)
 	 */
-	private function convert ($val)
+	private static function convert ($val)
 	{
 		if (($_s = Register::get_severity_level($val)) > 0) {
 			return ($_s);
@@ -117,7 +117,7 @@ abstract class ConfigHandler
 	 * to 'null'; if it is anything other than null, the CONFIG_NOVALUE status will not be set
 	 * \return Corresponding value of null when nothing was found
 	 */
-	public function get ($item, $default = null)
+	public static function get ($item, $default = null)
 	{
 		if (isset ($GLOBALS['owl_cache']['cget'][$item])) {
 			return ($GLOBALS['owl_cache']['cget'][$item]);
@@ -159,7 +159,7 @@ abstract class ConfigHandler
 	 * configuration file (e.g. 'group|subject|item')
 	 * \param[in] $value The new value of the item
 	 */
-	public function set ($item, $value)
+	public static function set ($item, $value)
 	{
 		if (isset ($GLOBALS['owl_cache']['cget'][$item])) {
 			// Clean the cache

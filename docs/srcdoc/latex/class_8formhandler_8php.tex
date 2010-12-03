@@ -5,6 +5,26 @@
 \item 
 class \hyperlink{classFormHandler}{FormHandler}
 \begin{DoxyCompactList}\small\item\em Formhandler. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{Indent}{\bf Format flags}\par
+{\em \label{_amgrpa4a8ad1564033c02db773a1b5aa004f6}
+ These flags define how formdata should be returned }\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_8formhandler_8php_af5de9385d7f7fc802eaa8e7090d8e0f5}{FORMDATA\_\-STRICT} 
+\begin{DoxyCompactList}\small\item\em Remove all HTML tags before returning anything. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8formhandler_8php_a274bb2c8e23d075b189f143adbb6746e}{FORMDATA\_\-BASIC\_\-HTML} 
+\begin{DoxyCompactList}\small\item\em Remove all tags except bold, underline etc, lists, line breaks, headers and such. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8formhandler_8php_ac2f81495783870a3c4a63ab0164aa412}{FORMDATA\_\-EXTENDED\_\-HTML} 
+\begin{DoxyCompactList}\small\item\em Remove all tags except the basic HTML tags, font and table tags, divs, spans, images and anchors. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8formhandler_8php_ac1497f65ec29dadf9d39c5da41e17fc3}{FORMDATA\_\-FULL\_\-HTML} 
+\begin{DoxyCompactList}\small\item\em Remove all tags except extended HTML tags, frame, style and form (input) tags. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8formhandler_8php_ae5bb66ec27c03f3b03796f3bd80ba2ff}{FORMDATA\_\-CUSTOM} 
+\begin{DoxyCompactList}\small\item\em Provide custom arrays for formatting,. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8formhandler_8php_a73c85f0f80e1060e1adf1efb73639845}{FORMDATA\_\-HTML\_\-CODE} 
+\begin{DoxyCompactList}\small\item\em Return all data, formatted as HTML code. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8formhandler_8php_a982c2cfab5717a3b68087a346cd4addd}{FORMDATA\_\-RAW} 
+\begin{DoxyCompactList}\small\item\em Return the data unformatted. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
 
 
 \subsection{Detailed Description}
@@ -12,5 +32,60 @@ This file defines the Formhandler class \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id}
-\hyperlink{class_8formhandler_8php}{class.formhandler.php},v 1.4 2010-\/08-\/20 08:39:54 oscar Exp 
+\hyperlink{class_8formhandler_8php}{class.formhandler.php},v 1.5 2010-\/10-\/04 17:40:40 oscar Exp 
 \end{DoxyParagraph}
+
+
+\subsection{Enumeration Type Documentation}
+\index{class.formhandler.php@{class.formhandler.php}!FORMDATA\_\-BASIC\_\-HTML@{FORMDATA\_\-BASIC\_\-HTML}}
+\index{FORMDATA\_\-BASIC\_\-HTML@{FORMDATA\_\-BASIC\_\-HTML}!class.formhandler.php@{class.formhandler.php}}
+\subsubsection[{FORMDATA\_\-BASIC\_\-HTML}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FORMDATA\_\-BASIC\_\-HTML}}\label{class_8formhandler_8php_a274bb2c8e23d075b189f143adbb6746e}
+
+
+Remove all tags except bold, underline etc, lists, line breaks, headers and such. 
+
+\index{class.formhandler.php@{class.formhandler.php}!FORMDATA\_\-CUSTOM@{FORMDATA\_\-CUSTOM}}
+\index{FORMDATA\_\-CUSTOM@{FORMDATA\_\-CUSTOM}!class.formhandler.php@{class.formhandler.php}}
+\subsubsection[{FORMDATA\_\-CUSTOM}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FORMDATA\_\-CUSTOM}}\label{class_8formhandler_8php_ae5bb66ec27c03f3b03796f3bd80ba2ff}
+
+
+Provide custom arrays for formatting,. 
+
+\begin{DoxySeeAlso}{See also}
+cleanString() 
+\end{DoxySeeAlso}
+\index{class.formhandler.php@{class.formhandler.php}!FORMDATA\_\-EXTENDED\_\-HTML@{FORMDATA\_\-EXTENDED\_\-HTML}}
+\index{FORMDATA\_\-EXTENDED\_\-HTML@{FORMDATA\_\-EXTENDED\_\-HTML}!class.formhandler.php@{class.formhandler.php}}
+\subsubsection[{FORMDATA\_\-EXTENDED\_\-HTML}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FORMDATA\_\-EXTENDED\_\-HTML}}\label{class_8formhandler_8php_ac2f81495783870a3c4a63ab0164aa412}
+
+
+Remove all tags except the basic HTML tags, font and table tags, divs, spans, images and anchors. 
+
+\index{class.formhandler.php@{class.formhandler.php}!FORMDATA\_\-FULL\_\-HTML@{FORMDATA\_\-FULL\_\-HTML}}
+\index{FORMDATA\_\-FULL\_\-HTML@{FORMDATA\_\-FULL\_\-HTML}!class.formhandler.php@{class.formhandler.php}}
+\subsubsection[{FORMDATA\_\-FULL\_\-HTML}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FORMDATA\_\-FULL\_\-HTML}}\label{class_8formhandler_8php_ac1497f65ec29dadf9d39c5da41e17fc3}
+
+
+Remove all tags except extended HTML tags, frame, style and form (input) tags. 
+
+\index{class.formhandler.php@{class.formhandler.php}!FORMDATA\_\-HTML\_\-CODE@{FORMDATA\_\-HTML\_\-CODE}}
+\index{FORMDATA\_\-HTML\_\-CODE@{FORMDATA\_\-HTML\_\-CODE}!class.formhandler.php@{class.formhandler.php}}
+\subsubsection[{FORMDATA\_\-HTML\_\-CODE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FORMDATA\_\-HTML\_\-CODE}}\label{class_8formhandler_8php_a73c85f0f80e1060e1adf1efb73639845}
+
+
+Return all data, formatted as HTML code. 
+
+\index{class.formhandler.php@{class.formhandler.php}!FORMDATA\_\-RAW@{FORMDATA\_\-RAW}}
+\index{FORMDATA\_\-RAW@{FORMDATA\_\-RAW}!class.formhandler.php@{class.formhandler.php}}
+\subsubsection[{FORMDATA\_\-RAW}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FORMDATA\_\-RAW}}\label{class_8formhandler_8php_a982c2cfab5717a3b68087a346cd4addd}
+
+
+Return the data unformatted. 
+
+\index{class.formhandler.php@{class.formhandler.php}!FORMDATA\_\-STRICT@{FORMDATA\_\-STRICT}}
+\index{FORMDATA\_\-STRICT@{FORMDATA\_\-STRICT}!class.formhandler.php@{class.formhandler.php}}
+\subsubsection[{FORMDATA\_\-STRICT}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FORMDATA\_\-STRICT}}\label{class_8formhandler_8php_af5de9385d7f7fc802eaa8e7090d8e0f5}
+
+
+Remove all HTML tags before returning anything. 
+

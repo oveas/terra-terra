@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the User class
- * \version $Id: class.user.php,v 1.4 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: class.user.php,v 1.5 2010-12-03 12:07:42 oscar Exp $
  */
 
 /**
@@ -21,7 +21,7 @@ class User extends UserHandler
 	 */
 	public function __construct ($username = null)
 	{
-		$this->dataset =& new DataHandler ();
+		$this->dataset = new DataHandler ();
 		if ($username == null) {
 			$username = ConfigHandler::get ('session|default_user');
 		}
@@ -51,7 +51,7 @@ class User extends UserHandler
 	public function login ($username, $password)
 	{
 		$this->set_username ($username);
-		if (parent::login ($password) !== true) {
+		if (parent::login ($username, $password) !== true) {
 // TODO: logging out here resets the status code
 //			self::logout();
 			return (false);

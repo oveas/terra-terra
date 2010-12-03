@@ -48,7 +48,7 @@ Collaboration diagram for UserHandler:\nopagebreak
 \item 
 \hyperlink{classUserHandler_a8000feaceda9d3c37fc56b6d1969b8f7}{logout} ()
 \item 
-\hyperlink{classUserHandler_a7a0b269a54d9430f48d6490c1fe14ecd}{login} (\$password)
+\hyperlink{classUserHandler_abf6562660ee8ec1663afe08550a63643}{login} (\$username, \$password)
 \item 
 \hyperlink{classUserHandler_afbcc9a275b547cca0bd4cff567b054a0}{set\_\-username} (\$username)
 \item 
@@ -170,7 +170,7 @@ Object's status code
 \end{DoxyReturn}
 
 
-Referenced by FormHandler::\_\-\_\-get().
+Referenced by SchemeHandler::compare().
 
 \index{UserHandler@{UserHandler}!get\_\-username@{get\_\-username}}
 \index{get\_\-username@{get\_\-username}!UserHandler@{UserHandler}}
@@ -207,19 +207,23 @@ References OWL::factory().
 
 
 
-Referenced by DOMElement::\_\-\_\-construct(), \_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by \_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{UserHandler@{UserHandler}!login@{login}}
 \index{login@{login}!UserHandler@{UserHandler}}
-\subsubsection[{login}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::login (\$ {\em password})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUserHandler_a7a0b269a54d9430f48d6490c1fe14ecd}
+\subsubsection[{login}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::login (\$ {\em username}, \/  \$ {\em password})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUserHandler_abf6562660ee8ec1663afe08550a63643}
 Attempt to log in with the current user and the given password
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$password}]The user provided password \end{DoxyParams}
+\item[\mbox{$\leftarrow$} {\em \$username}]Given username. Might be taken from the session as well, but given as a parameter here to suppress the E\_\-STRICT Declaration warning \item[\mbox{$\leftarrow$} {\em \$password}]The user provided password \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True on success, False otherwise 
 \end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classUser_a2c4fae5935ebf84e787126795bf42988}{User}.
+
 
 
 References ConfigHandler::get(), hash\_\-password(), \_\-OWL::set\_\-status(), set\_\-username(), and \_\-OWL::traceback().
@@ -247,7 +251,7 @@ Referenced by \_\-\_\-construct().
 \subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
 General reset function for all objects. Should be called after each non-\/fatal error 
 
-Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}.
+Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
 
 
 
@@ -278,7 +282,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by \_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-get(), DataHandler::\_\-\_\-get(), DataHandler::\_\-\_\-set(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), DataHandler::DataHandler(), login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), FormHandler::parse\_\-formdata(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), read\_\-userdata(), DataHandler::reset(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), DbHandler::table\_\-description(), and DbHandler::write().
+Referenced by \_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{UserHandler@{UserHandler}!set\_\-username@{set\_\-username}}
 \index{set\_\-username@{set\_\-username}!UserHandler@{UserHandler}}

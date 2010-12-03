@@ -1,5 +1,13 @@
 <map id="G" name="G">
-<area shape="rect" href="$classForm.html" title="Form Element class." alt="" coords="5,501,115,589"/>
-<area shape="rect" href="$classFormElement.html" title="Form element." alt="" coords="139,501,248,589"/>
-<area shape="rect" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="56,5,197,317"/>
+<area shape="rect" href="$classForm.html" title="Form Element class." alt="" coords="347,576,491,795"/>
+<area shape="rect" href="$classFormField.html" title="Formfield." alt="" coords="515,595,624,776"/>
+<area shape="rect" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="423,5,564,317"/>
+<area shape="rect" href="$classFormFieldButton.html" title="Formfield." alt="" coords="5,843,123,931"/>
+<area shape="rect" href="$classFormFieldCheckbox.html" title="Formfield." alt="" coords="147,843,283,931"/>
+<area shape="rect" href="$classFormFieldFile.html" title="Formfield." alt="" coords="307,843,416,931"/>
+<area shape="rect" href="$classFormFieldHidden.html" title="Formfield." alt="" coords="440,843,560,931"/>
+<area shape="rect" href="$classFormFieldRadio.html" title="Formfield." alt="" coords="584,843,696,931"/>
+<area shape="rect" href="$classFormFieldSelect.html" title="Formfield." alt="" coords="720,843,835,931"/>
+<area shape="rect" href="$classFormFieldText.html" title="Formfield." alt="" coords="859,843,968,931"/>
+<area shape="rect" href="$classFormFieldTextarea.html" title="Formfield." alt="" coords="992,843,1120,931"/>
 </map>

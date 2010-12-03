@@ -26,19 +26,25 @@
 </div>
 <div class="contents">
 <h1>/home/oscar/projects/owl-php/src/OWLloader.php File Reference</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLloader.html">OWLloader</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Class loader.  <a href="classOWLloader.html#_details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2>Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#a4d33a8f2fcc9c83cbeea921c4cb23a7f">OWL_INCLUDE</a> </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#a75dffdef5ba58a0ba5f21ed40627897f">OWL_SO_INC</a> </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#aca50646bc73c3addf0e0f25081eae0ae">OWL_BO_INC</a> </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#a2e11101c70f011a91d0d9c7f8e217738">OWL_UI_INC</a> </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#a74eed08508c8b70677c4167acf49e427">OWL_LIBRARY</a> </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#a462de9ae02e394313337afac5d1a5f95">OWL_SITE_TOP</a> </td></tr>
 <tr><td colspan="2"><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#a79190ec221c2b52403f7324f1d224c8f">$GLOBALS</a> ['OWLCache']</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#a65f2996116eed36e9ab25f254a470259">$GLOBALS</a> ['messages'] = array ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="OWLloader_8php.html#a78407183564d6b92f2219d8a10b9349c">if</a> (array_key_exists('app', ConfigHandler::get('configfiles')))</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>This file loads the <a class="el" href="classOWL.html">OWL</a> environment and initialises some singletons </p>
 <dl class="version"><dt><b>Version:</b></dt><dd></dd></dl>
-<dl class="rcs"><dt><b>Id</b></dt><dd><a class="el" href="OWLloader_8php.html">OWLloader.php</a>,v 1.7 2010-08-20 08:39:54 oscar Exp </dd></dl>
+<dl class="rcs"><dt><b>Id</b></dt><dd><a class="el" href="OWLloader_8php.html">OWLloader.php</a>,v 1.9 2010-10-15 10:51:55 oscar Exp </dd></dl>
 <hr/><h2>Enumeration Type Documentation</h2>
 <a class="anchor" id="aca50646bc73c3addf0e0f25081eae0ae"></a><!-- doxytag: member="OWLloader.php::OWL_BO_INC" ref="aca50646bc73c3addf0e0f25081eae0ae" args="" -->
 <div class="memitem">
@@ -72,6 +78,19 @@
       <table class="memname">
         <tr>
           <td class="memname">enum <a class="el" href="OWLloader_8php.html#a74eed08508c8b70677c4167acf49e427">OWL_LIBRARY</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a462de9ae02e394313337afac5d1a5f95"></a><!-- doxytag: member="OWLloader.php::OWL_SITE_TOP" ref="a462de9ae02e394313337afac5d1a5f95" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="OWLloader_8php.html#a462de9ae02e394313337afac5d1a5f95">OWL_SITE_TOP</a></td>
         </tr>
       </table>
 </div>
@@ -119,8 +138,37 @@
 
 </div>
 </div>
+<a class="anchor" id="a79190ec221c2b52403f7324f1d224c8f"></a><!-- doxytag: member="OWLloader.php::$GLOBALS" ref="a79190ec221c2b52403f7324f1d224c8f" args="['OWLCache']" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$GLOBALS['OWLCache']</td>
+        </tr>
+      </table>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Sep 1 17:14:10 2010 for OWL-PHP by&nbsp;
+<div class="memdoc">
+<b>Initial value:</b><div class="fragment"><pre class="fragment"> array (
+         <span class="stringliteral">&#39;classesLoaded&#39;</span> =&gt; array()
+)
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a78407183564d6b92f2219d8a10b9349c"></a><!-- doxytag: member="OWLloader.php::if" ref="a78407183564d6b92f2219d8a10b9349c" args="(array_key_exists('app', ConfigHandler::get('configfiles')))" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="OWLloader_8php.html#a78407183564d6b92f2219d8a10b9349c">if</a>(array_key_exists('app', ConfigHandler::get('configfiles')))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Dec 1 20:23:25 2010 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

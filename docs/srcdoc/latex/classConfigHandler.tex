@@ -5,19 +5,19 @@
 Configuration handler.  
 
 
-\subsection*{Public Member Functions}
+\subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classConfigHandler_a75a7f03f156cd0f315f91ec4bbddfbb6}{read\_\-config} (\$file= '')
+static \hyperlink{classConfigHandler_af61ee6f9f793e4cd0128c02e4e28bf90}{read\_\-config} (\$file= '')
 \item 
-\hyperlink{classConfigHandler_ab8a7633a5a352c40d5c1380e04ffd199}{get} (\$item, \$default=null)
+static \hyperlink{classConfigHandler_aa8f6a7516588561626efccb8be5875ce}{get} (\$item, \$default=null)
 \item 
-\hyperlink{classConfigHandler_ac947c34c710d66558da03ff632c32075}{set} (\$item, \$value)
+static \hyperlink{classConfigHandler_a82c10cf53f06169cee0bdc0716bc089a}{set} (\$item, \$value)
 \end{DoxyCompactItemize}
-\subsection*{Private Member Functions}
+\subsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classConfigHandler_adf3dd923bfd38e0274dc86ebd0caed92}{convert} (\$val)
+static \hyperlink{classConfigHandler_a9851c66d75db6a65c64aba5192173c14}{convert} (\$val)
 \end{DoxyCompactItemize}
 
 
@@ -33,7 +33,7 @@ Aug 20, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 \subsection{Member Function Documentation}
 \index{ConfigHandler@{ConfigHandler}!convert@{convert}}
 \index{convert@{convert}!ConfigHandler@{ConfigHandler}}
-\subsubsection[{convert}]{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::convert (\$ {\em val})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classConfigHandler_adf3dd923bfd38e0274dc86ebd0caed92}
+\subsubsection[{convert}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::convert (\$ {\em val})\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classConfigHandler_a9851c66d75db6a65c64aba5192173c14}
 Convert values in character string format to a known value
 
 
@@ -52,7 +52,7 @@ Referenced by read\_\-config().
 
 \index{ConfigHandler@{ConfigHandler}!get@{get}}
 \index{get@{get}!ConfigHandler@{ConfigHandler}}
-\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::get (\$ {\em item}, \/  \$ {\em default} = {\ttfamily null})}\label{classConfigHandler_ab8a7633a5a352c40d5c1380e04ffd199}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::get (\$ {\em item}, \/  \$ {\em default} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classConfigHandler_aa8f6a7516588561626efccb8be5875ce}
 Return a configuration value. Note! In order to use hidden values properly, this is the ONLY way configuration values should be retrieved!
 
 
@@ -67,11 +67,11 @@ References \$GLOBALS, and OWL::stat().
 
 
 
-Referenced by LogHandler::\_\-\_\-construct(), OWLException::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), User::\_\-\_\-construct(), FormHandler::\_\-\_\-get(), OWLException::check\_\-hide(), LogHandler::compose\_\-message(), DbHandler::connect(), DbHandler::get\_\-instance(), UserHandler::hash\_\-password(), LogHandler::log(), OWLExceptionHandler::log\_\-exception(), UserHandler::login(), User::logout(), FormHandler::parse\_\-formdata(), LogHandler::set\_\-filename(), \_\-OWL::set\_\-status(), \_\-OWL::signal(), and OWLException::traceback().
+Referenced by SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), OWLException::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), User::\_\-\_\-construct(), OWLException::check\_\-hide(), LogHandler::compose\_\-message(), DbHandler::connect(), FormHandler::get(), DbHandler::get\_\-instance(), UserHandler::hash\_\-password(), LogHandler::log(), OWLExceptionHandler::log\_\-exception(), UserHandler::login(), User::logout(), FormHandler::set(), LogHandler::set\_\-filename(), \_\-OWL::set\_\-status(), \_\-OWL::signal(), and OWLException::traceback().
 
 \index{ConfigHandler@{ConfigHandler}!read\_\-config@{read\_\-config}}
 \index{read\_\-config@{read\_\-config}!ConfigHandler@{ConfigHandler}}
-\subsubsection[{read\_\-config}]{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::read\_\-config (\$ {\em file} = {\ttfamily ''})}\label{classConfigHandler_a75a7f03f156cd0f315f91ec4bbddfbb6}
+\subsubsection[{read\_\-config}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::read\_\-config (\$ {\em file} = {\ttfamily ''})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classConfigHandler_af61ee6f9f793e4cd0128c02e4e28bf90}
 Parse the given configuration file
 
 
@@ -83,7 +83,7 @@ References \$GLOBALS, and convert().
 
 \index{ConfigHandler@{ConfigHandler}!set@{set}}
 \index{set@{set}!ConfigHandler@{ConfigHandler}}
-\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::set (\$ {\em item}, \/  \$ {\em value})}\label{classConfigHandler_ac947c34c710d66558da03ff632c32075}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::set (\$ {\em item}, \/  \$ {\em value})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classConfigHandler_a82c10cf53f06169cee0bdc0716bc089a}
 Set a configuration item. Existing values will be overwritten.
 
 

@@ -1,0 +1,70 @@
+\section{OWLloader Class Reference}
+\label{classOWLloader}\index{OWLloader@{OWLloader}}
+
+
+Class loader.  
+
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classOWLloader_a271d6508b029b3989db57f4d9b9b7677}{getClass} (\$\_\-className, \$\_\-classLocation=array(\hyperlink{OWLloader_8php_a75dffdef5ba58a0ba5f21ed40627897f}{OWL\_\-SO\_\-INC}, \hyperlink{OWLloader_8php_aca50646bc73c3addf0e0f25081eae0ae}{OWL\_\-BO\_\-INC}, \hyperlink{OWLloader_8php_a2e11101c70f011a91d0d9c7f8e217738}{OWL\_\-UI\_\-INC}), \$\_\-loadMultiple=false)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classOWLloader_a763911b4bc08982e24f1f897362f8c90}{\_\-tryLoad} (\$\_\-className, \$\_\-classLocation)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class loader. Abstract class to load other classfiles \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Oct 7, 2010 -\/-\/ O van Eijk -\/-\/ Initial version for OWL-\/PHP 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{OWLloader@{OWLloader}!\_\-tryLoad@{\_\-tryLoad}}
+\index{\_\-tryLoad@{\_\-tryLoad}!OWLloader@{OWLloader}}
+\subsubsection[{\_\-tryLoad}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::\_\-tryLoad (\$ {\em \_\-className}, \/  \$ {\em \_\-classLocation})\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classOWLloader_a763911b4bc08982e24f1f897362f8c90}
+Try loading a class from a specific location
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-className}]Name of the classfile \item[\mbox{$\leftarrow$} {\em \$\_\-classLocation}]Location where to tru loading it from \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success 
+\end{DoxyReturn}
+
+
+References \$GLOBALS.
+
+
+
+Referenced by getClass().
+
+\index{OWLloader@{OWLloader}!getClass@{getClass}}
+\index{getClass@{getClass}!OWLloader@{OWLloader}}
+\subsubsection[{getClass}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::getClass (\$ {\em \_\-className}, \/  \$ {\em \_\-classLocation} = {\ttfamily array({\bf OWL\_\-SO\_\-INC},~{\bf OWL\_\-BO\_\-INC},~{\bf OWL\_\-UI\_\-INC})}, \/  \$ {\em \_\-loadMultiple} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWLloader_a271d6508b029b3989db57f4d9b9b7677}
+Load a PHP classfile 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-className}]Name of the class; either file full name ($<$filename.php$>$ or the identifying name (\mbox{[}class.\mbox{]}$<$name$>$\mbox{[}.php\mbox{]}) \item[\mbox{$\leftarrow$} {\em \$\_\-classLocation}](Array of) location(s) where to look for the class \item[\mbox{$\leftarrow$} {\em \$\_\-loadMultiple}]Boolean; by default, the first matching classname will be loaded. Set this to true to load all files with the same name from multiple locations \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success 
+\end{DoxyReturn}
+
+
+References \_\-tryLoad().
+
+
+
+Referenced by Form::addField(), and Dispatcher::dispatch().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/\hyperlink{OWLloader_8php}{OWLloader.php}\end{DoxyCompactItemize}

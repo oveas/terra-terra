@@ -1,0 +1,170 @@
+\section{FormFieldTextarea Class Reference}
+\label{classFormFieldTextarea}\index{FormFieldTextarea@{FormFieldTextarea}}
+
+
+Formfield.  
+
+
+
+
+Inheritance diagram for FormFieldTextarea:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classFormFieldTextarea__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for FormFieldTextarea:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classFormFieldTextarea__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormFieldTextarea_a65e5d308db60f1ca0d08085d09dea8bc}{\_\-\_\-construct} ()
+\item 
+\hyperlink{classFormFieldTextarea_aebe84c54cafbcc8b4fc32f4b5ce04f1a}{getFieldCode} ()
+\item 
+\hyperlink{classFormField_ad57e32bd53170af060e869b3b60f0ef7}{setName} (\$\_\-value)
+\item 
+\hyperlink{classFormField_a465ff61e290d82be96bb793c3a14b3e7}{setValue} (\$\_\-value)
+\item 
+\hyperlink{classFormField_a1f64b737bccb6b2827f8c5665b9920c7}{getType} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormFieldTextarea_ab3a8058daa4c23d597e4003366075b59}{\$rows}
+\item 
+\hyperlink{classFormFieldTextarea_a70b12469646211ddd78d187269604fd4}{\$cols}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormField_a9f9d136ba8b4a793f22370aff43d592d}{getGenericFieldAttributes} (\$\_\-ignore=array())
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormField_a23861f707bcd77bbace6300de9621746}{\$name}
+\item 
+\hyperlink{classFormField_a3c01e89834248eec8e2f145fbcfa0fbc}{\$value}
+\item 
+\hyperlink{classFormField_ab6f1907061890290e32cb2befc0a5f50}{\$disabled}
+\item 
+\hyperlink{classFormField_a78ba5d4b9127e75e8ccf86f397b5d9ac}{\$readonly}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormFieldTextarea_a85348034822c70694fc8640bfcacc04d}{\$type}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Formfield. Formfield textarea elements \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Oct 19, 2010 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{FormFieldTextarea@{FormFieldTextarea}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldTextarea::\_\-\_\-construct ()}\label{classFormFieldTextarea_a65e5d308db60f1ca0d08085d09dea8bc}
+Class constructor; 
+
+Reimplemented from \hyperlink{classFormField_a0cfe713ce28a6a0cb53476ed463e1f01}{FormField}.
+
+
+
+\subsection{Member Function Documentation}
+\index{FormFieldTextarea@{FormFieldTextarea}!getFieldCode@{getFieldCode}}
+\index{getFieldCode@{getFieldCode}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{getFieldCode}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldTextarea::getFieldCode ()}\label{classFormFieldTextarea_aebe84c54cafbcc8b4fc32f4b5ce04f1a}
+Return the HTML code to display the form element
+
+\begin{DoxyReturn}{Returns}
+Textstring with the complete code for the form element 
+\end{DoxyReturn}
+
+
+References FormField::getGenericFieldAttributes().
+
+\index{FormFieldTextarea@{FormFieldTextarea}!getGenericFieldAttributes@{getGenericFieldAttributes}}
+\index{getGenericFieldAttributes@{getGenericFieldAttributes}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{getGenericFieldAttributes}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getGenericFieldAttributes (\$ {\em \_\-ignore} = {\ttfamily array()})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a9f9d136ba8b4a793f22370aff43d592d}
+Return the attributes for an HTML formfield in the \char`\"{} attrib='value' \mbox{[}...\mbox{]}\char`\"{} format
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-ignore}]Array with attributes names that should be ignored, e.g. for a textarea, the value is not returned as an attribute. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Textstring with the HTML code 
+\end{DoxyReturn}
+
+
+Referenced by getFieldCode(), FormFieldText::getFieldCode(), FormFieldRadio::getFieldCode(), FormFieldCheckbox::getFieldCode(), and FormFieldButton::getFieldCode().
+
+\index{FormFieldTextarea@{FormFieldTextarea}!getType@{getType}}
+\index{getType@{getType}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getType ()\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_a1f64b737bccb6b2827f8c5665b9920c7}
+Give the field type \begin{DoxyReturn}{Returns}
+Field type 
+\end{DoxyReturn}
+\index{FormFieldTextarea@{FormFieldTextarea}!setName@{setName}}
+\index{setName@{setName}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setName (\$ {\em \_\-value})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_ad57e32bd53170af060e869b3b60f0ef7}
+Set the field name 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Field name \end{DoxyParams}
+\index{FormFieldTextarea@{FormFieldTextarea}!setValue@{setValue}}
+\index{setValue@{setValue}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{setValue}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setValue (\$ {\em \_\-value})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_a465ff61e290d82be96bb793c3a14b3e7}
+Set the field value 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Field value \end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classFormFieldCheckbox_a787abee157599c389a18e0810f69fed5}{FormFieldCheckbox}, \hyperlink{classFormFieldRadio_aab105e92866fd80890d3254f51a2e4ca}{FormFieldRadio}, and \hyperlink{classFormFieldSelect_ae69f5b352df63796c048dca6a2de7544}{FormFieldSelect}.
+
+
+
+\subsection{Member Data Documentation}
+\index{FormFieldTextarea@{FormFieldTextarea}!\$cols@{\$cols}}
+\index{\$cols@{\$cols}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{\$cols}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldTextarea::\$cols}\label{classFormFieldTextarea_a70b12469646211ddd78d187269604fd4}
+Number of rows in the textarea \index{FormFieldTextarea@{FormFieldTextarea}!\$disabled@{\$disabled}}
+\index{\$disabled@{\$disabled}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{\$disabled}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$disabled\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_ab6f1907061890290e32cb2befc0a5f50}
+Boolean indicating a disabled field when true \index{FormFieldTextarea@{FormFieldTextarea}!\$name@{\$name}}
+\index{\$name@{\$name}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{\$name}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$name\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a23861f707bcd77bbace6300de9621746}
+Name of the formfield \index{FormFieldTextarea@{FormFieldTextarea}!\$readonly@{\$readonly}}
+\index{\$readonly@{\$readonly}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{\$readonly}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$readonly\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a78ba5d4b9127e75e8ccf86f397b5d9ac}
+Boolean indicating a readonly field when true \index{FormFieldTextarea@{FormFieldTextarea}!\$rows@{\$rows}}
+\index{\$rows@{\$rows}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{\$rows}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldTextarea::\$rows}\label{classFormFieldTextarea_ab3a8058daa4c23d597e4003366075b59}
+Number of columns in the textarea \index{FormFieldTextarea@{FormFieldTextarea}!\$type@{\$type}}
+\index{\$type@{\$type}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{\$type}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldTextarea::\$type\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormFieldTextarea_a85348034822c70694fc8640bfcacc04d}
+Field type; this class is used for 'text' and 'password' types 
+
+Reimplemented from \hyperlink{classFormField_a37bed21a1891e95be0e4a697e45ba51b}{FormField}.
+
+\index{FormFieldTextarea@{FormFieldTextarea}!\$value@{\$value}}
+\index{\$value@{\$value}!FormFieldTextarea@{FormFieldTextarea}}
+\subsubsection[{\$value}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$value\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a3c01e89834248eec8e2f145fbcfa0fbc}
+Field value 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/ui/\hyperlink{class_8formfield_8textarea_8php}{class.formfield.textarea.php}\end{DoxyCompactItemize}

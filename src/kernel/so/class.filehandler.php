@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the FileHandler class
- * \version $Id: class.filehandler.php,v 1.4 2010-08-20 08:39:54 oscar Exp $
+ * \version $Id: class.filehandler.php,v 1.5 2010-12-03 12:07:42 oscar Exp $
  */
 
 /**
@@ -37,9 +37,9 @@ class FileHandler extends _OWL
 
 	/**
 	 * Full filename as stored on the file system
-	 * \private
+	 * \protected
 	 */	
-	private $name; 
+	protected $name; 
 	var $original_name;	// Original filename
 //	var $location;		// the file's location on the file system
 //	var $file_ext;		// Original file type
@@ -203,6 +203,290 @@ class FileHandler extends _OWL
 	}
 }
 
+
+class OldOFMStuff
+{
+
+
+	function OFM_FileDetails ($Path, $File) {
+/*
+ * Get detailed information for the selected file and return it in
+ * an indexed array.
+ */
+   global $DateFormat;
+   global $FileSizes;
+   global $TotalSize;
+   global $TotalFiles;
+   global $ShowHidden;
+
+   $f = $Path . "/" . $File;
+
+   $fdet["name"]   = $File;
+   $fdet["path"]   = $Path;
+
+   if ($File == "." || $File == "..") {
+      // Never list 'Current' or 'Parent'
+      //
+      return ($fdet);
+   }
+
+   if (ereg("^\.", $File) && !$ShowHidden) {
+      // If ShowHidden is set to 'false' skip files starting with a '.'
+      //
+      return ($fdet);
+   }
+
+
+   /*
+    * Symbolic link? If so, we don't need to know the rest.
+    */
+   if (is_link($f)) {
+      $fdet["link"] = readlink($f);
+      $fdet["alink"] = OFM_TranslateLink ($fdet["path"], $fdet["link"]);
+      return ($fdet);
+   } else {
+      $fdet["link"] = "";
+   }
+
+   /*
+    * Some file characterisics
+    */
+   $fdet["dir"]     = is_dir($f);
+   $fdet["exec"]    = is_executable($f);
+   $fdet["file"]    = is_file($f);
+   $fdet["read"]    = is_readable($f);
+   $fdet["write"]   = is_writeable($f);
+   $fdet["upload"]  = is_uploaded_file($f);
+
+   /*
+    * File date information
+    */
+   $fdet["access"]  = date($DateFormat, fileatime($f));
+   $fdet["change"]  = date($DateFormat, filectime($f));
+   $fdet["modify"]  = date($DateFormat, filemtime($f));
+
+
+   /*
+    * Owner and group
+    */
+   $tmpa = posix_getpwuid(fileowner($f));
+   $fdet["owner"] = $tmpa["name"];
+
+   $tmpa = posix_getgrgid(filegroup($f));
+   $fdet["group"] = $tmpa["name"];
+
+   /*
+    * Permissions
+    */
+   $fperm = fileperms($f);
+   // Create the privilege list in *reverse* order!
+   //
+   $perms = array("x", "w", "r"    // World
+                , "x", "w", "r"    // Group
+		, "x", "w", "r");  // User (owner)
+   $fdet["perm"] = "";
+   for ($i = 0; $i <= 8; $i++) {
+      if ($fperm & 1) {
+         $fdet["perm"] = $perms[$i] . $fdet["perm"];
+      } else {
+         $fdet["perm"] = "-" . $fdet["perm"];
+      }
+      $fperm = $fperm >> 1;
+   }
+
+   /*
+    * File size (in human readable format).
+    * The TotalSize is increased and formatted later
+    */
+   $fdet["size"] = filesize($f);
+   $TotalSize += $fdet["size"];
+
+   for ($i = 0; $fdet["size"] > 1024; $i++) {
+      $fdet["size"] = $fdet["size"] / 1024;
+   }
+   $fdet["size"] = round($fdet["size"],2) . " " . $FileSizes[$i];
+
+   /*
+    * Get extra information about the file. This is returned
+    * in an array, creating a second level here.
+    */
+   if (!$fdet["dir"]) {
+      $fdet["info"] = OFM_FileInfo ($Path, $File);
+   }
+
+   /*
+    * Increase the nr of files in this directory
+    */
+   $TotalFiles++;
+   return ($fdet);
+}
+
+function OFM_FileInfo ($Path, $File) {
+/*
+ * Return the file type and additional information.
+ * The info is returned in an array.
+ * The type defines the type of the file, subtype is only filled if
+ * OFM can actually do something with the file.
+ */
+  global $SupportedArchives;
+  global $KnownArchives;
+  global $KnownImages;
+  global $KnownWebDocuments;
+  global $KnownScriptSources;
+
+  $f = $Path . "/" . $File;
+  $nel = explode (".", $File);
+  $FileInf["ext"] = strtolower ($nel[count($nel)-1]);
+
+  $FileInf["ascii"] = -1;
+  
+  /*
+   * Graphics
+   */
+  if (ereg("/" . $FileInf["ext"] . "/", $KnownImages)) {
+     $FileInf["type"] = "image";
+     $FileInf["subtype"] = $FileInf["ext"];
+     // Exceptions:
+     //
+     if ($FileInf["ext"] == "jpeg")  { $FileInf["subtype"] = "jpg"; }
+
+     if ($ImgInf = GetImageSize($f)) {
+        $FileInf["imgwidth"]  = $ImgInf[0];
+        $FileInf["imgheight"] = $ImgInf[1];
+     } else {
+        $FileInf["subtype"] = "";
+     }
+     $FileInf["ascii"] = 0;
+   }
+
+  /*
+   * Archives
+   */
+  // Exceptions:
+  //
+//  if ($FileInf["ext"] == "gz")  { $FileInf["ext"] = "gzip"; }
+  if (ereg("/" . $FileInf["ext"] . "/", $KnownArchives)) {
+     $FileInf["type"] = "archive";
+     $FileInf["subtype"] = $FileInf["ext"];
+
+     if (!ereg("/" . $FileInf["subtype"] . ":", $SupportedArchives)) {
+        $FileInf["subtype"] = "";
+     }
+     $FileInf["ascii"] = 0;
+  }
+  
+
+  /*
+   * Webdocuments
+   */
+  if (ereg("/" . $FileInf["ext"] . "/", $KnownWebDocuments)) {
+     $FileInf["type"] = "webdoc";
+     $FileInf["subtype"] = $FileInf["ext"];
+     $FileInf["ascii"] = 1;
+   }
+
+  /*
+   * WebScripts sources
+   */
+  if (ereg("/" . $FileInf["ext"] . "/", $KnownScriptSources)) {
+     $FileInf["type"] = "webscript";
+     $FileInf["subtype"] = $FileInf["ext"];
+     $FileInf["ascii"] = 1;
+   }
+
+
+
+  /*
+   * Not a predefined type; find out if it's Ascii or Binary
+   */
+  if ($FileInf["ascii"] == -1) {
+     $FileInf["ascii"] == @OFM_IsAscii ($f, $FileInf["ext"]);
+  }  
+
+  /*
+   * The file is ASCII, now see if it's DOS or UNIX
+   */
+  if ($FileInf["ascii"]) {
+     $FileInf["asciitype"] = "unix";
+     if (($fp = @fopen ($f, "r"))) { 
+        $Line = fread ($fp, 4096);
+        fclose ($fp);
+        if (ereg("\r\n$", $Line)) { $FileInf["asciitype"] = "dos"; }
+        if (ereg("\r$",   $Line)) { $FileInf["asciitype"] = "mac"; }
+     }
+  }
+
+  return ($FileInf);
+}
+
+
+function OFM_IsAscii ($File, $Type) {
+/*
+ * Find out if the file if Ascii or Binary.
+ * First we check known types from the config file. If the given type is not
+ * listed, the first 4096 bytes are checked; if they contain a
+ * newline character, the file is asumed to be Ascii.
+ */
+   global $BinaryFileTypes;
+   global $ASCIIFileTypes;
+   
+   if (ereg("/" . $Type . "/", $BinaryFileTypes)) {  return (0); }
+   if (ereg("/" . $Type . "/", $ASCIIFileTypes))  {  return (1); }
+
+   /*
+    * Unknown type; read a line to find out
+    */
+
+   // Unreadable; asume binary
+   if (!($fp = fopen ($File, "r"))) { return (0); }
+   
+   $Line = fread ($fp, 4096);
+   fclose ($fp);
+   if (ereg("\n", $Line)) { return (1); }
+   return (0);
+}
+
+/*
+sub OFM_convert_file ($$) {
+   my ($fname, $ctype) = @_;
+   error ('flocked', $fname, $OPLSteering{'Lock_Timeout'}) if (&OPL_lock ($fname, $OPLSteering{'Lock_Timeout'}) == 0);
+   my $ftemp = $fname . ".OFM.tmp";
+   if (&OPL_lock ($ftemp, $OPLSteering{'Lock_Timeout'}) == 0) {
+      OPL_unlock  ($fname);
+      error ('flocked', $ftemp, $OPLSteering{'Lock_Timeout'})
+   }
+   rename ($fname, $ftemp);
+   open (FILE, $ftemp);
+   open (CONV, ">$fname");
+   while (my $line = <FILE>) {
+      if ($ctype eq "mac2unix") {
+         $line =~ s/\r/\n/g;
+	 print CONV $line;
+      } else {
+         $line =~ s/\n$//;
+         $line =~ s/\r$//;
+         if ($ctype eq "dos2unix") {
+            $line .= "\n";
+         } elsif ($ctype eq "unix2dos") {
+            $line .= "\r\n";
+         } elsif ($ctype eq "unix2mac") {
+            $line .= "\r";
+         }
+	 print CONV $line;
+      }
+   }
+   close FILE;
+   close CONF;
+   OPL_unlock ($fname);
+   OPL_unlock ($ftemp);
+   OPL_delete($ftemp);
+   my ($a1, $a2) = split (/2/, $ctype);
+   $predirect = OFM_predirect("/ofm.php?presp=" . 
+      signal("2253", $fname . $OPLSteering{'FieldSep'} . $a1 . $OPLSteering{'FieldSep'} . $a2));
+}
+*/
+
+}
 
 
 /*

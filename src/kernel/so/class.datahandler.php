@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.4 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.5 2010-12-03 12:07:42 oscar Exp $
  */
 
 /**
@@ -155,7 +155,7 @@ class DataHandler extends _OWL
 	 * array, the second field in the array has to be the tablename
 	 * where the fieldname is found. The value itself van NEVER be an array!
 	 */
-	public function __set ($variable, $value)
+	public function set ($variable, $value)
 	{
 		if (is_array ($value)) {
 			if (count ($value, 0) != 2) {
@@ -230,18 +230,18 @@ class DataHandler extends _OWL
 	 * fully qualified table/fieldname (format "table#field"), or only
 	 * a field name, in which case it has to be unique.
 	 * If the fieldname cannot be found directly, the array is scanned to
-	 * find a matching field. It more matches are found, the object status
+	 * find a matching field. If more matches are found, the object status
 	 * is set to DATA_AMBFIELD.
 	 * \public
 	 * \param[in] $variable The name of the variable that should be retrieved
 	 * \return The value, or NULL when the value was not found or abigious.
 	 */
-	public function __get ($variable)
+	public function get ($variable)
 	{
 		if (array_key_exists ($variable, $this->owl_data)) {
 			return ($this->owl_data[$variable]);
 		} else {
-			switch ($this->find_field($variable, &$_k)) {
+			switch ($this->find_field($variable, $_k)) {
 				case 0:
 					$this->set_status (DATA_NOTFOUND, $variable);
 					return (null);

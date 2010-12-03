@@ -1,5 +1,10 @@
 \section{/home/oscar/projects/owl-\/php/src/OWLloader.php File Reference}
 \label{OWLloader_8php}\index{/home/oscar/projects/owl-\/php/src/OWLloader.php@{/home/oscar/projects/owl-\/php/src/OWLloader.php}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classOWLloader}{OWLloader}
+\begin{DoxyCompactList}\small\item\em Class loader. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,11 +17,17 @@ enum \hyperlink{OWLloader_8php_aca50646bc73c3addf0e0f25081eae0ae}{OWL\_\-BO\_\-I
 enum \hyperlink{OWLloader_8php_a2e11101c70f011a91d0d9c7f8e217738}{OWL\_\-UI\_\-INC} 
 \item 
 enum \hyperlink{OWLloader_8php_a74eed08508c8b70677c4167acf49e427}{OWL\_\-LIBRARY} 
+\item 
+enum \hyperlink{OWLloader_8php_a462de9ae02e394313337afac5d1a5f95}{OWL\_\-SITE\_\-TOP} 
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{OWLloader_8php_a79190ec221c2b52403f7324f1d224c8f}{\$GLOBALS} \mbox{[}'OWLCache'\mbox{]}
+\item 
 \hyperlink{OWLloader_8php_a65f2996116eed36e9ab25f254a470259}{\$GLOBALS} \mbox{[}'messages'\mbox{]} = array ()
+\item 
+\hyperlink{OWLloader_8php_a78407183564d6b92f2219d8a10b9349c}{if} (array\_\-key\_\-exists('app', ConfigHandler::get('configfiles')))
 \end{DoxyCompactItemize}
 
 
@@ -25,7 +36,7 @@ This file loads the \hyperlink{classOWL}{OWL} environment and initialises some s
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id}
-\hyperlink{OWLloader_8php}{OWLloader.php},v 1.7 2010-\/08-\/20 08:39:54 oscar Exp 
+\hyperlink{OWLloader_8php}{OWLloader.php},v 1.9 2010-\/10-\/15 10:51:55 oscar Exp 
 \end{DoxyParagraph}
 
 
@@ -39,6 +50,9 @@ This file loads the \hyperlink{classOWL}{OWL} environment and initialises some s
 \index{OWLloader.php@{OWLloader.php}!OWL\_\-LIBRARY@{OWL\_\-LIBRARY}}
 \index{OWL\_\-LIBRARY@{OWL\_\-LIBRARY}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{OWL\_\-LIBRARY}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-LIBRARY}}\label{OWLloader_8php_a74eed08508c8b70677c4167acf49e427}
+\index{OWLloader.php@{OWLloader.php}!OWL\_\-SITE\_\-TOP@{OWL\_\-SITE\_\-TOP}}
+\index{OWL\_\-SITE\_\-TOP@{OWL\_\-SITE\_\-TOP}!OWLloader.php@{OWLloader.php}}
+\subsubsection[{OWL\_\-SITE\_\-TOP}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-SITE\_\-TOP}}\label{OWLloader_8php_a462de9ae02e394313337afac5d1a5f95}
 \index{OWLloader.php@{OWLloader.php}!OWL\_\-SO\_\-INC@{OWL\_\-SO\_\-INC}}
 \index{OWL\_\-SO\_\-INC@{OWL\_\-SO\_\-INC}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{OWL\_\-SO\_\-INC}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-SO\_\-INC}}\label{OWLloader_8php_a75dffdef5ba58a0ba5f21ed40627897f}
@@ -51,3 +65,15 @@ This file loads the \hyperlink{classOWL}{OWL} environment and initialises some s
 \index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
 \index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'messages'\mbox{]} = array ()}\label{OWLloader_8php_a65f2996116eed36e9ab25f254a470259}
+\index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
+\index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
+\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'OWLCache'\mbox{]}}\label{OWLloader_8php_a79190ec221c2b52403f7324f1d224c8f}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+ array (
+         'classesLoaded' => array()
+)
+\end{DoxyCode}
+\index{OWLloader.php@{OWLloader.php}!if@{if}}
+\index{if@{if}!OWLloader.php@{OWLloader.php}}
+\subsubsection[{if}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if}(array\_\-key\_\-exists('app', ConfigHandler::get('configfiles')))}\label{OWLloader_8php_a78407183564d6b92f2219d8a10b9349c}

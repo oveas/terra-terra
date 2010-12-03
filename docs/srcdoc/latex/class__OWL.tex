@@ -69,7 +69,7 @@ May 15, 2007 -\/-\/ O van Eijk -\/-\/ initial version
 \subsubsection[{\_\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\_\-\_\-destruct ()}\label{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}
 Default class destructor; has to exist but can (should?) be reimplemented 
 
-Reimplemented in \hyperlink{classSession_aa498272c85524e4700abc3363883165b}{Session}, \hyperlink{classUser_accd20149a7414612c1505e022eb63ffc}{User}, \hyperlink{classDbHandler_a7cd6bd727d1f296eb5dbfae6ca36ab3f}{DbHandler}, \hyperlink{classFileHandler_a734859e8962992da99dd8f853da5ae43}{FileHandler}, \hyperlink{classLogHandler_aacd0c653489cf221423b9edd62e81458}{LogHandler}, \hyperlink{classSessionHandler_a461097c3ee6b1aecf833ce1225d02329}{SessionHandler}, and \hyperlink{classUserHandler_a3e1f6381ed79caf6e1a255fb0a9cc386}{UserHandler}.
+Reimplemented in \hyperlink{classSession_aa498272c85524e4700abc3363883165b}{Session}, \hyperlink{classUser_accd20149a7414612c1505e022eb63ffc}{User}, \hyperlink{classDbHandler_a7cd6bd727d1f296eb5dbfae6ca36ab3f}{DbHandler}, \hyperlink{classFileHandler_a734859e8962992da99dd8f853da5ae43}{FileHandler}, \hyperlink{classLogHandler_aacd0c653489cf221423b9edd62e81458}{LogHandler}, \hyperlink{classSchemeHandler_a3d786efe6ef92858de21438b59774226}{SchemeHandler}, \hyperlink{classSessionHandler_a461097c3ee6b1aecf833ce1225d02329}{SessionHandler}, and \hyperlink{classUserHandler_a3e1f6381ed79caf6e1a255fb0a9cc386}{UserHandler}.
 
 
 
@@ -122,7 +122,7 @@ Object's status code
 \end{DoxyReturn}
 
 
-Referenced by FormHandler::\_\-\_\-get().
+Referenced by SchemeHandler::compare().
 
 \index{\_\-OWL@{\_\-OWL}!init@{init}}
 \index{init@{init}!_OWL@{\_\-OWL}}
@@ -133,14 +133,14 @@ References OWL::factory().
 
 
 
-Referenced by DOMElement::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{\_\-OWL@{\_\-OWL}!reset@{reset}}
 \index{reset@{reset}!_OWL@{\_\-OWL}}
 \subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
 General reset function for all objects. Should be called after each non-\/fatal error 
 
-Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}.
+Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
 
 
 
@@ -183,7 +183,7 @@ References \$GLOBALS, \$status, ConfigHandler::get(), Register::get\_\-code(), r
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-get(), DataHandler::\_\-\_\-get(), DataHandler::\_\-\_\-set(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), DataHandler::DataHandler(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), FormHandler::parse\_\-formdata(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), DbHandler::table\_\-description(), and DbHandler::write().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{\_\-OWL@{\_\-OWL}!signal@{signal}}
 \index{signal@{signal}!_OWL@{\_\-OWL}}

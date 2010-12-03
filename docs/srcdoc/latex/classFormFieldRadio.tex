@@ -1,0 +1,174 @@
+\section{FormFieldRadio Class Reference}
+\label{classFormFieldRadio}\index{FormFieldRadio@{FormFieldRadio}}
+
+
+Formfield.  
+
+
+
+
+Inheritance diagram for FormFieldRadio:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classFormFieldRadio__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for FormFieldRadio:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classFormFieldRadio__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormFieldRadio_ae82224cf68e3513e29923c24f42eb06d}{\_\-\_\-construct} ()
+\item 
+\hyperlink{classFormFieldRadio_aab105e92866fd80890d3254f51a2e4ca}{setValue} (\$\_\-value)
+\item 
+\hyperlink{classFormFieldRadio_a2fc7c97f763930e5bdd8f7cbb7f3c98f}{setSelected} (\$\_\-value)
+\item 
+\hyperlink{classFormFieldRadio_a727e6c7c77ed0e2b49108d0e44c6e8d3}{getFieldCode} ()
+\item 
+\hyperlink{classFormField_ad57e32bd53170af060e869b3b60f0ef7}{setName} (\$\_\-value)
+\item 
+\hyperlink{classFormField_a1f64b737bccb6b2827f8c5665b9920c7}{getType} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormField_a9f9d136ba8b4a793f22370aff43d592d}{getGenericFieldAttributes} (\$\_\-ignore=array())
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormField_a37bed21a1891e95be0e4a697e45ba51b}{\$type}
+\item 
+\hyperlink{classFormField_a23861f707bcd77bbace6300de9621746}{\$name}
+\item 
+\hyperlink{classFormField_a3c01e89834248eec8e2f145fbcfa0fbc}{\$value}
+\item 
+\hyperlink{classFormField_ab6f1907061890290e32cb2befc0a5f50}{\$disabled}
+\item 
+\hyperlink{classFormField_a78ba5d4b9127e75e8ccf86f397b5d9ac}{\$readonly}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormFieldRadio_a1b6abf4c527efabf94d2b5147492007e}{\$selected}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Formfield. Formfield radio elements \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Oct 19, 2010 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{FormFieldRadio@{FormFieldRadio}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldRadio::\_\-\_\-construct ()}\label{classFormFieldRadio_ae82224cf68e3513e29923c24f42eb06d}
+Class constructor; 
+
+Reimplemented from \hyperlink{classFormField_a0cfe713ce28a6a0cb53476ed463e1f01}{FormField}.
+
+
+
+\subsection{Member Function Documentation}
+\index{FormFieldRadio@{FormFieldRadio}!getFieldCode@{getFieldCode}}
+\index{getFieldCode@{getFieldCode}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{getFieldCode}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldRadio::getFieldCode ()}\label{classFormFieldRadio_a727e6c7c77ed0e2b49108d0e44c6e8d3}
+Return the HTML code to display the form elements
+
+\begin{DoxyReturn}{Returns}
+Array with textstrings for each radio button in this this set. 
+\end{DoxyReturn}
+
+
+References FormField::getGenericFieldAttributes().
+
+\index{FormFieldRadio@{FormFieldRadio}!getGenericFieldAttributes@{getGenericFieldAttributes}}
+\index{getGenericFieldAttributes@{getGenericFieldAttributes}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{getGenericFieldAttributes}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getGenericFieldAttributes (\$ {\em \_\-ignore} = {\ttfamily array()})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a9f9d136ba8b4a793f22370aff43d592d}
+Return the attributes for an HTML formfield in the \char`\"{} attrib='value' \mbox{[}...\mbox{]}\char`\"{} format
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-ignore}]Array with attributes names that should be ignored, e.g. for a textarea, the value is not returned as an attribute. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Textstring with the HTML code 
+\end{DoxyReturn}
+
+
+Referenced by FormFieldTextarea::getFieldCode(), FormFieldText::getFieldCode(), getFieldCode(), FormFieldCheckbox::getFieldCode(), and FormFieldButton::getFieldCode().
+
+\index{FormFieldRadio@{FormFieldRadio}!getType@{getType}}
+\index{getType@{getType}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getType ()\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_a1f64b737bccb6b2827f8c5665b9920c7}
+Give the field type \begin{DoxyReturn}{Returns}
+Field type 
+\end{DoxyReturn}
+\index{FormFieldRadio@{FormFieldRadio}!setName@{setName}}
+\index{setName@{setName}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setName (\$ {\em \_\-value})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_ad57e32bd53170af060e869b3b60f0ef7}
+Set the field name 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Field name \end{DoxyParams}
+\index{FormFieldRadio@{FormFieldRadio}!setSelected@{setSelected}}
+\index{setSelected@{setSelected}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{setSelected}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldRadio::setSelected (\$ {\em \_\-value})}\label{classFormFieldRadio_a2fc7c97f763930e5bdd8f7cbb7f3c98f}
+Define the selected value 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Preselected value \end{DoxyParams}
+\index{FormFieldRadio@{FormFieldRadio}!setValue@{setValue}}
+\index{setValue@{setValue}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{setValue}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldRadio::setValue (\$ {\em \_\-value})}\label{classFormFieldRadio_aab105e92866fd80890d3254f51a2e4ca}
+Reimplement, multiple values are supported 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Field value \end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classFormField_a465ff61e290d82be96bb793c3a14b3e7}{FormField}.
+
+
+
+\subsection{Member Data Documentation}
+\index{FormFieldRadio@{FormFieldRadio}!\$disabled@{\$disabled}}
+\index{\$disabled@{\$disabled}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{\$disabled}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$disabled\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_ab6f1907061890290e32cb2befc0a5f50}
+Boolean indicating a disabled field when true \index{FormFieldRadio@{FormFieldRadio}!\$name@{\$name}}
+\index{\$name@{\$name}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{\$name}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$name\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a23861f707bcd77bbace6300de9621746}
+Name of the formfield \index{FormFieldRadio@{FormFieldRadio}!\$readonly@{\$readonly}}
+\index{\$readonly@{\$readonly}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{\$readonly}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$readonly\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a78ba5d4b9127e75e8ccf86f397b5d9ac}
+Boolean indicating a readonly field when true \index{FormFieldRadio@{FormFieldRadio}!\$selected@{\$selected}}
+\index{\$selected@{\$selected}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{\$selected}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldRadio::\$selected\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormFieldRadio_a1b6abf4c527efabf94d2b5147492007e}
+Holds the value that must be preselected \index{FormFieldRadio@{FormFieldRadio}!\$type@{\$type}}
+\index{\$type@{\$type}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{\$type}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$type\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a37bed21a1891e95be0e4a697e45ba51b}
+Field type 
+
+Reimplemented in \hyperlink{classFormFieldTextarea_a85348034822c70694fc8640bfcacc04d}{FormFieldTextarea}.
+
+
+
+Referenced by FormFieldText::\_\-\_\-construct(), and FormFieldButton::\_\-\_\-construct().
+
+\index{FormFieldRadio@{FormFieldRadio}!\$value@{\$value}}
+\index{\$value@{\$value}!FormFieldRadio@{FormFieldRadio}}
+\subsubsection[{\$value}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$value\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a3c01e89834248eec8e2f145fbcfa0fbc}
+Field value 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/ui/\hyperlink{class_8formfield_8radio_8php}{class.formfield.radio.php}\end{DoxyCompactItemize}

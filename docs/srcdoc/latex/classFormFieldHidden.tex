@@ -1,0 +1,316 @@
+\section{FormFieldHidden Class Reference}
+\label{classFormFieldHidden}\index{FormFieldHidden@{FormFieldHidden}}
+
+
+Formfield.  
+
+
+
+
+Inheritance diagram for FormFieldHidden:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=400pt]{classFormFieldHidden__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for FormFieldHidden:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=400pt]{classFormFieldHidden__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormFieldHidden_ae05bfed7c36d70f2bd9f772acb3a70e3}{\_\-\_\-construct} ()
+\item 
+\hyperlink{classFormField_ad57e32bd53170af060e869b3b60f0ef7}{setName} (\$\_\-value)
+\item 
+\hyperlink{classFormField_a465ff61e290d82be96bb793c3a14b3e7}{setValue} (\$\_\-value)
+\item 
+\hyperlink{classFormField_a1f64b737bccb6b2827f8c5665b9920c7}{getType} ()
+\item 
+\hyperlink{classDOMElement_afb849b6d94ad4911d255e7ede4ee0d83}{setId} (\$\_\-value)
+\item 
+\hyperlink{classDOMElement_a593e89f31f6c1050d3948b29b00f387a}{setClass} (\$\_\-value)
+\item 
+\hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
+\item 
+\hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
+\item 
+\hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
+\item 
+\hyperlink{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}{traceback} (\&\$text=false, \$depth=0)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDOMElement_a6c303bd7b18fdf485d05554b2f2191d9}{getAttributes} ()
+\item 
+\hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
+\item 
+\hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\item 
+\hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
+\item 
+\hyperlink{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
+\item 
+\hyperlink{class__OWL_a576829692a3b66e3d518853bf43abae3}{set\_\-high\_\-severity} (\&\$object=null)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormField_a37bed21a1891e95be0e4a697e45ba51b}{\$type}
+\item 
+\hyperlink{classFormField_a23861f707bcd77bbace6300de9621746}{\$name}
+\item 
+\hyperlink{classFormField_a3c01e89834248eec8e2f145fbcfa0fbc}{\$value}
+\item 
+\hyperlink{classDOMElement_a5114a8be2c698c735ec897857156d252}{\$class} = ''
+\item 
+\hyperlink{classDOMElement_aa678fb06bb8ffd915c7e6ded8cfc58b6}{\$style} = ''
+\item 
+\hyperlink{classDOMElement_a8b2176f3ade70abc7b41603618a992c0}{\$id} = ''
+\item 
+\hyperlink{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}{\$severity}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Formfield. Formfield hidden elements \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Oct 19, 2010 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{FormFieldHidden@{FormFieldHidden}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldHidden::\_\-\_\-construct ()}\label{classFormFieldHidden_ae05bfed7c36d70f2bd9f772acb3a70e3}
+Class constructor; 
+
+Reimplemented from \hyperlink{classFormField_a0cfe713ce28a6a0cb53476ed463e1f01}{FormField}.
+
+
+
+\subsection{Member Function Documentation}
+\index{FormFieldHidden@{FormFieldHidden}!check@{check}}
+\index{check@{check}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the severity level was correct ( below the max), otherwise false 
+\end{DoxyReturn}
+
+
+References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::traceback().
+
+
+
+Referenced by SessionHandler::write().
+
+\index{FormFieldHidden@{FormFieldHidden}!get\_\-severity@{get\_\-severity}}
+\index{get\_\-severity@{get\_\-severity}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+Get the current object severity level.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status severity level 
+\end{DoxyReturn}
+
+
+References \_\-OWL::\$status.
+
+
+
+Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandler::set\_\-key().
+
+\index{FormFieldHidden@{FormFieldHidden}!get\_\-status@{get\_\-status}}
+\index{get\_\-status@{get\_\-status}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+Get the current object status.
+
+\begin{DoxyReturn}{Returns}
+Object's status code 
+\end{DoxyReturn}
+
+
+Referenced by SchemeHandler::compare().
+
+\index{FormFieldHidden@{FormFieldHidden}!getAttributes@{getAttributes}}
+\index{getAttributes@{getAttributes}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{getAttributes}]{\setlength{\rightskip}{0pt plus 5cm}DOMElement::getAttributes ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classDOMElement_a6c303bd7b18fdf485d05554b2f2191d9}
+Return the general element attributes that are set \begin{DoxyReturn}{Returns}
+string attributes in HTML format (' fld=\char`\"{}value\char`\"{}...) 
+\end{DoxyReturn}
+
+
+Referenced by Form::openForm().
+
+\index{FormFieldHidden@{FormFieldHidden}!getType@{getType}}
+\index{getType@{getType}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getType ()\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_a1f64b737bccb6b2827f8c5665b9920c7}
+Give the field type \begin{DoxyReturn}{Returns}
+Field type 
+\end{DoxyReturn}
+\index{FormFieldHidden@{FormFieldHidden}!init@{init}}
+\index{init@{init}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+
+References OWL::factory().
+
+
+
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+
+\index{FormFieldHidden@{FormFieldHidden}!reset@{reset}}
+\index{reset@{reset}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
+General reset function for all objects. Should be called after each non-\/fatal error 
+
+Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
+
+
+
+References \_\-OWL::reset\_\-calltree().
+
+
+
+Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
+
+\index{FormFieldHidden@{FormFieldHidden}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
+\index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+
+Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
+
+\index{FormFieldHidden@{FormFieldHidden}!set\_\-status@{set\_\-status}}
+\index{set\_\-status@{set\_\-status}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+Set the current object status to the specified value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+
+
+References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
+
+
+
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), Form::setFieldAttributes(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+
+\index{FormFieldHidden@{FormFieldHidden}!setClass@{setClass}}
+\index{setClass@{setClass}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{setClass}]{\setlength{\rightskip}{0pt plus 5cm}DOMElement::setClass (\$ {\em \_\-value})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classDOMElement_a593e89f31f6c1050d3948b29b00f387a}
+Set the element Class 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Class name \end{DoxyParams}
+\index{FormFieldHidden@{FormFieldHidden}!setId@{setId}}
+\index{setId@{setId}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{setId}]{\setlength{\rightskip}{0pt plus 5cm}DOMElement::setId (\$ {\em \_\-value})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classDOMElement_afb849b6d94ad4911d255e7ede4ee0d83}
+Set the element ID 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Identification \end{DoxyParams}
+\index{FormFieldHidden@{FormFieldHidden}!setName@{setName}}
+\index{setName@{setName}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setName (\$ {\em \_\-value})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_ad57e32bd53170af060e869b3b60f0ef7}
+Set the field name 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Field name \end{DoxyParams}
+\index{FormFieldHidden@{FormFieldHidden}!setValue@{setValue}}
+\index{setValue@{setValue}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{setValue}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setValue (\$ {\em \_\-value})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_a465ff61e290d82be96bb793c3a14b3e7}
+Set the field value 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Field value \end{DoxyParams}
+\index{FormFieldHidden@{FormFieldHidden}!signal@{signal}}
+\index{signal@{signal}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+Display the message for the current object status
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The severity level for this object 
+\end{DoxyReturn}
+
+
+References ConfigHandler::get().
+
+
+
+Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
+
+\index{FormFieldHidden@{FormFieldHidden}!traceback@{traceback}}
+\index{traceback@{traceback}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity code of the failing object 
+\end{DoxyReturn}
+
+
+References \_\-OWL::signal().
+
+
+
+Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read().
+
+
+
+\subsection{Member Data Documentation}
+\index{FormFieldHidden@{FormFieldHidden}!\$class@{\$class}}
+\index{\$class@{\$class}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{\$class}]{\setlength{\rightskip}{0pt plus 5cm}DOMElement::\$class = ''\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classDOMElement_a5114a8be2c698c735ec897857156d252}
+Class specification \index{FormFieldHidden@{FormFieldHidden}!\$id@{\$id}}
+\index{\$id@{\$id}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{\$id}]{\setlength{\rightskip}{0pt plus 5cm}DOMElement::\$id = ''\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classDOMElement_a8b2176f3ade70abc7b41603618a992c0}
+Element ID \index{FormFieldHidden@{FormFieldHidden}!\$name@{\$name}}
+\index{\$name@{\$name}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{\$name}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$name\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a23861f707bcd77bbace6300de9621746}
+Name of the formfield \index{FormFieldHidden@{FormFieldHidden}!\$severity@{\$severity}}
+\index{\$severity@{\$severity}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
+Severity level of the current object status \index{FormFieldHidden@{FormFieldHidden}!\$style@{\$style}}
+\index{\$style@{\$style}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{\$style}]{\setlength{\rightskip}{0pt plus 5cm}DOMElement::\$style = ''\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classDOMElement_aa678fb06bb8ffd915c7e6ded8cfc58b6}
+Element style \index{FormFieldHidden@{FormFieldHidden}!\$type@{\$type}}
+\index{\$type@{\$type}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{\$type}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$type\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a37bed21a1891e95be0e4a697e45ba51b}
+Field type 
+
+Reimplemented in \hyperlink{classFormFieldTextarea_a85348034822c70694fc8640bfcacc04d}{FormFieldTextarea}.
+
+
+
+Referenced by FormFieldText::\_\-\_\-construct(), and FormFieldButton::\_\-\_\-construct().
+
+\index{FormFieldHidden@{FormFieldHidden}!\$value@{\$value}}
+\index{\$value@{\$value}!FormFieldHidden@{FormFieldHidden}}
+\subsubsection[{\$value}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$value\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a3c01e89834248eec8e2f145fbcfa0fbc}
+Field value 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/ui/\hyperlink{class_8formfield_8hidden_8php}{class.formfield.hidden.php}\end{DoxyCompactItemize}

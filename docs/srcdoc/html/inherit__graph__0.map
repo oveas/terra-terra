@@ -1,16 +1,17 @@
 <map id="G" name="G">
-<area shape="rect" href="$class__OWL.html" title="_OWL" alt="" coords="5,192,61,221"/>
-<area shape="rect" href="$classDataHandler.html" title="The OWL Data object." alt="" coords="120,5,211,35"/>
-<area shape="rect" href="$classDbHandler.html" title="Database handler." alt="" coords="125,59,205,88"/>
-<area shape="rect" href="$classDOMElement.html" title="DOM Element base class." alt="" coords="116,112,215,141"/>
-<area shape="rect" href="$classFileHandler.html" title="File handler." alt="" coords="123,165,208,195"/>
-<area shape="rect" href="$classLogHandler.html" title="Log handler." alt="" coords="123,219,208,248"/>
-<area shape="rect" href="$classOWL.html" title="OWL" alt="" coords="141,272,189,301"/>
-<area shape="rect" href="$classSessionHandler.html" title="the PHP session object" alt="" coords="109,325,221,355"/>
-<area shape="rect" href="$classUserHandler.html" title="the user object" alt="" coords="120,379,211,408"/>
-<area shape="rect" href="$classFormHandler.html" title="Formhandler." alt="" coords="272,5,368,35"/>
-<area shape="rect" href="$classForm.html" title="Form Element class." alt="" coords="295,85,345,115"/>
-<area shape="rect" href="$classFormElement.html" title="Form element." alt="" coords="271,139,369,168"/>
-<area shape="rect" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="287,325,353,355"/>
-<area shape="rect" href="$classUser.html" title="the OWL&#45;PHP session object" alt="" coords="296,379,344,408"/>
+<area shape="rect" href="$class__OWL.html" title="_OWL" alt="" coords="5,272,61,301"/>
+<area shape="rect" href="$classbaseDOMelement.html" title="DOM Element base class." alt="" coords="109,5,235,35"/>
+<area shape="rect" href="$classDataHandler.html" title="The OWL Data object." alt="" coords="127,59,217,88"/>
+<area shape="rect" href="$classDbHandler.html" title="Database handler." alt="" coords="132,112,212,141"/>
+<area shape="rect" href="$classDispatcher.html" title="Dispatcher singleton." alt="" coords="131,165,213,195"/>
+<area shape="rect" href="$classFileHandler.html" title="File handler." alt="" coords="129,219,215,248"/>
+<area shape="rect" href="$classFormHandler.html" title="Formhandler." alt="" coords="124,272,220,301"/>
+<area shape="rect" href="$classLogHandler.html" title="Log handler." alt="" coords="129,325,215,355"/>
+<area shape="rect" href="$classOWL.html" title="OWL" alt="" coords="148,379,196,408"/>
+<area shape="rect" href="$classSchemeHandler.html" title="Scheme handler." alt="" coords="116,432,228,461"/>
+<area shape="rect" href="$classSessionHandler.html" title="the PHP session object" alt="" coords="116,485,228,515"/>
+<area shape="rect" href="$classUserHandler.html" title="the user object" alt="" coords="127,539,217,568"/>
+<area shape="rect" href="$classImageHandler.html" title="Image handler." alt="" coords="283,219,384,248"/>
+<area shape="rect" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="300,485,367,515"/>
+<area shape="rect" href="$classUser.html" title="the OWL&#45;PHP session object" alt="" coords="309,539,357,568"/>
 </map>

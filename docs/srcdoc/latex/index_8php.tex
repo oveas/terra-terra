@@ -8,11 +8,19 @@ enum \hyperlink{index_8php_a35612f9a6bd7277982731a74593272c4}{OWL\_\-ROOT}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{index_8php_ab14b242803551e0f269742a7103f149d}{\$\_\-form} = FormHandler::get\_\-instance()
+\hyperlink{index_8php_ab14b242803551e0f269742a7103f149d}{\$\_\-form} = OWL::factory('\hyperlink{classFormHandler}{FormHandler}')
 \item 
-\hyperlink{index_8php_a5df5982b9dadc74df05081972cd67fdf}{\$\_\-user} = \& new \hyperlink{classUser}{User}()
+\hyperlink{index_8php_a5df5982b9dadc74df05081972cd67fdf}{\$\_\-user} = new \hyperlink{classUser}{User}()
 \item 
-\hyperlink{index_8php_a52f05478bd75c12464168eb5bed6d57d}{switch} (\$\_\-form-\/$>$act)
+\hyperlink{index_8php_aa284f7d5270c1aa684d885f7bb70d532}{switch} (\$\_\-form-\/$>$get('act'))
+\item 
+\hyperlink{index_8php_abb5321c25f21f089f5c253d5f2697502}{\$\_\-scheme} = SchemeHandler::get\_\-instance()
+\item 
+\hyperlink{index_8php_ac0ee5b766d19cb282552a3449a1f8376}{\$\_\-table}
+\item 
+\hyperlink{index_8php_a8fba9293fc0e3b428610c8208c00297d}{\$\_\-index}
+\item 
+\hyperlink{index_8php_a7a22c26026cc0626b015085e752b45cb}{\$\_\-t} = serialize(\$\_\-data\mbox{[}'columns'\mbox{]})
 \end{DoxyCompactItemize}
 
 
@@ -21,7 +29,7 @@ This is the entry point for OWL-\/PHP teststub \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id}
-\hyperlink{index_8php}{index.php},v 1.8 2010-\/08-\/20 08:39:54 oscar Exp 
+\hyperlink{index_8php}{index.php},v 1.10 2010-\/10-\/15 10:51:55 oscar Exp 
 \end{DoxyParagraph}
 
 
@@ -34,10 +42,59 @@ This is the entry point for OWL-\/PHP teststub \begin{DoxyVersion}{Version}
 \subsection{Variable Documentation}
 \index{index.php@{index.php}!\$\_\-form@{\$\_\-form}}
 \index{\$\_\-form@{\$\_\-form}!index.php@{index.php}}
-\subsubsection[{\$\_\-form}]{\setlength{\rightskip}{0pt plus 5cm}\$\_\-form = FormHandler::get\_\-instance()}\label{index_8php_ab14b242803551e0f269742a7103f149d}
+\subsubsection[{\$\_\-form}]{\setlength{\rightskip}{0pt plus 5cm}\$\_\-form = OWL::factory('{\bf FormHandler}')}\label{index_8php_ab14b242803551e0f269742a7103f149d}
+
+
+Referenced by Dispatcher::dispatch().
+
+\index{index.php@{index.php}!\$\_\-index@{\$\_\-index}}
+\index{\$\_\-index@{\$\_\-index}!index.php@{index.php}}
+\subsubsection[{\$\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}\$\_\-index}\label{index_8php_a8fba9293fc0e3b428610c8208c00297d}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+ array (
+         'name' => array(
+                         'columns' => array ('name')
+                        ,'primary' => false
+                        ,'unique' => false
+                        ,'type' => null
+        )
+        ,'address' => array(
+                         'columns' => array ('address')
+                        ,'primary' => false
+                        ,'unique' => false
+                        ,'type' => 'FULLTEXT'
+        )
+)
+\end{DoxyCode}
+
+
+Referenced by SchemeHandler::define\_\-index(), and SchemeHandler::get\_\-table\_\-indexes().
+
+\index{index.php@{index.php}!\$\_\-scheme@{\$\_\-scheme}}
+\index{\$\_\-scheme@{\$\_\-scheme}!index.php@{index.php}}
+\subsubsection[{\$\_\-scheme}]{\setlength{\rightskip}{0pt plus 5cm}\$\_\-scheme = SchemeHandler::get\_\-instance()}\label{index_8php_abb5321c25f21f089f5c253d5f2697502}
+
+
+Referenced by SchemeHandler::define\_\-scheme().
+
+\index{index.php@{index.php}!\$\_\-t@{\$\_\-t}}
+\index{\$\_\-t@{\$\_\-t}!index.php@{index.php}}
+\subsubsection[{\$\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}\$\_\-t = serialize(\$\_\-data\mbox{[}'columns'\mbox{]})}\label{index_8php_a7a22c26026cc0626b015085e752b45cb}
+
+
+Referenced by DbHandler::expand\_\-field(), DbHandler::extract\_\-tablelist(), and DataHandler::prepare().
+
+\index{index.php@{index.php}!\$\_\-table@{\$\_\-table}}
+\index{\$\_\-table@{\$\_\-table}!index.php@{index.php}}
+\subsubsection[{\$\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}\$\_\-table}\label{index_8php_ac0ee5b766d19cb282552a3449a1f8376}
+
+
+Referenced by DbHandler::extract\_\-tablelist(), DataHandler::prepare(), and DbHandler::tablelist().
+
 \index{index.php@{index.php}!\$\_\-user@{\$\_\-user}}
 \index{\$\_\-user@{\$\_\-user}!index.php@{index.php}}
-\subsubsection[{\$\_\-user}]{\setlength{\rightskip}{0pt plus 5cm}\$\_\-user = \& new {\bf User}()}\label{index_8php_a5df5982b9dadc74df05081972cd67fdf}
+\subsubsection[{\$\_\-user}]{\setlength{\rightskip}{0pt plus 5cm}\$\_\-user = new {\bf User}()}\label{index_8php_a5df5982b9dadc74df05081972cd67fdf}
 \index{index.php@{index.php}!switch@{switch}}
 \index{switch@{switch}!index.php@{index.php}}
-\subsubsection[{switch}]{\setlength{\rightskip}{0pt plus 5cm}{\bf switch}(\$\_\-form-\/$>$act)}\label{index_8php_a52f05478bd75c12464168eb5bed6d57d}
+\subsubsection[{switch}]{\setlength{\rightskip}{0pt plus 5cm}{\bf switch}(\$\_\-form-\/$>$get('act'))}\label{index_8php_aa284f7d5270c1aa684d885f7bb70d532}

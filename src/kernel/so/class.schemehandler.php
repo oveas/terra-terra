@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Scheme Handler class
- * \version $Id: class.schemehandler.php,v 1.1 2010-10-15 10:51:55 oscar Exp $
+ * \version $Id: class.schemehandler.php,v 1.2 2010-12-03 12:07:42 oscar Exp $
  */
 
 /**
@@ -54,11 +54,6 @@ class SchemeHandler extends _OWL
 	/**
 	 * Class constructor
 	 * \private
-	 * \param[in] $srv Database server
-	 * \param[in] $db Database name
-	 * \param[in] $usr Username to connect with
-	 * \param[in] $pwd Password to use for connection
-	 * \param[in] $dbtype Database type (reserved for future use, currently only MySQL is implemented)
 	 */
 	private function __construct ()
 	{
@@ -139,7 +134,7 @@ class SchemeHandler extends _OWL
 	}
 
 	/**
-	 * Define the layout for a table
+	 * Define the indexes for a table
 	 * \param[in] $_index Array holding the index description. This is a 2 dimensional array where the
 	 * first level holds the indexname. The second array defines the attributes for each index:
 	 * - unique : Boolean; True for unique keys
@@ -157,7 +152,7 @@ class SchemeHandler extends _OWL
 		foreach ($_index as $_name => $_descr) {
 			if ($_descr['primary']) {
 				if ($_primary) {
-					$this->set_status (SCHEMEHANDLE_DUPLPRKEY);
+					$this->set_status (SCHEMEHANDLE_DUPLPRKEY, $this->table);
 					return false;
 				}
 				$_name = 'PRIMARY';
@@ -171,9 +166,12 @@ class SchemeHandler extends _OWL
 
 	/**
 	 * If the table does not exist, of differs from the defined scheme, create of modify the table
+	 * \param[in] $_drops True if existing fields should be dropped; default false.
+	 * If existing fields should be converted to new fields, call with DbScheme::scheme(false) first,
+	 * then do the conversions, next call DbScheme::scheme(true).
 	 * \return Severity level
 	 */
-	function scheme()
+	function scheme($_drops = false)
 	{
 		if (!$this->inuse) {
 			$this->set_status (SCHEMEHANDLE_NOTUSE);
@@ -185,7 +183,7 @@ class SchemeHandler extends _OWL
 		} elseif ($_return === false) {
 			$_stat = $this->create_table(); // table does not exist
 		} else {
-			$_stat = $this->alter_table($_return); // differences found
+			$_stat = $this->alter_table($_return, $_drops); // differences found
 		}
 		return ($_stat === OWL_SUCCESS);
 	}
@@ -349,12 +347,13 @@ class SchemeHandler extends _OWL
 
 	/**
 	 * Make changes to the table
-	 * \param[in] array $_diffs Changes to make
+	 * \param[in] $_diffs Changes to make
+	 * \param[in] $_drops True if existing fields should be dropped
 	 * \private
 	 */
-	private function alter_table($_diffs)
+	private function alter_table($_diffs, $_drops)
 	{
-		if (array_key_exists('drop', $_diffs) && count($_diffs['drop']['columns']) > 0) {
+		if ($_drops === true && array_key_exists('drop', $_diffs) && count($_diffs['drop']['columns']) > 0) {
 			foreach ($_diffs['drop']['columns'] as $_fld => $_desc) {
 				$this->db->set_query('ALTER TABLE ' . $this->db->tablename($this->table) . ' DROP ' . $_fld);
 				$this->db->write(false, __LINE__, __FILE__);
@@ -383,7 +382,7 @@ class SchemeHandler extends _OWL
 
 	/**
 	 * Create the SQL code for a field definition
-	 * \param[in] array $_desc Indexed array with the field properties from scheme definition
+	 * \param[in] $_desc Indexed array with the field properties from scheme definition
 	 * \private
 	 * \return string SQL code
 	 */
@@ -420,8 +419,8 @@ class SchemeHandler extends _OWL
 	/**
 	 * Get the columns for a given table
 	 * \private
-	 * \param[in] $tablename The tablename
-	 * \return Indexed array holding all fields => datatypes, or null on errors
+	 * \param[in] $_tablename The tablename
+	 * \return Indexed array holding all fields =&gt; datatypes, or null on errors
 	 */
 	private function get_table_columns($_tablename)
 	{
@@ -454,7 +453,7 @@ class SchemeHandler extends _OWL
 			}
 
 			$_descr[$_record['Field']]['default'] = ($_record['Default'] == 'NULL') ? '' : $_record['Default'];
-			$_descr[$_record['Field']]['comment'] = substr(0, 1, $_record['Comment']);
+			$_descr[$_record['Field']]['comment'] = $_record['Comment'];
 //			$_descr[$_record['Field']]['index'] = substr(0, 1, $_record['Key']); // P[RI], U[NI] or M[UL]
 		}
 		return $_descr;
@@ -463,8 +462,8 @@ class SchemeHandler extends _OWL
 	/**
 	 * Get the indexes for a given table
 	 * \private
-	 * \param[in] $tablename The tablename
-	 * \return Indexed array holding all fields => datatypes, or null on errors
+	 * \param[in] $_tablename The tablename
+	 * \return Indexed array holding all fields =&gt; datatypes, or null on errors
 	 */
 	private function get_table_indexes($_tablename)
 	{
@@ -489,7 +488,7 @@ class SchemeHandler extends _OWL
 	/**
 	 * Get a description of a database table
 	 * \param[in] $tablename The tablename
-	 * \param[out] $_data Indexed array holding all fields => datatypes
+	 * \param[out] $data Indexed array holding all fields =&gt; datatypes
 	 * \return Severity level
 	 */
 	public function table_description ($tablename, &$data)
@@ -529,7 +528,6 @@ Register::register_code ('SCHEMEHANDLE_NOINDEX');
 
 Register::set_severity (OWL_WARNING);
 Register::register_code ('SCHEMEHANDLE_IVTABLE');
-Register::register_code ('SCHEMEHANDLE_NOINDEX');
 			
 Register::set_severity (OWL_BUG);
 Register::register_code ('SCHEMEHANDLE_INUSE');

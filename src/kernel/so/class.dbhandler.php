@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.7 2010-10-15 10:51:54 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.8 2010-12-03 12:07:42 oscar Exp $
  */
 
 /**
@@ -145,13 +145,14 @@ class DbHandler extends _OWL
 	 */
 	public function __clone ()
 	{
+//		$this->instance = ++self::$instances;
 		trigger_error('invalid object cloning');
 	}
 
 	/**
 	 * Return a reference to my implementation. If necessary, create that implementation first.
 	 * \public
-	 * \return Severity level
+	 * \return Object instance ID
 	 */
 	public static function get_instance()
 	{
@@ -563,7 +564,7 @@ class DbHandler extends _OWL
 			$this->query .= '* ';
 		} else {
 			for ($_i = 0; $_i < count ($values); $_i++) {
-				$this->expand_field (&$values[$_i]);
+				$this->expand_field ($values[$_i]);
 			}
 			$this->query .= join (', ', $values) . ' ';
 		}

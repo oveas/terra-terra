@@ -25,8 +25,6 @@ Collaboration diagram for OWL:\nopagebreak
 \item 
 \hyperlink{classOWL_a6537b942a6cab370c296ff5befd8f382}{stat} (\$a, \$b=array())
 \item 
-\hyperlink{classOWL_a28d4c5c395e6cb328cc663cd1d8e0ce2}{factory} (\$class, \$layer= 'so')
-\item 
 \hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
 \item 
 \hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
@@ -39,6 +37,8 @@ Collaboration diagram for OWL:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{classOWL_ae75b698b8f0aa7f9106ce84744ff10ed}{get\_\-instance} ()
+\item 
+static \hyperlink{classOWL_aa6f4f99b9b0d6c77e7d49075d8a29d69}{factory} (\$class, \$layer= 'so')
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
@@ -111,7 +111,7 @@ Referenced by SessionHandler::write().
 
 \index{OWL@{OWL}!factory@{factory}}
 \index{factory@{factory}!OWL@{OWL}}
-\subsubsection[{factory}]{\setlength{\rightskip}{0pt plus 5cm}OWL::factory (\$ {\em class}, \/  \$ {\em layer} = {\ttfamily 'so'})}\label{classOWL_a28d4c5c395e6cb328cc663cd1d8e0ce2}
+\subsubsection[{factory}]{\setlength{\rightskip}{0pt plus 5cm}static OWL::factory (\$ {\em class}, \/  \$ {\em layer} = {\ttfamily 'so'})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWL_aa6f4f99b9b0d6c77e7d49075d8a29d69}
 Loader function to instantiate the singletons or get the existing reference. This function will mainly be called in abstract mode. 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{$\leftarrow$} {\em \$class}]Classname \item[\mbox{$\leftarrow$} {\em \$layer}]Layer, defaults to 'so' \end{DoxyParams}
@@ -120,7 +120,7 @@ Reference to the object
 \end{DoxyReturn}
 
 
-Referenced by \_\-OWL::init().
+Referenced by SessionHandler::\_\-\_\-construct(), DataHandler::DataHandler(), Dispatcher::dispatch(), and \_\-OWL::init().
 
 \index{OWL@{OWL}!get\_\-instance@{get\_\-instance}}
 \index{get\_\-instance@{get\_\-instance}!OWL@{OWL}}
@@ -167,7 +167,7 @@ Object's status code
 \end{DoxyReturn}
 
 
-Referenced by FormHandler::\_\-\_\-get().
+Referenced by SchemeHandler::compare().
 
 \index{OWL@{OWL}!init@{init}}
 \index{init@{init}!OWL@{OWL}}
@@ -178,14 +178,14 @@ References factory().
 
 
 
-Referenced by DOMElement::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), \_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), \_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{OWL@{OWL}!reset@{reset}}
 \index{reset@{reset}!OWL@{OWL}}
 \subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
 General reset function for all objects. Should be called after each non-\/fatal error 
 
-Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}.
+Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
 
 
 
@@ -216,7 +216,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-get(), DataHandler::\_\-\_\-get(), DataHandler::\_\-\_\-set(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), DataHandler::DataHandler(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), FormHandler::parse\_\-formdata(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), DbHandler::table\_\-description(), and DbHandler::write().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{OWL@{OWL}!signal@{signal}}
 \index{signal@{signal}!OWL@{OWL}}

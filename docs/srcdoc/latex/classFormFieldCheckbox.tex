@@ -1,0 +1,174 @@
+\section{FormFieldCheckbox Class Reference}
+\label{classFormFieldCheckbox}\index{FormFieldCheckbox@{FormFieldCheckbox}}
+
+
+Formfield.  
+
+
+
+
+Inheritance diagram for FormFieldCheckbox:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classFormFieldCheckbox__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for FormFieldCheckbox:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classFormFieldCheckbox__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormFieldCheckbox_a9ea37cd03013e361f11680049c1a0097}{\_\-\_\-construct} ()
+\item 
+\hyperlink{classFormFieldCheckbox_a944623b7e1136bab6dd9880980037425}{setChecked} (\$\_\-value=true)
+\item 
+\hyperlink{classFormFieldCheckbox_a787abee157599c389a18e0810f69fed5}{setValue} (\$\_\-value)
+\item 
+\hyperlink{classFormFieldCheckbox_aaa7647c07d938553d8bec7afa869ebc0}{getFieldCode} ()
+\item 
+\hyperlink{classFormField_ad57e32bd53170af060e869b3b60f0ef7}{setName} (\$\_\-value)
+\item 
+\hyperlink{classFormField_a1f64b737bccb6b2827f8c5665b9920c7}{getType} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormField_a9f9d136ba8b4a793f22370aff43d592d}{getGenericFieldAttributes} (\$\_\-ignore=array())
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormField_a37bed21a1891e95be0e4a697e45ba51b}{\$type}
+\item 
+\hyperlink{classFormField_a23861f707bcd77bbace6300de9621746}{\$name}
+\item 
+\hyperlink{classFormField_a3c01e89834248eec8e2f145fbcfa0fbc}{\$value}
+\item 
+\hyperlink{classFormField_ab6f1907061890290e32cb2befc0a5f50}{\$disabled}
+\item 
+\hyperlink{classFormField_a78ba5d4b9127e75e8ccf86f397b5d9ac}{\$readonly}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormFieldCheckbox_a4abeb3a9445b5f31e84e32d257037f2a}{\$checked}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Formfield. Formfield Checkbox elements \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Oct 19, 2010 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{FormFieldCheckbox@{FormFieldCheckbox}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldCheckbox::\_\-\_\-construct ()}\label{classFormFieldCheckbox_a9ea37cd03013e361f11680049c1a0097}
+Class constructor; 
+
+Reimplemented from \hyperlink{classFormField_a0cfe713ce28a6a0cb53476ed463e1f01}{FormField}.
+
+
+
+\subsection{Member Function Documentation}
+\index{FormFieldCheckbox@{FormFieldCheckbox}!getFieldCode@{getFieldCode}}
+\index{getFieldCode@{getFieldCode}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{getFieldCode}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldCheckbox::getFieldCode ()}\label{classFormFieldCheckbox_aaa7647c07d938553d8bec7afa869ebc0}
+Return the HTML code to display the form element
+
+\begin{DoxyReturn}{Returns}
+Textstring with the complete code for the form element 
+\end{DoxyReturn}
+
+
+References FormField::getGenericFieldAttributes().
+
+\index{FormFieldCheckbox@{FormFieldCheckbox}!getGenericFieldAttributes@{getGenericFieldAttributes}}
+\index{getGenericFieldAttributes@{getGenericFieldAttributes}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{getGenericFieldAttributes}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getGenericFieldAttributes (\$ {\em \_\-ignore} = {\ttfamily array()})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a9f9d136ba8b4a793f22370aff43d592d}
+Return the attributes for an HTML formfield in the \char`\"{} attrib='value' \mbox{[}...\mbox{]}\char`\"{} format
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-ignore}]Array with attributes names that should be ignored, e.g. for a textarea, the value is not returned as an attribute. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Textstring with the HTML code 
+\end{DoxyReturn}
+
+
+Referenced by FormFieldTextarea::getFieldCode(), FormFieldText::getFieldCode(), FormFieldRadio::getFieldCode(), getFieldCode(), and FormFieldButton::getFieldCode().
+
+\index{FormFieldCheckbox@{FormFieldCheckbox}!getType@{getType}}
+\index{getType@{getType}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getType ()\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_a1f64b737bccb6b2827f8c5665b9920c7}
+Give the field type \begin{DoxyReturn}{Returns}
+Field type 
+\end{DoxyReturn}
+\index{FormFieldCheckbox@{FormFieldCheckbox}!setChecked@{setChecked}}
+\index{setChecked@{setChecked}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{setChecked}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldCheckbox::setChecked (\$ {\em \_\-value} = {\ttfamily true})}\label{classFormFieldCheckbox_a944623b7e1136bab6dd9880980037425}
+Set the Checked boolean 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Value indicating true (default) or false \end{DoxyParams}
+\index{FormFieldCheckbox@{FormFieldCheckbox}!setName@{setName}}
+\index{setName@{setName}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setName (\$ {\em \_\-value})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_ad57e32bd53170af060e869b3b60f0ef7}
+Set the field name 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Field name \end{DoxyParams}
+\index{FormFieldCheckbox@{FormFieldCheckbox}!setValue@{setValue}}
+\index{setValue@{setValue}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{setValue}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldCheckbox::setValue (\$ {\em \_\-value})}\label{classFormFieldCheckbox_a787abee157599c389a18e0810f69fed5}
+Reimplement; value defaults to 1 for checkboxes 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Field value \end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classFormField_a465ff61e290d82be96bb793c3a14b3e7}{FormField}.
+
+
+
+\subsection{Member Data Documentation}
+\index{FormFieldCheckbox@{FormFieldCheckbox}!\$checked@{\$checked}}
+\index{\$checked@{\$checked}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{\$checked}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldCheckbox::\$checked\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormFieldCheckbox_a4abeb3a9445b5f31e84e32d257037f2a}
+Boolean set to true when the box is checked \index{FormFieldCheckbox@{FormFieldCheckbox}!\$disabled@{\$disabled}}
+\index{\$disabled@{\$disabled}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{\$disabled}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$disabled\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_ab6f1907061890290e32cb2befc0a5f50}
+Boolean indicating a disabled field when true \index{FormFieldCheckbox@{FormFieldCheckbox}!\$name@{\$name}}
+\index{\$name@{\$name}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{\$name}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$name\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a23861f707bcd77bbace6300de9621746}
+Name of the formfield \index{FormFieldCheckbox@{FormFieldCheckbox}!\$readonly@{\$readonly}}
+\index{\$readonly@{\$readonly}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{\$readonly}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$readonly\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a78ba5d4b9127e75e8ccf86f397b5d9ac}
+Boolean indicating a readonly field when true \index{FormFieldCheckbox@{FormFieldCheckbox}!\$type@{\$type}}
+\index{\$type@{\$type}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{\$type}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$type\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a37bed21a1891e95be0e4a697e45ba51b}
+Field type 
+
+Reimplemented in \hyperlink{classFormFieldTextarea_a85348034822c70694fc8640bfcacc04d}{FormFieldTextarea}.
+
+
+
+Referenced by FormFieldText::\_\-\_\-construct(), and FormFieldButton::\_\-\_\-construct().
+
+\index{FormFieldCheckbox@{FormFieldCheckbox}!\$value@{\$value}}
+\index{\$value@{\$value}!FormFieldCheckbox@{FormFieldCheckbox}}
+\subsubsection[{\$value}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$value\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a3c01e89834248eec8e2f145fbcfa0fbc}
+Field value 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/ui/\hyperlink{class_8formfield_8checkbox_8php}{class.formfield.checkbox.php}\end{DoxyCompactItemize}

@@ -28,34 +28,26 @@
 <div class="contents">
 <h1>FormHandler Member List</h1>This is the complete list of members for <a class="el" href="classFormHandler.html">FormHandler</a>, including all inherited members.<table>
   <tr class="memlist"><td><a class="el" href="classFormHandler.html#a54efe3849e4065053f0eb0313356d072">$instance</a></td><td><a class="el" href="classFormHandler.html">FormHandler</a></td><td><code> [private, static]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classFormHandler.html#a7aa914557e2c76b46e4e0601c5dd75d5">$owl_multivalues</a></td><td><a class="el" href="classFormHandler.html">FormHandler</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classFormHandler.html#a2caca98eec368ff030f07f8024253527">$owl_formvalues</a></td><td><a class="el" href="classFormHandler.html">FormHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#ad26b40a9dbbacb33e299b17826f8327c">$severity</a></td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classFormHandler.html#a1ef7ad4fe143dd8339c8ab66423a1934">__construct</a>()</td><td><a class="el" href="classFormHandler.html">FormHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a44fd2222476a3109286cc82d92b6bbcc">__destruct</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classFormHandler.html#a371b8ded5110c6d66bc3a0c3e08fe085">__get</a>($variable)</td><td><a class="el" href="classFormHandler.html">FormHandler</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classDataHandler.html#a16c81c9564a7feaf530ce5d51ed99df7">__set</a>($variable, $value)</td><td><a class="el" href="classDataHandler.html">DataHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#ad6f4f6946f40199dd0333cf219fa500e">check</a>(&amp;$object, $level)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classDataHandler.html#aed5b2eb4ca7b2e4b0c1563d817d73c16">DataHandler</a>($tablename= '')</td><td><a class="el" href="classDataHandler.html">DataHandler</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classDataHandler.html#abb329fe5a97eb8df928aabfc8078ff23">db</a>(&amp;$data=false, $line=0, $file= '[unknown]')</td><td><a class="el" href="classDataHandler.html">DataHandler</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classDataHandler.html#a3c82ec0a40dabcc55dc203c96abf02d2">db_status</a>()</td><td><a class="el" href="classDataHandler.html">DataHandler</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classDataHandler.html#a435338a167a44a041af2895859abb0c9">escape_string</a>($string)</td><td><a class="el" href="classDataHandler.html">DataHandler</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classFormHandler.html#a5ee0cda14dcbe0b6e12226db4bd951a0">cleanString</a>($input, $allow=null, $content=null, $remove_comment=true)</td><td><a class="el" href="classFormHandler.html">FormHandler</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classFormHandler.html#a4dbeaa44aa51a795b16379ae703d893a">get</a>($variable, $format=FORMDATA_STRICT, $allows=null, $content=array('script'))</td><td><a class="el" href="classFormHandler.html">FormHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classFormHandler.html#ad5b352905583faed17034459f1a9ea6c">get_instance</a>()</td><td><a class="el" href="classFormHandler.html">FormHandler</a></td><td><code> [static]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#adf9509ef96858be7bdd9414c5ef129aa">get_severity</a>($status=null)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a99ec771fa2c5c279f80152cc09e489a8">get_status</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">init</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classFormHandler.html#aef73c198dbc5de4e84f6c2a23b8b294c">parse_formdata</a>($data=null)</td><td><a class="el" href="classFormHandler.html">FormHandler</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classDataHandler.html#af3e7a17194e97300d499e9178f4913cb">prepare</a>($type=DATA_READ)</td><td><a class="el" href="classDataHandler.html">DataHandler</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classDataHandler.html#ab89e1aaad9cd0a37f1c7f13c1d9c0d57">reset</a>($level=DATA_RESET_PREPARE)</td><td><a class="el" href="classDataHandler.html">DataHandler</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">_OWL::reset</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">reset</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classFormHandler.html#a5fcc8aef0de87e31ceee65ad1eadb96c">set</a>($variable, $value)</td><td><a class="el" href="classFormHandler.html">FormHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a576829692a3b66e3d518853bf43abae3">set_high_severity</a>(&amp;$object=null)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classDataHandler.html#a9b77733f02e9d6281fc40df110c0ba70">set_join</a>($lvalue, $rvalue, $linktype= '=')</td><td><a class="el" href="classDataHandler.html">DataHandler</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classDataHandler.html#a32ce223478b78a4ea9838a3c6ac7440c">set_key</a>($variable)</td><td><a class="el" href="classDataHandler.html">DataHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#aea912d0ede9b3c2a69b79072d94d4787">set_status</a>($status, $params=array())</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classDataHandler.html#abcb68472abd7da8ee6296421f0a7f2e9">set_tablename</a>($tblname)</td><td><a class="el" href="classDataHandler.html">DataHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">signal</a>($level=OWL_INFO, &amp;$text=false)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#aa29547995d6741b7d2b90c1d4ea99a13">traceback</a>(&amp;$text=false, $depth=0)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td></td></tr>
 </table></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Sep 1 17:14:11 2010 for OWL-PHP by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Dec 1 20:23:26 2010 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

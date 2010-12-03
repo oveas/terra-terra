@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.8 2010-10-15 10:51:55 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.9 2010-12-03 12:07:42 oscar Exp $
  */
 
 /**
@@ -44,7 +44,7 @@ class UserHandler extends _OWL
 
 		$this->dataset->set_tablename('owl_userdata');
 
-		$this->session =& new Session();
+		$this->session = new Session();
 
 		if (!isset($_SESSION['username'])) {
 			$this->set_username ($username);
@@ -61,37 +61,39 @@ class UserHandler extends _OWL
 	{
 		session_destroy();
 		$this->dataset->reset (DATA_RESET_FULL);
-		$this->session =& new Session();
+		$this->session = new Session();
 	}
 
 	/**
 	 * Attempt to log in with the current user and the given password
 	 * \protected
+	 * \param[in] $username Given username. Might be taken from the session as well, but given as a
+	 * parameter here to suppress the E_STRICT Declaration warning
 	 * \param[in] $password The user provided password
 	 * \return True on success, False otherwise
 	 */
-	protected function login ($password)
+	protected function login ($username, $password)
 	{
-		$this->dataset->username = $_SESSION['username'];
-		$this->dataset->password = $this->hash_password ($password);
+		$this->dataset->set('username', $username);
+		$this->dataset->set('password', $this->hash_password ($password));
 		$this->dataset->set_key ('username');
 		$this->dataset->set_key ('password');
 		$this->dataset->prepare ();
-		$this->dataset->db(&$this->user_data, __LINE__, __FILE__);
+		$this->dataset->db($this->user_data, __LINE__, __FILE__);
 		$_dbstat = $this->dataset->db_status();
 		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
 			$this->set_status (USER_LOGINFAIL, array (
 				  $_SESSION['username']
-				, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->password)
+				, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->get('password'))
 			));
 		} elseif ($_dbstat === DBHANDLE_ROWSREAD) {
 			$this->user_data = $this->user_data[0]; // Shift up one level
 			session_unset(); // Clear old data *BUT* ....
-			$this->set_username ($this->dataset->username); // .... restore the username!!
+			$this->set_username ($this->dataset->get('username')); // .... restore the username!!
 			$_SESSION['uid'] = $this->user_data['uid'];
 			$this->set_status (USER_LOGGEDIN, array (
 				  $_SESSION['username']
-				, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->password)
+				, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->get('password'))
 			));
 			return (true);
 		} else {
@@ -111,10 +113,10 @@ class UserHandler extends _OWL
 			return; // Nothing to do
 		}
 		$this->dataset->reset(DATA_RESET_META);
-		$this->dataset->uid = $_SESSION['uid'];
+		$this->dataset->set('uid', $_SESSION['uid']);
 		$this->dataset->set_key ('uid');
 		$this->dataset->prepare ();
-		$this->dataset->db(&$this->user_data);
+		$this->dataset->db($this->user_data);
 		$_dbstat = $this->dataset->db_status();
 		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
 			$this->set_status (USER_RESTORERR, $_SESSION['uid']);

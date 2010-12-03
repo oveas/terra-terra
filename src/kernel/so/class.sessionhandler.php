@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.5 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.6 2010-12-03 12:07:42 oscar Exp $
  */
 
 /**
@@ -72,7 +72,10 @@ class SessionHandler extends _OWL
 
 		ini_set ('session.save_handler', 'user');
 		ini_set ('session.use_trans_sid', true);
-
+		if (($_sessName = ConfigHandler::get('session|name')) != null) {
+			session_name($_sessName);
+		}
+		
 		session_set_save_handler (
 				array (&$this, 'open'),
 				array (&$this, 'close'),
@@ -122,11 +125,11 @@ class SessionHandler extends _OWL
 	 */
 	public function read ($id)
 	{
-		$this->dataset->sid = $this->db->escape_string($id);
-		$this->dataset->sdata = null;
+		$this->dataset->set('sid', $this->db->escape_string($id));
+		$this->dataset->set('sdata', null);
 
 		$this->dataset->prepare (DATA_READ);
-		$this->dataset->db (&$_data, __LINE__, __FILE__);
+		$this->dataset->db ($_data, __LINE__, __FILE__);
 		if ($this->set_high_severity($this->dataset) > OWL_WARNING) {
 			$this->traceback();
 		}
@@ -148,15 +151,15 @@ class SessionHandler extends _OWL
 			$this->db->open();
 		}
 
-		$this->dataset->sid = $this->db->escape_string($id);
-		
+		$this->dataset->set('sid', $this->db->escape_string($id));
+
 		// First, check if this session already exists in the db
 		$this->dataset->prepare (DATA_READ);
-		$this->dataset->db (&$_data, __LINE__, __FILE__);
+		$this->dataset->db ($_data, __LINE__, __FILE__);
 		
 		// Set or overwrite the values
-		$this->dataset->sdata = $this->db->escape_string($data);
-		$this->dataset->stimestamp = time();
+		$this->dataset->set('sdata', $this->db->escape_string($data));
+		$this->dataset->set('stimestamp', time());
 
 		if (count ($_data) == 0) {
 			$this->dataset->prepare (DATA_WRITE);
@@ -171,7 +174,7 @@ class SessionHandler extends _OWL
 			}
 		}
 		
-		$this->dataset->db (&$_data, __LINE__, __FILE__);
+		$this->dataset->db ($_data, __LINE__, __FILE__);
 		return (true);
 	}
 
@@ -191,7 +194,7 @@ class SessionHandler extends _OWL
 		$this->dataset->set_key ('sid');
 		$this->dataset->prepare (DATA_DELETE);
 
-		$this->dataset->db (&$_data, __LINE__, __FILE__);
+		$this->dataset->db ($_data, __LINE__, __FILE__);
 		return (true);
 	}
 

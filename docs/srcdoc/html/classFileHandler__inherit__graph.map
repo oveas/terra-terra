@@ -1,3 +1,4 @@
 <map id="G" name="G">
+<area shape="rect" href="$classImageHandler.html" title="Image handler." alt="" coords="16,688,136,832"/>
 <area shape="rect" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="5,5,147,317"/>
 </map>

@@ -1,0 +1,139 @@
+\section{FormField Class Reference}
+\label{classFormField}\index{FormField@{FormField}}
+
+
+Formfield.  
+
+
+
+
+Inheritance diagram for FormField:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classFormField__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormField_a0cfe713ce28a6a0cb53476ed463e1f01}{\_\-\_\-construct} ()
+\item 
+\hyperlink{classFormField_ad57e32bd53170af060e869b3b60f0ef7}{setName} (\$\_\-value)
+\item 
+\hyperlink{classFormField_a465ff61e290d82be96bb793c3a14b3e7}{setValue} (\$\_\-value)
+\item 
+\hyperlink{classFormField_a1f64b737bccb6b2827f8c5665b9920c7}{getType} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormField_a9f9d136ba8b4a793f22370aff43d592d}{getGenericFieldAttributes} (\$\_\-ignore=array())
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFormField_a37bed21a1891e95be0e4a697e45ba51b}{\$type}
+\item 
+\hyperlink{classFormField_a23861f707bcd77bbace6300de9621746}{\$name}
+\item 
+\hyperlink{classFormField_a3c01e89834248eec8e2f145fbcfa0fbc}{\$value}
+\item 
+\hyperlink{classFormField_ab6f1907061890290e32cb2befc0a5f50}{\$disabled}
+\item 
+\hyperlink{classFormField_a78ba5d4b9127e75e8ccf86f397b5d9ac}{\$readonly}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Formfield. Abstract base class for Formfield elements \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Oct 19, 2010 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{FormField@{FormField}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!FormField@{FormField}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\_\-\_\-construct ()}\label{classFormField_a0cfe713ce28a6a0cb53476ed463e1f01}
+Class constructor; 
+
+Reimplemented in \hyperlink{classFormFieldCheckbox_a9ea37cd03013e361f11680049c1a0097}{FormFieldCheckbox}, \hyperlink{classFormFieldFile_a2e19b30454dd3ed054772868bf6eebad}{FormFieldFile}, \hyperlink{classFormFieldRadio_ae82224cf68e3513e29923c24f42eb06d}{FormFieldRadio}, \hyperlink{classFormFieldSelect_a32c59192be8c316fb2f7e1edde8f0a98}{FormFieldSelect}, and \hyperlink{classFormFieldTextarea_a65e5d308db60f1ca0d08085d09dea8bc}{FormFieldTextarea}.
+
+
+
+Referenced by FormFieldText::\_\-\_\-construct(), and FormFieldButton::\_\-\_\-construct().
+
+
+
+\subsection{Member Function Documentation}
+\index{FormField@{FormField}!getGenericFieldAttributes@{getGenericFieldAttributes}}
+\index{getGenericFieldAttributes@{getGenericFieldAttributes}!FormField@{FormField}}
+\subsubsection[{getGenericFieldAttributes}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getGenericFieldAttributes (\$ {\em \_\-ignore} = {\ttfamily array()})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classFormField_a9f9d136ba8b4a793f22370aff43d592d}
+Return the attributes for an HTML formfield in the \char`\"{} attrib='value' \mbox{[}...\mbox{]}\char`\"{} format
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-ignore}]Array with attributes names that should be ignored, e.g. for a textarea, the value is not returned as an attribute. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Textstring with the HTML code 
+\end{DoxyReturn}
+
+
+Referenced by FormFieldTextarea::getFieldCode(), FormFieldText::getFieldCode(), FormFieldRadio::getFieldCode(), FormFieldCheckbox::getFieldCode(), and FormFieldButton::getFieldCode().
+
+\index{FormField@{FormField}!getType@{getType}}
+\index{getType@{getType}!FormField@{FormField}}
+\subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getType ()}\label{classFormField_a1f64b737bccb6b2827f8c5665b9920c7}
+Give the field type \begin{DoxyReturn}{Returns}
+Field type 
+\end{DoxyReturn}
+\index{FormField@{FormField}!setName@{setName}}
+\index{setName@{setName}!FormField@{FormField}}
+\subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setName (\$ {\em \_\-value})}\label{classFormField_ad57e32bd53170af060e869b3b60f0ef7}
+Set the field name 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Field name \end{DoxyParams}
+\index{FormField@{FormField}!setValue@{setValue}}
+\index{setValue@{setValue}!FormField@{FormField}}
+\subsubsection[{setValue}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setValue (\$ {\em \_\-value})}\label{classFormField_a465ff61e290d82be96bb793c3a14b3e7}
+Set the field value 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Field value \end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classFormFieldCheckbox_a787abee157599c389a18e0810f69fed5}{FormFieldCheckbox}, \hyperlink{classFormFieldRadio_aab105e92866fd80890d3254f51a2e4ca}{FormFieldRadio}, and \hyperlink{classFormFieldSelect_ae69f5b352df63796c048dca6a2de7544}{FormFieldSelect}.
+
+
+
+\subsection{Member Data Documentation}
+\index{FormField@{FormField}!\$disabled@{\$disabled}}
+\index{\$disabled@{\$disabled}!FormField@{FormField}}
+\subsubsection[{\$disabled}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$disabled\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classFormField_ab6f1907061890290e32cb2befc0a5f50}
+Boolean indicating a disabled field when true \index{FormField@{FormField}!\$name@{\$name}}
+\index{\$name@{\$name}!FormField@{FormField}}
+\subsubsection[{\$name}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$name\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classFormField_a23861f707bcd77bbace6300de9621746}
+Name of the formfield \index{FormField@{FormField}!\$readonly@{\$readonly}}
+\index{\$readonly@{\$readonly}!FormField@{FormField}}
+\subsubsection[{\$readonly}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$readonly\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classFormField_a78ba5d4b9127e75e8ccf86f397b5d9ac}
+Boolean indicating a readonly field when true \index{FormField@{FormField}!\$type@{\$type}}
+\index{\$type@{\$type}!FormField@{FormField}}
+\subsubsection[{\$type}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$type\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classFormField_a37bed21a1891e95be0e4a697e45ba51b}
+Field type 
+
+Reimplemented in \hyperlink{classFormFieldTextarea_a85348034822c70694fc8640bfcacc04d}{FormFieldTextarea}.
+
+
+
+Referenced by FormFieldText::\_\-\_\-construct(), and FormFieldButton::\_\-\_\-construct().
+
+\index{FormField@{FormField}!\$value@{\$value}}
+\index{\$value@{\$value}!FormField@{FormField}}
+\subsubsection[{\$value}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$value\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classFormField_a3c01e89834248eec8e2f145fbcfa0fbc}
+Field value 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/ui/\hyperlink{class_8formfield_8php}{class.formfield.php}\end{DoxyCompactItemize}

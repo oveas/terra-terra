@@ -26,6 +26,8 @@ Collaboration diagram for DbHandler:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}{\_\-\_\-construct} (\$srv= 'localhost', \$db= '', \$usr= '', \$pwd= '', \$dbtype= 'MySQL')
+\item 
 \hyperlink{classDbHandler_a7cd6bd727d1f296eb5dbfae6ca36ab3f}{\_\-\_\-destruct} ()
 \item 
 \hyperlink{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}{\_\-\_\-clone} ()
@@ -38,13 +40,13 @@ Collaboration diagram for DbHandler:\nopagebreak
 \item 
 \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{reset} ()
 \item 
-\hyperlink{classDbHandler_a00402b0e3e677108716714fbf94bea40}{table\_\-description} (\$tablename, \&\$data)
-\item 
 \hyperlink{classDbHandler_abaca15a312800e5522b3efd9dff036f5}{tablename} (\$tablename)
 \item 
 \hyperlink{classDbHandler_a305a3225c4760a88a06b0d55d0893962}{set\_\-query} (\$qry)
 \item 
 \hyperlink{classDbHandler_a5ebfdc2acfcb0e9cbc2861fc55c7127c}{read} (\$flag=\hyperlink{class_8dbhandler_8php_acc5178c2a582eafa4ef488ed3394b725}{DBHANDLE\_\-DATA}, \&\$data, \$quick\_\-query= '', \$line=0, \$file= '\mbox{[}unknown\mbox{]}')
+\item 
+\hyperlink{classDbHandler_a11e750a2c46022241eba49df81607ba9}{table\_\-exists} (\$tablename)
 \item 
 \hyperlink{classDbHandler_a67d77702ff6db70f89123d3f947af143}{escape\_\-string} (\$string)
 \item 
@@ -95,8 +97,6 @@ static \hyperlink{classDbHandler_ae9bfc8bdc6a8077adb342702aaffc9af}{get\_\-insta
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
-\item 
-\hyperlink{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}{\_\-\_\-construct} (\$srv= 'localhost', \$db= '', \$usr= '', \$pwd= '', \$dbtype= 'MySQL')
 \item 
 \hyperlink{classDbHandler_a9cf52ba614981a0082063d57290d3b7c}{connect} ()
 \item 
@@ -152,7 +152,7 @@ Jul 29, 2008 -\/-\/ O van Eijk -\/-\/ Modified version for \hyperlink{classOWL}{
 \subsection{Constructor \& Destructor Documentation}
 \index{DbHandler@{DbHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
 \index{\_\-\_\-construct@{\_\-\_\-construct}!DbHandler@{DbHandler}}
-\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\_\-\_\-construct (\$ {\em srv} = {\ttfamily 'localhost'}, \/  \$ {\em db} = {\ttfamily ''}, \/  \$ {\em usr} = {\ttfamily ''}, \/  \$ {\em pwd} = {\ttfamily ''}, \/  \$ {\em dbtype} = {\ttfamily 'MySQL'})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\_\-\_\-construct (\$ {\em srv} = {\ttfamily 'localhost'}, \/  \$ {\em db} = {\ttfamily ''}, \/  \$ {\em usr} = {\ttfamily ''}, \/  \$ {\em pwd} = {\ttfamily ''}, \/  \$ {\em dbtype} = {\ttfamily 'MySQL'})}\label{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}
 Class constructor; opens the database connection.
 
 
@@ -246,7 +246,7 @@ A 2D array with all data, or false on failures
 \end{DoxyReturn}
 
 
-Referenced by read().
+Referenced by read(), and table\_\-exists().
 
 \index{DbHandler@{DbHandler}!escape\_\-string@{escape\_\-string}}
 \index{escape\_\-string@{escape\_\-string}!DbHandler@{DbHandler}}
@@ -267,7 +267,7 @@ Change a fieldname in the format 'table\#field' to the format '`\mbox{[}prefix\m
 \item[\mbox{$\leftrightarrow$} {\em \$field}]Fieldname to expand \item[\mbox{$\leftarrow$} {\em \$quotes}]If true, add backquotes \end{DoxyParams}
 
 
-References tablename().
+References \$\_\-t, and tablename().
 
 
 
@@ -284,6 +284,10 @@ Array with tablenames
 \end{DoxyReturn}
 
 
+References \$\_\-t, and \$\_\-table.
+
+
+
 Referenced by prepare\_\-delete(), prepare\_\-insert(), and prepare\_\-update().
 
 \index{DbHandler@{DbHandler}!get\_\-instance@{get\_\-instance}}
@@ -292,15 +296,11 @@ Referenced by prepare\_\-delete(), prepare\_\-insert(), and prepare\_\-update().
 Return a reference to my implementation. If necessary, create that implementation first.
 
 \begin{DoxyReturn}{Returns}
-Severity level 
+Object instance ID 
 \end{DoxyReturn}
 
 
 References \$instance, and ConfigHandler::get().
-
-
-
-Referenced by SessionHandler::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{DbHandler@{DbHandler}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!DbHandler@{DbHandler}}
@@ -331,7 +331,7 @@ Object's status code
 \end{DoxyReturn}
 
 
-Referenced by FormHandler::\_\-\_\-get().
+Referenced by SchemeHandler::compare().
 
 \index{DbHandler@{DbHandler}!init@{init}}
 \index{init@{init}!DbHandler@{DbHandler}}
@@ -342,7 +342,7 @@ References OWL::factory().
 
 
 
-Referenced by DOMElement::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), OWL::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{DbHandler@{DbHandler}!is\_\-open@{is\_\-open}}
 \index{is\_\-open@{is\_\-open}!DbHandler@{DbHandler}}
@@ -459,10 +459,6 @@ Severity level
 
 References dbread(), open(), and \_\-OWL::set\_\-status().
 
-
-
-Referenced by table\_\-description().
-
 \index{DbHandler@{DbHandler}!reset@{reset}}
 \index{reset@{reset}!DbHandler@{DbHandler}}
 \subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::reset ()}\label{classDbHandler_a9982df4830f05803935bb31bac7fae3d}
@@ -499,7 +495,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), FormHandler::\_\-\_\-get(), DataHandler::\_\-\_\-get(), DataHandler::\_\-\_\-set(), FileHandler::close(), connect(), create(), DataHandler::DataHandler(), UserHandler::login(), FileHandler::open(), open(), LogHandler::open\_\-logfile(), FormHandler::parse\_\-formdata(), DataHandler::prepare(), prepare\_\-delete(), prepare\_\-insert(), prepare\_\-read(), prepare\_\-update(), read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), table\_\-description(), and write().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), connect(), create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), prepare\_\-delete(), prepare\_\-insert(), prepare\_\-read(), prepare\_\-update(), read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and write().
 
 \index{DbHandler@{DbHandler}!signal@{signal}}
 \index{signal@{signal}!DbHandler@{DbHandler}}
@@ -520,20 +516,18 @@ References ConfigHandler::get().
 
 Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
 
-\index{DbHandler@{DbHandler}!table\_\-description@{table\_\-description}}
-\index{table\_\-description@{table\_\-description}!DbHandler@{DbHandler}}
-\subsubsection[{table\_\-description}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::table\_\-description (\$ {\em tablename}, \/  \&\$ {\em data})}\label{classDbHandler_a00402b0e3e677108716714fbf94bea40}
-Get a description of a database table
-
-
+\index{DbHandler@{DbHandler}!table\_\-exists@{table\_\-exists}}
+\index{table\_\-exists@{table\_\-exists}!DbHandler@{DbHandler}}
+\subsubsection[{table\_\-exists}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::table\_\-exists (\$ {\em tablename})}\label{classDbHandler_a11e750a2c46022241eba49df81607ba9}
+Check if a table exists in the database 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$tablename}]The tablename \item[\mbox{$\rightarrow$} {\em \$data}]Indexed array holding all fields =$>$ datatypes \end{DoxyParams}
+\item[\mbox{$\leftarrow$} {\em \$tablename}]Name of the table to check \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Indexed array holding all fields =$>$ datatypes 
+True of the table exists 
 \end{DoxyReturn}
 
 
-References read(), and \_\-OWL::set\_\-status().
+References dbread(), and tablename().
 
 \index{DbHandler@{DbHandler}!tablelist@{tablelist}}
 \index{tablelist@{tablelist}!DbHandler@{DbHandler}}
@@ -548,7 +542,7 @@ The tablelist
 \end{DoxyReturn}
 
 
-References tablename().
+References \$\_\-table, and tablename().
 
 
 
@@ -567,7 +561,7 @@ Extended table name
 \end{DoxyReturn}
 
 
-Referenced by expand\_\-field(), prepare\_\-insert(), and tablelist().
+Referenced by expand\_\-field(), prepare\_\-insert(), table\_\-exists(), and tablelist().
 
 \index{DbHandler@{DbHandler}!traceback@{traceback}}
 \index{traceback@{traceback}!DbHandler@{DbHandler}}

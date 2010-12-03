@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in UK English
- * \version $Id: owl.messages.php,v 1.9 2010-10-15 10:51:54 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.10 2010-12-03 12:07:42 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -56,6 +56,15 @@ $GLOBALS['messages'] = array (
 	, USER_LOGINFAIL		=> 'Error logging in with username $p1$ and password $p2$'
 	, USER_LOGGEDIN			=> 'User $p1$ logged in with password $p2$'
 	, USER_RESTORERR		=> 'Error restoring data for user ID $p1$'
+	, FORM_NOCLASS			=> 'No classfile found for fieldtype $p1$'
+	, FORM_NOATTRIB			=> 'Attribute $p1$ does not exist for a $p2$ formfield'
+	, FORM_NOMULTIVAL		=> 'Field $p1$ already exists as type $p2$ and does not support multivalue'
+	, FORM_NOSUCHFIELD		=> 'The form has no field with the name $p1$'
+	, FORMFIELD_IVVAL		=> '$p1$ is an invalid value for attribute $p2$'
+	, FORMFIELD_IVVALFORMAT	=> 'Invalid value format for $p1$'
+	, FORMFIELD_NOVAL		=> 'Missing value in the optionlist for $p1$'
+	, FORMFIELD_NOSUCHVAL	=> 'Value $p1$ does not exists for field $p2$'
+	, FORMFIELD_VALEXIST	=> 'Value $p1$ already exists for field $p2$'
 	, FILE_NEWFILE			=> ''
 	, FILE_NOSUCHFILE		=> ''
 	, FILE_ENDOFFILE		=> ''
@@ -74,5 +83,9 @@ $GLOBALS['messages'] = array (
 	, SCHEMEHANDLE_NOCOLIDX	=> 'No columns defined for index $p2$ on scheme  $p1$'
 	, SCHEMEHANDLE_IVCOLID	=> 'Column $p3$ for index $p2$ on scheme does not exist'
 	, SCHEMEHANDLE_NOCOLS	=> 'No columns defined for scheme $p1$'
-
+	, SCHEMEHANDLE_DUPLPRKEY	=> 'Duplicate primary key found for scheme $p1$'
+	, DISP_INSARG			=> 'Insufficient arguments passed to the dispatcher'
+	, DISP_NOCLASS			=> 'Classfile $p1$ not found in $p2$'
+	, DISP_NOCLASSF			=> 'Cannot instantiate class $p1$'
+	, DISP_NOMETHOD			=> 'Method $p1$ not found in class $p2$'
 	);

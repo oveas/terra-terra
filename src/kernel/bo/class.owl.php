@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library helper class
- * \version $Id: class.owl.php,v 1.1 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: class.owl.php,v 1.2 2010-12-03 12:07:42 oscar Exp $
  */
 
 /**
@@ -63,12 +63,11 @@ class OWL extends _OWL
 
 	/**
 	 * Loader function to instantiate the singletons or get the existing reference.
-	 * This function will mainly be called in abstract mode.
 	 * \param[in] $class Classname
 	 * \param[in] $layer Layer, defaults to 'so'
 	 * \return Reference to the object
 	 */
-	function factory($class, $layer = 'so')
+	public static function factory($class, $layer = 'so')
 	{
 		if (!class_exists($class)) {
 			$class_file = OWL_ROOT . '/kernel/' . $layer . '/class.' . strtolower($class) . '.php';

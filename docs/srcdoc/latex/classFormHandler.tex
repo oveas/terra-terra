@@ -26,27 +26,11 @@ Collaboration diagram for FormHandler:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classFormHandler_a371b8ded5110c6d66bc3a0c3e08fe085}{\_\-\_\-get} (\$variable)
+\hyperlink{classFormHandler_a5fcc8aef0de87e31ceee65ad1eadb96c}{set} (\$variable, \$value)
 \item 
-\hyperlink{classDataHandler_aed5b2eb4ca7b2e4b0c1563d817d73c16}{DataHandler} (\$tablename= '')
+\hyperlink{classFormHandler_a4dbeaa44aa51a795b16379ae703d893a}{get} (\$variable, \$format=\hyperlink{class_8formhandler_8php_af5de9385d7f7fc802eaa8e7090d8e0f5}{FORMDATA\_\-STRICT}, \$allows=null, \$content=array('script'))
 \item 
-\hyperlink{classDataHandler_ab89e1aaad9cd0a37f1c7f13c1d9c0d57}{reset} (\$level=\hyperlink{class_8datahandler_8php_a19a99423705b41e563424ae76d7fe184}{DATA\_\-RESET\_\-PREPARE})
-\item 
-\hyperlink{classDataHandler_a16c81c9564a7feaf530ce5d51ed99df7}{\_\-\_\-set} (\$variable, \$value)
-\item 
-\hyperlink{classDataHandler_a32ce223478b78a4ea9838a3c6ac7440c}{set\_\-key} (\$variable)
-\item 
-\hyperlink{classDataHandler_a435338a167a44a041af2895859abb0c9}{escape\_\-string} (\$string)
-\item 
-\hyperlink{classDataHandler_a9b77733f02e9d6281fc40df110c0ba70}{set\_\-join} (\$lvalue, \$rvalue, \$linktype= '=')
-\item 
-\hyperlink{classDataHandler_abcb68472abd7da8ee6296421f0a7f2e9}{set\_\-tablename} (\$tblname)
-\item 
-\hyperlink{classDataHandler_af3e7a17194e97300d499e9178f4913cb}{prepare} (\$type=\hyperlink{class_8datahandler_8php_ac28f74b49007773d24ca2207baac6d32}{DATA\_\-READ})
-\item 
-\hyperlink{classDataHandler_abb329fe5a97eb8df928aabfc8078ff23}{db} (\&\$data=false, \$line=0, \$file= '\mbox{[}unknown\mbox{]}')
-\item 
-\hyperlink{classDataHandler_a3c82ec0a40dabcc55dc203c96abf02d2}{db\_\-status} ()
+\hyperlink{classFormHandler_a5ee0cda14dcbe0b6e12226db4bd951a0}{cleanString} (\$input, \$allow=null, \$content=null, \$remove\_\-comment=true)
 \item 
 \hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
 \item 
@@ -64,9 +48,9 @@ static \hyperlink{classFormHandler_ad5b352905583faed17034459f1a9ea6c}{get\_\-ins
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
-\item 
 \hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
+\item 
+\hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
 \item 
 \hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
 \item 
@@ -89,7 +73,7 @@ static \hyperlink{classFormHandler_ad5b352905583faed17034459f1a9ea6c}{get\_\-ins
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classFormHandler_a7aa914557e2c76b46e4e0601c5dd75d5}{\$owl\_\-multivalues}
+\hyperlink{classFormHandler_a2caca98eec368ff030f07f8024253527}{\$owl\_\-formvalues}
 \end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
@@ -99,7 +83,7 @@ static \hyperlink{classFormHandler_a54efe3849e4065053f0eb0313356d072}{\$instance
 
 
 \subsection{Detailed Description}
-Formhandler. Handler for all incoming formdata. It implements the datahandler class. \begin{DoxyAuthor}{Author}
+Formhandler. Handler for all incoming formdata. \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
@@ -113,42 +97,11 @@ Aug 28, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 \subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::\_\-\_\-construct ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormHandler_a1ef7ad4fe143dd8339c8ab66423a1934}
 Class constructor; Parse the incoming formdata. 
 
-References DataHandler::DataHandler(), parse\_\-formdata(), \_\-OWL::set\_\-status(), and DataHandler::set\_\-tablename().
+References \_\-OWL::init(), parse\_\-formdata(), and \_\-OWL::set\_\-status().
 
 
 
 \subsection{Member Function Documentation}
-\index{FormHandler@{FormHandler}!\_\-\_\-get@{\_\-\_\-get}}
-\index{\_\-\_\-get@{\_\-\_\-get}!FormHandler@{FormHandler}}
-\subsubsection[{\_\-\_\-get}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::\_\-\_\-get (\$ {\em variable})}\label{classFormHandler_a371b8ded5110c6d66bc3a0c3e08fe085}
-Reimplement of the \_\-\_\-get magic method; the parent's \_\-\_\-get will only be called if the requested variable name is not in the 'local' array where multi-\/values are stored.
-
-
-\begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$variable}]The variable name who's value should be returned \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Value as taken form the form. 
-\end{DoxyReturn}
-
-
-Reimplemented from \hyperlink{classDataHandler_af58cbd10b032e4904fa15ce950d521e2}{DataHandler}.
-
-
-
-References ConfigHandler::get(), \_\-OWL::get\_\-status(), and \_\-OWL::set\_\-status().
-
-\index{FormHandler@{FormHandler}!\_\-\_\-set@{\_\-\_\-set}}
-\index{\_\-\_\-set@{\_\-\_\-set}!FormHandler@{FormHandler}}
-\subsubsection[{\_\-\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::\_\-\_\-set (\$ {\em variable}, \/  \$ {\em value})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classDataHandler_a16c81c9564a7feaf530ce5d51ed99df7}
-Define or override a variable in the data array
-
-
-\begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$variable}]The name of the variable that should be set \item[\mbox{$\leftarrow$} {\em \$value}]Value to set the variable to. If this is an array, the second field in the array has to be the tablename where the fieldname is found. The value itself van NEVER be an array! \end{DoxyParams}
-
-
-References \_\-OWL::set\_\-status().
-
 \index{FormHandler@{FormHandler}!check@{check}}
 \index{check@{check}!FormHandler@{FormHandler}}
 \subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
@@ -168,54 +121,34 @@ References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::tr
 
 Referenced by SessionHandler::write().
 
-\index{FormHandler@{FormHandler}!DataHandler@{DataHandler}}
-\index{DataHandler@{DataHandler}!FormHandler@{FormHandler}}
-\subsubsection[{DataHandler}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::DataHandler (\$ {\em tablename} = {\ttfamily ''})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classDataHandler_aed5b2eb4ca7b2e4b0c1563d817d73c16}
-Class constructor. We don't use a standard constructor (\_\-\_\-construct()) here, since singleton classes (using private constructors) might derive from this class. In stead we use the PHP4 compatible constructor. 
+\index{FormHandler@{FormHandler}!cleanString@{cleanString}}
+\index{cleanString@{cleanString}!FormHandler@{FormHandler}}
+\subsubsection[{cleanString}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::cleanString (\$ {\em input}, \/  \$ {\em allow} = {\ttfamily null}, \/  \$ {\em content} = {\ttfamily null}, \/  \$ {\em remove\_\-comment} = {\ttfamily true})}\label{classFormHandler_a5ee0cda14dcbe0b6e12226db4bd951a0}
+Remove all tags from an input string 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$tablename}]Default table name for this dataset \end{DoxyParams}
-
-
-References DbHandler::get\_\-instance(), \_\-OWL::init(), and \_\-OWL::set\_\-status().
-
-
-
-Referenced by \_\-\_\-construct().
-
-\index{FormHandler@{FormHandler}!db@{db}}
-\index{db@{db}!FormHandler@{FormHandler}}
-\subsubsection[{db}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::db (\&\$ {\em data} = {\ttfamily false}, \/  \$ {\em line} = {\ttfamily 0}, \/  \$ {\em file} = {\ttfamily '\mbox{[}unknown\mbox{]}'})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classDataHandler_abb329fe5a97eb8df928aabfc8078ff23}
-Forward a call to the DBHandler object (which is private in this \hyperlink{classDataHandler}{DataHandler})
-
-
-\begin{DoxyParams}{Parameters}
-\item[\mbox{$\rightarrow$} {\em \$data}]The result of DBHandler function, or false when no query was prepared yet \item[\mbox{$\leftarrow$} {\em \$line}]Line number of this call \item[\mbox{$\leftarrow$} {\em \$file}]File that made the call to this method \end{DoxyParams}
+\item[\mbox{$\leftarrow$} {\em \$input}]Input string to clean \item[\mbox{$\leftarrow$} {\em \$allow}]array with tags that should not be removed. These can be in a regular expression format, e.g. array('b', 'h\mbox{[}1-\/6\mbox{]}') to allow the $<$b$>$ tag and $<$h1$>$ to $<$h6$>$. \item[\mbox{$\leftarrow$} {\em \$content}]array with tags that should completely be removed, so including all contents between the opening and closing tag, e.g. '$<$script$>$some code$<$/script$>$'. Default is array('script','style') \item[\mbox{$\leftarrow$} {\em \$remove\_\-comment}]When true (default), content blocks will completely be removed. Set to false to allow the content of a comment block. The tags themselves ('$<$!-\/-\/' and '-\/-\/$>$') will always be removed. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Severity level 
+The string with all tags removed 
 \end{DoxyReturn}
 
 
-References \_\-OWL::set\_\-high\_\-severity().
+Referenced by get().
 
-\index{FormHandler@{FormHandler}!db\_\-status@{db\_\-status}}
-\index{db\_\-status@{db\_\-status}!FormHandler@{FormHandler}}
-\subsubsection[{db\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::db\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classDataHandler_a3c82ec0a40dabcc55dc203c96abf02d2}
-Return the last status of the database
-
-\begin{DoxyReturn}{Returns}
-Current status of the database object 
-\end{DoxyReturn}
-\index{FormHandler@{FormHandler}!escape\_\-string@{escape\_\-string}}
-\index{escape\_\-string@{escape\_\-string}!FormHandler@{FormHandler}}
-\subsubsection[{escape\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::escape\_\-string (\$ {\em string})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classDataHandler_a435338a167a44a041af2895859abb0c9}
-Interface to the DbHander::escape\_\-string()
+\index{FormHandler@{FormHandler}!get@{get}}
+\index{get@{get}!FormHandler@{FormHandler}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::get (\$ {\em variable}, \/  \$ {\em format} = {\ttfamily {\bf FORMDATA\_\-STRICT}}, \/  \$ {\em allows} = {\ttfamily null}, \/  \$ {\em content} = {\ttfamily array('script')})}\label{classFormHandler_a4dbeaa44aa51a795b16379ae703d893a}
+Get the value of a given formfield, formatted as specified
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$string}]String to escape \end{DoxyParams}
+\item[\mbox{$\leftarrow$} {\em \$variable}]The variable name who's value should be returned \item[\mbox{$\leftarrow$} {\em \$format}]Specify how the field should be formatted \item[\mbox{$\leftarrow$} {\em \$allows}]Array with allowd tags, used for the FORMDATA\_\-CUSTOM format. \item[\mbox{$\leftarrow$} {\em \$content}]Array with tags to allow completely, used for the FORMDATA\_\-CUSTOM format. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Return value of \hyperlink{classDbHandler_a67d77702ff6db70f89123d3f947af143}{DbHandler::escape\_\-string()} 
+Value as taken from the form; single value or array 
 \end{DoxyReturn}
+
+
+References cleanString(), ConfigHandler::get(), and \_\-OWL::set\_\-status().
+
 \index{FormHandler@{FormHandler}!get\_\-instance@{get\_\-instance}}
 \index{get\_\-instance@{get\_\-instance}!FormHandler@{FormHandler}}
 \subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static FormHandler::get\_\-instance ()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classFormHandler_ad5b352905583faed17034459f1a9ea6c}
@@ -257,7 +190,7 @@ Object's status code
 \end{DoxyReturn}
 
 
-Referenced by \_\-\_\-get().
+Referenced by SchemeHandler::compare().
 
 \index{FormHandler@{FormHandler}!init@{init}}
 \index{init@{init}!FormHandler@{FormHandler}}
@@ -268,7 +201,7 @@ References OWL::factory().
 
 
 
-Referenced by DOMElement::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), \_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{FormHandler@{FormHandler}!parse\_\-formdata@{parse\_\-formdata}}
 \index{parse\_\-formdata@{parse\_\-formdata}!FormHandler@{FormHandler}}
@@ -280,38 +213,14 @@ Parse a given form and store all data in the parent class, except values that co
 \item[\mbox{$\leftarrow$} {\em \$data}]The formdata array. \end{DoxyParams}
 
 
-References ConfigHandler::get(), and \_\-OWL::set\_\-status().
-
-
-
 Referenced by \_\-\_\-construct().
-
-\index{FormHandler@{FormHandler}!prepare@{prepare}}
-\index{prepare@{prepare}!FormHandler@{FormHandler}}
-\subsubsection[{prepare}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::prepare (\$ {\em type} = {\ttfamily {\bf DATA\_\-READ}})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classDataHandler_af3e7a17194e97300d499e9178f4913cb}
-Prepare a database query
-
-
-\begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$type}]Specify which type of query should be prepared:
-\begin{DoxyItemize}
-\item DATA\_\-READ (default); Read data from the database
-\item DATA\_\-WRITE; Write new data to the database
-\item DATA\_\-UPDATE; Update data in the database 
-\end{DoxyItemize}\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Severity level 
-\end{DoxyReturn}
-
-
-References \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::set\_\-status().
 
 \index{FormHandler@{FormHandler}!reset@{reset}}
 \index{reset@{reset}!FormHandler@{FormHandler}}
 \subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
 General reset function for all objects. Should be called after each non-\/fatal error 
 
-Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}.
+Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
 
 
 
@@ -321,21 +230,17 @@ References \_\-OWL::reset\_\-calltree().
 
 Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
 
-\index{FormHandler@{FormHandler}!reset@{reset}}
-\index{reset@{reset}!FormHandler@{FormHandler}}
-\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::reset (\$ {\em level} = {\ttfamily {\bf DATA\_\-RESET\_\-PREPARE}})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classDataHandler_ab89e1aaad9cd0a37f1c7f13c1d9c0d57}
-Reset the object 
+\index{FormHandler@{FormHandler}!set@{set}}
+\index{set@{set}!FormHandler@{FormHandler}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::set (\$ {\em variable}, \/  \$ {\em value})}\label{classFormHandler_a5fcc8aef0de87e31ceee65ad1eadb96c}
+Reimplement the get method; the parent's get will only be called if the requested variable name is not in the 'local' array where multi-\/values are stored.
+
+
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$level}]The reset level, can be any of the following:
-\begin{DoxyItemize}
-\item DATA\_\-RESET\_\-STATUS; Reset object status only
-\item DATA\_\-RESET\_\-PREPARE (default); Reset status and a prepared query
-\item DATA\_\-RESET\_\-META; Reset status and query, remove all locks and joins
-\item DATA\_\-RESET\_\-FULL; Reset status and query, remove all locks, joins and data 
-\end{DoxyItemize}\end{DoxyParams}
+\item[\mbox{$\leftarrow$} {\em \$variable}]The variable name who's value should be set \item[\mbox{$\leftarrow$} {\em \$value}]Value for the variable \end{DoxyParams}
 
 
-References \_\-OWL::reset(), and \_\-OWL::set\_\-status().
+References ConfigHandler::get(), and \_\-OWL::set\_\-status().
 
 \index{FormHandler@{FormHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!FormHandler@{FormHandler}}
@@ -343,34 +248,6 @@ References \_\-OWL::reset(), and \_\-OWL::set\_\-status().
 Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
-
-\index{FormHandler@{FormHandler}!set\_\-join@{set\_\-join}}
-\index{set\_\-join@{set\_\-join}!FormHandler@{FormHandler}}
-\subsubsection[{set\_\-join}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set\_\-join (\$ {\em lvalue}, \/  \$ {\em rvalue}, \/  \$ {\em linktype} = {\ttfamily '='})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classDataHandler_a9b77733f02e9d6281fc40df110c0ba70}
-Define a link between 2 fields that will be recognized when the database query is built.
-
-
-\begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$lvalue}]Left value as array(table, field) \item[\mbox{$\leftarrow$} {\em \$rvalue}]Right value as array(table, field) \item[\mbox{$\leftarrow$} {\em \$linktype}]How are the fields linked. Can be any binary operator as recognized by SQL. \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Severity level 
-\end{DoxyReturn}
-
-
-References \_\-OWL::set\_\-status().
-
-\index{FormHandler@{FormHandler}!set\_\-key@{set\_\-key}}
-\index{set\_\-key@{set\_\-key}!FormHandler@{FormHandler}}
-\subsubsection[{set\_\-key}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set\_\-key (\$ {\em variable})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classDataHandler_a32ce223478b78a4ea9838a3c6ac7440c}
-Lock variables for update by adding them to an array. Fields in this array will not be overwritten on updates, but used in WHERE clauses. 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$variable}]Variable name to lock, optionally as an array (table, field) \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Severity level 
-\end{DoxyReturn}
-
-
-References \_\-OWL::get\_\-severity(), and \_\-OWL::set\_\-status().
 
 \index{FormHandler@{FormHandler}!set\_\-status@{set\_\-status}}
 \index{set\_\-status@{set\_\-status}!FormHandler@{FormHandler}}
@@ -386,19 +263,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), \_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), \_\-\_\-get(), DataHandler::\_\-\_\-get(), DataHandler::\_\-\_\-set(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), DataHandler::DataHandler(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), parse\_\-formdata(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), DbHandler::table\_\-description(), and DbHandler::write().
-
-\index{FormHandler@{FormHandler}!set\_\-tablename@{set\_\-tablename}}
-\index{set\_\-tablename@{set\_\-tablename}!FormHandler@{FormHandler}}
-\subsubsection[{set\_\-tablename}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set\_\-tablename (\$ {\em tblname})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classDataHandler_abcb68472abd7da8ee6296421f0a7f2e9}
-Set or overwrite the default table name
-
-
-\begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$tblname}]Default table name \end{DoxyParams}
-
-
-Referenced by \_\-\_\-construct().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), \_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{FormHandler@{FormHandler}!signal@{signal}}
 \index{signal@{signal}!FormHandler@{FormHandler}}
@@ -448,10 +313,10 @@ integer -\/ self reference
 
 Referenced by get\_\-instance().
 
-\index{FormHandler@{FormHandler}!\$owl\_\-multivalues@{\$owl\_\-multivalues}}
-\index{\$owl\_\-multivalues@{\$owl\_\-multivalues}!FormHandler@{FormHandler}}
-\subsubsection[{\$owl\_\-multivalues}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::\$owl\_\-multivalues\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormHandler_a7aa914557e2c76b46e4e0601c5dd75d5}
-Create an array which will hold multi-\/select values \index{FormHandler@{FormHandler}!\$severity@{\$severity}}
+\index{FormHandler@{FormHandler}!\$owl\_\-formvalues@{\$owl\_\-formvalues}}
+\index{\$owl\_\-formvalues@{\$owl\_\-formvalues}!FormHandler@{FormHandler}}
+\subsubsection[{\$owl\_\-formvalues}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::\$owl\_\-formvalues\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormHandler_a2caca98eec368ff030f07f8024253527}
+Create an array which will hold all (formatted) formvalues \index{FormHandler@{FormHandler}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!FormHandler@{FormHandler}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
 Severity level of the current object status 
