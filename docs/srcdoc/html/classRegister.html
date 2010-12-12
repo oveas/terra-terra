@@ -41,15 +41,16 @@
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#ae71e10bddb03483b54ad22b9edb95b7c">get_severity</a> ($level)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#a70490e59a4a3b910d259b8a4287c3e91">get_severity_level</a> ($name)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#a041706fafb409a31f125d2075501e82e">get_run_id</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#a363389530273f40c3b20666bbff75e05">get_code</a> ($value)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#abd8556b87ac48f8d8b3abeef6285c8f5">get_code</a> ($value, $unknown= '*unknown *')</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#ad4d61787414f7d64d1e3420f0fdf3f91">set_application</a> ($app_id)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#a58e49ccb1fe4e441d0329e879c922aa0">set_class</a> ($class_id)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#a0adde8d67d77b9b4d66156272cb48ae4">set_severity</a> ($severity_level)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#a688c665a20294826a762cf552b4a00fc">register_messages</a> ()</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p><a class="el" href="classOWL.html">OWL</a> keeps track of all running applications, their class and all status codes their instances (objects) can have. This is done in a global <a class="el" href="classRegister.html">Register</a>, which is maintained by this class. </p>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a363389530273f40c3b20666bbff75e05"></a><!-- doxytag: member="Register::get_code" ref="a363389530273f40c3b20666bbff75e05" args="($value)" -->
+<a class="anchor" id="abd8556b87ac48f8d8b3abeef6285c8f5"></a><!-- doxytag: member="Register::get_code" ref="abd8556b87ac48f8d8b3abeef6285c8f5" args="($value, $unknown= '*unknown *')" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -57,9 +58,18 @@
           <td class="memname">static Register::get_code </td>
           <td>(</td>
           <td class="paramtype">$&nbsp;</td>
-          <td class="paramname"> <em>value</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [static]</code></td>
+          <td class="paramname"> <em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>unknown</em> = <code>'*unknown*'</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
         </tr>
       </table>
 </div>
@@ -68,6 +78,7 @@
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$value</em>&nbsp;</td><td>Hex value of the status code </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$unknown</em>&nbsp;</td><td>Return value if the code does not exist </td></tr>
   </table>
   </dd>
 </dl>
@@ -75,7 +86,7 @@
 
 <p>References <a class="el" href="config_8php_source.html#l00010">$GLOBALS</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8loghandler_8php_source.html#l00152">LogHandler::compose_message()</a>, <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>, and <a class="el" href="class_8exceptionhandler_8php_source.html#l00105">OWLException::stack_dump()</a>.</p>
+<p>Referenced by <a class="el" href="class_8loghandler_8php_source.html#l00152">LogHandler::compose_message()</a>, <a class="el" href="class_8statushandler_8php_source.html#l00136">StatusHandler::get_message()</a>, <a class="el" href="class_8__owl_8php_source.html#l00111">_OWL::set_status()</a>, and <a class="el" href="class_8exceptionhandler_8php_source.html#l00105">OWLException::stack_dump()</a>.</p>
 
 </div>
 </div>
@@ -214,7 +225,7 @@
   </dd>
 </dl>
 
-<p>References <a class="el" href="config_8php_source.html#l00010">$GLOBALS</a>, and <a class="el" href="class_8register_8php_source.html#l00233">set_application()</a>.</p>
+<p>References <a class="el" href="config_8php_source.html#l00010">$GLOBALS</a>, and <a class="el" href="class_8register_8php_source.html#l00234">set_application()</a>.</p>
 
 </div>
 </div>
@@ -269,6 +280,28 @@
 </dl>
 
 <p>References <a class="el" href="config_8php_source.html#l00010">$GLOBALS</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a688c665a20294826a762cf552b4a00fc"></a><!-- doxytag: member="Register::register_messages" ref="a688c665a20294826a762cf552b4a00fc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Register::register_messages </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Load the message file </p>
+
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00120">ConfigHandler::get()</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8statushandler_8php_source.html#l00136">StatusHandler::get_message()</a>.</p>
 
 </div>
 </div>
@@ -396,7 +429,7 @@
 <li>/home/oscar/projects/owl-php/src/kernel/so/<a class="el" href="class_8register_8php.html">class.register.php</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Dec 1 20:23:26 2010 for OWL-PHP by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Dec 7 07:52:57 2010 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

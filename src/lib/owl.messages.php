@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in UK English
- * \version $Id: owl.messages.php,v 1.10 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.11 2010-12-12 14:27:36 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -84,6 +84,7 @@ $GLOBALS['messages'] = array (
 	, SCHEMEHANDLE_IVCOLID	=> 'Column $p3$ for index $p2$ on scheme does not exist'
 	, SCHEMEHANDLE_NOCOLS	=> 'No columns defined for scheme $p1$'
 	, SCHEMEHANDLE_DUPLPRKEY	=> 'Duplicate primary key found for scheme $p1$'
+	, DISP_NOARG			=> 'Dispatcher received no arguments'
 	, DISP_INSARG			=> 'Insufficient arguments passed to the dispatcher'
 	, DISP_NOCLASS			=> 'Classfile $p1$ not found in $p2$'
 	, DISP_NOCLASSF			=> 'Cannot instantiate class $p1$'

@@ -1,16 +1,25 @@
 <map id="G" name="G">
-<area shape="rect" href="$classbaseDOMelement.html" title="DOM Element base class." alt="" coords="5,655,131,817"/>
-<area shape="rect" href="$classDataHandler.html" title="The OWL Data object." alt="" coords="155,543,280,929"/>
-<area shape="rect" href="$classDbHandler.html" title="Database handler." alt="" coords="304,365,440,1107"/>
-<area shape="rect" href="$classDispatcher.html" title="Dispatcher singleton." alt="" coords="464,664,579,808"/>
-<area shape="rect" href="$classFileHandler.html" title="File handler." alt="" coords="603,599,723,873"/>
-<area shape="rect" href="$classFormHandler.html" title="Formhandler." alt="" coords="747,636,875,836"/>
-<area shape="rect" href="$classLogHandler.html" title="Log handler." alt="" coords="899,571,1048,901"/>
-<area shape="rect" href="$classOWL.html" title="{OWL\n|&#45; $instance\l|+ __clone()\l+ stat()\l+ get_instance()\l+ factory()\l&#45; __construct()\l}" alt="" coords="1072,655,1187,817"/>
-<area shape="rect" href="$classSchemeHandler.html" title="Scheme handler." alt="" coords="1211,487,1357,985"/>
-<area shape="rect" href="$classSessionHandler.html" title="the PHP session object" alt="" coords="1381,617,1493,855"/>
-<area shape="rect" href="$classUserHandler.html" title="the user object" alt="" coords="1521,608,1649,864"/>
-<area shape="rect" href="$classImageHandler.html" title="Image handler." alt="" coords="603,1192,723,1336"/>
-<area shape="rect" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="1365,1192,1501,1336"/>
-<area shape="rect" href="$classUser.html" title="the OWL&#45;PHP session object" alt="" coords="1525,1155,1661,1373"/>
+<area shape="rect" href="$classBaseElement.html" title="DOM Element base class." alt="" coords="347,645,461,827"/>
+<area shape="rect" href="$classDataHandler.html" title="The OWL Data object." alt="" coords="485,543,611,929"/>
+<area shape="rect" href="$classDbHandler.html" title="Database handler." alt="" coords="635,365,771,1107"/>
+<area shape="rect" href="$classDispatcher.html" title="Dispatcher singleton." alt="" coords="795,664,909,808"/>
+<area shape="rect" href="$classFileHandler.html" title="File handler." alt="" coords="933,599,1053,873"/>
+<area shape="rect" href="$classFormHandler.html" title="Formhandler." alt="" coords="1077,636,1205,836"/>
+<area shape="rect" href="$classLogHandler.html" title="Log handler." alt="" coords="1229,571,1379,901"/>
+<area shape="rect" href="$classOWL.html" title="{OWL\n|&#45; $instance\l|+ __clone()\l+ stat()\l+ get_instance()\l+ factory()\l&#45; __construct()\l}" alt="" coords="1403,655,1517,817"/>
+<area shape="rect" href="$classSchemeHandler.html" title="Scheme handler." alt="" coords="1541,487,1688,985"/>
+<area shape="rect" href="$classSessionHandler.html" title="the PHP session object" alt="" coords="1712,617,1824,855"/>
+<area shape="rect" href="$classUserHandler.html" title="the user object" alt="" coords="1852,608,1980,864"/>
+<area shape="rect" href="$classForm.html" title="Form Element class." alt="" coords="237,1192,381,1392"/>
+<area shape="rect" href="$classFormField.html" title="Formfield." alt="" coords="405,1155,592,1429"/>
+<area shape="rect" href="$classFormFieldButton.html" title="Formfield." alt="" coords="5,1524,123,1649"/>
+<area shape="rect" href="$classFormFieldCheckbox.html" title="Formfield." alt="" coords="147,1515,283,1659"/>
+<area shape="rect" href="$classFormFieldFile.html" title="Formfield." alt="" coords="307,1543,416,1631"/>
+<area shape="rect" href="$classFormFieldRadio.html" title="Formfield." alt="" coords="440,1515,557,1659"/>
+<area shape="rect" href="$classFormFieldSelect.html" title="Formfield." alt="" coords="581,1477,728,1696"/>
+<area shape="rect" href="$classFormFieldText.html" title="Formfield." alt="" coords="752,1505,869,1668"/>
+<area shape="rect" href="$classFormFieldTextarea.html" title="Formfield." alt="" coords="893,1515,1021,1659"/>
+<area shape="rect" href="$classImageHandler.html" title="Image handler." alt="" coords="933,1220,1053,1364"/>
+<area shape="rect" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="1696,1220,1832,1364"/>
+<area shape="rect" href="$classUser.html" title="the OWL&#45;PHP session object" alt="" coords="1856,1183,1992,1401"/>
 </map>

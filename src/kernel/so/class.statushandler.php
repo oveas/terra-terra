@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines status object that's user for all objects
- * \version $Id: class.statushandler.php,v 1.4 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: class.statushandler.php,v 1.5 2010-12-12 14:27:36 oscar Exp $
  */
 
 /**
@@ -137,10 +137,24 @@ class StatusHandler
 	{
 		$_search = array();
 
-		if (array_key_exists ($this->code, $GLOBALS['messages'])) {
-			$_msg = $GLOBALS['messages'][$this->code];	
+		// Check if the messages have already been loaded
+		if (!array_key_exists ($this->code, $GLOBALS['messages'])) {
+			Register::register_messages();
 		} else {
-			$_msg = sprintf ('No message found for code %%X%08X (%d)', $this->code, $this->code);
+			// Check if the messages code exists. If not, it might belong to a class
+			// that was loaded later; translate the code
+			if (!array_key_exists ($this->code, $GLOBALS['messages'])) {
+				if (($_mcode = Register::get_code($this->code, null) !== null)) {
+					$GLOBALS['messages'][$this->code] = $GLOBALS['messages'][$_mcode];
+					unset($GLOBALS['messages'][$_mcode]);
+				}
+			}
+		}
+
+		if (array_key_exists ($this->code, $GLOBALS['messages'])) {
+			$_msg = $GLOBALS['messages'][$this->code];
+		} else { // Still not there...
+			$_msg = sprintf ('No message found for code %%X%08X (%s)', $this->code, Register::get_code($this->code));
 		}
 		for ($_i = 0; $_i < count ($this->params); $_i++) {
 			$_search[] = '$p' . ($_i + 1) . '$';

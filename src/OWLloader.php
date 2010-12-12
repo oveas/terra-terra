@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.10 2010-12-03 12:07:43 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.11 2010-12-12 14:27:36 oscar Exp $
  */
 
 // Error handling used during development
@@ -138,36 +138,5 @@ if (array_key_exists ('app', ConfigHandler::get ('configfiles'))) {
 // has been parsed, since 'config|debug' is used to select the (no)debug library.
 require_once (OWL_LIBRARY . '/owl.helper.functions.php');
 
-// Load the message file
-if (file_exists (OWL_LIBRARY . '/owl.messages.'
-				. ConfigHandler::get ('locale|lang')
-				. '.php')) {
-	require_once (OWL_LIBRARY . '/owl.messages.'
-				. ConfigHandler::get ('locale|lang')
-				. '.php');
-} else {
-	require_once (OWL_LIBRARY . '/owl.messages.php');
-}
-
 // Singeltons
 $GLOBALS['logger'] = OWL::factory('LogHandler');
-
-
-
-//$_form = FormHandler::get_instance();
-//$_user = new User();
-
-
-//$GLOBALS['db'] = new DBHandler(
-//			  ConfigHandler::get ('dbserver')
-//			, ConfigHandler::get ('dbname')
-//			, ConfigHandler::get ('dbuser')
-//			, ConfigHandler::get ('dbpasswd'));
-
-//if (!$GLOBALS['db']->create()) {
-//	$GLOBALS['db']->signal ();
-//	die ("Fatal");
-//}
-
-//$GLOBALS['formdata'] = new FormHandler();
-//$GLOBALS['user'] = new User();

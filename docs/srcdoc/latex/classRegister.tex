@@ -19,13 +19,15 @@ static \hyperlink{classRegister_a70490e59a4a3b910d259b8a4287c3e91}{get\_\-severi
 \item 
 static \hyperlink{classRegister_a041706fafb409a31f125d2075501e82e}{get\_\-run\_\-id} ()
 \item 
-static \hyperlink{classRegister_a363389530273f40c3b20666bbff75e05}{get\_\-code} (\$value)
+static \hyperlink{classRegister_abd8556b87ac48f8d8b3abeef6285c8f5}{get\_\-code} (\$value, \$unknown= '$\ast$unknown $\ast$')
 \item 
 static \hyperlink{classRegister_ad4d61787414f7d64d1e3420f0fdf3f91}{set\_\-application} (\$app\_\-id)
 \item 
 static \hyperlink{classRegister_a58e49ccb1fe4e441d0329e879c922aa0}{set\_\-class} (\$class\_\-id)
 \item 
 static \hyperlink{classRegister_a0adde8d67d77b9b4d66156272cb48ae4}{set\_\-severity} (\$severity\_\-level)
+\item 
+static \hyperlink{classRegister_a688c665a20294826a762cf552b4a00fc}{register\_\-messages} ()
 \end{DoxyCompactItemize}
 
 
@@ -35,12 +37,12 @@ static \hyperlink{classRegister_a0adde8d67d77b9b4d66156272cb48ae4}{set\_\-severi
 \subsection{Member Function Documentation}
 \index{Register@{Register}!get\_\-code@{get\_\-code}}
 \index{get\_\-code@{get\_\-code}!Register@{Register}}
-\subsubsection[{get\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-code (\$ {\em value})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_a363389530273f40c3b20666bbff75e05}
+\subsubsection[{get\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-code (\$ {\em value}, \/  \$ {\em unknown} = {\ttfamily '$\ast$unknown$\ast$'})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_abd8556b87ac48f8d8b3abeef6285c8f5}
 Translate an hex value code to the symbolic name
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$value}]Hex value of the status code \end{DoxyParams}
+\item[\mbox{$\leftarrow$} {\em \$value}]Hex value of the status code \item[\mbox{$\leftarrow$} {\em \$unknown}]Return value if the code does not exist \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Human readable value 
 \end{DoxyReturn}
@@ -50,7 +52,7 @@ References \$GLOBALS.
 
 
 
-Referenced by LogHandler::compose\_\-message(), \_\-OWL::set\_\-status(), and OWLException::stack\_\-dump().
+Referenced by LogHandler::compose\_\-message(), StatusHandler::get\_\-message(), \_\-OWL::set\_\-status(), and OWLException::stack\_\-dump().
 
 \index{Register@{Register}!get\_\-run\_\-id@{get\_\-run\_\-id}}
 \index{get\_\-run\_\-id@{get\_\-run\_\-id}!Register@{Register}}
@@ -143,6 +145,17 @@ Define a new statuscode
 
 
 References \$GLOBALS.
+
+\index{Register@{Register}!register\_\-messages@{register\_\-messages}}
+\index{register\_\-messages@{register\_\-messages}!Register@{Register}}
+\subsubsection[{register\_\-messages}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-messages ()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_a688c665a20294826a762cf552b4a00fc}
+Load the message file 
+
+References ConfigHandler::get().
+
+
+
+Referenced by StatusHandler::get\_\-message().
 
 \index{Register@{Register}!register\_\-severity@{register\_\-severity}}
 \index{register\_\-severity@{register\_\-severity}!Register@{Register}}

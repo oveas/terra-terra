@@ -2,7 +2,7 @@
 /**
  * \file
  * Define the abstract Register class.
- * \version $Id: class.register.php,v 1.2 2010-08-20 08:39:54 oscar Exp $
+ * \version $Id: class.register.php,v 1.3 2010-12-12 14:27:36 oscar Exp $
  */
 
 
@@ -213,12 +213,13 @@ abstract class Register
 	 * Translate an hex value code to the symbolic name
 	 * \public
 	 * \param[in] $value Hex value of the status code
+	 * \param[in] $unknown Return value if the code does not exist
 	 * \return Human readable value
 	 */
-	static public function get_code ($value)
+	static public function get_code ($value, $unknown = '*unknown*')
 	{
 		if (!array_key_exists ("$value", $GLOBALS['register']['code_symbols'])) {
-			return ('*unknown*');
+			return ($unknown);
 		} else {
 			return ($GLOBALS['register']['code_symbols']["$value"]);
 		}
@@ -253,6 +254,26 @@ abstract class Register
 	static public function set_severity ($severity_level)
 	{
 		$GLOBALS['register']['stack']['severity'] = $severity_level;
+	}
+
+	/**
+	 * Load the message file
+	 * \public
+	 */
+	static public function register_messages ()
+	{
+		// Suppress 'Undefined constants' notices for codes not (yet) registered
+		$_er = error_reporting(~E_NOTICE);
+		if (file_exists (OWL_LIBRARY . '/owl.messages.'
+						. ConfigHandler::get ('locale|lang')
+						. '.php')) {
+			require (OWL_LIBRARY . '/owl.messages.'
+						. ConfigHandler::get ('locale|lang')
+						. '.php');
+		} else {
+			require (OWL_LIBRARY . '/owl.messages.php');
+		}
+		error_reporting($_er);
 	}
 }
 

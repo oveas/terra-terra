@@ -1,0 +1,266 @@
+\section{BaseElement Class Reference}
+\label{classBaseElement}\index{BaseElement@{BaseElement}}
+
+
+DOM Element base class.  
+
+
+
+
+Inheritance diagram for BaseElement:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classBaseElement__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for BaseElement:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=400pt]{classBaseElement__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBaseElement_a0c1ce3d1684ecb78960cf7a97278494e}{setId} (\$\_\-value)
+\item 
+\hyperlink{classBaseElement_af6597b30fa9798878f6290271043dfa2}{setClass} (\$\_\-value)
+\item 
+\hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
+\item 
+\hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
+\item 
+\hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
+\item 
+\hyperlink{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}{traceback} (\&\$text=false, \$depth=0)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBaseElement_a852277a83d867417f2e39e8a2483bac7}{getEvents} ()
+\item 
+\hyperlink{classBaseElement_a25bed980efe965e95dc43d7c2fa1faca}{getAttributes} ()
+\item 
+\hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
+\item 
+\hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\item 
+\hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
+\item 
+\hyperlink{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
+\item 
+\hyperlink{class__OWL_a576829692a3b66e3d518853bf43abae3}{set\_\-high\_\-severity} (\&\$object=null)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBaseElement_a99976a8e967db92e7800309f359b0803}{\$class} = ''
+\item 
+\hyperlink{classBaseElement_a429a3d642dd95f30e1059ef29564b87d}{\$style} = ''
+\item 
+\hyperlink{classBaseElement_a11b6989c43b53869a09f5ce65aa55b45}{\$id} = ''
+\item 
+\hyperlink{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}{\$severity}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+DOM Element base class. Abstract base class for all DOM elements \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Aug 29, 2008 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{BaseElement@{BaseElement}!check@{check}}
+\index{check@{check}!BaseElement@{BaseElement}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the severity level was correct ( below the max), otherwise false 
+\end{DoxyReturn}
+
+
+References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::traceback().
+
+
+
+Referenced by SessionHandler::write().
+
+\index{BaseElement@{BaseElement}!get\_\-severity@{get\_\-severity}}
+\index{get\_\-severity@{get\_\-severity}!BaseElement@{BaseElement}}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+Get the current object severity level.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status severity level 
+\end{DoxyReturn}
+
+
+References \_\-OWL::\$status.
+
+
+
+Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandler::set\_\-key().
+
+\index{BaseElement@{BaseElement}!get\_\-status@{get\_\-status}}
+\index{get\_\-status@{get\_\-status}!BaseElement@{BaseElement}}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+Get the current object status.
+
+\begin{DoxyReturn}{Returns}
+Object's status code 
+\end{DoxyReturn}
+
+
+Referenced by SchemeHandler::compare().
+
+\index{BaseElement@{BaseElement}!getAttributes@{getAttributes}}
+\index{getAttributes@{getAttributes}!BaseElement@{BaseElement}}
+\subsubsection[{getAttributes}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::getAttributes ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classBaseElement_a25bed980efe965e95dc43d7c2fa1faca}
+Return the general element attributes that are set \begin{DoxyReturn}{Returns}
+string attributes in HTML format (' fld=\char`\"{}value\char`\"{}...) 
+\end{DoxyReturn}
+
+
+Referenced by Form::openForm().
+
+\index{BaseElement@{BaseElement}!getEvents@{getEvents}}
+\index{getEvents@{getEvents}!BaseElement@{BaseElement}}
+\subsubsection[{getEvents}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::getEvents ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classBaseElement_a852277a83d867417f2e39e8a2483bac7}
+
+
+Referenced by FormField::getGenericFieldAttributes().
+
+\index{BaseElement@{BaseElement}!init@{init}}
+\index{init@{init}!BaseElement@{BaseElement}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+
+References OWL::factory().
+
+
+
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+
+\index{BaseElement@{BaseElement}!reset@{reset}}
+\index{reset@{reset}!BaseElement@{BaseElement}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
+General reset function for all objects. Should be called after each non-\/fatal error 
+
+Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
+
+
+
+References \_\-OWL::reset\_\-calltree().
+
+
+
+Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
+
+\index{BaseElement@{BaseElement}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
+\index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!BaseElement@{BaseElement}}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+
+Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
+
+\index{BaseElement@{BaseElement}!set\_\-status@{set\_\-status}}
+\index{set\_\-status@{set\_\-status}!BaseElement@{BaseElement}}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+Set the current object status to the specified value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+
+
+References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
+
+
+
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+
+\index{BaseElement@{BaseElement}!setClass@{setClass}}
+\index{setClass@{setClass}!BaseElement@{BaseElement}}
+\subsubsection[{setClass}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setClass (\$ {\em \_\-value})}\label{classBaseElement_af6597b30fa9798878f6290271043dfa2}
+Set the element Class 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Class name \end{DoxyParams}
+\index{BaseElement@{BaseElement}!setId@{setId}}
+\index{setId@{setId}!BaseElement@{BaseElement}}
+\subsubsection[{setId}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setId (\$ {\em \_\-value})}\label{classBaseElement_a0c1ce3d1684ecb78960cf7a97278494e}
+Set the element ID 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Identification \end{DoxyParams}
+\index{BaseElement@{BaseElement}!signal@{signal}}
+\index{signal@{signal}!BaseElement@{BaseElement}}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+Display the message for the current object status
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The severity level for this object 
+\end{DoxyReturn}
+
+
+References ConfigHandler::get().
+
+
+
+Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
+
+\index{BaseElement@{BaseElement}!traceback@{traceback}}
+\index{traceback@{traceback}!BaseElement@{BaseElement}}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity code of the failing object 
+\end{DoxyReturn}
+
+
+References \_\-OWL::signal().
+
+
+
+Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read().
+
+
+
+\subsection{Member Data Documentation}
+\index{BaseElement@{BaseElement}!\$class@{\$class}}
+\index{\$class@{\$class}!BaseElement@{BaseElement}}
+\subsubsection[{\$class}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$class = ''\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classBaseElement_a99976a8e967db92e7800309f359b0803}
+Class specification \index{BaseElement@{BaseElement}!\$id@{\$id}}
+\index{\$id@{\$id}!BaseElement@{BaseElement}}
+\subsubsection[{\$id}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$id = ''\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classBaseElement_a11b6989c43b53869a09f5ce65aa55b45}
+Element ID \index{BaseElement@{BaseElement}!\$severity@{\$severity}}
+\index{\$severity@{\$severity}!BaseElement@{BaseElement}}
+\subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
+Severity level of the current object status \index{BaseElement@{BaseElement}!\$style@{\$style}}
+\index{\$style@{\$style}!BaseElement@{BaseElement}}
+\subsubsection[{\$style}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$style = ''\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classBaseElement_a429a3d642dd95f30e1059ef29564b87d}
+Element style 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/ui/\hyperlink{class_8baseelement_8php}{class.baseelement.php}\end{DoxyCompactItemize}
