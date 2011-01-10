@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines status object that's user for all objects
- * \version $Id: class.statushandler.php,v 1.5 2010-12-12 14:27:36 oscar Exp $
+ * \version $Id: class.statushandler.php,v 1.6 2011-01-10 18:45:59 oscar Exp $
  */
 
 /**
@@ -44,16 +44,6 @@ class StatusHandler
 	private function __construct ($code = OWL_STATUS_WARNING)
 	{
 		$this->code = $code;
-	}
-
-	/**
-	 * Implementation of the __clone() function to prevent cloning of this singleton;
-	 * it triggers a fatal (user)error
-	 * \public
-	 */
-	public function __clone ()
-	{
-		trigger_error('invalid object cloning');
 	}
 
 	/**

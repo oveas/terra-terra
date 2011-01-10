@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.9 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.10 2011-01-10 18:45:59 oscar Exp $
  */
 
 /**
@@ -55,13 +55,20 @@ class UserHandler extends _OWL
 
 	/**
 	 * Log out the current user.
+	 * \param[in] $reset_status When true, the object status will be reset
 	 * \protected
 	 */
-	protected function logout ()
+	protected function logout ($reset_status)
 	{
+		if (!$reset_status) {
+			$this->save_status();
+		}
 		session_destroy();
 		$this->dataset->reset (DATA_RESET_FULL);
 		$this->session = new Session();
+		if (!$reset_status) {
+			$this->restore_status();
+		}
 	}
 
 	/**
@@ -152,6 +159,11 @@ class UserHandler extends _OWL
 	protected function get_username ()
 	{
 		return ($_SESSION['username']);
+	}
+
+	public function isLoggedIn()
+	{
+		return (!($_SESSION['username'] == ConfigHandler::get ('session|default_user')));
 	}
 
 	/**

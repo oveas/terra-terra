@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._owl.php,v 1.2 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class._owl.php,v 1.3 2011-01-10 18:46:00 oscar Exp $
  */
 
 /**
@@ -19,6 +19,12 @@ abstract class _OWL
 	 */
 	private $status;
 
+	/**
+	 * Copy of the status object
+	 * \private 
+	 */
+	private $saved_status;
+	
 	/**
 	 * Pointer to the object which holds the last nonsuccessfull (>= OWL_WARNING) status
 	 * \private
@@ -42,6 +48,7 @@ abstract class _OWL
 	protected function init ()
 	{
 		$this->status = OWL::factory('StatusHandler');
+		$this->saved_status = null;
 		$this->pstatus =& $this;
 	}
 
@@ -62,9 +69,29 @@ abstract class _OWL
 	 */
 	protected function reset ()
 	{
-	 	$this->reset_calltree();
+		$this->reset_calltree();
 	}
 
+	/**
+	 * Create a copy of the status object
+	 */
+	protected function save_status()
+	{
+		$this->saved_status = clone $this->status;
+	}
+
+	/**
+	 * Restore the previously saved status object and destroy the copy
+	 */
+	protected function restore_status()
+	{
+		if ($this->saved_status === null) {
+			$this->set_status(OWL_STATUS_NOSAVSTAT);
+		}
+		$this->status = clone $this->saved_status;
+		$this->saved_status = null;
+	}
+	
 	/**
 	 * Reset the status in the complete calltree
 	 * \private
@@ -79,7 +106,7 @@ abstract class _OWL
 		// Continue here on the way back...
 	 	$this->pstatus =& $this;
 	 	$this->status->reset();
-//echo "Object ".get_class($this)." reset<br>";
+//echo "Object ".get_class($this)." reset at level $depth<br>";
 	}
 
 	/**
@@ -265,9 +292,11 @@ Register::register_code ('OWL_STATUS_ERROR');
 //Register::register_code ('OWL_STATUS_BUG');
 Register::register_code ('OWL_STATUS_NOKEY');
 Register::register_code ('OWL_STATUS_IVKEY');
+Register::register_code ('OWL_STATUS_NOSAVSTAT');
 
 Register::set_severity (OWL_FATAL);
 Register::register_code ('OWL_STATUS_THROWERR');
+
 //Register::set_severity (OWL_CRITICAL);
 
 /*

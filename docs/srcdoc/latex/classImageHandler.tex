@@ -11,7 +11,7 @@ Inheritance diagram for ImageHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=400pt]{classImageHandler__inherit__graph}
+\includegraphics[height=600pt]{classImageHandler__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -20,7 +20,7 @@ Collaboration diagram for ImageHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=400pt]{classImageHandler__coll__graph}
+\includegraphics[height=600pt]{classImageHandler__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -60,6 +60,10 @@ Collaboration diagram for ImageHandler:\nopagebreak
 \item 
 \hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
 \item 
+\hyperlink{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}{save\_\-status} ()
+\item 
+\hyperlink{class__OWL_a465eeaf40edd9f9c848841700c32ce55}{restore\_\-status} ()
+\item 
 \hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
 \item 
 \hyperlink{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
@@ -96,12 +100,17 @@ Jul 30, 2008 -\/-\/ O van Eijk -\/-\/ Modified version for OWL-\/PHP
 \subsection{Constructor \& Destructor Documentation}
 \index{ImageHandler@{ImageHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
 \index{\_\-\_\-construct@{\_\-\_\-construct}!ImageHandler@{ImageHandler}}
-\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}ImageHandler::\_\-\_\-construct (\$ {\em name}, \/  \$ {\em req} = {\ttfamily false})}\label{classImageHandler_aa61dc81d4cf98eed31b32e2197018309}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}ImageHandler::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{\$}]{ name, }
+\item[{\$}]{ req = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{classImageHandler_aa61dc81d4cf98eed31b32e2197018309}
 Class constructor; setup the image characteristics
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$name}]Filename \item[\mbox{$\leftarrow$} {\em \$req}]True is the file must exist at object create time \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$name}]Filename \item[\mbox{\tt[in]} {\em \$req}]True is the file must exist at object create time \end{DoxyParams}
 
 
 Reimplemented from \hyperlink{classFileHandler_a8d75c8ea0c532acdeae0a0a4efa3704a}{FileHandler}.
@@ -115,12 +124,17 @@ References \$name, \_\-OWL::init(), and \_\-OWL::set\_\-status().
 \subsection{Member Function Documentation}
 \index{ImageHandler@{ImageHandler}!check@{check}}
 \index{check@{check}!ImageHandler@{ImageHandler}}
-\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ object, }
+\item[{\$}]{ level}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
 This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$object}]Pointer to an object to check against \item[\mbox{\tt[in]} {\em \$level}]The maximum severity level \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct ( below the max), otherwise false 
 \end{DoxyReturn}
@@ -134,7 +148,11 @@ Referenced by SessionHandler::write().
 
 \index{ImageHandler@{ImageHandler}!close@{close}}
 \index{close@{close}!ImageHandler@{ImageHandler}}
-\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::close ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFileHandler_aa48e7c3b67346e29b194d2f0ac5dd1f8}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFileHandler_aa48e7c3b67346e29b194d2f0ac5dd1f8}
 Close the file 
 
 References \_\-OWL::set\_\-status().
@@ -145,22 +163,34 @@ Referenced by FileHandler::\_\-\_\-destruct(), and FileHandler::read\_\-data().
 
 \index{ImageHandler@{ImageHandler}!download@{download}}
 \index{download@{download}!ImageHandler@{ImageHandler}}
-\subsubsection[{download}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::download ()\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFileHandler_ac17edc9b92643c32ae6040b1235c64dd}
+\subsubsection[{download}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::download (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFileHandler_ac17edc9b92643c32ae6040b1235c64dd}
 \index{ImageHandler@{ImageHandler}!encode@{encode}}
 \index{encode@{encode}!ImageHandler@{ImageHandler}}
-\subsubsection[{encode}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::encode ()\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFileHandler_aa29360bf94fd54d906256561f33d93ad}
+\subsubsection[{encode}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::encode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFileHandler_aa29360bf94fd54d906256561f33d93ad}
 
 
 References FileHandler::read\_\-data().
 
 \index{ImageHandler@{ImageHandler}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!ImageHandler@{ImageHandler}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
+\begin{DoxyParamCaption}
+\item[{\$}]{ status = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
 Get the current object severity level.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
@@ -174,7 +204,11 @@ Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandl
 
 \index{ImageHandler@{ImageHandler}!get\_\-status@{get\_\-status}}
 \index{get\_\-status@{get\_\-status}!ImageHandler@{ImageHandler}}
-\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
 Get the current object status.
 
 \begin{DoxyReturn}{Returns}
@@ -186,23 +220,31 @@ Referenced by SchemeHandler::compare().
 
 \index{ImageHandler@{ImageHandler}!init@{init}}
 \index{init@{init}!ImageHandler@{ImageHandler}}
-\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
 References OWL::factory().
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), \_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), FormField::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), \_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{ImageHandler@{ImageHandler}!open@{open}}
 \index{open@{open}!ImageHandler@{ImageHandler}}
-\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::open (\$ {\em mode} = {\ttfamily 'r'})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFileHandler_a2a650b033c4eb1f98ba47fb05ce7b454}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::open (
+\begin{DoxyParamCaption}
+\item[{\$}]{ mode = {\ttfamily 'r'}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFileHandler_a2a650b033c4eb1f98ba47fb05ce7b454}
 Open the file
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$mode}]Mode in which the file should be opened:
+\item[\mbox{\tt[in]} {\em \$mode}]Mode in which the file should be opened:
 \begin{DoxyItemize}
 \item 'r' Open for reading only; place the file pointer at the beginning of the file.
 \item 'r+' Open for reading and writing; place the file pointer at the beginning of the file.
@@ -221,7 +263,11 @@ Referenced by FileHandler::read\_\-data().
 
 \index{ImageHandler@{ImageHandler}!read\_\-data@{read\_\-data}}
 \index{read\_\-data@{read\_\-data}!ImageHandler@{ImageHandler}}
-\subsubsection[{read\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::read\_\-data ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFileHandler_a1389a6ea19a22471c301d70b5ed68ed8}
+\subsubsection[{read\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::read\_\-data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFileHandler_a1389a6ea19a22471c301d70b5ed68ed8}
 Read the file contents and return as one dataset 
 
 References FileHandler::close(), and FileHandler::open().
@@ -232,12 +278,16 @@ Referenced by FileHandler::encode().
 
 \index{ImageHandler@{ImageHandler}!read\_\-line@{read\_\-line}}
 \index{read\_\-line@{read\_\-line}!ImageHandler@{ImageHandler}}
-\subsubsection[{read\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::read\_\-line (\$ {\em trim} = {\ttfamily {\bf FILE\_\-NOTRIM}})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFileHandler_a69f84a8138f717c84f560125f1f95448}
+\subsubsection[{read\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::read\_\-line (
+\begin{DoxyParamCaption}
+\item[{\$}]{ trim = {\ttfamily {\bf FILE\_\-NOTRIM}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFileHandler_a69f84a8138f717c84f560125f1f95448}
 Read a single line from the file. File must be opened before
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$trim}]specify how the returned line should be trimmed:
+\item[\mbox{\tt[in]} {\em \$trim}]specify how the returned line should be trimmed:
 \begin{DoxyItemize}
 \item FILE\_\-NOTRIM
 \item FILE\_\-TRIM\_\-L
@@ -250,7 +300,11 @@ References \_\-OWL::set\_\-status().
 
 \index{ImageHandler@{ImageHandler}!reset@{reset}}
 \index{reset@{reset}!ImageHandler@{ImageHandler}}
-\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
 General reset function for all objects. Should be called after each non-\/fatal error 
 
 Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
@@ -263,37 +317,77 @@ References \_\-OWL::reset\_\-calltree().
 
 Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
 
+\index{ImageHandler@{ImageHandler}!restore\_\-status@{restore\_\-status}}
+\index{restore\_\-status@{restore\_\-status}!ImageHandler@{ImageHandler}}
+\subsubsection[{restore\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restore\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a465eeaf40edd9f9c848841700c32ce55}
+Restore the previously saved status object and destroy the copy 
+
+References \_\-OWL::set\_\-status().
+
+
+
+Referenced by UserHandler::logout().
+
+\index{ImageHandler@{ImageHandler}!save\_\-status@{save\_\-status}}
+\index{save\_\-status@{save\_\-status}!ImageHandler@{ImageHandler}}
+\subsubsection[{save\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::save\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
+Create a copy of the status object 
+
+Referenced by UserHandler::logout().
+
 \index{ImageHandler@{ImageHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!ImageHandler@{ImageHandler}}
-\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ object = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
 Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
 \index{ImageHandler@{ImageHandler}!set\_\-status@{set\_\-status}}
 \index{set\_\-status@{set\_\-status}!ImageHandler@{ImageHandler}}
-\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
+\begin{DoxyParamCaption}
+\item[{\$}]{ status, }
+\item[{\$}]{ params = {\ttfamily array~()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
 Set the current object status to the specified value.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{\tt[in]} {\em \$params}]\end{DoxyParams}
 
 
 References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), \_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), \_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), Form::setEncoding(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), Form::setMethod(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{ImageHandler@{ImageHandler}!signal@{signal}}
 \index{signal@{signal}!ImageHandler@{ImageHandler}}
-\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (
+\begin{DoxyParamCaption}
+\item[{\$}]{ level = {\ttfamily {\bf OWL\_\-INFO}}, }
+\item[{\&\$}]{ text = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
 Display the message for the current object status
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{\tt[out]} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
@@ -307,12 +401,17 @@ Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
 
 \index{ImageHandler@{ImageHandler}!traceback@{traceback}}
 \index{traceback@{traceback}!ImageHandler@{ImageHandler}}
-\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ text = {\ttfamily false}, }
+\item[{\$}]{ depth = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
 If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\item[\mbox{\tt[out]} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{\tt[in]} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}

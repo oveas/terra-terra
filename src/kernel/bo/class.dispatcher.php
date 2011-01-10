@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library Dispatcher class
- * \version $Id: class.dispatcher.php,v 1.2 2010-12-12 14:27:36 oscar Exp $
+ * \version $Id: class.dispatcher.php,v 1.3 2011-01-10 18:45:59 oscar Exp $
  */
 
 /**
@@ -62,7 +62,8 @@ class Dispatcher extends _OWL
 	public function dispatch()
 	{
 		$_form = OWL::factory('FormHandler');
-		$_destination = $_form->get('owl_dispatch');
+		$_destination = owlCrypt(urldecode($_form->get('owl_dispatch')));
+
 		if ($_form->get_status() === FORM_NOVALUE) {
 			$this->set_status(DISP_NOARG);
 			return;
@@ -75,7 +76,11 @@ class Dispatcher extends _OWL
 		}
 
 		if (empty($_classname)) {
-			$_classname = ucfirst($_classfile);
+			$_classname = $_classfile;
+			$_classname = preg_replace('/^class\./i', '', $_classname);
+			$_classname = preg_replace('/\.php$/i', '', $_classname);
+			$_classname = ucfirst($_classname);
+			
 		}
 
 		if (defined($_path)) {
@@ -85,18 +90,18 @@ class Dispatcher extends _OWL
 		}
 
 		if (!OWLloader::getClass($_classfile, $_inc_path)) {
-			$this->set_status (DISP_NOCLASSF, $_classfile);
+			$this->set_status (DISP_NOCLASSF, array($_classfile, "$_inc_path/$_classfile"));
 			return ($this->severity);
 		}
 
 		if (!class_exists($_classname)) {
-			$this->set_status (DISP_NOCLASS, $_classname, "$_inc_path/$_classfile");
+			$this->set_status (DISP_NOCLASS, $_classname);
 			return ($this->severity);
 		}
 
 		$_handler = new $_classname();
 		if (!method_exists($_handler, $_method)) {
-			$this->set_status (DISP_NOMETHOD, $_method, $_classfile);
+			$this->set_status (DISP_NOMETHOD, array($_method, $_classname));
 			return ($this->severity);
 		}
 		return $_handler->$_method();

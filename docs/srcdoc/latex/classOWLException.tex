@@ -47,12 +47,18 @@ Jul 29, 2008 -\/-\/ O van Eijk -\/-\/ Initial version
 \subsection{Constructor \& Destructor Documentation}
 \index{OWLException@{OWLException}!\_\-\_\-construct@{\_\-\_\-construct}}
 \index{\_\-\_\-construct@{\_\-\_\-construct}!OWLException@{OWLException}}
-\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::\_\-\_\-construct (\$ {\em msg} = {\ttfamily null}, \/  \$ {\em code} = {\ttfamily 0}, \/  {\bf OWLException} \$ {\em caller} = {\ttfamily null})}\label{classOWLException_a02821b324b42b7818c3fefe7638444e7}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{\$}]{ msg = {\ttfamily null}, }
+\item[{\$}]{ code = {\ttfamily 0}, }
+\item[{{\bf OWLException} \$}]{ caller = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}\label{classOWLException_a02821b324b42b7818c3fefe7638444e7}
 Create the Exception handler object
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$msg}]Message text \item[\mbox{$\leftarrow$} {\em \$code}]Code of the event \item[\mbox{$\leftarrow$} {\em \$caller}]Backlink to the calling object \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$msg}]Message text \item[\mbox{\tt[in]} {\em \$code}]Code of the event \item[\mbox{\tt[in]} {\em \$caller}]Backlink to the calling object \end{DoxyParams}
 
 
 References \$caller, and ConfigHandler::get().
@@ -62,10 +68,14 @@ References \$caller, and ConfigHandler::get().
 \subsection{Member Function Documentation}
 \index{OWLException@{OWLException}!check\_\-hide@{check\_\-hide}}
 \index{check\_\-hide@{check\_\-hide}!OWLException@{OWLException}}
-\subsubsection[{check\_\-hide}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::check\_\-hide (\$ {\em trace})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classOWLException_ad5e675e393079574ff85ac862262baa0}
+\subsubsection[{check\_\-hide}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::check\_\-hide (
+\begin{DoxyParamCaption}
+\item[{\$}]{ trace}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classOWLException_ad5e675e393079574ff85ac862262baa0}
 Check if this traced call has arguments that should be hidden in the stackdump. 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$trace}]The call \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$trace}]The call \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 integer holding the argument index that should be hidden, of -\/1 if nothing has to be hidden. 
 \end{DoxyReturn}
@@ -79,19 +89,27 @@ Referenced by traceback().
 
 \index{OWLException@{OWLException}!get\_\-trace@{get\_\-trace}}
 \index{get\_\-trace@{get\_\-trace}!OWLException@{OWLException}}
-\subsubsection[{get\_\-trace}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::get\_\-trace ()}\label{classOWLException_abec096884c369f08040443561ac3b164}
+\subsubsection[{get\_\-trace}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::get\_\-trace (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOWLException_abec096884c369f08040443561ac3b164}
 Trace back the previous object in the stack 
 
 Referenced by stack\_\-dump().
 
 \index{OWLException@{OWLException}!stack\_\-dump@{stack\_\-dump}}
 \index{stack\_\-dump@{stack\_\-dump}!OWLException@{OWLException}}
-\subsubsection[{stack\_\-dump}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::stack\_\-dump (\$ {\em textmode} = {\ttfamily true})}\label{classOWLException_acf2b94859fdebcefc22e8a75ac1a670d}
+\subsubsection[{stack\_\-dump}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::stack\_\-dump (
+\begin{DoxyParamCaption}
+\item[{\$}]{ textmode = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classOWLException_acf2b94859fdebcefc22e8a75ac1a670d}
 Create an overview of the calling stack
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$textmode}]specify the format in which the stackdump should be returned; text (true, default) of HTML (false). \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$textmode}]specify the format in which the stackdump should be returned; text (true, default) of HTML (false). \end{DoxyParams}
 
 
 References Register::get\_\-code(), Register::get\_\-severity(), get\_\-trace(), and traceback().
@@ -102,12 +120,18 @@ Referenced by OWLExceptionHandler::log\_\-exception().
 
 \index{OWLException@{OWLException}!traceback@{traceback}}
 \index{traceback@{traceback}!OWLException@{OWLException}}
-\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::traceback (\$ {\em trace}, \/  \$ {\em step}, \/  \$ {\em textmode})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classOWLException_a6e857cc079ee29428791e4926fe1677a}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::traceback (
+\begin{DoxyParamCaption}
+\item[{\$}]{ trace, }
+\item[{\$}]{ step, }
+\item[{\$}]{ textmode}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classOWLException_a6e857cc079ee29428791e4926fe1677a}
 Trace a single call from the stack
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$trace}]The call \item[\mbox{$\leftarrow$} {\em \$step}]Number of the call \item[\mbox{$\leftarrow$} {\em \$textmode}]True if the stackdump is created as ASCII text, False for HTML \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$trace}]The call \item[\mbox{\tt[in]} {\em \$step}]Number of the call \item[\mbox{\tt[in]} {\em \$textmode}]True if the stackdump is created as ASCII text, False for HTML \end{DoxyParams}
 
 
 References check\_\-hide(), and ConfigHandler::get().

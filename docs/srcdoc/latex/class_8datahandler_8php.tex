@@ -28,11 +28,13 @@ enum \hyperlink{class_8datahandler_8php_ab4fa180fa2d24c38e425ff9ca4c913fa}{DATA\
 enum \hyperlink{class_8datahandler_8php_a9266811d651cb3ff8c5fdf00111e677b}{DATA\_\-RESET\_\-STATUS} 
 \begin{DoxyCompactList}\small\item\em Reset object status only. \item\end{DoxyCompactList}\item 
 enum \hyperlink{class_8datahandler_8php_a19a99423705b41e563424ae76d7fe184}{DATA\_\-RESET\_\-PREPARE} 
-\begin{DoxyCompactList}\small\item\em Reset prepared queries as well. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Reset prepared queries. \item\end{DoxyCompactList}\item 
 enum \hyperlink{class_8datahandler_8php_a3ce9f928f9ba75096925bd4157246bbb}{DATA\_\-RESET\_\-META} 
 \begin{DoxyCompactList}\small\item\em Remove all locks and joins. \item\end{DoxyCompactList}\item 
+enum \hyperlink{class_8datahandler_8php_a7c6305f5e748976aa75d367420a408ea}{DATA\_\-RESET\_\-DATA} 
+\begin{DoxyCompactList}\small\item\em Erase all data from the object. \item\end{DoxyCompactList}\item 
 enum \hyperlink{class_8datahandler_8php_a2a28429433990da242faa223d5a49f0a}{DATA\_\-RESET\_\-FULL} 
-\begin{DoxyCompactList}\small\item\em Clean all data. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Short for All bits set. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 
 
@@ -40,7 +42,7 @@ enum \hyperlink{class_8datahandler_8php_a2a28429433990da242faa223d5a49f0a}{DATA\
 This file defines the \hyperlink{classDataHandler}{DataHandler} class \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id}
+\begin{DoxyParagraph}{Id:}
 \hyperlink{class_8datahandler_8php}{class.datahandler.php},v 1.5 2010-\/12-\/03 12:07:42 oscar Exp 
 \end{DoxyParagraph}
 
@@ -60,12 +62,19 @@ Remove data from the database.
 
 Read data from the database. 
 
+\index{class.datahandler.php@{class.datahandler.php}!DATA\_\-RESET\_\-DATA@{DATA\_\-RESET\_\-DATA}}
+\index{DATA\_\-RESET\_\-DATA@{DATA\_\-RESET\_\-DATA}!class.datahandler.php@{class.datahandler.php}}
+\subsubsection[{DATA\_\-RESET\_\-DATA}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-RESET\_\-DATA}}\label{class_8datahandler_8php_a7c6305f5e748976aa75d367420a408ea}
+
+
+Erase all data from the object. 
+
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-RESET\_\-FULL@{DATA\_\-RESET\_\-FULL}}
 \index{DATA\_\-RESET\_\-FULL@{DATA\_\-RESET\_\-FULL}!class.datahandler.php@{class.datahandler.php}}
 \subsubsection[{DATA\_\-RESET\_\-FULL}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-RESET\_\-FULL}}\label{class_8datahandler_8php_a2a28429433990da242faa223d5a49f0a}
 
 
-Clean all data. 
+Short for All bits set. 
 
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-RESET\_\-META@{DATA\_\-RESET\_\-META}}
 \index{DATA\_\-RESET\_\-META@{DATA\_\-RESET\_\-META}!class.datahandler.php@{class.datahandler.php}}
@@ -79,7 +88,7 @@ Remove all locks and joins.
 \subsubsection[{DATA\_\-RESET\_\-PREPARE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DATA\_\-RESET\_\-PREPARE}}\label{class_8datahandler_8php_a19a99423705b41e563424ae76d7fe184}
 
 
-Reset prepared queries as well. 
+Reset prepared queries. 
 
 \index{class.datahandler.php@{class.datahandler.php}!DATA\_\-RESET\_\-STATUS@{DATA\_\-RESET\_\-STATUS}}
 \index{DATA\_\-RESET\_\-STATUS@{DATA\_\-RESET\_\-STATUS}!class.datahandler.php@{class.datahandler.php}}

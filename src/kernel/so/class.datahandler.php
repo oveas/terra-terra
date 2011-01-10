@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.5 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.6 2011-01-10 18:45:59 oscar Exp $
  */
 
 /**
@@ -33,16 +33,19 @@ define ('DATA_DELETE',		3);
  * @{
  */
 //! Reset object status only
-define ('DATA_RESET_STATUS',	0);
+define ('DATA_RESET_STATUS',	1);
 
-//! Reset prepared queries as well
-define ('DATA_RESET_PREPARE',	1);
+//! Reset prepared queries 
+define ('DATA_RESET_PREPARE',	2);
 
 //! Remove all locks and joins
-define ('DATA_RESET_META',		2);
+define ('DATA_RESET_META',		4);
 
-//! Clean all data
-define ('DATA_RESET_FULL',		3);
+//! Erase all data from the object
+define ('DATA_RESET_DATA',		8);
+
+//! Short for All bits set
+define ('DATA_RESET_FULL',		15);
 
 //! @}
 
@@ -115,35 +118,26 @@ class DataHandler extends _OWL
 		$this->set_status (OWL_STATUS_OK);
 	}
 
-
 	/**
 	 * Reset the object
-	 * \param[in] $level The reset level, can be any of the following:
-	 *   - DATA_RESET_STATUS; Reset object status only
-	 *   - DATA_RESET_PREPARE (default); Reset status and a prepared query
-	 *   - DATA_RESET_META; Reset status and query, remove all locks and joins
-	 *   - DATA_RESET_FULL; Reset status and query, remove all locks, joins and data
+	 * \param[in] $level Bitmap indicating which items must be reset. Default is DATA_RESET_PREPARE
 	 * \public
 	 */
 	public function reset ($level = DATA_RESET_PREPARE)
 	{
-		switch ($level) {
-			case DATA_RESET_FULL:
-				$this->owl_data = array();
-			case DATA_RESET_META:
-				$this->owl_joins = array();
-				$this->owl_keys = array();
-			case DATA_RESET_PREPARE:
-				$this->owl_database->reset();
-				$this->owl_prepared = DATA_UNPREPARED;
-			case DATA_RESET_STATUS:
-				parent::reset();
-				return true;
-				break;
-			default:
-				$this->set_status (DATA_IVRESET, $level);
-				return false;
-				break;
+		if ($level & DATA_RESET_DATA) {
+			$this->owl_data = array();
+		}
+		if ($level & DATA_RESET_META) {
+			$this->owl_joins = array();
+			$this->owl_keys = array();
+		}
+		if ($level & DATA_RESET_PREPARE) {
+			$this->owl_database->reset();
+			$this->owl_prepared = DATA_UNPREPARED;
+		}
+		if ($level & DATA_RESET_STATUS) {
+			parent::reset();
 		}
 	}
 
@@ -434,7 +428,6 @@ Register::register_code ('DATA_IVPREPARE');
 
 Register::set_severity (OWL_ERROR);
 Register::register_code ('DATA_NODBLINK');
-Register::register_code ('DATA_IVRESET');
 
 //Register::set_severity (OWL_FATAL);
 //Register::set_severity (OWL_CRITICAL);

@@ -11,7 +11,7 @@ Inheritance diagram for DataHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=400pt]{classDataHandler__inherit__graph}
+\includegraphics[height=600pt]{classDataHandler__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -20,7 +20,7 @@ Collaboration diagram for DataHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=400pt]{classDataHandler__coll__graph}
+\includegraphics[height=600pt]{classDataHandler__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -62,6 +62,10 @@ Collaboration diagram for DataHandler:\nopagebreak
 \hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
 \hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\item 
+\hyperlink{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}{save\_\-status} ()
+\item 
+\hyperlink{class__OWL_a465eeaf40edd9f9c848841700c32ce55}{restore\_\-status} ()
 \item 
 \hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
 \item 
@@ -108,12 +112,17 @@ Aug 4, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 \subsection{Member Function Documentation}
 \index{DataHandler@{DataHandler}!check@{check}}
 \index{check@{check}!DataHandler@{DataHandler}}
-\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ object, }
+\item[{\$}]{ level}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
 This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$object}]Pointer to an object to check against \item[\mbox{\tt[in]} {\em \$level}]The maximum severity level \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct ( below the max), otherwise false 
 \end{DoxyReturn}
@@ -127,22 +136,32 @@ Referenced by SessionHandler::write().
 
 \index{DataHandler@{DataHandler}!DataHandler@{DataHandler}}
 \index{DataHandler@{DataHandler}!DataHandler@{DataHandler}}
-\subsubsection[{DataHandler}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::DataHandler (\$ {\em tablename} = {\ttfamily ''})}\label{classDataHandler_aed5b2eb4ca7b2e4b0c1563d817d73c16}
+\subsubsection[{DataHandler}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::DataHandler (
+\begin{DoxyParamCaption}
+\item[{\$}]{ tablename = {\ttfamily ''}}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_aed5b2eb4ca7b2e4b0c1563d817d73c16}
 Class constructor. We don't use a standard constructor (\_\-\_\-construct()) here, since singleton classes (using private constructors) might derive from this class. In stead we use the PHP4 compatible constructor. 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$tablename}]Default table name for this dataset \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$tablename}]Default table name for this dataset \end{DoxyParams}
 
 
 References OWL::factory(), \_\-OWL::init(), and \_\-OWL::set\_\-status().
 
 \index{DataHandler@{DataHandler}!db@{db}}
 \index{db@{db}!DataHandler@{DataHandler}}
-\subsubsection[{db}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::db (\&\$ {\em data} = {\ttfamily false}, \/  \$ {\em line} = {\ttfamily 0}, \/  \$ {\em file} = {\ttfamily '\mbox{[}unknown\mbox{]}'})}\label{classDataHandler_abb329fe5a97eb8df928aabfc8078ff23}
+\subsubsection[{db}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::db (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ data = {\ttfamily false}, }
+\item[{\$}]{ line = {\ttfamily 0}, }
+\item[{\$}]{ file = {\ttfamily '\mbox{[}unknown\mbox{]}'}}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_abb329fe5a97eb8df928aabfc8078ff23}
 Forward a call to the DBHandler object (which is private in this \hyperlink{classDataHandler}{DataHandler})
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\rightarrow$} {\em \$data}]The result of DBHandler function, or false when no query was prepared yet \item[\mbox{$\leftarrow$} {\em \$line}]Line number of this call \item[\mbox{$\leftarrow$} {\em \$file}]File that made the call to this method \end{DoxyParams}
+\item[\mbox{\tt[out]} {\em \$data}]The result of DBHandler function, or false when no query was prepared yet \item[\mbox{\tt[in]} {\em \$line}]Line number of this call \item[\mbox{\tt[in]} {\em \$file}]File that made the call to this method \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
@@ -152,7 +171,11 @@ References \_\-OWL::set\_\-high\_\-severity().
 
 \index{DataHandler@{DataHandler}!db\_\-status@{db\_\-status}}
 \index{db\_\-status@{db\_\-status}!DataHandler@{DataHandler}}
-\subsubsection[{db\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::db\_\-status ()}\label{classDataHandler_a3c82ec0a40dabcc55dc203c96abf02d2}
+\subsubsection[{db\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::db\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_a3c82ec0a40dabcc55dc203c96abf02d2}
 Return the last status of the database
 
 \begin{DoxyReturn}{Returns}
@@ -160,23 +183,32 @@ Current status of the database object
 \end{DoxyReturn}
 \index{DataHandler@{DataHandler}!escape\_\-string@{escape\_\-string}}
 \index{escape\_\-string@{escape\_\-string}!DataHandler@{DataHandler}}
-\subsubsection[{escape\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::escape\_\-string (\$ {\em string})}\label{classDataHandler_a435338a167a44a041af2895859abb0c9}
+\subsubsection[{escape\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::escape\_\-string (
+\begin{DoxyParamCaption}
+\item[{\$}]{ string}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_a435338a167a44a041af2895859abb0c9}
 Interface to the DbHander::escape\_\-string()
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$string}]String to escape \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$string}]String to escape \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Return value of \hyperlink{classDbHandler_a67d77702ff6db70f89123d3f947af143}{DbHandler::escape\_\-string()} 
 \end{DoxyReturn}
 \index{DataHandler@{DataHandler}!find\_\-field@{find\_\-field}}
 \index{find\_\-field@{find\_\-field}!DataHandler@{DataHandler}}
-\subsubsection[{find\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::find\_\-field (\$ {\em fld}, \/  \&\$ {\em expanded})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDataHandler_a1e4789e22370c96ae479bc3a58f30984}
+\subsubsection[{find\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::find\_\-field (
+\begin{DoxyParamCaption}
+\item[{\$}]{ fld, }
+\item[{\&\$}]{ expanded}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDataHandler_a1e4789e22370c96ae479bc3a58f30984}
 Try to exand a field to a fully qualified 'table\#field' name
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$fld}]The fieldname that has to be expanded \item[\mbox{$\rightarrow$} {\em \$expanded}]An array with all matching fully qualified fieldnames. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$fld}]The fieldname that has to be expanded \item[\mbox{\tt[out]} {\em \$expanded}]An array with all matching fully qualified fieldnames. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The number of matches 
 \end{DoxyReturn}
@@ -186,12 +218,16 @@ Referenced by get().
 
 \index{DataHandler@{DataHandler}!get@{get}}
 \index{get@{get}!DataHandler@{DataHandler}}
-\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::get (\$ {\em variable})}\label{classDataHandler_a7dcf85dac419f51ad4daa166c928a399}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::get (
+\begin{DoxyParamCaption}
+\item[{\$}]{ variable}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_a7dcf85dac419f51ad4daa166c928a399}
 Retrieve a value from the data array. The variable name can be a fully qualified table/fieldname (format \char`\"{}table\#field\char`\"{}), or only a field name, in which case it has to be unique. If the fieldname cannot be found directly, the array is scanned to find a matching field. If more matches are found, the object status is set to DATA\_\-AMBFIELD.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$variable}]The name of the variable that should be retrieved \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$variable}]The name of the variable that should be retrieved \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The value, or NULL when the value was not found or abigious. 
 \end{DoxyReturn}
@@ -201,12 +237,16 @@ References find\_\-field(), and \_\-OWL::set\_\-status().
 
 \index{DataHandler@{DataHandler}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!DataHandler@{DataHandler}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
+\begin{DoxyParamCaption}
+\item[{\$}]{ status = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
 Get the current object severity level.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
@@ -220,7 +260,11 @@ Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and set\_\-ke
 
 \index{DataHandler@{DataHandler}!get\_\-status@{get\_\-status}}
 \index{get\_\-status@{get\_\-status}!DataHandler@{DataHandler}}
-\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
 Get the current object status.
 
 \begin{DoxyReturn}{Returns}
@@ -232,23 +276,31 @@ Referenced by SchemeHandler::compare().
 
 \index{DataHandler@{DataHandler}!init@{init}}
 \index{init@{init}!DataHandler@{DataHandler}}
-\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
 References OWL::factory().
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler().
+Referenced by Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), FormField::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler().
 
 \index{DataHandler@{DataHandler}!prepare@{prepare}}
 \index{prepare@{prepare}!DataHandler@{DataHandler}}
-\subsubsection[{prepare}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::prepare (\$ {\em type} = {\ttfamily {\bf DATA\_\-READ}})}\label{classDataHandler_af3e7a17194e97300d499e9178f4913cb}
+\subsubsection[{prepare}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::prepare (
+\begin{DoxyParamCaption}
+\item[{\$}]{ type = {\ttfamily {\bf DATA\_\-READ}}}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_af3e7a17194e97300d499e9178f4913cb}
 Prepare a database query
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$type}]Specify which type of query should be prepared:
+\item[\mbox{\tt[in]} {\em \$type}]Specify which type of query should be prepared:
 \begin{DoxyItemize}
 \item DATA\_\-READ (default); Read data from the database
 \item DATA\_\-WRITE; Write new data to the database
@@ -263,7 +315,25 @@ References \$\_\-t, \$\_\-table, \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL
 
 \index{DataHandler@{DataHandler}!reset@{reset}}
 \index{reset@{reset}!DataHandler@{DataHandler}}
-\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::reset (
+\begin{DoxyParamCaption}
+\item[{\$}]{ level = {\ttfamily {\bf DATA\_\-RESET\_\-PREPARE}}}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_ab89e1aaad9cd0a37f1c7f13c1d9c0d57}
+Reset the object 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$level}]Bitmap indicating which items must be reset. Default is DATA\_\-RESET\_\-PREPARE \end{DoxyParams}
+
+
+References \_\-OWL::reset().
+
+\index{DataHandler@{DataHandler}!reset@{reset}}
+\index{reset@{reset}!DataHandler@{DataHandler}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
 General reset function for all objects. Should be called after each non-\/fatal error 
 
 Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
@@ -276,49 +346,74 @@ References \_\-OWL::reset\_\-calltree().
 
 Referenced by \_\-OWL::check(), SessionHandler::read(), reset(), and \_\-OWL::set\_\-status().
 
-\index{DataHandler@{DataHandler}!reset@{reset}}
-\index{reset@{reset}!DataHandler@{DataHandler}}
-\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::reset (\$ {\em level} = {\ttfamily {\bf DATA\_\-RESET\_\-PREPARE}})}\label{classDataHandler_ab89e1aaad9cd0a37f1c7f13c1d9c0d57}
-Reset the object 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$level}]The reset level, can be any of the following:
-\begin{DoxyItemize}
-\item DATA\_\-RESET\_\-STATUS; Reset object status only
-\item DATA\_\-RESET\_\-PREPARE (default); Reset status and a prepared query
-\item DATA\_\-RESET\_\-META; Reset status and query, remove all locks and joins
-\item DATA\_\-RESET\_\-FULL; Reset status and query, remove all locks, joins and data 
-\end{DoxyItemize}\end{DoxyParams}
+\index{DataHandler@{DataHandler}!restore\_\-status@{restore\_\-status}}
+\index{restore\_\-status@{restore\_\-status}!DataHandler@{DataHandler}}
+\subsubsection[{restore\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restore\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a465eeaf40edd9f9c848841700c32ce55}
+Restore the previously saved status object and destroy the copy 
+
+References \_\-OWL::set\_\-status().
 
 
-References \_\-OWL::reset(), and \_\-OWL::set\_\-status().
+
+Referenced by UserHandler::logout().
+
+\index{DataHandler@{DataHandler}!save\_\-status@{save\_\-status}}
+\index{save\_\-status@{save\_\-status}!DataHandler@{DataHandler}}
+\subsubsection[{save\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::save\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
+Create a copy of the status object 
+
+Referenced by UserHandler::logout().
 
 \index{DataHandler@{DataHandler}!set@{set}}
 \index{set@{set}!DataHandler@{DataHandler}}
-\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set (\$ {\em variable}, \/  \$ {\em value})}\label{classDataHandler_a296f26f5af1e46a49ae44110848fa031}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set (
+\begin{DoxyParamCaption}
+\item[{\$}]{ variable, }
+\item[{\$}]{ value}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_a296f26f5af1e46a49ae44110848fa031}
 Define or override a variable in the data array
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$variable}]The name of the variable that should be set \item[\mbox{$\leftarrow$} {\em \$value}]Value to set the variable to. If this is an array, the second field in the array has to be the tablename where the fieldname is found. The value itself van NEVER be an array! \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$variable}]The name of the variable that should be set \item[\mbox{\tt[in]} {\em \$value}]Value to set the variable to. If this is an array, the second field in the array has to be the tablename where the fieldname is found. The value itself van NEVER be an array! \end{DoxyParams}
 
 
 References \_\-OWL::set\_\-status().
 
 \index{DataHandler@{DataHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!DataHandler@{DataHandler}}
-\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ object = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
 Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
 
 Referenced by \_\-OWL::check(), db(), prepare(), and SessionHandler::read().
 
 \index{DataHandler@{DataHandler}!set\_\-join@{set\_\-join}}
 \index{set\_\-join@{set\_\-join}!DataHandler@{DataHandler}}
-\subsubsection[{set\_\-join}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set\_\-join (\$ {\em lvalue}, \/  \$ {\em rvalue}, \/  \$ {\em linktype} = {\ttfamily '='})}\label{classDataHandler_a9b77733f02e9d6281fc40df110c0ba70}
+\subsubsection[{set\_\-join}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set\_\-join (
+\begin{DoxyParamCaption}
+\item[{\$}]{ lvalue, }
+\item[{\$}]{ rvalue, }
+\item[{\$}]{ linktype = {\ttfamily '='}}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_a9b77733f02e9d6281fc40df110c0ba70}
 Define a link between 2 fields that will be recognized when the database query is built.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$lvalue}]Left value as array(table, field) \item[\mbox{$\leftarrow$} {\em \$rvalue}]Right value as array(table, field) \item[\mbox{$\leftarrow$} {\em \$linktype}]How are the fields linked. Can be any binary operator as recognized by SQL. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$lvalue}]Left value as array(table, field) \item[\mbox{\tt[in]} {\em \$rvalue}]Right value as array(table, field) \item[\mbox{\tt[in]} {\em \$linktype}]How are the fields linked. Can be any binary operator as recognized by SQL. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
@@ -328,10 +423,14 @@ References \_\-OWL::set\_\-status().
 
 \index{DataHandler@{DataHandler}!set\_\-key@{set\_\-key}}
 \index{set\_\-key@{set\_\-key}!DataHandler@{DataHandler}}
-\subsubsection[{set\_\-key}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set\_\-key (\$ {\em variable})}\label{classDataHandler_a32ce223478b78a4ea9838a3c6ac7440c}
+\subsubsection[{set\_\-key}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set\_\-key (
+\begin{DoxyParamCaption}
+\item[{\$}]{ variable}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_a32ce223478b78a4ea9838a3c6ac7440c}
 Lock variables for update by adding them to an array. Fields in this array will not be overwritten on updates, but used in WHERE clauses. 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$variable}]Variable name to lock, optionally as an array (table, field) \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$variable}]Variable name to lock, optionally as an array (table, field) \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
@@ -341,36 +440,50 @@ References \_\-OWL::get\_\-severity(), and \_\-OWL::set\_\-status().
 
 \index{DataHandler@{DataHandler}!set\_\-status@{set\_\-status}}
 \index{set\_\-status@{set\_\-status}!DataHandler@{DataHandler}}
-\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
+\begin{DoxyParamCaption}
+\item[{\$}]{ status, }
+\item[{\$}]{ params = {\ttfamily array~()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
 Set the current object status to the specified value.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{\tt[in]} {\em \$params}]\end{DoxyParams}
 
 
 References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), reset(), SchemeHandler::scheme(), FormHandler::set(), set(), set\_\-join(), set\_\-key(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), set(), set\_\-join(), set\_\-key(), BaseElement::setAttributes(), Form::setEncoding(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), Form::setMethod(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{DataHandler@{DataHandler}!set\_\-tablename@{set\_\-tablename}}
 \index{set\_\-tablename@{set\_\-tablename}!DataHandler@{DataHandler}}
-\subsubsection[{set\_\-tablename}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set\_\-tablename (\$ {\em tblname})}\label{classDataHandler_abcb68472abd7da8ee6296421f0a7f2e9}
+\subsubsection[{set\_\-tablename}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set\_\-tablename (
+\begin{DoxyParamCaption}
+\item[{\$}]{ tblname}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_abcb68472abd7da8ee6296421f0a7f2e9}
 Set or overwrite the default table name
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$tblname}]Default table name \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$tblname}]Default table name \end{DoxyParams}
 \index{DataHandler@{DataHandler}!signal@{signal}}
 \index{signal@{signal}!DataHandler@{DataHandler}}
-\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (
+\begin{DoxyParamCaption}
+\item[{\$}]{ level = {\ttfamily {\bf OWL\_\-INFO}}, }
+\item[{\&\$}]{ text = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
 Display the message for the current object status
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{\tt[out]} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
@@ -384,12 +497,17 @@ Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
 
 \index{DataHandler@{DataHandler}!traceback@{traceback}}
 \index{traceback@{traceback}!DataHandler@{DataHandler}}
-\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ text = {\ttfamily false}, }
+\item[{\$}]{ depth = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
 If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\item[\mbox{\tt[out]} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{\tt[in]} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}

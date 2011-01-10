@@ -29,6 +29,10 @@ Inheritance diagram for \_\-OWL:\nopagebreak
 \item 
 \hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
 \item 
+\hyperlink{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}{save\_\-status} ()
+\item 
+\hyperlink{class__OWL_a465eeaf40edd9f9c848841700c32ce55}{restore\_\-status} ()
+\item 
 \hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
 \item 
 \hyperlink{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
@@ -50,6 +54,8 @@ Inheritance diagram for \_\-OWL:\nopagebreak
 \item 
 \hyperlink{class__OWL_aaf448f6bc8a90e20c09e9e2b8fe46eb5}{\$status}
 \item 
+\hyperlink{class__OWL_a3fd6a7b2389b745c00a419dfb8cd7724}{\$saved\_\-status}
+\item 
 \hyperlink{class__OWL_af30c6ce2c59df6da2ef0f7059be9231e}{\$pstatus}
 \end{DoxyCompactItemize}
 
@@ -66,7 +72,11 @@ May 15, 2007 -\/-\/ O van Eijk -\/-\/ initial version
 \subsection{Constructor \& Destructor Documentation}
 \index{\_\-OWL@{\_\-OWL}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!_OWL@{\_\-OWL}}
-\subsubsection[{\_\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\_\-\_\-destruct ()}\label{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}
+\subsubsection[{\_\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\_\-\_\-destruct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}
 Default class destructor; has to exist but can (should?) be reimplemented 
 
 Reimplemented in \hyperlink{classSession_aa498272c85524e4700abc3363883165b}{Session}, \hyperlink{classUser_accd20149a7414612c1505e022eb63ffc}{User}, \hyperlink{classDbHandler_a7cd6bd727d1f296eb5dbfae6ca36ab3f}{DbHandler}, \hyperlink{classFileHandler_a734859e8962992da99dd8f853da5ae43}{FileHandler}, \hyperlink{classLogHandler_aacd0c653489cf221423b9edd62e81458}{LogHandler}, \hyperlink{classSchemeHandler_a3d786efe6ef92858de21438b59774226}{SchemeHandler}, \hyperlink{classSessionHandler_a461097c3ee6b1aecf833ce1225d02329}{SessionHandler}, and \hyperlink{classUserHandler_a3e1f6381ed79caf6e1a255fb0a9cc386}{UserHandler}.
@@ -76,12 +86,17 @@ Reimplemented in \hyperlink{classSession_aa498272c85524e4700abc3363883165b}{Sess
 \subsection{Member Function Documentation}
 \index{\_\-OWL@{\_\-OWL}!check@{check}}
 \index{check@{check}!_OWL@{\_\-OWL}}
-\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ object, }
+\item[{\$}]{ level}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
 This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$object}]Pointer to an object to check against \item[\mbox{\tt[in]} {\em \$level}]The maximum severity level \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct ( below the max), otherwise false 
 \end{DoxyReturn}
@@ -95,12 +110,16 @@ Referenced by SessionHandler::write().
 
 \index{\_\-OWL@{\_\-OWL}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!_OWL@{\_\-OWL}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
+\begin{DoxyParamCaption}
+\item[{\$}]{ status = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
 Get the current object severity level.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
@@ -114,7 +133,11 @@ Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandl
 
 \index{\_\-OWL@{\_\-OWL}!get\_\-status@{get\_\-status}}
 \index{get\_\-status@{get\_\-status}!_OWL@{\_\-OWL}}
-\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
 Get the current object status.
 
 \begin{DoxyReturn}{Returns}
@@ -126,18 +149,26 @@ Referenced by SchemeHandler::compare().
 
 \index{\_\-OWL@{\_\-OWL}!init@{init}}
 \index{init@{init}!_OWL@{\_\-OWL}}
-\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
 References OWL::factory().
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), FormField::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{\_\-OWL@{\_\-OWL}!reset@{reset}}
 \index{reset@{reset}!_OWL@{\_\-OWL}}
-\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
 General reset function for all objects. Should be called after each non-\/fatal error 
 
 Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
@@ -152,47 +183,91 @@ Referenced by check(), SessionHandler::read(), DataHandler::reset(), and set\_\-
 
 \index{\_\-OWL@{\_\-OWL}!reset\_\-calltree@{reset\_\-calltree}}
 \index{reset\_\-calltree@{reset\_\-calltree}!_OWL@{\_\-OWL}}
-\subsubsection[{reset\_\-calltree}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset\_\-calltree (\$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}final, private\mbox{]}}}\label{class__OWL_a91389e63fc76f6513147f302cbd92a2e}
+\subsubsection[{reset\_\-calltree}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset\_\-calltree (
+\begin{DoxyParamCaption}
+\item[{\$}]{ depth = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final, private\mbox{]}}}\label{class__OWL_a91389e63fc76f6513147f302cbd92a2e}
 Reset the status in the complete calltree
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$depth}]Keep track of the depth in recusrive calls. Should be empty in the first call. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$depth}]Keep track of the depth in recusrive calls. Should be empty in the first call. \end{DoxyParams}
 
 
 Referenced by reset().
 
+\index{\_\-OWL@{\_\-OWL}!restore\_\-status@{restore\_\-status}}
+\index{restore\_\-status@{restore\_\-status}!_OWL@{\_\-OWL}}
+\subsubsection[{restore\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restore\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_a465eeaf40edd9f9c848841700c32ce55}
+Restore the previously saved status object and destroy the copy 
+
+References set\_\-status().
+
+
+
+Referenced by UserHandler::logout().
+
+\index{\_\-OWL@{\_\-OWL}!save\_\-status@{save\_\-status}}
+\index{save\_\-status@{save\_\-status}!_OWL@{\_\-OWL}}
+\subsubsection[{save\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::save\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
+Create a copy of the status object 
+
+Referenced by UserHandler::logout().
+
 \index{\_\-OWL@{\_\-OWL}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!_OWL@{\_\-OWL}}
-\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ object = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
 Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
 
 Referenced by check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
 \index{\_\-OWL@{\_\-OWL}!set\_\-status@{set\_\-status}}
 \index{set\_\-status@{set\_\-status}!_OWL@{\_\-OWL}}
-\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
+\begin{DoxyParamCaption}
+\item[{\$}]{ status, }
+\item[{\$}]{ params = {\ttfamily array~()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
 Set the current object status to the specified value.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{\tt[in]} {\em \$params}]\end{DoxyParams}
 
 
 References \$GLOBALS, \$status, ConfigHandler::get(), Register::get\_\-code(), reset(), and signal().
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), Form::setEncoding(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), Form::setMethod(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{\_\-OWL@{\_\-OWL}!signal@{signal}}
 \index{signal@{signal}!_OWL@{\_\-OWL}}
-\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (
+\begin{DoxyParamCaption}
+\item[{\$}]{ level = {\ttfamily {\bf OWL\_\-INFO}}, }
+\item[{\&\$}]{ text = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
 Display the message for the current object status
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{\tt[out]} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
@@ -206,12 +281,17 @@ Referenced by set\_\-status(), and traceback().
 
 \index{\_\-OWL@{\_\-OWL}!traceback@{traceback}}
 \index{traceback@{traceback}!_OWL@{\_\-OWL}}
-\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ text = {\ttfamily false}, }
+\item[{\$}]{ depth = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
 If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\item[\mbox{\tt[out]} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{\tt[in]} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}
@@ -229,7 +309,10 @@ Referenced by check(), UserHandler::login(), and SessionHandler::read().
 \index{\_\-OWL@{\_\-OWL}!\$pstatus@{\$pstatus}}
 \index{\$pstatus@{\$pstatus}!_OWL@{\_\-OWL}}
 \subsubsection[{\$pstatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$pstatus\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{class__OWL_af30c6ce2c59df6da2ef0f7059be9231e}
-Pointer to the object which holds the last nonsuccessfull ($>$= OWL\_\-WARNING) status \index{\_\-OWL@{\_\-OWL}!\$severity@{\$severity}}
+Pointer to the object which holds the last nonsuccessfull ($>$= OWL\_\-WARNING) status \index{\_\-OWL@{\_\-OWL}!\$saved\_\-status@{\$saved\_\-status}}
+\index{\$saved\_\-status@{\$saved\_\-status}!_OWL@{\_\-OWL}}
+\subsubsection[{\$saved\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$saved\_\-status\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{class__OWL_a3fd6a7b2389b745c00a419dfb8cd7724}
+Copy of the status object \index{\_\-OWL@{\_\-OWL}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!_OWL@{\_\-OWL}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
 Severity level of the current object status \index{\_\-OWL@{\_\-OWL}!\$status@{\$status}}

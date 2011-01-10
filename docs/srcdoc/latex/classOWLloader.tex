@@ -29,12 +29,17 @@ Oct 7, 2010 -\/-\/ O van Eijk -\/-\/ Initial version for OWL-\/PHP
 \subsection{Member Function Documentation}
 \index{OWLloader@{OWLloader}!\_\-tryLoad@{\_\-tryLoad}}
 \index{\_\-tryLoad@{\_\-tryLoad}!OWLloader@{OWLloader}}
-\subsubsection[{\_\-tryLoad}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::\_\-tryLoad (\$ {\em \_\-className}, \/  \$ {\em \_\-classLocation})\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classOWLloader_a763911b4bc08982e24f1f897362f8c90}
+\subsubsection[{\_\-tryLoad}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::\_\-tryLoad (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-className, }
+\item[{\$}]{ \_\-classLocation}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classOWLloader_a763911b4bc08982e24f1f897362f8c90}
 Try loading a class from a specific location
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$\_\-className}]Name of the classfile \item[\mbox{$\leftarrow$} {\em \$\_\-classLocation}]Location where to tru loading it from \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-className}]Name of the classfile \item[\mbox{\tt[in]} {\em \$\_\-classLocation}]Location where to tru loading it from \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True on success 
 \end{DoxyReturn}
@@ -48,10 +53,16 @@ Referenced by getClass().
 
 \index{OWLloader@{OWLloader}!getClass@{getClass}}
 \index{getClass@{getClass}!OWLloader@{OWLloader}}
-\subsubsection[{getClass}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::getClass (\$ {\em \_\-className}, \/  \$ {\em \_\-classLocation} = {\ttfamily array({\bf OWL\_\-SO\_\-INC},~{\bf OWL\_\-BO\_\-INC},~{\bf OWL\_\-UI\_\-INC})}, \/  \$ {\em \_\-loadMultiple} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWLloader_a271d6508b029b3989db57f4d9b9b7677}
+\subsubsection[{getClass}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::getClass (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-className, }
+\item[{\$}]{ \_\-classLocation = {\ttfamily array({\bf OWL\_\-SO\_\-INC},~{\bf OWL\_\-BO\_\-INC},~{\bf OWL\_\-UI\_\-INC})}, }
+\item[{\$}]{ \_\-loadMultiple = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWLloader_a271d6508b029b3989db57f4d9b9b7677}
 Load a PHP classfile 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$\_\-className}]Name of the class; either file full name ($<$filename.php$>$ or the identifying name (\mbox{[}class.\mbox{]}$<$name$>$\mbox{[}.php\mbox{]}) \item[\mbox{$\leftarrow$} {\em \$\_\-classLocation}](Array of) location(s) where to look for the class \item[\mbox{$\leftarrow$} {\em \$\_\-loadMultiple}]Boolean; by default, the first matching classname will be loaded. Set this to true to load all files with the same name from multiple locations \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-className}]Name of the class; either file full name ($<$filename.php$>$ or the identifying name (\mbox{[}class.\mbox{]}$<$name$>$\mbox{[}.php\mbox{]}) \item[\mbox{\tt[in]} {\em \$\_\-classLocation}](Array of) location(s) where to look for the class \item[\mbox{\tt[in]} {\em \$\_\-loadMultiple}]Boolean; by default, the first matching classname will be loaded. Set this to true to load all files with the same name from multiple locations \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True on success 
 \end{DoxyReturn}

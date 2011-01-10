@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the User class
- * \version $Id: class.user.php,v 1.5 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.user.php,v 1.6 2011-01-10 18:45:59 oscar Exp $
  */
 
 /**
@@ -52,8 +52,7 @@ class User extends UserHandler
 	{
 		$this->set_username ($username);
 		if (parent::login ($username, $password) !== true) {
-// TODO: logging out here resets the status code
-//			self::logout();
+			self::logout(false);
 			return (false);
 		}
 		return (true);
@@ -64,11 +63,12 @@ class User extends UserHandler
 	 * Note: After logging out, the session still continues. The calling app must
 	 * take care of the forward (e.g. with a header('location: ' . $_SERVER['PHP_SELF'])
 	 * after a call to User::logout()).
+	 * \param[in] $reset_status When true (default) the object status will be reset
 	 * \public
 	 */
-	public function logout ()
+	public function logout ($reset_status = true)
 	{
-		parent::logout();
+		parent::logout($reset_status);
 		$this->set_username (ConfigHandler::get ('session|default_user'));
 	}
 

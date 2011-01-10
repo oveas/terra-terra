@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="8,651,144,795"/>
-<area shape="rect" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="5,5,147,317"/>
+<area shape="rect" id="node5" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="8,713,144,858"/>
+<area shape="rect" id="node2" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $saved_status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# save_status()\l# restore_status()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="5,6,147,375"/>
 </map>

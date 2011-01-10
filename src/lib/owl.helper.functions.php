@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.1 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.2 2011-01-10 18:46:00 oscar Exp $
  */
 
 // Select the (no)debug function libraries.
@@ -35,3 +35,36 @@ function toStrictBoolean ($_val, $_trueValues = array('yes', 'y', 'true', '1'), 
 	}
 }
 
+/**
+ * Very basic encryption/decryption routine. This is not meant for critical data, but should
+ * be used only to hide non-critical info that must be transferred.
+ * \param[in] $_string The string to be encrypted or decrypted
+ * \return Encrypted or decrypted string
+ */
+function owlCrypt ($_string)
+{
+	$_key = ConfigHandler::get ('crypt_key');
+	$_maxKeySize = 32;
+
+	$_keysize = strlen($_key);
+	if ($_keysize > $_maxKeySize) {
+		$_key = substr($_key, 0, $_maxKeySize);
+		$_keysize = $_maxKeySize;
+	}
+
+	$key = array();
+	for ($_idx1 = 0; $_idx1 < $_keysize; $_idx1++) {
+		$key[] = ord($_key{$_idx1}) & 0x1f;
+	}
+
+	for ($_idx1 = 0, $_idx2 = 0; $_idx1 < strlen($_string); $_idx1++) {
+		$_char = ord($_string{$_idx1});
+		if ($_char & 0xe0) {
+			$_string{$_idx1} = chr($_char ^ $key[$_idx2]);
+		}
+		if (++$_idx2 >= $_keysize) {
+			$_idx2 = 0;
+		}
+	}
+	return $_string;
+}

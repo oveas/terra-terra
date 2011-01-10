@@ -3,19 +3,43 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.11 2010-12-12 14:27:36 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.12 2011-01-10 18:46:00 oscar Exp $
  */
 
 // Error handling used during development
 error_reporting(E_ALL | E_STRICT);
 
+
+/**
+ * \name Global constants
+ * These constants define all paths for OWL
+ * @{
+ */
+//! OWL_ROOT must be defined by the application
+if (!defined('OWL_ROOT')) { trigger_error('OWL_ROOT must be defined by the application', E_USER_ERROR); }
+
+//! OWL_APPL must be defined by the application
+//if (!defined('OWL_APPL')) { trigger_error('OWL_APPL must be defined by the application', E_USER_ERROR); }
+
+//! Toplevel for the OWL includes
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
+
+//! Storage layer includes
 define ('OWL_SO_INC',	OWL_ROOT . '/kernel/so');
+
+//! Business layer includes
 define ('OWL_BO_INC',	OWL_ROOT . '/kernel/bo');
+
+//! Presentation layer includes
 define ('OWL_UI_INC',	OWL_ROOT . '/kernel/ui');
+
+//! OWL library
 define ('OWL_LIBRARY',	OWL_ROOT . '/lib');
 
-define ('OWL_SITE_TOP', $_SERVER['DOCUMENT_ROOT'] . $_SERVER['REQUEST_URI']);
+//! Toplocation of this site
+define ('OWL_SITE_TOP', $_SERVER['DOCUMENT_ROOT']);
+//! @}
+
 /**
  * \defgroup OWL_UI_LAYER Presentation modules
  * \defgroup OWL_BO_LAYER Business Object modules

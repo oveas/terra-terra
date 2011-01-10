@@ -11,7 +11,7 @@ Inheritance diagram for LogHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=400pt]{classLogHandler__inherit__graph}
+\includegraphics[height=600pt]{classLogHandler__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -20,7 +20,7 @@ Collaboration diagram for LogHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=400pt]{classLogHandler__coll__graph}
+\includegraphics[height=600pt]{classLogHandler__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -51,6 +51,10 @@ static \hyperlink{classLogHandler_aff978ec836c28d7b6e08a84802aa1c6d}{get\_\-inst
 \hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
 \hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\item 
+\hyperlink{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}{save\_\-status} ()
+\item 
+\hyperlink{class__OWL_a465eeaf40edd9f9c848841700c32ce55}{restore\_\-status} ()
 \item 
 \hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
 \item 
@@ -108,14 +112,22 @@ Aug 13, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 \subsection{Constructor \& Destructor Documentation}
 \index{LogHandler@{LogHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
 \index{\_\-\_\-construct@{\_\-\_\-construct}!LogHandler@{LogHandler}}
-\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\_\-\_\-construct ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_aacca49c4394109f4ccc494048a0b2cab}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_aacca49c4394109f4ccc494048a0b2cab}
 Class constructor 
 
 References ConfigHandler::get(), \_\-OWL::init(), open\_\-logfile(), and set\_\-filename().
 
 \index{LogHandler@{LogHandler}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!LogHandler@{LogHandler}}
-\subsubsection[{\_\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\_\-\_\-destruct ()}\label{classLogHandler_aacd0c653489cf221423b9edd62e81458}
+\subsubsection[{\_\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\_\-\_\-destruct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classLogHandler_aacd0c653489cf221423b9edd62e81458}
 Class destructor 
 
 Reimplemented from \hyperlink{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}{\_\-OWL}.
@@ -129,10 +141,18 @@ References close\_\-logfile().
 \subsection{Member Function Documentation}
 \index{LogHandler@{LogHandler}!\_\-\_\-clone@{\_\-\_\-clone}}
 \index{\_\-\_\-clone@{\_\-\_\-clone}!LogHandler@{LogHandler}}
-\subsubsection[{\_\-\_\-clone}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\_\-\_\-clone ()}\label{classLogHandler_a395099dd9f1e9794bfe6a0c771991c3c}
+\subsubsection[{\_\-\_\-clone}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\_\-\_\-clone (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classLogHandler_a395099dd9f1e9794bfe6a0c771991c3c}
 Implementation of the \hyperlink{classLogHandler_a395099dd9f1e9794bfe6a0c771991c3c}{\_\-\_\-clone()} function to prevent cloning of this singleton; it triggers a fatal (user)error \index{LogHandler@{LogHandler}!backtrace@{backtrace}}
 \index{backtrace@{backtrace}!LogHandler@{LogHandler}}
-\subsubsection[{backtrace}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::backtrace ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_a441d505d1dfb81bd86dc1d3c53600552}
+\subsubsection[{backtrace}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::backtrace (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_a441d505d1dfb81bd86dc1d3c53600552}
 Create a backtrace of the current log item
 
 \begin{DoxyReturn}{Returns}
@@ -144,12 +164,17 @@ Referenced by log().
 
 \index{LogHandler@{LogHandler}!check@{check}}
 \index{check@{check}!LogHandler@{LogHandler}}
-\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ object, }
+\item[{\$}]{ level}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
 This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$object}]Pointer to an object to check against \item[\mbox{\tt[in]} {\em \$level}]The maximum severity level \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct ( below the max), otherwise false 
 \end{DoxyReturn}
@@ -163,19 +188,28 @@ Referenced by SessionHandler::write().
 
 \index{LogHandler@{LogHandler}!close\_\-logfile@{close\_\-logfile}}
 \index{close\_\-logfile@{close\_\-logfile}!LogHandler@{LogHandler}}
-\subsubsection[{close\_\-logfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::close\_\-logfile ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_a1a3b03d9bb97404a4f746bd2aacc5a8c}
+\subsubsection[{close\_\-logfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::close\_\-logfile (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_a1a3b03d9bb97404a4f746bd2aacc5a8c}
 Close the logfile 
 
 Referenced by \_\-\_\-destruct(), and log().
 
 \index{LogHandler@{LogHandler}!compose\_\-message@{compose\_\-message}}
 \index{compose\_\-message@{compose\_\-message}!LogHandler@{LogHandler}}
-\subsubsection[{compose\_\-message}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::compose\_\-message (\&\$ {\em msg}, \/  \$ {\em code})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_ad32511521115b21779d699c836197dd0}
+\subsubsection[{compose\_\-message}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::compose\_\-message (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ msg, }
+\item[{\$}]{ code}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_ad32511521115b21779d699c836197dd0}
 Compose the logmessage by adding a timestamp and -\/ when not writing multiple files -\/ the run ID
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftrightarrow$} {\em \$msg}]Original message by the event \item[\mbox{$\leftarrow$} {\em \$code}]Status code of the message \end{DoxyParams}
+\item[\mbox{\tt[in,out]} {\em \$msg}]Original message by the event \item[\mbox{\tt[in]} {\em \$code}]Status code of the message \end{DoxyParams}
 
 
 References ConfigHandler::get(), Register::get\_\-code(), Register::get\_\-run\_\-id(), and \_\-OWL::get\_\-severity().
@@ -186,7 +220,11 @@ Referenced by log().
 
 \index{LogHandler@{LogHandler}!get\_\-instance@{get\_\-instance}}
 \index{get\_\-instance@{get\_\-instance}!LogHandler@{LogHandler}}
-\subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static LogHandler::get\_\-instance ()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classLogHandler_aff978ec836c28d7b6e08a84802aa1c6d}
+\subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static LogHandler::get\_\-instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classLogHandler_aff978ec836c28d7b6e08a84802aa1c6d}
 Return a reference to my implementation. If necessary, create that implementation first.
 
 \begin{DoxyReturn}{Returns}
@@ -198,12 +236,16 @@ References \$instance.
 
 \index{LogHandler@{LogHandler}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!LogHandler@{LogHandler}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
+\begin{DoxyParamCaption}
+\item[{\$}]{ status = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
 Get the current object severity level.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
@@ -217,7 +259,11 @@ Referenced by compose\_\-message(), log(), and DataHandler::set\_\-key().
 
 \index{LogHandler@{LogHandler}!get\_\-status@{get\_\-status}}
 \index{get\_\-status@{get\_\-status}!LogHandler@{LogHandler}}
-\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
 Get the current object status.
 
 \begin{DoxyReturn}{Returns}
@@ -229,30 +275,43 @@ Referenced by SchemeHandler::compare().
 
 \index{LogHandler@{LogHandler}!init@{init}}
 \index{init@{init}!LogHandler@{LogHandler}}
-\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
 References OWL::factory().
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), \_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), FormField::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), \_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{LogHandler@{LogHandler}!log@{log}}
 \index{log@{log}!LogHandler@{LogHandler}}
-\subsubsection[{log}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::log (\$ {\em msg}, \/  \$ {\em code})}\label{classLogHandler_a6d0139ed72f63093ca00f949ed5a73cb}
+\subsubsection[{log}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::log (
+\begin{DoxyParamCaption}
+\item[{\$}]{ msg, }
+\item[{\$}]{ code}
+\end{DoxyParamCaption}
+)}\label{classLogHandler_a6d0139ed72f63093ca00f949ed5a73cb}
 Log an event signalled by \hyperlink{classOWL}{OWL}
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$msg}]Message text \item[\mbox{$\leftarrow$} {\em \$code}]Status code of the message \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$msg}]Message text \item[\mbox{\tt[in]} {\em \$code}]Status code of the message \end{DoxyParams}
 
 
 References backtrace(), close\_\-logfile(), compose\_\-message(), ConfigHandler::get(), \_\-OWL::get\_\-severity(), open\_\-logfile(), and write\_\-logfile().
 
 \index{LogHandler@{LogHandler}!open\_\-logfile@{open\_\-logfile}}
 \index{open\_\-logfile@{open\_\-logfile}!LogHandler@{LogHandler}}
-\subsubsection[{open\_\-logfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::open\_\-logfile ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_aaf324e5156bf8ea83e5b4e990ea99e2d}
+\subsubsection[{open\_\-logfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::open\_\-logfile (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_aaf324e5156bf8ea83e5b4e990ea99e2d}
 Open the logfile for write 
 
 References \_\-OWL::set\_\-status().
@@ -263,7 +322,11 @@ Referenced by \_\-\_\-construct(), and log().
 
 \index{LogHandler@{LogHandler}!reset@{reset}}
 \index{reset@{reset}!LogHandler@{LogHandler}}
-\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
 General reset function for all objects. Should be called after each non-\/fatal error 
 
 Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
@@ -276,9 +339,39 @@ References \_\-OWL::reset\_\-calltree().
 
 Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
 
+\index{LogHandler@{LogHandler}!restore\_\-status@{restore\_\-status}}
+\index{restore\_\-status@{restore\_\-status}!LogHandler@{LogHandler}}
+\subsubsection[{restore\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restore\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a465eeaf40edd9f9c848841700c32ce55}
+Restore the previously saved status object and destroy the copy 
+
+References \_\-OWL::set\_\-status().
+
+
+
+Referenced by UserHandler::logout().
+
+\index{LogHandler@{LogHandler}!save\_\-status@{save\_\-status}}
+\index{save\_\-status@{save\_\-status}!LogHandler@{LogHandler}}
+\subsubsection[{save\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::save\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
+Create a copy of the status object 
+
+Referenced by UserHandler::logout().
+
 \index{LogHandler@{LogHandler}!set\_\-filename@{set\_\-filename}}
 \index{set\_\-filename@{set\_\-filename}!LogHandler@{LogHandler}}
-\subsubsection[{set\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::set\_\-filename ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_a65ef4f1c6ab4cff4057f5f5932cc690e}
+\subsubsection[{set\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::set\_\-filename (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_a65ef4f1c6ab4cff4057f5f5932cc690e}
 Find out what the filename of the logfile should be 
 
 References ConfigHandler::get(), and Register::get\_\-run\_\-id().
@@ -289,35 +382,49 @@ Referenced by \_\-\_\-construct().
 
 \index{LogHandler@{LogHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!LogHandler@{LogHandler}}
-\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ object = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
 Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
 \index{LogHandler@{LogHandler}!set\_\-status@{set\_\-status}}
 \index{set\_\-status@{set\_\-status}!LogHandler@{LogHandler}}
-\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
+\begin{DoxyParamCaption}
+\item[{\$}]{ status, }
+\item[{\$}]{ params = {\ttfamily array~()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
 Set the current object status to the specified value.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{\tt[in]} {\em \$params}]\end{DoxyParams}
 
 
 References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), Form::setEncoding(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), Form::setMethod(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{LogHandler@{LogHandler}!signal@{signal}}
 \index{signal@{signal}!LogHandler@{LogHandler}}
-\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (
+\begin{DoxyParamCaption}
+\item[{\$}]{ level = {\ttfamily {\bf OWL\_\-INFO}}, }
+\item[{\&\$}]{ text = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
 Display the message for the current object status
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{\tt[out]} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
@@ -331,12 +438,17 @@ Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
 
 \index{LogHandler@{LogHandler}!traceback@{traceback}}
 \index{traceback@{traceback}!LogHandler@{LogHandler}}
-\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ text = {\ttfamily false}, }
+\item[{\$}]{ depth = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
 If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\item[\mbox{\tt[out]} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{\tt[in]} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}
@@ -350,12 +462,16 @@ Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read()
 
 \index{LogHandler@{LogHandler}!write\_\-logfile@{write\_\-logfile}}
 \index{write\_\-logfile@{write\_\-logfile}!LogHandler@{LogHandler}}
-\subsubsection[{write\_\-logfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::write\_\-logfile (\$ {\em msg})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_ae0cd68fb6f068e47f899a1e4c7f29ba9}
+\subsubsection[{write\_\-logfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::write\_\-logfile (
+\begin{DoxyParamCaption}
+\item[{\$}]{ msg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_ae0cd68fb6f068e47f899a1e4c7f29ba9}
 Write a message to the logfile
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$msg}]The complete log message \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$msg}]The complete log message \end{DoxyParams}
 
 
 Referenced by log().

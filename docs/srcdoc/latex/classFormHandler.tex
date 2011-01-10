@@ -11,7 +11,7 @@ Inheritance diagram for FormHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=400pt]{classFormHandler__inherit__graph}
+\includegraphics[width=150pt]{classFormHandler__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -20,7 +20,7 @@ Collaboration diagram for FormHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=400pt]{classFormHandler__coll__graph}
+\includegraphics[width=150pt]{classFormHandler__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -51,6 +51,10 @@ static \hyperlink{classFormHandler_ad5b352905583faed17034459f1a9ea6c}{get\_\-ins
 \hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
 \hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\item 
+\hyperlink{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}{save\_\-status} ()
+\item 
+\hyperlink{class__OWL_a465eeaf40edd9f9c848841700c32ce55}{restore\_\-status} ()
 \item 
 \hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
 \item 
@@ -94,7 +98,11 @@ Aug 28, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 \subsection{Constructor \& Destructor Documentation}
 \index{FormHandler@{FormHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
 \index{\_\-\_\-construct@{\_\-\_\-construct}!FormHandler@{FormHandler}}
-\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::\_\-\_\-construct ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormHandler_a1ef7ad4fe143dd8339c8ab66423a1934}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormHandler_a1ef7ad4fe143dd8339c8ab66423a1934}
 Class constructor; Parse the incoming formdata. 
 
 References \_\-OWL::init(), parse\_\-formdata(), and \_\-OWL::set\_\-status().
@@ -104,12 +112,17 @@ References \_\-OWL::init(), parse\_\-formdata(), and \_\-OWL::set\_\-status().
 \subsection{Member Function Documentation}
 \index{FormHandler@{FormHandler}!check@{check}}
 \index{check@{check}!FormHandler@{FormHandler}}
-\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ object, }
+\item[{\$}]{ level}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
 This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$object}]Pointer to an object to check against \item[\mbox{\tt[in]} {\em \$level}]The maximum severity level \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct ( below the max), otherwise false 
 \end{DoxyReturn}
@@ -123,10 +136,17 @@ Referenced by SessionHandler::write().
 
 \index{FormHandler@{FormHandler}!cleanString@{cleanString}}
 \index{cleanString@{cleanString}!FormHandler@{FormHandler}}
-\subsubsection[{cleanString}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::cleanString (\$ {\em input}, \/  \$ {\em allow} = {\ttfamily null}, \/  \$ {\em content} = {\ttfamily null}, \/  \$ {\em remove\_\-comment} = {\ttfamily true})}\label{classFormHandler_a5ee0cda14dcbe0b6e12226db4bd951a0}
+\subsubsection[{cleanString}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::cleanString (
+\begin{DoxyParamCaption}
+\item[{\$}]{ input, }
+\item[{\$}]{ allow = {\ttfamily null}, }
+\item[{\$}]{ content = {\ttfamily null}, }
+\item[{\$}]{ remove\_\-comment = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classFormHandler_a5ee0cda14dcbe0b6e12226db4bd951a0}
 Remove all tags from an input string 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$input}]Input string to clean \item[\mbox{$\leftarrow$} {\em \$allow}]array with tags that should not be removed. These can be in a regular expression format, e.g. array('b', 'h\mbox{[}1-\/6\mbox{]}') to allow the $<$b$>$ tag and $<$h1$>$ to $<$h6$>$. \item[\mbox{$\leftarrow$} {\em \$content}]array with tags that should completely be removed, so including all contents between the opening and closing tag, e.g. '$<$script$>$some code$<$/script$>$'. Default is array('script','style') \item[\mbox{$\leftarrow$} {\em \$remove\_\-comment}]When true (default), content blocks will completely be removed. Set to false to allow the content of a comment block. The tags themselves ('$<$!-\/-\/' and '-\/-\/$>$') will always be removed. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$input}]Input string to clean \item[\mbox{\tt[in]} {\em \$allow}]array with tags that should not be removed. These can be in a regular expression format, e.g. array('b', 'h\mbox{[}1-\/6\mbox{]}') to allow the $<$b$>$ tag and $<$h1$>$ to $<$h6$>$. \item[\mbox{\tt[in]} {\em \$content}]array with tags that should completely be removed, so including all contents between the opening and closing tag, e.g. '$<$script$>$some code$<$/script$>$'. Default is array('script','style') \item[\mbox{\tt[in]} {\em \$remove\_\-comment}]When true (default), content blocks will completely be removed. Set to false to allow the content of a comment block. The tags themselves ('$<$!-\/-\/' and '-\/-\/$>$') will always be removed. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The string with all tags removed 
 \end{DoxyReturn}
@@ -136,12 +156,19 @@ Referenced by get().
 
 \index{FormHandler@{FormHandler}!get@{get}}
 \index{get@{get}!FormHandler@{FormHandler}}
-\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::get (\$ {\em variable}, \/  \$ {\em format} = {\ttfamily {\bf FORMDATA\_\-STRICT}}, \/  \$ {\em allows} = {\ttfamily null}, \/  \$ {\em content} = {\ttfamily array('script')})}\label{classFormHandler_a4dbeaa44aa51a795b16379ae703d893a}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::get (
+\begin{DoxyParamCaption}
+\item[{\$}]{ variable, }
+\item[{\$}]{ format = {\ttfamily {\bf FORMDATA\_\-STRICT}}, }
+\item[{\$}]{ allows = {\ttfamily null}, }
+\item[{\$}]{ content = {\ttfamily array('script')}}
+\end{DoxyParamCaption}
+)}\label{classFormHandler_a4dbeaa44aa51a795b16379ae703d893a}
 Get the value of a given formfield, formatted as specified
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$variable}]The variable name who's value should be returned \item[\mbox{$\leftarrow$} {\em \$format}]Specify how the field should be formatted \item[\mbox{$\leftarrow$} {\em \$allows}]Array with allowd tags, used for the FORMDATA\_\-CUSTOM format. \item[\mbox{$\leftarrow$} {\em \$content}]Array with tags to allow completely, used for the FORMDATA\_\-CUSTOM format. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$variable}]The variable name who's value should be returned \item[\mbox{\tt[in]} {\em \$format}]Specify how the field should be formatted \item[\mbox{\tt[in]} {\em \$allows}]Array with allowd tags, used for the FORMDATA\_\-CUSTOM format. \item[\mbox{\tt[in]} {\em \$content}]Array with tags to allow completely, used for the FORMDATA\_\-CUSTOM format. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Value as taken from the form; single value or array 
 \end{DoxyReturn}
@@ -151,7 +178,11 @@ References cleanString(), ConfigHandler::get(), and \_\-OWL::set\_\-status().
 
 \index{FormHandler@{FormHandler}!get\_\-instance@{get\_\-instance}}
 \index{get\_\-instance@{get\_\-instance}!FormHandler@{FormHandler}}
-\subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static FormHandler::get\_\-instance ()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classFormHandler_ad5b352905583faed17034459f1a9ea6c}
+\subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static FormHandler::get\_\-instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classFormHandler_ad5b352905583faed17034459f1a9ea6c}
 Return a reference to my implementation. If necessary, create that implementation first.
 
 \begin{DoxyReturn}{Returns}
@@ -163,12 +194,16 @@ References \$instance.
 
 \index{FormHandler@{FormHandler}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!FormHandler@{FormHandler}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
+\begin{DoxyParamCaption}
+\item[{\$}]{ status = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
 Get the current object severity level.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
@@ -182,7 +217,11 @@ Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandl
 
 \index{FormHandler@{FormHandler}!get\_\-status@{get\_\-status}}
 \index{get\_\-status@{get\_\-status}!FormHandler@{FormHandler}}
-\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
 Get the current object status.
 
 \begin{DoxyReturn}{Returns}
@@ -194,30 +233,42 @@ Referenced by SchemeHandler::compare().
 
 \index{FormHandler@{FormHandler}!init@{init}}
 \index{init@{init}!FormHandler@{FormHandler}}
-\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
 References OWL::factory().
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), \_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), FormField::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), \_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{FormHandler@{FormHandler}!parse\_\-formdata@{parse\_\-formdata}}
 \index{parse\_\-formdata@{parse\_\-formdata}!FormHandler@{FormHandler}}
-\subsubsection[{parse\_\-formdata}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::parse\_\-formdata (\$ {\em data} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormHandler_aef73c198dbc5de4e84f6c2a23b8b294c}
+\subsubsection[{parse\_\-formdata}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::parse\_\-formdata (
+\begin{DoxyParamCaption}
+\item[{\$}]{ data = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormHandler_aef73c198dbc5de4e84f6c2a23b8b294c}
 Parse a given form and store all data in the parent class, except values that come from a multiple select; they will be stored locally.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$data}]The formdata array. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$data}]The formdata array. \end{DoxyParams}
 
 
 Referenced by \_\-\_\-construct().
 
 \index{FormHandler@{FormHandler}!reset@{reset}}
 \index{reset@{reset}!FormHandler@{FormHandler}}
-\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
 General reset function for all objects. Should be called after each non-\/fatal error 
 
 Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
@@ -230,49 +281,94 @@ References \_\-OWL::reset\_\-calltree().
 
 Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
 
+\index{FormHandler@{FormHandler}!restore\_\-status@{restore\_\-status}}
+\index{restore\_\-status@{restore\_\-status}!FormHandler@{FormHandler}}
+\subsubsection[{restore\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restore\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a465eeaf40edd9f9c848841700c32ce55}
+Restore the previously saved status object and destroy the copy 
+
+References \_\-OWL::set\_\-status().
+
+
+
+Referenced by UserHandler::logout().
+
+\index{FormHandler@{FormHandler}!save\_\-status@{save\_\-status}}
+\index{save\_\-status@{save\_\-status}!FormHandler@{FormHandler}}
+\subsubsection[{save\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::save\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
+Create a copy of the status object 
+
+Referenced by UserHandler::logout().
+
 \index{FormHandler@{FormHandler}!set@{set}}
 \index{set@{set}!FormHandler@{FormHandler}}
-\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::set (\$ {\em variable}, \/  \$ {\em value})}\label{classFormHandler_a5fcc8aef0de87e31ceee65ad1eadb96c}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}FormHandler::set (
+\begin{DoxyParamCaption}
+\item[{\$}]{ variable, }
+\item[{\$}]{ value}
+\end{DoxyParamCaption}
+)}\label{classFormHandler_a5fcc8aef0de87e31ceee65ad1eadb96c}
 Reimplement the get method; the parent's get will only be called if the requested variable name is not in the 'local' array where multi-\/values are stored.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$variable}]The variable name who's value should be set \item[\mbox{$\leftarrow$} {\em \$value}]Value for the variable \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$variable}]The variable name who's value should be set \item[\mbox{\tt[in]} {\em \$value}]Value for the variable \end{DoxyParams}
 
 
 References ConfigHandler::get(), and \_\-OWL::set\_\-status().
 
 \index{FormHandler@{FormHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!FormHandler@{FormHandler}}
-\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ object = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
 Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
 \index{FormHandler@{FormHandler}!set\_\-status@{set\_\-status}}
 \index{set\_\-status@{set\_\-status}!FormHandler@{FormHandler}}
-\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
+\begin{DoxyParamCaption}
+\item[{\$}]{ status, }
+\item[{\$}]{ params = {\ttfamily array~()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
 Set the current object status to the specified value.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{\tt[in]} {\em \$params}]\end{DoxyParams}
 
 
 References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), \_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), \_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), Form::setEncoding(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), Form::setMethod(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{FormHandler@{FormHandler}!signal@{signal}}
 \index{signal@{signal}!FormHandler@{FormHandler}}
-\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (
+\begin{DoxyParamCaption}
+\item[{\$}]{ level = {\ttfamily {\bf OWL\_\-INFO}}, }
+\item[{\&\$}]{ text = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
 Display the message for the current object status
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{\tt[out]} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
@@ -286,12 +382,17 @@ Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
 
 \index{FormHandler@{FormHandler}!traceback@{traceback}}
 \index{traceback@{traceback}!FormHandler@{FormHandler}}
-\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ text = {\ttfamily false}, }
+\item[{\$}]{ depth = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
 If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\item[\mbox{\tt[out]} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{\tt[in]} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}

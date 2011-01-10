@@ -6,20 +6,23 @@
 class \hyperlink{classOWLloader}{OWLloader}
 \begin{DoxyCompactList}\small\item\em Class loader. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
-\begin{DoxyCompactItemize}
+\begin{Indent}{\bf Global constants}\par
+{\em \label{_amgrp08b298bc013f410cd1f593c409434f9b}
+ These constants define all paths for \hyperlink{classOWL}{OWL} }\begin{DoxyCompactItemize}
 \item 
 enum \hyperlink{OWLloader_8php_a4d33a8f2fcc9c83cbeea921c4cb23a7f}{OWL\_\-INCLUDE} 
-\item 
+\begin{DoxyCompactList}\small\item\em OWL\_\-ROOT must be defined by the application. \item\end{DoxyCompactList}\item 
 enum \hyperlink{OWLloader_8php_a75dffdef5ba58a0ba5f21ed40627897f}{OWL\_\-SO\_\-INC} 
-\item 
+\begin{DoxyCompactList}\small\item\em Storage layer includes. \item\end{DoxyCompactList}\item 
 enum \hyperlink{OWLloader_8php_aca50646bc73c3addf0e0f25081eae0ae}{OWL\_\-BO\_\-INC} 
-\item 
+\begin{DoxyCompactList}\small\item\em Business layer includes. \item\end{DoxyCompactList}\item 
 enum \hyperlink{OWLloader_8php_a2e11101c70f011a91d0d9c7f8e217738}{OWL\_\-UI\_\-INC} 
-\item 
+\begin{DoxyCompactList}\small\item\em Presentation layer includes. \item\end{DoxyCompactList}\item 
 enum \hyperlink{OWLloader_8php_a74eed08508c8b70677c4167acf49e427}{OWL\_\-LIBRARY} 
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classOWL}{OWL} library. \item\end{DoxyCompactList}\item 
 enum \hyperlink{OWLloader_8php_a462de9ae02e394313337afac5d1a5f95}{OWL\_\-SITE\_\-TOP} 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Toplocation of this site. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -37,8 +40,8 @@ enum \hyperlink{OWLloader_8php_a462de9ae02e394313337afac5d1a5f95}{OWL\_\-SITE\_\
 This file loads the \hyperlink{classOWL}{OWL} environment and initialises some singletons \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id}
-\hyperlink{OWLloader_8php}{OWLloader.php},v 1.10 2010-\/12-\/03 12:07:43 oscar Exp 
+\begin{DoxyParagraph}{Id:}
+\hyperlink{OWLloader_8php}{OWLloader.php},v 1.11 2010-\/12-\/12 14:27:36 oscar Exp 
 \end{DoxyParagraph}
 
 
@@ -46,30 +49,48 @@ This file loads the \hyperlink{classOWL}{OWL} environment and initialises some s
 \index{OWLloader.php@{OWLloader.php}!OWL\_\-BO\_\-INC@{OWL\_\-BO\_\-INC}}
 \index{OWL\_\-BO\_\-INC@{OWL\_\-BO\_\-INC}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{OWL\_\-BO\_\-INC}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-BO\_\-INC}}\label{OWLloader_8php_aca50646bc73c3addf0e0f25081eae0ae}
+
+
+Business layer includes. 
+
 \index{OWLloader.php@{OWLloader.php}!OWL\_\-INCLUDE@{OWL\_\-INCLUDE}}
 \index{OWL\_\-INCLUDE@{OWL\_\-INCLUDE}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{OWL\_\-INCLUDE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-INCLUDE}}\label{OWLloader_8php_a4d33a8f2fcc9c83cbeea921c4cb23a7f}
-\index{OWLloader.php@{OWLloader.php}!OWL\_\-LIBRARY@{OWL\_\-LIBRARY}}
+
+
+OWL\_\-ROOT must be defined by the application. 
+
+OWL\_\-APPL must be defined by the application Toplevel for the \hyperlink{classOWL}{OWL} includes \index{OWLloader.php@{OWLloader.php}!OWL\_\-LIBRARY@{OWL\_\-LIBRARY}}
 \index{OWL\_\-LIBRARY@{OWL\_\-LIBRARY}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{OWL\_\-LIBRARY}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-LIBRARY}}\label{OWLloader_8php_a74eed08508c8b70677c4167acf49e427}
+
+
+\hyperlink{classOWL}{OWL} library. 
+
 \index{OWLloader.php@{OWLloader.php}!OWL\_\-SITE\_\-TOP@{OWL\_\-SITE\_\-TOP}}
 \index{OWL\_\-SITE\_\-TOP@{OWL\_\-SITE\_\-TOP}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{OWL\_\-SITE\_\-TOP}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-SITE\_\-TOP}}\label{OWLloader_8php_a462de9ae02e394313337afac5d1a5f95}
+
+
+Toplocation of this site. 
+
 \index{OWLloader.php@{OWLloader.php}!OWL\_\-SO\_\-INC@{OWL\_\-SO\_\-INC}}
 \index{OWL\_\-SO\_\-INC@{OWL\_\-SO\_\-INC}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{OWL\_\-SO\_\-INC}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-SO\_\-INC}}\label{OWLloader_8php_a75dffdef5ba58a0ba5f21ed40627897f}
+
+
+Storage layer includes. 
+
 \index{OWLloader.php@{OWLloader.php}!OWL\_\-UI\_\-INC@{OWL\_\-UI\_\-INC}}
 \index{OWL\_\-UI\_\-INC@{OWL\_\-UI\_\-INC}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{OWL\_\-UI\_\-INC}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-UI\_\-INC}}\label{OWLloader_8php_a2e11101c70f011a91d0d9c7f8e217738}
 
 
+Presentation layer includes. 
+
+
+
 \subsection{Variable Documentation}
-\index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
-\index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
-\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'logger'\mbox{]} = OWL::factory('{\bf LogHandler}')}\label{OWLloader_8php_ad8f7743ae327face727dae55887c2a43}
-\index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
-\index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
-\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'messages'\mbox{]} = array ()}\label{OWLloader_8php_a65f2996116eed36e9ab25f254a470259}
 \index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
 \index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'OWLCache'\mbox{]}}\label{OWLloader_8php_a79190ec221c2b52403f7324f1d224c8f}
@@ -79,6 +100,12 @@ This file loads the \hyperlink{classOWL}{OWL} environment and initialises some s
          'classesLoaded' => array()
 )
 \end{DoxyCode}
+\index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
+\index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
+\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'logger'\mbox{]} = OWL::factory('{\bf LogHandler}')}\label{OWLloader_8php_ad8f7743ae327face727dae55887c2a43}
+\index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
+\index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
+\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'messages'\mbox{]} = array ()}\label{OWLloader_8php_a65f2996116eed36e9ab25f254a470259}
 \index{OWLloader.php@{OWLloader.php}!if@{if}}
 \index{if@{if}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{if}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if}(array\_\-key\_\-exists('app', ConfigHandler::get('configfiles')))}\label{OWLloader_8php_a78407183564d6b92f2219d8a10b9349c}

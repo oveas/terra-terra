@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a button formfield element
- * \version $Id: class.formfield.button.php,v 1.1 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.formfield.button.php,v 1.2 2011-01-10 18:46:00 oscar Exp $
  */
 
 /**
@@ -36,6 +36,24 @@ class FormFieldButton extends FormField
 	{
 		parent::__construct();
 		$this->type = strtolower($type);
+	}
+
+	/**
+	 * Set the alt text for the button
+	 * \param[in] $_value text
+	 */
+	public function setText($_value)
+	{
+		$this->alt = $_value;
+	}
+
+	/**
+	 * Set the image source for the button
+	 * \param[in] $_value Image source
+	 */
+	public function setSource($_value)
+	{
+		$this->src = $_value;
 	}
 
 	/**

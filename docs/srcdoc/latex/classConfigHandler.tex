@@ -33,12 +33,16 @@ Aug 20, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 \subsection{Member Function Documentation}
 \index{ConfigHandler@{ConfigHandler}!convert@{convert}}
 \index{convert@{convert}!ConfigHandler@{ConfigHandler}}
-\subsubsection[{convert}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::convert (\$ {\em val})\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classConfigHandler_a9851c66d75db6a65c64aba5192173c14}
+\subsubsection[{convert}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::convert (
+\begin{DoxyParamCaption}
+\item[{\$}]{ val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classConfigHandler_a9851c66d75db6a65c64aba5192173c14}
 Convert values in character string format to a known value
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$val}]The value as read from the config file \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$val}]The value as read from the config file \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Value in the desired format (or as is if nothing set) 
 \end{DoxyReturn}
@@ -52,12 +56,17 @@ Referenced by read\_\-config().
 
 \index{ConfigHandler@{ConfigHandler}!get@{get}}
 \index{get@{get}!ConfigHandler@{ConfigHandler}}
-\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::get (\$ {\em item}, \/  \$ {\em default} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classConfigHandler_aa8f6a7516588561626efccb8be5875ce}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::get (
+\begin{DoxyParamCaption}
+\item[{\$}]{ item, }
+\item[{\$}]{ default = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classConfigHandler_aa8f6a7516588561626efccb8be5875ce}
 Return a configuration value. Note! In order to use hidden values properly, this is the ONLY way configuration values should be retrieved!
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$item}]The configuration item in the same format as it appears in the configuration file (e.g. 'group$|$subject$|$item') \item[\mbox{$\leftarrow$} {\em \$default}]The default value to return if the config item was not set. This defaults to 'null'; if it is anything other than null, the CONFIG\_\-NOVALUE status will not be set \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$item}]The configuration item in the same format as it appears in the configuration file (e.g. 'group$|$subject$|$item') \item[\mbox{\tt[in]} {\em \$default}]The default value to return if the config item was not set. This defaults to 'null'; if it is anything other than null, the CONFIG\_\-NOVALUE status will not be set \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Corresponding value of null when nothing was found 
 \end{DoxyReturn}
@@ -67,28 +76,37 @@ References \$GLOBALS, and OWL::stat().
 
 
 
-Referenced by SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), OWLException::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), User::\_\-\_\-construct(), OWLException::check\_\-hide(), LogHandler::compose\_\-message(), DbHandler::connect(), FormHandler::get(), DbHandler::get\_\-instance(), UserHandler::hash\_\-password(), LogHandler::log(), OWLExceptionHandler::log\_\-exception(), UserHandler::login(), User::logout(), Register::register\_\-messages(), FormHandler::set(), LogHandler::set\_\-filename(), \_\-OWL::set\_\-status(), \_\-OWL::signal(), and OWLException::traceback().
+Referenced by SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), OWLException::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), User::\_\-\_\-construct(), OWLException::check\_\-hide(), LogHandler::compose\_\-message(), DbHandler::connect(), FormHandler::get(), DbHandler::get\_\-instance(), UserHandler::hash\_\-password(), UserHandler::isLoggedIn(), LogHandler::log(), OWLExceptionHandler::log\_\-exception(), UserHandler::login(), User::logout(), Register::register\_\-messages(), FormHandler::set(), LogHandler::set\_\-filename(), \_\-OWL::set\_\-status(), \_\-OWL::signal(), and OWLException::traceback().
 
 \index{ConfigHandler@{ConfigHandler}!read\_\-config@{read\_\-config}}
 \index{read\_\-config@{read\_\-config}!ConfigHandler@{ConfigHandler}}
-\subsubsection[{read\_\-config}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::read\_\-config (\$ {\em file} = {\ttfamily ''})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classConfigHandler_af61ee6f9f793e4cd0128c02e4e28bf90}
+\subsubsection[{read\_\-config}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::read\_\-config (
+\begin{DoxyParamCaption}
+\item[{\$}]{ file = {\ttfamily ''}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classConfigHandler_af61ee6f9f793e4cd0128c02e4e28bf90}
 Parse the given configuration file
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$file}]Full path to the configuration file \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$file}]Full path to the configuration file \end{DoxyParams}
 
 
 References \$GLOBALS, and convert().
 
 \index{ConfigHandler@{ConfigHandler}!set@{set}}
 \index{set@{set}!ConfigHandler@{ConfigHandler}}
-\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::set (\$ {\em item}, \/  \$ {\em value})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classConfigHandler_a82c10cf53f06169cee0bdc0716bc089a}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::set (
+\begin{DoxyParamCaption}
+\item[{\$}]{ item, }
+\item[{\$}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classConfigHandler_a82c10cf53f06169cee0bdc0716bc089a}
 Set a configuration item. Existing values will be overwritten.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$item}]The configuration item in the same format as it appears in the configuration file (e.g. 'group$|$subject$|$item') \item[\mbox{$\leftarrow$} {\em \$value}]The new value of the item \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$item}]The configuration item in the same format as it appears in the configuration file (e.g. 'group$|$subject$|$item') \item[\mbox{\tt[in]} {\em \$value}]The new value of the item \end{DoxyParams}
 
 
 References \$GLOBALS.

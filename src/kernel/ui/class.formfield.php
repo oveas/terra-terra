@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a formfield element
- * \version $Id: class.formfield.php,v 1.1 2010-12-03 12:07:43 oscar Exp $
+ * \version $Id: class.formfield.php,v 1.2 2011-01-10 18:45:59 oscar Exp $
  */
 
 /**
@@ -20,12 +20,6 @@ class FormField extends BaseElement
 	 * \protected
 	 */
 	protected $type;
-
-	/**
-	 * Name of the formfield
-	 * \protected
-	 */
-	protected $name;
 
 	/**
 	 * Field value
@@ -51,18 +45,9 @@ class FormField extends BaseElement
 	 */
 	public function __construct ()
 	{
+		_OWL::init();
 		$this->disabled = false;
 		$this->readonly = false;
-	}
-
-	/**
-	 * Set the field name
-	 * \param[in] $_value Field name
-	 * \public
-	 */
-	public function setName($_value)
-	{
-		$this->name = $_value;
 	}
 
 	/**
@@ -114,19 +99,7 @@ class FormField extends BaseElement
 	 */
 	protected function getGenericFieldAttributes($_ignore = array())
 	{
-		$_htmlCode = '';
-		if (!in_array('id', $_ignore) && !empty($this->id)) {
-			$_htmlCode .= " id='$this->id'";
-		}
-		if (!in_array('class', $_ignore) && !empty($this->class)) {
-			$_htmlCode .= " class='$this->class'";
-		}
-		if (!in_array('style', $_ignore) && !empty($this->style)) {
-			$_htmlCode .= " style='$this->style'";
-		}
-		if (!in_array('name', $_ignore) && !empty($this->name)) {
-			$_htmlCode .= " name='$this->name'";
-		}
+		$_htmlCode = parent::getAttributes($_ignore = array());
 		if (!in_array('value', $_ignore)) {
 			$_htmlCode .= " value='$this->value'";
 		}
@@ -136,7 +109,6 @@ class FormField extends BaseElement
 		if (!in_array('readonly', $_ignore) && ($this->readonly === true)) {
 			$_htmlCode .= " readonly='readonly'";
 		}
-		$_htmlCode .= $this->getEvents();
 		return $_htmlCode;
 	}
 

@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in UK English
- * \version $Id: owl.messages.en-uk.php,v 1.10 2010-12-12 14:27:36 oscar Exp $
+ * \version $Id: owl.messages.en-uk.php,v 1.11 2011-01-10 18:46:00 oscar Exp $
  */
 $GLOBALS['messages'] = array (
 	  OWL_STATUS_OK			=> 'Normal successfull completion'
@@ -76,7 +76,7 @@ $GLOBALS['messages'] = array (
 	, SCHEMEHANDLE_DUPLPRKEY	=> 'Duplicate primary key found for scheme $p1$'
 	, DISP_NOARG			=> 'Dispatcher received no arguments'
 	, DISP_INSARG			=> 'Insufficient arguments passed to the dispatcher'
-	, DISP_NOCLASS			=> 'Classfile $p1$ not found in $p2$'
-	, DISP_NOCLASSF			=> 'Cannot instantiate class $p1$'
+	, DISP_NOCLASS			=> 'Cannot instantiate class $p1$'
+	, DISP_NOCLASSF			=> 'Classfile $p1$ not found in $p2$'
 	, DISP_NOMETHOD			=> 'Method $p1$ not found in class $p2$'
 	);

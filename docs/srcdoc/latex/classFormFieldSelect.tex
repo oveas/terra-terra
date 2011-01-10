@@ -11,7 +11,7 @@ Inheritance diagram for FormFieldSelect:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=400pt]{classFormFieldSelect__inherit__graph}
+\includegraphics[height=600pt]{classFormFieldSelect__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -20,7 +20,7 @@ Collaboration diagram for FormFieldSelect:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=400pt]{classFormFieldSelect__coll__graph}
+\includegraphics[height=600pt]{classFormFieldSelect__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -36,8 +36,6 @@ Collaboration diagram for FormFieldSelect:\nopagebreak
 \item 
 \hyperlink{classFormFieldSelect_ae8875a609d388b03fcc63dd9111b5458}{getFieldCode} ()
 \item 
-\hyperlink{classFormField_ad57e32bd53170af060e869b3b60f0ef7}{setName} (\$\_\-value)
-\item 
 \hyperlink{classFormField_a9fa2c828eaf98154edfaa2e755657117}{setDisabled} (\$\_\-value=true)
 \item 
 \hyperlink{classFormField_a6eabbb35d24b1698ea25b66ddfd88a64}{setReadonly} (\$\_\-value=true)
@@ -46,7 +44,13 @@ Collaboration diagram for FormFieldSelect:\nopagebreak
 \item 
 \hyperlink{classBaseElement_a0c1ce3d1684ecb78960cf7a97278494e}{setId} (\$\_\-value)
 \item 
+\hyperlink{classBaseElement_a39bafb3609d10048920c20242c2a04c5}{setName} (\$\_\-value)
+\item 
+\hyperlink{classBaseElement_a6b2b9ff69f6e92db82f91d9c55cda697}{setStyle} (\$\_\-value)
+\item 
 \hyperlink{classBaseElement_af6597b30fa9798878f6290271043dfa2}{setClass} (\$\_\-value)
+\item 
+\hyperlink{classBaseElement_ad5789f45f16aaa144716ee8558069c31}{setEvent} (\$\_\-event, \$\_\-action, \$\_\-add=false)
 \item 
 \hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
 \item 
@@ -66,13 +70,17 @@ const \hyperlink{classFormFieldSelect_a9f90f3ec8f40d0a3ac6b75194ab7415f}{Default
 \item 
 \hyperlink{classFormField_a9f9d136ba8b4a793f22370aff43d592d}{getGenericFieldAttributes} (\$\_\-ignore=array())
 \item 
-\hyperlink{classBaseElement_a852277a83d867417f2e39e8a2483bac7}{getEvents} ()
+\hyperlink{classBaseElement_aa623b042d23a5b77add8b3c452ec5855}{setAttributes} (\$\_\-attribs)
 \item 
-\hyperlink{classBaseElement_a25bed980efe965e95dc43d7c2fa1faca}{getAttributes} ()
+\hyperlink{classBaseElement_ae8237038633fc53db818f36da1940297}{getAttributes} (\$\_\-ignore=array())
 \item 
 \hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
 \hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
+\item 
+\hyperlink{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}{save\_\-status} ()
+\item 
+\hyperlink{class__OWL_a465eeaf40edd9f9c848841700c32ce55}{restore\_\-status} ()
 \item 
 \hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
 \item 
@@ -85,8 +93,6 @@ const \hyperlink{classFormFieldSelect_a9f90f3ec8f40d0a3ac6b75194ab7415f}{Default
 \item 
 \hyperlink{classFormField_a37bed21a1891e95be0e4a697e45ba51b}{\$type}
 \item 
-\hyperlink{classFormField_a23861f707bcd77bbace6300de9621746}{\$name}
-\item 
 \hyperlink{classFormField_a3c01e89834248eec8e2f145fbcfa0fbc}{\$value}
 \item 
 \hyperlink{classFormField_ab6f1907061890290e32cb2befc0a5f50}{\$disabled}
@@ -96,6 +102,10 @@ const \hyperlink{classFormFieldSelect_a9f90f3ec8f40d0a3ac6b75194ab7415f}{Default
 \hyperlink{classBaseElement_a99976a8e967db92e7800309f359b0803}{\$class} = ''
 \item 
 \hyperlink{classBaseElement_a429a3d642dd95f30e1059ef29564b87d}{\$style} = ''
+\item 
+\hyperlink{classBaseElement_a02cebe45d277b4ff8f29db08bad371ba}{\$events} = array()
+\item 
+\hyperlink{classBaseElement_a30b8cff187a9de659a70daf287d66f45}{\$name} = ''
 \item 
 \hyperlink{classBaseElement_a11b6989c43b53869a09f5ce65aa55b45}{\$id} = ''
 \item 
@@ -124,7 +134,11 @@ Oct 19, 2010 -\/-\/ O van Eijk -\/-\/ initial version
 \subsection{Constructor \& Destructor Documentation}
 \index{FormFieldSelect@{FormFieldSelect}!\_\-\_\-construct@{\_\-\_\-construct}}
 \index{\_\-\_\-construct@{\_\-\_\-construct}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelect::\_\-\_\-construct ()}\label{classFormFieldSelect_a32c59192be8c316fb2f7e1edde8f0a98}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelect::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classFormFieldSelect_a32c59192be8c316fb2f7e1edde8f0a98}
 Class constructor; 
 
 Reimplemented from \hyperlink{classFormField_a0cfe713ce28a6a0cb53476ed463e1f01}{FormField}.
@@ -134,12 +148,17 @@ Reimplemented from \hyperlink{classFormField_a0cfe713ce28a6a0cb53476ed463e1f01}{
 \subsection{Member Function Documentation}
 \index{FormFieldSelect@{FormFieldSelect}!check@{check}}
 \index{check@{check}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (\&\$ {\em object}, \/  \$ {\em level})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ object, }
+\item[{\$}]{ level}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
 This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$object}]Pointer to an object to check against \item[\mbox{$\leftarrow$} {\em \$level}]The maximum severity level \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$object}]Pointer to an object to check against \item[\mbox{\tt[in]} {\em \$level}]The maximum severity level \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct ( below the max), otherwise false 
 \end{DoxyReturn}
@@ -153,12 +172,16 @@ Referenced by SessionHandler::write().
 
 \index{FormFieldSelect@{FormFieldSelect}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (\$ {\em status} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
+\begin{DoxyParamCaption}
+\item[{\$}]{ status = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
 Get the current object severity level.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
@@ -172,7 +195,11 @@ Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandl
 
 \index{FormFieldSelect@{FormFieldSelect}!get\_\-status@{get\_\-status}}
 \index{get\_\-status@{get\_\-status}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status ()\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final, inherited\mbox{]}}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
 Get the current object status.
 
 \begin{DoxyReturn}{Returns}
@@ -184,24 +211,32 @@ Referenced by SchemeHandler::compare().
 
 \index{FormFieldSelect@{FormFieldSelect}!getAttributes@{getAttributes}}
 \index{getAttributes@{getAttributes}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{getAttributes}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::getAttributes ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classBaseElement_a25bed980efe965e95dc43d7c2fa1faca}
-Return the general element attributes that are set \begin{DoxyReturn}{Returns}
+\subsubsection[{getAttributes}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::getAttributes (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-ignore = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classBaseElement_ae8237038633fc53db818f36da1940297}
+Return the general element attributes that are set 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-ignore}]Array with attributes names that should be ignored \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
 string attributes in HTML format (' fld=\char`\"{}value\char`\"{}...) 
 \end{DoxyReturn}
 
 
-Referenced by Form::openForm().
-
-\index{FormFieldSelect@{FormFieldSelect}!getEvents@{getEvents}}
-\index{getEvents@{getEvents}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{getEvents}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::getEvents ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classBaseElement_a852277a83d867417f2e39e8a2483bac7}
+References BaseElement::getEvents().
 
 
-Referenced by FormField::getGenericFieldAttributes().
+
+Referenced by FormField::getGenericFieldAttributes(), Table::getTable(), Tablecell::getTablecell(), Tablerow::getTablerow(), and Form::openForm().
 
 \index{FormFieldSelect@{FormFieldSelect}!getFieldCode@{getFieldCode}}
 \index{getFieldCode@{getFieldCode}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{getFieldCode}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelect::getFieldCode ()}\label{classFormFieldSelect_ae8875a609d388b03fcc63dd9111b5458}
+\subsubsection[{getFieldCode}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelect::getFieldCode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classFormFieldSelect_ae8875a609d388b03fcc63dd9111b5458}
 Return the HTML code to display the form elements
 
 \begin{DoxyReturn}{Returns}
@@ -213,18 +248,22 @@ References FormField::getGenericFieldAttributes().
 
 \index{FormFieldSelect@{FormFieldSelect}!getGenericFieldAttributes@{getGenericFieldAttributes}}
 \index{getGenericFieldAttributes@{getGenericFieldAttributes}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{getGenericFieldAttributes}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getGenericFieldAttributes (\$ {\em \_\-ignore} = {\ttfamily array()})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a9f9d136ba8b4a793f22370aff43d592d}
+\subsubsection[{getGenericFieldAttributes}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getGenericFieldAttributes (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-ignore = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a9f9d136ba8b4a793f22370aff43d592d}
 Return the attributes for an HTML formfield in the \char`\"{} attrib='value' \mbox{[}...\mbox{]}\char`\"{} format
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$\_\-ignore}]Array with attributes names that should be ignored, e.g. for a textarea, the value is not returned as an attribute. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-ignore}]Array with attributes names that should be ignored, e.g. for a textarea, the value is not returned as an attribute. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Textstring with the HTML code 
 \end{DoxyReturn}
 
 
-References BaseElement::getEvents().
+References BaseElement::getAttributes().
 
 
 
@@ -232,24 +271,36 @@ Referenced by FormFieldTextarea::getFieldCode(), FormFieldText::getFieldCode(), 
 
 \index{FormFieldSelect@{FormFieldSelect}!getType@{getType}}
 \index{getType@{getType}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getType ()\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_a1f64b737bccb6b2827f8c5665b9920c7}
+\subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}FormField::getType (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_a1f64b737bccb6b2827f8c5665b9920c7}
 Give the field type \begin{DoxyReturn}{Returns}
 Field type 
 \end{DoxyReturn}
 \index{FormFieldSelect@{FormFieldSelect}!init@{init}}
 \index{init@{init}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
 References OWL::factory().
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), FormField::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{FormFieldSelect@{FormFieldSelect}!reset@{reset}}
 \index{reset@{reset}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
 General reset function for all objects. Should be called after each non-\/fatal error 
 
 Reimplemented in \hyperlink{classDbHandler_a9982df4830f05803935bb31bac7fae3d}{DbHandler}, and \hyperlink{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}{SchemeHandler}.
@@ -262,81 +313,195 @@ References \_\-OWL::reset\_\-calltree().
 
 Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
 
+\index{FormFieldSelect@{FormFieldSelect}!restore\_\-status@{restore\_\-status}}
+\index{restore\_\-status@{restore\_\-status}!FormFieldSelect@{FormFieldSelect}}
+\subsubsection[{restore\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restore\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a465eeaf40edd9f9c848841700c32ce55}
+Restore the previously saved status object and destroy the copy 
+
+References \_\-OWL::set\_\-status().
+
+
+
+Referenced by UserHandler::logout().
+
+\index{FormFieldSelect@{FormFieldSelect}!save\_\-status@{save\_\-status}}
+\index{save\_\-status@{save\_\-status}!FormFieldSelect@{FormFieldSelect}}
+\subsubsection[{save\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::save\_\-status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
+Create a copy of the status object 
+
+Referenced by UserHandler::logout().
+
 \index{FormFieldSelect@{FormFieldSelect}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (\&\$ {\em object} = {\ttfamily null})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ object = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
 Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
 \index{FormFieldSelect@{FormFieldSelect}!set\_\-status@{set\_\-status}}
 \index{set\_\-status@{set\_\-status}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (\$ {\em status}, \/  \$ {\em params} = {\ttfamily array~()})\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
+\begin{DoxyParamCaption}
+\item[{\$}]{ status, }
+\item[{\$}]{ params = {\ttfamily array~()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}final, protected, inherited\mbox{]}}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
 Set the current object status to the specified value.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{$\leftarrow$} {\em \$params}]\end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$status}]\hyperlink{classOWL}{OWL} status code \item[\mbox{\tt[in]} {\em \$params}]\end{DoxyParams}
 
 
 References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), DataHandler::reset(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), FormFieldRadio::setSelected(), FormFieldText::setSize(), setSize(), setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), Form::setEncoding(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), Form::setMethod(), FormFieldRadio::setSelected(), FormFieldText::setSize(), setSize(), setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+
+\index{FormFieldSelect@{FormFieldSelect}!setAttributes@{setAttributes}}
+\index{setAttributes@{setAttributes}!FormFieldSelect@{FormFieldSelect}}
+\subsubsection[{setAttributes}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setAttributes (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-attribs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classBaseElement_aa623b042d23a5b77add8b3c452ec5855}
+Set the attributes of the DOM element by calling the 'set$<$Attrib$>$' method for this class. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-attribs}]Array with attributes in the format attrib=$>$value \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity level. The status increased when a set$<$Attrib\&gt method does not exist. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classTablecell_a91a8264df222cc44b77ceaf7282a400e}{Tablecell}, and \hyperlink{classTablerow_aece4cad0834c299d7e03030e945aea3a}{Tablerow}.
+
+
+
+References \_\-OWL::set\_\-status().
+
+
+
+Referenced by Table::\_\-\_\-construct().
 
 \index{FormFieldSelect@{FormFieldSelect}!setClass@{setClass}}
 \index{setClass@{setClass}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{setClass}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setClass (\$ {\em \_\-value})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_af6597b30fa9798878f6290271043dfa2}
+\subsubsection[{setClass}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setClass (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_af6597b30fa9798878f6290271043dfa2}
 Set the element Class 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Class name \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-value}]Class name \end{DoxyParams}
 \index{FormFieldSelect@{FormFieldSelect}!setDisabled@{setDisabled}}
 \index{setDisabled@{setDisabled}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{setDisabled}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setDisabled (\$ {\em \_\-value} = {\ttfamily true})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_a9fa2c828eaf98154edfaa2e755657117}
+\subsubsection[{setDisabled}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setDisabled (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-value = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_a9fa2c828eaf98154edfaa2e755657117}
 Set the Disabled boolean 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Value indicating true (default) or false \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-value}]Value indicating true (default) or false \end{DoxyParams}
+\index{FormFieldSelect@{FormFieldSelect}!setEvent@{setEvent}}
+\index{setEvent@{setEvent}!FormFieldSelect@{FormFieldSelect}}
+\subsubsection[{setEvent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setEvent (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-event, }
+\item[{\$}]{ \_\-action, }
+\item[{\$}]{ \_\-add = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_ad5789f45f16aaa144716ee8558069c31}
+Add an event to the events array 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-event}]Javascript event name (onXxx) \item[\mbox{\tt[in]} {\em \$\_\-action}]Javascript function or code \item[\mbox{\tt[in]} {\em \$\_\-add}]Boolean; when true, the action will be added if the event name already exists. Default is false; overwrite the action for this event. \end{DoxyParams}
 \index{FormFieldSelect@{FormFieldSelect}!setId@{setId}}
 \index{setId@{setId}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{setId}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setId (\$ {\em \_\-value})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_a0c1ce3d1684ecb78960cf7a97278494e}
+\subsubsection[{setId}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setId (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_a0c1ce3d1684ecb78960cf7a97278494e}
 Set the element ID 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Identification \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-value}]Identification \end{DoxyParams}
 \index{FormFieldSelect@{FormFieldSelect}!setMultiple@{setMultiple}}
 \index{setMultiple@{setMultiple}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{setMultiple}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelect::setMultiple (\$ {\em \_\-value} = {\ttfamily true})}\label{classFormFieldSelect_aa69374c1f0692d691e7899f3ed14a42e}
+\subsubsection[{setMultiple}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelect::setMultiple (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-value = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classFormFieldSelect_aa69374c1f0692d691e7899f3ed14a42e}
 Set the Multiple boolean 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Value indicating true (default) or false \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-value}]Value indicating true (default) or false \end{DoxyParams}
 \index{FormFieldSelect@{FormFieldSelect}!setName@{setName}}
 \index{setName@{setName}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setName (\$ {\em \_\-value})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_ad57e32bd53170af060e869b3b60f0ef7}
-Set the field name 
+\subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setName (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_a39bafb3609d10048920c20242c2a04c5}
+Set the element name 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Field name \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-value}]Element name \end{DoxyParams}
 \index{FormFieldSelect@{FormFieldSelect}!setReadonly@{setReadonly}}
 \index{setReadonly@{setReadonly}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{setReadonly}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setReadonly (\$ {\em \_\-value} = {\ttfamily true})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_a6eabbb35d24b1698ea25b66ddfd88a64}
+\subsubsection[{setReadonly}]{\setlength{\rightskip}{0pt plus 5cm}FormField::setReadonly (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-value = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormField_a6eabbb35d24b1698ea25b66ddfd88a64}
 Set the Readonly boolean 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$\_\-value}]Value indicating true (default) or false \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-value}]Value indicating true (default) or false \end{DoxyParams}
 \index{FormFieldSelect@{FormFieldSelect}!setSize@{setSize}}
 \index{setSize@{setSize}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{setSize}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelect::setSize (\$ {\em size})}\label{classFormFieldSelect_ad8ae8dcf6f6763cb32966eeca33c472b}
+\subsubsection[{setSize}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelect::setSize (
+\begin{DoxyParamCaption}
+\item[{\$}]{ size}
+\end{DoxyParamCaption}
+)}\label{classFormFieldSelect_ad8ae8dcf6f6763cb32966eeca33c472b}
 Set the Size attribute 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$size}]integer \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$size}]integer \end{DoxyParams}
 
 
 References \$size, and \_\-OWL::set\_\-status().
 
+\index{FormFieldSelect@{FormFieldSelect}!setStyle@{setStyle}}
+\index{setStyle@{setStyle}!FormFieldSelect@{FormFieldSelect}}
+\subsubsection[{setStyle}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setStyle (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_a6b2b9ff69f6e92db82f91d9c55cda697}
+Set the element style 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-value}]Element style \end{DoxyParams}
 \index{FormFieldSelect@{FormFieldSelect}!setValue@{setValue}}
 \index{setValue@{setValue}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{setValue}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelect::setValue (\$ {\em \_\-value})}\label{classFormFieldSelect_ae69f5b352df63796c048dca6a2de7544}
+\subsubsection[{setValue}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelect::setValue (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-value}
+\end{DoxyParamCaption}
+)}\label{classFormFieldSelect_ae69f5b352df63796c048dca6a2de7544}
 Define the options 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$\_\-value}]2-\/Dimensional array with option data. The first level contains indexed arrays with data for each option in the format: 
+\item[\mbox{\tt[in]} {\em \$\_\-value}]2-\/Dimensional array with option data. The first level contains indexed arrays with data for each option in the format: 
 \begin{DoxyCode}
  array (
      'value'    => string  // Required, value that will be submitted
@@ -360,12 +525,17 @@ References \_\-OWL::set\_\-status().
 
 \index{FormFieldSelect@{FormFieldSelect}!signal@{signal}}
 \index{signal@{signal}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (\$ {\em level} = {\ttfamily {\bf OWL\_\-INFO}}, \/  \&\$ {\em text} = {\ttfamily false})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (
+\begin{DoxyParamCaption}
+\item[{\$}]{ level = {\ttfamily {\bf OWL\_\-INFO}}, }
+\item[{\&\$}]{ text = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
 Display the message for the current object status
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\leftarrow$} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{$\rightarrow$} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$level}]An optional severity level; message will only be displayed when it is at least of this level. \item[\mbox{\tt[out]} {\em \$text}]If this parameter is given, the message text is returned in this string instead of echood. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
@@ -379,12 +549,17 @@ Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
 
 \index{FormFieldSelect@{FormFieldSelect}!traceback@{traceback}}
 \index{traceback@{traceback}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (\&\$ {\em text} = {\ttfamily false}, \/  \$ {\em depth} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ text = {\ttfamily false}, }
+\item[{\$}]{ depth = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
 If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{$\rightarrow$} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{$\leftarrow$} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
+\item[\mbox{\tt[out]} {\em \$text}]Optional variable in which the message text can be stored. If not given, the text will be written to standard output \item[\mbox{\tt[in]} {\em \$depth}]This paramater should be initially empty. It calculates the depth in recursive calls. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}
@@ -405,7 +580,14 @@ Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read()
 Class specification \index{FormFieldSelect@{FormFieldSelect}!\$disabled@{\$disabled}}
 \index{\$disabled@{\$disabled}!FormFieldSelect@{FormFieldSelect}}
 \subsubsection[{\$disabled}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$disabled\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_ab6f1907061890290e32cb2befc0a5f50}
-Boolean indicating a disabled field when true \index{FormFieldSelect@{FormFieldSelect}!\$id@{\$id}}
+Boolean indicating a disabled field when true \index{FormFieldSelect@{FormFieldSelect}!\$events@{\$events}}
+\index{\$events@{\$events}!FormFieldSelect@{FormFieldSelect}}
+\subsubsection[{\$events}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$events = array()\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classBaseElement_a02cebe45d277b4ff8f29db08bad371ba}
+Array with javascript events 
+
+Referenced by Form::setFieldEvents().
+
+\index{FormFieldSelect@{FormFieldSelect}!\$id@{\$id}}
 \index{\$id@{\$id}!FormFieldSelect@{FormFieldSelect}}
 \subsubsection[{\$id}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$id = ''\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classBaseElement_a11b6989c43b53869a09f5ce65aa55b45}
 Element ID \index{FormFieldSelect@{FormFieldSelect}!\$multiple@{\$multiple}}
@@ -413,8 +595,12 @@ Element ID \index{FormFieldSelect@{FormFieldSelect}!\$multiple@{\$multiple}}
 \subsubsection[{\$multiple}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelect::\$multiple\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormFieldSelect_a6eb8f177d1cfd20845509c0a35120725}
 Boolean indicating a multiple select \index{FormFieldSelect@{FormFieldSelect}!\$name@{\$name}}
 \index{\$name@{\$name}!FormFieldSelect@{FormFieldSelect}}
-\subsubsection[{\$name}]{\setlength{\rightskip}{0pt plus 5cm}FormField::\$name\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormField_a23861f707bcd77bbace6300de9621746}
-Name of the formfield \index{FormFieldSelect@{FormFieldSelect}!\$options@{\$options}}
+\subsubsection[{\$name}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$name = ''\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classBaseElement_a30b8cff187a9de659a70daf287d66f45}
+Name of the element 
+
+Referenced by Form::addField(), and Form::showField().
+
+\index{FormFieldSelect@{FormFieldSelect}!\$options@{\$options}}
 \index{\$options@{\$options}!FormFieldSelect@{FormFieldSelect}}
 \subsubsection[{\$options}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelect::\$options\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormFieldSelect_a5c4b74ae8d7274e642e78e5a514c9736}
 Array with options for the select list \index{FormFieldSelect@{FormFieldSelect}!\$readonly@{\$readonly}}

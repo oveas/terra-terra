@@ -1,373 +1,991 @@
-\contentsline {chapter}{\numberline {1}OWL-PHP Module Index}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}OWL-PHP Modules}{1}{section.1.1}
-\contentsline {chapter}{\numberline {2}OWL-PHP Hierarchical Index}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}OWL-PHP Class Hierarchy}{3}{section.2.1}
-\contentsline {chapter}{\numberline {3}OWL-PHP Class Index}{5}{chapter.3}
-\contentsline {section}{\numberline {3.1}OWL-PHP Class List}{5}{section.3.1}
-\contentsline {chapter}{\numberline {4}OWL-PHP File Index}{7}{chapter.4}
-\contentsline {section}{\numberline {4.1}OWL-PHP File List}{7}{section.4.1}
-\contentsline {chapter}{\numberline {5}OWL-PHP Module Documentation}{9}{chapter.5}
+\contentsline {chapter}{\numberline {1}Module Index}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Modules}{1}{section.1.1}
+\contentsline {chapter}{\numberline {2}Class Index}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Class Hierarchy}{3}{section.2.1}
+\contentsline {chapter}{\numberline {3}Class Index}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Class List}{5}{section.3.1}
+\contentsline {chapter}{\numberline {4}File Index}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}File List}{7}{section.4.1}
+\contentsline {chapter}{\numberline {5}Module Documentation}{9}{chapter.5}
 \contentsline {section}{\numberline {5.1}Presentation modules}{9}{section.5.1}
 \contentsline {section}{\numberline {5.2}Business Object modules}{10}{section.5.2}
 \contentsline {section}{\numberline {5.3}Storage Object modules}{11}{section.5.3}
 \contentsline {section}{\numberline {5.4}Library (codes, messages files etc.)}{12}{section.5.4}
-\contentsline {chapter}{\numberline {6}OWL-PHP Class Documentation}{13}{chapter.6}
+\contentsline {chapter}{\numberline {6}Class Documentation}{13}{chapter.6}
 \contentsline {section}{\numberline {6.1}\_\discretionary {-}{}{}OWL Class Reference}{13}{section.6.1}
 \contentsline {subsection}{\numberline {6.1.1}Detailed Description}{14}{subsection.6.1.1}
 \contentsline {subsection}{\numberline {6.1.2}Constructor \& Destructor Documentation}{14}{subsection.6.1.2}
-\contentsline {subsubsection}{\numberline {6.1.2.1}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct ()}{14}{subsubsection.6.1.2.1}
-\contentsline {subsection}{\numberline {6.1.3}Member Function Documentation}{14}{subsection.6.1.3}
-\contentsline {subsubsection}{\numberline {6.1.3.1}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected\unhbox \voidb@x \hbox {]}}}{14}{subsubsection.6.1.3.1}
-\contentsline {subsubsection}{\numberline {6.1.3.2}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected\unhbox \voidb@x \hbox {]}}}{15}{subsubsection.6.1.3.2}
-\contentsline {subsubsection}{\numberline {6.1.3.3}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset\_\discretionary {-}{}{}calltree (\$ {\em depth} = {\tt 0})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}final, private\unhbox \voidb@x \hbox {]}}}{15}{subsubsection.6.1.3.3}
-\contentsline {subsection}{\numberline {6.1.4}Member Data Documentation}{15}{subsection.6.1.4}
-\contentsline {subsubsection}{\numberline {6.1.4.1}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::\$status\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{15}{subsubsection.6.1.4.1}
-\contentsline {subsubsection}{\numberline {6.1.4.2}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::\$pstatus\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{15}{subsubsection.6.1.4.2}
-\contentsline {subsubsection}{\numberline {6.1.4.3}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::\$severity\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{15}{subsubsection.6.1.4.3}
-\contentsline {section}{\numberline {6.2}ConfigHandler Class Reference}{16}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{16}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Member Function Documentation}{16}{subsection.6.2.2}
-\contentsline {subsubsection}{\numberline {6.2.2.1}\setlength {\rightskip }{0pt plus 5cm}ConfigHandler::read\_\discretionary {-}{}{}config (\$ {\em file} = {\tt ''})}{16}{subsubsection.6.2.2.1}
-\contentsline {subsubsection}{\numberline {6.2.2.2}\setlength {\rightskip }{0pt plus 5cm}ConfigHandler::convert (\$ {\em val})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{16}{subsubsection.6.2.2.2}
-\contentsline {subsubsection}{\numberline {6.2.2.3}\setlength {\rightskip }{0pt plus 5cm}ConfigHandler::get (\$ {\em item})}{17}{subsubsection.6.2.2.3}
-\contentsline {section}{\numberline {6.3}DataHandler Class Reference}{18}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{20}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Constructor \& Destructor Documentation}{20}{subsection.6.3.2}
-\contentsline {subsubsection}{\numberline {6.3.2.1}\setlength {\rightskip }{0pt plus 5cm}DataHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct (\$ {\em dblink} = {\tt null}, \$ {\em tablename} = {\tt ''})}{20}{subsubsection.6.3.2.1}
-\contentsline {subsection}{\numberline {6.3.3}Member Function Documentation}{20}{subsection.6.3.3}
-\contentsline {subsubsection}{\numberline {6.3.3.1}\setlength {\rightskip }{0pt plus 5cm}DataHandler::reset (\$ {\em level} = {\tt {\bf DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}PREPARE}})}{20}{subsubsection.6.3.3.1}
-\contentsline {subsubsection}{\numberline {6.3.3.2}\setlength {\rightskip }{0pt plus 5cm}DataHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}set (\$ {\em variable}, \$ {\em value})}{21}{subsubsection.6.3.3.2}
-\contentsline {subsubsection}{\numberline {6.3.3.3}\setlength {\rightskip }{0pt plus 5cm}DataHandler::set\_\discretionary {-}{}{}key (\$ {\em variable})}{21}{subsubsection.6.3.3.3}
-\contentsline {subsubsection}{\numberline {6.3.3.4}\setlength {\rightskip }{0pt plus 5cm}DataHandler::find\_\discretionary {-}{}{}field (\$ {\em fld}, \&\$ {\em expanded})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{21}{subsubsection.6.3.3.4}
-\contentsline {subsubsection}{\numberline {6.3.3.5}\setlength {\rightskip }{0pt plus 5cm}DataHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}get (\$ {\em variable})}{22}{subsubsection.6.3.3.5}
-\contentsline {subsubsection}{\numberline {6.3.3.6}\setlength {\rightskip }{0pt plus 5cm}DataHandler::set\_\discretionary {-}{}{}join (\$ {\em lvalue}, \$ {\em rvalue}, \$ {\em linktype} = {\tt '='})}{22}{subsubsection.6.3.3.6}
-\contentsline {subsubsection}{\numberline {6.3.3.7}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{22}{subsubsection.6.3.3.7}
-\contentsline {subsubsection}{\numberline {6.3.3.8}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{22}{subsubsection.6.3.3.8}
-\contentsline {subsection}{\numberline {6.3.4}Member Data Documentation}{22}{subsection.6.3.4}
-\contentsline {subsubsection}{\numberline {6.3.4.1}\setlength {\rightskip }{0pt plus 5cm}DataHandler::\$owl\_\discretionary {-}{}{}data\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{22}{subsubsection.6.3.4.1}
-\contentsline {subsubsection}{\numberline {6.3.4.2}\setlength {\rightskip }{0pt plus 5cm}DataHandler::\$owl\_\discretionary {-}{}{}joins\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{23}{subsubsection.6.3.4.2}
-\contentsline {subsubsection}{\numberline {6.3.4.3}\setlength {\rightskip }{0pt plus 5cm}DataHandler::\$owl\_\discretionary {-}{}{}keys\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{23}{subsubsection.6.3.4.3}
-\contentsline {subsubsection}{\numberline {6.3.4.4}\setlength {\rightskip }{0pt plus 5cm}DataHandler::\$owl\_\discretionary {-}{}{}tablename\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{23}{subsubsection.6.3.4.4}
-\contentsline {subsubsection}{\numberline {6.3.4.5}\setlength {\rightskip }{0pt plus 5cm}DataHandler::\$owl\_\discretionary {-}{}{}database\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{23}{subsubsection.6.3.4.5}
-\contentsline {subsubsection}{\numberline {6.3.4.6}\setlength {\rightskip }{0pt plus 5cm}DataHandler::\$owl\_\discretionary {-}{}{}prepared\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{23}{subsubsection.6.3.4.6}
-\contentsline {section}{\numberline {6.4}DbHandler Class Reference}{24}{section.6.4}
-\contentsline {subsection}{\numberline {6.4.1}Detailed Description}{26}{subsection.6.4.1}
-\contentsline {subsection}{\numberline {6.4.2}Constructor \& Destructor Documentation}{26}{subsection.6.4.2}
-\contentsline {subsubsection}{\numberline {6.4.2.1}\setlength {\rightskip }{0pt plus 5cm}DbHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct (\$ {\em srv} = {\tt 'localhost'}, \$ {\em db} = {\tt ''}, \$ {\em usr} = {\tt ''}, \$ {\em pwd} = {\tt ''}, \$ {\em dbtype} = {\tt 'MySQL'})}{26}{subsubsection.6.4.2.1}
-\contentsline {subsubsection}{\numberline {6.4.2.2}\setlength {\rightskip }{0pt plus 5cm}DbHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct ()}{27}{subsubsection.6.4.2.2}
-\contentsline {subsection}{\numberline {6.4.3}Member Function Documentation}{27}{subsection.6.4.3}
-\contentsline {subsubsection}{\numberline {6.4.3.1}\setlength {\rightskip }{0pt plus 5cm}DbHandler::create ()}{27}{subsubsection.6.4.3.1}
-\contentsline {subsubsection}{\numberline {6.4.3.2}\setlength {\rightskip }{0pt plus 5cm}DbHandler::connect ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{27}{subsubsection.6.4.3.2}
-\contentsline {subsubsection}{\numberline {6.4.3.3}\setlength {\rightskip }{0pt plus 5cm}DbHandler::open ()}{27}{subsubsection.6.4.3.3}
-\contentsline {subsubsection}{\numberline {6.4.3.4}\setlength {\rightskip }{0pt plus 5cm}DbHandler::reset ()}{27}{subsubsection.6.4.3.4}
-\contentsline {subsubsection}{\numberline {6.4.3.5}\setlength {\rightskip }{0pt plus 5cm}DbHandler::table\_\discretionary {-}{}{}description (\$ {\em tablename}, \&\$ {\em data})}{27}{subsubsection.6.4.3.5}
-\contentsline {subsubsection}{\numberline {6.4.3.6}\setlength {\rightskip }{0pt plus 5cm}DbHandler::tablename (\$ {\em tablename})}{28}{subsubsection.6.4.3.6}
-\contentsline {subsubsection}{\numberline {6.4.3.7}\setlength {\rightskip }{0pt plus 5cm}DbHandler::set\_\discretionary {-}{}{}query (\$ {\em qry})}{28}{subsubsection.6.4.3.7}
-\contentsline {subsubsection}{\numberline {6.4.3.8}\setlength {\rightskip }{0pt plus 5cm}DbHandler::read (\$ {\em flag} = {\tt {\bf DBHANDLE\_\discretionary {-}{}{}DATA}}, \&\$ {\em data}, \$ {\em quick\_\discretionary {-}{}{}query} = {\tt ''}, \$ {\em line} = {\tt 0}, \$ {\em file} = {\tt '\unhbox \voidb@x \hbox {[}unknown\unhbox \voidb@x \hbox {]}'})}{28}{subsubsection.6.4.3.8}
-\contentsline {subsubsection}{\numberline {6.4.3.9}\setlength {\rightskip }{0pt plus 5cm}DbHandler::dbread (\$ {\em qry}, \&\$ {\em rows}, \&\$ {\em fields})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{29}{subsubsection.6.4.3.9}
-\contentsline {subsubsection}{\numberline {6.4.3.10}\setlength {\rightskip }{0pt plus 5cm}DbHandler::escape\_\discretionary {-}{}{}string (\$ {\em string})}{29}{subsubsection.6.4.3.10}
-\contentsline {subsubsection}{\numberline {6.4.3.11}\setlength {\rightskip }{0pt plus 5cm}DbHandler::unescape\_\discretionary {-}{}{}string (\$ {\em string})}{29}{subsubsection.6.4.3.11}
-\contentsline {subsubsection}{\numberline {6.4.3.12}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{30}{subsubsection.6.4.3.12}
-\contentsline {subsection}{\numberline {6.4.4}Member Data Documentation}{30}{subsection.6.4.4}
-\contentsline {subsubsection}{\numberline {6.4.4.1}\setlength {\rightskip }{0pt plus 5cm}DbHandler::\$id\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{30}{subsubsection.6.4.4.1}
-\contentsline {subsubsection}{\numberline {6.4.4.2}\setlength {\rightskip }{0pt plus 5cm}DbHandler::\$errno\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{30}{subsubsection.6.4.4.2}
-\contentsline {subsubsection}{\numberline {6.4.4.3}\setlength {\rightskip }{0pt plus 5cm}DbHandler::\$error\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{30}{subsubsection.6.4.4.3}
-\contentsline {subsubsection}{\numberline {6.4.4.4}\setlength {\rightskip }{0pt plus 5cm}DbHandler::\$database\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{30}{subsubsection.6.4.4.4}
-\contentsline {subsubsection}{\numberline {6.4.4.5}\setlength {\rightskip }{0pt plus 5cm}DbHandler::\$rowcount\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{30}{subsubsection.6.4.4.5}
-\contentsline {subsubsection}{\numberline {6.4.4.6}\setlength {\rightskip }{0pt plus 5cm}DbHandler::\$opened\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{30}{subsubsection.6.4.4.6}
-\contentsline {subsubsection}{\numberline {6.4.4.7}\setlength {\rightskip }{0pt plus 5cm}DbHandler::\$db\_\discretionary {-}{}{}prefix\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{30}{subsubsection.6.4.4.7}
-\contentsline {subsubsection}{\numberline {6.4.4.8}\setlength {\rightskip }{0pt plus 5cm}DbHandler::\$query\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{30}{subsubsection.6.4.4.8}
-\contentsline {section}{\numberline {6.5}DOMElement Class Reference}{31}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{32}{subsection.6.5.1}
-\contentsline {subsection}{\numberline {6.5.2}Constructor \& Destructor Documentation}{32}{subsection.6.5.2}
-\contentsline {subsubsection}{\numberline {6.5.2.1}\setlength {\rightskip }{0pt plus 5cm}DOMElement::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct ()}{32}{subsubsection.6.5.2.1}
-\contentsline {subsection}{\numberline {6.5.3}Member Function Documentation}{32}{subsection.6.5.3}
-\contentsline {subsubsection}{\numberline {6.5.3.1}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{32}{subsubsection.6.5.3.1}
-\contentsline {subsubsection}{\numberline {6.5.3.2}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{32}{subsubsection.6.5.3.2}
-\contentsline {section}{\numberline {6.6}FileHandler Class Reference}{33}{section.6.6}
-\contentsline {subsection}{\numberline {6.6.1}Detailed Description}{33}{subsection.6.6.1}
-\contentsline {subsection}{\numberline {6.6.2}Constructor \& Destructor Documentation}{33}{subsection.6.6.2}
-\contentsline {subsubsection}{\numberline {6.6.2.1}\setlength {\rightskip }{0pt plus 5cm}FileHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct (\$ {\em name} = {\tt ''})}{33}{subsubsection.6.6.2.1}
-\contentsline {subsubsection}{\numberline {6.6.2.2}\setlength {\rightskip }{0pt plus 5cm}FileHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct ()}{33}{subsubsection.6.6.2.2}
-\contentsline {subsection}{\numberline {6.6.3}Member Function Documentation}{33}{subsection.6.6.3}
-\contentsline {subsubsection}{\numberline {6.6.3.1}\setlength {\rightskip }{0pt plus 5cm}FileHandler::open (\$ {\em mode} = {\tt 'r'})}{34}{subsubsection.6.6.3.1}
-\contentsline {subsubsection}{\numberline {6.6.3.2}\setlength {\rightskip }{0pt plus 5cm}FileHandler::close ()}{34}{subsubsection.6.6.3.2}
-\contentsline {subsubsection}{\numberline {6.6.3.3}\setlength {\rightskip }{0pt plus 5cm}FileHandler::read\_\discretionary {-}{}{}data ()}{34}{subsubsection.6.6.3.3}
-\contentsline {subsubsection}{\numberline {6.6.3.4}\setlength {\rightskip }{0pt plus 5cm}FileHandler::read\_\discretionary {-}{}{}line (\$ {\em trim} = {\tt {\bf FILE\_\discretionary {-}{}{}NOTRIM}})}{34}{subsubsection.6.6.3.4}
-\contentsline {subsubsection}{\numberline {6.6.3.5}\setlength {\rightskip }{0pt plus 5cm}FileHandler::encode ()}{34}{subsubsection.6.6.3.5}
-\contentsline {subsubsection}{\numberline {6.6.3.6}\setlength {\rightskip }{0pt plus 5cm}FileHandler::download ()}{34}{subsubsection.6.6.3.6}
-\contentsline {subsection}{\numberline {6.6.4}Member Data Documentation}{34}{subsection.6.6.4}
-\contentsline {subsubsection}{\numberline {6.6.4.1}\setlength {\rightskip }{0pt plus 5cm}FileHandler::\$original\_\discretionary {-}{}{}name}{34}{subsubsection.6.6.4.1}
-\contentsline {section}{\numberline {6.7}Form Class Reference}{35}{section.6.7}
-\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{36}{subsection.6.7.1}
-\contentsline {subsection}{\numberline {6.7.2}Constructor \& Destructor Documentation}{36}{subsection.6.7.2}
-\contentsline {subsubsection}{\numberline {6.7.2.1}\setlength {\rightskip }{0pt plus 5cm}Form::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct ()}{36}{subsubsection.6.7.2.1}
-\contentsline {subsection}{\numberline {6.7.3}Member Function Documentation}{36}{subsection.6.7.3}
-\contentsline {subsubsection}{\numberline {6.7.3.1}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{36}{subsubsection.6.7.3.1}
-\contentsline {subsubsection}{\numberline {6.7.3.2}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{36}{subsubsection.6.7.3.2}
-\contentsline {section}{\numberline {6.8}FormElement Class Reference}{37}{section.6.8}
-\contentsline {subsection}{\numberline {6.8.1}Detailed Description}{38}{subsection.6.8.1}
-\contentsline {subsection}{\numberline {6.8.2}Constructor \& Destructor Documentation}{38}{subsection.6.8.2}
-\contentsline {subsubsection}{\numberline {6.8.2.1}\setlength {\rightskip }{0pt plus 5cm}FormElement::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct ()}{38}{subsubsection.6.8.2.1}
-\contentsline {subsection}{\numberline {6.8.3}Member Function Documentation}{38}{subsection.6.8.3}
-\contentsline {subsubsection}{\numberline {6.8.3.1}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{38}{subsubsection.6.8.3.1}
-\contentsline {subsubsection}{\numberline {6.8.3.2}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{38}{subsubsection.6.8.3.2}
-\contentsline {section}{\numberline {6.9}FormHandler Class Reference}{39}{section.6.9}
-\contentsline {subsection}{\numberline {6.9.1}Detailed Description}{41}{subsection.6.9.1}
-\contentsline {subsection}{\numberline {6.9.2}Constructor \& Destructor Documentation}{41}{subsection.6.9.2}
-\contentsline {subsubsection}{\numberline {6.9.2.1}\setlength {\rightskip }{0pt plus 5cm}FormHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct ()}{41}{subsubsection.6.9.2.1}
-\contentsline {subsection}{\numberline {6.9.3}Member Function Documentation}{41}{subsection.6.9.3}
-\contentsline {subsubsection}{\numberline {6.9.3.1}\setlength {\rightskip }{0pt plus 5cm}FormHandler::parse\_\discretionary {-}{}{}formdata (\$ {\em data} = {\tt null})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{41}{subsubsection.6.9.3.1}
-\contentsline {subsubsection}{\numberline {6.9.3.2}\setlength {\rightskip }{0pt plus 5cm}FormHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}get (\$ {\em variable})}{41}{subsubsection.6.9.3.2}
-\contentsline {subsubsection}{\numberline {6.9.3.3}\setlength {\rightskip }{0pt plus 5cm}DataHandler::reset (\$ {\em level} = {\tt {\bf DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}PREPARE}})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}inherited\unhbox \voidb@x \hbox {]}}}{42}{subsubsection.6.9.3.3}
-\contentsline {subsubsection}{\numberline {6.9.3.4}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{42}{subsubsection.6.9.3.4}
-\contentsline {subsubsection}{\numberline {6.9.3.5}\setlength {\rightskip }{0pt plus 5cm}DataHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}set (\$ {\em variable}, \$ {\em value})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}inherited\unhbox \voidb@x \hbox {]}}}{42}{subsubsection.6.9.3.5}
-\contentsline {subsubsection}{\numberline {6.9.3.6}\setlength {\rightskip }{0pt plus 5cm}DataHandler::set\_\discretionary {-}{}{}key (\$ {\em variable})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}inherited\unhbox \voidb@x \hbox {]}}}{42}{subsubsection.6.9.3.6}
-\contentsline {subsubsection}{\numberline {6.9.3.7}\setlength {\rightskip }{0pt plus 5cm}DataHandler::set\_\discretionary {-}{}{}join (\$ {\em lvalue}, \$ {\em rvalue}, \$ {\em linktype} = {\tt '='})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}inherited\unhbox \voidb@x \hbox {]}}}{43}{subsubsection.6.9.3.7}
-\contentsline {subsubsection}{\numberline {6.9.3.8}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{43}{subsubsection.6.9.3.8}
-\contentsline {subsection}{\numberline {6.9.4}Member Data Documentation}{43}{subsection.6.9.4}
-\contentsline {subsubsection}{\numberline {6.9.4.1}\setlength {\rightskip }{0pt plus 5cm}FormHandler::\$owl\_\discretionary {-}{}{}multivalues\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{43}{subsubsection.6.9.4.1}
-\contentsline {section}{\numberline {6.10}LogHandler Class Reference}{44}{section.6.10}
-\contentsline {subsection}{\numberline {6.10.1}Detailed Description}{45}{subsection.6.10.1}
-\contentsline {subsection}{\numberline {6.10.2}Constructor \& Destructor Documentation}{45}{subsection.6.10.2}
-\contentsline {subsubsection}{\numberline {6.10.2.1}\setlength {\rightskip }{0pt plus 5cm}LogHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct ()}{45}{subsubsection.6.10.2.1}
-\contentsline {subsubsection}{\numberline {6.10.2.2}\setlength {\rightskip }{0pt plus 5cm}LogHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct ()}{45}{subsubsection.6.10.2.2}
-\contentsline {subsection}{\numberline {6.10.3}Member Function Documentation}{46}{subsection.6.10.3}
-\contentsline {subsubsection}{\numberline {6.10.3.1}\setlength {\rightskip }{0pt plus 5cm}LogHandler::set\_\discretionary {-}{}{}filename ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{46}{subsubsection.6.10.3.1}
-\contentsline {subsubsection}{\numberline {6.10.3.2}\setlength {\rightskip }{0pt plus 5cm}LogHandler::open\_\discretionary {-}{}{}logfile ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{46}{subsubsection.6.10.3.2}
-\contentsline {subsubsection}{\numberline {6.10.3.3}\setlength {\rightskip }{0pt plus 5cm}LogHandler::close\_\discretionary {-}{}{}logfile ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{46}{subsubsection.6.10.3.3}
-\contentsline {subsubsection}{\numberline {6.10.3.4}\setlength {\rightskip }{0pt plus 5cm}LogHandler::write\_\discretionary {-}{}{}logfile (\$ {\em msg})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{46}{subsubsection.6.10.3.4}
-\contentsline {subsubsection}{\numberline {6.10.3.5}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{46}{subsubsection.6.10.3.5}
-\contentsline {subsubsection}{\numberline {6.10.3.6}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{46}{subsubsection.6.10.3.6}
-\contentsline {subsection}{\numberline {6.10.4}Member Data Documentation}{46}{subsection.6.10.4}
-\contentsline {subsubsection}{\numberline {6.10.4.1}\setlength {\rightskip }{0pt plus 5cm}LogHandler::\$opened\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{46}{subsubsection.6.10.4.1}
-\contentsline {subsubsection}{\numberline {6.10.4.2}\setlength {\rightskip }{0pt plus 5cm}LogHandler::\$filename\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{46}{subsubsection.6.10.4.2}
-\contentsline {subsubsection}{\numberline {6.10.4.3}\setlength {\rightskip }{0pt plus 5cm}LogHandler::\$fpointer\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{47}{subsubsection.6.10.4.3}
-\contentsline {section}{\numberline {6.11}OWL Class Reference}{48}{section.6.11}
-\contentsline {subsection}{\numberline {6.11.1}Constructor \& Destructor Documentation}{49}{subsection.6.11.1}
-\contentsline {subsubsection}{\numberline {6.11.1.1}\setlength {\rightskip }{0pt plus 5cm}OWL::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct ()}{49}{subsubsection.6.11.1.1}
-\contentsline {subsection}{\numberline {6.11.2}Member Function Documentation}{49}{subsection.6.11.2}
-\contentsline {subsubsection}{\numberline {6.11.2.1}\setlength {\rightskip }{0pt plus 5cm}OWL::s (\$ {\em a}, \$ {\em b} = {\tt array()})}{49}{subsubsection.6.11.2.1}
-\contentsline {subsubsection}{\numberline {6.11.2.2}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{49}{subsubsection.6.11.2.2}
-\contentsline {subsubsection}{\numberline {6.11.2.3}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{49}{subsubsection.6.11.2.3}
-\contentsline {section}{\numberline {6.12}OWLException Class Reference}{50}{section.6.12}
-\contentsline {subsection}{\numberline {6.12.1}Detailed Description}{50}{subsection.6.12.1}
-\contentsline {subsection}{\numberline {6.12.2}Constructor \& Destructor Documentation}{50}{subsection.6.12.2}
-\contentsline {subsubsection}{\numberline {6.12.2.1}\setlength {\rightskip }{0pt plus 5cm}OWLException::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct (\$ {\em msg} = {\tt null}, \$ {\em code} = {\tt 0}, {\bf OWLException} \$ {\em caller} = {\tt null})}{50}{subsubsection.6.12.2.1}
-\contentsline {subsection}{\numberline {6.12.3}Member Function Documentation}{51}{subsection.6.12.3}
-\contentsline {subsubsection}{\numberline {6.12.3.1}\setlength {\rightskip }{0pt plus 5cm}OWLException::get\_\discretionary {-}{}{}trace ()}{51}{subsubsection.6.12.3.1}
-\contentsline {subsubsection}{\numberline {6.12.3.2}\setlength {\rightskip }{0pt plus 5cm}OWLException::stack\_\discretionary {-}{}{}dump (\$ {\em textmode} = {\tt true})}{51}{subsubsection.6.12.3.2}
-\contentsline {subsubsection}{\numberline {6.12.3.3}\setlength {\rightskip }{0pt plus 5cm}OWLException::traceback (\$ {\em trace}, \$ {\em step}, \$ {\em textmode})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{51}{subsubsection.6.12.3.3}
-\contentsline {subsection}{\numberline {6.12.4}Member Data Documentation}{51}{subsection.6.12.4}
-\contentsline {subsubsection}{\numberline {6.12.4.1}\setlength {\rightskip }{0pt plus 5cm}OWLException::\$caller\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{51}{subsubsection.6.12.4.1}
-\contentsline {subsubsection}{\numberline {6.12.4.2}\setlength {\rightskip }{0pt plus 5cm}OWLException::\$thrown\_\discretionary {-}{}{}code}{51}{subsubsection.6.12.4.2}
-\contentsline {section}{\numberline {6.13}OWLExceptionHandler Class Reference}{52}{section.6.13}
-\contentsline {subsection}{\numberline {6.13.1}Detailed Description}{52}{subsection.6.13.1}
-\contentsline {subsection}{\numberline {6.13.2}Member Function Documentation}{52}{subsection.6.13.2}
-\contentsline {subsubsection}{\numberline {6.13.2.1}\setlength {\rightskip }{0pt plus 5cm}static OWLExceptionHandler::log\_\discretionary {-}{}{}exception ({\bf OWLException} \$ {\em exception})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{52}{subsubsection.6.13.2.1}
-\contentsline {subsubsection}{\numberline {6.13.2.2}\setlength {\rightskip }{0pt plus 5cm}static OWLExceptionHandler::handle\_\discretionary {-}{}{}exception ({\bf OWLException} \$ {\em exception})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{52}{subsubsection.6.13.2.2}
-\contentsline {section}{\numberline {6.14}Register Class Reference}{53}{section.6.14}
-\contentsline {subsection}{\numberline {6.14.1}Detailed Description}{53}{subsection.6.14.1}
-\contentsline {subsection}{\numberline {6.14.2}Member Function Documentation}{53}{subsection.6.14.2}
-\contentsline {subsubsection}{\numberline {6.14.2.1}\setlength {\rightskip }{0pt plus 5cm}static Register::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{53}{subsubsection.6.14.2.1}
-\contentsline {subsubsection}{\numberline {6.14.2.2}\setlength {\rightskip }{0pt plus 5cm}static Register::register\_\discretionary {-}{}{}app (\$ {\em name}, \$ {\em id})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{53}{subsubsection.6.14.2.2}
-\contentsline {subsubsection}{\numberline {6.14.2.3}\setlength {\rightskip }{0pt plus 5cm}static Register::register\_\discretionary {-}{}{}class (\$ {\em name})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{54}{subsubsection.6.14.2.3}
-\contentsline {subsubsection}{\numberline {6.14.2.4}\setlength {\rightskip }{0pt plus 5cm}static Register::register\_\discretionary {-}{}{}code (\$ {\em code})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{54}{subsubsection.6.14.2.4}
-\contentsline {subsubsection}{\numberline {6.14.2.5}\setlength {\rightskip }{0pt plus 5cm}static Register::register\_\discretionary {-}{}{}severity (\$ {\em level}, \$ {\em name})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{54}{subsubsection.6.14.2.5}
-\contentsline {subsubsection}{\numberline {6.14.2.6}\setlength {\rightskip }{0pt plus 5cm}static Register::get\_\discretionary {-}{}{}severity (\$ {\em level})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{54}{subsubsection.6.14.2.6}
-\contentsline {subsubsection}{\numberline {6.14.2.7}\setlength {\rightskip }{0pt plus 5cm}static Register::get\_\discretionary {-}{}{}severity\_\discretionary {-}{}{}level (\$ {\em name})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{54}{subsubsection.6.14.2.7}
-\contentsline {subsubsection}{\numberline {6.14.2.8}\setlength {\rightskip }{0pt plus 5cm}static Register::get\_\discretionary {-}{}{}run\_\discretionary {-}{}{}id ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{55}{subsubsection.6.14.2.8}
-\contentsline {subsubsection}{\numberline {6.14.2.9}\setlength {\rightskip }{0pt plus 5cm}static Register::get\_\discretionary {-}{}{}code (\$ {\em value})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{55}{subsubsection.6.14.2.9}
-\contentsline {subsubsection}{\numberline {6.14.2.10}\setlength {\rightskip }{0pt plus 5cm}static Register::set\_\discretionary {-}{}{}application (\$ {\em app\_\discretionary {-}{}{}id})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{55}{subsubsection.6.14.2.10}
-\contentsline {subsubsection}{\numberline {6.14.2.11}\setlength {\rightskip }{0pt plus 5cm}static Register::set\_\discretionary {-}{}{}class (\$ {\em class\_\discretionary {-}{}{}id})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{55}{subsubsection.6.14.2.11}
-\contentsline {subsubsection}{\numberline {6.14.2.12}\setlength {\rightskip }{0pt plus 5cm}static Register::set\_\discretionary {-}{}{}severity (\$ {\em severity\_\discretionary {-}{}{}level})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}static\unhbox \voidb@x \hbox {]}}}{55}{subsubsection.6.14.2.12}
-\contentsline {section}{\numberline {6.15}Session Class Reference}{56}{section.6.15}
-\contentsline {subsection}{\numberline {6.15.1}Detailed Description}{58}{subsection.6.15.1}
-\contentsline {subsection}{\numberline {6.15.2}Constructor \& Destructor Documentation}{58}{subsection.6.15.2}
-\contentsline {subsubsection}{\numberline {6.15.2.1}\setlength {\rightskip }{0pt plus 5cm}Session::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct ()}{58}{subsubsection.6.15.2.1}
-\contentsline {subsubsection}{\numberline {6.15.2.2}\setlength {\rightskip }{0pt plus 5cm}Session::\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct ()}{58}{subsubsection.6.15.2.2}
-\contentsline {subsection}{\numberline {6.15.3}Member Function Documentation}{58}{subsection.6.15.3}
-\contentsline {subsubsection}{\numberline {6.15.3.1}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::open ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}inherited\unhbox \voidb@x \hbox {]}}}{58}{subsubsection.6.15.3.1}
-\contentsline {subsubsection}{\numberline {6.15.3.2}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::close ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}inherited\unhbox \voidb@x \hbox {]}}}{58}{subsubsection.6.15.3.2}
-\contentsline {subsubsection}{\numberline {6.15.3.3}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::read (\$ {\em id})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}inherited\unhbox \voidb@x \hbox {]}}}{59}{subsubsection.6.15.3.3}
-\contentsline {subsubsection}{\numberline {6.15.3.4}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::write (\$ {\em id}, \$ {\em data})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}inherited\unhbox \voidb@x \hbox {]}}}{59}{subsubsection.6.15.3.4}
-\contentsline {subsubsection}{\numberline {6.15.3.5}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::destroy (\$ {\em id})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}inherited\unhbox \voidb@x \hbox {]}}}{59}{subsubsection.6.15.3.5}
-\contentsline {subsubsection}{\numberline {6.15.3.6}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::gc (\$ {\em lifetime})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}inherited\unhbox \voidb@x \hbox {]}}}{59}{subsubsection.6.15.3.6}
-\contentsline {subsubsection}{\numberline {6.15.3.7}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{60}{subsubsection.6.15.3.7}
-\contentsline {subsubsection}{\numberline {6.15.3.8}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{60}{subsubsection.6.15.3.8}
-\contentsline {subsection}{\numberline {6.15.4}Member Data Documentation}{60}{subsection.6.15.4}
-\contentsline {subsubsection}{\numberline {6.15.4.1}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::\$dataset\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{60}{subsubsection.6.15.4.1}
-\contentsline {section}{\numberline {6.16}SessionHandler Class Reference}{61}{section.6.16}
-\contentsline {subsection}{\numberline {6.16.1}Detailed Description}{62}{subsection.6.16.1}
-\contentsline {subsection}{\numberline {6.16.2}Constructor \& Destructor Documentation}{63}{subsection.6.16.2}
-\contentsline {subsubsection}{\numberline {6.16.2.1}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected\unhbox \voidb@x \hbox {]}}}{63}{subsubsection.6.16.2.1}
-\contentsline {subsubsection}{\numberline {6.16.2.2}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct ()}{63}{subsubsection.6.16.2.2}
-\contentsline {subsection}{\numberline {6.16.3}Member Function Documentation}{63}{subsection.6.16.3}
-\contentsline {subsubsection}{\numberline {6.16.3.1}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::open ()}{63}{subsubsection.6.16.3.1}
-\contentsline {subsubsection}{\numberline {6.16.3.2}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::close ()}{63}{subsubsection.6.16.3.2}
-\contentsline {subsubsection}{\numberline {6.16.3.3}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::read (\$ {\em id})}{63}{subsubsection.6.16.3.3}
-\contentsline {subsubsection}{\numberline {6.16.3.4}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::write (\$ {\em id}, \$ {\em data})}{64}{subsubsection.6.16.3.4}
-\contentsline {subsubsection}{\numberline {6.16.3.5}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::destroy (\$ {\em id})}{64}{subsubsection.6.16.3.5}
-\contentsline {subsubsection}{\numberline {6.16.3.6}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::gc (\$ {\em lifetime})}{64}{subsubsection.6.16.3.6}
-\contentsline {subsubsection}{\numberline {6.16.3.7}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{64}{subsubsection.6.16.3.7}
-\contentsline {subsubsection}{\numberline {6.16.3.8}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{65}{subsubsection.6.16.3.8}
-\contentsline {subsection}{\numberline {6.16.4}Member Data Documentation}{65}{subsection.6.16.4}
-\contentsline {subsubsection}{\numberline {6.16.4.1}\setlength {\rightskip }{0pt plus 5cm}SessionHandler::\$dataset\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected\unhbox \voidb@x \hbox {]}}}{65}{subsubsection.6.16.4.1}
-\contentsline {section}{\numberline {6.17}StatusHandler Class Reference}{66}{section.6.17}
-\contentsline {subsection}{\numberline {6.17.1}Detailed Description}{66}{subsection.6.17.1}
-\contentsline {subsection}{\numberline {6.17.2}Constructor \& Destructor Documentation}{66}{subsection.6.17.2}
-\contentsline {subsubsection}{\numberline {6.17.2.1}\setlength {\rightskip }{0pt plus 5cm}StatusHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct (\$ {\em code} = {\tt OWL\_\discretionary {-}{}{}STATUS\_\discretionary {-}{}{}WARNING})}{66}{subsubsection.6.17.2.1}
-\contentsline {subsection}{\numberline {6.17.3}Member Function Documentation}{67}{subsection.6.17.3}
-\contentsline {subsubsection}{\numberline {6.17.3.1}\setlength {\rightskip }{0pt plus 5cm}StatusHandler::set\_\discretionary {-}{}{}code (\$ {\em code} = {\tt OWL\_\discretionary {-}{}{}STATUS\_\discretionary {-}{}{}BUG})}{67}{subsubsection.6.17.3.1}
-\contentsline {subsubsection}{\numberline {6.17.3.2}\setlength {\rightskip }{0pt plus 5cm}StatusHandler::reset ()}{67}{subsubsection.6.17.3.2}
-\contentsline {subsubsection}{\numberline {6.17.3.3}\setlength {\rightskip }{0pt plus 5cm}StatusHandler::set\_\discretionary {-}{}{}params (\$ {\em params})}{67}{subsubsection.6.17.3.3}
-\contentsline {subsubsection}{\numberline {6.17.3.4}\setlength {\rightskip }{0pt plus 5cm}StatusHandler::get\_\discretionary {-}{}{}severity (\$ {\em status} = {\tt null})}{67}{subsubsection.6.17.3.4}
-\contentsline {subsubsection}{\numberline {6.17.3.5}\setlength {\rightskip }{0pt plus 5cm}StatusHandler::get\_\discretionary {-}{}{}code ()}{67}{subsubsection.6.17.3.5}
-\contentsline {subsubsection}{\numberline {6.17.3.6}\setlength {\rightskip }{0pt plus 5cm}StatusHandler::get\_\discretionary {-}{}{}message ()}{68}{subsubsection.6.17.3.6}
-\contentsline {subsection}{\numberline {6.17.4}Member Data Documentation}{68}{subsection.6.17.4}
-\contentsline {subsubsection}{\numberline {6.17.4.1}\setlength {\rightskip }{0pt plus 5cm}StatusHandler::\$code\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{68}{subsubsection.6.17.4.1}
-\contentsline {subsubsection}{\numberline {6.17.4.2}\setlength {\rightskip }{0pt plus 5cm}StatusHandler::\$params\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{68}{subsubsection.6.17.4.2}
-\contentsline {section}{\numberline {6.18}User Class Reference}{69}{section.6.18}
-\contentsline {subsection}{\numberline {6.18.1}Detailed Description}{71}{subsection.6.18.1}
-\contentsline {subsection}{\numberline {6.18.2}Constructor \& Destructor Documentation}{71}{subsection.6.18.2}
-\contentsline {subsubsection}{\numberline {6.18.2.1}\setlength {\rightskip }{0pt plus 5cm}User::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct (\$ {\em username} = {\tt null})}{71}{subsubsection.6.18.2.1}
-\contentsline {subsubsection}{\numberline {6.18.2.2}\setlength {\rightskip }{0pt plus 5cm}User::\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct ()}{71}{subsubsection.6.18.2.2}
-\contentsline {subsection}{\numberline {6.18.3}Member Function Documentation}{71}{subsection.6.18.3}
-\contentsline {subsubsection}{\numberline {6.18.3.1}\setlength {\rightskip }{0pt plus 5cm}User::login (\$ {\em username}, \$ {\em password})}{72}{subsubsection.6.18.3.1}
-\contentsline {subsubsection}{\numberline {6.18.3.2}\setlength {\rightskip }{0pt plus 5cm}User::logout ()}{72}{subsubsection.6.18.3.2}
-\contentsline {subsubsection}{\numberline {6.18.3.3}\setlength {\rightskip }{0pt plus 5cm}User::get\_\discretionary {-}{}{}username ()}{72}{subsubsection.6.18.3.3}
-\contentsline {subsubsection}{\numberline {6.18.3.4}\setlength {\rightskip }{0pt plus 5cm}UserHandler::login (\$ {\em password})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{72}{subsubsection.6.18.3.4}
-\contentsline {subsubsection}{\numberline {6.18.3.5}\setlength {\rightskip }{0pt plus 5cm}UserHandler::set\_\discretionary {-}{}{}username (\$ {\em username})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{72}{subsubsection.6.18.3.5}
-\contentsline {subsubsection}{\numberline {6.18.3.6}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{72}{subsubsection.6.18.3.6}
-\contentsline {subsubsection}{\numberline {6.18.3.7}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{73}{subsubsection.6.18.3.7}
-\contentsline {subsection}{\numberline {6.18.4}Member Data Documentation}{73}{subsection.6.18.4}
-\contentsline {subsubsection}{\numberline {6.18.4.1}\setlength {\rightskip }{0pt plus 5cm}UserHandler::\$session\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{73}{subsubsection.6.18.4.1}
-\contentsline {subsubsection}{\numberline {6.18.4.2}\setlength {\rightskip }{0pt plus 5cm}UserHandler::\$dataset\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{73}{subsubsection.6.18.4.2}
-\contentsline {subsubsection}{\numberline {6.18.4.3}\setlength {\rightskip }{0pt plus 5cm}UserHandler::\$user\_\discretionary {-}{}{}data\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}inherited\unhbox \voidb@x \hbox {]}}}{73}{subsubsection.6.18.4.3}
-\contentsline {section}{\numberline {6.19}UserHandler Class Reference}{74}{section.6.19}
-\contentsline {subsection}{\numberline {6.19.1}Detailed Description}{76}{subsection.6.19.1}
-\contentsline {subsection}{\numberline {6.19.2}Constructor \& Destructor Documentation}{76}{subsection.6.19.2}
-\contentsline {subsubsection}{\numberline {6.19.2.1}\setlength {\rightskip }{0pt plus 5cm}UserHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct (\$ {\em username})}{76}{subsubsection.6.19.2.1}
-\contentsline {subsubsection}{\numberline {6.19.2.2}\setlength {\rightskip }{0pt plus 5cm}UserHandler::\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct ()}{76}{subsubsection.6.19.2.2}
-\contentsline {subsection}{\numberline {6.19.3}Member Function Documentation}{76}{subsection.6.19.3}
-\contentsline {subsubsection}{\numberline {6.19.3.1}\setlength {\rightskip }{0pt plus 5cm}UserHandler::logout ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected\unhbox \voidb@x \hbox {]}}}{76}{subsubsection.6.19.3.1}
-\contentsline {subsubsection}{\numberline {6.19.3.2}\setlength {\rightskip }{0pt plus 5cm}UserHandler::login (\$ {\em password})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected\unhbox \voidb@x \hbox {]}}}{76}{subsubsection.6.19.3.2}
-\contentsline {subsubsection}{\numberline {6.19.3.3}\setlength {\rightskip }{0pt plus 5cm}UserHandler::read\_\discretionary {-}{}{}userdata ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{77}{subsubsection.6.19.3.3}
-\contentsline {subsubsection}{\numberline {6.19.3.4}\setlength {\rightskip }{0pt plus 5cm}UserHandler::hash\_\discretionary {-}{}{}password (\$ {\em password})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}private\unhbox \voidb@x \hbox {]}}}{77}{subsubsection.6.19.3.4}
-\contentsline {subsubsection}{\numberline {6.19.3.5}\setlength {\rightskip }{0pt plus 5cm}UserHandler::set\_\discretionary {-}{}{}username (\$ {\em username})\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected\unhbox \voidb@x \hbox {]}}}{77}{subsubsection.6.19.3.5}
-\contentsline {subsubsection}{\numberline {6.19.3.6}\setlength {\rightskip }{0pt plus 5cm}UserHandler::get\_\discretionary {-}{}{}username ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected\unhbox \voidb@x \hbox {]}}}{77}{subsubsection.6.19.3.6}
-\contentsline {subsubsection}{\numberline {6.19.3.7}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::init ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{77}{subsubsection.6.19.3.7}
-\contentsline {subsubsection}{\numberline {6.19.3.8}\setlength {\rightskip }{0pt plus 5cm}\_\discretionary {-}{}{}OWL::reset ()\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected, inherited\unhbox \voidb@x \hbox {]}}}{77}{subsubsection.6.19.3.8}
-\contentsline {subsection}{\numberline {6.19.4}Member Data Documentation}{78}{subsection.6.19.4}
-\contentsline {subsubsection}{\numberline {6.19.4.1}\setlength {\rightskip }{0pt plus 5cm}UserHandler::\$session\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected\unhbox \voidb@x \hbox {]}}}{78}{subsubsection.6.19.4.1}
-\contentsline {subsubsection}{\numberline {6.19.4.2}\setlength {\rightskip }{0pt plus 5cm}UserHandler::\$dataset\hspace {0.3cm}{\tt \unhbox \voidb@x \hbox {[}protected\unhbox \voidb@x \hbox {]}}}{78}{subsubsection.6.19.4.2}
-\contentsline {subsubsection}{\numberline {6.19.4.3}\setlength {\rightskip }{0pt plus 5cm}UserHandler::\$user\_\discretionary {-}{}{}data}{78}{subsubsection.6.19.4.3}
-\contentsline {chapter}{\numberline {7}OWL-PHP File Documentation}{79}{chapter.7}
-\contentsline {section}{\numberline {7.1}/home/oscar/work/eclipse/owl-php/src/config.php File Reference}{79}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Detailed Description}{79}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Variable Documentation}{79}{subsection.7.1.2}
-\contentsline {subsubsection}{\numberline {7.1.2.1}\setlength {\rightskip }{0pt plus 5cm}\$GLOBALS\unhbox \voidb@x \hbox {[}'config'\unhbox \voidb@x \hbox {]}\unhbox \voidb@x \hbox {[}'hide'\unhbox \voidb@x \hbox {]}\unhbox \voidb@x \hbox {[}'value'\unhbox \voidb@x \hbox {]} = '(hidden)'}{79}{subsubsection.7.1.2.1}
-\contentsline {subsubsection}{\numberline {7.1.2.2}\setlength {\rightskip }{0pt plus 5cm}\$GLOBALS\unhbox \voidb@x \hbox {[}'config'\unhbox \voidb@x \hbox {]}\unhbox \voidb@x \hbox {[}'hide'\unhbox \voidb@x \hbox {]}\unhbox \voidb@x \hbox {[}'tag'\unhbox \voidb@x \hbox {]} = '(hide)'}{79}{subsubsection.7.1.2.2}
-\contentsline {subsubsection}{\numberline {7.1.2.3}\setlength {\rightskip }{0pt plus 5cm}\$GLOBALS\unhbox \voidb@x \hbox {[}'config'\unhbox \voidb@x \hbox {]}\unhbox \voidb@x \hbox {[}'configfiles'\unhbox \voidb@x \hbox {]}\unhbox \voidb@x \hbox {[}'owl'\unhbox \voidb@x \hbox {]} = {\bf OWL\_\discretionary {-}{}{}ROOT} . '/owl\_\discretionary {-}{}{}config.cfg'}{80}{subsubsection.7.1.2.3}
-\contentsline {subsubsection}{\numberline {7.1.2.4}\setlength {\rightskip }{0pt plus 5cm}\$GLOBALS\unhbox \voidb@x \hbox {[}'register'\unhbox \voidb@x \hbox {]}}{80}{subsubsection.7.1.2.4}
-\contentsline {section}{\numberline {7.2}/home/oscar/work/eclipse/owl-php/src/index.php File Reference}{81}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Detailed Description}{81}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Enumeration Type Documentation}{81}{subsection.7.2.2}
-\contentsline {subsubsection}{\numberline {7.2.2.1}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}ROOT}}{81}{subsubsection.7.2.2.1}
-\contentsline {section}{\numberline {7.3}/home/oscar/work/eclipse/owl-php/src/kernel/bo/class.form.php File Reference}{82}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Detailed Description}{82}{subsection.7.3.1}
-\contentsline {section}{\numberline {7.4}/home/oscar/work/eclipse/owl-php/src/kernel/bo/class.session.php File Reference}{83}{section.7.4}
-\contentsline {subsection}{\numberline {7.4.1}Detailed Description}{83}{subsection.7.4.1}
-\contentsline {section}{\numberline {7.5}/home/oscar/work/eclipse/owl-php/src/kernel/bo/class.user.php File Reference}{84}{section.7.5}
-\contentsline {subsection}{\numberline {7.5.1}Detailed Description}{84}{subsection.7.5.1}
-\contentsline {section}{\numberline {7.6}/home/oscar/work/eclipse/owl-php/src/kernel/class.\_\discretionary {-}{}{}OWL.php File Reference}{85}{section.7.6}
-\contentsline {subsection}{\numberline {7.6.1}Detailed Description}{85}{subsection.7.6.1}
-\contentsline {section}{\numberline {7.7}/home/oscar/work/eclipse/owl-php/src/kernel/so/class.confighandler.php File Reference}{86}{section.7.7}
-\contentsline {subsection}{\numberline {7.7.1}Detailed Description}{86}{subsection.7.7.1}
-\contentsline {section}{\numberline {7.8}/home/oscar/work/eclipse/owl-php/src/kernel/so/class.datahandler.php File Reference}{87}{section.7.8}
-\contentsline {subsection}{\numberline {7.8.1}Detailed Description}{88}{subsection.7.8.1}
-\contentsline {subsection}{\numberline {7.8.2}Enumeration Type Documentation}{88}{subsection.7.8.2}
-\contentsline {subsubsection}{\numberline {7.8.2.1}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DATA\_\discretionary {-}{}{}DELETE}}{88}{subsubsection.7.8.2.1}
-\contentsline {subsubsection}{\numberline {7.8.2.2}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DATA\_\discretionary {-}{}{}READ}}{88}{subsubsection.7.8.2.2}
-\contentsline {subsubsection}{\numberline {7.8.2.3}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}FULL}}{88}{subsubsection.7.8.2.3}
-\contentsline {subsubsection}{\numberline {7.8.2.4}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}META}}{88}{subsubsection.7.8.2.4}
-\contentsline {subsubsection}{\numberline {7.8.2.5}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}PREPARE}}{88}{subsubsection.7.8.2.5}
-\contentsline {subsubsection}{\numberline {7.8.2.6}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}STATUS}}{88}{subsubsection.7.8.2.6}
-\contentsline {subsubsection}{\numberline {7.8.2.7}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DATA\_\discretionary {-}{}{}UNPREPARED}}{89}{subsubsection.7.8.2.7}
-\contentsline {subsubsection}{\numberline {7.8.2.8}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DATA\_\discretionary {-}{}{}UPDATE}}{89}{subsubsection.7.8.2.8}
-\contentsline {subsubsection}{\numberline {7.8.2.9}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DATA\_\discretionary {-}{}{}WRITE}}{89}{subsubsection.7.8.2.9}
-\contentsline {section}{\numberline {7.9}/home/oscar/work/eclipse/owl-php/src/kernel/so/class.dbhandler.php File Reference}{90}{section.7.9}
-\contentsline {subsection}{\numberline {7.9.1}Detailed Description}{90}{subsection.7.9.1}
-\contentsline {subsection}{\numberline {7.9.2}Enumeration Type Documentation}{90}{subsection.7.9.2}
-\contentsline {subsubsection}{\numberline {7.9.2.1}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DBHANDLE\_\discretionary {-}{}{}DATA}}{91}{subsubsection.7.9.2.1}
-\contentsline {subsubsection}{\numberline {7.9.2.2}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DBHANDLE\_\discretionary {-}{}{}FIELDCOUNT}}{91}{subsubsection.7.9.2.2}
-\contentsline {subsubsection}{\numberline {7.9.2.3}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DBHANDLE\_\discretionary {-}{}{}ROWCOUNT}}{91}{subsubsection.7.9.2.3}
-\contentsline {subsubsection}{\numberline {7.9.2.4}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DBHANDLE\_\discretionary {-}{}{}SINGLEFIELD}}{91}{subsubsection.7.9.2.4}
-\contentsline {subsubsection}{\numberline {7.9.2.5}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DBHANDLE\_\discretionary {-}{}{}SINGLEROW}}{91}{subsubsection.7.9.2.5}
-\contentsline {subsubsection}{\numberline {7.9.2.6}\setlength {\rightskip }{0pt plus 5cm}enum {\bf DBHANDLE\_\discretionary {-}{}{}TOTALFIELDCOUNT}}{91}{subsubsection.7.9.2.6}
-\contentsline {section}{\numberline {7.10}/home/oscar/work/eclipse/owl-php/src/kernel/so/class.exceptionhandler.php File Reference}{92}{section.7.10}
-\contentsline {subsection}{\numberline {7.10.1}Detailed Description}{92}{subsection.7.10.1}
-\contentsline {section}{\numberline {7.11}/home/oscar/work/eclipse/owl-php/src/kernel/so/class.filehandler.php File Reference}{93}{section.7.11}
-\contentsline {subsection}{\numberline {7.11.1}Detailed Description}{93}{subsection.7.11.1}
-\contentsline {subsection}{\numberline {7.11.2}Enumeration Type Documentation}{93}{subsection.7.11.2}
-\contentsline {subsubsection}{\numberline {7.11.2.1}\setlength {\rightskip }{0pt plus 5cm}enum {\bf FILE\_\discretionary {-}{}{}NOTRIM}}{93}{subsubsection.7.11.2.1}
-\contentsline {subsubsection}{\numberline {7.11.2.2}\setlength {\rightskip }{0pt plus 5cm}enum {\bf FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}C}}{93}{subsubsection.7.11.2.2}
-\contentsline {subsubsection}{\numberline {7.11.2.3}\setlength {\rightskip }{0pt plus 5cm}enum {\bf FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}L}}{93}{subsubsection.7.11.2.3}
-\contentsline {subsubsection}{\numberline {7.11.2.4}\setlength {\rightskip }{0pt plus 5cm}enum {\bf FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}R}}{93}{subsubsection.7.11.2.4}
-\contentsline {section}{\numberline {7.12}/home/oscar/work/eclipse/owl-php/src/kernel/so/class.formhandler.php File Reference}{94}{section.7.12}
-\contentsline {subsection}{\numberline {7.12.1}Detailed Description}{94}{subsection.7.12.1}
-\contentsline {section}{\numberline {7.13}/home/oscar/work/eclipse/owl-php/src/kernel/so/class.loghandler.php File Reference}{95}{section.7.13}
-\contentsline {subsection}{\numberline {7.13.1}Detailed Description}{95}{subsection.7.13.1}
-\contentsline {section}{\numberline {7.14}/home/oscar/work/eclipse/owl-php/src/kernel/so/class.register.php File Reference}{96}{section.7.14}
-\contentsline {subsection}{\numberline {7.14.1}Detailed Description}{96}{subsection.7.14.1}
-\contentsline {subsection}{\numberline {7.14.2}Enumeration Type Documentation}{96}{subsection.7.14.2}
-\contentsline {subsubsection}{\numberline {7.14.2.1}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}APPLICATION\_\discretionary {-}{}{}PATTERN}}{96}{subsubsection.7.14.2.1}
-\contentsline {subsubsection}{\numberline {7.14.2.2}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}OBJECT\_\discretionary {-}{}{}PATTERN}}{96}{subsubsection.7.14.2.2}
-\contentsline {subsubsection}{\numberline {7.14.2.3}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}SEVERITY\_\discretionary {-}{}{}PATTERN}}{96}{subsubsection.7.14.2.3}
-\contentsline {subsubsection}{\numberline {7.14.2.4}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}STATUS\_\discretionary {-}{}{}PATTERN}}{97}{subsubsection.7.14.2.4}
-\contentsline {section}{\numberline {7.15}/home/oscar/work/eclipse/owl-php/src/kernel/so/class.sessionhandler.php File Reference}{98}{section.7.15}
-\contentsline {subsection}{\numberline {7.15.1}Detailed Description}{98}{subsection.7.15.1}
-\contentsline {section}{\numberline {7.16}/home/oscar/work/eclipse/owl-php/src/kernel/so/class.statushandler.php File Reference}{99}{section.7.16}
-\contentsline {subsection}{\numberline {7.16.1}Detailed Description}{99}{subsection.7.16.1}
-\contentsline {section}{\numberline {7.17}/home/oscar/work/eclipse/owl-php/src/kernel/so/class.userhandler.php File Reference}{100}{section.7.17}
-\contentsline {subsection}{\numberline {7.17.1}Detailed Description}{100}{subsection.7.17.1}
-\contentsline {section}{\numberline {7.18}/home/oscar/work/eclipse/owl-php/src/kernel/ui/class.domelement.php File Reference}{101}{section.7.18}
-\contentsline {subsection}{\numberline {7.18.1}Detailed Description}{101}{subsection.7.18.1}
-\contentsline {section}{\numberline {7.19}/home/oscar/work/eclipse/owl-php/src/kernel/ui/class.formelement.php File Reference}{102}{section.7.19}
-\contentsline {subsection}{\numberline {7.19.1}Detailed Description}{102}{subsection.7.19.1}
-\contentsline {section}{\numberline {7.20}/home/oscar/work/eclipse/owl-php/src/lib/owl.messages.en-uk.php File Reference}{103}{section.7.20}
-\contentsline {subsection}{\numberline {7.20.1}Detailed Description}{103}{subsection.7.20.1}
-\contentsline {subsection}{\numberline {7.20.2}Variable Documentation}{103}{subsection.7.20.2}
-\contentsline {subsubsection}{\numberline {7.20.2.1}\setlength {\rightskip }{0pt plus 5cm}\$GLOBALS\unhbox \voidb@x \hbox {[}'messages'\unhbox \voidb@x \hbox {]}}{103}{subsubsection.7.20.2.1}
-\contentsline {section}{\numberline {7.21}/home/oscar/work/eclipse/owl-php/src/lib/owl.messages.php File Reference}{104}{section.7.21}
-\contentsline {subsection}{\numberline {7.21.1}Detailed Description}{104}{subsection.7.21.1}
-\contentsline {subsection}{\numberline {7.21.2}Variable Documentation}{104}{subsection.7.21.2}
-\contentsline {subsubsection}{\numberline {7.21.2.1}\setlength {\rightskip }{0pt plus 5cm}\$GLOBALS\unhbox \voidb@x \hbox {[}'messages'\unhbox \voidb@x \hbox {]}}{104}{subsubsection.7.21.2.1}
-\contentsline {section}{\numberline {7.22}/home/oscar/work/eclipse/owl-php/src/lib/owl.severitycodes.php File Reference}{105}{section.7.22}
-\contentsline {subsection}{\numberline {7.22.1}Detailed Description}{105}{subsection.7.22.1}
-\contentsline {subsection}{\numberline {7.22.2}Enumeration Type Documentation}{105}{subsection.7.22.2}
-\contentsline {subsubsection}{\numberline {7.22.2.1}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}BUG}}{105}{subsubsection.7.22.2.1}
-\contentsline {subsubsection}{\numberline {7.22.2.2}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}CRITICAL}}{105}{subsubsection.7.22.2.2}
-\contentsline {subsubsection}{\numberline {7.22.2.3}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}DEBUG}}{105}{subsubsection.7.22.2.3}
-\contentsline {subsubsection}{\numberline {7.22.2.4}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}ERROR}}{106}{subsubsection.7.22.2.4}
-\contentsline {subsubsection}{\numberline {7.22.2.5}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}FATAL}}{106}{subsubsection.7.22.2.5}
-\contentsline {subsubsection}{\numberline {7.22.2.6}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}INFO}}{106}{subsubsection.7.22.2.6}
-\contentsline {subsubsection}{\numberline {7.22.2.7}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}OK}}{106}{subsubsection.7.22.2.7}
-\contentsline {subsubsection}{\numberline {7.22.2.8}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}SUCCESS}}{106}{subsubsection.7.22.2.8}
-\contentsline {subsubsection}{\numberline {7.22.2.9}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}WARNING}}{106}{subsubsection.7.22.2.9}
-\contentsline {section}{\numberline {7.23}/home/oscar/work/eclipse/owl-php/src/OWLloader.php File Reference}{107}{section.7.23}
-\contentsline {subsection}{\numberline {7.23.1}Detailed Description}{107}{subsection.7.23.1}
-\contentsline {subsection}{\numberline {7.23.2}Enumeration Type Documentation}{107}{subsection.7.23.2}
-\contentsline {subsubsection}{\numberline {7.23.2.1}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}BO\_\discretionary {-}{}{}INC}}{107}{subsubsection.7.23.2.1}
-\contentsline {subsubsection}{\numberline {7.23.2.2}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}INCLUDE}}{107}{subsubsection.7.23.2.2}
-\contentsline {subsubsection}{\numberline {7.23.2.3}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}LIBRARY}}{107}{subsubsection.7.23.2.3}
-\contentsline {subsubsection}{\numberline {7.23.2.4}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}SO\_\discretionary {-}{}{}INC}}{108}{subsubsection.7.23.2.4}
-\contentsline {subsubsection}{\numberline {7.23.2.5}\setlength {\rightskip }{0pt plus 5cm}enum {\bf OWL\_\discretionary {-}{}{}UI\_\discretionary {-}{}{}INC}}{108}{subsubsection.7.23.2.5}
-\contentsline {subsection}{\numberline {7.23.3}Variable Documentation}{108}{subsection.7.23.3}
-\contentsline {subsubsection}{\numberline {7.23.3.1}\setlength {\rightskip }{0pt plus 5cm}\$GLOBALS\unhbox \voidb@x \hbox {[}'user'\unhbox \voidb@x \hbox {]} = \& new {\bf User}()}{108}{subsubsection.7.23.3.1}
-\contentsline {subsubsection}{\numberline {7.23.3.2}\setlength {\rightskip }{0pt plus 5cm}\$GLOBALS\unhbox \voidb@x \hbox {[}'formdata'\unhbox \voidb@x \hbox {]} = \& new {\bf FormHandler}()}{108}{subsubsection.7.23.3.2}
-\contentsline {subsubsection}{\numberline {7.23.3.3}\setlength {\rightskip }{0pt plus 5cm}\$GLOBALS\unhbox \voidb@x \hbox {[}'db'\unhbox \voidb@x \hbox {]}}{108}{subsubsection.7.23.3.3}
-\contentsline {subsubsection}{\numberline {7.23.3.4}\setlength {\rightskip }{0pt plus 5cm}\$GLOBALS\unhbox \voidb@x \hbox {[}'messages'\unhbox \voidb@x \hbox {]} = array ()}{108}{subsubsection.7.23.3.4}
-\contentsline {subsubsection}{\numberline {7.23.3.5}\setlength {\rightskip }{0pt plus 5cm}\$GLOBALS\unhbox \voidb@x \hbox {[}'owl\_\discretionary {-}{}{}object'\unhbox \voidb@x \hbox {]} = new {\bf OWL}()}{108}{subsubsection.7.23.3.5}
-\contentsline {section}{\numberline {7.24}/home/oscar/work/eclipse/owl-php/src/OWLrundown.php File Reference}{109}{section.7.24}
-\contentsline {subsection}{\numberline {7.24.1}Detailed Description}{109}{subsection.7.24.1}
+\contentsline {subsubsection}{\numberline {6.1.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}{14}{subsubsection.6.1.2.1}
+\contentsline {subsection}{\numberline {6.1.3}Member Function Documentation}{15}{subsection.6.1.3}
+\contentsline {subsubsection}{\numberline {6.1.3.1}check}{15}{subsubsection.6.1.3.1}
+\contentsline {subsubsection}{\numberline {6.1.3.2}get\_\discretionary {-}{}{}severity}{15}{subsubsection.6.1.3.2}
+\contentsline {subsubsection}{\numberline {6.1.3.3}get\_\discretionary {-}{}{}status}{15}{subsubsection.6.1.3.3}
+\contentsline {subsubsection}{\numberline {6.1.3.4}init}{15}{subsubsection.6.1.3.4}
+\contentsline {subsubsection}{\numberline {6.1.3.5}reset}{16}{subsubsection.6.1.3.5}
+\contentsline {subsubsection}{\numberline {6.1.3.6}reset\_\discretionary {-}{}{}calltree}{16}{subsubsection.6.1.3.6}
+\contentsline {subsubsection}{\numberline {6.1.3.7}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{16}{subsubsection.6.1.3.7}
+\contentsline {subsubsection}{\numberline {6.1.3.8}set\_\discretionary {-}{}{}status}{16}{subsubsection.6.1.3.8}
+\contentsline {subsubsection}{\numberline {6.1.3.9}signal}{17}{subsubsection.6.1.3.9}
+\contentsline {subsubsection}{\numberline {6.1.3.10}traceback}{17}{subsubsection.6.1.3.10}
+\contentsline {subsection}{\numberline {6.1.4}Member Data Documentation}{17}{subsection.6.1.4}
+\contentsline {subsubsection}{\numberline {6.1.4.1}\$pstatus}{17}{subsubsection.6.1.4.1}
+\contentsline {subsubsection}{\numberline {6.1.4.2}\$severity}{17}{subsubsection.6.1.4.2}
+\contentsline {subsubsection}{\numberline {6.1.4.3}\$status}{18}{subsubsection.6.1.4.3}
+\contentsline {section}{\numberline {6.2}BaseElement Class Reference}{19}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{21}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Member Function Documentation}{21}{subsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.2.1}check}{21}{subsubsection.6.2.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2.2}get\_\discretionary {-}{}{}severity}{21}{subsubsection.6.2.2.2}
+\contentsline {subsubsection}{\numberline {6.2.2.3}get\_\discretionary {-}{}{}status}{22}{subsubsection.6.2.2.3}
+\contentsline {subsubsection}{\numberline {6.2.2.4}getAttributes}{22}{subsubsection.6.2.2.4}
+\contentsline {subsubsection}{\numberline {6.2.2.5}getEvents}{22}{subsubsection.6.2.2.5}
+\contentsline {subsubsection}{\numberline {6.2.2.6}init}{22}{subsubsection.6.2.2.6}
+\contentsline {subsubsection}{\numberline {6.2.2.7}reset}{22}{subsubsection.6.2.2.7}
+\contentsline {subsubsection}{\numberline {6.2.2.8}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{23}{subsubsection.6.2.2.8}
+\contentsline {subsubsection}{\numberline {6.2.2.9}set\_\discretionary {-}{}{}status}{23}{subsubsection.6.2.2.9}
+\contentsline {subsubsection}{\numberline {6.2.2.10}setClass}{23}{subsubsection.6.2.2.10}
+\contentsline {subsubsection}{\numberline {6.2.2.11}setId}{23}{subsubsection.6.2.2.11}
+\contentsline {subsubsection}{\numberline {6.2.2.12}signal}{24}{subsubsection.6.2.2.12}
+\contentsline {subsubsection}{\numberline {6.2.2.13}traceback}{24}{subsubsection.6.2.2.13}
+\contentsline {subsection}{\numberline {6.2.3}Member Data Documentation}{24}{subsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.3.1}\$class}{24}{subsubsection.6.2.3.1}
+\contentsline {subsubsection}{\numberline {6.2.3.2}\$id}{24}{subsubsection.6.2.3.2}
+\contentsline {subsubsection}{\numberline {6.2.3.3}\$severity}{24}{subsubsection.6.2.3.3}
+\contentsline {subsubsection}{\numberline {6.2.3.4}\$style}{25}{subsubsection.6.2.3.4}
+\contentsline {section}{\numberline {6.3}ConfigHandler Class Reference}{26}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{26}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Member Function Documentation}{26}{subsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.2.1}convert}{26}{subsubsection.6.3.2.1}
+\contentsline {subsubsection}{\numberline {6.3.2.2}get}{26}{subsubsection.6.3.2.2}
+\contentsline {subsubsection}{\numberline {6.3.2.3}read\_\discretionary {-}{}{}config}{27}{subsubsection.6.3.2.3}
+\contentsline {subsubsection}{\numberline {6.3.2.4}set}{27}{subsubsection.6.3.2.4}
+\contentsline {section}{\numberline {6.4}DataHandler Class Reference}{28}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Detailed Description}{30}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Member Function Documentation}{30}{subsection.6.4.2}
+\contentsline {subsubsection}{\numberline {6.4.2.1}check}{30}{subsubsection.6.4.2.1}
+\contentsline {subsubsection}{\numberline {6.4.2.2}DataHandler}{31}{subsubsection.6.4.2.2}
+\contentsline {subsubsection}{\numberline {6.4.2.3}db}{31}{subsubsection.6.4.2.3}
+\contentsline {subsubsection}{\numberline {6.4.2.4}db\_\discretionary {-}{}{}status}{31}{subsubsection.6.4.2.4}
+\contentsline {subsubsection}{\numberline {6.4.2.5}escape\_\discretionary {-}{}{}string}{31}{subsubsection.6.4.2.5}
+\contentsline {subsubsection}{\numberline {6.4.2.6}find\_\discretionary {-}{}{}field}{32}{subsubsection.6.4.2.6}
+\contentsline {subsubsection}{\numberline {6.4.2.7}get}{32}{subsubsection.6.4.2.7}
+\contentsline {subsubsection}{\numberline {6.4.2.8}get\_\discretionary {-}{}{}severity}{32}{subsubsection.6.4.2.8}
+\contentsline {subsubsection}{\numberline {6.4.2.9}get\_\discretionary {-}{}{}status}{33}{subsubsection.6.4.2.9}
+\contentsline {subsubsection}{\numberline {6.4.2.10}init}{33}{subsubsection.6.4.2.10}
+\contentsline {subsubsection}{\numberline {6.4.2.11}prepare}{33}{subsubsection.6.4.2.11}
+\contentsline {subsubsection}{\numberline {6.4.2.12}reset}{33}{subsubsection.6.4.2.12}
+\contentsline {subsubsection}{\numberline {6.4.2.13}reset}{33}{subsubsection.6.4.2.13}
+\contentsline {subsubsection}{\numberline {6.4.2.14}set}{34}{subsubsection.6.4.2.14}
+\contentsline {subsubsection}{\numberline {6.4.2.15}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{34}{subsubsection.6.4.2.15}
+\contentsline {subsubsection}{\numberline {6.4.2.16}set\_\discretionary {-}{}{}join}{34}{subsubsection.6.4.2.16}
+\contentsline {subsubsection}{\numberline {6.4.2.17}set\_\discretionary {-}{}{}key}{34}{subsubsection.6.4.2.17}
+\contentsline {subsubsection}{\numberline {6.4.2.18}set\_\discretionary {-}{}{}status}{35}{subsubsection.6.4.2.18}
+\contentsline {subsubsection}{\numberline {6.4.2.19}set\_\discretionary {-}{}{}tablename}{35}{subsubsection.6.4.2.19}
+\contentsline {subsubsection}{\numberline {6.4.2.20}signal}{35}{subsubsection.6.4.2.20}
+\contentsline {subsubsection}{\numberline {6.4.2.21}traceback}{36}{subsubsection.6.4.2.21}
+\contentsline {subsection}{\numberline {6.4.3}Member Data Documentation}{36}{subsection.6.4.3}
+\contentsline {subsubsection}{\numberline {6.4.3.1}\$owl\_\discretionary {-}{}{}data}{36}{subsubsection.6.4.3.1}
+\contentsline {subsubsection}{\numberline {6.4.3.2}\$owl\_\discretionary {-}{}{}database}{36}{subsubsection.6.4.3.2}
+\contentsline {subsubsection}{\numberline {6.4.3.3}\$owl\_\discretionary {-}{}{}joins}{36}{subsubsection.6.4.3.3}
+\contentsline {subsubsection}{\numberline {6.4.3.4}\$owl\_\discretionary {-}{}{}keys}{36}{subsubsection.6.4.3.4}
+\contentsline {subsubsection}{\numberline {6.4.3.5}\$owl\_\discretionary {-}{}{}prepared}{36}{subsubsection.6.4.3.5}
+\contentsline {subsubsection}{\numberline {6.4.3.6}\$owl\_\discretionary {-}{}{}tablename}{37}{subsubsection.6.4.3.6}
+\contentsline {subsubsection}{\numberline {6.4.3.7}\$severity}{37}{subsubsection.6.4.3.7}
+\contentsline {section}{\numberline {6.5}DbHandler Class Reference}{38}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{41}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}Constructor \& Destructor Documentation}{41}{subsection.6.5.2}
+\contentsline {subsubsection}{\numberline {6.5.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{41}{subsubsection.6.5.2.1}
+\contentsline {subsubsection}{\numberline {6.5.2.2}\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}{41}{subsubsection.6.5.2.2}
+\contentsline {subsection}{\numberline {6.5.3}Member Function Documentation}{41}{subsection.6.5.3}
+\contentsline {subsubsection}{\numberline {6.5.3.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}clone}{41}{subsubsection.6.5.3.1}
+\contentsline {subsubsection}{\numberline {6.5.3.2}check}{42}{subsubsection.6.5.3.2}
+\contentsline {subsubsection}{\numberline {6.5.3.3}close}{42}{subsubsection.6.5.3.3}
+\contentsline {subsubsection}{\numberline {6.5.3.4}connect}{42}{subsubsection.6.5.3.4}
+\contentsline {subsubsection}{\numberline {6.5.3.5}create}{42}{subsubsection.6.5.3.5}
+\contentsline {subsubsection}{\numberline {6.5.3.6}dbread}{42}{subsubsection.6.5.3.6}
+\contentsline {subsubsection}{\numberline {6.5.3.7}escape\_\discretionary {-}{}{}string}{43}{subsubsection.6.5.3.7}
+\contentsline {subsubsection}{\numberline {6.5.3.8}expand\_\discretionary {-}{}{}field}{43}{subsubsection.6.5.3.8}
+\contentsline {subsubsection}{\numberline {6.5.3.9}extract\_\discretionary {-}{}{}tablelist}{43}{subsubsection.6.5.3.9}
+\contentsline {subsubsection}{\numberline {6.5.3.10}get\_\discretionary {-}{}{}instance}{44}{subsubsection.6.5.3.10}
+\contentsline {subsubsection}{\numberline {6.5.3.11}get\_\discretionary {-}{}{}severity}{44}{subsubsection.6.5.3.11}
+\contentsline {subsubsection}{\numberline {6.5.3.12}get\_\discretionary {-}{}{}status}{44}{subsubsection.6.5.3.12}
+\contentsline {subsubsection}{\numberline {6.5.3.13}init}{44}{subsubsection.6.5.3.13}
+\contentsline {subsubsection}{\numberline {6.5.3.14}is\_\discretionary {-}{}{}open}{44}{subsubsection.6.5.3.14}
+\contentsline {subsubsection}{\numberline {6.5.3.15}last\_\discretionary {-}{}{}inserted\_\discretionary {-}{}{}id}{45}{subsubsection.6.5.3.15}
+\contentsline {subsubsection}{\numberline {6.5.3.16}open}{45}{subsubsection.6.5.3.16}
+\contentsline {subsubsection}{\numberline {6.5.3.17}prepare\_\discretionary {-}{}{}delete}{45}{subsubsection.6.5.3.17}
+\contentsline {subsubsection}{\numberline {6.5.3.18}prepare\_\discretionary {-}{}{}insert}{45}{subsubsection.6.5.3.18}
+\contentsline {subsubsection}{\numberline {6.5.3.19}prepare\_\discretionary {-}{}{}read}{46}{subsubsection.6.5.3.19}
+\contentsline {subsubsection}{\numberline {6.5.3.20}prepare\_\discretionary {-}{}{}update}{46}{subsubsection.6.5.3.20}
+\contentsline {subsubsection}{\numberline {6.5.3.21}read}{46}{subsubsection.6.5.3.21}
+\contentsline {subsubsection}{\numberline {6.5.3.22}reset}{47}{subsubsection.6.5.3.22}
+\contentsline {subsubsection}{\numberline {6.5.3.23}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{47}{subsubsection.6.5.3.23}
+\contentsline {subsubsection}{\numberline {6.5.3.24}set\_\discretionary {-}{}{}query}{47}{subsubsection.6.5.3.24}
+\contentsline {subsubsection}{\numberline {6.5.3.25}set\_\discretionary {-}{}{}status}{47}{subsubsection.6.5.3.25}
+\contentsline {subsubsection}{\numberline {6.5.3.26}signal}{48}{subsubsection.6.5.3.26}
+\contentsline {subsubsection}{\numberline {6.5.3.27}table\_\discretionary {-}{}{}exists}{48}{subsubsection.6.5.3.27}
+\contentsline {subsubsection}{\numberline {6.5.3.28}tablelist}{48}{subsubsection.6.5.3.28}
+\contentsline {subsubsection}{\numberline {6.5.3.29}tablename}{49}{subsubsection.6.5.3.29}
+\contentsline {subsubsection}{\numberline {6.5.3.30}traceback}{49}{subsubsection.6.5.3.30}
+\contentsline {subsubsection}{\numberline {6.5.3.31}unescape\_\discretionary {-}{}{}string}{49}{subsubsection.6.5.3.31}
+\contentsline {subsubsection}{\numberline {6.5.3.32}update\_\discretionary {-}{}{}list}{50}{subsubsection.6.5.3.32}
+\contentsline {subsubsection}{\numberline {6.5.3.33}where\_\discretionary {-}{}{}clause}{50}{subsubsection.6.5.3.33}
+\contentsline {subsubsection}{\numberline {6.5.3.34}write}{50}{subsubsection.6.5.3.34}
+\contentsline {subsection}{\numberline {6.5.4}Member Data Documentation}{50}{subsection.6.5.4}
+\contentsline {subsubsection}{\numberline {6.5.4.1}\$database}{50}{subsubsection.6.5.4.1}
+\contentsline {subsubsection}{\numberline {6.5.4.2}\$db\_\discretionary {-}{}{}prefix}{51}{subsubsection.6.5.4.2}
+\contentsline {subsubsection}{\numberline {6.5.4.3}\$errno}{51}{subsubsection.6.5.4.3}
+\contentsline {subsubsection}{\numberline {6.5.4.4}\$error}{51}{subsubsection.6.5.4.4}
+\contentsline {subsubsection}{\numberline {6.5.4.5}\$id}{51}{subsubsection.6.5.4.5}
+\contentsline {subsubsection}{\numberline {6.5.4.6}\$instance}{51}{subsubsection.6.5.4.6}
+\contentsline {subsubsection}{\numberline {6.5.4.7}\$opened}{51}{subsubsection.6.5.4.7}
+\contentsline {subsubsection}{\numberline {6.5.4.8}\$query}{51}{subsubsection.6.5.4.8}
+\contentsline {subsubsection}{\numberline {6.5.4.9}\$rowcount}{51}{subsubsection.6.5.4.9}
+\contentsline {subsubsection}{\numberline {6.5.4.10}\$severity}{51}{subsubsection.6.5.4.10}
+\contentsline {section}{\numberline {6.6}Dispatcher Class Reference}{52}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}Detailed Description}{54}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}Constructor \& Destructor Documentation}{54}{subsection.6.6.2}
+\contentsline {subsubsection}{\numberline {6.6.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{54}{subsubsection.6.6.2.1}
+\contentsline {subsection}{\numberline {6.6.3}Member Function Documentation}{54}{subsection.6.6.3}
+\contentsline {subsubsection}{\numberline {6.6.3.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}clone}{54}{subsubsection.6.6.3.1}
+\contentsline {subsubsection}{\numberline {6.6.3.2}check}{55}{subsubsection.6.6.3.2}
+\contentsline {subsubsection}{\numberline {6.6.3.3}dispatch}{55}{subsubsection.6.6.3.3}
+\contentsline {subsubsection}{\numberline {6.6.3.4}get\_\discretionary {-}{}{}instance}{55}{subsubsection.6.6.3.4}
+\contentsline {subsubsection}{\numberline {6.6.3.5}get\_\discretionary {-}{}{}severity}{55}{subsubsection.6.6.3.5}
+\contentsline {subsubsection}{\numberline {6.6.3.6}get\_\discretionary {-}{}{}status}{56}{subsubsection.6.6.3.6}
+\contentsline {subsubsection}{\numberline {6.6.3.7}init}{56}{subsubsection.6.6.3.7}
+\contentsline {subsubsection}{\numberline {6.6.3.8}reset}{56}{subsubsection.6.6.3.8}
+\contentsline {subsubsection}{\numberline {6.6.3.9}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{56}{subsubsection.6.6.3.9}
+\contentsline {subsubsection}{\numberline {6.6.3.10}set\_\discretionary {-}{}{}status}{56}{subsubsection.6.6.3.10}
+\contentsline {subsubsection}{\numberline {6.6.3.11}signal}{57}{subsubsection.6.6.3.11}
+\contentsline {subsubsection}{\numberline {6.6.3.12}traceback}{57}{subsubsection.6.6.3.12}
+\contentsline {subsection}{\numberline {6.6.4}Member Data Documentation}{58}{subsection.6.6.4}
+\contentsline {subsubsection}{\numberline {6.6.4.1}\$instance}{58}{subsubsection.6.6.4.1}
+\contentsline {subsubsection}{\numberline {6.6.4.2}\$severity}{58}{subsubsection.6.6.4.2}
+\contentsline {section}{\numberline {6.7}FileHandler Class Reference}{59}{section.6.7}
+\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{61}{subsection.6.7.1}
+\contentsline {subsection}{\numberline {6.7.2}Constructor \& Destructor Documentation}{61}{subsection.6.7.2}
+\contentsline {subsubsection}{\numberline {6.7.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{61}{subsubsection.6.7.2.1}
+\contentsline {subsubsection}{\numberline {6.7.2.2}\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}{62}{subsubsection.6.7.2.2}
+\contentsline {subsection}{\numberline {6.7.3}Member Function Documentation}{62}{subsection.6.7.3}
+\contentsline {subsubsection}{\numberline {6.7.3.1}check}{62}{subsubsection.6.7.3.1}
+\contentsline {subsubsection}{\numberline {6.7.3.2}close}{62}{subsubsection.6.7.3.2}
+\contentsline {subsubsection}{\numberline {6.7.3.3}download}{62}{subsubsection.6.7.3.3}
+\contentsline {subsubsection}{\numberline {6.7.3.4}encode}{62}{subsubsection.6.7.3.4}
+\contentsline {subsubsection}{\numberline {6.7.3.5}get\_\discretionary {-}{}{}severity}{62}{subsubsection.6.7.3.5}
+\contentsline {subsubsection}{\numberline {6.7.3.6}get\_\discretionary {-}{}{}status}{63}{subsubsection.6.7.3.6}
+\contentsline {subsubsection}{\numberline {6.7.3.7}init}{63}{subsubsection.6.7.3.7}
+\contentsline {subsubsection}{\numberline {6.7.3.8}open}{63}{subsubsection.6.7.3.8}
+\contentsline {subsubsection}{\numberline {6.7.3.9}read\_\discretionary {-}{}{}data}{63}{subsubsection.6.7.3.9}
+\contentsline {subsubsection}{\numberline {6.7.3.10}read\_\discretionary {-}{}{}line}{64}{subsubsection.6.7.3.10}
+\contentsline {subsubsection}{\numberline {6.7.3.11}reset}{64}{subsubsection.6.7.3.11}
+\contentsline {subsubsection}{\numberline {6.7.3.12}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{64}{subsubsection.6.7.3.12}
+\contentsline {subsubsection}{\numberline {6.7.3.13}set\_\discretionary {-}{}{}status}{64}{subsubsection.6.7.3.13}
+\contentsline {subsubsection}{\numberline {6.7.3.14}signal}{65}{subsubsection.6.7.3.14}
+\contentsline {subsubsection}{\numberline {6.7.3.15}traceback}{65}{subsubsection.6.7.3.15}
+\contentsline {subsection}{\numberline {6.7.4}Member Data Documentation}{65}{subsection.6.7.4}
+\contentsline {subsubsection}{\numberline {6.7.4.1}\$fpointer}{65}{subsubsection.6.7.4.1}
+\contentsline {subsubsection}{\numberline {6.7.4.2}\$name}{66}{subsubsection.6.7.4.2}
+\contentsline {subsubsection}{\numberline {6.7.4.3}\$opened}{66}{subsubsection.6.7.4.3}
+\contentsline {subsubsection}{\numberline {6.7.4.4}\$original\_\discretionary {-}{}{}name}{66}{subsubsection.6.7.4.4}
+\contentsline {subsubsection}{\numberline {6.7.4.5}\$severity}{66}{subsubsection.6.7.4.5}
+\contentsline {section}{\numberline {6.8}Form Class Reference}{67}{section.6.8}
+\contentsline {subsection}{\numberline {6.8.1}Detailed Description}{69}{subsection.6.8.1}
+\contentsline {subsection}{\numberline {6.8.2}Constructor \& Destructor Documentation}{69}{subsection.6.8.2}
+\contentsline {subsubsection}{\numberline {6.8.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{69}{subsubsection.6.8.2.1}
+\contentsline {subsection}{\numberline {6.8.3}Member Function Documentation}{70}{subsection.6.8.3}
+\contentsline {subsubsection}{\numberline {6.8.3.1}addField}{70}{subsubsection.6.8.3.1}
+\contentsline {subsubsection}{\numberline {6.8.3.2}check}{70}{subsubsection.6.8.3.2}
+\contentsline {subsubsection}{\numberline {6.8.3.3}closeForm}{70}{subsubsection.6.8.3.3}
+\contentsline {subsubsection}{\numberline {6.8.3.4}get\_\discretionary {-}{}{}severity}{71}{subsubsection.6.8.3.4}
+\contentsline {subsubsection}{\numberline {6.8.3.5}get\_\discretionary {-}{}{}status}{71}{subsubsection.6.8.3.5}
+\contentsline {subsubsection}{\numberline {6.8.3.6}getAttributes}{71}{subsubsection.6.8.3.6}
+\contentsline {subsubsection}{\numberline {6.8.3.7}getEvents}{71}{subsubsection.6.8.3.7}
+\contentsline {subsubsection}{\numberline {6.8.3.8}init}{71}{subsubsection.6.8.3.8}
+\contentsline {subsubsection}{\numberline {6.8.3.9}openForm}{72}{subsubsection.6.8.3.9}
+\contentsline {subsubsection}{\numberline {6.8.3.10}reset}{72}{subsubsection.6.8.3.10}
+\contentsline {subsubsection}{\numberline {6.8.3.11}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{72}{subsubsection.6.8.3.11}
+\contentsline {subsubsection}{\numberline {6.8.3.12}set\_\discretionary {-}{}{}status}{72}{subsubsection.6.8.3.12}
+\contentsline {subsubsection}{\numberline {6.8.3.13}setClass}{73}{subsubsection.6.8.3.13}
+\contentsline {subsubsection}{\numberline {6.8.3.14}setFieldAttributes}{73}{subsubsection.6.8.3.14}
+\contentsline {subsubsection}{\numberline {6.8.3.15}setId}{73}{subsubsection.6.8.3.15}
+\contentsline {subsubsection}{\numberline {6.8.3.16}showField}{73}{subsubsection.6.8.3.16}
+\contentsline {subsubsection}{\numberline {6.8.3.17}signal}{73}{subsubsection.6.8.3.17}
+\contentsline {subsubsection}{\numberline {6.8.3.18}traceback}{74}{subsubsection.6.8.3.18}
+\contentsline {subsection}{\numberline {6.8.4}Member Data Documentation}{74}{subsection.6.8.4}
+\contentsline {subsubsection}{\numberline {6.8.4.1}\$class}{74}{subsubsection.6.8.4.1}
+\contentsline {subsubsection}{\numberline {6.8.4.2}\$dispatcher}{74}{subsubsection.6.8.4.2}
+\contentsline {subsubsection}{\numberline {6.8.4.3}\$fields}{74}{subsubsection.6.8.4.3}
+\contentsline {subsubsection}{\numberline {6.8.4.4}\$id}{74}{subsubsection.6.8.4.4}
+\contentsline {subsubsection}{\numberline {6.8.4.5}\$severity}{75}{subsubsection.6.8.4.5}
+\contentsline {subsubsection}{\numberline {6.8.4.6}\$style}{75}{subsubsection.6.8.4.6}
+\contentsline {section}{\numberline {6.9}FormField Class Reference}{76}{section.6.9}
+\contentsline {subsection}{\numberline {6.9.1}Detailed Description}{78}{subsection.6.9.1}
+\contentsline {subsection}{\numberline {6.9.2}Constructor \& Destructor Documentation}{78}{subsection.6.9.2}
+\contentsline {subsubsection}{\numberline {6.9.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{78}{subsubsection.6.9.2.1}
+\contentsline {subsection}{\numberline {6.9.3}Member Function Documentation}{78}{subsection.6.9.3}
+\contentsline {subsubsection}{\numberline {6.9.3.1}check}{78}{subsubsection.6.9.3.1}
+\contentsline {subsubsection}{\numberline {6.9.3.2}get\_\discretionary {-}{}{}severity}{79}{subsubsection.6.9.3.2}
+\contentsline {subsubsection}{\numberline {6.9.3.3}get\_\discretionary {-}{}{}status}{79}{subsubsection.6.9.3.3}
+\contentsline {subsubsection}{\numberline {6.9.3.4}getAttributes}{79}{subsubsection.6.9.3.4}
+\contentsline {subsubsection}{\numberline {6.9.3.5}getEvents}{79}{subsubsection.6.9.3.5}
+\contentsline {subsubsection}{\numberline {6.9.3.6}getGenericFieldAttributes}{80}{subsubsection.6.9.3.6}
+\contentsline {subsubsection}{\numberline {6.9.3.7}getType}{80}{subsubsection.6.9.3.7}
+\contentsline {subsubsection}{\numberline {6.9.3.8}init}{80}{subsubsection.6.9.3.8}
+\contentsline {subsubsection}{\numberline {6.9.3.9}reset}{80}{subsubsection.6.9.3.9}
+\contentsline {subsubsection}{\numberline {6.9.3.10}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{80}{subsubsection.6.9.3.10}
+\contentsline {subsubsection}{\numberline {6.9.3.11}set\_\discretionary {-}{}{}status}{81}{subsubsection.6.9.3.11}
+\contentsline {subsubsection}{\numberline {6.9.3.12}setClass}{81}{subsubsection.6.9.3.12}
+\contentsline {subsubsection}{\numberline {6.9.3.13}setDisabled}{81}{subsubsection.6.9.3.13}
+\contentsline {subsubsection}{\numberline {6.9.3.14}setId}{81}{subsubsection.6.9.3.14}
+\contentsline {subsubsection}{\numberline {6.9.3.15}setName}{82}{subsubsection.6.9.3.15}
+\contentsline {subsubsection}{\numberline {6.9.3.16}setReadonly}{82}{subsubsection.6.9.3.16}
+\contentsline {subsubsection}{\numberline {6.9.3.17}setValue}{82}{subsubsection.6.9.3.17}
+\contentsline {subsubsection}{\numberline {6.9.3.18}signal}{82}{subsubsection.6.9.3.18}
+\contentsline {subsubsection}{\numberline {6.9.3.19}traceback}{83}{subsubsection.6.9.3.19}
+\contentsline {subsection}{\numberline {6.9.4}Member Data Documentation}{83}{subsection.6.9.4}
+\contentsline {subsubsection}{\numberline {6.9.4.1}\$class}{83}{subsubsection.6.9.4.1}
+\contentsline {subsubsection}{\numberline {6.9.4.2}\$disabled}{83}{subsubsection.6.9.4.2}
+\contentsline {subsubsection}{\numberline {6.9.4.3}\$id}{83}{subsubsection.6.9.4.3}
+\contentsline {subsubsection}{\numberline {6.9.4.4}\$name}{83}{subsubsection.6.9.4.4}
+\contentsline {subsubsection}{\numberline {6.9.4.5}\$readonly}{83}{subsubsection.6.9.4.5}
+\contentsline {subsubsection}{\numberline {6.9.4.6}\$severity}{83}{subsubsection.6.9.4.6}
+\contentsline {subsubsection}{\numberline {6.9.4.7}\$style}{83}{subsubsection.6.9.4.7}
+\contentsline {subsubsection}{\numberline {6.9.4.8}\$type}{84}{subsubsection.6.9.4.8}
+\contentsline {subsubsection}{\numberline {6.9.4.9}\$value}{84}{subsubsection.6.9.4.9}
+\contentsline {section}{\numberline {6.10}FormFieldButton Class Reference}{85}{section.6.10}
+\contentsline {subsection}{\numberline {6.10.1}Detailed Description}{87}{subsection.6.10.1}
+\contentsline {subsection}{\numberline {6.10.2}Constructor \& Destructor Documentation}{87}{subsection.6.10.2}
+\contentsline {subsubsection}{\numberline {6.10.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{87}{subsubsection.6.10.2.1}
+\contentsline {subsection}{\numberline {6.10.3}Member Function Documentation}{88}{subsection.6.10.3}
+\contentsline {subsubsection}{\numberline {6.10.3.1}check}{88}{subsubsection.6.10.3.1}
+\contentsline {subsubsection}{\numberline {6.10.3.2}get\_\discretionary {-}{}{}severity}{88}{subsubsection.6.10.3.2}
+\contentsline {subsubsection}{\numberline {6.10.3.3}get\_\discretionary {-}{}{}status}{88}{subsubsection.6.10.3.3}
+\contentsline {subsubsection}{\numberline {6.10.3.4}getAttributes}{88}{subsubsection.6.10.3.4}
+\contentsline {subsubsection}{\numberline {6.10.3.5}getEvents}{89}{subsubsection.6.10.3.5}
+\contentsline {subsubsection}{\numberline {6.10.3.6}getFieldCode}{89}{subsubsection.6.10.3.6}
+\contentsline {subsubsection}{\numberline {6.10.3.7}getGenericFieldAttributes}{89}{subsubsection.6.10.3.7}
+\contentsline {subsubsection}{\numberline {6.10.3.8}getType}{89}{subsubsection.6.10.3.8}
+\contentsline {subsubsection}{\numberline {6.10.3.9}init}{89}{subsubsection.6.10.3.9}
+\contentsline {subsubsection}{\numberline {6.10.3.10}reset}{90}{subsubsection.6.10.3.10}
+\contentsline {subsubsection}{\numberline {6.10.3.11}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{90}{subsubsection.6.10.3.11}
+\contentsline {subsubsection}{\numberline {6.10.3.12}set\_\discretionary {-}{}{}status}{90}{subsubsection.6.10.3.12}
+\contentsline {subsubsection}{\numberline {6.10.3.13}setClass}{90}{subsubsection.6.10.3.13}
+\contentsline {subsubsection}{\numberline {6.10.3.14}setDisabled}{91}{subsubsection.6.10.3.14}
+\contentsline {subsubsection}{\numberline {6.10.3.15}setId}{91}{subsubsection.6.10.3.15}
+\contentsline {subsubsection}{\numberline {6.10.3.16}setName}{91}{subsubsection.6.10.3.16}
+\contentsline {subsubsection}{\numberline {6.10.3.17}setReadonly}{91}{subsubsection.6.10.3.17}
+\contentsline {subsubsection}{\numberline {6.10.3.18}setValue}{91}{subsubsection.6.10.3.18}
+\contentsline {subsubsection}{\numberline {6.10.3.19}signal}{91}{subsubsection.6.10.3.19}
+\contentsline {subsubsection}{\numberline {6.10.3.20}traceback}{92}{subsubsection.6.10.3.20}
+\contentsline {subsection}{\numberline {6.10.4}Member Data Documentation}{92}{subsection.6.10.4}
+\contentsline {subsubsection}{\numberline {6.10.4.1}\$alt}{92}{subsubsection.6.10.4.1}
+\contentsline {subsubsection}{\numberline {6.10.4.2}\$class}{92}{subsubsection.6.10.4.2}
+\contentsline {subsubsection}{\numberline {6.10.4.3}\$disabled}{92}{subsubsection.6.10.4.3}
+\contentsline {subsubsection}{\numberline {6.10.4.4}\$id}{92}{subsubsection.6.10.4.4}
+\contentsline {subsubsection}{\numberline {6.10.4.5}\$name}{92}{subsubsection.6.10.4.5}
+\contentsline {subsubsection}{\numberline {6.10.4.6}\$readonly}{93}{subsubsection.6.10.4.6}
+\contentsline {subsubsection}{\numberline {6.10.4.7}\$severity}{93}{subsubsection.6.10.4.7}
+\contentsline {subsubsection}{\numberline {6.10.4.8}\$src}{93}{subsubsection.6.10.4.8}
+\contentsline {subsubsection}{\numberline {6.10.4.9}\$style}{93}{subsubsection.6.10.4.9}
+\contentsline {subsubsection}{\numberline {6.10.4.10}\$type}{93}{subsubsection.6.10.4.10}
+\contentsline {subsubsection}{\numberline {6.10.4.11}\$value}{93}{subsubsection.6.10.4.11}
+\contentsline {section}{\numberline {6.11}FormFieldCheckbox Class Reference}{94}{section.6.11}
+\contentsline {subsection}{\numberline {6.11.1}Detailed Description}{96}{subsection.6.11.1}
+\contentsline {subsection}{\numberline {6.11.2}Constructor \& Destructor Documentation}{96}{subsection.6.11.2}
+\contentsline {subsubsection}{\numberline {6.11.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{96}{subsubsection.6.11.2.1}
+\contentsline {subsection}{\numberline {6.11.3}Member Function Documentation}{97}{subsection.6.11.3}
+\contentsline {subsubsection}{\numberline {6.11.3.1}check}{97}{subsubsection.6.11.3.1}
+\contentsline {subsubsection}{\numberline {6.11.3.2}get\_\discretionary {-}{}{}severity}{97}{subsubsection.6.11.3.2}
+\contentsline {subsubsection}{\numberline {6.11.3.3}get\_\discretionary {-}{}{}status}{97}{subsubsection.6.11.3.3}
+\contentsline {subsubsection}{\numberline {6.11.3.4}getAttributes}{97}{subsubsection.6.11.3.4}
+\contentsline {subsubsection}{\numberline {6.11.3.5}getEvents}{98}{subsubsection.6.11.3.5}
+\contentsline {subsubsection}{\numberline {6.11.3.6}getFieldCode}{98}{subsubsection.6.11.3.6}
+\contentsline {subsubsection}{\numberline {6.11.3.7}getGenericFieldAttributes}{98}{subsubsection.6.11.3.7}
+\contentsline {subsubsection}{\numberline {6.11.3.8}getType}{98}{subsubsection.6.11.3.8}
+\contentsline {subsubsection}{\numberline {6.11.3.9}init}{98}{subsubsection.6.11.3.9}
+\contentsline {subsubsection}{\numberline {6.11.3.10}reset}{99}{subsubsection.6.11.3.10}
+\contentsline {subsubsection}{\numberline {6.11.3.11}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{99}{subsubsection.6.11.3.11}
+\contentsline {subsubsection}{\numberline {6.11.3.12}set\_\discretionary {-}{}{}status}{99}{subsubsection.6.11.3.12}
+\contentsline {subsubsection}{\numberline {6.11.3.13}setChecked}{99}{subsubsection.6.11.3.13}
+\contentsline {subsubsection}{\numberline {6.11.3.14}setClass}{100}{subsubsection.6.11.3.14}
+\contentsline {subsubsection}{\numberline {6.11.3.15}setDisabled}{100}{subsubsection.6.11.3.15}
+\contentsline {subsubsection}{\numberline {6.11.3.16}setId}{100}{subsubsection.6.11.3.16}
+\contentsline {subsubsection}{\numberline {6.11.3.17}setName}{100}{subsubsection.6.11.3.17}
+\contentsline {subsubsection}{\numberline {6.11.3.18}setReadonly}{100}{subsubsection.6.11.3.18}
+\contentsline {subsubsection}{\numberline {6.11.3.19}setValue}{100}{subsubsection.6.11.3.19}
+\contentsline {subsubsection}{\numberline {6.11.3.20}signal}{101}{subsubsection.6.11.3.20}
+\contentsline {subsubsection}{\numberline {6.11.3.21}traceback}{101}{subsubsection.6.11.3.21}
+\contentsline {subsection}{\numberline {6.11.4}Member Data Documentation}{101}{subsection.6.11.4}
+\contentsline {subsubsection}{\numberline {6.11.4.1}\$checked}{101}{subsubsection.6.11.4.1}
+\contentsline {subsubsection}{\numberline {6.11.4.2}\$class}{101}{subsubsection.6.11.4.2}
+\contentsline {subsubsection}{\numberline {6.11.4.3}\$disabled}{101}{subsubsection.6.11.4.3}
+\contentsline {subsubsection}{\numberline {6.11.4.4}\$id}{102}{subsubsection.6.11.4.4}
+\contentsline {subsubsection}{\numberline {6.11.4.5}\$name}{102}{subsubsection.6.11.4.5}
+\contentsline {subsubsection}{\numberline {6.11.4.6}\$readonly}{102}{subsubsection.6.11.4.6}
+\contentsline {subsubsection}{\numberline {6.11.4.7}\$severity}{102}{subsubsection.6.11.4.7}
+\contentsline {subsubsection}{\numberline {6.11.4.8}\$style}{102}{subsubsection.6.11.4.8}
+\contentsline {subsubsection}{\numberline {6.11.4.9}\$type}{102}{subsubsection.6.11.4.9}
+\contentsline {subsubsection}{\numberline {6.11.4.10}\$value}{102}{subsubsection.6.11.4.10}
+\contentsline {section}{\numberline {6.12}FormFieldFile Class Reference}{103}{section.6.12}
+\contentsline {subsection}{\numberline {6.12.1}Detailed Description}{105}{subsection.6.12.1}
+\contentsline {subsection}{\numberline {6.12.2}Constructor \& Destructor Documentation}{105}{subsection.6.12.2}
+\contentsline {subsubsection}{\numberline {6.12.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{105}{subsubsection.6.12.2.1}
+\contentsline {subsection}{\numberline {6.12.3}Member Function Documentation}{105}{subsection.6.12.3}
+\contentsline {subsubsection}{\numberline {6.12.3.1}check}{105}{subsubsection.6.12.3.1}
+\contentsline {subsubsection}{\numberline {6.12.3.2}get\_\discretionary {-}{}{}severity}{106}{subsubsection.6.12.3.2}
+\contentsline {subsubsection}{\numberline {6.12.3.3}get\_\discretionary {-}{}{}status}{106}{subsubsection.6.12.3.3}
+\contentsline {subsubsection}{\numberline {6.12.3.4}getAttributes}{106}{subsubsection.6.12.3.4}
+\contentsline {subsubsection}{\numberline {6.12.3.5}getEvents}{106}{subsubsection.6.12.3.5}
+\contentsline {subsubsection}{\numberline {6.12.3.6}getGenericFieldAttributes}{107}{subsubsection.6.12.3.6}
+\contentsline {subsubsection}{\numberline {6.12.3.7}getType}{107}{subsubsection.6.12.3.7}
+\contentsline {subsubsection}{\numberline {6.12.3.8}init}{107}{subsubsection.6.12.3.8}
+\contentsline {subsubsection}{\numberline {6.12.3.9}reset}{107}{subsubsection.6.12.3.9}
+\contentsline {subsubsection}{\numberline {6.12.3.10}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{107}{subsubsection.6.12.3.10}
+\contentsline {subsubsection}{\numberline {6.12.3.11}set\_\discretionary {-}{}{}status}{108}{subsubsection.6.12.3.11}
+\contentsline {subsubsection}{\numberline {6.12.3.12}setClass}{108}{subsubsection.6.12.3.12}
+\contentsline {subsubsection}{\numberline {6.12.3.13}setDisabled}{108}{subsubsection.6.12.3.13}
+\contentsline {subsubsection}{\numberline {6.12.3.14}setId}{108}{subsubsection.6.12.3.14}
+\contentsline {subsubsection}{\numberline {6.12.3.15}setName}{109}{subsubsection.6.12.3.15}
+\contentsline {subsubsection}{\numberline {6.12.3.16}setReadonly}{109}{subsubsection.6.12.3.16}
+\contentsline {subsubsection}{\numberline {6.12.3.17}setValue}{109}{subsubsection.6.12.3.17}
+\contentsline {subsubsection}{\numberline {6.12.3.18}signal}{109}{subsubsection.6.12.3.18}
+\contentsline {subsubsection}{\numberline {6.12.3.19}traceback}{110}{subsubsection.6.12.3.19}
+\contentsline {subsection}{\numberline {6.12.4}Member Data Documentation}{110}{subsection.6.12.4}
+\contentsline {subsubsection}{\numberline {6.12.4.1}\$class}{110}{subsubsection.6.12.4.1}
+\contentsline {subsubsection}{\numberline {6.12.4.2}\$disabled}{110}{subsubsection.6.12.4.2}
+\contentsline {subsubsection}{\numberline {6.12.4.3}\$id}{110}{subsubsection.6.12.4.3}
+\contentsline {subsubsection}{\numberline {6.12.4.4}\$name}{110}{subsubsection.6.12.4.4}
+\contentsline {subsubsection}{\numberline {6.12.4.5}\$readonly}{110}{subsubsection.6.12.4.5}
+\contentsline {subsubsection}{\numberline {6.12.4.6}\$severity}{110}{subsubsection.6.12.4.6}
+\contentsline {subsubsection}{\numberline {6.12.4.7}\$style}{110}{subsubsection.6.12.4.7}
+\contentsline {subsubsection}{\numberline {6.12.4.8}\$type}{111}{subsubsection.6.12.4.8}
+\contentsline {subsubsection}{\numberline {6.12.4.9}\$value}{111}{subsubsection.6.12.4.9}
+\contentsline {section}{\numberline {6.13}FormFieldRadio Class Reference}{112}{section.6.13}
+\contentsline {subsection}{\numberline {6.13.1}Detailed Description}{114}{subsection.6.13.1}
+\contentsline {subsection}{\numberline {6.13.2}Constructor \& Destructor Documentation}{114}{subsection.6.13.2}
+\contentsline {subsubsection}{\numberline {6.13.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{114}{subsubsection.6.13.2.1}
+\contentsline {subsection}{\numberline {6.13.3}Member Function Documentation}{115}{subsection.6.13.3}
+\contentsline {subsubsection}{\numberline {6.13.3.1}check}{115}{subsubsection.6.13.3.1}
+\contentsline {subsubsection}{\numberline {6.13.3.2}get\_\discretionary {-}{}{}severity}{115}{subsubsection.6.13.3.2}
+\contentsline {subsubsection}{\numberline {6.13.3.3}get\_\discretionary {-}{}{}status}{115}{subsubsection.6.13.3.3}
+\contentsline {subsubsection}{\numberline {6.13.3.4}getAttributes}{115}{subsubsection.6.13.3.4}
+\contentsline {subsubsection}{\numberline {6.13.3.5}getEvents}{116}{subsubsection.6.13.3.5}
+\contentsline {subsubsection}{\numberline {6.13.3.6}getFieldCode}{116}{subsubsection.6.13.3.6}
+\contentsline {subsubsection}{\numberline {6.13.3.7}getGenericFieldAttributes}{116}{subsubsection.6.13.3.7}
+\contentsline {subsubsection}{\numberline {6.13.3.8}getType}{116}{subsubsection.6.13.3.8}
+\contentsline {subsubsection}{\numberline {6.13.3.9}init}{116}{subsubsection.6.13.3.9}
+\contentsline {subsubsection}{\numberline {6.13.3.10}reset}{117}{subsubsection.6.13.3.10}
+\contentsline {subsubsection}{\numberline {6.13.3.11}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{117}{subsubsection.6.13.3.11}
+\contentsline {subsubsection}{\numberline {6.13.3.12}set\_\discretionary {-}{}{}status}{117}{subsubsection.6.13.3.12}
+\contentsline {subsubsection}{\numberline {6.13.3.13}setClass}{117}{subsubsection.6.13.3.13}
+\contentsline {subsubsection}{\numberline {6.13.3.14}setDisabled}{118}{subsubsection.6.13.3.14}
+\contentsline {subsubsection}{\numberline {6.13.3.15}setId}{118}{subsubsection.6.13.3.15}
+\contentsline {subsubsection}{\numberline {6.13.3.16}setName}{118}{subsubsection.6.13.3.16}
+\contentsline {subsubsection}{\numberline {6.13.3.17}setReadonly}{118}{subsubsection.6.13.3.17}
+\contentsline {subsubsection}{\numberline {6.13.3.18}setSelected}{118}{subsubsection.6.13.3.18}
+\contentsline {subsubsection}{\numberline {6.13.3.19}setValue}{118}{subsubsection.6.13.3.19}
+\contentsline {subsubsection}{\numberline {6.13.3.20}signal}{119}{subsubsection.6.13.3.20}
+\contentsline {subsubsection}{\numberline {6.13.3.21}traceback}{119}{subsubsection.6.13.3.21}
+\contentsline {subsection}{\numberline {6.13.4}Member Data Documentation}{119}{subsection.6.13.4}
+\contentsline {subsubsection}{\numberline {6.13.4.1}\$class}{119}{subsubsection.6.13.4.1}
+\contentsline {subsubsection}{\numberline {6.13.4.2}\$disabled}{119}{subsubsection.6.13.4.2}
+\contentsline {subsubsection}{\numberline {6.13.4.3}\$id}{119}{subsubsection.6.13.4.3}
+\contentsline {subsubsection}{\numberline {6.13.4.4}\$name}{120}{subsubsection.6.13.4.4}
+\contentsline {subsubsection}{\numberline {6.13.4.5}\$readonly}{120}{subsubsection.6.13.4.5}
+\contentsline {subsubsection}{\numberline {6.13.4.6}\$selected}{120}{subsubsection.6.13.4.6}
+\contentsline {subsubsection}{\numberline {6.13.4.7}\$severity}{120}{subsubsection.6.13.4.7}
+\contentsline {subsubsection}{\numberline {6.13.4.8}\$style}{120}{subsubsection.6.13.4.8}
+\contentsline {subsubsection}{\numberline {6.13.4.9}\$type}{120}{subsubsection.6.13.4.9}
+\contentsline {subsubsection}{\numberline {6.13.4.10}\$value}{120}{subsubsection.6.13.4.10}
+\contentsline {section}{\numberline {6.14}FormFieldSelect Class Reference}{121}{section.6.14}
+\contentsline {subsection}{\numberline {6.14.1}Detailed Description}{123}{subsection.6.14.1}
+\contentsline {subsection}{\numberline {6.14.2}Constructor \& Destructor Documentation}{124}{subsection.6.14.2}
+\contentsline {subsubsection}{\numberline {6.14.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{124}{subsubsection.6.14.2.1}
+\contentsline {subsection}{\numberline {6.14.3}Member Function Documentation}{124}{subsection.6.14.3}
+\contentsline {subsubsection}{\numberline {6.14.3.1}check}{124}{subsubsection.6.14.3.1}
+\contentsline {subsubsection}{\numberline {6.14.3.2}get\_\discretionary {-}{}{}severity}{124}{subsubsection.6.14.3.2}
+\contentsline {subsubsection}{\numberline {6.14.3.3}get\_\discretionary {-}{}{}status}{124}{subsubsection.6.14.3.3}
+\contentsline {subsubsection}{\numberline {6.14.3.4}getAttributes}{125}{subsubsection.6.14.3.4}
+\contentsline {subsubsection}{\numberline {6.14.3.5}getEvents}{125}{subsubsection.6.14.3.5}
+\contentsline {subsubsection}{\numberline {6.14.3.6}getFieldCode}{125}{subsubsection.6.14.3.6}
+\contentsline {subsubsection}{\numberline {6.14.3.7}getGenericFieldAttributes}{125}{subsubsection.6.14.3.7}
+\contentsline {subsubsection}{\numberline {6.14.3.8}getType}{125}{subsubsection.6.14.3.8}
+\contentsline {subsubsection}{\numberline {6.14.3.9}init}{126}{subsubsection.6.14.3.9}
+\contentsline {subsubsection}{\numberline {6.14.3.10}reset}{126}{subsubsection.6.14.3.10}
+\contentsline {subsubsection}{\numberline {6.14.3.11}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{126}{subsubsection.6.14.3.11}
+\contentsline {subsubsection}{\numberline {6.14.3.12}set\_\discretionary {-}{}{}status}{126}{subsubsection.6.14.3.12}
+\contentsline {subsubsection}{\numberline {6.14.3.13}setClass}{127}{subsubsection.6.14.3.13}
+\contentsline {subsubsection}{\numberline {6.14.3.14}setDisabled}{127}{subsubsection.6.14.3.14}
+\contentsline {subsubsection}{\numberline {6.14.3.15}setId}{127}{subsubsection.6.14.3.15}
+\contentsline {subsubsection}{\numberline {6.14.3.16}setMultiple}{127}{subsubsection.6.14.3.16}
+\contentsline {subsubsection}{\numberline {6.14.3.17}setName}{127}{subsubsection.6.14.3.17}
+\contentsline {subsubsection}{\numberline {6.14.3.18}setReadonly}{127}{subsubsection.6.14.3.18}
+\contentsline {subsubsection}{\numberline {6.14.3.19}setSize}{128}{subsubsection.6.14.3.19}
+\contentsline {subsubsection}{\numberline {6.14.3.20}setValue}{128}{subsubsection.6.14.3.20}
+\contentsline {subsubsection}{\numberline {6.14.3.21}signal}{128}{subsubsection.6.14.3.21}
+\contentsline {subsubsection}{\numberline {6.14.3.22}traceback}{128}{subsubsection.6.14.3.22}
+\contentsline {subsection}{\numberline {6.14.4}Member Data Documentation}{129}{subsection.6.14.4}
+\contentsline {subsubsection}{\numberline {6.14.4.1}\$class}{129}{subsubsection.6.14.4.1}
+\contentsline {subsubsection}{\numberline {6.14.4.2}\$disabled}{129}{subsubsection.6.14.4.2}
+\contentsline {subsubsection}{\numberline {6.14.4.3}\$id}{129}{subsubsection.6.14.4.3}
+\contentsline {subsubsection}{\numberline {6.14.4.4}\$multiple}{129}{subsubsection.6.14.4.4}
+\contentsline {subsubsection}{\numberline {6.14.4.5}\$name}{129}{subsubsection.6.14.4.5}
+\contentsline {subsubsection}{\numberline {6.14.4.6}\$options}{129}{subsubsection.6.14.4.6}
+\contentsline {subsubsection}{\numberline {6.14.4.7}\$readonly}{129}{subsubsection.6.14.4.7}
+\contentsline {subsubsection}{\numberline {6.14.4.8}\$severity}{129}{subsubsection.6.14.4.8}
+\contentsline {subsubsection}{\numberline {6.14.4.9}\$size}{130}{subsubsection.6.14.4.9}
+\contentsline {subsubsection}{\numberline {6.14.4.10}\$style}{130}{subsubsection.6.14.4.10}
+\contentsline {subsubsection}{\numberline {6.14.4.11}\$type}{130}{subsubsection.6.14.4.11}
+\contentsline {subsubsection}{\numberline {6.14.4.12}\$value}{130}{subsubsection.6.14.4.12}
+\contentsline {subsubsection}{\numberline {6.14.4.13}DefaultOptionGroup}{130}{subsubsection.6.14.4.13}
+\contentsline {section}{\numberline {6.15}FormFieldText Class Reference}{131}{section.6.15}
+\contentsline {subsection}{\numberline {6.15.1}Detailed Description}{133}{subsection.6.15.1}
+\contentsline {subsection}{\numberline {6.15.2}Constructor \& Destructor Documentation}{133}{subsection.6.15.2}
+\contentsline {subsubsection}{\numberline {6.15.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{133}{subsubsection.6.15.2.1}
+\contentsline {subsection}{\numberline {6.15.3}Member Function Documentation}{134}{subsection.6.15.3}
+\contentsline {subsubsection}{\numberline {6.15.3.1}check}{134}{subsubsection.6.15.3.1}
+\contentsline {subsubsection}{\numberline {6.15.3.2}get\_\discretionary {-}{}{}severity}{134}{subsubsection.6.15.3.2}
+\contentsline {subsubsection}{\numberline {6.15.3.3}get\_\discretionary {-}{}{}status}{134}{subsubsection.6.15.3.3}
+\contentsline {subsubsection}{\numberline {6.15.3.4}getAttributes}{135}{subsubsection.6.15.3.4}
+\contentsline {subsubsection}{\numberline {6.15.3.5}getEvents}{135}{subsubsection.6.15.3.5}
+\contentsline {subsubsection}{\numberline {6.15.3.6}getFieldCode}{135}{subsubsection.6.15.3.6}
+\contentsline {subsubsection}{\numberline {6.15.3.7}getGenericFieldAttributes}{135}{subsubsection.6.15.3.7}
+\contentsline {subsubsection}{\numberline {6.15.3.8}getType}{135}{subsubsection.6.15.3.8}
+\contentsline {subsubsection}{\numberline {6.15.3.9}init}{136}{subsubsection.6.15.3.9}
+\contentsline {subsubsection}{\numberline {6.15.3.10}reset}{136}{subsubsection.6.15.3.10}
+\contentsline {subsubsection}{\numberline {6.15.3.11}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{136}{subsubsection.6.15.3.11}
+\contentsline {subsubsection}{\numberline {6.15.3.12}set\_\discretionary {-}{}{}status}{136}{subsubsection.6.15.3.12}
+\contentsline {subsubsection}{\numberline {6.15.3.13}setClass}{137}{subsubsection.6.15.3.13}
+\contentsline {subsubsection}{\numberline {6.15.3.14}setDisabled}{137}{subsubsection.6.15.3.14}
+\contentsline {subsubsection}{\numberline {6.15.3.15}setId}{137}{subsubsection.6.15.3.15}
+\contentsline {subsubsection}{\numberline {6.15.3.16}setMaxsize}{137}{subsubsection.6.15.3.16}
+\contentsline {subsubsection}{\numberline {6.15.3.17}setName}{137}{subsubsection.6.15.3.17}
+\contentsline {subsubsection}{\numberline {6.15.3.18}setReadonly}{138}{subsubsection.6.15.3.18}
+\contentsline {subsubsection}{\numberline {6.15.3.19}setSize}{138}{subsubsection.6.15.3.19}
+\contentsline {subsubsection}{\numberline {6.15.3.20}setValue}{138}{subsubsection.6.15.3.20}
+\contentsline {subsubsection}{\numberline {6.15.3.21}signal}{138}{subsubsection.6.15.3.21}
+\contentsline {subsubsection}{\numberline {6.15.3.22}traceback}{138}{subsubsection.6.15.3.22}
+\contentsline {subsection}{\numberline {6.15.4}Member Data Documentation}{139}{subsection.6.15.4}
+\contentsline {subsubsection}{\numberline {6.15.4.1}\$class}{139}{subsubsection.6.15.4.1}
+\contentsline {subsubsection}{\numberline {6.15.4.2}\$disabled}{139}{subsubsection.6.15.4.2}
+\contentsline {subsubsection}{\numberline {6.15.4.3}\$id}{139}{subsubsection.6.15.4.3}
+\contentsline {subsubsection}{\numberline {6.15.4.4}\$maxsize}{139}{subsubsection.6.15.4.4}
+\contentsline {subsubsection}{\numberline {6.15.4.5}\$name}{139}{subsubsection.6.15.4.5}
+\contentsline {subsubsection}{\numberline {6.15.4.6}\$readonly}{139}{subsubsection.6.15.4.6}
+\contentsline {subsubsection}{\numberline {6.15.4.7}\$severity}{139}{subsubsection.6.15.4.7}
+\contentsline {subsubsection}{\numberline {6.15.4.8}\$size}{139}{subsubsection.6.15.4.8}
+\contentsline {subsubsection}{\numberline {6.15.4.9}\$style}{140}{subsubsection.6.15.4.9}
+\contentsline {subsubsection}{\numberline {6.15.4.10}\$type}{140}{subsubsection.6.15.4.10}
+\contentsline {subsubsection}{\numberline {6.15.4.11}\$value}{140}{subsubsection.6.15.4.11}
+\contentsline {section}{\numberline {6.16}FormFieldTextarea Class Reference}{141}{section.6.16}
+\contentsline {subsection}{\numberline {6.16.1}Detailed Description}{143}{subsection.6.16.1}
+\contentsline {subsection}{\numberline {6.16.2}Constructor \& Destructor Documentation}{143}{subsection.6.16.2}
+\contentsline {subsubsection}{\numberline {6.16.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{143}{subsubsection.6.16.2.1}
+\contentsline {subsection}{\numberline {6.16.3}Member Function Documentation}{144}{subsection.6.16.3}
+\contentsline {subsubsection}{\numberline {6.16.3.1}check}{144}{subsubsection.6.16.3.1}
+\contentsline {subsubsection}{\numberline {6.16.3.2}get\_\discretionary {-}{}{}severity}{144}{subsubsection.6.16.3.2}
+\contentsline {subsubsection}{\numberline {6.16.3.3}get\_\discretionary {-}{}{}status}{144}{subsubsection.6.16.3.3}
+\contentsline {subsubsection}{\numberline {6.16.3.4}getAttributes}{144}{subsubsection.6.16.3.4}
+\contentsline {subsubsection}{\numberline {6.16.3.5}getEvents}{145}{subsubsection.6.16.3.5}
+\contentsline {subsubsection}{\numberline {6.16.3.6}getFieldCode}{145}{subsubsection.6.16.3.6}
+\contentsline {subsubsection}{\numberline {6.16.3.7}getGenericFieldAttributes}{145}{subsubsection.6.16.3.7}
+\contentsline {subsubsection}{\numberline {6.16.3.8}getType}{145}{subsubsection.6.16.3.8}
+\contentsline {subsubsection}{\numberline {6.16.3.9}init}{145}{subsubsection.6.16.3.9}
+\contentsline {subsubsection}{\numberline {6.16.3.10}reset}{146}{subsubsection.6.16.3.10}
+\contentsline {subsubsection}{\numberline {6.16.3.11}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{146}{subsubsection.6.16.3.11}
+\contentsline {subsubsection}{\numberline {6.16.3.12}set\_\discretionary {-}{}{}status}{146}{subsubsection.6.16.3.12}
+\contentsline {subsubsection}{\numberline {6.16.3.13}setClass}{146}{subsubsection.6.16.3.13}
+\contentsline {subsubsection}{\numberline {6.16.3.14}setDisabled}{147}{subsubsection.6.16.3.14}
+\contentsline {subsubsection}{\numberline {6.16.3.15}setId}{147}{subsubsection.6.16.3.15}
+\contentsline {subsubsection}{\numberline {6.16.3.16}setName}{147}{subsubsection.6.16.3.16}
+\contentsline {subsubsection}{\numberline {6.16.3.17}setReadonly}{147}{subsubsection.6.16.3.17}
+\contentsline {subsubsection}{\numberline {6.16.3.18}setValue}{147}{subsubsection.6.16.3.18}
+\contentsline {subsubsection}{\numberline {6.16.3.19}signal}{147}{subsubsection.6.16.3.19}
+\contentsline {subsubsection}{\numberline {6.16.3.20}traceback}{148}{subsubsection.6.16.3.20}
+\contentsline {subsection}{\numberline {6.16.4}Member Data Documentation}{148}{subsection.6.16.4}
+\contentsline {subsubsection}{\numberline {6.16.4.1}\$class}{148}{subsubsection.6.16.4.1}
+\contentsline {subsubsection}{\numberline {6.16.4.2}\$cols}{148}{subsubsection.6.16.4.2}
+\contentsline {subsubsection}{\numberline {6.16.4.3}\$disabled}{148}{subsubsection.6.16.4.3}
+\contentsline {subsubsection}{\numberline {6.16.4.4}\$id}{148}{subsubsection.6.16.4.4}
+\contentsline {subsubsection}{\numberline {6.16.4.5}\$name}{148}{subsubsection.6.16.4.5}
+\contentsline {subsubsection}{\numberline {6.16.4.6}\$readonly}{149}{subsubsection.6.16.4.6}
+\contentsline {subsubsection}{\numberline {6.16.4.7}\$rows}{149}{subsubsection.6.16.4.7}
+\contentsline {subsubsection}{\numberline {6.16.4.8}\$severity}{149}{subsubsection.6.16.4.8}
+\contentsline {subsubsection}{\numberline {6.16.4.9}\$style}{149}{subsubsection.6.16.4.9}
+\contentsline {subsubsection}{\numberline {6.16.4.10}\$type}{149}{subsubsection.6.16.4.10}
+\contentsline {subsubsection}{\numberline {6.16.4.11}\$value}{149}{subsubsection.6.16.4.11}
+\contentsline {section}{\numberline {6.17}FormHandler Class Reference}{150}{section.6.17}
+\contentsline {subsection}{\numberline {6.17.1}Detailed Description}{152}{subsection.6.17.1}
+\contentsline {subsection}{\numberline {6.17.2}Constructor \& Destructor Documentation}{152}{subsection.6.17.2}
+\contentsline {subsubsection}{\numberline {6.17.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{152}{subsubsection.6.17.2.1}
+\contentsline {subsection}{\numberline {6.17.3}Member Function Documentation}{153}{subsection.6.17.3}
+\contentsline {subsubsection}{\numberline {6.17.3.1}check}{153}{subsubsection.6.17.3.1}
+\contentsline {subsubsection}{\numberline {6.17.3.2}cleanString}{153}{subsubsection.6.17.3.2}
+\contentsline {subsubsection}{\numberline {6.17.3.3}get}{153}{subsubsection.6.17.3.3}
+\contentsline {subsubsection}{\numberline {6.17.3.4}get\_\discretionary {-}{}{}instance}{154}{subsubsection.6.17.3.4}
+\contentsline {subsubsection}{\numberline {6.17.3.5}get\_\discretionary {-}{}{}severity}{154}{subsubsection.6.17.3.5}
+\contentsline {subsubsection}{\numberline {6.17.3.6}get\_\discretionary {-}{}{}status}{154}{subsubsection.6.17.3.6}
+\contentsline {subsubsection}{\numberline {6.17.3.7}init}{154}{subsubsection.6.17.3.7}
+\contentsline {subsubsection}{\numberline {6.17.3.8}parse\_\discretionary {-}{}{}formdata}{155}{subsubsection.6.17.3.8}
+\contentsline {subsubsection}{\numberline {6.17.3.9}reset}{155}{subsubsection.6.17.3.9}
+\contentsline {subsubsection}{\numberline {6.17.3.10}set}{155}{subsubsection.6.17.3.10}
+\contentsline {subsubsection}{\numberline {6.17.3.11}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{155}{subsubsection.6.17.3.11}
+\contentsline {subsubsection}{\numberline {6.17.3.12}set\_\discretionary {-}{}{}status}{155}{subsubsection.6.17.3.12}
+\contentsline {subsubsection}{\numberline {6.17.3.13}signal}{156}{subsubsection.6.17.3.13}
+\contentsline {subsubsection}{\numberline {6.17.3.14}traceback}{156}{subsubsection.6.17.3.14}
+\contentsline {subsection}{\numberline {6.17.4}Member Data Documentation}{157}{subsection.6.17.4}
+\contentsline {subsubsection}{\numberline {6.17.4.1}\$instance}{157}{subsubsection.6.17.4.1}
+\contentsline {subsubsection}{\numberline {6.17.4.2}\$owl\_\discretionary {-}{}{}formvalues}{157}{subsubsection.6.17.4.2}
+\contentsline {subsubsection}{\numberline {6.17.4.3}\$severity}{157}{subsubsection.6.17.4.3}
+\contentsline {section}{\numberline {6.18}ImageHandler Class Reference}{158}{section.6.18}
+\contentsline {subsection}{\numberline {6.18.1}Detailed Description}{160}{subsection.6.18.1}
+\contentsline {subsection}{\numberline {6.18.2}Constructor \& Destructor Documentation}{160}{subsection.6.18.2}
+\contentsline {subsubsection}{\numberline {6.18.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{160}{subsubsection.6.18.2.1}
+\contentsline {subsection}{\numberline {6.18.3}Member Function Documentation}{161}{subsection.6.18.3}
+\contentsline {subsubsection}{\numberline {6.18.3.1}check}{161}{subsubsection.6.18.3.1}
+\contentsline {subsubsection}{\numberline {6.18.3.2}close}{161}{subsubsection.6.18.3.2}
+\contentsline {subsubsection}{\numberline {6.18.3.3}download}{161}{subsubsection.6.18.3.3}
+\contentsline {subsubsection}{\numberline {6.18.3.4}encode}{161}{subsubsection.6.18.3.4}
+\contentsline {subsubsection}{\numberline {6.18.3.5}get\_\discretionary {-}{}{}severity}{161}{subsubsection.6.18.3.5}
+\contentsline {subsubsection}{\numberline {6.18.3.6}get\_\discretionary {-}{}{}status}{162}{subsubsection.6.18.3.6}
+\contentsline {subsubsection}{\numberline {6.18.3.7}init}{162}{subsubsection.6.18.3.7}
+\contentsline {subsubsection}{\numberline {6.18.3.8}open}{162}{subsubsection.6.18.3.8}
+\contentsline {subsubsection}{\numberline {6.18.3.9}read\_\discretionary {-}{}{}data}{162}{subsubsection.6.18.3.9}
+\contentsline {subsubsection}{\numberline {6.18.3.10}read\_\discretionary {-}{}{}line}{163}{subsubsection.6.18.3.10}
+\contentsline {subsubsection}{\numberline {6.18.3.11}reset}{163}{subsubsection.6.18.3.11}
+\contentsline {subsubsection}{\numberline {6.18.3.12}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{163}{subsubsection.6.18.3.12}
+\contentsline {subsubsection}{\numberline {6.18.3.13}set\_\discretionary {-}{}{}status}{163}{subsubsection.6.18.3.13}
+\contentsline {subsubsection}{\numberline {6.18.3.14}signal}{164}{subsubsection.6.18.3.14}
+\contentsline {subsubsection}{\numberline {6.18.3.15}traceback}{164}{subsubsection.6.18.3.15}
+\contentsline {subsection}{\numberline {6.18.4}Member Data Documentation}{164}{subsection.6.18.4}
+\contentsline {subsubsection}{\numberline {6.18.4.1}\$fpointer}{164}{subsubsection.6.18.4.1}
+\contentsline {subsubsection}{\numberline {6.18.4.2}\$name}{165}{subsubsection.6.18.4.2}
+\contentsline {subsubsection}{\numberline {6.18.4.3}\$opened}{165}{subsubsection.6.18.4.3}
+\contentsline {subsubsection}{\numberline {6.18.4.4}\$original\_\discretionary {-}{}{}name}{165}{subsubsection.6.18.4.4}
+\contentsline {subsubsection}{\numberline {6.18.4.5}\$severity}{165}{subsubsection.6.18.4.5}
+\contentsline {section}{\numberline {6.19}LogHandler Class Reference}{166}{section.6.19}
+\contentsline {subsection}{\numberline {6.19.1}Detailed Description}{168}{subsection.6.19.1}
+\contentsline {subsection}{\numberline {6.19.2}Constructor \& Destructor Documentation}{168}{subsection.6.19.2}
+\contentsline {subsubsection}{\numberline {6.19.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{168}{subsubsection.6.19.2.1}
+\contentsline {subsubsection}{\numberline {6.19.2.2}\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}{169}{subsubsection.6.19.2.2}
+\contentsline {subsection}{\numberline {6.19.3}Member Function Documentation}{169}{subsection.6.19.3}
+\contentsline {subsubsection}{\numberline {6.19.3.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}clone}{169}{subsubsection.6.19.3.1}
+\contentsline {subsubsection}{\numberline {6.19.3.2}backtrace}{169}{subsubsection.6.19.3.2}
+\contentsline {subsubsection}{\numberline {6.19.3.3}check}{169}{subsubsection.6.19.3.3}
+\contentsline {subsubsection}{\numberline {6.19.3.4}close\_\discretionary {-}{}{}logfile}{169}{subsubsection.6.19.3.4}
+\contentsline {subsubsection}{\numberline {6.19.3.5}compose\_\discretionary {-}{}{}message}{170}{subsubsection.6.19.3.5}
+\contentsline {subsubsection}{\numberline {6.19.3.6}get\_\discretionary {-}{}{}instance}{170}{subsubsection.6.19.3.6}
+\contentsline {subsubsection}{\numberline {6.19.3.7}get\_\discretionary {-}{}{}severity}{170}{subsubsection.6.19.3.7}
+\contentsline {subsubsection}{\numberline {6.19.3.8}get\_\discretionary {-}{}{}status}{170}{subsubsection.6.19.3.8}
+\contentsline {subsubsection}{\numberline {6.19.3.9}init}{171}{subsubsection.6.19.3.9}
+\contentsline {subsubsection}{\numberline {6.19.3.10}log}{171}{subsubsection.6.19.3.10}
+\contentsline {subsubsection}{\numberline {6.19.3.11}open\_\discretionary {-}{}{}logfile}{171}{subsubsection.6.19.3.11}
+\contentsline {subsubsection}{\numberline {6.19.3.12}reset}{171}{subsubsection.6.19.3.12}
+\contentsline {subsubsection}{\numberline {6.19.3.13}set\_\discretionary {-}{}{}filename}{171}{subsubsection.6.19.3.13}
+\contentsline {subsubsection}{\numberline {6.19.3.14}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{171}{subsubsection.6.19.3.14}
+\contentsline {subsubsection}{\numberline {6.19.3.15}set\_\discretionary {-}{}{}status}{172}{subsubsection.6.19.3.15}
+\contentsline {subsubsection}{\numberline {6.19.3.16}signal}{172}{subsubsection.6.19.3.16}
+\contentsline {subsubsection}{\numberline {6.19.3.17}traceback}{172}{subsubsection.6.19.3.17}
+\contentsline {subsubsection}{\numberline {6.19.3.18}write\_\discretionary {-}{}{}logfile}{173}{subsubsection.6.19.3.18}
+\contentsline {subsection}{\numberline {6.19.4}Member Data Documentation}{173}{subsection.6.19.4}
+\contentsline {subsubsection}{\numberline {6.19.4.1}\$filename}{173}{subsubsection.6.19.4.1}
+\contentsline {subsubsection}{\numberline {6.19.4.2}\$fpointer}{173}{subsubsection.6.19.4.2}
+\contentsline {subsubsection}{\numberline {6.19.4.3}\$instance}{173}{subsubsection.6.19.4.3}
+\contentsline {subsubsection}{\numberline {6.19.4.4}\$opened}{173}{subsubsection.6.19.4.4}
+\contentsline {subsubsection}{\numberline {6.19.4.5}\$severity}{173}{subsubsection.6.19.4.5}
+\contentsline {section}{\numberline {6.20}OldOFMStuff Class Reference}{174}{section.6.20}
+\contentsline {subsection}{\numberline {6.20.1}Member Function Documentation}{174}{subsection.6.20.1}
+\contentsline {subsubsection}{\numberline {6.20.1.1}OFM\_\discretionary {-}{}{}FileDetails}{174}{subsubsection.6.20.1.1}
+\contentsline {subsubsection}{\numberline {6.20.1.2}OFM\_\discretionary {-}{}{}FileInfo}{174}{subsubsection.6.20.1.2}
+\contentsline {subsubsection}{\numberline {6.20.1.3}OFM\_\discretionary {-}{}{}IsAscii}{174}{subsubsection.6.20.1.3}
+\contentsline {section}{\numberline {6.21}OWL Class Reference}{175}{section.6.21}
+\contentsline {subsection}{\numberline {6.21.1}Detailed Description}{177}{subsection.6.21.1}
+\contentsline {subsection}{\numberline {6.21.2}Constructor \& Destructor Documentation}{177}{subsection.6.21.2}
+\contentsline {subsubsection}{\numberline {6.21.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{177}{subsubsection.6.21.2.1}
+\contentsline {subsection}{\numberline {6.21.3}Member Function Documentation}{177}{subsection.6.21.3}
+\contentsline {subsubsection}{\numberline {6.21.3.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}clone}{177}{subsubsection.6.21.3.1}
+\contentsline {subsubsection}{\numberline {6.21.3.2}check}{177}{subsubsection.6.21.3.2}
+\contentsline {subsubsection}{\numberline {6.21.3.3}factory}{178}{subsubsection.6.21.3.3}
+\contentsline {subsubsection}{\numberline {6.21.3.4}get\_\discretionary {-}{}{}instance}{178}{subsubsection.6.21.3.4}
+\contentsline {subsubsection}{\numberline {6.21.3.5}get\_\discretionary {-}{}{}severity}{178}{subsubsection.6.21.3.5}
+\contentsline {subsubsection}{\numberline {6.21.3.6}get\_\discretionary {-}{}{}status}{179}{subsubsection.6.21.3.6}
+\contentsline {subsubsection}{\numberline {6.21.3.7}init}{179}{subsubsection.6.21.3.7}
+\contentsline {subsubsection}{\numberline {6.21.3.8}reset}{179}{subsubsection.6.21.3.8}
+\contentsline {subsubsection}{\numberline {6.21.3.9}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{179}{subsubsection.6.21.3.9}
+\contentsline {subsubsection}{\numberline {6.21.3.10}set\_\discretionary {-}{}{}status}{179}{subsubsection.6.21.3.10}
+\contentsline {subsubsection}{\numberline {6.21.3.11}signal}{180}{subsubsection.6.21.3.11}
+\contentsline {subsubsection}{\numberline {6.21.3.12}stat}{180}{subsubsection.6.21.3.12}
+\contentsline {subsubsection}{\numberline {6.21.3.13}traceback}{180}{subsubsection.6.21.3.13}
+\contentsline {subsection}{\numberline {6.21.4}Member Data Documentation}{181}{subsection.6.21.4}
+\contentsline {subsubsection}{\numberline {6.21.4.1}\$instance}{181}{subsubsection.6.21.4.1}
+\contentsline {subsubsection}{\numberline {6.21.4.2}\$severity}{181}{subsubsection.6.21.4.2}
+\contentsline {section}{\numberline {6.22}OWLException Class Reference}{182}{section.6.22}
+\contentsline {subsection}{\numberline {6.22.1}Detailed Description}{182}{subsection.6.22.1}
+\contentsline {subsection}{\numberline {6.22.2}Constructor \& Destructor Documentation}{182}{subsection.6.22.2}
+\contentsline {subsubsection}{\numberline {6.22.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{182}{subsubsection.6.22.2.1}
+\contentsline {subsection}{\numberline {6.22.3}Member Function Documentation}{183}{subsection.6.22.3}
+\contentsline {subsubsection}{\numberline {6.22.3.1}check\_\discretionary {-}{}{}hide}{183}{subsubsection.6.22.3.1}
+\contentsline {subsubsection}{\numberline {6.22.3.2}get\_\discretionary {-}{}{}trace}{183}{subsubsection.6.22.3.2}
+\contentsline {subsubsection}{\numberline {6.22.3.3}stack\_\discretionary {-}{}{}dump}{183}{subsubsection.6.22.3.3}
+\contentsline {subsubsection}{\numberline {6.22.3.4}traceback}{183}{subsubsection.6.22.3.4}
+\contentsline {subsection}{\numberline {6.22.4}Member Data Documentation}{184}{subsection.6.22.4}
+\contentsline {subsubsection}{\numberline {6.22.4.1}\$caller}{184}{subsubsection.6.22.4.1}
+\contentsline {subsubsection}{\numberline {6.22.4.2}\$hidden\_\discretionary {-}{}{}args}{184}{subsubsection.6.22.4.2}
+\contentsline {subsubsection}{\numberline {6.22.4.3}\$thrown\_\discretionary {-}{}{}code}{184}{subsubsection.6.22.4.3}
+\contentsline {section}{\numberline {6.23}OWLExceptionHandler Class Reference}{185}{section.6.23}
+\contentsline {subsection}{\numberline {6.23.1}Detailed Description}{185}{subsection.6.23.1}
+\contentsline {subsection}{\numberline {6.23.2}Member Function Documentation}{185}{subsection.6.23.2}
+\contentsline {subsubsection}{\numberline {6.23.2.1}handle\_\discretionary {-}{}{}exception}{185}{subsubsection.6.23.2.1}
+\contentsline {subsubsection}{\numberline {6.23.2.2}log\_\discretionary {-}{}{}exception}{185}{subsubsection.6.23.2.2}
+\contentsline {section}{\numberline {6.24}OWLloader Class Reference}{186}{section.6.24}
+\contentsline {subsection}{\numberline {6.24.1}Detailed Description}{186}{subsection.6.24.1}
+\contentsline {subsection}{\numberline {6.24.2}Member Function Documentation}{186}{subsection.6.24.2}
+\contentsline {subsubsection}{\numberline {6.24.2.1}\_\discretionary {-}{}{}tryLoad}{186}{subsubsection.6.24.2.1}
+\contentsline {subsubsection}{\numberline {6.24.2.2}getClass}{186}{subsubsection.6.24.2.2}
+\contentsline {section}{\numberline {6.25}Register Class Reference}{188}{section.6.25}
+\contentsline {subsection}{\numberline {6.25.1}Detailed Description}{188}{subsection.6.25.1}
+\contentsline {subsection}{\numberline {6.25.2}Member Function Documentation}{188}{subsection.6.25.2}
+\contentsline {subsubsection}{\numberline {6.25.2.1}get\_\discretionary {-}{}{}code}{188}{subsubsection.6.25.2.1}
+\contentsline {subsubsection}{\numberline {6.25.2.2}get\_\discretionary {-}{}{}run\_\discretionary {-}{}{}id}{188}{subsubsection.6.25.2.2}
+\contentsline {subsubsection}{\numberline {6.25.2.3}get\_\discretionary {-}{}{}severity}{189}{subsubsection.6.25.2.3}
+\contentsline {subsubsection}{\numberline {6.25.2.4}get\_\discretionary {-}{}{}severity\_\discretionary {-}{}{}level}{189}{subsubsection.6.25.2.4}
+\contentsline {subsubsection}{\numberline {6.25.2.5}init}{189}{subsubsection.6.25.2.5}
+\contentsline {subsubsection}{\numberline {6.25.2.6}register\_\discretionary {-}{}{}app}{189}{subsubsection.6.25.2.6}
+\contentsline {subsubsection}{\numberline {6.25.2.7}register\_\discretionary {-}{}{}class}{189}{subsubsection.6.25.2.7}
+\contentsline {subsubsection}{\numberline {6.25.2.8}register\_\discretionary {-}{}{}code}{190}{subsubsection.6.25.2.8}
+\contentsline {subsubsection}{\numberline {6.25.2.9}register\_\discretionary {-}{}{}messages}{190}{subsubsection.6.25.2.9}
+\contentsline {subsubsection}{\numberline {6.25.2.10}register\_\discretionary {-}{}{}severity}{190}{subsubsection.6.25.2.10}
+\contentsline {subsubsection}{\numberline {6.25.2.11}set\_\discretionary {-}{}{}application}{190}{subsubsection.6.25.2.11}
+\contentsline {subsubsection}{\numberline {6.25.2.12}set\_\discretionary {-}{}{}class}{190}{subsubsection.6.25.2.12}
+\contentsline {subsubsection}{\numberline {6.25.2.13}set\_\discretionary {-}{}{}severity}{191}{subsubsection.6.25.2.13}
+\contentsline {section}{\numberline {6.26}SchemeHandler Class Reference}{192}{section.6.26}
+\contentsline {subsection}{\numberline {6.26.1}Detailed Description}{194}{subsection.6.26.1}
+\contentsline {subsection}{\numberline {6.26.2}Constructor \& Destructor Documentation}{195}{subsection.6.26.2}
+\contentsline {subsubsection}{\numberline {6.26.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{195}{subsubsection.6.26.2.1}
+\contentsline {subsubsection}{\numberline {6.26.2.2}\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}{195}{subsubsection.6.26.2.2}
+\contentsline {subsection}{\numberline {6.26.3}Member Function Documentation}{195}{subsection.6.26.3}
+\contentsline {subsubsection}{\numberline {6.26.3.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}clone}{195}{subsubsection.6.26.3.1}
+\contentsline {subsubsection}{\numberline {6.26.3.2}\_\discretionary {-}{}{}define\_\discretionary {-}{}{}field}{195}{subsubsection.6.26.3.2}
+\contentsline {subsubsection}{\numberline {6.26.3.3}alter\_\discretionary {-}{}{}scheme}{195}{subsubsection.6.26.3.3}
+\contentsline {subsubsection}{\numberline {6.26.3.4}alter\_\discretionary {-}{}{}table}{196}{subsubsection.6.26.3.4}
+\contentsline {subsubsection}{\numberline {6.26.3.5}check}{196}{subsubsection.6.26.3.5}
+\contentsline {subsubsection}{\numberline {6.26.3.6}compare}{196}{subsubsection.6.26.3.6}
+\contentsline {subsubsection}{\numberline {6.26.3.7}create\_\discretionary {-}{}{}scheme}{196}{subsubsection.6.26.3.7}
+\contentsline {subsubsection}{\numberline {6.26.3.8}create\_\discretionary {-}{}{}table}{197}{subsubsection.6.26.3.8}
+\contentsline {subsubsection}{\numberline {6.26.3.9}define\_\discretionary {-}{}{}index}{197}{subsubsection.6.26.3.9}
+\contentsline {subsubsection}{\numberline {6.26.3.10}define\_\discretionary {-}{}{}scheme}{197}{subsubsection.6.26.3.10}
+\contentsline {subsubsection}{\numberline {6.26.3.11}get\_\discretionary {-}{}{}instance}{197}{subsubsection.6.26.3.11}
+\contentsline {subsubsection}{\numberline {6.26.3.12}get\_\discretionary {-}{}{}severity}{198}{subsubsection.6.26.3.12}
+\contentsline {subsubsection}{\numberline {6.26.3.13}get\_\discretionary {-}{}{}status}{198}{subsubsection.6.26.3.13}
+\contentsline {subsubsection}{\numberline {6.26.3.14}get\_\discretionary {-}{}{}table\_\discretionary {-}{}{}columns}{198}{subsubsection.6.26.3.14}
+\contentsline {subsubsection}{\numberline {6.26.3.15}get\_\discretionary {-}{}{}table\_\discretionary {-}{}{}indexes}{198}{subsubsection.6.26.3.15}
+\contentsline {subsubsection}{\numberline {6.26.3.16}init}{199}{subsubsection.6.26.3.16}
+\contentsline {subsubsection}{\numberline {6.26.3.17}reset}{199}{subsubsection.6.26.3.17}
+\contentsline {subsubsection}{\numberline {6.26.3.18}scheme}{199}{subsubsection.6.26.3.18}
+\contentsline {subsubsection}{\numberline {6.26.3.19}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{199}{subsubsection.6.26.3.19}
+\contentsline {subsubsection}{\numberline {6.26.3.20}set\_\discretionary {-}{}{}status}{199}{subsubsection.6.26.3.20}
+\contentsline {subsubsection}{\numberline {6.26.3.21}signal}{200}{subsubsection.6.26.3.21}
+\contentsline {subsubsection}{\numberline {6.26.3.22}table\_\discretionary {-}{}{}description}{200}{subsubsection.6.26.3.22}
+\contentsline {subsubsection}{\numberline {6.26.3.23}traceback}{201}{subsubsection.6.26.3.23}
+\contentsline {subsubsection}{\numberline {6.26.3.24}validate\_\discretionary {-}{}{}scheme}{201}{subsubsection.6.26.3.24}
+\contentsline {subsection}{\numberline {6.26.4}Member Data Documentation}{201}{subsection.6.26.4}
+\contentsline {subsubsection}{\numberline {6.26.4.1}\$db}{201}{subsubsection.6.26.4.1}
+\contentsline {subsubsection}{\numberline {6.26.4.2}\$id}{201}{subsubsection.6.26.4.2}
+\contentsline {subsubsection}{\numberline {6.26.4.3}\$instance}{201}{subsubsection.6.26.4.3}
+\contentsline {subsubsection}{\numberline {6.26.4.4}\$inuse}{201}{subsubsection.6.26.4.4}
+\contentsline {subsubsection}{\numberline {6.26.4.5}\$scheme}{202}{subsubsection.6.26.4.5}
+\contentsline {subsubsection}{\numberline {6.26.4.6}\$severity}{202}{subsubsection.6.26.4.6}
+\contentsline {subsubsection}{\numberline {6.26.4.7}\$table}{202}{subsubsection.6.26.4.7}
+\contentsline {section}{\numberline {6.27}Session Class Reference}{203}{section.6.27}
+\contentsline {subsection}{\numberline {6.27.1}Detailed Description}{205}{subsection.6.27.1}
+\contentsline {subsection}{\numberline {6.27.2}Constructor \& Destructor Documentation}{205}{subsection.6.27.2}
+\contentsline {subsubsection}{\numberline {6.27.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{205}{subsubsection.6.27.2.1}
+\contentsline {subsubsection}{\numberline {6.27.2.2}\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}{205}{subsubsection.6.27.2.2}
+\contentsline {subsection}{\numberline {6.27.3}Member Function Documentation}{205}{subsection.6.27.3}
+\contentsline {subsubsection}{\numberline {6.27.3.1}check}{205}{subsubsection.6.27.3.1}
+\contentsline {subsubsection}{\numberline {6.27.3.2}close}{206}{subsubsection.6.27.3.2}
+\contentsline {subsubsection}{\numberline {6.27.3.3}destroy}{206}{subsubsection.6.27.3.3}
+\contentsline {subsubsection}{\numberline {6.27.3.4}gc}{206}{subsubsection.6.27.3.4}
+\contentsline {subsubsection}{\numberline {6.27.3.5}get\_\discretionary {-}{}{}session\_\discretionary {-}{}{}var}{206}{subsubsection.6.27.3.5}
+\contentsline {subsubsection}{\numberline {6.27.3.6}get\_\discretionary {-}{}{}severity}{207}{subsubsection.6.27.3.6}
+\contentsline {subsubsection}{\numberline {6.27.3.7}get\_\discretionary {-}{}{}status}{207}{subsubsection.6.27.3.7}
+\contentsline {subsubsection}{\numberline {6.27.3.8}init}{207}{subsubsection.6.27.3.8}
+\contentsline {subsubsection}{\numberline {6.27.3.9}open}{207}{subsubsection.6.27.3.9}
+\contentsline {subsubsection}{\numberline {6.27.3.10}read}{207}{subsubsection.6.27.3.10}
+\contentsline {subsubsection}{\numberline {6.27.3.11}reset}{208}{subsubsection.6.27.3.11}
+\contentsline {subsubsection}{\numberline {6.27.3.12}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{208}{subsubsection.6.27.3.12}
+\contentsline {subsubsection}{\numberline {6.27.3.13}set\_\discretionary {-}{}{}session\_\discretionary {-}{}{}var}{208}{subsubsection.6.27.3.13}
+\contentsline {subsubsection}{\numberline {6.27.3.14}set\_\discretionary {-}{}{}status}{208}{subsubsection.6.27.3.14}
+\contentsline {subsubsection}{\numberline {6.27.3.15}signal}{209}{subsubsection.6.27.3.15}
+\contentsline {subsubsection}{\numberline {6.27.3.16}traceback}{209}{subsubsection.6.27.3.16}
+\contentsline {subsubsection}{\numberline {6.27.3.17}write}{209}{subsubsection.6.27.3.17}
+\contentsline {subsection}{\numberline {6.27.4}Member Data Documentation}{210}{subsection.6.27.4}
+\contentsline {subsubsection}{\numberline {6.27.4.1}\$dataset}{210}{subsubsection.6.27.4.1}
+\contentsline {subsubsection}{\numberline {6.27.4.2}\$severity}{210}{subsubsection.6.27.4.2}
+\contentsline {section}{\numberline {6.28}SessionHandler Class Reference}{211}{section.6.28}
+\contentsline {subsection}{\numberline {6.28.1}Detailed Description}{213}{subsection.6.28.1}
+\contentsline {subsection}{\numberline {6.28.2}Constructor \& Destructor Documentation}{213}{subsection.6.28.2}
+\contentsline {subsubsection}{\numberline {6.28.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{213}{subsubsection.6.28.2.1}
+\contentsline {subsubsection}{\numberline {6.28.2.2}\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}{213}{subsubsection.6.28.2.2}
+\contentsline {subsection}{\numberline {6.28.3}Member Function Documentation}{214}{subsection.6.28.3}
+\contentsline {subsubsection}{\numberline {6.28.3.1}check}{214}{subsubsection.6.28.3.1}
+\contentsline {subsubsection}{\numberline {6.28.3.2}close}{214}{subsubsection.6.28.3.2}
+\contentsline {subsubsection}{\numberline {6.28.3.3}destroy}{214}{subsubsection.6.28.3.3}
+\contentsline {subsubsection}{\numberline {6.28.3.4}gc}{214}{subsubsection.6.28.3.4}
+\contentsline {subsubsection}{\numberline {6.28.3.5}get\_\discretionary {-}{}{}severity}{215}{subsubsection.6.28.3.5}
+\contentsline {subsubsection}{\numberline {6.28.3.6}get\_\discretionary {-}{}{}status}{215}{subsubsection.6.28.3.6}
+\contentsline {subsubsection}{\numberline {6.28.3.7}init}{215}{subsubsection.6.28.3.7}
+\contentsline {subsubsection}{\numberline {6.28.3.8}open}{215}{subsubsection.6.28.3.8}
+\contentsline {subsubsection}{\numberline {6.28.3.9}read}{215}{subsubsection.6.28.3.9}
+\contentsline {subsubsection}{\numberline {6.28.3.10}reset}{216}{subsubsection.6.28.3.10}
+\contentsline {subsubsection}{\numberline {6.28.3.11}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{216}{subsubsection.6.28.3.11}
+\contentsline {subsubsection}{\numberline {6.28.3.12}set\_\discretionary {-}{}{}status}{216}{subsubsection.6.28.3.12}
+\contentsline {subsubsection}{\numberline {6.28.3.13}signal}{217}{subsubsection.6.28.3.13}
+\contentsline {subsubsection}{\numberline {6.28.3.14}traceback}{217}{subsubsection.6.28.3.14}
+\contentsline {subsubsection}{\numberline {6.28.3.15}write}{217}{subsubsection.6.28.3.15}
+\contentsline {subsection}{\numberline {6.28.4}Member Data Documentation}{218}{subsection.6.28.4}
+\contentsline {subsubsection}{\numberline {6.28.4.1}\$dataset}{218}{subsubsection.6.28.4.1}
+\contentsline {subsubsection}{\numberline {6.28.4.2}\$db}{218}{subsubsection.6.28.4.2}
+\contentsline {subsubsection}{\numberline {6.28.4.3}\$severity}{218}{subsubsection.6.28.4.3}
+\contentsline {section}{\numberline {6.29}StatusHandler Class Reference}{219}{section.6.29}
+\contentsline {subsection}{\numberline {6.29.1}Detailed Description}{219}{subsection.6.29.1}
+\contentsline {subsection}{\numberline {6.29.2}Constructor \& Destructor Documentation}{220}{subsection.6.29.2}
+\contentsline {subsubsection}{\numberline {6.29.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{220}{subsubsection.6.29.2.1}
+\contentsline {subsection}{\numberline {6.29.3}Member Function Documentation}{220}{subsection.6.29.3}
+\contentsline {subsubsection}{\numberline {6.29.3.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}clone}{220}{subsubsection.6.29.3.1}
+\contentsline {subsubsection}{\numberline {6.29.3.2}get\_\discretionary {-}{}{}code}{220}{subsubsection.6.29.3.2}
+\contentsline {subsubsection}{\numberline {6.29.3.3}get\_\discretionary {-}{}{}instance}{220}{subsubsection.6.29.3.3}
+\contentsline {subsubsection}{\numberline {6.29.3.4}get\_\discretionary {-}{}{}message}{220}{subsubsection.6.29.3.4}
+\contentsline {subsubsection}{\numberline {6.29.3.5}get\_\discretionary {-}{}{}severity}{221}{subsubsection.6.29.3.5}
+\contentsline {subsubsection}{\numberline {6.29.3.6}reset}{221}{subsubsection.6.29.3.6}
+\contentsline {subsubsection}{\numberline {6.29.3.7}set\_\discretionary {-}{}{}code}{221}{subsubsection.6.29.3.7}
+\contentsline {subsubsection}{\numberline {6.29.3.8}set\_\discretionary {-}{}{}params}{221}{subsubsection.6.29.3.8}
+\contentsline {subsection}{\numberline {6.29.4}Member Data Documentation}{221}{subsection.6.29.4}
+\contentsline {subsubsection}{\numberline {6.29.4.1}\$code}{221}{subsubsection.6.29.4.1}
+\contentsline {subsubsection}{\numberline {6.29.4.2}\$instance}{221}{subsubsection.6.29.4.2}
+\contentsline {subsubsection}{\numberline {6.29.4.3}\$params}{222}{subsubsection.6.29.4.3}
+\contentsline {section}{\numberline {6.30}User Class Reference}{223}{section.6.30}
+\contentsline {subsection}{\numberline {6.30.1}Detailed Description}{225}{subsection.6.30.1}
+\contentsline {subsection}{\numberline {6.30.2}Constructor \& Destructor Documentation}{225}{subsection.6.30.2}
+\contentsline {subsubsection}{\numberline {6.30.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{225}{subsubsection.6.30.2.1}
+\contentsline {subsubsection}{\numberline {6.30.2.2}\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}{225}{subsubsection.6.30.2.2}
+\contentsline {subsection}{\numberline {6.30.3}Member Function Documentation}{226}{subsection.6.30.3}
+\contentsline {subsubsection}{\numberline {6.30.3.1}check}{226}{subsubsection.6.30.3.1}
+\contentsline {subsubsection}{\numberline {6.30.3.2}get\_\discretionary {-}{}{}id}{226}{subsubsection.6.30.3.2}
+\contentsline {subsubsection}{\numberline {6.30.3.3}get\_\discretionary {-}{}{}session\_\discretionary {-}{}{}var}{226}{subsubsection.6.30.3.3}
+\contentsline {subsubsection}{\numberline {6.30.3.4}get\_\discretionary {-}{}{}severity}{226}{subsubsection.6.30.3.4}
+\contentsline {subsubsection}{\numberline {6.30.3.5}get\_\discretionary {-}{}{}status}{227}{subsubsection.6.30.3.5}
+\contentsline {subsubsection}{\numberline {6.30.3.6}get\_\discretionary {-}{}{}username}{227}{subsubsection.6.30.3.6}
+\contentsline {subsubsection}{\numberline {6.30.3.7}init}{227}{subsubsection.6.30.3.7}
+\contentsline {subsubsection}{\numberline {6.30.3.8}login}{227}{subsubsection.6.30.3.8}
+\contentsline {subsubsection}{\numberline {6.30.3.9}logout}{227}{subsubsection.6.30.3.9}
+\contentsline {subsubsection}{\numberline {6.30.3.10}reset}{228}{subsubsection.6.30.3.10}
+\contentsline {subsubsection}{\numberline {6.30.3.11}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{228}{subsubsection.6.30.3.11}
+\contentsline {subsubsection}{\numberline {6.30.3.12}set\_\discretionary {-}{}{}session\_\discretionary {-}{}{}var}{228}{subsubsection.6.30.3.12}
+\contentsline {subsubsection}{\numberline {6.30.3.13}set\_\discretionary {-}{}{}status}{228}{subsubsection.6.30.3.13}
+\contentsline {subsubsection}{\numberline {6.30.3.14}set\_\discretionary {-}{}{}username}{229}{subsubsection.6.30.3.14}
+\contentsline {subsubsection}{\numberline {6.30.3.15}signal}{229}{subsubsection.6.30.3.15}
+\contentsline {subsubsection}{\numberline {6.30.3.16}traceback}{229}{subsubsection.6.30.3.16}
+\contentsline {subsection}{\numberline {6.30.4}Member Data Documentation}{230}{subsection.6.30.4}
+\contentsline {subsubsection}{\numberline {6.30.4.1}\$dataset}{230}{subsubsection.6.30.4.1}
+\contentsline {subsubsection}{\numberline {6.30.4.2}\$session}{230}{subsubsection.6.30.4.2}
+\contentsline {subsubsection}{\numberline {6.30.4.3}\$severity}{230}{subsubsection.6.30.4.3}
+\contentsline {subsubsection}{\numberline {6.30.4.4}\$user\_\discretionary {-}{}{}data}{230}{subsubsection.6.30.4.4}
+\contentsline {section}{\numberline {6.31}UserHandler Class Reference}{231}{section.6.31}
+\contentsline {subsection}{\numberline {6.31.1}Detailed Description}{233}{subsection.6.31.1}
+\contentsline {subsection}{\numberline {6.31.2}Constructor \& Destructor Documentation}{233}{subsection.6.31.2}
+\contentsline {subsubsection}{\numberline {6.31.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}construct}{233}{subsubsection.6.31.2.1}
+\contentsline {subsubsection}{\numberline {6.31.2.2}\_\discretionary {-}{}{}\_\discretionary {-}{}{}destruct}{234}{subsubsection.6.31.2.2}
+\contentsline {subsection}{\numberline {6.31.3}Member Function Documentation}{234}{subsection.6.31.3}
+\contentsline {subsubsection}{\numberline {6.31.3.1}check}{234}{subsubsection.6.31.3.1}
+\contentsline {subsubsection}{\numberline {6.31.3.2}get\_\discretionary {-}{}{}severity}{234}{subsubsection.6.31.3.2}
+\contentsline {subsubsection}{\numberline {6.31.3.3}get\_\discretionary {-}{}{}status}{234}{subsubsection.6.31.3.3}
+\contentsline {subsubsection}{\numberline {6.31.3.4}get\_\discretionary {-}{}{}username}{235}{subsubsection.6.31.3.4}
+\contentsline {subsubsection}{\numberline {6.31.3.5}hash\_\discretionary {-}{}{}password}{235}{subsubsection.6.31.3.5}
+\contentsline {subsubsection}{\numberline {6.31.3.6}init}{235}{subsubsection.6.31.3.6}
+\contentsline {subsubsection}{\numberline {6.31.3.7}login}{235}{subsubsection.6.31.3.7}
+\contentsline {subsubsection}{\numberline {6.31.3.8}logout}{236}{subsubsection.6.31.3.8}
+\contentsline {subsubsection}{\numberline {6.31.3.9}read\_\discretionary {-}{}{}userdata}{236}{subsubsection.6.31.3.9}
+\contentsline {subsubsection}{\numberline {6.31.3.10}reset}{236}{subsubsection.6.31.3.10}
+\contentsline {subsubsection}{\numberline {6.31.3.11}set\_\discretionary {-}{}{}high\_\discretionary {-}{}{}severity}{236}{subsubsection.6.31.3.11}
+\contentsline {subsubsection}{\numberline {6.31.3.12}set\_\discretionary {-}{}{}status}{236}{subsubsection.6.31.3.12}
+\contentsline {subsubsection}{\numberline {6.31.3.13}set\_\discretionary {-}{}{}username}{237}{subsubsection.6.31.3.13}
+\contentsline {subsubsection}{\numberline {6.31.3.14}signal}{237}{subsubsection.6.31.3.14}
+\contentsline {subsubsection}{\numberline {6.31.3.15}traceback}{237}{subsubsection.6.31.3.15}
+\contentsline {subsection}{\numberline {6.31.4}Member Data Documentation}{238}{subsection.6.31.4}
+\contentsline {subsubsection}{\numberline {6.31.4.1}\$dataset}{238}{subsubsection.6.31.4.1}
+\contentsline {subsubsection}{\numberline {6.31.4.2}\$session}{238}{subsubsection.6.31.4.2}
+\contentsline {subsubsection}{\numberline {6.31.4.3}\$severity}{238}{subsubsection.6.31.4.3}
+\contentsline {subsubsection}{\numberline {6.31.4.4}\$user\_\discretionary {-}{}{}data}{238}{subsubsection.6.31.4.4}
+\contentsline {chapter}{\numberline {7}File Documentation}{239}{chapter.7}
+\contentsline {section}{\numberline {7.1}/home/oscar/projects/owl-\/php/src/config.php File Reference}{239}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Detailed Description}{239}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Variable Documentation}{239}{subsection.7.1.2}
+\contentsline {subsubsection}{\numberline {7.1.2.1}\$GLOBALS}{239}{subsubsection.7.1.2.1}
+\contentsline {subsubsection}{\numberline {7.1.2.2}\$GLOBALS}{239}{subsubsection.7.1.2.2}
+\contentsline {subsubsection}{\numberline {7.1.2.3}\$GLOBALS}{239}{subsubsection.7.1.2.3}
+\contentsline {subsubsection}{\numberline {7.1.2.4}\$GLOBALS}{239}{subsubsection.7.1.2.4}
+\contentsline {section}{\numberline {7.2}/home/oscar/projects/owl-\/php/src/index.php File Reference}{241}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Detailed Description}{241}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Enumeration Type Documentation}{241}{subsection.7.2.2}
+\contentsline {subsubsection}{\numberline {7.2.2.1}OWL\_\discretionary {-}{}{}ROOT}{241}{subsubsection.7.2.2.1}
+\contentsline {subsection}{\numberline {7.2.3}Variable Documentation}{241}{subsection.7.2.3}
+\contentsline {subsubsection}{\numberline {7.2.3.1}\$\_\discretionary {-}{}{}form}{241}{subsubsection.7.2.3.1}
+\contentsline {subsubsection}{\numberline {7.2.3.2}\$\_\discretionary {-}{}{}index}{241}{subsubsection.7.2.3.2}
+\contentsline {subsubsection}{\numberline {7.2.3.3}\$\_\discretionary {-}{}{}scheme}{242}{subsubsection.7.2.3.3}
+\contentsline {subsubsection}{\numberline {7.2.3.4}\$\_\discretionary {-}{}{}t}{242}{subsubsection.7.2.3.4}
+\contentsline {subsubsection}{\numberline {7.2.3.5}\$\_\discretionary {-}{}{}table}{242}{subsubsection.7.2.3.5}
+\contentsline {subsubsection}{\numberline {7.2.3.6}\$\_\discretionary {-}{}{}user}{242}{subsubsection.7.2.3.6}
+\contentsline {subsubsection}{\numberline {7.2.3.7}\$LoginForm}{242}{subsubsection.7.2.3.7}
+\contentsline {subsubsection}{\numberline {7.2.3.8}switch}{242}{subsubsection.7.2.3.8}
+\contentsline {section}{\numberline {7.3}/home/oscar/projects/owl-\/php/src/kernel/bo/class.dispatcher.php File Reference}{243}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Detailed Description}{243}{subsection.7.3.1}
+\contentsline {section}{\numberline {7.4}/home/oscar/projects/owl-\/php/src/kernel/bo/class.form.php File Reference}{244}{section.7.4}
+\contentsline {subsection}{\numberline {7.4.1}Detailed Description}{244}{subsection.7.4.1}
+\contentsline {section}{\numberline {7.5}/home/oscar/projects/owl-\/php/src/kernel/bo/class.owl.php File Reference}{245}{section.7.5}
+\contentsline {subsection}{\numberline {7.5.1}Detailed Description}{245}{subsection.7.5.1}
+\contentsline {section}{\numberline {7.6}/home/oscar/projects/owl-\/php/src/kernel/bo/class.session.php File Reference}{246}{section.7.6}
+\contentsline {subsection}{\numberline {7.6.1}Detailed Description}{246}{subsection.7.6.1}
+\contentsline {section}{\numberline {7.7}/home/oscar/projects/owl-\/php/src/kernel/bo/class.user.php File Reference}{247}{section.7.7}
+\contentsline {subsection}{\numberline {7.7.1}Detailed Description}{247}{subsection.7.7.1}
+\contentsline {section}{\numberline {7.8}/home/oscar/projects/owl-\/php/src/kernel/class.\_\discretionary {-}{}{}owl.php File Reference}{248}{section.7.8}
+\contentsline {subsection}{\numberline {7.8.1}Detailed Description}{248}{subsection.7.8.1}
+\contentsline {section}{\numberline {7.9}/home/oscar/projects/owl-\/php/src/kernel/so/class.confighandler.php File Reference}{249}{section.7.9}
+\contentsline {subsection}{\numberline {7.9.1}Detailed Description}{249}{subsection.7.9.1}
+\contentsline {section}{\numberline {7.10}/home/oscar/projects/owl-\/php/src/kernel/so/class.datahandler.php File Reference}{250}{section.7.10}
+\contentsline {subsection}{\numberline {7.10.1}Detailed Description}{250}{subsection.7.10.1}
+\contentsline {subsection}{\numberline {7.10.2}Enumeration Type Documentation}{251}{subsection.7.10.2}
+\contentsline {subsubsection}{\numberline {7.10.2.1}DATA\_\discretionary {-}{}{}DELETE}{251}{subsubsection.7.10.2.1}
+\contentsline {subsubsection}{\numberline {7.10.2.2}DATA\_\discretionary {-}{}{}READ}{251}{subsubsection.7.10.2.2}
+\contentsline {subsubsection}{\numberline {7.10.2.3}DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}FULL}{251}{subsubsection.7.10.2.3}
+\contentsline {subsubsection}{\numberline {7.10.2.4}DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}META}{251}{subsubsection.7.10.2.4}
+\contentsline {subsubsection}{\numberline {7.10.2.5}DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}PREPARE}{251}{subsubsection.7.10.2.5}
+\contentsline {subsubsection}{\numberline {7.10.2.6}DATA\_\discretionary {-}{}{}RESET\_\discretionary {-}{}{}STATUS}{251}{subsubsection.7.10.2.6}
+\contentsline {subsubsection}{\numberline {7.10.2.7}DATA\_\discretionary {-}{}{}UNPREPARED}{251}{subsubsection.7.10.2.7}
+\contentsline {subsubsection}{\numberline {7.10.2.8}DATA\_\discretionary {-}{}{}UPDATE}{251}{subsubsection.7.10.2.8}
+\contentsline {subsubsection}{\numberline {7.10.2.9}DATA\_\discretionary {-}{}{}WRITE}{251}{subsubsection.7.10.2.9}
+\contentsline {section}{\numberline {7.11}/home/oscar/projects/owl-\/php/src/kernel/so/class.dbhandler.php File Reference}{252}{section.7.11}
+\contentsline {subsection}{\numberline {7.11.1}Detailed Description}{252}{subsection.7.11.1}
+\contentsline {subsection}{\numberline {7.11.2}Enumeration Type Documentation}{252}{subsection.7.11.2}
+\contentsline {subsubsection}{\numberline {7.11.2.1}DBHANDLE\_\discretionary {-}{}{}DATA}{252}{subsubsection.7.11.2.1}
+\contentsline {subsubsection}{\numberline {7.11.2.2}DBHANDLE\_\discretionary {-}{}{}FIELDCOUNT}{253}{subsubsection.7.11.2.2}
+\contentsline {subsubsection}{\numberline {7.11.2.3}DBHANDLE\_\discretionary {-}{}{}ROWCOUNT}{253}{subsubsection.7.11.2.3}
+\contentsline {subsubsection}{\numberline {7.11.2.4}DBHANDLE\_\discretionary {-}{}{}SINGLEFIELD}{253}{subsubsection.7.11.2.4}
+\contentsline {subsubsection}{\numberline {7.11.2.5}DBHANDLE\_\discretionary {-}{}{}SINGLEROW}{253}{subsubsection.7.11.2.5}
+\contentsline {subsubsection}{\numberline {7.11.2.6}DBHANDLE\_\discretionary {-}{}{}TOTALFIELDCOUNT}{253}{subsubsection.7.11.2.6}
+\contentsline {section}{\numberline {7.12}/home/oscar/projects/owl-\/php/src/kernel/so/class.exceptionhandler.php File Reference}{254}{section.7.12}
+\contentsline {subsection}{\numberline {7.12.1}Detailed Description}{254}{subsection.7.12.1}
+\contentsline {section}{\numberline {7.13}/home/oscar/projects/owl-\/php/src/kernel/so/class.filehandler.php File Reference}{255}{section.7.13}
+\contentsline {subsection}{\numberline {7.13.1}Detailed Description}{255}{subsection.7.13.1}
+\contentsline {subsection}{\numberline {7.13.2}Enumeration Type Documentation}{255}{subsection.7.13.2}
+\contentsline {subsubsection}{\numberline {7.13.2.1}FILE\_\discretionary {-}{}{}NOTRIM}{255}{subsubsection.7.13.2.1}
+\contentsline {subsubsection}{\numberline {7.13.2.2}FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}C}{255}{subsubsection.7.13.2.2}
+\contentsline {subsubsection}{\numberline {7.13.2.3}FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}L}{256}{subsubsection.7.13.2.3}
+\contentsline {subsubsection}{\numberline {7.13.2.4}FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}R}{256}{subsubsection.7.13.2.4}
+\contentsline {section}{\numberline {7.14}/home/oscar/projects/owl-\/php/src/kernel/so/class.formhandler.php File Reference}{257}{section.7.14}
+\contentsline {subsection}{\numberline {7.14.1}Detailed Description}{257}{subsection.7.14.1}
+\contentsline {subsection}{\numberline {7.14.2}Enumeration Type Documentation}{257}{subsection.7.14.2}
+\contentsline {subsubsection}{\numberline {7.14.2.1}FORMDATA\_\discretionary {-}{}{}BASIC\_\discretionary {-}{}{}HTML}{257}{subsubsection.7.14.2.1}
+\contentsline {subsubsection}{\numberline {7.14.2.2}FORMDATA\_\discretionary {-}{}{}CUSTOM}{258}{subsubsection.7.14.2.2}
+\contentsline {subsubsection}{\numberline {7.14.2.3}FORMDATA\_\discretionary {-}{}{}EXTENDED\_\discretionary {-}{}{}HTML}{258}{subsubsection.7.14.2.3}
+\contentsline {subsubsection}{\numberline {7.14.2.4}FORMDATA\_\discretionary {-}{}{}FULL\_\discretionary {-}{}{}HTML}{258}{subsubsection.7.14.2.4}
+\contentsline {subsubsection}{\numberline {7.14.2.5}FORMDATA\_\discretionary {-}{}{}HTML\_\discretionary {-}{}{}CODE}{258}{subsubsection.7.14.2.5}
+\contentsline {subsubsection}{\numberline {7.14.2.6}FORMDATA\_\discretionary {-}{}{}RAW}{258}{subsubsection.7.14.2.6}
+\contentsline {subsubsection}{\numberline {7.14.2.7}FORMDATA\_\discretionary {-}{}{}STRICT}{258}{subsubsection.7.14.2.7}
+\contentsline {section}{\numberline {7.15}/home/oscar/projects/owl-\/php/src/kernel/so/class.imagehandler.php File Reference}{259}{section.7.15}
+\contentsline {subsection}{\numberline {7.15.1}Detailed Description}{259}{subsection.7.15.1}
+\contentsline {subsection}{\numberline {7.15.2}Enumeration Type Documentation}{259}{subsection.7.15.2}
+\contentsline {subsubsection}{\numberline {7.15.2.1}FILE\_\discretionary {-}{}{}NOTRIM}{259}{subsubsection.7.15.2.1}
+\contentsline {subsubsection}{\numberline {7.15.2.2}FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}C}{259}{subsubsection.7.15.2.2}
+\contentsline {subsubsection}{\numberline {7.15.2.3}FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}L}{259}{subsubsection.7.15.2.3}
+\contentsline {subsubsection}{\numberline {7.15.2.4}FILE\_\discretionary {-}{}{}TRIM\_\discretionary {-}{}{}R}{260}{subsubsection.7.15.2.4}
+\contentsline {section}{\numberline {7.16}/home/oscar/projects/owl-\/php/src/kernel/so/class.loghandler.php File Reference}{261}{section.7.16}
+\contentsline {subsection}{\numberline {7.16.1}Detailed Description}{261}{subsection.7.16.1}
+\contentsline {section}{\numberline {7.17}/home/oscar/projects/owl-\/php/src/kernel/so/class.register.php File Reference}{262}{section.7.17}
+\contentsline {subsection}{\numberline {7.17.1}Detailed Description}{262}{subsection.7.17.1}
+\contentsline {subsection}{\numberline {7.17.2}Enumeration Type Documentation}{262}{subsection.7.17.2}
+\contentsline {subsubsection}{\numberline {7.17.2.1}OWL\_\discretionary {-}{}{}APPLICATION\_\discretionary {-}{}{}PATTERN}{262}{subsubsection.7.17.2.1}
+\contentsline {subsubsection}{\numberline {7.17.2.2}OWL\_\discretionary {-}{}{}OBJECT\_\discretionary {-}{}{}PATTERN}{262}{subsubsection.7.17.2.2}
+\contentsline {subsubsection}{\numberline {7.17.2.3}OWL\_\discretionary {-}{}{}SEVERITY\_\discretionary {-}{}{}PATTERN}{262}{subsubsection.7.17.2.3}
+\contentsline {subsubsection}{\numberline {7.17.2.4}OWL\_\discretionary {-}{}{}STATUS\_\discretionary {-}{}{}PATTERN}{262}{subsubsection.7.17.2.4}
+\contentsline {section}{\numberline {7.18}/home/oscar/projects/owl-\/php/src/kernel/so/class.schemehandler.php File Reference}{263}{section.7.18}
+\contentsline {subsection}{\numberline {7.18.1}Detailed Description}{263}{subsection.7.18.1}
+\contentsline {section}{\numberline {7.19}/home/oscar/projects/owl-\/php/src/kernel/so/class.sessionhandler.php File Reference}{264}{section.7.19}
+\contentsline {subsection}{\numberline {7.19.1}Detailed Description}{264}{subsection.7.19.1}
+\contentsline {subsection}{\numberline {7.19.2}Enumeration Type Documentation}{264}{subsection.7.19.2}
+\contentsline {subsubsection}{\numberline {7.19.2.1}SESSIONVAR\_\discretionary {-}{}{}ARRAY}{264}{subsubsection.7.19.2.1}
+\contentsline {subsubsection}{\numberline {7.19.2.2}SESSIONVAR\_\discretionary {-}{}{}DECR}{264}{subsubsection.7.19.2.2}
+\contentsline {subsubsection}{\numberline {7.19.2.3}SESSIONVAR\_\discretionary {-}{}{}INCR}{265}{subsubsection.7.19.2.3}
+\contentsline {subsubsection}{\numberline {7.19.2.4}SESSIONVAR\_\discretionary {-}{}{}SET}{265}{subsubsection.7.19.2.4}
+\contentsline {subsubsection}{\numberline {7.19.2.5}SESSIONVAR\_\discretionary {-}{}{}UNSET}{265}{subsubsection.7.19.2.5}
+\contentsline {section}{\numberline {7.20}/home/oscar/projects/owl-\/php/src/kernel/so/class.statushandler.php File Reference}{266}{section.7.20}
+\contentsline {subsection}{\numberline {7.20.1}Detailed Description}{266}{subsection.7.20.1}
+\contentsline {section}{\numberline {7.21}/home/oscar/projects/owl-\/php/src/kernel/so/class.userhandler.php File Reference}{267}{section.7.21}
+\contentsline {subsection}{\numberline {7.21.1}Detailed Description}{267}{subsection.7.21.1}
+\contentsline {section}{\numberline {7.22}/home/oscar/projects/owl-\/php/src/kernel/ui/class.baseelement.php File Reference}{268}{section.7.22}
+\contentsline {subsection}{\numberline {7.22.1}Detailed Description}{268}{subsection.7.22.1}
+\contentsline {section}{\numberline {7.23}/home/oscar/projects/owl-\/php/src/kernel/ui/class.formfield.php File Reference}{269}{section.7.23}
+\contentsline {subsection}{\numberline {7.23.1}Detailed Description}{269}{subsection.7.23.1}
+\contentsline {section}{\numberline {7.24}/home/oscar/projects/owl-\/php/src/kernel/ui/formfields/class.formfield.button.php File Reference}{270}{section.7.24}
+\contentsline {subsection}{\numberline {7.24.1}Detailed Description}{270}{subsection.7.24.1}
+\contentsline {section}{\numberline {7.25}/home/oscar/projects/owl-\/php/src/kernel/ui/formfields/class.formfield.checkbox.php File Reference}{271}{section.7.25}
+\contentsline {subsection}{\numberline {7.25.1}Detailed Description}{271}{subsection.7.25.1}
+\contentsline {section}{\numberline {7.26}/home/oscar/projects/owl-\/php/src/kernel/ui/formfields/class.formfield.file.php File Reference}{272}{section.7.26}
+\contentsline {subsection}{\numberline {7.26.1}Detailed Description}{272}{subsection.7.26.1}
+\contentsline {section}{\numberline {7.27}/home/oscar/projects/owl-\/php/src/kernel/ui/formfields/class.formfield.radio.php File Reference}{273}{section.7.27}
+\contentsline {subsection}{\numberline {7.27.1}Detailed Description}{273}{subsection.7.27.1}
+\contentsline {section}{\numberline {7.28}/home/oscar/projects/owl-\/php/src/kernel/ui/formfields/class.formfield.select.php File Reference}{274}{section.7.28}
+\contentsline {subsection}{\numberline {7.28.1}Detailed Description}{274}{subsection.7.28.1}
+\contentsline {section}{\numberline {7.29}/home/oscar/projects/owl-\/php/src/kernel/ui/formfields/class.formfield.text.php File Reference}{275}{section.7.29}
+\contentsline {subsection}{\numberline {7.29.1}Detailed Description}{275}{subsection.7.29.1}
+\contentsline {section}{\numberline {7.30}/home/oscar/projects/owl-\/php/src/kernel/ui/formfields/class.formfield.textarea.php File Reference}{276}{section.7.30}
+\contentsline {subsection}{\numberline {7.30.1}Detailed Description}{276}{subsection.7.30.1}
+\contentsline {section}{\numberline {7.31}/home/oscar/projects/owl-\/php/src/lib/owl.debug.functions.php File Reference}{277}{section.7.31}
+\contentsline {subsection}{\numberline {7.31.1}Detailed Description}{277}{subsection.7.31.1}
+\contentsline {subsection}{\numberline {7.31.2}Function Documentation}{277}{subsection.7.31.2}
+\contentsline {subsubsection}{\numberline {7.31.2.1}DBG\_\discretionary {-}{}{}dumpval}{277}{subsubsection.7.31.2.1}
+\contentsline {section}{\numberline {7.32}/home/oscar/projects/owl-\/php/src/lib/owl.helper.functions.php File Reference}{278}{section.7.32}
+\contentsline {subsection}{\numberline {7.32.1}Detailed Description}{278}{subsection.7.32.1}
+\contentsline {section}{\numberline {7.33}/home/oscar/projects/owl-\/php/src/lib/owl.messages.en-\/uk.php File Reference}{279}{section.7.33}
+\contentsline {subsection}{\numberline {7.33.1}Detailed Description}{279}{subsection.7.33.1}
+\contentsline {subsection}{\numberline {7.33.2}Variable Documentation}{279}{subsection.7.33.2}
+\contentsline {subsubsection}{\numberline {7.33.2.1}\$GLOBALS}{279}{subsubsection.7.33.2.1}
+\contentsline {section}{\numberline {7.34}/home/oscar/projects/owl-\/php/src/lib/owl.messages.php File Reference}{280}{section.7.34}
+\contentsline {subsection}{\numberline {7.34.1}Detailed Description}{280}{subsection.7.34.1}
+\contentsline {subsection}{\numberline {7.34.2}Variable Documentation}{280}{subsection.7.34.2}
+\contentsline {subsubsection}{\numberline {7.34.2.1}\$GLOBALS}{280}{subsubsection.7.34.2.1}
+\contentsline {section}{\numberline {7.35}/home/oscar/projects/owl-\/php/src/lib/owl.nodebug.functions.php File Reference}{281}{section.7.35}
+\contentsline {subsection}{\numberline {7.35.1}Detailed Description}{281}{subsection.7.35.1}
+\contentsline {subsection}{\numberline {7.35.2}Function Documentation}{281}{subsection.7.35.2}
+\contentsline {subsubsection}{\numberline {7.35.2.1}DBG\_\discretionary {-}{}{}dumpval}{281}{subsubsection.7.35.2.1}
+\contentsline {section}{\numberline {7.36}/home/oscar/projects/owl-\/php/src/lib/owl.severitycodes.php File Reference}{282}{section.7.36}
+\contentsline {subsection}{\numberline {7.36.1}Detailed Description}{282}{subsection.7.36.1}
+\contentsline {subsection}{\numberline {7.36.2}Enumeration Type Documentation}{282}{subsection.7.36.2}
+\contentsline {subsubsection}{\numberline {7.36.2.1}OWL\_\discretionary {-}{}{}BUG}{282}{subsubsection.7.36.2.1}
+\contentsline {subsubsection}{\numberline {7.36.2.2}OWL\_\discretionary {-}{}{}CRITICAL}{282}{subsubsection.7.36.2.2}
+\contentsline {subsubsection}{\numberline {7.36.2.3}OWL\_\discretionary {-}{}{}DEBUG}{282}{subsubsection.7.36.2.3}
+\contentsline {subsubsection}{\numberline {7.36.2.4}OWL\_\discretionary {-}{}{}ERROR}{282}{subsubsection.7.36.2.4}
+\contentsline {subsubsection}{\numberline {7.36.2.5}OWL\_\discretionary {-}{}{}FATAL}{282}{subsubsection.7.36.2.5}
+\contentsline {subsubsection}{\numberline {7.36.2.6}OWL\_\discretionary {-}{}{}INFO}{283}{subsubsection.7.36.2.6}
+\contentsline {subsubsection}{\numberline {7.36.2.7}OWL\_\discretionary {-}{}{}OK}{283}{subsubsection.7.36.2.7}
+\contentsline {subsubsection}{\numberline {7.36.2.8}OWL\_\discretionary {-}{}{}SUCCESS}{283}{subsubsection.7.36.2.8}
+\contentsline {subsubsection}{\numberline {7.36.2.9}OWL\_\discretionary {-}{}{}WARNING}{283}{subsubsection.7.36.2.9}
+\contentsline {section}{\numberline {7.37}/home/oscar/projects/owl-\/php/src/OWLloader.php File Reference}{284}{section.7.37}
+\contentsline {subsection}{\numberline {7.37.1}Detailed Description}{284}{subsection.7.37.1}
+\contentsline {subsection}{\numberline {7.37.2}Enumeration Type Documentation}{285}{subsection.7.37.2}
+\contentsline {subsubsection}{\numberline {7.37.2.1}OWL\_\discretionary {-}{}{}BO\_\discretionary {-}{}{}INC}{285}{subsubsection.7.37.2.1}
+\contentsline {subsubsection}{\numberline {7.37.2.2}OWL\_\discretionary {-}{}{}INCLUDE}{285}{subsubsection.7.37.2.2}
+\contentsline {subsubsection}{\numberline {7.37.2.3}OWL\_\discretionary {-}{}{}LIBRARY}{285}{subsubsection.7.37.2.3}
+\contentsline {subsubsection}{\numberline {7.37.2.4}OWL\_\discretionary {-}{}{}SITE\_\discretionary {-}{}{}TOP}{285}{subsubsection.7.37.2.4}
+\contentsline {subsubsection}{\numberline {7.37.2.5}OWL\_\discretionary {-}{}{}SO\_\discretionary {-}{}{}INC}{285}{subsubsection.7.37.2.5}
+\contentsline {subsubsection}{\numberline {7.37.2.6}OWL\_\discretionary {-}{}{}UI\_\discretionary {-}{}{}INC}{285}{subsubsection.7.37.2.6}
+\contentsline {subsection}{\numberline {7.37.3}Variable Documentation}{285}{subsection.7.37.3}
+\contentsline {subsubsection}{\numberline {7.37.3.1}\$GLOBALS}{285}{subsubsection.7.37.3.1}
+\contentsline {subsubsection}{\numberline {7.37.3.2}\$GLOBALS}{285}{subsubsection.7.37.3.2}
+\contentsline {subsubsection}{\numberline {7.37.3.3}\$GLOBALS}{285}{subsubsection.7.37.3.3}
+\contentsline {subsubsection}{\numberline {7.37.3.4}if}{285}{subsubsection.7.37.3.4}
+\contentsline {section}{\numberline {7.38}/home/oscar/projects/owl-\/php/src/OWLrundown.php File Reference}{286}{section.7.38}
+\contentsline {subsection}{\numberline {7.38.1}Detailed Description}{286}{subsection.7.38.1}
+\contentsline {subsection}{\numberline {7.38.2}Variable Documentation}{286}{subsection.7.38.2}
+\contentsline {subsubsection}{\numberline {7.38.2.1}\$\_\discretionary {-}{}{}form}{286}{subsubsection.7.38.2.1}

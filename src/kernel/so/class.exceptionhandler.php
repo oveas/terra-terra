@@ -3,7 +3,7 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.5 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: class.exceptionhandler.php,v 1.6 2011-01-10 18:45:59 oscar Exp $
  */
 
 
@@ -49,10 +49,10 @@ class OWLException extends Exception
 		$this->hidden_args = array();
 		$_hide_arguments = ConfigHandler::get ('exception|hide_arguments', 0);
 		if ($_hide_arguments !== 0) {
-			$_hidden_args = split (',', $_hide_arguments);
+			$_hidden_args = explode (',', $_hide_arguments);
 			foreach ($_hidden_args as $_argument) {
-				$_call = split (':', $_argument);
-				$_method = split ('->', $_call[0]);
+				$_call = explode (':', $_argument);
+				$_method = explode ('->', $_call[0]);
 				$this->hidden_args[] = array(
 						 'class' => $_method[0]
 						,'function' => $_method[1]

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.6 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.7 2011-01-10 18:45:59 oscar Exp $
  */
 
 /**
@@ -190,7 +190,6 @@ class SessionHandler extends _OWL
 		if (isset($_COOKIE[session_name()])) {
 			setcookie(session_name(), '', time()-42000, '/');
 		}
-
 		$this->dataset->set_key ('sid');
 		$this->dataset->prepare (DATA_DELETE);
 

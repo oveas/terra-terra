@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$classBaseElement.html" title="DOM Element base class." alt="" coords="41,365,156,547"/>
-<area shape="rect" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="28,5,169,317"/>
+<area shape="rect" id="node2" href="$classBaseElement.html" title="DOM Element base class." alt="" coords="41,425,156,719"/>
+<area shape="rect" id="node4" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $saved_status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# save_status()\l# restore_status()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="28,6,169,375"/>
 </map>
