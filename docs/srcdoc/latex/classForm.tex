@@ -44,13 +44,21 @@ Collaboration diagram for Form:\nopagebreak
 \item 
 \hyperlink{classForm_a9bb2df9ed7b866b0dc4b29b3874c2a1a}{closeForm} ()
 \item 
+\hyperlink{classForm_aeac5855c8b2406c34090a621d59df664}{showElement} ()
+\item 
 \hyperlink{classBaseElement_a0c1ce3d1684ecb78960cf7a97278494e}{setId} (\$\_\-value)
+\item 
+\hyperlink{classBaseElement_a4a7aa583ee21af392908d7fd42fde790}{getId} ()
 \item 
 \hyperlink{classBaseElement_a39bafb3609d10048920c20242c2a04c5}{setName} (\$\_\-value)
 \item 
 \hyperlink{classBaseElement_a6b2b9ff69f6e92db82f91d9c55cda697}{setStyle} (\$\_\-value)
 \item 
 \hyperlink{classBaseElement_af6597b30fa9798878f6290271043dfa2}{setClass} (\$\_\-value)
+\item 
+\hyperlink{classBaseElement_a164a9c6e4ee68afa0ad343942ba54d28}{setContent} (\&\$\_\-content)
+\item 
+\hyperlink{classBaseElement_af8c86b93bcdcfbc415bf96c622dc5516}{getContent} ()
 \item 
 \hyperlink{classBaseElement_ad5789f45f16aaa144716ee8558069c31}{setEvent} (\$\_\-event, \$\_\-action, \$\_\-add=false)
 \item 
@@ -157,9 +165,9 @@ References \$dispatcher, \_\-OWL::init(), and \_\-OWL::set\_\-status().
 )}\label{classForm_a880197a858a70581146d6f0d275eff02}
 Add a formfield to the formelement 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$type}]Field type \item[\mbox{\tt[in]} {\em \$name}]Field name \item[\mbox{\tt[in]} {\em \$value}]Optional field value. For a selectlist type this must be an array, see \hyperlink{classFormFieldSelect_ae69f5b352df63796c048dca6a2de7544}{FormFieldSelect::setValue()} \item[\mbox{\tt[in]} {\em \$attributes}]Indexed array with additional values in the format, where the key must be a supported attributed for the given type. \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$type}]Field type \item[\mbox{\tt[in]} {\em \$name}]Field name \item[\mbox{\tt[in]} {\em \$value}]Optional field value. For a selectlist type this must be an array, see FormFieldSelect::setValue() \item[\mbox{\tt[in]} {\em \$attributes}]Indexed array with additional values in the format, where the key must be a supported attributed for the given type. \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Severity level of the object status 
+Reference to the field object, or the severity in case of errors 
 \end{DoxyReturn}
 
 
@@ -265,8 +273,31 @@ References BaseElement::getEvents().
 
 
 
-Referenced by FormField::getGenericFieldAttributes(), Table::getTable(), Tablecell::getTablecell(), Tablerow::getTablerow(), and openForm().
+Referenced by FormFieldPlugin::getGenericFieldAttributes(), openForm(), Tablerow::showElement(), Tablecell::showElement(), Table::showElement(), and Container::showElement().
 
+\index{Form@{Form}!getContent@{getContent}}
+\index{getContent@{getContent}!Form@{Form}}
+\subsubsection[{getContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::getContent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_af8c86b93bcdcfbc415bf96c622dc5516}
+Get the content of the current container, which can be plain HTML or an object, in which case the HTML will be retrieved from the object here. Enter description here ... 
+
+Referenced by Tablecell::showElement(), and Container::showElement().
+
+\index{Form@{Form}!getId@{getId}}
+\index{getId@{getId}!Form@{Form}}
+\subsubsection[{getId}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::getId (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_a4a7aa583ee21af392908d7fd42fde790}
+Get the element's HTML ID
+
+\begin{DoxyReturn}{Returns}
+The ID 
+\end{DoxyReturn}
 \index{Form@{Form}!init@{init}}
 \index{init@{init}!Form@{Form}}
 \subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init (
@@ -280,7 +311,7 @@ References OWL::factory().
 
 
 
-Referenced by Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), FormField::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), \_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), \_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{Form@{Form}!openForm@{openForm}}
 \index{openForm@{openForm}!Form@{Form}}
@@ -371,7 +402,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), \_\-\_\-construct(), addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), setEncoding(), setFieldAttributes(), FormFieldText::setMaxsize(), setMethod(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), \_\-\_\-construct(), addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), setEncoding(), setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), FormFieldRadioPlugin::setValue(), showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{Form@{Form}!setAttributes@{setAttributes}}
 \index{setAttributes@{setAttributes}!Form@{Form}}
@@ -384,7 +415,7 @@ Set the attributes of the DOM element by calling the 'set$<$Attrib$>$' method fo
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-attribs}]Array with attributes in the format attrib=$>$value \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Severity level. The status increased when a set$<$Attrib\&gt method does not exist. 
+Severity level. The status increased when a set$<$Attrib$>$ method does not exist. 
 \end{DoxyReturn}
 
 
@@ -396,7 +427,7 @@ References \_\-OWL::set\_\-status().
 
 
 
-Referenced by Table::\_\-\_\-construct().
+Referenced by Table::\_\-\_\-construct(), and Container::\_\-\_\-construct().
 
 \index{Form@{Form}!setClass@{setClass}}
 \index{setClass@{setClass}!Form@{Form}}
@@ -408,6 +439,24 @@ Referenced by Table::\_\-\_\-construct().
 Set the element Class 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-value}]Class name \end{DoxyParams}
+\index{Form@{Form}!setContent@{setContent}}
+\index{setContent@{setContent}!Form@{Form}}
+\subsubsection[{setContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setContent (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-content}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_a164a9c6e4ee68afa0ad343942ba54d28}
+Fill the content for a container. Existing content (e.g. set during instantiation) will be overwritten. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-content}]Reference to the content, which can be HTML code or an object, of which the \hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{showElement()} method will be called to retrieve the HTML. \end{DoxyParams}
+
+
+References \_\-OWL::set\_\-status().
+
+
+
+Referenced by Tablecell::\_\-\_\-construct(), and Container::\_\-\_\-construct().
+
 \index{Form@{Form}!setEncoding@{setEncoding}}
 \index{setEncoding@{setEncoding}!Form@{Form}}
 \subsubsection[{setEncoding}]{\setlength{\rightskip}{0pt plus 5cm}Form::setEncoding (
@@ -481,6 +530,10 @@ References BaseElement::\$events.
 Set the element ID 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-value}]Identification \end{DoxyParams}
+
+
+Referenced by BaseElement::setName().
+
 \index{Form@{Form}!setMethod@{setMethod}}
 \index{setMethod@{setMethod}!Form@{Form}}
 \subsubsection[{setMethod}]{\setlength{\rightskip}{0pt plus 5cm}Form::setMethod (
@@ -508,6 +561,10 @@ References \$method, and \_\-OWL::set\_\-status().
 Set the element name 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-value}]Element name \end{DoxyParams}
+
+
+References BaseElement::setId().
+
 \index{Form@{Form}!setStyle@{setStyle}}
 \index{setStyle@{setStyle}!Form@{Form}}
 \subsubsection[{setStyle}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setStyle (
@@ -518,6 +575,20 @@ Set the element name
 Set the element style 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-value}]Element style \end{DoxyParams}
+\index{Form@{Form}!showElement@{showElement}}
+\index{showElement@{showElement}!Form@{Form}}
+\subsubsection[{showElement}]{\setlength{\rightskip}{0pt plus 5cm}Form::showElement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classForm_aeac5855c8b2406c34090a621d59df664}
+This is a dummy implementation for the \hyperlink{classForm_aeac5855c8b2406c34090a621d59df664}{showElement()} method, since the form is never displayed as 1 single element, but spread through to container is belongs in. Each subelement of the form is displayed seperately. \begin{DoxySeeAlso}{See also}
+\hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{BaseElement::showElement()} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{BaseElement}.
+
 \index{Form@{Form}!showField@{showField}}
 \index{showField@{showField}!Form@{Form}}
 \subsubsection[{showField}]{\setlength{\rightskip}{0pt plus 5cm}Form::showField (

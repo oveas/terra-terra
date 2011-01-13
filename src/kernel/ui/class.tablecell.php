@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a tablecell element
- * \version $Id: class.tablecell.php,v 1.1 2011-01-10 18:45:59 oscar Exp $
+ * \version $Id: class.tablecell.php,v 1.2 2011-01-13 11:05:34 oscar Exp $
  */
 
 /**
@@ -28,12 +28,6 @@ class Tablecell extends BaseElement
 	private $colspan = '';
 	
 	/**
-	 * HTML content
-	 * \private
-	 */
-	private $content;
-
-	/**
 	 * Class constructor;
 	 * \param[in] $_content HTML that will be placed in the table cell
 	 * \public
@@ -41,7 +35,7 @@ class Tablecell extends BaseElement
 	public function __construct ($_content = '&nbsp;')
 	{
 		_OWL::init();
-		$this->content = $_content;
+		$this->setContent($_content);
 	}
 
 	/**
@@ -81,7 +75,7 @@ class Tablecell extends BaseElement
 	 * \public
 	 * \return string with the HTML code
 	 */
-	public function getTablecell()
+	public function showElement()
 	{
 		$_htmlCode = "\t<td";
 		if (!empty($this->rowspan)) {
@@ -91,7 +85,7 @@ class Tablecell extends BaseElement
 			$_htmlCode .= ' colspan="' . $this->colspan . '"';
 		}
 		$_htmlCode .= $this->getAttributes();
-		$_htmlCode .= '>' . $this->content . "</td>\n";
+		$_htmlCode .= '>' . $this->getContent() . "</td>\n";
 		return $_htmlCode;
 	}
 }

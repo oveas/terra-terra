@@ -2,7 +2,7 @@
 /**
  * \file
  * Define the abstract Register class.
- * \version $Id: class.register.php,v 1.3 2010-12-12 14:27:36 oscar Exp $
+ * \version $Id: class.register.php,v 1.4 2011-01-13 11:05:35 oscar Exp $
  */
 
 
@@ -257,23 +257,49 @@ abstract class Register
 	}
 
 	/**
-	 * Load the message file
+	 * Load the message file for OWL and the application
 	 * \public
 	 */
 	static public function register_messages ()
 	{
+		$_lang = ConfigHandler::get ('locale|lang');
 		// Suppress 'Undefined constants' notices for codes not (yet) registered
 		$_er = error_reporting(~E_NOTICE);
-		if (file_exists (OWL_LIBRARY . '/owl.messages.'
-						. ConfigHandler::get ('locale|lang')
-						. '.php')) {
-			require (OWL_LIBRARY . '/owl.messages.'
-						. ConfigHandler::get ('locale|lang')
-						. '.php');
+		if (file_exists (OWL_LIBRARY . '/owl.messages.' . $_lang . '.php')) {
+			require (OWL_LIBRARY . '/owl.messages.' . $_lang . '.php');
 		} else {
 			require (OWL_LIBRARY . '/owl.messages.php');
 		}
+		if (file_exists (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.messages.' . $_lang . '.php')) {
+			require (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.messages.' . $_lang . '.php');
+		} elseif (file_exists (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.messages.php')){
+			require (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.messages.php');
+		}
 		error_reporting($_er);
+	}
+
+	/**
+	 * Load the labels file for OWL or the application
+	 * \param[in] $_owl When true, the OWL file(s) will be loaded, by default only the application's
+	 * \public
+	 */
+	static public function register_labels ($_owl = false)
+	{
+		$_lang = ConfigHandler::get ('locale|lang');
+		// Suppress 'Undefined constants' notices for codes not (yet) registered
+		if ($_owl) {
+			if (file_exists (OWL_LIBRARY . '/owl.labels.' . $_lang . '.php')) {
+				require (OWL_LIBRARY . '/owl.labels.' . $_lang . '.php');
+			} else {
+				require (OWL_LIBRARY . '/owl.labels.php');
+			}
+		} else {
+			if (file_exists (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.labels.' . $_lang . '.php')) {
+				require (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.labels.' . $_lang . '.php');
+			} else {
+				require (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.labels.php');
+			}
+		}
 	}
 }
 

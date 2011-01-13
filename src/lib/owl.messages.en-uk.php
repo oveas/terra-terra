@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in UK English
- * \version $Id: owl.messages.en-uk.php,v 1.11 2011-01-10 18:46:00 oscar Exp $
+ * \version $Id: owl.messages.en-uk.php,v 1.12 2011-01-13 11:05:34 oscar Exp $
  */
 $GLOBALS['messages'] = array (
 	  OWL_STATUS_OK			=> 'Normal successfull completion'
@@ -15,6 +15,7 @@ $GLOBALS['messages'] = array (
 	, OWL_STATUS_WOPENERR	=> 'Error openening $p1$ for write'
 	, OWL_STATUS_NOKEY		=> 'No security key could be found'
 	, OWL_STATUS_IVKEY		=> 'Given security key does not match with this server'
+	, OWL_STATUS_NOSAVSTAT	=> 'Trying to restore a status that was not previously saved'
 	, OWL_STATUS_THROWERR	=> 'No context to throw an exception'
 	, CONFIG_NOVALUE		=> 'Nonexising config value <i>$p1$</i> requested'
 	, LOGGING_OPENERR		=> 'Cannot open logfile <i>$p1$</i> for write'
@@ -47,14 +48,25 @@ $GLOBALS['messages'] = array (
 	, DATA_AMBFIELD			=> 'The variable $p1$ occured more than once'
 	, DATA_NODBLINK			=> 'A database query shoukld be prepared, but there is no database handler set yet'
 	, DATA_IVPREPARE		=> 'A database query was prepared with an invalid prepare flag'
-	, DATA_IVRESET			=> 'The object was reset with an invalid reset flag'
-	, FORM_RETVALUE			=> 'Retrieve value $p2$ for formvariable $p1$'
-	, FORM_STORVALUE		=> 'Storing formvariable $p1$ with value $p2$'
+	, FORM_RETVALUE			=> 'Retrieve value $p2 for formvariable $p1'
+	, FORM_STORVALUE		=> 'Storing formvariable $p1 with value $p2'
 	, FORM_PARSE			=> 'Start parsing the incoming formdata'
-	, FORM_NOVALUE			=> 'No value found for formvariable $p1$'
+	, FORM_NOVALUE			=> 'No value found for formvariable $p1'
 	, USER_LOGINFAIL		=> 'Error logging in with username $p1$ and password $p2$'
 	, USER_LOGGEDIN			=> 'User $p1$ logged in with password $p2$'
 	, USER_RESTORERR		=> 'Error restoring data for user ID $p1$'
+	, FORM_IVMETHOD			=> 'Form method $p1$ is invalid or not supported'
+	, FORM_IVENCODING		=> 'Form encoding $p1$ is invalid or not supported'
+	, FORM_IVCLASSNAME		=> 'Invalid classname for formfieldtype $p1$ - cannot instantiate $p2$'
+	, FORM_NOCLASS			=> 'No classfile found for fieldtype $p1$'
+	, FORM_NOATTRIB			=> 'Attribute $p1$ does not exist for a $p2$ formfield'
+	, FORM_NOMULTIVAL		=> 'Field $p1$ already exists as type $p2$ and does not support multivalue'
+	, FORM_NOSUCHFIELD		=> 'The form has no field with the name $p1$'
+	, FORMFIELD_IVVAL		=> '$p1$ is an invalid value for attribute $p2$'
+	, FORMFIELD_IVVALFORMAT	=> 'Invalid value format for $p1$'
+	, FORMFIELD_NOVAL		=> 'Missing value in the optionlist for $p1$'
+	, FORMFIELD_NOSUCHVAL	=> 'Value $p1$ does not exists for field $p2$'
+	, FORMFIELD_VALEXIST	=> 'Value $p1$ already exists for field $p2$'
 	, FILE_NEWFILE			=> ''
 	, FILE_NOSUCHFILE		=> ''
 	, FILE_ENDOFFILE		=> ''
@@ -79,4 +91,8 @@ $GLOBALS['messages'] = array (
 	, DISP_NOCLASS			=> 'Cannot instantiate class $p1$'
 	, DISP_NOCLASSF			=> 'Classfile $p1$ not found in $p2$'
 	, DISP_NOMETHOD			=> 'Method $p1$ not found in class $p2$'
-	);
+	, DOM_IVATTRIB			=> 'Invalid attribute $p1$'
+	, DOM_SELFREF			=> 'Cannot set the content with a reference to myself in element $p1$'
+	, CONTAINER_IVTYPE		=> 'Invalid container type $p1$'
+	, CONTAINER_IVCLASSNAME	=> 'Invalid classname for containertype $p1$ - cannot instantiate $p2$'
+);

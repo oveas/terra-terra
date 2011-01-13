@@ -20,8 +20,19 @@ enum \hyperlink{OWLloader_8php_a2e11101c70f011a91d0d9c7f8e217738}{OWL\_\-UI\_\-I
 \begin{DoxyCompactList}\small\item\em Presentation layer includes. \item\end{DoxyCompactList}\item 
 enum \hyperlink{OWLloader_8php_a74eed08508c8b70677c4167acf49e427}{OWL\_\-LIBRARY} 
 \begin{DoxyCompactList}\small\item\em \hyperlink{classOWL}{OWL} library. \item\end{DoxyCompactList}\item 
+enum \hyperlink{OWLloader_8php_acb1e6e914bd3c0c96fc20ae6bb3a8a99}{OWL\_\-PLUGINS} 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classOWL}{OWL} plugindirectory. \item\end{DoxyCompactList}\item 
 enum \hyperlink{OWLloader_8php_a462de9ae02e394313337afac5d1a5f95}{OWL\_\-SITE\_\-TOP} 
 \begin{DoxyCompactList}\small\item\em Toplocation of this site. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Global constants for the application}\par
+{\em \label{_amgrp3ebb069601fef11bcb0ba759cb17b4d6}
+ These constants define sime paths for the application that are also required by \hyperlink{classOWL}{OWL} }\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{OWLloader_8php_a17a0c6fb6eda7d05081d16bc519c97b5}{APPL\_\-SITE\_\-TOP} 
+\begin{DoxyCompactList}\small\item\em APPL\_\-NAME must be defined by the application. The application name must -\/ in lowercase -\/ also be used as top directory for the installation. \item\end{DoxyCompactList}\item 
+enum \hyperlink{OWLloader_8php_a1b19bb6ffba1d1e7871092e086cc4e94}{APPL\_\-LIBRARY} 
+\begin{DoxyCompactList}\small\item\em Location of all configuration files. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -41,12 +52,26 @@ This file loads the \hyperlink{classOWL}{OWL} environment and initialises some s
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id:}
-\hyperlink{OWLloader_8php}{OWLloader.php},v 1.11 2010-\/12-\/12 14:27:36 oscar Exp 
+\hyperlink{OWLloader_8php}{OWLloader.php},v 1.12 2011-\/01-\/10 18:46:00 oscar Exp 
 \end{DoxyParagraph}
 
 
 \subsection{Enumeration Type Documentation}
-\index{OWLloader.php@{OWLloader.php}!OWL\_\-BO\_\-INC@{OWL\_\-BO\_\-INC}}
+\index{OWLloader.php@{OWLloader.php}!APPL\_\-LIBRARY@{APPL\_\-LIBRARY}}
+\index{APPL\_\-LIBRARY@{APPL\_\-LIBRARY}!OWLloader.php@{OWLloader.php}}
+\subsubsection[{APPL\_\-LIBRARY}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf APPL\_\-LIBRARY}}\label{OWLloader_8php_a1b19bb6ffba1d1e7871092e086cc4e94}
+
+
+Location of all configuration files. 
+
+\index{OWLloader.php@{OWLloader.php}!APPL\_\-SITE\_\-TOP@{APPL\_\-SITE\_\-TOP}}
+\index{APPL\_\-SITE\_\-TOP@{APPL\_\-SITE\_\-TOP}!OWLloader.php@{OWLloader.php}}
+\subsubsection[{APPL\_\-SITE\_\-TOP}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf APPL\_\-SITE\_\-TOP}}\label{OWLloader_8php_a17a0c6fb6eda7d05081d16bc519c97b5}
+
+
+APPL\_\-NAME must be defined by the application. The application name must -\/ in lowercase -\/ also be used as top directory for the installation. 
+
+APPL\_\-CODE must be defined by the application. It must be an acronym that will be used by \hyperlink{classOWL}{OWL} to locate resources, like files in the library. Toplevel for the site \index{OWLloader.php@{OWLloader.php}!OWL\_\-BO\_\-INC@{OWL\_\-BO\_\-INC}}
 \index{OWL\_\-BO\_\-INC@{OWL\_\-BO\_\-INC}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{OWL\_\-BO\_\-INC}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-BO\_\-INC}}\label{OWLloader_8php_aca50646bc73c3addf0e0f25081eae0ae}
 
@@ -60,12 +85,19 @@ Business layer includes.
 
 OWL\_\-ROOT must be defined by the application. 
 
-OWL\_\-APPL must be defined by the application Toplevel for the \hyperlink{classOWL}{OWL} includes \index{OWLloader.php@{OWLloader.php}!OWL\_\-LIBRARY@{OWL\_\-LIBRARY}}
+Toplevel for the \hyperlink{classOWL}{OWL} includes \index{OWLloader.php@{OWLloader.php}!OWL\_\-LIBRARY@{OWL\_\-LIBRARY}}
 \index{OWL\_\-LIBRARY@{OWL\_\-LIBRARY}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{OWL\_\-LIBRARY}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-LIBRARY}}\label{OWLloader_8php_a74eed08508c8b70677c4167acf49e427}
 
 
 \hyperlink{classOWL}{OWL} library. 
+
+\index{OWLloader.php@{OWLloader.php}!OWL\_\-PLUGINS@{OWL\_\-PLUGINS}}
+\index{OWL\_\-PLUGINS@{OWL\_\-PLUGINS}!OWLloader.php@{OWLloader.php}}
+\subsubsection[{OWL\_\-PLUGINS}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-PLUGINS}}\label{OWLloader_8php_acb1e6e914bd3c0c96fc20ae6bb3a8a99}
+
+
+\hyperlink{classOWL}{OWL} plugindirectory. 
 
 \index{OWLloader.php@{OWLloader.php}!OWL\_\-SITE\_\-TOP@{OWL\_\-SITE\_\-TOP}}
 \index{OWL\_\-SITE\_\-TOP@{OWL\_\-SITE\_\-TOP}!OWLloader.php@{OWLloader.php}}

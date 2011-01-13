@@ -20,7 +20,7 @@ Collaboration diagram for BaseElement:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=150pt]{classBaseElement__coll__graph}
+\includegraphics[height=600pt]{classBaseElement__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -28,13 +28,21 @@ Collaboration diagram for BaseElement:\nopagebreak
 \item 
 \hyperlink{classBaseElement_a0c1ce3d1684ecb78960cf7a97278494e}{setId} (\$\_\-value)
 \item 
+\hyperlink{classBaseElement_a4a7aa583ee21af392908d7fd42fde790}{getId} ()
+\item 
 \hyperlink{classBaseElement_a39bafb3609d10048920c20242c2a04c5}{setName} (\$\_\-value)
 \item 
 \hyperlink{classBaseElement_a6b2b9ff69f6e92db82f91d9c55cda697}{setStyle} (\$\_\-value)
 \item 
 \hyperlink{classBaseElement_af6597b30fa9798878f6290271043dfa2}{setClass} (\$\_\-value)
 \item 
+\hyperlink{classBaseElement_a164a9c6e4ee68afa0ad343942ba54d28}{setContent} (\&\$\_\-content)
+\item 
+\hyperlink{classBaseElement_af8c86b93bcdcfbc415bf96c622dc5516}{getContent} ()
+\item 
 \hyperlink{classBaseElement_ad5789f45f16aaa144716ee8558069c31}{setEvent} (\$\_\-event, \$\_\-action, \$\_\-add=false)
+\item 
+\hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{showElement} ()
 \item 
 \hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
 \item 
@@ -84,6 +92,11 @@ Collaboration diagram for BaseElement:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classBaseElement_a852277a83d867417f2e39e8a2483bac7}{getEvents} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBaseElement_ac2c7999af8528ffd86f3f1864028948a}{\$content}
 \end{DoxyCompactItemize}
 
 
@@ -179,7 +192,18 @@ References getEvents().
 
 
 
-Referenced by FormField::getGenericFieldAttributes(), Table::getTable(), Tablecell::getTablecell(), Tablerow::getTablerow(), and Form::openForm().
+Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Tablerow::showElement(), Tablecell::showElement(), Table::showElement(), and Container::showElement().
+
+\index{BaseElement@{BaseElement}!getContent@{getContent}}
+\index{getContent@{getContent}!BaseElement@{BaseElement}}
+\subsubsection[{getContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::getContent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classBaseElement_af8c86b93bcdcfbc415bf96c622dc5516}
+Get the content of the current container, which can be plain HTML or an object, in which case the HTML will be retrieved from the object here. Enter description here ... 
+
+Referenced by Tablecell::showElement(), and Container::showElement().
 
 \index{BaseElement@{BaseElement}!getEvents@{getEvents}}
 \index{getEvents@{getEvents}!BaseElement@{BaseElement}}
@@ -195,6 +219,18 @@ string, HTML code
 
 Referenced by getAttributes().
 
+\index{BaseElement@{BaseElement}!getId@{getId}}
+\index{getId@{getId}!BaseElement@{BaseElement}}
+\subsubsection[{getId}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::getId (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classBaseElement_a4a7aa583ee21af392908d7fd42fde790}
+Get the element's HTML ID
+
+\begin{DoxyReturn}{Returns}
+The ID 
+\end{DoxyReturn}
 \index{BaseElement@{BaseElement}!init@{init}}
 \index{init@{init}!BaseElement@{BaseElement}}
 \subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init (
@@ -208,7 +244,7 @@ References OWL::factory().
 
 
 
-Referenced by Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), FormField::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
 
 \index{BaseElement@{BaseElement}!reset@{reset}}
 \index{reset@{reset}!BaseElement@{BaseElement}}
@@ -285,7 +321,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), setAttributes(), Form::setEncoding(), Form::setFieldAttributes(), FormFieldText::setMaxsize(), Form::setMethod(), FormFieldRadio::setSelected(), FormFieldText::setSize(), FormFieldSelect::setSize(), FormFieldSelect::setValue(), FormFieldRadio::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), setAttributes(), setContent(), Form::setEncoding(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), FormFieldRadioPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{BaseElement@{BaseElement}!setAttributes@{setAttributes}}
 \index{setAttributes@{setAttributes}!BaseElement@{BaseElement}}
@@ -298,7 +334,7 @@ Set the attributes of the DOM element by calling the 'set$<$Attrib$>$' method fo
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-attribs}]Array with attributes in the format attrib=$>$value \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Severity level. The status increased when a set$<$Attrib\&gt method does not exist. 
+Severity level. The status increased when a set$<$Attrib$>$ method does not exist. 
 \end{DoxyReturn}
 
 
@@ -310,7 +346,7 @@ References \_\-OWL::set\_\-status().
 
 
 
-Referenced by Table::\_\-\_\-construct().
+Referenced by Table::\_\-\_\-construct(), and Container::\_\-\_\-construct().
 
 \index{BaseElement@{BaseElement}!setClass@{setClass}}
 \index{setClass@{setClass}!BaseElement@{BaseElement}}
@@ -322,6 +358,24 @@ Referenced by Table::\_\-\_\-construct().
 Set the element Class 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-value}]Class name \end{DoxyParams}
+\index{BaseElement@{BaseElement}!setContent@{setContent}}
+\index{setContent@{setContent}!BaseElement@{BaseElement}}
+\subsubsection[{setContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setContent (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-content}
+\end{DoxyParamCaption}
+)}\label{classBaseElement_a164a9c6e4ee68afa0ad343942ba54d28}
+Fill the content for a container. Existing content (e.g. set during instantiation) will be overwritten. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-content}]Reference to the content, which can be HTML code or an object, of which the \hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{showElement()} method will be called to retrieve the HTML. \end{DoxyParams}
+
+
+References \_\-OWL::set\_\-status().
+
+
+
+Referenced by Tablecell::\_\-\_\-construct(), and Container::\_\-\_\-construct().
+
 \index{BaseElement@{BaseElement}!setEvent@{setEvent}}
 \index{setEvent@{setEvent}!BaseElement@{BaseElement}}
 \subsubsection[{setEvent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setEvent (
@@ -344,6 +398,10 @@ Add an event to the events array
 Set the element ID 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-value}]Identification \end{DoxyParams}
+
+
+Referenced by setName().
+
 \index{BaseElement@{BaseElement}!setName@{setName}}
 \index{setName@{setName}!BaseElement@{BaseElement}}
 \subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setName (
@@ -354,6 +412,10 @@ Set the element ID
 Set the element name 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-value}]Element name \end{DoxyParams}
+
+
+References setId().
+
 \index{BaseElement@{BaseElement}!setStyle@{setStyle}}
 \index{setStyle@{setStyle}!BaseElement@{BaseElement}}
 \subsubsection[{setStyle}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setStyle (
@@ -364,6 +426,20 @@ Set the element name
 Set the element style 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-value}]Element style \end{DoxyParams}
+\index{BaseElement@{BaseElement}!showElement@{showElement}}
+\index{showElement@{showElement}!BaseElement@{BaseElement}}
+\subsubsection[{showElement}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::showElement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classBaseElement_a63634d81fad745e3b72cda0100afebea}
+This function must be implemented by all elements. \begin{DoxyReturn}{Returns}
+The implementation must return a textstring with the complete HTML code to display the element 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classForm_aeac5855c8b2406c34090a621d59df664}{Form}, \hyperlink{classContainer_a966af30a8c244fbc2ee61648fa59ffe3}{Container}, \hyperlink{classTable_a71c094dc93aee06ee427f2d53a6691c0}{Table}, \hyperlink{classTablecell_a3dd7511a61bfb8100ff293435685209d}{Tablecell}, \hyperlink{classTablerow_a050c4f377fec4b9554734ff339aaade8}{Tablerow}, \hyperlink{classContainerDivPlugin_a4d9cb8fa601b51f951e5f90aad4d1a3c}{ContainerDivPlugin}, \hyperlink{classContainerFieldsetPlugin_aacca071df123a3068b0b6b8ed5dbdb83}{ContainerFieldsetPlugin}, \hyperlink{classContainerLabelPlugin_ab725a7631eae2f0467a1c04bbd5081d7}{ContainerLabelPlugin}, \hyperlink{classContainerSpanPlugin_a5a1d46ade3182c9cd270e6e01844e30c}{ContainerSpanPlugin}, \hyperlink{classFormFieldButtonPlugin_a029b1662ddc1652b2a571cb2b72421b7}{FormFieldButtonPlugin}, \hyperlink{classFormFieldCheckboxPlugin_a0bed3773bd415fc026d042102c1d4740}{FormFieldCheckboxPlugin}, \hyperlink{classFormFieldPlugin_a3983c0e5035930d864d40e606ab3670b}{FormFieldPlugin}, \hyperlink{classFormFieldRadioPlugin_aade41bf9d88869342c319954da8df608}{FormFieldRadioPlugin}, \hyperlink{classFormFieldSelectPlugin_a65df2919c0789f499302f75ec2356876}{FormFieldSelectPlugin}, \hyperlink{classFormFieldTextPlugin_ac6cee64e91f04b380e948973026bff4e}{FormFieldTextPlugin}, and \hyperlink{classFormFieldTextareaPlugin_ad2b4186a948dded848826a4870e7713b}{FormFieldTextareaPlugin}.
+
 \index{BaseElement@{BaseElement}!signal@{signal}}
 \index{signal@{signal}!BaseElement@{BaseElement}}
 \subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (
@@ -418,7 +494,10 @@ Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read()
 \index{BaseElement@{BaseElement}!\$class@{\$class}}
 \index{\$class@{\$class}!BaseElement@{BaseElement}}
 \subsubsection[{\$class}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$class = ''\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classBaseElement_a99976a8e967db92e7800309f359b0803}
-Class specification \index{BaseElement@{BaseElement}!\$events@{\$events}}
+Class specification \index{BaseElement@{BaseElement}!\$content@{\$content}}
+\index{\$content@{\$content}!BaseElement@{BaseElement}}
+\subsubsection[{\$content}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$content\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classBaseElement_ac2c7999af8528ffd86f3f1864028948a}
+Content for a container \index{BaseElement@{BaseElement}!\$events@{\$events}}
 \index{\$events@{\$events}!BaseElement@{BaseElement}}
 \subsubsection[{\$events}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$events = array()\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classBaseElement_a02cebe45d277b4ff8f29db08bad371ba}
 Array with javascript events 

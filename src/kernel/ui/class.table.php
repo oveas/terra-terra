@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a table element
- * \version $Id: class.table.php,v 1.1 2011-01-10 18:45:59 oscar Exp $
+ * \version $Id: class.table.php,v 1.2 2011-01-13 11:05:34 oscar Exp $
  */
 
 if (!OWLloader::getClass('tablerow')) {
@@ -73,7 +73,7 @@ class Table extends BaseElement
 	 * \public
 	 * \return string with the HTML code
 	 */
-	public function getTable()
+	public function showElement()
 	{
 		$_htmlCode = '<table';
 		if ($this->border !== '') {
@@ -82,9 +82,9 @@ class Table extends BaseElement
 		$_htmlCode .= $this->getAttributes();
 		$_htmlCode .= ">\n";
 		foreach ($this->rows as $_row) {
-			$_htmlCode .= $_row->getTablerow();
+			$_htmlCode .= $_row->showElement();
 		}
-		$_htmlCode .= "<table>\n";
+		$_htmlCode .= "</table>\n";
 		return $_htmlCode;
 	}
 }

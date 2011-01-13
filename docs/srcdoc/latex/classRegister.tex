@@ -28,6 +28,8 @@ static \hyperlink{classRegister_a58e49ccb1fe4e441d0329e879c922aa0}{set\_\-class}
 static \hyperlink{classRegister_a0adde8d67d77b9b4d66156272cb48ae4}{set\_\-severity} (\$severity\_\-level)
 \item 
 static \hyperlink{classRegister_a688c665a20294826a762cf552b4a00fc}{register\_\-messages} ()
+\item 
+static \hyperlink{classRegister_ad145e4bc28af91817782399b06422e74}{register\_\-labels} (\$\_\-owl=false)
 \end{DoxyCompactItemize}
 
 
@@ -180,6 +182,20 @@ Define a new statuscode
 
 References \$GLOBALS.
 
+\index{Register@{Register}!register\_\-labels@{register\_\-labels}}
+\index{register\_\-labels@{register\_\-labels}!Register@{Register}}
+\subsubsection[{register\_\-labels}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-labels (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-owl = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_ad145e4bc28af91817782399b06422e74}
+Load the labels file for \hyperlink{classOWL}{OWL} or the application 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-owl}]When true, the \hyperlink{classOWL}{OWL} file(s) will be loaded, by default only the application's \end{DoxyParams}
+
+
+References ConfigHandler::get().
+
 \index{Register@{Register}!register\_\-messages@{register\_\-messages}}
 \index{register\_\-messages@{register\_\-messages}!Register@{Register}}
 \subsubsection[{register\_\-messages}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-messages (
@@ -187,7 +203,7 @@ References \$GLOBALS.
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classRegister_a688c665a20294826a762cf552b4a00fc}
-Load the message file 
+Load the message file for \hyperlink{classOWL}{OWL} and the application 
 
 References ConfigHandler::get().
 

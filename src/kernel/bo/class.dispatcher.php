@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library Dispatcher class
- * \version $Id: class.dispatcher.php,v 1.3 2011-01-10 18:45:59 oscar Exp $
+ * \version $Id: class.dispatcher.php,v 1.4 2011-01-13 11:05:35 oscar Exp $
  */
 
 /**
@@ -62,12 +62,14 @@ class Dispatcher extends _OWL
 	public function dispatch()
 	{
 		$_form = OWL::factory('FormHandler');
-		$_destination = owlCrypt(urldecode($_form->get('owl_dispatch')));
-
-		if ($_form->get_status() === FORM_NOVALUE) {
+		
+		$_dispatcher = $_form->get('owl_dispatch');
+		if ($_form->get_status() === FORM_NOVALUE || !$_dispatcher) {
 			$this->set_status(DISP_NOARG);
 			return;
 		}
+		$_destination = owlCrypt(urldecode($_dispatcher));
+		
 		list($_appl, $_path, $_classfile, $_classname, $_method) = explode('#', $_destination);
 
 		if ($_method == null) {

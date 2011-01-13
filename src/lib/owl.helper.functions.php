@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.2 2011-01-10 18:46:00 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.3 2011-01-13 11:05:34 oscar Exp $
  */
 
 // Select the (no)debug function libraries.
@@ -32,6 +32,20 @@ function toStrictBoolean ($_val, $_trueValues = array('yes', 'y', 'true', '1'), 
 		);
 	} else {
 		return (boolean) $_val;
+	}
+}
+
+/**
+ * Translate a textstring using the labels array
+ * \param[in] $_string Text string to translate
+ * \return The translation, or the input if none was found.
+ */
+function owlTrn ($_string)
+{
+	if (array_key_exists($_string, $GLOBALS['labels'])) {
+		return $GLOBALS['labels'][$_string];
+	} else {
+		return ((ConfigHandler::get ('debug')?'(!)':'').$_string);
 	}
 }
 

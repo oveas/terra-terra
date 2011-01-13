@@ -2,8 +2,8 @@
 /**
  * \file
  * \ingroup OWL_LIBRARY
- * This file defines the message text for all status codes in UK English
- * \version $Id: owl.messages.php,v 1.12 2011-01-10 18:46:00 oscar Exp $
+ * This file defines the message text for all status codes in the default language
+ * \version $Id: owl.messages.php,v 1.13 2011-01-13 11:05:34 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -58,6 +58,7 @@ $GLOBALS['messages'] = array (
 	, USER_RESTORERR		=> 'Error restoring data for user ID $p1$'
 	, FORM_IVMETHOD			=> 'Form method $p1$ is invalid or not supported'
 	, FORM_IVENCODING		=> 'Form encoding $p1$ is invalid or not supported'
+	, FORM_IVCLASSNAME		=> 'Invalid classname for formfieldtype $p1$ - cannot instantiate $p2$'
 	, FORM_NOCLASS			=> 'No classfile found for fieldtype $p1$'
 	, FORM_NOATTRIB			=> 'Attribute $p1$ does not exist for a $p2$ formfield'
 	, FORM_NOMULTIVAL		=> 'Field $p1$ already exists as type $p2$ and does not support multivalue'
@@ -91,4 +92,8 @@ $GLOBALS['messages'] = array (
 	, DISP_NOCLASS			=> 'Cannot instantiate class $p1$'
 	, DISP_NOCLASSF			=> 'Classfile $p1$ not found in $p2$'
 	, DISP_NOMETHOD			=> 'Method $p1$ not found in class $p2$'
-	);
+	, DOM_IVATTRIB			=> 'Invalid attribute $p1$'
+	, DOM_SELFREF			=> 'Cannot set the content with a reference to myself in element $p1$'
+	, CONTAINER_IVTYPE		=> 'Invalid container type $p1$'
+	, CONTAINER_IVCLASSNAME	=> 'Invalid classname for containertype $p1$ - cannot instantiate $p2$'
+);

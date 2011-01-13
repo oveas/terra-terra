@@ -3,12 +3,20 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.12 2011-01-10 18:46:00 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.13 2011-01-13 11:05:35 oscar Exp $
  */
 
 // Error handling used during development
-error_reporting(E_ALL | E_STRICT);
+// error_reporting(E_ALL | E_STRICT);
 
+// Doxygen setup
+/**
+ * \defgroup OWL_UI_LAYER Presentation modules
+ * \defgroup OWL_BO_LAYER Business Object modules
+ * \defgroup OWL_SO_LAYER Storage Object modules
+ * \defgroup OWL_LIBRARY Library (codes, messages files etc.)
+ * \defgroup OWL_UI_PLUGINS Plugins for the presentation modules
+ */
 
 /**
  * \name Global constants
@@ -16,10 +24,8 @@ error_reporting(E_ALL | E_STRICT);
  * @{
  */
 //! OWL_ROOT must be defined by the application
-if (!defined('OWL_ROOT')) { trigger_error('OWL_ROOT must be defined by the application', E_USER_ERROR); }
-
-//! OWL_APPL must be defined by the application
-//if (!defined('OWL_APPL')) { trigger_error('OWL_APPL must be defined by the application', E_USER_ERROR); }
+if (!defined('OWL_ROOT')) { trigger_error('OWL_ROOT must be defined by the application', E_USER_ERROR);
+}
 
 //! Toplevel for the OWL includes
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
@@ -36,16 +42,35 @@ define ('OWL_UI_INC',	OWL_ROOT . '/kernel/ui');
 //! OWL library
 define ('OWL_LIBRARY',	OWL_ROOT . '/lib');
 
+//! OWL plugindirectory
+define ('OWL_PLUGINS',	OWL_ROOT . '/plugins');
+
 //! Toplocation of this site
 define ('OWL_SITE_TOP', $_SERVER['DOCUMENT_ROOT']);
+
 //! @}
 
 /**
- * \defgroup OWL_UI_LAYER Presentation modules
- * \defgroup OWL_BO_LAYER Business Object modules
- * \defgroup OWL_SO_LAYER Storage Object modules
- * \defgroup OWL_LIBRARY Library (codes, messages files etc.)
+ * \name Global constants for the application
+ * These constants define sime paths for the application that are also required by OWL
+ * @{
  */
+//! APPL_NAME must be defined by the application. The application name must - in lowercase - also be used as top directory for the installation.
+if (!defined('APPL_NAME')) {
+	trigger_error('APPL_NAME must be defined by the application', E_USER_ERROR);
+}
+
+//! APPL_CODE must be defined by the application. It must be an acronym that will be used by OWL to locate resources, like files in the library.
+if (!defined('APPL_CODE')) {
+	trigger_error('APPL_CODE must be defined by the application', E_USER_ERROR);
+}
+
+//! Toplevel for the site
+define ('APPL_SITE_TOP', OWL_SITE_TOP . '/' . strtolower(APPL_NAME));
+
+//! Location of all configuration files
+define ('APPL_LIBRARY', APPL_SITE_TOP . '/lib');
+//! @}
 
 /**
  * \ingroup OWL_SO_LAYER
@@ -143,6 +168,7 @@ OWLloader::getClass('dispatcher', OWL_BO_INC);
 
 // UI Layer
 OWLloader::getClass('baseelement', OWL_UI_INC);
+OWLloader::getClass('container', OWL_UI_INC);
 
 //$GLOBALS['owl_object'] = new OWL();
 $GLOBALS['messages'] = array ();
@@ -161,6 +187,9 @@ if (array_key_exists ('app', ConfigHandler::get ('configfiles'))) {
 // General helper functions. This can be loaded only after the configuration
 // has been parsed, since 'config|debug' is used to select the (no)debug library.
 require_once (OWL_LIBRARY . '/owl.helper.functions.php');
+
+// Set up the label translations
+Register::register_labels(true);
 
 // Singeltons
 $GLOBALS['logger'] = OWL::factory('LogHandler');

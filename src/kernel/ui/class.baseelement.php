@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the top-level BaseElement class
- * \version $Id: class.baseelement.php,v 1.2 2011-01-10 18:45:59 oscar Exp $
+ * \version $Id: class.baseelement.php,v 1.3 2011-01-13 11:05:34 oscar Exp $
  */
 
 /**
@@ -39,6 +39,12 @@ abstract class BaseElement extends _OWL
 	protected $name = '';
 
 	/**
+	 * Content for a container
+	 * \private
+	 */
+	private $content;
+
+	/**
 	 * Element ID
 	 * \protected
 	 */
@@ -55,6 +61,16 @@ abstract class BaseElement extends _OWL
 	}
 
 	/**
+	 * Get the element's HTML ID
+	 * \public
+	 * \return The ID
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
+
+	/**
 	 * Set the element name
 	 * \param[in] $_value Element name
 	 * \public
@@ -62,6 +78,12 @@ abstract class BaseElement extends _OWL
 	public function setName($_value)
 	{
 		$this->name = $_value;
+
+		// Default the id to the name
+		if (empty($this->id)) {
+			$this->setId($_value);
+		}
+		
 	}
 
 	/**
@@ -82,6 +104,37 @@ abstract class BaseElement extends _OWL
 	public function setClass($_value)
 	{
 		$this->class = $_value;
+	}
+
+	/**
+	 * Fill the content for a container. Existing content (e.g. set during instantiation)
+	 * will be overwritten.
+	 * \param[in] $_content Reference to the content, which can be HTML code or an object,
+	 * of which the showElement() method will be called to retrieve the HTML.
+	 */
+	public function setContent(&$_content)
+	{
+		if (is_object($_content) && ($_content === $this)) {
+			$this->set_status (DOM_SELFREF, $this->name);
+			return '&nbsp;'; // Probably fatal, but for completeness...
+		}
+		$this->content = $_content;
+	}
+
+	/**
+	 * Get the content of the current container, which can be plain HTML or an object,
+	 * in which case the HTML will be retrieved from the object here.
+	 * Enter description here ...
+	 */
+	public function getContent()
+	{
+		if (is_object($this->content)) {
+			// TODO; this can cause a loop when a reference is set to an object
+			// that instantiated me. Make some loop detection here.
+			return $this->content->showElement();
+		} else {
+			return $this->content;
+		}
 	}
 
 	/**
@@ -122,7 +175,7 @@ abstract class BaseElement extends _OWL
 	/**
 	 * Set the attributes of the DOM element by calling the 'set&lt;Attrib&gt;' method for this class.
 	 * \param[in] $_attribs Array with attributes in the format attrib=>value
-	 * \return Severity level. The status increased when a set&lt;Attrib&gt method does not exist.
+	 * \return Severity level. The status increased when a set&lt;Attrib&gt; method does not exist.
 	 */
 	protected function setAttributes($_attribs)
 	{
@@ -164,6 +217,13 @@ abstract class BaseElement extends _OWL
 		}
 		return $_htmlCode;
 	}
+
+	/**
+	 * This function must be implemented by all elements.
+	 * \return The implementation must return a textstring with the complete 
+	 * HTML code to display the element
+	 */
+	abstract public function showElement();
 }
 
 /*
@@ -183,6 +243,8 @@ Register::register_code('DOM_IVATTRIB');
 
 //Register::set_severity (OWL_BUG);
 
-//Register::set_severity (OWL_ERROR);
+Register::set_severity (OWL_ERROR);
+Register::register_code('DOM_SELFREF');
+
 //Register::set_severity (OWL_FATAL);
 //Register::set_severity (OWL_CRITICAL);

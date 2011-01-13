@@ -2,10 +2,10 @@
 /**
  * \file
  * This file defines the HTML Form class
- * \version $Id: class.form.php,v 1.3 2011-01-10 18:46:00 oscar Exp $
+ * \version $Id: class.form.php,v 1.4 2011-01-13 11:05:35 oscar Exp $
  */
 
-OWLloader::getClass('formfield', OWL_UI_INC);
+OWLloader::getClass('formfield', OWL_PLUGINS . '/formfields');
 
 /**
  * \ingroup OWL_BO_LAYER
@@ -119,7 +119,7 @@ class Form extends BaseElement
 	 * \param[in] $value Optional field value. For a selectlist type this must be an array, see FormFieldSelect::setValue()
 	 * \param[in] $attributes Indexed array with additional values in the format, where the key must be a supported attributed
 	 * for the given type.
-	 * \return Severity level of the object status
+	 * \return Reference to the field object, or the severity in case of errors
 	 */
 	public function addField($type, $name, $value = '', $attributes = array())
 	{
@@ -146,13 +146,16 @@ class Form extends BaseElement
 				$type = 'button';
 			}
 
-			if (!OWLloader::getClass('formfield.'.$type, OWL_UI_INC . '/formfields')) {
+			if (!OWLloader::getClass('formfield.'.$type, OWL_PLUGINS . '/formfields')) {
 				$this->set_status (FORM_NOCLASS, $type);
 				return ($this->severity);
 			}
-			$_className = 'FormField' . ucfirst($type);
+			$_className = 'FormField' . ucfirst($type) . 'Plugin';
 
-			$this->fields[$name] = new $_className($_subtype);
+			if (!($this->fields[$name] = new $_className($_subtype))) {
+				$this->set_status (FORM_IVCLASSNAME, array($type, $_className));
+				return ($this->severity);
+			}
 
 			$this->fields[$name]->setName($name);
 			$this->fields[$name]->setValue($value);
@@ -161,7 +164,7 @@ class Form extends BaseElement
 		if (count($attributes) > 0) {
 			$this->setFieldAttributes($name, $attributes);
 		}
-		return ($this->severity);
+		return $this->fields[$name];
 	}
 
 	/**
@@ -204,7 +207,7 @@ class Form extends BaseElement
 			$this->set_status (FORM_NOSUCHFIELD, array($name));
 			return null;
 		}
-		return $this->fields[$name]->getFieldCode();
+		return $this->fields[$name]->showElement();
 	}
 
 	/**
@@ -228,6 +231,17 @@ class Form extends BaseElement
 		$this->addField('hidden', 'owl_dispatch', $this->dispatcher);
 		return $this->showField('owl_dispatch') . '</form>'."\n";
 	}
+
+	/**
+	 * This is a dummy implementation for the showElement() method, since the form is
+	 * never displayed as 1 single element, but spread through to container is belongs in.
+	 * Each subelement of the form is displayed seperately.
+	 * \see BaseElement::showElement()
+	 */
+	public function showElement()
+	{
+		return '';
+	}
 }
 
 /*
@@ -247,7 +261,8 @@ Register::register_code ('FORM_NOMULTIVAL');
 Register::register_code ('FORM_IVMETHOD');
 Register::register_code ('FORM_IVENCODING');
 
-//Register::set_severity (OWL_BUG);
+Register::set_severity (OWL_BUG);
+Register::register_code ('FORM_IVCLASSNAME');
 
 Register::set_severity (OWL_ERROR);
 Register::register_code ('FORM_IVDISPATCH');

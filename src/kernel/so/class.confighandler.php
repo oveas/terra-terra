@@ -2,7 +2,7 @@
 /**
  * \file
  * Define a class for config handling
- * \version $Id: class.confighandler.php,v 1.5 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.6 2011-01-13 11:05:35 oscar Exp $
  */
 
 /**
@@ -97,6 +97,7 @@ abstract class ConfigHandler
 		if (($_s = Register::get_severity_level($val)) > 0) {
 			return ($_s);
 		}
+		// TODO; We've got toStrictBoolean() for this now
 		if ($val === 'true' || $val === 'True' || $val === 'TRUE' || $val === '1') {
 			return (true);
 		}
