@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.9 2011-01-18 14:24:59 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.10 2011-01-18 14:32:42 oscar Exp $
  */
 
 /**
@@ -102,6 +102,13 @@ class DbHandler extends _OWL
 	private static $instance;
 
 	/**
+	 * integer - self reference to the original object before cloning
+	 * \private
+	 * \static
+	 */
+	private static $original_instance;
+
+	/**
 	 * Class constructor; opens the database connection.
 	 * \private
 	 * \param[in] $srv Database server
@@ -199,7 +206,7 @@ class DbHandler extends _OWL
 	public static function get_instance()
 	{
 		if (!DbHandler::$instance instanceof self) {
-			DbHandler::$instance = new self(
+			DbHandler::$original_instance = DbHandler::$instance = new self(
 					  ConfigHandler::get ('dbserver')
 					, ConfigHandler::get ('dbname')
 					, ConfigHandler::get ('dbuser')
@@ -207,7 +214,8 @@ class DbHandler extends _OWL
 			);
 			DbHandler::$instance->open();
 		}
-		return DbHandler::$instance;
+		// Make sure we don't return a clone
+		return DbHandler::$original_instance;
 	}
 
 	/**
