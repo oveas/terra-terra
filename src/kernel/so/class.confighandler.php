@@ -2,7 +2,7 @@
 /**
  * \file
  * Define a class for config handling
- * \version $Id: class.confighandler.php,v 1.6 2011-01-13 11:05:35 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.7 2011-01-18 14:24:59 oscar Exp $
  */
 
 /**
@@ -41,47 +41,25 @@ abstract class ConfigHandler
 			}
 			$_value = trim ($_value);
 			$_value = self::convert ($_value);
-			
-			$_hide = strpos ($_item, $GLOBALS['config']['hide']['tag']);
+
+			$_protect = strpos ($_item, $GLOBALS['config']['config']['protect_tag']);
+			$_protect = ($_protect !== false);
+			if ($_protect === true) {
+				$_item = str_replace($GLOBALS['config']['config']['protect_tag'], '', $_item);
+				$GLOBALS['config']['protected_values'][] = $_item;
+			}
+			if (in_array($_item, $GLOBALS['config']['protected_values'])
+				&& array_key_exists($_item, $GLOBALS['config']['values'])) {
+				OWL::stat(CONFIG_PROTECTED, $_item);
+				continue;
+			}
+
+			$_hide = strpos ($_item, $GLOBALS['config']['config']['hide_tag']);
 			$_hide = ($_hide !== false);
-			if ($_hide) {
-				$_item = str_replace($GLOBALS['config']['hide']['tag'], '', $_item);
+			if ($_hide === true) {
+				$_item = str_replace($GLOBALS['config']['config']['hide_tag'], '', $_item);
 			}
-			if (strpos ($_item, '|') !== false) {
-				$_item = explode ('|', $_item);
-				$_pointer =& $GLOBALS['config'];
-				if ($_hide) {
-					$_hidden =& $GLOBALS['hidden_values'];
-				}
-				foreach ($_item as $_k => $_v) {
-					if ($_k == (count ($_item)-1)) {
-						if ($_hide) {
-							$_hidden[$_v] = $_value; 
-							$_pointer[$_v] = $GLOBALS['config']['hide']['value'];
-						} else {
-							$_pointer[$_v] = $_value;
-						}
-					} else {
-						if (!array_key_exists($_v, $_pointer)) {
-							$_pointer[$_v] = array();
-						}
-						$_pointer =& $_pointer[$_v];
-						if ($_hide) {
-							if (!array_key_exists($_v, $_hidden)) {
-								$_hidden[$_v] = array();
-							}
-							$_hidden =& $_hidden[$_v];
-						}
-					}
-				}
-			} else {
-				if ($_hide) {
-					$GLOBALS['hidden_values'][$_item] = $_value;
-					$GLOBALS['config'][$_item] = $GLOBALS['config']['hide']['value'];
-				} else {
-					$GLOBALS['config'][$_item] = $_value;
-				}
-			}
+			self::_set($_item, $_value, $_hide);
 		}
 		@fclose ($fpointer);
 	}
@@ -123,19 +101,26 @@ abstract class ConfigHandler
 		if (isset ($GLOBALS['owl_cache']['cget'][$item])) {
 			return ($GLOBALS['owl_cache']['cget'][$item]);
 		}
+
 		$_cache =& $GLOBALS['owl_cache']['cget'][$item];
-		$_c =& $GLOBALS['config'];
-		$_h =& $GLOBALS['hidden_values'];
+		$_c =& $GLOBALS['config']['values'];
+		$_h =& $GLOBALS['config']['hidden_values'];
+		
 		if (strpos ($item, '|') !== false) {
 			$item = explode ('|', $item);
 			foreach ($item as $_k => $_v) {
 				$_c =& $_c[$_v];
-				$_h =& $_h[$_v];
+				if (array_key_exists($_v, $_h)) {
+					$_h =& $_h[$_v];
+				}
 			}
 		} else {
 			$_c =& $_c[$item];
-			$_h =& $_h[$item];
+			if (array_key_exists($item, $_h)) {
+				$_h =& $_h[$item];
+			}
 		}
+
 		if (!isset ($_c)) {
 			if ($default === null) {
 				OWL::stat (CONFIG_NOVALUE, $item); 
@@ -144,8 +129,8 @@ abstract class ConfigHandler
 				return $default;
 			}
 		}
-		if ($_c === $GLOBALS['config']['hide']['value']) {
-			$_cache = $_h;
+		if ($_c === $GLOBALS['config']['config']['hide_value']) {
+			$_cache = owlCrypt($_h);
 		} else {
 			$_cache = $_c;
 		}
@@ -154,35 +139,73 @@ abstract class ConfigHandler
 
 
 	/**
-	 * Set a configuration item. Existing values will be overwritten.
+	 * Set a configuration item. Existing values will be overwritten when not protected.
 	 * \public
 	 * \param[in] $item The configuration item in the same format as it appears in the
 	 * configuration file (e.g. 'group|subject|item')
 	 * \param[in] $value The new value of the item
 	 */
-	public static function set ($item, $value)
+	public static function set ($_item, $_value)
 	{
-		if (isset ($GLOBALS['owl_cache']['cget'][$item])) {
+		if (isset ($GLOBALS['owl_cache']['cget'][$_item])) {
 			// Clean the cache
-			unset ($GLOBALS['owl_cache']['cget'][$item]);
+			unset ($GLOBALS['owl_cache']['cget'][$_item]);
 		}
 
-		// TODO; check if the original value had to be hidden. If so, hide again!
-		if (strpos ($item, '|') !== false) {
-			$_item = explode ('|', $item);
-			$_pointer =& $GLOBALS['config'];
+		if (in_array($_item, $GLOBALS['config']['protected_values'])) {
+			OWL::stat(CONFIG_PROTECTED, $_item);
+			return;
+		}
+		self::_set($_item, $_value, array_key_exists($_item, $GLOBALS['config']['hidden_values']));
+		
+	}
+
+	/**
+	 * Set or update a configuration item
+	 * \param[in] $_item Item name or path (seperated with '|')
+	 * \param[in] $_value The calue to be set
+	 * \param[in] $_hide Boolean which it true when this is a hidden item
+	 */
+	private static function _set ($_item, $_value, $_hide)
+	{
+		if ($_hide) {
+			$_value = owlCrypt($_value);
+		}
+		
+		if (strpos ($_item, '|') !== false) {
+			$_item = explode ('|', $_item);
+			$_pointer =& $GLOBALS['config']['values'];
+			if ($_hide) {
+				$_hidden =& $GLOBALS['config']['hidden_values'];
+			}
 			foreach ($_item as $_k => $_v) {
 				if ($_k == (count ($_item)-1)) {
-					$_pointer[$_v] = $value;
+					if ($_hide) {
+						$_hidden[$_v] = $_value; 
+						$_pointer[$_v] = $GLOBALS['config']['config']['hide_value'];
+					} else {
+						$_pointer[$_v] = $_value;
+					}
 				} else {
 					if (!array_key_exists($_v, $_pointer)) {
 						$_pointer[$_v] = array();
 					}
 					$_pointer =& $_pointer[$_v];
+					if ($_hide) {
+						if (!array_key_exists($_v, $_hidden)) {
+							$_hidden[$_v] = array();
+						}
+						$_hidden =& $_hidden[$_v];
+					}
 				}
 			}
 		} else {
-			$GLOBALS['config'][$_item] = $value;
+			if ($_hide) {
+				$GLOBALS['config']['hidden_values'][$_item] = $_value;
+				$GLOBALS['config']['values'][$_item] = $GLOBALS['config']['config']['hide_value'];
+			} else {
+				$GLOBALS['config']['values'][$_item] = $_value;
+			}
 		}
 	}
 }
@@ -204,4 +227,5 @@ Register::set_severity (OWL_ERROR);
 Register::register_code ('CONFIG_NOVALUE');
 
 //Register::set_severity (OWL_FATAL);
+Register::register_code ('CONFIG_PROTECTED');
 //Register::set_severity (OWL_CRITICAL);

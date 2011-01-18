@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.10 2011-01-10 18:45:59 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.11 2011-01-18 14:24:59 oscar Exp $
  */
 
 /**
@@ -42,7 +42,10 @@ class UserHandler extends _OWL
 	{
 		_OWL::init();
 
-		$this->dataset->set_tablename('owl_userdata');
+		if (ConfigHandler::get ('owltables', true)) {
+			$this->dataset->set_prefix(ConfigHandler::get ('owlprefix'));
+		}
+		$this->dataset->set_tablename('user');
 
 		$this->session = new Session();
 

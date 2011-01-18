@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library helper class
- * \version $Id: class.owl.php,v 1.2 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.owl.php,v 1.3 2011-01-18 14:24:59 oscar Exp $
  */
 
 /**
@@ -55,7 +55,7 @@ class OWL extends _OWL
 	 * \param[in] $a First parameter for passthrough
 	 * \param[in] $b Second parameter for passthrough
 	 */
-	public function stat ($a, $b = array())
+	public static function stat ($a, $b = array())
 	{
 		$me = self::get_instance(); // Make sure I am instantiated
 		$me->set_status ($a, $b);

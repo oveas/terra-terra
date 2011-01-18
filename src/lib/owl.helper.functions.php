@@ -3,15 +3,8 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.3 2011-01-13 11:05:34 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.4 2011-01-18 14:24:59 oscar Exp $
  */
-
-// Select the (no)debug function libraries.
-if ($GLOBALS['config']['debug']) {
-	require_once (OWL_LIBRARY . '/owl.debug.functions.php');
-} else {
-	require_once (OWL_LIBRARY . '/owl.nodebug.functions.php');
-}
 
 /**
  * Convert a given value to a strict boolean.

@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.13 2011-01-13 11:05:35 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.14 2011-01-18 14:24:58 oscar Exp $
  */
 
 // Error handling used during development
@@ -41,6 +41,9 @@ define ('OWL_UI_INC',	OWL_ROOT . '/kernel/ui');
 
 //! OWL library
 define ('OWL_LIBRARY',	OWL_ROOT . '/lib');
+
+//! Default log directory
+define ('OWL_LOG',		OWL_ROOT . '/log');
 
 //! OWL plugindirectory
 define ('OWL_PLUGINS',	OWL_ROOT . '/plugins');
@@ -173,23 +176,32 @@ OWLloader::getClass('container', OWL_UI_INC);
 //$GLOBALS['owl_object'] = new OWL();
 $GLOBALS['messages'] = array ();
 
-ConfigHandler::read_config (ConfigHandler::get ('configfiles|owl'));
-if (array_key_exists ('app', ConfigHandler::get ('configfiles'))) {
-	if (is_array(ConfigHandler::get ('configfiles|app'))) {
-		foreach (ConfigHandler::get ('configfiles|app') as $_k => $_v) {
-			ConfigHandler::read_config ($_v);
-		}
-	} else {
-		ConfigHandler::read_config (ConfigHandler::get ('configfiles|app'));
+// General helper functions.
+require_once (OWL_LIBRARY . '/owl.helper.functions.php');
+
+// If an APP_CONFIG file has been defined, add it to the config files array
+// Values in this config file will overwrite the OWL defaults. 
+if (defined('APP_CONFIG_FILE')) {
+	$GLOBALS['config']['configfiles']['app'][] = APP_CONFIG_FILE;
+}
+
+ConfigHandler::read_config ($GLOBALS['config']['configfiles']['owl']);
+if (count ($GLOBALS['config']['configfiles']['app']) > 0) {
+	foreach ($GLOBALS['config']['configfiles']['app'] as $_cfgfile) {
+		ConfigHandler::read_config ($_cfgfile);
 	}
 }
 
-// General helper functions. This can be loaded only after the configuration
-// has been parsed, since 'config|debug' is used to select the (no)debug library.
-require_once (OWL_LIBRARY . '/owl.helper.functions.php');
+// Singeltons
+$GLOBALS['logger'] = OWL::factory('LogHandler');
+
+// Select the (no)debug function libraries.
+if ($GLOBALS['config']['values']['debug']) {
+	require_once (OWL_LIBRARY . '/owl.debug.functions.php');
+} else {
+	require_once (OWL_LIBRARY . '/owl.nodebug.functions.php');
+}
 
 // Set up the label translations
 Register::register_labels(true);
 
-// Singeltons
-$GLOBALS['logger'] = OWL::factory('LogHandler');

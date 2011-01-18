@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Loghandler class
- * \version $Id: class.loghandler.php,v 1.5 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: class.loghandler.php,v 1.6 2011-01-18 14:24:59 oscar Exp $
  */
 
 //require_once (OWL_INCLUDE . '/class._OWL.php');
@@ -51,8 +51,8 @@ class LogHandler extends _OWL
 		$this->opened = false;
 		$this->created = false;
 		$this->set_filename();
-		if (ConfigHandler::get ('logging|multiple_file') ||
-			ConfigHandler::get ('logging|persistant')) {
+		if (ConfigHandler::get ('logging|multiple_file', false) ||
+			ConfigHandler::get ('logging|persistant', false)) {
 			$this->open_logfile();
 		}
 	}
@@ -94,16 +94,24 @@ class LogHandler extends _OWL
 	}
 
 	/**
-	 * Find out what the filename of the logfile should be
+	 * Find out what the filename of the logfile should be. When logs are written
+	 * before the configuration is complete, a temporart startup logfile is created
 	 * \private
 	 */
 	private function set_filename ()
 	{
-		if (ConfigHandler::get ('logging|multiple_file')) {
-			$this->filename = ConfigHandler::get ('logging|filename')
-							. '.' . Register::get_run_id();
+		$_file = ConfigHandler::get ('logging|filename', OWL_LOG . '/owl.startup.log');
+		$_segments = explode('/', $_file);
+		$_first = array_shift($_segments);
+		if (defined($_first)) {
+			array_unshift($_segments, constant($_first));
+			$_file = implode('/', $_segments);
+		}
+		
+		if (ConfigHandler::get ('logging|multiple_file', false)) {
+			$this->filename = $_file . '.' . Register::get_run_id();
 		} else {
-			$this->filename = ConfigHandler::get ('logging|filename');
+			$this->filename = $_file;
 		}
 		
 	}
@@ -175,27 +183,31 @@ class LogHandler extends _OWL
 		$this->write_logfile ($msg);
 
 		$_severity = $this->get_severity($code);
-		if ($_severity >= ConfigHandler::get ('logging|trace_level')
-			&& $_severity < ConfigHandler::get ('exception|throw_level') ) { // Will already be logged
-			$this->backtrace();
+		if ($_severity >= ConfigHandler::get ('logging|trace_level', 0xf)
+			&& $_severity < ConfigHandler::get ('exception|throw_level', 0x0) ) { // Will already be logged
+			$_trace = $this->backtrace();
+			$this->write_logfile ($_trace);
 		}
-		if (!ConfigHandler::get ('logging|multiple_file') &&
-			!ConfigHandler::get ('logging|persistant')) {
+		if (!ConfigHandler::get ('logging|multiple_file', false) &&
+			!ConfigHandler::get ('logging|persistant', false)) {
 			$this->close_logfile();
 		}
 	}
 
 	/**
 	 * Create a backtrace of the current log item
+	 * \param[in] $_browser_dump Just for OWL development (early days...); when true, the
+	 * trace is dumped to the browser.
 	 * \private
 	 * \return Trace information of this call.
 	 */
-	private function backtrace ()
+	private function backtrace ($_browser_dump = false)
 	{
-		$trace = debug_backtrace();
-		echo "<pre>";
-		print_r ($trace);
-		echo "</pre>";
+		$_trace = "(start trace)\n" . print_r(debug_backtrace(), true) . "\n(end trace)\n";
+		if ($_browser_dump === true) {
+			echo '<pre>' .$_trace . '</pre>';
+		}
+		return $_trace;
 	}
 }
 

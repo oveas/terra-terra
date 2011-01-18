@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.6 2011-01-10 18:45:59 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.7 2011-01-18 14:24:59 oscar Exp $
  */
 
 /**
@@ -106,7 +106,7 @@ class DataHandler extends _OWL
 	 * \param[in] $tablename Default table name for this dataset
 	 * \public
 	 */
-	public function DataHandler ($tablename = '')
+	public function __construct ($tablename = '')
 	{
 		_OWL::init();
 		$this->owl_data = array();
@@ -389,7 +389,18 @@ class DataHandler extends _OWL
 		}
 		return ($this->set_high_severity ($this->owl_database));
 	}
-	
+
+	/**
+	 * Overwrite the table prefix for this dataset.
+	 * Since the prefix is stored in the database handler object, a clone is made here.
+	 * \param[in] $prefix Table prefix
+	 */
+	public function set_prefix ($prefix)
+	{
+		$this->owl_database = clone $this->owl_database;
+		$this->owl_database->alt(array('prefix'=>$prefix));
+	}
+
 	/**
 	 * Return the last status of the database
 	 * \public

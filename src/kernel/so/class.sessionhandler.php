@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.7 2011-01-10 18:45:59 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.8 2011-01-18 14:24:59 oscar Exp $
  */
 
 /**
@@ -57,7 +57,10 @@ class SessionHandler extends _OWL
 	{
 		_OWL::init();
 
-		$this->dataset->set_tablename('owl_sessiondata');
+		if (ConfigHandler::get ('owltables', true) === true) {
+			$this->dataset->set_prefix(ConfigHandler::get ('owlprefix'));
+		}
+		$this->dataset->set_tablename('session');
 
 		// We need a reference to DbHandler here to make sure the object
 		// can't go out of scope before the session data is written during rundown.

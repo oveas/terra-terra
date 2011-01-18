@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the top-level BaseElement class
- * \version $Id: class.baseelement.php,v 1.3 2011-01-13 11:05:34 oscar Exp $
+ * \version $Id: class.baseelement.php,v 1.4 2011-01-18 14:24:58 oscar Exp $
  */
 
 /**
@@ -50,6 +50,12 @@ abstract class BaseElement extends _OWL
 	 */
 	protected $id = '';
 	
+	/**
+	 * Boolean for loop detection
+	 * \private
+	 */
+	private $shown = false;
+
 	/**
 	 * Set the element ID
 	 * \param[in] $_value Identification
@@ -108,7 +114,7 @@ abstract class BaseElement extends _OWL
 
 	/**
 	 * Fill the content for a container. Existing content (e.g. set during instantiation)
-	 * will be overwritten.
+	 * will be overwritten. If that is not desired, the addToContent method should be used instead.
 	 * \param[in] $_content Reference to the content, which can be HTML code or an object,
 	 * of which the showElement() method will be called to retrieve the HTML.
 	 */
@@ -122,18 +128,59 @@ abstract class BaseElement extends _OWL
 	}
 
 	/**
-	 * Get the content of the current container, which can be plain HTML or an object,
-	 * in which case the HTML will be retrieved from the object here.
-	 * Enter description here ...
+	 * Add a content to the container. If the container is not an array yet, it will be
+	 * converted to obe.
+	 * \param[in] $_content Reference to the content, which can be HTML code or an object,
+	 * of which the showElement() method will be called to retrieve the HTML.
+	 */
+	public function addToContent(&$_content)
+	{
+		if (is_object($_content) && ($_content === $this)) {
+			$this->set_status (DOM_SELFREF, get_class($this));
+			return '&nbsp;'; // Probably fatal, but for completeness...
+		}
+		if (!is_array($this->content)) {
+			$_existingContent = $this->content;
+			$this->content = array($_existingContent);
+		}
+		$this->content[] = $_content;
+	}
+
+	/**
+	 * Get the content of the current container, which can be plain HTML, an object,
+	 * or an array which can mix both types.
+	 * \return HTML code
 	 */
 	public function getContent()
 	{
-		if (is_object($this->content)) {
-			// TODO; this can cause a loop when a reference is set to an object
-			// that instantiated me. Make some loop detection here.
-			return $this->content->showElement();
+		$_htmlCode = '';
+		if (is_array($this->content)) {
+			foreach ($this->content as $_item) {
+				$_htmlCode .= $this->_getContent($_item);
+			}
 		} else {
-			return $this->content;
+			$_htmlCode .= $this->_getContent($this->content);
+		}
+		return $_htmlCode;
+	}
+
+	/**
+	 * Get the HTML for a content item, which can be plain HTML or an object,
+	 * in which case the HTML will be retrieved from the object here.
+	 * \param[in] $_contentItem The (next) contentitem
+	 * \return HTML code
+	 */
+	private function _getContent($_contentItem)
+	{
+		if (is_object($_contentItem)) {
+			if ($this->shown === true) {
+				$this->set_status (DOM_LOOPDETECT, array(get_class($_contentItem), get_class($this)));
+				return '&nbsp;'; // Probably fatal, but for completeness...
+			}
+			$this->shown = true;
+			return $_contentItem->showElement();
+		} else {
+			return $_contentItem;
 		}
 	}
 
@@ -245,6 +292,7 @@ Register::register_code('DOM_IVATTRIB');
 
 Register::set_severity (OWL_ERROR);
 Register::register_code('DOM_SELFREF');
+Register::register_code('DOM_LOOPDETECT');
 
 //Register::set_severity (OWL_FATAL);
 //Register::set_severity (OWL_CRITICAL);

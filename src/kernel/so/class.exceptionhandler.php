@@ -3,7 +3,7 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.6 2011-01-10 18:45:59 oscar Exp $
+ * \version $Id: class.exceptionhandler.php,v 1.7 2011-01-18 14:24:59 oscar Exp $
  */
 
 
@@ -317,6 +317,11 @@ class OWLExceptionHandler
 	 */ 
 	public static function log_exception(OWLException $exception)
 	{
+		$_tmp_logger = false;
+		if (!array_key_exists('logger', $GLOBALS) || !is_object($GLOBALS['logger'])) {
+			$GLOBALS['logger'] = OWL::factory('LogHandler');
+			$_tmp_logger = true;
+		}
 		$GLOBALS['logger']->log ($exception->stack_dump(true), $exception->thrown_code);
 
 		if (ConfigHandler::get ('exception|show_in_browser')) {		
@@ -324,6 +329,9 @@ class OWLExceptionHandler
 		} else {
 			echo ('<p class="exception"><b>An exception was thrown</b><br/>'
 				. 'Check the logfile for details</p>');
+		}
+		if ($_tmp_logger === true) {
+			unset ($GLOBALS['logger']);
 		}
 	}
   

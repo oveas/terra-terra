@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
- * \version $Id: owl.messages.php,v 1.13 2011-01-13 11:05:34 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.14 2011-01-18 14:24:59 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -19,6 +19,7 @@ $GLOBALS['messages'] = array (
 	, OWL_STATUS_NOSAVSTAT	=> 'Trying to restore a status that was not previously saved'
 	, OWL_STATUS_THROWERR	=> 'No context to throw an exception'
 	, CONFIG_NOVALUE		=> 'Nonexising config value <i>$p1$</i> requested'
+	, CONFIG_PROTECTED		=> 'Attempt to overwrite the protected configuration item <i>$p1$</i>'
 	, LOGGING_OPENERR		=> 'Cannot open logfile <i>$p1$</i> for write'
 	, SESSION_INVUSERNAME	=> 'Username does not exist'
 	, SESSION_NODATASET		=> 'Session was created without a dataset'
@@ -30,6 +31,7 @@ $GLOBALS['messages'] = array (
 	, SESSION_WRITEERR		=> 'Session data could not be written - database object is already destroyed'
 	, DBHANDLE_OPENED		=> 'Database $p1$ opened with ID $p2$'
 	, DBHANDLE_QPREPARED	=> 'Prepared SQL statement for $p1$: <i>$p2$</i>'
+	, DBHANDLE_NOTACLONE	=> 'Method alt() was called on a database handler that was not cloned'
 	, DBHANDLE_ROWSREAD		=> '$p2$ rows returned to $p4$ (line $p3$) with query: <i>$p1$</i>'
 	, DBHANDLE_ROWCOUNT		=> '$p2$ rows where successfully $p1$'
 	, DBHANDLE_CONNECTERR	=> 'Error connecting to database server $p1$ with username $p2$ and password $p3$'
@@ -49,10 +51,10 @@ $GLOBALS['messages'] = array (
 	, DATA_AMBFIELD			=> 'The variable $p1$ occured more than once'
 	, DATA_NODBLINK			=> 'A database query shoukld be prepared, but there is no database handler set yet'
 	, DATA_IVPREPARE		=> 'A database query was prepared with an invalid prepare flag'
-	, FORM_RETVALUE			=> 'Retrieve value $p2 for formvariable $p1'
-	, FORM_STORVALUE		=> 'Storing formvariable $p1 with value $p2'
+	, FORM_RETVALUE			=> 'Retrieve value $p2$ for formvariable $p1$'
+	, FORM_STORVALUE		=> 'Storing formvariable $p1$ with value $p2$'
 	, FORM_PARSE			=> 'Start parsing the incoming formdata'
-	, FORM_NOVALUE			=> 'No value found for formvariable $p1'
+	, FORM_NOVALUE			=> 'No value found for formvariable $p1$'
 	, USER_LOGINFAIL		=> 'Error logging in with username $p1$ and password $p2$'
 	, USER_LOGGEDIN			=> 'User $p1$ logged in with password $p2$'
 	, USER_RESTORERR		=> 'Error restoring data for user ID $p1$'
@@ -94,6 +96,7 @@ $GLOBALS['messages'] = array (
 	, DISP_NOMETHOD			=> 'Method $p1$ not found in class $p2$'
 	, DOM_IVATTRIB			=> 'Invalid attribute $p1$'
 	, DOM_SELFREF			=> 'Cannot set the content with a reference to myself in element $p1$'
+	, DOM_LOOPDETECT		=> 'Loop detected - parent item $p1$ is used as content in $p2$'
 	, CONTAINER_IVTYPE		=> 'Invalid container type $p1$'
 	, CONTAINER_IVCLASSNAME	=> 'Invalid classname for containertype $p1$ - cannot instantiate $p2$'
 );

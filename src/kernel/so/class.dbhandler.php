@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.8 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.9 2011-01-18 14:24:59 oscar Exp $
  */
 
 /**
@@ -90,6 +90,11 @@ class DbHandler extends _OWL
 	private $query;
 
 	/**
+	 * boolean -  true when the object has been cloned
+	 */
+	private $cloned;
+	
+	/**
 	 * integer - self reference
 	 * \private
 	 * \static
@@ -105,14 +110,14 @@ class DbHandler extends _OWL
 	 * \param[in] $pwd Password to use for connection
 	 * \param[in] $dbtype Database type (reserved for future use, currently only MySQL is implemented)
 	 */
-	// TODO must be public for CMAIL_Intranet.... 
-	public function __construct ($srv = 'localhost'
+	private function __construct ($srv = 'localhost'
 			,  $db = ''
 			,  $usr = ''
 			,  $pwd = ''
 			,  $dbtype = 'MySQL')
 	{
 		_OWL::init();
+		$this->cloned = false;
 		$this->database['server']   = $srv;
 		$this->database['name']     = $db;
 		$this->database['username'] = $usr;
@@ -139,16 +144,53 @@ class DbHandler extends _OWL
 	}
 
 	/**
-	 * Implementation of the __clone() function to prevent cloning of this singleton;
-	 * it triggers a fatal (user)error
+	 * Implementation of the __clone() function.
+	 * The current connection will be closed, and a property will be set to indicate this
+	 * is a cloned object.
+	 * After that, the alt() method can be used to change connection info.
 	 * \public
 	 */
 	public function __clone ()
 	{
-//		$this->instance = ++self::$instances;
-		trigger_error('invalid object cloning');
+		$this->close();
+		self::$instance = ++self::$instance;
+		$this->cloned = true;
+		$this->open();
 	}
 
+	/**
+	 * On a cloned database object, set an alternative, prefix or connection.
+	 * \param[in] $properties An indexed array with the properties that should be changed.
+	 * Supported are:
+	 * 	- prefix   : The table prefix
+	 * 	- server   : Database server
+	 * 	- name     : Database name
+	 * 	- username : Username to connect with
+	 * 	- password : Password to use for connection
+	 * 	- dbtype   : Database type (reserved for future use, currently only MySQL is implemented)
+	 */
+	public function alt($properties)
+	{
+		if (!$this->cloned) {
+			$this->set_status (DBHANDLE_NOTACLONE);
+		} else {
+			foreach ($properties as $k => $v) {
+				if ($k == 'prefix') {
+					$this->db_prefix = $v;
+				} elseif ($k == 'server') {
+					$this->database['server'] = $v;
+				} elseif ($k == 'name') {
+					$this->database['name'] = $v;
+				} elseif ($k == 'username') {
+					$this->database['username'] = $v;
+				} elseif ($k == 'password') {
+					$this->database['password'] = $v;
+				} elseif ($k == 'dbtype') {
+					$this->database['engine'] = $v;
+				}
+			}
+		}
+	}
 	/**
 	 * Return a reference to my implementation. If necessary, create that implementation first.
 	 * \public
@@ -743,7 +785,8 @@ Register::register_code ('DBHANDLE_NODATA');
 Register::set_severity (OWL_WARNING);
 Register::register_code ('DBHANDLE_IVTABLE');
 
-//Register::set_severity (OWL_BUG);
+Register::set_severity (OWL_BUG);
+Register::register_code ('DBHANDLE_NOTACLONE');
 
 Register::set_severity (OWL_ERROR);
 Register::register_code ('DBHANDLE_CONNECTERR');
