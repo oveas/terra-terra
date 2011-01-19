@@ -2,7 +2,7 @@
 /**
  * \file
  * Define a class for config handling
- * \version $Id: class.confighandler.php,v 1.8 2011-01-19 17:00:32 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.9 2011-01-19 17:04:02 oscar Exp $
  */
 
 /**
@@ -141,9 +141,9 @@ abstract class ConfigHandler
 	/**
 	 * Set a configuration item. Existing values will be overwritten when not protected.
 	 * \public
-	 * \param[in] $item The configuration item in the same format as it appears in the
+	 * \param[in] $_item The configuration item in the same format as it appears in the
 	 * configuration file (e.g. 'group|subject|item')
-	 * \param[in] $value The new value of the item
+	 * \param[in] $_value The new value of the item
 	 */
 	public static function set ($_item, $_value)
 	{

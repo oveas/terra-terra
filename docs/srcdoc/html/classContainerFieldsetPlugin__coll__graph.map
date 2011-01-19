@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classContainerPlugin.html" title="ContainerPlugins." alt="" coords="28,862,140,1026"/>
-<area shape="rect" id="node4" href="$classBaseElement.html" title="DOM Element base class." alt="" coords="24,425,144,813"/>
+<area shape="rect" id="node2" href="$classContainerPlugin.html" title="ContainerPlugins." alt="" coords="28,918,140,1082"/>
+<area shape="rect" id="node4" href="$classBaseElement.html" title="DOM Element base class." alt="" coords="23,425,145,869"/>
 <area shape="rect" id="node6" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $saved_status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# save_status()\l# restore_status()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="13,6,155,375"/>
 </map>

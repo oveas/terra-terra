@@ -48,6 +48,8 @@ Collaboration diagram for Tablecell:\nopagebreak
 \item 
 \hyperlink{classBaseElement_a164a9c6e4ee68afa0ad343942ba54d28}{setContent} (\&\$\_\-content)
 \item 
+\hyperlink{classBaseElement_abd48eef64ca4f419f26d66a0c0419908}{addToContent} (\&\$\_\-content)
+\item 
 \hyperlink{classBaseElement_af8c86b93bcdcfbc415bf96c622dc5516}{getContent} ()
 \item 
 \hyperlink{classBaseElement_ad5789f45f16aaa144716ee8558069c31}{setEvent} (\$\_\-event, \$\_\-action, \$\_\-add=false)
@@ -130,6 +132,20 @@ References \_\-OWL::init(), and BaseElement::setContent().
 
 
 \subsection{Member Function Documentation}
+\index{Tablecell@{Tablecell}!addToContent@{addToContent}}
+\index{addToContent@{addToContent}!Tablecell@{Tablecell}}
+\subsubsection[{addToContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::addToContent (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-content}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_abd48eef64ca4f419f26d66a0c0419908}
+Add a content to the container. If the container is not an array yet, it will be converted to obe. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-content}]Reference to the content, which can be HTML code or an object, of which the \hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{showElement()} method will be called to retrieve the HTML. \end{DoxyParams}
+
+
+References \_\-OWL::set\_\-status().
+
 \index{Tablecell@{Tablecell}!check@{check}}
 \index{check@{check}!Tablecell@{Tablecell}}
 \subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
@@ -212,7 +228,7 @@ References BaseElement::getEvents().
 
 
 
-Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Tablerow::showElement(), showElement(), Table::showElement(), and Container::showElement().
+Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Tablerow::showElement(), showElement(), Table::showElement(), Document::showElement(), and Container::showElement().
 
 \index{Tablecell@{Tablecell}!getContent@{getContent}}
 \index{getContent@{getContent}!Tablecell@{Tablecell}}
@@ -221,9 +237,16 @@ Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Ta
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_af8c86b93bcdcfbc415bf96c622dc5516}
-Get the content of the current container, which can be plain HTML or an object, in which case the HTML will be retrieved from the object here. Enter description here ... 
+Get the content of the current container, which can be plain HTML, an object, or an array which can mix both types. \begin{DoxyReturn}{Returns}
+HTML code 
+\end{DoxyReturn}
 
-Referenced by showElement(), and Container::showElement().
+
+References BaseElement::\_\-getContent().
+
+
+
+Referenced by showElement(), Document::showElement(), Container::showElement(), and Form::showElement().
 
 \index{Tablecell@{Tablecell}!getId@{getId}}
 \index{getId@{getId}!Tablecell@{Tablecell}}
@@ -237,6 +260,10 @@ Get the element's HTML ID
 \begin{DoxyReturn}{Returns}
 The ID 
 \end{DoxyReturn}
+
+
+Referenced by BaseElement::\_\-getContent().
+
 \index{Tablecell@{Tablecell}!init@{init}}
 \index{init@{init}!Tablecell@{Tablecell}}
 \subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init (
@@ -250,7 +277,7 @@ References OWL::factory().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), \_\-\_\-construct(), Table::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), \_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), and Dispatcher::\_\-\_\-construct().
 
 \index{Tablecell@{Tablecell}!reset@{reset}}
 \index{reset@{reset}!Tablecell@{Tablecell}}
@@ -327,7 +354,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), FormFieldRadioPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{Tablecell@{Tablecell}!setAttributes@{setAttributes}}
 \index{setAttributes@{setAttributes}!Tablecell@{Tablecell}}
@@ -370,7 +397,7 @@ Set the colspan value
 \item[{\&\$}]{ \_\-content}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_a164a9c6e4ee68afa0ad343942ba54d28}
-Fill the content for a container. Existing content (e.g. set during instantiation) will be overwritten. 
+Fill the content for a container. Existing content (e.g. set during instantiation) will be overwritten. If that is not desired, the addToContent method should be used instead. 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-content}]Reference to the content, which can be HTML code or an object, of which the \hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{showElement()} method will be called to retrieve the HTML. \end{DoxyParams}
 

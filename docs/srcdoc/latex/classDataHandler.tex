@@ -26,7 +26,7 @@ Collaboration diagram for DataHandler:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classDataHandler_aed5b2eb4ca7b2e4b0c1563d817d73c16}{DataHandler} (\$tablename= '')
+\hyperlink{classDataHandler_a4fd274c45bf06283b05e757b7c081439}{\_\-\_\-construct} (\$tablename= '')
 \item 
 \hyperlink{classDataHandler_ab89e1aaad9cd0a37f1c7f13c1d9c0d57}{reset} (\$level=\hyperlink{class_8datahandler_8php_a19a99423705b41e563424ae76d7fe184}{DATA\_\-RESET\_\-PREPARE})
 \item 
@@ -45,6 +45,8 @@ Collaboration diagram for DataHandler:\nopagebreak
 \hyperlink{classDataHandler_af3e7a17194e97300d499e9178f4913cb}{prepare} (\$type=\hyperlink{class_8datahandler_8php_ac28f74b49007773d24ca2207baac6d32}{DATA\_\-READ})
 \item 
 \hyperlink{classDataHandler_abb329fe5a97eb8df928aabfc8078ff23}{db} (\&\$data=false, \$line=0, \$file= '\mbox{[}unknown\mbox{]}')
+\item 
+\hyperlink{classDataHandler_a27db6fb8365b7def4db7bd72984a0089}{set\_\-prefix} (\$prefix)
 \item 
 \hyperlink{classDataHandler_a3c82ec0a40dabcc55dc203c96abf02d2}{db\_\-status} ()
 \item 
@@ -109,6 +111,23 @@ Aug 4, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 \end{DoxyVersion}
 
 
+\subsection{Constructor \& Destructor Documentation}
+\index{DataHandler@{DataHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!DataHandler@{DataHandler}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{\$}]{ tablename = {\ttfamily ''}}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_a4fd274c45bf06283b05e757b7c081439}
+Class constructor. We don't use a standard constructor (\hyperlink{classDataHandler_a4fd274c45bf06283b05e757b7c081439}{\_\-\_\-construct()}) here, since singleton classes (using private constructors) might derive from this class. In stead we use the PHP4 compatible constructor. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$tablename}]Default table name for this dataset \end{DoxyParams}
+
+
+References OWL::factory(), \_\-OWL::init(), and \_\-OWL::set\_\-status().
+
+
+
 \subsection{Member Function Documentation}
 \index{DataHandler@{DataHandler}!check@{check}}
 \index{check@{check}!DataHandler@{DataHandler}}
@@ -133,20 +152,6 @@ References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::tr
 
 
 Referenced by SessionHandler::write().
-
-\index{DataHandler@{DataHandler}!DataHandler@{DataHandler}}
-\index{DataHandler@{DataHandler}!DataHandler@{DataHandler}}
-\subsubsection[{DataHandler}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::DataHandler (
-\begin{DoxyParamCaption}
-\item[{\$}]{ tablename = {\ttfamily ''}}
-\end{DoxyParamCaption}
-)}\label{classDataHandler_aed5b2eb4ca7b2e4b0c1563d817d73c16}
-Class constructor. We don't use a standard constructor (\_\-\_\-construct()) here, since singleton classes (using private constructors) might derive from this class. In stead we use the PHP4 compatible constructor. 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$tablename}]Default table name for this dataset \end{DoxyParams}
-
-
-References OWL::factory(), \_\-OWL::init(), and \_\-OWL::set\_\-status().
 
 \index{DataHandler@{DataHandler}!db@{db}}
 \index{db@{db}!DataHandler@{DataHandler}}
@@ -287,7 +292,7 @@ References OWL::factory().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), \_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), and Dispatcher::\_\-\_\-construct().
 
 \index{DataHandler@{DataHandler}!prepare@{prepare}}
 \index{prepare@{prepare}!DataHandler@{DataHandler}}
@@ -438,6 +443,16 @@ Severity level
 
 References \_\-OWL::get\_\-severity(), and \_\-OWL::set\_\-status().
 
+\index{DataHandler@{DataHandler}!set\_\-prefix@{set\_\-prefix}}
+\index{set\_\-prefix@{set\_\-prefix}!DataHandler@{DataHandler}}
+\subsubsection[{set\_\-prefix}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::set\_\-prefix (
+\begin{DoxyParamCaption}
+\item[{\$}]{ prefix}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_a27db6fb8365b7def4db7bd72984a0089}
+Overwrite the table prefix for this dataset. Since the prefix is stored in the database handler object, a clone is made here. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$prefix}]\hyperlink{classTable}{Table} prefix \end{DoxyParams}
 \index{DataHandler@{DataHandler}!set\_\-status@{set\_\-status}}
 \index{set\_\-status@{set\_\-status}!DataHandler@{DataHandler}}
 \subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
@@ -457,7 +472,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), set(), set\_\-join(), set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), FormFieldRadioPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), \_\-\_\-construct(), Form::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), set(), set\_\-join(), set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{DataHandler@{DataHandler}!set\_\-tablename@{set\_\-tablename}}
 \index{set\_\-tablename@{set\_\-tablename}!DataHandler@{DataHandler}}

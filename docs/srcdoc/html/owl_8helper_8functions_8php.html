@@ -25,18 +25,191 @@
   </div>
 </div>
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <h1>/home/oscar/projects/owl-php/src/lib/owl.helper.functions.php File Reference</h1>  </div>
 </div>
 <div class="contents">
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a2c49978306cd0e2f4f9406c20373ed02">toStrictBoolean</a> ($_val, $_trueValues=array('yes', 'y', 'true', '1'), $_forceLowercase=true)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#ac0a7a4f459017820c92f439ded932d7f">owlTrn</a> ($_string)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a0836b830fe9e399265d4cf910c5dff28">owlCrypt</a> ($_string)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a0eb759657249228d1a2473ffa7de921c">URL2Path</a> ($_file)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a08f49d79aaaa581551e49017424cbe77">ExpandURL</a> ($_file)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>This file defines general helper functions </p>
 <dl class="version"><dt><b>Version:</b></dt><dd></dd></dl>
-<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="owl_8helper_8functions_8php.html">owl.helper.functions.php</a>,v 1.2 2011-01-10 18:46:00 oscar Exp </dd></dl>
+<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="owl_8helper_8functions_8php.html">owl.helper.functions.php</a>,v 1.5 2011-01-19 17:00:32 oscar Exp </dd></dl>
+<hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a08f49d79aaaa581551e49017424cbe77"></a><!-- doxytag: member="owl.helper.functions.php::ExpandURL" ref="a08f49d79aaaa581551e49017424cbe77" args="($_file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ExpandURL </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_file</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
 </div>
-<hr class="footer"/><address class="footer"><small>Generated on Thu Jan 13 2011 11:56:19 for OWL-PHP by&nbsp;
+<div class="memdoc">
+<p>Expand a given location to a fully qualified URL </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_file</em>&nbsp;</td><td>Location of the file, either a full URL or relative from the base url (the path MUST start with 'http(s)://' or '/'!) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Fully qualified URL, or null when the input is invalid </dd></dl>
+
+<p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>.</p>
+
+<p>Referenced by <a class="el" href="classDocument.html#a9e088502436fe985b501cb5650ab022d">Document::loadScript()</a>, <a class="el" href="classDocument.html#a90810fa2ea28179748a865531c7fc263">Document::loadStyle()</a>, and <a class="el" href="classDocument.html#afca18e2b74a78d2954303a96ffa3d63d">Document::setFavicon()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0836b830fe9e399265d4cf910c5dff28"></a><!-- doxytag: member="owl.helper.functions.php::owlCrypt" ref="a0836b830fe9e399265d4cf910c5dff28" args="($_string)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">owlCrypt </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_string</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Very basic encryption/decryption routine. This is not meant for critical data, but should be used only to hide non-critical info that must be transferred. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_string</em>&nbsp;</td><td>The string to be encrypted or decrypted </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Encrypted or decrypted string </dd></dl>
+
+<p>References <a class="el" href="classConfigHandler.html#aa8f6a7516588561626efccb8be5875ce">ConfigHandler::get()</a>.</p>
+
+<p>Referenced by <a class="el" href="classForm.html#ae90293f5520279d6c18f416d3f883ac8">Form::__construct()</a>, <a class="el" href="classConfigHandler.html#a7a31419ae991ab50967444568277aa4c">ConfigHandler::_set()</a>, <a class="el" href="classDispatcher.html#af79aa0f7056d4bc6765f940a9a0fb039">Dispatcher::dispatch()</a>, and <a class="el" href="classConfigHandler.html#aa8f6a7516588561626efccb8be5875ce">ConfigHandler::get()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac0a7a4f459017820c92f439ded932d7f"></a><!-- doxytag: member="owl.helper.functions.php::owlTrn" ref="ac0a7a4f459017820c92f439ded932d7f" args="($_string)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">owlTrn </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_string</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Translate a textstring using the labels array </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_string</em>&nbsp;</td><td>Text string to translate </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The translation, or the input if none was found. </dd></dl>
+
+<p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, and <a class="el" href="classConfigHandler.html#aa8f6a7516588561626efccb8be5875ce">ConfigHandler::get()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2c49978306cd0e2f4f9406c20373ed02"></a><!-- doxytag: member="owl.helper.functions.php::toStrictBoolean" ref="a2c49978306cd0e2f4f9406c20373ed02" args="($_val, $_trueValues=array('yes', 'y', 'true', '1'), $_forceLowercase=true)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">toStrictBoolean </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_trueValues</em> = <code>array('yes',&nbsp;'y',&nbsp;'true',&nbsp;'1')</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_forceLowercase</em> = <code>true</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Convert a given value to a strict boolean. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_val</em>&nbsp;</td><td>Value to convert, can be any type </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_trueValues</em>&nbsp;</td><td>Array with string values that should be considered 'true'. Defaults to 'yes', 'y', 'true' and '1' </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_forceLowercase</em>&nbsp;</td><td>Compare the input in lowercase only, defaults to true. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Strict boolean value </dd></dl>
+
+<p>Referenced by <a class="el" href="classFormFieldCheckboxPlugin.html#aa9497f7b19c9f2c337d9690f292a5aea">FormFieldCheckboxPlugin::setChecked()</a>, <a class="el" href="classFormFieldPlugin.html#a91fae1af7cc850ae97f3f79652824b8c">FormFieldPlugin::setDisabled()</a>, <a class="el" href="classFormFieldSelectPlugin.html#a30b7a5fd00c68c85089b3d212825efd9">FormFieldSelectPlugin::setMultiple()</a>, <a class="el" href="classFormFieldPlugin.html#a866f1fd589c30d9e5bd1e059e4b85905">FormFieldPlugin::setReadonly()</a>, and <a class="el" href="classFormFieldSelectPlugin.html#a376e5cfa2c8cbba192a547a09b5cd429">FormFieldSelectPlugin::setValue()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0eb759657249228d1a2473ffa7de921c"></a><!-- doxytag: member="owl.helper.functions.php::URL2Path" ref="a0eb759657249228d1a2473ffa7de921c" args="($_file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">URL2Path </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_file</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Translate a fully specified URL to the path specification </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_file</em>&nbsp;</td><td>URL of the file </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Path specification of the file, or null of the file is not on the local host </dd></dl>
+
+<p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>.</p>
+
+<p>Referenced by <a class="el" href="classDocument.html#a9e088502436fe985b501cb5650ab022d">Document::loadScript()</a>, <a class="el" href="classDocument.html#a90810fa2ea28179748a865531c7fc263">Document::loadStyle()</a>, and <a class="el" href="classDocument.html#afca18e2b74a78d2954303a96ffa3d63d">Document::setFavicon()</a>.</p>
+
+</div>
+</div>
+</div>
+<hr class="footer"/><address class="footer"><small>Generated on Wed Jan 19 2011 18:00:23 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

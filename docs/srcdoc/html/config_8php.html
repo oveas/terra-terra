@@ -35,14 +35,12 @@
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a> ['register']</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8php.html#a36e909583250c43d72bdc7c09e2d4a20">$GLOBALS</a> ['config']['configfiles']['owl'] = <a class="el" href="index_8php.html#a35612f9a6bd7277982731a74593272c4">OWL_ROOT</a> . '/owl_config.cfg'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8php.html#a15cc7b8e0baf358db666b97bd9c7fcf5">$GLOBALS</a> ['config']['hide']['tag'] = '(hide)'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8php.html#a7b69aee0b150d2e6556beaff4a99e589">$GLOBALS</a> ['config']['hide']['value'] = '(hidden)'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8php.html#ab954a2cc6c5b7053b6cabb0c8dea38d1">$GLOBALS</a> ['config']</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Configuration basics file for <a class="el" href="classOWL.html">OWL</a>; it stores some fixed configuration in a global data structure </p>
 <dl class="version"><dt><b>Version:</b></dt><dd></dd></dl>
-<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="config_8php.html">config.php</a>,v 1.5 2010-08-20 08:39:54 oscar Exp </dd></dl>
+<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="config_8php.html">config.php</a>,v 1.6 2011-01-18 14:24:58 oscar Exp </dd></dl>
 <hr/><h2>Variable Documentation</h2>
 <a class="anchor" id="a6cc1ef3a8c20d69988531d27f931855b"></a><!-- doxytag: member="config.php::$GLOBALS" ref="a6cc1ef3a8c20d69988531d27f931855b" args="['register']" -->
 <div class="memitem">
@@ -55,55 +53,43 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 <b>Initial value:</b><div class="fragment"><pre class="fragment"> array (
-                                          <span class="stringliteral">&#39;applications&#39;</span>        =&gt; array()
-                                        , <span class="stringliteral">&#39;classes&#39;</span>                     =&gt; array()
-                                )
+          <span class="stringliteral">&#39;applications&#39;</span>        =&gt; array()
+        , <span class="stringliteral">&#39;classes&#39;</span>                     =&gt; array()
+)
 </pre></div>
-<p>Referenced by <a class="el" href="classOWLloader.html#a763911b4bc08982e24f1f897362f8c90">OWLloader::_tryLoad()</a>, <a class="el" href="classConfigHandler.html#aa8f6a7516588561626efccb8be5875ce">ConfigHandler::get()</a>, <a class="el" href="classRegister.html#abd8556b87ac48f8d8b3abeef6285c8f5">Register::get_code()</a>, <a class="el" href="classStatusHandler.html#a79170bca79bfd82e3f707e1294e7c916">StatusHandler::get_message()</a>, <a class="el" href="classRegister.html#a041706fafb409a31f125d2075501e82e">Register::get_run_id()</a>, <a class="el" href="classRegister.html#ae71e10bddb03483b54ad22b9edb95b7c">Register::get_severity()</a>, <a class="el" href="classRegister.html#a70490e59a4a3b910d259b8a4287c3e91">Register::get_severity_level()</a>, <a class="el" href="classRegister.html#a5c34c30e9e6ce4dea2dbb02f55e9278a">Register::init()</a>, <a class="el" href="classOWLExceptionHandler.html#a760bf3e7d648a7714abf5720f39369d8">OWLExceptionHandler::log_exception()</a>, <a class="el" href="classConfigHandler.html#af61ee6f9f793e4cd0128c02e4e28bf90">ConfigHandler::read_config()</a>, <a class="el" href="classRegister.html#ac547568c4a7272fdaf65cb2825eccec3">Register::register_app()</a>, <a class="el" href="classRegister.html#a58300f74d002f1306a03baf12af0f02c">Register::register_class()</a>, <a class="el" href="classRegister.html#a875fd1f32f0746aa9e0e00b053c7389a">Register::register_code()</a>, <a class="el" href="classRegister.html#ac22a104eefa471675cb28ee20821eaad">Register::register_severity()</a>, <a class="el" href="classConfigHandler.html#a82c10cf53f06169cee0bdc0716bc089a">ConfigHandler::set()</a>, <a class="el" href="classRegister.html#ad4d61787414f7d64d1e3420f0fdf3f91">Register::set_application()</a>, <a class="el" href="classRegister.html#a58e49ccb1fe4e441d0329e879c922aa0">Register::set_class()</a>, <a class="el" href="classRegister.html#a0adde8d67d77b9b4d66156272cb48ae4">Register::set_severity()</a>, and <a class="el" href="class__OWL.html#aea912d0ede9b3c2a69b79072d94d4787">_OWL::set_status()</a>.</p>
+<p>Referenced by <a class="el" href="classConfigHandler.html#a7a31419ae991ab50967444568277aa4c">ConfigHandler::_set()</a>, <a class="el" href="classOWLloader.html#a763911b4bc08982e24f1f897362f8c90">OWLloader::_tryLoad()</a>, <a class="el" href="classConfigHandler.html#aa8f6a7516588561626efccb8be5875ce">ConfigHandler::get()</a>, <a class="el" href="classRegister.html#abd8556b87ac48f8d8b3abeef6285c8f5">Register::get_code()</a>, <a class="el" href="classStatusHandler.html#a79170bca79bfd82e3f707e1294e7c916">StatusHandler::get_message()</a>, <a class="el" href="classRegister.html#a041706fafb409a31f125d2075501e82e">Register::get_run_id()</a>, <a class="el" href="classRegister.html#ae71e10bddb03483b54ad22b9edb95b7c">Register::get_severity()</a>, <a class="el" href="classRegister.html#a70490e59a4a3b910d259b8a4287c3e91">Register::get_severity_level()</a>, <a class="el" href="classRegister.html#a5c34c30e9e6ce4dea2dbb02f55e9278a">Register::init()</a>, <a class="el" href="classOWLExceptionHandler.html#a760bf3e7d648a7714abf5720f39369d8">OWLExceptionHandler::log_exception()</a>, <a class="el" href="owl_8helper_8functions_8php.html#ac0a7a4f459017820c92f439ded932d7f">owlTrn()</a>, <a class="el" href="classConfigHandler.html#af61ee6f9f793e4cd0128c02e4e28bf90">ConfigHandler::read_config()</a>, <a class="el" href="classRegister.html#ac547568c4a7272fdaf65cb2825eccec3">Register::register_app()</a>, <a class="el" href="classRegister.html#a58300f74d002f1306a03baf12af0f02c">Register::register_class()</a>, <a class="el" href="classRegister.html#a875fd1f32f0746aa9e0e00b053c7389a">Register::register_code()</a>, <a class="el" href="classRegister.html#ac22a104eefa471675cb28ee20821eaad">Register::register_severity()</a>, <a class="el" href="classConfigHandler.html#a0f6d68b5d2f4da014209d449fc0f5996">ConfigHandler::set()</a>, <a class="el" href="classRegister.html#ad4d61787414f7d64d1e3420f0fdf3f91">Register::set_application()</a>, <a class="el" href="classRegister.html#a58e49ccb1fe4e441d0329e879c922aa0">Register::set_class()</a>, <a class="el" href="classRegister.html#a0adde8d67d77b9b4d66156272cb48ae4">Register::set_severity()</a>, <a class="el" href="class__OWL.html#aea912d0ede9b3c2a69b79072d94d4787">_OWL::set_status()</a>, and <a class="el" href="owl_8helper_8functions_8php.html#a0eb759657249228d1a2473ffa7de921c">URL2Path()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a7b69aee0b150d2e6556beaff4a99e589"></a><!-- doxytag: member="config.php::$GLOBALS" ref="a7b69aee0b150d2e6556beaff4a99e589" args="['config']['hide']['value']" -->
+<a class="anchor" id="ab954a2cc6c5b7053b6cabb0c8dea38d1"></a><!-- doxytag: member="config.php::$GLOBALS" ref="ab954a2cc6c5b7053b6cabb0c8dea38d1" args="['config']" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$GLOBALS['config']['hide']['value'] = '(hidden)'</td>
+          <td class="memname">$GLOBALS['config']</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<b>Initial value:</b><div class="fragment"><pre class="fragment"> array(
+          <span class="stringliteral">&#39;configfiles&#39;</span>                 =&gt; array(
+                                  <span class="stringliteral">&#39;owl&#39;</span> =&gt; <a class="code" href="index_8php.html#a35612f9a6bd7277982731a74593272c4">OWL_ROOT</a> . <span class="stringliteral">&#39;/owl_config.cfg&#39;</span>
+                                , <span class="stringliteral">&#39;app&#39;</span> =&gt; array()
+        )
+        , <span class="stringliteral">&#39;hidden_values&#39;</span>               =&gt; array()
+        , <span class="stringliteral">&#39;protected_values&#39;</span>    =&gt; array()
 
-</div>
-</div>
-<a class="anchor" id="a15cc7b8e0baf358db666b97bd9c7fcf5"></a><!-- doxytag: member="config.php::$GLOBALS" ref="a15cc7b8e0baf358db666b97bd9c7fcf5" args="['config']['hide']['tag']" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">$GLOBALS['config']['hide']['tag'] = '(hide)'</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a36e909583250c43d72bdc7c09e2d4a20"></a><!-- doxytag: member="config.php::$GLOBALS" ref="a36e909583250c43d72bdc7c09e2d4a20" args="['config']['configfiles']['owl']" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">$GLOBALS['config']['configfiles']['owl'] = <a class="el" href="index_8php.html#a35612f9a6bd7277982731a74593272c4">OWL_ROOT</a> . '/owl_config.cfg'</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
+        , <span class="stringliteral">&#39;config&#39;</span>                              =&gt; array(
+                                  <span class="stringliteral">&#39;protect_tag&#39;</span> =&gt; <span class="stringliteral">&#39;(!)&#39;</span>
+                                , <span class="stringliteral">&#39;hide_tag&#39;</span>    =&gt; <span class="stringliteral">&#39;(hide)&#39;</span>
+                                , <span class="stringliteral">&#39;hide_value&#39;</span>  =&gt; <span class="stringliteral">&#39;(hidden)&#39;</span>
+        )
+)
+</pre></div>
 </div>
 </div>
 </div>
-<hr class="footer"/><address class="footer"><small>Generated on Thu Jan 13 2011 11:56:19 for OWL-PHP by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Wed Jan 19 2011 18:00:23 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

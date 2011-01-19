@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines an HTML document
- * \version $Id: class.document.php,v 1.1 2011-01-19 17:00:32 oscar Exp $
+ * \version $Id: class.document.php,v 1.2 2011-01-19 17:04:01 oscar Exp $
  */
 
 /**
@@ -136,7 +136,7 @@ class Document extends BaseElement
 
 	/**
 	 * Add a CSS stylesheet to the document
-	 * \param $_url URL of the stylesheet
+	 * \param[in] $_style URL of the stylesheet
 	 * \param[in] $_condition Condition to specify the browser(s), e.g. "lte IE 6" means the stylesheet
 	 * will be loaded only for Internet Explorer up and including version 6.
 	 * \see http://www.thesitewizard.com/css/excludecss.shtml for the syntax
@@ -169,7 +169,7 @@ class Document extends BaseElement
 
 	/**
 	 * Add an on-the-fly javascript to the document
-	 * \param $_style Script code without the &lt;(/)script&gt; tags
+	 * \param $_script Script code without the &lt;(/)script&gt; tags
 	 */
 	public function addScript($_script = '')
 	{
@@ -178,7 +178,7 @@ class Document extends BaseElement
 
 	/**
 	 * Add a Javascript sourcefile to the document
-	 * \param $_url URL of the scriptsource
+	 * \param $_script URL of the scriptsource
 	 */
 	public function loadScript($_script = '')
 	{

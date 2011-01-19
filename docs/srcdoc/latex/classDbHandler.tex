@@ -26,11 +26,11 @@ Collaboration diagram for DbHandler:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}{\_\-\_\-construct} (\$srv= 'localhost', \$db= '', \$usr= '', \$pwd= '', \$dbtype= 'MySQL')
-\item 
 \hyperlink{classDbHandler_a7cd6bd727d1f296eb5dbfae6ca36ab3f}{\_\-\_\-destruct} ()
 \item 
 \hyperlink{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}{\_\-\_\-clone} ()
+\item 
+\hyperlink{classDbHandler_a82105c9c768f26a7a5ec84019121bbeb}{alt} (\$properties)
 \item 
 \hyperlink{classDbHandler_ac9e93cb0ab57f03b2719eebd0c0ee2ef}{create} ()
 \item 
@@ -102,6 +102,8 @@ static \hyperlink{classDbHandler_ae9bfc8bdc6a8077adb342702aaffc9af}{get\_\-insta
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}{\_\-\_\-construct} (\$srv= 'localhost', \$db= '', \$usr= '', \$pwd= '', \$dbtype= 'MySQL')
+\item 
 \hyperlink{classDbHandler_a9cf52ba614981a0082063d57290d3b7c}{connect} ()
 \item 
 \hyperlink{classDbHandler_a130e49aa639fecb46ce6719ddcb0d72f}{dbread} (\$qry, \&\$rows, \&\$fields)
@@ -134,11 +136,15 @@ static \hyperlink{classDbHandler_ae9bfc8bdc6a8077adb342702aaffc9af}{get\_\-insta
 \hyperlink{classDbHandler_a19af96598e7f72673fc5da26ad77731b}{\$db\_\-prefix}
 \item 
 \hyperlink{classDbHandler_ad671b5596b37dac6d48a660a07775965}{\$query}
+\item 
+\hyperlink{classDbHandler_a6fc74f6785f349ab442f33ce31f46e63}{\$cloned}
 \end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{classDbHandler_a0859a862eac3e8ba14c6d04de0396710}{\$instance}
+\item 
+static \hyperlink{classDbHandler_a495ca4030e7ca7d5e8c7e2604e042dfe}{\$original\_\-instance}
 \end{DoxyCompactItemize}
 
 
@@ -164,7 +170,7 @@ Jul 29, 2008 -\/-\/ O van Eijk -\/-\/ Modified version for \hyperlink{classOWL}{
 \item[{\$}]{ pwd = {\ttfamily ''}, }
 \item[{\$}]{ dbtype = {\ttfamily 'MySQL'}}
 \end{DoxyParamCaption}
-)}\label{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}
 Class constructor; opens the database connection.
 
 
@@ -199,7 +205,33 @@ References close().
 {}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}
-Implementation of the \hyperlink{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}{\_\-\_\-clone()} function to prevent cloning of this singleton; it triggers a fatal (user)error \index{DbHandler@{DbHandler}!check@{check}}
+Implementation of the \hyperlink{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}{\_\-\_\-clone()} function. The current connection will be closed, and a property will be set to indicate this is a cloned object. After that, the \hyperlink{classDbHandler_a82105c9c768f26a7a5ec84019121bbeb}{alt()} method can be used to change connection info. 
+
+References close(), and open().
+
+\index{DbHandler@{DbHandler}!alt@{alt}}
+\index{alt@{alt}!DbHandler@{DbHandler}}
+\subsubsection[{alt}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::alt (
+\begin{DoxyParamCaption}
+\item[{\$}]{ properties}
+\end{DoxyParamCaption}
+)}\label{classDbHandler_a82105c9c768f26a7a5ec84019121bbeb}
+On a cloned database object, set an alternative, prefix or connection. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$properties}]An indexed array with the properties that should be changed. Supported are:
+\begin{DoxyItemize}
+\item prefix : The table prefix
+\item server : Database server
+\item name : Database name
+\item username : Username to connect with
+\item password : Password to use for connection
+\item dbtype : Database type (reserved for future use, currently only MySQL is implemented) 
+\end{DoxyItemize}\end{DoxyParams}
+
+
+References \_\-OWL::set\_\-status().
+
+\index{DbHandler@{DbHandler}!check@{check}}
 \index{check@{check}!DbHandler@{DbHandler}}
 \subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
 \begin{DoxyParamCaption}
@@ -232,7 +264,7 @@ Referenced by SessionHandler::write().
 )}\label{classDbHandler_ad3d2853bbd2d1962710907e34afb424f}
 Close the database and disconnect from the server. This function is called on program shutdown. Although the database will be closed already by PHP, this function might be called at any time manually; is also updates the 'opened' variable. 
 
-Referenced by \_\-\_\-destruct(), and create().
+Referenced by \_\-\_\-clone(), \_\-\_\-destruct(), and create().
 
 \index{DbHandler@{DbHandler}!connect@{connect}}
 \index{connect@{connect}!DbHandler@{DbHandler}}
@@ -360,7 +392,7 @@ Object instance ID
 \end{DoxyReturn}
 
 
-References \$instance, and ConfigHandler::get().
+References \$instance, \$original\_\-instance, and ConfigHandler::get().
 
 \index{DbHandler@{DbHandler}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!DbHandler@{DbHandler}}
@@ -414,7 +446,7 @@ References OWL::factory().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), and Dispatcher::\_\-\_\-construct().
 
 \index{DbHandler@{DbHandler}!is\_\-open@{is\_\-open}}
 \index{is\_\-open@{is\_\-open}!DbHandler@{DbHandler}}
@@ -458,7 +490,7 @@ References connect(), and \_\-OWL::set\_\-status().
 
 
 
-Referenced by read().
+Referenced by \_\-\_\-clone(), and read().
 
 \index{DbHandler@{DbHandler}!prepare\_\-delete@{prepare\_\-delete}}
 \index{prepare\_\-delete@{prepare\_\-delete}!DbHandler@{DbHandler}}
@@ -651,7 +683,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), Form::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), connect(), create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), prepare\_\-delete(), prepare\_\-insert(), prepare\_\-read(), prepare\_\-update(), read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), FormFieldRadioPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and write().
+Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), connect(), create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), prepare\_\-delete(), prepare\_\-insert(), prepare\_\-read(), prepare\_\-update(), read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and write().
 
 \index{DbHandler@{DbHandler}!signal@{signal}}
 \index{signal@{signal}!DbHandler@{DbHandler}}
@@ -846,7 +878,10 @@ References \_\-OWL::set\_\-status().
 
 
 \subsection{Member Data Documentation}
-\index{DbHandler@{DbHandler}!\$database@{\$database}}
+\index{DbHandler@{DbHandler}!\$cloned@{\$cloned}}
+\index{\$cloned@{\$cloned}!DbHandler@{DbHandler}}
+\subsubsection[{\$cloned}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$cloned\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a6fc74f6785f349ab442f33ce31f46e63}
+boolean -\/ true when the object has been cloned \index{DbHandler@{DbHandler}!\$database@{\$database}}
 \index{\$database@{\$database}!DbHandler@{DbHandler}}
 \subsubsection[{\$database}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$database\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_afaac5248f9ee59786b48a7b51f318940}
 array -\/ Database location and authorization indo \index{DbHandler@{DbHandler}!\$db\_\-prefix@{\$db\_\-prefix}}
@@ -871,7 +906,14 @@ Referenced by get\_\-instance().
 \index{DbHandler@{DbHandler}!\$opened@{\$opened}}
 \index{\$opened@{\$opened}!DbHandler@{DbHandler}}
 \subsubsection[{\$opened}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$opened\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a71e36ffbff0d157b1d91dc000bc6f821}
-boolean -\/ True if the database is opened \index{DbHandler@{DbHandler}!\$query@{\$query}}
+boolean -\/ True if the database is opened \index{DbHandler@{DbHandler}!\$original\_\-instance@{\$original\_\-instance}}
+\index{\$original\_\-instance@{\$original\_\-instance}!DbHandler@{DbHandler}}
+\subsubsection[{\$original\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$original\_\-instance\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classDbHandler_a495ca4030e7ca7d5e8c7e2604e042dfe}
+integer -\/ self reference to the original object before cloning 
+
+Referenced by get\_\-instance().
+
+\index{DbHandler@{DbHandler}!\$query@{\$query}}
 \index{\$query@{\$query}!DbHandler@{DbHandler}}
 \subsubsection[{\$query}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$query\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_ad671b5596b37dac6d48a660a07775965}
 string -\/ Query string \index{DbHandler@{DbHandler}!\$rowcount@{\$rowcount}}

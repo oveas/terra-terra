@@ -28,11 +28,15 @@ Collaboration diagram for FormFieldRadioPlugin:\nopagebreak
 \item 
 \hyperlink{classFormFieldRadioPlugin_a4d682ec2c5ea0625ff7c4f59ebbd8875}{\_\-\_\-construct} ()
 \item 
-\hyperlink{classFormFieldRadioPlugin_a1e53edfd8afa42e4ba19ad0cb31ef8c4}{setValue} (\$\_\-value)
+\hyperlink{classFormFieldRadioPlugin_aad18a5a39a64d116ef456621af516e0c}{addOption} (\$\_\-value)
 \item 
 \hyperlink{classFormFieldRadioPlugin_a164e0d24210ebccb5eb4ce69a934d9c5}{setSelected} (\$\_\-value)
 \item 
+\hyperlink{classFormFieldRadioPlugin_a3a9d60b14807c54ac09824424114cea5}{setLabel} (\$\_\-val, \$\_\-lbl)
+\item 
 \hyperlink{classFormFieldRadioPlugin_aade41bf9d88869342c319954da8df608}{showElement} ()
+\item 
+\hyperlink{classFormFieldPlugin_af951a690345b35e616d204cf51e8899e}{setValue} (\$\_\-value)
 \item 
 \hyperlink{classFormFieldPlugin_a91fae1af7cc850ae97f3f79652824b8c}{setDisabled} (\$\_\-value=true)
 \item 
@@ -51,6 +55,8 @@ Collaboration diagram for FormFieldRadioPlugin:\nopagebreak
 \hyperlink{classBaseElement_af6597b30fa9798878f6290271043dfa2}{setClass} (\$\_\-value)
 \item 
 \hyperlink{classBaseElement_a164a9c6e4ee68afa0ad343942ba54d28}{setContent} (\&\$\_\-content)
+\item 
+\hyperlink{classBaseElement_abd48eef64ca4f419f26d66a0c0419908}{addToContent} (\&\$\_\-content)
 \item 
 \hyperlink{classBaseElement_af8c86b93bcdcfbc415bf96c622dc5516}{getContent} ()
 \item 
@@ -114,6 +120,10 @@ Collaboration diagram for FormFieldRadioPlugin:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classFormFieldRadioPlugin_ac8ac64ba29c3dc3ba48102c35ebbf9b1}{\$selected}
+\item 
+\hyperlink{classFormFieldRadioPlugin_ad94f2b13915670f29fc5692cd21dc814}{\$label}
+\item 
+\hyperlink{classFormFieldRadioPlugin_a12bed681103a481444503635c334a52b}{\$options}
 \end{DoxyCompactItemize}
 
 
@@ -141,6 +151,34 @@ Reimplemented from \hyperlink{classFormFieldPlugin_a816fc34dd6b56585e728314e6a1b
 
 
 \subsection{Member Function Documentation}
+\index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!addOption@{addOption}}
+\index{addOption@{addOption}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
+\subsubsection[{addOption}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldRadioPlugin::addOption (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-value}
+\end{DoxyParamCaption}
+)}\label{classFormFieldRadioPlugin_aad18a5a39a64d116ef456621af516e0c}
+Add an option to the options array 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-value}]Field value \end{DoxyParams}
+
+
+References \_\-OWL::set\_\-status().
+
+\index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!addToContent@{addToContent}}
+\index{addToContent@{addToContent}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
+\subsubsection[{addToContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::addToContent (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-content}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_abd48eef64ca4f419f26d66a0c0419908}
+Add a content to the container. If the container is not an array yet, it will be converted to obe. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-content}]Reference to the content, which can be HTML code or an object, of which the \hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{showElement()} method will be called to retrieve the HTML. \end{DoxyParams}
+
+
+References \_\-OWL::set\_\-status().
+
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!check@{check}}
 \index{check@{check}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
 \subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
@@ -223,7 +261,7 @@ References BaseElement::getEvents().
 
 
 
-Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Tablerow::showElement(), Tablecell::showElement(), Table::showElement(), and Container::showElement().
+Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Tablerow::showElement(), Tablecell::showElement(), Table::showElement(), Document::showElement(), and Container::showElement().
 
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!getContent@{getContent}}
 \index{getContent@{getContent}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
@@ -232,9 +270,16 @@ Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Ta
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_af8c86b93bcdcfbc415bf96c622dc5516}
-Get the content of the current container, which can be plain HTML or an object, in which case the HTML will be retrieved from the object here. Enter description here ... 
+Get the content of the current container, which can be plain HTML, an object, or an array which can mix both types. \begin{DoxyReturn}{Returns}
+HTML code 
+\end{DoxyReturn}
 
-Referenced by Tablecell::showElement(), and Container::showElement().
+
+References BaseElement::\_\-getContent().
+
+
+
+Referenced by Tablecell::showElement(), Document::showElement(), Container::showElement(), and Form::showElement().
 
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!getGenericFieldAttributes@{getGenericFieldAttributes}}
 \index{getGenericFieldAttributes@{getGenericFieldAttributes}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
@@ -271,6 +316,10 @@ Get the element's HTML ID
 \begin{DoxyReturn}{Returns}
 The ID 
 \end{DoxyReturn}
+
+
+Referenced by BaseElement::\_\-getContent().
+
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!getType@{getType}}
 \index{getType@{getType}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
 \subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldPlugin::getType (
@@ -294,7 +343,7 @@ References OWL::factory().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), and Dispatcher::\_\-\_\-construct().
 
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!reset@{reset}}
 \index{reset@{reset}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
@@ -371,7 +420,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), Form::addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Form::setMethod(), setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!setAttributes@{setAttributes}}
 \index{setAttributes@{setAttributes}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
@@ -396,7 +445,7 @@ References \_\-OWL::set\_\-status().
 
 
 
-Referenced by Table::\_\-\_\-construct(), and Container::\_\-\_\-construct().
+Referenced by Table::\_\-\_\-construct(), Container::\_\-\_\-construct(), Form::\_\-\_\-construct(), and Document::setAttribs().
 
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!setClass@{setClass}}
 \index{setClass@{setClass}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
@@ -415,7 +464,7 @@ Set the element Class
 \item[{\&\$}]{ \_\-content}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_a164a9c6e4ee68afa0ad343942ba54d28}
-Fill the content for a container. Existing content (e.g. set during instantiation) will be overwritten. 
+Fill the content for a container. Existing content (e.g. set during instantiation) will be overwritten. If that is not desired, the addToContent method should be used instead. 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-content}]Reference to the content, which can be HTML code or an object, of which the \hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{showElement()} method will be called to retrieve the HTML. \end{DoxyParams}
 
@@ -436,6 +485,10 @@ Referenced by Tablecell::\_\-\_\-construct(), and Container::\_\-\_\-construct()
 Set the Disabled boolean 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-value}]Value indicating true (default) or false \end{DoxyParams}
+
+
+References toStrictBoolean().
+
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!setEvent@{setEvent}}
 \index{setEvent@{setEvent}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
 \subsubsection[{setEvent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setEvent (
@@ -462,6 +515,17 @@ Set the element ID
 
 Referenced by BaseElement::setName().
 
+\index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!setLabel@{setLabel}}
+\index{setLabel@{setLabel}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
+\subsubsection[{setLabel}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldRadioPlugin::setLabel (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-val, }
+\item[{\$}]{ \_\-lbl}
+\end{DoxyParamCaption}
+)}\label{classFormFieldRadioPlugin_a3a9d60b14807c54ac09824424114cea5}
+Set the label for the given option 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-val}]Value for which the label is set \item[\mbox{\tt[in]} {\em \$\_\-lbl}]The label, either as fixed HTML or as a reference to a (label) object \end{DoxyParams}
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!setName@{setName}}
 \index{setName@{setName}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
 \subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setName (
@@ -486,6 +550,10 @@ References BaseElement::setId().
 Set the Readonly boolean 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-value}]Value indicating true (default) or false \end{DoxyParams}
+
+
+References toStrictBoolean().
+
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!setSelected@{setSelected}}
 \index{setSelected@{setSelected}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
 \subsubsection[{setSelected}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldRadioPlugin::setSelected (
@@ -512,21 +580,17 @@ Set the element style
 \item[\mbox{\tt[in]} {\em \$\_\-value}]Element style \end{DoxyParams}
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!setValue@{setValue}}
 \index{setValue@{setValue}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
-\subsubsection[{setValue}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldRadioPlugin::setValue (
+\subsubsection[{setValue}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldPlugin::setValue (
 \begin{DoxyParamCaption}
 \item[{\$}]{ \_\-value}
 \end{DoxyParamCaption}
-)}\label{classFormFieldRadioPlugin_a1e53edfd8afa42e4ba19ad0cb31ef8c4}
-Reimplement, multiple values are supported 
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classFormFieldPlugin_af951a690345b35e616d204cf51e8899e}
+Set the field value 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-value}]Field value \end{DoxyParams}
 
 
-Reimplemented from \hyperlink{classFormFieldPlugin_af951a690345b35e616d204cf51e8899e}{FormFieldPlugin}.
-
-
-
-References \_\-OWL::set\_\-status().
+Reimplemented in \hyperlink{classFormFieldCheckboxPlugin_a029c81fb3520e7ae973c51869099bb77}{FormFieldCheckboxPlugin}, and \hyperlink{classFormFieldSelectPlugin_a376e5cfa2c8cbba192a547a09b5cd429}{FormFieldSelectPlugin}.
 
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!showElement@{showElement}}
 \index{showElement@{showElement}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
@@ -615,14 +679,20 @@ Referenced by Form::setFieldEvents().
 \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!\$id@{\$id}}
 \index{\$id@{\$id}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
 \subsubsection[{\$id}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$id = ''\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classBaseElement_a11b6989c43b53869a09f5ce65aa55b45}
-Element ID \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!\$name@{\$name}}
+Element ID \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!\$label@{\$label}}
+\index{\$label@{\$label}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
+\subsubsection[{\$label}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldRadioPlugin::\$label\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormFieldRadioPlugin_ad94f2b13915670f29fc5692cd21dc814}
+Array with labels for each option \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!\$name@{\$name}}
 \index{\$name@{\$name}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
 \subsubsection[{\$name}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$name = ''\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classBaseElement_a30b8cff187a9de659a70daf287d66f45}
 Name of the element 
 
 Referenced by Form::addField(), and Form::showField().
 
-\index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!\$readonly@{\$readonly}}
+\index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!\$options@{\$options}}
+\index{\$options@{\$options}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
+\subsubsection[{\$options}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldRadioPlugin::\$options\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classFormFieldRadioPlugin_a12bed681103a481444503635c334a52b}
+List with options (values) \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!\$readonly@{\$readonly}}
 \index{\$readonly@{\$readonly}!FormFieldRadioPlugin@{FormFieldRadioPlugin}}
 \subsubsection[{\$readonly}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldPlugin::\$readonly\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classFormFieldPlugin_a707acf02de21b2b7975b2aa362615ce0}
 Boolean indicating a readonly field when true \index{FormFieldRadioPlugin@{FormFieldRadioPlugin}!\$selected@{\$selected}}

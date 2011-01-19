@@ -1,5 +1,18 @@
 \section{/home/oscar/projects/owl-\/php/src/lib/owl.helper.functions.php File Reference}
 \label{owl_8helper_8functions_8php}\index{/home/oscar/projects/owl-\/php/src/lib/owl.helper.functions.php@{/home/oscar/projects/owl-\/php/src/lib/owl.helper.functions.php}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{owl_8helper_8functions_8php_a2c49978306cd0e2f4f9406c20373ed02}{toStrictBoolean} (\$\_\-val, \$\_\-trueValues=array('yes', 'y', 'true', '1'), \$\_\-forceLowercase=true)
+\item 
+\hyperlink{owl_8helper_8functions_8php_ac0a7a4f459017820c92f439ded932d7f}{owlTrn} (\$\_\-string)
+\item 
+\hyperlink{owl_8helper_8functions_8php_a0836b830fe9e399265d4cf910c5dff28}{owlCrypt} (\$\_\-string)
+\item 
+\hyperlink{owl_8helper_8functions_8php_a0eb759657249228d1a2473ffa7de921c}{URL2Path} (\$\_\-file)
+\item 
+\hyperlink{owl_8helper_8functions_8php_a08f49d79aaaa581551e49017424cbe77}{ExpandURL} (\$\_\-file)
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -7,5 +20,107 @@ This file defines general helper functions \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id:}
-\hyperlink{owl_8helper_8functions_8php}{owl.helper.functions.php},v 1.2 2011-\/01-\/10 18:46:00 oscar Exp 
+\hyperlink{owl_8helper_8functions_8php}{owl.helper.functions.php},v 1.5 2011-\/01-\/19 17:00:32 oscar Exp 
 \end{DoxyParagraph}
+
+
+\subsection{Function Documentation}
+\index{owl.helper.functions.php@{owl.helper.functions.php}!ExpandURL@{ExpandURL}}
+\index{ExpandURL@{ExpandURL}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{ExpandURL}]{\setlength{\rightskip}{0pt plus 5cm}ExpandURL (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-file}
+\end{DoxyParamCaption}
+)}\label{owl_8helper_8functions_8php_a08f49d79aaaa581551e49017424cbe77}
+Expand a given location to a fully qualified URL 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-file}]Location of the file, either a full URL or relative from the base url (the path MUST start with 'http(s)://' or '/'!) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Fully qualified URL, or null when the input is invalid 
+\end{DoxyReturn}
+
+
+References OWL::factory().
+
+
+
+Referenced by Document::loadScript(), Document::loadStyle(), and Document::setFavicon().
+
+\index{owl.helper.functions.php@{owl.helper.functions.php}!owlCrypt@{owlCrypt}}
+\index{owlCrypt@{owlCrypt}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{owlCrypt}]{\setlength{\rightskip}{0pt plus 5cm}owlCrypt (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-string}
+\end{DoxyParamCaption}
+)}\label{owl_8helper_8functions_8php_a0836b830fe9e399265d4cf910c5dff28}
+Very basic encryption/decryption routine. This is not meant for critical data, but should be used only to hide non-\/critical info that must be transferred. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-string}]The string to be encrypted or decrypted \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Encrypted or decrypted string 
+\end{DoxyReturn}
+
+
+References ConfigHandler::get().
+
+
+
+Referenced by Form::\_\-\_\-construct(), ConfigHandler::\_\-set(), Dispatcher::dispatch(), and ConfigHandler::get().
+
+\index{owl.helper.functions.php@{owl.helper.functions.php}!owlTrn@{owlTrn}}
+\index{owlTrn@{owlTrn}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{owlTrn}]{\setlength{\rightskip}{0pt plus 5cm}owlTrn (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-string}
+\end{DoxyParamCaption}
+)}\label{owl_8helper_8functions_8php_ac0a7a4f459017820c92f439ded932d7f}
+Translate a textstring using the labels array 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-string}]Text string to translate \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The translation, or the input if none was found. 
+\end{DoxyReturn}
+
+
+References \$GLOBALS, and ConfigHandler::get().
+
+\index{owl.helper.functions.php@{owl.helper.functions.php}!toStrictBoolean@{toStrictBoolean}}
+\index{toStrictBoolean@{toStrictBoolean}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{toStrictBoolean}]{\setlength{\rightskip}{0pt plus 5cm}toStrictBoolean (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-val, }
+\item[{\$}]{ \_\-trueValues = {\ttfamily array('yes',~'y',~'true',~'1')}, }
+\item[{\$}]{ \_\-forceLowercase = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{owl_8helper_8functions_8php_a2c49978306cd0e2f4f9406c20373ed02}
+Convert a given value to a strict boolean. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-val}]Value to convert, can be any type \item[\mbox{\tt[in]} {\em \$\_\-trueValues}]Array with string values that should be considered 'true'. Defaults to 'yes', 'y', 'true' and '1' \item[\mbox{\tt[in]} {\em \$\_\-forceLowercase}]Compare the input in lowercase only, defaults to true. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Strict boolean value 
+\end{DoxyReturn}
+
+
+Referenced by FormFieldCheckboxPlugin::setChecked(), FormFieldPlugin::setDisabled(), FormFieldSelectPlugin::setMultiple(), FormFieldPlugin::setReadonly(), and FormFieldSelectPlugin::setValue().
+
+\index{owl.helper.functions.php@{owl.helper.functions.php}!URL2Path@{URL2Path}}
+\index{URL2Path@{URL2Path}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{URL2Path}]{\setlength{\rightskip}{0pt plus 5cm}URL2Path (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-file}
+\end{DoxyParamCaption}
+)}\label{owl_8helper_8functions_8php_a0eb759657249228d1a2473ffa7de921c}
+Translate a fully specified URL to the path specification 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-file}]URL of the file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Path specification of the file, or null of the file is not on the local host 
+\end{DoxyReturn}
+
+
+References \$GLOBALS.
+
+
+
+Referenced by Document::loadScript(), Document::loadStyle(), and Document::setFavicon().
+

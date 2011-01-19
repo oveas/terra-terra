@@ -5,11 +5,7 @@
 \item 
 \hyperlink{config_8php_a6cc1ef3a8c20d69988531d27f931855b}{\$GLOBALS} \mbox{[}'register'\mbox{]}
 \item 
-\hyperlink{config_8php_a36e909583250c43d72bdc7c09e2d4a20}{\$GLOBALS} \mbox{[}'config'\mbox{]}\mbox{[}'configfiles'\mbox{]}\mbox{[}'owl'\mbox{]} = \hyperlink{index_8php_a35612f9a6bd7277982731a74593272c4}{OWL\_\-ROOT} . '/owl\_\-config.cfg'
-\item 
-\hyperlink{config_8php_a15cc7b8e0baf358db666b97bd9c7fcf5}{\$GLOBALS} \mbox{[}'config'\mbox{]}\mbox{[}'hide'\mbox{]}\mbox{[}'tag'\mbox{]} = '(hide)'
-\item 
-\hyperlink{config_8php_a7b69aee0b150d2e6556beaff4a99e589}{\$GLOBALS} \mbox{[}'config'\mbox{]}\mbox{[}'hide'\mbox{]}\mbox{[}'value'\mbox{]} = '(hidden)'
+\hyperlink{config_8php_ab954a2cc6c5b7053b6cabb0c8dea38d1}{\$GLOBALS} \mbox{[}'config'\mbox{]}
 \end{DoxyCompactItemize}
 
 
@@ -18,7 +14,7 @@ Configuration basics file for \hyperlink{classOWL}{OWL}; it stores some fixed co
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id:}
-\hyperlink{config_8php}{config.php},v 1.5 2010-\/08-\/20 08:39:54 oscar Exp 
+\hyperlink{config_8php}{config.php},v 1.6 2011-\/01-\/18 14:24:58 oscar Exp 
 \end{DoxyParagraph}
 
 
@@ -29,21 +25,31 @@ Configuration basics file for \hyperlink{classOWL}{OWL}; it stores some fixed co
 {\bfseries Initial value:}
 \begin{DoxyCode}
  array (
-                                          'applications'        => array()
-                                        , 'classes'                     => array(
-      )
-                                )
+          'applications'        => array()
+        , 'classes'                     => array()
+)
 \end{DoxyCode}
 
 
-Referenced by OWLloader::\_\-tryLoad(), ConfigHandler::get(), Register::get\_\-code(), StatusHandler::get\_\-message(), Register::get\_\-run\_\-id(), Register::get\_\-severity(), Register::get\_\-severity\_\-level(), Register::init(), OWLExceptionHandler::log\_\-exception(), ConfigHandler::read\_\-config(), Register::register\_\-app(), Register::register\_\-class(), Register::register\_\-code(), Register::register\_\-severity(), ConfigHandler::set(), Register::set\_\-application(), Register::set\_\-class(), Register::set\_\-severity(), and \_\-OWL::set\_\-status().
+Referenced by ConfigHandler::\_\-set(), OWLloader::\_\-tryLoad(), ConfigHandler::get(), Register::get\_\-code(), StatusHandler::get\_\-message(), Register::get\_\-run\_\-id(), Register::get\_\-severity(), Register::get\_\-severity\_\-level(), Register::init(), OWLExceptionHandler::log\_\-exception(), owlTrn(), ConfigHandler::read\_\-config(), Register::register\_\-app(), Register::register\_\-class(), Register::register\_\-code(), Register::register\_\-severity(), ConfigHandler::set(), Register::set\_\-application(), Register::set\_\-class(), Register::set\_\-severity(), \_\-OWL::set\_\-status(), and URL2Path().
 
 \index{config.php@{config.php}!\$GLOBALS@{\$GLOBALS}}
 \index{\$GLOBALS@{\$GLOBALS}!config.php@{config.php}}
-\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'config'\mbox{]}\mbox{[}'hide'\mbox{]}\mbox{[}'value'\mbox{]} = '(hidden)'}\label{config_8php_a7b69aee0b150d2e6556beaff4a99e589}
-\index{config.php@{config.php}!\$GLOBALS@{\$GLOBALS}}
-\index{\$GLOBALS@{\$GLOBALS}!config.php@{config.php}}
-\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'config'\mbox{]}\mbox{[}'hide'\mbox{]}\mbox{[}'tag'\mbox{]} = '(hide)'}\label{config_8php_a15cc7b8e0baf358db666b97bd9c7fcf5}
-\index{config.php@{config.php}!\$GLOBALS@{\$GLOBALS}}
-\index{\$GLOBALS@{\$GLOBALS}!config.php@{config.php}}
-\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'config'\mbox{]}\mbox{[}'configfiles'\mbox{]}\mbox{[}'owl'\mbox{]} = {\bf OWL\_\-ROOT} . '/owl\_\-config.cfg'}\label{config_8php_a36e909583250c43d72bdc7c09e2d4a20}
+\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'config'\mbox{]}}\label{config_8php_ab954a2cc6c5b7053b6cabb0c8dea38d1}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+ array(
+          'configfiles'                 => array(
+                                  'owl' => OWL_ROOT . '/owl_config.cfg'
+                                , 'app' => array()
+        )
+        , 'hidden_values'               => array()
+        , 'protected_values'    => array()
+
+        , 'config'                              => array(
+                                  'protect_tag' => '(!)'
+                                , 'hide_tag'    => '(hide)'
+                                , 'hide_value'  => '(hidden)'
+        )
+)
+\end{DoxyCode}

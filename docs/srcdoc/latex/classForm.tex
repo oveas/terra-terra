@@ -26,7 +26,7 @@ Collaboration diagram for Form:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classForm_ad0247731b52213ae543452da25da005b}{\_\-\_\-construct} (\$dispatcher)
+\hyperlink{classForm_ae90293f5520279d6c18f416d3f883ac8}{\_\-\_\-construct} (\$\_\-dispatcher, \$\_\-attribs=array())
 \item 
 \hyperlink{classForm_a2dc6461afb09effeefe444847ad9b562}{setMethod} (\$method)
 \item 
@@ -39,10 +39,6 @@ Collaboration diagram for Form:\nopagebreak
 \hyperlink{classForm_a011360ce04a237f5609446f3134ec32c}{setFieldEvents} (\$index, \$events)
 \item 
 \hyperlink{classForm_a29e01263557e33fab02ee5c3aaa0b3f5}{showField} (\$name)
-\item 
-\hyperlink{classForm_a94902cc2869e1608247d9204036af7d1}{openForm} ()
-\item 
-\hyperlink{classForm_a9bb2df9ed7b866b0dc4b29b3874c2a1a}{closeForm} ()
 \item 
 \hyperlink{classForm_aeac5855c8b2406c34090a621d59df664}{showElement} ()
 \item 
@@ -57,6 +53,8 @@ Collaboration diagram for Form:\nopagebreak
 \hyperlink{classBaseElement_af6597b30fa9798878f6290271043dfa2}{setClass} (\$\_\-value)
 \item 
 \hyperlink{classBaseElement_a164a9c6e4ee68afa0ad343942ba54d28}{setContent} (\&\$\_\-content)
+\item 
+\hyperlink{classBaseElement_abd48eef64ca4f419f26d66a0c0419908}{addToContent} (\&\$\_\-content)
 \item 
 \hyperlink{classBaseElement_af8c86b93bcdcfbc415bf96c622dc5516}{getContent} ()
 \item 
@@ -106,6 +104,13 @@ Collaboration diagram for Form:\nopagebreak
 \item 
 \hyperlink{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}{\$severity}
 \end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classForm_a94902cc2869e1608247d9204036af7d1}{openForm} ()
+\item 
+\hyperlink{classForm_a9bb2df9ed7b866b0dc4b29b3874c2a1a}{closeForm} ()
+\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -133,22 +138,23 @@ Aug 29, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 \index{\_\-\_\-construct@{\_\-\_\-construct}!Form@{Form}}
 \subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}Form::\_\-\_\-construct (
 \begin{DoxyParamCaption}
-\item[{\$}]{ dispatcher}
+\item[{\$}]{ \_\-dispatcher, }
+\item[{\$}]{ \_\-attribs = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)}\label{classForm_ad0247731b52213ae543452da25da005b}
+)}\label{classForm_ae90293f5520279d6c18f416d3f883ac8}
 Class constructor 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$dispatcher}]\hyperlink{classDispatcher}{Dispatcher} as an indexed array with the followinf keys:
+\item[\mbox{\tt[in]} {\em \$\_\-dispatcher}]\hyperlink{classDispatcher}{Dispatcher} as an indexed array with the followinf keys:
 \begin{DoxyItemize}
 \item application: Name of the application. When the include path is no constant, it must be equal to the name of the directory directly under the server's document root.
 \item include\_\-path: A path relative from the application toplevel, or a constant
 \item class\_\-file: Filename, this can be the full file name (\char`\"{}class.myclass.php\char`\"{}) or just the name (\char`\"{}myclass\char`\"{})
 \item class\_\-name Name of the class. This can be ommitted if it is equal to the classfile starting with a capital (\char`\"{}Myclass\char`\"{})
 \item method\_\-name: Methpd that will be called when the form is submitted. This method should accept no parameters, but must get the formdata using \hyperlink{classOWL_aa6f4f99b9b0d6c77e7d49075d8a29d69}{OWL::factory}('FormHandler'); For short, a string in the format \char`\"{}application\#include\_\-path-\/path\#class\_\-file\#class\_\-name\#method\_\-name\char`\"{} may also be given. 
-\end{DoxyItemize}\end{DoxyParams}
+\end{DoxyItemize}\item[\mbox{\tt[in]} {\em \$\_\-attribs}]Indexed array with the HTML attributes \end{DoxyParams}
 
 
-References \$dispatcher, \_\-OWL::init(), and \_\-OWL::set\_\-status().
+References \_\-OWL::init(), owlCrypt(), \_\-OWL::set\_\-status(), and BaseElement::setAttributes().
 
 
 
@@ -176,6 +182,20 @@ References BaseElement::\$name, OWLloader::getClass(), \_\-OWL::set\_\-status(),
 
 
 Referenced by closeForm().
+
+\index{Form@{Form}!addToContent@{addToContent}}
+\index{addToContent@{addToContent}!Form@{Form}}
+\subsubsection[{addToContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::addToContent (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-content}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_abd48eef64ca4f419f26d66a0c0419908}
+Add a content to the container. If the container is not an array yet, it will be converted to obe. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-content}]Reference to the content, which can be HTML code or an object, of which the \hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{showElement()} method will be called to retrieve the HTML. \end{DoxyParams}
+
+
+References \_\-OWL::set\_\-status().
 
 \index{Form@{Form}!check@{check}}
 \index{check@{check}!Form@{Form}}
@@ -207,13 +227,17 @@ Referenced by SessionHandler::write().
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}\label{classForm_a9bb2df9ed7b866b0dc4b29b3874c2a1a}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classForm_a9bb2df9ed7b866b0dc4b29b3874c2a1a}
 Close the form and set a hidden field defining the dispatcher \begin{DoxyReturn}{Returns}
 HTML code 
 \end{DoxyReturn}
 
 
 References addField(), and showField().
+
+
+
+Referenced by showElement().
 
 \index{Form@{Form}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!Form@{Form}}
@@ -273,7 +297,7 @@ References BaseElement::getEvents().
 
 
 
-Referenced by FormFieldPlugin::getGenericFieldAttributes(), openForm(), Tablerow::showElement(), Tablecell::showElement(), Table::showElement(), and Container::showElement().
+Referenced by FormFieldPlugin::getGenericFieldAttributes(), openForm(), Tablerow::showElement(), Tablecell::showElement(), Table::showElement(), Document::showElement(), and Container::showElement().
 
 \index{Form@{Form}!getContent@{getContent}}
 \index{getContent@{getContent}!Form@{Form}}
@@ -282,9 +306,16 @@ Referenced by FormFieldPlugin::getGenericFieldAttributes(), openForm(), Tablerow
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_af8c86b93bcdcfbc415bf96c622dc5516}
-Get the content of the current container, which can be plain HTML or an object, in which case the HTML will be retrieved from the object here. Enter description here ... 
+Get the content of the current container, which can be plain HTML, an object, or an array which can mix both types. \begin{DoxyReturn}{Returns}
+HTML code 
+\end{DoxyReturn}
 
-Referenced by Tablecell::showElement(), and Container::showElement().
+
+References BaseElement::\_\-getContent().
+
+
+
+Referenced by Tablecell::showElement(), Document::showElement(), Container::showElement(), and showElement().
 
 \index{Form@{Form}!getId@{getId}}
 \index{getId@{getId}!Form@{Form}}
@@ -298,6 +329,10 @@ Get the element's HTML ID
 \begin{DoxyReturn}{Returns}
 The ID 
 \end{DoxyReturn}
+
+
+Referenced by BaseElement::\_\-getContent().
+
 \index{Form@{Form}!init@{init}}
 \index{init@{init}!Form@{Form}}
 \subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init (
@@ -311,7 +346,7 @@ References OWL::factory().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), \_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and DataHandler::DataHandler().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), \_\-\_\-construct(), and Dispatcher::\_\-\_\-construct().
 
 \index{Form@{Form}!openForm@{openForm}}
 \index{openForm@{openForm}!Form@{Form}}
@@ -319,13 +354,17 @@ Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}\label{classForm_a94902cc2869e1608247d9204036af7d1}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classForm_a94902cc2869e1608247d9204036af7d1}
 Return the form code to open the form \begin{DoxyReturn}{Returns}
 HTML code 
 \end{DoxyReturn}
 
 
 References BaseElement::getAttributes().
+
+
+
+Referenced by showElement().
 
 \index{Form@{Form}!reset@{reset}}
 \index{reset@{reset}!Form@{Form}}
@@ -402,7 +441,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), \_\-\_\-construct(), addField(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), DataHandler::DataHandler(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), setEncoding(), setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), FormFieldRadioPlugin::setValue(), showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), \_\-\_\-construct(), BaseElement::\_\-getContent(), addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), setEncoding(), Document::setFavicon(), setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{Form@{Form}!setAttributes@{setAttributes}}
 \index{setAttributes@{setAttributes}!Form@{Form}}
@@ -427,7 +466,7 @@ References \_\-OWL::set\_\-status().
 
 
 
-Referenced by Table::\_\-\_\-construct(), and Container::\_\-\_\-construct().
+Referenced by Table::\_\-\_\-construct(), Container::\_\-\_\-construct(), \_\-\_\-construct(), and Document::setAttribs().
 
 \index{Form@{Form}!setClass@{setClass}}
 \index{setClass@{setClass}!Form@{Form}}
@@ -446,7 +485,7 @@ Set the element Class
 \item[{\&\$}]{ \_\-content}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{classBaseElement_a164a9c6e4ee68afa0ad343942ba54d28}
-Fill the content for a container. Existing content (e.g. set during instantiation) will be overwritten. 
+Fill the content for a container. Existing content (e.g. set during instantiation) will be overwritten. If that is not desired, the addToContent method should be used instead. 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-content}]Reference to the content, which can be HTML code or an object, of which the \hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{showElement()} method will be called to retrieve the HTML. \end{DoxyParams}
 
@@ -582,12 +621,16 @@ Set the element style
 {}
 \end{DoxyParamCaption}
 )}\label{classForm_aeac5855c8b2406c34090a621d59df664}
-This is a dummy implementation for the \hyperlink{classForm_aeac5855c8b2406c34090a621d59df664}{showElement()} method, since the form is never displayed as 1 single element, but spread through to container is belongs in. Each subelement of the form is displayed seperately. \begin{DoxySeeAlso}{See also}
+Display the form \begin{DoxySeeAlso}{See also}
 \hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{BaseElement::showElement()} 
 \end{DoxySeeAlso}
 
 
 Reimplemented from \hyperlink{classBaseElement_a63634d81fad745e3b72cda0100afebea}{BaseElement}.
+
+
+
+References closeForm(), BaseElement::getContent(), and openForm().
 
 \index{Form@{Form}!showField@{showField}}
 \index{showField@{showField}!Form@{Form}}
@@ -667,11 +710,7 @@ Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read()
 Class specification \index{Form@{Form}!\$dispatcher@{\$dispatcher}}
 \index{\$dispatcher@{\$dispatcher}!Form@{Form}}
 \subsubsection[{\$dispatcher}]{\setlength{\rightskip}{0pt plus 5cm}Form::\$dispatcher\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classForm_ab02292e715af1dc9b0499dd20900aa92}
-String holding dispatch info. 
-
-Referenced by \_\-\_\-construct().
-
-\index{Form@{Form}!\$enctype@{\$enctype}}
+String holding dispatch info. \index{Form@{Form}!\$enctype@{\$enctype}}
 \index{\$enctype@{\$enctype}!Form@{Form}}
 \subsubsection[{\$enctype}]{\setlength{\rightskip}{0pt plus 5cm}Form::\$enctype\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classForm_a9c23b3ec186995d3df3ad6d4d5efc134}
 \hyperlink{classForm}{Form} encoding; application/x-\/www-\/form-\/urlencoded (defauls) or multipart/form-\/data 

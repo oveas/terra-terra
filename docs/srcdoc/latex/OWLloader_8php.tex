@@ -10,8 +10,10 @@ class \hyperlink{classOWLloader}{OWLloader}
 {\em \label{_amgrp08b298bc013f410cd1f593c409434f9b}
  These constants define all paths for \hyperlink{classOWL}{OWL} }\begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{OWLloader_8php_a4d33a8f2fcc9c83cbeea921c4cb23a7f}{OWL\_\-INCLUDE} 
+enum \hyperlink{OWLloader_8php_ab34b15a08db8691330db97cccd4d6140}{OWL\_\-VERSION} 
 \begin{DoxyCompactList}\small\item\em OWL\_\-ROOT must be defined by the application. \item\end{DoxyCompactList}\item 
+enum \hyperlink{OWLloader_8php_a4d33a8f2fcc9c83cbeea921c4cb23a7f}{OWL\_\-INCLUDE} 
+\begin{DoxyCompactList}\small\item\em Toplevel for the \hyperlink{classOWL}{OWL} includes. \item\end{DoxyCompactList}\item 
 enum \hyperlink{OWLloader_8php_a75dffdef5ba58a0ba5f21ed40627897f}{OWL\_\-SO\_\-INC} 
 \begin{DoxyCompactList}\small\item\em Storage layer includes. \item\end{DoxyCompactList}\item 
 enum \hyperlink{OWLloader_8php_aca50646bc73c3addf0e0f25081eae0ae}{OWL\_\-BO\_\-INC} 
@@ -20,6 +22,8 @@ enum \hyperlink{OWLloader_8php_a2e11101c70f011a91d0d9c7f8e217738}{OWL\_\-UI\_\-I
 \begin{DoxyCompactList}\small\item\em Presentation layer includes. \item\end{DoxyCompactList}\item 
 enum \hyperlink{OWLloader_8php_a74eed08508c8b70677c4167acf49e427}{OWL\_\-LIBRARY} 
 \begin{DoxyCompactList}\small\item\em \hyperlink{classOWL}{OWL} library. \item\end{DoxyCompactList}\item 
+enum \hyperlink{OWLloader_8php_ae3fe8a897196b3cb98b8827a9a940ccb}{OWL\_\-LOG} 
+\begin{DoxyCompactList}\small\item\em Default log directory. \item\end{DoxyCompactList}\item 
 enum \hyperlink{OWLloader_8php_acb1e6e914bd3c0c96fc20ae6bb3a8a99}{OWL\_\-PLUGINS} 
 \begin{DoxyCompactList}\small\item\em \hyperlink{classOWL}{OWL} plugindirectory. \item\end{DoxyCompactList}\item 
 enum \hyperlink{OWLloader_8php_a462de9ae02e394313337afac5d1a5f95}{OWL\_\-SITE\_\-TOP} 
@@ -41,9 +45,7 @@ enum \hyperlink{OWLloader_8php_a1b19bb6ffba1d1e7871092e086cc4e94}{APPL\_\-LIBRAR
 \item 
 \hyperlink{OWLloader_8php_a65f2996116eed36e9ab25f254a470259}{\$GLOBALS} \mbox{[}'messages'\mbox{]} = array ()
 \item 
-\hyperlink{OWLloader_8php_a78407183564d6b92f2219d8a10b9349c}{if} (array\_\-key\_\-exists('app', ConfigHandler::get('configfiles')))
-\item 
-\hyperlink{OWLloader_8php_ad8f7743ae327face727dae55887c2a43}{\$GLOBALS} \mbox{[}'logger'\mbox{]} = OWL::factory('\hyperlink{classLogHandler}{LogHandler}')
+if(count(\$GLOBALS\mbox{[}'config'\mbox{]}\mbox{[}'configfiles'\mbox{]}\mbox{[}'app'\mbox{]}) $>$ 0) \hyperlink{OWLloader_8php_a5657c6427a5b1e3d4450f366cddef80a}{\$GLOBALS} \mbox{[}'logger'\mbox{]} = OWL::factory('\hyperlink{classLogHandler}{LogHandler}')
 \end{DoxyCompactItemize}
 
 
@@ -52,7 +54,7 @@ This file loads the \hyperlink{classOWL}{OWL} environment and initialises some s
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id:}
-\hyperlink{OWLloader_8php}{OWLloader.php},v 1.12 2011-\/01-\/10 18:46:00 oscar Exp 
+\hyperlink{OWLloader_8php}{OWLloader.php},v 1.15 2011-\/01-\/19 17:00:32 oscar Exp 
 \end{DoxyParagraph}
 
 
@@ -83,14 +85,21 @@ Business layer includes.
 \subsubsection[{OWL\_\-INCLUDE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-INCLUDE}}\label{OWLloader_8php_a4d33a8f2fcc9c83cbeea921c4cb23a7f}
 
 
-OWL\_\-ROOT must be defined by the application. 
+Toplevel for the \hyperlink{classOWL}{OWL} includes. 
 
-Toplevel for the \hyperlink{classOWL}{OWL} includes \index{OWLloader.php@{OWLloader.php}!OWL\_\-LIBRARY@{OWL\_\-LIBRARY}}
+\index{OWLloader.php@{OWLloader.php}!OWL\_\-LIBRARY@{OWL\_\-LIBRARY}}
 \index{OWL\_\-LIBRARY@{OWL\_\-LIBRARY}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{OWL\_\-LIBRARY}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-LIBRARY}}\label{OWLloader_8php_a74eed08508c8b70677c4167acf49e427}
 
 
 \hyperlink{classOWL}{OWL} library. 
+
+\index{OWLloader.php@{OWLloader.php}!OWL\_\-LOG@{OWL\_\-LOG}}
+\index{OWL\_\-LOG@{OWL\_\-LOG}!OWLloader.php@{OWLloader.php}}
+\subsubsection[{OWL\_\-LOG}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-LOG}}\label{OWLloader_8php_ae3fe8a897196b3cb98b8827a9a940ccb}
+
+
+Default log directory. 
 
 \index{OWLloader.php@{OWLloader.php}!OWL\_\-PLUGINS@{OWL\_\-PLUGINS}}
 \index{OWL\_\-PLUGINS@{OWL\_\-PLUGINS}!OWLloader.php@{OWLloader.php}}
@@ -120,7 +129,14 @@ Storage layer includes.
 
 Presentation layer includes. 
 
+\index{OWLloader.php@{OWLloader.php}!OWL\_\-VERSION@{OWL\_\-VERSION}}
+\index{OWL\_\-VERSION@{OWL\_\-VERSION}!OWLloader.php@{OWLloader.php}}
+\subsubsection[{OWL\_\-VERSION}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWL\_\-VERSION}}\label{OWLloader_8php_ab34b15a08db8691330db97cccd4d6140}
 
+
+OWL\_\-ROOT must be defined by the application. 
+
+\hyperlink{classOWL}{OWL} version 
 
 \subsection{Variable Documentation}
 \index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
@@ -134,10 +150,7 @@ Presentation layer includes.
 \end{DoxyCode}
 \index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
 \index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
-\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'logger'\mbox{]} = OWL::factory('{\bf LogHandler}')}\label{OWLloader_8php_ad8f7743ae327face727dae55887c2a43}
+\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}if (count(\$GLOBALS\mbox{[}'config'\mbox{]}\mbox{[}'configfiles'\mbox{]}\mbox{[}'app'\mbox{]}) $>$ 0) \$GLOBALS\mbox{[}'logger'\mbox{]} = OWL::factory('{\bf LogHandler}')}\label{OWLloader_8php_a5657c6427a5b1e3d4450f366cddef80a}
 \index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
 \index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'messages'\mbox{]} = array ()}\label{OWLloader_8php_a65f2996116eed36e9ab25f254a470259}
-\index{OWLloader.php@{OWLloader.php}!if@{if}}
-\index{if@{if}!OWLloader.php@{OWLloader.php}}
-\subsubsection[{if}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if}(array\_\-key\_\-exists('app', ConfigHandler::get('configfiles')))}\label{OWLloader_8php_a78407183564d6b92f2219d8a10b9349c}
