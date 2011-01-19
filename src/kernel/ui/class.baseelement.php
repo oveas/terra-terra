@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the top-level BaseElement class
- * \version $Id: class.baseelement.php,v 1.4 2011-01-18 14:24:58 oscar Exp $
+ * \version $Id: class.baseelement.php,v 1.5 2011-01-19 17:00:32 oscar Exp $
  */
 
 /**
@@ -161,6 +161,7 @@ abstract class BaseElement extends _OWL
 		} else {
 			$_htmlCode .= $this->_getContent($this->content);
 		}
+		$this->shown = true;
 		return $_htmlCode;
 	}
 
@@ -174,10 +175,15 @@ abstract class BaseElement extends _OWL
 	{
 		if (is_object($_contentItem)) {
 			if ($this->shown === true) {
-				$this->set_status (DOM_LOOPDETECT, array(get_class($_contentItem), get_class($this)));
+//				DBG_dumpval($this);
+//				DBG_dumpval($_contentItem);
+				$this->set_status (DOM_LOOPDETECT, array(
+					  get_class($_contentItem) . ' (' . $_contentItem->getId() . ')'
+					, get_class($this) . ' (' . $this->getId() . ')'
+					)
+				);
 				return '&nbsp;'; // Probably fatal, but for completeness...
 			}
-			$this->shown = true;
 			return $_contentItem->showElement();
 		} else {
 			return $_contentItem;

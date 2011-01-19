@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
- * \version $Id: owl.messages.php,v 1.14 2011-01-18 14:24:59 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.15 2011-01-19 17:00:32 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -99,4 +99,7 @@ $GLOBALS['messages'] = array (
 	, DOM_LOOPDETECT		=> 'Loop detected - parent item $p1$ is used as content in $p2$'
 	, CONTAINER_IVTYPE		=> 'Invalid container type $p1$'
 	, CONTAINER_IVCLASSNAME	=> 'Invalid classname for containertype $p1$ - cannot instantiate $p2$'
+	, DOC_NOSUCHFILE		=> 'Cannot load $p1$ file $p2$ - file does not exist'
+	, DOC_PROTTAG			=> 'Attemt to overwrite the protected $p1$ tag $p2$'
+	, DOC_IVFILESPEC		=> 'Cannot load $p1$ file $p2$ is an invalid location specification'
 );

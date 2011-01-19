@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the HTML Form class
- * \version $Id: class.form.php,v 1.4 2011-01-13 11:05:35 oscar Exp $
+ * \version $Id: class.form.php,v 1.5 2011-01-19 17:00:32 oscar Exp $
  */
 
 OWLloader::getClass('formfield', OWL_PLUGINS . '/formfields');
@@ -43,7 +43,7 @@ class Form extends BaseElement
 
 	/**
 	 * Class constructor
-	 * \param[in] $dispatcher Dispatcher as an indexed array with the followinf keys:
+	 * \param[in] $_dispatcher Dispatcher as an indexed array with the followinf keys:
 	 * 	- application: Name of the application. When the include path is no constant, it must be equal to
 	 * the name of the directory directly under the server's document root.
 	 * 	- include_path: A path relative from the application toplevel, or a constant
@@ -54,30 +54,33 @@ class Form extends BaseElement
 	 * no parameters, but must get the formdata using OWL::factory('FormHandler');
 	 * For short, a string in the format "application#include_path-path#class_file#class_name#method_name"
 	 * may also be given.
+	 * \param[in] $_attribs Indexed array with the HTML attributes 
 	 * \public
 	 */
-	public function __construct ($dispatcher)
+	public function __construct ($_dispatcher, $_attribs = array())
 	{
 		_OWL::init();
 		$this->fields = array();
 		$this->method = 'POST';
 		$this->enctype = 'application/x-www-form-urlencoded';
 		
-		if (is_array($dispatcher)) {
-			foreach (array('application', 'include_path','class_file','method_name') as $_req)
-			if (!array_key_exists($_req, $dispatcher)) {
-				$this->set_status (FORM_IVDISPATCH, $_req);
-				return ($this->severity);
+		if (is_array($_dispatcher)) {
+			foreach (array('application', 'include_path','class_file','method_name') as $_req) {
+				if (!array_key_exists($_req, $_dispatcher)) {
+					$this->set_status (FORM_IVDISPATCH, $_req);
+					return ($this->severity);
+				}
 			}
-			$_dispatcher = $dispatcher['application']
-				.'#'.$dispatcher['include_path']
-				.'#'.$dispatcher['class_file']
-				.'#'.(array_key_exists('class_name', $dispatcher)?$dispatcher['class_name']:'')
-				.'#'.$dispatcher['method_name'];
-		} else {
-			$_dispatcher = $dispatcher;
+			$_dispatcher = $_dispatcher['application']
+				.'#'.$_dispatcher['include_path']
+				.'#'.$_dispatcher['class_file']
+				.'#'.(array_key_exists('class_name', $_dispatcher)?$_dispatcher['class_name']:'')
+				.'#'.$_dispatcher['method_name'];
 		}
 		$this->dispatcher = urlencode(owlCrypt($_dispatcher));
+		if (count($_attribs) > 0) {
+			parent::setAttributes($_attribs);
+		}
 	}
 
 	/**
@@ -214,7 +217,7 @@ class Form extends BaseElement
 	 * Return the form code to open the form
 	 * \return HTML code
 	 */
-	public function openForm()
+	private function openForm()
 	{
 		return '<form action="'.$_SERVER['PHP_SELF'].'" '
 			. parent::getAttributes()
@@ -226,21 +229,19 @@ class Form extends BaseElement
 	 * Close the form and set a hidden field defining the dispatcher
 	 * \return HTML code
 	 */
-	public function closeForm()
+	private function closeForm()
 	{
 		$this->addField('hidden', 'owl_dispatch', $this->dispatcher);
 		return $this->showField('owl_dispatch') . '</form>'."\n";
 	}
 
 	/**
-	 * This is a dummy implementation for the showElement() method, since the form is
-	 * never displayed as 1 single element, but spread through to container is belongs in.
-	 * Each subelement of the form is displayed seperately.
+	 * Display the form
 	 * \see BaseElement::showElement()
 	 */
 	public function showElement()
 	{
-		return '';
+		return $this->openForm() . $this->getContent() . $this->closeForm();
 	}
 }
 

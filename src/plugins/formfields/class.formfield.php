@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a formfield element plugin
- * \version $Id: class.formfield.php,v 1.1 2011-01-13 11:05:34 oscar Exp $
+ * \version $Id: class.formfield.php,v 1.2 2011-01-19 17:00:32 oscar Exp $
  */
 
 /**
@@ -99,7 +99,7 @@ abstract class FormFieldPlugin extends BaseElement
 	 */
 	protected function getGenericFieldAttributes($_ignore = array())
 	{
-		$_htmlCode = parent::getAttributes($_ignore = array());
+		$_htmlCode = parent::getAttributes($_ignore);
 		if (!in_array('value', $_ignore)) {
 			$_htmlCode .= " value='$this->value'";
 		}

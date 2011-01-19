@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.4 2011-01-18 14:24:59 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.5 2011-01-19 17:00:32 oscar Exp $
  */
 
 /**
@@ -74,4 +74,41 @@ function owlCrypt ($_string)
 		}
 	}
 	return $_string;
+}
+
+/**
+ * Translate a fully specified URL to the path specification
+ * \param[in] $_file URL of the file
+ * \return Path specification of the file, or null of the file is not on the local host
+ */
+function URL2Path ($_file)
+{
+	$_rex = '/^(http)(s)?:\/\/(?<host>[\w-]+)/i';
+	if (preg_match($_rex, $_file, $_match)) {
+		if (strtolower($GLOBALS['HTTP_HOST']) !== $_match['host']) {
+			return null;
+		}
+	}
+	return preg_replace($_rex, $_SERVER['DOCUMENT_ROOT'], $_file);
+}
+
+/**
+ * Expand a given location to a fully qualified URL
+ * \param[in] $_file Location of the file, either a full URL or relative from the base url
+ * (the path MUST start with 'http(s)://' or '/'!)
+ * \return Fully qualified URL, or null when the input is invalid
+ */
+function ExpandURL($_file)
+{
+	$_rex = '/^(http)(s)?:\/\/(?<host>[\w-]+)/i';
+	if (!preg_match('/^(http)(s)?:\/\/[\w-]+)/i', $_file)) {
+		// Not starting with an host, so add the base URL, at least, if the
+		// path is indeed relative from the base (starting with a '/')
+		if (!preg_match('/^\/', $_file)) {
+			return null;
+		}
+		$_document = OWL::factory('Document', 'ui');
+		$_file = $_document->getBase() . $_file;
+	}
+	return $_file;
 }

@@ -2,7 +2,7 @@
 /**
  * \file
  * Define a class for config handling
- * \version $Id: class.confighandler.php,v 1.7 2011-01-18 14:24:59 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.8 2011-01-19 17:00:32 oscar Exp $
  */
 
 /**
@@ -220,12 +220,13 @@ Register::register_class ('ConfigHandler');
 //Register::set_severity (OWL_INFO);
 //Register::set_severity (OWL_OK);
 //Register::set_severity (OWL_SUCCESS);
-//Register::set_severity (OWL_WARNING);
+Register::set_severity (OWL_WARNING);
+Register::register_code ('CONFIG_PROTECTED');
+
 //Register::set_severity (OWL_BUG);
 
 Register::set_severity (OWL_ERROR);
 Register::register_code ('CONFIG_NOVALUE');
 
 //Register::set_severity (OWL_FATAL);
-Register::register_code ('CONFIG_PROTECTED');
 //Register::set_severity (OWL_CRITICAL);

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a radio formfield element
- * \version $Id: class.formfield.radio.php,v 1.1 2011-01-13 11:05:34 oscar Exp $
+ * \version $Id: class.formfield.radio.php,v 1.2 2011-01-19 17:00:32 oscar Exp $
  */
 
 /**
@@ -22,6 +22,18 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	private $selected;
 
 	/**
+	 * Array with labels for each option
+	 * \private
+	 */
+	private $label;
+
+	/**
+	 * List with options (values)
+	 * \private
+	 */
+	private $options;
+
+	/**
 	 * Class constructor; 
 	 * \public
 	 */
@@ -29,20 +41,21 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	{
 		parent::__construct();
 		$this->type = 'radio';
-		$this->value = array();
+		$this->options = array();
+		$this->label = array();
 	}
 
 	/**
-	 * Reimplement, multiple values are supported
+	 * Add an option to the options array
 	 * \param[in] $_value Field value
 	 * \public
 	 */
-	public function setValue($_value)
+	public function addOption($_value)
 	{
-		if (in_array($_value, $this->value)) {
+		if (in_array($_value, $this->options)) {
 			$this->set_status (FORMFIELD_VALEXISTS, $_value, $this->name);
 		} else {
-			$this->value[] = $_value;
+			$this->options[] = $_value;
 		}
 	}
 
@@ -61,6 +74,19 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	}
 
 	/**
+	 * Set the label for the given option
+	 * \param[in] $_val Value for which the label is set
+	 * \param[in] $_lbl The label, either as fixed HTML or as a reference to a (label) object
+	 */
+	public function setLabel($_val, $_lbl)
+	{
+		if (is_object($_lbl)) {
+			$this->label[$_val] = $_lbl->showElement();
+		} else {
+			$this->label[$_val] = $_lbl;
+		}
+	}
+	/**
 	 * Return the HTML code to display the form elements
 	 * \public
 	 * \return Array with textstrings for each radio button in this this set.
@@ -68,12 +94,15 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	public function showElement ()
 	{
 		$_retCode = array();
-		foreach ($this->value as $_val) {
+		foreach ($this->options as $_val) {
 			$_htmlCode = "<input type='$this->type' value='$_val'";
-			if (!empty($this->selected) && ($this->selected == $_val)) {
-				$_htmlCode .= " checked='$this->checked'";
+			if ($this->value == $_val) {
+				$_htmlCode .= " checked";
 			}
 			$_htmlCode .= $this->getGenericFieldAttributes(array('value')) . '/>';
+			if (array_key_exists($_val, $this->label)) {
+				$_htmlCode .= $this->label[$_val];
+			}
 			$_retCode[] = $_htmlCode;
 		}
 		return $_retCode;

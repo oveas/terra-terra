@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.14 2011-01-18 14:24:58 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.15 2011-01-19 17:00:32 oscar Exp $
  */
 
 // Error handling used during development
@@ -26,6 +26,8 @@
 //! OWL_ROOT must be defined by the application
 if (!defined('OWL_ROOT')) { trigger_error('OWL_ROOT must be defined by the application', E_USER_ERROR);
 }
+//! OWL version
+define ('OWL_VERSION', '0.1.0');
 
 //! Toplevel for the OWL includes
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
