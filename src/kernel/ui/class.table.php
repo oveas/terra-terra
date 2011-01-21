@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a table element
- * \version $Id: class.table.php,v 1.2 2011-01-13 11:05:34 oscar Exp $
+ * \version $Id: class.table.php,v 1.3 2011-01-21 16:28:15 oscar Exp $
  */
 
 if (!OWLloader::getClass('tablerow')) {
@@ -36,7 +36,7 @@ class Table extends BaseElement
 	 * \param[in] $_attribs Indexed array with the HTML attributes 
 	 * \public
 	 */
-	public function __construct ($_attribs = array())
+	public function __construct (array $_attribs = array())
 	{
 		_OWL::init();
 		if (count($_attribs) > 0) {
@@ -60,7 +60,7 @@ class Table extends BaseElement
 	 * \return Pointer to the row object
 	 * \public
 	 */
-	public function addRow($_attribs = array())
+	public function addRow(array $_attribs = array())
 	{
 		$_row = new Tablerow($_attribs);
 		$_row->setAttributes($_attribs);

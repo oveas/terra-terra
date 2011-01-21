@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.10 2011-01-18 14:32:42 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.11 2011-01-21 16:28:15 oscar Exp $
  */
 
 /**
@@ -176,7 +176,7 @@ class DbHandler extends _OWL
 	 * 	- password : Password to use for connection
 	 * 	- dbtype   : Database type (reserved for future use, currently only MySQL is implemented)
 	 */
-	public function alt($properties)
+	public function alt(array $properties)
 	{
 		if (!$this->cloned) {
 			$this->set_status (DBHANDLE_NOTACLONE);
@@ -344,7 +344,7 @@ class DbHandler extends _OWL
 	 * the selected rows(s) are returned in a 2d array.
 	 * \public
 	 * \param[in] $flag Flag that identifies how data should be returned; as data (default) or the number of rows
-	 * \param[out] $data The retrieved value in a formatt depending on the flag:
+	 * \param[out] $data The retrieved value in a format depending on the flag:
 	 *   - DBHANDLE_ROWCOUNT; Number of matching rows
 	 *   - DBHANDLE_FIELDCOUNT; Number of fields per rows
 	 *   - DBHANDLE_TOTALFIELDCOUNT; Total number op fields
@@ -508,7 +508,7 @@ class DbHandler extends _OWL
 	 * \param[in] $tables An array with tablenames
 	 * \return The tablelist
 	 */
-	private function tablelist ($tables)
+	private function tablelist (array $tables)
 	{	
 		$_i = 0;
 		foreach ($tables as $_table) {
@@ -528,7 +528,7 @@ class DbHandler extends _OWL
 	 * \param[in] $joins Array of arrays with values (field, linktype, field)
 	 * \return The WHERE clause
 	 */
-	private function where_clause ($searches, $joins)
+	private function where_clause (array $searches, array $joins)
 	{	
 		$_where = '';
 		$_i = 0;
@@ -562,7 +562,7 @@ class DbHandler extends _OWL
 	 * \param[in] $updates Array with fields to update (fieldname => values)
 	 * \return The UPDATE statement
 	 */
-	private function update_list ($updates)
+	private function update_list (array $updates)
 	{
 		$_update = 'SET ';
 		$_i = 0;
@@ -584,7 +584,7 @@ class DbHandler extends _OWL
 	 * \param[in] $fields An array with fields
 	 * \return Array with tablenames
 	 */
-	private function extract_tablelist ($fields)
+	private function extract_tablelist (array $fields)
 	{
 		$_table = array();
 		foreach ($fields as $_field => $_value) {
@@ -606,9 +606,12 @@ class DbHandler extends _OWL
 	 * \param[in] $joins Joins on the given tables
 	 * \return Severity level
 	 */
-	public function prepare_read ($values = array(), $tables = array(), $searches = array(), $joins = array())
+	public function prepare_read (
+			  array $values = array()
+			, array $tables = array()
+			, array $searches = array()
+			, array $joins = array())
 	{
-// TODO: Check on empty tablelist
 		$this->query = 'SELECT ';
 		if (count ($values) == 0) {
 			$this->query .= '* ';
@@ -619,10 +622,16 @@ class DbHandler extends _OWL
 			$this->query .= join (', ', $values) . ' ';
 		}
 
-		$this->query .= 'FROM ' . $this->tablelist ($tables);
-		$this->query .= 'WHERE ' . $this->where_clause ($searches, $joins);
+		if (count($tables) == 0) {
+			$this->set_status (DBHANDLE_NOTABLES);
+		} else {
+			$this->query .= 'FROM ' . $this->tablelist ($tables);
+			if (($_where = $this->where_clause ($searches, $joins)) != '') {
+				$this->query .= 'WHERE ' . $_where;
+			}
 
-		$this->set_status (DBHANDLE_QPREPARED, array('read', $this->query));
+			$this->set_status (DBHANDLE_QPREPARED, array('read', $this->query));
+		}
 //echo ("Prepared query: <i>$this->query</i><br />");
 		return ($this->severity);
 	}
@@ -634,16 +643,18 @@ class DbHandler extends _OWL
 	 * \param[in] $searches Given values that have to match
 	 * \return Severity level
 	 */
-	public function prepare_delete ($searches = array())
+	public function prepare_delete (array $searches = array())
 	{
-// TODO: Check on empty tablelist
-
 		$_tables = $this->extract_tablelist ($searches);
-
-		$this->query = 'DELETE FROM ' . $this->tablelist ($_tables);
-		$this->query .= 'WHERE ' . $this->where_clause ($searches, array());
-
-		$this->set_status (DBHANDLE_QPREPARED, array('delete', $this->query));
+		if (count($_tables) == 0) {
+			$this->set_status (DBHANDLE_NOTABLES);
+		} else {
+			$this->query = 'DELETE FROM ' . $this->tablelist ($_tables);
+			if (($_where = $this->where_clause ($searches, array())) != '') {
+				$this->query .= 'WHERE ' . $_where;
+			}
+			$this->set_status (DBHANDLE_QPREPARED, array('delete', $this->query));
+		}
 		return ($this->severity);
 	}
 
@@ -657,12 +668,15 @@ class DbHandler extends _OWL
 	 * \param[in] $joins Joins on the given tables
 	 * \return Severity level
 	 */
-	public function prepare_update ($values = array(), $searches = array(), $joins = array())
+	public function prepare_update (array $values = array(), array $searches = array(), array $joins = array())
 	{
-// TODO:  Check on empty arrays!!!
 		$_updates = array();
 		$_searches = array();
 		$_tables = $this->extract_tablelist ($values);
+		if (count($_tables) == 0) {
+			$this->set_status (DBHANDLE_NOTABLES);
+			return ($this->severity);
+		}
 
 		foreach ($values as $_fld => $_val) {
 			if (in_array ($_fld, $searches)) {
@@ -671,9 +685,17 @@ class DbHandler extends _OWL
 				$_updates[$_fld] = $_val;
 			}
 		}
+
+		if (count($_updates)) {
+			$this->set_status (DBHANDLE_NOVALUES);
+			return ($this->severity);
+		}
+
 		$this->query = 'UPDATE ' . $this->tablelist ($_tables) . ' '
-					 . $this->update_list ($_updates)
-					 . 'WHERE ' . $this->where_clause ($_searches, $joins);
+					 . $this->update_list ($_updates);
+		if (($_where = $this->where_clause ($_searches, $joins)) != '') {
+			$this->query .= 'WHERE ' . $_where;
+		}
 
 		$this->set_status (DBHANDLE_QPREPARED, array('update', $this->query));
 //echo ("Prepared query: <i>$this->query</i><br />");
@@ -687,13 +709,16 @@ class DbHandler extends _OWL
 	 * \param[in] $values Given database values
 	 * \return Severity level
 	 */
-	public function prepare_insert ($values = array())
+	public function prepare_insert (array $values = array())
 	{
-// TODO:  Check on empty arrays!!!
 		$_fld = array();
 		$_val = array();
 		$_tables = $this->extract_tablelist ($values);
-
+		if (count($_tables) == 0) {
+			$this->set_status (DBHANDLE_NOTABLES);
+			return ($this->severity);
+		}
+		
 		foreach ($values as $_f => $_v) {
 			$this->expand_field ($_f);
 			$_fld[] = $_f;
@@ -792,6 +817,8 @@ Register::register_code ('DBHANDLE_NODATA');
 
 Register::set_severity (OWL_WARNING);
 Register::register_code ('DBHANDLE_IVTABLE');
+Register::register_code ('DBHANDLE_NOTABLES');
+Register::register_code ('DBHANDLE_NOVALUES');
 
 Register::set_severity (OWL_BUG);
 Register::register_code ('DBHANDLE_NOTACLONE');

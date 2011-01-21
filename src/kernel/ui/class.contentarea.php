@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the abstract ContentArea class
- * \version $Id: class.contentarea.php,v 1.1 2011-01-21 10:18:28 oscar Exp $
+ * \version $Id: class.contentarea.php,v 1.2 2011-01-21 16:28:15 oscar Exp $
  */
 
 /**
@@ -36,6 +36,15 @@ abstract class ContentArea extends _OWL
 	{
 		$_document = OWL::factory('Document', 'ui');
 		$_document->addToContent($this->contentObject);
+	}
+
+	/**
+	 * Add the newly created container to the given container
+	 * \param[in] $_contnr Reference to the container object
+	 */
+	public function addToContainer(Container $_contnr)
+	{
+		$_contnr->addToContent($this->contentObject);
 	}
 }
 

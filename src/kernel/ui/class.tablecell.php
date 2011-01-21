@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a tablecell element
- * \version $Id: class.tablecell.php,v 1.2 2011-01-13 11:05:34 oscar Exp $
+ * \version $Id: class.tablecell.php,v 1.3 2011-01-21 16:28:15 oscar Exp $
  */
 
 /**
@@ -38,18 +38,6 @@ class Tablecell extends BaseElement
 		$this->setContent($_content);
 	}
 
-	/**
-	 * Set the HTML attributes for this row. Calls the parents' protected function
-	 * \param[in] $_attribs Indexed array with the HTML attributes
-	 * \public
-	 */
-	public function setAttributes($_attribs = array())
-	{
-		if (count($_attribs) > 0) {
-			parent::setAttributes($_attribs);
-		}
-	}
-	
 	/**
 	 * Set the rowspan value
 	 * \param[in] $_value Rowspan value

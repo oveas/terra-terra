@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the top-level BaseElement class
- * \version $Id: class.baseelement.php,v 1.6 2011-01-21 10:18:27 oscar Exp $
+ * \version $Id: class.baseelement.php,v 1.7 2011-01-21 16:28:15 oscar Exp $
  */
 
 /**
@@ -230,7 +230,7 @@ abstract class BaseElement extends _OWL
 	 * \param[in] $_attribs Array with attributes in the format attrib=>value
 	 * \return Severity level. The status increased when a set&lt;Attrib&gt; method does not exist.
 	 */
-	public function setAttributes($_attribs)
+	public function setAttributes(array $_attribs)
 	{
 		foreach ($_attribs as $_k => $_v) {
 			$_method = 'set' . ucfirst($_k);
@@ -250,7 +250,7 @@ abstract class BaseElement extends _OWL
 	 * \return string attributes in HTML format (' fld="value"...)
 	 * \protected
 	 */
-	protected function getAttributes($_ignore = array())
+	protected function getAttributes(array $_ignore = array())
 	{
 		$_htmlCode = '';
 		if (!in_array('id', $_ignore) && !empty($this->id)) {

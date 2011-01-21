@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines an HTML document
- * \version $Id: class.document.php,v 1.3 2011-01-21 10:18:27 oscar Exp $
+ * \version $Id: class.document.php,v 1.4 2011-01-21 16:28:15 oscar Exp $
  */
 
 /**
@@ -16,7 +16,7 @@
 class Document extends BaseElement
 {
 	/**
-	 * Base URL for the application, defaults to Document_Root
+	 * Base URL for the application, defaults to the server top
 	 * \private
 	 */
 	private $base;
@@ -81,10 +81,11 @@ class Document extends BaseElement
 	 * \param[in] $_attribs Indexed array with the HTML attributes 
 	 * \private
 	 */
-	private function __construct ($_attribs = array())
+	private function __construct (array $_attribs = array())
 	{
 		_OWL::init();
-		$this->base = $_SERVER['DOCUMENT_ROOT'];
+		$_proto = explode('/', $_SERVER['SERVER_PROTOCOL']);
+		$this->base = strtolower($_proto[0]) . '://' . $_SERVER['HTTP_HOST'];
 		$this->styles = array();
 		$this->css = array('unconditional' => array());
 		$this->scripts = array();
@@ -150,8 +151,8 @@ class Document extends BaseElement
 		} else {
 			$_ptr =& $this->css['unconditional'];
 		}
-		if (!in_array($_scriptUrl, $_prt)) {
-			$_prt[] = $_scriptUrl;
+		if (!in_array($_styleUrl, $_ptr)) {
+			$_ptr[] = $_styleUrl;
 		}
 	}
 

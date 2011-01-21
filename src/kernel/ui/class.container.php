@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a container element
- * \version $Id: class.container.php,v 1.2 2011-01-21 10:18:28 oscar Exp $
+ * \version $Id: class.container.php,v 1.3 2011-01-21 16:28:15 oscar Exp $
  */
 
 OWLloader::getClass('container', OWL_PLUGINS . '/containers');
@@ -36,7 +36,7 @@ class Container extends BaseElement
 	 * Refer to the 'show&lt;Type&gt;Type()' method for details
 	 * \public
 	 */
-	public function __construct ($_type, $_content = '&nbsp;', $_attribs = array(), $_type_attribs = array())
+	public function __construct ($_type, $_content = '&nbsp;', array $_attribs = array(), array $_type_attribs = array())
 	{
 		_OWL::init();
 		$this->showMethod = 'show' . ucfirst($_type) . 'Type';
@@ -61,7 +61,7 @@ class Container extends BaseElement
 	 * Set container specific attributes
 	 * \param[in] $_attribs Indexed array with the type specific attributes.
 	 */
-	public function setContainer($_attribs = array())
+	public function setContainer(array $_attribs = array())
 	{
 		$this->containerObject->setAttributes($_attribs);
 	}

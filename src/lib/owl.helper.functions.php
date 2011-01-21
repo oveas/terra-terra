@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.5 2011-01-19 17:00:32 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.6 2011-01-21 16:28:15 oscar Exp $
  */
 
 /**
@@ -101,12 +101,13 @@ function URL2Path ($_file)
 function ExpandURL($_file)
 {
 	$_rex = '/^(http)(s)?:\/\/(?<host>[\w-]+)/i';
-	if (!preg_match('/^(http)(s)?:\/\/[\w-]+)/i', $_file)) {
+	if (!preg_match('/^(http)(s)?:\/\/[\w-]+/i', $_file)) {
 		// Not starting with an host, so add the base URL, at least, if the
 		// path is indeed relative from the base (starting with a '/')
-		if (!preg_match('/^\/', $_file)) {
+		if (!preg_match('/^\//', $_file)) {
 			return null;
 		}
+		$_file = preg_replace('@' . $_SERVER['DOCUMENT_ROOT'] . '@', '', $_file);
 		$_document = OWL::factory('Document', 'ui');
 		$_file = $_document->getBase() . $_file;
 	}

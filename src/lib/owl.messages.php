@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
- * \version $Id: owl.messages.php,v 1.16 2011-01-21 10:18:28 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.17 2011-01-21 16:28:15 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -33,6 +33,8 @@ $GLOBALS['messages'] = array (
 	, SESSION_WRITEERR		=> 'Session data could not be written - database object is already destroyed'
 	, DBHANDLE_OPENED		=> 'Database $p1$ opened with ID $p2$'
 	, DBHANDLE_QPREPARED	=> 'Prepared SQL statement for $p1$: <i>$p2$</i>'
+	, DBHANDLE_NOTABLES		=> 'Table list empty - could not extract tables from fieldlist or empty list received'
+	, DBHANDLE_NOVALUES		=> 'Nothing to do - found no fieldnames for update'
 	, DBHANDLE_NOTACLONE	=> 'Method alt() was called on a database handler that was not cloned'
 	, DBHANDLE_ROWSREAD		=> '$p2$ rows returned to $p4$ (line $p3$) with query: <i>$p1$</i>'
 	, DBHANDLE_ROWCOUNT		=> '$p2$ rows where successfully $p1$'

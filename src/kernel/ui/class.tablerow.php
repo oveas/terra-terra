@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a table row element
- * \version $Id: class.tablerow.php,v 1.2 2011-01-13 11:05:34 oscar Exp $
+ * \version $Id: class.tablerow.php,v 1.3 2011-01-21 16:28:15 oscar Exp $
  */
 
 if (!OWLloader::getClass('tablecell')) {
@@ -35,25 +35,13 @@ class Tablerow extends BaseElement
 	}
 
 	/**
-	 * Set the HTML attributes for this row. Calls the parents' protected function
-	 * \param[in] $_attribs Indexed array with the HTML attributes
-	 * \public
-	 */
-	public function setAttributes($_attribs = array())
-	{
-		if (count($_attribs) > 0) {
-			parent::setAttributes($_attribs);
-		}
-	}
-	
-	/**
 	 * Add a new tablecell
 	 * \param[in] $_content HTML code that will be placed in the cell
 	 * \param[in] $_attribs An optional array with HTML attributes
 	 * \return Reference to the cell object
 	 * \public
 	 */
-	public function addCell($_content = '&nbsp;', $_attribs = array())
+	public function addCell($_content = '&nbsp;', array $_attribs = array())
 	{
 		$_cell = new Tablecell($_content);
 		$_cell->setAttributes($_attribs);
