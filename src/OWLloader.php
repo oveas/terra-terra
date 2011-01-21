@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.15 2011-01-19 17:00:32 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.16 2011-01-21 10:18:28 oscar Exp $
  */
 
 // Error handling used during development
@@ -73,7 +73,7 @@ if (!defined('APPL_CODE')) {
 //! Toplevel for the site
 define ('APPL_SITE_TOP', OWL_SITE_TOP . '/' . strtolower(APPL_NAME));
 
-//! Location of all configuration files
+//! Location of all configuration files. NOT, the application MUST provide this location!
 define ('APPL_LIBRARY', APPL_SITE_TOP . '/lib');
 //! @}
 
@@ -86,6 +86,32 @@ define ('APPL_LIBRARY', APPL_SITE_TOP . '/lib');
  */
 abstract class OWLloader
 {
+	/**
+	 * Load a contentarea. This is done by calling the loadArea() method of the given class.
+	 * \param[in] $_classFile Name of the classfile. This must the full filename without '.php'
+	 * The name must be equal to the name of the class without 'Area in camelcase, so if the name of
+	 * the classfile is 'myspot.php', the classname must be 'MyspotArea' and this argument must
+	 * be 'myspot'
+	 * \param[in] $_classLocation Full path specification (can be as a constant) where the file can
+	 * be found
+	 * \return Reference to the object which is an instantiation of the class, null on erros
+	 */
+	public static function getArea ($_classFile, $_classLocation)
+	{
+		if (!self::_tryLoad($_classFile . '.php', $_classLocation)) {
+			OWL::stat(OWL_LOADERR, array('Area class', $_classFile, $_classLocation));
+			return null;
+		}
+		$_className = ucfirst($_classFile . 'Area');
+		if (!class_exists($_className)) {
+			OWL::stat(OWL_LOADERR, array($_className));
+			return null;
+		}
+		$_cArea = new $_className();
+		$_cArea->loadArea();
+		return $_cArea;
+	}
+
 	/**
 	 * Load a PHP classfile
 	 * \param[in] $_className Name of the class; either file full name (&lt;filename.php&gt; or the identifying name ([class.]&lt;name&gt;[.php])
@@ -174,6 +200,7 @@ OWLloader::getClass('dispatcher', OWL_BO_INC);
 // UI Layer
 OWLloader::getClass('baseelement', OWL_UI_INC);
 OWLloader::getClass('container', OWL_UI_INC);
+OWLloader::getClass('contentarea', OWL_UI_INC);
 
 //$GLOBALS['owl_object'] = new OWL();
 $GLOBALS['messages'] = array ();

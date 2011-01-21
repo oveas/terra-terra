@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.8 2011-01-18 14:24:59 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.9 2011-01-21 10:18:27 oscar Exp $
  */
 
 /**
@@ -73,7 +73,7 @@ class SessionHandler extends _OWL
 
 //		ini_set ('session.gc_maxlifetime', ConfigHandler::get ('session|lifetime'));
 
-		ini_set ('session.save_handler', 'user');
+		if (!ini_set ('session.save_handler', 'user'));
 		ini_set ('session.use_trans_sid', true);
 		if (($_sessName = ConfigHandler::get('session|name')) != null) {
 			session_name($_sessName);
@@ -211,9 +211,10 @@ class SessionHandler extends _OWL
 	 */
 	public function gc ($lifetime)
 	{
-		$this->db->query =
-			  'DELETE FROM ' . $this->db->tablename ('sessiondata')
-			. ' WHERE stimestamp < ' . time() - $lifetime;
+		$this->db->set_query(
+				  'DELETE FROM ' . $this->db->tablename ('sessiondata')
+				. ' WHERE stimestamp < ' . time() - $lifetime
+			);
 		return $this->db->write (__LINE__, __FILE__);
 	}
 }

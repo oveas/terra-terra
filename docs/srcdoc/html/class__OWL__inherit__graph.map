@@ -1,35 +1,37 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classBaseElement.html" title="DOM Element base class." alt="" coords="1057,602,1180,1046"/>
-<area shape="rect" id="node43" href="$classDataHandler.html" title="The OWL Data object." alt="" coords="1212,621,1337,1027"/>
-<area shape="rect" id="node45" href="$classDbHandler.html" title="Database handler." alt="" coords="1361,425,1497,1223"/>
-<area shape="rect" id="node47" href="$classDispatcher.html" title="Dispatcher singleton." alt="" coords="1521,751,1636,897"/>
-<area shape="rect" id="node49" href="$classFileHandler.html" title="File handler." alt="" coords="1660,686,1780,962"/>
-<area shape="rect" id="node53" href="$classFormHandler.html" title="Formhandler." alt="" coords="1804,723,1932,925"/>
-<area shape="rect" id="node55" href="$classLogHandler.html" title="Log handler." alt="" coords="1956,658,2105,990"/>
-<area shape="rect" id="node57" href="$classOWL.html" title="{OWL\n|&#45; $instance\l|+ __clone()\l+ get_instance()\l+ stat()\l+ factory()\l&#45; __construct()\l}" alt="" coords="2129,742,2244,906"/>
-<area shape="rect" id="node59" href="$classSchemeHandler.html" title="Scheme handler." alt="" coords="2268,574,2415,1074"/>
-<area shape="rect" id="node61" href="$classSessionHandler.html" title="the PHP session object" alt="" coords="2439,705,2551,943"/>
-<area shape="rect" id="node65" href="$classUserHandler.html" title="the user object" alt="" coords="2583,686,2711,962"/>
-<area shape="rect" id="node5" href="$classContainer.html" title="Container." alt="" coords="288,1515,416,1623"/>
-<area shape="rect" id="node7" href="$classContainerPlugin.html" title="ContainerPlugins." alt="" coords="440,1487,552,1651"/>
-<area shape="rect" id="node17" href="$classDocument.html" title="Document." alt="" coords="703,1273,833,1866"/>
-<area shape="rect" id="node19" href="$classForm.html" title="Form Element class." alt="" coords="857,1413,1001,1726"/>
-<area shape="rect" id="node21" href="$classFormFieldPlugin.html" title="Formfield." alt="" coords="1025,1441,1212,1698"/>
-<area shape="rect" id="node37" href="$classTable.html" title="Table." alt="" coords="1236,1487,1356,1651"/>
-<area shape="rect" id="node39" href="$classTablecell.html" title="Tablecell." alt="" coords="1380,1478,1500,1661"/>
-<area shape="rect" id="node41" href="$classTablerow.html" title="Tablerow." alt="" coords="1524,1497,1644,1642"/>
-<area shape="rect" id="node9" href="$classContainerDivPlugin.html" title="DivContainer." alt="" coords="5,1971,136,2079"/>
-<area shape="rect" id="node11" href="$classContainerFieldsetPlugin.html" title="FieldsetContainer." alt="" coords="160,1962,317,2089"/>
-<area shape="rect" id="node13" href="$classContainerLabelPlugin.html" title="LabelContainer." alt="" coords="341,1962,485,2089"/>
-<area shape="rect" id="node15" href="$classContainerSpanPlugin.html" title="SpanContainer." alt="" coords="509,1971,651,2079"/>
-<area shape="rect" id="node23" href="$classFormFieldButtonPlugin.html" title="Formfield." alt="" coords="675,1943,829,2107"/>
-<area shape="rect" id="node25" href="$classFormFieldCheckboxPlugin.html" title="Formfield." alt="" coords="853,1953,1027,2098"/>
-<area shape="rect" id="node27" href="$classFormFieldFilePlugin.html" title="Formfield." alt="" coords="1051,1981,1187,2070"/>
-<area shape="rect" id="node29" href="$classFormFieldRadioPlugin.html" title="Formfield." alt="" coords="1211,1925,1360,2126"/>
-<area shape="rect" id="node31" href="$classFormFieldSelectPlugin.html" title="Formfield." alt="" coords="1384,1915,1536,2135"/>
-<area shape="rect" id="node33" href="$classFormFieldTextareaPlugin.html" title="Formfield." alt="" coords="1560,1953,1725,2098"/>
-<area shape="rect" id="node35" href="$classFormFieldTextPlugin.html" title="Formfield." alt="" coords="1749,1943,1891,2107"/>
-<area shape="rect" id="node51" href="$classImageHandler.html" title="Image handler." alt="" coords="1668,1497,1788,1642"/>
-<area shape="rect" id="node63" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="2423,1497,2559,1642"/>
-<area shape="rect" id="node67" href="$classUser.html" title="the OWL&#45;PHP session object" alt="" coords="2583,1459,2719,1679"/>
+<area shape="rect" id="node3" href="$classBaseElement.html" title="DOM Element base class." alt="" coords="1124,602,1247,1046"/>
+<area shape="rect" id="node45" href="$classContentArea.html" title="Content Area base class." alt="" coords="1271,770,1407,878"/>
+<area shape="rect" id="node47" href="$classDataHandler.html" title="The OWL Data object." alt="" coords="1431,621,1556,1027"/>
+<area shape="rect" id="node49" href="$classDbHandler.html" title="Database handler." alt="" coords="1580,425,1716,1223"/>
+<area shape="rect" id="node51" href="$classDispatcher.html" title="Dispatcher singleton." alt="" coords="1740,742,1897,906"/>
+<area shape="rect" id="node53" href="$classFileHandler.html" title="File handler." alt="" coords="1921,686,2041,962"/>
+<area shape="rect" id="node57" href="$classFormHandler.html" title="Formhandler." alt="" coords="2065,723,2193,925"/>
+<area shape="rect" id="node59" href="$classLogHandler.html" title="Log handler." alt="" coords="2217,658,2367,990"/>
+<area shape="rect" id="node61" href="$classOWL.html" title="{OWL\n|&#45; $instance\l|+ __clone()\l+ get_instance()\l+ stat()\l+ factory()\l&#45; __construct()\l}" alt="" coords="2391,742,2505,906"/>
+<area shape="rect" id="node63" href="$classSchemeHandler.html" title="Scheme handler." alt="" coords="2529,574,2676,1074"/>
+<area shape="rect" id="node65" href="$classSessionHandler.html" title="the PHP session object" alt="" coords="2700,705,2812,943"/>
+<area shape="rect" id="node69" href="$classUserHandler.html" title="the user object" alt="" coords="2840,686,2968,962"/>
+<area shape="rect" id="node5" href="$classContainer.html" title="Container." alt="" coords="369,1497,497,1623"/>
+<area shape="rect" id="node7" href="$classContainerPlugin.html" title="ContainerPlugins." alt="" coords="521,1478,633,1642"/>
+<area shape="rect" id="node19" href="$classDocument.html" title="Document." alt="" coords="863,1273,993,1847"/>
+<area shape="rect" id="node21" href="$classForm.html" title="Form Element class." alt="" coords="1017,1403,1161,1717"/>
+<area shape="rect" id="node23" href="$classFormFieldPlugin.html" title="Formfield." alt="" coords="1185,1431,1372,1689"/>
+<area shape="rect" id="node39" href="$classTable.html" title="Table." alt="" coords="1396,1478,1516,1642"/>
+<area shape="rect" id="node41" href="$classTablecell.html" title="Tablecell." alt="" coords="1540,1469,1660,1651"/>
+<area shape="rect" id="node43" href="$classTablerow.html" title="Tablerow." alt="" coords="1684,1487,1804,1633"/>
+<area shape="rect" id="node9" href="$classContainerDivPlugin.html" title="DivContainer." alt="" coords="5,1953,136,2061"/>
+<area shape="rect" id="node11" href="$classContainerFieldsetPlugin.html" title="FieldsetContainer." alt="" coords="160,1943,317,2070"/>
+<area shape="rect" id="node13" href="$classContainerLabelPlugin.html" title="LabelContainer." alt="" coords="341,1943,485,2070"/>
+<area shape="rect" id="node15" href="$classContainerLinkPlugin.html" title="LinkContainer." alt="" coords="509,1915,645,2098"/>
+<area shape="rect" id="node17" href="$classContainerSpanPlugin.html" title="SpanContainer." alt="" coords="669,1953,811,2061"/>
+<area shape="rect" id="node25" href="$classFormFieldButtonPlugin.html" title="Formfield." alt="" coords="835,1925,989,2089"/>
+<area shape="rect" id="node27" href="$classFormFieldCheckboxPlugin.html" title="Formfield." alt="" coords="1013,1934,1187,2079"/>
+<area shape="rect" id="node29" href="$classFormFieldFilePlugin.html" title="Formfield." alt="" coords="1211,1962,1347,2051"/>
+<area shape="rect" id="node31" href="$classFormFieldRadioPlugin.html" title="Formfield." alt="" coords="1371,1897,1520,2117"/>
+<area shape="rect" id="node33" href="$classFormFieldSelectPlugin.html" title="Formfield." alt="" coords="1544,1897,1696,2117"/>
+<area shape="rect" id="node35" href="$classFormFieldTextareaPlugin.html" title="Formfield." alt="" coords="1720,1934,1885,2079"/>
+<area shape="rect" id="node37" href="$classFormFieldTextPlugin.html" title="Formfield." alt="" coords="1909,1925,2051,2089"/>
+<area shape="rect" id="node55" href="$classImageHandler.html" title="Image handler." alt="" coords="1921,1487,2041,1633"/>
+<area shape="rect" id="node67" href="$classSession.html" title="the OWL&#45;PHP session object" alt="" coords="2684,1487,2820,1633"/>
+<area shape="rect" id="node71" href="$classUser.html" title="the OWL&#45;PHP session object" alt="" coords="2844,1450,2980,1670"/>
 </map>

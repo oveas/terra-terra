@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines an HTML document
- * \version $Id: class.document.php,v 1.2 2011-01-19 17:04:01 oscar Exp $
+ * \version $Id: class.document.php,v 1.3 2011-01-21 10:18:27 oscar Exp $
  */
 
 /**
@@ -111,18 +111,6 @@ class Document extends BaseElement
 			Document::$instance = new self();
 		}
 		return Document::$instance;
-	}
-
-	/**
-	 * Call to the parent's (protected) setAttributes()
-	 * \param[in] $_attribs Indexed array with the HTML attributes 
-	 * \public
-	 */
-	public function setAttribs($_attribs = array())
-	{
-		if (count($_attribs) > 0) {
-			parent::setAttributes($_attribs);
-		}
 	}
 
 	/**

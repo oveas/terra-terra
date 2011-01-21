@@ -44,6 +44,7 @@
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLloader.html#a7a405369cad4d0a09f82cad218bc4824">getArea</a> ($_classFile, $_classLocation)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLloader.html#a271d6508b029b3989db57f4d9b9b7677">getClass</a> ($_className, $_classLocation=array(<a class="el" href="OWLloader_8php.html#a75dffdef5ba58a0ba5f21ed40627897f">OWL_SO_INC</a>, <a class="el" href="OWLloader_8php.html#aca50646bc73c3addf0e0f25081eae0ae">OWL_BO_INC</a>, <a class="el" href="OWLloader_8php.html#a2e11101c70f011a91d0d9c7f8e217738">OWL_UI_INC</a>), $_loadMultiple=false)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -95,6 +96,42 @@ Static Private Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a7a405369cad4d0a09f82cad218bc4824"></a><!-- doxytag: member="OWLloader::getArea" ref="a7a405369cad4d0a09f82cad218bc4824" args="($_classFile, $_classLocation)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static OWLloader::getArea </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_classFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_classLocation</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Load a contentarea. This is done by calling the loadArea() method of the given class. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_classFile</em>&nbsp;</td><td>Name of the classfile. This must the full filename without '.php' The name must be equal to the name of the class without 'Area in camelcase, so if the name of the classfile is 'myspot.php', the classname must be 'MyspotArea' and this argument must be 'myspot' </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_classLocation</em>&nbsp;</td><td>Full path specification (can be as a constant) where the file can be found </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Reference to the object which is an instantiation of the class. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a271d6508b029b3989db57f4d9b9b7677"></a><!-- doxytag: member="OWLloader::getClass" ref="a271d6508b029b3989db57f4d9b9b7677" args="($_className, $_classLocation=array(OWL_SO_INC, OWL_BO_INC, OWL_UI_INC), $_loadMultiple=false)" -->
 <div class="memitem">
 <div class="memproto">
@@ -138,7 +175,7 @@ Static Private Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="classOWLloader.html#a763911b4bc08982e24f1f897362f8c90">_tryLoad()</a>.</p>
 
-<p>Referenced by <a class="el" href="classContainer.html#aee0db5bff80563bc8dbf5e9d2b6fe7e5">Container::__construct()</a>, <a class="el" href="classForm.html#a880197a858a70581146d6f0d275eff02">Form::addField()</a>, and <a class="el" href="classDispatcher.html#af79aa0f7056d4bc6765f940a9a0fb039">Dispatcher::dispatch()</a>.</p>
+<p>Referenced by <a class="el" href="classContainer.html#aee0db5bff80563bc8dbf5e9d2b6fe7e5">Container::__construct()</a>, <a class="el" href="classForm.html#a880197a858a70581146d6f0d275eff02">Form::addField()</a>, and <a class="el" href="classDispatcher.html#a55f3a6e89f797e2986d32166cfa49486">Dispatcher::dispatch()</a>.</p>
 
 </div>
 </div>
@@ -146,7 +183,7 @@ Static Private Member Functions</h2></td></tr>
 <li>/home/oscar/projects/owl-php/src/<a class="el" href="OWLloader_8php.html">OWLloader.php</a></li>
 </ul>
 </div>
-<hr class="footer"/><address class="footer"><small>Generated on Wed Jan 19 2011 18:00:24 for OWL-PHP by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Jan 21 2011 10:54:31 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
- * \version $Id: owl.messages.php,v 1.15 2011-01-19 17:00:32 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.16 2011-01-21 10:18:28 oscar Exp $
  */
 
 $GLOBALS['messages'] = array (
@@ -11,13 +11,15 @@ $GLOBALS['messages'] = array (
 	, OWL_STATUS_WARNING	=> 'Operation ended with a warning'
 	, OWL_STATUS_ERROR		=> 'Operation ended with an error'
 	, OWL_STATUS_BUG		=> 'A programming bug was found in $p1$ on line $p2$'
-	, OWL_STATUS_FNF		=> 'File $p1$ not found'
-	, OWL_STATUS_ROPENERR	=> 'Error openening $p1$ for read'
-	, OWL_STATUS_WOPENERR	=> 'Error openening $p1$ for write'
-	, OWL_STATUS_NOKEY		=> 'No security key could be found'
-	, OWL_STATUS_IVKEY		=> 'Given security key does not match with this server'
+//	, OWL_STATUS_FNF		=> 'File $p1$ not found'
+//	, OWL_STATUS_ROPENERR	=> 'Error openening $p1$ for read'
+//	, OWL_STATUS_WOPENERR	=> 'Error openening $p1$ for write'
+//	, OWL_STATUS_NOKEY		=> 'No security key could be found'
+//	, OWL_STATUS_IVKEY		=> 'Given security key does not match with this server'
 	, OWL_STATUS_NOSAVSTAT	=> 'Trying to restore a status that was not previously saved'
 	, OWL_STATUS_THROWERR	=> 'No context to throw an exception'
+	, OWL_LOADERR			=> 'Error loading $p1$ file $p2$ from location $p3$'
+	, OWL_INSTERR			=> 'Error instantiating class $p1$'
 	, CONFIG_NOVALUE		=> 'Nonexising config value <i>$p1$</i> requested'
 	, CONFIG_PROTECTED		=> 'Attempt to overwrite the protected configuration item <i>$p1$</i>'
 	, LOGGING_OPENERR		=> 'Cannot open logfile <i>$p1$</i> for write'
@@ -51,13 +53,13 @@ $GLOBALS['messages'] = array (
 	, DATA_AMBFIELD			=> 'The variable $p1$ occured more than once'
 	, DATA_NODBLINK			=> 'A database query shoukld be prepared, but there is no database handler set yet'
 	, DATA_IVPREPARE		=> 'A database query was prepared with an invalid prepare flag'
+	, USER_LOGINFAIL		=> 'Error logging in with username $p1$ and password $p2$'
+	, USER_LOGGEDIN			=> 'User $p1$ logged in with password $p2$'
+	, USER_RESTORERR		=> 'Error restoring data for user ID $p1$'
 	, FORM_RETVALUE			=> 'Retrieve value $p2$ for formvariable $p1$'
 	, FORM_STORVALUE		=> 'Storing formvariable $p1$ with value $p2$'
 	, FORM_PARSE			=> 'Start parsing the incoming formdata'
 	, FORM_NOVALUE			=> 'No value found for formvariable $p1$'
-	, USER_LOGINFAIL		=> 'Error logging in with username $p1$ and password $p2$'
-	, USER_LOGGEDIN			=> 'User $p1$ logged in with password $p2$'
-	, USER_RESTORERR		=> 'Error restoring data for user ID $p1$'
 	, FORM_IVMETHOD			=> 'Form method $p1$ is invalid or not supported'
 	, FORM_IVENCODING		=> 'Form encoding $p1$ is invalid or not supported'
 	, FORM_IVCLASSNAME		=> 'Invalid classname for formfieldtype $p1$ - cannot instantiate $p2$'
@@ -90,6 +92,7 @@ $GLOBALS['messages'] = array (
 	, SCHEMEHANDLE_NOCOLS	=> 'No columns defined for scheme $p1$'
 	, SCHEMEHANDLE_DUPLPRKEY	=> 'Duplicate primary key found for scheme $p1$'
 	, DISP_NOARG			=> 'Dispatcher received no arguments'
+	, DISP_IVDISPATCH		=> 'Invalid argument $p1$ in dispatcher'
 	, DISP_INSARG			=> 'Insufficient arguments passed to the dispatcher'
 	, DISP_NOCLASS			=> 'Cannot instantiate class $p1$'
 	, DISP_NOCLASSF			=> 'Classfile $p1$ not found in $p2$'

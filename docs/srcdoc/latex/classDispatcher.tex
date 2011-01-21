@@ -7,20 +7,22 @@
 
 
 
-Inheritance diagram for Dispatcher:\nopagebreak
+Inheritance diagram for Dispatcher:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=150pt]{classDispatcher__inherit__graph}
+\includegraphics[width=162pt]{classDispatcher__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Dispatcher:\nopagebreak
+Collaboration diagram for Dispatcher:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=150pt]{classDispatcher__coll__graph}
+\includegraphics[width=162pt]{classDispatcher__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -28,7 +30,9 @@ Collaboration diagram for Dispatcher:\nopagebreak
 \item 
 \hyperlink{classDispatcher_a601d9fd6c9a2ccbfd77b43b6f7678ba3}{\_\-\_\-clone} ()
 \item 
-\hyperlink{classDispatcher_af79aa0f7056d4bc6765f940a9a0fb039}{dispatch} ()
+\hyperlink{classDispatcher_a8a974bbbb30be7cda74f9929972fd2f6}{composeDispatcher} (\$\_\-dispatcher)
+\item 
+\hyperlink{classDispatcher_a55f3a6e89f797e2986d32166cfa49486}{dispatch} (\$\_\-dispatcher=null)
 \item 
 \hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
 \item 
@@ -132,15 +136,43 @@ References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::tr
 
 Referenced by SessionHandler::write().
 
+\index{Dispatcher@{Dispatcher}!composeDispatcher@{composeDispatcher}}
+\index{composeDispatcher@{composeDispatcher}!Dispatcher@{Dispatcher}}
+\subsubsection[{composeDispatcher}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::composeDispatcher (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-dispatcher}
+\end{DoxyParamCaption}
+)}\label{classDispatcher_a8a974bbbb30be7cda74f9929972fd2f6}
+Translate a given dispatcher to the URL encoded format 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-dispatcher}]\hyperlink{classDispatcher}{Dispatcher} as an indexed array with the following keys:
+\begin{DoxyItemize}
+\item application: Name of the application. When the include path is no constant, it must be equal to the name of the directory directly under the server's document root.
+\item include\_\-path: A path relative from the application toplevel, or a constant
+\item class\_\-file: Filename, this can be the full file name (\char`\"{}class.myclass.php\char`\"{}) or just the name (\char`\"{}myclass\char`\"{})
+\item class\_\-name Name of the class. This can be ommitted if it is equal to the classfile starting with a capital (\char`\"{}Myclass\char`\"{})
+\item method\_\-name: Methpd that will be called when the form is submitted. This method should accept no parameters, but must get the formdata using \hyperlink{classOWL_aa6f4f99b9b0d6c77e7d49075d8a29d69}{OWL::factory}('FormHandler'); For short, a string in the format \char`\"{}application\#include\_\-path-\/path\#class\_\-file\#class\_\-name\#method\_\-name\char`\"{} may also be given. 
+\end{DoxyItemize}\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+URL encoded dispatcher 
+\end{DoxyReturn}
+
+
+References owlCrypt(), and \_\-OWL::set\_\-status().
+
 \index{Dispatcher@{Dispatcher}!dispatch@{dispatch}}
 \index{dispatch@{dispatch}!Dispatcher@{Dispatcher}}
 \subsubsection[{dispatch}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::dispatch (
 \begin{DoxyParamCaption}
-{}
+\item[{\$}]{ \_\-dispatcher = {\ttfamily null}}
 \end{DoxyParamCaption}
-)}\label{classDispatcher_af79aa0f7056d4bc6765f940a9a0fb039}
-Get the dispatcher info from the formdata, load the specified classfile and call the method specified.
-
+)}\label{classDispatcher_a55f3a6e89f797e2986d32166cfa49486}
+Get the dispatcher info from the formdata, load the specified classfile and call the method specified. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-dispatcher}]An optional dispatcher can be given (\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classDispatcher_a8a974bbbb30be7cda74f9929972fd2f6}{Dispatcher::composeDispatcher()} for the format). When omitted, the dispatcher will be taken from the formdata.
+\end{DoxySeeAlso}
 \begin{DoxyReturn}{Returns}
 On errors during dispatch, the severity level, otherwise the return value of the given method 
 \end{DoxyReturn}
@@ -293,7 +325,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Form::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), composeDispatcher(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{Dispatcher@{Dispatcher}!signal@{signal}}
 \index{signal@{signal}!Dispatcher@{Dispatcher}}

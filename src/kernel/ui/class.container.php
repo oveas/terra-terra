@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a container element
- * \version $Id: class.container.php,v 1.1 2011-01-13 11:05:34 oscar Exp $
+ * \version $Id: class.container.php,v 1.2 2011-01-21 10:18:28 oscar Exp $
  */
 
 OWLloader::getClass('container', OWL_PLUGINS . '/containers');
@@ -57,7 +57,15 @@ class Container extends BaseElement
 		$this->setContent($_content);
 	}
 
-	
+	/**
+	 * Set container specific attributes
+	 * \param[in] $_attribs Indexed array with the type specific attributes.
+	 */
+	public function setContainer($_attribs = array())
+	{
+		$this->containerObject->setAttributes($_attribs);
+	}
+
 	/**
 	 * Get the HTML code to display the container
 	 * \public

@@ -8,6 +8,8 @@ Class loader.
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+static \hyperlink{classOWLloader_a7a405369cad4d0a09f82cad218bc4824}{getArea} (\$\_\-classFile, \$\_\-classLocation)
+\item 
 static \hyperlink{classOWLloader_a271d6508b029b3989db57f4d9b9b7677}{getClass} (\$\_\-className, \$\_\-classLocation=array(\hyperlink{OWLloader_8php_a75dffdef5ba58a0ba5f21ed40627897f}{OWL\_\-SO\_\-INC}, \hyperlink{OWLloader_8php_aca50646bc73c3addf0e0f25081eae0ae}{OWL\_\-BO\_\-INC}, \hyperlink{OWLloader_8php_a2e11101c70f011a91d0d9c7f8e217738}{OWL\_\-UI\_\-INC}), \$\_\-loadMultiple=false)
 \end{DoxyCompactItemize}
 \subsection*{Static Private Member Functions}
@@ -51,6 +53,20 @@ References \$GLOBALS.
 
 Referenced by getClass().
 
+\index{OWLloader@{OWLloader}!getArea@{getArea}}
+\index{getArea@{getArea}!OWLloader@{OWLloader}}
+\subsubsection[{getArea}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::getArea (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-classFile, }
+\item[{\$}]{ \_\-classLocation}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWLloader_a7a405369cad4d0a09f82cad218bc4824}
+Load a contentarea. This is done by calling the loadArea() method of the given class. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-classFile}]Name of the classfile. This must the full filename without '.php' The name must be equal to the name of the class without 'Area in camelcase, so if the name of the classfile is 'myspot.php', the classname must be 'MyspotArea' and this argument must be 'myspot' \item[\mbox{\tt[in]} {\em \$\_\-classLocation}]Full path specification (can be as a constant) where the file can be found \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the object which is an instantiation of the class. 
+\end{DoxyReturn}
 \index{OWLloader@{OWLloader}!getClass@{getClass}}
 \index{getClass@{getClass}!OWLloader@{OWLloader}}
 \subsubsection[{getClass}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::getClass (

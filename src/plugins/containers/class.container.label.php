@@ -2,12 +2,12 @@
 /**
  * \file
  * This file defines the label plugin for containers
- * \version $Id: class.container.label.php,v 1.1 2011-01-13 11:05:35 oscar Exp $
+ * \version $Id: class.container.label.php,v 1.2 2011-01-21 10:18:27 oscar Exp $
  */
 
 /**
  * \ingroup OWL_UI_PLUGINS
- * Abstract class defining Label container plugin
+ * Class defining Label container plugin
  * \brief LabelContainer
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jan 12, 2011 -- O van Eijk -- initial version
@@ -34,11 +34,11 @@ class ContainerLabelPlugin extends ContainerPlugin
 
 	/**
 	 * Set the for attribute, which identifies the formfield for which this is a label
-	 * \param[in] $_formFieldObject Reference to the formfield object
+	 * \param[in] $_for Reference to the formfield object or a string with the ID
 	 */
-	public function setFor($_formFieldObject)
+	public function setFor($_for)
 	{
-		$this->for = $_formFieldObject;
+		$this->for = $_for;
 	}
 
 	/**
@@ -49,7 +49,9 @@ class ContainerLabelPlugin extends ContainerPlugin
 	{
 		$_htmlCode = '';
 		if ($this->for !== null) {
-			$_htmlCode .= ' for="' . $this->for->getId() . '"';
+			$_htmlCode .= ' for="'
+				. ((is_object($this->for)) ? $this->for->getId() : $this->for)
+				. '"';
 		}
 		return $_htmlCode;
 	}

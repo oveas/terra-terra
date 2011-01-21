@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a radio formfield element
- * \version $Id: class.formfield.radio.php,v 1.2 2011-01-19 17:00:32 oscar Exp $
+ * \version $Id: class.formfield.radio.php,v 1.3 2011-01-21 10:18:28 oscar Exp $
  */
 
 /**
@@ -34,6 +34,12 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	private $options;
 
 	/**
+	 * Indexed array with HTML ids for the options
+	 * \private
+	 */
+	private $option_ids;
+
+	/**
 	 * Class constructor; 
 	 * \public
 	 */
@@ -42,20 +48,24 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 		parent::__construct();
 		$this->type = 'radio';
 		$this->options = array();
+		$this->optionids = array();
 		$this->label = array();
 	}
 
 	/**
 	 * Add an option to the options array
-	 * \param[in] $_value Field value
+	 * \param[in] $_value Field value, defaults to 'option&lt;value&gt;'. This argument
+	 * is required in combination with a label container.
+	 * \param[in] $_id HTML ID for this option
 	 * \public
 	 */
-	public function addOption($_value)
+	public function addOption($_value, $_id = '')
 	{
 		if (in_array($_value, $this->options)) {
 			$this->set_status (FORMFIELD_VALEXISTS, $_value, $this->name);
 		} else {
 			$this->options[] = $_value;
+			$this->option_ids[$_value] = (($_id === '') ? ('option'.$_value) : $_id);
 		}
 	}
 
@@ -95,11 +105,12 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	{
 		$_retCode = array();
 		foreach ($this->options as $_val) {
-			$_htmlCode = "<input type='$this->type' value='$_val'";
+			$_htmlCode = "<input type='$this->type' value='$_val'"
+				. " id='" . $this->option_ids[$_val] . "'";
 			if ($this->value == $_val) {
 				$_htmlCode .= " checked";
 			}
-			$_htmlCode .= $this->getGenericFieldAttributes(array('value')) . '/>';
+			$_htmlCode .= $this->getGenericFieldAttributes(array('value', 'id')) . '/>';
 			if (array_key_exists($_val, $this->label)) {
 				$_htmlCode .= $this->label[$_val];
 			}

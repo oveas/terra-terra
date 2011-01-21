@@ -2,12 +2,12 @@
 /**
  * \file
  * This file defines the div plugin for containers
- * \version $Id: class.container.div.php,v 1.1 2011-01-13 11:05:35 oscar Exp $
+ * \version $Id: class.container.div.php,v 1.2 2011-01-21 10:18:27 oscar Exp $
  */
 
 /**
  * \ingroup OWL_UI_PLUGINS
- * Abstract class defining Div container plugin
+ * Class defining Div container plugin
  * \brief DivContainer
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jan 12, 2011 -- O van Eijk -- initial version

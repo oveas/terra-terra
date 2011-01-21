@@ -2,12 +2,12 @@
 /**
  * \file
  * This file defines the span plugin for containers
- * \version $Id: class.container.span.php,v 1.1 2011-01-13 11:05:35 oscar Exp $
+ * \version $Id: class.container.span.php,v 1.2 2011-01-21 10:18:27 oscar Exp $
  */
 
 /**
  * \ingroup OWL_UI_PLUGINS
- * Abstract class defining Span container plugin
+ * Class defining Span container plugin
  * \brief SpanContainer
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jan 12, 2011 -- O van Eijk -- initial version

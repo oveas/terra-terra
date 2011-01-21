@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._owl.php,v 1.3 2011-01-10 18:46:00 oscar Exp $
+ * \version $Id: class._owl.php,v 1.4 2011-01-21 10:18:28 oscar Exp $
  */
 
 /**
@@ -278,9 +278,9 @@ Register::register_code ('OWL_STATUS_OK');
 
 Register::set_severity (OWL_WARNING);
 Register::register_code ('OWL_STATUS_WARNING');
-Register::register_code ('OWL_STATUS_FNF');
-Register::register_code ('OWL_STATUS_ROPENERR');
-Register::register_code ('OWL_STATUS_WOPENERR');
+//Register::register_code ('OWL_STATUS_FNF');
+//Register::register_code ('OWL_STATUS_ROPENERR');
+//Register::register_code ('OWL_STATUS_WOPENERR');
 
 //Register::set_severity (OWL_BUG);
 
@@ -290,9 +290,11 @@ Register::register_code ('OWL_STATUS_BUG');
 Register::set_severity (OWL_ERROR);
 Register::register_code ('OWL_STATUS_ERROR');
 //Register::register_code ('OWL_STATUS_BUG');
-Register::register_code ('OWL_STATUS_NOKEY');
-Register::register_code ('OWL_STATUS_IVKEY');
+//Register::register_code ('OWL_STATUS_NOKEY');
+//Register::register_code ('OWL_STATUS_IVKEY');
 Register::register_code ('OWL_STATUS_NOSAVSTAT');
+Register::register_code('OWL_LOADERR');
+Register::register_code('OWL_INSTERR');
 
 Register::set_severity (OWL_FATAL);
 Register::register_code ('OWL_STATUS_THROWERR');

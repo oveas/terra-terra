@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the HTML Form class
- * \version $Id: class.form.php,v 1.5 2011-01-19 17:00:32 oscar Exp $
+ * \version $Id: class.form.php,v 1.6 2011-01-21 10:18:28 oscar Exp $
  */
 
 OWLloader::getClass('formfield', OWL_PLUGINS . '/formfields');
@@ -43,17 +43,7 @@ class Form extends BaseElement
 
 	/**
 	 * Class constructor
-	 * \param[in] $_dispatcher Dispatcher as an indexed array with the followinf keys:
-	 * 	- application: Name of the application. When the include path is no constant, it must be equal to
-	 * the name of the directory directly under the server's document root.
-	 * 	- include_path: A path relative from the application toplevel, or a constant
-	 * 	- class_file: Filename, this can be the full file name ("class.myclass.php") or just the name ("myclass")
-	 * 	- class_name Name of the class. This can be ommitted if it is equal to the classfile starting
-	 * with a capital ("Myclass")
-	 * 	- method_name: Methpd that will be called when the form is submitted. This method should accept
-	 * no parameters, but must get the formdata using OWL::factory('FormHandler');
-	 * For short, a string in the format "application#include_path-path#class_file#class_name#method_name"
-	 * may also be given.
+	 * \param[in] $_dispatcher OWL dispatcher as string or array, \see Dispatcher::composeDispatcher()
 	 * \param[in] $_attribs Indexed array with the HTML attributes 
 	 * \public
 	 */
@@ -63,21 +53,10 @@ class Form extends BaseElement
 		$this->fields = array();
 		$this->method = 'POST';
 		$this->enctype = 'application/x-www-form-urlencoded';
-		
-		if (is_array($_dispatcher)) {
-			foreach (array('application', 'include_path','class_file','method_name') as $_req) {
-				if (!array_key_exists($_req, $_dispatcher)) {
-					$this->set_status (FORM_IVDISPATCH, $_req);
-					return ($this->severity);
-				}
-			}
-			$_dispatcher = $_dispatcher['application']
-				.'#'.$_dispatcher['include_path']
-				.'#'.$_dispatcher['class_file']
-				.'#'.(array_key_exists('class_name', $_dispatcher)?$_dispatcher['class_name']:'')
-				.'#'.$_dispatcher['method_name'];
-		}
-		$this->dispatcher = urlencode(owlCrypt($_dispatcher));
+
+		$_disp = OWL::factory('Dispatcher', 'bo');
+		$this->dispatcher = $_disp->composeDispatcher($_dispatcher);
+
 		if (count($_attribs) > 0) {
 			parent::setAttributes($_attribs);
 		}
@@ -266,7 +245,6 @@ Register::set_severity (OWL_BUG);
 Register::register_code ('FORM_IVCLASSNAME');
 
 Register::set_severity (OWL_ERROR);
-Register::register_code ('FORM_IVDISPATCH');
 Register::register_code ('FORM_NOCLASS');
 Register::register_code ('FORM_NOATTRIB');
 Register::register_code ('FORM_NOSUCHFIELD');
