@@ -2,10 +2,8 @@
 /**
  * \file
  * This file defines the Loghandler class
- * \version $Id: class.loghandler.php,v 1.6 2011-01-18 14:24:59 oscar Exp $
+ * \version $Id: class.loghandler.php,v 1.7 2011-04-06 14:42:16 oscar Exp $
  */
-
-//require_once (OWL_INCLUDE . '/class._OWL.php');
 
 /**
  * \ingroup OWL_SO_LAYER
@@ -178,6 +176,11 @@ class LogHandler extends _OWL
 		if (!$this->opened) {
 			$this->open_logfile ();
 		}
+
+		$_replace = array("/<\/?b>/", "/<\/?i>/", "/<br\s*\/?>/");
+		$_with = array('*', '"', "\n");
+		$msg = preg_replace($_replace, $_with, $msg);
+		
 		$this->compose_message ($msg, $code);
 
 		$this->write_logfile ($msg);

@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.16 2011-01-21 10:18:28 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.17 2011-04-06 14:42:16 oscar Exp $
  */
 
 // Error handling used during development
@@ -121,12 +121,6 @@ abstract class OWLloader
 	 */
 	public static function getClass ($_className, $_classLocation = array(OWL_SO_INC, OWL_BO_INC, OWL_UI_INC), $_loadMultiple = false)
 	{
-
-		// FIXME This constuction will prevent duplicate names from several locations to load
-//		if (array_key_exists($_className, $GLOBALS['OWLCache']['classesLoaded'])) {
-//			return $GLOBALS['OWLCache']['classesLoaded'][$_className];
-//		}
-
 		if (!is_array($_classLocation)) {
 			return self::_tryLoad($_className, $_classLocation);
 		}
@@ -152,22 +146,32 @@ abstract class OWLloader
 	 */
 	private static function _tryLoad ($_className, $_classLocation)
 	{
+		$_classPath = $_classLocation . '/' . $_className;
+		if (array_key_exists($_classPath, $GLOBALS['OWLCache']['classesLoaded'])) {
+			return $GLOBALS['OWLCache']['classesLoaded'][$_classPath];
+		}
 		if (!file_exists($_classLocation . '/' . $_className)) {
 			// Try the classname with prefix 'class' and suffix 'php
 			$_className = 'class.'.$_className.'.php';
 			if (!file_exists($_classLocation . '/' . $_className)) {
-				$GLOBALS['OWLCache']['classesLoaded'][$_className] = false;
-				return false;
+				$GLOBALS['OWLCache']['classesLoaded'][$_classPath] = false;
+				return $GLOBALS['OWLCache']['classesLoaded'][$_classPath];
 			}
 		}
-		require_once ($_classLocation . '/' . $_className);
-		$GLOBALS['OWLCache']['classesLoaded'][$_className] = true;
-		return true;
+		$_classPath = $_classLocation . '/' . $_className;
+		if (array_key_exists($_classPath, $GLOBALS['OWLCache']['classesLoaded'])) {
+			return $GLOBALS['OWLCache']['classesLoaded'][$_classPath];
+		}
+		require ($_classPath);
+		$GLOBALS['OWLCache']['classesLoaded'][$_classPath] = true;
+		return $GLOBALS['OWLCache']['classesLoaded'][$_classPath];
 	}
 }
 
 $GLOBALS['OWLCache'] = array (
 	 'classesLoaded' => array()
+	,'languageLoaded' => array()
+	,'labelsLoaded' => array()
 );
 
 OWLloader::getClass('owl.severitycodes.php', OWL_LIBRARY);
@@ -204,9 +208,10 @@ OWLloader::getClass('contentarea', OWL_UI_INC);
 
 //$GLOBALS['owl_object'] = new OWL();
 $GLOBALS['messages'] = array ();
+$GLOBALS['labels'] = array ();
 
 // General helper functions.
-require_once (OWL_LIBRARY . '/owl.helper.functions.php');
+require (OWL_LIBRARY . '/owl.helper.functions.php');
 
 // If an APP_CONFIG file has been defined, add it to the config files array
 // Values in this config file will overwrite the OWL defaults. 
@@ -226,10 +231,11 @@ $GLOBALS['logger'] = OWL::factory('LogHandler');
 
 // Select the (no)debug function libraries.
 if ($GLOBALS['config']['values']['debug']) {
-	require_once (OWL_LIBRARY . '/owl.debug.functions.php');
+	require (OWL_LIBRARY . '/owl.debug.functions.php');
 } else {
-	require_once (OWL_LIBRARY . '/owl.nodebug.functions.php');
+	require (OWL_LIBRARY . '/owl.nodebug.functions.php');
 }
+//DBG_dumpval($GLOBALS);
 
 // Set up the label translations
 Register::register_labels(true);

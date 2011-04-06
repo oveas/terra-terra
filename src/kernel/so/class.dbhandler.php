@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.11 2011-01-21 16:28:15 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.12 2011-04-06 14:42:16 oscar Exp $
  */
 
 /**
@@ -27,6 +27,31 @@ define ('DBHANDLE_FIELDCOUNT',		4);
 
 //! Return the total number of fields
 define ('DBHANDLE_TOTALFIELDCOUNT', 5);
+
+//! @}
+
+/**
+ * \name Action types
+ * These flags define what type of queries is prepared or the last execution state
+ * @{
+ */
+//! Read data from the database
+define ('DBHANDLE_READ',		0);
+
+//! Write new data to the database
+define ('DBHANDLE_INSERT',		1);
+
+//! Update data in the database
+define ('DBHANDLE_UPDATE',		2);
+
+//! Remove data from the database
+define ('DBHANDLE_DELETE',		3);
+
+//! Last prepare action failed
+define ('DBHANDLE_FAILED',		10);
+
+//! Last prepared query was executed. Chect object staus for the result
+define ('DBHANDLE_COMPLETED',	11);
 
 //! @}
 
@@ -90,6 +115,18 @@ class DbHandler extends _OWL
 	private $query;
 
 	/**
+	 * string - Prepared query type
+	 * \private
+	 */
+	private $query_type;
+	
+	/**
+	 * integer - Last inserted Auto Increment value. Set after all write actions, so can be 0.
+	 * \private
+	 */
+	private $last_id;
+
+	/**
 	 * boolean -  true when the object has been cloned
 	 */
 	private $cloned;
@@ -135,6 +172,7 @@ class DbHandler extends _OWL
 		$this->errno = 0;
 		$this->error = '';
 		$this->db_prefix = ConfigHandler::get ('dbprefix');
+		$this->query_type = DBHANDLE_COMPLETED;
 		$this->set_status (OWL_STATUS_OK);
 	}
 
@@ -159,10 +197,14 @@ class DbHandler extends _OWL
 	 */
 	public function __clone ()
 	{
-		$this->close();
-		self::$instance = ++self::$instance;
-		$this->cloned = true;
-		$this->open();
+		if ($this->cloned) {
+			$this->set_status (DBHANDLE_CLONEACLONE);
+		} else {
+			$this->close();
+			self::$instance = ++self::$instance;
+			$this->cloned = true;
+			$this->reset();
+		}
 	}
 
 	/**
@@ -196,6 +238,7 @@ class DbHandler extends _OWL
 					$this->database['engine'] = $v;
 				}
 			}
+			$this->open();
 		}
 	}
 	/**
@@ -423,6 +466,7 @@ class DbHandler extends _OWL
 	 */
 	private function dbread ($qry, &$rows, &$fields)
 	{
+		$this->query_type = DBHANDLE_COMPLETED; // Mark the action as completed now
 		if (($__result = mysql_query ($qry, $this->id)) === false) {
 			$this->error = mysql_error($this->id);
 			$this->errno = mysql_errno($this->id);
@@ -623,13 +667,14 @@ class DbHandler extends _OWL
 		}
 
 		if (count($tables) == 0) {
+			$this->query_type = DBHANDLE_FAILED;
 			$this->set_status (DBHANDLE_NOTABLES);
 		} else {
 			$this->query .= 'FROM ' . $this->tablelist ($tables);
 			if (($_where = $this->where_clause ($searches, $joins)) != '') {
 				$this->query .= 'WHERE ' . $_where;
 			}
-
+			$this->query_type = DBHANDLE_READ;
 			$this->set_status (DBHANDLE_QPREPARED, array('read', $this->query));
 		}
 //echo ("Prepared query: <i>$this->query</i><br />");
@@ -647,12 +692,14 @@ class DbHandler extends _OWL
 	{
 		$_tables = $this->extract_tablelist ($searches);
 		if (count($_tables) == 0) {
+			$this->query_type = DBHANDLE_FAILED;
 			$this->set_status (DBHANDLE_NOTABLES);
 		} else {
 			$this->query = 'DELETE FROM ' . $this->tablelist ($_tables);
 			if (($_where = $this->where_clause ($searches, array())) != '') {
 				$this->query .= 'WHERE ' . $_where;
 			}
+			$this->query_type = DBHANDLE_DELETE;
 			$this->set_status (DBHANDLE_QPREPARED, array('delete', $this->query));
 		}
 		return ($this->severity);
@@ -674,6 +721,7 @@ class DbHandler extends _OWL
 		$_searches = array();
 		$_tables = $this->extract_tablelist ($values);
 		if (count($_tables) == 0) {
+			$this->query_type = DBHANDLE_FAILED;
 			$this->set_status (DBHANDLE_NOTABLES);
 			return ($this->severity);
 		}
@@ -687,6 +735,7 @@ class DbHandler extends _OWL
 		}
 
 		if (count($_updates)) {
+			$this->query_type = DBHANDLE_FAILED;
 			$this->set_status (DBHANDLE_NOVALUES);
 			return ($this->severity);
 		}
@@ -696,7 +745,8 @@ class DbHandler extends _OWL
 		if (($_where = $this->where_clause ($_searches, $joins)) != '') {
 			$this->query .= 'WHERE ' . $_where;
 		}
-
+		$this->query_type = DBHANDLE_UPDATE;
+		
 		$this->set_status (DBHANDLE_QPREPARED, array('update', $this->query));
 //echo ("Prepared query: <i>$this->query</i><br />");
 		return ($this->severity);
@@ -715,6 +765,7 @@ class DbHandler extends _OWL
 		$_val = array();
 		$_tables = $this->extract_tablelist ($values);
 		if (count($_tables) == 0) {
+			$this->query_type = DBHANDLE_FAILED;
 			$this->set_status (DBHANDLE_NOTABLES);
 			return ($this->severity);
 		}
@@ -732,6 +783,7 @@ class DbHandler extends _OWL
 						 . ' (' . join (', ', $_fld) . ') ' 
 						 . ' VALUES (' . join (', ', $_val) . ') '; 
 		}
+		$this->query_type = DBHANDLE_INSERT;
 		$this->set_status (DBHANDLE_QPREPARED, array('write', $this->query));
 //echo ("Prepared query: <i>$this->query</i><br />");
 		return ($this->severity);
@@ -745,13 +797,13 @@ class DbHandler extends _OWL
 	 * \param[in] $file File that made the call to this method
 	 * \return Severity level
 	 */
-	public function write ($rows = false, $line = 0, $file = '[unknown]')
+	public function write (&$rows = null, $line = 0, $file = '[unknown]')
 	{
 		if (!$this->opened) {
 			$this->set_status (DBHANDLE_DBCLOSED);
 			return ($this->severity);
 		}
-		if (!@mysql_query ($this->query, $this->id)) {
+		if (!mysql_query ($this->query, $this->id)) {
 			$this->error = mysql_error($this->id);
 			$this->errno = mysql_errno($this->id);
 			$this->set_status (DBHANDLE_QUERYERR, array (
@@ -760,12 +812,16 @@ class DbHandler extends _OWL
 					, $line
 					, $file
 				));
-			return ($this->severity);
+				$this->query_type = DBHANDLE_COMPLETED;
+				return ($this->severity);
 		}
-
-		$_cnt = mysql_affected_rows();
+		if ($this->query_type === DBHANDLE_INSERT) {
+			$this->last_id = mysql_insert_id($this->id); // Check for auto increment values
+		}
+		$_cnt = mysql_affected_rows($this->id);
+		$this->query_type = DBHANDLE_COMPLETED;
 		$this->set_status (DBHANDLE_UPDATED, array ('written', $_cnt));
-		if ($rows !== false) {
+		if ($rows !== null) {
 			$rows = $_cnt;
 		}
 		
@@ -779,7 +835,7 @@ class DbHandler extends _OWL
 	 */
 	public function last_inserted_id ()
 	{
-		return (mysql_insert_id());
+		return ($this->last_id);
 	}
 
 	/**
@@ -821,9 +877,10 @@ Register::register_code ('DBHANDLE_NOTABLES');
 Register::register_code ('DBHANDLE_NOVALUES');
 
 Register::set_severity (OWL_BUG);
-Register::register_code ('DBHANDLE_NOTACLONE');
 
 Register::set_severity (OWL_ERROR);
+Register::register_code ('DBHANDLE_CLONEACLONE');
+Register::register_code ('DBHANDLE_NOTACLONE');
 Register::register_code ('DBHANDLE_CONNECTERR');
 Register::register_code ('DBHANDLE_OPENERR');
 Register::register_code ('DBHANDLE_DBCLOSED');

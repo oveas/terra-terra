@@ -5,9 +5,9 @@
 \item 
 \hyperlink{owl_8helper_8functions_8php_a2c49978306cd0e2f4f9406c20373ed02}{toStrictBoolean} (\$\_\-val, \$\_\-trueValues=array('yes', 'y', 'true', '1'), \$\_\-forceLowercase=true)
 \item 
-\hyperlink{owl_8helper_8functions_8php_ac0a7a4f459017820c92f439ded932d7f}{owlTrn} (\$\_\-string)
-\item 
 \hyperlink{owl_8helper_8functions_8php_a0836b830fe9e399265d4cf910c5dff28}{owlCrypt} (\$\_\-string)
+\item 
+\hyperlink{owl_8helper_8functions_8php_a91f5481c5ca87b74848c1966639d490c}{RandomString} (\$\_\-size, \$\_\-lowercase=false)
 \item 
 \hyperlink{owl_8helper_8functions_8php_a0eb759657249228d1a2473ffa7de921c}{URL2Path} (\$\_\-file)
 \item 
@@ -20,7 +20,7 @@ This file defines general helper functions \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id:}
-\hyperlink{owl_8helper_8functions_8php}{owl.helper.functions.php},v 1.5 2011-\/01-\/19 17:00:32 oscar Exp 
+\hyperlink{owl_8helper_8functions_8php}{owl.helper.functions.php},v 1.6 2011-\/01-\/21 16:28:15 oscar Exp 
 \end{DoxyParagraph}
 
 
@@ -67,22 +67,20 @@ References ConfigHandler::get().
 
 Referenced by ConfigHandler::\_\-set(), Dispatcher::composeDispatcher(), Dispatcher::dispatch(), and ConfigHandler::get().
 
-\index{owl.helper.functions.php@{owl.helper.functions.php}!owlTrn@{owlTrn}}
-\index{owlTrn@{owlTrn}!owl.helper.functions.php@{owl.helper.functions.php}}
-\subsubsection[{owlTrn}]{\setlength{\rightskip}{0pt plus 5cm}owlTrn (
+\index{owl.helper.functions.php@{owl.helper.functions.php}!RandomString@{RandomString}}
+\index{RandomString@{RandomString}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{RandomString}]{\setlength{\rightskip}{0pt plus 5cm}RandomString (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-string}
+\item[{\$}]{ \_\-size, }
+\item[{\$}]{ \_\-lowercase = {\ttfamily false}}
 \end{DoxyParamCaption}
-)}\label{owl_8helper_8functions_8php_ac0a7a4f459017820c92f439ded932d7f}
-Translate a textstring using the labels array 
+)}\label{owl_8helper_8functions_8php_a91f5481c5ca87b74848c1966639d490c}
+Return a random string. The string will contain characters only (A-\/Z) 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-string}]Text string to translate \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The translation, or the input if none was found. 
-\end{DoxyReturn}
+\item[\mbox{\tt[in]} {\em \$\_\-size}]The string size in characters \item[\mbox{\tt[in]} {\em \$\_\-lowercase}]Boolean that indicates the string should contain lowercase characters only. Default is uppercase only. \end{DoxyParams}
 
 
-References \$GLOBALS, and ConfigHandler::get().
+Referenced by UserHandler::register().
 
 \index{owl.helper.functions.php@{owl.helper.functions.php}!toStrictBoolean@{toStrictBoolean}}
 \index{toStrictBoolean@{toStrictBoolean}!owl.helper.functions.php@{owl.helper.functions.php}}

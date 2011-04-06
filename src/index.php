@@ -2,11 +2,11 @@
 /**
  * \file
  * This is the entry point for OWL-PHP teststub
- * \version $Id: index.php,v 1.11 2010-12-03 12:07:43 oscar Exp $
+ * \version $Id: index.php,v 1.12 2011-04-06 14:42:16 oscar Exp $
  */
 
 define ('OWL_ROOT', '/home/oscar/projects/owl-php/src');
-require_once (OWL_ROOT . '/OWLloader.php');
+require (OWL_ROOT . '/OWLloader.php');
 
 DBG_dumpval ($GLOBALS['config']);
 DBG_dumpval ($GLOBALS['register']);

@@ -7,7 +7,8 @@ The \hyperlink{classOWL}{OWL} Data object.
 
 
 
-Inheritance diagram for DataHandler:\nopagebreak
+Inheritance diagram for DataHandler:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,8 @@ Inheritance diagram for DataHandler:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for DataHandler:\nopagebreak
+Collaboration diagram for DataHandler:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -44,11 +46,13 @@ Collaboration diagram for DataHandler:\nopagebreak
 \item 
 \hyperlink{classDataHandler_af3e7a17194e97300d499e9178f4913cb}{prepare} (\$type=\hyperlink{class_8datahandler_8php_ac28f74b49007773d24ca2207baac6d32}{DATA\_\-READ})
 \item 
-\hyperlink{classDataHandler_abb329fe5a97eb8df928aabfc8078ff23}{db} (\&\$data=false, \$line=0, \$file= '\mbox{[}unknown\mbox{]}')
+\hyperlink{classDataHandler_ad0d98add797178eb7192333dcc2bab4c}{db} (\&\$data=null, \$line=0, \$file= '\mbox{[}unknown\mbox{]}')
 \item 
 \hyperlink{classDataHandler_a27db6fb8365b7def4db7bd72984a0089}{set\_\-prefix} (\$prefix)
 \item 
 \hyperlink{classDataHandler_a3c82ec0a40dabcc55dc203c96abf02d2}{db\_\-status} ()
+\item 
+\hyperlink{classDataHandler_ae025dc51e854e8d5d534c5e26c617470}{inserted\_\-id} ()
 \item 
 \hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
 \item 
@@ -157,11 +161,11 @@ Referenced by SessionHandler::write().
 \index{db@{db}!DataHandler@{DataHandler}}
 \subsubsection[{db}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::db (
 \begin{DoxyParamCaption}
-\item[{\&\$}]{ data = {\ttfamily false}, }
+\item[{\&\$}]{ data = {\ttfamily null}, }
 \item[{\$}]{ line = {\ttfamily 0}, }
 \item[{\$}]{ file = {\ttfamily '\mbox{[}unknown\mbox{]}'}}
 \end{DoxyParamCaption}
-)}\label{classDataHandler_abb329fe5a97eb8df928aabfc8078ff23}
+)}\label{classDataHandler_ad0d98add797178eb7192333dcc2bab4c}
 Forward a call to the DBHandler object (which is private in this \hyperlink{classDataHandler}{DataHandler})
 
 
@@ -292,8 +296,20 @@ References OWL::factory().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), \_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), and Dispatcher::\_\-\_\-construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), \_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and UserHandler::construct().
 
+\index{DataHandler@{DataHandler}!inserted\_\-id@{inserted\_\-id}}
+\index{inserted\_\-id@{inserted\_\-id}!DataHandler@{DataHandler}}
+\subsubsection[{inserted\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::inserted\_\-id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classDataHandler_ae025dc51e854e8d5d534c5e26c617470}
+Return the last inserted AutoIncrement value
+
+\begin{DoxyReturn}{Returns}
+Last ID 
+\end{DoxyReturn}
 \index{DataHandler@{DataHandler}!prepare@{prepare}}
 \index{prepare@{prepare}!DataHandler@{DataHandler}}
 \subsubsection[{prepare}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::prepare (
@@ -453,6 +469,10 @@ References \_\-OWL::get\_\-severity(), and \_\-OWL::set\_\-status().
 Overwrite the table prefix for this dataset. Since the prefix is stored in the database handler object, a clone is made here. 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$prefix}]\hyperlink{classTable}{Table} prefix \end{DoxyParams}
+
+
+References OWL::factory().
+
 \index{DataHandler@{DataHandler}!set\_\-status@{set\_\-status}}
 \index{set\_\-status@{set\_\-status}!DataHandler@{DataHandler}}
 \subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
@@ -472,7 +492,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), \_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), set(), set\_\-join(), set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), \_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), DbHandler::connect(), UserHandler::construct(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), set(), set\_\-join(), set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{DataHandler@{DataHandler}!set\_\-tablename@{set\_\-tablename}}
 \index{set\_\-tablename@{set\_\-tablename}!DataHandler@{DataHandler}}

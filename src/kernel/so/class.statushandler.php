@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines status object that's user for all objects
- * \version $Id: class.statushandler.php,v 1.6 2011-01-10 18:45:59 oscar Exp $
+ * \version $Id: class.statushandler.php,v 1.7 2011-04-06 14:42:15 oscar Exp $
  */
 
 /**
@@ -143,8 +143,9 @@ class StatusHandler
 
 		if (array_key_exists ($this->code, $GLOBALS['messages'])) {
 			$_msg = $GLOBALS['messages'][$this->code];
-		} else { // Still not there...
-			$_msg = sprintf ('No message found for code %%X%08X (%s)', $this->code, Register::get_code($this->code));
+		} else {
+			$_msg = sprintf ('No message found for code %%X%08X (%d) (%s)', $this->code, $this->code, Register::get_code($this->code));
+//			$_msg = sprintf ('No message found for code %%X%08X (%s)', $this->code, Register::get_code($this->code));
 		}
 		for ($_i = 0; $_i < count ($this->params); $_i++) {
 			$_search[] = '$p' . ($_i + 1) . '$';

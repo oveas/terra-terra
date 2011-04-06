@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the abstract ContentArea class
- * \version $Id: class.contentarea.php,v 1.2 2011-01-21 16:28:15 oscar Exp $
+ * \version $Id: class.contentarea.php,v 1.3 2011-04-06 14:42:16 oscar Exp $
  */
 
 /**
@@ -30,22 +30,34 @@ abstract class ContentArea extends _OWL
 	abstract public function loadArea();
 	
 	/**
-	 * Add the newly created container object to the document
+	 * Add the newly created container object to the given container document
+	 * \param[in] $_contnr Reference to the container object, by default (when null) the content will
+	 * be added to the main document.
 	 */
-	public function addToDocument()
+	public function addToDocument(Container $_contnr = null)
 	{
-		$_document = OWL::factory('Document', 'ui');
-		$_document->addToContent($this->contentObject);
+		if ($_contnr === null) {
+			$_document = OWL::factory('Document', 'ui');
+			$_document->addToContent($this->contentObject);
+		} else {
+			$_contnr->addToContent($this->contentObject);
+		}
 	}
 
 	/**
-	 * Add the newly created container to the given container
-	 * \param[in] $_contnr Reference to the container object
+	 * Translate a textstring using the labels array
+	 * \param[in] $_string Text string to translate
+	 * \return The translation, or the input if none was found.
 	 */
-	public function addToContainer(Container $_contnr)
+	public function trn ($_string)
 	{
-		$_contnr->addToContent($this->contentObject);
+		if (array_key_exists($_string, $GLOBALS['labels'])) {
+			return $GLOBALS['labels'][$_string];
+		} else {
+			return ((ConfigHandler::get ('debug')?'(!)':'').$_string);
+		}
 	}
+
 }
 
 /*

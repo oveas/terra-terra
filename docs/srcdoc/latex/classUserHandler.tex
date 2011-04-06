@@ -7,7 +7,8 @@ the user object
 
 
 
-Inheritance diagram for UserHandler:\nopagebreak
+Inheritance diagram for UserHandler:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,8 @@ Inheritance diagram for UserHandler:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for UserHandler:\nopagebreak
+Collaboration diagram for UserHandler:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,8 +27,6 @@ Collaboration diagram for UserHandler:\nopagebreak
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
-\item 
-\hyperlink{classUserHandler_a624054e9693139a3fe5af0ef3b757f04}{\_\-\_\-construct} (\$username)
 \item 
 \hyperlink{classUserHandler_a4539c12ed2ce12a9147d61496854d5ab}{isLoggedIn} ()
 \item 
@@ -47,6 +47,12 @@ Collaboration diagram for UserHandler:\nopagebreak
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUserHandler_ae471fe5473119da7089886c27ad5a3e9}{construct} (\$username)
+\item 
+\hyperlink{classUserHandler_a4b50cc703608c490080b25c5b2ae3418}{username\_\-exists} (\$username)
+\item 
+\hyperlink{classUserHandler_a7fbe37f478bf35e0570db3296529e2a4}{register} (\$username, \$email, \$password, \$vpassword)
 \item 
 \hyperlink{classUserHandler_a0bcf46a5b0c4a5b495cba98b8da02b7b}{logout} (\$reset\_\-status)
 \item 
@@ -98,26 +104,6 @@ Aug 27, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 
 
 \subsection{Constructor \& Destructor Documentation}
-\index{UserHandler@{UserHandler}!\_\-\_\-construct@{\_\-\_\-construct}}
-\index{\_\-\_\-construct@{\_\-\_\-construct}!UserHandler@{UserHandler}}
-\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\_\-\_\-construct (
-\begin{DoxyParamCaption}
-\item[{\$}]{ username}
-\end{DoxyParamCaption}
-)}\label{classUserHandler_a624054e9693139a3fe5af0ef3b757f04}
-Class constructor; setup the user environment
-
-
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$username}]Username. \end{DoxyParams}
-
-
-Reimplemented in \hyperlink{classUser_ab8a717f17626301cc8b7815a43ea5b5b}{User}.
-
-
-
-References ConfigHandler::get(), \_\-OWL::init(), read\_\-userdata(), \_\-OWL::set\_\-status(), and set\_\-username().
-
 \index{UserHandler@{UserHandler}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!UserHandler@{UserHandler}}
 \subsubsection[{\_\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::\_\-\_\-destruct (
@@ -159,6 +145,26 @@ References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::tr
 
 
 Referenced by SessionHandler::write().
+
+\index{UserHandler@{UserHandler}!construct@{construct}}
+\index{construct@{construct}!UserHandler@{UserHandler}}
+\subsubsection[{construct}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::construct (
+\begin{DoxyParamCaption}
+\item[{\$}]{ username}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUserHandler_ae471fe5473119da7089886c27ad5a3e9}
+Class constructor; setup the user environment
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$username}]Username. \end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classUser_a9cf024c7e3148e45afd1bee7691ceefd}{User}.
+
+
+
+References ConfigHandler::get(), \_\-OWL::init(), read\_\-userdata(), \_\-OWL::set\_\-status(), and set\_\-username().
 
 \index{UserHandler@{UserHandler}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!UserHandler@{UserHandler}}
@@ -231,7 +237,7 @@ References ConfigHandler::get().
 
 
 
-Referenced by login().
+Referenced by login(), and register().
 
 \index{UserHandler@{UserHandler}!init@{init}}
 \index{init@{init}!UserHandler@{UserHandler}}
@@ -246,7 +252,7 @@ References OWL::factory().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), \_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), and Dispatcher::\_\-\_\-construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and construct().
 
 \index{UserHandler@{UserHandler}!isLoggedIn@{isLoggedIn}}
 \index{isLoggedIn@{isLoggedIn}!UserHandler@{UserHandler}}
@@ -314,7 +320,33 @@ References \_\-OWL::set\_\-status().
 
 
 
-Referenced by \_\-\_\-construct().
+Referenced by construct().
+
+\index{UserHandler@{UserHandler}!register@{register}}
+\index{register@{register}!UserHandler@{UserHandler}}
+\subsubsection[{register}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::register (
+\begin{DoxyParamCaption}
+\item[{\$}]{ username, }
+\item[{\$}]{ email, }
+\item[{\$}]{ password, }
+\item[{\$}]{ vpassword}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUserHandler_a7fbe37f478bf35e0570db3296529e2a4}
+Store a newly registered user
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$username}]Given username \item[\mbox{\tt[in]} {\em \$email}]Given username \item[\mbox{\tt[in]} {\em \$password}]Given password \item[\mbox{\tt[in]} {\em \$vpassword}]Given password verification -\/ not used here but must exist in the reimplementation \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New user ID or -\/1 on failure 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classUser_ac262f6dc9d3a121c25045fe6716e014a}{User}.
+
+
+
+References hash\_\-password(), and RandomString().
 
 \index{UserHandler@{UserHandler}!reset@{reset}}
 \index{reset@{reset}!UserHandler@{UserHandler}}
@@ -391,7 +423,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by Container::\_\-\_\-construct(), \_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), DbHandler::connect(), construct(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), read\_\-userdata(), User::register(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{UserHandler@{UserHandler}!set\_\-username@{set\_\-username}}
 \index{set\_\-username@{set\_\-username}!UserHandler@{UserHandler}}
@@ -405,7 +437,7 @@ Set the username
 \item[\mbox{\tt[in]} {\em \$username}]Username \end{DoxyParams}
 
 
-Referenced by \_\-\_\-construct(), login(), User::login(), and User::logout().
+Referenced by construct(), login(), User::login(), and User::logout().
 
 \index{UserHandler@{UserHandler}!signal@{signal}}
 \index{signal@{signal}!UserHandler@{UserHandler}}
@@ -454,6 +486,25 @@ References \_\-OWL::signal().
 
 
 Referenced by \_\-OWL::check(), login(), and SessionHandler::read().
+
+\index{UserHandler@{UserHandler}!username\_\-exists@{username\_\-exists}}
+\index{username\_\-exists@{username\_\-exists}!UserHandler@{UserHandler}}
+\subsubsection[{username\_\-exists}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::username\_\-exists (
+\begin{DoxyParamCaption}
+\item[{\$}]{ username}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUserHandler_a4b50cc703608c490080b25c5b2ae3418}
+Check is a given username exists
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$username}]The username to check \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True when the username exists false otherwise 
+\end{DoxyReturn}
+
+
+Referenced by User::register().
 
 
 

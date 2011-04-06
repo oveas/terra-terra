@@ -59,12 +59,48 @@ Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#aa74936d65eaded5fe8d34047a73e4cea">DBHANDLE_TOTALFIELDCOUNT</a> </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Return the total number of fields. </p>
  <a href="class_8dbhandler_8php.html#aa74936d65eaded5fe8d34047a73e4cea">More...</a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Action types</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="amgrp9ad7eef834aba9bf8b8f74b3a7b87e62"></a> These flags define what type of queries is prepared or the last execution state </p>
+</div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a4dbfa42638414eb755b9e798ba993573">DBHANDLE_READ</a> </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Read data from the database. </p>
+ <a href="class_8dbhandler_8php.html#a4dbfa42638414eb755b9e798ba993573">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a9b823a1d51ed910255c944dfe313129a">DBHANDLE_INSERT</a> </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Write new data to the database. </p>
+ <a href="class_8dbhandler_8php.html#a9b823a1d51ed910255c944dfe313129a">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a44c5292f8bc0072b38e9651b63cc04d8">DBHANDLE_UPDATE</a> </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Update data in the database. </p>
+ <a href="class_8dbhandler_8php.html#a44c5292f8bc0072b38e9651b63cc04d8">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a978ad3c1b4647dae1fe77c7f8c757da5">DBHANDLE_DELETE</a> </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Remove data from the database. </p>
+ <a href="class_8dbhandler_8php.html#a978ad3c1b4647dae1fe77c7f8c757da5">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#acf3fd82991e7c67a3472b81dc1ce9904">DBHANDLE_FAILED</a> </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Last prepare action failed. </p>
+ <a href="class_8dbhandler_8php.html#acf3fd82991e7c67a3472b81dc1ce9904">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a81abd823ff43027e2a788e4d5993790f">DBHANDLE_COMPLETED</a> </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Last prepared query was executed. Chect object staus for the result. </p>
+ <a href="class_8dbhandler_8php.html#a81abd823ff43027e2a788e4d5993790f">More...</a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>This file defines the Database Handler class </p>
 <dl class="version"><dt><b>Version:</b></dt><dd></dd></dl>
-<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="class_8dbhandler_8php.html">class.dbhandler.php</a>,v 1.10 2011-01-18 14:32:42 oscar Exp </dd></dl>
+<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="class_8dbhandler_8php.html">class.dbhandler.php</a>,v 1.11 2011-01-21 16:28:15 oscar Exp </dd></dl>
 <hr/><h2>Enumeration Type Documentation</h2>
+<a class="anchor" id="a81abd823ff43027e2a788e4d5993790f"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_COMPLETED" ref="a81abd823ff43027e2a788e4d5993790f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a81abd823ff43027e2a788e4d5993790f">DBHANDLE_COMPLETED</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Last prepared query was executed. Chect object staus for the result. </p>
+
+</div>
+</div>
 <a class="anchor" id="acc5178c2a582eafa4ef488ed3394b725"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_DATA" ref="acc5178c2a582eafa4ef488ed3394b725" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -80,6 +116,36 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a978ad3c1b4647dae1fe77c7f8c757da5"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_DELETE" ref="a978ad3c1b4647dae1fe77c7f8c757da5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a978ad3c1b4647dae1fe77c7f8c757da5">DBHANDLE_DELETE</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Remove data from the database. </p>
+
+</div>
+</div>
+<a class="anchor" id="acf3fd82991e7c67a3472b81dc1ce9904"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_FAILED" ref="acf3fd82991e7c67a3472b81dc1ce9904" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#acf3fd82991e7c67a3472b81dc1ce9904">DBHANDLE_FAILED</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Last prepare action failed. </p>
+
+</div>
+</div>
 <a class="anchor" id="afda554c4527b03446f287291626c12ad"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_FIELDCOUNT" ref="afda554c4527b03446f287291626c12ad" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -92,6 +158,36 @@ Enumerations</h2></td></tr>
 <div class="memdoc">
 
 <p>Return the number of fields per row. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9b823a1d51ed910255c944dfe313129a"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_INSERT" ref="a9b823a1d51ed910255c944dfe313129a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a9b823a1d51ed910255c944dfe313129a">DBHANDLE_INSERT</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Write new data to the database. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4dbfa42638414eb755b9e798ba993573"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_READ" ref="a4dbfa42638414eb755b9e798ba993573" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a4dbfa42638414eb755b9e798ba993573">DBHANDLE_READ</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Read data from the database. </p>
 
 </div>
 </div>
@@ -155,8 +251,23 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a44c5292f8bc0072b38e9651b63cc04d8"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_UPDATE" ref="a44c5292f8bc0072b38e9651b63cc04d8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a44c5292f8bc0072b38e9651b63cc04d8">DBHANDLE_UPDATE</a></td>
+        </tr>
+      </table>
 </div>
-<hr class="footer"/><address class="footer"><small>Generated on Fri Jan 21 2011 10:54:29 for OWL-PHP by&nbsp;
+<div class="memdoc">
+
+<p>Update data in the database. </p>
+
+</div>
+</div>
+</div>
+<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 6 2011 16:40:04 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

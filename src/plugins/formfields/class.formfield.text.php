@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a text-, password or hidden formfield element
- * \version $Id: class.formfield.text.php,v 1.1 2011-01-13 11:05:34 oscar Exp $
+ * \version $Id: class.formfield.text.php,v 1.2 2011-04-06 14:42:15 oscar Exp $
  */
 
 /**
@@ -76,7 +76,7 @@ class FormFieldTextPlugin extends FormFieldPlugin
 			$_htmlCode .= " size='$this->size'";
 		}
 		if (!empty($this->maxsize) && ($this->type != 'hidden')) {
-			$_htmlCode .= " maxsize='$this->maxsize'";
+			$_htmlCode .= " maxlength='$this->maxsize'";
 		}
 		$_htmlCode .= $this->getGenericFieldAttributes() . '/>';
 		return $_htmlCode;

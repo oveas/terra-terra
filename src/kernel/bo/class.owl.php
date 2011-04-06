@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library helper class
- * \version $Id: class.owl.php,v 1.3 2011-01-18 14:24:59 oscar Exp $
+ * \version $Id: class.owl.php,v 1.4 2011-04-06 14:42:15 oscar Exp $
  */
 
 /**
@@ -74,7 +74,7 @@ class OWL extends _OWL
 			if (!file_exists($class_file)) {
 				trigger_error('Class file ' . $class_file . ' not found', E_USER_ERROR);
 			}
-			require_once ($class_file);
+			require ($class_file);
 		}
 		if (!class_exists($class)) {
 			trigger_error('Class ' . $class . ' not found', E_USER_ERROR);

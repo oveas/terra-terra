@@ -35,15 +35,15 @@
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a2c49978306cd0e2f4f9406c20373ed02">toStrictBoolean</a> ($_val, $_trueValues=array('yes', 'y', 'true', '1'), $_forceLowercase=true)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#ac0a7a4f459017820c92f439ded932d7f">owlTrn</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a0836b830fe9e399265d4cf910c5dff28">owlCrypt</a> ($_string)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a91f5481c5ca87b74848c1966639d490c">RandomString</a> ($_size, $_lowercase=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a0eb759657249228d1a2473ffa7de921c">URL2Path</a> ($_file)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a08f49d79aaaa581551e49017424cbe77">ExpandURL</a> ($_file)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>This file defines general helper functions </p>
 <dl class="version"><dt><b>Version:</b></dt><dd></dd></dl>
-<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="owl_8helper_8functions_8php.html">owl.helper.functions.php</a>,v 1.5 2011-01-19 17:00:32 oscar Exp </dd></dl>
+<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="owl_8helper_8functions_8php.html">owl.helper.functions.php</a>,v 1.6 2011-01-21 16:28:15 oscar Exp </dd></dl>
 <hr/><h2>Function Documentation</h2>
 <a class="anchor" id="a08f49d79aaaa581551e49017424cbe77"></a><!-- doxytag: member="owl.helper.functions.php::ExpandURL" ref="a08f49d79aaaa581551e49017424cbe77" args="($_file)" -->
 <div class="memitem">
@@ -105,31 +105,40 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac0a7a4f459017820c92f439ded932d7f"></a><!-- doxytag: member="owl.helper.functions.php::owlTrn" ref="ac0a7a4f459017820c92f439ded932d7f" args="($_string)" -->
+<a class="anchor" id="a91f5481c5ca87b74848c1966639d490c"></a><!-- doxytag: member="owl.helper.functions.php::RandomString" ref="a91f5481c5ca87b74848c1966639d490c" args="($_size, $_lowercase=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">owlTrn </td>
+          <td class="memname">RandomString </td>
           <td>(</td>
           <td class="paramtype">$&nbsp;</td>
-          <td class="paramname"> <em>_string</em></td>
-          <td>&nbsp;)&nbsp;</td>
+          <td class="paramname"> <em>_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_lowercase</em> = <code>false</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Translate a textstring using the labels array </p>
+<p>Return a random string. The string will contain characters only (A-Z) </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_string</em>&nbsp;</td><td>Text string to translate </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_size</em>&nbsp;</td><td>The string size in characters </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_lowercase</em>&nbsp;</td><td>Boolean that indicates the string should contain lowercase characters only. Default is uppercase only. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>The translation, or the input if none was found. </dd></dl>
 
-<p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, and <a class="el" href="classConfigHandler.html#aa8f6a7516588561626efccb8be5875ce">ConfigHandler::get()</a>.</p>
+<p>Referenced by <a class="el" href="classUserHandler.html#a7fbe37f478bf35e0570db3296529e2a4">UserHandler::register()</a>.</p>
 
 </div>
 </div>
@@ -209,7 +218,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 </div>
-<hr class="footer"/><address class="footer"><small>Generated on Fri Jan 21 2011 10:54:29 for OWL-PHP by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 6 2011 16:40:04 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

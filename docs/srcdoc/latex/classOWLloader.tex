@@ -65,8 +65,12 @@ Load a contentarea. This is done by calling the loadArea() method of the given c
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$\_\-classFile}]Name of the classfile. This must the full filename without '.php' The name must be equal to the name of the class without 'Area in camelcase, so if the name of the classfile is 'myspot.php', the classname must be 'MyspotArea' and this argument must be 'myspot' \item[\mbox{\tt[in]} {\em \$\_\-classLocation}]Full path specification (can be as a constant) where the file can be found \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Reference to the object which is an instantiation of the class. 
+Reference to the object which is an instantiation of the class, null on erros 
 \end{DoxyReturn}
+
+
+References OWL::stat().
+
 \index{OWLloader@{OWLloader}!getClass@{getClass}}
 \index{getClass@{getClass}!OWLloader@{OWLloader}}
 \subsubsection[{getClass}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::getClass (

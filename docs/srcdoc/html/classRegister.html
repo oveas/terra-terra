@@ -52,7 +52,7 @@ Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#ad4d61787414f7d64d1e3420f0fdf3f91">set_application</a> ($app_id)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#a58e49ccb1fe4e441d0329e879c922aa0">set_class</a> ($class_id)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#a0adde8d67d77b9b4d66156272cb48ae4">set_severity</a> ($severity_level)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#a688c665a20294826a762cf552b4a00fc">register_messages</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#a80be033f56d821cf6d271ffac2e2d387">register_messages</a> ($_force=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegister.html#ad145e4bc28af91817782399b06422e74">register_labels</a> ($_owl=false)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
@@ -314,18 +314,19 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>References <a class="el" href="classConfigHandler.html#aa8f6a7516588561626efccb8be5875ce">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="owl_8labels_8php.html#a2ec9873ed5b12f5516e61365717fa6c0">$_labels</a>, <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, and <a class="el" href="classConfigHandler.html#aa8f6a7516588561626efccb8be5875ce">ConfigHandler::get()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a688c665a20294826a762cf552b4a00fc"></a><!-- doxytag: member="Register::register_messages" ref="a688c665a20294826a762cf552b4a00fc" args="()" -->
+<a class="anchor" id="a80be033f56d821cf6d271ffac2e2d387"></a><!-- doxytag: member="Register::register_messages" ref="a80be033f56d821cf6d271ffac2e2d387" args="($_force=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">static Register::register_messages </td>
           <td>(</td>
-          <td class="paramname"></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_force</em> = <code>false</code></td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [static]</code></td>
         </tr>
@@ -333,8 +334,14 @@ Static Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Load the message file for <a class="el" href="classOWL.html">OWL</a> and the application </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_force</em>&nbsp;</td><td>Boolean to force a reload with (different) translations, defaults to false </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>References <a class="el" href="classConfigHandler.html#aa8f6a7516588561626efccb8be5875ce">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="owl_8messages_8php.html#a5caca00ffca4d529cdbb748a61f4b015">$_messages</a>, <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, and <a class="el" href="classConfigHandler.html#aa8f6a7516588561626efccb8be5875ce">ConfigHandler::get()</a>.</p>
 
 <p>Referenced by <a class="el" href="classStatusHandler.html#a79170bca79bfd82e3f707e1294e7c916">StatusHandler::get_message()</a>.</p>
 
@@ -464,7 +471,7 @@ Static Public Member Functions</h2></td></tr>
 <li>/home/oscar/projects/owl-php/src/kernel/so/<a class="el" href="class_8register_8php.html">class.register.php</a></li>
 </ul>
 </div>
-<hr class="footer"/><address class="footer"><small>Generated on Fri Jan 21 2011 10:54:31 for OWL-PHP by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 6 2011 16:40:06 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

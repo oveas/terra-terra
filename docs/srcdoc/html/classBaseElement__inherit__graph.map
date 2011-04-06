@@ -5,8 +5,8 @@
 <area shape="rect" id="node21" href="$classForm.html" title="Form Element class." alt="" coords="1017,1049,1161,1362"/>
 <area shape="rect" id="node23" href="$classFormFieldPlugin.html" title="Formfield." alt="" coords="1185,1077,1372,1334"/>
 <area shape="rect" id="node39" href="$classTable.html" title="Table." alt="" coords="1396,1123,1516,1287"/>
-<area shape="rect" id="node41" href="$classTablecell.html" title="Tablecell." alt="" coords="1540,1114,1660,1297"/>
-<area shape="rect" id="node43" href="$classTablerow.html" title="Tablerow." alt="" coords="1684,1133,1804,1278"/>
+<area shape="rect" id="node41" href="$classTablecell.html" title="Tablecell." alt="" coords="1540,1123,1660,1287"/>
+<area shape="rect" id="node43" href="$classTablerow.html" title="Tablerow." alt="" coords="1684,1142,1804,1269"/>
 <area shape="rect" id="node2" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $saved_status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# save_status()\l# restore_status()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="1113,6,1255,375"/>
 <area shape="rect" id="node9" href="$classContainerDivPlugin.html" title="DivContainer." alt="" coords="5,1598,136,1706"/>
 <area shape="rect" id="node11" href="$classContainerFieldsetPlugin.html" title="FieldsetContainer." alt="" coords="160,1589,317,1715"/>

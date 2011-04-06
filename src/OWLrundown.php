@@ -3,8 +3,10 @@
  * \file
  * \ingroup OWL_LIBRARY
  * Make sure all objects are destroyed in the proper order
- * \version $Id: OWLrundown.php,v 1.4 2010-10-04 17:40:40 oscar Exp $
+ * \version $Id: OWLrundown.php,v 1.5 2011-04-06 14:42:16 oscar Exp $
  */
+
+//DBG_dumpval($GLOBALS['messages']);
 
 // Make sure no exceptions are thrown anymore from this point!
 ConfigHandler::set('exception|block_throws', true);

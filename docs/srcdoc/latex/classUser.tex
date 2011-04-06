@@ -7,7 +7,8 @@ the OWL-\/PHP session object
 
 
 
-Inheritance diagram for User:\nopagebreak
+Inheritance diagram for User:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,8 @@ Inheritance diagram for User:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for User:\nopagebreak
+Collaboration diagram for User:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,8 +27,6 @@ Collaboration diagram for User:\nopagebreak
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
-\item 
-\hyperlink{classUser_ab8a717f17626301cc8b7815a43ea5b5b}{\_\-\_\-construct} (\$username=null)
 \item 
 \hyperlink{classUser_accd20149a7414612c1505e022eb63ffc}{\_\-\_\-destruct} ()
 \item 
@@ -52,6 +52,11 @@ Collaboration diagram for User:\nopagebreak
 \item 
 \hyperlink{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}{traceback} (\&\$text=false, \$depth=0)
 \end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classUser_a4d4ea8d545686fa335e8597f1bab73d2}{password\_\-strength} (\$\_\-pwd, \$\_\-compare=array())
+\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -59,6 +64,12 @@ Collaboration diagram for User:\nopagebreak
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUser_a9cf024c7e3148e45afd1bee7691ceefd}{construct} (\$username=null)
+\item 
+\hyperlink{classUser_ac262f6dc9d3a121c25045fe6716e014a}{register} (\$username, \$email, \$password, \$vpassword)
+\item 
+\hyperlink{classUserHandler_a4b50cc703608c490080b25c5b2ae3418}{username\_\-exists} (\$username)
 \item 
 \hyperlink{classUserHandler_afbcc9a275b547cca0bd4cff567b054a0}{set\_\-username} (\$username)
 \item 
@@ -97,26 +108,6 @@ Aug 27, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 
 
 \subsection{Constructor \& Destructor Documentation}
-\index{User@{User}!\_\-\_\-construct@{\_\-\_\-construct}}
-\index{\_\-\_\-construct@{\_\-\_\-construct}!User@{User}}
-\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}User::\_\-\_\-construct (
-\begin{DoxyParamCaption}
-\item[{\$}]{ username = {\ttfamily null}}
-\end{DoxyParamCaption}
-)}\label{classUser_ab8a717f17626301cc8b7815a43ea5b5b}
-Class constructor; create a new user environment
-
-
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$username}]Username when logged in. Default username is 'anonymous' \end{DoxyParams}
-
-
-Reimplemented from \hyperlink{classUserHandler_a624054e9693139a3fe5af0ef3b757f04}{UserHandler}.
-
-
-
-References ConfigHandler::get().
-
 \index{User@{User}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!User@{User}}
 \subsubsection[{\_\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}User::\_\-\_\-destruct (
@@ -154,6 +145,26 @@ References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::tr
 
 
 Referenced by SessionHandler::write().
+
+\index{User@{User}!construct@{construct}}
+\index{construct@{construct}!User@{User}}
+\subsubsection[{construct}]{\setlength{\rightskip}{0pt plus 5cm}User::construct (
+\begin{DoxyParamCaption}
+\item[{\$}]{ username = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUser_a9cf024c7e3148e45afd1bee7691ceefd}
+Class constructor; create a new user environment
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$username}]Username when logged in. Default username is 'anonymous' \end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classUserHandler_ae471fe5473119da7089886c27ad5a3e9}{UserHandler}.
+
+
+
+References ConfigHandler::get().
 
 \index{User@{User}!get\_\-id@{get\_\-id}}
 \index{get\_\-id@{get\_\-id}!User@{User}}
@@ -246,7 +257,7 @@ References OWL::factory().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), and Dispatcher::\_\-\_\-construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and UserHandler::construct().
 
 \index{User@{User}!isLoggedIn@{isLoggedIn}}
 \index{isLoggedIn@{isLoggedIn}!User@{User}}
@@ -304,6 +315,46 @@ References ConfigHandler::get(), and UserHandler::set\_\-username().
 
 
 Referenced by login().
+
+\index{User@{User}!password\_\-strength@{password\_\-strength}}
+\index{password\_\-strength@{password\_\-strength}!User@{User}}
+\subsubsection[{password\_\-strength}]{\setlength{\rightskip}{0pt plus 5cm}static User::password\_\-strength (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-pwd, }
+\item[{\$}]{ \_\-compare = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classUser_a4d4ea8d545686fa335e8597f1bab73d2}
+Calculate the strenbgth of a given password. This method uses string length and checks for variations in the characters and digits used. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-pwd}]The password as a string \item[\mbox{\tt[in]} {\em \$\_\-compare}]An optional array of string to compare with, like username and or email address. If the password if (part of) any of the strings in the array, the strength is decreased. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer from 0-\/10 indicating the strength, where 0 is the lowest and 10 the highest level 
+\end{DoxyReturn}
+\index{User@{User}!register@{register}}
+\index{register@{register}!User@{User}}
+\subsubsection[{register}]{\setlength{\rightskip}{0pt plus 5cm}User::register (
+\begin{DoxyParamCaption}
+\item[{\$}]{ username, }
+\item[{\$}]{ email, }
+\item[{\$}]{ password, }
+\item[{\$}]{ vpassword}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUser_ac262f6dc9d3a121c25045fe6716e014a}
+\hyperlink{classRegister}{Register} a new username
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$username}]Given username \item[\mbox{\tt[in]} {\em \$email}]Given username \item[\mbox{\tt[in]} {\em \$password}]Given password \item[\mbox{\tt[in]} {\em \$vpassword}]Given password \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New user ID or -\/1 on failure 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classUserHandler_a7fbe37f478bf35e0570db3296529e2a4}{UserHandler}.
+
+
+
+References ConfigHandler::get(), \_\-OWL::set\_\-status(), and UserHandler::username\_\-exists().
 
 \index{User@{User}!reset@{reset}}
 \index{reset@{reset}!User@{User}}
@@ -394,7 +445,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), DbHandler::connect(), UserHandler::construct(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), register(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{User@{User}!set\_\-username@{set\_\-username}}
 \index{set\_\-username@{set\_\-username}!User@{User}}
@@ -408,7 +459,7 @@ Set the username
 \item[\mbox{\tt[in]} {\em \$username}]Username \end{DoxyParams}
 
 
-Referenced by UserHandler::\_\-\_\-construct(), UserHandler::login(), login(), and logout().
+Referenced by UserHandler::construct(), UserHandler::login(), login(), and logout().
 
 \index{User@{User}!signal@{signal}}
 \index{signal@{signal}!User@{User}}
@@ -457,6 +508,25 @@ References \_\-OWL::signal().
 
 
 Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read().
+
+\index{User@{User}!username\_\-exists@{username\_\-exists}}
+\index{username\_\-exists@{username\_\-exists}!User@{User}}
+\subsubsection[{username\_\-exists}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::username\_\-exists (
+\begin{DoxyParamCaption}
+\item[{\$}]{ username}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classUserHandler_a4b50cc703608c490080b25c5b2ae3418}
+Check is a given username exists
+
+
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$username}]The username to check \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True when the username exists false otherwise 
+\end{DoxyReturn}
+
+
+Referenced by register().
 
 
 

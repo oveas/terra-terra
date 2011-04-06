@@ -5,15 +5,26 @@
 #
 # Version 0.1 -- Initial version (2008-08-26)
 # (c) Oscar van Eijk, Oveas Functionality Provider
-# $Id: codescan.pl,v 1.2 2010-10-04 17:40:40 oscar Exp $
+# $Id: codescan.pl,v 1.3 2011-04-06 14:42:15 oscar Exp $
 #
 
 my $location = '/home/oscar/projects/owl-php/src';
-if ($ARGC > 0) {
+my $app = 'owl';
+
+if ($#ARGV >= 0) {
 	$location = $ARGV[0];
+	if ($#ARGV == 0) {
+		print "Usage: $0 [location] [app]\n";
+		exit();
+	} else {
+		$app = $ARGV[1];
+	}
 }
-my $msgfile = 'lib/owl.messages.php';
+my $msgfile = 'lib/'.$app.'.messages.php';
 my %Messages = {};
+
+my $lblfile = 'lib/'.$app.'.labels.php';
+my %Labels = {};
 
 sub loadmessages ($$) {
 	my $loc = shift;
@@ -26,6 +37,19 @@ sub loadmessages ($$) {
 		}
 	}
 	close MF;
+}
+
+sub loadlabels ($$) {
+	my $loc = shift;
+	my $lf = shift;
+
+	open (LF, '<', $loc . '/' . $lf) || die 'Fatal error opening label file ' . $loc . '/' . $lf;
+	while (my $line = <LF>) {
+		if ($line =~ /\s+,?\s+('|")(.*?)(\1)\s+=>\s+'(.*?)'/i) {
+			$Labels{$2} = $4;
+		}
+	}
+	close LF;
 }
 
 sub checkfiles ($$) {
@@ -60,6 +84,11 @@ sub checkfiles ($$) {
 							print '* [' . $1 . '] has no text in file ' . $file . ' on line ' . $i . "\n";
 						}
 					}
+					if ($line =~ /(::|->)trn\s*\('(.*?)'\)/i) {
+						if (!exists ($Labels{$2})) {
+							print '* [' . $2 . '] has no translation in file ' . $file . ' on line ' . $i . "\n";
+						}
+					}
 				}
 				close FH;
 			}
@@ -70,4 +99,5 @@ sub checkfiles ($$) {
 }
 
 &loadmessages ($location, $msgfile);
+&loadlabels ($location, $lblfile);
 &checkfiles ($location, 0);

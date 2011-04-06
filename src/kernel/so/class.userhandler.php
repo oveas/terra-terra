@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.11 2011-01-18 14:24:59 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.12 2011-04-06 14:42:16 oscar Exp $
  */
 
 /**
@@ -12,7 +12,7 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 27, 2008 -- O van Eijk -- initial version
  */
-class UserHandler extends _OWL
+abstract class UserHandler extends _OWL
 {
 	
 	/**
@@ -35,10 +35,10 @@ class UserHandler extends _OWL
 
 	/**
 	 * Class constructor; setup the user environment
-	 * \public
+	 * \protected
 	 * \param[in] $username Username.
 	 */
-	public function __construct ($username)
+	protected function construct ($username)
 	{
 		_OWL::init();
 
@@ -54,6 +54,46 @@ class UserHandler extends _OWL
 		}
 		$this->read_userdata();
 		$this->set_status (OWL_STATUS_OK);
+	}
+
+	/**
+	 * Check is a given username exists
+	 * \protected
+	 * \param[in] $username The username to check
+	 * \return True when the username exists false otherwise
+	 */
+	protected function username_exists ($username)
+	{
+		$this->dataset->set('username', $username);
+		$this->dataset->set_key ('username');
+		$this->dataset->prepare ();
+		$this->dataset->db($this->user_data, __LINE__, __FILE__);
+		$_dbstat = $this->dataset->db_status();
+		if ($_dbstat === DBHANDLE_NODATA) {
+			return (false);
+		}
+		return (true);
+	}
+
+	/**
+	 * Store a newly registered user
+	 * \protected
+	 * \param[in] $username Given username
+	 * \param[in] $email Given username
+	 * \param[in] $password Given password
+	 * \param[in] $vpassword Given password verification - not used here but must exist in the reimplementation
+	 * \return New user ID or -1 on failure
+	 */
+	protected function register($username, $email, $password, $vpassword)
+	{
+		$this->dataset->set('username', $username);
+		$this->dataset->set('password', $this->hash_password($password));
+		$this->dataset->set('email', $email);
+		$this->dataset->set('verification', RandomString(45));
+		$this->dataset->prepare(DATA_WRITE);
+		$_result = null;
+		$this->dataset->db ($_result, __LINE__, __FILE__);
+		return ($this->dataset->inserted_id());
 	}
 
 	/**
@@ -141,7 +181,7 @@ class UserHandler extends _OWL
 	 * \param[in] $password Given password in plain text format
 	 * \return The encrypted password
 	 */
-	private function hash_password ($password)
+	private  function hash_password ($password)
 	{
 		return (hash (ConfigHandler::get ('session|password_crypt'), $password));
 	}

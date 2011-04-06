@@ -3,10 +3,10 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
- * \version $Id: owl.messages.php,v 1.17 2011-01-21 16:28:15 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.18 2011-04-06 14:42:15 oscar Exp $
  */
 
-$GLOBALS['messages'] = array (
+$_messages = array (
 	  OWL_STATUS_OK			=> 'Normal successfull completion'
 	, OWL_STATUS_WARNING	=> 'Operation ended with a warning'
 	, OWL_STATUS_ERROR		=> 'Operation ended with an error'
@@ -36,6 +36,7 @@ $GLOBALS['messages'] = array (
 	, DBHANDLE_NOTABLES		=> 'Table list empty - could not extract tables from fieldlist or empty list received'
 	, DBHANDLE_NOVALUES		=> 'Nothing to do - found no fieldnames for update'
 	, DBHANDLE_NOTACLONE	=> 'Method alt() was called on a database handler that was not cloned'
+	, DBHANDLE_CLONEACLONE	=> 'It is not allowed to clone a clone - please create a clone of the original object only'
 	, DBHANDLE_ROWSREAD		=> '$p2$ rows returned to $p4$ (line $p3$) with query: <i>$p1$</i>'
 	, DBHANDLE_ROWCOUNT		=> '$p2$ rows where successfully $p1$'
 	, DBHANDLE_CONNECTERR	=> 'Error connecting to database server $p1$ with username $p2$ and password $p3$'
@@ -58,6 +59,9 @@ $GLOBALS['messages'] = array (
 	, USER_LOGINFAIL		=> 'Error logging in with username $p1$ and password $p2$'
 	, USER_LOGGEDIN			=> 'User $p1$ logged in with password $p2$'
 	, USER_RESTORERR		=> 'Error restoring data for user ID $p1$'
+	, USER_DUPLUSERNAME		=> 'A user with the name $p1$ already exists'
+	, USER_PWDVERFAILED		=> 'The given passwords to not match'
+	, USER_WEAKPASSWD		=> 'Your password os too weak. Please use more variety, like mixed case characters, a mix of digits and (special) characters etc.'
 	, FORM_RETVALUE			=> 'Retrieve value $p2$ for formvariable $p1$'
 	, FORM_STORVALUE		=> 'Storing formvariable $p1$ with value $p2$'
 	, FORM_PARSE			=> 'Start parsing the incoming formdata'

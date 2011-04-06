@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.7 2011-01-18 14:24:59 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.8 2011-04-06 14:42:16 oscar Exp $
  */
 
 /**
@@ -375,7 +375,7 @@ class DataHandler extends _OWL
 	 * \param[in] $file File that made the call to this method
 	 * \return Severity level
 	 */
-	public function db (&$data = false, $line = 0, $file = '[unknown]')
+	public function db (&$data = null, $line = 0, $file = '[unknown]')
 	{
 		switch ($this->owl_prepared) {
 			case DATA_READ:
@@ -397,8 +397,11 @@ class DataHandler extends _OWL
 	 */
 	public function set_prefix ($prefix)
 	{
+		$_saved = OWL::factory('DbHandler');
+		$_saved->close();
 		$this->owl_database = clone $this->owl_database;
 		$this->owl_database->alt(array('prefix'=>$prefix));
+		$_saved->open();
 	}
 
 	/**
@@ -409,6 +412,16 @@ class DataHandler extends _OWL
 	public function db_status ()
 	{
 		return ($this->owl_database->get_status());
+	}
+
+	/**
+	 * Return the last inserted AutoIncrement value
+	 * \public
+	 * \return Last ID
+	 */
+	public function inserted_id ()
+	{
+		return ($this->owl_database->last_inserted_id());
 	}
 }
 

@@ -7,7 +7,8 @@ Database handler.
 
 
 
-Inheritance diagram for DbHandler:\nopagebreak
+Inheritance diagram for DbHandler:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,8 @@ Inheritance diagram for DbHandler:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for DbHandler:\nopagebreak
+Collaboration diagram for DbHandler:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,7 +32,7 @@ Collaboration diagram for DbHandler:\nopagebreak
 \item 
 \hyperlink{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}{\_\-\_\-clone} ()
 \item 
-\hyperlink{classDbHandler_a82105c9c768f26a7a5ec84019121bbeb}{alt} (\$properties)
+\hyperlink{classDbHandler_ac3a8e0bfe2491e17bc527715505f90a7}{alt} (array \$properties)
 \item 
 \hyperlink{classDbHandler_ac9e93cb0ab57f03b2719eebd0c0ee2ef}{create} ()
 \item 
@@ -52,15 +54,15 @@ Collaboration diagram for DbHandler:\nopagebreak
 \item 
 \hyperlink{classDbHandler_a27c604b14c39913d34630e5504979b15}{unescape\_\-string} (\$string)
 \item 
-\hyperlink{classDbHandler_a3f9a0832d2de73e1f698b6d3c33569e6}{prepare\_\-read} (\$values=array(), \$tables=array(), \$searches=array(), \$joins=array())
+\hyperlink{classDbHandler_a2d8dd22e7e74b48db269ec1f53b8e549}{prepare\_\-read} (array \$values=array(), array \$tables=array(), array \$searches=array(), array \$joins=array())
 \item 
-\hyperlink{classDbHandler_a973e07b361c889b6ff44e93cc7665ca4}{prepare\_\-delete} (\$searches=array())
+\hyperlink{classDbHandler_a11a0d416e8993b919c9fec6f15dacbc5}{prepare\_\-delete} (array \$searches=array())
 \item 
-\hyperlink{classDbHandler_a9bddaca38be2544f6fdd4d82b3cd1c50}{prepare\_\-update} (\$values=array(), \$searches=array(), \$joins=array())
+\hyperlink{classDbHandler_a2e6560a5c8cc01339346bc1a74e21337}{prepare\_\-update} (array \$values=array(), array \$searches=array(), array \$joins=array())
 \item 
-\hyperlink{classDbHandler_a79e3237271c150c4f4f6c2593060567e}{prepare\_\-insert} (\$values=array())
+\hyperlink{classDbHandler_a157e507b2d562331d2e6fdbada61d604}{prepare\_\-insert} (array \$values=array())
 \item 
-\hyperlink{classDbHandler_a654166283f0f61f918cc34a5071f838c}{write} (\$rows=false, \$line=0, \$file= '\mbox{[}unknown\mbox{]}')
+\hyperlink{classDbHandler_ac02a117c76d5d20ec950fcd5aae9cf8d}{write} (\&\$rows=null, \$line=0, \$file= '\mbox{[}unknown\mbox{]}')
 \item 
 \hyperlink{classDbHandler_ad6be57a8dbb86dc1648c79b96128fc97}{last\_\-inserted\_\-id} ()
 \item 
@@ -110,13 +112,13 @@ static \hyperlink{classDbHandler_ae9bfc8bdc6a8077adb342702aaffc9af}{get\_\-insta
 \item 
 \hyperlink{classDbHandler_a7896419cf143412ad74ca8fccb11fb6e}{expand\_\-field} (\&\$field, \$quotes=false)
 \item 
-\hyperlink{classDbHandler_a2b6376ab821eb4aa2f086d852099c6c1}{tablelist} (\$tables)
+\hyperlink{classDbHandler_a0ea7d40a222cf6f1bf77b42e8eba03e4}{tablelist} (array \$tables)
 \item 
-\hyperlink{classDbHandler_a7715991ea990f6610a95844bebd75800}{where\_\-clause} (\$searches, \$joins)
+\hyperlink{classDbHandler_a5075bce990f4dab6b588275f38d301c9}{where\_\-clause} (array \$searches, array \$joins)
 \item 
-\hyperlink{classDbHandler_aa734a4d3767057b811be5b4621d55cdd}{update\_\-list} (\$updates)
+\hyperlink{classDbHandler_a18d001f947569eaa09c2e74dfb225e15}{update\_\-list} (array \$updates)
 \item 
-\hyperlink{classDbHandler_af7a315d2a47dc9f2d2f897ca87981c00}{extract\_\-tablelist} (\$fields)
+\hyperlink{classDbHandler_a11636da2e77be029e036c7f68e0e58b4}{extract\_\-tablelist} (array \$fields)
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -136,6 +138,10 @@ static \hyperlink{classDbHandler_ae9bfc8bdc6a8077adb342702aaffc9af}{get\_\-insta
 \hyperlink{classDbHandler_a19af96598e7f72673fc5da26ad77731b}{\$db\_\-prefix}
 \item 
 \hyperlink{classDbHandler_ad671b5596b37dac6d48a660a07775965}{\$query}
+\item 
+\hyperlink{classDbHandler_afba491ae1a1f1b9343cb65c87ef1e2a9}{\$query\_\-type}
+\item 
+\hyperlink{classDbHandler_aaa5ed1e6f29e1faa49c503ba9b3134ac}{\$last\_\-id}
 \item 
 \hyperlink{classDbHandler_a6fc74f6785f349ab442f33ce31f46e63}{\$cloned}
 \end{DoxyCompactItemize}
@@ -205,17 +211,17 @@ References close().
 {}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}
-Implementation of the \hyperlink{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}{\_\-\_\-clone()} function. The current connection will be closed, and a property will be set to indicate this is a cloned object. After that, the \hyperlink{classDbHandler_a82105c9c768f26a7a5ec84019121bbeb}{alt()} method can be used to change connection info. 
+Implementation of the \hyperlink{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}{\_\-\_\-clone()} function. The current connection will be closed, and a property will be set to indicate this is a cloned object. After that, the \hyperlink{classDbHandler_ac3a8e0bfe2491e17bc527715505f90a7}{alt()} method can be used to change connection info. 
 
-References close(), and open().
+References close(), reset(), and \_\-OWL::set\_\-status().
 
 \index{DbHandler@{DbHandler}!alt@{alt}}
 \index{alt@{alt}!DbHandler@{DbHandler}}
 \subsubsection[{alt}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::alt (
 \begin{DoxyParamCaption}
-\item[{\$}]{ properties}
+\item[{array \$}]{ properties}
 \end{DoxyParamCaption}
-)}\label{classDbHandler_a82105c9c768f26a7a5ec84019121bbeb}
+)}\label{classDbHandler_ac3a8e0bfe2491e17bc527715505f90a7}
 On a cloned database object, set an alternative, prefix or connection. 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$properties}]An indexed array with the properties that should be changed. Supported are:
@@ -229,7 +235,7 @@ On a cloned database object, set an alternative, prefix or connection.
 \end{DoxyItemize}\end{DoxyParams}
 
 
-References \_\-OWL::set\_\-status().
+References open(), and \_\-OWL::set\_\-status().
 
 \index{DbHandler@{DbHandler}!check@{check}}
 \index{check@{check}!DbHandler@{DbHandler}}
@@ -361,9 +367,9 @@ Referenced by prepare\_\-insert(), prepare\_\-read(), update\_\-list(), and wher
 \index{extract\_\-tablelist@{extract\_\-tablelist}!DbHandler@{DbHandler}}
 \subsubsection[{extract\_\-tablelist}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::extract\_\-tablelist (
 \begin{DoxyParamCaption}
-\item[{\$}]{ fields}
+\item[{array \$}]{ fields}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_af7a315d2a47dc9f2d2f897ca87981c00}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a11636da2e77be029e036c7f68e0e58b4}
 Create an array with unique tablenames as extracted from an array of fields in the format (table::field =$>$ value, ...) 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$fields}]An array with fields \end{DoxyParams}
@@ -446,7 +452,7 @@ References OWL::factory().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), and Dispatcher::\_\-\_\-construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and UserHandler::construct().
 
 \index{DbHandler@{DbHandler}!is\_\-open@{is\_\-open}}
 \index{is\_\-open@{is\_\-open}!DbHandler@{DbHandler}}
@@ -490,15 +496,15 @@ References connect(), and \_\-OWL::set\_\-status().
 
 
 
-Referenced by \_\-\_\-clone(), and read().
+Referenced by alt(), and read().
 
 \index{DbHandler@{DbHandler}!prepare\_\-delete@{prepare\_\-delete}}
 \index{prepare\_\-delete@{prepare\_\-delete}!DbHandler@{DbHandler}}
 \subsubsection[{prepare\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::prepare\_\-delete (
 \begin{DoxyParamCaption}
-\item[{\$}]{ searches = {\ttfamily array()}}
+\item[{array \$}]{ searches = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)}\label{classDbHandler_a973e07b361c889b6ff44e93cc7665ca4}
+)}\label{classDbHandler_a11a0d416e8993b919c9fec6f15dacbc5}
 Prepare a delete query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
 
 
@@ -515,9 +521,9 @@ References extract\_\-tablelist(), \_\-OWL::set\_\-status(), tablelist(), and wh
 \index{prepare\_\-insert@{prepare\_\-insert}!DbHandler@{DbHandler}}
 \subsubsection[{prepare\_\-insert}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::prepare\_\-insert (
 \begin{DoxyParamCaption}
-\item[{\$}]{ values = {\ttfamily array()}}
+\item[{array \$}]{ values = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)}\label{classDbHandler_a79e3237271c150c4f4f6c2593060567e}
+)}\label{classDbHandler_a157e507b2d562331d2e6fdbada61d604}
 Prepare an insert query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
 
 
@@ -534,12 +540,12 @@ References expand\_\-field(), extract\_\-tablelist(), \_\-OWL::set\_\-status(), 
 \index{prepare\_\-read@{prepare\_\-read}!DbHandler@{DbHandler}}
 \subsubsection[{prepare\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::prepare\_\-read (
 \begin{DoxyParamCaption}
-\item[{\$}]{ values = {\ttfamily array()}, }
-\item[{\$}]{ tables = {\ttfamily array()}, }
-\item[{\$}]{ searches = {\ttfamily array()}, }
-\item[{\$}]{ joins = {\ttfamily array()}}
+\item[{array \$}]{ values = {\ttfamily array()}, }
+\item[{array \$}]{ tables = {\ttfamily array()}, }
+\item[{array \$}]{ searches = {\ttfamily array()}, }
+\item[{array \$}]{ joins = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)}\label{classDbHandler_a3f9a0832d2de73e1f698b6d3c33569e6}
+)}\label{classDbHandler_a2d8dd22e7e74b48db269ec1f53b8e549}
 Prepare a read query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
 
 
@@ -556,11 +562,11 @@ References expand\_\-field(), \_\-OWL::set\_\-status(), tablelist(), and where\_
 \index{prepare\_\-update@{prepare\_\-update}!DbHandler@{DbHandler}}
 \subsubsection[{prepare\_\-update}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::prepare\_\-update (
 \begin{DoxyParamCaption}
-\item[{\$}]{ values = {\ttfamily array()}, }
-\item[{\$}]{ searches = {\ttfamily array()}, }
-\item[{\$}]{ joins = {\ttfamily array()}}
+\item[{array \$}]{ values = {\ttfamily array()}, }
+\item[{array \$}]{ searches = {\ttfamily array()}, }
+\item[{array \$}]{ joins = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)}\label{classDbHandler_a9bddaca38be2544f6fdd4d82b3cd1c50}
+)}\label{classDbHandler_a2e6560a5c8cc01339346bc1a74e21337}
 Prepare an update query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
 
 
@@ -588,7 +594,7 @@ Read from the database. The return value depends on the flag. By default, the se
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$flag}]Flag that identifies how data should be returned; as data (default) or the number of rows \item[\mbox{\tt[out]} {\em \$data}]The retrieved value in a formatt depending on the flag:
+\item[\mbox{\tt[in]} {\em \$flag}]Flag that identifies how data should be returned; as data (default) or the number of rows \item[\mbox{\tt[out]} {\em \$data}]The retrieved value in a format depending on the flag:
 \begin{DoxyItemize}
 \item DBHANDLE\_\-ROWCOUNT; Number of matching rows
 \item DBHANDLE\_\-FIELDCOUNT; Number of fields per rows
@@ -614,6 +620,10 @@ References dbread(), open(), and \_\-OWL::set\_\-status().
 Reset the object 
 
 Reimplemented from \hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{\_\-OWL}.
+
+
+
+Referenced by \_\-\_\-clone().
 
 \index{DbHandler@{DbHandler}!restore\_\-status@{restore\_\-status}}
 \index{restore\_\-status@{restore\_\-status}!DbHandler@{DbHandler}}
@@ -683,7 +693,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by Container::\_\-\_\-construct(), UserHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), connect(), create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), prepare\_\-delete(), prepare\_\-insert(), prepare\_\-read(), prepare\_\-update(), read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and write().
+Referenced by \_\-\_\-clone(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), connect(), UserHandler::construct(), create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), prepare\_\-delete(), prepare\_\-insert(), prepare\_\-read(), prepare\_\-update(), read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and write().
 
 \index{DbHandler@{DbHandler}!signal@{signal}}
 \index{signal@{signal}!DbHandler@{DbHandler}}
@@ -730,9 +740,9 @@ References dbread(), and tablename().
 \index{tablelist@{tablelist}!DbHandler@{DbHandler}}
 \subsubsection[{tablelist}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::tablelist (
 \begin{DoxyParamCaption}
-\item[{\$}]{ tables}
+\item[{array \$}]{ tables}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a2b6376ab821eb4aa2f086d852099c6c1}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a0ea7d40a222cf6f1bf77b42e8eba03e4}
 Create a list with tables, including prefixes, that can be interpreted by SQL
 
 
@@ -811,9 +821,9 @@ The unescaped string
 \index{update\_\-list@{update\_\-list}!DbHandler@{DbHandler}}
 \subsubsection[{update\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::update\_\-list (
 \begin{DoxyParamCaption}
-\item[{\$}]{ updates}
+\item[{array \$}]{ updates}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_aa734a4d3767057b811be5b4621d55cdd}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a18d001f947569eaa09c2e74dfb225e15}
 Create a string with 'field = value, ...' combinations in SQL format
 
 
@@ -834,10 +844,10 @@ Referenced by prepare\_\-update().
 \index{where\_\-clause@{where\_\-clause}!DbHandler@{DbHandler}}
 \subsubsection[{where\_\-clause}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::where\_\-clause (
 \begin{DoxyParamCaption}
-\item[{\$}]{ searches, }
-\item[{\$}]{ joins}
+\item[{array \$}]{ searches, }
+\item[{array \$}]{ joins}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a7715991ea990f6610a95844bebd75800}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a5075bce990f4dab6b588275f38d301c9}
 Create a WHERE clause that can be interpreted by SQL
 
 
@@ -858,11 +868,11 @@ Referenced by prepare\_\-delete(), prepare\_\-read(), and prepare\_\-update().
 \index{write@{write}!DbHandler@{DbHandler}}
 \subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::write (
 \begin{DoxyParamCaption}
-\item[{\$}]{ rows = {\ttfamily false}, }
+\item[{\&\$}]{ rows = {\ttfamily null}, }
 \item[{\$}]{ line = {\ttfamily 0}, }
 \item[{\$}]{ file = {\ttfamily '\mbox{[}unknown\mbox{]}'}}
 \end{DoxyParamCaption}
-)}\label{classDbHandler_a654166283f0f61f918cc34a5071f838c}
+)}\label{classDbHandler_ac02a117c76d5d20ec950fcd5aae9cf8d}
 Database inserts and updates. The number of affected rows is stored in \$this-\/$>$rowcount
 
 
@@ -903,7 +913,10 @@ integer -\/ self reference
 
 Referenced by get\_\-instance().
 
-\index{DbHandler@{DbHandler}!\$opened@{\$opened}}
+\index{DbHandler@{DbHandler}!\$last\_\-id@{\$last\_\-id}}
+\index{\$last\_\-id@{\$last\_\-id}!DbHandler@{DbHandler}}
+\subsubsection[{\$last\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$last\_\-id\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_aaa5ed1e6f29e1faa49c503ba9b3134ac}
+integer -\/ Last inserted Auto Increment value. Set after all write actions, so can be 0. \index{DbHandler@{DbHandler}!\$opened@{\$opened}}
 \index{\$opened@{\$opened}!DbHandler@{DbHandler}}
 \subsubsection[{\$opened}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$opened\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a71e36ffbff0d157b1d91dc000bc6f821}
 boolean -\/ True if the database is opened \index{DbHandler@{DbHandler}!\$original\_\-instance@{\$original\_\-instance}}
@@ -916,7 +929,10 @@ Referenced by get\_\-instance().
 \index{DbHandler@{DbHandler}!\$query@{\$query}}
 \index{\$query@{\$query}!DbHandler@{DbHandler}}
 \subsubsection[{\$query}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$query\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_ad671b5596b37dac6d48a660a07775965}
-string -\/ Query string \index{DbHandler@{DbHandler}!\$rowcount@{\$rowcount}}
+string -\/ Query string \index{DbHandler@{DbHandler}!\$query\_\-type@{\$query\_\-type}}
+\index{\$query\_\-type@{\$query\_\-type}!DbHandler@{DbHandler}}
+\subsubsection[{\$query\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$query\_\-type\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_afba491ae1a1f1b9343cb65c87ef1e2a9}
+string -\/ Prepared query type \index{DbHandler@{DbHandler}!\$rowcount@{\$rowcount}}
 \index{\$rowcount@{\$rowcount}!DbHandler@{DbHandler}}
 \subsubsection[{\$rowcount}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$rowcount\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a56a7ae4bd7d842c85f3fe8052aecbfef}
 integer -\/ Row counter \index{DbHandler@{DbHandler}!\$severity@{\$severity}}

@@ -35,9 +35,9 @@ This is the complete list of members for <a class="el" href="classUser.html">Use
   <tr class="memlist"><td><a class="el" href="classUserHandler.html#af097b7fd1ee085b46a6c34e071508a7f">$session</a></td><td><a class="el" href="classUserHandler.html">UserHandler</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#ad26b40a9dbbacb33e299b17826f8327c">$severity</a></td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classUserHandler.html#ae7a2d59eee65560ac96b860e828bb445">$user_data</a></td><td><a class="el" href="classUserHandler.html">UserHandler</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classUser.html#ab8a717f17626301cc8b7815a43ea5b5b">__construct</a>($username=null)</td><td><a class="el" href="classUser.html">User</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classUser.html#accd20149a7414612c1505e022eb63ffc">__destruct</a>()</td><td><a class="el" href="classUser.html">User</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#ad6f4f6946f40199dd0333cf219fa500e">check</a>(&amp;$object, $level)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classUser.html#a9cf024c7e3148e45afd1bee7691ceefd">construct</a>($username=null)</td><td><a class="el" href="classUser.html">User</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classUser.html#a21bee530c9f8304e9e74e274f0f655af">get_id</a>()</td><td><a class="el" href="classUser.html">User</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classUser.html#a84f3693077e777cc1d61b45fcecdb36c">get_session_var</a>($var, $default=null)</td><td><a class="el" href="classUser.html">User</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#adf9509ef96858be7bdd9414c5ef129aa">get_severity</a>($status=null)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td></td></tr>
@@ -47,6 +47,8 @@ This is the complete list of members for <a class="el" href="classUser.html">Use
   <tr class="memlist"><td><a class="el" href="classUserHandler.html#a4539c12ed2ce12a9147d61496854d5ab">isLoggedIn</a>()</td><td><a class="el" href="classUserHandler.html">UserHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classUser.html#a2c4fae5935ebf84e787126795bf42988">login</a>($username, $password)</td><td><a class="el" href="classUser.html">User</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classUser.html#a95e19a7d141f922c2870a6404ff641b1">logout</a>($reset_status=true)</td><td><a class="el" href="classUser.html">User</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classUser.html#a4d4ea8d545686fa335e8597f1bab73d2">password_strength</a>($_pwd, $_compare=array())</td><td><a class="el" href="classUser.html">User</a></td><td><code> [static]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classUser.html#ac262f6dc9d3a121c25045fe6716e014a">register</a>($username, $email, $password, $vpassword)</td><td><a class="el" href="classUser.html">User</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">reset</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a465eeaf40edd9f9c848841700c32ce55">restore_status</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a9e49b9c76fbc021b244c6915ea536d71">save_status</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
@@ -56,8 +58,9 @@ This is the complete list of members for <a class="el" href="classUser.html">Use
   <tr class="memlist"><td><a class="el" href="classUserHandler.html#afbcc9a275b547cca0bd4cff567b054a0">set_username</a>($username)</td><td><a class="el" href="classUserHandler.html">UserHandler</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">signal</a>($level=OWL_INFO, &amp;$text=false)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#aa29547995d6741b7d2b90c1d4ea99a13">traceback</a>(&amp;$text=false, $depth=0)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classUserHandler.html#a4b50cc703608c490080b25c5b2ae3418">username_exists</a>($username)</td><td><a class="el" href="classUserHandler.html">UserHandler</a></td><td><code> [protected]</code></td></tr>
 </table></div>
-<hr class="footer"/><address class="footer"><small>Generated on Fri Jan 21 2011 10:54:31 for OWL-PHP by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 6 2011 16:40:07 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

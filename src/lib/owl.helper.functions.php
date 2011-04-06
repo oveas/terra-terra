@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.6 2011-01-21 16:28:15 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.7 2011-04-06 14:42:15 oscar Exp $
  */
 
 /**
@@ -25,20 +25,6 @@ function toStrictBoolean ($_val, $_trueValues = array('yes', 'y', 'true', '1'), 
 		);
 	} else {
 		return (boolean) $_val;
-	}
-}
-
-/**
- * Translate a textstring using the labels array
- * \param[in] $_string Text string to translate
- * \return The translation, or the input if none was found.
- */
-function owlTrn ($_string)
-{
-	if (array_key_exists($_string, $GLOBALS['labels'])) {
-		return $GLOBALS['labels'][$_string];
-	} else {
-		return ((ConfigHandler::get ('debug')?'(!)':'').$_string);
 	}
 }
 
@@ -74,6 +60,25 @@ function owlCrypt ($_string)
 		}
 	}
 	return $_string;
+}
+
+/**
+ * Return a random string. The string will contain characters only (A-Z)
+ * \param[in] $_size The string size in characters
+ * \param[in] $_lowercase Boolean that indicates the string should contain lowercase characters only. Default is uppercase only.
+ */
+function RandomString ($_size, $_lowercase = false)
+{
+	$_string = '';
+	if ($_lowercase) {
+		$_offset = 32;
+	} else {
+		$_offset = 0;
+	}
+	for ($_cnt = 0; $_cnt < $_size; $_cnt++) {
+		$_string .= chr(rand(65, 90) + $_offset);
+	}
+	return ($_string);
 }
 
 /**
