@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.17 2011-04-06 14:42:16 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.18 2011-04-12 14:57:34 oscar Exp $
  */
 
 // Error handling used during development
@@ -16,6 +16,7 @@
  * \defgroup OWL_SO_LAYER Storage Object modules
  * \defgroup OWL_LIBRARY Library (codes, messages files etc.)
  * \defgroup OWL_UI_PLUGINS Plugins for the presentation modules
+ * \defgroup OWL_DRIVERS Drivers
  */
 
 /**
@@ -49,6 +50,9 @@ define ('OWL_LOG',		OWL_ROOT . '/log');
 
 //! OWL plugindirectory
 define ('OWL_PLUGINS',	OWL_ROOT . '/plugins');
+
+//! OWL divers directory
+define ('OWL_DRIVERS',	OWL_ROOT . '/drivers');
 
 //! Toplocation of this site
 define ('OWL_SITE_TOP', $_SERVER['DOCUMENT_ROOT']);
@@ -110,6 +114,17 @@ abstract class OWLloader
 		$_cArea = new $_className();
 		$_cArea->loadArea();
 		return $_cArea;
+	}
+
+	/**
+	 * Load a driverfile
+	 * \param[in] $_driverName Name of the class. Will be converted to lowercase to find the classfile
+	 * \param[in] $_driverType Driver type, must match the directoryname in OWL_DRIVERS where the classfile can be found
+	 * \return True on success
+	 */
+	public static function getDriver ($_driverName, $_driverType)
+	{
+		return (self::getClass(strtolower($_driverName), OWL_DRIVERS . '/' . $_driverType));
 	}
 
 	/**
@@ -205,6 +220,9 @@ OWLloader::getClass('dispatcher', OWL_BO_INC);
 OWLloader::getClass('baseelement', OWL_UI_INC);
 OWLloader::getClass('container', OWL_UI_INC);
 OWLloader::getClass('contentarea', OWL_UI_INC);
+
+// Drivers
+OWLloader::getClass('dbdriver', OWL_DRIVERS . '/database');
 
 //$GLOBALS['owl_object'] = new OWL();
 $GLOBALS['messages'] = array ();

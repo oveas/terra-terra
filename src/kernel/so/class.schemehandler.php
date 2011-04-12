@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Scheme Handler class
- * \version $Id: class.schemehandler.php,v 1.2 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.schemehandler.php,v 1.3 2011-04-12 14:57:34 oscar Exp $
  */
 
 /**
@@ -11,6 +11,7 @@
  * \brief Scheme handler 
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Oct 7, 2010 -- O van Eijk -- initial version for OWL
+ * \todo FIXME This handler currently doesn't use the DbDriver driver class
  */
 class SchemeHandler extends _OWL
 {

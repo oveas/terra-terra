@@ -1,0 +1,327 @@
+\section{DbDriver Class Reference}
+\label{classDbDriver}\index{DbDriver@{DbDriver}}
+
+
+Database driver.  
+
+
+
+
+Inheritance diagram for DbDriver:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{classDbDriver__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDbDriver_a0f4423a9599ea3197d97b110f6a4e3ee}{\_\-\_\-construct} ()
+\item 
+\hyperlink{classDbDriver_a3b044c35e3548effe3adf89bef5043e6}{dbCreate} (\&\$\_\-resource, \$\_\-name)
+\item 
+\hyperlink{classDbDriver_ac8a3d40046bf719aada5a1807a915589}{dbError} (\&\$\_\-resource, \&\$\_\-number, \&\$\_\-text)
+\item 
+\hyperlink{classDbDriver_a46e195260ab444a3223f578fbc6c22c9}{dbConnect} (\&\$\_\-resource, \$\_\-server, \$\_\-name, \$\_\-user, \$\_\-password, \$\_\-multiple=false)
+\item 
+\hyperlink{classDbDriver_a4747fcf9c24b722fd56c65111f9652dd}{dbOpen} (\&\$\_\-resource, \$\_\-server, \$\_\-name, \$\_\-user, \$\_\-password)
+\item 
+\hyperlink{classDbDriver_abe6928bd50a1115dc1e9e6b283d9b065}{dbTableList} (\&\$\_\-resource, \$\_\-pattern, \$\_\-views=false)
+\item 
+\hyperlink{classDbDriver_ac5343f76317816de2fb14e4a55eeb569}{dbRead} (\&\$\_\-data, \&\$\_\-resource, \$\_\-query)
+\item 
+\hyperlink{classDbDriver_a461f60524cd8d1dd23dd3c70ca5fcab7}{dbWrite} (\&\$\_\-resource, \$\_\-query)
+\item 
+\hyperlink{classDbDriver_a437f10c4bd4a651dc4694178da4ef65a}{dbInsertId} (\&\$\_\-resource, \$\_\-table, \$\_\-field)
+\item 
+\hyperlink{classDbDriver_a958aa47c21cc8db3ee7831e8b3fb1eb7}{dbRowCount} (\&\$\_\-data)
+\item 
+\hyperlink{classDbDriver_ab0faeafbd094c078e30929c884603833}{dbFetchNextRecord} (\&\$\_\-data)
+\item 
+\hyperlink{classDbDriver_a713cd43a5493bfcc0025523074568579}{dbClear} (\&\$\_\-data)
+\item 
+\hyperlink{classDbDriver_afa98f626bf20cb750d114857ba0a33e1}{dbClose} (\&\$\_\-resource)
+\item 
+\hyperlink{classDbDriver_accaa33441d852734b2213937612e66f6}{dbEscapeString} (\$\_\-string)
+\item 
+\hyperlink{classDbDriver_ac99fd7eba511d8799fcc447006179c72}{dbUnescapeString} (\$\_\-string)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Database driver. Abstract class that defines the database drivers. Most of the methods here must be reimplemented by the drivers. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Apr 12, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{DbDriver@{DbDriver}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!DbDriver@{DbDriver}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_a0f4423a9599ea3197d97b110f6a4e3ee}
+Conctructor. Is allowed to be empty but must be provided 
+
+Reimplemented in \hyperlink{classMySQL_a0fc0de8fcae17604dea97d9dfc12cfba}{MySQL}.
+
+
+
+\subsection{Member Function Documentation}
+\index{DbDriver@{DbDriver}!dbClear@{dbClear}}
+\index{dbClear@{dbClear}!DbDriver@{DbDriver}}
+\subsubsection[{dbClear}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbClear (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_a713cd43a5493bfcc0025523074568579}
+Clear a dataset 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-data}]as returned by \hyperlink{classDbDriver_ac5343f76317816de2fb14e4a55eeb569}{DbDriver::dbRead()} \end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classMySQL_a88191ab56d8ff3389b4519b712d74c32}{MySQL}.
+
+\index{DbDriver@{DbDriver}!dbClose@{dbClose}}
+\index{dbClose@{dbClose}!DbDriver@{DbDriver}}
+\subsubsection[{dbClose}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbClose (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-resource}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_afa98f626bf20cb750d114857ba0a33e1}
+Close a database connection 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-resource}]Link with the database server \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMySQL_af37ce7304d8326337363a12631835d1b}{MySQL}.
+
+\index{DbDriver@{DbDriver}!dbConnect@{dbConnect}}
+\index{dbConnect@{dbConnect}!DbDriver@{DbDriver}}
+\subsubsection[{dbConnect}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbConnect (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-resource, }
+\item[{\$}]{ \_\-server, }
+\item[{\$}]{ \_\-name, }
+\item[{\$}]{ \_\-user, }
+\item[{\$}]{ \_\-password, }
+\item[{\$}]{ \_\-multiple = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_a46e195260ab444a3223f578fbc6c22c9}
+Make a connection with a database server 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[out]} {\em \$\_\-resource}]Link with the database server \item[\mbox{\tt[in]} {\em \$\_\-server}]Server to connect to \item[\mbox{\tt[in]} {\em \$\_\-name}]Database name to open \item[\mbox{\tt[in]} {\em \$\_\-user}]Username to connect with \item[\mbox{\tt[in]} {\em \$\_\-password}]Password to connect with \item[\mbox{\tt[in]} {\em \$\_\-multiple}]True when multiple connections are allowed, default is false \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMySQL_a856919afd4bd3680410fdc98bd2eb865}{MySQL}.
+
+\index{DbDriver@{DbDriver}!dbCreate@{dbCreate}}
+\index{dbCreate@{dbCreate}!DbDriver@{DbDriver}}
+\subsubsection[{dbCreate}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbCreate (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-resource, }
+\item[{\$}]{ \_\-name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_a3b044c35e3548effe3adf89bef5043e6}
+Create a new database 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-resource}]Link with the database server \item[\mbox{\tt[in]} {\em \$\_\-name}]Name of the new database \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a negative value on failures, any other integer on success 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMySQL_a54c2526c30d48b65d34c51581ddbabd2}{MySQL}.
+
+\index{DbDriver@{DbDriver}!dbError@{dbError}}
+\index{dbError@{dbError}!DbDriver@{DbDriver}}
+\subsubsection[{dbError}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbError (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-resource, }
+\item[{\&\$}]{ \_\-number, }
+\item[{\&\$}]{ \_\-text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_ac8a3d40046bf719aada5a1807a915589}
+Get the last error number and error text from the database server 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-resource}]Link with the database server \item[\mbox{\tt[out]} {\em \$\_\-number}]Error number \item[\mbox{\tt[out]} {\em \$\_\-text}]Error text \end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classMySQL_aca5c47b5530644a7877d32b1c04376f2}{MySQL}.
+
+\index{DbDriver@{DbDriver}!dbEscapeString@{dbEscapeString}}
+\index{dbEscapeString@{dbEscapeString}!DbDriver@{DbDriver}}
+\subsubsection[{dbEscapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbEscapeString (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-string}
+\end{DoxyParamCaption}
+)}\label{classDbDriver_accaa33441d852734b2213937612e66f6}
+Escape a given string for use in queries 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-string}]The input string \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String in SQL safe format 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMySQL_a7f4b581ad71a3ee8922d51c9ef28a18c}{MySQL}.
+
+\index{DbDriver@{DbDriver}!dbFetchNextRecord@{dbFetchNextRecord}}
+\index{dbFetchNextRecord@{dbFetchNextRecord}!DbDriver@{DbDriver}}
+\subsubsection[{dbFetchNextRecord}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbFetchNextRecord (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_ab0faeafbd094c078e30929c884603833}
+Get the next record from a dataset 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-data}]as returned by \hyperlink{classDbDriver_ac5343f76317816de2fb14e4a55eeb569}{DbDriver::dbRead()} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Record as an associative array (fieldname =$>$ fieldvalue) 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMySQL_a2ebd12deacbdebd6ad876e279f34b4da}{MySQL}.
+
+\index{DbDriver@{DbDriver}!dbInsertId@{dbInsertId}}
+\index{dbInsertId@{dbInsertId}!DbDriver@{DbDriver}}
+\subsubsection[{dbInsertId}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbInsertId (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-resource, }
+\item[{\$}]{ \_\-table, }
+\item[{\$}]{ \_\-field}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_a437f10c4bd4a651dc4694178da4ef65a}
+Retrieve the last auto generated ID value 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-resource}]Link with the database server \item[\mbox{\tt[in]} {\em \$\_\-table}]\hyperlink{classTable}{Table} to take the value from \item[\mbox{\tt[in]} {\em \$\_\-field}]Name of the Auto field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The last generated ID, or 0 when not found 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMySQL_aaf69bfa761be38520c7d72ae11506dac}{MySQL}.
+
+\index{DbDriver@{DbDriver}!dbOpen@{dbOpen}}
+\index{dbOpen@{dbOpen}!DbDriver@{DbDriver}}
+\subsubsection[{dbOpen}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbOpen (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-resource, }
+\item[{\$}]{ \_\-server, }
+\item[{\$}]{ \_\-name, }
+\item[{\$}]{ \_\-user, }
+\item[{\$}]{ \_\-password}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_a4747fcf9c24b722fd56c65111f9652dd}
+Open a database 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in,out]} {\em \$\_\-resource}]Link with the database server \item[\mbox{\tt[in]} {\em \$\_\-server}]Server to connect to \item[\mbox{\tt[in]} {\em \$\_\-name}]Database name to open \item[\mbox{\tt[in]} {\em \$\_\-user}]Username to connect with \item[\mbox{\tt[in]} {\em \$\_\-password}]Password to connect with \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMySQL_adba97d7d125e5772ea5ffa61dcb2b9e3}{MySQL}.
+
+\index{DbDriver@{DbDriver}!dbRead@{dbRead}}
+\index{dbRead@{dbRead}!DbDriver@{DbDriver}}
+\subsubsection[{dbRead}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbRead (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-data, }
+\item[{\&\$}]{ \_\-resource, }
+\item[{\$}]{ \_\-query}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_ac5343f76317816de2fb14e4a55eeb569}
+Read from the database 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[out]} {\em \$\_\-data}]Dataset retrieved by the given query \item[\mbox{\tt[in]} {\em \$\_\-resource}]Link with the database server \item[\mbox{\tt[in]} {\em \$\_\-query}]Query to execute \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMySQL_af85679f7912ab93293b31ad7609a7734}{MySQL}.
+
+\index{DbDriver@{DbDriver}!dbRowCount@{dbRowCount}}
+\index{dbRowCount@{dbRowCount}!DbDriver@{DbDriver}}
+\subsubsection[{dbRowCount}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbRowCount (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_a958aa47c21cc8db3ee7831e8b3fb1eb7}
+Get the number of rows in a dataset 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-data}]as returned by \hyperlink{classDbDriver_ac5343f76317816de2fb14e4a55eeb569}{DbDriver::dbRead()} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of rows in the set 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMySQL_a69ec9e11642d3ef0dddcecf95acc6907}{MySQL}.
+
+\index{DbDriver@{DbDriver}!dbTableList@{dbTableList}}
+\index{dbTableList@{dbTableList}!DbDriver@{DbDriver}}
+\subsubsection[{dbTableList}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbTableList (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-resource, }
+\item[{\$}]{ \_\-pattern, }
+\item[{\$}]{ \_\-views = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_abe6928bd50a1115dc1e9e6b283d9b065}
+Get a list with tablenames 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-resource}]Link with the database server \item[\mbox{\tt[in]} {\em \$\_\-pattern}]Search pattern \item[\mbox{\tt[in]} {\em \$\_\-views}]True when views should be included. Default is false \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Indexed array with matching tables and their attributes 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMySQL_a9da288ed9ff36dc572a68165de8b5839}{MySQL}.
+
+\index{DbDriver@{DbDriver}!dbUnescapeString@{dbUnescapeString}}
+\index{dbUnescapeString@{dbUnescapeString}!DbDriver@{DbDriver}}
+\subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbUnescapeString (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-string}
+\end{DoxyParamCaption}
+)}\label{classDbDriver_ac99fd7eba511d8799fcc447006179c72}
+Unescape a string fthat is formatted for use in SQL 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-string}]The input string in SQL safe format \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String without SQL formatting 
+\end{DoxyReturn}
+\index{DbDriver@{DbDriver}!dbWrite@{dbWrite}}
+\index{dbWrite@{dbWrite}!DbDriver@{DbDriver}}
+\subsubsection[{dbWrite}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbWrite (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{ \_\-resource, }
+\item[{\$}]{ \_\-query}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}abstract\mbox{]}}}\label{classDbDriver_a461f60524cd8d1dd23dd3c70ca5fcab7}
+Write to the database 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-resource}]Link with the database server \item[\mbox{\tt[in]} {\em \$\_\-query}]Query to execute \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of affected rows, or -\/1 on failures 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMySQL_a5a7250d264b682ee2f4bdb14bb4aafd7}{MySQL}.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/drivers/database/\hyperlink{class_8dbdriver_8php}{class.dbdriver.php}\end{DoxyCompactItemize}

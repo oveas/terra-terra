@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.12 2011-04-06 14:42:16 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.13 2011-04-12 14:57:34 oscar Exp $
  */
 
 /**
@@ -86,14 +86,46 @@ abstract class UserHandler extends _OWL
 	 */
 	protected function register($username, $email, $password, $vpassword)
 	{
+		$_vstring = RandomString(45);
 		$this->dataset->set('username', $username);
 		$this->dataset->set('password', $this->hash_password($password));
 		$this->dataset->set('email', $email);
-		$this->dataset->set('verification', RandomString(45));
+		$this->dataset->set('verification', $_vstring);
+		$this->dataset->set('registered', date('Y-m-d H:i:s'));
 		$this->dataset->prepare(DATA_WRITE);
 		$_result = null;
 		$this->dataset->db ($_result, __LINE__, __FILE__);
-		return ($this->dataset->inserted_id());
+		$_uid = $this->dataset->inserted_id();
+		$this->set_callback_argument(array('uid' => $_uid, 'vcode' => $_vstring));
+		return ($_uid);
+	}
+
+	/**
+	 * Confirm a user registration.
+	 * \param[in] $_confirmation Array holding the confirmation data (user ID and verification code)
+	 * \return True on success, false on failure
+	 */
+	protected function confirm(array $_confirmation)
+	{
+		$this->dataset->set('uid', $_confirmation['uid']);
+		$this->dataset->set('verification', $_confirmation['vcode']);
+		$this->dataset->prepare(DATA_READ);
+		$_result = null;
+		$this->dataset->db ($_result, __LINE__, __FILE__);
+		if ($this->dataset->db_status() === DBHANDLE_NODATA) {
+			$this->set_status (USER_IVCONFARG);
+			return (false);
+		}
+		$this->dataset->set_key('uid');
+		$this->dataset->set('verification', '');
+		$this->dataset->prepare(DATA_UPDATE);
+		if ($this->dataset->db ($_result, __LINE__, __FILE__) <= OWL_SUCCESS) {
+			$this->set_status(USER_CONFIRMED);
+			return (true);
+		} else {
+			$this->set_status(USER_CONFERR);
+			return (false);
+		}
 	}
 
 	/**
@@ -138,14 +170,18 @@ abstract class UserHandler extends _OWL
 			));
 		} elseif ($_dbstat === DBHANDLE_ROWSREAD) {
 			$this->user_data = $this->user_data[0]; // Shift up one level
-			session_unset(); // Clear old data *BUT* ....
-			$this->set_username ($this->dataset->get('username')); // .... restore the username!!
-			$_SESSION['uid'] = $this->user_data['uid'];
-			$this->set_status (USER_LOGGEDIN, array (
-				  $_SESSION['username']
-				, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->get('password'))
-			));
-			return (true);
+			if ($this->user_data['verification'] !== '') {
+				$this->set_status (USER_NOTCONFIRMED, array($username));
+			} else {
+				session_unset(); // Clear old data *BUT* ....
+				$this->set_username ($this->dataset->get('username')); // .... restore the username!!
+				$_SESSION['uid'] = $this->user_data['uid'];
+				$this->set_status (USER_LOGGEDIN, array (
+					  $_SESSION['username']
+					, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->get('password'))
+				));
+				return (true);
+			}
 		} else {
 			$this->traceback ();
 		}
@@ -234,11 +270,15 @@ Register::register_class('UserHandler');
 //Register::set_severity (OWL_OK);
 Register::set_severity (OWL_SUCCESS);
 Register::register_code ('USER_LOGGEDIN');
+Register::register_code ('USER_CONFIRMED');
 
 Register::set_severity (OWL_WARNING);
 Register::register_code ('USER_INVUSERNAME');
 Register::register_code ('USER_INVPASSWORD');
 Register::register_code ('USER_LOGINFAIL');
+Register::register_code ('USER_NOTCONFIRMED');
+Register::register_code ('USER_IVCONFARG');
+Register::register_code ('USER_CONFERR');
 
 Register::set_severity (OWL_BUG);
 

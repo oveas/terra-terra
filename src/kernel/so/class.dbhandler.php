@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.12 2011-04-06 14:42:16 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.13 2011-04-12 14:57:34 oscar Exp $
  */
 
 /**
@@ -91,6 +91,12 @@ class DbHandler extends _OWL
 	private $database;
 
 	/**
+	 * object - The database driver
+	 * \private
+	 */
+	private $driver;
+
+	/**
 	 * integer - Row counter
 	 * \private
 	 */
@@ -152,7 +158,7 @@ class DbHandler extends _OWL
 	 * \param[in] $db Database name
 	 * \param[in] $usr Username to connect with
 	 * \param[in] $pwd Password to use for connection
-	 * \param[in] $dbtype Database type (reserved for future use, currently only MySQL is implemented)
+	 * \param[in] $dbtype Database type, used to load the driver
 	 */
 	private function __construct ($srv = 'localhost'
 			,  $db = ''
@@ -167,6 +173,7 @@ class DbHandler extends _OWL
 		$this->database['username'] = $usr;
 		$this->database['password'] = $pwd;
 		$this->database['engine']   = $dbtype;
+		$this->load_driver();
 
 		$this->opened = false;
 		$this->errno = 0;
@@ -174,6 +181,19 @@ class DbHandler extends _OWL
 		$this->db_prefix = ConfigHandler::get ('dbprefix');
 		$this->query_type = DBHANDLE_COMPLETED;
 		$this->set_status (OWL_STATUS_OK);
+	}
+
+	/**
+	 * Create a new instance of the database driver
+	 * \private
+	 */
+	private function load_driver()
+	{
+		if (!class_exists($this->database['engine'])) {
+			if (OWLloader::getDriver($this->database['engine'], 'database') === true) {
+				$this->driver = new $this->database['engine'];
+			}
+		}
 	}
 
 	/**
@@ -237,6 +257,7 @@ class DbHandler extends _OWL
 				} elseif ($k == 'dbtype') {
 					$this->database['engine'] = $v;
 				}
+				$this->load_driver();
 			}
 			$this->open();
 		}
@@ -269,11 +290,13 @@ class DbHandler extends _OWL
 	public function create ()
 	{
 		if ($this->connect ()) {
-			if (!@mysql_query ('CREATE DATABASE ' . $this->database['name'])) {
+			if (!$this->driver->dbCreate ($this->database['name'])) {
+				$_errNo = $_errTxt = null;
+				$this->driver->dbError ($this->id, $_errNo, $_errTxt);
 				$this->set_status (DBHANDLE_CREATERR, array (
 								  $this->database['name']
-								, mysql_errno ($this->id)
-								, mysql_error ($this->id)
+								, $_errNo
+								, $_errTxt
 							));
 			}
 		}
@@ -289,11 +312,14 @@ class DbHandler extends _OWL
 	 */
 	private function connect ()
 	{
-		if (!($this->id = @mysql_connect ($this->database['server']
-				, $this->database['username']
-				, $this->database['password']
-				, true // Allow more databases on the same server to be opened
-			))) {
+		if (!$this->driver->dbConnect(
+				 $this->id
+				,$this->database['server']
+				,$this->database['name']
+				,$this->database['username']
+				,$this->database['password']
+				,true // Allow more databases on the same server to be opened
+		)) {
 			$this->set_status (DBHANDLE_CONNECTERR, array (
 					  $this->database['server']
 					, $this->database['username']
@@ -329,15 +355,21 @@ class DbHandler extends _OWL
 			return ($this->severity);
 		}
 
-		if (!(mysql_select_db ($this->database['name'], $this->id))) {
+		if (!$this->driver->dbOpen(
+				 $this->id
+				,$this->database['server']
+				,$this->database['name']
+				,$this->database['username']
+				,$this->database['password']
+		)) {
+			$_errNo = $_errTxt = null;
+			$this->driver->dbError ($this->id, $_errNo, $_errTxt);
 			$this->set_status (DBHANDLE_OPENERR, array (
 							  $this->database['name']
-							, mysql_errno ($this->id)
-							, mysql_error ($this->id)
+							, $_errNo
+							, $_errTxt
 						));
 		}
-		
-//echo ("ID for ".$this->database['name'].": $this->id<br/>");
 		$this->opened = true;
 
 		$this->set_status (DBHANDLE_OPENED, array (
@@ -467,24 +499,23 @@ class DbHandler extends _OWL
 	private function dbread ($qry, &$rows, &$fields)
 	{
 		$this->query_type = DBHANDLE_COMPLETED; // Mark the action as completed now
-		if (($__result = mysql_query ($qry, $this->id)) === false) {
-			$this->error = mysql_error($this->id);
-			$this->errno = mysql_errno($this->id);
+		$__result = null;
+		if ($this->driver->dbRead($__result, $this->id, $qry) === false) {
+			$this->driver->dbError ($this->id, $this->errno, $this->error);
 			return (false);
 		}
 
-		if (mysql_num_rows($__result) == 0) {
+		
+		if ($this->driver->dbRowCount($__result) == 0) {
 			$fields = 0;
 			return (array());
 		}
 
-//		$fiels = mysql_num_fields($__result);
-
 		$rows = 0;
-		while ($__row = mysql_fetch_assoc ($__result)) {
+		while ($__row = $this->driver->dbFetchNextRecord ($__result)) {
 			$data_set[$rows++] = $__row;
 		}
-		mysql_free_result ($__result);
+		$this->driver->dbClear ($__result);
 		$fields = count($data_set[0]);
 		return ($data_set);
 	}
@@ -496,10 +527,9 @@ class DbHandler extends _OWL
 	 */
 	public function table_exists($tablename)
 	{
-		$_rowcount;
-		$_fldcount;
-		$_matches = $this->dbread("SHOW TABLES LIKE '" . $this->tablename($tablename) . "'", $_rowcount, $_fieldcount);
-		return ($_rowcount > 0);
+		$_tablename = $this->tablename($tablename);
+		$_tables = $this->driver->dbTableList($this->id, $_tablename);
+		return (count($_tables) > 0);
 	}
 
 	/**
@@ -510,17 +540,7 @@ class DbHandler extends _OWL
 	 */
 	public function escape_string ($string)
 	{
-		if ($this->database['engine'] == 'MySQL') {
-			// Currently the only type supported
-			//
-			if (function_exists('mysql_real_escape_string')) {
-				return (mysql_real_escape_string($string));
-			} else {
-				return (mysql_escape_string($string));
-			}
-		} else {
-			return (addslashes($string));
-		}
+		return ($this->driver->dbEscapeString($string));
 	}
 
 	/**
@@ -531,7 +551,7 @@ class DbHandler extends _OWL
 	 */
 	public function unescape_string ($string)
 	{
-		return (stripslashes($string));
+		return ($this->driver->dbUnescapeString($string));
 	}
 
 	/**
@@ -617,7 +637,7 @@ class DbHandler extends _OWL
 				$this->expand_field ($_fld);
 				$_update .= $_fld
 						 . ' = '
-						 . (($_val == null) ? 'NULL ' : (" '" . $_val . "' "));
+						 . (($_val === null) ? 'NULL ' : (" '" . $_val . "' "));
 		}
 		return $_update;
 	}
@@ -725,7 +745,6 @@ class DbHandler extends _OWL
 			$this->set_status (DBHANDLE_NOTABLES);
 			return ($this->severity);
 		}
-
 		foreach ($values as $_fld => $_val) {
 			if (in_array ($_fld, $searches)) {
 				$_searches[$_fld] = $_val;
@@ -733,8 +752,7 @@ class DbHandler extends _OWL
 				$_updates[$_fld] = $_val;
 			}
 		}
-
-		if (count($_updates)) {
+		if (count($_updates) === 0) {
 			$this->query_type = DBHANDLE_FAILED;
 			$this->set_status (DBHANDLE_NOVALUES);
 			return ($this->severity);
@@ -748,7 +766,8 @@ class DbHandler extends _OWL
 		$this->query_type = DBHANDLE_UPDATE;
 		
 		$this->set_status (DBHANDLE_QPREPARED, array('update', $this->query));
-//echo ("Prepared query: <i>$this->query</i><br />");
+//echo ("Prepared query: <i>$this->query</i> ($this->severity)<br />");
+
 		return ($this->severity);
 	}
 
@@ -803,9 +822,9 @@ class DbHandler extends _OWL
 			$this->set_status (DBHANDLE_DBCLOSED);
 			return ($this->severity);
 		}
-		if (!mysql_query ($this->query, $this->id)) {
-			$this->error = mysql_error($this->id);
-			$this->errno = mysql_errno($this->id);
+		
+		if (($_cnt = $this->driver->dbWrite($this->id, $this->query)) < 0) {
+			$this->driver->dbError ($this->id, $this->errno, $this->error);
 			$this->set_status (DBHANDLE_QUERYERR, array (
 					  $this->query
 					, $this->error
@@ -816,9 +835,8 @@ class DbHandler extends _OWL
 				return ($this->severity);
 		}
 		if ($this->query_type === DBHANDLE_INSERT) {
-			$this->last_id = mysql_insert_id($this->id); // Check for auto increment values
+			$this->last_id = $this->driver->dbInsertId($this->id, null, null); // Check for auto increment values
 		}
-		$_cnt = mysql_affected_rows($this->id);
 		$this->query_type = DBHANDLE_COMPLETED;
 		$this->set_status (DBHANDLE_UPDATED, array ('written', $_cnt));
 		if ($rows !== null) {
@@ -849,7 +867,7 @@ class DbHandler extends _OWL
 	public function close () 
 	{
 		if ($this->opened) {
-			@mysql_close ($this->id);
+			$this->driver->dbClose($this->id);
 			$this->opened = false;
 		}
 	}

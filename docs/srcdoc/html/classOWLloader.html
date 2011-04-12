@@ -12,6 +12,7 @@
   <div class="tabs">
     <ul class="tablist">
       <li><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -45,6 +46,7 @@
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLloader.html#a7a405369cad4d0a09f82cad218bc4824">getArea</a> ($_classFile, $_classLocation)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLloader.html#a5911bb36f76142aadfaa6d554113800c">getDriver</a> ($_driverName, $_driverType)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLloader.html#a271d6508b029b3989db57f4d9b9b7677">getClass</a> ($_className, $_classLocation=array(<a class="el" href="OWLloader_8php.html#a75dffdef5ba58a0ba5f21ed40627897f">OWL_SO_INC</a>, <a class="el" href="OWLloader_8php.html#aca50646bc73c3addf0e0f25081eae0ae">OWL_BO_INC</a>, <a class="el" href="OWLloader_8php.html#a2e11101c70f011a91d0d9c7f8e217738">OWL_UI_INC</a>), $_loadMultiple=false)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -181,11 +183,49 @@ Static Private Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a5911bb36f76142aadfaa6d554113800c"></a><!-- doxytag: member="OWLloader::getDriver" ref="a5911bb36f76142aadfaa6d554113800c" args="($_driverName, $_driverType)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static OWLloader::getDriver </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_driverName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_driverType</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Load a driverfile </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_driverName</em>&nbsp;</td><td>Name of the class. Will be converted to lowercase to find the classfile </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_driverType</em>&nbsp;</td><td>Driver type, must match the directoryname in OWL_DRIVERS where the classfile can be found </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+
+<p>Referenced by <a class="el" href="classDbHandler.html#a1fa2e9fbcd6984aa8971880ddb2ed1dc">DbHandler::load_driver()</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/oscar/projects/owl-php/src/<a class="el" href="OWLloader_8php.html">OWLloader.php</a></li>
 </ul>
 </div>
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 6 2011 16:40:06 for OWL-PHP by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Apr 12 2011 16:53:53 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

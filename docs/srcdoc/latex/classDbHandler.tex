@@ -7,8 +7,7 @@ Database handler.
 
 
 
-Inheritance diagram for DbHandler:
-\nopagebreak
+Inheritance diagram for DbHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,8 +16,7 @@ Inheritance diagram for DbHandler:
 \end{figure}
 
 
-Collaboration diagram for DbHandler:
-\nopagebreak
+Collaboration diagram for DbHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -72,6 +70,8 @@ Collaboration diagram for DbHandler:
 \item 
 \hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
 \item 
+\hyperlink{class__OWL_ae76c46aff1ad253106332670fc59c777}{succeeded} (\$\_\-ok=\hyperlink{owl_8severitycodes_8php_a96223f06ba27bf5cbefa6e9d702897c2}{OWL\_\-SUCCESS})
+\item 
 \hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
 \item 
 \hyperlink{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}{traceback} (\&\$text=false, \$depth=0)
@@ -86,11 +86,17 @@ static \hyperlink{classDbHandler_ae9bfc8bdc6a8077adb342702aaffc9af}{get\_\-insta
 \item 
 \hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
+\hyperlink{class__OWL_a28d9025eaf37b49d63cb334ed28c33f0}{set\_\-callback} (\$\_\-dispatcher)
+\item 
+\hyperlink{class__OWL_a1e26611ce858b237f5a98a91ea3c3a1b}{set\_\-callback\_\-argument} (array \$\_\-arg)
+\item 
+\hyperlink{class__OWL_abded13b1c97ea6e0cfe3c68cb6bcf7a5}{get\_\-callback} ()
+\item 
 \hyperlink{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}{save\_\-status} ()
 \item 
 \hyperlink{class__OWL_a465eeaf40edd9f9c848841700c32ce55}{restore\_\-status} ()
 \item 
-\hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
+\hyperlink{class__OWL_ae2e3c56e5f3c4ce4156c6b1bb1c50f63}{check} (\&\$object, \$level=\hyperlink{owl_8severitycodes_8php_ace886152e2e86cd2e91cb833fd495adb}{OWL\_\-WARNING})
 \item 
 \hyperlink{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
 \item 
@@ -104,7 +110,9 @@ static \hyperlink{classDbHandler_ae9bfc8bdc6a8077adb342702aaffc9af}{get\_\-insta
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}{\_\-\_\-construct} (\$srv= 'localhost', \$db= '', \$usr= '', \$pwd= '', \$dbtype= 'MySQL')
+\hyperlink{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}{\_\-\_\-construct} (\$srv= 'localhost', \$db= '', \$usr= '', \$pwd= '', \$dbtype= '\hyperlink{classMySQL}{MySQL}')
+\item 
+\hyperlink{classDbHandler_a1fa2e9fbcd6984aa8971880ddb2ed1dc}{load\_\-driver} ()
 \item 
 \hyperlink{classDbHandler_a9cf52ba614981a0082063d57290d3b7c}{connect} ()
 \item 
@@ -130,6 +138,8 @@ static \hyperlink{classDbHandler_ae9bfc8bdc6a8077adb342702aaffc9af}{get\_\-insta
 \hyperlink{classDbHandler_ade79e11156abbfc180864beb5b9df377}{\$error}
 \item 
 \hyperlink{classDbHandler_afaac5248f9ee59786b48a7b51f318940}{\$database}
+\item 
+\hyperlink{classDbHandler_a7fa6c2e54682982813e963fd738d1a1b}{\$driver}
 \item 
 \hyperlink{classDbHandler_a56a7ae4bd7d842c85f3fe8052aecbfef}{\$rowcount}
 \item 
@@ -174,17 +184,17 @@ Jul 29, 2008 -\/-\/ O van Eijk -\/-\/ Modified version for \hyperlink{classOWL}{
 \item[{\$}]{ db = {\ttfamily ''}, }
 \item[{\$}]{ usr = {\ttfamily ''}, }
 \item[{\$}]{ pwd = {\ttfamily ''}, }
-\item[{\$}]{ dbtype = {\ttfamily 'MySQL'}}
+\item[{\$}]{ dbtype = {\ttfamily '{\bf MySQL}'}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}
 Class constructor; opens the database connection.
 
 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$srv}]Database server \item[\mbox{\tt[in]} {\em \$db}]Database name \item[\mbox{\tt[in]} {\em \$usr}]Username to connect with \item[\mbox{\tt[in]} {\em \$pwd}]Password to use for connection \item[\mbox{\tt[in]} {\em \$dbtype}]Database type (reserved for future use, currently only MySQL is implemented) \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$srv}]Database server \item[\mbox{\tt[in]} {\em \$db}]Database name \item[\mbox{\tt[in]} {\em \$usr}]Username to connect with \item[\mbox{\tt[in]} {\em \$pwd}]Password to use for connection \item[\mbox{\tt[in]} {\em \$dbtype}]Database type, used to load the driver \end{DoxyParams}
 
 
-References ConfigHandler::get(), \_\-OWL::init(), and \_\-OWL::set\_\-status().
+References ConfigHandler::get(), \_\-OWL::init(), load\_\-driver(), and \_\-OWL::set\_\-status().
 
 \index{DbHandler@{DbHandler}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!DbHandler@{DbHandler}}
@@ -231,20 +241,20 @@ On a cloned database object, set an alternative, prefix or connection.
 \item name : Database name
 \item username : Username to connect with
 \item password : Password to use for connection
-\item dbtype : Database type (reserved for future use, currently only MySQL is implemented) 
+\item dbtype : Database type (reserved for future use, currently only \hyperlink{classMySQL}{MySQL} is implemented) 
 \end{DoxyItemize}\end{DoxyParams}
 
 
-References open(), and \_\-OWL::set\_\-status().
+References load\_\-driver(), open(), and \_\-OWL::set\_\-status().
 
 \index{DbHandler@{DbHandler}!check@{check}}
 \index{check@{check}!DbHandler@{DbHandler}}
 \subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
 \begin{DoxyParamCaption}
 \item[{\&\$}]{ object, }
-\item[{\$}]{ level}
+\item[{\$}]{ level = {\ttfamily {\bf OWL\_\-WARNING}}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae2e3c56e5f3c4ce4156c6b1bb1c50f63}
 This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
 
 
@@ -327,7 +337,7 @@ A 2D array with all data, or false on failures
 \end{DoxyReturn}
 
 
-Referenced by read(), and table\_\-exists().
+Referenced by read().
 
 \index{DbHandler@{DbHandler}!escape\_\-string@{escape\_\-string}}
 \index{escape\_\-string@{escape\_\-string}!DbHandler@{DbHandler}}
@@ -383,6 +393,24 @@ References \$\_\-t, and \$\_\-table.
 
 
 Referenced by prepare\_\-delete(), prepare\_\-insert(), and prepare\_\-update().
+
+\index{DbHandler@{DbHandler}!get\_\-callback@{get\_\-callback}}
+\index{get\_\-callback@{get\_\-callback}!DbHandler@{DbHandler}}
+\subsubsection[{get\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-callback (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_abded13b1c97ea6e0cfe3c68cb6bcf7a5}
+Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
+The dispatcher, of null on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classDispatcher_af4b71fa3c4d25bab86187d9dc44182f2}{Dispatcher}.
+
+
+
+References OWL::factory().
 
 \index{DbHandler@{DbHandler}!get\_\-instance@{get\_\-instance}}
 \index{get\_\-instance@{get\_\-instance}!DbHandler@{DbHandler}}
@@ -478,6 +506,21 @@ Return the last ID after a newly inserted record holding an AUTO\_\-INCREMENT fi
 \begin{DoxyReturn}{Returns}
 The number that was last inserted 
 \end{DoxyReturn}
+\index{DbHandler@{DbHandler}!load\_\-driver@{load\_\-driver}}
+\index{load\_\-driver@{load\_\-driver}!DbHandler@{DbHandler}}
+\subsubsection[{load\_\-driver}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::load\_\-driver (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a1fa2e9fbcd6984aa8971880ddb2ed1dc}
+Create a new instance of the database driver 
+
+References OWLloader::getDriver().
+
+
+
+Referenced by \_\-\_\-construct(), and alt().
+
 \index{DbHandler@{DbHandler}!open@{open}}
 \index{open@{open}!DbHandler@{DbHandler}}
 \subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::open (
@@ -651,6 +694,47 @@ Create a copy of the status object
 
 Referenced by UserHandler::logout().
 
+\index{DbHandler@{DbHandler}!set\_\-callback@{set\_\-callback}}
+\index{set\_\-callback@{set\_\-callback}!DbHandler@{DbHandler}}
+\subsubsection[{set\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-dispatcher}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a28d9025eaf37b49d63cb334ed28c33f0}
+Set a dispatcher for later callback 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-dispatcher}]Dispatched, \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classDispatcher_a8a974bbbb30be7cda74f9929972fd2f6}{Dispatcher::composeDispatcher()} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+True on success, false on failure 
+\end{DoxyReturn}
+
+
+References OWL::factory().
+
+\index{DbHandler@{DbHandler}!set\_\-callback\_\-argument@{set\_\-callback\_\-argument}}
+\index{set\_\-callback\_\-argument@{set\_\-callback\_\-argument}!DbHandler@{DbHandler}}
+\subsubsection[{set\_\-callback\_\-argument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback\_\-argument (
+\begin{DoxyParamCaption}
+\item[{array \$}]{ \_\-arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a1e26611ce858b237f5a98a91ea3c3a1b}
+Add an argument to a previously registered callback dispatcher 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-arg}]Argument, must be an array type. When non-\/ arrays should be passed as arguments, the must be set when the callback is registered already \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failure 
+\end{DoxyReturn}
+
+
+References OWL::factory().
+
+
+
+Referenced by UserHandler::register().
+
 \index{DbHandler@{DbHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!DbHandler@{DbHandler}}
 \subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
@@ -693,7 +777,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by \_\-\_\-clone(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), connect(), UserHandler::construct(), create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), prepare\_\-delete(), prepare\_\-insert(), prepare\_\-read(), prepare\_\-update(), read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and write().
+Referenced by \_\-\_\-clone(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), UserHandler::confirm(), User::confirm(), connect(), UserHandler::construct(), create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), prepare\_\-delete(), prepare\_\-insert(), prepare\_\-read(), prepare\_\-update(), read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and write().
 
 \index{DbHandler@{DbHandler}!signal@{signal}}
 \index{signal@{signal}!DbHandler@{DbHandler}}
@@ -719,6 +803,23 @@ References ConfigHandler::get().
 
 Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
 
+\index{DbHandler@{DbHandler}!succeeded@{succeeded}}
+\index{succeeded@{succeeded}!DbHandler@{DbHandler}}
+\subsubsection[{succeeded}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::succeeded (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-ok = {\ttfamily {\bf OWL\_\-SUCCESS}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_ae76c46aff1ad253106332670fc59c777}
+Check if the object currenlty has a success state 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-ok}]The highest severity that's considered successfull, default OWL\_\-SUCCESS \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean true when successfull 
+\end{DoxyReturn}
+
+
+Referenced by Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+
 \index{DbHandler@{DbHandler}!table\_\-exists@{table\_\-exists}}
 \index{table\_\-exists@{table\_\-exists}!DbHandler@{DbHandler}}
 \subsubsection[{table\_\-exists}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::table\_\-exists (
@@ -734,7 +835,7 @@ True of the table exists
 \end{DoxyReturn}
 
 
-References dbread(), and tablename().
+References tablename().
 
 \index{DbHandler@{DbHandler}!tablelist@{tablelist}}
 \index{tablelist@{tablelist}!DbHandler@{DbHandler}}
@@ -897,7 +998,10 @@ boolean -\/ true when the object has been cloned \index{DbHandler@{DbHandler}!\$
 array -\/ Database location and authorization indo \index{DbHandler@{DbHandler}!\$db\_\-prefix@{\$db\_\-prefix}}
 \index{\$db\_\-prefix@{\$db\_\-prefix}!DbHandler@{DbHandler}}
 \subsubsection[{\$db\_\-prefix}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$db\_\-prefix\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a19af96598e7f72673fc5da26ad77731b}
-string -\/ database prefix \index{DbHandler@{DbHandler}!\$errno@{\$errno}}
+string -\/ database prefix \index{DbHandler@{DbHandler}!\$driver@{\$driver}}
+\index{\$driver@{\$driver}!DbHandler@{DbHandler}}
+\subsubsection[{\$driver}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$driver\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_a7fa6c2e54682982813e963fd738d1a1b}
+object -\/ The database driver \index{DbHandler@{DbHandler}!\$errno@{\$errno}}
 \index{\$errno@{\$errno}!DbHandler@{DbHandler}}
 \subsubsection[{\$errno}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$errno\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classDbHandler_af6e9f493be56617cb533763bb2a0e85a}
 integer -\/ Error ID \index{DbHandler@{DbHandler}!\$error@{\$error}}

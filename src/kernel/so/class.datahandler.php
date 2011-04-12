@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.8 2011-04-06 14:42:16 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.9 2011-04-12 14:57:34 oscar Exp $
  */
 
 /**
@@ -342,28 +342,31 @@ class DataHandler extends _OWL
 						$_table[] = $_t;
 					}
 				}
-				$this->owl_database->prepare_read ($_unset, $_table, $_set, $this->owl_joins);
-				$this->set_status (DATA_PREPARED, 'read');
+				$_stat = $this->owl_database->prepare_read ($_unset, $_table, $_set, $this->owl_joins);
+				$_type = 'read';
 				break;
 			case DATA_WRITE:
-				$this->owl_database->prepare_insert ($this->owl_data);
-				$this->set_status (DATA_PREPARED, 'write');
+				$_stat = $this->owl_database->prepare_insert ($this->owl_data);
+				$_type = 'write';
 				break;
 			case DATA_UPDATE:
-				$this->owl_database->prepare_update ($this->owl_data, $this->owl_keys, $this->owl_joins);
-				$this->set_status (DATA_PREPARED, 'update');
+				$_stat = $this->owl_database->prepare_update ($this->owl_data, $this->owl_keys, $this->owl_joins);
+				$_type = 'update';
 				break;
 			case DATA_DELETE:
-				$this->owl_database->prepare_delete ($this->owl_data, $this->owl_keys, $this->owl_joins);
-				$this->set_status (DATA_PREPARED, 'delete');
+				$_stat = $this->owl_database->prepare_delete ($this->owl_data, $this->owl_keys, $this->owl_joins);
+				$_type = 'delete';
 				break;
 			case DATA_UNPREPARED:
 			default:
 				$this->set_status (DATA_IVPREPARE, $type);
-//				return ($this->severity);
+				return ($this->severity);
 				break;
 		}
-		$this->owl_prepared = $type;
+		if ($_stat <= OWL_SUCCESS) {
+			$this->set_status (DATA_PREPARED, $_type);
+			$this->owl_prepared = $type;
+		}
 		return ($this->set_high_severity ($this->owl_database));
 	}
 	

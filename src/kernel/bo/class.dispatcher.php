@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library Dispatcher class
- * \version $Id: class.dispatcher.php,v 1.5 2011-01-21 10:18:28 oscar Exp $
+ * \version $Id: class.dispatcher.php,v 1.6 2011-04-12 14:57:34 oscar Exp $
  */
 
 /**
@@ -22,11 +22,17 @@ class Dispatcher extends _OWL
 	private static $instance;
 
 	/**
+	 * string - A dispatcher registered for callback
+	 */
+	private $dispatcher;
+	
+	/**
 	 * Constructor
 	 */	
 	private function __construct ()
 	{ 
 		parent::init();
+		$this->dispatcher = null;
 	}
 
 	/**
@@ -58,12 +64,11 @@ class Dispatcher extends _OWL
 	 * 	- application: Name of the application. When the include path is no constant, it must be equal to
 	 * the name of the directory directly under the server's document root.
 	 * 	- include_path: A path relative from the application toplevel, or a constant
-	 * 	- class_file: Filename, this can be the full file name ("class.myclass.php") or just the name ("myclass")
-	 * 	- class_name Name of the class. This can be ommitted if it is equal to the classfile starting
-	 * with a capital ("Myclass")
-	 * 	- method_name: Methpd that will be called when the form is submitted. This method should accept
-	 * no parameters, but must get the formdata using OWL::factory('FormHandler');
-	 * For short, a string in the format "application#include_path-path#class_file#class_name#method_name"
+	 * 	- class_file: Filename, this can be the full file name ("class.myclass.php") or just the name ("myclass"). When omitted, it defaults to the classname (e.g. "MyClass") in lowercase.
+	 * 	- class_name Name of the class.
+	 * 	- method_name: Method that will be called when the form is submitted.
+	 * 	- argument: An optional argument for the method called. The method which is called by the dispatcher must accept this argument type. If ommitted, no arguments will be passed by the dispatcher
+	 * For short, a string in the format "application#include_path-path#class_file#class_name#method_name[#argument]"
 	 * may also be given.
 	 * \return URL encoded dispatcher
 	 * \public
@@ -71,17 +76,27 @@ class Dispatcher extends _OWL
 	public function composeDispatcher($_dispatcher)
 	{
 		if (is_array($_dispatcher)) {
-			foreach (array('application', 'include_path','class_file','method_name') as $_req) {
+			foreach (array('application', 'include_path','class_name','method_name') as $_req) {
 				if (!array_key_exists($_req, $_dispatcher)) {
 					$this->set_status (DISP_IVDISPATCH, $_req);
 					return ($this->severity);
 				}
 			}
+			if (array_key_exists('argument', $_dispatcher)) {
+				if (is_array($_dispatcher['argument'])) {
+					$_argument = serialize($_dispatcher['argument']);
+				} else {
+					$_argument = $_dispatcher['argument'];
+				}
+			} else {
+				$_argument = 0;
+			}
 			$_dispatcher = $_dispatcher['application']
 				.'#'.$_dispatcher['include_path']
-				.'#'.$_dispatcher['class_file']
-				.'#'.(array_key_exists('class_name', $_dispatcher)?$_dispatcher['class_name']:'')
-				.'#'.$_dispatcher['method_name'];
+				.'#'.(array_key_exists('class_file', $_dispatcher)?$_dispatcher['class_file']:strtolower($_dispatcher['class_name']))
+				.'#'.$_dispatcher['class_name']
+				.'#'.$_dispatcher['method_name']
+				.'#'.$_argument;
 		}
 		return bin2hex(owlCrypt($_dispatcher));
 	}
@@ -105,58 +120,130 @@ class Dispatcher extends _OWL
 				$this->set_status(DISP_NOARG);
 				return;
 			}
-			$_destination = owlCrypt(pack ("H*", $_dispatcher));
+			$_destination = $this->decode_dispatcher($_dispatcher);
 		} else {
-			if (is_array($_dispatcher)) {
-				$_destination = implode('#', $_dispatcher);
-			} else {
-				$_destination = $_dispatcher;
-			}
-		}
-		
-		list($_appl, $_path, $_classfile, $_classname, $_method) = explode('#', $_destination);
-
-		if ($_method == null) {
-			$this->set_status (DISP_INSARG);
-			return ($this->severity);
+			$_destination = $this->decode_dispatcher($_dispatcher);
 		}
 
-		if (empty($_classname)) {
-			$_classname = $_classfile;
-			$_classname = preg_replace('/^class\./i', '', $_classname);
-			$_classname = preg_replace('/\.php$/i', '', $_classname);
-			$_classname = ucfirst($_classname);
-			
-		}
-
-		if (defined($_path)) {
-			$_inc_path = constant($_path);
+		if (defined($_destination['include_path'])) {
+			$_inc_path = constant($_destination['include_path']);
 		} else {
-			$_inc_path = OWL_SITE_TOP . "/$_appl/$_path";
+			$_inc_path = OWL_SITE_TOP . '/'.$_destination['application'].'/'.$_destination['include_path'];
 		}
 
-		if (!OWLloader::getClass($_classfile, $_inc_path)) {
-			$this->set_status (DISP_NOCLASSF, array($_classfile, "$_inc_path/$_classfile"));
+		if (!OWLloader::getClass($_destination['class_file'], $_inc_path)) {
+			$this->set_status (DISP_NOCLASSF, array($_destination['class_file'], "$_inc_path/".$_destination['class_file']));
 			return ($this->severity);
 		}
 
-		if (!class_exists($_classname)) {
-			$this->set_status (DISP_NOCLASS, $_classname);
+		if (!class_exists($_destination['class_name'])) {
+			$this->set_status (DISP_NOCLASS, $_destination['class_name']);
 			return ($this->severity);
 		}
 
-		if (method_exists($_classname, 'get_reference')) {
+		if (method_exists($_destination['class_name'], 'get_reference')) {
 			// user call_user_func() top be compatible with PHP v < 5.3.0
-			$_handler = call_user_func (array($_classname, 'get_reference'));
+			$_handler = call_user_func (array($_destination['class_name'], 'get_reference'));
 		} else {
-			$_handler = new $_classname();
+			$_handler = new $_destination['class_name']();
 		}
 
-		if (!method_exists($_handler, $_method)) {
-			$this->set_status (DISP_NOMETHOD, array($_method, $_classname));
+		if (!method_exists($_handler, $_destination['method_name'])) {
+			$this->set_status (DISP_NOMETHOD, array($_method, $_destination['class_name']));
 			return ($this->severity);
 		}
-		return $_handler->$_method();
+
+		if ($_destination['argument'] != 0) {
+			return $_handler->$_destination['method_name']($_destination['argument']);
+		} else {
+			return $_handler->$_destination['method_name']();
+		}
+	}
+
+	/**
+	 * Check the format a a dispatcher and decode it
+	 * \param[in] $_dispatcher Dispatcher
+	 * \return Dispatcher as an indexed array
+	 */
+	private function decode_dispatcher($_dispatcher)
+	{
+		if (is_array($_dispatcher)) {
+			return ($_dispatcher);
+		}
+		$_dElements = explode('#', $_dispatcher);
+		if (!(count($_dElements) >= 5)) {
+			$_dispatcher = owlCrypt(pack ("H*", $_dispatcher));
+			$_dElements = explode('#', $_dispatcher);
+		}
+		$_d['application'] = array_shift($_dElements);
+		$_d['include_path'] = array_shift($_dElements);
+		$_d['class_file'] = array_shift($_dElements);
+		$_d['class_name'] = array_shift($_dElements);
+		$_d['method_name'] = array_shift($_dElements);
+		$_arg = ((count($_dElements) > 0) ? $_dElements[0] : 0);
+		if (!$_arg) {
+			$_d['argument'] = 0;
+		} else {
+			$_d['argument'] = unserialize($_arg);
+		}
+		return ($_d);
+	}
+
+	/**
+	 * Register a callback that wal later be retrieved as dispatcher
+	 * \param[in] $_dispatcher Dispatched, \see Dispatcher::composeDispatcher() for the format
+	 * \public
+	 * \return True on success, false on failure
+	 */
+	public function register_callback($_dispatcher)
+	{
+		if ($this->dispatcher !== null) {
+			$this->set_status (DISP_ALREGIST);
+			return (false);
+		}
+		$this->dispatcher = $this->composeDispatcher($_dispatcher);
+		if (!$this->succeeded()) {
+			$this->dispatcher = null;
+			return (false);
+		}
+		return (true);
+	}
+
+	/**
+	 * Add an argument to a previously registered callback dispatcher
+	 * \param[in] $_argument Argument, must be an array type. When non- arrays should be passed as arguments, the must be set when the callback is registered already
+	 * \return True on success, false on failure
+	 */
+	public function register_argument(array $_argument)
+	{
+		if ($this->dispatcher === null) {
+			$this->set_status (DISP_NOTREGIST);
+			return (false);
+		}
+		$_dispatcher = $this->decode_dispatcher($this->dispatcher);
+
+		if ($_dispatcher['argument'] === 0) {
+			$_dispatcher['argument'] = $_argument;
+		} else {
+			if (!is_array($_dispatcher['argument'])) {
+				$this->set_status (DISP_INCOMPAT);
+				return (false);
+			}
+			$_dispatcher['argument'] = $_argument + $_dispatcher['argument'];
+		}
+		$this->dispatcher = $this->composeDispatcher($_dispatcher);
+		return ($this->succeeded());
+	}
+
+	/**
+	 * Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly.
+	 * \return The dispatcher, or null when no dispatched was registered
+	 */
+	public function get_callback()
+	{
+		$_dispatcher = $this->dispatcher;
+		$this->dispatcher = null; // reset
+		return ($_dispatcher);
 	}
 }
 
@@ -176,10 +263,12 @@ Register::set_severity (OWL_SUCCESS);
 //Register::set_severity (OWL_WARNING);
 Register::register_code ('DISP_INSARG');
 
-//Register::set_severity (OWL_BUG);
+Register::set_severity (OWL_BUG);
+Register::register_code ('DISP_ALREGIST');
 
 Register::set_severity (OWL_ERROR);
 Register::register_code ('DISP_IVDISPATCH');
+Register::register_code ('DISP_INCOMPAT');
 Register::register_code ('DISP_NOCLASS');
 Register::register_code ('DISP_NOCLASSF');
 Register::register_code ('DISP_NOMETHOD');

@@ -10,6 +10,8 @@ Class loader.
 \item 
 static \hyperlink{classOWLloader_a7a405369cad4d0a09f82cad218bc4824}{getArea} (\$\_\-classFile, \$\_\-classLocation)
 \item 
+static \hyperlink{classOWLloader_a5911bb36f76142aadfaa6d554113800c}{getDriver} (\$\_\-driverName, \$\_\-driverType)
+\item 
 static \hyperlink{classOWLloader_a271d6508b029b3989db57f4d9b9b7677}{getClass} (\$\_\-className, \$\_\-classLocation=array(\hyperlink{OWLloader_8php_a75dffdef5ba58a0ba5f21ed40627897f}{OWL\_\-SO\_\-INC}, \hyperlink{OWLloader_8php_aca50646bc73c3addf0e0f25081eae0ae}{OWL\_\-BO\_\-INC}, \hyperlink{OWLloader_8php_a2e11101c70f011a91d0d9c7f8e217738}{OWL\_\-UI\_\-INC}), \$\_\-loadMultiple=false)
 \end{DoxyCompactItemize}
 \subsection*{Static Private Member Functions}
@@ -93,6 +95,24 @@ References \_\-tryLoad().
 
 
 Referenced by Container::\_\-\_\-construct(), Form::addField(), and Dispatcher::dispatch().
+
+\index{OWLloader@{OWLloader}!getDriver@{getDriver}}
+\index{getDriver@{getDriver}!OWLloader@{OWLloader}}
+\subsubsection[{getDriver}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::getDriver (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-driverName, }
+\item[{\$}]{ \_\-driverType}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWLloader_a5911bb36f76142aadfaa6d554113800c}
+Load a driverfile 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-driverName}]Name of the class. Will be converted to lowercase to find the classfile \item[\mbox{\tt[in]} {\em \$\_\-driverType}]Driver type, must match the directoryname in OWL\_\-DRIVERS where the classfile can be found \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success 
+\end{DoxyReturn}
+
+
+Referenced by DbHandler::load\_\-driver().
 
 
 

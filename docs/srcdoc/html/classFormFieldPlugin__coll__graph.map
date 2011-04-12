@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classBaseElement.html" title="DOM Element base class." alt="" coords="37,425,160,869"/>
-<area shape="rect" id="node4" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $saved_status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ signal()\l+ traceback()\l# init()\l# reset()\l# save_status()\l# restore_status()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="28,6,169,375"/>
+<area shape="rect" id="node2" href="$classBaseElement.html" title="DOM Element base class." alt="" coords="37,499,160,943"/>
+<area shape="rect" id="node4" href="$class__OWL.html" title="{_OWL\n|# $severity\l&#45; $status\l&#45; $saved_status\l&#45; $pstatus\l|+ __destruct()\l+ get_status()\l+ get_severity()\l+ succeeded()\l+ signal()\l+ traceback()\l# init()\l# set_callback()\l# set_callback_argument()\l# get_callback()\l# reset()\l# save_status()\l# restore_status()\l# check()\l# set_status()\l# set_high_severity()\l&#45; reset_calltree()\l}" alt="" coords="12,6,185,450"/>
 </map>

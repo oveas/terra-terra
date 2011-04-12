@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
- * \version $Id: owl.messages.php,v 1.18 2011-04-06 14:42:15 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.19 2011-04-12 14:57:34 oscar Exp $
  */
 
 $_messages = array (
@@ -57,6 +57,7 @@ $_messages = array (
 	, DATA_NODBLINK			=> 'A database query shoukld be prepared, but there is no database handler set yet'
 	, DATA_IVPREPARE		=> 'A database query was prepared with an invalid prepare flag'
 	, USER_LOGINFAIL		=> 'Error logging in with username $p1$ and password $p2$'
+	, USER_NOTCONFIRMED		=> 'Username $p1$ is not confirmed yet, please follow the link in the email you received'
 	, USER_LOGGEDIN			=> 'User $p1$ logged in with password $p2$'
 	, USER_RESTORERR		=> 'Error restoring data for user ID $p1$'
 	, USER_DUPLUSERNAME		=> 'A user with the name $p1$ already exists'
@@ -97,7 +98,9 @@ $_messages = array (
 	, SCHEMEHANDLE_IVCOLID	=> 'Column $p3$ for index $p2$ on scheme does not exist'
 	, SCHEMEHANDLE_NOCOLS	=> 'No columns defined for scheme $p1$'
 	, SCHEMEHANDLE_DUPLPRKEY	=> 'Duplicate primary key found for scheme $p1$'
+	, DISP_ALREGIST			=> 'Another dispatcher was already registered'
 	, DISP_NOARG			=> 'Dispatcher received no arguments'
+	, DISP_INCOMPAT			=> 'Trying to register incompatible arguments - a non- array argument was registered before'
 	, DISP_IVDISPATCH		=> 'Invalid argument $p1$ in dispatcher'
 	, DISP_INSARG			=> 'Insufficient arguments passed to the dispatcher'
 	, DISP_NOCLASS			=> 'Cannot instantiate class $p1$'

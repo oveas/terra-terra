@@ -7,8 +7,7 @@ the user object
 
 
 
-Inheritance diagram for UserHandler:
-\nopagebreak
+Inheritance diagram for UserHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,12 +16,11 @@ Inheritance diagram for UserHandler:
 \end{figure}
 
 
-Collaboration diagram for UserHandler:
-\nopagebreak
+Collaboration diagram for UserHandler:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=150pt]{classUserHandler__coll__graph}
+\includegraphics[height=600pt]{classUserHandler__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -35,6 +33,8 @@ Collaboration diagram for UserHandler:
 \hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
 \item 
 \hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
+\item 
+\hyperlink{class__OWL_ae76c46aff1ad253106332670fc59c777}{succeeded} (\$\_\-ok=\hyperlink{owl_8severitycodes_8php_a96223f06ba27bf5cbefa6e9d702897c2}{OWL\_\-SUCCESS})
 \item 
 \hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
 \item 
@@ -54,6 +54,8 @@ Collaboration diagram for UserHandler:
 \item 
 \hyperlink{classUserHandler_a7fbe37f478bf35e0570db3296529e2a4}{register} (\$username, \$email, \$password, \$vpassword)
 \item 
+\hyperlink{classUserHandler_a33b6532ffa6ac263b195bb58c2d770dd}{confirm} (array \$\_\-confirmation)
+\item 
 \hyperlink{classUserHandler_a0bcf46a5b0c4a5b495cba98b8da02b7b}{logout} (\$reset\_\-status)
 \item 
 \hyperlink{classUserHandler_abf6562660ee8ec1663afe08550a63643}{login} (\$username, \$password)
@@ -64,13 +66,19 @@ Collaboration diagram for UserHandler:
 \item 
 \hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{init} ()
 \item 
+\hyperlink{class__OWL_a28d9025eaf37b49d63cb334ed28c33f0}{set\_\-callback} (\$\_\-dispatcher)
+\item 
+\hyperlink{class__OWL_a1e26611ce858b237f5a98a91ea3c3a1b}{set\_\-callback\_\-argument} (array \$\_\-arg)
+\item 
+\hyperlink{class__OWL_abded13b1c97ea6e0cfe3c68cb6bcf7a5}{get\_\-callback} ()
+\item 
 \hyperlink{class__OWL_a2f2a042bcf31965194c03033df0edc9b}{reset} ()
 \item 
 \hyperlink{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}{save\_\-status} ()
 \item 
 \hyperlink{class__OWL_a465eeaf40edd9f9c848841700c32ce55}{restore\_\-status} ()
 \item 
-\hyperlink{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}{check} (\&\$object, \$level)
+\hyperlink{class__OWL_ae2e3c56e5f3c4ce4156c6b1bb1c50f63}{check} (\&\$object, \$level=\hyperlink{owl_8severitycodes_8php_ace886152e2e86cd2e91cb833fd495adb}{OWL\_\-WARNING})
 \item 
 \hyperlink{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}{set\_\-status} (\$status, \$params=array())
 \item 
@@ -127,9 +135,9 @@ Reimplemented in \hyperlink{classUser_accd20149a7414612c1505e022eb63ffc}{User}.
 \subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
 \begin{DoxyParamCaption}
 \item[{\&\$}]{ object, }
-\item[{\$}]{ level}
+\item[{\$}]{ level = {\ttfamily {\bf OWL\_\-WARNING}}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad6f4f6946f40199dd0333cf219fa500e}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae2e3c56e5f3c4ce4156c6b1bb1c50f63}
 This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
 
 
@@ -145,6 +153,27 @@ References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::tr
 
 
 Referenced by SessionHandler::write().
+
+\index{UserHandler@{UserHandler}!confirm@{confirm}}
+\index{confirm@{confirm}!UserHandler@{UserHandler}}
+\subsubsection[{confirm}]{\setlength{\rightskip}{0pt plus 5cm}UserHandler::confirm (
+\begin{DoxyParamCaption}
+\item[{array \$}]{ \_\-confirmation}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classUserHandler_a33b6532ffa6ac263b195bb58c2d770dd}
+Confirm a user registration. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-confirmation}]Array holding the confirmation data (user ID and verification code) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failure 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classUser_acbcc13f994e50ee3f562e9949f6d0638}{User}.
+
+
+
+References \_\-OWL::set\_\-status().
 
 \index{UserHandler@{UserHandler}!construct@{construct}}
 \index{construct@{construct}!UserHandler@{UserHandler}}
@@ -165,6 +194,24 @@ Reimplemented in \hyperlink{classUser_a9cf024c7e3148e45afd1bee7691ceefd}{User}.
 
 
 References ConfigHandler::get(), \_\-OWL::init(), read\_\-userdata(), \_\-OWL::set\_\-status(), and set\_\-username().
+
+\index{UserHandler@{UserHandler}!get\_\-callback@{get\_\-callback}}
+\index{get\_\-callback@{get\_\-callback}!UserHandler@{UserHandler}}
+\subsubsection[{get\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-callback (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_abded13b1c97ea6e0cfe3c68cb6bcf7a5}
+Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
+The dispatcher, of null on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classDispatcher_af4b71fa3c4d25bab86187d9dc44182f2}{Dispatcher}.
+
+
+
+References OWL::factory().
 
 \index{UserHandler@{UserHandler}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!UserHandler@{UserHandler}}
@@ -346,7 +393,7 @@ Reimplemented in \hyperlink{classUser_ac262f6dc9d3a121c25045fe6716e014a}{User}.
 
 
 
-References hash\_\-password(), and RandomString().
+References hash\_\-password(), RandomString(), and \_\-OWL::set\_\-callback\_\-argument().
 
 \index{UserHandler@{UserHandler}!reset@{reset}}
 \index{reset@{reset}!UserHandler@{UserHandler}}
@@ -393,6 +440,47 @@ Create a copy of the status object
 
 Referenced by logout().
 
+\index{UserHandler@{UserHandler}!set\_\-callback@{set\_\-callback}}
+\index{set\_\-callback@{set\_\-callback}!UserHandler@{UserHandler}}
+\subsubsection[{set\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-dispatcher}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a28d9025eaf37b49d63cb334ed28c33f0}
+Set a dispatcher for later callback 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-dispatcher}]Dispatched, \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classDispatcher_a8a974bbbb30be7cda74f9929972fd2f6}{Dispatcher::composeDispatcher()} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+True on success, false on failure 
+\end{DoxyReturn}
+
+
+References OWL::factory().
+
+\index{UserHandler@{UserHandler}!set\_\-callback\_\-argument@{set\_\-callback\_\-argument}}
+\index{set\_\-callback\_\-argument@{set\_\-callback\_\-argument}!UserHandler@{UserHandler}}
+\subsubsection[{set\_\-callback\_\-argument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback\_\-argument (
+\begin{DoxyParamCaption}
+\item[{array \$}]{ \_\-arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_a1e26611ce858b237f5a98a91ea3c3a1b}
+Add an argument to a previously registered callback dispatcher 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-arg}]Argument, must be an array type. When non-\/ arrays should be passed as arguments, the must be set when the callback is registered already \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failure 
+\end{DoxyReturn}
+
+
+References OWL::factory().
+
+
+
+Referenced by register().
+
 \index{UserHandler@{UserHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!UserHandler@{UserHandler}}
 \subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
@@ -423,7 +511,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), DbHandler::connect(), construct(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), read\_\-userdata(), User::register(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), confirm(), User::confirm(), DbHandler::connect(), construct(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{UserHandler@{UserHandler}!set\_\-username@{set\_\-username}}
 \index{set\_\-username@{set\_\-username}!UserHandler@{UserHandler}}
@@ -462,6 +550,23 @@ References ConfigHandler::get().
 
 
 Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
+
+\index{UserHandler@{UserHandler}!succeeded@{succeeded}}
+\index{succeeded@{succeeded}!UserHandler@{UserHandler}}
+\subsubsection[{succeeded}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::succeeded (
+\begin{DoxyParamCaption}
+\item[{\$}]{ \_\-ok = {\ttfamily {\bf OWL\_\-SUCCESS}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_ae76c46aff1ad253106332670fc59c777}
+Check if the object currenlty has a success state 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$\_\-ok}]The highest severity that's considered successfull, default OWL\_\-SUCCESS \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean true when successfull 
+\end{DoxyReturn}
+
+
+Referenced by Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
 
 \index{UserHandler@{UserHandler}!traceback@{traceback}}
 \index{traceback@{traceback}!UserHandler@{UserHandler}}

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the User class
- * \version $Id: class.user.php,v 1.7 2011-04-06 14:42:15 oscar Exp $
+ * \version $Id: class.user.php,v 1.8 2011-04-12 14:57:34 oscar Exp $
  */
 
 /**
@@ -97,6 +97,20 @@ abstract class User extends UserHandler
 			return -1;
 		}
 		return (parent::register($username, $email, $password, $vpassword));
+	}
+
+	/**
+	 * Confirm a user registration.
+	 * \param[in] $_confirmation Array that must contain at least the keys 'uid' and 'vcode'
+	 * \return True on success, false on failure
+	 */
+	protected function confirm(array $_confirmation)
+	{
+		if (!array_key_exists('uid', $_confirmation) || !array_key_exists('vcode', $_confirmation)) {
+			$this->set_status (USER_IVCONFARG);
+			return (false);
+		}
+		return (parent::confirm($_confirmation));
 	}
 
 	/**

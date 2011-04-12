@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._owl.php,v 1.4 2011-01-21 10:18:28 oscar Exp $
+ * \version $Id: class._owl.php,v 1.5 2011-04-12 14:57:34 oscar Exp $
  */
 
 /**
@@ -63,6 +63,41 @@ abstract class _OWL
 	}
 
 	/**
+	 * Set a dispatcher for later callback
+	 * \param[in] $_dispatcher Dispatched, \see Dispatcher::composeDispatcher()
+	 * \return True on success, false on failure
+	 */
+	protected function set_callback($_dispatcher)
+	{
+		if (!array_key_exists('class_name', $_dispatcher)) {
+			$_dispatcher['class_name'] = get_class($this);
+		}
+		$_disp = OWL::factory('Dispatcher', 'bo');
+		return ($_disp->register_callback($_dispatcher));
+	}
+
+	/**
+	 * Add an argument to a previously registered callback dispatcher
+	 * \param[in] $_arg Argument, must be an array type. When non- arrays should be passed as arguments, the must be set when the callback is registered already
+	 * \return True on success, false on failure
+	 */
+	protected function set_callback_argument(array $_arg)
+	{
+		$_disp = OWL::factory('Dispatcher', 'bo');
+		return ($_disp->register_argument($_arg));
+	}
+	
+	/**
+	 * Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly.
+	 * \return The dispatcher, of null on failure.
+	 */
+	protected function get_callback()
+	{
+		$_disp = OWL::factory('Dispatcher', 'bo');
+		return ($_disp->get_callback());
+	}
+
+	/**
 	 * General reset function for all objects. Should be called after each
 	 * non-fatal error
 	 * \protected
@@ -119,9 +154,9 @@ abstract class _OWL
 	 * \param[in] $level The maximum severity level
 	 * \return True if the severity level was correct ( below the max), otherwise false
 	 */
-	protected function check (&$object, $level)
+	protected function check (&$object, $level = OWL_WARNING)
 	{
-		if ($this->set_high_severity($object) > OWL_WARNING) {
+		if ($this->set_high_severity($object) > $level) {
 			$this->traceback();
 			$this->reset();
 			return (false);
@@ -194,6 +229,16 @@ abstract class _OWL
 	public function get_severity ($status = null)
 	{
 	 	return ($this->status->get_severity($status));
+	}
+
+	/**
+	 * Check if the object currenlty has a success state
+	 * \param[in] $_ok The highest severity that's considered successfull, default OWL_SUCCESS
+	 * \return Boolean true when successfull
+	 */
+	public function succeeded ($_ok = OWL_SUCCESS)
+	{
+		return ($this->status->get_severity($this->status->get_code()) <= $_ok);
 	}
 
 	/**

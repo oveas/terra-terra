@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.7 2011-04-06 14:42:15 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.8 2011-04-12 14:57:34 oscar Exp $
  */
 
 /**

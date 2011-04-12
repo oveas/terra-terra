@@ -12,6 +12,7 @@
   <div class="tabs">
     <ul class="tablist">
       <li><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -34,6 +35,7 @@ This is the complete list of members for <a class="el" href="classDbHandler.html
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a6fc74f6785f349ab442f33ce31f46e63">$cloned</a></td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#afaac5248f9ee59786b48a7b51f318940">$database</a></td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a19af96598e7f72673fc5da26ad77731b">$db_prefix</a></td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDbHandler.html#a7fa6c2e54682982813e963fd738d1a1b">$driver</a></td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#af6e9f493be56617cb533763bb2a0e85a">$errno</a></td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#ade79e11156abbfc180864beb5b9df377">$error</a></td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#ad38e1c3312815c8ad4093957881092ff">$id</a></td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
@@ -49,7 +51,7 @@ This is the complete list of members for <a class="el" href="classDbHandler.html
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#ae54e9d4643f41a9296167086f6a769fc">__construct</a>($srv= 'localhost', $db= '', $usr= '', $pwd= '', $dbtype= 'MySQL')</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a7cd6bd727d1f296eb5dbfae6ca36ab3f">__destruct</a>()</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#ac3a8e0bfe2491e17bc527715505f90a7">alt</a>(array $properties)</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class__OWL.html#ad6f4f6946f40199dd0333cf219fa500e">check</a>(&amp;$object, $level)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class__OWL.html#ae2e3c56e5f3c4ce4156c6b1bb1c50f63">check</a>(&amp;$object, $level=OWL_WARNING)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#ad3d2853bbd2d1962710907e34afb424f">close</a>()</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a9cf52ba614981a0082063d57290d3b7c">connect</a>()</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#ac9e93cb0ab57f03b2719eebd0c0ee2ef">create</a>()</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
@@ -57,12 +59,14 @@ This is the complete list of members for <a class="el" href="classDbHandler.html
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a67d77702ff6db70f89123d3f947af143">escape_string</a>($string)</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a7896419cf143412ad74ca8fccb11fb6e">expand_field</a>(&amp;$field, $quotes=false)</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a11636da2e77be029e036c7f68e0e58b4">extract_tablelist</a>(array $fields)</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class__OWL.html#abded13b1c97ea6e0cfe3c68cb6bcf7a5">get_callback</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#ae9bfc8bdc6a8077adb342702aaffc9af">get_instance</a>()</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [static]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#adf9509ef96858be7bdd9414c5ef129aa">get_severity</a>($status=null)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a99ec771fa2c5c279f80152cc09e489a8">get_status</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">init</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#aa342b2bd73c5f8ce05cadcba02f9cf5a">is_open</a>()</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#ad6be57a8dbb86dc1648c79b96128fc97">last_inserted_id</a>()</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDbHandler.html#a1fa2e9fbcd6984aa8971880ddb2ed1dc">load_driver</a>()</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#afccbfc69ead84f8445116e050d1cfc2d">open</a>()</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a11a0d416e8993b919c9fec6f15dacbc5">prepare_delete</a>(array $searches=array())</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a157e507b2d562331d2e6fdbada61d604">prepare_insert</a>(array $values=array())</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
@@ -72,10 +76,13 @@ This is the complete list of members for <a class="el" href="classDbHandler.html
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a9982df4830f05803935bb31bac7fae3d">reset</a>()</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a465eeaf40edd9f9c848841700c32ce55">restore_status</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a9e49b9c76fbc021b244c6915ea536d71">save_status</a>()</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class__OWL.html#a28d9025eaf37b49d63cb334ed28c33f0">set_callback</a>($_dispatcher)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class__OWL.html#a1e26611ce858b237f5a98a91ea3c3a1b">set_callback_argument</a>(array $_arg)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a576829692a3b66e3d518853bf43abae3">set_high_severity</a>(&amp;$object=null)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a305a3225c4760a88a06b0d55d0893962">set_query</a>($qry)</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#aea912d0ede9b3c2a69b79072d94d4787">set_status</a>($status, $params=array())</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">signal</a>($level=OWL_INFO, &amp;$text=false)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class__OWL.html#ae76c46aff1ad253106332670fc59c777">succeeded</a>($_ok=OWL_SUCCESS)</td><td><a class="el" href="class__OWL.html">_OWL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a11e750a2c46022241eba49df81607ba9">table_exists</a>($tablename)</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a0ea7d40a222cf6f1bf77b42e8eba03e4">tablelist</a>(array $tables)</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#abaca15a312800e5522b3efd9dff036f5">tablename</a>($tablename)</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
@@ -85,7 +92,7 @@ This is the complete list of members for <a class="el" href="classDbHandler.html
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#a5075bce990f4dab6b588275f38d301c9">where_clause</a>(array $searches, array $joins)</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbHandler.html#ac02a117c76d5d20ec950fcd5aae9cf8d">write</a>(&amp;$rows=null, $line=0, $file= '[unknown]')</td><td><a class="el" href="classDbHandler.html">DbHandler</a></td><td></td></tr>
 </table></div>
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 6 2011 16:40:05 for OWL-PHP by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Apr 12 2011 16:53:52 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
