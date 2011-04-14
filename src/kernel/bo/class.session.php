@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Session class
- * \version $Id: class.session.php,v 1.5 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.session.php,v 1.6 2011-04-14 11:34:41 oscar Exp $
  */
 
 /**
@@ -14,6 +14,7 @@
  */
 class Session extends SessionHandler
 {
+
 	/**
 	 * When a new run is initialised, restore an older session or create a new one
 	 * \public 
@@ -26,6 +27,16 @@ class Session extends SessionHandler
 			session_start ();
 			header ('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"'); //Fix for IE6
 		}
+		if ($this->get_session_var('init', false) === false) {
+			$this->setup();
+		} else {
+			if (ConfigHandler::get('session|check_ip') === true) {
+				if ($this->get_session_var('ip') != $this->ip_address()) {
+					$this->set_status (SESSION_IPCHKFAIL);
+				}
+			}
+		}
+		$this->set_session_var('step', 0, SESSIONVAR_INCR);
 	}
 	
 	/**
@@ -36,10 +47,22 @@ class Session extends SessionHandler
 	{
 		parent::__destruct();
 		session_write_close ();
-		if (@is_object ($this->dataset)){
-			$this->dataset->__destruct();
-			unset ($this->dataset);
+	}
+
+	/**
+	 * Initialize a session
+	 * \param[in] $vars An optional array with key-value pairs that will be stored in the session
+	 */
+	public function setup (array $vars = array())
+	{
+		$this->set_session_var('ip', $this->ip_address());
+		$this->set_session_var('step', 0, SESSIONVAR_INCR);
+		if (count($vars) > 0) {
+			foreach ($vars as $_k => $_v) {
+				$this->set_session_var($_k, $_v);
+			}
 		}
+		$this->set_session_var('init', true);
 	}
 
 	/**
@@ -101,4 +124,28 @@ class Session extends SessionHandler
 			return $default;
 		}
 	}
+
+	/**
+	 * Identify the clients IP address where the client can use a shared internet source (HTTP_CLIENT_IP),
+	 * a proxy server (HTTP_X_FORWARDED_FOR) is direct access (REMOTE_ADDR)
+	 * \return The IP address, or 0.0.0.0 when none was found
+	 */
+	private function ip_address()
+	{
+		if (array_key_exists('HTTP_CLIENT_IP', $_SERVER)) {
+			return ($_SERVER['HTTP_CLIENT_IP']);
+		}
+		if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
+			return ($_SERVER['HTTP_X_FORWARDED_FOR']);
+		}
+		if ($_SERVER['REMOTE_ADDR']) {
+			return ($_SERVER['REMOTE_ADDR']);
+		}
+		return ('0.0.0.0');
+	}
 }
+
+Register::register_class('Session');
+
+Register::set_severity (OWL_WARNING);
+Register::register_code ('SESSION_IPCHKFAIL');

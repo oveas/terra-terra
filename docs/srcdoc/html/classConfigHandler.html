@@ -29,7 +29,8 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a>  </div>
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a>  </div>
   <div class="headertitle">
 <h1>ConfigHandler Class Reference<br/>
 <small>
@@ -45,13 +46,19 @@
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#af61ee6f9f793e4cd0128c02e4e28bf90">read_config</a> ($file= '')</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#aee636634bffead4a620e4e01dd3a9649">read_config</a> (array $_source)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#aa8f6a7516588561626efccb8be5875ce">get</a> ($item, $default=null)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#a0f6d68b5d2f4da014209d449fc0f5996">set</a> ($_item, $_value)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#a1a9cec0c104e79c5b70eaee3c1f8eaea">config_file</a> ($_file)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#a07cc4e8a46e645f52c0bfb50baca1184">config_table</a> ($_table, $_applic, $_group, $_user, $_force)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#a9851c66d75db6a65c64aba5192173c14">convert</a> ($val)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#a68fb5e0d30a583d249ae6b407450123d">parse_item</a> ($_item, $_value, $_protect, $_hide)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#a7a31419ae991ab50967444568277aa4c">_set</a> ($_item, $_value, $_hide)</td></tr>
+<tr><td colspan="2"><h2><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigHandler.html#a271a119ca51e0d3da5b8bc2238fc569a">$dataset</a> = null</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Configuration handler. </p>
@@ -101,7 +108,96 @@ Static Private Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, and <a class="el" href="owl_8helper_8functions_8php.html#a0836b830fe9e399265d4cf910c5dff28">owlCrypt()</a>.</p>
 
-<p>Referenced by <a class="el" href="classConfigHandler.html#af61ee6f9f793e4cd0128c02e4e28bf90">read_config()</a>, and <a class="el" href="classConfigHandler.html#a0f6d68b5d2f4da014209d449fc0f5996">set()</a>.</p>
+<p>Referenced by <a class="el" href="classConfigHandler.html#a68fb5e0d30a583d249ae6b407450123d">parse_item()</a>, and <a class="el" href="classConfigHandler.html#a0f6d68b5d2f4da014209d449fc0f5996">set()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1a9cec0c104e79c5b70eaee3c1f8eaea"></a><!-- doxytag: member="ConfigHandler::config_file" ref="a1a9cec0c104e79c5b70eaee3c1f8eaea" args="($_file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static ConfigHandler::config_file </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_file</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Parse a configuration file </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_file</em>&nbsp;</td><td>Filename </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, and <a class="el" href="classConfigHandler.html#a68fb5e0d30a583d249ae6b407450123d">parse_item()</a>.</p>
+
+<p>Referenced by <a class="el" href="classConfigHandler.html#aee636634bffead4a620e4e01dd3a9649">read_config()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a07cc4e8a46e645f52c0bfb50baca1184"></a><!-- doxytag: member="ConfigHandler::config_table" ref="a07cc4e8a46e645f52c0bfb50baca1184" args="($_table, $_applic, $_group, $_user, $_force)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static ConfigHandler::config_table </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_applic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_group</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_user</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_force</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Parse a configuration table </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_table</em>&nbsp;</td><td>Config tablename without prefix </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_applic</em>&nbsp;</td><td>Application name for which the config should be read </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_group</em>&nbsp;</td><td>Group ID for which the config should be read </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_user</em>&nbsp;</td><td><a class="el" href="classUser.html" title="the OWL-PHP session object">User</a> ID for which the config should be read </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_force</em>&nbsp;</td><td>Boolean that can force overwrite of protected values </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>References <a class="el" href="index_8php.html#ac0ee5b766d19cb282552a3449a1f8376">$_table</a>, <a class="el" href="index_8php.html#a5df5982b9dadc74df05081972cd67fdf">$_user</a>, and <a class="el" href="classConfigHandler.html#a68fb5e0d30a583d249ae6b407450123d">parse_item()</a>.</p>
+
+<p>Referenced by <a class="el" href="classConfigHandler.html#aee636634bffead4a620e4e01dd3a9649">read_config()</a>.</p>
 
 </div>
 </div>
@@ -131,7 +227,7 @@ Static Private Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="classRegister.html#a70490e59a4a3b910d259b8a4287c3e91">Register::get_severity_level()</a>.</p>
 
-<p>Referenced by <a class="el" href="classConfigHandler.html#af61ee6f9f793e4cd0128c02e4e28bf90">read_config()</a>.</p>
+<p>Referenced by <a class="el" href="classConfigHandler.html#a68fb5e0d30a583d249ae6b407450123d">parse_item()</a>.</p>
 
 </div>
 </div>
@@ -171,34 +267,97 @@ Static Private Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, <a class="el" href="owl_8helper_8functions_8php.html#a0836b830fe9e399265d4cf910c5dff28">owlCrypt()</a>, and <a class="el" href="classOWL.html#a5adc562bc79982a362e9b99a50e640f2">OWL::stat()</a>.</p>
 
-<p>Referenced by <a class="el" href="classSessionHandler.html#a546ba6d31a1ce532de13f65aadc3be0e">SessionHandler::__construct()</a>, <a class="el" href="classLogHandler.html#aacca49c4394109f4ccc494048a0b2cab">LogHandler::__construct()</a>, <a class="el" href="classOWLException.html#a02821b324b42b7818c3fefe7638444e7">OWLException::__construct()</a>, <a class="el" href="classDbHandler.html#ae54e9d4643f41a9296167086f6a769fc">DbHandler::__construct()</a>, <a class="el" href="classOWLException.html#ad5e675e393079574ff85ac862262baa0">OWLException::check_hide()</a>, <a class="el" href="classLogHandler.html#ad32511521115b21779d699c836197dd0">LogHandler::compose_message()</a>, <a class="el" href="classDbHandler.html#a9cf52ba614981a0082063d57290d3b7c">DbHandler::connect()</a>, <a class="el" href="classUserHandler.html#ae471fe5473119da7089886c27ad5a3e9">UserHandler::construct()</a>, <a class="el" href="classUser.html#a9cf024c7e3148e45afd1bee7691ceefd">User::construct()</a>, <a class="el" href="classFormHandler.html#a4dbeaa44aa51a795b16379ae703d893a">FormHandler::get()</a>, <a class="el" href="classDbHandler.html#ae9bfc8bdc6a8077adb342702aaffc9af">DbHandler::get_instance()</a>, <a class="el" href="classUserHandler.html#a6b2bbbdb4f1a08578c219a933880a1de">UserHandler::hash_password()</a>, <a class="el" href="classUserHandler.html#a4539c12ed2ce12a9147d61496854d5ab">UserHandler::isLoggedIn()</a>, <a class="el" href="classLogHandler.html#a6d0139ed72f63093ca00f949ed5a73cb">LogHandler::log()</a>, <a class="el" href="classOWLExceptionHandler.html#a760bf3e7d648a7714abf5720f39369d8">OWLExceptionHandler::log_exception()</a>, <a class="el" href="classUserHandler.html#abf6562660ee8ec1663afe08550a63643">UserHandler::login()</a>, <a class="el" href="classUser.html#a95e19a7d141f922c2870a6404ff641b1">User::logout()</a>, <a class="el" href="owl_8helper_8functions_8php.html#a0836b830fe9e399265d4cf910c5dff28">owlCrypt()</a>, <a class="el" href="classUser.html#ac262f6dc9d3a121c25045fe6716e014a">User::register()</a>, <a class="el" href="classRegister.html#ad145e4bc28af91817782399b06422e74">Register::register_labels()</a>, <a class="el" href="classRegister.html#a80be033f56d821cf6d271ffac2e2d387">Register::register_messages()</a>, <a class="el" href="classFormHandler.html#a5fcc8aef0de87e31ceee65ad1eadb96c">FormHandler::set()</a>, <a class="el" href="classLogHandler.html#a65ef4f1c6ab4cff4057f5f5932cc690e">LogHandler::set_filename()</a>, <a class="el" href="class__OWL.html#aea912d0ede9b3c2a69b79072d94d4787">_OWL::set_status()</a>, <a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">_OWL::signal()</a>, <a class="el" href="classOWLException.html#a6e857cc079ee29428791e4926fe1677a">OWLException::traceback()</a>, and <a class="el" href="classContentArea.html#a36a662f1463162a8a8abea718a1f70ba">ContentArea::trn()</a>.</p>
+<p>Referenced by <a class="el" href="classSessionHandler.html#a546ba6d31a1ce532de13f65aadc3be0e">SessionHandler::__construct()</a>, <a class="el" href="classLogHandler.html#aacca49c4394109f4ccc494048a0b2cab">LogHandler::__construct()</a>, <a class="el" href="classOWLException.html#a02821b324b42b7818c3fefe7638444e7">OWLException::__construct()</a>, <a class="el" href="classDbHandler.html#ae54e9d4643f41a9296167086f6a769fc">DbHandler::__construct()</a>, <a class="el" href="classSession.html#a36373ba15d6c8f932aeea02d7320d7c8">Session::__construct()</a>, <a class="el" href="classOWLException.html#ad5e675e393079574ff85ac862262baa0">OWLException::check_hide()</a>, <a class="el" href="classLogHandler.html#ad32511521115b21779d699c836197dd0">LogHandler::compose_message()</a>, <a class="el" href="classDbHandler.html#a9cf52ba614981a0082063d57290d3b7c">DbHandler::connect()</a>, <a class="el" href="classUserHandler.html#ae471fe5473119da7089886c27ad5a3e9">UserHandler::construct()</a>, <a class="el" href="classUser.html#a9cf024c7e3148e45afd1bee7691ceefd">User::construct()</a>, <a class="el" href="classFormHandler.html#a4dbeaa44aa51a795b16379ae703d893a">FormHandler::get()</a>, <a class="el" href="classDbHandler.html#ae9bfc8bdc6a8077adb342702aaffc9af">DbHandler::get_instance()</a>, <a class="el" href="classUserHandler.html#a6b2bbbdb4f1a08578c219a933880a1de">UserHandler::hash_password()</a>, <a class="el" href="classUserHandler.html#a4539c12ed2ce12a9147d61496854d5ab">UserHandler::isLoggedIn()</a>, <a class="el" href="classLogHandler.html#a6d0139ed72f63093ca00f949ed5a73cb">LogHandler::log()</a>, <a class="el" href="classOWLExceptionHandler.html#a760bf3e7d648a7714abf5720f39369d8">OWLExceptionHandler::log_exception()</a>, <a class="el" href="classLogHandler.html#a96f9831cfceceffa055ba46b2deb6734">LogHandler::log_session()</a>, <a class="el" href="classUserHandler.html#abf6562660ee8ec1663afe08550a63643">UserHandler::login()</a>, <a class="el" href="classUser.html#a95e19a7d141f922c2870a6404ff641b1">User::logout()</a>, <a class="el" href="owl_8helper_8functions_8php.html#a0836b830fe9e399265d4cf910c5dff28">owlCrypt()</a>, <a class="el" href="classUser.html#ac262f6dc9d3a121c25045fe6716e014a">User::register()</a>, <a class="el" href="classRegister.html#ad145e4bc28af91817782399b06422e74">Register::register_labels()</a>, <a class="el" href="classRegister.html#a80be033f56d821cf6d271ffac2e2d387">Register::register_messages()</a>, <a class="el" href="classFormHandler.html#a5fcc8aef0de87e31ceee65ad1eadb96c">FormHandler::set()</a>, <a class="el" href="classLogHandler.html#a65ef4f1c6ab4cff4057f5f5932cc690e">LogHandler::set_filename()</a>, <a class="el" href="class__OWL.html#aea912d0ede9b3c2a69b79072d94d4787">_OWL::set_status()</a>, <a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">_OWL::signal()</a>, <a class="el" href="classOWLException.html#a6e857cc079ee29428791e4926fe1677a">OWLException::traceback()</a>, and <a class="el" href="classContentArea.html#a36a662f1463162a8a8abea718a1f70ba">ContentArea::trn()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af61ee6f9f793e4cd0128c02e4e28bf90"></a><!-- doxytag: member="ConfigHandler::read_config" ref="af61ee6f9f793e4cd0128c02e4e28bf90" args="($file= '')" -->
+<a class="anchor" id="a68fb5e0d30a583d249ae6b407450123d"></a><!-- doxytag: member="ConfigHandler::parse_item" ref="a68fb5e0d30a583d249ae6b407450123d" args="($_item, $_value, $_protect, $_hide)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static ConfigHandler::parse_item </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_protect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>_hide</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Parse a configuration item as read from the file or database, and store is </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_item</em>&nbsp;</td><td>Name of the config item </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_value</em>&nbsp;</td><td>Value of the config item </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_protect</em>&nbsp;</td><td>Boolean indicating a protected value </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_hide</em>&nbsp;</td><td>Boolean indicated a hidden value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, <a class="el" href="classConfigHandler.html#a7a31419ae991ab50967444568277aa4c">_set()</a>, <a class="el" href="classConfigHandler.html#a9851c66d75db6a65c64aba5192173c14">convert()</a>, and <a class="el" href="classOWL.html#a5adc562bc79982a362e9b99a50e640f2">OWL::stat()</a>.</p>
+
+<p>Referenced by <a class="el" href="classConfigHandler.html#a1a9cec0c104e79c5b70eaee3c1f8eaea">config_file()</a>, and <a class="el" href="classConfigHandler.html#a07cc4e8a46e645f52c0bfb50baca1184">config_table()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aee636634bffead4a620e4e01dd3a9649"></a><!-- doxytag: member="ConfigHandler::read_config" ref="aee636634bffead4a620e4e01dd3a9649" args="(array $_source)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">static ConfigHandler::read_config </td>
           <td>(</td>
-          <td class="paramtype">$&nbsp;</td>
-          <td class="paramname"> <em>file</em> = <code>''</code></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>_source</em></td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [static]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Parse the given configuration file</p>
+<p>Parse the given configuration source</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$file</em>&nbsp;</td><td>Full path to the configuration file </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>$_source</em>&nbsp;</td><td>Array describing the configuration source. It can have the following keys:</p>
+<ul>
+<li><a href="file:">file:</a> Full path to the configuration file</li>
+<li>table: Config tablename without prefix. Default 'config', MUST be given with the first call</li>
+<li>applic: Application name for which the config should be read, default 'owl'</li>
+<li>group: Application name for which the config should be read, default 0</li>
+<li>user: Application name for which the config should be read, default 0</li>
+<li>force: Boolean that can force overwrite of protected values, default false</li>
+</ul>
+</td></tr>
   </table>
   </dd>
 </dl>
+<p>The first call must always read from a file. On subsequent calls, if no filename is given, the configuration is taken from the (owl_)config table </p>
 
-<p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, <a class="el" href="classConfigHandler.html#a7a31419ae991ab50967444568277aa4c">_set()</a>, <a class="el" href="classConfigHandler.html#a9851c66d75db6a65c64aba5192173c14">convert()</a>, and <a class="el" href="classOWL.html#a5adc562bc79982a362e9b99a50e640f2">OWL::stat()</a>.</p>
+<p>References <a class="el" href="classConfigHandler.html#a1a9cec0c104e79c5b70eaee3c1f8eaea">config_file()</a>, <a class="el" href="classConfigHandler.html#a07cc4e8a46e645f52c0bfb50baca1184">config_table()</a>, and <a class="el" href="owl_8helper_8functions_8php.html#a2c49978306cd0e2f4f9406c20373ed02">toStrictBoolean()</a>.</p>
 
 </div>
 </div>
@@ -239,11 +398,26 @@ Static Private Member Functions</h2></td></tr>
 
 </div>
 </div>
+<hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a271a119ca51e0d3da5b8bc2238fc569a"></a><!-- doxytag: member="ConfigHandler::$dataset" ref="a271a119ca51e0d3da5b8bc2238fc569a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConfigHandler::$dataset = null<code> [static, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Datahandler object for database access </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/oscar/projects/owl-php/src/kernel/so/<a class="el" href="class_8confighandler_8php.html">class.confighandler.php</a></li>
 </ul>
 </div>
-<hr class="footer"/><address class="footer"><small>Generated on Tue Apr 12 2011 16:53:51 for OWL-PHP by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 14 2011 13:33:46 for OWL-PHP by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

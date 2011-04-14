@@ -1,0 +1,107 @@
+\section{OWLCache Class Reference}
+\label{classOWLCache}\index{OWLCache@{OWLCache}}
+
+
+Cache handler.  
+
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classOWLCache_a5c9e800ea5a9e0b0829b31466e94b539}{get} (\$cache, \$key)
+\item 
+static \hyperlink{classOWLCache_aa4f5e152fc2b1f5f88d2128a68322cc8}{set} (\$cache, \$key, \$value)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classOWLCache_a8acd763ed96208dbd8e5b46adf4d28cd}{init} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classOWLCache_a429167796c668f4edde177d017f9f86c}{\$cache} = null
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Cache handler. Abstract class to handle all caching \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Apr 14, 2011 -\/-\/ O van Eijk -\/-\/ Initial version for OWL-\/PHP 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{OWLCache@{OWLCache}!get@{get}}
+\index{get@{get}!OWLCache@{OWLCache}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}static OWLCache::get (
+\begin{DoxyParamCaption}
+\item[{\$}]{ cache, }
+\item[{\$}]{ key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWLCache_a5c9e800ea5a9e0b0829b31466e94b539}
+Get a value from cache 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$cache}]Name of the cache array \item[\mbox{\tt[in]} {\em \$key}]Key in the cache array \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value that was found, of null when nothing was found 
+\end{DoxyReturn}
+
+
+References \$cache.
+
+
+
+Referenced by OWLloader::\_\-tryLoad(), LogHandler::log\_\-session(), Register::register\_\-labels(), and Register::register\_\-messages().
+
+\index{OWLCache@{OWLCache}!init@{init}}
+\index{init@{init}!OWLCache@{OWLCache}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}static OWLCache::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classOWLCache_a8acd763ed96208dbd8e5b46adf4d28cd}
+Initialise the cache array with the predefined keys 
+
+Referenced by set().
+
+\index{OWLCache@{OWLCache}!set@{set}}
+\index{set@{set}!OWLCache@{OWLCache}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}static OWLCache::set (
+\begin{DoxyParamCaption}
+\item[{\$}]{ cache, }
+\item[{\$}]{ key, }
+\item[{\$}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWLCache_aa4f5e152fc2b1f5f88d2128a68322cc8}
+Store a value in cache. Non existing cache arrays will dynamically be created 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$cache}]Name of the cache array \item[\mbox{\tt[in]} {\em \$key}]Key in the cache array \item[\mbox{\tt[in]} {\em \$value}]Value to store \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The given value is also returned 
+\end{DoxyReturn}
+
+
+References \$cache, and init().
+
+
+
+Referenced by OWLloader::\_\-tryLoad(), User::construct(), Register::register\_\-labels(), and Register::register\_\-messages().
+
+
+
+\subsection{Member Data Documentation}
+\index{OWLCache@{OWLCache}!\$cache@{\$cache}}
+\index{\$cache@{\$cache}!OWLCache@{OWLCache}}
+\subsubsection[{\$cache}]{\setlength{\rightskip}{0pt plus 5cm}OWLCache::\$cache = null\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classOWLCache_a429167796c668f4edde177d017f9f86c}
+Array in which the cache data is stored 
+
+Referenced by get(), and set().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/so/\hyperlink{class_8cache_8php}{class.cache.php}\end{DoxyCompactItemize}

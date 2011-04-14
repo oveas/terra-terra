@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library Dispatcher class
- * \version $Id: class.dispatcher.php,v 1.6 2011-04-12 14:57:34 oscar Exp $
+ * \version $Id: class.dispatcher.php,v 1.7 2011-04-14 11:34:41 oscar Exp $
  */
 
 /**
@@ -112,6 +112,7 @@ class Dispatcher extends _OWL
 	 */
 	public function dispatch($_dispatcher = null)
 	{
+		$_form = null;
 		if ($_dispatcher === null) {
 			$_form = OWL::factory('FormHandler');
 
@@ -124,6 +125,9 @@ class Dispatcher extends _OWL
 		} else {
 			$_destination = $this->decode_dispatcher($_dispatcher);
 		}
+
+		$_logger = OWL::factory('LogHandler', 'so');
+		$_logger->log_session($_destination, $_form);
 
 		if (defined($_destination['include_path'])) {
 			$_inc_path = constant($_destination['include_path']);

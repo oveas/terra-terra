@@ -7,7 +7,8 @@ the OWL-\/PHP session object
 
 
 
-Inheritance diagram for Session:\nopagebreak
+Inheritance diagram for Session:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,8 @@ Inheritance diagram for Session:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Session:\nopagebreak
+Collaboration diagram for Session:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -29,6 +31,8 @@ Collaboration diagram for Session:\nopagebreak
 \hyperlink{classSession_a36373ba15d6c8f932aeea02d7320d7c8}{\_\-\_\-construct} ()
 \item 
 \hyperlink{classSession_aa498272c85524e4700abc3363883165b}{\_\-\_\-destruct} ()
+\item 
+\hyperlink{classSession_a4b7cad06b82b01bef75054a8b859a7c5}{setup} (array \$vars=array())
 \item 
 \hyperlink{classSession_a178a3aa14d421509658f465b0b6bd398}{set\_\-session\_\-var} (\$var, \$val=0, \$flg=\hyperlink{class_8sessionhandler_8php_af9e860b1663497a46177b0ec35d6a9f5}{SESSIONVAR\_\-SET})
 \item 
@@ -50,7 +54,7 @@ Collaboration diagram for Session:\nopagebreak
 \item 
 \hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
 \item 
-\hyperlink{class__OWL_ae76c46aff1ad253106332670fc59c777}{succeeded} (\$\_\-ok=\hyperlink{owl_8severitycodes_8php_a96223f06ba27bf5cbefa6e9d702897c2}{OWL\_\-SUCCESS})
+\hyperlink{class__OWL_a53ab4d3bbb2c6a56966c339ca4b4c805}{succeeded} (\$\_\-ok=\hyperlink{owl_8severitycodes_8php_a96223f06ba27bf5cbefa6e9d702897c2}{OWL\_\-SUCCESS}, \&\$\_\-object=null)
 \item 
 \hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
 \item 
@@ -82,9 +86,14 @@ Collaboration diagram for Session:\nopagebreak
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classSessionHandler_a74c46fcfbadd4c4e6bacc73ddf350056}{\$dataset}
+\hyperlink{classSessionHandler_a74c46fcfbadd4c4e6bacc73ddf350056}{\$dataset} = null
 \item 
 \hyperlink{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}{\$severity}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSession_a39de9a64a03ee2940732ede578bbd928}{ip\_\-address} ()
 \end{DoxyCompactItemize}
 
 
@@ -108,6 +117,10 @@ Aug 13, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 When a new run is initialised, restore an older session or create a new one 
 
 Reimplemented from \hyperlink{classSessionHandler_a546ba6d31a1ce532de13f65aadc3be0e}{SessionHandler}.
+
+
+
+References ConfigHandler::get(), get\_\-session\_\-var(), ip\_\-address(), set\_\-session\_\-var(), \_\-OWL::set\_\-status(), and setup().
 
 \index{Session@{Session}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!Session@{Session}}
@@ -223,6 +236,10 @@ Get a session variable
 \begin{DoxyReturn}{Returns}
 The value from the session, null if not set 
 \end{DoxyReturn}
+
+
+Referenced by \_\-\_\-construct().
+
 \index{Session@{Session}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!Session@{Session}}
 \subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
@@ -271,11 +288,25 @@ Referenced by SchemeHandler::compare().
 )\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
-References OWL::factory().
+References OWL::factory(), and \_\-OWL::set\_\-status().
 
 
 
 Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and UserHandler::construct().
+
+\index{Session@{Session}!ip\_\-address@{ip\_\-address}}
+\index{ip\_\-address@{ip\_\-address}!Session@{Session}}
+\subsubsection[{ip\_\-address}]{\setlength{\rightskip}{0pt plus 5cm}Session::ip\_\-address (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSession_a39de9a64a03ee2940732ede578bbd928}
+Identify the clients IP address where the client can use a shared internet source (HTTP\_\-CLIENT\_\-IP), a proxy server (HTTP\_\-X\_\-FORWARDED\_\-FOR) is direct access (REMOTE\_\-ADDR) \begin{DoxyReturn}{Returns}
+The IP address, or 0.0.0.0 when none was found 
+\end{DoxyReturn}
+
+
+Referenced by \_\-\_\-construct(), and setup().
 
 \index{Session@{Session}!open@{open}}
 \index{open@{open}!Session@{Session}}
@@ -419,6 +450,10 @@ Set a session variable
 
 \begin{DoxyParams}{Parameters}
 \item[\mbox{\tt[in]} {\em \$var}]Variable name \item[\mbox{\tt[in]} {\em \$val}]Variable value (default 0) \item[\mbox{\tt[in]} {\em \$flg}]How to handle the value. Default SESSIONVAR\_\-SET \end{DoxyParams}
+
+
+Referenced by \_\-\_\-construct(), and setup().
+
 \index{Session@{Session}!set\_\-status@{set\_\-status}}
 \index{set\_\-status@{set\_\-status}!Session@{Session}}
 \subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
@@ -438,7 +473,25 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), UserHandler::confirm(), User::confirm(), DbHandler::connect(), UserHandler::construct(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), \_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), UserHandler::confirm(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+
+\index{Session@{Session}!setup@{setup}}
+\index{setup@{setup}!Session@{Session}}
+\subsubsection[{setup}]{\setlength{\rightskip}{0pt plus 5cm}Session::setup (
+\begin{DoxyParamCaption}
+\item[{array \$}]{ vars = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)}\label{classSession_a4b7cad06b82b01bef75054a8b859a7c5}
+Initialize a session 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$vars}]An optional array with key-\/value pairs that will be stored in the session \end{DoxyParams}
+
+
+References ip\_\-address(), and set\_\-session\_\-var().
+
+
+
+Referenced by \_\-\_\-construct().
 
 \index{Session@{Session}!signal@{signal}}
 \index{signal@{signal}!Session@{Session}}
@@ -468,18 +521,19 @@ Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
 \index{succeeded@{succeeded}!Session@{Session}}
 \subsubsection[{succeeded}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::succeeded (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-ok = {\ttfamily {\bf OWL\_\-SUCCESS}}}
+\item[{\$}]{ \_\-ok = {\ttfamily {\bf OWL\_\-SUCCESS}}, }
+\item[{\&\$}]{ \_\-object = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_ae76c46aff1ad253106332670fc59c777}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a53ab4d3bbb2c6a56966c339ca4b4c805}
 Check if the object currenlty has a success state 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-ok}]The highest severity that's considered successfull, default OWL\_\-SUCCESS \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-ok}]The highest severity that's considered successfull, default OWL\_\-SUCCESS \item[\mbox{\tt[in]} {\em \$\_\-object}]REference to the object to check, defaults to the current object \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Boolean true when successfull 
 \end{DoxyReturn}
 
 
-Referenced by Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+Referenced by UserHandler::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
 
 \index{Session@{Session}!traceback@{traceback}}
 \index{traceback@{traceback}!Session@{Session}}
@@ -530,7 +584,7 @@ References \_\-OWL::check().
 \subsection{Member Data Documentation}
 \index{Session@{Session}!\$dataset@{\$dataset}}
 \index{\$dataset@{\$dataset}!Session@{Session}}
-\subsubsection[{\$dataset}]{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::\$dataset\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classSessionHandler_a74c46fcfbadd4c4e6bacc73ddf350056}
+\subsubsection[{\$dataset}]{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::\$dataset = null\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{classSessionHandler_a74c46fcfbadd4c4e6bacc73ddf350056}
 Link to a datahandler object. This dataset is used as an interface to all database IO. \index{Session@{Session}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!Session@{Session}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}

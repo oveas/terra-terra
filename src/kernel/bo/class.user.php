@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the User class
- * \version $Id: class.user.php,v 1.8 2011-04-12 14:57:34 oscar Exp $
+ * \version $Id: class.user.php,v 1.9 2011-04-14 11:34:41 oscar Exp $
  */
 
 /**
@@ -26,6 +26,7 @@ abstract class User extends UserHandler
 			$username = ConfigHandler::get ('session|default_user');
 		}
 		parent::construct ($username);
+		OWLCache::set(OWLCACHE_OBJECTS, 'user', ($_ =& $this));
 	}
 	
 	/**
@@ -35,7 +36,7 @@ abstract class User extends UserHandler
 	public function __destruct ()
 	{
 		parent::__destruct();
-		if (@is_object ($this->dataset)) {
+		if (is_object ($this->dataset)) {
 			$this->dataset->__destruct();
 			unset ($this->dataset);
 		}
@@ -179,15 +180,24 @@ abstract class User extends UserHandler
 	}
 
 	/**
+	 * Return the userID of the current session
+	 * \public
+	 */
+	public function get_user_id ()
+	{
+		return ($this->get_session_var('uid', 0));
+	}
+	
+	/**
 	 * Return the current session ID
 	 * \public
 	 * \return the session ID
 	 */
-	public function get_id ()
+	public function get_session_id ()
 	{
 		return session_id();
 	}
-	
+
 	/**
 	 * Set a session variable
 	 * \public
@@ -212,6 +222,7 @@ abstract class User extends UserHandler
 		return $this->session->get_session_var($var, $default);
 	}
 }
+Register::register_class('User');
 
 Register::set_severity (OWL_WARNING);
 Register::register_code ('USER_DUPLUSERNAME');

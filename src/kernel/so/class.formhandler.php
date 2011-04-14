@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Formhandler class
- * \version $Id: class.formhandler.php,v 1.6 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.formhandler.php,v 1.7 2011-04-14 11:34:41 oscar Exp $
  */
 
 /**
@@ -260,6 +260,15 @@ class FormHandler extends _OWL
 		$input = preg_replace("/#_#_#/", '<', $input);
 		$input = preg_replace("/\s+/", ' ', $input);
 		return $input;
+	}
+
+	/**
+	 * Get the complete formdata for logging purposes
+	 * \return Array with the parsed formdata
+	 */
+	public function get_form_data()
+	{
+		return ($this->owl_formvalues);
 	}
 }
 

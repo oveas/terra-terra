@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the MySQL drivers
- * \version $Id: class.mysql.php,v 1.1 2011-04-12 14:57:34 oscar Exp $
+ * \version $Id: class.mysql.php,v 1.2 2011-04-14 11:34:41 oscar Exp $
  */
 
 /**
@@ -56,7 +56,7 @@ class MySQL extends DbDriver
 			if (!$_views && $_r['Table_type'] != 'BASE TABLE') {
 				continue;
 			}
-			$_tables[$_r[0]] = null; // TODO Columns, attributes etc, see SchemeHandler
+			$_tables[$_r[0]] = null; // \todo Columns, attributes etc, see SchemeHandler
 		}
 		$this->dbClear($_data);
 		return ($_tables);

@@ -7,7 +7,8 @@ the PHP session object
 
 
 
-Inheritance diagram for SessionHandler:\nopagebreak
+Inheritance diagram for SessionHandler:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -44,7 +45,7 @@ Collaboration diagram for SessionHandler:\nopagebreak
 \item 
 \hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
 \item 
-\hyperlink{class__OWL_ae76c46aff1ad253106332670fc59c777}{succeeded} (\$\_\-ok=\hyperlink{owl_8severitycodes_8php_a96223f06ba27bf5cbefa6e9d702897c2}{OWL\_\-SUCCESS})
+\hyperlink{class__OWL_a53ab4d3bbb2c6a56966c339ca4b4c805}{succeeded} (\$\_\-ok=\hyperlink{owl_8severitycodes_8php_a96223f06ba27bf5cbefa6e9d702897c2}{OWL\_\-SUCCESS}, \&\$\_\-object=null)
 \item 
 \hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
 \item 
@@ -78,7 +79,7 @@ Collaboration diagram for SessionHandler:\nopagebreak
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classSessionHandler_a74c46fcfbadd4c4e6bacc73ddf350056}{\$dataset}
+\hyperlink{classSessionHandler_a74c46fcfbadd4c4e6bacc73ddf350056}{\$dataset} = null
 \item 
 \hyperlink{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}{\$severity}
 \end{DoxyCompactItemize}
@@ -112,7 +113,7 @@ Reimplemented in \hyperlink{classSession_a36373ba15d6c8f932aeea02d7320d7c8}{Sess
 
 
 
-References OWL::factory(), ConfigHandler::get(), \_\-OWL::init(), and \_\-OWL::set\_\-status().
+References OWL::factory(), ConfigHandler::get(), and \_\-OWL::init().
 
 \index{SessionHandler@{SessionHandler}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!SessionHandler@{SessionHandler}}
@@ -264,7 +265,7 @@ Referenced by SchemeHandler::compare().
 )\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
-References OWL::factory().
+References OWL::factory(), and \_\-OWL::set\_\-status().
 
 
 
@@ -417,7 +418,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), \_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), UserHandler::confirm(), User::confirm(), DbHandler::connect(), UserHandler::construct(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), UserHandler::confirm(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{SessionHandler@{SessionHandler}!signal@{signal}}
 \index{signal@{signal}!SessionHandler@{SessionHandler}}
@@ -447,18 +448,19 @@ Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
 \index{succeeded@{succeeded}!SessionHandler@{SessionHandler}}
 \subsubsection[{succeeded}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::succeeded (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-ok = {\ttfamily {\bf OWL\_\-SUCCESS}}}
+\item[{\$}]{ \_\-ok = {\ttfamily {\bf OWL\_\-SUCCESS}}, }
+\item[{\&\$}]{ \_\-object = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_ae76c46aff1ad253106332670fc59c777}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a53ab4d3bbb2c6a56966c339ca4b4c805}
 Check if the object currenlty has a success state 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-ok}]The highest severity that's considered successfull, default OWL\_\-SUCCESS \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-ok}]The highest severity that's considered successfull, default OWL\_\-SUCCESS \item[\mbox{\tt[in]} {\em \$\_\-object}]REference to the object to check, defaults to the current object \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Boolean true when successfull 
 \end{DoxyReturn}
 
 
-Referenced by Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+Referenced by UserHandler::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
 
 \index{SessionHandler@{SessionHandler}!traceback@{traceback}}
 \index{traceback@{traceback}!SessionHandler@{SessionHandler}}
@@ -509,7 +511,7 @@ References \_\-OWL::check().
 \subsection{Member Data Documentation}
 \index{SessionHandler@{SessionHandler}!\$dataset@{\$dataset}}
 \index{\$dataset@{\$dataset}!SessionHandler@{SessionHandler}}
-\subsubsection[{\$dataset}]{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::\$dataset\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classSessionHandler_a74c46fcfbadd4c4e6bacc73ddf350056}
+\subsubsection[{\$dataset}]{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::\$dataset = null\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}\label{classSessionHandler_a74c46fcfbadd4c4e6bacc73ddf350056}
 Link to a datahandler object. This dataset is used as an interface to all database IO. \index{SessionHandler@{SessionHandler}!\$db@{\$db}}
 \index{\$db@{\$db}!SessionHandler@{SessionHandler}}
 \subsubsection[{\$db}]{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::\$db\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classSessionHandler_a0bb7c3206f3664f2a4b8e96edf49a3bc}

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._owl.php,v 1.5 2011-04-12 14:57:34 oscar Exp $
+ * \version $Id: class._owl.php,v 1.6 2011-04-14 11:34:41 oscar Exp $
  */
 
 /**
@@ -50,6 +50,7 @@ abstract class _OWL
 		$this->status = OWL::factory('StatusHandler');
 		$this->saved_status = null;
 		$this->pstatus =& $this;
+		$this->set_status (OWL_STATUS_OK); // Be an optimist ;)
 	}
 
 	/**
@@ -234,11 +235,15 @@ abstract class _OWL
 	/**
 	 * Check if the object currenlty has a success state
 	 * \param[in] $_ok The highest severity that's considered successfull, default OWL_SUCCESS
+	 * \param[in] $_object REference to the object to check, defaults to the current object
 	 * \return Boolean true when successfull
 	 */
-	public function succeeded ($_ok = OWL_SUCCESS)
+	public function succeeded ($_ok = OWL_SUCCESS, &$_object = null)
 	{
-		return ($this->status->get_severity($this->status->get_code()) <= $_ok);
+		if ($_object === null) {
+			$_object =& $this;
+		}
+		return ($_object->status->get_severity($_object->status->get_code()) <= $_ok);
 	}
 
 	/**

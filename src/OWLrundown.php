@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * Make sure all objects are destroyed in the proper order
- * \version $Id: OWLrundown.php,v 1.5 2011-04-06 14:42:16 oscar Exp $
+ * \version $Id: OWLrundown.php,v 1.6 2011-04-14 11:34:42 oscar Exp $
  */
 
 //DBG_dumpval($GLOBALS['messages']);
@@ -27,7 +27,7 @@ $_form->__destruct();
 //unset ($GLOBALS['db']);
 
 // Destroy the logger object
-$GLOBALS['logger']->__destruct();
+//$GLOBALS['logger']->__destruct();
 //unset ($GLOBALS['logger']);
 
 // Destroy the main class

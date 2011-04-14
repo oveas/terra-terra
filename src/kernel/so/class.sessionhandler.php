@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.9 2011-01-21 10:18:27 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.10 2011-04-14 11:34:41 oscar Exp $
  */
 
 /**
@@ -41,7 +41,7 @@ class SessionHandler extends _OWL
 	 * Link to a datahandler object. This dataset is used as an interface to all database IO.
 	 * \private
 	 */	
-	protected $dataset;
+	protected $dataset = null;
 
 	/**
 	 * Reference to the DB Singleton
@@ -87,8 +87,6 @@ class SessionHandler extends _OWL
 				array (&$this, 'destroy'),
 				array (&$this, 'gc')
 			);
-
-		$this->set_status (OWL_STATUS_OK);
 	}
 
 	/**

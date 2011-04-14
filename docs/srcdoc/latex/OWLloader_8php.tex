@@ -43,13 +43,11 @@ enum \hyperlink{OWLloader_8php_a1b19bb6ffba1d1e7871092e086cc4e94}{APPL\_\-LIBRAR
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{OWLloader_8php_a79190ec221c2b52403f7324f1d224c8f}{\$GLOBALS} \mbox{[}'OWLCache'\mbox{]}
-\item 
 \hyperlink{OWLloader_8php_a65f2996116eed36e9ab25f254a470259}{\$GLOBALS} \mbox{[}'messages'\mbox{]} = array ()
 \item 
 \hyperlink{OWLloader_8php_a49e8feb96fae9cb6655df44ebad3ca2b}{\$GLOBALS} \mbox{[}'labels'\mbox{]} = array ()
 \item 
-if(count(\$GLOBALS\mbox{[}'config'\mbox{]}\mbox{[}'configfiles'\mbox{]}\mbox{[}'app'\mbox{]}) $>$ 0) \hyperlink{OWLloader_8php_a5657c6427a5b1e3d4450f366cddef80a}{\$GLOBALS} \mbox{[}'logger'\mbox{]} = OWL::factory('\hyperlink{classLogHandler}{LogHandler}')
+\hyperlink{OWLloader_8php_ad8f7743ae327face727dae55887c2a43}{\$GLOBALS} \mbox{[}'logger'\mbox{]} = OWL::factory('\hyperlink{classLogHandler}{LogHandler}')
 \end{DoxyCompactItemize}
 
 
@@ -58,7 +56,7 @@ This file loads the \hyperlink{classOWL}{OWL} environment and initialises some s
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id:}
-\hyperlink{OWLloader_8php}{OWLloader.php},v 1.17 2011-\/04-\/06 14:42:16 oscar Exp 
+\hyperlink{OWLloader_8php}{OWLloader.php},v 1.18 2011-\/04-\/12 14:57:34 oscar Exp 
 \end{DoxyParagraph}
 
 
@@ -152,21 +150,10 @@ OWL\_\-ROOT must be defined by the application.
 \subsection{Variable Documentation}
 \index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
 \index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
-\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'OWLCache'\mbox{]}}\label{OWLloader_8php_a79190ec221c2b52403f7324f1d224c8f}
-{\bfseries Initial value:}
-\begin{DoxyCode}
- array (
-         'classesLoaded' => array()
-        ,'languageLoaded' => array()
-        ,'labelsLoaded' => array()
-)
-\end{DoxyCode}
+\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'messages'\mbox{]} = array ()}\label{OWLloader_8php_a65f2996116eed36e9ab25f254a470259}
 \index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
 \index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
-\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}if (count(\$GLOBALS\mbox{[}'config'\mbox{]}\mbox{[}'configfiles'\mbox{]}\mbox{[}'app'\mbox{]}) $>$ 0) \$GLOBALS\mbox{[}'logger'\mbox{]} = OWL::factory('{\bf LogHandler}')}\label{OWLloader_8php_a5657c6427a5b1e3d4450f366cddef80a}
+\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'logger'\mbox{]} = OWL::factory('{\bf LogHandler}')}\label{OWLloader_8php_ad8f7743ae327face727dae55887c2a43}
 \index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
 \index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
 \subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'labels'\mbox{]} = array ()}\label{OWLloader_8php_a49e8feb96fae9cb6655df44ebad3ca2b}
-\index{OWLloader.php@{OWLloader.php}!\$GLOBALS@{\$GLOBALS}}
-\index{\$GLOBALS@{\$GLOBALS}!OWLloader.php@{OWLloader.php}}
-\subsubsection[{\$GLOBALS}]{\setlength{\rightskip}{0pt plus 5cm}\$GLOBALS\mbox{[}'messages'\mbox{]} = array ()}\label{OWLloader_8php_a65f2996116eed36e9ab25f254a470259}

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Loghandler class
- * \version $Id: class.loghandler.php,v 1.7 2011-04-06 14:42:16 oscar Exp $
+ * \version $Id: class.loghandler.php,v 1.8 2011-04-14 11:34:41 oscar Exp $
  */
 
 /**
@@ -33,6 +33,16 @@ class LogHandler extends _OWL
 	private $fpointer;
 
 	/**
+	 * Datahandler reference for the session logging in the database
+	 */
+	private $dataset = null;
+
+	/**
+	 * Boolean to ensure session data is logged only once per action
+	 */
+	private $session_logged = false;
+
+	/**
 	 * integer - self reference
 	 * \private
 	 * \static
@@ -53,6 +63,11 @@ class LogHandler extends _OWL
 			ConfigHandler::get ('logging|persistant', false)) {
 			$this->open_logfile();
 		}
+		$this->dataset = new DataHandler ();
+		if (ConfigHandler::get ('owltables', true)) {
+			$this->dataset->set_prefix(ConfigHandler::get ('owlprefix'));
+		}
+		$this->dataset->set_tablename('sessionlog');
 	}
 
 	/**
@@ -89,6 +104,36 @@ class LogHandler extends _OWL
 			LogHandler::$instance = new self();
 		}
 		return LogHandler::$instance;
+	}
+
+	/**
+	 * Log the user action in the database. This method is called from the Dispatcher::dispatcher()
+	 * and can be called moreoften, but only the first log is written.
+	 * \param[in] $dispatcher Array with dispatcher information
+	 * \param[in] $form Form object
+	 */
+	public function log_session(array $dispatcher, FormHandler $form = null)
+	{
+		if ($this->session_logged === true) {
+			return;
+		}
+		$user = OWLCache::get(OWLCACHE_OBJECTS, 'user');
+		if (ConfigHandler::get('logging|log_form_data', true) === true && $form !== null) {
+			$formdata = serialize($form->get_form_data());
+		} else {
+			$formdata = null;
+		}
+		$this->dataset->set('sid', $user->get_session_id());
+		$this->dataset->set('step', $user->get_session_var('step', 0));
+		$this->dataset->set('uid', $user->get_user_id());
+		$this->dataset->set('applic', APPL_NAME);
+		$this->dataset->set('ip', $user->get_session_var('ip'));
+		$this->dataset->set('referer', (array_key_exists('HTTP_REFERER', $_SERVER) ? $_SERVER['HTTP_REFERER'] : ''));
+		$this->dataset->set('dispatcher', serialize($dispatcher));
+		$this->dataset->set('formdata', $formdata);
+		$this->dataset->prepare(DATA_WRITE);
+		$this->dataset->db();
+		$this->session_logged = true;
 	}
 
 	/**

@@ -2,7 +2,7 @@
 /**
  * \file
  * Define the abstract Register class.
- * \version $Id: class.register.php,v 1.5 2011-04-06 14:42:16 oscar Exp $
+ * \version $Id: class.register.php,v 1.6 2011-04-14 11:34:41 oscar Exp $
  */
 
 
@@ -266,31 +266,32 @@ abstract class Register
 		$_lang = ConfigHandler::get ('locale|lang');
 		// Suppress 'Undefined constants' notices for codes not (yet) registered
 		$_er = error_reporting(~E_NOTICE);
-		if (!array_key_exists('owlMessages', $GLOBALS['OWLCache']['languageLoaded'])) {
+		if (OWLCache::get(OWLCACHE_MESSAGE, 'owlMessages') === null) {
 			if (file_exists (OWL_LIBRARY . '/owl.messages.' . $_lang . '.php')) {
 				require (OWL_LIBRARY . '/owl.messages.' . $_lang . '.php');
-				$GLOBALS['OWLCache']['languageLoaded']['owlMessages'] = true;
+				$_found = OWLCache::set(OWLCACHE_MESSAGE, 'owlMessages', true);
 			} elseif (file_exists (OWL_LIBRARY . '/owl.messages.php')) {
 				require (OWL_LIBRARY . '/owl.messages.php');
-				$GLOBALS['OWLCache']['languageLoaded']['owlMessages'] = true;
+				$_found = OWLCache::set(OWLCACHE_MESSAGE, 'owlMessages', true);
 			} else {
-				$GLOBALS['OWLCache']['languageLoaded']['owlMessages'] = false;
+				$_found = OWLCache::set(OWLCACHE_MESSAGE, 'owlMessages', false);
 			}
-			if ($GLOBALS['OWLCache']['languageLoaded']['owlMessages']) {
+			if ($_found === true) {
 				$GLOBALS['messages'] = $_messages + $GLOBALS['messages'];
 			}
 		}
-		if (!array_key_exists(strtolower(APPL_CODE) . 'Messages', $GLOBALS['OWLCache']['languageLoaded'])) {
+
+		if (OWLCache::get(OWLCACHE_MESSAGE, strtolower(APPL_CODE) . 'Messages') === null) {
 			if (file_exists (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.messages.' . $_lang . '.php')) {
 				require (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.messages.' . $_lang . '.php');
-				$GLOBALS['OWLCache']['languageLoaded'][strtolower(APPL_CODE) . 'Messages'] = true;
+				$_found = OWLCache::set(OWLCACHE_MESSAGE, strtolower(APPL_CODE) . 'Messages', true);
 			} elseif (file_exists (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.messages.php')){
 				require (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.messages.php');
-				$GLOBALS['OWLCache']['languageLoaded'][strtolower(APPL_CODE) . 'Messages'] = true;
+				$_found = OWLCache::set(OWLCACHE_MESSAGE, strtolower(APPL_CODE) . 'Messages', true);
 			} else {
-				$GLOBALS['OWLCache']['languageLoaded'][strtolower(APPL_CODE) . 'Messages'] = false;
+				$_found = OWLCache::set(OWLCACHE_MESSAGE, strtolower(APPL_CODE) . 'Messages', false);
 			}
-			if ($GLOBALS['OWLCache']['languageLoaded'][strtolower(APPL_CODE) . 'Messages']) {
+			if ($_found === true) {
 				$GLOBALS['messages'] = $_messages + $GLOBALS['messages'];
 			}
 		}
@@ -307,32 +308,32 @@ abstract class Register
 		$_lang = ConfigHandler::get ('locale|lang');
 		// Suppress 'Undefined constants' notices for codes not (yet) registered
 		if ($_owl) {
-			if (!array_key_exists('owlLabels', $GLOBALS['OWLCache']['labelsLoaded'])) {
+			if (OWLCache::get(OWLCACHE_LABELS, 'owlLabels') === null) {
 				if (file_exists (OWL_LIBRARY . '/owl.labels.' . $_lang . '.php')) {
 					require (OWL_LIBRARY . '/owl.labels.' . $_lang . '.php');
-					$GLOBALS['OWLCache']['labelsLoaded']['owlLabels'] = true;
+					$_found = OWLCache::set(OWLCACHE_LABELS, 'owlLabels', true);
 				} elseif (file_exists (OWL_LIBRARY . '/owl.labels.php')) {
 					require (OWL_LIBRARY . '/owl.labels.php');
-					$GLOBALS['OWLCache']['labelsLoaded']['owlLabels'] = true;
+					$_found = OWLCache::set(OWLCACHE_LABELS, 'owlLabels', true);
 				} else {
-					$GLOBALS['OWLCache']['labelsLoaded']['owlLabels'] = false;
+					$_found = OWLCache::set(OWLCACHE_LABELS, 'owlLabels', false);
 				}
-				if ($GLOBALS['OWLCache']['labelsLoaded']['owlLabels']) {
+				if ($_found === true) {
 					$GLOBALS['labels'] = $_labels + $GLOBALS['labels'];
 				}
 			}
 		} else {
-			if (!array_key_exists(strtolower(APPL_CODE) . 'Labels', $GLOBALS['OWLCache']['labelsLoaded'])) {
+			if (OWLCache::get(OWLCACHE_LABELS, strtolower(APPL_CODE) . 'Labels') === null) {
 				if (file_exists (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.labels.' . $_lang . '.php')) {
 					require (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.labels.' . $_lang . '.php');
-					$GLOBALS['OWLCache']['labelsLoaded'][strtolower(APPL_CODE) . 'Labels'] = true;
+					$_found = OWLCache::set(OWLCACHE_LABELS, strtolower(APPL_CODE) . 'Labels', true);
 				} elseif (file_exists (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.labels.php')) {
 					require (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.labels.php');
-					$GLOBALS['OWLCache']['labelsLoaded'][strtolower(APPL_CODE) . 'Labels'] = true;
+					$_found = OWLCache::set(OWLCACHE_LABELS, strtolower(APPL_CODE) . 'Labels', true);
 				} else {
-					$GLOBALS['OWLCache']['labelsLoaded'][strtolower(APPL_CODE) . 'Labels'] = false;
+					$_found = OWLCache::set(OWLCACHE_LABELS, strtolower(APPL_CODE) . 'Labels', false);
 				}
-				if ($GLOBALS['OWLCache']['labelsLoaded'][strtolower(APPL_CODE) . 'Labels']) {
+				if ($_found === true) {
 					$GLOBALS['labels'] = $_labels + $GLOBALS['labels'];
 				}
 			}

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.13 2011-04-12 14:57:34 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.14 2011-04-14 11:34:41 oscar Exp $
  */
 
 /**
@@ -48,12 +48,14 @@ abstract class UserHandler extends _OWL
 		$this->dataset->set_tablename('user');
 
 		$this->session = new Session();
-
-		if (!isset($_SESSION['username'])) {
-			$this->set_username ($username);
+		if ($this->succeeded(OWL_SUCCESS, $this->session) === true) {
+			if (!isset($_SESSION['username'])) {
+				$this->set_username ($username);
+			}
+			$this->read_userdata();
+		} else {
+			$this->session->signal();
 		}
-		$this->read_userdata();
-		$this->set_status (OWL_STATUS_OK);
 	}
 
 	/**
@@ -173,11 +175,13 @@ abstract class UserHandler extends _OWL
 			if ($this->user_data['verification'] !== '') {
 				$this->set_status (USER_NOTCONFIRMED, array($username));
 			} else {
-				session_unset(); // Clear old data *BUT* ....
-				$this->set_username ($this->dataset->get('username')); // .... restore the username!!
-				$_SESSION['uid'] = $this->user_data['uid'];
+				session_unset(); // Clear the session ... 
+				$this->session->setup(array( // ... and reinitialise
+					 'username' => $this->dataset->get('username')
+					,'uid' => $this->user_data['uid']
+				));
 				$this->set_status (USER_LOGGEDIN, array (
-					  $_SESSION['username']
+					  $this->session->get_session_var('username')
 					, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->get('password'))
 				));
 				return (true);
@@ -195,17 +199,17 @@ abstract class UserHandler extends _OWL
 	 */
 	private function read_userdata ()
 	{
-		if (!isset ($_SESSION['uid'])) {
+		if ($this->session->get_session_var('uid') === null) {
 			return; // Nothing to do
 		}
 		$this->dataset->reset(DATA_RESET_META);
-		$this->dataset->set('uid', $_SESSION['uid']);
+		$this->dataset->set('uid', $this->session->get_session_var('uid'));
 		$this->dataset->set_key ('uid');
 		$this->dataset->prepare ();
 		$this->dataset->db($this->user_data);
 		$_dbstat = $this->dataset->db_status();
 		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
-			$this->set_status (USER_RESTORERR, $_SESSION['uid']);
+			$this->set_status (USER_RESTORERR, $this->session->get_session_var('uid'));
 		} else {
 			$this->user_data = $this->user_data[0]; // Shift up one level
 		}
@@ -228,7 +232,7 @@ abstract class UserHandler extends _OWL
 	 */
 	protected function set_username ($username)
 	{
-		$_SESSION['username'] = $username;
+		$this->session->set_session_var('username', $username);
 	}
 
 	/**
@@ -237,12 +241,12 @@ abstract class UserHandler extends _OWL
 	 */
 	protected function get_username ()
 	{
-		return ($_SESSION['username']);
+		return ($this->session->get_session_var('username'));
 	}
 
 	public function isLoggedIn()
 	{
-		return (!($_SESSION['username'] == ConfigHandler::get ('session|default_user')));
+		return (!($this->session->get_session_var('username', ConfigHandler::get ('session|default_user')) == ConfigHandler::get ('session|default_user')));
 	}
 
 	/**

@@ -7,7 +7,8 @@ the user object
 
 
 
-Inheritance diagram for UserHandler:\nopagebreak
+Inheritance diagram for UserHandler:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -34,7 +35,7 @@ Collaboration diagram for UserHandler:\nopagebreak
 \item 
 \hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
 \item 
-\hyperlink{class__OWL_ae76c46aff1ad253106332670fc59c777}{succeeded} (\$\_\-ok=\hyperlink{owl_8severitycodes_8php_a96223f06ba27bf5cbefa6e9d702897c2}{OWL\_\-SUCCESS})
+\hyperlink{class__OWL_a53ab4d3bbb2c6a56966c339ca4b4c805}{succeeded} (\$\_\-ok=\hyperlink{owl_8severitycodes_8php_a96223f06ba27bf5cbefa6e9d702897c2}{OWL\_\-SUCCESS}, \&\$\_\-object=null)
 \item 
 \hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
 \item 
@@ -193,7 +194,7 @@ Reimplemented in \hyperlink{classUser_a9cf024c7e3148e45afd1bee7691ceefd}{User}.
 
 
 
-References ConfigHandler::get(), \_\-OWL::init(), read\_\-userdata(), \_\-OWL::set\_\-status(), and set\_\-username().
+References ConfigHandler::get(), \_\-OWL::init(), read\_\-userdata(), set\_\-username(), and \_\-OWL::succeeded().
 
 \index{UserHandler@{UserHandler}!get\_\-callback@{get\_\-callback}}
 \index{get\_\-callback@{get\_\-callback}!UserHandler@{UserHandler}}
@@ -295,7 +296,7 @@ Referenced by login(), and register().
 )\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
-References OWL::factory().
+References OWL::factory(), and \_\-OWL::set\_\-status().
 
 
 
@@ -334,7 +335,7 @@ Reimplemented in \hyperlink{classUser_a2c4fae5935ebf84e787126795bf42988}{User}.
 
 
 
-References ConfigHandler::get(), hash\_\-password(), \_\-OWL::set\_\-status(), set\_\-username(), and \_\-OWL::traceback().
+References ConfigHandler::get(), hash\_\-password(), \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
 
 \index{UserHandler@{UserHandler}!logout@{logout}}
 \index{logout@{logout}!UserHandler@{UserHandler}}
@@ -511,7 +512,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), confirm(), User::confirm(), DbHandler::connect(), construct(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), confirm(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{UserHandler@{UserHandler}!set\_\-username@{set\_\-username}}
 \index{set\_\-username@{set\_\-username}!UserHandler@{UserHandler}}
@@ -525,7 +526,7 @@ Set the username
 \item[\mbox{\tt[in]} {\em \$username}]Username \end{DoxyParams}
 
 
-Referenced by construct(), login(), User::login(), and User::logout().
+Referenced by construct(), User::login(), and User::logout().
 
 \index{UserHandler@{UserHandler}!signal@{signal}}
 \index{signal@{signal}!UserHandler@{UserHandler}}
@@ -555,18 +556,19 @@ Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
 \index{succeeded@{succeeded}!UserHandler@{UserHandler}}
 \subsubsection[{succeeded}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::succeeded (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-ok = {\ttfamily {\bf OWL\_\-SUCCESS}}}
+\item[{\$}]{ \_\-ok = {\ttfamily {\bf OWL\_\-SUCCESS}}, }
+\item[{\&\$}]{ \_\-object = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_ae76c46aff1ad253106332670fc59c777}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a53ab4d3bbb2c6a56966c339ca4b4c805}
 Check if the object currenlty has a success state 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-ok}]The highest severity that's considered successfull, default OWL\_\-SUCCESS \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-ok}]The highest severity that's considered successfull, default OWL\_\-SUCCESS \item[\mbox{\tt[in]} {\em \$\_\-object}]REference to the object to check, defaults to the current object \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Boolean true when successfull 
 \end{DoxyReturn}
 
 
-Referenced by Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+Referenced by construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
 
 \index{UserHandler@{UserHandler}!traceback@{traceback}}
 \index{traceback@{traceback}!UserHandler@{UserHandler}}

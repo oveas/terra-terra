@@ -7,7 +7,8 @@ Log handler.
 
 
 
-Inheritance diagram for LogHandler:\nopagebreak
+Inheritance diagram for LogHandler:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,8 @@ Inheritance diagram for LogHandler:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for LogHandler:\nopagebreak
+Collaboration diagram for LogHandler:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,13 +32,15 @@ Collaboration diagram for LogHandler:\nopagebreak
 \item 
 \hyperlink{classLogHandler_a395099dd9f1e9794bfe6a0c771991c3c}{\_\-\_\-clone} ()
 \item 
+\hyperlink{classLogHandler_a96f9831cfceceffa055ba46b2deb6734}{log\_\-session} (array \$dispatcher, \hyperlink{classFormHandler}{FormHandler} \$form=null)
+\item 
 \hyperlink{classLogHandler_a6d0139ed72f63093ca00f949ed5a73cb}{log} (\$msg, \$code)
 \item 
 \hyperlink{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}{get\_\-status} ()
 \item 
 \hyperlink{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}{get\_\-severity} (\$status=null)
 \item 
-\hyperlink{class__OWL_ae76c46aff1ad253106332670fc59c777}{succeeded} (\$\_\-ok=\hyperlink{owl_8severitycodes_8php_a96223f06ba27bf5cbefa6e9d702897c2}{OWL\_\-SUCCESS})
+\hyperlink{class__OWL_a53ab4d3bbb2c6a56966c339ca4b4c805}{succeeded} (\$\_\-ok=\hyperlink{owl_8severitycodes_8php_a96223f06ba27bf5cbefa6e9d702897c2}{OWL\_\-SUCCESS}, \&\$\_\-object=null)
 \item 
 \hyperlink{class__OWL_a51ba4a16409acf2a2f61f286939091a5}{signal} (\$level=\hyperlink{owl_8severitycodes_8php_a139328861128689f2f4def6a399d9057}{OWL\_\-INFO}, \&\$text=false)
 \item 
@@ -100,6 +104,10 @@ static \hyperlink{classLogHandler_aff978ec836c28d7b6e08a84802aa1c6d}{get\_\-inst
 \hyperlink{classLogHandler_ab51c12bcd654093b9d0153ab38ebad8c}{\$filename}
 \item 
 \hyperlink{classLogHandler_ad65c8954bda40d8a33828f0a0a2cbf5b}{\$fpointer}
+\item 
+\hyperlink{classLogHandler_aa133900b467a9224e64fcef83f1f9cb8}{\$dataset} = null
+\item 
+\hyperlink{classLogHandler_a0cfee82e814e8f258349710b6e87b72b}{\$session\_\-logged} = false
 \end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
@@ -309,7 +317,7 @@ Referenced by SchemeHandler::compare().
 )\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
-References OWL::factory().
+References OWL::factory(), and \_\-OWL::set\_\-status().
 
 
 
@@ -331,6 +339,21 @@ Log an event signalled by \hyperlink{classOWL}{OWL}
 
 
 References backtrace(), close\_\-logfile(), compose\_\-message(), ConfigHandler::get(), \_\-OWL::get\_\-severity(), open\_\-logfile(), and write\_\-logfile().
+
+\index{LogHandler@{LogHandler}!log\_\-session@{log\_\-session}}
+\index{log\_\-session@{log\_\-session}!LogHandler@{LogHandler}}
+\subsubsection[{log\_\-session}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::log\_\-session (
+\begin{DoxyParamCaption}
+\item[{array \$}]{ dispatcher, }
+\item[{{\bf FormHandler} \$}]{ form = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}\label{classLogHandler_a96f9831cfceceffa055ba46b2deb6734}
+Log the user action in the database. This method is called from the Dispatcher::dispatcher() and can be called moreoften, but only the first log is written. 
+\begin{DoxyParams}{Parameters}
+\item[\mbox{\tt[in]} {\em \$dispatcher}]Array with dispatcher information \item[\mbox{\tt[in]} {\em \$form}]\hyperlink{classForm}{Form} object \end{DoxyParams}
+
+
+References ConfigHandler::get(), and OWLCache::get().
 
 \index{LogHandler@{LogHandler}!open\_\-logfile@{open\_\-logfile}}
 \index{open\_\-logfile@{open\_\-logfile}!LogHandler@{LogHandler}}
@@ -478,7 +501,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), UserHandler::confirm(), User::confirm(), DbHandler::connect(), UserHandler::construct(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), UserHandler::confirm(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{LogHandler@{LogHandler}!signal@{signal}}
 \index{signal@{signal}!LogHandler@{LogHandler}}
@@ -508,18 +531,19 @@ Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
 \index{succeeded@{succeeded}!LogHandler@{LogHandler}}
 \subsubsection[{succeeded}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::succeeded (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-ok = {\ttfamily {\bf OWL\_\-SUCCESS}}}
+\item[{\$}]{ \_\-ok = {\ttfamily {\bf OWL\_\-SUCCESS}}, }
+\item[{\&\$}]{ \_\-object = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_ae76c46aff1ad253106332670fc59c777}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}\label{class__OWL_a53ab4d3bbb2c6a56966c339ca4b4c805}
 Check if the object currenlty has a success state 
 \begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-ok}]The highest severity that's considered successfull, default OWL\_\-SUCCESS \end{DoxyParams}
+\item[\mbox{\tt[in]} {\em \$\_\-ok}]The highest severity that's considered successfull, default OWL\_\-SUCCESS \item[\mbox{\tt[in]} {\em \$\_\-object}]REference to the object to check, defaults to the current object \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Boolean true when successfull 
 \end{DoxyReturn}
 
 
-Referenced by Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+Referenced by UserHandler::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
 
 \index{LogHandler@{LogHandler}!traceback@{traceback}}
 \index{traceback@{traceback}!LogHandler@{LogHandler}}
@@ -564,7 +588,10 @@ Referenced by log().
 
 
 \subsection{Member Data Documentation}
-\index{LogHandler@{LogHandler}!\$filename@{\$filename}}
+\index{LogHandler@{LogHandler}!\$dataset@{\$dataset}}
+\index{\$dataset@{\$dataset}!LogHandler@{LogHandler}}
+\subsubsection[{\$dataset}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\$dataset = null\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_aa133900b467a9224e64fcef83f1f9cb8}
+Datahandler reference for the session logging in the database \index{LogHandler@{LogHandler}!\$filename@{\$filename}}
 \index{\$filename@{\$filename}!LogHandler@{LogHandler}}
 \subsubsection[{\$filename}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\$filename\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_ab51c12bcd654093b9d0153ab38ebad8c}
 Name of the logfile \index{LogHandler@{LogHandler}!\$fpointer@{\$fpointer}}
@@ -580,7 +607,10 @@ Referenced by get\_\-instance().
 \index{LogHandler@{LogHandler}!\$opened@{\$opened}}
 \index{\$opened@{\$opened}!LogHandler@{LogHandler}}
 \subsubsection[{\$opened}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\$opened\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_a956e7e71a9ff96c6301d1f41a5bf207e}
-Boolean to keep track of the logfile status \index{LogHandler@{LogHandler}!\$severity@{\$severity}}
+Boolean to keep track of the logfile status \index{LogHandler@{LogHandler}!\$session\_\-logged@{\$session\_\-logged}}
+\index{\$session\_\-logged@{\$session\_\-logged}!LogHandler@{LogHandler}}
+\subsubsection[{\$session\_\-logged}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\$session\_\-logged = false\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classLogHandler_a0cfee82e814e8f258349710b6e87b72b}
+Boolean to ensure session data is logged only once per action \index{LogHandler@{LogHandler}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!LogHandler@{LogHandler}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
 Severity level of the current object status 

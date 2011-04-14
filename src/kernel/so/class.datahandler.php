@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.9 2011-04-12 14:57:34 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.10 2011-04-14 11:34:41 oscar Exp $
  */
 
 /**
@@ -332,7 +332,7 @@ class DataHandler extends _OWL
 				$_unset = array();
 				$_table = array();
 				foreach ($this->owl_data as $_field => $_value) {
-					if ($this->owl_data[$_field] == null) {
+					if ($this->owl_data[$_field] === null) {
 						$_unset[] = $_field;
 					} else {
 						$_set[$_field] = $_value;

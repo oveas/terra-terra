@@ -2,7 +2,7 @@
 /**
  * \file
  * Define a class for config handling
- * \version $Id: class.confighandler.php,v 1.9 2011-01-19 17:04:02 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.10 2011-04-14 11:34:41 oscar Exp $
  */
 
 /**
@@ -17,14 +17,47 @@ abstract class ConfigHandler
 {
 
 	/**
-	 * Parse the given configuration file
+	 * Datahandler object for database access
+	 */	
+	private static $dataset = null;
+
+	/**
+	 * Parse the given configuration source
 	 * \public
-	 * \param[in] $file Full path to the configuration file
+	 * \param[in] $_source Array describing the configuration source. It can have the following keys:
+	 *  - file: Full path to the configuration file
+	 *  - table: Config tablename without prefix. Default 'config', MUST be given with the first call
+	 *  - applic: Application name for which the config should be read, default 'owl'
+	 *  - group: Application name for which the config should be read, default 0
+	 *  - user: Application name for which the config should be read, default 0
+	 *  - force: Boolean that can force overwrite of protected values, default false
+	 * 
+	 * The first call must always read from a file. On subsequent calls, if no filename is given,
+	 * the configuration is taken from the (owl_)config table
 	 */
-	public static function read_config ($file = '')
+	public static function read_config (array $_source)
 	{
-		if (($fpointer = fopen ($file, 'r')) === false) {
-			die ('Fatal error reading configuration file: ' . $file);
+		if (array_key_exists('file', $_source)) {
+			self::config_file($_source['file']);
+		} else {
+			self::config_table(
+				 (array_key_exists('table', $_source) ? $_source['table'] : 'config')
+				,(array_key_exists('applic', $_source) ? $_source['applic'] : 'owl')
+				,(array_key_exists('group', $_source) ? $_source['group'] : 0)
+				,(array_key_exists('user', $_source) ? $_source['user'] : 0)
+				,(array_key_exists('force', $_source) ? toStrictBoolean($_source['force']) : false)
+			);
+		}
+	}
+
+	/**
+	 * Parse a configuration file
+	 * \param[in] $_file Filename
+	 */
+	private static function config_file ($_file)
+	{
+		if (($fpointer = fopen ($_file, 'r')) === false) {
+			die ('Fatal error reading configuration file: ' . $_file);
 		}
 		while (!feof($fpointer)) {
 			$_line = fgets ($fpointer, 8192);
@@ -40,30 +73,48 @@ abstract class ConfigHandler
 				continue;
 			}
 			$_value = trim ($_value);
-			$_value = self::convert ($_value);
 
 			$_protect = strpos ($_item, $GLOBALS['config']['config']['protect_tag']);
 			$_protect = ($_protect !== false);
-			if ($_protect === true) {
-				$_item = str_replace($GLOBALS['config']['config']['protect_tag'], '', $_item);
-				$GLOBALS['config']['protected_values'][] = $_item;
-			}
-			if (in_array($_item, $GLOBALS['config']['protected_values'])
-				&& array_key_exists($_item, $GLOBALS['config']['values'])) {
-				OWL::stat(CONFIG_PROTECTED, $_item);
-				continue;
-			}
 
 			$_hide = strpos ($_item, $GLOBALS['config']['config']['hide_tag']);
 			$_hide = ($_hide !== false);
-			if ($_hide === true) {
-				$_item = str_replace($GLOBALS['config']['config']['hide_tag'], '', $_item);
-			}
-			self::_set($_item, $_value, $_hide);
+
+			self::parse_item($_item, $_value, $_protect, $_hide);
 		}
-		@fclose ($fpointer);
+		fclose ($fpointer);
 	}
-	
+
+	/**
+	 * Parse a configuration table
+	 * \param[in] $_table Config tablename without prefix
+	 * \param[in] $_applic Application name for which the config should be read
+	 * \param[in] $_group Group ID for which the config should be read
+	 * \param[in] $_user User ID for which the config should be read
+	 * \param[in] $_force Boolean that can force overwrite of protected values
+	 */
+	private static function config_table ($_table, $_applic, $_group, $_user, $_force)
+	{
+		if (self::$dataset === null) {
+			self::$dataset = new DataHandler();
+			if (self::get ('owltables', true)) {
+				self::$dataset->set_prefix(self::get ('owlprefix'));
+			}
+			self::$dataset->set_tablename($_table);
+		}
+		self::$dataset->set('applic', $_applic);
+		self::$dataset->set('gid', $_group);
+		self::$dataset->set('uid', $_user);
+		self::$dataset->prepare ();
+		$_cfg = null;
+		self::$dataset->db ($_cfg, __LINE__, __FILE__);
+		if (count($_cfg) > 0) {
+			foreach ($_cfg as $_item) {
+				self::parse_item($_item['name'], $_item['value'], $_item['protect'], $_item['hide']);
+			}
+		}
+	}
+
 	/**
 	 * Convert values in character string format to a known value
 	 * \private
@@ -84,7 +135,33 @@ abstract class ConfigHandler
 		}
 		return ($val);
 	}
-	
+
+	/**
+	 * Parse a configuration item as read from the file or database, and store is
+	 * \param[in] $_item Name of the config item
+	 * \param[in] $_value Value of the config item
+	 * \param[in] $_protect Boolean indicating a protected value
+	 * \param[in] $_hide Boolean indicated a hidden value
+	 */
+	private static function parse_item ($_item, $_value, $_protect, $_hide)
+	{
+		if ($_protect === true) {
+			$_item = str_replace($GLOBALS['config']['config']['protect_tag'], '', $_item);
+			$GLOBALS['config']['protected_values'][] = $_item;
+		}
+		if (in_array($_item, $GLOBALS['config']['protected_values'])
+			&& array_key_exists($_item, $GLOBALS['config']['values'])) {
+			OWL::stat(CONFIG_PROTECTED, $_item);
+			return;
+		}
+
+		if ($_hide === true) {
+			$_item = str_replace($GLOBALS['config']['config']['hide_tag'], '', $_item);
+		}
+		$_value = self::convert ($_value);
+		self::_set($_item, $_value, $_hide);
+	}
+
 	/**
 	 * Return a configuration value.
 	 * Note! In order to use hidden values properly, this is the ONLY way configuration
@@ -123,7 +200,7 @@ abstract class ConfigHandler
 
 		if (!isset ($_c)) {
 			if ($default === null) {
-				OWL::stat (CONFIG_NOVALUE, $item); 
+				OWL::stat (CONFIG_NOVALUE, (is_array($item)?implode('|', $item):$item)); 
 				return (null);
 			} else {
 				return $default;
@@ -217,11 +294,12 @@ abstract class ConfigHandler
 Register::register_class ('ConfigHandler');
 
 //Register::set_severity (OWL_DEBUG);
-//Register::set_severity (OWL_INFO);
+Register::set_severity (OWL_INFO);
+Register::register_code ('CONFIG_PROTECTED');
+
 //Register::set_severity (OWL_OK);
 //Register::set_severity (OWL_SUCCESS);
-Register::set_severity (OWL_WARNING);
-Register::register_code ('CONFIG_PROTECTED');
+//Register::set_severity (OWL_WARNING);
 
 //Register::set_severity (OWL_BUG);
 

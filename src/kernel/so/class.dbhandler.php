@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.13 2011-04-12 14:57:34 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.14 2011-04-14 11:34:41 oscar Exp $
  */
 
 /**
@@ -604,7 +604,7 @@ class DbHandler extends _OWL
 				$this->expand_field ($_fld);
 				$_where .= $_fld
 						 . ' = '
-						 . (($_val == null) ? 'NULL ' : (" '" . $_val . "' "));
+						 . (($_val === null) ? 'NULL ' : (" '" . $_val . "' "));
 			}
 		}
 		if (count ($joins) > 0) {
