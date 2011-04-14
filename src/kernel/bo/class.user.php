@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the User class
- * \version $Id: class.user.php,v 1.9 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class.user.php,v 1.10 2011-04-14 14:31:35 oscar Exp $
  */
 
 /**
@@ -14,6 +14,12 @@
  */
 abstract class User extends UserHandler
 {
+
+	/**
+	 * This users rightslist
+	 */
+	private $rights;
+
 	/**
 	 * Class constructor; create a new user environment
 	 * \protected
@@ -26,6 +32,7 @@ abstract class User extends UserHandler
 			$username = ConfigHandler::get ('session|default_user');
 		}
 		parent::construct ($username);
+		$this->rights = new Rights();
 		OWLCache::set(OWLCACHE_OBJECTS, 'user', ($_ =& $this));
 	}
 	

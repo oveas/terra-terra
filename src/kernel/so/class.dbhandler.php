@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.14 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.15 2011-04-14 14:31:35 oscar Exp $
  */
 
 /**
@@ -588,7 +588,8 @@ class DbHandler extends _OWL
 	/**
 	 * Create a WHERE clause that can be interpreted by SQL
 	 * \private
-	 * \param[in] $searches Array with values (fieldname => values)
+	 * \param[in] $searches Array with values (fieldname => values) Values can be an array in which
+	 * case more ORs for that field will be added to the where clause
 	 * \param[in] $joins Array of arrays with values (field, linktype, field)
 	 * \return The WHERE clause
 	 */
@@ -602,9 +603,19 @@ class DbHandler extends _OWL
 					$_where .= 'AND ';
 				}
 				$this->expand_field ($_fld);
-				$_where .= $_fld
-						 . ' = '
-						 . (($_val === null) ? 'NULL ' : (" '" . $_val . "' "));
+				if (is_array($_val)) {
+					$_or = array();
+					foreach ($_val as $_v) {
+						$_or[] = $_fld
+							 . ((preg_match('/(^%|[^\\\]%)/', $_v) == 0) ? ' = ' : ' LIKE ')
+							 . (($_v === null) ? 'NULL ' : (" '" . $_v . "' "));
+					}
+					$_where .= '(' . implode(' OR ', $_or). ')'; 
+				} else {
+					$_where .= $_fld
+							 . ((preg_match('/(^%|[^\\\]%)/', $_val) == 0) ? ' = ' : ' LIKE ')
+							 . (($_val === null) ? 'NULL ' : (" '" . $_val . "' "));
+				}
 			}
 		}
 		if (count ($joins) > 0) {

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.10 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.11 2011-04-14 14:31:35 oscar Exp $
  */
 
 /**
@@ -145,18 +145,15 @@ class DataHandler extends _OWL
 	 * Define or override a variable in the data array
 	 * \public 
 	 * \param[in] $variable The name of the variable that should be set
-	 * \param[in] $value Value to set the variable to. If this is an 
-	 * array, the second field in the array has to be the tablename
-	 * where the fieldname is found. The value itself van NEVER be an array!
+	 * \param[in] $value Value to set the variable to. For read operations, this
+	 * can be a value, in which case the fieldname be will looked for matching all
+	 * given values. Values ith unescaped percent signs will be searched using the SQL LIKE keyword
+	 * \param[in] $table An optional tablename where the field can be found
 	 */
-	public function set ($variable, $value)
+	public function set ($variable, $value, $table = null)
 	{
-		if (is_array ($value)) {
-			if (count ($value, 0) != 2) {
-				$this->set_status (DATA_IVARRAY);
-				return;
-			}
-			$this->owl_data[$value[1] . '#' . $variable] = $value[0];
+		if ($table !== null) {
+			$this->owl_data[$table . '#' . $variable] = $value;
 		} else {
 			$this->owl_data[$this->owl_tablename . '#' . $variable] = $value;
 		}
@@ -395,16 +392,21 @@ class DataHandler extends _OWL
 
 	/**
 	 * Overwrite the table prefix for this dataset.
-	 * Since the prefix is stored in the database handler object, a clone is made here.
+	 * Since the prefix is stored in the database handler object, a clone is used (or made) here.
 	 * \param[in] $prefix Table prefix
 	 */
 	public function set_prefix ($prefix)
 	{
-		$_saved = OWL::factory('DbHandler');
-		$_saved->close();
-		$this->owl_database = clone $this->owl_database;
-		$this->owl_database->alt(array('prefix'=>$prefix));
-		$_saved->open();
+		if (($_clone = OWLCache::get(OWLCACHE_OBJECTS, $prefix . '_DB')) !== null) {
+			$this->owl_database = $_clone;
+		} else {
+			$_saved = OWL::factory('DbHandler');
+			$_saved->close();
+			$this->owl_database = clone $this->owl_database;
+			$this->owl_database->alt(array('prefix'=>$prefix));
+			$_saved->open();
+			OWLCache::set(OWLCACHE_OBJECTS, $prefix . '_DB', $this->owl_database);
+		}
 	}
 
 	/**

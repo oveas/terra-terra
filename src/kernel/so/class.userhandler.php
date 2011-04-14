@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.14 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.15 2011-04-14 14:31:35 oscar Exp $
  */
 
 /**
@@ -17,25 +17,21 @@ abstract class UserHandler extends _OWL
 	
 	/**
 	 * The PHP session object
-	 * \private
 	 */	
 	protected $session;
 
 	/**
 	 * Link to a datahandler object. This dataset is used as an interface to all database IO.
-	 * \private
 	 */	
 	protected $dataset;
 
 	/**
 	 * An indexed array with the user information as take from the database
-	 * \public
 	 */
-	public $user_data;
+	private $user_data;
 
 	/**
 	 * Class constructor; setup the user environment
-	 * \protected
 	 * \param[in] $username Username.
 	 */
 	protected function construct ($username)
@@ -60,7 +56,6 @@ abstract class UserHandler extends _OWL
 
 	/**
 	 * Check is a given username exists
-	 * \protected
 	 * \param[in] $username The username to check
 	 * \return True when the username exists false otherwise
 	 */
@@ -79,7 +74,6 @@ abstract class UserHandler extends _OWL
 
 	/**
 	 * Store a newly registered user
-	 * \protected
 	 * \param[in] $username Given username
 	 * \param[in] $email Given username
 	 * \param[in] $password Given password
