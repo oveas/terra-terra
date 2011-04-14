@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * Make sure all objects are destroyed in the proper order
- * \version $Id: OWLrundown.php,v 1.6 2011-04-14 11:34:42 oscar Exp $
+ * \version $Id: OWLrundown.php,v 1.7 2011-04-14 11:40:55 oscar Exp $
  */
 
 //DBG_dumpval($GLOBALS['messages']);
@@ -12,6 +12,10 @@
 ConfigHandler::set('exception|block_throws', true);
 
 //echo "Start rundown<br/>";
+
+// Write data to the cache (TODO: Not yet implemented)
+OWLCache::saveCache();
+
 // Destroy the Formhandler singleton
 $_form = OWL::factory('FormHandler');
 $_form->__destruct();

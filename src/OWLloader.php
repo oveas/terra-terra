@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.19 2011-04-14 11:34:42 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.20 2011-04-14 11:40:55 oscar Exp $
  */
 
 // Error handling used during development
@@ -222,9 +222,11 @@ OWLloader::getClass('contentarea', OWL_UI_INC);
 // Drivers
 OWLloader::getClass('dbdriver', OWL_DRIVERS . '/database');
 
-//$GLOBALS['owl_object'] = new OWL();
 $GLOBALS['messages'] = array ();
 $GLOBALS['labels'] = array ();
+
+// Load data from the cache (TODO: Not yet implemented)
+OWLCache::loadCache();
 
 // General helper functions.
 require (OWL_LIBRARY . '/owl.helper.functions.php');

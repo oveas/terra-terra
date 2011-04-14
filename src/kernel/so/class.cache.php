@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the cache class
- * \version $Id: class.cache.php,v 1.1 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class.cache.php,v 1.2 2011-04-14 11:40:55 oscar Exp $
  */
 
 /**
@@ -89,6 +89,24 @@ abstract class OWLCache
 		}
 		self::$cache[$cache][$key] = $value;
 		return ($value);
+	}
+
+	/**
+	 * Load cached data
+	 * \todo Data caching is not yet implemented - this is a placeholder for future use
+	 */
+	public static function loadCache ()
+	{
+		// Placeholder - prepared for future use
+	}
+
+	/**
+	 * Write data to te general cache
+	 * \todo Data caching is not yet implemented - this is a placeholder for future use
+	 */
+	public static function saveCache ()
+	{
+		// Placeholder- prepared for future use
 	}
 }
 
