@@ -2,25 +2,22 @@
 /**
  * \file
  * This file defines the Database drivers
- * \version $Id: class.dbdriver.php,v 1.1 2011-04-12 14:57:34 oscar Exp $
+ * \version $Id: class.dbdriver.php,v 1.2 2011-04-19 13:00:03 oscar Exp $
  */
 
 /**
  * \ingroup OWL_DRIVERS
- * Abstract class that defines the database drivers. Most of the methods here must be
- * reimplemented by the drivers.
- * \brief Database driver 
+ * Interface that defines the database drivers. Some of the methods are implemented in class DbDefaults
+ * \brief Database driver interface
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 12, 2011 -- O van Eijk -- initial version
  */
-
-abstract class DbDriver
+interface DbDriver
 {
-
 	/**
-	 * Conctructor. Is allowed to be empty but must be provided
+	 * Conctructor.
 	 */
-	abstract public function __construct();
+	 public function __construct();
 
 	/**
 	 * Create a new database
@@ -28,7 +25,7 @@ abstract class DbDriver
 	 * \param[in] $_name Name of the new database
 	 * \return a negative value on failures, any other integer on success
 	 */
-	abstract public function dbCreate (&$_resource, $_name);
+	 public function dbCreate (&$_resource, $_name);
 
 	/**
 	 * Get the last error number and error text from the database server
@@ -36,7 +33,7 @@ abstract class DbDriver
 	 * \param[out] $_number Error number
 	 * \param[out] $_text Error text
 	 */
-	abstract public function dbError (&$_resource, &$_number, &$_text);
+	 public function dbError (&$_resource, &$_number, &$_text);
 
 	
 	/**
@@ -49,7 +46,7 @@ abstract class DbDriver
 	 * \param[in] $_multiple True when multiple connections are allowed, default is false
 	 * \return True on success, false on failures
 	 */
-	abstract public function dbConnect (&$_resource, $_server, $_name, $_user, $_password, $_multiple = false);
+	 public function dbConnect (&$_resource, $_server, $_name, $_user, $_password, $_multiple = false);
 
 	/**
 	 * Open a database
@@ -60,7 +57,7 @@ abstract class DbDriver
 	 * \param[in] $_password Password to connect with
 	 * \return True on success, false on failures
 	 */
-	abstract public function dbOpen (&$_resource, $_server, $_name, $_user, $_password);
+	 public function dbOpen (&$_resource, $_server, $_name, $_user, $_password);
 
 	/**
 	 * Get a list with tablenames 
@@ -69,7 +66,7 @@ abstract class DbDriver
 	 * \param[in] $_views True when views should be included. Default is false
 	 * \return Indexed array with matching tables and their attributes
 	 */
-	abstract public function dbTableList (&$_resource, $_pattern, $_views = false);
+	 public function dbTableList (&$_resource, $_pattern, $_views = false);
 
 	/**
 	 * Read from the database
@@ -78,7 +75,7 @@ abstract class DbDriver
 	 * \param[in] $_query Query to execute
 	 * \return True on success, false on failures
 	 */
-	abstract public function dbRead (&$_data, &$_resource, $_query);
+	 public function dbRead (&$_data, &$_resource, $_query);
 
 	/**
 	 * Write to the database
@@ -86,7 +83,7 @@ abstract class DbDriver
 	 * \param[in] $_query Query to execute
 	 * \return Number of affected rows, or -1 on failures
 	 */
-	abstract public function dbWrite (&$_resource, $_query);
+	 public function dbWrite (&$_resource, $_query);
 
 	/**
 	 * Retrieve the last auto generated ID value
@@ -95,52 +92,83 @@ abstract class DbDriver
 	 * \param[in] $_field Name of the Auto field
 	 * \return The last generated ID, or 0 when not found
 	 */
-	abstract public function dbInsertId (&$_resource, $_table, $_field);
+	 public function dbInsertId (&$_resource, $_table, $_field);
 	
 	/**
 	 * Get the number of rows in a dataset
 	 * \param[in] $_data as returned by DbDriver::dbRead()
 	 * \return Number of rows in the set
 	 */
-	abstract public function dbRowCount (&$_data);
+	 public function dbRowCount (&$_data);
 
 	/**
 	 * Get the next record from a dataset
 	 * \param[in] $_data as returned by DbDriver::dbRead()
 	 * \return Record as an associative array (fieldname => fieldvalue)
 	 */
-	abstract public function dbFetchNextRecord (&$_data);
+	 public function dbFetchNextRecord (&$_data);
 
 	/**
 	 * Clear a dataset
 	 * \param[in] $_data as returned by DbDriver::dbRead()
 	 */
-	abstract public function dbClear (&$_data);
+	 public function dbClear (&$_data);
 
 	/**
 	 * Close a database connection
 	 * \param[in] $_resource Link with the database server
 	 * \return True on success, false on failures
 	 */
-	abstract public function dbClose (&$_resource);
+	 public function dbClose (&$_resource);
 
-	/**
+	 /**
 	 * Escape a given string for use in queries
+	 * This method is implemented by class DbDefaults
 	 * \param[in] $_string The input string
 	 * \return String in SQL safe format
 	 */
-	public function dbEscapeString ($_string)
-	{
-		return (addslashes($_string));
-	}
+	public function dbEscapeString ($_string);
 
 	/**
 	 * Unescape a string fthat is formatted for use in SQL
+	 * This method is implemented by class DbDefaults
 	 * \param[in] $_string The input string in SQL safe format
 	 * \return String without SQL formatting
 	 */
-	public function dbUnescapeString ($_string)
-	{
-		return (stripslashes($_string));
-	}
+	public function dbUnescapeString ($_string);
+
+	/**
+	 * Inplementation of the SQL COUNT() function.
+	 * \param[in] $_field Name of the field
+	 * \param[in] $_arguments Array with arguments, which is required by syntax
+	 * \return Complete SQL function code
+	 */
+	public function functionCount($_field, array $_arguments = array());
+
+	/**
+	 * Inplementation of the SQL IF() function.
+	 * \param[in] $_field Name of the field
+	 * \param[in] $_arguments Array with arguments. This array should be
+	 * in the format (check, value, then, else), e.g. array('<', 5 , 'Less then 5', '5 or more')
+	 * \return Complete SQL function code
+	 */
+	public function functionIf($_field, array $_arguments = array());
+
+	/**
+	 * Inplementation of the SQL IFNULL() function.
+	 * \param[in] $_field Name of the field
+	 * \param[in] $_arguments Array with arguments. The array should have 1 element, which is the
+	 * default value when $_field is empty. Note for literal string values this field must be quoted, e.g. "'value'"!
+	 * \return Complete SQL function code
+	 */
+	public function functionIfnull($_field, array $_arguments = array());
+
+	/**
+	 * Inplementation of the SQL CONCAT() function.
+	 * \param[in] $_field Name of the field
+	 * \param[in] $_arguments Array with arguments.  The array should have 1 element, which is the
+	 * value that will be concatenaterd to $_field. Note for literal string values this field must be quoted, e.g. "'value'"!
+	 * \return Complete SQL function code
+	 */
+	public function functionConcat($_field, array $_arguments = array());
 }

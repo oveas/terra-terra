@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.11 2011-04-14 14:31:35 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.12 2011-04-19 13:00:03 oscar Exp $
  */
 
 /**
@@ -66,13 +66,11 @@ class DataHandler extends _OWL
 
 	/**
 	 * 2D Array holding all relationships between the data.
-	 * \private
 	 */	
 	private $owl_joins;
 
 	/**
 	 * Array with variable names that are used in WHERE clauses on updates
-	 * \private
 	 */	
 	private $owl_keys;
 
@@ -82,14 +80,12 @@ class DataHandler extends _OWL
 	 * This is useful for datasets that come from only one database table.
 	 * For datasets that are not read from or written to a database, the
 	 * tablename can be null.
-	 * \private
 	 */	
 	private $owl_tablename;
 
 	/**
 	 * An optional link to a database object. This has to be specified if the data needs to
 	 * be written to or read from a dabatase.
-	 * \private
 	 */	
 	private $owl_database;
 
@@ -121,7 +117,6 @@ class DataHandler extends _OWL
 	/**
 	 * Reset the object
 	 * \param[in] $level Bitmap indicating which items must be reset. Default is DATA_RESET_PREPARE
-	 * \public
 	 */
 	public function reset ($level = DATA_RESET_PREPARE)
 	{
@@ -140,23 +135,74 @@ class DataHandler extends _OWL
 			parent::reset();
 		}
 	}
-
+	
 	/**
 	 * Define or override a variable in the data array
-	 * \public 
-	 * \param[in] $variable The name of the variable that should be set
+	 * \param[in] $variable The name of the variable that should be set.
 	 * \param[in] $value Value to set the variable to. For read operations, this
 	 * can be a value, in which case the fieldname be will looked for matching all
-	 * given values. Values ith unescaped percent signs will be searched using the SQL LIKE keyword
-	 * \param[in] $table An optional tablename where the field can be found
+	 * given values. Values with unescaped percent signs will be searched using the SQL LIKE keyword
+	 * If the matchtype is DBMATCH_NONE, the value is ignored.
+	 * \param[in] $table An optional tablename for this field. Defaults to $this->owl_tablename
+	 * \param[in] $fieldFunction An optional array with SQL functions and statements that apply to
+	 * the fieldname. This is an indexed array, where all keys must have an array as value.
+	 * The following keys are supported:
+	 * 	- function: An array where the first element is an SQL function, which must exist in the database driver as 'functionFunction'
+	 * (e.g., for 'function'=> array("ifnull", "default"), the method "functionIfnull()" must exist).
+	 * The first argument passed to the method is always the fieldname, additional arguments will be taken from the array.
+	 * 	- groupby: Add the fieldname to a groupby list. The value for this key must be an empty array
+	 * 	- orderby: Add the fieldname to the orderby list. The given array can contain 1 element; "ASC" or "DESC". When empty,
+	 * it defaults to the SQL default (ASC)
+	 * 	- having: Add the fieldname to to the having clause. The array must contain 2 elements, where the
+	 * first element is the matchtype and the second argument is the value to match
+	 * 	- name: The DataHandler returns data as indexed arrays on read operations, where the index equals the fieldname. This might contain complete
+	 * SQL code when functions are called; this can be overwritten by specifying a name for the field
+	 * \param[in] $valueFunction An optional array with SQL functions and statements that apply to
+	 * the value. This is an indexed array, where all keys must have an array as value.
+	 * The following keys are supported:
+	 * 	- function: An array where the first element is an SQL function, which must exist in the database driver as 'functionFunction'
+	 * (e.g., for 'function'=> array("ifnull", "default"), the method "functionIfnull()" must exist).
+	 * The first argument passed to the method is always the fieldname, additional arguments will be taken from the array.
+	 * 	- match: The matchtype. When omitted, default is DBMATCH_EQ ('='). If the field should be in a SELECT list and not in the where clause, use the matchtype DBMATCH_NONE
+	 * (if no fields are set with DBMATCH_NONE, read queries will select with SELECT *)
 	 */
-	public function set ($variable, $value, $table = null)
+	/**
+	* \example exa.datahandler-set.php
+	 * This example shows advanced use ot the DataHandler::set() method
+	 */
+	public function set ($variable, $value, $table = null, array $fieldFunction = null, array $valueFunction = null)
 	{
-		if ($table !== null) {
-			$this->owl_data[$table . '#' . $variable] = $value;
-		} else {
-			$this->owl_data[$this->owl_tablename . '#' . $variable] = $value;
+		if ($fieldFunction === null && $valueFunction === null) {
+			$this->owl_data[(($table === null) ? $this->owl_tablename : $table) . '#' . $variable] = array(DBMATCH_EQ, $value);
+			return;
 		}
+		// Prepare the array for DbHandler::prepare_field()
+		$fieldData = array(
+			  'field' => $variable
+			, 'table' => ($table === null) ? $this->owl_tablename : $table
+			, 'value' => $value
+		);
+
+		if ($fieldFunction !== null) {
+			foreach ($fieldFunction as $_k => $_v) {
+				if ($_k == 'function') {
+					$fieldData['fieldfunction'] = $_v;
+				} else {
+					$fieldData[$_k] = $_v;
+				}
+			}
+		}
+		if ($valueFunction !== null) {
+			foreach ($valueFunction as $_k => $_v) {
+				if ($_k == 'function') {
+					$fieldData['valuefunction'] = $_v;
+				} else {
+					$fieldData[$_k] = $_v;
+				}
+			}
+		}
+		list ($_f, $_v) = $this->owl_database->prepare_field($fieldData);
+		$this->owl_data[$_f] = $_v;
 	}
 
 	/**
@@ -223,14 +269,15 @@ class DataHandler extends _OWL
 	 * If the fieldname cannot be found directly, the array is scanned to
 	 * find a matching field. If more matches are found, the object status
 	 * is set to DATA_AMBFIELD.
-	 * \public
+	 * \note The data array contains arrays where the first element is the matchtype (=, <, <= etc)
+	 * and the second element is the actual value!
 	 * \param[in] $variable The name of the variable that should be retrieved
 	 * \return The value, or NULL when the value was not found or abigious.
 	 */
 	public function get ($variable)
 	{
 		if (array_key_exists ($variable, $this->owl_data)) {
-			return ($this->owl_data[$variable]);
+			return ($this->owl_data[$variable][1]);
 		} else {
 			switch ($this->find_field($variable, $_k)) {
 				case 0:
@@ -238,7 +285,7 @@ class DataHandler extends _OWL
 					return (null);
 					break;
 				case 1:
-					return ($this->owl_data[$_k[0]]);
+					return ($this->owl_data[$_k[0]][1]);
 					break;
 				default:
 					$this->set_status (DATA_AMBFIELD, $variable);
@@ -311,6 +358,7 @@ class DataHandler extends _OWL
 	 *   - DATA_WRITE; Write new data to the database
 	 *   - DATA_UPDATE; Update data in the database
 	 * \return Severity level
+	 * \todo add limit and cache
 	 */
 	public function prepare ($type = DATA_READ)
 	{
@@ -329,7 +377,7 @@ class DataHandler extends _OWL
 				$_unset = array();
 				$_table = array();
 				foreach ($this->owl_data as $_field => $_value) {
-					if ($this->owl_data[$_field] === null) {
+					if ($this->owl_data[$_field][0] === DBMATCH_NONE) {
 						$_unset[] = $_field;
 					} else {
 						$_set[$_field] = $_value;

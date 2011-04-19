@@ -3,42 +3,56 @@
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classDbHandler}{DbHandler}
-\begin{DoxyCompactList}\small\item\em Database handler. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+class {\bf DbHandler}
+\begin{DoxyCompactList}\small\item\em Database handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
-\begin{Indent}{\bf Return Flags}\par
-{\em \label{_amgrpebeec4b488cd2cc250c1b366c2aab455}
- These flags that define what value should be returned by read() }\begin{DoxyCompactItemize}
+\begin{Indent}\paragraph*{Return Flags}
+{\em These flags that define what value should be returned by read() }\begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{class_8dbhandler_8php_acc5178c2a582eafa4ef488ed3394b725}{DBHANDLE\_\-DATA} 
-\begin{DoxyCompactList}\small\item\em Return the read values (default). \item\end{DoxyCompactList}\item 
-enum \hyperlink{class_8dbhandler_8php_a4752b0fc86256fd568adf6ef216418c7}{DBHANDLE\_\-SINGLEFIELD} 
-\begin{DoxyCompactList}\small\item\em Return the read value as a single field (i.s.o. a 2D array). \item\end{DoxyCompactList}\item 
-enum \hyperlink{class_8dbhandler_8php_a5c8464b7bfbb63bd605046e8b615dbbe}{DBHANDLE\_\-SINGLEROW} 
-\begin{DoxyCompactList}\small\item\em Return the read value as a single row (a 1D array). \item\end{DoxyCompactList}\item 
-enum \hyperlink{class_8dbhandler_8php_ac904f05455a162c07c216c330ad7c5c6}{DBHANDLE\_\-ROWCOUNT} 
-\begin{DoxyCompactList}\small\item\em Return the number of rows. \item\end{DoxyCompactList}\item 
-enum \hyperlink{class_8dbhandler_8php_afda554c4527b03446f287291626c12ad}{DBHANDLE\_\-FIELDCOUNT} 
-\begin{DoxyCompactList}\small\item\em Return the number of fields per row. \item\end{DoxyCompactList}\item 
-enum \hyperlink{class_8dbhandler_8php_aa74936d65eaded5fe8d34047a73e4cea}{DBHANDLE\_\-TOTALFIELDCOUNT} 
-\begin{DoxyCompactList}\small\item\em Return the total number of fields. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+enum {\bf DBHANDLE\_\-DATA} 
+\begin{DoxyCompactList}\small\item\em Return the read values (default) \end{DoxyCompactList}\item 
+enum {\bf DBHANDLE\_\-SINGLEFIELD} 
+\begin{DoxyCompactList}\small\item\em Return the read value as a single field (i.s.o. a 2D array) \end{DoxyCompactList}\item 
+enum {\bf DBHANDLE\_\-SINGLEROW} 
+\begin{DoxyCompactList}\small\item\em Return the read value as a single row (a 1D array) \end{DoxyCompactList}\item 
+enum {\bf DBHANDLE\_\-ROWCOUNT} 
+\begin{DoxyCompactList}\small\item\em Return the number of rows. \end{DoxyCompactList}\item 
+enum {\bf DBHANDLE\_\-FIELDCOUNT} 
+\begin{DoxyCompactList}\small\item\em Return the number of fields per row. \end{DoxyCompactList}\item 
+enum {\bf DBHANDLE\_\-TOTALFIELDCOUNT} 
+\begin{DoxyCompactList}\small\item\em Return the total number of fields. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
-\begin{Indent}{\bf Action types}\par
-{\em \label{_amgrp9ad7eef834aba9bf8b8f74b3a7b87e62}
- These flags define what type of queries is prepared or the last execution state }\begin{DoxyCompactItemize}
+\begin{Indent}\paragraph*{Action types}
+{\em These flags define what type of queries is prepared or the last execution state }\begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{class_8dbhandler_8php_a4dbfa42638414eb755b9e798ba993573}{DBHANDLE\_\-READ} 
-\begin{DoxyCompactList}\small\item\em Read data from the database. \item\end{DoxyCompactList}\item 
-enum \hyperlink{class_8dbhandler_8php_a9b823a1d51ed910255c944dfe313129a}{DBHANDLE\_\-INSERT} 
-\begin{DoxyCompactList}\small\item\em Write new data to the database. \item\end{DoxyCompactList}\item 
-enum \hyperlink{class_8dbhandler_8php_a44c5292f8bc0072b38e9651b63cc04d8}{DBHANDLE\_\-UPDATE} 
-\begin{DoxyCompactList}\small\item\em Update data in the database. \item\end{DoxyCompactList}\item 
-enum \hyperlink{class_8dbhandler_8php_a978ad3c1b4647dae1fe77c7f8c757da5}{DBHANDLE\_\-DELETE} 
-\begin{DoxyCompactList}\small\item\em Remove data from the database. \item\end{DoxyCompactList}\item 
-enum \hyperlink{class_8dbhandler_8php_acf3fd82991e7c67a3472b81dc1ce9904}{DBHANDLE\_\-FAILED} 
-\begin{DoxyCompactList}\small\item\em Last prepare action failed. \item\end{DoxyCompactList}\item 
-enum \hyperlink{class_8dbhandler_8php_a81abd823ff43027e2a788e4d5993790f}{DBHANDLE\_\-COMPLETED} 
-\begin{DoxyCompactList}\small\item\em Last prepared query was executed. Chect object staus for the result. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+enum {\bf DBHANDLE\_\-READ} 
+\begin{DoxyCompactList}\small\item\em Read data from the database. \end{DoxyCompactList}\item 
+enum {\bf DBHANDLE\_\-INSERT} 
+\begin{DoxyCompactList}\small\item\em Write new data to the database. \end{DoxyCompactList}\item 
+enum {\bf DBHANDLE\_\-UPDATE} 
+\begin{DoxyCompactList}\small\item\em Update data in the database. \end{DoxyCompactList}\item 
+enum {\bf DBHANDLE\_\-DELETE} 
+\begin{DoxyCompactList}\small\item\em Remove data from the database. \end{DoxyCompactList}\item 
+enum {\bf DBHANDLE\_\-FAILED} 
+\begin{DoxyCompactList}\small\item\em Last prepare action failed. \end{DoxyCompactList}\item 
+enum {\bf DBHANDLE\_\-COMPLETED} 
+\begin{DoxyCompactList}\small\item\em Last prepared query was executed. Chect object staus for the result. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\paragraph*{Match types}
+{\em These defines are used to compare values in SQL }\begin{DoxyCompactItemize}
+\item 
+enum {\bf DBMATCH\_\-EQ} 
+\begin{DoxyCompactList}\small\item\em Left and right values should match (default) (when the value contains percent signs, 'LIKE' will be used;. \end{DoxyCompactList}\item 
+enum {\bf DBMATCH\_\-LT} 
+\begin{DoxyCompactList}\small\item\em Left value should be less than right value. \end{DoxyCompactList}\item 
+enum {\bf DBMATCH\_\-GT} 
+\begin{DoxyCompactList}\small\item\em Left value should be greater than right value. \end{DoxyCompactList}\item 
+enum {\bf DBMATCH\_\-LE} 
+\begin{DoxyCompactList}\small\item\em Left value should be less than or equal to right value. \end{DoxyCompactList}\item 
+enum {\bf DBMATCH\_\-GE} 
+\begin{DoxyCompactList}\small\item\em Left value should be greater than or equal to right value. \end{DoxyCompactList}\item 
+enum {\bf DBMATCH\_\-NONE} 
+\begin{DoxyCompactList}\small\item\em Don't match on this field, use it in the SELECT list instead. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 
 
@@ -47,7 +61,7 @@ This file defines the Database Handler class \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id:}
-\hyperlink{class_8dbhandler_8php}{class.dbhandler.php},v 1.13 2011-\/04-\/12 14:57:34 oscar Exp 
+\doxyref{class.dbhandler.php}{p.}{class_8dbhandler_8php},v 1.15 2011-\/04-\/14 14:31:35 oscar Exp 
 \end{DoxyParagraph}
 
 
@@ -64,7 +78,7 @@ Last prepared query was executed. Chect object staus for the result.
 \subsubsection[{DBHANDLE\_\-DATA}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBHANDLE\_\-DATA}}\label{class_8dbhandler_8php_acc5178c2a582eafa4ef488ed3394b725}
 
 
-Return the read values (default). 
+Return the read values (default) 
 
 \index{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\-DELETE@{DBHANDLE\_\-DELETE}}
 \index{DBHANDLE\_\-DELETE@{DBHANDLE\_\-DELETE}!class.dbhandler.php@{class.dbhandler.php}}
@@ -113,14 +127,14 @@ Return the number of rows.
 \subsubsection[{DBHANDLE\_\-SINGLEFIELD}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBHANDLE\_\-SINGLEFIELD}}\label{class_8dbhandler_8php_a4752b0fc86256fd568adf6ef216418c7}
 
 
-Return the read value as a single field (i.s.o. a 2D array). 
+Return the read value as a single field (i.s.o. a 2D array) 
 
 \index{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\-SINGLEROW@{DBHANDLE\_\-SINGLEROW}}
 \index{DBHANDLE\_\-SINGLEROW@{DBHANDLE\_\-SINGLEROW}!class.dbhandler.php@{class.dbhandler.php}}
 \subsubsection[{DBHANDLE\_\-SINGLEROW}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBHANDLE\_\-SINGLEROW}}\label{class_8dbhandler_8php_a5c8464b7bfbb63bd605046e8b615dbbe}
 
 
-Return the read value as a single row (a 1D array). 
+Return the read value as a single row (a 1D array) 
 
 \index{class.dbhandler.php@{class.dbhandler.php}!DBHANDLE\_\-TOTALFIELDCOUNT@{DBHANDLE\_\-TOTALFIELDCOUNT}}
 \index{DBHANDLE\_\-TOTALFIELDCOUNT@{DBHANDLE\_\-TOTALFIELDCOUNT}!class.dbhandler.php@{class.dbhandler.php}}
@@ -135,4 +149,49 @@ Return the total number of fields.
 
 
 Update data in the database. 
+
+\index{class.dbhandler.php@{class.dbhandler.php}!DBMATCH\_\-EQ@{DBMATCH\_\-EQ}}
+\index{DBMATCH\_\-EQ@{DBMATCH\_\-EQ}!class.dbhandler.php@{class.dbhandler.php}}
+\subsubsection[{DBMATCH\_\-EQ}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBMATCH\_\-EQ}}\label{class_8dbhandler_8php_a2e63f10508e2c30c83d0ee42b25a70f0}
+
+
+Left and right values should match (default) (when the value contains percent signs, 'LIKE' will be used;. 
+
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataHandler::set()}{p.}{classDataHandler_a00cad7b4cee6e867dc985451f40ae404}) 
+\end{DoxySeeAlso}
+\index{class.dbhandler.php@{class.dbhandler.php}!DBMATCH\_\-GE@{DBMATCH\_\-GE}}
+\index{DBMATCH\_\-GE@{DBMATCH\_\-GE}!class.dbhandler.php@{class.dbhandler.php}}
+\subsubsection[{DBMATCH\_\-GE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBMATCH\_\-GE}}\label{class_8dbhandler_8php_add3424a7f2fae29b9ef51fefe16e67b5}
+
+
+Left value should be greater than or equal to right value. 
+
+\index{class.dbhandler.php@{class.dbhandler.php}!DBMATCH\_\-GT@{DBMATCH\_\-GT}}
+\index{DBMATCH\_\-GT@{DBMATCH\_\-GT}!class.dbhandler.php@{class.dbhandler.php}}
+\subsubsection[{DBMATCH\_\-GT}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBMATCH\_\-GT}}\label{class_8dbhandler_8php_a798942d1de0d7c694fa3bf29af7fb31b}
+
+
+Left value should be greater than right value. 
+
+\index{class.dbhandler.php@{class.dbhandler.php}!DBMATCH\_\-LE@{DBMATCH\_\-LE}}
+\index{DBMATCH\_\-LE@{DBMATCH\_\-LE}!class.dbhandler.php@{class.dbhandler.php}}
+\subsubsection[{DBMATCH\_\-LE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBMATCH\_\-LE}}\label{class_8dbhandler_8php_a7aed795cca306387e0819a3ebf7412fe}
+
+
+Left value should be less than or equal to right value. 
+
+\index{class.dbhandler.php@{class.dbhandler.php}!DBMATCH\_\-LT@{DBMATCH\_\-LT}}
+\index{DBMATCH\_\-LT@{DBMATCH\_\-LT}!class.dbhandler.php@{class.dbhandler.php}}
+\subsubsection[{DBMATCH\_\-LT}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBMATCH\_\-LT}}\label{class_8dbhandler_8php_ab2d0950007e46fa8e0ef79981bb7071a}
+
+
+Left value should be less than right value. 
+
+\index{class.dbhandler.php@{class.dbhandler.php}!DBMATCH\_\-NONE@{DBMATCH\_\-NONE}}
+\index{DBMATCH\_\-NONE@{DBMATCH\_\-NONE}!class.dbhandler.php@{class.dbhandler.php}}
+\subsubsection[{DBMATCH\_\-NONE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf DBMATCH\_\-NONE}}\label{class_8dbhandler_8php_ab8861dd59bb18f73f87f060e75b26ea1}
+
+
+Don't match on this field, use it in the SELECT list instead. 
 

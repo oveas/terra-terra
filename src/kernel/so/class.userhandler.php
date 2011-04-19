@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the UserHandler class
- * \version $Id: class.userhandler.php,v 1.15 2011-04-14 14:31:35 oscar Exp $
+ * \version $Id: class.userhandler.php,v 1.16 2011-04-19 13:00:03 oscar Exp $
  */
 
 /**
@@ -78,14 +78,16 @@ abstract class UserHandler extends _OWL
 	 * \param[in] $email Given username
 	 * \param[in] $password Given password
 	 * \param[in] $vpassword Given password verification - not used here but must exist in the reimplementation
+	 * \param[in] $group Default group
 	 * \return New user ID or -1 on failure
 	 */
-	protected function register($username, $email, $password, $vpassword)
+	protected function register($username, $email, $password, $vpassword, $group)
 	{
 		$_vstring = RandomString(45);
 		$this->dataset->set('username', $username);
 		$this->dataset->set('password', $this->hash_password($password));
 		$this->dataset->set('email', $email);
+		$this->dataset->set('group', $group);
 		$this->dataset->set('verification', $_vstring);
 		$this->dataset->set('registered', date('Y-m-d H:i:s'));
 		$this->dataset->prepare(DATA_WRITE);

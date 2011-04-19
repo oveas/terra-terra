@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.10 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.11 2011-04-19 13:00:03 oscar Exp $
  */
 
 /**
@@ -122,12 +122,12 @@ class SessionHandler extends _OWL
 	 * Read the session
 	 * \public
 	 * \param[in] $id session id
-	 * \return Session data
+	 * \return Session data or null when not found
 	 */
 	public function read ($id)
 	{
 		$this->dataset->set('sid', $this->db->escape_string($id));
-		$this->dataset->set('sdata', null);
+		$this->dataset->set('sdata', null, null, null, array('match' => array(DBMATCH_NONE)));
 
 		$this->dataset->prepare (DATA_READ);
 		$this->dataset->db ($_data, __LINE__, __FILE__);
@@ -135,6 +135,9 @@ class SessionHandler extends _OWL
 			$this->traceback();
 		}
 		$this->reset();
+		if (count($_data) == 0) {
+			return null;
+		}
 		return ($_data[0]['sdata']);
 	}
 
@@ -157,7 +160,7 @@ class SessionHandler extends _OWL
 		// First, check if this session already exists in the db
 		$this->dataset->prepare (DATA_READ);
 		$this->dataset->db ($_data, __LINE__, __FILE__);
-		
+
 		// Set or overwrite the values
 		$this->dataset->set('sdata', $this->db->escape_string($data));
 		$this->dataset->set('stimestamp', time());

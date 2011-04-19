@@ -2,7 +2,7 @@
 /**
  * \file
  * Define a class for config handling
- * \version $Id: class.confighandler.php,v 1.10 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.11 2011-04-19 13:00:03 oscar Exp $
  */
 
 /**
@@ -42,7 +42,7 @@ abstract class ConfigHandler
 		} else {
 			self::config_table(
 				 (array_key_exists('table', $_source) ? $_source['table'] : 'config')
-				,(array_key_exists('applic', $_source) ? $_source['applic'] : 'owl')
+				,(array_key_exists('aid', $_source) ? $_source['aid'] : OWL_APPL_ID)
 				,(array_key_exists('group', $_source) ? $_source['group'] : 0)
 				,(array_key_exists('user', $_source) ? $_source['user'] : 0)
 				,(array_key_exists('force', $_source) ? toStrictBoolean($_source['force']) : false)
@@ -102,7 +102,7 @@ abstract class ConfigHandler
 			}
 			self::$dataset->set_tablename($_table);
 		}
-		self::$dataset->set('applic', $_applic);
+		self::$dataset->set('aid', $_applic);
 		self::$dataset->set('gid', $_group);
 		self::$dataset->set('uid', $_user);
 		self::$dataset->prepare ();
@@ -171,11 +171,12 @@ abstract class ConfigHandler
 	 * configuration file (e.g. 'group|subject|item')
 	 * \param[in] $default The default value to return if the config item was not set. This defaults
 	 * to 'null'; if it is anything other than null, the CONFIG_NOVALUE status will not be set
+	 * \param[in] $force Boolean to force a reparse of the config item ignoring existing cache values
 	 * \return Corresponding value of null when nothing was found
 	 */
-	public static function get ($item, $default = null)
+	public static function get ($item, $default = null, $force = false)
 	{
-		if (isset ($GLOBALS['owl_cache']['cget'][$item])) {
+		if ($force === false && isset ($GLOBALS['owl_cache']['cget'][$item])) {
 			return ($GLOBALS['owl_cache']['cget'][$item]);
 		}
 

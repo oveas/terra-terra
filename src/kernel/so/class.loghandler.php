@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Loghandler class
- * \version $Id: class.loghandler.php,v 1.8 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class.loghandler.php,v 1.9 2011-04-19 13:00:03 oscar Exp $
  */
 
 /**
@@ -106,6 +106,19 @@ class LogHandler extends _OWL
 		return LogHandler::$instance;
 	}
 
+	public function set_applic_logfile()
+	{
+		if (!ConfigHandler::get ('logging|multiple_file', false) &&
+			!ConfigHandler::get ('logging|persistant', false)) {
+			$this->close_logfile();
+		}
+		$this->set_filename();
+		if (ConfigHandler::get ('logging|multiple_file', false) ||
+			ConfigHandler::get ('logging|persistant', false)) {
+			$this->open_logfile();
+		}
+	}
+
 	/**
 	 * Log the user action in the database. This method is called from the Dispatcher::dispatcher()
 	 * and can be called moreoften, but only the first log is written.
@@ -132,7 +145,7 @@ class LogHandler extends _OWL
 		$this->dataset->set('dispatcher', serialize($dispatcher));
 		$this->dataset->set('formdata', $formdata);
 		$this->dataset->prepare(DATA_WRITE);
-		$this->dataset->db();
+		$this->dataset->db($_dummy, __LINE__, __FILE__);
 		$this->session_logged = true;
 	}
 
@@ -143,7 +156,7 @@ class LogHandler extends _OWL
 	 */
 	private function set_filename ()
 	{
-		$_file = ConfigHandler::get ('logging|filename', OWL_LOG . '/owl.startup.log');
+		$_file = ConfigHandler::get ('logging|filename', OWL_LOG . '/owl.startup.log', true);
 		$_segments = explode('/', $_file);
 		$_first = array_shift($_segments);
 		if (defined($_first)) {
@@ -165,7 +178,7 @@ class LogHandler extends _OWL
 	 */
 	private function open_logfile ()
 	{
-		if (($this->fpointer = @fopen ($this->filename, 'a')) === false) {
+		if (($this->fpointer = fopen ($this->filename, 'a')) === false) {
 			$this->set_status (LOGGING_OPENERR, $this->filename);
 		}
 		$this->opened = true;
@@ -178,7 +191,7 @@ class LogHandler extends _OWL
 	private function close_logfile ()
 	{
 		if ($this->opened) {
-			@fclose ($this->fpointer);
+			fclose ($this->fpointer);
 			$this->opened = false;
 		}
 	}

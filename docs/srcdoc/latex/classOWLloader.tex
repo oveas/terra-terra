@@ -8,21 +8,25 @@ Class loader.
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classOWLloader_a7a405369cad4d0a09f82cad218bc4824}{getArea} (\$\_\-classFile, \$\_\-classLocation)
+static {\bf getArea} (\$\_\-classFile, \$\_\-classLocation)
 \item 
-static \hyperlink{classOWLloader_a5911bb36f76142aadfaa6d554113800c}{getDriver} (\$\_\-driverName, \$\_\-driverType)
+static {\bf getDriver} (\$\_\-driverName, \$\_\-driverType)
 \item 
-static \hyperlink{classOWLloader_a271d6508b029b3989db57f4d9b9b7677}{getClass} (\$\_\-className, \$\_\-classLocation=array(\hyperlink{OWLloader_8php_a75dffdef5ba58a0ba5f21ed40627897f}{OWL\_\-SO\_\-INC}, \hyperlink{OWLloader_8php_aca50646bc73c3addf0e0f25081eae0ae}{OWL\_\-BO\_\-INC}, \hyperlink{OWLloader_8php_a2e11101c70f011a91d0d9c7f8e217738}{OWL\_\-UI\_\-INC}), \$\_\-loadMultiple=false)
+static {\bf getClass} (\$\_\-className, \$\_\-classLocation=array({\bf OWL\_\-SO\_\-INC}, {\bf OWL\_\-BO\_\-INC}, {\bf OWL\_\-UI\_\-INC}), \$\_\-loadMultiple=false)
+\item 
+static {\bf getOWLId} ()
 \end{DoxyCompactItemize}
 \subsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classOWLloader_a763911b4bc08982e24f1f897362f8c90}{\_\-tryLoad} (\$\_\-className, \$\_\-classLocation)
+static {\bf \_\-tryLoad} (\$\_\-className, \$\_\-classLocation)
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Class loader. Abstract class to load other classfiles \begin{DoxyAuthor}{Author}
+Class loader. 
+
+Abstract class to load other classfiles \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
@@ -35,15 +39,19 @@ Oct 7, 2010 -\/-\/ O van Eijk -\/-\/ Initial version for OWL-\/PHP
 \index{\_\-tryLoad@{\_\-tryLoad}!OWLloader@{OWLloader}}
 \subsubsection[{\_\-tryLoad}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::\_\-tryLoad (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-className, }
-\item[{\$}]{ \_\-classLocation}
+\item[{\$}]{\_\-className, }
+\item[{\$}]{\_\-classLocation}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classOWLloader_a763911b4bc08982e24f1f897362f8c90}
+)\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classOWLloader_a763911b4bc08982e24f1f897362f8c90}
 Try loading a class from a specific location
 
 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-className}]Name of the classfile \item[\mbox{\tt[in]} {\em \$\_\-classLocation}]Location where to tru loading it from \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-className} & Name of the classfile \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-classLocation} & Location where to tru loading it from \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True on success 
 \end{DoxyReturn}
@@ -59,13 +67,17 @@ Referenced by getClass().
 \index{getArea@{getArea}!OWLloader@{OWLloader}}
 \subsubsection[{getArea}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::getArea (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-classFile, }
-\item[{\$}]{ \_\-classLocation}
+\item[{\$}]{\_\-classFile, }
+\item[{\$}]{\_\-classLocation}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWLloader_a7a405369cad4d0a09f82cad218bc4824}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLloader_a7a405369cad4d0a09f82cad218bc4824}
 Load a contentarea. This is done by calling the loadArea() method of the given class. 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-classFile}]Name of the classfile. This must the full filename without '.php' The name must be equal to the name of the class without 'Area in camelcase, so if the name of the classfile is 'myspot.php', the classname must be 'MyspotArea' and this argument must be 'myspot' \item[\mbox{\tt[in]} {\em \$\_\-classLocation}]Full path specification (can be as a constant) where the file can be found \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-classFile} & Name of the classfile. This must the full filename without '.php' The name must be equal to the name of the class without 'Area in camelcase, so if the name of the classfile is 'myspot.php', the classname must be 'MyspotArea' and this argument must be 'myspot' \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-classLocation} & Full path specification (can be as a constant) where the file can be found \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Reference to the object which is an instantiation of the class, null on erros 
 \end{DoxyReturn}
@@ -77,14 +89,20 @@ References OWL::stat().
 \index{getClass@{getClass}!OWLloader@{OWLloader}}
 \subsubsection[{getClass}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::getClass (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-className, }
-\item[{\$}]{ \_\-classLocation = {\ttfamily array({\bf OWL\_\-SO\_\-INC},~{\bf OWL\_\-BO\_\-INC},~{\bf OWL\_\-UI\_\-INC})}, }
-\item[{\$}]{ \_\-loadMultiple = {\ttfamily false}}
+\item[{\$}]{\_\-className, }
+\item[{\$}]{\_\-classLocation = {\ttfamily array({\bf OWL\_\-SO\_\-INC},~{\bf OWL\_\-BO\_\-INC},~{\bf OWL\_\-UI\_\-INC})}, }
+\item[{\$}]{\_\-loadMultiple = {\ttfamily false}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWLloader_a271d6508b029b3989db57f4d9b9b7677}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLloader_a271d6508b029b3989db57f4d9b9b7677}
 Load a PHP classfile 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-className}]Name of the class; either file full name ($<$filename.php$>$ or the identifying name (\mbox{[}class.\mbox{]}$<$name$>$\mbox{[}.php\mbox{]}) \item[\mbox{\tt[in]} {\em \$\_\-classLocation}](Array of) location(s) where to look for the class \item[\mbox{\tt[in]} {\em \$\_\-loadMultiple}]Boolean; by default, the first matching classname will be loaded. Set this to true to load all files with the same name from multiple locations \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-className} & Name of the class; either file full name ($<$filename.php$>$ or the identifying name ([class.]$<$name$>$[.php]) \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-classLocation} & (Array of) location(s) where to look for the class \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-loadMultiple} & Boolean; by default, the first matching classname will be loaded. Set this to true to load all files with the same name from multiple locations \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True on success 
 \end{DoxyReturn}
@@ -100,13 +118,17 @@ Referenced by Container::\_\-\_\-construct(), Form::addField(), and Dispatcher::
 \index{getDriver@{getDriver}!OWLloader@{OWLloader}}
 \subsubsection[{getDriver}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::getDriver (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-driverName, }
-\item[{\$}]{ \_\-driverType}
+\item[{\$}]{\_\-driverName, }
+\item[{\$}]{\_\-driverType}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWLloader_a5911bb36f76142aadfaa6d554113800c}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLloader_a5911bb36f76142aadfaa6d554113800c}
 Load a driverfile 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-driverName}]Name of the class. Will be converted to lowercase to find the classfile \item[\mbox{\tt[in]} {\em \$\_\-driverType}]Driver type, must match the directoryname in OWL\_\-DRIVERS where the classfile can be found \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-driverName} & Name of the class. Will be converted to lowercase to find the classfile \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-driverType} & Driver type, must match the directoryname in OWL\_\-DRIVERS where the classfile can be found \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True on success 
 \end{DoxyReturn}
@@ -114,8 +136,19 @@ True on success
 
 Referenced by DbHandler::load\_\-driver().
 
+\index{OWLloader@{OWLloader}!getOWLId@{getOWLId}}
+\index{getOWLId@{getOWLId}!OWLloader@{OWLloader}}
+\subsubsection[{getOWLId}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::getOWLId (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLloader_a2353c72ad883ad179d9aaf22d3ce6018}
+
+
+References ConfigHandler::get().
+
 
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/projects/owl-\/php/src/\hyperlink{OWLloader_8php}{OWLloader.php}\end{DoxyCompactItemize}
+/home/oscar/projects/owl-\/php/src/{\bf OWLloader.php}\end{DoxyCompactItemize}

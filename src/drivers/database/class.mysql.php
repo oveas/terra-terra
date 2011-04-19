@@ -2,8 +2,10 @@
 /**
  * \file
  * This file defines the MySQL drivers
- * \version $Id: class.mysql.php,v 1.2 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class.mysql.php,v 1.3 2011-04-19 13:00:03 oscar Exp $
  */
+
+define('USE_BACKTICKS', true);
 
 /**
  * \ingroup OWL_DRIVERS
@@ -13,7 +15,7 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 12, 2011 -- O van Eijk -- initial version
  */
-class MySQL extends DbDriver
+class MySQL extends DbDefaults implements DbDriver 
 {
 	public function __construct()
 	{
@@ -111,5 +113,22 @@ class MySQL extends DbDriver
 		} else {
 			return (mysql_escape_string($_string));
 		}
+	}
+
+	public function functionIf($_field, array $_arguments = array())
+	{
+		return 'IF(' . $_field . ' ' . $_arguments[0] . ' ' . $_arguments[1]
+				. ', ' . $_arguments[2] . ', ' // then
+				. ', ' . $_arguments[3] . ')'; // else
+	}
+
+	public function functionIfnull($_field, array $_arguments = array())
+	{
+		return 'IFNULL(' . $_field . ', ' . $_arguments[0] . ')';
+	}
+
+	public function functionConcat($_field, array $_arguments = array())
+	{
+		return 'CONCAT(' . $_field . ', ' . $_arguments[0] . ')';
 	}
 }

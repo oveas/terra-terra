@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the HTML Form class
- * \version $Id: class.form.php,v 1.6 2011-01-21 10:18:28 oscar Exp $
+ * \version $Id: class.form.php,v 1.7 2011-04-19 13:00:03 oscar Exp $
  */
 
 OWLloader::getClass('formfield', OWL_PLUGINS . '/formfields');
@@ -210,8 +210,8 @@ class Form extends BaseElement
 	 */
 	private function closeForm()
 	{
-		$this->addField('hidden', 'owl_dispatch', $this->dispatcher);
-		return $this->showField('owl_dispatch') . '</form>'."\n";
+		$this->addField('hidden', OWL_DISPATCHER_NAME, $this->dispatcher);
+		return $this->showField(OWL_DISPATCHER_NAME) . '</form>'."\n";
 	}
 
 	/**

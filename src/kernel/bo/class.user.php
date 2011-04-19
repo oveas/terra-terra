@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the User class
- * \version $Id: class.user.php,v 1.10 2011-04-14 14:31:35 oscar Exp $
+ * \version $Id: class.user.php,v 1.11 2011-04-19 13:00:03 oscar Exp $
  */
 
 /**
@@ -87,11 +87,12 @@ abstract class User extends UserHandler
 	 * \param[in] $email Given username
 	 * \param[in] $password Given password
 	 * \param[in] $vpassword Given password
+	 * \param[in] $group Default Group ID, defaults to the user|default_group config setting
 	 * \return New user ID or -1 on failure
 	 */
-	protected function register($username, $email, $password, $vpassword)
+	protected function register($username, $email, $password, $vpassword, $group = 0)
 	{
-		if ($this->username_exists($username)) {
+		if ($this->username_exists($username) === true) {
 			$this->set_status (USER_DUPLUSERNAME, array ($username));
 			return -1;
 		}
@@ -104,7 +105,10 @@ abstract class User extends UserHandler
 			$this->set_status (USER_PWDVERFAILED);
 			return -1;
 		}
-		return (parent::register($username, $email, $password, $vpassword));
+		if ($group === 0) {
+			$group = ConfigHandler::get('user|default_group');
+		}
+		return (parent::register($username, $email, $password, $vpassword, $group));
 	}
 
 	/**

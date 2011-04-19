@@ -1,0 +1,122 @@
+\section{exa.datahandler-\/set.php}
+Define or override a variable in the data array 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$variable} & The name of the variable that should be set. \\
+\hline
+\mbox{\tt in}  & {\em \$value} & Value to set the variable to. For read operations, this can be a value, in which case the fieldname be will looked for matching all given values. Values with unescaped percent signs will be searched using the SQL LIKE keyword If the matchtype is DBMATCH\_\-NONE, the value is ignored. \\
+\hline
+\mbox{\tt in}  & {\em \$table} & An optional tablename for this field. Defaults to \$this-\/$>$owl\_\-tablename \\
+\hline
+\mbox{\tt in}  & {\em \$fieldFunction} & An optional array with SQL functions and statements that apply to the fieldname. This is an indexed array, where all keys must have an array as value. The following keys are supported:
+\begin{DoxyItemize}
+\item function: An array where the first element is an SQL function, which must exist in the database driver as 'functionFunction' (e.g., for 'function'=$>$ array(\char`\"{}ifnull\char`\"{}, \char`\"{}default\char`\"{}), the method \char`\"{}functionIfnull()\char`\"{} must exist). The first argument passed to the method is always the fieldname, additional arguments will be taken from the array.
+\item groupby: Add the fieldname to a groupby list. The value for this key must be an empty array
+\item orderby: Add the fieldname to the orderby list. The given array can contain 1 element; \char`\"{}ASC\char`\"{} or \char`\"{}DESC\char`\"{}. When empty, it defaults to the SQL default (ASC)
+\item having: Add the fieldname to to the having clause. The array must contain 2 elements, where the first element is the matchtype and the second argument is the value to match
+\item name: The \doxyref{DataHandler}{p.}{classDataHandler} returns data as indexed arrays on read operations, where the index equals the fieldname. This might contain complete SQL code when functions are called; this can be overwritten by specifying a name for the field 
+\end{DoxyItemize}\\
+\hline
+\mbox{\tt in}  & {\em \$valueFunction} & An optional array with SQL functions and statements that apply to the value. This is an indexed array, where all keys must have an array as value. The following keys are supported:
+\begin{DoxyItemize}
+\item function: An array where the first element is an SQL function, which must exist in the database driver as 'functionFunction' (e.g., for 'function'=$>$ array(\char`\"{}ifnull\char`\"{}, \char`\"{}default\char`\"{}), the method \char`\"{}functionIfnull()\char`\"{} must exist). The first argument passed to the method is always the fieldname, additional arguments will be taken from the array.
+\item match: The matchtype. When omitted, default is DBMATCH\_\-EQ ('='). If the field should be in a SELECT list and not in the where clause, use the matchtype DBMATCH\_\-NONE (if no fields are set with DBMATCH\_\-NONE, read queries will select with SELECT $\ast$)
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+This example shows advanced use ot the \doxyref{DataHandler::set()}{p.}{classDataHandler_a00cad7b4cee6e867dc985451f40ae404} method
+
+
+\begin{DoxyCodeInclude}
+<?php
+/*
+ * This function demonstrates the use of the DataHandler::set() method to use SQL
+       functions.
+ * This example uses the following database table:
+ *
+ *      CREATE TABLE `exa_sqlfunc` (
+ *      `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+ *      `name` VARCHAR( 12 ) NOT NULL ,
+ *      `expires` DATE ,
+ *      `membership` INT NOT NULL ,
+ *      INDEX ( `name` )
+ *      )
+ *
+ * This implies the configuration should have the table prefix set to 'exa'
+ */
+function useSqlFunctions($date)
+{
+        $dataset = new DataHandler();
+        $dataset->set_tablename('sqlfunc');
+        
+        // Set the 'name' field
+        $dataset->set(
+                  'name'                // Fieldname to get
+                , null                  // We must read this value, so set it to 
+      null
+                , null                  // Use the default tablename (sqlfunc)
+                , array(                // Array with functions for the fielname.
+       All keys MUST have an array as value!
+                          'groupby' => array()                  // No arguments, 
+      so use an empty array
+                        , 'orderby' => array('desc')    // Ordering; desc here, c
+      an be empty (default to the SQL default: asc)
+                )
+        );
+
+        // Set the 'membership' field
+        $dataset->set(
+                  'membership'  // Fieldname to get
+                , null                  // We will read this value, so his will b
+      e ignored
+                , null                  // Use the default tablename (sqlfunc)
+                , array(                // Array with functions for the fielname.
+       All keys MUST have an array as value!
+                          'function' => array('count')          // Use the COUNT(
+      ) function (from the db driver); no extra arguments
+                        , 'having' => array(DBMATCH_GT, 3)      // Make sure we o
+      nly get results when the count is more than 3
+                        , 'name' => array('no_mbrships')        // Set the index 
+      name for the result array
+                )
+                , array(                // Array with functions for the value. Al
+      l keys MUST have an array as value!
+                          'match' => array(DBMATCH_NONE) //Don't match on this fi
+      eld, but use it in the SELECT list.
+                )
+        );
+
+        // Set the 'expires' field; this is the field we make our select on
+        $dataset->set(
+                  'expires'             // Fieldname to select
+                , $date                 // Select using this value
+                , null                  // Use the default tablename (sqlfunc)
+                , array(                // Array with functions for the fielname.
+       All keys MUST have an array as value!
+                          'function' => array('ifnull', 'NOW()')        // Call t
+      he ifnull function with 'NOW()' as the second argument.
+                                                // ** NOTE**, to use an exact dat
+      , this value must be quoted, e.g. "'2011-04-18'" !
+                )
+                , array(                // Array with functions for the value. Al
+      l keys MUST have an array as value!
+                          'match' => array(DBMATCH_GE) // Match with ">=", defaul
+      t is 'DBMATCH_EQ ('=')
+                )
+        );
+
+        $dataset->prepare (); // Default prepare action is DATA_READ
+        // The following query is prepared:
+        // SELECT `exa_sqlfunc`.`name`, COUNT(`exa_sqlfunc`.`membership`) AS no_m
+      brships
+        // FROM `exa_sqlfunc`
+        // WHERE IFNULL(`exa_sqlfunc`.`expires`, NOW()) >= '(given date)'
+        // GROUP BY `exa_sqlfunc`.`name`
+        // HAVING COUNT(`exa_sqlfunc`.`membership`) > 3
+        // ORDER BY `exa_sqlfunc`.`name` DESC
+
+        $dataset->db ($_list, __LINE__, __FILE__); // Execute the query
+        print_r($_list); // Show the results
+}
+?>
+\end{DoxyCodeInclude}
+ 

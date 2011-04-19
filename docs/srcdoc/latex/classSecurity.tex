@@ -1,0 +1,94 @@
+\section{Security Class Reference}
+\label{classSecurity}\index{Security@{Security}}
+
+
+the OWL-\/PHP security objects  
+
+
+Inheritance diagram for Security:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSecurity}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf mergeBitmaps} (\$bitmap, \$app= 'owl')
+\item 
+{\bf controlBitmap} (\$bit, \$app= 'owl', \$controller={\bf BIT\_\-CHECK})
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$bitmap}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+the OWL-\/PHP security objects 
+
+This class handles \doxyref{OWL}{p.}{classOWL} security \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Apr 16, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{Security@{Security}!controlBitmap@{controlBitmap}}
+\index{controlBitmap@{controlBitmap}!Security@{Security}}
+\subsubsection[{controlBitmap}]{\setlength{\rightskip}{0pt plus 5cm}Security::controlBitmap (
+\begin{DoxyParamCaption}
+\item[{\$}]{bit, }
+\item[{\$}]{app = {\ttfamily 'owl'}, }
+\item[{\$}]{controller = {\ttfamily {\bf BIT\_\-CHECK}}}
+\end{DoxyParamCaption}
+)}\label{classSecurity_a3f7e654b890fa75bc4ea33e7865430e5}
+Check, set or unset a bit in the current users bitmap. Enter description here ... 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$bit} & Bit that should be checked or (un)set \\
+\hline
+\mbox{\tt in}  & {\em \$app} & Application the bit belongs to \\
+\hline
+\mbox{\tt in}  & {\em \$controller} & Controller defining the action, defaults to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the bit was set ($\ast$before$\ast$ a set or unset action!) 
+\end{DoxyReturn}
+\index{Security@{Security}!mergeBitmaps@{mergeBitmaps}}
+\index{mergeBitmaps@{mergeBitmaps}!Security@{Security}}
+\subsubsection[{mergeBitmaps}]{\setlength{\rightskip}{0pt plus 5cm}Security::mergeBitmaps (
+\begin{DoxyParamCaption}
+\item[{\$}]{bitmap, }
+\item[{\$}]{app = {\ttfamily 'owl'}}
+\end{DoxyParamCaption}
+)}\label{classSecurity_a71a483d9148fa350c78fc8b038ab6a94}
+Merge a given gitmap with the current users bitmap 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$bitmap} & Rightlist bitmap \\
+\hline
+\mbox{\tt in}  & {\em \$app} & Application the bitmap belongs to \\
+\hline
+\end{DoxyParams}
+
+
+References \$bitmap.
+
+
+
+\subsection{Member Data Documentation}
+\index{Security@{Security}!\$bitmap@{\$bitmap}}
+\index{\$bitmap@{\$bitmap}!Security@{Security}}
+\subsubsection[{\$bitmap}]{\setlength{\rightskip}{0pt plus 5cm}Security::\$bitmap\hspace{0.3cm}{\ttfamily  [protected]}}\label{classSecurity_a75470ea2df84673afbdef0955297f78f}
+Array with security bitmaps bitmaps for the current user 
+
+Referenced by mergeBitmaps().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/bo/{\bf class.security.php}\end{DoxyCompactItemize}

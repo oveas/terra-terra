@@ -8,44 +8,46 @@ Status object.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classStatusHandler_a748d462386322a552aa798f951258c91}{set\_\-code} (\$code=OWL\_\-STATUS\_\-BUG)
+{\bf set\_\-code} (\$code=OWL\_\-STATUS\_\-BUG)
 \item 
-\hyperlink{classStatusHandler_a8b0a327d3272ae49032a596518d47164}{reset} ()
+{\bf reset} ()
 \item 
-\hyperlink{classStatusHandler_ac35544d3ad8a435f69db0965ed674428}{set\_\-params} (\$params)
+{\bf set\_\-params} (\$params)
 \item 
-\hyperlink{classStatusHandler_acadd0806c17eb02abcc92882e8588d4e}{get\_\-severity} (\$status=null)
+{\bf get\_\-severity} (\$status=null)
 \item 
-\hyperlink{classStatusHandler_ad39bc4e6a56b6d418a252957da9b4417}{get\_\-code} ()
+{\bf get\_\-code} ()
 \item 
-\hyperlink{classStatusHandler_a79170bca79bfd82e3f707e1294e7c916}{get\_\-message} ()
+{\bf get\_\-message} ()
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classStatusHandler_a9d291ccaa6b4e6eed931e47025915b0e}{get\_\-instance} ()
+static {\bf get\_\-instance} ()
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classStatusHandler_a5cb2ad461aa4afc7ec9115c176eb354e}{\_\-\_\-construct} (\$code=OWL\_\-STATUS\_\-WARNING)
+{\bf \_\-\_\-construct} (\$code=OWL\_\-STATUS\_\-WARNING)
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classStatusHandler_ab74e826d2401345eb20b11fe7d78aa45}{\$code}
+{\bf \$code}
 \item 
-\hyperlink{classStatusHandler_a599f9c9284340399fdcb7dac9cb7856f}{\$params}
+{\bf \$params}
 \end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classStatusHandler_a93400d190e7612dd53fbf0be529a96ee}{\$instance}
+static {\bf \$instance}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Status object. Each object, when initialised, gets a status object which olds information about the last action that was performed. \begin{DoxyAuthor}{Author}
+Status object. 
+
+Each object, when initialised, gets a status object which olds information about the last action that was performed. \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
@@ -58,14 +60,16 @@ Aug 11, 2008 -\/-\/ O van Eijk -\/-\/ Initial version
 \index{\_\-\_\-construct@{\_\-\_\-construct}!StatusHandler@{StatusHandler}}
 \subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\_\-\_\-construct (
 \begin{DoxyParamCaption}
-\item[{\$}]{ code = {\ttfamily OWL\_\-STATUS\_\-WARNING}}
+\item[{\$}]{code = {\ttfamily OWL\_\-STATUS\_\-WARNING}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classStatusHandler_a5cb2ad461aa4afc7ec9115c176eb354e}
-Constructor; should be called only by \hyperlink{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}{\_\-OWL::init()}. The default status is initially a (generic) warning status. It should be set to any successfull status after object initialisation completed.
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classStatusHandler_a5cb2ad461aa4afc7ec9115c176eb354e}
+Constructor; should be called only by \doxyref{\_\-OWL::init()}{p.}{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}. The default status is initially a (generic) warning status. It should be set to any successfull status after object initialisation completed.
 
 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$code}]The status code \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$code} & The status code \\
+\hline
+\end{DoxyParams}
 
 
 References \$code.
@@ -91,7 +95,7 @@ The status code
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classStatusHandler_a9d291ccaa6b4e6eed931e47025915b0e}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classStatusHandler_a9d291ccaa6b4e6eed931e47025915b0e}
 Return a reference to my implementation. If necessary, create that implementation first.
 
 \begin{DoxyReturn}{Returns}
@@ -121,14 +125,16 @@ References \$GLOBALS, Register::get\_\-code(), and Register::register\_\-message
 \index{get\_\-severity@{get\_\-severity}!StatusHandler@{StatusHandler}}
 \subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::get\_\-severity (
 \begin{DoxyParamCaption}
-\item[{\$}]{ status = {\ttfamily null}}
+\item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
 )}\label{classStatusHandler_acadd0806c17eb02abcc92882e8588d4e}
 Check the status of the given object and return its severity.
 
 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$status}]An optional parameter to check an other status code i.s.o the object's current status. \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$status} & An optional parameter to check an other status code i.s.o the object's current status. \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The severity level of the current status 
 \end{DoxyReturn}
@@ -143,14 +149,16 @@ Reset the object status \index{StatusHandler@{StatusHandler}!set\_\-code@{set\_\
 \index{set\_\-code@{set\_\-code}!StatusHandler@{StatusHandler}}
 \subsubsection[{set\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::set\_\-code (
 \begin{DoxyParamCaption}
-\item[{\$}]{ code = {\ttfamily OWL\_\-STATUS\_\-BUG}}
+\item[{\$}]{code = {\ttfamily OWL\_\-STATUS\_\-BUG}}
 \end{DoxyParamCaption}
 )}\label{classStatusHandler_a748d462386322a552aa798f951258c91}
 Set the status of the owner object to the given value.
 
 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$code}]The status code \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$code} & The status code \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The severity level of the code 
 \end{DoxyReturn}
@@ -162,14 +170,16 @@ References \$code.
 \index{set\_\-params@{set\_\-params}!StatusHandler@{StatusHandler}}
 \subsubsection[{set\_\-params}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::set\_\-params (
 \begin{DoxyParamCaption}
-\item[{\$}]{ params}
+\item[{\$}]{params}
 \end{DoxyParamCaption}
 )}\label{classStatusHandler_ac35544d3ad8a435f69db0965ed674428}
 If the status was set with optional parameters, they will be set in this subject and substituted in the correct message
 
 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$params}]An array with parameters \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$params} & An array with parameters \\
+\hline
+\end{DoxyParams}
 
 
 References \$params.
@@ -179,21 +189,21 @@ References \$params.
 \subsection{Member Data Documentation}
 \index{StatusHandler@{StatusHandler}!\$code@{\$code}}
 \index{\$code@{\$code}!StatusHandler@{StatusHandler}}
-\subsubsection[{\$code}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$code\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classStatusHandler_ab74e826d2401345eb20b11fe7d78aa45}
+\subsubsection[{\$code}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$code\hspace{0.3cm}{\ttfamily  [private]}}\label{classStatusHandler_ab74e826d2401345eb20b11fe7d78aa45}
 Current object status 
 
 Referenced by \_\-\_\-construct(), and set\_\-code().
 
 \index{StatusHandler@{StatusHandler}!\$instance@{\$instance}}
 \index{\$instance@{\$instance}!StatusHandler@{StatusHandler}}
-\subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$instance\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classStatusHandler_a93400d190e7612dd53fbf0be529a96ee}
+\subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$instance\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classStatusHandler_a93400d190e7612dd53fbf0be529a96ee}
 integer -\/ self reference 
 
 Referenced by get\_\-instance().
 
 \index{StatusHandler@{StatusHandler}!\$params@{\$params}}
 \index{\$params@{\$params}!StatusHandler@{StatusHandler}}
-\subsubsection[{\$params}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$params\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}\label{classStatusHandler_a599f9c9284340399fdcb7dac9cb7856f}
+\subsubsection[{\$params}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$params\hspace{0.3cm}{\ttfamily  [private]}}\label{classStatusHandler_a599f9c9284340399fdcb7dac9cb7856f}
 Array with parameters that will be substituted in message text 
 
 Referenced by set\_\-params().
@@ -202,4 +212,4 @@ Referenced by set\_\-params().
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/projects/owl-\/php/src/kernel/so/\hyperlink{class_8statushandler_8php}{class.statushandler.php}\end{DoxyCompactItemize}
+/home/oscar/projects/owl-\/php/src/kernel/so/{\bf class.statushandler.php}\end{DoxyCompactItemize}

@@ -1,0 +1,138 @@
+\section{Rights Class Reference}
+\label{classRights}\index{Rights@{Rights}}
+
+
+the OWL-\/PHP rights object  
+
+
+Inheritance diagram for Rights:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classRights}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf mergeBitmaps} (\$bitmap, \$app= 'owl')
+\item 
+{\bf controlBitmap} (\$bit, \$app= 'owl', \$controller={\bf BIT\_\-CHECK})
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$bitmap}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf registerRights} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$rightslist}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+the OWL-\/PHP rights object 
+
+This class handles the \doxyref{Rights}{p.}{classRights} bitmaps \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Apr 14, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Rights@{Rights}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!Rights@{Rights}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}Rights::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classRights_ac08fd24bc66ab5aec116ce20cc9e9807}
+Class constructor 
+
+References OWLCache::get(), and registerRights().
+
+
+
+\subsection{Member Function Documentation}
+\index{Rights@{Rights}!controlBitmap@{controlBitmap}}
+\index{controlBitmap@{controlBitmap}!Rights@{Rights}}
+\subsubsection[{controlBitmap}]{\setlength{\rightskip}{0pt plus 5cm}Security::controlBitmap (
+\begin{DoxyParamCaption}
+\item[{\$}]{bit, }
+\item[{\$}]{app = {\ttfamily 'owl'}, }
+\item[{\$}]{controller = {\ttfamily {\bf BIT\_\-CHECK}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classSecurity_a3f7e654b890fa75bc4ea33e7865430e5}
+Check, set or unset a bit in the current users bitmap. Enter description here ... 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$bit} & Bit that should be checked or (un)set \\
+\hline
+\mbox{\tt in}  & {\em \$app} & Application the bit belongs to \\
+\hline
+\mbox{\tt in}  & {\em \$controller} & Controller defining the action, defaults to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the bit was set ($\ast$before$\ast$ a set or unset action!) 
+\end{DoxyReturn}
+\index{Rights@{Rights}!mergeBitmaps@{mergeBitmaps}}
+\index{mergeBitmaps@{mergeBitmaps}!Rights@{Rights}}
+\subsubsection[{mergeBitmaps}]{\setlength{\rightskip}{0pt plus 5cm}Security::mergeBitmaps (
+\begin{DoxyParamCaption}
+\item[{\$}]{bitmap, }
+\item[{\$}]{app = {\ttfamily 'owl'}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classSecurity_a71a483d9148fa350c78fc8b038ab6a94}
+Merge a given gitmap with the current users bitmap 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$bitmap} & Rightlist bitmap \\
+\hline
+\mbox{\tt in}  & {\em \$app} & Application the bitmap belongs to \\
+\hline
+\end{DoxyParams}
+
+
+References Security::\$bitmap.
+
+\index{Rights@{Rights}!registerRights@{registerRights}}
+\index{registerRights@{registerRights}!Rights@{Rights}}
+\subsubsection[{registerRights}]{\setlength{\rightskip}{0pt plus 5cm}Rights::registerRights (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classRights_ae7c51a4150f9a496569ed8d241e485f5}
+If the rightlist is not yet filled, do so now and store the list in cache 
+
+References ConfigHandler::get(), and OWLCache::set().
+
+
+
+Referenced by \_\-\_\-construct().
+
+
+
+\subsection{Member Data Documentation}
+\index{Rights@{Rights}!\$bitmap@{\$bitmap}}
+\index{\$bitmap@{\$bitmap}!Rights@{Rights}}
+\subsubsection[{\$bitmap}]{\setlength{\rightskip}{0pt plus 5cm}Security::\$bitmap\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classSecurity_a75470ea2df84673afbdef0955297f78f}
+Array with security bitmaps bitmaps for the current user 
+
+Referenced by Security::mergeBitmaps().
+
+\index{Rights@{Rights}!\$rightslist@{\$rightslist}}
+\index{\$rightslist@{\$rightslist}!Rights@{Rights}}
+\subsubsection[{\$rightslist}]{\setlength{\rightskip}{0pt plus 5cm}Rights::\$rightslist\hspace{0.3cm}{\ttfamily  [private]}}\label{classRights_a0dd4834ba24f778314805dcab1777393}
+Array with all known right identifiers 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/bo/{\bf class.rights.php}\end{DoxyCompactItemize}

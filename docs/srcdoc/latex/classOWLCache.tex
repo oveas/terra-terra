@@ -8,24 +8,30 @@ Cache handler.
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classOWLCache_a5c9e800ea5a9e0b0829b31466e94b539}{get} (\$cache, \$key)
+static {\bf get} (\$cache, \$key)
 \item 
-static \hyperlink{classOWLCache_aa4f5e152fc2b1f5f88d2128a68322cc8}{set} (\$cache, \$key, \$value)
+static {\bf set} (\$cache, \$key, \$value)
+\item 
+static {\bf loadCache} ()
+\item 
+static {\bf saveCache} ()
 \end{DoxyCompactItemize}
 \subsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classOWLCache_a8acd763ed96208dbd8e5b46adf4d28cd}{init} ()
+static {\bf init} ()
 \end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classOWLCache_a429167796c668f4edde177d017f9f86c}{\$cache} = null
+static {\bf \$cache} = null
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Cache handler. Abstract class to handle all caching \begin{DoxyAuthor}{Author}
+Cache handler. 
+
+Abstract class to handle all caching \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
@@ -38,13 +44,17 @@ Apr 14, 2011 -\/-\/ O van Eijk -\/-\/ Initial version for OWL-\/PHP
 \index{get@{get}!OWLCache@{OWLCache}}
 \subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}static OWLCache::get (
 \begin{DoxyParamCaption}
-\item[{\$}]{ cache, }
-\item[{\$}]{ key}
+\item[{\$}]{cache, }
+\item[{\$}]{key}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWLCache_a5c9e800ea5a9e0b0829b31466e94b539}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLCache_a5c9e800ea5a9e0b0829b31466e94b539}
 Get a value from cache 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$cache}]Name of the cache array \item[\mbox{\tt[in]} {\em \$key}]Key in the cache array \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$cache} & Name of the cache array \\
+\hline
+\mbox{\tt in}  & {\em \$key} & Key in the cache array \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Value that was found, of null when nothing was found 
 \end{DoxyReturn}
@@ -54,7 +64,7 @@ References \$cache.
 
 
 
-Referenced by OWLloader::\_\-tryLoad(), LogHandler::log\_\-session(), Register::register\_\-labels(), and Register::register\_\-messages().
+Referenced by Rights::\_\-\_\-construct(), OWLloader::\_\-tryLoad(), LogHandler::log\_\-session(), Register::register\_\-labels(), Register::register\_\-messages(), and DataHandler::set\_\-prefix().
 
 \index{OWLCache@{OWLCache}!init@{init}}
 \index{init@{init}!OWLCache@{OWLCache}}
@@ -62,23 +72,47 @@ Referenced by OWLloader::\_\-tryLoad(), LogHandler::log\_\-session(), Register::
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classOWLCache_a8acd763ed96208dbd8e5b46adf4d28cd}
+)\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classOWLCache_a8acd763ed96208dbd8e5b46adf4d28cd}
 Initialise the cache array with the predefined keys 
 
 Referenced by set().
 
+\index{OWLCache@{OWLCache}!loadCache@{loadCache}}
+\index{loadCache@{loadCache}!OWLCache@{OWLCache}}
+\subsubsection[{loadCache}]{\setlength{\rightskip}{0pt plus 5cm}static OWLCache::loadCache (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLCache_afcd10dcca169bdd1f77a848eb1349f3f}
+Load cached data \begin{Desc}
+\item[{\bf Todo}]Data caching is not yet implemented -\/ this is a placeholder for future use \end{Desc}
+\index{OWLCache@{OWLCache}!saveCache@{saveCache}}
+\index{saveCache@{saveCache}!OWLCache@{OWLCache}}
+\subsubsection[{saveCache}]{\setlength{\rightskip}{0pt plus 5cm}static OWLCache::saveCache (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLCache_ad7685dc7d8ea322c576413a6366ef503}
+Write data to te general cache \begin{Desc}
+\item[{\bf Todo}]Data caching is not yet implemented -\/ this is a placeholder for future use \end{Desc}
 \index{OWLCache@{OWLCache}!set@{set}}
 \index{set@{set}!OWLCache@{OWLCache}}
 \subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}static OWLCache::set (
 \begin{DoxyParamCaption}
-\item[{\$}]{ cache, }
-\item[{\$}]{ key, }
-\item[{\$}]{ value}
+\item[{\$}]{cache, }
+\item[{\$}]{key, }
+\item[{\$}]{value}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classOWLCache_aa4f5e152fc2b1f5f88d2128a68322cc8}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLCache_aa4f5e152fc2b1f5f88d2128a68322cc8}
 Store a value in cache. Non existing cache arrays will dynamically be created 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$cache}]Name of the cache array \item[\mbox{\tt[in]} {\em \$key}]Key in the cache array \item[\mbox{\tt[in]} {\em \$value}]Value to store \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$cache} & Name of the cache array \\
+\hline
+\mbox{\tt in}  & {\em \$key} & Key in the cache array \\
+\hline
+\mbox{\tt in}  & {\em \$value} & Value to store \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The given value is also returned 
 \end{DoxyReturn}
@@ -88,14 +122,14 @@ References \$cache, and init().
 
 
 
-Referenced by OWLloader::\_\-tryLoad(), User::construct(), Register::register\_\-labels(), and Register::register\_\-messages().
+Referenced by OWLloader::\_\-tryLoad(), User::construct(), Register::register\_\-labels(), Register::register\_\-messages(), and Rights::registerRights().
 
 
 
 \subsection{Member Data Documentation}
 \index{OWLCache@{OWLCache}!\$cache@{\$cache}}
 \index{\$cache@{\$cache}!OWLCache@{OWLCache}}
-\subsubsection[{\$cache}]{\setlength{\rightskip}{0pt plus 5cm}OWLCache::\$cache = null\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classOWLCache_a429167796c668f4edde177d017f9f86c}
+\subsubsection[{\$cache}]{\setlength{\rightskip}{0pt plus 5cm}OWLCache::\$cache = null\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classOWLCache_a429167796c668f4edde177d017f9f86c}
 Array in which the cache data is stored 
 
 Referenced by get(), and set().
@@ -104,4 +138,4 @@ Referenced by get(), and set().
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/projects/owl-\/php/src/kernel/so/\hyperlink{class_8cache_8php}{class.cache.php}\end{DoxyCompactItemize}
+/home/oscar/projects/owl-\/php/src/kernel/so/{\bf class.cache.php}\end{DoxyCompactItemize}

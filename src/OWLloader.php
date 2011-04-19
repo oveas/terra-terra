@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.21 2011-04-14 14:31:35 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.22 2011-04-19 13:00:03 oscar Exp $
  */
 
 // Error handling used during development
@@ -57,28 +57,6 @@ define ('OWL_DRIVERS',	OWL_ROOT . '/drivers');
 //! Toplocation of this site
 define ('OWL_SITE_TOP', $_SERVER['DOCUMENT_ROOT']);
 
-//! @}
-
-/**
- * \name Global constants for the application
- * These constants define sime paths for the application that are also required by OWL
- * @{
- */
-//! APPL_NAME must be defined by the application. The application name must - in lowercase - also be used as top directory for the installation.
-if (!defined('APPL_NAME')) {
-	trigger_error('APPL_NAME must be defined by the application', E_USER_ERROR);
-}
-
-//! APPL_CODE must be defined by the application. It must be an acronym that will be used by OWL to locate resources, like files in the library.
-if (!defined('APPL_CODE')) {
-	trigger_error('APPL_CODE must be defined by the application', E_USER_ERROR);
-}
-
-//! Toplevel for the site
-define ('APPL_SITE_TOP', OWL_SITE_TOP . '/' . strtolower(APPL_NAME));
-
-//! Location of all configuration files. NOT, the application MUST provide this location!
-define ('APPL_LIBRARY', APPL_SITE_TOP . '/lib');
 //! @}
 
 /**
@@ -183,6 +161,74 @@ abstract class OWLloader
 		}
 		return OWLCache::set(OWLCACHE_CLASSES, $_classPath, true);
 	}
+
+	public static function getOWLId ()
+	{
+		$dataset = new DataHandler();
+		if (ConfigHandler::get ('owltables', true)) {
+			$dataset->set_prefix(ConfigHandler::get ('owlprefix', 'owl'));
+		}
+		$dataset->set_tablename('applications');
+
+		$dataset->set('code', 'OWL');
+		$dataset->set_key('code');
+		$dataset->prepare();
+		$dataset->db($_id, __LINE__, __FILE__);
+		return ($_id[0]['aid']);
+	}
+
+	/**
+	 * Load the application environment
+	 * \param[in] $applic_code Application code
+	 */
+	public static function loadApplication ($applic_code)
+	{
+		$dataset = new DataHandler();
+		if (ConfigHandler::get ('owltables', true)) {
+			$dataset->set_prefix(ConfigHandler::get ('owlprefix', 'owl'));
+		}
+		$dataset->set_tablename('applications');
+
+		$dataset->set('code', $applic_code);
+		$dataset->set_key('code');
+		$dataset->prepare();
+		$dataset->db($app_data, __LINE__, __FILE__);
+
+		/**
+		 * \name Global constants for the application
+		 * These constants define sime paths for the application that are also required by OWL
+		 * @{
+		 */
+
+		//! Application ID
+		define ('APPL_ID', $app_data[0]['aid']);
+
+		//! The application. This must - in lowercase - also be used as top directory for the installation.
+		define ('APPL_NAME', $app_data[0]['name']);
+
+		//! Toplevel for the site
+		define ('APPL_SITE_TOP', OWL_SITE_TOP . '/' . strtolower(APPL_NAME));
+
+		//! Location of all configuration files. NOT, the application MUST provide this location!
+		define ('APPL_LIBRARY', APPL_SITE_TOP . '/lib');
+		//! @}
+
+		// If an APP_CONFIG file has been defined, add it to the config files array
+		// Values in this config file will overwrite the OWL defaults. 
+		if (defined('APP_CONFIG_FILE')) {
+			$GLOBALS['config']['configfiles']['app'][] = APP_CONFIG_FILE;
+		}
+		if (count ($GLOBALS['config']['configfiles']['app']) > 0) {
+			foreach ($GLOBALS['config']['configfiles']['app'] as $_cfgfile) {
+				ConfigHandler::read_config (array('file' => $_cfgfile));
+			}
+		}
+		// Get the dynamic configuration from the database for the calling application
+		ConfigHandler::read_config (array('aid' => APPL_ID));
+
+		$_logger = OWL::factory('loghandler', 'so');
+		$_logger->set_applic_logfile();
+	}
 }
 // The very first class being loaded must be OWLCache; it's used by getClass()
 OWLloader::getClass('cache', OWL_SO_INC);
@@ -210,10 +256,13 @@ OWLloader::getClass('filehandler', OWL_SO_INC);
 
 // BO Layer
 OWLloader::getClass('owl', OWL_BO_INC);
-OWLloader::getClass('session', OWL_BO_INC);
-OWLloader::getClass('rights', OWL_BO_INC);
-OWLloader::getClass('user', OWL_BO_INC);
 OWLloader::getClass('dispatcher', OWL_BO_INC);
+// Security system
+OWLloader::getClass('security', OWL_BO_INC);
+OWLloader::getClass('rights', OWL_BO_INC);
+// User and session
+OWLloader::getClass('session', OWL_BO_INC);
+OWLloader::getClass('user', OWL_BO_INC);
 
 // UI Layer
 OWLloader::getClass('baseelement', OWL_UI_INC);
@@ -222,31 +271,23 @@ OWLloader::getClass('contentarea', OWL_UI_INC);
 
 // Drivers
 OWLloader::getClass('dbdriver', OWL_DRIVERS . '/database');
+OWLloader::getClass('dbdefaults', OWL_DRIVERS . '/database');
 
 $GLOBALS['messages'] = array ();
 $GLOBALS['labels'] = array ();
 
-// Load data from the cache (TODO: Not yet implemented)
+// Load data from the cache
 OWLCache::loadCache();
 
 // General helper functions.
 require (OWL_LIBRARY . '/owl.helper.functions.php');
 
-// If an APP_CONFIG file has been defined, add it to the config files array
-// Values in this config file will overwrite the OWL defaults. 
-if (defined('APP_CONFIG_FILE')) {
-	$GLOBALS['config']['configfiles']['app'][] = APP_CONFIG_FILE;
-}
-
+// Get the static OWL configuration from file
 ConfigHandler::read_config (array('file' => $GLOBALS['config']['configfiles']['owl']));
-if (count ($GLOBALS['config']['configfiles']['app']) > 0) {
-	foreach ($GLOBALS['config']['configfiles']['app'] as $_cfgfile) {
-		ConfigHandler::read_config (array('file' => $_cfgfile));
-	}
-}
-// Get the dynamic configuration from the database, both for OWL and the calling application
+// Now define the OWL Application ID; it is required by the next read_config() call
+define('OWL_APPL_ID',OWLloader::getOWLId());
+// Get the dynamic OWL configuration from the database
 ConfigHandler::read_config (array());
-ConfigHandler::read_config (array('applic' => strtolower(APPL_NAME)));
 
 // Set up the logger
 $GLOBALS['logger'] = OWL::factory('LogHandler');
@@ -262,3 +303,11 @@ if ($GLOBALS['config']['values']['debug']) {
 // Set up the label translations
 Register::register_labels(true);
 
+if (!defined('OWL___INSTALLER')) {
+	//! APPL_CODE must be defined by the application. It must be an acronym that will be used by OWL to locate resources, like files in the library.
+	if (!defined('APPL_CODE')) {
+		trigger_error('APPL_CODE must be defined by the application', E_USER_ERROR);
+	} else {
+		OWLloader::loadApplication(APPL_CODE);
+	}
+}

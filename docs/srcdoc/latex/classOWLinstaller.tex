@@ -1,0 +1,88 @@
+\section{OWLinstaller Class Reference}
+\label{classOWLinstaller}\index{OWLinstaller@{OWLinstaller}}
+
+
+Application installer.  
+
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf installApplication} (\$code, \$name, \$version, \$description= '', \$link= '', \$author= '', \$license= '')
+\item 
+static {\bf enableApplication} (\$id)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Application installer. 
+
+Abstract class to install applications \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Apr 19, 2011 -\/-\/ O van Eijk -\/-\/ Initial version for OWL-\/PHP 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{OWLinstaller@{OWLinstaller}!enableApplication@{enableApplication}}
+\index{enableApplication@{enableApplication}!OWLinstaller@{OWLinstaller}}
+\subsubsection[{enableApplication}]{\setlength{\rightskip}{0pt plus 5cm}static OWLinstaller::enableApplication (
+\begin{DoxyParamCaption}
+\item[{\$}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLinstaller_a381aeca103d4f10cf0d4edc7e436f4e7}
+Enable an application 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$id} & Application ID \\
+\hline
+\end{DoxyParams}
+
+
+References ConfigHandler::get().
+
+\index{OWLinstaller@{OWLinstaller}!installApplication@{installApplication}}
+\index{installApplication@{installApplication}!OWLinstaller@{OWLinstaller}}
+\subsubsection[{installApplication}]{\setlength{\rightskip}{0pt plus 5cm}static OWLinstaller::installApplication (
+\begin{DoxyParamCaption}
+\item[{\$}]{code, }
+\item[{\$}]{name, }
+\item[{\$}]{version, }
+\item[{\$}]{description = {\ttfamily ''}, }
+\item[{\$}]{link = {\ttfamily ''}, }
+\item[{\$}]{author = {\ttfamily ''}, }
+\item[{\$}]{license = {\ttfamily ''}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLinstaller_a4ed45e29611ce17a8edf24e51979a5d7}
+\doxyref{Register}{p.}{classRegister} an application in the database 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$code} & Application code \\
+\hline
+\mbox{\tt in}  & {\em \$name} & Name of the application \\
+\hline
+\mbox{\tt in}  & {\em \$version} & Version number of the application \\
+\hline
+\mbox{\tt in}  & {\em \$description} & Optional description \\
+\hline
+\mbox{\tt in}  & {\em \$link} & Optional link to the applications homepage \\
+\hline
+\mbox{\tt in}  & {\em \$author} & Optional name of the copyright holder \\
+\hline
+\mbox{\tt in}  & {\em \$license} & Optional license \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The application ID 
+\end{DoxyReturn}
+\begin{Desc}
+\item[{\bf Todo}]Error checking \end{Desc}
+
+
+References ConfigHandler::get().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/{\bf OWLinstaller.php}\end{DoxyCompactItemize}

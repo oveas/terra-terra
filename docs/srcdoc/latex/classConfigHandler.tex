@@ -8,34 +8,36 @@ Configuration handler.
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classConfigHandler_aee636634bffead4a620e4e01dd3a9649}{read\_\-config} (array \$\_\-source)
+static {\bf read\_\-config} (array \$\_\-source)
 \item 
-static \hyperlink{classConfigHandler_aa8f6a7516588561626efccb8be5875ce}{get} (\$item, \$default=null)
+static {\bf get} (\$item, \$default=null, \$force=false)
 \item 
-static \hyperlink{classConfigHandler_a0f6d68b5d2f4da014209d449fc0f5996}{set} (\$\_\-item, \$\_\-value)
+static {\bf set} (\$\_\-item, \$\_\-value)
 \end{DoxyCompactItemize}
 \subsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classConfigHandler_a1a9cec0c104e79c5b70eaee3c1f8eaea}{config\_\-file} (\$\_\-file)
+static {\bf config\_\-file} (\$\_\-file)
 \item 
-static \hyperlink{classConfigHandler_a07cc4e8a46e645f52c0bfb50baca1184}{config\_\-table} (\$\_\-table, \$\_\-applic, \$\_\-group, \$\_\-user, \$\_\-force)
+static {\bf config\_\-table} (\$\_\-table, \$\_\-applic, \$\_\-group, \$\_\-user, \$\_\-force)
 \item 
-static \hyperlink{classConfigHandler_a9851c66d75db6a65c64aba5192173c14}{convert} (\$val)
+static {\bf convert} (\$val)
 \item 
-static \hyperlink{classConfigHandler_a68fb5e0d30a583d249ae6b407450123d}{parse\_\-item} (\$\_\-item, \$\_\-value, \$\_\-protect, \$\_\-hide)
+static {\bf parse\_\-item} (\$\_\-item, \$\_\-value, \$\_\-protect, \$\_\-hide)
 \item 
-static \hyperlink{classConfigHandler_a7a31419ae991ab50967444568277aa4c}{\_\-set} (\$\_\-item, \$\_\-value, \$\_\-hide)
+static {\bf \_\-set} (\$\_\-item, \$\_\-value, \$\_\-hide)
 \end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classConfigHandler_a271a119ca51e0d3da5b8bc2238fc569a}{\$dataset} = null
+static {\bf \$dataset} = null
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Configuration handler. This abstract class reads configution from file ort database, and fills and reads the global datastructure with config items \begin{DoxyAuthor}{Author}
+Configuration handler. 
+
+This abstract class reads configution from file ort database, and fills and reads the global datastructure with config items \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
@@ -48,14 +50,20 @@ Aug 20, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 \index{\_\-set@{\_\-set}!ConfigHandler@{ConfigHandler}}
 \subsubsection[{\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::\_\-set (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-item, }
-\item[{\$}]{ \_\-value, }
-\item[{\$}]{ \_\-hide}
+\item[{\$}]{\_\-item, }
+\item[{\$}]{\_\-value, }
+\item[{\$}]{\_\-hide}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classConfigHandler_a7a31419ae991ab50967444568277aa4c}
+)\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classConfigHandler_a7a31419ae991ab50967444568277aa4c}
 Set or update a configuration item 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-item}]Item name or path (seperated with '$|$') \item[\mbox{\tt[in]} {\em \$\_\-value}]The calue to be set \item[\mbox{\tt[in]} {\em \$\_\-hide}]Boolean which it true when this is a hidden item \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-item} & Item name or path (seperated with '$|$') \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-value} & The calue to be set \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-hide} & Boolean which it true when this is a hidden item \\
+\hline
+\end{DoxyParams}
 
 
 References \$GLOBALS, and owlCrypt().
@@ -68,12 +76,14 @@ Referenced by parse\_\-item(), and set().
 \index{config\_\-file@{config\_\-file}!ConfigHandler@{ConfigHandler}}
 \subsubsection[{config\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::config\_\-file (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-file}
+\item[{\$}]{\_\-file}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classConfigHandler_a1a9cec0c104e79c5b70eaee3c1f8eaea}
+)\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classConfigHandler_a1a9cec0c104e79c5b70eaee3c1f8eaea}
 Parse a configuration file 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-file}]Filename \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-file} & Filename \\
+\hline
+\end{DoxyParams}
 
 
 References \$GLOBALS, and parse\_\-item().
@@ -86,16 +96,26 @@ Referenced by read\_\-config().
 \index{config\_\-table@{config\_\-table}!ConfigHandler@{ConfigHandler}}
 \subsubsection[{config\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::config\_\-table (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-table, }
-\item[{\$}]{ \_\-applic, }
-\item[{\$}]{ \_\-group, }
-\item[{\$}]{ \_\-user, }
-\item[{\$}]{ \_\-force}
+\item[{\$}]{\_\-table, }
+\item[{\$}]{\_\-applic, }
+\item[{\$}]{\_\-group, }
+\item[{\$}]{\_\-user, }
+\item[{\$}]{\_\-force}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classConfigHandler_a07cc4e8a46e645f52c0bfb50baca1184}
+)\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classConfigHandler_a07cc4e8a46e645f52c0bfb50baca1184}
 Parse a configuration table 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-table}]Config tablename without prefix \item[\mbox{\tt[in]} {\em \$\_\-applic}]Application name for which the config should be read \item[\mbox{\tt[in]} {\em \$\_\-group}]Group ID for which the config should be read \item[\mbox{\tt[in]} {\em \$\_\-user}]\hyperlink{classUser}{User} ID for which the config should be read \item[\mbox{\tt[in]} {\em \$\_\-force}]Boolean that can force overwrite of protected values \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-table} & Config tablename without prefix \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-applic} & Application name for which the config should be read \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-group} & \doxyref{Group}{p.}{classGroup} ID for which the config should be read \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-user} & \doxyref{User}{p.}{classUser} ID for which the config should be read \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-force} & Boolean that can force overwrite of protected values \\
+\hline
+\end{DoxyParams}
 
 
 References \$\_\-table, \$\_\-user, and parse\_\-item().
@@ -108,14 +128,16 @@ Referenced by read\_\-config().
 \index{convert@{convert}!ConfigHandler@{ConfigHandler}}
 \subsubsection[{convert}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::convert (
 \begin{DoxyParamCaption}
-\item[{\$}]{ val}
+\item[{\$}]{val}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classConfigHandler_a9851c66d75db6a65c64aba5192173c14}
+)\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classConfigHandler_a9851c66d75db6a65c64aba5192173c14}
 Convert values in character string format to a known value
 
 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$val}]The value as read from the config file \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$val} & The value as read from the config file \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Value in the desired format (or as is if nothing set) 
 \end{DoxyReturn}
@@ -131,15 +153,22 @@ Referenced by parse\_\-item().
 \index{get@{get}!ConfigHandler@{ConfigHandler}}
 \subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::get (
 \begin{DoxyParamCaption}
-\item[{\$}]{ item, }
-\item[{\$}]{ default = {\ttfamily null}}
+\item[{\$}]{item, }
+\item[{\$}]{default = {\ttfamily null}, }
+\item[{\$}]{force = {\ttfamily false}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classConfigHandler_aa8f6a7516588561626efccb8be5875ce}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classConfigHandler_a97bd7376cd88d47cb6e45bd8a5db567f}
 Return a configuration value. Note! In order to use hidden values properly, this is the ONLY way configuration values should be retrieved!
 
 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$item}]The configuration item in the same format as it appears in the configuration file (e.g. 'group$|$subject$|$item') \item[\mbox{\tt[in]} {\em \$default}]The default value to return if the config item was not set. This defaults to 'null'; if it is anything other than null, the CONFIG\_\-NOVALUE status will not be set \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$item} & The configuration item in the same format as it appears in the configuration file (e.g. 'group$|$subject$|$item') \\
+\hline
+\mbox{\tt in}  & {\em \$default} & The default value to return if the config item was not set. This defaults to 'null'; if it is anything other than null, the CONFIG\_\-NOVALUE status will not be set \\
+\hline
+\mbox{\tt in}  & {\em \$force} & Boolean to force a reparse of the config item ignoring existing cache values \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Corresponding value of null when nothing was found 
 \end{DoxyReturn}
@@ -149,21 +178,29 @@ References \$GLOBALS, owlCrypt(), and OWL::stat().
 
 
 
-Referenced by SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), OWLException::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), OWLException::check\_\-hide(), LogHandler::compose\_\-message(), DbHandler::connect(), UserHandler::construct(), User::construct(), FormHandler::get(), DbHandler::get\_\-instance(), UserHandler::hash\_\-password(), UserHandler::isLoggedIn(), LogHandler::log(), OWLExceptionHandler::log\_\-exception(), LogHandler::log\_\-session(), UserHandler::login(), User::logout(), owlCrypt(), User::register(), Register::register\_\-labels(), Register::register\_\-messages(), FormHandler::set(), LogHandler::set\_\-filename(), \_\-OWL::set\_\-status(), \_\-OWL::signal(), OWLException::traceback(), and ContentArea::trn().
+Referenced by SessionHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), OWLException::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), OWLException::check\_\-hide(), LogHandler::compose\_\-message(), DbHandler::connect(), UserHandler::construct(), User::construct(), OWLinstaller::enableApplication(), FormHandler::get(), DbHandler::get\_\-instance(), OWLloader::getOWLId(), UserHandler::hash\_\-password(), OWLinstaller::installApplication(), UserHandler::isLoggedIn(), LogHandler::log(), OWLExceptionHandler::log\_\-exception(), LogHandler::log\_\-session(), UserHandler::login(), User::logout(), owlCrypt(), User::register(), Register::register\_\-labels(), Register::register\_\-messages(), Rights::registerRights(), FormHandler::set(), LogHandler::set\_\-applic\_\-logfile(), LogHandler::set\_\-filename(), \_\-OWL::set\_\-status(), \_\-OWL::signal(), OWLException::traceback(), and ContentArea::trn().
 
 \index{ConfigHandler@{ConfigHandler}!parse\_\-item@{parse\_\-item}}
 \index{parse\_\-item@{parse\_\-item}!ConfigHandler@{ConfigHandler}}
 \subsubsection[{parse\_\-item}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::parse\_\-item (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-item, }
-\item[{\$}]{ \_\-value, }
-\item[{\$}]{ \_\-protect, }
-\item[{\$}]{ \_\-hide}
+\item[{\$}]{\_\-item, }
+\item[{\$}]{\_\-value, }
+\item[{\$}]{\_\-protect, }
+\item[{\$}]{\_\-hide}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classConfigHandler_a68fb5e0d30a583d249ae6b407450123d}
+)\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classConfigHandler_a68fb5e0d30a583d249ae6b407450123d}
 Parse a configuration item as read from the file or database, and store is 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-item}]Name of the config item \item[\mbox{\tt[in]} {\em \$\_\-value}]Value of the config item \item[\mbox{\tt[in]} {\em \$\_\-protect}]Boolean indicating a protected value \item[\mbox{\tt[in]} {\em \$\_\-hide}]Boolean indicated a hidden value \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-item} & Name of the config item \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-value} & Value of the config item \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-protect} & Boolean indicating a protected value \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-hide} & Boolean indicated a hidden value \\
+\hline
+\end{DoxyParams}
 
 
 References \$GLOBALS, \_\-set(), convert(), and OWL::stat().
@@ -176,22 +213,24 @@ Referenced by config\_\-file(), and config\_\-table().
 \index{read\_\-config@{read\_\-config}!ConfigHandler@{ConfigHandler}}
 \subsubsection[{read\_\-config}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::read\_\-config (
 \begin{DoxyParamCaption}
-\item[{array \$}]{ \_\-source}
+\item[{array \$}]{\_\-source}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classConfigHandler_aee636634bffead4a620e4e01dd3a9649}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classConfigHandler_aee636634bffead4a620e4e01dd3a9649}
 Parse the given configuration source
 
 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-source}]Array describing the configuration source. It can have the following keys:
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-source} & Array describing the configuration source. It can have the following keys:
 \begin{DoxyItemize}
-\item \href{file:}{\tt file:} Full path to the configuration file
+\item {\tt file:} Full path to the configuration file
 \item table: Config tablename without prefix. Default 'config', MUST be given with the first call
 \item applic: Application name for which the config should be read, default 'owl'
 \item group: Application name for which the config should be read, default 0
 \item user: Application name for which the config should be read, default 0
 \item force: Boolean that can force overwrite of protected values, default false
-\end{DoxyItemize}\end{DoxyParams}
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
 The first call must always read from a file. On subsequent calls, if no filename is given, the configuration is taken from the (owl\_\-)config table 
 
 References config\_\-file(), config\_\-table(), and toStrictBoolean().
@@ -200,15 +239,19 @@ References config\_\-file(), config\_\-table(), and toStrictBoolean().
 \index{set@{set}!ConfigHandler@{ConfigHandler}}
 \subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}static ConfigHandler::set (
 \begin{DoxyParamCaption}
-\item[{\$}]{ \_\-item, }
-\item[{\$}]{ \_\-value}
+\item[{\$}]{\_\-item, }
+\item[{\$}]{\_\-value}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}\label{classConfigHandler_a0f6d68b5d2f4da014209d449fc0f5996}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classConfigHandler_a0f6d68b5d2f4da014209d449fc0f5996}
 Set a configuration item. Existing values will be overwritten when not protected.
 
 
-\begin{DoxyParams}{Parameters}
-\item[\mbox{\tt[in]} {\em \$\_\-item}]The configuration item in the same format as it appears in the configuration file (e.g. 'group$|$subject$|$item') \item[\mbox{\tt[in]} {\em \$\_\-value}]The new value of the item \end{DoxyParams}
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-item} & The configuration item in the same format as it appears in the configuration file (e.g. 'group$|$subject$|$item') \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-value} & The new value of the item \\
+\hline
+\end{DoxyParams}
 
 
 References \$GLOBALS, \_\-set(), and OWL::stat().
@@ -218,9 +261,9 @@ References \$GLOBALS, \_\-set(), and OWL::stat().
 \subsection{Member Data Documentation}
 \index{ConfigHandler@{ConfigHandler}!\$dataset@{\$dataset}}
 \index{\$dataset@{\$dataset}!ConfigHandler@{ConfigHandler}}
-\subsubsection[{\$dataset}]{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::\$dataset = null\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}\label{classConfigHandler_a271a119ca51e0d3da5b8bc2238fc569a}
+\subsubsection[{\$dataset}]{\setlength{\rightskip}{0pt plus 5cm}ConfigHandler::\$dataset = null\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classConfigHandler_a271a119ca51e0d3da5b8bc2238fc569a}
 Datahandler object for database access 
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/projects/owl-\/php/src/kernel/so/\hyperlink{class_8confighandler_8php}{class.confighandler.php}\end{DoxyCompactItemize}
+/home/oscar/projects/owl-\/php/src/kernel/so/{\bf class.confighandler.php}\end{DoxyCompactItemize}

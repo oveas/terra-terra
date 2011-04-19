@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
- * \version $Id: owl.messages.php,v 1.19 2011-04-12 14:57:34 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.20 2011-04-19 13:00:04 oscar Exp $
  */
 
 $_messages = array (
@@ -46,6 +46,8 @@ $_messages = array (
 	, DBHANDLE_CREATERR		=> 'Error ($p2$) creating database $p1$: <i>$p3$</i>'
 	, DBHANDLE_NODATA		=> 'Query had no results'
 	, DBHANDLE_IVTABLE		=> 'Attemt to read from a non- existing database table'
+	, DBHANDLE_IVFLDFORMAT	=> 'Invalid array received to format the field ($p1$)<br/>The array must contain the key <code>field</code>'
+	, DBHANDLE_IVFUNCTION	=> 'The requested function ($p1$) does not exist in active database driver'
 	, DATA_KEYSET			=> 'Variable $p1$ locked as a key'
 	, DATA_JOINSET			=> 'Table join ($p1$) has been defined on $p2$ and $p3$'
 	, DATA_PREPARED			=> 'Prepared database query for $p1$'

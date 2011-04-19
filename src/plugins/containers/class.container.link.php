@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the link plugin for containers
- * \version $Id: class.container.link.php,v 1.1 2011-01-21 10:18:27 oscar Exp $
+ * \version $Id: class.container.link.php,v 1.2 2011-04-19 13:00:03 oscar Exp $
  */
 
 /**
@@ -63,7 +63,7 @@ class ContainerLinkPlugin extends ContainerPlugin
 	public function setDispatcher($_dispatcher)
 	{
 		$_disp = OWL::factory('Dispatcher', 'bo');
-		$this->href = $_SERVER['PHP_SELF'] . '?owl_dispatch=' . $_disp->composeDispatcher($_dispatcher);
+		$this->href = $_SERVER['PHP_SELF'] . '?' . OWL_DISPATCHER_NAME . '=' . $_disp->composeDispatcher($_dispatcher);
 	}
 
 	/**

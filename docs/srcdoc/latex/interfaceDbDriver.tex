@@ -1,0 +1,484 @@
+\section{DbDriver Interface Reference}
+\label{interfaceDbDriver}\index{DbDriver@{DbDriver}}
+
+
+Database driver interface.  
+
+
+Inheritance diagram for DbDriver:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfaceDbDriver}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf dbCreate} (\&\$\_\-resource, \$\_\-name)
+\item 
+{\bf dbError} (\&\$\_\-resource, \&\$\_\-number, \&\$\_\-text)
+\item 
+{\bf dbConnect} (\&\$\_\-resource, \$\_\-server, \$\_\-name, \$\_\-user, \$\_\-password, \$\_\-multiple=false)
+\item 
+{\bf dbOpen} (\&\$\_\-resource, \$\_\-server, \$\_\-name, \$\_\-user, \$\_\-password)
+\item 
+{\bf dbTableList} (\&\$\_\-resource, \$\_\-pattern, \$\_\-views=false)
+\item 
+{\bf dbRead} (\&\$\_\-data, \&\$\_\-resource, \$\_\-query)
+\item 
+{\bf dbWrite} (\&\$\_\-resource, \$\_\-query)
+\item 
+{\bf dbInsertId} (\&\$\_\-resource, \$\_\-table, \$\_\-field)
+\item 
+{\bf dbRowCount} (\&\$\_\-data)
+\item 
+{\bf dbFetchNextRecord} (\&\$\_\-data)
+\item 
+{\bf dbClear} (\&\$\_\-data)
+\item 
+{\bf dbClose} (\&\$\_\-resource)
+\item 
+{\bf dbEscapeString} (\$\_\-string)
+\item 
+{\bf dbUnescapeString} (\$\_\-string)
+\item 
+{\bf functionCount} (\$\_\-field, array \$\_\-arguments=array())
+\item 
+{\bf functionIf} (\$\_\-field, array \$\_\-arguments=array())
+\item 
+{\bf functionIfnull} (\$\_\-field, array \$\_\-arguments=array())
+\item 
+{\bf functionConcat} (\$\_\-field, array \$\_\-arguments=array())
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Database driver interface. 
+
+Interface that defines the database drivers. Some of the methods are implemented in class \doxyref{DbDefaults}{p.}{classDbDefaults} \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Apr 12, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{DbDriver@{DbDriver}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!DbDriver@{DbDriver}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a0f4423a9599ea3197d97b110f6a4e3ee}
+Conctructor. 
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a0fc0de8fcae17604dea97d9dfc12cfba}.
+
+
+
+\subsection{Member Function Documentation}
+\index{DbDriver@{DbDriver}!dbClear@{dbClear}}
+\index{dbClear@{dbClear}!DbDriver@{DbDriver}}
+\subsubsection[{dbClear}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbClear (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-data}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a713cd43a5493bfcc0025523074568579}
+Clear a dataset 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-data} & as returned by \doxyref{DbDriver::dbRead()}{p.}{interfaceDbDriver_ac5343f76317816de2fb14e4a55eeb569} \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a88191ab56d8ff3389b4519b712d74c32}.
+
+\index{DbDriver@{DbDriver}!dbClose@{dbClose}}
+\index{dbClose@{dbClose}!DbDriver@{DbDriver}}
+\subsubsection[{dbClose}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbClose (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_afa98f626bf20cb750d114857ba0a33e1}
+Close a database connection 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_af37ce7304d8326337363a12631835d1b}.
+
+\index{DbDriver@{DbDriver}!dbConnect@{dbConnect}}
+\index{dbConnect@{dbConnect}!DbDriver@{DbDriver}}
+\subsubsection[{dbConnect}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbConnect (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-server, }
+\item[{\$}]{\_\-name, }
+\item[{\$}]{\_\-user, }
+\item[{\$}]{\_\-password, }
+\item[{\$}]{\_\-multiple = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a46e195260ab444a3223f578fbc6c22c9}
+Make a connection with a database server 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-server} & Server to connect to \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Database name to open \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-user} & Username to connect with \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-password} & Password to connect with \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-multiple} & True when multiple connections are allowed, default is false \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a856919afd4bd3680410fdc98bd2eb865}.
+
+\index{DbDriver@{DbDriver}!dbCreate@{dbCreate}}
+\index{dbCreate@{dbCreate}!DbDriver@{DbDriver}}
+\subsubsection[{dbCreate}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbCreate (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-name}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a3b044c35e3548effe3adf89bef5043e6}
+Create a new database 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Name of the new database \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a negative value on failures, any other integer on success 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a54c2526c30d48b65d34c51581ddbabd2}.
+
+\index{DbDriver@{DbDriver}!dbError@{dbError}}
+\index{dbError@{dbError}!DbDriver@{DbDriver}}
+\subsubsection[{dbError}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbError (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\&\$}]{\_\-number, }
+\item[{\&\$}]{\_\-text}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_ac8a3d40046bf719aada5a1807a915589}
+Get the last error number and error text from the database server 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt out}  & {\em \$\_\-number} & Error number \\
+\hline
+\mbox{\tt out}  & {\em \$\_\-text} & Error text \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_aca5c47b5530644a7877d32b1c04376f2}.
+
+\index{DbDriver@{DbDriver}!dbEscapeString@{dbEscapeString}}
+\index{dbEscapeString@{dbEscapeString}!DbDriver@{DbDriver}}
+\subsubsection[{dbEscapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbEscapeString (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-string}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_accaa33441d852734b2213937612e66f6}
+Escape a given string for use in queries This method is implemented by class \doxyref{DbDefaults}{p.}{classDbDefaults} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-string} & The input string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String in SQL safe format 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a7f4b581ad71a3ee8922d51c9ef28a18c}.
+
+\index{DbDriver@{DbDriver}!dbFetchNextRecord@{dbFetchNextRecord}}
+\index{dbFetchNextRecord@{dbFetchNextRecord}!DbDriver@{DbDriver}}
+\subsubsection[{dbFetchNextRecord}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbFetchNextRecord (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-data}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_ab0faeafbd094c078e30929c884603833}
+Get the next record from a dataset 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-data} & as returned by \doxyref{DbDriver::dbRead()}{p.}{interfaceDbDriver_ac5343f76317816de2fb14e4a55eeb569} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Record as an associative array (fieldname =$>$ fieldvalue) 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a2ebd12deacbdebd6ad876e279f34b4da}.
+
+\index{DbDriver@{DbDriver}!dbInsertId@{dbInsertId}}
+\index{dbInsertId@{dbInsertId}!DbDriver@{DbDriver}}
+\subsubsection[{dbInsertId}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbInsertId (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-table, }
+\item[{\$}]{\_\-field}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a437f10c4bd4a651dc4694178da4ef65a}
+Retrieve the last auto generated ID value 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-table} & \doxyref{Table}{p.}{classTable} to take the value from \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the Auto field \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The last generated ID, or 0 when not found 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_aaf69bfa761be38520c7d72ae11506dac}.
+
+\index{DbDriver@{DbDriver}!dbOpen@{dbOpen}}
+\index{dbOpen@{dbOpen}!DbDriver@{DbDriver}}
+\subsubsection[{dbOpen}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbOpen (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-server, }
+\item[{\$}]{\_\-name, }
+\item[{\$}]{\_\-user, }
+\item[{\$}]{\_\-password}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a4747fcf9c24b722fd56c65111f9652dd}
+Open a database 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-server} & Server to connect to \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Database name to open \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-user} & Username to connect with \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-password} & Password to connect with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_adba97d7d125e5772ea5ffa61dcb2b9e3}.
+
+\index{DbDriver@{DbDriver}!dbRead@{dbRead}}
+\index{dbRead@{dbRead}!DbDriver@{DbDriver}}
+\subsubsection[{dbRead}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbRead (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-data, }
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-query}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_ac5343f76317816de2fb14e4a55eeb569}
+Read from the database 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em \$\_\-data} & Dataset retrieved by the given query \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-query} & Query to execute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_af85679f7912ab93293b31ad7609a7734}.
+
+\index{DbDriver@{DbDriver}!dbRowCount@{dbRowCount}}
+\index{dbRowCount@{dbRowCount}!DbDriver@{DbDriver}}
+\subsubsection[{dbRowCount}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbRowCount (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-data}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a958aa47c21cc8db3ee7831e8b3fb1eb7}
+Get the number of rows in a dataset 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-data} & as returned by \doxyref{DbDriver::dbRead()}{p.}{interfaceDbDriver_ac5343f76317816de2fb14e4a55eeb569} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of rows in the set 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a69ec9e11642d3ef0dddcecf95acc6907}.
+
+\index{DbDriver@{DbDriver}!dbTableList@{dbTableList}}
+\index{dbTableList@{dbTableList}!DbDriver@{DbDriver}}
+\subsubsection[{dbTableList}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbTableList (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-pattern, }
+\item[{\$}]{\_\-views = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_abe6928bd50a1115dc1e9e6b283d9b065}
+Get a list with tablenames 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-pattern} & Search pattern \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-views} & True when views should be included. Default is false \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Indexed array with matching tables and their attributes 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a9da288ed9ff36dc572a68165de8b5839}.
+
+\index{DbDriver@{DbDriver}!dbUnescapeString@{dbUnescapeString}}
+\index{dbUnescapeString@{dbUnescapeString}!DbDriver@{DbDriver}}
+\subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbUnescapeString (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-string}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_ac99fd7eba511d8799fcc447006179c72}
+Unescape a string fthat is formatted for use in SQL This method is implemented by class \doxyref{DbDefaults}{p.}{classDbDefaults} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-string} & The input string in SQL safe format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String without SQL formatting 
+\end{DoxyReturn}
+\index{DbDriver@{DbDriver}!dbWrite@{dbWrite}}
+\index{dbWrite@{dbWrite}!DbDriver@{DbDriver}}
+\subsubsection[{dbWrite}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbWrite (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-query}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a461f60524cd8d1dd23dd3c70ca5fcab7}
+Write to the database 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-query} & Query to execute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of affected rows, or -\/1 on failures 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a5a7250d264b682ee2f4bdb14bb4aafd7}.
+
+\index{DbDriver@{DbDriver}!functionConcat@{functionConcat}}
+\index{functionConcat@{functionConcat}!DbDriver@{DbDriver}}
+\subsubsection[{functionConcat}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionConcat (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-field, }
+\item[{array \$}]{\_\-arguments = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a869608212113175cefe8782a1c6f25d8}
+Inplementation of the SQL CONCAT() function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-arguments} & Array with arguments. The array should have 1 element, which is the value that will be concatenaterd to \$\_\-field. Note for literal string values this field must be quoted, e.g. \char`\"{}'value'\char`\"{}! \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete SQL function code 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a5841248a1c642433fa9b0acc28551369}.
+
+\index{DbDriver@{DbDriver}!functionCount@{functionCount}}
+\index{functionCount@{functionCount}!DbDriver@{DbDriver}}
+\subsubsection[{functionCount}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionCount (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-field, }
+\item[{array \$}]{\_\-arguments = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a58f24b8ba3d3c104cefac2d9c21ca67c}
+Inplementation of the SQL COUNT() function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-arguments} & Array with arguments, which is required by syntax \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete SQL function code 
+\end{DoxyReturn}
+\index{DbDriver@{DbDriver}!functionIf@{functionIf}}
+\index{functionIf@{functionIf}!DbDriver@{DbDriver}}
+\subsubsection[{functionIf}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionIf (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-field, }
+\item[{array \$}]{\_\-arguments = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a8b33be0c4168bcb0078afa8494e5f374}
+Inplementation of the SQL IF() function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-arguments} & Array with arguments. This array should be in the format (check, value, then, else), e.g. array('$<$', 5 , 'Less then 5', '5 or more') \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete SQL function code 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_af4c29d70b7d95c95d2b3ed400a6a28f5}.
+
+\index{DbDriver@{DbDriver}!functionIfnull@{functionIfnull}}
+\index{functionIfnull@{functionIfnull}!DbDriver@{DbDriver}}
+\subsubsection[{functionIfnull}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionIfnull (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-field, }
+\item[{array \$}]{\_\-arguments = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a3196a4aa4f7f75c464593894f63ae2f0}
+Inplementation of the SQL IFNULL() function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-arguments} & Array with arguments. The array should have 1 element, which is the default value when \$\_\-field is empty. Note for literal string values this field must be quoted, e.g. \char`\"{}'value'\char`\"{}! \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete SQL function code 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a2a247b2f8551feaf40548a597694c960}.
+
+
+
+The documentation for this interface was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/drivers/database/{\bf class.dbdriver.php}\end{DoxyCompactItemize}
