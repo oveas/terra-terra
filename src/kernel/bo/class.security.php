@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Security base class
- * \version $Id: class.security.php,v 1.2 2011-04-26 11:45:45 oscar Exp $
+ * \version $Id: class.security.php,v 1.3 2011-04-26 11:51:24 oscar Exp $
  */
 
 /**
@@ -52,14 +52,14 @@ class Security
 		}
 	}
 
+	/**
+	 * Magic function for serialize; make sure only the required data is serialized
+	 */
 	public function __sleep()
 	{
 		return array('bitmap');
 	}
-	public function __wakeup()
-	{
-		
-	}
+
 	/**
 	 * Initialise the bitmap for the given application
 	 * \param[in] $value Bitmap value
