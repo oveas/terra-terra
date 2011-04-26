@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._owl.php,v 1.6 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class._owl.php,v 1.7 2011-04-26 11:45:45 oscar Exp $
  */
 
 /**
@@ -153,7 +153,7 @@ abstract class _OWL
 	 * \protected
 	 * \param[in] $object Pointer to an object to check against
 	 * \param[in] $level The maximum severity level
-	 * \return True if the severity level was correct ( below the max), otherwise false
+	 * \return True if the severity level was correct (below the max), otherwise false
 	 */
 	protected function check (&$object, $level = OWL_WARNING)
 	{

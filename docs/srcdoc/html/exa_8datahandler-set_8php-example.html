@@ -21,7 +21,7 @@ $(document).ready(initResizable);
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">OWL-PHP&#160;<span id="projectnumber">010</span></div>
+   <div id="projectname">OWL-PHP&#160;<span id="projectnumber">0.1.0</span></div>
   </td>
  </tr>
  </tbody>
@@ -56,29 +56,7 @@ $(document).ready(initResizable);
 <div class="title">exa.datahandler-set.php</div>  </div>
 </div>
 <div class="contents">
-<p>Define or override a variable in the data array </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$variable</td><td>The name of the variable that should be set. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Value to set the variable to. For read operations, this can be a value, in which case the fieldname be will looked for matching all given values. Values with unescaped percent signs will be searched using the SQL LIKE keyword If the matchtype is DBMATCH_NONE, the value is ignored. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$table</td><td>An optional tablename for this field. Defaults to $this-&gt;owl_tablename </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$fieldFunction</td><td>An optional array with SQL functions and statements that apply to the fieldname. This is an indexed array, where all keys must have an array as value. The following keys are supported:<ul>
-<li>function: An array where the first element is an SQL function, which must exist in the database driver as 'functionFunction' (e.g., for 'function'=&gt; array("ifnull", "default"), the method "functionIfnull()" must exist). The first argument passed to the method is always the fieldname, additional arguments will be taken from the array.</li>
-<li>groupby: Add the fieldname to a groupby list. The value for this key must be an empty array</li>
-<li>orderby: Add the fieldname to the orderby list. The given array can contain 1 element; "ASC" or "DESC". When empty, it defaults to the SQL default (ASC)</li>
-<li>having: Add the fieldname to to the having clause. The array must contain 2 elements, where the first element is the matchtype and the second argument is the value to match</li>
-<li>name: The <a class="el" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a> returns data as indexed arrays on read operations, where the index equals the fieldname. This might contain complete SQL code when functions are called; this can be overwritten by specifying a name for the field </li>
-</ul>
-</td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$valueFunction</td><td>An optional array with SQL functions and statements that apply to the value. This is an indexed array, where all keys must have an array as value. The following keys are supported:<ul>
-<li>function: An array where the first element is an SQL function, which must exist in the database driver as 'functionFunction' (e.g., for 'function'=&gt; array("ifnull", "default"), the method "functionIfnull()" must exist). The first argument passed to the method is always the fieldname, additional arguments will be taken from the array.</li>
-<li>match: The matchtype. When omitted, default is DBMATCH_EQ ('='). If the field should be in a SELECT list and not in the where clause, use the matchtype DBMATCH_NONE (if no fields are set with DBMATCH_NONE, read queries will select with SELECT *)</li>
-</ul>
-</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This example shows advanced use ot the <a class="el" href="classDataHandler.html#a00cad7b4cee6e867dc985451f40ae404">DataHandler::set()</a> method</p>
+<p>This example shows advanced use of the <a class="el" href="classDataHandler.html#a00cad7b4cee6e867dc985451f40ae404">DataHandler::set()</a> method</p>
 <div class="fragment"><pre class="fragment">&lt;?php
 <span class="comment">/*</span>
 <span class="comment"> * This function demonstrates the use of the DataHandler::set() method to use SQL functions.</span>
@@ -92,7 +70,7 @@ $(document).ready(initResizable);
 <span class="comment"> *      INDEX ( `name` )</span>
 <span class="comment"> *      )</span>
 <span class="comment"> *</span>
-<span class="comment"> * This implies the configuration should have the table prefix set to &#39;exa&#39;</span>
+<span class="comment"> * This implies the configuration should have the table prefix set to &#39;exa_&#39;</span>
 <span class="comment"> */</span>
 function useSqlFunctions($date)
 {
@@ -157,7 +135,7 @@ function useSqlFunctions($date)
 </div>
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="footer">Generated on Tue Apr 19 2011 15:01:19 for OWL-PHP by&#160;
+      <li class="footer">Generated on Tue Apr 26 2011 13:40:12 for OWL-PHP by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

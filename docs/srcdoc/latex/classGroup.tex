@@ -14,7 +14,9 @@ Inheritance diagram for Group:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bf \_\-\_\-construct} ()
+{\bf \_\-\_\-construct} (\$id)
+\item 
+{\bf get} (\$item, \$default=null)
 \item 
 {\bf get\_\-status} ()
 \item 
@@ -28,6 +30,8 @@ Inheritance diagram for Group:\begin{figure}[H]
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+{\bf get\_\-group\_\-item} (\$item, \$default=null)
 \item 
 {\bf init} ()
 \item 
@@ -74,12 +78,21 @@ Apr 14, 2011 -\/-\/ O van Eijk -\/-\/ initial version
 \index{\_\-\_\-construct@{\_\-\_\-construct}!Group@{Group}}
 \subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}Group::\_\-\_\-construct (
 \begin{DoxyParamCaption}
-{}
+\item[{\$}]{id}
 \end{DoxyParamCaption}
-)}\label{classGroup_a816d1844875d6b781f2081a2aed1d2ee}
+)}\label{classGroup_a4658f7a59e927da6c639071ef75a5931}
 Class constructor 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$id} & \doxyref{Group}{p.}{classGroup} ID \\
+\hline
+\end{DoxyParams}
 
-Reimplemented from {\bf GroupHandler} \doxyref{}{p.}{classGroupHandler_a1fc51662b5b2b14594da336cdf919c6f}.
+
+Reimplemented from {\bf GroupHandler} \doxyref{}{p.}{classGroupHandler_ac959dc8f3f9000590c1cfa97ed741164}.
+
+
+
+References GroupHandler::\$id.
 
 
 
@@ -102,7 +115,7 @@ This is a helper function for lazy developers. Some checks have to be made quite
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the severity level was correct ( below the max), otherwise false 
+True if the severity level was correct (below the max), otherwise false 
 \end{DoxyReturn}
 
 
@@ -112,6 +125,24 @@ References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::tr
 
 Referenced by SessionHandler::write().
 
+\index{Group@{Group}!get@{get}}
+\index{get@{get}!Group@{Group}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}Group::get (
+\begin{DoxyParamCaption}
+\item[{\$}]{item, }
+\item[{\$}]{default = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}\label{classGroup_ac8b4123c5a94e4f61936b740e0befd78}
+Return a groupdata item, or the default value if it does not exist. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$item} & The item of which the value should be returned \\
+\hline
+\mbox{\tt in}  & {\em \$default} & Default value it the item does not exist (default is null) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value 
+\end{DoxyReturn}
 \index{Group@{Group}!get\_\-callback@{get\_\-callback}}
 \index{get\_\-callback@{get\_\-callback}!Group@{Group}}
 \subsubsection[{get\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-callback (
@@ -130,6 +161,24 @@ Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_af4b71fa3c4d25b
 
 References OWL::factory().
 
+\index{Group@{Group}!get\_\-group\_\-item@{get\_\-group\_\-item}}
+\index{get\_\-group\_\-item@{get\_\-group\_\-item}!Group@{Group}}
+\subsubsection[{get\_\-group\_\-item}]{\setlength{\rightskip}{0pt plus 5cm}GroupHandler::get\_\-group\_\-item (
+\begin{DoxyParamCaption}
+\item[{\$}]{item, }
+\item[{\$}]{default = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classGroupHandler_a7951d6ccb1ecc408eba1a54ba483e884}
+Return a groupdata item, or the default value if it does not exist. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$item} & The item of which the value should be returned \\
+\hline
+\mbox{\tt in}  & {\em \$default} & Default value it the item does not exist (default is null) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value 
+\end{DoxyReturn}
 \index{Group@{Group}!get\_\-severity@{get\_\-severity}}
 \index{get\_\-severity@{get\_\-severity}!Group@{Group}}
 \subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
@@ -184,7 +233,7 @@ References OWL::factory(), and \_\-OWL::set\_\-status().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and UserHandler::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{Group@{Group}!reset@{reset}}
 \index{reset@{reset}!Group@{Group}}
@@ -218,7 +267,7 @@ References \_\-OWL::set\_\-status().
 
 
 
-Referenced by UserHandler::logout().
+Referenced by User::logout().
 
 \index{Group@{Group}!save\_\-status@{save\_\-status}}
 \index{save\_\-status@{save\_\-status}!Group@{Group}}
@@ -229,7 +278,7 @@ Referenced by UserHandler::logout().
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
 Create a copy of the status object 
 
-Referenced by UserHandler::logout().
+Referenced by User::logout().
 
 \index{Group@{Group}!set\_\-callback@{set\_\-callback}}
 \index{set\_\-callback@{set\_\-callback}!Group@{Group}}
@@ -274,7 +323,7 @@ References OWL::factory().
 
 
 
-Referenced by UserHandler::register().
+Referenced by User::register().
 
 \index{Group@{Group}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!Group@{Group}}
@@ -310,7 +359,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), UserHandler::confirm(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-field(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-field(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), User::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{Group@{Group}!signal@{signal}}
 \index{signal@{signal}!Group@{Group}}
@@ -360,7 +409,7 @@ Boolean true when successfull
 \end{DoxyReturn}
 
 
-Referenced by UserHandler::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+Referenced by User::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
 
 \index{Group@{Group}!traceback@{traceback}}
 \index{traceback@{traceback}!Group@{Group}}
@@ -388,7 +437,7 @@ References \_\-OWL::signal().
 
 
 
-Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read().
+Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 
 
 

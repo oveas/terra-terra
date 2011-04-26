@@ -11,7 +11,7 @@
  *	INDEX ( `name` )
  *	)
  *
- * This implies the configuration should have the table prefix set to 'exa'
+ * This implies the configuration should have the table prefix set to 'exa_'
  */
 function useSqlFunctions($date)
 {

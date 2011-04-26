@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Session class
- * \version $Id: class.session.php,v 1.6 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class.session.php,v 1.7 2011-04-26 11:45:45 oscar Exp $
  */
 
 /**
@@ -14,6 +14,10 @@
  */
 class Session extends SessionHandler
 {
+	/**
+	 * Right object holding the currently active right for this session
+	 */
+	private $rights;
 
 	/**
 	 * When a new run is initialised, restore an older session or create a new one
@@ -30,12 +34,14 @@ class Session extends SessionHandler
 		if ($this->get_session_var('init', false) === false) {
 			$this->setup();
 		} else {
+			$this->set_session_var('new', false);
 			if (ConfigHandler::get('session|check_ip') === true) {
 				if ($this->get_session_var('ip') != $this->ip_address()) {
 					$this->set_status (SESSION_IPCHKFAIL);
 				}
 			}
 		}
+		$this->rights = $this->get_session_var('rights');
 		$this->set_session_var('step', 0, SESSIONVAR_INCR);
 	}
 	
@@ -57,12 +63,27 @@ class Session extends SessionHandler
 	{
 		$this->set_session_var('ip', $this->ip_address());
 		$this->set_session_var('step', 0, SESSIONVAR_INCR);
+		$this->set_session_var('new', true);
+		$this->set_session_var('uid', 0); // Defaults to the anonymous user
 		if (count($vars) > 0) {
 			foreach ($vars as $_k => $_v) {
 				$this->set_session_var($_k, $_v);
 			}
 		}
+		$this->set_session_var('rights', new Rights(APPL_ID));
 		$this->set_session_var('init', true);
+	}
+
+	/**
+	 * Set the default right bitmap for this session
+	 * \param[in] $bitmap The bitmap value which is either the default group value, or the complete
+	 * list of rights for this user (depending on the configuration)
+	 * \param[in] $app Application ID
+	 * \todo CUrrently, this only works for OWL bitmaps; at application level this is not yet implemented
+	 */
+	public function set_rights($bitmap, $app = OWL_APPL_ID)
+	{
+		$this->rights->initBitmap($bitmap,$app);
 	}
 
 	/**
@@ -136,7 +157,8 @@ class Session extends SessionHandler
 			return ($_SERVER['HTTP_CLIENT_IP']);
 		}
 		if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
-			return ($_SERVER['HTTP_X_FORWARDED_FOR']);
+			$_ips = preg_split ('/,\s*/', $_SERVER['HTTP_X_FORWARDED_FOR']);
+			return ($_ips[0]);
 		}
 		if ($_SERVER['REMOTE_ADDR']) {
 			return ($_SERVER['REMOTE_ADDR']);

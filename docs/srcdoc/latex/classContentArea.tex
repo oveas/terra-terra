@@ -71,6 +71,13 @@ Oscar van Eijk, Oveas Functionality Provider
 \begin{DoxyVersion}{Version}
 Aug 29, 2008 -\/-\/ O van Eijk -\/-\/ initial version 
 \end{DoxyVersion}
+\begin{Desc}
+\item[Examples: ]\par
+
+
+{\bf exa.form.php}.
+
+\end{Desc}
 
 
 \subsection{Member Function Documentation}
@@ -108,7 +115,7 @@ This is a helper function for lazy developers. Some checks have to be made quite
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the severity level was correct ( below the max), otherwise false 
+True if the severity level was correct (below the max), otherwise false 
 \end{DoxyReturn}
 
 
@@ -190,7 +197,7 @@ References OWL::factory(), and \_\-OWL::set\_\-status().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and UserHandler::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{ContentArea@{ContentArea}!loadArea@{loadArea}}
 \index{loadArea@{loadArea}!ContentArea@{ContentArea}}
@@ -202,6 +209,9 @@ Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(
 This function must be reimplemented by all derived classes. It creates an object of any container type(with as many nested objects as desired) which holds all content for this area. \begin{DoxyReturn}{Returns}
 The container object 
 \end{DoxyReturn}
+\begin{Desc}
+\item[Examples: ]\par
+{\bf exa.form.php}.\end{Desc}
 \index{ContentArea@{ContentArea}!reset@{reset}}
 \index{reset@{reset}!ContentArea@{ContentArea}}
 \subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset (
@@ -234,7 +244,7 @@ References \_\-OWL::set\_\-status().
 
 
 
-Referenced by UserHandler::logout().
+Referenced by User::logout().
 
 \index{ContentArea@{ContentArea}!save\_\-status@{save\_\-status}}
 \index{save\_\-status@{save\_\-status}!ContentArea@{ContentArea}}
@@ -245,7 +255,7 @@ Referenced by UserHandler::logout().
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
 Create a copy of the status object 
 
-Referenced by UserHandler::logout().
+Referenced by User::logout().
 
 \index{ContentArea@{ContentArea}!set\_\-callback@{set\_\-callback}}
 \index{set\_\-callback@{set\_\-callback}!ContentArea@{ContentArea}}
@@ -290,7 +300,7 @@ References OWL::factory().
 
 
 
-Referenced by UserHandler::register().
+Referenced by User::register().
 
 \index{ContentArea@{ContentArea}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!ContentArea@{ContentArea}}
@@ -326,7 +336,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), UserHandler::confirm(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-field(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-field(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), User::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{ContentArea@{ContentArea}!signal@{signal}}
 \index{signal@{signal}!ContentArea@{ContentArea}}
@@ -376,7 +386,7 @@ Boolean true when successfull
 \end{DoxyReturn}
 
 
-Referenced by UserHandler::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+Referenced by User::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
 
 \index{ContentArea@{ContentArea}!traceback@{traceback}}
 \index{traceback@{traceback}!ContentArea@{ContentArea}}
@@ -404,7 +414,7 @@ References \_\-OWL::signal().
 
 
 
-Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read().
+Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 
 \index{ContentArea@{ContentArea}!trn@{trn}}
 \index{trn@{trn}!ContentArea@{ContentArea}}
@@ -421,6 +431,9 @@ Translate a textstring using the labels array
 \begin{DoxyReturn}{Returns}
 The translation, or the input if none was found. 
 \end{DoxyReturn}
+\begin{Desc}
+\item[Examples: ]\par
+{\bf exa.form.php}.\end{Desc}
 
 
 References \$GLOBALS, and ConfigHandler::get().

@@ -1,6 +1,7 @@
 var NAVTREE =
 [
   [ "OWL-PHP", "index.html", [
+    [ "Main Page", "index.html", null ],
     [ "Related Pages", "pages.html", [
       [ "Todo List", "todo.html", null ]
     ] ],
@@ -44,7 +45,6 @@ var NAVTREE =
           [ "SchemeHandler", "classSchemeHandler.html", null ],
           [ "SessionHandler", "classSessionHandler.html", null ],
           [ "StatusHandler", "classStatusHandler.html", null ],
-          [ "UserHandler", "classUserHandler.html", null ],
           [ "OWLinstaller", "classOWLinstaller.html", null ],
           [ "OWLloader", "classOWLloader.html", null ]
         ] ],
@@ -134,8 +134,7 @@ var NAVTREE =
       [ "Table", "classTable.html", null ],
       [ "Tablecell", "classTablecell.html", null ],
       [ "Tablerow", "classTablerow.html", null ],
-      [ "User", "classUser.html", null ],
-      [ "UserHandler", "classUserHandler.html", null ]
+      [ "User", "classUser.html", null ]
     ] ],
     [ "Class Index", "classes.html", null ],
     [ "Class Hierarchy", "hierarchy.html", [
@@ -181,9 +180,7 @@ var NAVTREE =
         [ "SessionHandler", "classSessionHandler.html", [
           [ "Session", "classSession.html", null ]
         ] ],
-        [ "UserHandler", "classUserHandler.html", [
-          [ "User", "classUser.html", null ]
-        ] ]
+        [ "User", "classUser.html", null ]
       ] ],
       [ "ConfigHandler", "classConfigHandler.html", null ],
       [ "DbDefaults", "classDbDefaults.html", [
@@ -237,7 +234,6 @@ var NAVTREE =
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.schemehandler.php", "class_8schemehandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.sessionhandler.php", "class_8sessionhandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.statushandler.php", "class_8statushandler_8php.html", null ],
-      [ "/home/oscar/projects/owl-php/src/kernel/so/class.userhandler.php", "class_8userhandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/ui/class.baseelement.php", "class_8baseelement_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/ui/class.container.php", "kernel_2ui_2class_8container_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/ui/class.contentarea.php", "class_8contentarea_8php.html", null ],
@@ -267,7 +263,9 @@ var NAVTREE =
       [ "/home/oscar/projects/owl-php/src/plugins/formfields/class.formfield.textarea.php", "class_8formfield_8textarea_8php.html", null ]
     ] ],
     [ "Examples", "examples.html", [
-      [ "exa.datahandler-set.php", "exa_8datahandler-set_8php-example.html", null ]
+      [ "exa.datahandler-set.php", "exa_8datahandler-set_8php-example.html", null ],
+      [ "exa.form.php", "exa_8form_8php-example.html", null ],
+      [ "exa.schemehandler.php", "exa_8schemehandler_8php-example.html", null ]
     ] ],
     [ "File Members", "globals.html", null ]
   ] ]

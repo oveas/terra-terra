@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.22 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.23 2011-04-26 11:45:45 oscar Exp $
  */
 
 // Error handling used during development
@@ -226,6 +226,11 @@ abstract class OWLloader
 		// Get the dynamic configuration from the database for the calling application
 		ConfigHandler::read_config (array('aid' => APPL_ID));
 
+		// Now make sure the primary DB handle connects with the database as defined in the
+		// application config.
+		$_db = OWL::factory('dbhandler');
+		$_db->force_reread();
+
 		$_logger = OWL::factory('loghandler', 'so');
 		$_logger->set_applic_logfile();
 	}
@@ -251,7 +256,7 @@ OWLloader::getClass('sessionhandler', OWL_SO_INC);
 OWLloader::getClass('dbhandler', OWL_SO_INC);
 OWLloader::getClass('datahandler', OWL_SO_INC);
 OWLloader::getClass('formhandler', OWL_SO_INC);
-OWLloader::getClass('userhandler', OWL_SO_INC);
+OWLloader::getClass('grouphandler', OWL_SO_INC);
 OWLloader::getClass('filehandler', OWL_SO_INC);
 
 // BO Layer
@@ -261,6 +266,7 @@ OWLloader::getClass('dispatcher', OWL_BO_INC);
 OWLloader::getClass('security', OWL_BO_INC);
 OWLloader::getClass('rights', OWL_BO_INC);
 // User and session
+OWLloader::getClass('group', OWL_BO_INC);
 OWLloader::getClass('session', OWL_BO_INC);
 OWLloader::getClass('user', OWL_BO_INC);
 
@@ -311,3 +317,11 @@ if (!defined('OWL___INSTALLER')) {
 		OWLloader::loadApplication(APPL_CODE);
 	}
 }
+
+/**
+ * \mainpage
+ * Oveas Web Library for PHP is a development framework for webbased applications.
+ * 
+ * The aim is an environment that combines the best of several worlds; ease of use from Windows,
+ * flexibility from Linux, robustness from OpenVMS and of course internet's platform and location independency.
+ */

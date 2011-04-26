@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the HTML Form class
- * \version $Id: class.form.php,v 1.7 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: class.form.php,v 1.8 2011-04-26 11:45:45 oscar Exp $
  */
 
 OWLloader::getClass('formfield', OWL_PLUGINS . '/formfields');
@@ -223,6 +223,12 @@ class Form extends BaseElement
 		return $this->openForm() . $this->getContent() . $this->closeForm();
 	}
 }
+/**
+ * \example exa.form.php
+ * This example shows how to create a form and display it. The example code in the comments
+ * can be used in the mainpage, e.g. index.php.
+ * 
+ */
 
 /*
  * Register this class and all status codes

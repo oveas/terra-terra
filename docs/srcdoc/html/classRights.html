@@ -21,7 +21,7 @@ $(document).ready(initResizable);
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">OWL-PHP&#160;<span id="projectnumber">010</span></div>
+   <div id="projectname">OWL-PHP&#160;<span id="projectnumber">0.1.0</span></div>
   </td>
  </tr>
  </tbody>
@@ -85,8 +85,12 @@ Inheritance diagram for Rights:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRights.html#ac08fd24bc66ab5aec116ce20cc9e9807">__construct</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a71a483d9148fa350c78fc8b038ab6a94">mergeBitmaps</a> ($bitmap, $app= 'owl')</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRights.html#a85a0c92c43ac7ae3d01b972a184f18c4">__construct</a> ($app, $owl=true)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#aa45b726507989bfe49ac468b3ea1a7c2">__sleep</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a4274ea0ab7dc1aaa9de5bc7a497ae1e7">__wakeup</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a590951291ac82db7b6855b468e097886">initBitmap</a> ($value, $app)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a723668f35887ff342fe86de04a5a680e">getBitmap</a> ($app)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a320378151e60f1426d15aaa2b9885938">mergeBitmaps</a> ($bitmap, $app)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a3f7e654b890fa75bc4ea33e7865430e5">controlBitmap</a> ($bit, $app= 'owl', $controller=<a class="el" href="class_8security_8php.html#a21de8ac044d95cc6dc43980c9905439a">BIT_CHECK</a>)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -104,26 +108,78 @@ Private Attributes</h2></td></tr>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>Apr 14, 2011 -- O van Eijk -- initial version </dd></dl>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ac08fd24bc66ab5aec116ce20cc9e9807"></a><!-- doxytag: member="Rights::__construct" ref="ac08fd24bc66ab5aec116ce20cc9e9807" args="()" -->
+<a class="anchor" id="a85a0c92c43ac7ae3d01b972a184f18c4"></a><!-- doxytag: member="Rights::__construct" ref="a85a0c92c43ac7ae3d01b972a184f18c4" args="($app, $owl=true)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Rights::__construct </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>app</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>owl</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 <p>Class constructor </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$app</td><td>code for which the bitmap array must be setup </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$owl</td><td>By default, the owl bitmap will be setup as well. Set this to false to suppress this </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classSecurity.html#a52521de4bd0c0279bcf9eb57ca915c14">Security</a>.</p>
 
 <p>References <a class="el" href="classOWLCache.html#a5c9e800ea5a9e0b0829b31466e94b539">OWLCache::get()</a>, and <a class="el" href="classRights.html#ae7c51a4150f9a496569ed8d241e485f5">registerRights()</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="aa45b726507989bfe49ac468b3ea1a7c2"></a><!-- doxytag: member="Rights::__sleep" ref="aa45b726507989bfe49ac468b3ea1a7c2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Security::__sleep </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4274ea0ab7dc1aaa9de5bc7a497ae1e7"></a><!-- doxytag: member="Rights::__wakeup" ref="a4274ea0ab7dc1aaa9de5bc7a497ae1e7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Security::__wakeup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a3f7e654b890fa75bc4ea33e7865430e5"></a><!-- doxytag: member="Rights::controlBitmap" ref="a3f7e654b890fa75bc4ea33e7865430e5" args="($bit, $app= 'owl', $controller=BIT_CHECK)" -->
 <div class="memitem">
 <div class="memproto">
@@ -167,7 +223,66 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a71a483d9148fa350c78fc8b038ab6a94"></a><!-- doxytag: member="Rights::mergeBitmaps" ref="a71a483d9148fa350c78fc8b038ab6a94" args="($bitmap, $app= 'owl')" -->
+<a class="anchor" id="a723668f35887ff342fe86de04a5a680e"></a><!-- doxytag: member="Rights::getBitmap" ref="a723668f35887ff342fe86de04a5a680e" args="($app)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Security::getBitmap </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>app</em></td><td>)</td>
+          <td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get the bitmap value for the given application </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$app</td><td>Application ID </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a590951291ac82db7b6855b468e097886"></a><!-- doxytag: member="Rights::initBitmap" ref="a590951291ac82db7b6855b468e097886" args="($value, $app)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Security::initBitmap </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>app</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Initialise the bitmap for the given application </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Bitmap value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$app</td><td>Application ID </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a320378151e60f1426d15aaa2b9885938"></a><!-- doxytag: member="Rights::mergeBitmaps" ref="a320378151e60f1426d15aaa2b9885938" args="($bitmap, $app)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -181,7 +296,7 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>app</em> = <code>'owl'</code>&#160;</td>
+          <td class="paramname"><em>app</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -221,7 +336,7 @@ Private Attributes</h2></td></tr>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, and <a class="el" href="classOWLCache.html#aa4f5e152fc2b1f5f88d2128a68322cc8">OWLCache::set()</a>.</p>
 
-<p>Referenced by <a class="el" href="classRights.html#ac08fd24bc66ab5aec116ce20cc9e9807">__construct()</a>.</p>
+<p>Referenced by <a class="el" href="classRights.html#a85a0c92c43ac7ae3d01b972a184f18c4">__construct()</a>.</p>
 
 </div>
 </div>
@@ -238,7 +353,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Array with security bitmaps bitmaps for the current user </p>
 
-<p>Referenced by <a class="el" href="classSecurity.html#a71a483d9148fa350c78fc8b038ab6a94">Security::mergeBitmaps()</a>.</p>
+<p>Referenced by <a class="el" href="classSecurity.html#a320378151e60f1426d15aaa2b9885938">Security::mergeBitmaps()</a>.</p>
 
 </div>
 </div>
@@ -264,7 +379,7 @@ Private Attributes</h2></td></tr>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="classRights.html">Rights</a>      </li>
-      <li class="footer">Generated on Tue Apr 19 2011 15:01:35 for OWL-PHP by&#160;
+      <li class="footer">Generated on Tue Apr 26 2011 13:40:22 for OWL-PHP by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

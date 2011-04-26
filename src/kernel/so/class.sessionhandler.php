@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.11 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.12 2011-04-26 11:45:45 oscar Exp $
  */
 
 /**
@@ -78,7 +78,6 @@ class SessionHandler extends _OWL
 		if (($_sessName = ConfigHandler::get('session|name')) != null) {
 			session_name($_sessName);
 		}
-		
 		session_set_save_handler (
 				array (&$this, 'open'),
 				array (&$this, 'close'),
@@ -154,7 +153,6 @@ class SessionHandler extends _OWL
 		if (!$this->db->is_open()) {
 			$this->db->open();
 		}
-
 		$this->dataset->set('sid', $this->db->escape_string($id));
 
 		// First, check if this session already exists in the db

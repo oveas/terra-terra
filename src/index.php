@@ -2,12 +2,12 @@
 /**
  * \file
  * This is the entry point for OWL-PHP teststub
- * \version $Id: index.php,v 1.12 2011-04-06 14:42:16 oscar Exp $
+ * \version $Id: index.php,v 1.13 2011-04-26 11:45:46 oscar Exp $
  */
-
+define ('APPL_CODE', 'OWL');
 define ('OWL_ROOT', '/home/oscar/projects/owl-php/src');
 require (OWL_ROOT . '/OWLloader.php');
-
+/*
 DBG_dumpval ($GLOBALS['config']);
 DBG_dumpval ($GLOBALS['register']);
 DBG_dumpval ($_SESSION);
@@ -35,7 +35,7 @@ switch ($_form->get('act')) {
 	default :
 		break;
 }
-
+*/
 // Testcases :-)
 ?>
 <html>
@@ -43,41 +43,9 @@ switch ($_form->get('act')) {
 <title>OWL-PHP</title>
 </head>
 <body>
-Hello <?php echo ($_user->get_username()); ?> (<?php echo ($_user->user_data['email']); ?>)<br />
-<?php $_user->set_session_var('c', 1, SESSIONVAR_INCR); ?>
-You've been here <?php echo $_user->get_session_var('c', '?'); ?> times.<br />
-<a href="<?php echo ($_SERVER['PHP_SELF']); ?>">Continue</a><br />
-<a href="<?php echo ($_SERVER['PHP_SELF']); ?>?act=logout">Logout</a><br />
-
-<?php 
-$LoginForm->openForm();
-$LoginForm->addField('text', 'usr', 'Ik', array('size' => 20));
-$LoginForm->addField('password', 'pwd', '', array('size' => 15));
-?>
-<?php echo $LoginForm->openForm(); ?>
-<table border=0>
-	<tr>
-		<td>Username:</td>
-		<td><?php echo $LoginForm->showField('usr'); ?></td>
-	</tr>
-	<tr>
-		<td>Password:</td>
-		<td><?php echo $LoginForm->showField('pwd'); ?></td>
-	</tr>
-	<tr>
-		<td colspan="2"><input type="submit" value="login" name="act"></td>
-	</tr>
-</table>
-<?php echo $LoginForm->closeForm(); ?>
-
-<pre>
-<?php print_r($_SESSION);?>
-</pre>
-<hr>
 <pre>
 <?php 
-OWLloader::getClass('schemehandler');
-$_scheme = SchemeHandler::get_instance();
+$_scheme = OWL::factory('schemehandler');
 //$_data1 = array();
 //$_scheme->table_description('test2', $_data1);
 //$_data2 = array();
@@ -135,17 +103,8 @@ $_scheme->define_index($_index);
 $_scheme->scheme();
 $_scheme->reset();
 $_scheme->table_description('person', $_data);
-//print_r($_data);
+echo '<pre>'. print_r($_data, 1) . '</pre>';
 ?>
-$_t = '<?php print serialize($_data['columns'])?>'
-$_i = '<?php print serialize($_data['indexes'])?>'
-$_scheme->create_scheme('person');
-$_scheme->define_scheme($_t);
-$_scheme->define_index($_i);
-$_scheme->scheme();
-$_scheme->reset();
-<?php $_t=serialize($_data['columns']); print_r(unserialize($_t));
-$_scheme->table_description('test', $_data);print_r($_data);?>
 
 </pre>
 </body>

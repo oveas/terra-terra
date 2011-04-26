@@ -20,6 +20,8 @@ Inheritance diagram for Session:\begin{figure}[H]
 \item 
 {\bf setup} (array \$vars=array())
 \item 
+{\bf set\_\-rights} (\$bitmap, \$app={\bf OWL\_\-APPL\_\-ID})
+\item 
 {\bf set\_\-session\_\-var} (\$var, \$val=0, \$flg={\bf SESSIONVAR\_\-SET})
 \item 
 {\bf get\_\-session\_\-var} (\$var, \$default=null)
@@ -80,6 +82,11 @@ Inheritance diagram for Session:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 {\bf ip\_\-address} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$rights}
 \end{DoxyCompactItemize}
 
 
@@ -142,7 +149,7 @@ This is a helper function for lazy developers. Some checks have to be made quite
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the severity level was correct ( below the max), otherwise false 
+True if the severity level was correct (below the max), otherwise false 
 \end{DoxyReturn}
 
 
@@ -294,7 +301,7 @@ References OWL::factory(), and \_\-OWL::set\_\-status().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and UserHandler::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{Session@{Session}!ip\_\-address@{ip\_\-address}}
 \index{ip\_\-address@{ip\_\-address}!Session@{Session}}
@@ -375,7 +382,7 @@ References \_\-OWL::set\_\-status().
 
 
 
-Referenced by UserHandler::logout().
+Referenced by User::logout().
 
 \index{Session@{Session}!save\_\-status@{save\_\-status}}
 \index{save\_\-status@{save\_\-status}!Session@{Session}}
@@ -386,7 +393,7 @@ Referenced by UserHandler::logout().
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
 Create a copy of the status object 
 
-Referenced by UserHandler::logout().
+Referenced by User::logout().
 
 \index{Session@{Session}!set\_\-callback@{set\_\-callback}}
 \index{set\_\-callback@{set\_\-callback}!Session@{Session}}
@@ -431,7 +438,7 @@ References OWL::factory().
 
 
 
-Referenced by UserHandler::register().
+Referenced by User::register().
 
 \index{Session@{Session}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!Session@{Session}}
@@ -444,6 +451,23 @@ Compare the severity level of the current object with a given one and set my sta
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
+\index{Session@{Session}!set\_\-rights@{set\_\-rights}}
+\index{set\_\-rights@{set\_\-rights}!Session@{Session}}
+\subsubsection[{set\_\-rights}]{\setlength{\rightskip}{0pt plus 5cm}Session::set\_\-rights (
+\begin{DoxyParamCaption}
+\item[{\$}]{bitmap, }
+\item[{\$}]{app = {\ttfamily {\bf OWL\_\-APPL\_\-ID}}}
+\end{DoxyParamCaption}
+)}\label{classSession_a446494dcd7888067b647443854a7f0a8}
+Set the default right bitmap for this session 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$bitmap} & The bitmap value which is either the default group value, or the complete list of rights for this user (depending on the configuration) \\
+\hline
+\mbox{\tt in}  & {\em \$app} & Application ID \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[{\bf Todo}]CUrrently, this only works for \doxyref{OWL}{p.}{classOWL} bitmaps; at application level this is not yet implemented \end{Desc}
 \index{Session@{Session}!set\_\-session\_\-var@{set\_\-session\_\-var}}
 \index{set\_\-session\_\-var@{set\_\-session\_\-var}!Session@{Session}}
 \subsubsection[{set\_\-session\_\-var}]{\setlength{\rightskip}{0pt plus 5cm}Session::set\_\-session\_\-var (
@@ -491,7 +515,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), \_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), UserHandler::confirm(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-field(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), \_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-field(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), User::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{Session@{Session}!setup@{setup}}
 \index{setup@{setup}!Session@{Session}}
@@ -561,7 +585,7 @@ Boolean true when successfull
 \end{DoxyReturn}
 
 
-Referenced by UserHandler::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+Referenced by User::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
 
 \index{Session@{Session}!traceback@{traceback}}
 \index{traceback@{traceback}!Session@{Session}}
@@ -589,7 +613,7 @@ References \_\-OWL::signal().
 
 
 
-Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read().
+Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 
 \index{Session@{Session}!write@{write}}
 \index{write@{write}!Session@{Session}}
@@ -621,7 +645,10 @@ References \_\-OWL::check().
 \index{Session@{Session}!\$dataset@{\$dataset}}
 \index{\$dataset@{\$dataset}!Session@{Session}}
 \subsubsection[{\$dataset}]{\setlength{\rightskip}{0pt plus 5cm}SessionHandler::\$dataset = null\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classSessionHandler_a74c46fcfbadd4c4e6bacc73ddf350056}
-Link to a datahandler object. This dataset is used as an interface to all database IO. \index{Session@{Session}!\$severity@{\$severity}}
+Link to a datahandler object. This dataset is used as an interface to all database IO. \index{Session@{Session}!\$rights@{\$rights}}
+\index{\$rights@{\$rights}!Session@{Session}}
+\subsubsection[{\$rights}]{\setlength{\rightskip}{0pt plus 5cm}Session::\$rights\hspace{0.3cm}{\ttfamily  [private]}}\label{classSession_a83d6397ee36c98e8799a663e2b67c025}
+Right object holding the currently active right for this session \index{Session@{Session}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!Session@{Session}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
 Severity level of the current object status 

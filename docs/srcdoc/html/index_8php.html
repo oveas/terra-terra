@@ -21,7 +21,7 @@ $(document).ready(initResizable);
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">OWL-PHP&#160;<span id="projectnumber">010</span></div>
+   <div id="projectname">OWL-PHP&#160;<span id="projectnumber">0.1.0</span></div>
   </td>
  </tr>
  </tbody>
@@ -68,23 +68,32 @@ $(document).ready(initResizable);
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#ae7e02b97dadbff261168a7669d2f2ba4">APPL_CODE</a> </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a35612f9a6bd7277982731a74593272c4">OWL_ROOT</a> </td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">if(!OWLloader::getClass('form'))&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#ae89d28a5f6ccd73a8cb4a0253db78766">$LoginForm</a> = new <a class="el" href="classForm.html">Form</a>('applic#include-path#classfile#class#method')</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#ab14b242803551e0f269742a7103f149d">$_form</a> = OWL::factory('<a class="el" href="classFormHandler.html">FormHandler</a>')</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a5df5982b9dadc74df05081972cd67fdf">$_user</a> = new <a class="el" href="classUser.html">User</a>()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#aa284f7d5270c1aa684d885f7bb70d532">switch</a> ($_form-&gt;get('act'))</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a> = SchemeHandler::get_instance()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a> = OWL::factory('schemehandler')</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#ac0ee5b766d19cb282552a3449a1f8376">$_table</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a8fba9293fc0e3b428610c8208c00297d">$_index</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a7a22c26026cc0626b015085e752b45cb">$_t</a> = serialize($_data['columns'])</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This is the entry point for OWL-PHP teststub </p>
 <dl class="version"><dt><b>Version:</b></dt><dd></dd></dl>
 <dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="index_8php.html">index.php</a>,v 1.12 2011-04-06 14:42:16 oscar Exp </dd></dl>
 </div><hr/><h2>Enumeration Type Documentation</h2>
+<a class="anchor" id="ae7e02b97dadbff261168a7669d2f2ba4"></a><!-- doxytag: member="index.php::APPL_CODE" ref="ae7e02b97dadbff261168a7669d2f2ba4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="index_8php.html#ae7e02b97dadbff261168a7669d2f2ba4">APPL_CODE</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a35612f9a6bd7277982731a74593272c4"></a><!-- doxytag: member="index.php::OWL_ROOT" ref="a35612f9a6bd7277982731a74593272c4" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -99,21 +108,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Variable Documentation</h2>
-<a class="anchor" id="ab14b242803551e0f269742a7103f149d"></a><!-- doxytag: member="index.php::$_form" ref="ab14b242803551e0f269742a7103f149d" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">$_form = OWL::factory('<a class="el" href="classFormHandler.html">FormHandler</a>')</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Referenced by <a class="el" href="classDispatcher.html#a55f3a6e89f797e2986d32166cfa49486">Dispatcher::dispatch()</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a8fba9293fc0e3b428610c8208c00297d"></a><!-- doxytag: member="index.php::$_index" ref="a8fba9293fc0e3b428610c8208c00297d" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -138,7 +132,8 @@ Variables</h2></td></tr>
                         ,<span class="stringliteral">&#39;type&#39;</span> =&gt; <span class="stringliteral">&#39;FULLTEXT&#39;</span>
         )
 )
-</pre></div>
+</pre></div><dl><dt><b>Examples: </b></dt><dd><a class="el" href="exa_8schemehandler_8php-example.html#a3">exa.schemehandler.php</a>.</dd>
+</dl>
 <p>Referenced by <a class="el" href="classSchemeHandler.html#a92adefff835050da61337524b9ae907b">SchemeHandler::define_index()</a>, and <a class="el" href="classSchemeHandler.html#a23070e6253bcd9b0bc343bc582219638">SchemeHandler::get_table_indexes()</a>.</p>
 
 </div>
@@ -148,28 +143,14 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$_scheme = SchemeHandler::get_instance()</td>
+          <td class="memname">$_scheme = OWL::factory('schemehandler')</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="exa_8schemehandler_8php-example.html#a0">exa.schemehandler.php</a>.</dd>
+</dl>
 <p>Referenced by <a class="el" href="classSchemeHandler.html#a07f6b7c5ac78e88f32584b90da53776b">SchemeHandler::define_scheme()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7a22c26026cc0626b015085e752b45cb"></a><!-- doxytag: member="index.php::$_t" ref="a7a22c26026cc0626b015085e752b45cb" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">$_t = serialize($_data['columns'])</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Referenced by <a class="el" href="classDbHandler.html#a11636da2e77be029e036c7f68e0e58b4">DbHandler::extract_tablelist()</a>, and <a class="el" href="classDataHandler.html#af3e7a17194e97300d499e9178f4913cb">DataHandler::prepare()</a>.</p>
 
 </div>
 </div>
@@ -183,49 +164,9 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="exa_8schemehandler_8php-example.html#a2">exa.schemehandler.php</a>.</dd>
+</dl>
 <p>Referenced by <a class="el" href="classConfigHandler.html#a07cc4e8a46e645f52c0bfb50baca1184">ConfigHandler::config_table()</a>, <a class="el" href="classDbHandler.html#a11636da2e77be029e036c7f68e0e58b4">DbHandler::extract_tablelist()</a>, <a class="el" href="classDataHandler.html#af3e7a17194e97300d499e9178f4913cb">DataHandler::prepare()</a>, and <a class="el" href="classDbHandler.html#a0ea7d40a222cf6f1bf77b42e8eba03e4">DbHandler::tablelist()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5df5982b9dadc74df05081972cd67fdf"></a><!-- doxytag: member="index.php::$_user" ref="a5df5982b9dadc74df05081972cd67fdf" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">$_user = new <a class="el" href="classUser.html">User</a>()</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Referenced by <a class="el" href="classConfigHandler.html#a07cc4e8a46e645f52c0bfb50baca1184">ConfigHandler::config_table()</a>, and <a class="el" href="classMySQL.html#a856919afd4bd3680410fdc98bd2eb865">MySQL::dbConnect()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae89d28a5f6ccd73a8cb4a0253db78766"></a><!-- doxytag: member="index.php::$LoginForm" ref="ae89d28a5f6ccd73a8cb4a0253db78766" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">if (!OWLloader::getClass('form')) $LoginForm = new <a class="el" href="classForm.html">Form</a>('applic#include-path#classfile#class#method')</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aa284f7d5270c1aa684d885f7bb70d532"></a><!-- doxytag: member="index.php::switch" ref="aa284f7d5270c1aa684d885f7bb70d532" args="($_form&#45;&gt;get('act'))" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="index_8php.html#aa284f7d5270c1aa684d885f7bb70d532">switch</a>($_form-&gt;get('act'))</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
 
 </div>
 </div>
@@ -234,7 +175,7 @@ Variables</h2></td></tr>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="index_8php.html">index.php</a>      </li>
-      <li class="footer">Generated on Tue Apr 19 2011 15:01:19 for OWL-PHP by&#160;
+      <li class="footer">Generated on Tue Apr 26 2011 13:40:13 for OWL-PHP by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

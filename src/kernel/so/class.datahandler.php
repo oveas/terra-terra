@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.12 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.13 2011-04-26 11:45:45 oscar Exp $
  */
 
 /**
@@ -139,13 +139,9 @@ class DataHandler extends _OWL
 	/**
 	 * Define or override a variable in the data array
 	 * \param[in] $variable The name of the variable that should be set.
-	 * \param[in] $value Value to set the variable to. For read operations, this
-	 * can be a value, in which case the fieldname be will looked for matching all
-	 * given values. Values with unescaped percent signs will be searched using the SQL LIKE keyword
-	 * If the matchtype is DBMATCH_NONE, the value is ignored.
+	 * \param[in] $value Value to set the variable to. For read operations, this can be a value, in which case the fieldname be will looked for matching all given values. Values with unescaped percent signs will be searched using the SQL LIKE keyword. If the matchtype is DBMATCH_NONE, the value is ignored.
 	 * \param[in] $table An optional tablename for this field. Defaults to $this->owl_tablename
-	 * \param[in] $fieldFunction An optional array with SQL functions and statements that apply to
-	 * the fieldname. This is an indexed array, where all keys must have an array as value.
+	 * \param[in] $fieldFunction An optional array with SQL functions and statements that apply to the fieldname. This is an indexed array, where all keys must have an array as value.
 	 * The following keys are supported:
 	 * 	- function: An array where the first element is an SQL function, which must exist in the database driver as 'functionFunction'
 	 * (e.g., for 'function'=> array("ifnull", "default"), the method "functionIfnull()" must exist).
@@ -165,10 +161,7 @@ class DataHandler extends _OWL
 	 * The first argument passed to the method is always the fieldname, additional arguments will be taken from the array.
 	 * 	- match: The matchtype. When omitted, default is DBMATCH_EQ ('='). If the field should be in a SELECT list and not in the where clause, use the matchtype DBMATCH_NONE
 	 * (if no fields are set with DBMATCH_NONE, read queries will select with SELECT *)
-	 */
-	/**
-	* \example exa.datahandler-set.php
-	 * This example shows advanced use ot the DataHandler::set() method
+	 * \see exa.datahandler-set.php
 	 */
 	public function set ($variable, $value, $table = null, array $fieldFunction = null, array $valueFunction = null)
 	{
@@ -204,7 +197,7 @@ class DataHandler extends _OWL
 		list ($_f, $_v) = $this->owl_database->prepare_field($fieldData);
 		$this->owl_data[$_f] = $_v;
 	}
-
+	
 	/**
 	 * Lock variables for update by adding them to an array. Fields in this array will not
 	 * be overwritten on updates, but used in WHERE clauses.
@@ -435,6 +428,9 @@ class DataHandler extends _OWL
 				$this->owl_database->write ($data, $line, $file);
 				break;
 		}
+//		if ($this->check($this->owl_database) === true) {
+//			$this->reset(DATA_RESET_DATA);
+//		}
 		return ($this->set_high_severity ($this->owl_database));
 	}
 
@@ -477,6 +473,10 @@ class DataHandler extends _OWL
 		return ($this->owl_database->last_inserted_id());
 	}
 }
+/**
+ * \example exa.datahandler-set.php
+ * This example shows advanced use of the DataHandler::set() method
+ */
 
 /*
  * Register this class and all status codes

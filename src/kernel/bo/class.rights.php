@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Rights class
- * \version $Id: class.rights.php,v 1.2 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: class.rights.php,v 1.3 2011-04-26 11:45:45 oscar Exp $
  */
 
 /**
@@ -21,10 +21,12 @@ class Rights extends Security
 
 	/**
 	 * Class constructor
+	 * \param[in] $app code for which the bitmap array must be setup
+	 * \param[in] $owl By default, the owl bitmap will be setup as well. Set this to false to suppress this
 	 */
-	public function __construct ()
+	public function __construct ($app, $owl = true)
 	{
-		$this->bitmap = array();
+		parent::__construct($app, $owl);
 		if (($this->rightslist = OWLCache::get('rights', 'list')) === null) {
 			$this->registerRights();
 		}
@@ -49,7 +51,6 @@ class Rights extends Security
 		}
 		OWLCache::set('rights', 'list', $this->rightslist);
 	}
-
 }
 Register::register_class('Rights');
 

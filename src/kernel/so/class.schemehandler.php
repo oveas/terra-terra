@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Scheme Handler class
- * \version $Id: class.schemehandler.php,v 1.3 2011-04-12 14:57:34 oscar Exp $
+ * \version $Id: class.schemehandler.php,v 1.4 2011-04-26 11:45:45 oscar Exp $
  */
 
 /**
@@ -11,7 +11,7 @@
  * \brief Scheme handler 
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Oct 7, 2010 -- O van Eijk -- initial version for OWL
- * \todo FIXME This handler currently doesn't use the DbDriver driver class
+ * \todo This handler currently doesn't use the DbDriver driver class
  */
 class SchemeHandler extends _OWL
 {
@@ -166,7 +166,7 @@ class SchemeHandler extends _OWL
 	}
 
 	/**
-	 * If the table does not exist, of differs from the defined scheme, create of modify the table
+	 * If the table does not exist, or differs from the defined scheme, create of modify the table
 	 * \param[in] $_drops True if existing fields should be dropped; default false.
 	 * If existing fields should be converted to new fields, call with DbScheme::scheme(false) first,
 	 * then do the conversions, next call DbScheme::scheme(true).
@@ -273,9 +273,7 @@ class SchemeHandler extends _OWL
 
 	/**
 	 * Compare the scheme with an existing database table
-	 * 
-	 * \private
-	 * \return mixed True if there are no differences, False if the table does not exist or an
+	 * \return mixed True if there are no differences, False if the table does not exist, or an
 	 * array with differences
 	 */
 	private function compare ()
@@ -343,7 +341,7 @@ class SchemeHandler extends _OWL
 		}
 		$_qry .= ')';
 		$this->db->set_query($_qry);
-		return ($this->db->write(false, __LINE__, __FILE__));
+		return ($this->db->write($_dummy, __LINE__, __FILE__));
 	}
 
 	/**
@@ -504,6 +502,9 @@ class SchemeHandler extends _OWL
 		return ($this->severity);
 	}
 	
+	/**
+	 * Reset the internal data structure
+	 */
 	public function reset()
 	{
 		$this->scheme = array();
@@ -512,6 +513,10 @@ class SchemeHandler extends _OWL
 		parent::reset();
 	}
 }
+/**
+ * \example exa.schemehandler.php
+ * This example shows how to create or alter a table using the SchemeHandler class
+ */
 
 /*
  * Register this class and all status codes

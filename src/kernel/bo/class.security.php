@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Security base class
- * \version $Id: class.security.php,v 1.1 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: class.security.php,v 1.2 2011-04-26 11:45:45 oscar Exp $
  */
 
 /**
@@ -40,11 +40,51 @@ class Security
 	protected $bitmap;
 
 	/**
+	 * Class constructor
+	 * \param[in] $app code for which the bitmap array must be setup
+	 * \param[in] $owl By default, the owl bitmap will be setup as well. Set this to false to suppress this
+	 */
+	public function __construct ($app, $owl = true)
+	{
+		$this->bitmap = array($app => 0);
+		if ($owl === true) {
+			$this->bitmap[OWL_APPL_ID] = 0;
+		}
+	}
+
+	public function __sleep()
+	{
+		return array('bitmap');
+	}
+	public function __wakeup()
+	{
+		
+	}
+	/**
+	 * Initialise the bitmap for the given application
+	 * \param[in] $value Bitmap value
+	 * \param[in] $app Application ID
+	 */
+	public function initBitmap($value, $app)
+	{
+		$this->bitmap[$app] = $value;
+	}
+
+	/**
+	 * Get the bitmap value for the given application
+	 * \param[in] $app Application ID
+	 */
+	public function getBitmap($app)
+	{
+		return $this->bitmap[$app];
+	}
+
+	/**
 	 * Merge a given gitmap with the current users bitmap
 	 * \param[in] $bitmap Rightlist bitmap
 	 * \param[in] $app Application the bitmap belongs to
 	 */
-	public function mergeBitmaps($bitmap, $app = 'owl')
+	public function mergeBitmaps($bitmap, $app)
 	{
 		if (array_key_exists($app, $this->bitmap)) {
 			$this->bitmap[$app] = ($this->bitmap[$app] | $bitmap);

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.16 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.17 2011-04-26 11:45:45 oscar Exp $
  */
 
 /**
@@ -280,7 +280,7 @@ class DbHandler extends _OWL
 	 * 	- name     : Database name
 	 * 	- username : Username to connect with
 	 * 	- password : Password to use for connection
-	 * 	- dbtype   : Database type (reserved for future use, currently only MySQL is implemented)
+	 * 	- dbdriver : Database type (reserved for future use, currently only MySQL is implemented)
 	 */
 	public function alt(array $properties)
 	{
@@ -298,7 +298,7 @@ class DbHandler extends _OWL
 					$this->database['username'] = $v;
 				} elseif ($k == 'password') {
 					$this->database['password'] = $v;
-				} elseif ($k == 'dbtype') {
+				} elseif ($k == 'dbdriver') {
 					$this->database['engine'] = $v;
 				}
 				$this->load_driver();
@@ -319,11 +319,32 @@ class DbHandler extends _OWL
 					, ConfigHandler::get ('dbname')
 					, ConfigHandler::get ('dbuser')
 					, ConfigHandler::get ('dbpasswd')
+					, ConfigHandler::get ('dbdriver', 'MySQL')
 			);
 			DbHandler::$instance->open();
 		}
 		// Make sure we don't return a clone
 		return DbHandler::$original_instance;
+	}
+
+	/**
+	 * Hmmm.... we need this method as the result of a race condition; if an alternative
+	 * database (clone) is opened first, that's the default connection, which is probably 
+	 * the case in most situation since the owl config table is read early in the init phase.
+	 * I need to think about it... is this solution acceptable? So we need something smarter here?
+	 * This method is allowed to be called only once by OWLLoader; maybe some checks?
+	 */
+	public function force_reread ()
+	{
+		$this->close();
+		$this->database['server']	= ConfigHandler::get ('dbserver', null, true);
+		$this->database['name']		= ConfigHandler::get ('dbname', null, true);
+		$this->database['username']	= ConfigHandler::get ('dbuser', null, true);
+		$this->database['password']	= ConfigHandler::get ('dbpasswd', null, true);
+		$this->database['engine']	= ConfigHandler::get ('dbdriver', 'MySQL', true);
+		$this->db_prefix			= ConfigHandler::get ('dbprefix', null, true);
+		$this->load_driver();
+		$this->open();
 	}
 
 	/**
@@ -442,13 +463,14 @@ class DbHandler extends _OWL
 	 * Extend a tablename with the database prefix
 	 * \public
 	 * \param[in] $tablename Table name to extend
+	 * \param[in] $ignore_backticks Boolean to suppress backticks if set, default false
 	 * \return Extended table name
 	 */
-	public function tablename ($tablename)
+	public function tablename ($tablename, $ignore_backticks = false)
 	{
-		return (($this->use_backticks === true) ? '`' : '')
+		return (($this->use_backticks === true && $ignore_backticks === false) ? '`' : '')
 			. $this->db_prefix . $tablename
-			. (($this->use_backticks === true) ? '`' : '');
+			. (($this->use_backticks === true && $ignore_backticks === false) ? '`' : '');
 	}
 
 	/**
@@ -653,7 +675,7 @@ class DbHandler extends _OWL
 	 */
 	public function table_exists($tablename)
 	{
-		$_tablename = $this->tablename($tablename);
+		$_tablename = $this->tablename($tablename, true);
 		$_tables = $this->driver->dbTableList($this->id, $_tablename);
 		return (count($_tables) > 0);
 	}
@@ -747,6 +769,9 @@ class DbHandler extends _OWL
 		$_i = 0;
 		if (count ($searches) > 0) {
 			foreach ($searches as $_fld => $_value) {
+				if ($_value[0] == DBMATCH_NONE) {
+					continue;
+				}
 				if ($_i++ > 0) {
 					$_where .= 'AND ';
 				}
@@ -926,6 +951,7 @@ class DbHandler extends _OWL
 			$this->query_type = DBHANDLE_DELETE;
 			$this->set_status (DBHANDLE_QPREPARED, array('delete', $this->query));
 		}
+//echo ("Prepared query: <i>$this->query</i> ($this->severity)<br />");
 		return ($this->severity);
 	}
 

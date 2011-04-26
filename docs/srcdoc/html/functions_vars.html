@@ -21,7 +21,7 @@ $(document).ready(initResizable);
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">OWL-PHP&#160;<span id="projectnumber">010</span></div>
+   <div id="projectname">OWL-PHP&#160;<span id="projectnumber">0.1.0</span></div>
   </td>
  </tr>
  </tbody>
@@ -133,11 +133,11 @@ $(document).ready(initResizable);
 : <a class="el" href="classDbHandler.html#afaac5248f9ee59786b48a7b51f318940">DbHandler</a>
 </li>
 <li>$dataset
-: <a class="el" href="classConfigHandler.html#a271a119ca51e0d3da5b8bc2238fc569a">ConfigHandler</a>
+: <a class="el" href="classUser.html#ac516c03e30e262e4085151df30109b00">User</a>
+, <a class="el" href="classConfigHandler.html#a271a119ca51e0d3da5b8bc2238fc569a">ConfigHandler</a>
 , <a class="el" href="classGroupHandler.html#ac42cac4ee05f215c218400b85022d6d9">GroupHandler</a>
 , <a class="el" href="classLogHandler.html#aa133900b467a9224e64fcef83f1f9cb8">LogHandler</a>
 , <a class="el" href="classSessionHandler.html#a74c46fcfbadd4c4e6bacc73ddf350056">SessionHandler</a>
-, <a class="el" href="classUserHandler.html#ac38c1ea50b2820ed03781bdbe8eb2e08">UserHandler</a>
 </li>
 <li>$db
 : <a class="el" href="classSchemeHandler.html#abf3bf26e35b759ccd49f358dedc2dfd1">SchemeHandler</a>
@@ -185,6 +185,9 @@ $(document).ready(initResizable);
 , <a class="el" href="classImageHandler.html#ac56acda82f7ece75d33f6c57845a727e">ImageHandler</a>
 , <a class="el" href="classLogHandler.html#ad65c8954bda40d8a33828f0a0a2cbf5b">LogHandler</a>
 </li>
+<li>$group
+: <a class="el" href="classUser.html#a669fa9bfc33707ca3ee6102249acaf6f">User</a>
+</li>
 <li>$group_data
 : <a class="el" href="classGroupHandler.html#a118c57f74699aad169b1fd664e7d8d10">GroupHandler</a>
 </li>
@@ -202,6 +205,7 @@ $(document).ready(initResizable);
 </li>
 <li>$id
 : <a class="el" href="classDbHandler.html#ad38e1c3312815c8ad4093957881092ff">DbHandler</a>
+, <a class="el" href="classGroupHandler.html#aec022db526dda38481146c920ab9c4e2">GroupHandler</a>
 , <a class="el" href="classSchemeHandler.html#af297e966eae06ff1e38a143f93b4aeb9">SchemeHandler</a>
 , <a class="el" href="classBaseElement.html#a11b6989c43b53869a09f5ce65aa55b45">BaseElement</a>
 </li>
@@ -236,6 +240,9 @@ $(document).ready(initResizable);
 <li>$maxsize
 : <a class="el" href="classFormFieldTextPlugin.html#a825b32048381e79f1db0d37e71adff77">FormFieldTextPlugin</a>
 </li>
+<li>$memberships
+: <a class="el" href="classUser.html#a1a8f6207b6403f4806051f82b594e2eb">User</a>
+</li>
 <li>$meta
 : <a class="el" href="classDocument.html#a4b2a3fc78ec084611daef3343dca3756">Document</a>
 </li>
@@ -251,10 +258,10 @@ $(document).ready(initResizable);
 , <a class="el" href="classBaseElement.html#a30b8cff187a9de659a70daf287d66f45">BaseElement</a>
 </li>
 <li>$opened
-: <a class="el" href="classDbHandler.html#a71e36ffbff0d157b1d91dc000bc6f821">DbHandler</a>
-, <a class="el" href="classFileHandler.html#a061409b2bbd2e13bc47415527c0de720">FileHandler</a>
+: <a class="el" href="classFileHandler.html#a061409b2bbd2e13bc47415527c0de720">FileHandler</a>
 , <a class="el" href="classImageHandler.html#a6a87b3626bd0a457c6937b3e9b1cc69b">ImageHandler</a>
 , <a class="el" href="classLogHandler.html#a956e7e71a9ff96c6301d1f41a5bf207e">LogHandler</a>
+, <a class="el" href="classDbHandler.html#a71e36ffbff0d157b1d91dc000bc6f821">DbHandler</a>
 </li>
 <li>$option_ids
 : <a class="el" href="classFormFieldRadioPlugin.html#a19af80da90f77f55d13a0f46877a230e">FormFieldRadioPlugin</a>
@@ -310,7 +317,8 @@ $(document).ready(initResizable);
 : <a class="el" href="classFormFieldPlugin.html#a707acf02de21b2b7975b2aa362615ce0">FormFieldPlugin</a>
 </li>
 <li>$rights
-: <a class="el" href="classUser.html#a3f482d6b1f02d4024e66abdb86bd1cf8">User</a>
+: <a class="el" href="classSession.html#a83d6397ee36c98e8799a663e2b67c025">Session</a>
+, <a class="el" href="classUser.html#a3f482d6b1f02d4024e66abdb86bd1cf8">User</a>
 </li>
 <li>$rightslist
 : <a class="el" href="classRights.html#a0dd4834ba24f778314805dcab1777393">Rights</a>
@@ -319,8 +327,8 @@ $(document).ready(initResizable);
 : <a class="el" href="classDbHandler.html#a56a7ae4bd7d842c85f3fe8052aecbfef">DbHandler</a>
 </li>
 <li>$rows
-: <a class="el" href="classTable.html#a3dc32bed19b1a5b31d87818d028f0560">Table</a>
-, <a class="el" href="classFormFieldTextareaPlugin.html#a543fab6cd11fe7b26c3618ed000aeeae">FormFieldTextareaPlugin</a>
+: <a class="el" href="classFormFieldTextareaPlugin.html#a543fab6cd11fe7b26c3618ed000aeeae">FormFieldTextareaPlugin</a>
+, <a class="el" href="classTable.html#a3dc32bed19b1a5b31d87818d028f0560">Table</a>
 </li>
 <li>$rowspan
 : <a class="el" href="classTablecell.html#a6e65d5e92f39b101a8f00ac92506de43">Tablecell</a>
@@ -338,7 +346,7 @@ $(document).ready(initResizable);
 : <a class="el" href="classFormFieldRadioPlugin.html#ac8ac64ba29c3dc3ba48102c35ebbf9b1">FormFieldRadioPlugin</a>
 </li>
 <li>$session
-: <a class="el" href="classUserHandler.html#af097b7fd1ee085b46a6c34e071508a7f">UserHandler</a>
+: <a class="el" href="classUser.html#a0bcbaf8fe088e8359201c8fee8cd368e">User</a>
 </li>
 <li>$session_logged
 : <a class="el" href="classLogHandler.html#a0cfee82e814e8f258349710b6e87b72b">LogHandler</a>
@@ -350,8 +358,8 @@ $(document).ready(initResizable);
 : <a class="el" href="classBaseElement.html#ae435cc6d7b4aa9824322ef40ad7450f6">BaseElement</a>
 </li>
 <li>$size
-: <a class="el" href="classFormFieldTextPlugin.html#acb1df0209af99c25587375a0d1c603ea">FormFieldTextPlugin</a>
-, <a class="el" href="classFormFieldSelectPlugin.html#adcd34518bb409c8e4db46c3dd1a7eb50">FormFieldSelectPlugin</a>
+: <a class="el" href="classFormFieldSelectPlugin.html#adcd34518bb409c8e4db46c3dd1a7eb50">FormFieldSelectPlugin</a>
+, <a class="el" href="classFormFieldTextPlugin.html#acb1df0209af99c25587375a0d1c603ea">FormFieldTextPlugin</a>
 </li>
 <li>$src
 : <a class="el" href="classFormFieldButtonPlugin.html#a33519a89924287c0b7628a006438cac2">FormFieldButtonPlugin</a>
@@ -382,14 +390,14 @@ $(document).ready(initResizable);
 </li>
 <li>$type
 : <a class="el" href="classContainerPlugin.html#a4322b57179b2fb28ab6c9587e393842f">ContainerPlugin</a>
-, <a class="el" href="classFormFieldTextareaPlugin.html#af23729f44357a182a2b25a2689fca464">FormFieldTextareaPlugin</a>
 , <a class="el" href="classFormFieldPlugin.html#acf8210731f7b8dcee47d777975bc91ca">FormFieldPlugin</a>
+, <a class="el" href="classFormFieldTextareaPlugin.html#af23729f44357a182a2b25a2689fca464">FormFieldTextareaPlugin</a>
 </li>
 <li>$use_backticks
 : <a class="el" href="classDbHandler.html#aba13a0ae78c5665670778ed51be722d3">DbHandler</a>
 </li>
 <li>$user_data
-: <a class="el" href="classUserHandler.html#ae7a2d59eee65560ac96b860e828bb445">UserHandler</a>
+: <a class="el" href="classUser.html#a214012afca3e92dfeed14a9a1f80a268">User</a>
 </li>
 <li>$value
 : <a class="el" href="classFormFieldPlugin.html#abbe128149202f43e8fcac8184018048c">FormFieldPlugin</a>
@@ -406,7 +414,7 @@ $(document).ready(initResizable);
 </div>
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="footer">Generated on Tue Apr 19 2011 15:01:19 for OWL-PHP by&#160;
+      <li class="footer">Generated on Tue Apr 26 2011 13:40:13 for OWL-PHP by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

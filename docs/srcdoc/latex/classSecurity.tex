@@ -14,7 +14,17 @@ Inheritance diagram for Security:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bf mergeBitmaps} (\$bitmap, \$app= 'owl')
+{\bf \_\-\_\-construct} (\$app, \$owl=true)
+\item 
+{\bf \_\-\_\-sleep} ()
+\item 
+{\bf \_\-\_\-wakeup} ()
+\item 
+{\bf initBitmap} (\$value, \$app)
+\item 
+{\bf getBitmap} (\$app)
+\item 
+{\bf mergeBitmaps} (\$bitmap, \$app)
 \item 
 {\bf controlBitmap} (\$bit, \$app= 'owl', \$controller={\bf BIT\_\-CHECK})
 \end{DoxyCompactItemize}
@@ -36,7 +46,43 @@ Apr 16, 2011 -\/-\/ O van Eijk -\/-\/ initial version
 \end{DoxyVersion}
 
 
+\subsection{Constructor \& Destructor Documentation}
+\index{Security@{Security}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!Security@{Security}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}Security::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{\$}]{app, }
+\item[{\$}]{owl = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classSecurity_a52521de4bd0c0279bcf9eb57ca915c14}
+Class constructor 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$app} & code for which the bitmap array must be setup \\
+\hline
+\mbox{\tt in}  & {\em \$owl} & By default, the owl bitmap will be setup as well. Set this to false to suppress this \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in {\bf Rights} \doxyref{}{p.}{classRights_a85a0c92c43ac7ae3d01b972a184f18c4}.
+
+
+
 \subsection{Member Function Documentation}
+\index{Security@{Security}!\_\-\_\-sleep@{\_\-\_\-sleep}}
+\index{\_\-\_\-sleep@{\_\-\_\-sleep}!Security@{Security}}
+\subsubsection[{\_\-\_\-sleep}]{\setlength{\rightskip}{0pt plus 5cm}Security::\_\-\_\-sleep (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSecurity_aa45b726507989bfe49ac468b3ea1a7c2}
+\index{Security@{Security}!\_\-\_\-wakeup@{\_\-\_\-wakeup}}
+\index{\_\-\_\-wakeup@{\_\-\_\-wakeup}!Security@{Security}}
+\subsubsection[{\_\-\_\-wakeup}]{\setlength{\rightskip}{0pt plus 5cm}Security::\_\-\_\-wakeup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSecurity_a4274ea0ab7dc1aaa9de5bc7a497ae1e7}
 \index{Security@{Security}!controlBitmap@{controlBitmap}}
 \index{controlBitmap@{controlBitmap}!Security@{Security}}
 \subsubsection[{controlBitmap}]{\setlength{\rightskip}{0pt plus 5cm}Security::controlBitmap (
@@ -58,14 +104,41 @@ Check, set or unset a bit in the current users bitmap. Enter description here ..
 \begin{DoxyReturn}{Returns}
 True if the bit was set ($\ast$before$\ast$ a set or unset action!) 
 \end{DoxyReturn}
+\index{Security@{Security}!getBitmap@{getBitmap}}
+\index{getBitmap@{getBitmap}!Security@{Security}}
+\subsubsection[{getBitmap}]{\setlength{\rightskip}{0pt plus 5cm}Security::getBitmap (
+\begin{DoxyParamCaption}
+\item[{\$}]{app}
+\end{DoxyParamCaption}
+)}\label{classSecurity_a723668f35887ff342fe86de04a5a680e}
+Get the bitmap value for the given application 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$app} & Application ID \\
+\hline
+\end{DoxyParams}
+\index{Security@{Security}!initBitmap@{initBitmap}}
+\index{initBitmap@{initBitmap}!Security@{Security}}
+\subsubsection[{initBitmap}]{\setlength{\rightskip}{0pt plus 5cm}Security::initBitmap (
+\begin{DoxyParamCaption}
+\item[{\$}]{value, }
+\item[{\$}]{app}
+\end{DoxyParamCaption}
+)}\label{classSecurity_a590951291ac82db7b6855b468e097886}
+Initialise the bitmap for the given application 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$value} & Bitmap value \\
+\hline
+\mbox{\tt in}  & {\em \$app} & Application ID \\
+\hline
+\end{DoxyParams}
 \index{Security@{Security}!mergeBitmaps@{mergeBitmaps}}
 \index{mergeBitmaps@{mergeBitmaps}!Security@{Security}}
 \subsubsection[{mergeBitmaps}]{\setlength{\rightskip}{0pt plus 5cm}Security::mergeBitmaps (
 \begin{DoxyParamCaption}
 \item[{\$}]{bitmap, }
-\item[{\$}]{app = {\ttfamily 'owl'}}
+\item[{\$}]{app}
 \end{DoxyParamCaption}
-)}\label{classSecurity_a71a483d9148fa350c78fc8b038ab6a94}
+)}\label{classSecurity_a320378151e60f1426d15aaa2b9885938}
 Merge a given gitmap with the current users bitmap 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$bitmap} & Rightlist bitmap \\

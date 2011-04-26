@@ -1,29 +1,5 @@
 \section{exa.datahandler-\/set.php}
-Define or override a variable in the data array 
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$variable} & The name of the variable that should be set. \\
-\hline
-\mbox{\tt in}  & {\em \$value} & Value to set the variable to. For read operations, this can be a value, in which case the fieldname be will looked for matching all given values. Values with unescaped percent signs will be searched using the SQL LIKE keyword If the matchtype is DBMATCH\_\-NONE, the value is ignored. \\
-\hline
-\mbox{\tt in}  & {\em \$table} & An optional tablename for this field. Defaults to \$this-\/$>$owl\_\-tablename \\
-\hline
-\mbox{\tt in}  & {\em \$fieldFunction} & An optional array with SQL functions and statements that apply to the fieldname. This is an indexed array, where all keys must have an array as value. The following keys are supported:
-\begin{DoxyItemize}
-\item function: An array where the first element is an SQL function, which must exist in the database driver as 'functionFunction' (e.g., for 'function'=$>$ array(\char`\"{}ifnull\char`\"{}, \char`\"{}default\char`\"{}), the method \char`\"{}functionIfnull()\char`\"{} must exist). The first argument passed to the method is always the fieldname, additional arguments will be taken from the array.
-\item groupby: Add the fieldname to a groupby list. The value for this key must be an empty array
-\item orderby: Add the fieldname to the orderby list. The given array can contain 1 element; \char`\"{}ASC\char`\"{} or \char`\"{}DESC\char`\"{}. When empty, it defaults to the SQL default (ASC)
-\item having: Add the fieldname to to the having clause. The array must contain 2 elements, where the first element is the matchtype and the second argument is the value to match
-\item name: The \doxyref{DataHandler}{p.}{classDataHandler} returns data as indexed arrays on read operations, where the index equals the fieldname. This might contain complete SQL code when functions are called; this can be overwritten by specifying a name for the field 
-\end{DoxyItemize}\\
-\hline
-\mbox{\tt in}  & {\em \$valueFunction} & An optional array with SQL functions and statements that apply to the value. This is an indexed array, where all keys must have an array as value. The following keys are supported:
-\begin{DoxyItemize}
-\item function: An array where the first element is an SQL function, which must exist in the database driver as 'functionFunction' (e.g., for 'function'=$>$ array(\char`\"{}ifnull\char`\"{}, \char`\"{}default\char`\"{}), the method \char`\"{}functionIfnull()\char`\"{} must exist). The first argument passed to the method is always the fieldname, additional arguments will be taken from the array.
-\item match: The matchtype. When omitted, default is DBMATCH\_\-EQ ('='). If the field should be in a SELECT list and not in the where clause, use the matchtype DBMATCH\_\-NONE (if no fields are set with DBMATCH\_\-NONE, read queries will select with SELECT $\ast$)
-\end{DoxyItemize}\\
-\hline
-\end{DoxyParams}
-This example shows advanced use ot the \doxyref{DataHandler::set()}{p.}{classDataHandler_a00cad7b4cee6e867dc985451f40ae404} method
+This example shows advanced use of the \doxyref{DataHandler::set()}{p.}{classDataHandler_a00cad7b4cee6e867dc985451f40ae404} method
 
 
 \begin{DoxyCodeInclude}
@@ -41,7 +17,7 @@ This example shows advanced use ot the \doxyref{DataHandler::set()}{p.}{classDat
  *      INDEX ( `name` )
  *      )
  *
- * This implies the configuration should have the table prefix set to 'exa'
+ * This implies the configuration should have the table prefix set to 'exa_'
  */
 function useSqlFunctions($date)
 {

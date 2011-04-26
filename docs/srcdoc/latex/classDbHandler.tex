@@ -20,6 +20,8 @@ Inheritance diagram for DbHandler:\begin{figure}[H]
 \item 
 {\bf alt} (array \$properties)
 \item 
+{\bf force\_\-reread} ()
+\item 
 {\bf create} ()
 \item 
 {\bf is\_\-open} ()
@@ -28,7 +30,7 @@ Inheritance diagram for DbHandler:\begin{figure}[H]
 \item 
 {\bf reset} ()
 \item 
-{\bf tablename} (\$tablename)
+{\bf tablename} (\$tablename, \$ignore\_\-backticks=false)
 \item 
 {\bf set\_\-query} (\$qry)
 \item 
@@ -273,7 +275,7 @@ On a cloned database object, set an alternative, prefix or connection.
 \item name : Database name
 \item username : Username to connect with
 \item password : Password to use for connection
-\item dbtype : Database type (reserved for future use, currently only \doxyref{MySQL}{p.}{classMySQL} is implemented) 
+\item dbdriver : Database type (reserved for future use, currently only \doxyref{MySQL}{p.}{classMySQL} is implemented) 
 \end{DoxyItemize}\\
 \hline
 \end{DoxyParams}
@@ -299,7 +301,7 @@ This is a helper function for lazy developers. Some checks have to be made quite
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the severity level was correct ( below the max), otherwise false 
+True if the severity level was correct (below the max), otherwise false 
 \end{DoxyReturn}
 
 
@@ -318,7 +320,7 @@ Referenced by SessionHandler::write().
 )}\label{classDbHandler_ad3d2853bbd2d1962710907e34afb424f}
 Close the database and disconnect from the server. This function is called on program shutdown. Although the database will be closed already by PHP, this function might be called at any time manually; is also updates the 'opened' variable. 
 
-Referenced by \_\-\_\-clone(), \_\-\_\-destruct(), and create().
+Referenced by \_\-\_\-clone(), \_\-\_\-destruct(), create(), and force\_\-reread().
 
 \index{DbHandler@{DbHandler}!connect@{connect}}
 \index{connect@{connect}!DbHandler@{DbHandler}}
@@ -440,11 +442,22 @@ Array with tablenames
 \end{DoxyReturn}
 
 
-References \$\_\-t, and \$\_\-table.
+References \$\_\-table.
 
 
 
 Referenced by prepare\_\-delete(), prepare\_\-insert(), and prepare\_\-update().
+
+\index{DbHandler@{DbHandler}!force\_\-reread@{force\_\-reread}}
+\index{force\_\-reread@{force\_\-reread}!DbHandler@{DbHandler}}
+\subsubsection[{force\_\-reread}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::force\_\-reread (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classDbHandler_a69bfc884c77c7dfd33d0007ec0415f82}
+Hmmm.... we need this method as the result of a race condition; if an alternative database (clone) is opened first, that's the default connection, which is probably the case in most situation since the owl config table is read early in the init phase. I need to think about it... is this solution acceptable? So we need something smarter here? This method is allowed to be called only once by OWLLoader; maybe some checks? 
+
+References close(), ConfigHandler::get(), load\_\-driver(), and open().
 
 \index{DbHandler@{DbHandler}!get\_\-callback@{get\_\-callback}}
 \index{get\_\-callback@{get\_\-callback}!DbHandler@{DbHandler}}
@@ -534,7 +547,7 @@ References OWL::factory(), and \_\-OWL::set\_\-status().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and UserHandler::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{DbHandler@{DbHandler}!is\_\-open@{is\_\-open}}
 \index{is\_\-open@{is\_\-open}!DbHandler@{DbHandler}}
@@ -573,7 +586,7 @@ References OWLloader::getDriver(), and toStrictBoolean().
 
 
 
-Referenced by \_\-\_\-construct(), and alt().
+Referenced by \_\-\_\-construct(), alt(), and force\_\-reread().
 
 \index{DbHandler@{DbHandler}!open@{open}}
 \index{open@{open}!DbHandler@{DbHandler}}
@@ -593,7 +606,7 @@ References connect(), and \_\-OWL::set\_\-status().
 
 
 
-Referenced by alt(), and read().
+Referenced by alt(), force\_\-reread(), and read().
 
 \index{DbHandler@{DbHandler}!prepare\_\-delete@{prepare\_\-delete}}
 \index{prepare\_\-delete@{prepare\_\-delete}!DbHandler@{DbHandler}}
@@ -785,7 +798,7 @@ References \_\-OWL::set\_\-status().
 
 
 
-Referenced by UserHandler::logout().
+Referenced by User::logout().
 
 \index{DbHandler@{DbHandler}!save\_\-status@{save\_\-status}}
 \index{save\_\-status@{save\_\-status}!DbHandler@{DbHandler}}
@@ -796,7 +809,7 @@ Referenced by UserHandler::logout().
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
 Create a copy of the status object 
 
-Referenced by UserHandler::logout().
+Referenced by User::logout().
 
 \index{DbHandler@{DbHandler}!set\_\-callback@{set\_\-callback}}
 \index{set\_\-callback@{set\_\-callback}!DbHandler@{DbHandler}}
@@ -841,7 +854,7 @@ References OWL::factory().
 
 
 
-Referenced by UserHandler::register().
+Referenced by User::register().
 
 \index{DbHandler@{DbHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
 \index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!DbHandler@{DbHandler}}
@@ -865,7 +878,7 @@ Set the database query. This function should only be used if the query is too co
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$qry} & A complete database query. All tablenames must be prefixed (with the \doxyref{tablename()}{p.}{classDbHandler_abaca15a312800e5522b3efd9dff036f5} function)! \\
+\mbox{\tt in}  & {\em \$qry} & A complete database query. All tablenames must be prefixed (with the \doxyref{tablename()}{p.}{classDbHandler_a05ea485a22c0ef87090f2313614c84c8} function)! \\
 \hline
 \end{DoxyParams}
 \index{DbHandler@{DbHandler}!set\_\-status@{set\_\-status}}
@@ -891,7 +904,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-
 
 
 
-Referenced by \_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), UserHandler::confirm(), User::confirm(), connect(), create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), UserHandler::login(), FileHandler::open(), open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), prepare\_\-delete(), prepare\_\-field(), prepare\_\-insert(), prepare\_\-read(), prepare\_\-update(), read(), FileHandler::read\_\-line(), UserHandler::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and write().
+Referenced by \_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), User::confirm(), connect(), create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), prepare\_\-delete(), prepare\_\-field(), prepare\_\-insert(), prepare\_\-read(), prepare\_\-update(), read(), FileHandler::read\_\-line(), User::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and write().
 
 \index{DbHandler@{DbHandler}!signal@{signal}}
 \index{signal@{signal}!DbHandler@{DbHandler}}
@@ -941,7 +954,7 @@ Boolean true when successfull
 \end{DoxyReturn}
 
 
-Referenced by UserHandler::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+Referenced by User::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
 
 \index{DbHandler@{DbHandler}!table\_\-exists@{table\_\-exists}}
 \index{table\_\-exists@{table\_\-exists}!DbHandler@{DbHandler}}
@@ -991,14 +1004,17 @@ Referenced by prepare\_\-delete(), prepare\_\-read(), and prepare\_\-update().
 \index{tablename@{tablename}!DbHandler@{DbHandler}}
 \subsubsection[{tablename}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::tablename (
 \begin{DoxyParamCaption}
-\item[{\$}]{tablename}
+\item[{\$}]{tablename, }
+\item[{\$}]{ignore\_\-backticks = {\ttfamily false}}
 \end{DoxyParamCaption}
-)}\label{classDbHandler_abaca15a312800e5522b3efd9dff036f5}
+)}\label{classDbHandler_a05ea485a22c0ef87090f2313614c84c8}
 Extend a tablename with the database prefix
 
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$tablename} & \doxyref{Table}{p.}{classTable} name to extend \\
+\hline
+\mbox{\tt in}  & {\em \$ignore\_\-backticks} & Boolean to suppress backticks if set, default false \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -1034,7 +1050,7 @@ References \_\-OWL::signal().
 
 
 
-Referenced by \_\-OWL::check(), UserHandler::login(), and SessionHandler::read().
+Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 
 \index{DbHandler@{DbHandler}!unescape\_\-string@{unescape\_\-string}}
 \index{unescape\_\-string@{unescape\_\-string}!DbHandler@{DbHandler}}
