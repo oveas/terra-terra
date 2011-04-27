@@ -2,7 +2,7 @@
 /**
  * \file
  * This is the entry point for OWL-PHP teststub
- * \version $Id: index.php,v 1.13 2011-04-26 11:45:46 oscar Exp $
+ * \version $Id: index.php,v 1.14 2011-04-27 11:50:08 oscar Exp $
  */
 define ('APPL_CODE', 'OWL');
 define ('OWL_ROOT', '/home/oscar/projects/owl-php/src');
@@ -47,9 +47,9 @@ switch ($_form->get('act')) {
 <?php 
 $_scheme = OWL::factory('schemehandler');
 //$_data1 = array();
-//$_scheme->table_description('test2', $_data1);
+//$_scheme->tableDescription('test2', $_data1);
 //$_data2 = array();
-//$_scheme->table_description('test', $_data2);
+//$_scheme->tableDescription('test', $_data2);
 //print_r($_scheme->compare($_data1,$_data2));
 $_table = array(
 	 'id' => array (
@@ -97,12 +97,12 @@ $_index = array (
 			,'type' => 'FULLTEXT'
 	)
 );
-$_scheme->create_scheme('person');
-$_scheme->define_scheme($_table);
-$_scheme->define_index($_index);
+$_scheme->createScheme('person');
+$_scheme->defineScheme($_table);
+$_scheme->defineIndex($_index);
 $_scheme->scheme();
 $_scheme->reset();
-$_scheme->table_description('person', $_data);
+$_scheme->tableDescription('person', $_data);
 echo '<pre>'. print_r($_data, 1) . '</pre>';
 ?>
 

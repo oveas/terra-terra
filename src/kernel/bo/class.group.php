@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Group class
- * \version $Id: class.group.php,v 1.3 2011-04-27 10:58:21 oscar Exp $
+ * \version $Id: class.group.php,v 1.4 2011-04-27 11:50:08 oscar Exp $
  */
 
 /**
@@ -23,17 +23,17 @@ class Group extends _OWL
 		_OWL::init();
 		$this->dataset = new DataHandler ();
 		if (ConfigHandler::get ('owltables', true)) {
-			$this->dataset->set_prefix(ConfigHandler::get ('owlprefix'));
+			$this->dataset->setPrefix(ConfigHandler::get ('owlprefix'));
 		}
-		$this->dataset->set_tablename('group');
+		$this->dataset->setTablename('group');
 		$this->id = $id;
-		$this->get_group_data();
+		$this->getGroupData();
 	}
 
 	/**
 	 * Read the group information from the database and store it in the internal dataset
 	 */
-	private function get_group_data()
+	private function getGroupData()
 	{
 		$this->dataset->set('gid', $this->id);
 		$this->dataset->prepare();
@@ -56,4 +56,4 @@ class Group extends _OWL
 		);
 	}
 }
-Register::register_class('Group');
+Register::registerClass('Group');

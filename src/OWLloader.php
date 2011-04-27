@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.24 2011-04-27 10:58:21 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.25 2011-04-27 11:50:08 oscar Exp $
  */
 
 // Error handling used during development
@@ -166,12 +166,12 @@ abstract class OWLloader
 	{
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('owltables', true)) {
-			$dataset->set_prefix(ConfigHandler::get ('owlprefix', 'owl'));
+			$dataset->setPrefix(ConfigHandler::get ('owlprefix', 'owl'));
 		}
-		$dataset->set_tablename('applications');
+		$dataset->setTablename('applications');
 
 		$dataset->set('code', 'OWL');
-		$dataset->set_key('code');
+		$dataset->setKey('code');
 		$dataset->prepare();
 		$dataset->db($_id, __LINE__, __FILE__);
 		return ($_id[0]['aid']);
@@ -185,12 +185,12 @@ abstract class OWLloader
 	{
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('owltables', true)) {
-			$dataset->set_prefix(ConfigHandler::get ('owlprefix', 'owl'));
+			$dataset->setPrefix(ConfigHandler::get ('owlprefix', 'owl'));
 		}
-		$dataset->set_tablename('applications');
+		$dataset->setTablename('applications');
 
 		$dataset->set('code', $applic_code);
-		$dataset->set_key('code');
+		$dataset->setKey('code');
 		$dataset->prepare();
 		$dataset->db($app_data, __LINE__, __FILE__);
 
@@ -220,19 +220,19 @@ abstract class OWLloader
 		}
 		if (count ($GLOBALS['config']['configfiles']['app']) > 0) {
 			foreach ($GLOBALS['config']['configfiles']['app'] as $_cfgfile) {
-				ConfigHandler::read_config (array('file' => $_cfgfile));
+				ConfigHandler::readConfig (array('file' => $_cfgfile));
 			}
 		}
 		// Get the dynamic configuration from the database for the calling application
-		ConfigHandler::read_config (array('aid' => APPL_ID));
+		ConfigHandler::readConfig (array('aid' => APPL_ID));
 
 		// Now make sure the primary DB handle connects with the database as defined in the
 		// application config.
 		$_db = OWL::factory('dbhandler');
-		$_db->force_reread();
+		$_db->forceReread();
 
 		$_logger = OWL::factory('loghandler', 'so');
-		$_logger->set_applic_logfile();
+		$_logger->setApplicLogfile();
 	}
 }
 // The very first class being loaded must be OWLCache; it's used by getClass()
@@ -288,11 +288,11 @@ OWLCache::loadCache();
 require (OWL_LIBRARY . '/owl.helper.functions.php');
 
 // Get the static OWL configuration from file
-ConfigHandler::read_config (array('file' => $GLOBALS['config']['configfiles']['owl']));
-// Now define the OWL Application ID; it is required by the next read_config() call
-define('OWL_APPL_ID',OWLloader::getOWLId());
+ConfigHandler::readConfig (array('file' => $GLOBALS['config']['configfiles']['owl']));
+// Now define the OWL Application ID; it is required by the next readConfig() call
+define('OWL_ID',OWLloader::getOWLId());
 // Get the dynamic OWL configuration from the database
-ConfigHandler::read_config (array());
+ConfigHandler::readConfig (array());
 
 // Set up the logger
 $GLOBALS['logger'] = OWL::factory('LogHandler');
@@ -306,7 +306,7 @@ if ($GLOBALS['config']['values']['debug']) {
 //DBG_dumpval($GLOBALS);
 
 // Set up the label translations
-Register::register_labels(true);
+Register::registerLabels(true);
 
 if (!defined('OWL___INSTALLER')) {
 	//! APPL_CODE must be defined by the application. It must be an acronym that will be used by OWL to locate resources, like files in the library.

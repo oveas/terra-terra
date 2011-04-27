@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the top-level BaseElement class
- * \version $Id: class.baseelement.php,v 1.7 2011-01-21 16:28:15 oscar Exp $
+ * \version $Id: class.baseelement.php,v 1.8 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -121,7 +121,7 @@ abstract class BaseElement extends _OWL
 	public function setContent(&$_content)
 	{
 		if (is_object($_content) && ($_content === $this)) {
-			$this->set_status (DOM_SELFREF, $this->name);
+			$this->setStatus (DOM_SELFREF, $this->name);
 			return '&nbsp;'; // Probably fatal, but for completeness...
 		}
 		$this->content = $_content;
@@ -136,7 +136,7 @@ abstract class BaseElement extends _OWL
 	public function addToContent(&$_content)
 	{
 		if (is_object($_content) && ($_content === $this)) {
-			$this->set_status (DOM_SELFREF, get_class($this));
+			$this->setStatus (DOM_SELFREF, get_class($this));
 			return '&nbsp;'; // Probably fatal, but for completeness...
 		}
 		if (!is_array($this->content)) {
@@ -177,7 +177,7 @@ abstract class BaseElement extends _OWL
 			if ($this->shown === true) {
 //				DBG_dumpval($this);
 //				DBG_dumpval($_contentItem);
-				$this->set_status (DOM_LOOPDETECT, array(
+				$this->setStatus (DOM_LOOPDETECT, array(
 					  get_class($_contentItem) . ' (' . $_contentItem->getId() . ')'
 					, get_class($this) . ' (' . $this->getId() . ')'
 					)
@@ -237,7 +237,7 @@ abstract class BaseElement extends _OWL
 			if (method_exists($this, $_method)) {
 				$this->$_method($_v);
 			} else {
-				$this->set_status (DOM_IVATTRIB, array($_k));
+				$this->setStatus (DOM_IVATTRIB, array($_k));
 				return $this->severity;
 			}
 		}
@@ -282,23 +282,23 @@ abstract class BaseElement extends _OWL
 /*
  * Register this class and all status codes
  */
-Register::register_class ('DOMElement');
+Register::registerClass ('DOMElement');
 
-//Register::set_severity (OWL_DEBUG);
+//Register::setSeverity (OWL_DEBUG);
 
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-Register::set_severity (OWL_SUCCESS);
-//Register::register_code ('FORM_RETVALUE');
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+Register::setSeverity (OWL_SUCCESS);
+//Register::registerCode ('FORM_RETVALUE');
 
-Register::set_severity (OWL_WARNING);
-Register::register_code('DOM_IVATTRIB');
+Register::setSeverity (OWL_WARNING);
+Register::registerCode('DOM_IVATTRIB');
 
-//Register::set_severity (OWL_BUG);
+//Register::setSeverity (OWL_BUG);
 
-Register::set_severity (OWL_ERROR);
-Register::register_code('DOM_SELFREF');
-Register::register_code('DOM_LOOPDETECT');
+Register::setSeverity (OWL_ERROR);
+Register::registerCode('DOM_SELFREF');
+Register::registerCode('DOM_LOOPDETECT');
 
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

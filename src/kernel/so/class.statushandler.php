@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines status object that's user for all objects
- * \version $Id: class.statushandler.php,v 1.7 2011-04-06 14:42:15 oscar Exp $
+ * \version $Id: class.statushandler.php,v 1.8 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -51,7 +51,7 @@ class StatusHandler
 	 * \public
 	 * \return Severity level
 	 */
-	public static function get_instance()
+	public static function getInstance()
 	{
 		if (!StatusHandler::$instance instanceof self) {
 			StatusHandler::$instance = new self();
@@ -65,10 +65,10 @@ class StatusHandler
 	 * \param[in] $code The status code
 	 * \return The severity level of the code
 	 */
-	public function set_code ($code = OWL_STATUS_BUG)
+	public function setCode ($code = OWL_STATUS_BUG)
 	{
 		$this->code = $code;
-		return (self::get_severity());
+		return (self::getSeverity());
 	}
 
 	/**
@@ -87,7 +87,7 @@ class StatusHandler
 	 * \public
 	 * \param[in] $params An array with parameters
 	 */
-	public function set_params ($params)
+	public function setParams ($params)
 	{
 		$this->params = $params;
 	}
@@ -99,7 +99,7 @@ class StatusHandler
 	 * object's current status.
 	 * \return The severity level of the current status
 	 */
-	public function get_severity ($status = null)
+	public function getSeverity ($status = null)
 	{
 		$_stat = ($status === null ? $this->code : $status);
 		return ($_stat & OWL_SEVERITY_PATTERN); 
@@ -110,7 +110,7 @@ class StatusHandler
 	 * \public
 	 * \return The status code
 	 */
-	public function get_code ()
+	public function getCode ()
 	{
 		return ($this->code); 
 	}
@@ -123,18 +123,18 @@ class StatusHandler
 	 * \public
 	 * \return The message text
 	 */
-	public function get_message ()
+	public function getMessage ()
 	{
 		$_search = array();
 
 		// Check if the messages have already been loaded
 		if (!array_key_exists ($this->code, $GLOBALS['messages'])) {
-			Register::register_messages();
+			Register::registerMessages();
 		} else {
 			// Check if the messages code exists. If not, it might belong to a class
 			// that was loaded later; translate the code
 			if (!array_key_exists ($this->code, $GLOBALS['messages'])) {
-				if (($_mcode = Register::get_code($this->code, null) !== null)) {
+				if (($_mcode = Register::getCode($this->code, null) !== null)) {
 					$GLOBALS['messages'][$this->code] = $GLOBALS['messages'][$_mcode];
 					unset($GLOBALS['messages'][$_mcode]);
 				}
@@ -144,8 +144,8 @@ class StatusHandler
 		if (array_key_exists ($this->code, $GLOBALS['messages'])) {
 			$_msg = $GLOBALS['messages'][$this->code];
 		} else {
-			$_msg = sprintf ('No message found for code %%X%08X (%d) (%s)', $this->code, $this->code, Register::get_code($this->code));
-//			$_msg = sprintf ('No message found for code %%X%08X (%s)', $this->code, Register::get_code($this->code));
+			$_msg = sprintf ('No message found for code %%X%08X (%d) (%s)', $this->code, $this->code, Register::getCode($this->code));
+//			$_msg = sprintf ('No message found for code %%X%08X (%s)', $this->code, Register::getCode($this->code));
 		}
 		for ($_i = 0; $_i < count ($this->params); $_i++) {
 			$_search[] = '$p' . ($_i + 1) . '$';

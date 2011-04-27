@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a formfield element plugin
- * \version $Id: class.formfield.php,v 1.2 2011-01-19 17:00:32 oscar Exp $
+ * \version $Id: class.formfield.php,v 1.3 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -126,24 +126,24 @@ abstract class FormFieldPlugin extends BaseElement
 /*
  * Register this class and all status codes
  */
-Register::register_class ('FormField');
+Register::registerClass ('FormField');
 
-//Register::set_severity (OWL_DEBUG);
+//Register::setSeverity (OWL_DEBUG);
 
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-Register::set_severity (OWL_SUCCESS);
-//Register::register_code ('FORM_RETVALUE');
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+Register::setSeverity (OWL_SUCCESS);
+//Register::registerCode ('FORM_RETVALUE');
 
-Register::set_severity (OWL_WARNING);
-Register::register_code ('FORMFIELD_IVVAL');
-Register::register_code ('FORMFIELD_IVVALFORMAT');
-Register::register_code ('FORMFIELD_NOVAL');
-Register::register_code ('FORMFIELD_NOSUCHVAL');
-Register::register_code ('FORMFIELD_VALEXISTS');
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('FORMFIELD_IVVAL');
+Register::registerCode ('FORMFIELD_IVVALFORMAT');
+Register::registerCode ('FORMFIELD_NOVAL');
+Register::registerCode ('FORMFIELD_NOSUCHVAL');
+Register::registerCode ('FORMFIELD_VALEXISTS');
 
-//Register::set_severity (OWL_BUG);
+//Register::setSeverity (OWL_BUG);
 
-//Register::set_severity (OWL_ERROR);
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_ERROR);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

@@ -3,7 +3,7 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.7 2011-01-18 14:24:59 oscar Exp $
+ * \version $Id: class.exceptionhandler.php,v 1.8 2011-04-27 11:50:07 oscar Exp $
  */
 
 
@@ -62,7 +62,7 @@ class OWLException extends Exception
 		}
 	}
 
-//	public function get_caller()
+//	public function getCaller()
 //	{
 //		return $this->caller;
 //	}
@@ -71,7 +71,7 @@ class OWLException extends Exception
 	 * Trace back the previous object in the stack
 	 * \public
 	 */
-	public function get_trace()
+	public function _getTrace()
 	{
 		if ($this->caller !== null) {
 
@@ -82,7 +82,7 @@ class OWLException extends Exception
 			unset ($_trace);
 
 			if (get_class ($this->caller) == 'OWLException') {
-				foreach ($this->caller->get_trace () as $_key => $_trace) {
+				foreach ($this->caller->_getTrace () as $_key => $_trace) {
 					array_push ($_arr, $_trace);
 				}
 			} else {
@@ -102,27 +102,27 @@ class OWLException extends Exception
 	 * \param[in] $textmode specify the format in which the stackdump should be
 	 * returned; text (true, default) of HTML (false).
 	 */
-	public function stack_dump($textmode = true)
+	public function stackDump($textmode = true)
 	{
 		if ($textmode) {
 			$_text = 'An exception was thrown :'. "\n";
 			$_text = sprintf('%sException code : %%X%08X (%s)%s',
-					$_text, $this->code, Register::get_code ($this->code), "\n");
+					$_text, $this->code, Register::getCode ($this->code), "\n");
 
-			$_text .= 'Severity level: ' . Register::get_severity ($this->code & OWL_SEVERITY_PATTERN) . "\n";
+			$_text .= 'Severity level: ' . Register::getSeverity ($this->code & OWL_SEVERITY_PATTERN) . "\n";
 			$_text .= 'Exception message : ' . $this->message . "\n";
 		} else {
 			$_text = '<p class="exception"><b>An exception was thrown :</b><br/>';
 			$_text = sprintf('%sException code : %%X%08X (%s)<br />',
-					$_text, $this->code, Register::get_code ($this->code));
+					$_text, $this->code, Register::getCode ($this->code));
 
-			// There's no instance here, so we need to duplicate _OWL::get_severity():
-			$_text .= 'Severity level: ' . Register::get_severity ($this->code & OWL_SEVERITY_PATTERN) . '<br />';
+			// There's no instance here, so we need to duplicate _OWL::getSeverity():
+			$_text .= 'Severity level: ' . Register::getSeverity ($this->code & OWL_SEVERITY_PATTERN) . '<br />';
 			$_text .= 'Exception message : ' . $this->message . '<br/>';
 			$_text .= '<span class="stackdump">';
 		}
 
-		$_stack = $this->get_trace();
+		$_stack = $this->_getTrace();
 		$_calls = count($_stack);
 		$_count = 0;
 
@@ -148,7 +148,7 @@ class OWLException extends Exception
 	 * \return integer holding the argument index that should be hidden, of -1 if nothing
 	 * has to be hidden.
 	 */
-	private function check_hide ($trace)
+	private function checkHide ($trace)
 	{
 		if (!ConfigHandler::get ('exception|show_values', false)) {
 			return -1; // Won't be shown anyway
@@ -211,7 +211,7 @@ class OWLException extends Exception
 					if ($_i > 0) {
 						$_text .= ', ';
 					}
-					if ($this->check_hide($trace) == $_i) {
+					if ($this->checkHide($trace) == $_i) {
 						$_text .= '*****';
 						continue;
 					}
@@ -315,17 +315,17 @@ class OWLExceptionHandler
 	 * Show the stackdump of an exception
 	 * \param[in] $exception The exception
 	 */ 
-	public static function log_exception(OWLException $exception)
+	public static function logException(OWLException $exception)
 	{
 		$_tmp_logger = false;
 		if (!array_key_exists('logger', $GLOBALS) || !is_object($GLOBALS['logger'])) {
 			$GLOBALS['logger'] = OWL::factory('LogHandler');
 			$_tmp_logger = true;
 		}
-		$GLOBALS['logger']->log ($exception->stack_dump(true), $exception->thrown_code);
+		$GLOBALS['logger']->log ($exception->stackDump(true), $exception->thrown_code);
 
 		if (ConfigHandler::get ('exception|show_in_browser')) {		
-			echo ($exception->stack_dump(false));
+			echo ($exception->stackDump(false));
 		} else {
 			echo ('<p class="exception"><b>An exception was thrown</b><br/>'
 				. 'Check the logfile for details</p>');
@@ -339,10 +339,10 @@ class OWLExceptionHandler
 	 * Catch an uncaught exception
 	 * \param[in] $exception The exception
 	 */ 
-	public static function handle_exception (OWLException $exception)
+	public static function handleException (OWLException $exception)
 	{
-		self::log_exception($exception);
+		self::logException($exception);
 	}
 }
 
-set_exception_handler(array('OWLExceptionHandler', 'handle_exception'));
+set_exception_handler(array('OWLExceptionHandler', 'handleException'));

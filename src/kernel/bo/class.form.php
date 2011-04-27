@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the HTML Form class
- * \version $Id: class.form.php,v 1.8 2011-04-26 11:45:45 oscar Exp $
+ * \version $Id: class.form.php,v 1.9 2011-04-27 11:50:08 oscar Exp $
  */
 
 OWLloader::getClass('formfield', OWL_PLUGINS . '/formfields');
@@ -70,7 +70,7 @@ class Form extends BaseElement
 	public function setMethod ($method)
 	{
 		if ($method != 'GET' && $method != 'POST') {
-			$this->set_status (FORM_IVMETHOD, $method);
+			$this->setStatus (FORM_IVMETHOD, $method);
 			return ($this->severity);
 		}
 		$this->method = $method;
@@ -87,7 +87,7 @@ class Form extends BaseElement
 	{
 		$enctype = strtolower($enctype);
 		if ($enctype != 'multipart/form-data' && $enctype != 'application/x-www-form-urlencoded') {
-			$this->set_status (FORM_IVENCODING, $enctype);
+			$this->setStatus (FORM_IVENCODING, $enctype);
 			return ($this->severity);
 		}
 		$this->enctype = $enctype;
@@ -112,7 +112,7 @@ class Form extends BaseElement
 //				if (in_array(''))
 //				$this->fields[$name]->addValue($value);
 //			} else {
-//				$this->set_status (FORM_NOMULTIVAL, array($name, $this->fields[$name]->getType()));
+//				$this->setStatus (FORM_NOMULTIVAL, array($name, $this->fields[$name]->getType()));
 //				return $this->severity;
 //			}
 		} else {
@@ -129,13 +129,13 @@ class Form extends BaseElement
 			}
 
 			if (!OWLloader::getClass('formfield.'.$type, OWL_PLUGINS . '/formfields')) {
-				$this->set_status (FORM_NOCLASS, $type);
+				$this->setStatus (FORM_NOCLASS, $type);
 				return ($this->severity);
 			}
 			$_className = 'FormField' . ucfirst($type) . 'Plugin';
 
 			if (!($this->fields[$name] = new $_className($_subtype))) {
-				$this->set_status (FORM_IVCLASSNAME, array($type, $_className));
+				$this->setStatus (FORM_IVCLASSNAME, array($type, $_className));
 				return ($this->severity);
 			}
 
@@ -161,7 +161,7 @@ class Form extends BaseElement
 			if (method_exists($this->fields[$index], $_method)) {
 				$this->fields[$index]->$_method($_v);
 			} else {
-				$this->set_status (FORM_NOATTRIB, array($_k, $this->fields[$index]->getType()));
+				$this->setStatus (FORM_NOATTRIB, array($_k, $this->fields[$index]->getType()));
 			}
 		}
 	}
@@ -186,7 +186,7 @@ class Form extends BaseElement
 	public function showField($name)
 	{
 		if (in_array($name, $this->fields)) {
-			$this->set_status (FORM_NOSUCHFIELD, array($name));
+			$this->setStatus (FORM_NOSUCHFIELD, array($name));
 			return null;
 		}
 		return $this->fields[$name]->showElement();
@@ -233,27 +233,27 @@ class Form extends BaseElement
 /*
  * Register this class and all status codes
  */
-Register::register_class ('Form');
+Register::registerClass ('Form');
 
-//Register::set_severity (OWL_DEBUG);
+//Register::setSeverity (OWL_DEBUG);
 
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-Register::set_severity (OWL_SUCCESS);
-//Register::register_code ('FORM_RETVALUE');
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+Register::setSeverity (OWL_SUCCESS);
+//Register::registerCode ('FORM_RETVALUE');
 
-Register::set_severity (OWL_WARNING);
-Register::register_code ('FORM_NOMULTIVAL');
-Register::register_code ('FORM_IVMETHOD');
-Register::register_code ('FORM_IVENCODING');
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('FORM_NOMULTIVAL');
+Register::registerCode ('FORM_IVMETHOD');
+Register::registerCode ('FORM_IVENCODING');
 
-Register::set_severity (OWL_BUG);
-Register::register_code ('FORM_IVCLASSNAME');
+Register::setSeverity (OWL_BUG);
+Register::registerCode ('FORM_IVCLASSNAME');
 
-Register::set_severity (OWL_ERROR);
-Register::register_code ('FORM_NOCLASS');
-Register::register_code ('FORM_NOATTRIB');
-Register::register_code ('FORM_NOSUCHFIELD');
+Register::setSeverity (OWL_ERROR);
+Register::registerCode ('FORM_NOCLASS');
+Register::registerCode ('FORM_NOATTRIB');
+Register::registerCode ('FORM_NOSUCHFIELD');
 
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

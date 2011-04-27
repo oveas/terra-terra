@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library Dispatcher class
- * \version $Id: class.dispatcher.php,v 1.9 2011-04-27 10:58:20 oscar Exp $
+ * \version $Id: class.dispatcher.php,v 1.10 2011-04-27 11:50:08 oscar Exp $
  */
 
 define ('OWL_DISPATCHER_NAME', 'd'); //< Formfield/HTTP var name for the dispatcher
@@ -52,7 +52,7 @@ class Dispatcher extends _OWL
 	 * \public
 	 * \return Severity level
 	 */
-	public static function get_instance()
+	public static function getInstance()
 	{
 		if (!Dispatcher::$instance instanceof self) {
 			Dispatcher::$instance = new self();
@@ -80,7 +80,7 @@ class Dispatcher extends _OWL
 		if (is_array($_dispatcher)) {
 			foreach (array('application', 'include_path','class_name','method_name') as $_req) {
 				if (!array_key_exists($_req, $_dispatcher)) {
-					$this->set_status (DISP_IVDISPATCH, $_req);
+					$this->setStatus (DISP_IVDISPATCH, $_req);
 					return ($this->severity);
 				}
 			}
@@ -119,8 +119,8 @@ class Dispatcher extends _OWL
 			$_form = OWL::factory('FormHandler');
 
 			$_dispatcher = $_form->get(OWL_DISPATCHER_NAME);
-			if ($_form->get_status() === FORM_NOVALUE || !$_dispatcher) {
-				$this->set_status(DISP_NOARG);
+			if ($_form->getStatus() === FORM_NOVALUE || !$_dispatcher) {
+				$this->setStatus(DISP_NOARG);
 				return;
 			}
 			$_destination = $this->decodeDispatcher($_dispatcher);
@@ -129,7 +129,7 @@ class Dispatcher extends _OWL
 		}
 
 		$_logger = OWL::factory('LogHandler', 'so');
-		$_logger->log_session($_destination, $_form);
+		$_logger->logSession($_destination, $_form);
 
 		if (defined($_destination['include_path'])) {
 			$_inc_path = constant($_destination['include_path']);
@@ -138,12 +138,12 @@ class Dispatcher extends _OWL
 		}
 
 		if (!OWLloader::getClass($_destination['class_file'], $_inc_path)) {
-			$this->set_status (DISP_NOCLASSF, array($_destination['class_file'], "$_inc_path/".$_destination['class_file']));
+			$this->setStatus (DISP_NOCLASSF, array($_destination['class_file'], "$_inc_path/".$_destination['class_file']));
 			return ($this->severity);
 		}
 
 		if (!class_exists($_destination['class_name'])) {
-			$this->set_status (DISP_NOCLASS, $_destination['class_name']);
+			$this->setStatus (DISP_NOCLASS, $_destination['class_name']);
 			return ($this->severity);
 		}
 
@@ -155,7 +155,7 @@ class Dispatcher extends _OWL
 		}
 
 		if (!method_exists($_handler, $_destination['method_name'])) {
-			$this->set_status (DISP_NOMETHOD, array($_method, $_destination['class_name']));
+			$this->setStatus (DISP_NOMETHOD, array($_method, $_destination['class_name']));
 			return ($this->severity);
 		}
 
@@ -201,10 +201,10 @@ class Dispatcher extends _OWL
 	 * \public
 	 * \return True on success, false on failure
 	 */
-	public function register_callback($_dispatcher)
+	public function registerCallback($_dispatcher)
 	{
 		if ($this->dispatcher !== null) {
-			$this->set_status (DISP_ALREGIST);
+			$this->setStatus (DISP_ALREGIST);
 			return (false);
 		}
 		$this->dispatcher = $this->composeDispatcher($_dispatcher);
@@ -220,10 +220,10 @@ class Dispatcher extends _OWL
 	 * \param[in] $_argument Argument, must be an array type. When non- arrays should be passed as arguments, the must be set when the callback is registered already
 	 * \return True on success, false on failure
 	 */
-	public function register_argument(array $_argument)
+	public function registerArgument(array $_argument)
 	{
 		if ($this->dispatcher === null) {
-			$this->set_status (DISP_NOTREGIST);
+			$this->setStatus (DISP_NOTREGIST);
 			return (false);
 		}
 		$_dispatcher = $this->decodeDispatcher($this->dispatcher);
@@ -232,7 +232,7 @@ class Dispatcher extends _OWL
 			$_dispatcher['argument'] = $_argument;
 		} else {
 			if (!is_array($_dispatcher['argument'])) {
-				$this->set_status (DISP_INCOMPAT);
+				$this->setStatus (DISP_INCOMPAT);
 				return (false);
 			}
 			$_dispatcher['argument'] = $_argument + $_dispatcher['argument'];
@@ -245,7 +245,7 @@ class Dispatcher extends _OWL
 	 * Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly.
 	 * \return The dispatcher, or null when no dispatched was registered
 	 */
-	public function get_callback()
+	public function getCallback()
 	{
 		$_dispatcher = $this->dispatcher;
 		$this->dispatcher = null; // reset
@@ -256,28 +256,28 @@ class Dispatcher extends _OWL
 /*
  * Register this class and all status codes
  */
-Register::register_class ('Dispatcher');
+Register::registerClass ('Dispatcher');
 
-//Register::set_severity (OWL_DEBUG);
+//Register::setSeverity (OWL_DEBUG);
 
-Register::set_severity (OWL_INFO);
-Register::register_code ('DISP_NOARG');
+Register::setSeverity (OWL_INFO);
+Register::registerCode ('DISP_NOARG');
 
-//Register::set_severity (OWL_OK);
-Register::set_severity (OWL_SUCCESS);
+//Register::setSeverity (OWL_OK);
+Register::setSeverity (OWL_SUCCESS);
 
-//Register::set_severity (OWL_WARNING);
-Register::register_code ('DISP_INSARG');
+//Register::setSeverity (OWL_WARNING);
+Register::registerCode ('DISP_INSARG');
 
-Register::set_severity (OWL_BUG);
-Register::register_code ('DISP_ALREGIST');
+Register::setSeverity (OWL_BUG);
+Register::registerCode ('DISP_ALREGIST');
 
-Register::set_severity (OWL_ERROR);
-Register::register_code ('DISP_IVDISPATCH');
-Register::register_code ('DISP_INCOMPAT');
-Register::register_code ('DISP_NOCLASS');
-Register::register_code ('DISP_NOCLASSF');
-Register::register_code ('DISP_NOMETHOD');
+Register::setSeverity (OWL_ERROR);
+Register::registerCode ('DISP_IVDISPATCH');
+Register::registerCode ('DISP_INCOMPAT');
+Register::registerCode ('DISP_NOCLASS');
+Register::registerCode ('DISP_NOCLASSF');
+Register::registerCode ('DISP_NOMETHOD');
 
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the abstract ContentArea class
- * \version $Id: class.contentarea.php,v 1.4 2011-04-27 10:58:21 oscar Exp $
+ * \version $Id: class.contentarea.php,v 1.5 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -74,16 +74,16 @@ abstract class ContentArea extends _OWL
 /*
  * Register this class and all status codes
  */
-Register::register_class ('ContentArea');
+Register::registerClass ('ContentArea');
 
-//Register::set_severity (OWL_DEBUG);
+//Register::setSeverity (OWL_DEBUG);
 
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-//Register::set_severity (OWL_SUCCESS);
-//Register::register_code ('FORM_RETVALUE');
-//Register::set_severity (OWL_WARNING);
-//Register::set_severity (OWL_BUG);
-//Register::set_severity (OWL_ERROR);
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
+//Register::registerCode ('FORM_RETVALUE');
+//Register::setSeverity (OWL_WARNING);
+//Register::setSeverity (OWL_BUG);
+//Register::setSeverity (OWL_ERROR);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

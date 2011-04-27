@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a  selectlist formfield element
- * \version $Id: class.formfield.select.php,v 1.1 2011-01-13 11:05:34 oscar Exp $
+ * \version $Id: class.formfield.select.php,v 1.2 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -64,17 +64,17 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 	public function setValue($_value)
 	{
 		if (!is_array($_value)) {
-			$this->set_status(FORMFIELD_IVVALFORMAT, array($this->name));
+			$this->setStatus(FORMFIELD_IVVALFORMAT, array($this->name));
 			return;
 		}
 
 		foreach ($_value as $_option) {
 			if (!is_array($_option)) {
-				$this->set_status(FORMFIELD_IVVALFORMAT, array($this->name));
+				$this->setStatus(FORMFIELD_IVVALFORMAT, array($this->name));
 				return;
 			}
 			if (!array_key_exists('value', $_option)) {
-				$this->set_status(FORMFIELD_NOVAL, array($this->name));
+				$this->setStatus(FORMFIELD_NOVAL, array($this->name));
 				return;
 			}
 
@@ -84,7 +84,7 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 				$_valueArray = $this->options[self::DefaultOptionGroup];
 			}
 			if (in_array($_option['value'], $_valueArray)) { // TODO This will only check the current optgroup
-				$this->set_status (FORMFIELD_VALEXISTS, $_option['value'], $this->name);
+				$this->setStatus (FORMFIELD_VALEXISTS, $_option['value'], $this->name);
 				return;
 			}
 			$_valueArray['value'] = $_option['value'];
@@ -107,7 +107,7 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 		if (is_int($size)) {
 			$this->size = $size;
 		} else {
-			$this->set_status(FORMFIELD_IVVAL, array($size, 'size'));
+			$this->setStatus(FORMFIELD_IVVAL, array($size, 'size'));
 		}
 	}
 
@@ -161,17 +161,17 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 	}
 
 
-//Register::set_severity (OWL_DEBUG);
+//Register::setSeverity (OWL_DEBUG);
 
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-//Register::set_severity (OWL_SUCCESS);
-//Register::register_code ('FORM_RETVALUE');
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
+//Register::registerCode ('FORM_RETVALUE');
 
-//Register::set_severity (OWL_WARNING);
+//Register::setSeverity (OWL_WARNING);
 
-//Register::set_severity (OWL_BUG);
+//Register::setSeverity (OWL_BUG);
 
-//Register::set_severity (OWL_ERROR);
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_ERROR);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

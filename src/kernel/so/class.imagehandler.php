@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the FileHandler class
- * \version $Id: class.imagehandler.php,v 1.1 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.imagehandler.php,v 1.2 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -82,11 +82,11 @@ class ImageHandler extends FileHandler
 
 		if (!file_exists($this->name)) {
 			if ($req) {
-				$this->set_status (FILE_NEWFILE, array (
+				$this->setStatus (FILE_NEWFILE, array (
 					$this->name
 				));
 			} else {
-				$this->set_status (FILE_NOSUCHFILE, array (
+				$this->setStatus (FILE_NOSUCHFILE, array (
 					$this->name
 				));
 			}
@@ -96,7 +96,7 @@ class ImageHandler extends FileHandler
 		$this->localfile = !eregi("^([a-z]+)://", $this->name);
 		$this->myfile = (fileowner($this->name) == getmyuid());
 
-		$this->set_status (OWL_STATUS_OK);
+		$this->setStatus (OWL_STATUS_OK);
 	}
 }
 
@@ -105,27 +105,27 @@ class ImageHandler extends FileHandler
 /*
  * Register this class and all status codes
  */
-Register::register_class('ImageHandler');
+Register::registerClass('ImageHandler');
 
-//Register::set_severity (OWL_DEBUG);
-Register::set_severity (OWL_INFO);
-Register::register_code ('FILE_NEWFILE');
+//Register::setSeverity (OWL_DEBUG);
+Register::setSeverity (OWL_INFO);
+Register::registerCode ('FILE_NEWFILE');
 
-//Register::set_severity (OWL_OK);
+//Register::setSeverity (OWL_OK);
 
-Register::set_severity (OWL_SUCCESS);
-Register::register_code ('FILE_CREATED');
-Register::register_code ('FILE_OPENED');
-Register::register_code ('FILE_CLOSED');
+Register::setSeverity (OWL_SUCCESS);
+Register::registerCode ('FILE_CREATED');
+Register::registerCode ('FILE_OPENED');
+Register::registerCode ('FILE_CLOSED');
 
-Register::set_severity (OWL_WARNING);
-Register::register_code ('FILE_NOSUCHFILE');
-Register::register_code ('FILE_ENDOFFILE');
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('FILE_NOSUCHFILE');
+Register::registerCode ('FILE_ENDOFFILE');
 
-//Register::set_severity (OWL_BUG);
+//Register::setSeverity (OWL_BUG);
 
-Register::set_severity (OWL_ERROR);
-Register::register_code ('FILE_OPENERR');
+Register::setSeverity (OWL_ERROR);
+Register::registerCode ('FILE_OPENERR');
 
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

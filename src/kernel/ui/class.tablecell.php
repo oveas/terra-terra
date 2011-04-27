@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a tablecell element
- * \version $Id: class.tablecell.php,v 1.3 2011-01-21 16:28:15 oscar Exp $
+ * \version $Id: class.tablecell.php,v 1.4 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -81,15 +81,15 @@ class Tablecell extends BaseElement
 /*
  * Register this class and all status codes
  */
-Register::register_class ('Tablecell');
+Register::registerClass ('Tablecell');
 
-//Register::set_severity (OWL_DEBUG);
+//Register::setSeverity (OWL_DEBUG);
 
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-//Register::set_severity (OWL_SUCCESS);
-//Register::set_severity (OWL_WARNING);
-//Register::set_severity (OWL_BUG);
-//Register::set_severity (OWL_ERROR);
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (OWL_WARNING);
+//Register::setSeverity (OWL_BUG);
+//Register::setSeverity (OWL_ERROR);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Session class
- * \version $Id: class.session.php,v 1.8 2011-04-27 10:58:21 oscar Exp $
+ * \version $Id: class.session.php,v 1.9 2011-04-27 11:50:08 oscar Exp $
  */
 
 /**
@@ -31,18 +31,18 @@ class Session extends SessionHandler
 			session_start ();
 			header ('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"'); //Fix for IE6
 		}
-		if ($this->get_session_var('init', false) === false) {
+		if ($this->getSessionVar('init', false) === false) {
 			$this->setup();
 		} else {
-			$this->set_session_var('new', false);
+			$this->setSessionVar('new', false);
 			if (ConfigHandler::get('session|check_ip') === true) {
-				if ($this->get_session_var('ip') != $this->ip_address()) {
-					$this->set_status (SESSION_IPCHKFAIL);
+				if ($this->getSessionVar('ip') != $this->ipAddress()) {
+					$this->setStatus (SESSION_IPCHKFAIL);
 				}
 			}
 		}
-		$this->rights = $this->get_session_var('rights');
-		$this->set_session_var('step', 0, SESSIONVAR_INCR);
+		$this->rights = $this->getSessionVar('rights');
+		$this->setSessionVar('step', 0, SESSIONVAR_INCR);
 	}
 	
 	/**
@@ -61,17 +61,17 @@ class Session extends SessionHandler
 	 */
 	public function setup (array $vars = array())
 	{
-		$this->set_session_var('ip', $this->ip_address());
-		$this->set_session_var('step', 0, SESSIONVAR_INCR);
-		$this->set_session_var('new', true);
-		$this->set_session_var('uid', 0); // Defaults to the anonymous user
+		$this->setSessionVar('ip', $this->ipAddress());
+		$this->setSessionVar('step', 0, SESSIONVAR_INCR);
+		$this->setSessionVar('new', true);
+		$this->setSessionVar('uid', 0); // Defaults to the anonymous user
 		if (count($vars) > 0) {
 			foreach ($vars as $_k => $_v) {
-				$this->set_session_var($_k, $_v);
+				$this->setSessionVar($_k, $_v);
 			}
 		}
-		$this->set_session_var('rights', new Rights(APPL_ID));
-		$this->set_session_var('init', true);
+		$this->setSessionVar('rights', new Rights(APPL_ID));
+		$this->setSessionVar('init', true);
 	}
 
 	/**
@@ -81,7 +81,7 @@ class Session extends SessionHandler
 	 * \param[in] $app Application ID
 	 * \todo CUrrently, this only works for OWL bitmaps; at application level this is not yet implemented
 	 */
-	public function set_rights($bitmap, $app = OWL_APPL_ID)
+	public function setRights($bitmap, $app = OWL_ID)
 	{
 		$this->rights->initBitmap($bitmap,$app);
 	}
@@ -104,7 +104,7 @@ class Session extends SessionHandler
 	 * \param[in] $val Variable value (default 0)
 	 * \param[in] $flg How to handle the value. Default SESSIONVAR_SET
 	 */
-	public function set_session_var ($var, $val = 0, $flg = SESSIONVAR_SET)
+	public function setSessionVar ($var, $val = 0, $flg = SESSIONVAR_SET)
 	{
 		switch ($flg) {
 			case (SESSIONVAR_UNSET):
@@ -148,7 +148,7 @@ class Session extends SessionHandler
 	 * \param[in] $default Default value to return if the variable was not set (default null)
 	 * \return The value from the session, null if not set
 	 */
-	public function get_session_var ($var, $default = null)
+	public function getSessionVar ($var, $default = null)
 	{
 		if (array_key_exists($var, $_SESSION)) {
 			return $_SESSION[$var];
@@ -162,7 +162,7 @@ class Session extends SessionHandler
 	 * a proxy server (HTTP_X_FORWARDED_FOR) is direct access (REMOTE_ADDR)
 	 * \return The IP address, or 0.0.0.0 when none was found
 	 */
-	private function ip_address()
+	private function ipAddress()
 	{
 		if (array_key_exists('HTTP_CLIENT_IP', $_SERVER)) {
 			return ($_SERVER['HTTP_CLIENT_IP']);
@@ -178,7 +178,7 @@ class Session extends SessionHandler
 	}
 }
 
-Register::register_class('Session');
+Register::registerClass('Session');
 
-Register::set_severity (OWL_WARNING);
-Register::register_code ('SESSION_IPCHKFAIL');
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('SESSION_IPCHKFAIL');

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Scheme Handler class
- * \version $Id: class.schemehandler.php,v 1.4 2011-04-26 11:45:45 oscar Exp $
+ * \version $Id: class.schemehandler.php,v 1.5 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -59,8 +59,8 @@ class SchemeHandler extends _OWL
 	private function __construct ()
 	{
 		_OWL::init();
-		$this->db = DbHandler::get_instance();
-		$this->set_status (OWL_STATUS_OK);
+		$this->db = DbHandler::getInstance();
+		$this->setStatus (OWL_STATUS_OK);
 	}
 
 	/**
@@ -89,7 +89,7 @@ class SchemeHandler extends _OWL
 	 * \public
 	 * \return Severity level
 	 */
-	public static function get_instance()
+	public static function getInstance()
 	{
 		if (!SchemeHandler::$instance instanceof self) {
 			SchemeHandler::$instance = new self();
@@ -101,10 +101,10 @@ class SchemeHandler extends _OWL
 	 * Set a new tablename
 	 * \param[in] $_tblname Name of the table to create, check or modify
 	 */
-	public function create_scheme ($_tblname)
+	public function createScheme ($_tblname)
 	{
 		if ($this->inuse) {
-			$this->set_status (SCHEMEHANDLE_INUSE, $this->table);
+			$this->setStatus (SCHEMEHANDLE_INUSE, $this->table);
 			return ($this->severity);
 		}
 		self::reset();
@@ -124,14 +124,14 @@ class SchemeHandler extends _OWL
 	 * - options : Array; for SET and ENUM types. the list of possible values
 	 * - comment : String; field comment
 	 */
-	public function define_scheme($_scheme)
+	public function defineScheme($_scheme)
 	{
 		if (!$this->inuse) {
-			$this->set_status (SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (SCHEMEHANDLE_NOTUSE);
 			return ($this->severity);
 		}
 		$this->scheme['columns'] = $_scheme;
-		return $this->validate_scheme();
+		return $this->validateScheme();
 	}
 
 	/**
@@ -143,17 +143,17 @@ class SchemeHandler extends _OWL
 	 * - columns : Array; List with columnnames that will be indexed
 	 * - type : String (optional); Index type, currenty only supports 'FULLTEXT'
 	 */
-	public function define_index($_index)
+	public function defineIndex($_index)
 	{
 		if (!$this->inuse) {
-			$this->set_status (SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (SCHEMEHANDLE_NOTUSE);
 			return ($this->severity);
 		}
 		$_primary = false;
 		foreach ($_index as $_name => $_descr) {
 			if ($_descr['primary']) {
 				if ($_primary) {
-					$this->set_status (SCHEMEHANDLE_DUPLPRKEY, $this->table);
+					$this->setStatus (SCHEMEHANDLE_DUPLPRKEY, $this->table);
 					return false;
 				}
 				$_name = 'PRIMARY';
@@ -162,7 +162,7 @@ class SchemeHandler extends _OWL
 			unset ($_descr['primary']);
 			$this->scheme['indexes'][$_name] = $_descr;
 		}
-		return $this->validate_scheme();
+		return $this->validateScheme();
 	}
 
 	/**
@@ -175,16 +175,16 @@ class SchemeHandler extends _OWL
 	function scheme($_drops = false)
 	{
 		if (!$this->inuse) {
-			$this->set_status (SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (SCHEMEHANDLE_NOTUSE);
 			return ($this->severity);
 		}
 		$_return = $this->compare();
 		if ($_return === true) {
 			return true; // table exists and is equal
 		} elseif ($_return === false) {
-			$_stat = $this->create_table(); // table does not exist
+			$_stat = $this->createTable(); // table does not exist
 		} else {
-			$_stat = $this->alter_table($_return, $_drops); // differences found
+			$_stat = $this->alterTable($_return, $_drops); // differences found
 		}
 		return ($_stat === OWL_SUCCESS);
 	}
@@ -192,20 +192,20 @@ class SchemeHandler extends _OWL
 	/**
 	 * Modify 1 or more fields in an existing scheme definition
 	 * \param[in] $_field Array holding 1 or more field descriptions
-	 * \see define_scheme()
+	 * \see defineScheme()
 	 * \private
 	 * \return Boolean; false if the table description contains errors
 	 */
-	public function alter_scheme($_field)
+	public function alterScheme($_field)
 	{
 		if (!$this->inuse) {
-			$this->set_status (SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (SCHEMEHANDLE_NOTUSE);
 			return ($this->severity);
 		}
 		foreach ($_field as $_fieldname => $_attributes) {
 			$this->scheme['columns'][$_fieldname][$_attributes[0]] = $_attributes[1];
 		}
-		return $this->validate_scheme();
+		return $this->validateScheme();
 	}
 
 	/**
@@ -214,13 +214,13 @@ class SchemeHandler extends _OWL
 	 * \private
 	 * \return boolean False if there is an error in the scheme definition, True if no errors were found
 	 */
-	private function validate_scheme()
+	private function validateScheme()
 	{
 		$_counters = array(
 			 'auto_inc' => 0
 		);
 		if (!array_key_exists('columns', $this->scheme) || count($this->scheme['columns']) == 0) {
-			$this->set_status (SCHEMEHANDLE_NOCOLS, $this->table);
+			$this->setStatus (SCHEMEHANDLE_NOCOLS, $this->table);
 			return false;
 		}
 		foreach ($this->scheme['columns'] as $_fld => $_desc) {
@@ -233,7 +233,7 @@ class SchemeHandler extends _OWL
 							,'type' => null
 				);
 				if ($_counters['auto_inc'] > 0) {
-				$this->set_status (SCHEMEHANDLE_MULAUTOINC, $this->table);
+				$this->setStatus (SCHEMEHANDLE_MULAUTOINC, $this->table);
 					return false;
 				}
 				$_counters['auto_inc']++;
@@ -251,19 +251,19 @@ class SchemeHandler extends _OWL
 			
 		}
 		if (!array_key_exists('indexes', $this->scheme) || count($this->scheme['indexes']) == 0) {
-			$this->set_status (SCHEMEHANDLE_NOINDEX, $this->table);
+			$this->setStatus (SCHEMEHANDLE_NOINDEX, $this->table);
 			return true;
 		}
 		foreach ($this->scheme['indexes'] as $_idx => $_desc) {
 			if (!array_key_exists('columns', $_desc)
 				|| !is_array($_desc['columns'])
 				|| count($_desc['columns']) == 0) {
-					$this->set_status (SCHEMEHANDLE_NOCOLIDX, $this->table, $_idx);
+					$this->setStatus (SCHEMEHANDLE_NOCOLIDX, $this->table, $_idx);
 					return false;
 			}
 			foreach ($_desc['columns'] as $_fld) {
 				if (!array_key_exists($_fld, $this->scheme['columns'])) {
-					$this->set_status (SCHEMEHANDLE_IVCOLIDX, $this->table, $_idx, $_fld);
+					$this->setStatus (SCHEMEHANDLE_IVCOLIDX, $this->table, $_idx, $_fld);
 					return false;
 				}
 			}
@@ -280,8 +280,8 @@ class SchemeHandler extends _OWL
 	{
 		$_diffs = array();
 		$_current = array();
-		$this->table_description($this->table, $_current);
-		if ($this->get_status() === SCHEMEHANDLE_NOTABLE) {
+		$this->tableDescription($this->table, $_current);
+		if ($this->getStatus() === SCHEMEHANDLE_NOTABLE) {
 			return false;
 		}
 		foreach ($this->scheme['columns'] as $_fld => $_descr) {
@@ -311,7 +311,7 @@ class SchemeHandler extends _OWL
 	 * Create the defined table
 	 * \private
 	 */
-	private function create_table()
+	private function createTable()
 	{
 		$_qry = 'CREATE TABLE ' . $this->db->tablename($this->table) . '(';
 		$_first = true;
@@ -340,7 +340,7 @@ class SchemeHandler extends _OWL
 			$_qry .= ('(' . implode(',',$_desc['columns']) . ')');
 		}
 		$_qry .= ')';
-		$this->db->set_query($_qry);
+		$this->db->setQuery($_qry);
 		return ($this->db->write($_dummy, __LINE__, __FILE__));
 	}
 
@@ -350,11 +350,11 @@ class SchemeHandler extends _OWL
 	 * \param[in] $_drops True if existing fields should be dropped
 	 * \private
 	 */
-	private function alter_table($_diffs, $_drops)
+	private function alterTable($_diffs, $_drops)
 	{
 		if ($_drops === true && array_key_exists('drop', $_diffs) && count($_diffs['drop']['columns']) > 0) {
 			foreach ($_diffs['drop']['columns'] as $_fld => $_desc) {
-				$this->db->set_query('ALTER TABLE ' . $this->db->tablename($this->table) . ' DROP ' . $_fld);
+				$this->db->setQuery('ALTER TABLE ' . $this->db->tablename($this->table) . ' DROP ' . $_fld);
 				$this->db->write(false, __LINE__, __FILE__);
 			}
 		}
@@ -363,7 +363,7 @@ class SchemeHandler extends _OWL
 				$_qry = 'ALTER TABLE ' . $this->db->tablename($this->table)
 					. ' CHANGE `' . $_fld . '` `' .$_fld . '` ' . $_desc['type']
 					. $this->_define_field($_desc);
-				$this->db->set_query($_qry);
+				$this->db->setQuery($_qry);
 				$this->db->write(false, __LINE__, __FILE__);
 			}
 		}
@@ -372,7 +372,7 @@ class SchemeHandler extends _OWL
 				$_qry = 'ALTER TABLE ' . $this->db->tablename($this->table)
 					. ' ADD `' . $_fld . '` ' . $_desc['type']
 					. $this->_define_field($_desc);
-				$this->db->set_query($_qry);
+				$this->db->setQuery($_qry);
 				$this->db->write(false, __LINE__, __FILE__);
 			}
 		}
@@ -421,16 +421,16 @@ class SchemeHandler extends _OWL
 	 * \param[in] $_tablename The tablename
 	 * \return Indexed array holding all fields =&gt; datatypes, or null on errors
 	 */
-	private function get_table_columns($_tablename)
+	private function getTableColumns($_tablename)
 	{
 		$_descr = array ();
 		$_data  = array ();
 		$_qry = 'SHOW FULL COLUMNS FROM ' . $this->db->tablename($_tablename);
 
 		$this->db->read (DBHANDLE_DATA, $_data, $_qry, __LINE__, __FILE__);
-		if ($this->db->get_status() === 'DBHANDLE_NODATA') {
+		if ($this->db->getStatus() === 'DBHANDLE_NODATA') {
 			// A table without fields.... not likely.... some bug somewhere
-			$this->set_status (SCHEMEHANDLE_EMPTYTABLE, $_tablename);
+			$this->setStatus (SCHEMEHANDLE_EMPTYTABLE, $_tablename);
 			return null;
 		}
 		foreach ($_data as $_record) {
@@ -464,15 +464,15 @@ class SchemeHandler extends _OWL
 	 * \param[in] $_tablename The tablename
 	 * \return Indexed array holding all fields =&gt; datatypes, or null on errors
 	 */
-	private function get_table_indexes($_tablename)
+	private function getTableIndexes($_tablename)
 	{
 		$_descr = array ();
 		$_data  = array ();
 		$_qry = 'SHOW INDEXES FROM ' . $this->db->tablename($_tablename);
 
 		$this->db->read (DBHANDLE_DATA, $_data, $_qry, __LINE__, __FILE__);
-		if ($this->db->get_status() === 'DBHANDLE_NODATA') {
-			$this->set_status (SCHEMEHANDLE_NOINDEX, $_tablename);
+		if ($this->db->getStatus() === 'DBHANDLE_NODATA') {
+			$this->setStatus (SCHEMEHANDLE_NOINDEX, $_tablename);
 			return null;
 		}
 		foreach ($_data as $_record) {
@@ -490,15 +490,15 @@ class SchemeHandler extends _OWL
 	 * \param[out] $data Indexed array holding all fields =&gt; datatypes
 	 * \return Severity level
 	 */
-	public function table_description ($tablename, &$data)
+	public function tableDescription ($tablename, &$data)
 	{
-		if (!$this->db->table_exists($tablename)) {
+		if (!$this->db->tableExists($tablename)) {
 			$data = array();
-			$this->set_status (SCHEMEHANDLE_NOTABLE);
+			$this->setStatus (SCHEMEHANDLE_NOTABLE);
 			return ($this->severity);
 		}
-		$data['columns'] = $this->get_table_columns($tablename);
-		$data['indexes'] = $this->get_table_indexes($tablename);
+		$data['columns'] = $this->getTableColumns($tablename);
+		$data['indexes'] = $this->getTableIndexes($tablename);
 		return ($this->severity);
 	}
 	
@@ -521,31 +521,31 @@ class SchemeHandler extends _OWL
 /*
  * Register this class and all status codes
  */
-Register::register_class ('SchemeHandler');
+Register::registerClass ('SchemeHandler');
 
-//Register::set_severity (OWL_DEBUG);
+//Register::setSeverity (OWL_DEBUG);
 
-Register::set_severity (OWL_INFO);
-Register::register_code ('SCHEMEHANDLE_NOTABLE');
-Register::register_code ('SCHEMEHANDLE_NOINDEX');
+Register::setSeverity (OWL_INFO);
+Register::registerCode ('SCHEMEHANDLE_NOTABLE');
+Register::registerCode ('SCHEMEHANDLE_NOINDEX');
 
-//Register::set_severity (OWL_OK);
-//Register::set_severity (OWL_SUCCESS);
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
 
-Register::set_severity (OWL_WARNING);
-Register::register_code ('SCHEMEHANDLE_IVTABLE');
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('SCHEMEHANDLE_IVTABLE');
 			
-Register::set_severity (OWL_BUG);
-Register::register_code ('SCHEMEHANDLE_INUSE');
-Register::register_code ('SCHEMEHANDLE_NOUSE');
-Register::register_code ('SCHEMEHANDLE_EMPTYTABLE');
+Register::setSeverity (OWL_BUG);
+Register::registerCode ('SCHEMEHANDLE_INUSE');
+Register::registerCode ('SCHEMEHANDLE_NOUSE');
+Register::registerCode ('SCHEMEHANDLE_EMPTYTABLE');
 					
-Register::set_severity (OWL_ERROR);
-Register::register_code ('SCHEMEHANDLE_DUPLPRKEY');
-Register::register_code ('SCHEMEHANDLE_MULAUTOINC');
-Register::register_code ('SCHEMEHANDLE_NOCOLIDX');
-Register::register_code ('SCHEMEHANDLE_IVCOLIDX');
-Register::register_code ('SCHEMEHANDLE_NOCOLS');
+Register::setSeverity (OWL_ERROR);
+Register::registerCode ('SCHEMEHANDLE_DUPLPRKEY');
+Register::registerCode ('SCHEMEHANDLE_MULAUTOINC');
+Register::registerCode ('SCHEMEHANDLE_NOCOLIDX');
+Register::registerCode ('SCHEMEHANDLE_IVCOLIDX');
+Register::registerCode ('SCHEMEHANDLE_NOCOLS');
 
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

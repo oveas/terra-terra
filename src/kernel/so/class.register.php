@@ -2,7 +2,7 @@
 /**
  * \file
  * Define the abstract Register class.
- * \version $Id: class.register.php,v 1.6 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class.register.php,v 1.7 2011-04-27 11:50:07 oscar Exp $
  */
 
 
@@ -82,7 +82,7 @@ abstract class Register
 	 * \param[in] $name Name of the class
 	 * \param[in] $id Application ID
 	 */
-	static public function register_app ($name, $id)
+	static public function registerApp ($name, $id)
 	{
 		if ($id == 0x00000000 || $id == 0xffffffff) {
 			$_msg = sprintf("Access violation - ID for application %s (%%08X) is out of range",
@@ -97,7 +97,7 @@ abstract class Register
 			$GLOBALS['register']['applications']["$id"] = $name;
 			$GLOBALS['register']['stack']['class'] = $id;
 		}
-		self::set_application ($id);
+		self::setApplication ($id);
 	}
 
 	/**
@@ -105,7 +105,7 @@ abstract class Register
 	 * \public
 	 * \param[in] $name Name of the class
 	 */
-	static public function register_class ($name)
+	static public function registerClass ($name)
 	{
 // TODO Error handling when out of range
 
@@ -128,14 +128,14 @@ abstract class Register
 	 * \public
 	 * \param[in] $code Symbolic name of the status code
 	 */
-	static public function register_code ($code)
+	static public function registerCode ($code)
 	{
 		if (defined ($code)) {
 			// TODO; should we generate a warning here?
 		}
 
 		if (!array_key_exists ('severity', $GLOBALS['register']['stack'])) {
-			die ("Fatal error - Register::register_code() called without a current severity; call Register::set_severity() first");
+			die ("Fatal error - Register::registerCode() called without a current severity; call Register::setSeverity() first");
 		}
 
 		// Some pointers for readability and initialise non-existing arrays
@@ -163,7 +163,7 @@ abstract class Register
 	 * \param[in] $level Symbolic name for the severity level
 	 * \param[in] $name Human readable value
 	 */
-	static public function register_severity ($level, $name)
+	static public function registerSeverity ($level, $name)
 	{
 		$GLOBALS['register']['severity']['name']["$level"] = $name; // Cast as a string!
 		$GLOBALS['register']['severity']['value']['OWL_' . $name] = $level;
@@ -175,7 +175,7 @@ abstract class Register
 	 * \param[in] $level Hex value of the severity level
 	 * \return Human readable value
 	 */
-	static public function get_severity ($level)
+	static public function getSeverity ($level)
 	{
 		if (!array_key_exists ("$level", $GLOBALS['register']['severity']['name'])) {
 			return ('(unspecified)');
@@ -191,7 +191,7 @@ abstract class Register
 	 * \param[in] $name The name of the severity level
 	 * \return Hex value of the severity level
 	 */
-	static public function get_severity_level ($name)
+	static public function getSeverityLevel ($name)
 	{
 		if (!array_key_exists ("$name", $GLOBALS['register']['severity']['value'])) {
 			return (-1);
@@ -204,7 +204,7 @@ abstract class Register
 	 * Return the ID of the current run
 	 * \public
 	 */
-	static public function get_run_id ()
+	static public function getRunId ()
 	{
 		return ($GLOBALS['register']['run']['id']);
 	}
@@ -216,7 +216,7 @@ abstract class Register
 	 * \param[in] $unknown Return value if the code does not exist
 	 * \return Human readable value
 	 */
-	static public function get_code ($value, $unknown = '*unknown*')
+	static public function getCode ($value, $unknown = '*unknown*')
 	{
 		if (!array_key_exists ("$value", $GLOBALS['register']['code_symbols'])) {
 			return ($unknown);
@@ -231,7 +231,7 @@ abstract class Register
 	 * \public
 	 * \param[in] $app_id Application ID
 	 */
-	static public function set_application ($app_id)
+	static public function setApplication ($app_id)
 	{
 		$GLOBALS['register']['stack']['app'] = $app_id;
 	}
@@ -241,7 +241,7 @@ abstract class Register
 	 * \public
 	 * \param[in] $class_id Class ID
 	 */
-	static public function set_class ($class_id)
+	static public function setClass ($class_id)
 	{
 		$GLOBALS['register']['stack']['class'] = $class_id; 
 	}
@@ -251,7 +251,7 @@ abstract class Register
 	 * \public
 	 * \param[in] $severity_level Severity level
 	 */
-	static public function set_severity ($severity_level)
+	static public function setSeverity ($severity_level)
 	{
 		$GLOBALS['register']['stack']['severity'] = $severity_level;
 	}
@@ -261,7 +261,7 @@ abstract class Register
 	 * \param[in] $_force Boolean to force a reload with (different) translations, defaults to false
 	 * \public
 	 */
-	static public function register_messages ($_force = false)
+	static public function registerMessages ($_force = false)
 	{
 		$_lang = ConfigHandler::get ('locale|lang');
 		// Suppress 'Undefined constants' notices for codes not (yet) registered
@@ -303,7 +303,7 @@ abstract class Register
 	 * \param[in] $_owl When true, the OWL file(s) will be loaded, by default only the application's
 	 * \public
 	 */
-	static public function register_labels ($_owl = false)
+	static public function registerLabels ($_owl = false)
 	{
 		$_lang = ConfigHandler::get ('locale|lang');
 		// Suppress 'Undefined constants' notices for codes not (yet) registered

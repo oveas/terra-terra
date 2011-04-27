@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library helper class
- * \version $Id: class.owl.php,v 1.4 2011-04-06 14:42:15 oscar Exp $
+ * \version $Id: class.owl.php,v 1.5 2011-04-27 11:50:08 oscar Exp $
  */
 
 /**
@@ -42,7 +42,7 @@ class OWL extends _OWL
 	 * \public
 	 * \return Severity level
 	 */
-	public static function get_instance()
+	public static function getInstance()
 	{
 		if (!OWL::$instance instanceof self) {
 			OWL::$instance = new self();
@@ -51,14 +51,14 @@ class OWL extends _OWL
 	}
 
 	/**
-	 * Call to set_status()
+	 * Call to setStatus()
 	 * \param[in] $a First parameter for passthrough
 	 * \param[in] $b Second parameter for passthrough
 	 */
 	public static function stat ($a, $b = array())
 	{
-		$me = self::get_instance(); // Make sure I am instantiated
-		$me->set_status ($a, $b);
+		$me = self::getInstance(); // Make sure I am instantiated
+		$me->setStatus ($a, $b);
 	}
 
 	/**
@@ -79,6 +79,6 @@ class OWL extends _OWL
 		if (!class_exists($class)) {
 			trigger_error('Class ' . $class . ' not found', E_USER_ERROR);
 		}
-		return call_user_func(array($class, 'get_instance'));
+		return call_user_func(array($class, 'getInstance'));
 	}
 }

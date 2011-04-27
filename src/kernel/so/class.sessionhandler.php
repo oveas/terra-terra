@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.12 2011-04-26 11:45:45 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.13 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -58,9 +58,9 @@ class SessionHandler extends _OWL
 		_OWL::init();
 
 		if (ConfigHandler::get ('owltables', true) === true) {
-			$this->dataset->set_prefix(ConfigHandler::get ('owlprefix'));
+			$this->dataset->setPrefix(ConfigHandler::get ('owlprefix'));
 		}
-		$this->dataset->set_tablename('session');
+		$this->dataset->setTablename('session');
 
 		// We need a reference to DbHandler here to make sure the object
 		// can't go out of scope before the session data is written during rundown.
@@ -125,12 +125,12 @@ class SessionHandler extends _OWL
 	 */
 	public function read ($id)
 	{
-		$this->dataset->set('sid', $this->db->escape_string($id));
+		$this->dataset->set('sid', $this->db->escapeString($id));
 		$this->dataset->set('sdata', null, null, null, array('match' => array(DBMATCH_NONE)));
 
 		$this->dataset->prepare (DATA_READ);
 		$this->dataset->db ($_data, __LINE__, __FILE__);
-		if ($this->set_high_severity($this->dataset) > OWL_WARNING) {
+		if ($this->setHighSeverity($this->dataset) > OWL_WARNING) {
 			$this->traceback();
 		}
 		$this->reset();
@@ -150,23 +150,23 @@ class SessionHandler extends _OWL
 	public function write ($id, $data)
 	{
 		// During rundown the dabase might have been closed aready, so reopen it.
-		if (!$this->db->is_open()) {
+		if (!$this->db->isOpen()) {
 			$this->db->open();
 		}
-		$this->dataset->set('sid', $this->db->escape_string($id));
+		$this->dataset->set('sid', $this->db->escapeString($id));
 
 		// First, check if this session already exists in the db
 		$this->dataset->prepare (DATA_READ);
 		$this->dataset->db ($_data, __LINE__, __FILE__);
 
 		// Set or overwrite the values
-		$this->dataset->set('sdata', $this->db->escape_string($data));
+		$this->dataset->set('sdata', $this->db->escapeString($data));
 		$this->dataset->set('stimestamp', time());
 
 		if (count ($_data) == 0) {
 			$this->dataset->prepare (DATA_WRITE);
 		} else {
-			$this->dataset->set_key ('sid');
+			$this->dataset->setKey ('sid');
 			if (!$this->check ($this->dataset, OWL_WARNING)) {
 				return (false);
 			}
@@ -192,7 +192,7 @@ class SessionHandler extends _OWL
 		if (isset($_COOKIE[session_name()])) {
 			setcookie(session_name(), '', time()-42000, '/');
 		}
-		$this->dataset->set_key ('sid');
+		$this->dataset->setKey ('sid');
 		$this->dataset->prepare (DATA_DELETE);
 
 		$this->dataset->db ($_data, __LINE__, __FILE__);
@@ -210,7 +210,7 @@ class SessionHandler extends _OWL
 	 */
 	public function gc ($lifetime)
 	{
-		$this->db->set_query(
+		$this->db->setQuery(
 				  'DELETE FROM ' . $this->db->tablename ('sessiondata')
 				. ' WHERE stimestamp < ' . time() - $lifetime
 			);
@@ -221,26 +221,26 @@ class SessionHandler extends _OWL
 /*
  * Register this class and all status codes
  */
-Register::register_class('SessionHandler');
+Register::registerClass('SessionHandler');
 
-//Register::set_severity (OWL_DEBUG);
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-//Register::set_severity (OWL_SUCCESS);
+//Register::setSeverity (OWL_DEBUG);
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
 
-Register::set_severity (OWL_WARNING);
-Register::register_code ('SESSION_INVUSERNAME');
-Register::register_code ('SESSION_INVPASSWORD');
-Register::register_code ('SESSION_TIMEOUT');
-Register::register_code ('SESSION_NOACCESS');
-Register::register_code ('SESSION_DISABLED');
-Register::register_code ('SESSION_IVSESSION');
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('SESSION_INVUSERNAME');
+Register::registerCode ('SESSION_INVPASSWORD');
+Register::registerCode ('SESSION_TIMEOUT');
+Register::registerCode ('SESSION_NOACCESS');
+Register::registerCode ('SESSION_DISABLED');
+Register::registerCode ('SESSION_IVSESSION');
 
-//Register::set_severity (OWL_BUG);
+//Register::setSeverity (OWL_BUG);
 
-Register::set_severity (OWL_ERROR);
-Register::register_code ('SESSION_NODATASET');
-Register::register_code ('SESSION_WRITEERR');
+Register::setSeverity (OWL_ERROR);
+Register::registerCode ('SESSION_NODATASET');
+Register::registerCode ('SESSION_WRITEERR');
 
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

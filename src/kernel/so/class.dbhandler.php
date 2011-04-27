@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.17 2011-04-26 11:45:45 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.18 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -212,21 +212,21 @@ class DbHandler extends _OWL
 		$this->database['username'] = $usr;
 		$this->database['password'] = $pwd;
 		$this->database['engine']   = $dbtype;
-		$this->load_driver();
+		$this->loadDriver();
 
 		$this->opened = false;
 		$this->errno = 0;
 		$this->error = '';
 		$this->db_prefix = ConfigHandler::get ('dbprefix');
 		$this->query_type = DBHANDLE_COMPLETED;
-		$this->set_status (OWL_STATUS_OK);
+		$this->setStatus (OWL_STATUS_OK);
 	}
 
 	/**
 	 * Create a new instance of the database driver
 	 * \private
 	 */
-	private function load_driver()
+	private function loadDriver()
 	{
 		if (!class_exists($this->database['engine'])) {
 			if (OWLloader::getDriver($this->database['engine'], 'database') === true) {
@@ -262,7 +262,7 @@ class DbHandler extends _OWL
 	public function __clone ()
 	{
 		if ($this->cloned) {
-			$this->set_status (DBHANDLE_CLONEACLONE);
+			$this->setStatus (DBHANDLE_CLONEACLONE);
 		} else {
 			$this->close();
 			self::$instance = ++self::$instance;
@@ -285,7 +285,7 @@ class DbHandler extends _OWL
 	public function alt(array $properties)
 	{
 		if (!$this->cloned) {
-			$this->set_status (DBHANDLE_NOTACLONE);
+			$this->setStatus (DBHANDLE_NOTACLONE);
 		} else {
 			foreach ($properties as $k => $v) {
 				if ($k == 'prefix') {
@@ -301,7 +301,7 @@ class DbHandler extends _OWL
 				} elseif ($k == 'dbdriver') {
 					$this->database['engine'] = $v;
 				}
-				$this->load_driver();
+				$this->loadDriver();
 			}
 			$this->open();
 		}
@@ -311,7 +311,7 @@ class DbHandler extends _OWL
 	 * \public
 	 * \return Object instance ID
 	 */
-	public static function get_instance()
+	public static function getInstance()
 	{
 		if (!DbHandler::$instance instanceof self) {
 			DbHandler::$original_instance = DbHandler::$instance = new self(
@@ -334,7 +334,7 @@ class DbHandler extends _OWL
 	 * I need to think about it... is this solution acceptable? So we need something smarter here?
 	 * This method is allowed to be called only once by OWLLoader; maybe some checks?
 	 */
-	public function force_reread ()
+	public function forceReread ()
 	{
 		$this->close();
 		$this->database['server']	= ConfigHandler::get ('dbserver', null, true);
@@ -343,7 +343,7 @@ class DbHandler extends _OWL
 		$this->database['password']	= ConfigHandler::get ('dbpasswd', null, true);
 		$this->database['engine']	= ConfigHandler::get ('dbdriver', 'MySQL', true);
 		$this->db_prefix			= ConfigHandler::get ('dbprefix', null, true);
-		$this->load_driver();
+		$this->loadDriver();
 		$this->open();
 	}
 
@@ -358,7 +358,7 @@ class DbHandler extends _OWL
 			if (!$this->driver->dbCreate ($this->database['name'])) {
 				$_errNo = $_errTxt = null;
 				$this->driver->dbError ($this->id, $_errNo, $_errTxt);
-				$this->set_status (DBHANDLE_CREATERR, array (
+				$this->setStatus (DBHANDLE_CREATERR, array (
 								  $this->database['name']
 								, $_errNo
 								, $_errTxt
@@ -385,7 +385,7 @@ class DbHandler extends _OWL
 				,$this->database['password']
 				,true // Allow more databases on the same server to be opened
 		)) {
-			$this->set_status (DBHANDLE_CONNECTERR, array (
+			$this->setStatus (DBHANDLE_CONNECTERR, array (
 					  $this->database['server']
 					, $this->database['username']
 					, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->database['password'])
@@ -400,7 +400,7 @@ class DbHandler extends _OWL
 	 * \public
 	 * \return boolean, True when opened
 	 */
-	public function is_open()
+	public function isOpen()
 	{
 		return $this->opened;
 	}
@@ -429,7 +429,7 @@ class DbHandler extends _OWL
 		)) {
 			$_errNo = $_errTxt = null;
 			$this->driver->dbError ($this->id, $_errNo, $_errTxt);
-			$this->set_status (DBHANDLE_OPENERR, array (
+			$this->setStatus (DBHANDLE_OPENERR, array (
 							  $this->database['name']
 							, $_errNo
 							, $_errTxt
@@ -437,7 +437,7 @@ class DbHandler extends _OWL
 		}
 		$this->opened = true;
 
-		$this->set_status (DBHANDLE_OPENED, array (
+		$this->setStatus (DBHANDLE_OPENED, array (
 						  $this->database['name']
 						, $this->id
 					));
@@ -480,7 +480,7 @@ class DbHandler extends _OWL
 	 * \param[in] $qry A complete database query. All tablenames must be prefixed (with the
 	 * tablename() function)!
 	 */
-	public function set_query ($qry)
+	public function setQuery ($qry)
 	{
 		$this->query = $qry;
 //		return $this->query . $qry;
@@ -491,13 +491,13 @@ class DbHandler extends _OWL
 	 * Internal arrays are filled with grouping data, ordering data etc. if required.,
 	 * \param[in] $fielddata Array with a description of the field, \see DbHandler::set()
 	 * \return An array with two elements: the fieldname in the format that will be handled by
-	 * DbHandler::expand_field(), and the value which might be a normal value, an array of values
+	 * DbHandler::expandField(), and the value which might be a normal value, an array of values
 	 * of a value as set by a driver function (using database functions). On errors, null is returned.
 	 */
-	public function prepare_field (array $fielddata)
+	public function prepareField (array $fielddata)
 	{
 		if (!array_key_exists('field', $fielddata) || !array_key_exists('value', $fielddata)) {
-			$this->set_status(DBHANDLE_IVFLDFORMAT, implode(',', $fielddata));
+			$this->setStatus(DBHANDLE_IVFLDFORMAT, implode(',', $fielddata));
 			return null;
 		}
 
@@ -509,7 +509,7 @@ class DbHandler extends _OWL
 			}
 			// There a driver function speficied that works on the fieldname. Just
 			// make all checks and add the info to the fieldname, this will be handled
-			// by expand_field() during the prepare stage.
+			// by expandField() during the prepare stage.
 			if (is_array($fielddata['fieldfunction'])) { // Got arguments as well
 				$_driverMethod = 'function' . ucfirst(array_shift($fielddata['fieldfunction']));
 				$_functionArguments = $fielddata['fieldfunction'];
@@ -518,7 +518,7 @@ class DbHandler extends _OWL
 				$_functionArguments = array();
 			}
 			if (!method_exists($this->driver, $_driverMethod)) {
-				$this->set_status(DBHANDLE_IVFUNCTION, $fielddata['fieldfunction']);
+				$this->setStatus(DBHANDLE_IVFUNCTION, $fielddata['fieldfunction']);
 				return null;
 			}
 			$fieldname .= '#' . $_driverMethod . '#' . implode('#', $_functionArguments);
@@ -536,7 +536,7 @@ class DbHandler extends _OWL
 		if (array_key_exists('having', $fielddata)) {
 			if (count($fielddata['having']) !== 2) {
 				// Todo, maybe better to create an own errormessage for this
-				$this->set_status(DBHANDLE_IVFLDFORMAT, 'invalid argumentcount for HAVING in ' . implode(',', $fielddata));
+				$this->setStatus(DBHANDLE_IVFLDFORMAT, 'invalid argumentcount for HAVING in ' . implode(',', $fielddata));
 				return null;
 			}
 			$this->having[] = array($fieldname, $fielddata['having'][0] . ' ' . $fielddata['having'][1]);
@@ -547,7 +547,7 @@ class DbHandler extends _OWL
 			// by calling the proper driver function
 			$_driverMethod = 'function' . ucfirst(array_shift($fielddata['valuefunction']));
 			if (!method_exists($this->driver, $_driverMethod)) {
-				$this->set_status(DBHANDLE_IVFUNCTION, $_driverMethod);
+				$this->setStatus(DBHANDLE_IVFUNCTION, $_driverMethod);
 				return null;
 			}
 			if (!is_array($fielddata['value'])) {
@@ -586,7 +586,7 @@ class DbHandler extends _OWL
 		$this->open();
 
 		if (!$this->opened) {
-			$this->set_status (DBHANDLE_DBCLOSED);
+			$this->setStatus (DBHANDLE_DBCLOSED);
 			return ($this->severity);
 		}
 
@@ -597,7 +597,7 @@ class DbHandler extends _OWL
 		}
 
 		if (($_data = $this->dbread ($_query, $this->rowcount, $_fieldcnt)) === false) {
-			$this->set_status (DBHANDLE_QUERYERR, array (
+			$this->setStatus (DBHANDLE_QUERYERR, array (
 					  $_query
 					, $this->error
 					, $line
@@ -606,7 +606,7 @@ class DbHandler extends _OWL
 			return ($this->severity);
 		}
 //echo "ok ($this->rowcount)<br>";
-		$this->set_status (DBHANDLE_ROWSREAD, array (
+		$this->setStatus (DBHANDLE_ROWSREAD, array (
 				  $_query
 				, $this->rowcount
 				, $line
@@ -614,7 +614,7 @@ class DbHandler extends _OWL
 			));
 
 		if ($this->rowcount == 0) {
-			$this->set_status (DBHANDLE_NODATA, array (
+			$this->setStatus (DBHANDLE_NODATA, array (
 					  $line
 					, $file
 				));
@@ -673,7 +673,7 @@ class DbHandler extends _OWL
 	 * \param[in] $tablename Name of the table to check
 	 * \return True of the table exists
 	 */
-	public function table_exists($tablename)
+	public function tableExists($tablename)
 	{
 		$_tablename = $this->tablename($tablename, true);
 		$_tables = $this->driver->dbTableList($this->id, $_tablename);
@@ -686,7 +686,7 @@ class DbHandler extends _OWL
 	 * \param $string The string that should be escaped
 	 * \return The escaped string
 	 */
-	public function escape_string ($string)
+	public function escapeString ($string)
 	{
 		return ($this->driver->dbEscapeString($string));
 	}
@@ -697,7 +697,7 @@ class DbHandler extends _OWL
 	 * \param $string The string that should be unescaped
 	 * \return The unescaped string
 	 */
-	public function unescape_string ($string)
+	public function unescapeString ($string)
 	{
 		return ($this->driver->dbUnescapeString($string));
 	}
@@ -709,7 +709,7 @@ class DbHandler extends _OWL
 	 * \param[in,out] $field Fieldname to expand
 	 * \param[in] $check_name Boolean which is true if the fieldname should be returned with 'AS'. Default is false
 	 */
-	private function expand_field (&$field, $check_name = false)
+	private function expandField (&$field, $check_name = false)
 	{
 		$_f = explode ('#', $field);
 		$_tablename = array_shift($_f);
@@ -763,7 +763,7 @@ class DbHandler extends _OWL
 	 * \param[in] $joins Array of arrays with values (field, linktype, field)
 	 * \return The WHERE clause
 	 */
-	private function where_clause (array $searches, array $joins)
+	private function whereClause (array $searches, array $joins)
 	{	
 		$_where = '';
 		$_i = 0;
@@ -775,7 +775,7 @@ class DbHandler extends _OWL
 				if ($_i++ > 0) {
 					$_where .= 'AND ';
 				}
-				$this->expand_field ($_fld);
+				$this->expandField ($_fld);
 				list ($_match, $_val) = $_value;
 				if (is_array($_val)) {
 					$_or = array();
@@ -797,8 +797,8 @@ class DbHandler extends _OWL
 				if ($_i++ > 0) {
 					$_where .= 'AND ';
 				}
-				$this->expand_field ($_join[0]);
-				$this->expand_field ($_join[2]);
+				$this->expandField ($_join[0]);
+				$this->expandField ($_join[2]);
 				$_where .= ($_join[0] . ' ' . $_join[1] . ' ' . $_join[2] . ' ');
 			}
 		}
@@ -811,7 +811,7 @@ class DbHandler extends _OWL
 	 * \param[in] $updates Array with fields to update (fieldname => values)
 	 * \return The UPDATE statement
 	 */
-	private function update_list (array $updates)
+	private function updateList (array $updates)
 	{
 		$_update = 'SET ';
 		$_i = 0;
@@ -819,7 +819,7 @@ class DbHandler extends _OWL
 				if ($_i++ > 0) {
 					$_update .= ', ';
 				}
-				$this->expand_field ($_fld);
+				$this->expandField ($_fld);
 				$_update .= $_fld
 						 . ' = '
 						 . (($_val === null) ? 'NULL ' : (" '" . $_val . "' "));
@@ -833,7 +833,7 @@ class DbHandler extends _OWL
 	 * \param[in] $fields An array with fields
 	 * \return Array with tablenames
 	 */
-	private function extract_tablelist (array $fields)
+	private function extractTablelist (array $fields)
 	{
 		$_table = array();
 		foreach ($fields as $_field => $_value) {
@@ -850,14 +850,14 @@ class DbHandler extends _OWL
 	 * compose this depending on the query type.
 	 * \return String with additional clauses
 	 */
-	private function additional_clauses()
+	private function additionalClauses()
 	{
 		$addl = '';
 		if ($this->query_type === DBHANDLE_READ)
 			if (count($this->grouping) > 0) {
 				$fields = array();
 				foreach ($this->grouping as $_f) {
-					$this->expand_field($_f);
+					$this->expandField($_f);
 					$fields[] = $_f;
 				}
 				$addl .= ' GROUP BY ' . implode(',', $fields);
@@ -865,7 +865,7 @@ class DbHandler extends _OWL
 			if (count($this->having) > 0) {
 				$fields = array();
 				foreach ($this->having as $_f) {
-					$this->expand_field($_f[0]);
+					$this->expandField($_f[0]);
 					$fields[] = $_f[0] . ' ' . $_f[1];
 				}
 				$addl .= ' HAVING ' . implode(',', $fields);
@@ -874,7 +874,7 @@ class DbHandler extends _OWL
 			if (count($this->ordering) > 0) {
 				$fields = array();
 				foreach ($this->ordering as $_f) {
-					$this->expand_field($_f[0]);
+					$this->expandField($_f[0]);
 					$fields[] = $_f[0] . ' ' . strtoupper($_f[1]);
 				}
 				$addl .= ' ORDER BY ' . implode(',', $fields);
@@ -896,7 +896,7 @@ class DbHandler extends _OWL
 	 * \param[in] $joins Joins on the given tables
 	 * \return Severity level
 	 */
-	public function prepare_read (
+	public function prepareRead (
 			  array $values = array()
 			, array $tables = array()
 			, array $searches = array()
@@ -907,24 +907,24 @@ class DbHandler extends _OWL
 			$this->query .= '* ';
 		} else {
 			for ($_i = 0; $_i < count ($values); $_i++) {
-				$this->expand_field ($values[$_i], true);
+				$this->expandField ($values[$_i], true);
 			}
 			$this->query .= join (', ', $values) . ' ';
 		}
 
 		if (count($tables) == 0) {
 			$this->query_type = DBHANDLE_FAILED;
-			$this->set_status (DBHANDLE_NOTABLES);
+			$this->setStatus (DBHANDLE_NOTABLES);
 		} else {
 			$this->query .= 'FROM ' . $this->tablelist ($tables);
-			if (($_where = $this->where_clause ($searches, $joins)) != '') {
+			if (($_where = $this->whereClause ($searches, $joins)) != '') {
 				$this->query .= 'WHERE ' . $_where;
 			}
 			$this->query_type = DBHANDLE_READ;
-			$this->set_status (DBHANDLE_QPREPARED, array('read', $this->query));
+			$this->setStatus (DBHANDLE_QPREPARED, array('read', $this->query));
 		}
 
-		$this->query .= $this->additional_clauses();
+		$this->query .= $this->additionalClauses();
 //echo ("Prepared query: <i>$this->query</i><br />");
 		return ($this->severity);
 	}
@@ -936,20 +936,20 @@ class DbHandler extends _OWL
 	 * \param[in] $searches Given values that have to match
 	 * \return Severity level
 	 */
-	public function prepare_delete (array $searches = array())
+	public function prepareDelete (array $searches = array())
 	{
-		$_tables = $this->extract_tablelist ($searches);
+		$_tables = $this->extractTablelist ($searches);
 		if (count($_tables) == 0) {
 			$this->query_type = DBHANDLE_FAILED;
-			$this->set_status (DBHANDLE_NOTABLES);
+			$this->setStatus (DBHANDLE_NOTABLES);
 		} else {
 			$this->query = 'DELETE FROM ' . $this->tablelist ($_tables);
-			if (($_where = $this->where_clause ($searches, array())) != '') {
+			if (($_where = $this->whereClause ($searches, array())) != '') {
 				$this->query .= 'WHERE ' . $_where;
 			}
-			$this->query .= $this->additional_clauses();
+			$this->query .= $this->additionalClauses();
 			$this->query_type = DBHANDLE_DELETE;
-			$this->set_status (DBHANDLE_QPREPARED, array('delete', $this->query));
+			$this->setStatus (DBHANDLE_QPREPARED, array('delete', $this->query));
 		}
 //echo ("Prepared query: <i>$this->query</i> ($this->severity)<br />");
 		return ($this->severity);
@@ -965,14 +965,14 @@ class DbHandler extends _OWL
 	 * \param[in] $joins Joins on the given tables
 	 * \return Severity level
 	 */
-	public function prepare_update (array $values = array(), array $searches = array(), array $joins = array())
+	public function prepareUpdate (array $values = array(), array $searches = array(), array $joins = array())
 	{
 		$_updates = array();
 		$_searches = array();
-		$_tables = $this->extract_tablelist ($values);
+		$_tables = $this->extractTablelist ($values);
 		if (count($_tables) == 0) {
 			$this->query_type = DBHANDLE_FAILED;
-			$this->set_status (DBHANDLE_NOTABLES);
+			$this->setStatus (DBHANDLE_NOTABLES);
 			return ($this->severity);
 		}
 		foreach ($values as $_fld => $_val) {
@@ -984,19 +984,19 @@ class DbHandler extends _OWL
 		}
 		if (count($_updates) === 0) {
 			$this->query_type = DBHANDLE_FAILED;
-			$this->set_status (DBHANDLE_NOVALUES);
+			$this->setStatus (DBHANDLE_NOVALUES);
 			return ($this->severity);
 		}
 
 		$this->query = 'UPDATE ' . $this->tablelist ($_tables) . ' '
-					 . $this->update_list ($_updates);
-		if (($_where = $this->where_clause ($_searches, $joins)) != '') {
+					 . $this->updateList ($_updates);
+		if (($_where = $this->whereClause ($_searches, $joins)) != '') {
 			$this->query .= 'WHERE ' . $_where;
 		}
 		$this->query_type = DBHANDLE_UPDATE;
-		$this->query .= $this->additional_clauses();
+		$this->query .= $this->additionalClauses();
 
-		$this->set_status (DBHANDLE_QPREPARED, array('update', $this->query));
+		$this->setStatus (DBHANDLE_QPREPARED, array('update', $this->query));
 //echo ("Prepared query: <i>$this->query</i> ($this->severity)<br />");
 
 		return ($this->severity);
@@ -1009,19 +1009,19 @@ class DbHandler extends _OWL
 	 * \param[in] $values Given database values
 	 * \return Severity level
 	 */
-	public function prepare_insert (array $values = array())
+	public function prepareInsert (array $values = array())
 	{
 		$_fld = array();
 		$_val = array();
-		$_tables = $this->extract_tablelist ($values);
+		$_tables = $this->extractTablelist ($values);
 		if (count($_tables) == 0) {
 			$this->query_type = DBHANDLE_FAILED;
-			$this->set_status (DBHANDLE_NOTABLES);
+			$this->setStatus (DBHANDLE_NOTABLES);
 			return ($this->severity);
 		}
 		
 		foreach ($values as $_f => $_v) {
-			$this->expand_field ($_f);
+			$this->expandField ($_f);
 			$_fld[] = $_f;
 			// $_v[0] contains the eq sign here; can be ignored
 			$_val[] = ($_v[1] === null ? 'NULL' : "'$_v[1]'");
@@ -1034,9 +1034,9 @@ class DbHandler extends _OWL
 						 . ' (' . join (', ', $_fld) . ') ' 
 						 . ' VALUES (' . join (', ', $_val) . ') '; 
 		}
-		$this->query .= $this->additional_clauses();
+		$this->query .= $this->additionalClauses();
 		$this->query_type = DBHANDLE_INSERT;
-		$this->set_status (DBHANDLE_QPREPARED, array('write', $this->query));
+		$this->setStatus (DBHANDLE_QPREPARED, array('write', $this->query));
 //echo ("Prepared query: <i>$this->query</i><br />");
 		return ($this->severity);
 	}
@@ -1052,13 +1052,13 @@ class DbHandler extends _OWL
 	public function write (&$rows = null, $line = 0, $file = '[unknown]')
 	{
 		if (!$this->opened) {
-			$this->set_status (DBHANDLE_DBCLOSED);
+			$this->setStatus (DBHANDLE_DBCLOSED);
 			return ($this->severity);
 		}
 		
 		if (($_cnt = $this->driver->dbWrite($this->id, $this->query)) < 0) {
 			$this->driver->dbError ($this->id, $this->errno, $this->error);
-			$this->set_status (DBHANDLE_QUERYERR, array (
+			$this->setStatus (DBHANDLE_QUERYERR, array (
 					  $this->query
 					, $this->error
 					, $line
@@ -1071,7 +1071,7 @@ class DbHandler extends _OWL
 			$this->last_id = $this->driver->dbInsertId($this->id, null, null); // Check for auto increment values
 		}
 		$this->query_type = DBHANDLE_COMPLETED;
-		$this->set_status (DBHANDLE_UPDATED, array ('written', $_cnt));
+		$this->setStatus (DBHANDLE_UPDATED, array ('written', $_cnt));
 		if ($rows !== null) {
 			$rows = $_cnt;
 		}
@@ -1084,7 +1084,7 @@ class DbHandler extends _OWL
 	 * \public
 	 * \return The number that was last inserted 
 	 */
-	public function last_inserted_id ()
+	public function lastInsertedId ()
 	{
 		return ($this->last_id);
 	}
@@ -1109,36 +1109,36 @@ class DbHandler extends _OWL
 /*
  * Register this class and all status codes
  */
-Register::register_class ('DbHandler');
+Register::registerClass ('DbHandler');
 
-Register::set_severity (OWL_DEBUG);
-Register::register_code ('DBHANDLE_QPREPARED');
-Register::register_code ('DBHANDLE_ROWSREAD');
+Register::setSeverity (OWL_DEBUG);
+Register::registerCode ('DBHANDLE_QPREPARED');
+Register::registerCode ('DBHANDLE_ROWSREAD');
 
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-Register::set_severity (OWL_SUCCESS);
-Register::register_code ('DBHANDLE_OPENED');
-Register::register_code ('DBHANDLE_UPDATED');
-Register::register_code ('DBHANDLE_NODATA');
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+Register::setSeverity (OWL_SUCCESS);
+Register::registerCode ('DBHANDLE_OPENED');
+Register::registerCode ('DBHANDLE_UPDATED');
+Register::registerCode ('DBHANDLE_NODATA');
 
-Register::set_severity (OWL_WARNING);
-Register::register_code ('DBHANDLE_IVTABLE');
-Register::register_code ('DBHANDLE_NOTABLES');
-Register::register_code ('DBHANDLE_NOVALUES');
-Register::register_code ('DBHANDLE_IVFUNCTION');
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('DBHANDLE_IVTABLE');
+Register::registerCode ('DBHANDLE_NOTABLES');
+Register::registerCode ('DBHANDLE_NOVALUES');
+Register::registerCode ('DBHANDLE_IVFUNCTION');
 
-Register::set_severity (OWL_BUG);
+Register::setSeverity (OWL_BUG);
 
-Register::set_severity (OWL_ERROR);
-Register::register_code ('DBHANDLE_IVFLDFORMAT');
-Register::register_code ('DBHANDLE_CLONEACLONE');
-Register::register_code ('DBHANDLE_NOTACLONE');
-Register::register_code ('DBHANDLE_CONNECTERR');
-Register::register_code ('DBHANDLE_OPENERR');
-Register::register_code ('DBHANDLE_DBCLOSED');
-Register::register_code ('DBHANDLE_QUERYERR');
-Register::register_code ('DBHANDLE_CREATERR');
+Register::setSeverity (OWL_ERROR);
+Register::registerCode ('DBHANDLE_IVFLDFORMAT');
+Register::registerCode ('DBHANDLE_CLONEACLONE');
+Register::registerCode ('DBHANDLE_NOTACLONE');
+Register::registerCode ('DBHANDLE_CONNECTERR');
+Register::registerCode ('DBHANDLE_OPENERR');
+Register::registerCode ('DBHANDLE_DBCLOSED');
+Register::registerCode ('DBHANDLE_QUERYERR');
+Register::registerCode ('DBHANDLE_CREATERR');
 
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

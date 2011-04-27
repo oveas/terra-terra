@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a text-, password or hidden formfield element
- * \version $Id: class.formfield.text.php,v 1.2 2011-04-06 14:42:15 oscar Exp $
+ * \version $Id: class.formfield.text.php,v 1.3 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -47,7 +47,7 @@ class FormFieldTextPlugin extends FormFieldPlugin
 		if (is_int($size)) {
 			$this->size = $size;
 		} else {
-			$this->set_status(FORMFIELD_IVVAL, array($size, 'size'));
+			$this->setStatus(FORMFIELD_IVVAL, array($size, 'size'));
 		}
 	}
 
@@ -60,7 +60,7 @@ class FormFieldTextPlugin extends FormFieldPlugin
 		if (is_int($maxsize)) {
 			$this->maxsize = $maxsize;
 		} else {
-			$this->set_status(FORMFIELD_IVVAL, array($maxsize, 'maxsize'));
+			$this->setStatus(FORMFIELD_IVVAL, array($maxsize, 'maxsize'));
 		}
 	}
 
@@ -84,17 +84,17 @@ class FormFieldTextPlugin extends FormFieldPlugin
 }
 
 
-//Register::set_severity (OWL_DEBUG);
+//Register::setSeverity (OWL_DEBUG);
 
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-//Register::set_severity (OWL_SUCCESS);
-//Register::register_code ('FORM_RETVALUE');
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
+//Register::registerCode ('FORM_RETVALUE');
 
-//Register::set_severity (OWL_WARNING);
+//Register::setSeverity (OWL_WARNING);
 
-//Register::set_severity (OWL_BUG);
+//Register::setSeverity (OWL_BUG);
 
-//Register::set_severity (OWL_ERROR);
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_ERROR);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

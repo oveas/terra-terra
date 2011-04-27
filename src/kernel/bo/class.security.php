@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Security base class
- * \version $Id: class.security.php,v 1.4 2011-04-27 10:58:21 oscar Exp $
+ * \version $Id: class.security.php,v 1.5 2011-04-27 11:50:08 oscar Exp $
  */
 
 /**
@@ -48,7 +48,7 @@ abstract class Security
 	{
 		$this->bitmap = array($app => 0);
 		if ($owl === true) {
-			$this->bitmap[OWL_APPL_ID] = 0;
+			$this->bitmap[OWL_ID] = 0;
 		}
 	}
 
@@ -130,7 +130,7 @@ abstract class Security
 		return (toStrictBoolean($_curr));
 	}
 }
-Register::register_class('Rights');
+Register::registerClass('Rights');
 
-Register::set_severity (OWL_WARNING);
-//Register::register_code ('USER_DUPLUSERNAME');
+Register::setSeverity (OWL_WARNING);
+//Register::registerCode ('USER_DUPLUSERNAME');

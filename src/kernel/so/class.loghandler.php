@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Loghandler class
- * \version $Id: class.loghandler.php,v 1.9 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: class.loghandler.php,v 1.10 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -58,16 +58,16 @@ class LogHandler extends _OWL
 		_OWL::init();
 		$this->opened = false;
 		$this->created = false;
-		$this->set_filename();
+		$this->setFilename();
 		if (ConfigHandler::get ('logging|multiple_file', false) ||
 			ConfigHandler::get ('logging|persistant', false)) {
-			$this->open_logfile();
+			$this->openLogfile();
 		}
 		$this->dataset = new DataHandler ();
 		if (ConfigHandler::get ('owltables', true)) {
-			$this->dataset->set_prefix(ConfigHandler::get ('owlprefix'));
+			$this->dataset->setPrefix(ConfigHandler::get ('owlprefix'));
 		}
-		$this->dataset->set_tablename('sessionlog');
+		$this->dataset->setTablename('sessionlog');
 	}
 
 	/**
@@ -79,7 +79,7 @@ class LogHandler extends _OWL
 		if (parent::__destruct() === false) {
 			return false; // Skip the rest
 		}
-		$this->close_logfile();
+		$this->closeLogfile();
 		return true;
 	}
 
@@ -98,7 +98,7 @@ class LogHandler extends _OWL
 	 * \public
 	 * \return Severity level
 	 */
-	public static function get_instance()
+	public static function getInstance()
 	{
 		if (!LogHandler::$instance instanceof self) {
 			LogHandler::$instance = new self();
@@ -106,16 +106,16 @@ class LogHandler extends _OWL
 		return LogHandler::$instance;
 	}
 
-	public function set_applic_logfile()
+	public function setApplicLogfile()
 	{
 		if (!ConfigHandler::get ('logging|multiple_file', false) &&
 			!ConfigHandler::get ('logging|persistant', false)) {
-			$this->close_logfile();
+			$this->closeLogfile();
 		}
-		$this->set_filename();
+		$this->setFilename();
 		if (ConfigHandler::get ('logging|multiple_file', false) ||
 			ConfigHandler::get ('logging|persistant', false)) {
-			$this->open_logfile();
+			$this->openLogfile();
 		}
 	}
 
@@ -125,22 +125,22 @@ class LogHandler extends _OWL
 	 * \param[in] $dispatcher Array with dispatcher information
 	 * \param[in] $form Form object
 	 */
-	public function log_session(array $dispatcher, FormHandler $form = null)
+	public function logSession(array $dispatcher, FormHandler $form = null)
 	{
 		if ($this->session_logged === true) {
 			return;
 		}
 		$user = OWLCache::get(OWLCACHE_OBJECTS, 'user');
 		if (ConfigHandler::get('logging|log_form_data', true) === true && $form !== null) {
-			$formdata = serialize($form->get_form_data());
+			$formdata = serialize($form->getFormData());
 		} else {
 			$formdata = null;
 		}
-		$this->dataset->set('sid', $user->get_session_id());
-		$this->dataset->set('step', $user->get_session_var('step', 0));
-		$this->dataset->set('uid', $user->get_user_id());
+		$this->dataset->set('sid', $user->getSessionId());
+		$this->dataset->set('step', $user->getSessionVar('step', 0));
+		$this->dataset->set('uid', $user->getUserId());
 		$this->dataset->set('applic', APPL_NAME);
-		$this->dataset->set('ip', $user->get_session_var('ip'));
+		$this->dataset->set('ip', $user->getSessionVar('ip'));
 		$this->dataset->set('referer', (array_key_exists('HTTP_REFERER', $_SERVER) ? $_SERVER['HTTP_REFERER'] : ''));
 		$this->dataset->set('dispatcher', serialize($dispatcher));
 		$this->dataset->set('formdata', $formdata);
@@ -154,7 +154,7 @@ class LogHandler extends _OWL
 	 * before the configuration is complete, a temporart startup logfile is created
 	 * \private
 	 */
-	private function set_filename ()
+	private function setFilename ()
 	{
 		$_file = ConfigHandler::get ('logging|filename', OWL_LOG . '/owl.startup.log', true);
 		$_segments = explode('/', $_file);
@@ -165,7 +165,7 @@ class LogHandler extends _OWL
 		}
 		
 		if (ConfigHandler::get ('logging|multiple_file', false)) {
-			$this->filename = $_file . '.' . Register::get_run_id();
+			$this->filename = $_file . '.' . Register::getRunId();
 		} else {
 			$this->filename = $_file;
 		}
@@ -176,10 +176,10 @@ class LogHandler extends _OWL
 	 * Open the logfile for write
 	 * \private
 	 */
-	private function open_logfile ()
+	private function openLogfile ()
 	{
 		if (($this->fpointer = fopen ($this->filename, 'a')) === false) {
-			$this->set_status (LOGGING_OPENERR, $this->filename);
+			$this->setStatus (LOGGING_OPENERR, $this->filename);
 		}
 		$this->opened = true;
 	}
@@ -188,7 +188,7 @@ class LogHandler extends _OWL
 	 * Close the logfile
 	 * \private
 	 */
-	private function close_logfile ()
+	private function closeLogfile ()
 	{
 		if ($this->opened) {
 			fclose ($this->fpointer);
@@ -201,7 +201,7 @@ class LogHandler extends _OWL
 	 * \private
 	 * \param[in] $msg The complete log message
 	 */
-	private function write_logfile ($msg)
+	private function writeLogfile ($msg)
 	{
 		fwrite  ($this->fpointer, $msg . "\n");
 	}
@@ -213,14 +213,14 @@ class LogHandler extends _OWL
 	 * \param[in,out] $msg Original message by the event
 	 * \param[in] $code Status code of the message
 	 */
-	private function compose_message (&$msg, $code)
+	private function composeMessage (&$msg, $code)
 	{
 		$_prefix = date (ConfigHandler::get ('locale|log_date')) . ':'
 				 . date (ConfigHandler::get ('locale|log_time')); 
 		if (!ConfigHandler::get ('logging|multiple_file')) {
-			$_prefix .= ' [' . Register::get_run_id() . ']';
+			$_prefix .= ' [' . Register::getRunId() . ']';
 		}
-		$msg = $_prefix . ' (' . Register::get_severity ($this->get_severity($code)) . ':' . Register::get_code ($code) . ') ' . $msg;
+		$msg = $_prefix . ' (' . Register::getSeverity ($this->getSeverity($code)) . ':' . Register::getCode ($code) . ') ' . $msg;
 	}
 
 	/**
@@ -232,26 +232,26 @@ class LogHandler extends _OWL
 	public function log ($msg, $code)
 	{
 		if (!$this->opened) {
-			$this->open_logfile ();
+			$this->openLogfile ();
 		}
 
 		$_replace = array("/<\/?b>/", "/<\/?i>/", "/<br\s*\/?>/");
 		$_with = array('*', '"', "\n");
 		$msg = preg_replace($_replace, $_with, $msg);
 		
-		$this->compose_message ($msg, $code);
+		$this->composeMessage ($msg, $code);
 
-		$this->write_logfile ($msg);
+		$this->writeLogfile ($msg);
 
-		$_severity = $this->get_severity($code);
+		$_severity = $this->getSeverity($code);
 		if ($_severity >= ConfigHandler::get ('logging|trace_level', 0xf)
 			&& $_severity < ConfigHandler::get ('exception|throw_level', 0x0) ) { // Will already be logged
 			$_trace = $this->backtrace();
-			$this->write_logfile ($_trace);
+			$this->writeLogfile ($_trace);
 		}
 		if (!ConfigHandler::get ('logging|multiple_file', false) &&
 			!ConfigHandler::get ('logging|persistant', false)) {
-			$this->close_logfile();
+			$this->closeLogfile();
 		}
 	}
 
@@ -276,17 +276,17 @@ class LogHandler extends _OWL
  * Register this class and all status codes
  */
 
-Register::register_class ('LogHandler');
+Register::registerClass ('LogHandler');
 
-//Register::set_severity (OWL_DEBUG);
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-//Register::set_severity (OWL_SUCCESS);
-//Register::set_severity (OWL_WARNING);
-//Register::set_severity (OWL_BUG);
-//Register::set_severity (OWL_ERROR);
+//Register::setSeverity (OWL_DEBUG);
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (OWL_WARNING);
+//Register::setSeverity (OWL_BUG);
+//Register::setSeverity (OWL_ERROR);
 
-Register::set_severity (OWL_FATAL);
-Register::register_code ('LOGGING_OPENERR');
+Register::setSeverity (OWL_FATAL);
+Register::registerCode ('LOGGING_OPENERR');
 
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_CRITICAL);

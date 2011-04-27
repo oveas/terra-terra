@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the FileHandler class
- * \version $Id: class.filehandler.php,v 1.5 2010-12-03 12:07:42 oscar Exp $
+ * \version $Id: class.filehandler.php,v 1.6 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -82,11 +82,11 @@ class FileHandler extends _OWL
 
 		if (!file_exists($this->name)) {
 			if ($req) {
-				$this->set_status (FILE_NEWFILE, array (
+				$this->setStatus (FILE_NEWFILE, array (
 					$this->name
 				));
 			} else {
-				$this->set_status (FILE_NOSUCHFILE, array (
+				$this->setStatus (FILE_NOSUCHFILE, array (
 					$this->name
 				));
 			}
@@ -96,7 +96,7 @@ class FileHandler extends _OWL
 		$this->localfile = !eregi("^([a-z]+)://", $this->name);
 		$this->myfile = (fileowner($this->name) == getmyuid());
 
-		$this->set_status (OWL_STATUS_OK);
+		$this->setStatus (OWL_STATUS_OK);
 	}
 
 	public function __destruct ()
@@ -123,11 +123,11 @@ class FileHandler extends _OWL
 	{
 		if (!$this->opened) {
 			if (!($this->fpointer = fopen ($this->name, $mode))) {
-				$this->set_status (FILE_OPENERR, array (
+				$this->setStatus (FILE_OPENERR, array (
 					$this->name
 				));
 			} else {
-				$this->set_status (FILE_OPENED, array (
+				$this->setStatus (FILE_OPENED, array (
 					$this->name
 				));
 				$this->opened = true;
@@ -144,7 +144,7 @@ class FileHandler extends _OWL
 		if ($this->opened) {
 			fclose($this->fpointer);
 			$this->opened = false;
-			$this->set_status (FILE_CLOSED, array (
+			$this->setStatus (FILE_CLOSED, array (
 				$this->name
 			));
 		}
@@ -154,7 +154,7 @@ class FileHandler extends _OWL
 	 * Read the file contents and return as one dataset
 	 * \protected
 	 */
-	protected function read_data ()
+	protected function readData ()
 	{
 		$this->open ('rb');
 		$__data = fread ($this->fpointer, $this->size);
@@ -171,11 +171,11 @@ class FileHandler extends _OWL
 	 *    - FILE_TRIM_R
 	 *    - FILE_TRIM_C
 	 */
-	protected function read_line ($trim = FILE_NOTRIM)
+	protected function readLine ($trim = FILE_NOTRIM)
 	{
 		$__data = fgets ($this->fpointer, 4096);
 		if (feof($this->fpointer)) {
-			$this->set_status (FILE_ENDOFFILE, array (
+			$this->setStatus (FILE_ENDOFFILE, array (
 				$this->name
 			));
 		}
@@ -190,7 +190,7 @@ class FileHandler extends _OWL
 
 	public function encode ()
 	{
-		return (chunk_split(base64_encode($this->read_data())));
+		return (chunk_split(base64_encode($this->readData())));
 	}
 
 	public function download ()
@@ -492,27 +492,27 @@ sub OFM_convert_file ($$) {
 /*
  * Register this class and all status codes
  */
-Register::register_class('FileHandler');
+Register::registerClass('FileHandler');
 
-//Register::set_severity (OWL_DEBUG);
-Register::set_severity (OWL_INFO);
-Register::register_code ('FILE_NEWFILE');
+//Register::setSeverity (OWL_DEBUG);
+Register::setSeverity (OWL_INFO);
+Register::registerCode ('FILE_NEWFILE');
 
-//Register::set_severity (OWL_OK);
+//Register::setSeverity (OWL_OK);
 
-Register::set_severity (OWL_SUCCESS);
-Register::register_code ('FILE_CREATED');
-Register::register_code ('FILE_OPENED');
-Register::register_code ('FILE_CLOSED');
+Register::setSeverity (OWL_SUCCESS);
+Register::registerCode ('FILE_CREATED');
+Register::registerCode ('FILE_OPENED');
+Register::registerCode ('FILE_CLOSED');
 
-Register::set_severity (OWL_WARNING);
-Register::register_code ('FILE_NOSUCHFILE');
-Register::register_code ('FILE_ENDOFFILE');
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('FILE_NOSUCHFILE');
+Register::registerCode ('FILE_ENDOFFILE');
 
-//Register::set_severity (OWL_BUG);
+//Register::setSeverity (OWL_BUG);
 
-Register::set_severity (OWL_ERROR);
-Register::register_code ('FILE_OPENERR');
+Register::setSeverity (OWL_ERROR);
+Register::registerCode ('FILE_OPENERR');
 
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

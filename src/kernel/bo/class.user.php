@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the User class
- * \version $Id: class.user.php,v 1.13 2011-04-27 10:58:21 oscar Exp $
+ * \version $Id: class.user.php,v 1.14 2011-04-27 11:50:08 oscar Exp $
  */
 
 /**
@@ -56,37 +56,37 @@ abstract class User extends _OWL
 
 		$this->dataset = new DataHandler ();
 		if (ConfigHandler::get ('owltables', true)) {
-			$this->dataset->set_prefix(ConfigHandler::get ('owlprefix'));
+			$this->dataset->setPrefix(ConfigHandler::get ('owlprefix'));
 		}
-		$this->dataset->set_tablename('user');
+		$this->dataset->setTablename('user');
 
 		$this->memberships = array();
 
 		$this->session = new Session();
 		if ($this->succeeded(OWL_SUCCESS, $this->session) === true) {
 			if (!isset($_SESSION['username'])) {
-				$this->set_username ($username);
+				$this->setUsername ($username);
 			}
-			$this->read_userdata();
+			$this->readUserdata();
 		} else {
 			$this->session->signal();
 		}
 
 		$this->rights = new Rights(APPL_ID);
-		if ($this->session->get_session_var('new', true) === true) {
-			$this->get_memberships();
-			$this->set_session_var('rightslist', serialize($this->rights));
-			$this->set_session_var('memberships', serialize($this->memberships));
+		if ($this->session->getSessionVar('new', true) === true) {
+			$this->getMemberships();
+			$this->setSessionVar('rightslist', serialize($this->rights));
+			$this->setSessionVar('memberships', serialize($this->memberships));
 			$_allRights = ConfigHandler::get('session|default_rights_all', false);
-			$this->session->set_rights(
+			$this->session->setRights(
 				  ($_allRights
-					? $this->rights->getBitmap(OWL_APPL_ID)
+					? $this->rights->getBitmap(OWL_ID)
 					: $this->group->get('right', 0))
-				, OWL_APPL_ID
+				, OWL_ID
 			);
 		} else {
-			$this->rights = unserialize($this->get_session_var('rightslist'));
-			$this->memberships = unserialize($this->get_session_var('memberships'));
+			$this->rights = unserialize($this->getSessionVar('rightslist'));
+			$this->memberships = unserialize($this->getSessionVar('memberships'));
 		}
 		OWLCache::set(OWLCACHE_OBJECTS, 'user', ($_ =& $this));
 	}
@@ -118,32 +118,32 @@ abstract class User extends _OWL
 	 */
 	public function login ($username, $password)
 	{
-		$this->set_username ($username);
+		$this->setUsername ($username);
 		$this->dataset->reset(DATA_RESET_DATA);
 		$this->dataset->set('username', $username);
-		$this->dataset->set('password', $this->hash_password ($password));
-		$this->dataset->set_key ('username');
-		$this->dataset->set_key ('password');
+		$this->dataset->set('password', $this->hashPassword ($password));
+		$this->dataset->setKey ('username');
+		$this->dataset->setKey ('password');
 		$this->dataset->prepare ();
 		$this->dataset->db($this->user_data, __LINE__, __FILE__);
-		$_dbstat = $this->dataset->db_status();
+		$_dbstat = $this->dataset->dbStatus();
 		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
-			$this->set_status (USER_LOGINFAIL, array (
+			$this->setStatus (USER_LOGINFAIL, array (
 				  $_SESSION['username']
 				, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->get('password'))
 			));
 		} elseif ($_dbstat === DBHANDLE_ROWSREAD) {
 			$this->user_data = $this->user_data[0]; // Shift up one level
 			if ($this->user_data['verification'] !== '') {
-				$this->set_status (USER_NOTCONFIRMED, array($username));
+				$this->setStatus (USER_NOTCONFIRMED, array($username));
 			} else {
 				session_unset(); // Clear the session ... 
 				$this->session->setup(array( // ... and reinitialise
 					 'username' => $this->dataset->get('username')
 					,'uid' => $this->user_data['uid']
 				));
-				$this->set_status (USER_LOGGEDIN, array (
-					  $this->session->get_session_var('username')
+				$this->setStatus (USER_LOGGEDIN, array (
+					  $this->session->getSessionVar('username')
 					, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->get('password'))
 				));
 				return (true);
@@ -160,41 +160,41 @@ abstract class User extends _OWL
 	 * Note: After logging out, the session still continues. The calling app must
 	 * take care of the forward (e.g. with a header('location: ' . $_SERVER['PHP_SELF'])
 	 * after a call to User::logout()).
-	 * \param[in] $reset_status When true (default) the object status will be reset
+	 * \param[in] $resetStatus When true (default) the object status will be reset
 	 * \public
 	 */
-	public function logout ($reset_status = true)
+	public function logout ($resetStatus = true)
 	{
-		if (!$reset_status) {
-			$this->save_status();
+		if (!$resetStatus) {
+			$this->saveStatus();
 		}
 		session_destroy();
 		$this->dataset->reset (DATA_RESET_FULL);
 		$this->session = new Session();
-		if (!$reset_status) {
-			$this->restore_status();
+		if (!$resetStatus) {
+			$this->restoreStatus();
 		}
 
-		$this->set_username (ConfigHandler::get ('session|default_user'));
+		$this->setUsername (ConfigHandler::get ('session|default_user'));
 	}
 	/**
 	 * When a new session starts for a use that was logged in before
 	 * retrieve the userdata back from the database
 	 * \private
 	 */
-	private function read_userdata ()
+	private function readUserdata ()
 	{
-		if ($this->session->get_session_var('uid') === null) {
+		if ($this->session->getSessionVar('uid') === null) {
 			return; // Nothing to do
 		}
 		$this->dataset->reset(DATA_RESET_META);
-		$this->dataset->set('uid', $this->session->get_session_var('uid'));
-		$this->dataset->set_key ('uid');
+		$this->dataset->set('uid', $this->session->getSessionVar('uid'));
+		$this->dataset->setKey ('uid');
 		$this->dataset->prepare ();
 		$this->dataset->db($this->user_data, __LINE__, __FILE__);
-		$_dbstat = $this->dataset->db_status();
+		$_dbstat = $this->dataset->dbStatus();
 		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
-			$this->set_status (USER_RESTORERR, $this->session->get_session_var('uid'));
+			$this->setStatus (USER_RESTORERR, $this->session->getSessionVar('uid'));
 		} else {
 			$this->user_data = $this->user_data[0]; // Shift up one level
 			$this->group = new Group($this->user_data['gid']);
@@ -205,19 +205,19 @@ abstract class User extends _OWL
 	 * Set the username
 	 * \param[in] $username Username
 	 */
-	private function set_username ($username)
+	private function setUsername ($username)
 	{
 		if ($username === null) {
 			$username = ConfigHandler::get ('session|default_user');
 			$this->dataset->reset(DATA_RESET_META);
 			$this->dataset->set('username', $username);
 			$this->dataset->set('uid', null, null, null, array('match' => array(DBMATCH_NONE)));
-			$this->dataset->set_key ('username');
+			$this->dataset->setKey ('username');
 			$this->dataset->prepare ();
 			$this->dataset->db($_data, __LINE__, __FILE__);
-			$this->session->set_session_var('uid', $_data[0]['uid']);
+			$this->session->setSessionVar('uid', $_data[0]['uid']);
 		}
-		$this->session->set_session_var('username', $username);
+		$this->session->setSessionVar('username', $username);
 	}
 
 	/**
@@ -226,7 +226,7 @@ abstract class User extends _OWL
 	 * \param[in] $password Given password in plain text format
 	 * \return The encrypted password
 	 */
-	private  function hash_password ($password)
+	private  function hashPassword ($password)
 	{
 		return (hash (ConfigHandler::get ('session|password_crypt'), $password));
 	}
@@ -236,13 +236,13 @@ abstract class User extends _OWL
 	 * \param[in] $username The username to check
 	 * \return True when the username exists false otherwise
 	 */
-	private function username_exists ($username)
+	private function usernameExists ($username)
 	{
 		$this->dataset->set('username', $username);
-		$this->dataset->set_key ('username');
+		$this->dataset->setKey ('username');
 		$this->dataset->prepare ();
 		$this->dataset->db($this->user_data, __LINE__, __FILE__);
-		$_dbstat = $this->dataset->db_status();
+		$_dbstat = $this->dataset->dbStatus();
 		if ($_dbstat === DBHANDLE_NODATA) {
 			return (false);
 		}
@@ -261,17 +261,17 @@ abstract class User extends _OWL
 	 */
 	protected function register($username, $email, $password, $vpassword, $group = 0)
 	{
-		if ($this->username_exists($username) === true) {
-			$this->set_status (USER_DUPLUSERNAME, array ($username));
+		if ($this->usernameExists($username) === true) {
+			$this->setStatus (USER_DUPLUSERNAME, array ($username));
 			return -1;
 		}
 		$_minPwdStrength = ConfigHandler::get ('session|pwd_minstrength');
-		if ($_minPwdStrength > 0 && self::password_strength($password, array($username, $email)) < $_minPwdStrength) {
-			$this->set_status (USER_WEAKPASSWD);
+		if ($_minPwdStrength > 0 && self::passwordStrength($password, array($username, $email)) < $_minPwdStrength) {
+			$this->setStatus (USER_WEAKPASSWD);
 			return -1;
 		}
 		if ($password !== $vpassword) {
-			$this->set_status (USER_PWDVERFAILED);
+			$this->setStatus (USER_PWDVERFAILED);
 			return -1;
 		}
 		if ($group === 0) {
@@ -281,7 +281,7 @@ abstract class User extends _OWL
 		$_vstring = RandomString(45);
 		$this->dataset->set('uid', null);
 		$this->dataset->set('username', $username);
-		$this->dataset->set('password', $this->hash_password($password));
+		$this->dataset->set('password', $this->hashPassword($password));
 		$this->dataset->set('email', $email);
 		$this->dataset->set('gid', $group);
 		$this->dataset->set('verification', $_vstring);
@@ -289,8 +289,8 @@ abstract class User extends _OWL
 		$this->dataset->prepare(DATA_WRITE);
 		$_result = null;
 		$this->dataset->db ($_result, __LINE__, __FILE__);
-		$_uid = $this->dataset->inserted_id();
-		$this->set_callback_argument(array('uid' => $_uid, 'vcode' => $_vstring));
+		$_uid = $this->dataset->insertedId();
+		$this->setCallbackArgument(array('uid' => $_uid, 'vcode' => $_vstring));
 		return ($_uid);
 	}
 
@@ -302,7 +302,7 @@ abstract class User extends _OWL
 	protected function confirm(array $_confirmation)
 	{
 		if (!array_key_exists('uid', $_confirmation) || !array_key_exists('vcode', $_confirmation)) {
-			$this->set_status (USER_IVCONFARG);
+			$this->setStatus (USER_IVCONFARG);
 			return (false);
 		}
 
@@ -311,18 +311,18 @@ abstract class User extends _OWL
 		$this->dataset->prepare(DATA_READ);
 		$_result = null;
 		$this->dataset->db ($_result, __LINE__, __FILE__);
-		if ($this->dataset->db_status() === DBHANDLE_NODATA) {
-			$this->set_status (USER_IVCONFARG);
+		if ($this->dataset->dbStatus() === DBHANDLE_NODATA) {
+			$this->setStatus (USER_IVCONFARG);
 			return (false);
 		}
-		$this->dataset->set_key('uid');
+		$this->dataset->setKey('uid');
 		$this->dataset->set('verification', '');
 		$this->dataset->prepare(DATA_UPDATE);
 		if ($this->dataset->db ($_result, __LINE__, __FILE__) <= OWL_SUCCESS) {
-			$this->set_status(USER_CONFIRMED);
+			$this->setStatus(USER_CONFIRMED);
 			return (true);
 		} else {
-			$this->set_status(USER_CONFERR);
+			$this->setStatus(USER_CONFERR);
 			return (false);
 		}
 	}
@@ -335,7 +335,7 @@ abstract class User extends _OWL
 	 * If the password if (part of) any of the strings in the array, the strength is decreased.
 	 * \return An integer from 0-10 indicating the strength, where 0 is the lowest and 10 the highest level
 	 */
-	static public function password_strength($_pwd, $_compare = array())
+	static public function passwordStrength($_pwd, $_compare = array())
 	{
 		if (($_length = strlen($_pwd)) == 0) {
 			return 0;
@@ -400,25 +400,25 @@ abstract class User extends _OWL
 	 */
 	public function isLoggedIn()
 	{
-		return (!($this->session->get_session_var('username', ConfigHandler::get ('session|default_user')) == ConfigHandler::get ('session|default_user')));
+		return (!($this->session->getSessionVar('username', ConfigHandler::get ('session|default_user')) == ConfigHandler::get ('session|default_user')));
 	}
 
 	/**
 	 * Return the username of the current session
 	 * \public
 	 */
-	public function get_username ()
+	public function getUsername ()
 	{
-		return ($this->session->get_session_var('username'));
+		return ($this->session->getSessionVar('username'));
 	}
 
 	/**
 	 * Return the userID of the current session
 	 * \public
 	 */
-	public function get_user_id ()
+	public function getUserId ()
 	{
-		return ($this->get_session_var('uid', 0));
+		return ($this->getSessionVar('uid', 0));
 	}
 	
 	/**
@@ -426,7 +426,7 @@ abstract class User extends _OWL
 	 * \public
 	 * \return the session ID
 	 */
-	public function get_session_id ()
+	public function getSessionId ()
 	{
 		return session_id();
 	}
@@ -434,22 +434,22 @@ abstract class User extends _OWL
 	/**
 	 * Get the list of all objects this user is member of
 	 */
-	private function get_memberships()
+	private function getMemberships()
 	{
 		$dataset = new DataHandler ();
 		if (ConfigHandler::get ('owltables', true)) {
-			$dataset->set_prefix(ConfigHandler::get ('owlprefix'));
+			$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
 		}
-		$dataset->set_tablename('memberships');
-		$dataset->set('uid', $this->get_user_id());
+		$dataset->setTablename('memberships');
+		$dataset->set('uid', $this->getUserId());
 		$dataset->prepare();
 		$dataset->db($_data, __LINE__, __FILE__);
-		if ($dataset->db_status() !== DBHANDLE_NODATA) {
+		if ($dataset->dbStatus() !== DBHANDLE_NODATA) {
 			foreach ($_data as $_mbrship) {
 				$this->memberships[$_mbrship['gid']] = new Group($_mbrship['gid']);
 				$this->rights->mergeBitmaps(
 						  $this->memberships[$_mbrship['gid']]->get('right', 0)
-						, $this->memberships[$_mbrship['gid']]->get('aid', OWL_APPL_ID)
+						, $this->memberships[$_mbrship['gid']]->get('aid', OWL_ID)
 				);
 			}
 		}
@@ -462,9 +462,9 @@ abstract class User extends _OWL
 	 * \param[in] $val Variable value (default 0)
 	 * \param[in] $flg How to handle the value. Default SESSIONVAR_SET
 	 */
-	public function set_session_var ($var, $val = 0, $flg = SESSIONVAR_SET)
+	public function setSessionVar ($var, $val = 0, $flg = SESSIONVAR_SET)
 	{
-		$this->session->set_session_var($var, $val, $flg);
+		$this->session->setSessionVar($var, $val, $flg);
 	}
 
 	/**
@@ -474,41 +474,41 @@ abstract class User extends _OWL
 	 * \param[in] $default Default value to return if the variable was not set (default null)
 	 * \return The value from the session, null if not set
 	 */
-	public function get_session_var ($var, $default = null)
+	public function getSessionVar ($var, $default = null)
 	{
-		return $this->session->get_session_var($var, $default);
+		return $this->session->getSessionVar($var, $default);
 	}
 }
-Register::register_class('User');
+Register::registerClass('User');
 
 
 
 
 
-//Register::set_severity (OWL_DEBUG);
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-Register::set_severity (OWL_SUCCESS);
-Register::register_code ('USER_LOGGEDIN');
-Register::register_code ('USER_CONFIRMED');
+//Register::setSeverity (OWL_DEBUG);
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+Register::setSeverity (OWL_SUCCESS);
+Register::registerCode ('USER_LOGGEDIN');
+Register::registerCode ('USER_CONFIRMED');
 
-Register::set_severity (OWL_WARNING);
-Register::register_code ('USER_DUPLUSERNAME');
-Register::register_code ('USER_PWDVERFAILED');
-Register::register_code ('USER_WEAKPASSWD');
-Register::register_code ('USER_INVUSERNAME');
-Register::register_code ('USER_INVPASSWORD');
-Register::register_code ('USER_LOGINFAIL');
-Register::register_code ('USER_NOTCONFIRMED');
-Register::register_code ('USER_IVCONFARG');
-Register::register_code ('USER_CONFERR');
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('USER_DUPLUSERNAME');
+Register::registerCode ('USER_PWDVERFAILED');
+Register::registerCode ('USER_WEAKPASSWD');
+Register::registerCode ('USER_INVUSERNAME');
+Register::registerCode ('USER_INVPASSWORD');
+Register::registerCode ('USER_LOGINFAIL');
+Register::registerCode ('USER_NOTCONFIRMED');
+Register::registerCode ('USER_IVCONFARG');
+Register::registerCode ('USER_CONFERR');
 
-Register::set_severity (OWL_BUG);
+Register::setSeverity (OWL_BUG);
 
-Register::set_severity (OWL_ERROR);
-Register::register_code ('USER_NODATASET');
-Register::register_code ('USER_RESTORERR');
+Register::setSeverity (OWL_ERROR);
+Register::registerCode ('USER_NODATASET');
+Register::registerCode ('USER_RESTORERR');
 
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);
 

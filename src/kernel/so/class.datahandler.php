@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.13 2011-04-26 11:45:45 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.14 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -111,7 +111,7 @@ class DataHandler extends _OWL
 		$this->owl_tablename = $tablename;
 		$this->owl_database = OWL::factory('DbHandler');
 		$this->owl_prepared = DATA_UNPREPARED;
-		$this->set_status (OWL_STATUS_OK);
+		$this->setStatus (OWL_STATUS_OK);
 	}
 
 	/**
@@ -169,7 +169,7 @@ class DataHandler extends _OWL
 			$this->owl_data[(($table === null) ? $this->owl_tablename : $table) . '#' . $variable] = array(DBMATCH_EQ, $value);
 			return;
 		}
-		// Prepare the array for DbHandler::prepare_field()
+		// Prepare the array for DbHandler::prepareField()
 		$fieldData = array(
 			  'field' => $variable
 			, 'table' => ($table === null) ? $this->owl_tablename : $table
@@ -194,7 +194,7 @@ class DataHandler extends _OWL
 				}
 			}
 		}
-		list ($_f, $_v) = $this->owl_database->prepare_field($fieldData);
+		list ($_f, $_v) = $this->owl_database->prepareField($fieldData);
 		$this->owl_data[$_f] = $_v;
 	}
 	
@@ -204,11 +204,11 @@ class DataHandler extends _OWL
 	 * \param[in] $variable Variable name to lock, optionally as an array (table, field)
 	 * \return Severity level
 	 */
-	public function set_key ($variable)
+	public function setKey ($variable)
 	{
 		if (is_array ($variable)) {
 			if (count ($variable, 0) != 2) {
-				$this->set_status (DATA_IVARRAY);
+				$this->setStatus (DATA_IVARRAY);
 				return ($this->severity);
 			}
 			$_var = $variable[0] . '#' . $variable[1];
@@ -218,19 +218,19 @@ class DataHandler extends _OWL
 		if (!in_array ($_var, $this->owl_keys)) {
 			$this->owl_keys[] = $_var;
 		}
-		$this->set_status (DATA_KEYSET, $variable);
-		return ($this->get_severity());
+		$this->setStatus (DATA_KEYSET, $variable);
+		return ($this->getSeverity());
 	}
 
 	/**
-	 * Interface to the DbHander::escape_string()
+	 * Interface to the DbHander::escapeString()
 	 * \public
 	 * \param[in] $string String to escape
-	 * \return Return value of DbHandler::escape_string()
+	 * \return Return value of DbHandler::escapeString()
 	 */
-	public function escape_string($string)
+	public function escapeString($string)
 	{
-		return $this->owl_database->escape_string($string);
+		return $this->owl_database->escapeString($string);
 	}
 
 	/**
@@ -240,7 +240,7 @@ class DataHandler extends _OWL
 	 * \param[out] $expanded An array with all matching fully qualified fieldnames.
 	 * \return The number of matches
 	 */
-	private function find_field ($fld, &$expanded)
+	private function findField ($fld, &$expanded)
 	{
 		$_matches = 0;
 		$expanded = array();
@@ -272,16 +272,16 @@ class DataHandler extends _OWL
 		if (array_key_exists ($variable, $this->owl_data)) {
 			return ($this->owl_data[$variable][1]);
 		} else {
-			switch ($this->find_field($variable, $_k)) {
+			switch ($this->findField($variable, $_k)) {
 				case 0:
-					$this->set_status (DATA_NOTFOUND, $variable);
+					$this->setStatus (DATA_NOTFOUND, $variable);
 					return (null);
 					break;
 				case 1:
 					return ($this->owl_data[$_k[0]][1]);
 					break;
 				default:
-					$this->set_status (DATA_AMBFIELD, $variable);
+					$this->setStatus (DATA_AMBFIELD, $variable);
 					return (null);
 					break;
 			}
@@ -298,11 +298,11 @@ class DataHandler extends _OWL
 	 * operator as recognized by SQL.
 	 * \return Severity level
 	 */
-	public function set_join ($lvalue, $rvalue, $linktype = '=')
+	public function setJoin ($lvalue, $rvalue, $linktype = '=')
 	{
 		if (is_array ($lvalue)) {
 			if (count ($lvalue, 0) != 2) {
-				$this->set_status (DATA_IVARRAY, 'lvalue');
+				$this->setStatus (DATA_IVARRAY, 'lvalue');
 				return ($this->severity);
 			}
 			$lvalue = $lvalue[0] . '#' . $lvalue[1];
@@ -312,7 +312,7 @@ class DataHandler extends _OWL
 
 		if (is_array ($rvalue)) {
 			if (count ($rvalue, 0) != 2) {
-				$this->set_status (DATA_IVARRAY, 'rvalue');
+				$this->setStatus (DATA_IVARRAY, 'rvalue');
 				return ($this->severity);
 			}
 			$rvalue = $rvalue[0] . '#' . $rvalue[1];
@@ -321,15 +321,15 @@ class DataHandler extends _OWL
 		}
 
 		if (!array_key_exists ($lvalue, $this->data)) {
-			$this->set_status (DATA_NOSUCHFLD, $lvalue);
+			$this->setStatus (DATA_NOSUCHFLD, $lvalue);
 			return ($this->severity);
 		}
 		if (!array_key_exists ($rvalue, $this->data)) {
-			$this->set_status (DATA_NOSUCHFLD, $rvalue);
+			$this->setStatus (DATA_NOSUCHFLD, $rvalue);
 			return ($this->severity);
 		}
 		$this->owl_joins[] = array ($lvalue, $linktype, $rvalue);
-		$this->set_status (DATA_JOINSET, array($linktype, $lvalue, $rvalue));
+		$this->setStatus (DATA_JOINSET, array($linktype, $lvalue, $rvalue));
 		return ($this->severity);
 	}
 
@@ -338,7 +338,7 @@ class DataHandler extends _OWL
 	 * \public
 	 * \param[in] $tblname Default table name
 	 */
-	public function set_tablename ($tblname)
+	public function setTablename ($tblname)
 	{
 		$this->owl_tablename = $tblname;
 	}
@@ -356,11 +356,11 @@ class DataHandler extends _OWL
 	public function prepare ($type = DATA_READ)
 	{
 		if ($this->owl_database == null) {
-			$this->set_status (DATA_NODBLINK);
+			$this->setStatus (DATA_NODBLINK);
 			return ($this->severity);
 		}
 		if (count ($this->owl_data) == 0){
-			$this->set_status (DATA_NOSELECT);
+			$this->setStatus (DATA_NOSELECT);
 			return ($this->severity);
 		}
 
@@ -380,32 +380,32 @@ class DataHandler extends _OWL
 						$_table[] = $_t;
 					}
 				}
-				$_stat = $this->owl_database->prepare_read ($_unset, $_table, $_set, $this->owl_joins);
+				$_stat = $this->owl_database->prepareRead ($_unset, $_table, $_set, $this->owl_joins);
 				$_type = 'read';
 				break;
 			case DATA_WRITE:
-				$_stat = $this->owl_database->prepare_insert ($this->owl_data);
+				$_stat = $this->owl_database->prepareInsert ($this->owl_data);
 				$_type = 'write';
 				break;
 			case DATA_UPDATE:
-				$_stat = $this->owl_database->prepare_update ($this->owl_data, $this->owl_keys, $this->owl_joins);
+				$_stat = $this->owl_database->prepareUpdate ($this->owl_data, $this->owl_keys, $this->owl_joins);
 				$_type = 'update';
 				break;
 			case DATA_DELETE:
-				$_stat = $this->owl_database->prepare_delete ($this->owl_data, $this->owl_keys, $this->owl_joins);
+				$_stat = $this->owl_database->prepareDelete ($this->owl_data, $this->owl_keys, $this->owl_joins);
 				$_type = 'delete';
 				break;
 			case DATA_UNPREPARED:
 			default:
-				$this->set_status (DATA_IVPREPARE, $type);
+				$this->setStatus (DATA_IVPREPARE, $type);
 				return ($this->severity);
 				break;
 		}
 		if ($_stat <= OWL_SUCCESS) {
-			$this->set_status (DATA_PREPARED, $_type);
+			$this->setStatus (DATA_PREPARED, $_type);
 			$this->owl_prepared = $type;
 		}
-		return ($this->set_high_severity ($this->owl_database));
+		return ($this->setHighSeverity ($this->owl_database));
 	}
 	
 	/**
@@ -431,7 +431,7 @@ class DataHandler extends _OWL
 //		if ($this->check($this->owl_database) === true) {
 //			$this->reset(DATA_RESET_DATA);
 //		}
-		return ($this->set_high_severity ($this->owl_database));
+		return ($this->setHighSeverity ($this->owl_database));
 	}
 
 	/**
@@ -439,7 +439,7 @@ class DataHandler extends _OWL
 	 * Since the prefix is stored in the database handler object, a clone is used (or made) here.
 	 * \param[in] $prefix Table prefix
 	 */
-	public function set_prefix ($prefix)
+	public function setPrefix ($prefix)
 	{
 		if (($_clone = OWLCache::get(OWLCACHE_OBJECTS, $prefix . '_DB')) !== null) {
 			$this->owl_database = $_clone;
@@ -458,9 +458,9 @@ class DataHandler extends _OWL
 	 * \public
 	 * \return Current status of the database object
 	 */
-	public function db_status ()
+	public function dbStatus ()
 	{
-		return ($this->owl_database->get_status());
+		return ($this->owl_database->getStatus());
 	}
 
 	/**
@@ -468,9 +468,9 @@ class DataHandler extends _OWL
 	 * \public
 	 * \return Last ID
 	 */
-	public function inserted_id ()
+	public function insertedId ()
 	{
-		return ($this->owl_database->last_inserted_id());
+		return ($this->owl_database->lastInsertedId());
 	}
 }
 /**
@@ -482,29 +482,29 @@ class DataHandler extends _OWL
  * Register this class and all status codes
  */
 
-Register::register_class ('DataHandler');
+Register::registerClass ('DataHandler');
 
-Register::set_severity (OWL_DEBUG);
-Register::register_code ('DATA_KEYSET');
-Register::register_code ('DATA_JOINSET');
-Register::register_code ('DATA_PREPARED');
+Register::setSeverity (OWL_DEBUG);
+Register::registerCode ('DATA_KEYSET');
+Register::registerCode ('DATA_JOINSET');
+Register::registerCode ('DATA_PREPARED');
 
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-//Register::set_severity (OWL_SUCCESS);
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
 
-Register::set_severity (OWL_WARNING);
-Register::register_code ('DATA_NOTFOUND');
-Register::register_code ('DATA_NOSELECT');
-Register::register_code ('DATA_AMBFIELD');
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('DATA_NOTFOUND');
+Register::registerCode ('DATA_NOSELECT');
+Register::registerCode ('DATA_AMBFIELD');
 
-Register::set_severity (OWL_BUG);
-Register::register_code ('DATA_IVARRAY');
-Register::register_code ('DATA_NOSUCHFLD');
-Register::register_code ('DATA_IVPREPARE');
+Register::setSeverity (OWL_BUG);
+Register::registerCode ('DATA_IVARRAY');
+Register::registerCode ('DATA_NOSUCHFLD');
+Register::registerCode ('DATA_IVPREPARE');
 
-Register::set_severity (OWL_ERROR);
-Register::register_code ('DATA_NODBLINK');
+Register::setSeverity (OWL_ERROR);
+Register::registerCode ('DATA_NODBLINK');
 
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

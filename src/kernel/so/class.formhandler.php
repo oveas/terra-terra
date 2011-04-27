@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Formhandler class
- * \version $Id: class.formhandler.php,v 1.7 2011-04-14 11:34:41 oscar Exp $
+ * \version $Id: class.formhandler.php,v 1.8 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -62,10 +62,10 @@ class FormHandler extends _OWL
 	{
 		_OWL::init();
 		$this->owl_formvalues = array();
-		$this->set_status (FORM_PARSE);
-		$this->parse_formdata ($_GET);
-		$this->parse_formdata ($_POST);
-		$this->set_status (OWL_STATUS_OK);
+		$this->setStatus (FORM_PARSE);
+		$this->parseFormdata ($_GET);
+		$this->parseFormdata ($_POST);
+		$this->setStatus (OWL_STATUS_OK);
 	}
 
 	/**
@@ -73,7 +73,7 @@ class FormHandler extends _OWL
 	 * \public
 	 * \return Severity level
 	 */
-	public static function get_instance()
+	public static function getInstance()
 	{
 		if (!FormHandler::$instance instanceof self) {
 			FormHandler::$instance = new self();
@@ -87,7 +87,7 @@ class FormHandler extends _OWL
 	 * \private
 	 * \param[in] $data The formdata array. 
 	 */
-	private function parse_formdata ($data = null)
+	private function parseFormdata ($data = null)
 	{
 		if ($data === null || empty($data)) {
 			return;
@@ -125,7 +125,7 @@ class FormHandler extends _OWL
 		}
 
 		if (ConfigHandler::get ('debug') === true) {
-			$this->set_status (FORM_STORVALUE,
+			$this->setStatus (FORM_STORVALUE,
 				array ($variable
 						, (
 							is_array($this->owl_formvalues[$variable])
@@ -199,11 +199,11 @@ class FormHandler extends _OWL
 			}
 		} else {
 			$_val = null;
-			$this->set_status (FORM_NOVALUE, $variable);
+			$this->setStatus (FORM_NOVALUE, $variable);
 		}
 
 		if (ConfigHandler::get ('debug') === true) {
-			$this->set_status (FORM_RETVALUE, array ($variable, $_val));
+			$this->setStatus (FORM_RETVALUE, array ($variable, $_val));
 		}
 		return ($_val);
 	}
@@ -266,7 +266,7 @@ class FormHandler extends _OWL
 	 * Get the complete formdata for logging purposes
 	 * \return Array with the parsed formdata
 	 */
-	public function get_form_data()
+	public function getFormData()
 	{
 		return ($this->owl_formvalues);
 	}
@@ -275,22 +275,22 @@ class FormHandler extends _OWL
 /*
  * Register this class and all status codes
  */
-Register::register_class ('FormHandler');
+Register::registerClass ('FormHandler');
 
-Register::set_severity (OWL_DEBUG);
-Register::register_code ('FORM_STORVALUE');
-Register::register_code ('FORM_PARSE');
+Register::setSeverity (OWL_DEBUG);
+Register::registerCode ('FORM_STORVALUE');
+Register::registerCode ('FORM_PARSE');
 
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-Register::set_severity (OWL_SUCCESS);
-Register::register_code ('FORM_RETVALUE');
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+Register::setSeverity (OWL_SUCCESS);
+Register::registerCode ('FORM_RETVALUE');
 
-Register::set_severity (OWL_WARNING);
-Register::register_code ('FORM_NOVALUE');
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('FORM_NOVALUE');
 
-//Register::set_severity (OWL_BUG);
+//Register::setSeverity (OWL_BUG);
 
-//Register::set_severity (OWL_ERROR);
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_ERROR);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

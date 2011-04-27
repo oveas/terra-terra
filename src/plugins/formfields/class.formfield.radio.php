@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a radio formfield element
- * \version $Id: class.formfield.radio.php,v 1.3 2011-01-21 10:18:28 oscar Exp $
+ * \version $Id: class.formfield.radio.php,v 1.4 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -62,7 +62,7 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	public function addOption($_value, $_id = '')
 	{
 		if (in_array($_value, $this->options)) {
-			$this->set_status (FORMFIELD_VALEXISTS, $_value, $this->name);
+			$this->setStatus (FORMFIELD_VALEXISTS, $_value, $this->name);
 		} else {
 			$this->options[] = $_value;
 			$this->option_ids[$_value] = (($_id === '') ? ('option'.$_value) : $_id);
@@ -77,7 +77,7 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	public function setSelected($_value)
 	{
 		if (!in_array($_value, $this->value)) {
-			$this->set_status (FORMFIELD_NOSUCHVAL, $_value, $this->name);
+			$this->setStatus (FORMFIELD_NOSUCHVAL, $_value, $this->name);
 		} else {
 			$this->selected = $_value;
 		}

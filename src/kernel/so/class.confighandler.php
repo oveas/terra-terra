@@ -2,7 +2,7 @@
 /**
  * \file
  * Define a class for config handling
- * \version $Id: class.confighandler.php,v 1.11 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.12 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -35,14 +35,14 @@ abstract class ConfigHandler
 	 * The first call must always read from a file. On subsequent calls, if no filename is given,
 	 * the configuration is taken from the (owl_)config table
 	 */
-	public static function read_config (array $_source)
+	public static function readConfig (array $_source)
 	{
 		if (array_key_exists('file', $_source)) {
-			self::config_file($_source['file']);
+			self::configFile($_source['file']);
 		} else {
-			self::config_table(
+			self::configTable(
 				 (array_key_exists('table', $_source) ? $_source['table'] : 'config')
-				,(array_key_exists('aid', $_source) ? $_source['aid'] : OWL_APPL_ID)
+				,(array_key_exists('aid', $_source) ? $_source['aid'] : OWL_ID)
 				,(array_key_exists('group', $_source) ? $_source['group'] : 0)
 				,(array_key_exists('user', $_source) ? $_source['user'] : 0)
 				,(array_key_exists('force', $_source) ? toStrictBoolean($_source['force']) : false)
@@ -54,7 +54,7 @@ abstract class ConfigHandler
 	 * Parse a configuration file
 	 * \param[in] $_file Filename
 	 */
-	private static function config_file ($_file)
+	private static function configFile ($_file)
 	{
 		if (($fpointer = fopen ($_file, 'r')) === false) {
 			die ('Fatal error reading configuration file: ' . $_file);
@@ -80,7 +80,7 @@ abstract class ConfigHandler
 			$_hide = strpos ($_item, $GLOBALS['config']['config']['hide_tag']);
 			$_hide = ($_hide !== false);
 
-			self::parse_item($_item, $_value, $_protect, $_hide);
+			self::parseItem($_item, $_value, $_protect, $_hide);
 		}
 		fclose ($fpointer);
 	}
@@ -93,14 +93,14 @@ abstract class ConfigHandler
 	 * \param[in] $_user User ID for which the config should be read
 	 * \param[in] $_force Boolean that can force overwrite of protected values
 	 */
-	private static function config_table ($_table, $_applic, $_group, $_user, $_force)
+	private static function configTable ($_table, $_applic, $_group, $_user, $_force)
 	{
 		if (self::$dataset === null) {
 			self::$dataset = new DataHandler();
 			if (self::get ('owltables', true)) {
-				self::$dataset->set_prefix(self::get ('owlprefix'));
+				self::$dataset->setPrefix(self::get ('owlprefix'));
 			}
-			self::$dataset->set_tablename($_table);
+			self::$dataset->setTablename($_table);
 		}
 		self::$dataset->set('aid', $_applic);
 		self::$dataset->set('gid', $_group);
@@ -110,7 +110,7 @@ abstract class ConfigHandler
 		self::$dataset->db ($_cfg, __LINE__, __FILE__);
 		if (count($_cfg) > 0) {
 			foreach ($_cfg as $_item) {
-				self::parse_item($_item['name'], $_item['value'], $_item['protect'], $_item['hide']);
+				self::parseItem($_item['name'], $_item['value'], $_item['protect'], $_item['hide']);
 			}
 		}
 	}
@@ -123,7 +123,7 @@ abstract class ConfigHandler
 	 */
 	private static function convert ($val)
 	{
-		if (($_s = Register::get_severity_level($val)) > 0) {
+		if (($_s = Register::getSeverityLevel($val)) > 0) {
 			return ($_s);
 		}
 		// TODO; We've got toStrictBoolean() for this now
@@ -143,7 +143,7 @@ abstract class ConfigHandler
 	 * \param[in] $_protect Boolean indicating a protected value
 	 * \param[in] $_hide Boolean indicated a hidden value
 	 */
-	private static function parse_item ($_item, $_value, $_protect, $_hide)
+	private static function parseItem ($_item, $_value, $_protect, $_hide)
 	{
 		if ($_protect === true) {
 			$_item = str_replace($GLOBALS['config']['config']['protect_tag'], '', $_item);
@@ -292,20 +292,20 @@ abstract class ConfigHandler
  * Register this class and all status codes
  */
 
-Register::register_class ('ConfigHandler');
+Register::registerClass ('ConfigHandler');
 
-//Register::set_severity (OWL_DEBUG);
-Register::set_severity (OWL_INFO);
-Register::register_code ('CONFIG_PROTECTED');
+//Register::setSeverity (OWL_DEBUG);
+Register::setSeverity (OWL_INFO);
+Register::registerCode ('CONFIG_PROTECTED');
 
-//Register::set_severity (OWL_OK);
-//Register::set_severity (OWL_SUCCESS);
-//Register::set_severity (OWL_WARNING);
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (OWL_WARNING);
 
-//Register::set_severity (OWL_BUG);
+//Register::setSeverity (OWL_BUG);
 
-Register::set_severity (OWL_ERROR);
-Register::register_code ('CONFIG_NOVALUE');
+Register::setSeverity (OWL_ERROR);
+Register::registerCode ('CONFIG_NOVALUE');
 
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

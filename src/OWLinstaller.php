@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_SO_LAYER
  * This file defines the class to install applications
- * \version $Id: OWLinstaller.php,v 1.1 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: OWLinstaller.php,v 1.2 2011-04-27 11:50:08 oscar Exp $
  */
 
 /**
@@ -31,9 +31,9 @@ abstract class OWLinstaller
 	{
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('owltables', true)) {
-				$dataset->set_prefix(ConfigHandler::get ('owlprefix'));
+				$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
 		}
-		$dataset->set_tablename('applications');
+		$dataset->setTablename('applications');
 		$dataset->set('code', $code);
 		$dataset->set('name', $name);
 		$dataset->set('version', $version);
@@ -43,7 +43,7 @@ abstract class OWLinstaller
 		$dataset->set('license', $license);
 		$dataset->prepare(DATA_WRITE);
 		$dataset->db($_dummy, __LINE__, __FILE__);
-		return ($dataset->inserted_id());
+		return ($dataset->insertedId());
 	}
 
 	/**
@@ -54,12 +54,12 @@ abstract class OWLinstaller
 	{
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('owltables', true)) {
-				$dataset->set_prefix(ConfigHandler::get ('owlprefix'));
+				$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
 		}
-		$dataset->set_tablename('applications');
+		$dataset->setTablename('applications');
 		$dataset->set('aid', $id);
 		$dataset->set('enabled', 1);
-		$dataset->set_key('aid');
+		$dataset->setKey('aid');
 		$dataset->prepare(DATA_UPDATE);
 		$dataset->db($_dummy, __LINE__, __FILE__);
 	}

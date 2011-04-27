@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a button formfield element
- * \version $Id: class.formfield.button.php,v 1.1 2011-01-13 11:05:34 oscar Exp $
+ * \version $Id: class.formfield.button.php,v 1.2 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -78,17 +78,17 @@ class FormFieldButtonPlugin extends FormFieldPlugin
 }
 
 
-//Register::set_severity (OWL_DEBUG);
+//Register::setSeverity (OWL_DEBUG);
 
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-//Register::set_severity (OWL_SUCCESS);
-//Register::register_code ('FORM_RETVALUE');
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
+//Register::registerCode ('FORM_RETVALUE');
 
-//Register::set_severity (OWL_WARNING);
+//Register::setSeverity (OWL_WARNING);
 
-//Register::set_severity (OWL_BUG);
+//Register::setSeverity (OWL_BUG);
 
-//Register::set_severity (OWL_ERROR);
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_ERROR);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

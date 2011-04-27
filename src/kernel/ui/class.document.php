@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines an HTML document
- * \version $Id: class.document.php,v 1.4 2011-01-21 16:28:15 oscar Exp $
+ * \version $Id: class.document.php,v 1.5 2011-04-27 11:50:07 oscar Exp $
  */
 
 /**
@@ -106,7 +106,7 @@ class Document extends BaseElement
 	 * \public
 	 * \return Severity level
 	 */
-	public static function get_instance()
+	public static function getInstance()
 	{
 		if (!Document::$instance instanceof self) {
 			Document::$instance = new self();
@@ -135,11 +135,11 @@ class Document extends BaseElement
 		$_path = URL2Path($_style);
 		// If not null the file is on the local host; check if it's there
 		if ($_path !== null && !file_exists($_path)) {
-			$this->set_status(DOC_NOSUCHFILE, array('stylesheet', $_style));
+			$this->setStatus(DOC_NOSUCHFILE, array('stylesheet', $_style));
 			return;
 		}
 		if (($_styleUrl = ExpandURL($_style)) === null) {
-			$this->set_status(DOC_IVFILESPEC, array('stylesheet', $_script));
+			$this->setStatus(DOC_IVFILESPEC, array('stylesheet', $_script));
 			return;
 		}
 		
@@ -174,11 +174,11 @@ class Document extends BaseElement
 		$_path = URL2Path($_script);
 		// If not null the file is on the local host; check if it's there
 		if ($_path !== null && !file_exists($_path)) {
-			$this->set_status(DOC_NOSUCHFILE, array('javascript', $_script));
+			$this->setStatus(DOC_NOSUCHFILE, array('javascript', $_script));
 			return;
 		}
 		if (($_scriptUrl = ExpandURL($_script)) === null) {
-			$this->set_status(DOC_IVFILESPEC, array('javascript', $_script));
+			$this->setStatus(DOC_IVFILESPEC, array('javascript', $_script));
 			return;
 		}
 		if (!in_array($_scriptUrl, $this->js)) {
@@ -204,11 +204,11 @@ class Document extends BaseElement
 	{
 		$_path = URL2Path($_icon);
 		if ($_path === null || !file_exists($_path)) {
-			$this->set_status(DOC_NOSUCHFILE, array('favicon', $_icon));
+			$this->setStatus(DOC_NOSUCHFILE, array('favicon', $_icon));
 			return;
 		}
 		if (($_iconURL = ExpandURL($_icon)) === null) {
-			$this->set_status(DOC_IVFILESPEC, array('favicon', $_icon));
+			$this->setStatus(DOC_IVFILESPEC, array('favicon', $_icon));
 			return;
 		}
 		$this->favicon = $_iconURL;
@@ -235,7 +235,7 @@ class Document extends BaseElement
 				$this->meta[$_name][] = $_content;
 			} elseif ($_name == 'generator') {
 				// Not allowed to overwrite this meta tag
-				$this->set_status(DOC_PROTTAG, arra('meta', 'generator'));
+				$this->setStatus(DOC_PROTTAG, arra('meta', 'generator'));
 			} else {
 				$this->meta[$_name] = $_content;
 			}
@@ -381,21 +381,21 @@ class Document extends BaseElement
 /*
  * Register this class and all status codes
  */
-Register::register_class ('Document');
+Register::registerClass ('Document');
 
-//Register::set_severity (OWL_DEBUG);
+//Register::setSeverity (OWL_DEBUG);
 
-Register::set_severity (OWL_INFO);
-Register::register_code('DOC_PROTTAG');
+Register::setSeverity (OWL_INFO);
+Register::registerCode('DOC_PROTTAG');
 
-//Register::set_severity (OWL_OK);
-//Register::set_severity (OWL_SUCCESS);
-Register::set_severity (OWL_WARNING);
-Register::register_code('DOC_NOSUCHFILE');
-Register::register_code('DOC_IVFILESPEC');
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
+Register::setSeverity (OWL_WARNING);
+Register::registerCode('DOC_NOSUCHFILE');
+Register::registerCode('DOC_IVFILESPEC');
 
 
-//Register::set_severity (OWL_BUG);
-//Register::set_severity (OWL_ERROR);
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_BUG);
+//Register::setSeverity (OWL_ERROR);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

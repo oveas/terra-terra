@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines a container element
- * \version $Id: class.container.php,v 1.3 2011-01-21 16:28:15 oscar Exp $
+ * \version $Id: class.container.php,v 1.4 2011-04-27 11:50:07 oscar Exp $
  */
 
 OWLloader::getClass('container', OWL_PLUGINS . '/containers');
@@ -42,12 +42,12 @@ class Container extends BaseElement
 		$this->showMethod = 'show' . ucfirst($_type) . 'Type';
 
 		if (!OWLloader::getClass('container.'.$_type, OWL_PLUGINS . '/containers')) {
-			$this->set_status(CONTAINER_IVTYPE, array($_type));
+			$this->setStatus(CONTAINER_IVTYPE, array($_type));
 			return null;
 		}
 		$_className = 'Container' . ucfirst($_type) . 'Plugin';
 		if (!($this->containerObject = new $_className)) {
-			$this->set_status (CONTAINER_IVCLASSNAME, array($_type, $_className));
+			$this->setStatus (CONTAINER_IVCLASSNAME, array($_type, $_className));
 			return ($this->severity);
 		}
 		if (count($_attribs) > 0) {
@@ -87,19 +87,19 @@ class Container extends BaseElement
 /*
  * Register this class and all status codes
  */
-Register::register_class ('Container');
+Register::registerClass ('Container');
 
-//Register::set_severity (OWL_DEBUG);
+//Register::setSeverity (OWL_DEBUG);
 
-//Register::set_severity (OWL_INFO);
-//Register::set_severity (OWL_OK);
-//Register::set_severity (OWL_SUCCESS);
-//Register::set_severity (OWL_WARNING);
-Register::set_severity (OWL_BUG);
-Register::register_code ('CONTAINER_IVCLASSNAME');
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (OWL_WARNING);
+Register::setSeverity (OWL_BUG);
+Register::registerCode ('CONTAINER_IVCLASSNAME');
 
-Register::set_severity (OWL_ERROR);
-Register::register_code ('CONTAINER_IVTYPE');
+Register::setSeverity (OWL_ERROR);
+Register::registerCode ('CONTAINER_IVTYPE');
 
-//Register::set_severity (OWL_FATAL);
-//Register::set_severity (OWL_CRITICAL);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);

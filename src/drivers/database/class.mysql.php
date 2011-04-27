@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the MySQL drivers
- * \version $Id: class.mysql.php,v 1.3 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: class.mysql.php,v 1.4 2011-04-27 11:50:08 oscar Exp $
  */
 
 define('USE_BACKTICKS', true);

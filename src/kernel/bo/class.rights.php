@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Rights class
- * \version $Id: class.rights.php,v 1.4 2011-04-27 10:58:20 oscar Exp $
+ * \version $Id: class.rights.php,v 1.5 2011-04-27 11:50:08 oscar Exp $
  */
 
 /**
@@ -60,11 +60,11 @@ class Rights extends Security
 	{
 		$dataset = new DataHandler ();
 		if (ConfigHandler::get ('owltables', true)) {
-			$dataset->set_prefix(ConfigHandler::get ('owlprefix'));
+			$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
 		}
-		$dataset->set_tablename('rights');
-		$dataset->set('aid', array(OWL_APPL_ID, APPL_ID));
-		$dataset->set_key('appl');
+		$dataset->setTablename('rights');
+		$dataset->set('aid', array(OWL_ID, APPL_ID));
+		$dataset->setKey('appl');
 		$dataset->prepare();
 		$dataset->db($data, __FILE__, __CLASS__);
 		foreach ($data as $_r) {
@@ -73,7 +73,7 @@ class Rights extends Security
 		OWLCache::set('rights', 'list', $this->rightslist);
 	}
 }
-Register::register_class('Rights');
+Register::registerClass('Rights');
 
-Register::set_severity (OWL_WARNING);
-//Register::register_code ('USER_DUPLUSERNAME');
+Register::setSeverity (OWL_WARNING);
+//Register::registerCode ('USER_DUPLUSERNAME');
