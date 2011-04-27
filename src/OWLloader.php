@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.23 2011-04-26 11:45:45 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.24 2011-04-27 10:58:21 oscar Exp $
  */
 
 // Error handling used during development
@@ -256,7 +256,6 @@ OWLloader::getClass('sessionhandler', OWL_SO_INC);
 OWLloader::getClass('dbhandler', OWL_SO_INC);
 OWLloader::getClass('datahandler', OWL_SO_INC);
 OWLloader::getClass('formhandler', OWL_SO_INC);
-OWLloader::getClass('grouphandler', OWL_SO_INC);
 OWLloader::getClass('filehandler', OWL_SO_INC);
 
 // BO Layer

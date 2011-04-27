@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Oveas Web Library Dispatcher class
- * \version $Id: class.dispatcher.php,v 1.8 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: class.dispatcher.php,v 1.9 2011-04-27 10:58:20 oscar Exp $
  */
 
 define ('OWL_DISPATCHER_NAME', 'd'); //< Formfield/HTTP var name for the dispatcher
@@ -123,9 +123,9 @@ class Dispatcher extends _OWL
 				$this->set_status(DISP_NOARG);
 				return;
 			}
-			$_destination = $this->decode_dispatcher($_dispatcher);
+			$_destination = $this->decodeDispatcher($_dispatcher);
 		} else {
-			$_destination = $this->decode_dispatcher($_dispatcher);
+			$_destination = $this->decodeDispatcher($_dispatcher);
 		}
 
 		$_logger = OWL::factory('LogHandler', 'so');
@@ -171,7 +171,7 @@ class Dispatcher extends _OWL
 	 * \param[in] $_dispatcher Dispatcher
 	 * \return Dispatcher as an indexed array
 	 */
-	private function decode_dispatcher($_dispatcher)
+	private function decodeDispatcher($_dispatcher)
 	{
 		if (is_array($_dispatcher)) {
 			return ($_dispatcher);
@@ -226,7 +226,7 @@ class Dispatcher extends _OWL
 			$this->set_status (DISP_NOTREGIST);
 			return (false);
 		}
-		$_dispatcher = $this->decode_dispatcher($this->dispatcher);
+		$_dispatcher = $this->decodeDispatcher($this->dispatcher);
 
 		if ($_dispatcher['argument'] === 0) {
 			$_dispatcher['argument'] = $_argument;

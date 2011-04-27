@@ -70,14 +70,14 @@ $_index = array (
 	)
 );
 
-$_scheme->create_scheme('person');	// Create the scheme in the SchemeHandler 
-$_scheme->define_scheme($_table);	// Define the columns
-$_scheme->define_index($_index);	// Define the indexes
+$_scheme->createScheme('person');	// Create the scheme in the SchemeHandler 
+$_scheme->defineScheme($_table);	// Define the columns
+$_scheme->defineIndex($_index);		// Define the indexes
 $_scheme->scheme();					// Check the table in the database and create or alter it
 $_scheme->reset();					// Reset the schemehandler (clear the definitions)
 
 // Now setup the same table in the schemehandler again, this time by reading from the database
-$_scheme->table_description('person', $_data);
+$_scheme->tableDescription('person', $_data);
 // Show the result
 echo '<pre>'. print_r($_data, 1) . '</pre>';
 

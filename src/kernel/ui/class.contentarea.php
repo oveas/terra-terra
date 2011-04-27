@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the abstract ContentArea class
- * \version $Id: class.contentarea.php,v 1.3 2011-04-06 14:42:16 oscar Exp $
+ * \version $Id: class.contentarea.php,v 1.4 2011-04-27 10:58:21 oscar Exp $
  */
 
 /**
@@ -58,6 +58,17 @@ abstract class ContentArea extends _OWL
 		}
 	}
 
+	/**
+	 * Check if the current user has the right to see this container
+	 * \param[in] $bit Rightsbit to check
+	 * \param[in] $appl ID of the application the bit belongs to
+	 * \return Boolean; true when the user has the right
+	 */
+	protected function hasRight ($bit, $appl)
+	{
+		$_u = OWLCache::get(OWLCACHE_OBJECTS, 'user');
+		return ($_u->hasRight($bit, $appl));
+	}
 }
 
 /*

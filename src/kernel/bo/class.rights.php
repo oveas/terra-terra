@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Rights class
- * \version $Id: class.rights.php,v 1.3 2011-04-26 11:45:45 oscar Exp $
+ * \version $Id: class.rights.php,v 1.4 2011-04-27 10:58:20 oscar Exp $
  */
 
 /**
@@ -30,6 +30,27 @@ class Rights extends Security
 		if (($this->rightslist = OWLCache::get('rights', 'list')) === null) {
 			$this->registerRights();
 		}
+	}
+
+	/**
+	 * The rightslist is stored in cache, not in the serialized object, so we must retrieve it
+	 * again on unserialize()
+	 */
+	public function __wakeup()
+	{
+		if (($this->rightslist = OWLCache::get('rights', 'list')) === null) {
+			$this->registerRights();
+		}
+	}
+
+	/**
+	 * Get the bitvalue for a given name
+	 * \param[in] $name Name of the rights bit
+	 * \return Integer value
+	 */
+	public function bitValue($name)
+	{
+		return ($this->rightslist[$name]);
 	}
 
 	/**

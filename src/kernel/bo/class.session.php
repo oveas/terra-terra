@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Session class
- * \version $Id: class.session.php,v 1.7 2011-04-26 11:45:45 oscar Exp $
+ * \version $Id: class.session.php,v 1.8 2011-04-27 10:58:21 oscar Exp $
  */
 
 /**
@@ -84,6 +84,17 @@ class Session extends SessionHandler
 	public function set_rights($bitmap, $app = OWL_APPL_ID)
 	{
 		$this->rights->initBitmap($bitmap,$app);
+	}
+
+	/**
+	 * Check if a rightsbit has been set for this session
+	 * \param[in] $bit Rightsbit to check
+	 * \param[in] $appl ID of the application the bit belongs to
+	 * \return Boolean; true when the bit is set
+	 */
+	public function hasRight ($bit, $appl)
+	{
+		return ($this->rights->controlBitmap($this->rights->bitValue($bit), $appl, BIT_CHECK));
 	}
 
 	/**

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Security base class
- * \version $Id: class.security.php,v 1.3 2011-04-26 11:51:24 oscar Exp $
+ * \version $Id: class.security.php,v 1.4 2011-04-27 10:58:21 oscar Exp $
  */
 
 /**
@@ -31,7 +31,7 @@ define ('BIT_TOGGLE',	4);
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 16, 2011 -- O van Eijk -- initial version
  */
-class Security
+abstract class Security
 {
 
 	/**
@@ -59,6 +59,13 @@ class Security
 	{
 		return array('bitmap');
 	}
+
+	/**
+	 * Get the bitvalue for a given name. This method must be reimplemented
+	 * \param[in] $name Name of the bit
+	 * \return Integer value
+	 */
+	abstract public function bitValue($name);
 
 	/**
 	 * Initialise the bitmap for the given application
@@ -97,11 +104,11 @@ class Security
 	 * Check, set or unset a bit in the current users bitmap.
 	 * Enter description here ...
 	 * \param[in] $bit Bit that should be checked or (un)set
-	 * \param[in] $app Application the bit belongs to
+	 * \param[in] $app Application ID the bit belongs to
 	 * \param[in] $controller Controller defining the action, defaults to check
 	 * \return True if the bit was set (*before* a set or unset action!)
 	 */
-	public function controlBitmap ($bit, $app = 'owl', $controller = BIT_CHECK)
+	public function controlBitmap ($bit, $app, $controller = BIT_CHECK)
 	{
 		if (!array_key_exists($app, $this->bitmap)) {
 			$this->bitmap[$app] = 0;
@@ -111,16 +118,16 @@ class Security
 		}
 		if ($controller == BIT_SET) {
 			if (!$_curr) {
-				$this->bitmap = ($this->bitmap | $_bit);
+				$this->bitmap[$app] = ($this->bitmap[$app] | $_bit);
 			}
-		} elseif ($_act == BIT_UNSET) {
+		} elseif ($controller == BIT_UNSET) {
 			if ($_curr) {
 				$this->bitmap[$app] = ($this->bitmap[$app] ^ $_bit);
 			}
-		} elseif ($_act == BIT_TOGGLE) {
+		} elseif ($controller == BIT_TOGGLE) {
 			$this->bitmap[$app] = ($this->bitmap[$app] ^ $_bit);
 		}
-		return ($_curr);
+		return (toStrictBoolean($_curr));
 	}
 }
 Register::register_class('Rights');

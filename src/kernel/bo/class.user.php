@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the User class
- * \version $Id: class.user.php,v 1.12 2011-04-26 11:45:45 oscar Exp $
+ * \version $Id: class.user.php,v 1.13 2011-04-27 10:58:21 oscar Exp $
  */
 
 /**
@@ -81,7 +81,7 @@ abstract class User extends _OWL
 			$this->session->set_rights(
 				  ($_allRights
 					? $this->rights->getBitmap(OWL_APPL_ID)
-					: $this->group->get('rights', 0))
+					: $this->group->get('right', 0))
 				, OWL_APPL_ID
 			);
 		} else {
@@ -381,6 +381,17 @@ abstract class User extends _OWL
 		$_strength = floor($_strength / 10 + 1);
 
 		return $_strength;
+	}
+
+	/**
+	 * Check if a rightsbit has been set for this user
+	 * \param[in] $bit Rightsbit to check
+	 * \param[in] $appl ID of the application the bit belongs to
+	 * \return Boolean; true when the bit is set
+	 */
+	public function hasRight ($bit, $appl)
+	{
+		return ($this->session->hasRight($bit, $appl));
 	}
 
 	/**

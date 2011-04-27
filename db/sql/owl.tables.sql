@@ -58,11 +58,11 @@ CREATE  TABLE IF NOT EXISTS `owl_user` (
   `email` VARCHAR(45) NULL COMMENT 'Email address. Extra addresses must be handled by the apps' ,
   `registered` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'First reghistration date and time' ,
   `verification` VARCHAR(45) NOT NULL DEFAULT '' COMMENT 'Verification code for new registrations' ,
-  `group` INT UNSIGNED NOT NULL COMMENT 'Primary group ID' ,
+  `gid` INT UNSIGNED NOT NULL COMMENT 'Primary group ID' ,
   `right` BIGINT UNSIGNED ZEROFILL NOT NULL DEFAULT 0 COMMENT 'Additional user specific rightbits' ,
   PRIMARY KEY (`uid`) ,
   CONSTRAINT `fk_usergroup`
-    FOREIGN KEY (`group` )
+    FOREIGN KEY (`gid` )
     REFERENCES `owl_group` (`gid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
@@ -71,7 +71,7 @@ COMMENT = 'Basic userdata for all OWL based applications';
 
 CREATE UNIQUE INDEX `username` USING BTREE ON `owl_user` (`username` ASC) ;
 
-CREATE INDEX `fk_usergroup` ON `owl_user` (`group` ASC) ;
+CREATE INDEX `fk_usergroup` ON `owl_user` (`gid` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -210,7 +210,8 @@ COMMIT;
 -- Data for table `owl_user`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `group`, `right`) VALUES (NULL, 'oscar', 'f5a1ee88f62cb3d1cc9d801b5f2910bbb0c3b525', 'oscar@oveas.com', 'NOW()', '', 2, 0);
+INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (2, 'oscar', 'f5a1ee88f62cb3d1cc9d801b5f2910bbb0c3b525', 'oscar@oveas.com', 'NOW()', '', 2, 0);
+INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (1, 'anonymous', '', '', 'NOW()', '', 1, 0);
 
 COMMIT;
 
@@ -230,6 +231,7 @@ INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, 
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|default_user', 'anonymous', 1, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'logging|log_form_data', 'true', 0, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'user|default_group', '2', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|default_rights_all', '0', 1, 0);
 
 COMMIT;
 

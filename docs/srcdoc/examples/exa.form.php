@@ -48,6 +48,11 @@ class LoginArea extends ContentArea
 	 */
 	public function loadArea()
 	{
+		// Check if the current user can see this form
+		if ($this->hasRight('readanonymous', OWL_ID) === false) {
+			return;
+		}
+
 		// Create a new form. The first argument defines the dispatcher, second is the form name
 		$_frm = new Form(
 			  array(
