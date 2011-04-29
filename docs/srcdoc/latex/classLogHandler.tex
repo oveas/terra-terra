@@ -18,15 +18,15 @@ Inheritance diagram for LogHandler:\begin{figure}[H]
 \item 
 {\bf \_\-\_\-clone} ()
 \item 
-{\bf set\_\-applic\_\-logfile} ()
+{\bf setApplicLogfile} ()
 \item 
-{\bf log\_\-session} (array \$dispatcher, {\bf FormHandler} \$form=null)
+{\bf logSession} (array \$dispatcher, {\bf FormHandler} \$form=null)
 \item 
 {\bf log} (\$msg, \$code)
 \item 
-{\bf get\_\-status} ()
+{\bf getStatus} ()
 \item 
-{\bf get\_\-severity} (\$status=null)
+{\bf getSeverity} (\$status=null)
 \item 
 {\bf succeeded} (\$\_\-ok={\bf OWL\_\-SUCCESS}, \&\$\_\-object=null)
 \item 
@@ -37,30 +37,30 @@ Inheritance diagram for LogHandler:\begin{figure}[H]
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static {\bf get\_\-instance} ()
+static {\bf getInstance} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\bf init} ()
 \item 
-{\bf set\_\-callback} (\$\_\-dispatcher)
+{\bf setCallback} (\$\_\-dispatcher)
 \item 
-{\bf set\_\-callback\_\-argument} (array \$\_\-arg)
+{\bf setCallbackArgument} (array \$\_\-arg)
 \item 
-{\bf get\_\-callback} ()
+{\bf getCallback} ()
 \item 
 {\bf reset} ()
 \item 
-{\bf save\_\-status} ()
+{\bf saveStatus} ()
 \item 
-{\bf restore\_\-status} ()
+{\bf restoreStatus} ()
 \item 
 {\bf check} (\&\$object, \$level={\bf OWL\_\-WARNING})
 \item 
-{\bf set\_\-status} (\$status, \$params=array())
+{\bf setStatus} (\$status, \$params=array())
 \item 
-{\bf set\_\-high\_\-severity} (\&\$object=null)
+{\bf setHighSeverity} (\&\$object=null)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -72,15 +72,15 @@ static {\bf get\_\-instance} ()
 \item 
 {\bf \_\-\_\-construct} ()
 \item 
-{\bf set\_\-filename} ()
+{\bf setFilename} ()
 \item 
-{\bf open\_\-logfile} ()
+{\bf openLogfile} ()
 \item 
-{\bf close\_\-logfile} ()
+{\bf closeLogfile} ()
 \item 
-{\bf write\_\-logfile} (\$msg)
+{\bf writeLogfile} (\$msg)
 \item 
-{\bf compose\_\-message} (\&\$msg, \$code)
+{\bf composeMessage} (\&\$msg, \$code)
 \item 
 {\bf backtrace} (\$\_\-browser\_\-dump=false)
 \end{DoxyCompactItemize}
@@ -125,7 +125,7 @@ Aug 13, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_aacca49c4394109f4ccc494048a0b2cab}
 Class constructor 
 
-References ConfigHandler::get(), \_\-OWL::init(), open\_\-logfile(), and set\_\-filename().
+References ConfigHandler::get(), \_\-OWL::init(), openLogfile(), and setFilename().
 
 \index{LogHandler@{LogHandler}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!LogHandler@{LogHandler}}
@@ -140,7 +140,7 @@ Reimplemented from {\bf \_\-OWL} \doxyref{}{p.}{class__OWL_a44fd2222476a3109286c
 
 
 
-References close\_\-logfile().
+References closeLogfile().
 
 
 
@@ -193,31 +193,31 @@ True if the severity level was correct (below the max), otherwise false
 \end{DoxyReturn}
 
 
-References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::traceback().
+References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
 
 
 
 Referenced by SessionHandler::write().
 
-\index{LogHandler@{LogHandler}!close\_\-logfile@{close\_\-logfile}}
-\index{close\_\-logfile@{close\_\-logfile}!LogHandler@{LogHandler}}
-\subsubsection[{close\_\-logfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::close\_\-logfile (
+\index{LogHandler@{LogHandler}!closeLogfile@{closeLogfile}}
+\index{closeLogfile@{closeLogfile}!LogHandler@{LogHandler}}
+\subsubsection[{closeLogfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::closeLogfile (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_a1a3b03d9bb97404a4f746bd2aacc5a8c}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_adf4246ae948f34bebada251f5be84781}
 Close the logfile 
 
-Referenced by \_\-\_\-destruct(), log(), and set\_\-applic\_\-logfile().
+Referenced by \_\-\_\-destruct(), log(), and setApplicLogfile().
 
-\index{LogHandler@{LogHandler}!compose\_\-message@{compose\_\-message}}
-\index{compose\_\-message@{compose\_\-message}!LogHandler@{LogHandler}}
-\subsubsection[{compose\_\-message}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::compose\_\-message (
+\index{LogHandler@{LogHandler}!composeMessage@{composeMessage}}
+\index{composeMessage@{composeMessage}!LogHandler@{LogHandler}}
+\subsubsection[{composeMessage}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::composeMessage (
 \begin{DoxyParamCaption}
 \item[{\&\$}]{msg, }
 \item[{\$}]{code}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_ad32511521115b21779d699c836197dd0}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_af366e1232e6d440215b4a732e431225f}
 Compose the logmessage by adding a timestamp and -\/ when not writing multiple files -\/ the run ID
 
 
@@ -229,37 +229,37 @@ Compose the logmessage by adding a timestamp and -\/ when not writing multiple f
 \end{DoxyParams}
 
 
-References ConfigHandler::get(), Register::get\_\-code(), Register::get\_\-run\_\-id(), and \_\-OWL::get\_\-severity().
+References ConfigHandler::get(), Register::getCode(), Register::getRunId(), and \_\-OWL::getSeverity().
 
 
 
 Referenced by log().
 
-\index{LogHandler@{LogHandler}!get\_\-callback@{get\_\-callback}}
-\index{get\_\-callback@{get\_\-callback}!LogHandler@{LogHandler}}
-\subsubsection[{get\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-callback (
+\index{LogHandler@{LogHandler}!getCallback@{getCallback}}
+\index{getCallback@{getCallback}!LogHandler@{LogHandler}}
+\subsubsection[{getCallback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getCallback (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_abded13b1c97ea6e0cfe3c68cb6bcf7a5}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_acb46ff88f43ca66f1268d3f5199c3f8d}
 Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
 The dispatcher, of null on failure. 
 \end{DoxyReturn}
 
 
-Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_af4b71fa3c4d25bab86187d9dc44182f2}.
+Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}.
 
 
 
 References OWL::factory().
 
-\index{LogHandler@{LogHandler}!get\_\-instance@{get\_\-instance}}
-\index{get\_\-instance@{get\_\-instance}!LogHandler@{LogHandler}}
-\subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static LogHandler::get\_\-instance (
+\index{LogHandler@{LogHandler}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!LogHandler@{LogHandler}}
+\subsubsection[{getInstance}]{\setlength{\rightskip}{0pt plus 5cm}static LogHandler::getInstance (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classLogHandler_aff978ec836c28d7b6e08a84802aa1c6d}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classLogHandler_a669066b3e01ca9a2c3eb33df8ae75765}
 Return a reference to my implementation. If necessary, create that implementation first.
 
 \begin{DoxyReturn}{Returns}
@@ -269,13 +269,13 @@ Severity level
 
 References \$instance.
 
-\index{LogHandler@{LogHandler}!get\_\-severity@{get\_\-severity}}
-\index{get\_\-severity@{get\_\-severity}!LogHandler@{LogHandler}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
+\index{LogHandler@{LogHandler}!getSeverity@{getSeverity}}
+\index{getSeverity@{getSeverity}!LogHandler@{LogHandler}}
+\subsubsection[{getSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getSeverity (
 \begin{DoxyParamCaption}
 \item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
 Get the current object severity level.
 
 
@@ -292,15 +292,15 @@ References \_\-OWL::\$status.
 
 
 
-Referenced by compose\_\-message(), log(), and DataHandler::set\_\-key().
+Referenced by composeMessage(), log(), and DataHandler::setKey().
 
-\index{LogHandler@{LogHandler}!get\_\-status@{get\_\-status}}
-\index{get\_\-status@{get\_\-status}!LogHandler@{LogHandler}}
-\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status (
+\index{LogHandler@{LogHandler}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!LogHandler@{LogHandler}}
+\subsubsection[{getStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+)\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
 Get the current object status.
 
 \begin{DoxyReturn}{Returns}
@@ -319,11 +319,11 @@ Referenced by SchemeHandler::compare().
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
-References OWL::factory(), and \_\-OWL::set\_\-status().
+References OWL::factory(), and \_\-OWL::setStatus().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), \_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), \_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{LogHandler@{LogHandler}!log@{log}}
 \index{log@{log}!LogHandler@{LogHandler}}
@@ -344,16 +344,16 @@ Log an event signalled by \doxyref{OWL}{p.}{classOWL}
 \end{DoxyParams}
 
 
-References backtrace(), close\_\-logfile(), compose\_\-message(), ConfigHandler::get(), \_\-OWL::get\_\-severity(), open\_\-logfile(), and write\_\-logfile().
+References backtrace(), closeLogfile(), composeMessage(), ConfigHandler::get(), \_\-OWL::getSeverity(), openLogfile(), and writeLogfile().
 
-\index{LogHandler@{LogHandler}!log\_\-session@{log\_\-session}}
-\index{log\_\-session@{log\_\-session}!LogHandler@{LogHandler}}
-\subsubsection[{log\_\-session}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::log\_\-session (
+\index{LogHandler@{LogHandler}!logSession@{logSession}}
+\index{logSession@{logSession}!LogHandler@{LogHandler}}
+\subsubsection[{logSession}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::logSession (
 \begin{DoxyParamCaption}
 \item[{array \$}]{dispatcher, }
 \item[{{\bf FormHandler} \$}]{form = {\ttfamily null}}
 \end{DoxyParamCaption}
-)}\label{classLogHandler_a96f9831cfceceffa055ba46b2deb6734}
+)}\label{classLogHandler_a4b9214a42c6bcb2ee7de7d6a4c10d68c}
 Log the user action in the database. This method is called from the Dispatcher::dispatcher() and can be called moreoften, but only the first log is written. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$dispatcher} & Array with dispatcher information \\
@@ -365,20 +365,20 @@ Log the user action in the database. This method is called from the Dispatcher::
 
 References ConfigHandler::get(), and OWLCache::get().
 
-\index{LogHandler@{LogHandler}!open\_\-logfile@{open\_\-logfile}}
-\index{open\_\-logfile@{open\_\-logfile}!LogHandler@{LogHandler}}
-\subsubsection[{open\_\-logfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::open\_\-logfile (
+\index{LogHandler@{LogHandler}!openLogfile@{openLogfile}}
+\index{openLogfile@{openLogfile}!LogHandler@{LogHandler}}
+\subsubsection[{openLogfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::openLogfile (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_aaf324e5156bf8ea83e5b4e990ea99e2d}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_aae86161ab4886bf901ce22773b32e193}
 Open the logfile for write 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 
 
-Referenced by \_\-\_\-construct(), log(), and set\_\-applic\_\-logfile().
+Referenced by \_\-\_\-construct(), log(), and setApplicLogfile().
 
 \index{LogHandler@{LogHandler}!reset@{reset}}
 \index{reset@{reset}!LogHandler@{LogHandler}}
@@ -393,56 +393,56 @@ Reimplemented in {\bf DbHandler} \doxyref{}{p.}{classDbHandler_a9982df4830f05803
 
 
 
-References \_\-OWL::reset\_\-calltree().
+References \_\-OWL::resetCalltree().
 
 
 
-Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
+Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::setStatus().
 
-\index{LogHandler@{LogHandler}!restore\_\-status@{restore\_\-status}}
-\index{restore\_\-status@{restore\_\-status}!LogHandler@{LogHandler}}
-\subsubsection[{restore\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restore\_\-status (
+\index{LogHandler@{LogHandler}!restoreStatus@{restoreStatus}}
+\index{restoreStatus@{restoreStatus}!LogHandler@{LogHandler}}
+\subsubsection[{restoreStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restoreStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a465eeaf40edd9f9c848841700c32ce55}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
 Restore the previously saved status object and destroy the copy 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 
 
 Referenced by User::logout().
 
-\index{LogHandler@{LogHandler}!save\_\-status@{save\_\-status}}
-\index{save\_\-status@{save\_\-status}!LogHandler@{LogHandler}}
-\subsubsection[{save\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::save\_\-status (
+\index{LogHandler@{LogHandler}!saveStatus@{saveStatus}}
+\index{saveStatus@{saveStatus}!LogHandler@{LogHandler}}
+\subsubsection[{saveStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::saveStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
 Create a copy of the status object 
 
 Referenced by User::logout().
 
-\index{LogHandler@{LogHandler}!set\_\-applic\_\-logfile@{set\_\-applic\_\-logfile}}
-\index{set\_\-applic\_\-logfile@{set\_\-applic\_\-logfile}!LogHandler@{LogHandler}}
-\subsubsection[{set\_\-applic\_\-logfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::set\_\-applic\_\-logfile (
+\index{LogHandler@{LogHandler}!setApplicLogfile@{setApplicLogfile}}
+\index{setApplicLogfile@{setApplicLogfile}!LogHandler@{LogHandler}}
+\subsubsection[{setApplicLogfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::setApplicLogfile (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}\label{classLogHandler_a128f89060f13e7933726a3767d7f5a84}
+)}\label{classLogHandler_a23abe91efe4c2468f4ca5fdd115c4a13}
 
 
-References close\_\-logfile(), ConfigHandler::get(), open\_\-logfile(), and set\_\-filename().
+References closeLogfile(), ConfigHandler::get(), openLogfile(), and setFilename().
 
-\index{LogHandler@{LogHandler}!set\_\-callback@{set\_\-callback}}
-\index{set\_\-callback@{set\_\-callback}!LogHandler@{LogHandler}}
-\subsubsection[{set\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback (
+\index{LogHandler@{LogHandler}!setCallback@{setCallback}}
+\index{setCallback@{setCallback}!LogHandler@{LogHandler}}
+\subsubsection[{setCallback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setCallback (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-dispatcher}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a28d9025eaf37b49d63cb334ed28c33f0}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a5f84d43cd4dc7810649f1e2ebecad360}
 Set a dispatcher for later callback 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-dispatcher} & Dispatched, \\
@@ -458,13 +458,13 @@ True on success, false on failure
 
 References OWL::factory().
 
-\index{LogHandler@{LogHandler}!set\_\-callback\_\-argument@{set\_\-callback\_\-argument}}
-\index{set\_\-callback\_\-argument@{set\_\-callback\_\-argument}!LogHandler@{LogHandler}}
-\subsubsection[{set\_\-callback\_\-argument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback\_\-argument (
+\index{LogHandler@{LogHandler}!setCallbackArgument@{setCallbackArgument}}
+\index{setCallbackArgument@{setCallbackArgument}!LogHandler@{LogHandler}}
+\subsubsection[{setCallbackArgument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setCallbackArgument (
 \begin{DoxyParamCaption}
 \item[{array \$}]{\_\-arg}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a1e26611ce858b237f5a98a91ea3c3a1b}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a4e9ebfbd3c0d76539bed4e44de9962c3}
 Add an argument to a previously registered callback dispatcher 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-arg} & Argument, must be an array type. When non-\/ arrays should be passed as arguments, the must be set when the callback is registered already \\
@@ -481,40 +481,40 @@ References OWL::factory().
 
 Referenced by User::register().
 
-\index{LogHandler@{LogHandler}!set\_\-filename@{set\_\-filename}}
-\index{set\_\-filename@{set\_\-filename}!LogHandler@{LogHandler}}
-\subsubsection[{set\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::set\_\-filename (
+\index{LogHandler@{LogHandler}!setFilename@{setFilename}}
+\index{setFilename@{setFilename}!LogHandler@{LogHandler}}
+\subsubsection[{setFilename}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::setFilename (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_a65ef4f1c6ab4cff4057f5f5932cc690e}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_a81b42d2a82a4ff17ea2901ee801f1cb2}
 Find out what the filename of the logfile should be. When logs are written before the configuration is complete, a temporart startup logfile is created 
 
-References ConfigHandler::get(), and Register::get\_\-run\_\-id().
+References ConfigHandler::get(), and Register::getRunId().
 
 
 
-Referenced by \_\-\_\-construct(), and set\_\-applic\_\-logfile().
+Referenced by \_\-\_\-construct(), and setApplicLogfile().
 
-\index{LogHandler@{LogHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
-\index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!LogHandler@{LogHandler}}
-\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
+\index{LogHandler@{LogHandler}!setHighSeverity@{setHighSeverity}}
+\index{setHighSeverity@{setHighSeverity}!LogHandler@{LogHandler}}
+\subsubsection[{setHighSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setHighSeverity (
 \begin{DoxyParamCaption}
 \item[{\&\$}]{object = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
 Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
-\index{LogHandler@{LogHandler}!set\_\-status@{set\_\-status}}
-\index{set\_\-status@{set\_\-status}!LogHandler@{LogHandler}}
-\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
+\index{LogHandler@{LogHandler}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!LogHandler@{LogHandler}}
+\subsubsection[{setStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setStatus (
 \begin{DoxyParamCaption}
 \item[{\$}]{status, }
 \item[{\$}]{params = {\ttfamily array~()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+)\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
 Set the current object status to the specified value.
 
 
@@ -526,11 +526,11 @@ Set the current object status to the specified value.
 \end{DoxyParams}
 
 
-References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
+References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-field(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), User::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), DbHandler::read(), FileHandler::readLine(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), SchemeHandler::validateScheme(), and DbHandler::write().
 
 \index{LogHandler@{LogHandler}!signal@{signal}}
 \index{signal@{signal}!LogHandler@{LogHandler}}
@@ -558,7 +558,7 @@ References ConfigHandler::get().
 
 
 
-Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
+Referenced by \_\-OWL::setStatus(), and \_\-OWL::traceback().
 
 \index{LogHandler@{LogHandler}!succeeded@{succeeded}}
 \index{succeeded@{succeeded}!LogHandler@{LogHandler}}
@@ -580,7 +580,7 @@ Boolean true when successfull
 \end{DoxyReturn}
 
 
-Referenced by User::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher::registerCallback().
 
 \index{LogHandler@{LogHandler}!traceback@{traceback}}
 \index{traceback@{traceback}!LogHandler@{LogHandler}}
@@ -610,13 +610,13 @@ References \_\-OWL::signal().
 
 Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 
-\index{LogHandler@{LogHandler}!write\_\-logfile@{write\_\-logfile}}
-\index{write\_\-logfile@{write\_\-logfile}!LogHandler@{LogHandler}}
-\subsubsection[{write\_\-logfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::write\_\-logfile (
+\index{LogHandler@{LogHandler}!writeLogfile@{writeLogfile}}
+\index{writeLogfile@{writeLogfile}!LogHandler@{LogHandler}}
+\subsubsection[{writeLogfile}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::writeLogfile (
 \begin{DoxyParamCaption}
 \item[{\$}]{msg}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_ae0cd68fb6f068e47f899a1e4c7f29ba9}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_ad9213e0ef36a84216c023f86ac74db4e}
 Write a message to the logfile
 
 
@@ -645,7 +645,7 @@ File pointer \index{LogHandler@{LogHandler}!\$instance@{\$instance}}
 \subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::\$instance\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classLogHandler_a1907cf33534c0b1100fa593c12bcfb6e}
 integer -\/ self reference 
 
-Referenced by get\_\-instance().
+Referenced by getInstance().
 
 \index{LogHandler@{LogHandler}!\$opened@{\$opened}}
 \index{\$opened@{\$opened}!LogHandler@{LogHandler}}
@@ -657,6 +657,10 @@ Boolean to ensure session data is logged only once per action \index{LogHandler@
 \index{\$severity@{\$severity}!LogHandler@{LogHandler}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
 Severity level of the current object status 
+
+Referenced by DbHandler::commitTransaction(), DbHandler::rollbackTransaction(), and DbHandler::startTransaction().
+
+
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 

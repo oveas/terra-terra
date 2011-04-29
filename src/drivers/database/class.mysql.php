@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the MySQL drivers
- * \version $Id: class.mysql.php,v 1.4 2011-04-27 11:50:08 oscar Exp $
+ * \version $Id: class.mysql.php,v 1.5 2011-04-29 14:55:20 oscar Exp $
  */
 
 define('USE_BACKTICKS', true);
@@ -46,6 +46,22 @@ class MySQL extends DbDefaults implements DbDriver
 		return (mysql_select_db ($_name, $_resource));
 	}
 
+	public function dbTransactionCommit (&$_resource, $_name, $_name = null, $_new = false)
+	{
+		$_q = 'COMMIT WORK'
+			. ' AND ' . (($_new === true) ? ' ' : 'NO ') . 'CHAIN'
+			. ' NO RELEASE';
+		return ($this->dbExec($_resource, $_q));
+	}
+
+	public function dbTransactionRollback (&$_resource, $_name, $_name = null, $_new = false)
+	{
+		$_q = 'ROLLBACK WORK'
+			. ' AND ' . (($_new === true) ? ' ' : 'NO ') . 'CHAIN'
+			. ' NO RELEASE';
+		return ($this->dbExec($_resource, $_q));
+	}
+
 	public function dbTableList (&$_resource, $_pattern, $_views = false)
 	{
 		$_data = null;
@@ -63,7 +79,12 @@ class MySQL extends DbDefaults implements DbDriver
 		$this->dbClear($_data);
 		return ($_tables);
 	}
-	
+
+	public function dbExec (&$_resource, $_statement)
+	{
+		return (mysql_query ($_statement, $_resource) !== false);
+	}
+
 	public function dbRead (&$_data, &$_resource, $_query)
 	{
 		$_data = mysql_query ($_query, $_resource);

@@ -112,15 +112,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#a748d462386322a552aa798f951258c91">set_code</a> ($code=OWL_STATUS_BUG)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#a7bd5d0dce50fb5774198085a94d3afbe">setCode</a> ($code=OWL_STATUS_BUG)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#a8b0a327d3272ae49032a596518d47164">reset</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#ac35544d3ad8a435f69db0965ed674428">set_params</a> ($params)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#acadd0806c17eb02abcc92882e8588d4e">get_severity</a> ($status=null)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#ad39bc4e6a56b6d418a252957da9b4417">get_code</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#a79170bca79bfd82e3f707e1294e7c916">get_message</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#a846a63e089ce848b96889dd5f46bb8eb">setParams</a> ($params)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#a682605c7d09b7a8bdcb4b71160eba07f">getSeverity</a> ($status=null)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#a6d78a4d390a3877973d07c2c1d99b09b">getCode</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#a93dbefed42ac15769ca3bd7ac5714951">getMessage</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#a9d291ccaa6b4e6eed931e47025915b0e">get_instance</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#a293bd529266ef7932c722e32693088c7">getInstance</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusHandler.html#a5cb2ad461aa4afc7ec9115c176eb354e">__construct</a> ($code=OWL_STATUS_WARNING)</td></tr>
@@ -165,12 +165,12 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="ad39bc4e6a56b6d418a252957da9b4417"></a><!-- doxytag: member="StatusHandler::get_code" ref="ad39bc4e6a56b6d418a252957da9b4417" args="()" -->
+<a class="anchor" id="a6d78a4d390a3877973d07c2c1d99b09b"></a><!-- doxytag: member="StatusHandler::getCode" ref="a6d78a4d390a3877973d07c2c1d99b09b" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">StatusHandler::get_code </td>
+          <td class="memname">StatusHandler::getCode </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -183,12 +183,12 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9d291ccaa6b4e6eed931e47025915b0e"></a><!-- doxytag: member="StatusHandler::get_instance" ref="a9d291ccaa6b4e6eed931e47025915b0e" args="()" -->
+<a class="anchor" id="a293bd529266ef7932c722e32693088c7"></a><!-- doxytag: member="StatusHandler::getInstance" ref="a293bd529266ef7932c722e32693088c7" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">static StatusHandler::get_instance </td>
+          <td class="memname">static StatusHandler::getInstance </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [static]</code></td>
@@ -203,12 +203,12 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a79170bca79bfd82e3f707e1294e7c916"></a><!-- doxytag: member="StatusHandler::get_message" ref="a79170bca79bfd82e3f707e1294e7c916" args="()" -->
+<a class="anchor" id="a93dbefed42ac15769ca3bd7ac5714951"></a><!-- doxytag: member="StatusHandler::getMessage" ref="a93dbefed42ac15769ca3bd7ac5714951" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">StatusHandler::get_message </td>
+          <td class="memname">StatusHandler::getMessage </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -219,16 +219,16 @@ Static Private Attributes</h2></td></tr>
 <p>Retrieve the message that has been specified for the current object status. If parameters are set and wanted by the message text, replace them. If more parameters are available then used in the message, there's a quote with the unused parameter count added to the message.</p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The message text </dd></dl>
 
-<p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, <a class="el" href="classRegister.html#abd8556b87ac48f8d8b3abeef6285c8f5">Register::get_code()</a>, and <a class="el" href="classRegister.html#a80be033f56d821cf6d271ffac2e2d387">Register::register_messages()</a>.</p>
+<p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, <a class="el" href="classRegister.html#ae1e8ad7a7509a80bc008861282762c89">Register::getCode()</a>, and <a class="el" href="classRegister.html#a621b284845f02aeee3221041409af7e3">Register::registerMessages()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="acadd0806c17eb02abcc92882e8588d4e"></a><!-- doxytag: member="StatusHandler::get_severity" ref="acadd0806c17eb02abcc92882e8588d4e" args="($status=null)" -->
+<a class="anchor" id="a682605c7d09b7a8bdcb4b71160eba07f"></a><!-- doxytag: member="StatusHandler::getSeverity" ref="a682605c7d09b7a8bdcb4b71160eba07f" args="($status=null)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">StatusHandler::get_severity </td>
+          <td class="memname">StatusHandler::getSeverity </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>status</em> = <code>null</code></td><td>)</td>
@@ -265,12 +265,12 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a748d462386322a552aa798f951258c91"></a><!-- doxytag: member="StatusHandler::set_code" ref="a748d462386322a552aa798f951258c91" args="($code=OWL_STATUS_BUG)" -->
+<a class="anchor" id="a7bd5d0dce50fb5774198085a94d3afbe"></a><!-- doxytag: member="StatusHandler::setCode" ref="a7bd5d0dce50fb5774198085a94d3afbe" args="($code=OWL_STATUS_BUG)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">StatusHandler::set_code </td>
+          <td class="memname">StatusHandler::setCode </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>code</em> = <code>OWL_STATUS_BUG</code></td><td>)</td>
@@ -292,12 +292,12 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac35544d3ad8a435f69db0965ed674428"></a><!-- doxytag: member="StatusHandler::set_params" ref="ac35544d3ad8a435f69db0965ed674428" args="($params)" -->
+<a class="anchor" id="a846a63e089ce848b96889dd5f46bb8eb"></a><!-- doxytag: member="StatusHandler::setParams" ref="a846a63e089ce848b96889dd5f46bb8eb" args="($params)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">StatusHandler::set_params </td>
+          <td class="memname">StatusHandler::setParams </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
@@ -331,7 +331,7 @@ Static Private Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Current object status </p>
 
-<p>Referenced by <a class="el" href="classStatusHandler.html#a5cb2ad461aa4afc7ec9115c176eb354e">__construct()</a>, and <a class="el" href="classStatusHandler.html#a748d462386322a552aa798f951258c91">set_code()</a>.</p>
+<p>Referenced by <a class="el" href="classStatusHandler.html#a5cb2ad461aa4afc7ec9115c176eb354e">__construct()</a>, and <a class="el" href="classStatusHandler.html#a7bd5d0dce50fb5774198085a94d3afbe">setCode()</a>.</p>
 
 </div>
 </div>
@@ -347,7 +347,7 @@ Static Private Attributes</h2></td></tr>
 <div class="memdoc">
 <p>integer - self reference </p>
 
-<p>Referenced by <a class="el" href="classStatusHandler.html#a9d291ccaa6b4e6eed931e47025915b0e">get_instance()</a>.</p>
+<p>Referenced by <a class="el" href="classStatusHandler.html#a293bd529266ef7932c722e32693088c7">getInstance()</a>.</p>
 
 </div>
 </div>
@@ -363,7 +363,7 @@ Static Private Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Array with parameters that will be substituted in message text </p>
 
-<p>Referenced by <a class="el" href="classStatusHandler.html#ac35544d3ad8a435f69db0965ed674428">set_params()</a>.</p>
+<p>Referenced by <a class="el" href="classStatusHandler.html#a846a63e089ce848b96889dd5f46bb8eb">setParams()</a>.</p>
 
 </div>
 </div>
@@ -390,7 +390,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Apr 26 2011 14:04:20 for OWL-PHP by
+    <li class="footer">Generated on Fri Apr 29 2011 16:53:11 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

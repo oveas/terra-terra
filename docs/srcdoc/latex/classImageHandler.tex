@@ -20,9 +20,9 @@ Inheritance diagram for ImageHandler:\begin{figure}[H]
 \item 
 {\bf download} ()
 \item 
-{\bf get\_\-status} ()
+{\bf getStatus} ()
 \item 
-{\bf get\_\-severity} (\$status=null)
+{\bf getSeverity} (\$status=null)
 \item 
 {\bf succeeded} (\$\_\-ok={\bf OWL\_\-SUCCESS}, \&\$\_\-object=null)
 \item 
@@ -42,29 +42,29 @@ Inheritance diagram for ImageHandler:\begin{figure}[H]
 \item 
 {\bf close} ()
 \item 
-{\bf read\_\-data} ()
+{\bf readData} ()
 \item 
-{\bf read\_\-line} (\$trim={\bf FILE\_\-NOTRIM})
+{\bf readLine} (\$trim={\bf FILE\_\-NOTRIM})
 \item 
 {\bf init} ()
 \item 
-{\bf set\_\-callback} (\$\_\-dispatcher)
+{\bf setCallback} (\$\_\-dispatcher)
 \item 
-{\bf set\_\-callback\_\-argument} (array \$\_\-arg)
+{\bf setCallbackArgument} (array \$\_\-arg)
 \item 
-{\bf get\_\-callback} ()
+{\bf getCallback} ()
 \item 
 {\bf reset} ()
 \item 
-{\bf save\_\-status} ()
+{\bf saveStatus} ()
 \item 
-{\bf restore\_\-status} ()
+{\bf restoreStatus} ()
 \item 
 {\bf check} (\&\$object, \$level={\bf OWL\_\-WARNING})
 \item 
-{\bf set\_\-status} (\$status, \$params=array())
+{\bf setStatus} (\$status, \$params=array())
 \item 
-{\bf set\_\-high\_\-severity} (\&\$object=null)
+{\bf setHighSeverity} (\&\$object=null)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -119,7 +119,7 @@ Reimplemented from {\bf FileHandler} \doxyref{}{p.}{classFileHandler_a8d75c8ea0c
 
 
 
-References \$name, \_\-OWL::init(), and \_\-OWL::set\_\-status().
+References \$name, \_\-OWL::init(), and \_\-OWL::setStatus().
 
 
 
@@ -146,7 +146,7 @@ True if the severity level was correct (below the max), otherwise false
 \end{DoxyReturn}
 
 
-References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::traceback().
+References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
 
 
 
@@ -161,11 +161,11 @@ Referenced by SessionHandler::write().
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classFileHandler_aa48e7c3b67346e29b194d2f0ac5dd1f8}
 Close the file 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 
 
-Referenced by FileHandler::\_\-\_\-destruct(), and FileHandler::read\_\-data().
+Referenced by FileHandler::\_\-\_\-destruct(), and FileHandler::readData().
 
 \index{ImageHandler@{ImageHandler}!download@{download}}
 \index{download@{download}!ImageHandler@{ImageHandler}}
@@ -183,33 +183,33 @@ Referenced by FileHandler::\_\-\_\-destruct(), and FileHandler::read\_\-data().
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classFileHandler_aa29360bf94fd54d906256561f33d93ad}
 
 
-References FileHandler::read\_\-data().
+References FileHandler::readData().
 
-\index{ImageHandler@{ImageHandler}!get\_\-callback@{get\_\-callback}}
-\index{get\_\-callback@{get\_\-callback}!ImageHandler@{ImageHandler}}
-\subsubsection[{get\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-callback (
+\index{ImageHandler@{ImageHandler}!getCallback@{getCallback}}
+\index{getCallback@{getCallback}!ImageHandler@{ImageHandler}}
+\subsubsection[{getCallback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getCallback (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_abded13b1c97ea6e0cfe3c68cb6bcf7a5}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_acb46ff88f43ca66f1268d3f5199c3f8d}
 Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
 The dispatcher, of null on failure. 
 \end{DoxyReturn}
 
 
-Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_af4b71fa3c4d25bab86187d9dc44182f2}.
+Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}.
 
 
 
 References OWL::factory().
 
-\index{ImageHandler@{ImageHandler}!get\_\-severity@{get\_\-severity}}
-\index{get\_\-severity@{get\_\-severity}!ImageHandler@{ImageHandler}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
+\index{ImageHandler@{ImageHandler}!getSeverity@{getSeverity}}
+\index{getSeverity@{getSeverity}!ImageHandler@{ImageHandler}}
+\subsubsection[{getSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getSeverity (
 \begin{DoxyParamCaption}
 \item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
 Get the current object severity level.
 
 
@@ -226,15 +226,15 @@ References \_\-OWL::\$status.
 
 
 
-Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandler::set\_\-key().
+Referenced by LogHandler::composeMessage(), LogHandler::log(), and DataHandler::setKey().
 
-\index{ImageHandler@{ImageHandler}!get\_\-status@{get\_\-status}}
-\index{get\_\-status@{get\_\-status}!ImageHandler@{ImageHandler}}
-\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status (
+\index{ImageHandler@{ImageHandler}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!ImageHandler@{ImageHandler}}
+\subsubsection[{getStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+)\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
 Get the current object status.
 
 \begin{DoxyReturn}{Returns}
@@ -253,11 +253,11 @@ Referenced by SchemeHandler::compare().
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
-References OWL::factory(), and \_\-OWL::set\_\-status().
+References OWL::factory(), and \_\-OWL::setStatus().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), \_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), \_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{ImageHandler@{ImageHandler}!open@{open}}
 \index{open@{open}!ImageHandler@{ImageHandler}}
@@ -283,19 +283,19 @@ Open the file
 \end{DoxyParams}
 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 
 
-Referenced by FileHandler::read\_\-data().
+Referenced by FileHandler::readData().
 
-\index{ImageHandler@{ImageHandler}!read\_\-data@{read\_\-data}}
-\index{read\_\-data@{read\_\-data}!ImageHandler@{ImageHandler}}
-\subsubsection[{read\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::read\_\-data (
+\index{ImageHandler@{ImageHandler}!readData@{readData}}
+\index{readData@{readData}!ImageHandler@{ImageHandler}}
+\subsubsection[{readData}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::readData (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classFileHandler_a1389a6ea19a22471c301d70b5ed68ed8}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classFileHandler_a6f9263704f08f071a5e563aeb3216d95}
 Read the file contents and return as one dataset 
 
 References FileHandler::close(), and FileHandler::open().
@@ -304,13 +304,13 @@ References FileHandler::close(), and FileHandler::open().
 
 Referenced by FileHandler::encode().
 
-\index{ImageHandler@{ImageHandler}!read\_\-line@{read\_\-line}}
-\index{read\_\-line@{read\_\-line}!ImageHandler@{ImageHandler}}
-\subsubsection[{read\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::read\_\-line (
+\index{ImageHandler@{ImageHandler}!readLine@{readLine}}
+\index{readLine@{readLine}!ImageHandler@{ImageHandler}}
+\subsubsection[{readLine}]{\setlength{\rightskip}{0pt plus 5cm}FileHandler::readLine (
 \begin{DoxyParamCaption}
 \item[{\$}]{trim = {\ttfamily {\bf FILE\_\-NOTRIM}}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classFileHandler_a69f84a8138f717c84f560125f1f95448}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classFileHandler_a2140ee43c68f088396b4573a56e3007c}
 Read a single line from the file. File must be opened before
 
 
@@ -326,7 +326,7 @@ Read a single line from the file. File must be opened before
 \end{DoxyParams}
 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 \index{ImageHandler@{ImageHandler}!reset@{reset}}
 \index{reset@{reset}!ImageHandler@{ImageHandler}}
@@ -341,45 +341,45 @@ Reimplemented in {\bf DbHandler} \doxyref{}{p.}{classDbHandler_a9982df4830f05803
 
 
 
-References \_\-OWL::reset\_\-calltree().
+References \_\-OWL::resetCalltree().
 
 
 
-Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
+Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::setStatus().
 
-\index{ImageHandler@{ImageHandler}!restore\_\-status@{restore\_\-status}}
-\index{restore\_\-status@{restore\_\-status}!ImageHandler@{ImageHandler}}
-\subsubsection[{restore\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restore\_\-status (
+\index{ImageHandler@{ImageHandler}!restoreStatus@{restoreStatus}}
+\index{restoreStatus@{restoreStatus}!ImageHandler@{ImageHandler}}
+\subsubsection[{restoreStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restoreStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a465eeaf40edd9f9c848841700c32ce55}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
 Restore the previously saved status object and destroy the copy 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 
 
 Referenced by User::logout().
 
-\index{ImageHandler@{ImageHandler}!save\_\-status@{save\_\-status}}
-\index{save\_\-status@{save\_\-status}!ImageHandler@{ImageHandler}}
-\subsubsection[{save\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::save\_\-status (
+\index{ImageHandler@{ImageHandler}!saveStatus@{saveStatus}}
+\index{saveStatus@{saveStatus}!ImageHandler@{ImageHandler}}
+\subsubsection[{saveStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::saveStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
 Create a copy of the status object 
 
 Referenced by User::logout().
 
-\index{ImageHandler@{ImageHandler}!set\_\-callback@{set\_\-callback}}
-\index{set\_\-callback@{set\_\-callback}!ImageHandler@{ImageHandler}}
-\subsubsection[{set\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback (
+\index{ImageHandler@{ImageHandler}!setCallback@{setCallback}}
+\index{setCallback@{setCallback}!ImageHandler@{ImageHandler}}
+\subsubsection[{setCallback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setCallback (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-dispatcher}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a28d9025eaf37b49d63cb334ed28c33f0}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a5f84d43cd4dc7810649f1e2ebecad360}
 Set a dispatcher for later callback 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-dispatcher} & Dispatched, \\
@@ -395,13 +395,13 @@ True on success, false on failure
 
 References OWL::factory().
 
-\index{ImageHandler@{ImageHandler}!set\_\-callback\_\-argument@{set\_\-callback\_\-argument}}
-\index{set\_\-callback\_\-argument@{set\_\-callback\_\-argument}!ImageHandler@{ImageHandler}}
-\subsubsection[{set\_\-callback\_\-argument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback\_\-argument (
+\index{ImageHandler@{ImageHandler}!setCallbackArgument@{setCallbackArgument}}
+\index{setCallbackArgument@{setCallbackArgument}!ImageHandler@{ImageHandler}}
+\subsubsection[{setCallbackArgument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setCallbackArgument (
 \begin{DoxyParamCaption}
 \item[{array \$}]{\_\-arg}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a1e26611ce858b237f5a98a91ea3c3a1b}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a4e9ebfbd3c0d76539bed4e44de9962c3}
 Add an argument to a previously registered callback dispatcher 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-arg} & Argument, must be an array type. When non-\/ arrays should be passed as arguments, the must be set when the callback is registered already \\
@@ -418,25 +418,25 @@ References OWL::factory().
 
 Referenced by User::register().
 
-\index{ImageHandler@{ImageHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
-\index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!ImageHandler@{ImageHandler}}
-\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
+\index{ImageHandler@{ImageHandler}!setHighSeverity@{setHighSeverity}}
+\index{setHighSeverity@{setHighSeverity}!ImageHandler@{ImageHandler}}
+\subsubsection[{setHighSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setHighSeverity (
 \begin{DoxyParamCaption}
 \item[{\&\$}]{object = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
 Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
-\index{ImageHandler@{ImageHandler}!set\_\-status@{set\_\-status}}
-\index{set\_\-status@{set\_\-status}!ImageHandler@{ImageHandler}}
-\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
+\index{ImageHandler@{ImageHandler}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!ImageHandler@{ImageHandler}}
+\subsubsection[{setStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setStatus (
 \begin{DoxyParamCaption}
 \item[{\$}]{status, }
 \item[{\$}]{params = {\ttfamily array~()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+)\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
 Set the current object status to the specified value.
 
 
@@ -448,11 +448,11 @@ Set the current object status to the specified value.
 \end{DoxyParams}
 
 
-References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
+References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), \_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-field(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), User::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), \_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), DbHandler::read(), FileHandler::readLine(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), SchemeHandler::validateScheme(), and DbHandler::write().
 
 \index{ImageHandler@{ImageHandler}!signal@{signal}}
 \index{signal@{signal}!ImageHandler@{ImageHandler}}
@@ -480,7 +480,7 @@ References ConfigHandler::get().
 
 
 
-Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
+Referenced by \_\-OWL::setStatus(), and \_\-OWL::traceback().
 
 \index{ImageHandler@{ImageHandler}!succeeded@{succeeded}}
 \index{succeeded@{succeeded}!ImageHandler@{ImageHandler}}
@@ -502,7 +502,7 @@ Boolean true when successfull
 \end{DoxyReturn}
 
 
-Referenced by User::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher::registerCallback().
 
 \index{ImageHandler@{ImageHandler}!traceback@{traceback}}
 \index{traceback@{traceback}!ImageHandler@{ImageHandler}}
@@ -571,6 +571,10 @@ Reimplemented from {\bf FileHandler} \doxyref{}{p.}{classFileHandler_a4777085858
 \index{\$severity@{\$severity}!ImageHandler@{ImageHandler}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
 Severity level of the current object status 
+
+Referenced by DbHandler::commitTransaction(), DbHandler::rollbackTransaction(), and DbHandler::startTransaction().
+
+
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 

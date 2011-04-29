@@ -50,7 +50,7 @@ class LoginArea extends ContentArea
 	{
 		// Check if the current user can see this form
 		if ($this->hasRight('readanonymous', OWL_ID) === false) {
-			return;
+			return false;
 		}
 
 		// Create a new form. The first argument defines the dispatcher, second is the form name

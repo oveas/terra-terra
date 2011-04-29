@@ -3,13 +3,13 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
- * \version $Id: owl.messages.php,v 1.20 2011-04-19 13:00:04 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.21 2011-04-29 14:55:20 oscar Exp $
  */
 
 $_messages = array (
 	  OWL_STATUS_OK			=> 'Normal successfull completion'
-	, OWL_STATUS_WARNING	=> 'Operation ended with a warning'
-	, OWL_STATUS_ERROR		=> 'Operation ended with an error'
+	, OWL_STATUS_WARNING	=> 'An unknown warning occured'
+	, OWL_STATUS_ERROR		=> 'An unknown error occured'
 	, OWL_STATUS_BUG		=> 'A programming bug was found in $p1$ on line $p2$'
 //	, OWL_STATUS_FNF		=> 'File $p1$ not found'
 //	, OWL_STATUS_ROPENERR	=> 'Error openening $p1$ for read'
@@ -37,6 +37,7 @@ $_messages = array (
 	, DBHANDLE_NOVALUES		=> 'Nothing to do - found no fieldnames for update'
 	, DBHANDLE_NOTACLONE	=> 'Method alt() was called on a database handler that was not cloned'
 	, DBHANDLE_CLONEACLONE	=> 'It is not allowed to clone a clone - please create a clone of the original object only'
+	, DBHANDLE_CLONEWHILETRANS	=> 'Cannot clone the database object while a transaction is open'
 	, DBHANDLE_ROWSREAD		=> '$p2$ rows returned to $p4$ (line $p3$) with query: <i>$p1$</i>'
 	, DBHANDLE_ROWCOUNT		=> '$p2$ rows where successfully $p1$'
 	, DBHANDLE_CONNECTERR	=> 'Error connecting to database server $p1$ with username $p2$ and password $p3$'
@@ -48,6 +49,9 @@ $_messages = array (
 	, DBHANDLE_IVTABLE		=> 'Attemt to read from a non- existing database table'
 	, DBHANDLE_IVFLDFORMAT	=> 'Invalid array received to format the field ($p1$)<br/>The array must contain the key <code>field</code>'
 	, DBHANDLE_IVFUNCTION	=> 'The requested function ($p1$) does not exist in active database driver'
+	, DBHANDLE_TRANSOPEN	=> 'A new transaction cannot be started - commit or rollback the open transaction first'
+	, DBHANDLE_NOTRANSOPEN	=> 'No transaction is open - cannot $p1$'
+	, DBHANDLE_DRIVERERR	=> 'The database driver returned error <i>$p1$</i><br />Message was: <b>$p2$</b>'
 	, DATA_KEYSET			=> 'Variable $p1$ locked as a key'
 	, DATA_JOINSET			=> 'Table join ($p1$) has been defined on $p2$ and $p3$'
 	, DATA_PREPARED			=> 'Prepared database query for $p1$'

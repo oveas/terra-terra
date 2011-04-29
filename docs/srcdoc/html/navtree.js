@@ -38,7 +38,6 @@ var NAVTREE =
           [ "OWLExceptionHandler", "classOWLExceptionHandler.html", null ],
           [ "FileHandler", "classFileHandler.html", null ],
           [ "FormHandler", "classFormHandler.html", null ],
-          [ "GroupHandler", "classGroupHandler.html", null ],
           [ "ImageHandler", "classImageHandler.html", null ],
           [ "LogHandler", "classLogHandler.html", null ],
           [ "Register", "classRegister.html", null ],
@@ -113,7 +112,6 @@ var NAVTREE =
       [ "FormFieldTextPlugin", "classFormFieldTextPlugin.html", null ],
       [ "FormHandler", "classFormHandler.html", null ],
       [ "Group", "classGroup.html", null ],
-      [ "GroupHandler", "classGroupHandler.html", null ],
       [ "ImageHandler", "classImageHandler.html", null ],
       [ "LogHandler", "classLogHandler.html", null ],
       [ "MySQL", "classMySQL.html", null ],
@@ -171,9 +169,7 @@ var NAVTREE =
           [ "ImageHandler", "classImageHandler.html", null ]
         ] ],
         [ "FormHandler", "classFormHandler.html", null ],
-        [ "GroupHandler", "classGroupHandler.html", [
-          [ "Group", "classGroup.html", null ]
-        ] ],
+        [ "Group", "classGroup.html", null ],
         [ "LogHandler", "classLogHandler.html", null ],
         [ "OWL", "classOWL.html", null ],
         [ "SchemeHandler", "classSchemeHandler.html", null ],
@@ -227,7 +223,6 @@ var NAVTREE =
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.exceptionhandler.php", "class_8exceptionhandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.filehandler.php", "class_8filehandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.formhandler.php", "class_8formhandler_8php.html", null ],
-      [ "/home/oscar/projects/owl-php/src/kernel/so/class.grouphandler.php", "class_8grouphandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.imagehandler.php", "class_8imagehandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.loghandler.php", "class_8loghandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.register.php", "class_8register_8php.html", null ],

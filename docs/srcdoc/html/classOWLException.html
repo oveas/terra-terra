@@ -112,14 +112,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLException.html#a02821b324b42b7818c3fefe7638444e7">__construct</a> ($msg=null, $code=0, <a class="el" href="classOWLException.html">OWLException</a> $caller=null)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLException.html#abec096884c369f08040443561ac3b164">get_trace</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLException.html#acf2b94859fdebcefc22e8a75ac1a670d">stack_dump</a> ($textmode=true)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLException.html#ad5e583964eaccad8e9e6140e56367b14">_getTrace</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLException.html#a60ce016fcb62831121e76b21b689e590">stackDump</a> ($textmode=true)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLException.html#abd34d579d5f578f2e08a04c987dbea1a">$thrown_code</a></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLException.html#ad5e675e393079574ff85ac862262baa0">check_hide</a> ($trace)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLException.html#a2f2fa7401523c6b501b8becf8f163705">checkHide</a> ($trace)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLException.html#a6e857cc079ee29428791e4926fe1677a">traceback</a> ($trace, $step, $textmode)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -177,12 +177,31 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="ad5e675e393079574ff85ac862262baa0"></a><!-- doxytag: member="OWLException::check_hide" ref="ad5e675e393079574ff85ac862262baa0" args="($trace)" -->
+<a class="anchor" id="ad5e583964eaccad8e9e6140e56367b14"></a><!-- doxytag: member="OWLException::_getTrace" ref="ad5e583964eaccad8e9e6140e56367b14" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">OWLException::check_hide </td>
+          <td class="memname">OWLException::_getTrace </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Trace back the previous object in the stack </p>
+
+<p>Referenced by <a class="el" href="classOWLException.html#a60ce016fcb62831121e76b21b689e590">stackDump()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2f2fa7401523c6b501b8becf8f163705"></a><!-- doxytag: member="OWLException::checkHide" ref="a2f2fa7401523c6b501b8becf8f163705" args="($trace)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">OWLException::checkHide </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>trace</em></td><td>)</td>
@@ -206,31 +225,12 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="abec096884c369f08040443561ac3b164"></a><!-- doxytag: member="OWLException::get_trace" ref="abec096884c369f08040443561ac3b164" args="()" -->
+<a class="anchor" id="a60ce016fcb62831121e76b21b689e590"></a><!-- doxytag: member="OWLException::stackDump" ref="a60ce016fcb62831121e76b21b689e590" args="($textmode=true)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">OWLException::get_trace </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Trace back the previous object in the stack </p>
-
-<p>Referenced by <a class="el" href="classOWLException.html#acf2b94859fdebcefc22e8a75ac1a670d">stack_dump()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="acf2b94859fdebcefc22e8a75ac1a670d"></a><!-- doxytag: member="OWLException::stack_dump" ref="acf2b94859fdebcefc22e8a75ac1a670d" args="($textmode=true)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">OWLException::stack_dump </td>
+          <td class="memname">OWLException::stackDump </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>textmode</em> = <code>true</code></td><td>)</td>
@@ -247,9 +247,9 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>References <a class="el" href="classRegister.html#abd8556b87ac48f8d8b3abeef6285c8f5">Register::get_code()</a>, <a class="el" href="classRegister.html#ae71e10bddb03483b54ad22b9edb95b7c">Register::get_severity()</a>, <a class="el" href="classOWLException.html#abec096884c369f08040443561ac3b164">get_trace()</a>, and <a class="el" href="classOWLException.html#a6e857cc079ee29428791e4926fe1677a">traceback()</a>.</p>
+<p>References <a class="el" href="classOWLException.html#ad5e583964eaccad8e9e6140e56367b14">_getTrace()</a>, <a class="el" href="classRegister.html#ae1e8ad7a7509a80bc008861282762c89">Register::getCode()</a>, <a class="el" href="classRegister.html#ab30a099321016bd399a1ee72e7a22d1d">Register::getSeverity()</a>, and <a class="el" href="classOWLException.html#a6e857cc079ee29428791e4926fe1677a">traceback()</a>.</p>
 
-<p>Referenced by <a class="el" href="classOWLExceptionHandler.html#a760bf3e7d648a7714abf5720f39369d8">OWLExceptionHandler::log_exception()</a>.</p>
+<p>Referenced by <a class="el" href="classOWLExceptionHandler.html#a852d8657a89a27dd37400f327700ed0d">OWLExceptionHandler::logException()</a>.</p>
 
 </div>
 </div>
@@ -293,9 +293,9 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>References <a class="el" href="classOWLException.html#ad5e675e393079574ff85ac862262baa0">check_hide()</a>, and <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="classOWLException.html#a2f2fa7401523c6b501b8becf8f163705">checkHide()</a>, and <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
-<p>Referenced by <a class="el" href="classOWLException.html#acf2b94859fdebcefc22e8a75ac1a670d">stack_dump()</a>.</p>
+<p>Referenced by <a class="el" href="classOWLException.html#a60ce016fcb62831121e76b21b689e590">stackDump()</a>.</p>
 
 </div>
 </div>
@@ -367,7 +367,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Apr 26 2011 14:04:18 for OWL-PHP by
+    <li class="footer">Generated on Fri Apr 29 2011 16:53:10 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

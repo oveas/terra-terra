@@ -16,6 +16,10 @@ Inheritance diagram for Rights:\begin{figure}[H]
 \item 
 {\bf \_\-\_\-construct} (\$app, \$owl=true)
 \item 
+{\bf \_\-\_\-wakeup} ()
+\item 
+{\bf bitValue} (\$name)
+\item 
 {\bf \_\-\_\-sleep} ()
 \item 
 {\bf initBitmap} (\$value, \$app)
@@ -24,7 +28,7 @@ Inheritance diagram for Rights:\begin{figure}[H]
 \item 
 {\bf mergeBitmaps} (\$bitmap, \$app)
 \item 
-{\bf controlBitmap} (\$bit, \$app= 'owl', \$controller={\bf BIT\_\-CHECK})
+{\bf controlBitmap} (\$bit, \$app, \$controller={\bf BIT\_\-CHECK})
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -88,20 +92,50 @@ References OWLCache::get(), and registerRights().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classSecurity_aa45b726507989bfe49ac468b3ea1a7c2}
-Magic function for serialize; make sure only the required data is serialized \index{Rights@{Rights}!controlBitmap@{controlBitmap}}
+Magic function for serialize; make sure only the required data is serialized \index{Rights@{Rights}!\_\-\_\-wakeup@{\_\-\_\-wakeup}}
+\index{\_\-\_\-wakeup@{\_\-\_\-wakeup}!Rights@{Rights}}
+\subsubsection[{\_\-\_\-wakeup}]{\setlength{\rightskip}{0pt plus 5cm}Rights::\_\-\_\-wakeup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classRights_ae593813ebe727ec950a5812e97d539a2}
+The rightslist is stored in cache, not in the serialized object, so we must retrieve it again on unserialize() 
+
+References OWLCache::get(), and registerRights().
+
+\index{Rights@{Rights}!bitValue@{bitValue}}
+\index{bitValue@{bitValue}!Rights@{Rights}}
+\subsubsection[{bitValue}]{\setlength{\rightskip}{0pt plus 5cm}Rights::bitValue (
+\begin{DoxyParamCaption}
+\item[{\$}]{name}
+\end{DoxyParamCaption}
+)}\label{classRights_a550e960aca4a85da15a18d8f89195825}
+Get the bitvalue for a given name 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$name} & Name of the rights bit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer value 
+\end{DoxyReturn}
+
+
+Reimplemented from {\bf Security} \doxyref{}{p.}{classSecurity_ae643092625efa402b95502ac228aae30}.
+
+\index{Rights@{Rights}!controlBitmap@{controlBitmap}}
 \index{controlBitmap@{controlBitmap}!Rights@{Rights}}
 \subsubsection[{controlBitmap}]{\setlength{\rightskip}{0pt plus 5cm}Security::controlBitmap (
 \begin{DoxyParamCaption}
 \item[{\$}]{bit, }
-\item[{\$}]{app = {\ttfamily 'owl'}, }
+\item[{\$}]{app, }
 \item[{\$}]{controller = {\ttfamily {\bf BIT\_\-CHECK}}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classSecurity_a3f7e654b890fa75bc4ea33e7865430e5}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classSecurity_a061a75e3f9a2be41f85b19e5ad7f973f}
 Check, set or unset a bit in the current users bitmap. Enter description here ... 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$bit} & Bit that should be checked or (un)set \\
 \hline
-\mbox{\tt in}  & {\em \$app} & Application the bit belongs to \\
+\mbox{\tt in}  & {\em \$app} & Application ID the bit belongs to \\
 \hline
 \mbox{\tt in}  & {\em \$controller} & Controller defining the action, defaults to check \\
 \hline
@@ -109,6 +143,10 @@ Check, set or unset a bit in the current users bitmap. Enter description here ..
 \begin{DoxyReturn}{Returns}
 True if the bit was set ($\ast$before$\ast$ a set or unset action!) 
 \end{DoxyReturn}
+
+
+References toStrictBoolean().
+
 \index{Rights@{Rights}!getBitmap@{getBitmap}}
 \index{getBitmap@{getBitmap}!Rights@{Rights}}
 \subsubsection[{getBitmap}]{\setlength{\rightskip}{0pt plus 5cm}Security::getBitmap (
@@ -129,7 +167,7 @@ Get the bitmap value for the given application
 \item[{\$}]{app}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classSecurity_a590951291ac82db7b6855b468e097886}
-Initialise the bitmap for the given application 
+(Re)initialise the bitmap for the given application 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$value} & Bitmap value \\
 \hline
@@ -168,7 +206,7 @@ References ConfigHandler::get(), and OWLCache::set().
 
 
 
-Referenced by \_\-\_\-construct().
+Referenced by \_\-\_\-construct(), and \_\-\_\-wakeup().
 
 
 

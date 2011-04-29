@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.25 2011-04-27 11:50:08 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.26 2011-04-29 14:55:21 oscar Exp $
  */
 
 // Error handling used during development
@@ -90,8 +90,11 @@ abstract class OWLloader
 			return null;
 		}
 		$_cArea = new $_className();
-		$_cArea->loadArea();
-		return $_cArea;
+		if ($_cArea->loadArea() === false) {
+			return null;
+		} else {
+			return $_cArea;
+		}
 	}
 
 	/**

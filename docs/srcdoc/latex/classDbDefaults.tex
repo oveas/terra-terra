@@ -16,6 +16,12 @@ Inheritance diagram for DbDefaults:\begin{figure}[H]
 \item 
 {\bf \_\-\_\-constructor} ()
 \item 
+{\bf dbTransactionStart} (\&\$\_\-resource, \$\_\-name=null)
+\item 
+{\bf dbTransactionCommit} (\&\$\_\-resource, \$\_\-name, \$\_\-name=null, \$\_\-new=false)
+\item 
+{\bf dbTransactionRollback} (\&\$\_\-resource, \$\_\-name, \$\_\-name=null, \$\_\-new=false)
+\item 
 {\bf dbEscapeString} (\$\_\-string)
 \item 
 {\bf dbUnescapeString} (\$\_\-string)
@@ -62,6 +68,76 @@ String in SQL safe format
 
 Reimplemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a7f4b581ad71a3ee8922d51c9ef28a18c}.
 
+\index{DbDefaults@{DbDefaults}!dbTransactionCommit@{dbTransactionCommit}}
+\index{dbTransactionCommit@{dbTransactionCommit}!DbDefaults@{DbDefaults}}
+\subsubsection[{dbTransactionCommit}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::dbTransactionCommit (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-name, }
+\item[{\$}]{\_\-name = {\ttfamily null}, }
+\item[{\$}]{\_\-new = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{classDbDefaults_a8e061014dd32e328f70e0dd1661b74c6}
+Open a new transaction 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Transaction name for databases that support named transactions \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-new} & Boolean, true when a new transaction should be started after the commit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Reimplemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a935f49386759d4bcb109119e87a6010a}.
+
+\index{DbDefaults@{DbDefaults}!dbTransactionRollback@{dbTransactionRollback}}
+\index{dbTransactionRollback@{dbTransactionRollback}!DbDefaults@{DbDefaults}}
+\subsubsection[{dbTransactionRollback}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::dbTransactionRollback (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-name, }
+\item[{\$}]{\_\-name = {\ttfamily null}, }
+\item[{\$}]{\_\-new = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{classDbDefaults_a763074f5917f16755b2d00bf6d277a0a}
+Open a new transaction 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Transaction name for databases that support named transactions \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-new} & Boolean, true when a new transaction should be started after the rollback \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Reimplemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a207f82ed5516848b7a25802fe236d3a2}.
+
+\index{DbDefaults@{DbDefaults}!dbTransactionStart@{dbTransactionStart}}
+\index{dbTransactionStart@{dbTransactionStart}!DbDefaults@{DbDefaults}}
+\subsubsection[{dbTransactionStart}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::dbTransactionStart (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-name = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}\label{classDbDefaults_a30ef8b1e115ed1dbdbd66b960c0e348d}
+Open a new transaction 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Transaction name for databases that support named transactions \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
 \index{DbDefaults@{DbDefaults}!dbUnescapeString@{dbUnescapeString}}
 \index{dbUnescapeString@{dbUnescapeString}!DbDefaults@{DbDefaults}}
 \subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::dbUnescapeString (

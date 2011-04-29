@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.14 2011-04-27 11:50:07 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.15 2011-04-29 14:55:20 oscar Exp $
  */
 
 /**
@@ -96,6 +96,11 @@ class DataHandler extends _OWL
 	private $owl_prepared;
 
 	/**
+	 * integer - Last inserted Auto Increment value. Set after all write actions, so can be 0.
+	 */
+	private $last_id;
+
+	/**
 	 * Class constructor. We don't use a standard constructor (__construct()) here,
 	 * since singleton classes (using private constructors) might derive from this class.
 	 * In stead we use the PHP4 compatible constructor.
@@ -135,7 +140,16 @@ class DataHandler extends _OWL
 			parent::reset();
 		}
 	}
-	
+
+	/**
+	 * Get the link to the actual database object of the dataset, which might be the original
+	 * singleton, or the clone in use.
+	 */
+	public function getDbLink()
+	{
+		return ($this->owl_database);
+	}
+
 	/**
 	 * Define or override a variable in the data array
 	 * \param[in] $variable The name of the variable that should be set.
@@ -428,6 +442,9 @@ class DataHandler extends _OWL
 				$this->owl_database->write ($data, $line, $file);
 				break;
 		}
+		if ($this->owl_prepared === DATA_WRITE) {
+			$this->last_id = $this->owl_database->lastInsertedId();
+		}
 //		if ($this->check($this->owl_database) === true) {
 //			$this->reset(DATA_RESET_DATA);
 //		}
@@ -465,12 +482,11 @@ class DataHandler extends _OWL
 
 	/**
 	 * Return the last inserted AutoIncrement value
-	 * \public
 	 * \return Last ID
 	 */
 	public function insertedId ()
 	{
-		return ($this->owl_database->lastInsertedId());
+		return ($this->last_id);
 	}
 }
 /**

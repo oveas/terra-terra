@@ -50,9 +50,9 @@ Inheritance diagram for FormFieldSelectPlugin:\begin{figure}[H]
 \item 
 {\bf setAttributes} (array \$\_\-attribs)
 \item 
-{\bf get\_\-status} ()
+{\bf getStatus} ()
 \item 
-{\bf get\_\-severity} (\$status=null)
+{\bf getSeverity} (\$status=null)
 \item 
 {\bf succeeded} (\$\_\-ok={\bf OWL\_\-SUCCESS}, \&\$\_\-object=null)
 \item 
@@ -74,23 +74,23 @@ const {\bf DefaultOptionGroup} = '\_\-\_\-OWL\_\-OptGroup\_\-\_\-'
 \item 
 {\bf init} ()
 \item 
-{\bf set\_\-callback} (\$\_\-dispatcher)
+{\bf setCallback} (\$\_\-dispatcher)
 \item 
-{\bf set\_\-callback\_\-argument} (array \$\_\-arg)
+{\bf setCallbackArgument} (array \$\_\-arg)
 \item 
-{\bf get\_\-callback} ()
+{\bf getCallback} ()
 \item 
 {\bf reset} ()
 \item 
-{\bf save\_\-status} ()
+{\bf saveStatus} ()
 \item 
-{\bf restore\_\-status} ()
+{\bf restoreStatus} ()
 \item 
 {\bf check} (\&\$object, \$level={\bf OWL\_\-WARNING})
 \item 
-{\bf set\_\-status} (\$status, \$params=array())
+{\bf setStatus} (\$status, \$params=array())
 \item 
-{\bf set\_\-high\_\-severity} (\&\$object=null)
+{\bf setHighSeverity} (\&\$object=null)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -169,7 +169,7 @@ Add a content to the container. If the container is not an array yet, it will be
 {\bf exa.form.php}.\end{Desc}
 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!check@{check}}
 \index{check@{check}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
@@ -193,70 +193,11 @@ True if the severity level was correct (below the max), otherwise false
 \end{DoxyReturn}
 
 
-References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::traceback().
+References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
 
 
 
 Referenced by SessionHandler::write().
-
-\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!get\_\-callback@{get\_\-callback}}
-\index{get\_\-callback@{get\_\-callback}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
-\subsubsection[{get\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-callback (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_abded13b1c97ea6e0cfe3c68cb6bcf7a5}
-Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
-The dispatcher, of null on failure. 
-\end{DoxyReturn}
-
-
-Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_af4b71fa3c4d25bab86187d9dc44182f2}.
-
-
-
-References OWL::factory().
-
-\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!get\_\-severity@{get\_\-severity}}
-\index{get\_\-severity@{get\_\-severity}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
-\begin{DoxyParamCaption}
-\item[{\$}]{status = {\ttfamily null}}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
-Get the current object severity level.
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$status} & An optional parameter to check an other status code i.s.o the object's current status. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Status severity level 
-\end{DoxyReturn}
-
-
-References \_\-OWL::\$status.
-
-
-
-Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandler::set\_\-key().
-
-\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!get\_\-status@{get\_\-status}}
-\index{get\_\-status@{get\_\-status}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
-\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
-Get the current object status.
-
-\begin{DoxyReturn}{Returns}
-Object's status code 
-\end{DoxyReturn}
-
-
-Referenced by SchemeHandler::compare().
 
 \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!getAttributes@{getAttributes}}
 \index{getAttributes@{getAttributes}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
@@ -280,6 +221,24 @@ References BaseElement::getEvents().
 
 
 Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Tablerow::showElement(), Tablecell::showElement(), Table::showElement(), Document::showElement(), and Container::showElement().
+
+\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!getCallback@{getCallback}}
+\index{getCallback@{getCallback}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
+\subsubsection[{getCallback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getCallback (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_acb46ff88f43ca66f1268d3f5199c3f8d}
+Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
+The dispatcher, of null on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}.
+
+
+
+References OWL::factory().
 
 \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!getContent@{getContent}}
 \index{getContent@{getContent}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
@@ -340,6 +299,47 @@ The ID
 
 Referenced by BaseElement::\_\-getContent().
 
+\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!getSeverity@{getSeverity}}
+\index{getSeverity@{getSeverity}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
+\subsubsection[{getSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getSeverity (
+\begin{DoxyParamCaption}
+\item[{\$}]{status = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
+Get the current object severity level.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$status} & An optional parameter to check an other status code i.s.o the object's current status. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status severity level 
+\end{DoxyReturn}
+
+
+References \_\-OWL::\$status.
+
+
+
+Referenced by LogHandler::composeMessage(), LogHandler::log(), and DataHandler::setKey().
+
+\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
+\subsubsection[{getStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getStatus (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
+Get the current object status.
+
+\begin{DoxyReturn}{Returns}
+Object's status code 
+\end{DoxyReturn}
+
+
+Referenced by SchemeHandler::compare().
+
 \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!getType@{getType}}
 \index{getType@{getType}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
 \subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldPlugin::getType (
@@ -359,11 +359,11 @@ Field type
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
-References OWL::factory(), and \_\-OWL::set\_\-status().
+References OWL::factory(), and \_\-OWL::setStatus().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!reset@{reset}}
 \index{reset@{reset}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
@@ -378,118 +378,37 @@ Reimplemented in {\bf DbHandler} \doxyref{}{p.}{classDbHandler_a9982df4830f05803
 
 
 
-References \_\-OWL::reset\_\-calltree().
+References \_\-OWL::resetCalltree().
 
 
 
-Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
+Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::setStatus().
 
-\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!restore\_\-status@{restore\_\-status}}
-\index{restore\_\-status@{restore\_\-status}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
-\subsubsection[{restore\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restore\_\-status (
+\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!restoreStatus@{restoreStatus}}
+\index{restoreStatus@{restoreStatus}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
+\subsubsection[{restoreStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restoreStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a465eeaf40edd9f9c848841700c32ce55}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
 Restore the previously saved status object and destroy the copy 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 
 
 Referenced by User::logout().
 
-\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!save\_\-status@{save\_\-status}}
-\index{save\_\-status@{save\_\-status}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
-\subsubsection[{save\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::save\_\-status (
+\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!saveStatus@{saveStatus}}
+\index{saveStatus@{saveStatus}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
+\subsubsection[{saveStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::saveStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
 Create a copy of the status object 
 
 Referenced by User::logout().
-
-\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!set\_\-callback@{set\_\-callback}}
-\index{set\_\-callback@{set\_\-callback}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
-\subsubsection[{set\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback (
-\begin{DoxyParamCaption}
-\item[{\$}]{\_\-dispatcher}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a28d9025eaf37b49d63cb334ed28c33f0}
-Set a dispatcher for later callback 
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$\_\-dispatcher} & Dispatched, \\
-\hline
-\end{DoxyParams}
-\begin{DoxySeeAlso}{See also}
-\doxyref{Dispatcher::composeDispatcher()}{p.}{classDispatcher_a8a974bbbb30be7cda74f9929972fd2f6} 
-\end{DoxySeeAlso}
-\begin{DoxyReturn}{Returns}
-True on success, false on failure 
-\end{DoxyReturn}
-
-
-References OWL::factory().
-
-\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!set\_\-callback\_\-argument@{set\_\-callback\_\-argument}}
-\index{set\_\-callback\_\-argument@{set\_\-callback\_\-argument}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
-\subsubsection[{set\_\-callback\_\-argument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback\_\-argument (
-\begin{DoxyParamCaption}
-\item[{array \$}]{\_\-arg}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a1e26611ce858b237f5a98a91ea3c3a1b}
-Add an argument to a previously registered callback dispatcher 
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$\_\-arg} & Argument, must be an array type. When non-\/ arrays should be passed as arguments, the must be set when the callback is registered already \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-True on success, false on failure 
-\end{DoxyReturn}
-
-
-References OWL::factory().
-
-
-
-Referenced by User::register().
-
-\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
-\index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
-\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
-\begin{DoxyParamCaption}
-\item[{\&\$}]{object = {\ttfamily null}}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
-Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
-
-Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
-
-\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!set\_\-status@{set\_\-status}}
-\index{set\_\-status@{set\_\-status}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
-\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
-\begin{DoxyParamCaption}
-\item[{\$}]{status, }
-\item[{\$}]{params = {\ttfamily array~()}}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
-Set the current object status to the specified value.
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$status} & \doxyref{OWL}{p.}{classOWL} status code \\
-\hline
-\mbox{\tt in}  & {\em \$params} & \\
-\hline
-\end{DoxyParams}
-
-
-References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
-
-
-
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-field(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), User::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), setSize(), setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
 
 \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!setAttributes@{setAttributes}}
 \index{setAttributes@{setAttributes}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
@@ -508,11 +427,56 @@ Severity level. The status increased when a set$<$Attrib$>$ method does not exis
 \end{DoxyReturn}
 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 
 
 Referenced by Table::\_\-\_\-construct(), Container::\_\-\_\-construct(), and Form::\_\-\_\-construct().
+
+\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!setCallback@{setCallback}}
+\index{setCallback@{setCallback}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
+\subsubsection[{setCallback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setCallback (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-dispatcher}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a5f84d43cd4dc7810649f1e2ebecad360}
+Set a dispatcher for later callback 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-dispatcher} & Dispatched, \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxyref{Dispatcher::composeDispatcher()}{p.}{classDispatcher_a8a974bbbb30be7cda74f9929972fd2f6} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+True on success, false on failure 
+\end{DoxyReturn}
+
+
+References OWL::factory().
+
+\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!setCallbackArgument@{setCallbackArgument}}
+\index{setCallbackArgument@{setCallbackArgument}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
+\subsubsection[{setCallbackArgument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setCallbackArgument (
+\begin{DoxyParamCaption}
+\item[{array \$}]{\_\-arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a4e9ebfbd3c0d76539bed4e44de9962c3}
+Add an argument to a previously registered callback dispatcher 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-arg} & Argument, must be an array type. When non-\/ arrays should be passed as arguments, the must be set when the callback is registered already \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failure 
+\end{DoxyReturn}
+
+
+References OWL::factory().
+
+
+
+Referenced by User::register().
 
 \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!setClass@{setClass}}
 \index{setClass@{setClass}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
@@ -540,7 +504,7 @@ Fill the content for a container. Existing content (e.g. set during instantiatio
 \end{DoxyParams}
 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 
 
@@ -580,6 +544,17 @@ Add an event to the events array
 \mbox{\tt in}  & {\em \$\_\-add} & Boolean; when true, the action will be added if the event name already exists. Default is false; overwrite the action for this event. \\
 \hline
 \end{DoxyParams}
+\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!setHighSeverity@{setHighSeverity}}
+\index{setHighSeverity@{setHighSeverity}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
+\subsubsection[{setHighSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setHighSeverity (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{object = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+
+Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
+
 \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!setId@{setId}}
 \index{setId@{setId}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
 \subsubsection[{setId}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setId (
@@ -658,7 +633,32 @@ Set the Size attribute
 \end{DoxyParams}
 
 
-References \$size, and \_\-OWL::set\_\-status().
+References \$size, and \_\-OWL::setStatus().
+
+\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
+\subsubsection[{setStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setStatus (
+\begin{DoxyParamCaption}
+\item[{\$}]{status, }
+\item[{\$}]{params = {\ttfamily array~()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
+Set the current object status to the specified value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$status} & \doxyref{OWL}{p.}{classOWL} status code \\
+\hline
+\mbox{\tt in}  & {\em \$params} & \\
+\hline
+\end{DoxyParams}
+
+
+References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
+
+
+
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), DbHandler::read(), FileHandler::readLine(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), setSize(), setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), SchemeHandler::validateScheme(), and DbHandler::write().
 
 \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!setStyle@{setStyle}}
 \index{setStyle@{setStyle}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
@@ -703,7 +703,7 @@ Reimplemented from {\bf FormFieldPlugin} \doxyref{}{p.}{classFormFieldPlugin_af9
 
 
 
-References DefaultOptionGroup, \_\-OWL::set\_\-status(), and toStrictBoolean().
+References DefaultOptionGroup, \_\-OWL::setStatus(), and toStrictBoolean().
 
 \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!showElement@{showElement}}
 \index{showElement@{showElement}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
@@ -751,7 +751,7 @@ References ConfigHandler::get().
 
 
 
-Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
+Referenced by \_\-OWL::setStatus(), and \_\-OWL::traceback().
 
 \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!succeeded@{succeeded}}
 \index{succeeded@{succeeded}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
@@ -773,7 +773,7 @@ Boolean true when successfull
 \end{DoxyReturn}
 
 
-Referenced by User::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher::registerCallback().
 
 \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!traceback@{traceback}}
 \index{traceback@{traceback}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
@@ -841,7 +841,11 @@ Array with options for the select list \index{FormFieldSelectPlugin@{FormFieldSe
 Boolean indicating a readonly field when true \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
-Severity level of the current object status \index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!\$size@{\$size}}
+Severity level of the current object status 
+
+Referenced by DbHandler::commitTransaction(), DbHandler::rollbackTransaction(), and DbHandler::startTransaction().
+
+\index{FormFieldSelectPlugin@{FormFieldSelectPlugin}!\$size@{\$size}}
 \index{\$size@{\$size}!FormFieldSelectPlugin@{FormFieldSelectPlugin}}
 \subsubsection[{\$size}]{\setlength{\rightskip}{0pt plus 5cm}FormFieldSelectPlugin::\$size\hspace{0.3cm}{\ttfamily  [private]}}\label{classFormFieldSelectPlugin_adcd34518bb409c8e4db46c3dd1a7eb50}
 Number of visible options 

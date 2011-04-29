@@ -26,6 +26,8 @@ Inheritance diagram for DbDriver:\begin{figure}[H]
 \item 
 {\bf dbTableList} (\&\$\_\-resource, \$\_\-pattern, \$\_\-views=false)
 \item 
+{\bf dbExec} (\&\$\_\-resource, \$\_\-statement)
+\item 
 {\bf dbRead} (\&\$\_\-data, \&\$\_\-resource, \$\_\-query)
 \item 
 {\bf dbWrite} (\&\$\_\-resource, \$\_\-query)
@@ -39,6 +41,12 @@ Inheritance diagram for DbDriver:\begin{figure}[H]
 {\bf dbClear} (\&\$\_\-data)
 \item 
 {\bf dbClose} (\&\$\_\-resource)
+\item 
+{\bf dbTransactionStart} (\&\$\_\-resource, \$\_\-name=null)
+\item 
+{\bf dbTransactionCommit} (\&\$\_\-resource, \$\_\-name, \$\_\-name=null, \$\_\-new=false)
+\item 
+{\bf dbTransactionRollback} (\&\$\_\-resource, \$\_\-name, \$\_\-name=null, \$\_\-new=false)
 \item 
 {\bf dbEscapeString} (\$\_\-string)
 \item 
@@ -212,6 +220,28 @@ String in SQL safe format
 
 Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a7f4b581ad71a3ee8922d51c9ef28a18c}.
 
+\index{DbDriver@{DbDriver}!dbExec@{dbExec}}
+\index{dbExec@{dbExec}!DbDriver@{DbDriver}}
+\subsubsection[{dbExec}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbExec (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-statement}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a0b45d39ae1507571c29601a2ba5e0fc9}
+Execute a database statement that does not return any value 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-statement} & Statement to execute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a469902953a75fcdb3f65b822376c67c1}.
+
 \index{DbDriver@{DbDriver}!dbFetchNextRecord@{dbFetchNextRecord}}
 \index{dbFetchNextRecord@{dbFetchNextRecord}!DbDriver@{DbDriver}}
 \subsubsection[{dbFetchNextRecord}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbFetchNextRecord (
@@ -356,6 +386,76 @@ Indexed array with matching tables and their attributes
 
 Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a9da288ed9ff36dc572a68165de8b5839}.
 
+\index{DbDriver@{DbDriver}!dbTransactionCommit@{dbTransactionCommit}}
+\index{dbTransactionCommit@{dbTransactionCommit}!DbDriver@{DbDriver}}
+\subsubsection[{dbTransactionCommit}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbTransactionCommit (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-name, }
+\item[{\$}]{\_\-name = {\ttfamily null}, }
+\item[{\$}]{\_\-new = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_ada53072d3b3edcabbeda95353279fadb}
+Open a new transaction 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Transaction name for databases that support named transactions \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-new} & Boolean, true when a new transaction should be started after the commit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a935f49386759d4bcb109119e87a6010a}.
+
+\index{DbDriver@{DbDriver}!dbTransactionRollback@{dbTransactionRollback}}
+\index{dbTransactionRollback@{dbTransactionRollback}!DbDriver@{DbDriver}}
+\subsubsection[{dbTransactionRollback}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbTransactionRollback (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-name, }
+\item[{\$}]{\_\-name = {\ttfamily null}, }
+\item[{\$}]{\_\-new = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_ae6fffd17ac4b45df6db83fa743c4725d}
+Open a new transaction 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Transaction name for databases that support named transactions \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-new} & Boolean, true when a new transaction should be started after the rollback \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a207f82ed5516848b7a25802fe236d3a2}.
+
+\index{DbDriver@{DbDriver}!dbTransactionStart@{dbTransactionStart}}
+\index{dbTransactionStart@{dbTransactionStart}!DbDriver@{DbDriver}}
+\subsubsection[{dbTransactionStart}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbTransactionStart (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-name = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a3f9f0c1234b3fe3fb263ff1393f13197}
+Open a new transaction 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Transaction name for databases that support named transactions \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
 \index{DbDriver@{DbDriver}!dbUnescapeString@{dbUnescapeString}}
 \index{dbUnescapeString@{dbUnescapeString}!DbDriver@{DbDriver}}
 \subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbUnescapeString (

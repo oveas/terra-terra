@@ -164,14 +164,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         )
 );
 
-<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;create_scheme(<span class="stringliteral">&#39;person&#39;</span>);      <span class="comment">// Create the scheme in the SchemeHandler </span>
-<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;define_scheme(<a class="code" href="index_8php.html#ac0ee5b766d19cb282552a3449a1f8376">$_table</a>);       <span class="comment">// Define the columns</span>
-<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;define_index(<a class="code" href="index_8php.html#a8fba9293fc0e3b428610c8208c00297d">$_index</a>);        <span class="comment">// Define the indexes</span>
+<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;createScheme(<span class="stringliteral">&#39;person&#39;</span>);       <span class="comment">// Create the scheme in the SchemeHandler </span>
+<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;defineScheme(<a class="code" href="index_8php.html#ac0ee5b766d19cb282552a3449a1f8376">$_table</a>);        <span class="comment">// Define the columns</span>
+<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;defineIndex(<a class="code" href="index_8php.html#a8fba9293fc0e3b428610c8208c00297d">$_index</a>);         <span class="comment">// Define the indexes</span>
 <a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;scheme();                                     <span class="comment">// Check the table in the database and create or alter it</span>
 <a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;reset();                                      <span class="comment">// Reset the schemehandler (clear the definitions)</span>
 
 <span class="comment">// Now setup the same table in the schemehandler again, this time by reading from the database</span>
-<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;table_description(<span class="stringliteral">&#39;person&#39;</span>, $_data);
+<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;tableDescription(<span class="stringliteral">&#39;person&#39;</span>, $_data);
 <span class="comment">// Show the result</span>
 echo <span class="stringliteral">&#39;&lt;pre&gt;&#39;</span>. print_r($_data, 1) . <span class="stringliteral">&#39;&lt;/pre&gt;&#39;</span>;
 
@@ -309,7 +309,7 @@ echo <span class="stringliteral">&#39;&lt;pre&gt;&#39;</span>. print_r($_data, 1
 </div>
 
 
-    <li class="footer">Generated on Tue Apr 26 2011 14:04:07 for OWL-PHP by
+    <li class="footer">Generated on Fri Apr 29 2011 16:53:02 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

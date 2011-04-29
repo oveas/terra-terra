@@ -118,6 +118,9 @@ Inheritance diagram for DbDefaults:</div>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#afc607b5c0a8d2320cd21f5746dde027e">__constructor</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a30ef8b1e115ed1dbdbd66b960c0e348d">dbTransactionStart</a> (&amp;$_resource, $_name=null)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a8e061014dd32e328f70e0dd1661b74c6">dbTransactionCommit</a> (&amp;$_resource, $_name, $_name=null, $_new=false)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a763074f5917f16755b2d00bf6d277a0a">dbTransactionRollback</a> (&amp;$_resource, $_name, $_name=null, $_new=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a8fcdd03995e94df3567ada9dcc975968">dbEscapeString</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a7ac3780695fb0d6e291ee123be7db020">dbUnescapeString</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#ae9ccdb445c7c4213eaff21677a03ed41">functionCount</a> ($_field, array $_arguments=array())</td></tr>
@@ -169,6 +172,144 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>String in SQL safe format </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classMySQL.html#a7f4b581ad71a3ee8922d51c9ef28a18c">MySQL</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8e061014dd32e328f70e0dd1661b74c6"></a><!-- doxytag: member="DbDefaults::dbTransactionCommit" ref="a8e061014dd32e328f70e0dd1661b74c6" args="(&amp;$_resource, $_name, $_name=null, $_new=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::dbTransactionCommit </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_new</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Open a new transaction </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Transaction name for databases that support named transactions </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_new</td><td>Boolean, true when a new transaction should be started after the commit </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classMySQL.html#a935f49386759d4bcb109119e87a6010a">MySQL</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a763074f5917f16755b2d00bf6d277a0a"></a><!-- doxytag: member="DbDefaults::dbTransactionRollback" ref="a763074f5917f16755b2d00bf6d277a0a" args="(&amp;$_resource, $_name, $_name=null, $_new=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::dbTransactionRollback </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_new</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Open a new transaction </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Transaction name for databases that support named transactions </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_new</td><td>Boolean, true when a new transaction should be started after the rollback </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classMySQL.html#a207f82ed5516848b7a25802fe236d3a2">MySQL</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a30ef8b1e115ed1dbdbd66b960c0e348d"></a><!-- doxytag: member="DbDefaults::dbTransactionStart" ref="a30ef8b1e115ed1dbdbd66b960c0e348d" args="(&amp;$_resource, $_name=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::dbTransactionStart </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Open a new transaction </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Transaction name for databases that support named transactions </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 
 </div>
 </div>
@@ -256,7 +397,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Apr 26 2011 14:04:13 for OWL-PHP by
+    <li class="footer">Generated on Fri Apr 29 2011 16:53:06 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

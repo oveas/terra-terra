@@ -5,31 +5,31 @@
 \item 
 static {\bf init} ()
 \item 
-static {\bf register\_\-app} (\$name, \$id)
+static {\bf registerApp} (\$name, \$id)
 \item 
-static {\bf register\_\-class} (\$name)
+static {\bf registerClass} (\$name)
 \item 
-static {\bf register\_\-code} (\$code)
+static {\bf registerCode} (\$code)
 \item 
-static {\bf register\_\-severity} (\$level, \$name)
+static {\bf registerSeverity} (\$level, \$name)
 \item 
-static {\bf get\_\-severity} (\$level)
+static {\bf getSeverity} (\$level)
 \item 
-static {\bf get\_\-severity\_\-level} (\$name)
+static {\bf getSeverityLevel} (\$name)
 \item 
-static {\bf get\_\-run\_\-id} ()
+static {\bf getRunId} ()
 \item 
-static {\bf get\_\-code} (\$value, \$unknown= '$\ast$unknown $\ast$')
+static {\bf getCode} (\$value, \$unknown= '$\ast$unknown $\ast$')
 \item 
-static {\bf set\_\-application} (\$app\_\-id)
+static {\bf setApplication} (\$app\_\-id)
 \item 
-static {\bf set\_\-class} (\$class\_\-id)
+static {\bf setClass} (\$class\_\-id)
 \item 
-static {\bf set\_\-severity} (\$severity\_\-level)
+static {\bf setSeverity} (\$severity\_\-level)
 \item 
-static {\bf register\_\-messages} (\$\_\-force=false)
+static {\bf registerMessages} (\$\_\-force=false)
 \item 
-static {\bf register\_\-labels} (\$\_\-owl=false)
+static {\bf registerLabels} (\$\_\-owl=false)
 \end{DoxyCompactItemize}
 
 
@@ -37,14 +37,14 @@ static {\bf register\_\-labels} (\$\_\-owl=false)
 \doxyref{OWL}{p.}{classOWL} keeps track of all running applications, their class and all status codes their instances (objects) can have. This is done in a global \doxyref{Register}{p.}{classRegister}, which is maintained by this class. 
 
 \subsection{Member Function Documentation}
-\index{Register@{Register}!get\_\-code@{get\_\-code}}
-\index{get\_\-code@{get\_\-code}!Register@{Register}}
-\subsubsection[{get\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-code (
+\index{Register@{Register}!getCode@{getCode}}
+\index{getCode@{getCode}!Register@{Register}}
+\subsubsection[{getCode}]{\setlength{\rightskip}{0pt plus 5cm}static Register::getCode (
 \begin{DoxyParamCaption}
 \item[{\$}]{value, }
 \item[{\$}]{unknown = {\ttfamily '$\ast$unknown$\ast$'}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_abd8556b87ac48f8d8b3abeef6285c8f5}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_ae1e8ad7a7509a80bc008861282762c89}
 Translate an hex value code to the symbolic name
 
 
@@ -63,30 +63,30 @@ References \$GLOBALS.
 
 
 
-Referenced by LogHandler::compose\_\-message(), StatusHandler::get\_\-message(), \_\-OWL::set\_\-status(), and OWLException::stack\_\-dump().
+Referenced by LogHandler::composeMessage(), StatusHandler::getMessage(), \_\-OWL::setStatus(), and OWLException::stackDump().
 
-\index{Register@{Register}!get\_\-run\_\-id@{get\_\-run\_\-id}}
-\index{get\_\-run\_\-id@{get\_\-run\_\-id}!Register@{Register}}
-\subsubsection[{get\_\-run\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-run\_\-id (
+\index{Register@{Register}!getRunId@{getRunId}}
+\index{getRunId@{getRunId}!Register@{Register}}
+\subsubsection[{getRunId}]{\setlength{\rightskip}{0pt plus 5cm}static Register::getRunId (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a041706fafb409a31f125d2075501e82e}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_ab2d39837602364ab87b02917924d9a63}
 Return the ID of the current run 
 
 References \$GLOBALS.
 
 
 
-Referenced by LogHandler::compose\_\-message(), and LogHandler::set\_\-filename().
+Referenced by LogHandler::composeMessage(), and LogHandler::setFilename().
 
-\index{Register@{Register}!get\_\-severity@{get\_\-severity}}
-\index{get\_\-severity@{get\_\-severity}!Register@{Register}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-severity (
+\index{Register@{Register}!getSeverity@{getSeverity}}
+\index{getSeverity@{getSeverity}!Register@{Register}}
+\subsubsection[{getSeverity}]{\setlength{\rightskip}{0pt plus 5cm}static Register::getSeverity (
 \begin{DoxyParamCaption}
 \item[{\$}]{level}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_ae71e10bddb03483b54ad22b9edb95b7c}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_ab30a099321016bd399a1ee72e7a22d1d}
 Read a severity level from the register
 
 
@@ -103,15 +103,15 @@ References \$GLOBALS.
 
 
 
-Referenced by OWLException::stack\_\-dump().
+Referenced by OWLException::stackDump().
 
-\index{Register@{Register}!get\_\-severity\_\-level@{get\_\-severity\_\-level}}
-\index{get\_\-severity\_\-level@{get\_\-severity\_\-level}!Register@{Register}}
-\subsubsection[{get\_\-severity\_\-level}]{\setlength{\rightskip}{0pt plus 5cm}static Register::get\_\-severity\_\-level (
+\index{Register@{Register}!getSeverityLevel@{getSeverityLevel}}
+\index{getSeverityLevel@{getSeverityLevel}!Register@{Register}}
+\subsubsection[{getSeverityLevel}]{\setlength{\rightskip}{0pt plus 5cm}static Register::getSeverityLevel (
 \begin{DoxyParamCaption}
 \item[{\$}]{name}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a70490e59a4a3b910d259b8a4287c3e91}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_ae53810ade5adbbc069e0b2881f28fcca}
 This function is used by a config parse to translate a string value to the appropriate severity level
 
 
@@ -141,14 +141,14 @@ Initialise the register array
 
 References \$GLOBALS.
 
-\index{Register@{Register}!register\_\-app@{register\_\-app}}
-\index{register\_\-app@{register\_\-app}!Register@{Register}}
-\subsubsection[{register\_\-app}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-app (
+\index{Register@{Register}!registerApp@{registerApp}}
+\index{registerApp@{registerApp}!Register@{Register}}
+\subsubsection[{registerApp}]{\setlength{\rightskip}{0pt plus 5cm}static Register::registerApp (
 \begin{DoxyParamCaption}
 \item[{\$}]{name, }
 \item[{\$}]{id}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_ac547568c4a7272fdaf65cb2825eccec3}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a6763d4478157270eb88ac0d8349d3e67}
 Store the specified application in the register
 
 
@@ -160,15 +160,15 @@ Store the specified application in the register
 \end{DoxyParams}
 
 
-References \$GLOBALS, and set\_\-application().
+References \$GLOBALS, and setApplication().
 
-\index{Register@{Register}!register\_\-class@{register\_\-class}}
-\index{register\_\-class@{register\_\-class}!Register@{Register}}
-\subsubsection[{register\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-class (
+\index{Register@{Register}!registerClass@{registerClass}}
+\index{registerClass@{registerClass}!Register@{Register}}
+\subsubsection[{registerClass}]{\setlength{\rightskip}{0pt plus 5cm}static Register::registerClass (
 \begin{DoxyParamCaption}
 \item[{\$}]{name}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a58300f74d002f1306a03baf12af0f02c}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a7f8f9dd6364815e162fe098327177943}
 Store the specified class in the register, and setup an array to keep track of the codes
 
 
@@ -180,13 +180,13 @@ Store the specified class in the register, and setup an array to keep track of t
 
 References \$GLOBALS.
 
-\index{Register@{Register}!register\_\-code@{register\_\-code}}
-\index{register\_\-code@{register\_\-code}!Register@{Register}}
-\subsubsection[{register\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-code (
+\index{Register@{Register}!registerCode@{registerCode}}
+\index{registerCode@{registerCode}!Register@{Register}}
+\subsubsection[{registerCode}]{\setlength{\rightskip}{0pt plus 5cm}static Register::registerCode (
 \begin{DoxyParamCaption}
 \item[{\$}]{code}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a875fd1f32f0746aa9e0e00b053c7389a}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_ace694afc76c4c61e6763f50a09adfa8a}
 Define a new statuscode
 
 
@@ -198,13 +198,13 @@ Define a new statuscode
 
 References \$GLOBALS.
 
-\index{Register@{Register}!register\_\-labels@{register\_\-labels}}
-\index{register\_\-labels@{register\_\-labels}!Register@{Register}}
-\subsubsection[{register\_\-labels}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-labels (
+\index{Register@{Register}!registerLabels@{registerLabels}}
+\index{registerLabels@{registerLabels}!Register@{Register}}
+\subsubsection[{registerLabels}]{\setlength{\rightskip}{0pt plus 5cm}static Register::registerLabels (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-owl = {\ttfamily false}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_ad145e4bc28af91817782399b06422e74}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a1fef7a441bef05fd4d09f66a4d573663}
 Load the labels file for \doxyref{OWL}{p.}{classOWL} or the application 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-owl} & When true, the \doxyref{OWL}{p.}{classOWL} file(s) will be loaded, by default only the application's \\
@@ -214,13 +214,13 @@ Load the labels file for \doxyref{OWL}{p.}{classOWL} or the application
 
 References \$\_\-labels, \$GLOBALS, OWLCache::get(), ConfigHandler::get(), and OWLCache::set().
 
-\index{Register@{Register}!register\_\-messages@{register\_\-messages}}
-\index{register\_\-messages@{register\_\-messages}!Register@{Register}}
-\subsubsection[{register\_\-messages}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-messages (
+\index{Register@{Register}!registerMessages@{registerMessages}}
+\index{registerMessages@{registerMessages}!Register@{Register}}
+\subsubsection[{registerMessages}]{\setlength{\rightskip}{0pt plus 5cm}static Register::registerMessages (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-force = {\ttfamily false}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a80be033f56d821cf6d271ffac2e2d387}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a621b284845f02aeee3221041409af7e3}
 Load the message file for \doxyref{OWL}{p.}{classOWL} and the application 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-force} & Boolean to force a reload with (different) translations, defaults to false \\
@@ -232,16 +232,16 @@ References \$\_\-messages, \$GLOBALS, OWLCache::get(), ConfigHandler::get(), and
 
 
 
-Referenced by StatusHandler::get\_\-message().
+Referenced by StatusHandler::getMessage().
 
-\index{Register@{Register}!register\_\-severity@{register\_\-severity}}
-\index{register\_\-severity@{register\_\-severity}!Register@{Register}}
-\subsubsection[{register\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}static Register::register\_\-severity (
+\index{Register@{Register}!registerSeverity@{registerSeverity}}
+\index{registerSeverity@{registerSeverity}!Register@{Register}}
+\subsubsection[{registerSeverity}]{\setlength{\rightskip}{0pt plus 5cm}static Register::registerSeverity (
 \begin{DoxyParamCaption}
 \item[{\$}]{level, }
 \item[{\$}]{name}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_ac22a104eefa471675cb28ee20821eaad}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a3d20a4b805c7d83c971c3edf0a717a7c}
 Store the known severitylevels in the register
 
 
@@ -255,13 +255,13 @@ Store the known severitylevels in the register
 
 References \$GLOBALS.
 
-\index{Register@{Register}!set\_\-application@{set\_\-application}}
-\index{set\_\-application@{set\_\-application}!Register@{Register}}
-\subsubsection[{set\_\-application}]{\setlength{\rightskip}{0pt plus 5cm}static Register::set\_\-application (
+\index{Register@{Register}!setApplication@{setApplication}}
+\index{setApplication@{setApplication}!Register@{Register}}
+\subsubsection[{setApplication}]{\setlength{\rightskip}{0pt plus 5cm}static Register::setApplication (
 \begin{DoxyParamCaption}
 \item[{\$}]{app\_\-id}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_ad4d61787414f7d64d1e3420f0fdf3f91}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_aba1dda2414f79a72795beb16adc07273}
 Point the register to the specified application.
 
 
@@ -275,15 +275,15 @@ References \$GLOBALS.
 
 
 
-Referenced by register\_\-app().
+Referenced by registerApp().
 
-\index{Register@{Register}!set\_\-class@{set\_\-class}}
-\index{set\_\-class@{set\_\-class}!Register@{Register}}
-\subsubsection[{set\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}static Register::set\_\-class (
+\index{Register@{Register}!setClass@{setClass}}
+\index{setClass@{setClass}!Register@{Register}}
+\subsubsection[{setClass}]{\setlength{\rightskip}{0pt plus 5cm}static Register::setClass (
 \begin{DoxyParamCaption}
 \item[{\$}]{class\_\-id}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a58e49ccb1fe4e441d0329e879c922aa0}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a79c9ab87540d73ee2afda02f370d4cec}
 Point the register to the specified class.
 
 
@@ -295,13 +295,13 @@ Point the register to the specified class.
 
 References \$GLOBALS.
 
-\index{Register@{Register}!set\_\-severity@{set\_\-severity}}
-\index{set\_\-severity@{set\_\-severity}!Register@{Register}}
-\subsubsection[{set\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}static Register::set\_\-severity (
+\index{Register@{Register}!setSeverity@{setSeverity}}
+\index{setSeverity@{setSeverity}!Register@{Register}}
+\subsubsection[{setSeverity}]{\setlength{\rightskip}{0pt plus 5cm}static Register::setSeverity (
 \begin{DoxyParamCaption}
 \item[{\$}]{severity\_\-level}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a0adde8d67d77b9b4d66156272cb48ae4}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classRegister_a3aaeb77c15ce76576550505499cd7caa}
 Set the current severity to the specified level in the \doxyref{Register}{p.}{classRegister}
 
 

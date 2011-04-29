@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Group class
- * \version $Id: class.group.php,v 1.4 2011-04-27 11:50:08 oscar Exp $
+ * \version $Id: class.group.php,v 1.5 2011-04-29 14:55:20 oscar Exp $
  */
 
 /**
@@ -14,6 +14,11 @@
  */
 class Group extends _OWL
 {
+	/**
+	 * Array with rights bitmaps for all applications
+	 */
+	private $rights;
+
 	/**
 	 * Class constructor
 	 * \param[in] $id Group ID
@@ -27,7 +32,9 @@ class Group extends _OWL
 		}
 		$this->dataset->setTablename('group');
 		$this->id = $id;
+		$this->rights = array();
 		$this->getGroupData();
+		$this->getGroupRights();
 	}
 
 	/**
@@ -40,7 +47,35 @@ class Group extends _OWL
 		$this->dataset->db($_data, __LINE__, __FILE__);
 		$this->group_data = $_data[0];
 	}
-	
+
+	private function getGroupRights()
+	{
+		$dataset = new DataHandler ();
+		if (ConfigHandler::get ('owltables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		}
+		$dataset->setTablename('grouprights');
+		$dataset->set('gid', $this->id);
+		$dataset->prepare();
+		$dataset->db($_data, __LINE__, __FILE__);
+		foreach ($_data as $_r) {
+			$this->rights['a'.$_r['aid']] = $_r['right'];
+		}
+	}
+
+	/**
+	 * Return this groups rights bitmap for the given application
+	 * \param[in] $aid Application ID
+	 * \return Rights bitmap or 0 when not found
+	 */
+	public function getRights($aid)
+	{
+		if (!array_key_exists('a'.$aid, $this->rights)) {
+			return (0);
+		}
+		return ($this->rights['a'.$aid]);
+	}
+
 	/**
 	 * Return a groupdata item, or the default value if it does not exist.
 	 * \param[in] $item The item of which the value should be returned

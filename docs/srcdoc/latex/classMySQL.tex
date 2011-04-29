@@ -24,7 +24,13 @@ Inheritance diagram for MySQL:\begin{figure}[H]
 \item 
 {\bf dbOpen} (\&\$\_\-resource, \$\_\-server, \$\_\-name, \$\_\-user, \$\_\-password)
 \item 
+{\bf dbTransactionCommit} (\&\$\_\-resource, \$\_\-name, \$\_\-name=null, \$\_\-new=false)
+\item 
+{\bf dbTransactionRollback} (\&\$\_\-resource, \$\_\-name, \$\_\-name=null, \$\_\-new=false)
+\item 
 {\bf dbTableList} (\&\$\_\-resource, \$\_\-pattern, \$\_\-views=false)
+\item 
+{\bf dbExec} (\&\$\_\-resource, \$\_\-statement)
 \item 
 {\bf dbRead} (\&\$\_\-data, \&\$\_\-resource, \$\_\-query)
 \item 
@@ -50,9 +56,13 @@ Inheritance diagram for MySQL:\begin{figure}[H]
 \item 
 {\bf \_\-\_\-constructor} ()
 \item 
+{\bf dbTransactionStart} (\&\$\_\-resource, \$\_\-name=null)
+\item 
 {\bf dbUnescapeString} (\$\_\-string)
 \item 
 {\bf functionCount} (\$\_\-field, array \$\_\-arguments=array())
+\item 
+{\bf dbTransactionStart} (\&\$\_\-resource, \$\_\-name=null)
 \item 
 {\bf dbUnescapeString} (\$\_\-string)
 \item 
@@ -236,6 +246,32 @@ String in SQL safe format
 
 Reimplemented from {\bf DbDefaults} \doxyref{}{p.}{classDbDefaults_a8fcdd03995e94df3567ada9dcc975968}.
 
+\index{MySQL@{MySQL}!dbExec@{dbExec}}
+\index{dbExec@{dbExec}!MySQL@{MySQL}}
+\subsubsection[{dbExec}]{\setlength{\rightskip}{0pt plus 5cm}MySQL::dbExec (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-statement}
+\end{DoxyParamCaption}
+)}\label{classMySQL_a469902953a75fcdb3f65b822376c67c1}
+Execute a database statement that does not return any value 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-statement} & Statement to execute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Implements {\bf DbDriver} \doxyref{}{p.}{interfaceDbDriver_a0b45d39ae1507571c29601a2ba5e0fc9}.
+
+
+
+Referenced by dbTransactionCommit(), and dbTransactionRollback().
+
 \index{MySQL@{MySQL}!dbFetchNextRecord@{dbFetchNextRecord}}
 \index{dbFetchNextRecord@{dbFetchNextRecord}!MySQL@{MySQL}}
 \subsubsection[{dbFetchNextRecord}]{\setlength{\rightskip}{0pt plus 5cm}MySQL::dbFetchNextRecord (
@@ -392,20 +428,101 @@ Implements {\bf DbDriver} \doxyref{}{p.}{interfaceDbDriver_abe6928bd50a1115dc1e9
 
 References dbClear(), dbFetchNextRecord(), and dbRead().
 
-\index{MySQL@{MySQL}!dbUnescapeString@{dbUnescapeString}}
-\index{dbUnescapeString@{dbUnescapeString}!MySQL@{MySQL}}
-\subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbUnescapeString (
+\index{MySQL@{MySQL}!dbTransactionCommit@{dbTransactionCommit}}
+\index{dbTransactionCommit@{dbTransactionCommit}!MySQL@{MySQL}}
+\subsubsection[{dbTransactionCommit}]{\setlength{\rightskip}{0pt plus 5cm}MySQL::dbTransactionCommit (
 \begin{DoxyParamCaption}
-\item[{\$}]{\_\-string}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-name, }
+\item[{\$}]{\_\-name = {\ttfamily null}, }
+\item[{\$}]{\_\-new = {\ttfamily false}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_ac99fd7eba511d8799fcc447006179c72}
-Unescape a string fthat is formatted for use in SQL This method is implemented by class \doxyref{DbDefaults}{p.}{classDbDefaults} 
+)}\label{classMySQL_a935f49386759d4bcb109119e87a6010a}
+Open a new transaction 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$\_\-string} & The input string in SQL safe format \\
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Transaction name for databases that support named transactions \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-new} & Boolean, true when a new transaction should be started after the commit \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-String without SQL formatting 
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Reimplemented from {\bf DbDefaults} \doxyref{}{p.}{classDbDefaults_a8e061014dd32e328f70e0dd1661b74c6}.
+
+
+
+References dbExec().
+
+\index{MySQL@{MySQL}!dbTransactionRollback@{dbTransactionRollback}}
+\index{dbTransactionRollback@{dbTransactionRollback}!MySQL@{MySQL}}
+\subsubsection[{dbTransactionRollback}]{\setlength{\rightskip}{0pt plus 5cm}MySQL::dbTransactionRollback (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-name, }
+\item[{\$}]{\_\-name = {\ttfamily null}, }
+\item[{\$}]{\_\-new = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{classMySQL_a207f82ed5516848b7a25802fe236d3a2}
+Open a new transaction 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Transaction name for databases that support named transactions \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-new} & Boolean, true when a new transaction should be started after the rollback \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+
+
+Reimplemented from {\bf DbDefaults} \doxyref{}{p.}{classDbDefaults_a763074f5917f16755b2d00bf6d277a0a}.
+
+
+
+References dbExec().
+
+\index{MySQL@{MySQL}!dbTransactionStart@{dbTransactionStart}}
+\index{dbTransactionStart@{dbTransactionStart}!MySQL@{MySQL}}
+\subsubsection[{dbTransactionStart}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::dbTransactionStart (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-name = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_a30ef8b1e115ed1dbdbd66b960c0e348d}
+Open a new transaction 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Transaction name for databases that support named transactions \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+\index{MySQL@{MySQL}!dbTransactionStart@{dbTransactionStart}}
+\index{dbTransactionStart@{dbTransactionStart}!MySQL@{MySQL}}
+\subsubsection[{dbTransactionStart}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbTransactionStart (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-name = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_a3f9f0c1234b3fe3fb263ff1393f13197}
+Open a new transaction 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-name} & Transaction name for databases that support named transactions \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
 \end{DoxyReturn}
 \index{MySQL@{MySQL}!dbUnescapeString@{dbUnescapeString}}
 \index{dbUnescapeString@{dbUnescapeString}!MySQL@{MySQL}}
@@ -415,6 +532,21 @@ String without SQL formatting
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_a7ac3780695fb0d6e291ee123be7db020}
 Unescape a string fthat is formatted for use in SQL 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-string} & The input string in SQL safe format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String without SQL formatting 
+\end{DoxyReturn}
+\index{MySQL@{MySQL}!dbUnescapeString@{dbUnescapeString}}
+\index{dbUnescapeString@{dbUnescapeString}!MySQL@{MySQL}}
+\subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbUnescapeString (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_ac99fd7eba511d8799fcc447006179c72}
+Unescape a string fthat is formatted for use in SQL This method is implemented by class \doxyref{DbDefaults}{p.}{classDbDefaults} 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-string} & The input string in SQL safe format \\
 \hline
@@ -472,12 +604,12 @@ Implements {\bf DbDriver} \doxyref{}{p.}{interfaceDbDriver_a869608212113175cefe8
 
 \index{MySQL@{MySQL}!functionCount@{functionCount}}
 \index{functionCount@{functionCount}!MySQL@{MySQL}}
-\subsubsection[{functionCount}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::functionCount (
+\subsubsection[{functionCount}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionCount (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-field, }
 \item[{array \$}]{\_\-arguments = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_ae9ccdb445c7c4213eaff21677a03ed41}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_a58f24b8ba3d3c104cefac2d9c21ca67c}
 Inplementation of the SQL COUNT() function. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
@@ -490,12 +622,12 @@ Complete SQL function code
 \end{DoxyReturn}
 \index{MySQL@{MySQL}!functionCount@{functionCount}}
 \index{functionCount@{functionCount}!MySQL@{MySQL}}
-\subsubsection[{functionCount}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionCount (
+\subsubsection[{functionCount}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::functionCount (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-field, }
 \item[{array \$}]{\_\-arguments = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_a58f24b8ba3d3c104cefac2d9c21ca67c}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_ae9ccdb445c7c4213eaff21677a03ed41}
 Inplementation of the SQL COUNT() function. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\

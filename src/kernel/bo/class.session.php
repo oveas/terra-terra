@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Session class
- * \version $Id: class.session.php,v 1.9 2011-04-27 11:50:08 oscar Exp $
+ * \version $Id: class.session.php,v 1.10 2011-04-29 14:55:20 oscar Exp $
  */
 
 /**
@@ -27,21 +27,19 @@ class Session extends SessionHandler
 	{
 		$this->dataset = new DataHandler ();
 		parent::__construct ();
-		if (session_id() == '') {
-			session_start ();
-			header ('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"'); //Fix for IE6
-		}
-		if ($this->getSessionVar('init', false) === false) {
-			$this->setup();
+
+		session_start ();
+		header ('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"'); //Fix for IE6
+		if ($this->getSessionVar('uid', 0) == 0) {
+			$this->newSession();
 		} else {
-			$this->setSessionVar('new', false);
+			$this->restoreSession();
 			if (ConfigHandler::get('session|check_ip') === true) {
 				if ($this->getSessionVar('ip') != $this->ipAddress()) {
 					$this->setStatus (SESSION_IPCHKFAIL);
 				}
 			}
 		}
-		$this->rights = $this->getSessionVar('rights');
 		$this->setSessionVar('step', 0, SESSIONVAR_INCR);
 	}
 	
@@ -51,27 +49,36 @@ class Session extends SessionHandler
 	 */
 	public function __destruct ()
 	{
+		$this->saveSession();
 		parent::__destruct();
 		session_write_close ();
 	}
 
 	/**
 	 * Initialize a session
-	 * \param[in] $vars An optional array with key-value pairs that will be stored in the session
 	 */
-	public function setup (array $vars = array())
+	public function newSession ()
 	{
 		$this->setSessionVar('ip', $this->ipAddress());
 		$this->setSessionVar('step', 0, SESSIONVAR_INCR);
-		$this->setSessionVar('new', true);
-		$this->setSessionVar('uid', 0); // Defaults to the anonymous user
-		if (count($vars) > 0) {
-			foreach ($vars as $_k => $_v) {
-				$this->setSessionVar($_k, $_v);
-			}
-		}
-		$this->setSessionVar('rights', new Rights(APPL_ID));
-		$this->setSessionVar('init', true);
+		$this->setSessionVar('uid', 0); // Must be filled by the User class, 0 causes fatals on restore
+		$this->rights = new Rights(APPL_ID);
+	}
+
+	/**
+	 * Restore a session environment
+	 */
+	private function restoreSession()
+	{
+		$this->rights = unserialize($this->getSessionVar('activerights'));
+	}
+
+	/**
+	 * Save active data to the session environment
+	 */
+	private function saveSession()
+	{
+		$this->setSessionVar('activerights', serialize($this->rights));
 	}
 
 	/**
@@ -79,7 +86,6 @@ class Session extends SessionHandler
 	 * \param[in] $bitmap The bitmap value which is either the default group value, or the complete
 	 * list of rights for this user (depending on the configuration)
 	 * \param[in] $app Application ID
-	 * \todo CUrrently, this only works for OWL bitmaps; at application level this is not yet implemented
 	 */
 	public function setRights($bitmap, $app = OWL_ID)
 	{

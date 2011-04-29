@@ -8,22 +8,22 @@ Status object.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bf set\_\-code} (\$code=OWL\_\-STATUS\_\-BUG)
+{\bf setCode} (\$code=OWL\_\-STATUS\_\-BUG)
 \item 
 {\bf reset} ()
 \item 
-{\bf set\_\-params} (\$params)
+{\bf setParams} (\$params)
 \item 
-{\bf get\_\-severity} (\$status=null)
+{\bf getSeverity} (\$status=null)
 \item 
-{\bf get\_\-code} ()
+{\bf getCode} ()
 \item 
-{\bf get\_\-message} ()
+{\bf getMessage} ()
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static {\bf get\_\-instance} ()
+static {\bf getInstance} ()
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
@@ -77,25 +77,25 @@ References \$code.
 
 
 \subsection{Member Function Documentation}
-\index{StatusHandler@{StatusHandler}!get\_\-code@{get\_\-code}}
-\index{get\_\-code@{get\_\-code}!StatusHandler@{StatusHandler}}
-\subsubsection[{get\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::get\_\-code (
+\index{StatusHandler@{StatusHandler}!getCode@{getCode}}
+\index{getCode@{getCode}!StatusHandler@{StatusHandler}}
+\subsubsection[{getCode}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::getCode (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}\label{classStatusHandler_ad39bc4e6a56b6d418a252957da9b4417}
+)}\label{classStatusHandler_a6d78a4d390a3877973d07c2c1d99b09b}
 Return the status code
 
 \begin{DoxyReturn}{Returns}
 The status code 
 \end{DoxyReturn}
-\index{StatusHandler@{StatusHandler}!get\_\-instance@{get\_\-instance}}
-\index{get\_\-instance@{get\_\-instance}!StatusHandler@{StatusHandler}}
-\subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static StatusHandler::get\_\-instance (
+\index{StatusHandler@{StatusHandler}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!StatusHandler@{StatusHandler}}
+\subsubsection[{getInstance}]{\setlength{\rightskip}{0pt plus 5cm}static StatusHandler::getInstance (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classStatusHandler_a9d291ccaa6b4e6eed931e47025915b0e}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classStatusHandler_a293bd529266ef7932c722e32693088c7}
 Return a reference to my implementation. If necessary, create that implementation first.
 
 \begin{DoxyReturn}{Returns}
@@ -105,13 +105,13 @@ Severity level
 
 References \$instance.
 
-\index{StatusHandler@{StatusHandler}!get\_\-message@{get\_\-message}}
-\index{get\_\-message@{get\_\-message}!StatusHandler@{StatusHandler}}
-\subsubsection[{get\_\-message}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::get\_\-message (
+\index{StatusHandler@{StatusHandler}!getMessage@{getMessage}}
+\index{getMessage@{getMessage}!StatusHandler@{StatusHandler}}
+\subsubsection[{getMessage}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::getMessage (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}\label{classStatusHandler_a79170bca79bfd82e3f707e1294e7c916}
+)}\label{classStatusHandler_a93dbefed42ac15769ca3bd7ac5714951}
 Retrieve the message that has been specified for the current object status. If parameters are set and wanted by the message text, replace them. If more parameters are available then used in the message, there's a quote with the unused parameter count added to the message.
 
 \begin{DoxyReturn}{Returns}
@@ -119,15 +119,15 @@ The message text
 \end{DoxyReturn}
 
 
-References \$GLOBALS, Register::get\_\-code(), and Register::register\_\-messages().
+References \$GLOBALS, Register::getCode(), and Register::registerMessages().
 
-\index{StatusHandler@{StatusHandler}!get\_\-severity@{get\_\-severity}}
-\index{get\_\-severity@{get\_\-severity}!StatusHandler@{StatusHandler}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::get\_\-severity (
+\index{StatusHandler@{StatusHandler}!getSeverity@{getSeverity}}
+\index{getSeverity@{getSeverity}!StatusHandler@{StatusHandler}}
+\subsubsection[{getSeverity}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::getSeverity (
 \begin{DoxyParamCaption}
 \item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
-)}\label{classStatusHandler_acadd0806c17eb02abcc92882e8588d4e}
+)}\label{classStatusHandler_a682605c7d09b7a8bdcb4b71160eba07f}
 Check the status of the given object and return its severity.
 
 
@@ -145,13 +145,13 @@ The severity level of the current status
 {}
 \end{DoxyParamCaption}
 )}\label{classStatusHandler_a8b0a327d3272ae49032a596518d47164}
-Reset the object status \index{StatusHandler@{StatusHandler}!set\_\-code@{set\_\-code}}
-\index{set\_\-code@{set\_\-code}!StatusHandler@{StatusHandler}}
-\subsubsection[{set\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::set\_\-code (
+Reset the object status \index{StatusHandler@{StatusHandler}!setCode@{setCode}}
+\index{setCode@{setCode}!StatusHandler@{StatusHandler}}
+\subsubsection[{setCode}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::setCode (
 \begin{DoxyParamCaption}
 \item[{\$}]{code = {\ttfamily OWL\_\-STATUS\_\-BUG}}
 \end{DoxyParamCaption}
-)}\label{classStatusHandler_a748d462386322a552aa798f951258c91}
+)}\label{classStatusHandler_a7bd5d0dce50fb5774198085a94d3afbe}
 Set the status of the owner object to the given value.
 
 
@@ -166,13 +166,13 @@ The severity level of the code
 
 References \$code.
 
-\index{StatusHandler@{StatusHandler}!set\_\-params@{set\_\-params}}
-\index{set\_\-params@{set\_\-params}!StatusHandler@{StatusHandler}}
-\subsubsection[{set\_\-params}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::set\_\-params (
+\index{StatusHandler@{StatusHandler}!setParams@{setParams}}
+\index{setParams@{setParams}!StatusHandler@{StatusHandler}}
+\subsubsection[{setParams}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::setParams (
 \begin{DoxyParamCaption}
 \item[{\$}]{params}
 \end{DoxyParamCaption}
-)}\label{classStatusHandler_ac35544d3ad8a435f69db0965ed674428}
+)}\label{classStatusHandler_a846a63e089ce848b96889dd5f46bb8eb}
 If the status was set with optional parameters, they will be set in this subject and substituted in the correct message
 
 
@@ -192,21 +192,21 @@ References \$params.
 \subsubsection[{\$code}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$code\hspace{0.3cm}{\ttfamily  [private]}}\label{classStatusHandler_ab74e826d2401345eb20b11fe7d78aa45}
 Current object status 
 
-Referenced by \_\-\_\-construct(), and set\_\-code().
+Referenced by \_\-\_\-construct(), and setCode().
 
 \index{StatusHandler@{StatusHandler}!\$instance@{\$instance}}
 \index{\$instance@{\$instance}!StatusHandler@{StatusHandler}}
 \subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$instance\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classStatusHandler_a93400d190e7612dd53fbf0be529a96ee}
 integer -\/ self reference 
 
-Referenced by get\_\-instance().
+Referenced by getInstance().
 
 \index{StatusHandler@{StatusHandler}!\$params@{\$params}}
 \index{\$params@{\$params}!StatusHandler@{StatusHandler}}
 \subsubsection[{\$params}]{\setlength{\rightskip}{0pt plus 5cm}StatusHandler::\$params\hspace{0.3cm}{\ttfamily  [private]}}\label{classStatusHandler_a599f9c9284340399fdcb7dac9cb7856f}
 Array with parameters that will be substituted in message text 
 
-Referenced by set\_\-params().
+Referenced by setParams().
 
 
 

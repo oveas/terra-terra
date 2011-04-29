@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.13 2011-04-27 11:50:07 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.14 2011-04-29 14:55:20 oscar Exp $
  */
 
 /**
@@ -214,7 +214,7 @@ class SessionHandler extends _OWL
 				  'DELETE FROM ' . $this->db->tablename ('sessiondata')
 				. ' WHERE stimestamp < ' . time() - $lifetime
 			);
-		return $this->db->write (__LINE__, __FILE__);
+		return $this->db->write ($_dummy, __LINE__, __FILE__);
 	}
 }
 

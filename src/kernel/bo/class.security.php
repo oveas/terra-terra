@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Security base class
- * \version $Id: class.security.php,v 1.5 2011-04-27 11:50:08 oscar Exp $
+ * \version $Id: class.security.php,v 1.6 2011-04-29 14:55:20 oscar Exp $
  */
 
 /**
@@ -46,9 +46,9 @@ abstract class Security
 	 */
 	public function __construct ($app, $owl = true)
 	{
-		$this->bitmap = array($app => 0);
+		$this->bitmap = array('a'.$app => 0);
 		if ($owl === true) {
-			$this->bitmap[OWL_ID] = 0;
+			$this->bitmap['a'.OWL_ID] = 0;
 		}
 	}
 
@@ -68,13 +68,13 @@ abstract class Security
 	abstract public function bitValue($name);
 
 	/**
-	 * Initialise the bitmap for the given application
+	 * (Re)initialise the bitmap for the given application
 	 * \param[in] $value Bitmap value
 	 * \param[in] $app Application ID
 	 */
 	public function initBitmap($value, $app)
 	{
-		$this->bitmap[$app] = $value;
+		$this->bitmap['a'.$app] = $value;
 	}
 
 	/**
@@ -83,7 +83,7 @@ abstract class Security
 	 */
 	public function getBitmap($app)
 	{
-		return $this->bitmap[$app];
+		return $this->bitmap['a'.$app];
 	}
 
 	/**
@@ -93,10 +93,10 @@ abstract class Security
 	 */
 	public function mergeBitmaps($bitmap, $app)
 	{
-		if (array_key_exists($app, $this->bitmap)) {
-			$this->bitmap[$app] = ($this->bitmap[$app] | $bitmap);
+		if (array_key_exists('a'.$app, $this->bitmap)) {
+			$this->bitmap['a'.$app] = ($this->bitmap['a'.$app] | $bitmap);
 		} else {
-			$this->bitmap[$app] = $bitmap;
+			$this->bitmap['a'.$app] = $bitmap;
 		}
 	}
 
@@ -110,22 +110,23 @@ abstract class Security
 	 */
 	public function controlBitmap ($bit, $app, $controller = BIT_CHECK)
 	{
-		if (!array_key_exists($app, $this->bitmap)) {
-			$this->bitmap[$app] = 0;
+//echo "Check bit $bit in ".$this->bitmap[$app]."<br>";
+		if (!array_key_exists('a'.$app, $this->bitmap)) {
+			$this->bitmap['a'.$app] = 0;
 			$_curr = 0;
 		} else {
-			$_curr = ($this->bitmap[$app] & $bit);
+			$_curr = ($this->bitmap['a'.$app] & $bit);
 		}
 		if ($controller == BIT_SET) {
 			if (!$_curr) {
-				$this->bitmap[$app] = ($this->bitmap[$app] | $_bit);
+				$this->bitmap['a'.$app] = ($this->bitmap['a'.$app] | $_bit);
 			}
 		} elseif ($controller == BIT_UNSET) {
 			if ($_curr) {
-				$this->bitmap[$app] = ($this->bitmap[$app] ^ $_bit);
+				$this->bitmap['a'.$app] = ($this->bitmap['a'.$app] ^ $_bit);
 			}
 		} elseif ($controller == BIT_TOGGLE) {
-			$this->bitmap[$app] = ($this->bitmap[$app] ^ $_bit);
+			$this->bitmap['a'.$app] = ($this->bitmap['a'.$app] ^ $_bit);
 		}
 		return (toStrictBoolean($_curr));
 	}

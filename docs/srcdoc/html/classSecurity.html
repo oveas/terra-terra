@@ -120,10 +120,11 @@ Inheritance diagram for Security:</div>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a52521de4bd0c0279bcf9eb57ca915c14">__construct</a> ($app, $owl=true)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#aa45b726507989bfe49ac468b3ea1a7c2">__sleep</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#ae643092625efa402b95502ac228aae30">bitValue</a> ($name)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a590951291ac82db7b6855b468e097886">initBitmap</a> ($value, $app)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a723668f35887ff342fe86de04a5a680e">getBitmap</a> ($app)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a320378151e60f1426d15aaa2b9885938">mergeBitmaps</a> ($bitmap, $app)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a3f7e654b890fa75bc4ea33e7865430e5">controlBitmap</a> ($bit, $app= 'owl', $controller=<a class="el" href="class_8security_8php.html#a21de8ac044d95cc6dc43980c9905439a">BIT_CHECK</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a061a75e3f9a2be41f85b19e5ad7f973f">controlBitmap</a> ($bit, $app, $controller=<a class="el" href="class_8security_8php.html#a21de8ac044d95cc6dc43980c9905439a">BIT_CHECK</a>)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSecurity.html#a75470ea2df84673afbdef0955297f78f">$bitmap</a></td></tr>
@@ -189,7 +190,34 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3f7e654b890fa75bc4ea33e7865430e5"></a><!-- doxytag: member="Security::controlBitmap" ref="a3f7e654b890fa75bc4ea33e7865430e5" args="($bit, $app= 'owl', $controller=BIT_CHECK)" -->
+<a class="anchor" id="ae643092625efa402b95502ac228aae30"></a><!-- doxytag: member="Security::bitValue" ref="ae643092625efa402b95502ac228aae30" args="($name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Security::bitValue </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td><code> [abstract]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get the bitvalue for a given name. This method must be reimplemented </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$name</td><td>Name of the bit </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Integer value </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classRights.html#a550e960aca4a85da15a18d8f89195825">Rights</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a061a75e3f9a2be41f85b19e5ad7f973f"></a><!-- doxytag: member="Security::controlBitmap" ref="a061a75e3f9a2be41f85b19e5ad7f973f" args="($bit, $app, $controller=BIT_CHECK)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -203,7 +231,7 @@ Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>app</em> = <code>'owl'</code>, </td>
+          <td class="paramname"><em>app</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -223,12 +251,14 @@ Protected Attributes</h2></td></tr>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$bit</td><td>Bit that should be checked or (un)set </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$app</td><td>Application the bit belongs to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$app</td><td>Application ID the bit belongs to </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$controller</td><td>Controller defining the action, defaults to check </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if the bit was set (*before* a set or unset action!) </dd></dl>
+
+<p>References <a class="el" href="owl_8helper_8functions_8php.html#a2c49978306cd0e2f4f9406c20373ed02">toStrictBoolean()</a>.</p>
 
 </div>
 </div>
@@ -280,7 +310,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Initialise the bitmap for the given application </p>
+<p>(Re)initialise the bitmap for the given application </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Bitmap value </td></tr>
@@ -368,7 +398,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Apr 26 2011 14:04:19 for OWL-PHP by
+    <li class="footer">Generated on Fri Apr 29 2011 16:53:11 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

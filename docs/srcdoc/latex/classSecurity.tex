@@ -18,13 +18,15 @@ Inheritance diagram for Security:\begin{figure}[H]
 \item 
 {\bf \_\-\_\-sleep} ()
 \item 
+{\bf bitValue} (\$name)
+\item 
 {\bf initBitmap} (\$value, \$app)
 \item 
 {\bf getBitmap} (\$app)
 \item 
 {\bf mergeBitmaps} (\$bitmap, \$app)
 \item 
-{\bf controlBitmap} (\$bit, \$app= 'owl', \$controller={\bf BIT\_\-CHECK})
+{\bf controlBitmap} (\$bit, \$app, \$controller={\bf BIT\_\-CHECK})
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -74,20 +76,39 @@ Reimplemented in {\bf Rights} \doxyref{}{p.}{classRights_a85a0c92c43ac7ae3d01b97
 {}
 \end{DoxyParamCaption}
 )}\label{classSecurity_aa45b726507989bfe49ac468b3ea1a7c2}
-Magic function for serialize; make sure only the required data is serialized \index{Security@{Security}!controlBitmap@{controlBitmap}}
+Magic function for serialize; make sure only the required data is serialized \index{Security@{Security}!bitValue@{bitValue}}
+\index{bitValue@{bitValue}!Security@{Security}}
+\subsubsection[{bitValue}]{\setlength{\rightskip}{0pt plus 5cm}Security::bitValue (
+\begin{DoxyParamCaption}
+\item[{\$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [abstract]}}\label{classSecurity_ae643092625efa402b95502ac228aae30}
+Get the bitvalue for a given name. This method must be reimplemented 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$name} & Name of the bit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer value 
+\end{DoxyReturn}
+
+
+Reimplemented in {\bf Rights} \doxyref{}{p.}{classRights_a550e960aca4a85da15a18d8f89195825}.
+
+\index{Security@{Security}!controlBitmap@{controlBitmap}}
 \index{controlBitmap@{controlBitmap}!Security@{Security}}
 \subsubsection[{controlBitmap}]{\setlength{\rightskip}{0pt plus 5cm}Security::controlBitmap (
 \begin{DoxyParamCaption}
 \item[{\$}]{bit, }
-\item[{\$}]{app = {\ttfamily 'owl'}, }
+\item[{\$}]{app, }
 \item[{\$}]{controller = {\ttfamily {\bf BIT\_\-CHECK}}}
 \end{DoxyParamCaption}
-)}\label{classSecurity_a3f7e654b890fa75bc4ea33e7865430e5}
+)}\label{classSecurity_a061a75e3f9a2be41f85b19e5ad7f973f}
 Check, set or unset a bit in the current users bitmap. Enter description here ... 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$bit} & Bit that should be checked or (un)set \\
 \hline
-\mbox{\tt in}  & {\em \$app} & Application the bit belongs to \\
+\mbox{\tt in}  & {\em \$app} & Application ID the bit belongs to \\
 \hline
 \mbox{\tt in}  & {\em \$controller} & Controller defining the action, defaults to check \\
 \hline
@@ -95,6 +116,10 @@ Check, set or unset a bit in the current users bitmap. Enter description here ..
 \begin{DoxyReturn}{Returns}
 True if the bit was set ($\ast$before$\ast$ a set or unset action!) 
 \end{DoxyReturn}
+
+
+References toStrictBoolean().
+
 \index{Security@{Security}!getBitmap@{getBitmap}}
 \index{getBitmap@{getBitmap}!Security@{Security}}
 \subsubsection[{getBitmap}]{\setlength{\rightskip}{0pt plus 5cm}Security::getBitmap (
@@ -115,7 +140,7 @@ Get the bitmap value for the given application
 \item[{\$}]{app}
 \end{DoxyParamCaption}
 )}\label{classSecurity_a590951291ac82db7b6855b468e097886}
-Initialise the bitmap for the given application 
+(Re)initialise the bitmap for the given application 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$value} & Bitmap value \\
 \hline

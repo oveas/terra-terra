@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the User class
- * \version $Id: class.user.php,v 1.14 2011-04-27 11:50:08 oscar Exp $
+ * \version $Id: class.user.php,v 1.15 2011-04-29 14:55:20 oscar Exp $
  */
 
 /**
@@ -63,32 +63,72 @@ abstract class User extends _OWL
 		$this->memberships = array();
 
 		$this->session = new Session();
-		if ($this->succeeded(OWL_SUCCESS, $this->session) === true) {
-			if (!isset($_SESSION['username'])) {
-				$this->setUsername ($username);
-			}
-			$this->readUserdata();
-		} else {
+		if ($this->succeeded(OWL_SUCCESS, $this->session) !== true) {
 			$this->session->signal();
 		}
 
-		$this->rights = new Rights(APPL_ID);
-		if ($this->session->getSessionVar('new', true) === true) {
-			$this->getMemberships();
-			$this->setSessionVar('rightslist', serialize($this->rights));
-			$this->setSessionVar('memberships', serialize($this->memberships));
-			$_allRights = ConfigHandler::get('session|default_rights_all', false);
-			$this->session->setRights(
-				  ($_allRights
-					? $this->rights->getBitmap(OWL_ID)
-					: $this->group->get('right', 0))
-				, OWL_ID
-			);
+		if ($this->getUserId() == 0) {
+			$this->newUser();
 		} else {
-			$this->rights = unserialize($this->getSessionVar('rightslist'));
-			$this->memberships = unserialize($this->getSessionVar('memberships'));
+			$this->restoreUser();
 		}
 		OWLCache::set(OWLCACHE_OBJECTS, 'user', ($_ =& $this));
+	}
+
+	/**
+	 * Cleanup the existing user environment
+	 * \param[in] $newSession Boolean set to true when a new session must be created
+	 */
+	private function clearUser($newSession = false)
+	{
+		if ($newSession === true) {
+			session_destroy(); // Clear the session ... 
+			unset ($this->session);
+			$this->session = new Session();
+		}
+		$this->dataset->reset (DATA_RESET_FULL);
+		if (is_object($this->rights)) {
+			unset ($this->rights);
+		}
+		if (is_object($this->group)) {
+			unset ($this->group);
+		}
+	}
+
+	/**
+	 * (Re)initialize the user environment
+	 */
+	private function newUser()
+	{
+		$this->readUserdata();
+		$this->rights = new Rights(APPL_ID);
+		$this->getMemberships();
+		if (ConfigHandler::get('session|default_rights_all', false) === true) {
+			$this->session->setRights($this->rights->getBitmap(OWL_ID), OWL_ID);
+			$this->session->setRights($this->rights->getBitmap(APPL_ID), APPL_ID);
+		} else {
+			$this->session->setRights($this->group->getRights(OWL_ID), OWL_ID);
+			$this->session->setRights($this->group->getRights(APPL_ID), APPL_ID);
+		}
+	}
+
+	/**
+	 * Save the current user environment in the session
+	 */
+	private function saveUser()
+	{
+		$this->setSessionVar('authorizedrights', serialize($this->rights));
+		$this->setSessionVar('memberships', serialize($this->memberships));
+	}
+
+	/**
+	 * Restore a user environment
+	 */
+	private function restoreUser()
+	{
+		$this->readUserdata();
+		$this->rights = unserialize($this->getSessionVar('authorizedrights'));
+		$this->memberships = unserialize($this->getSessionVar('memberships'));
 	}
 
 	/**
@@ -98,14 +138,7 @@ abstract class User extends _OWL
 	public function __destruct ()
 	{
 		parent::__destruct();
-		if (is_object ($this->session)) {
-			$this->session->__destruct();
-			unset ($this->session);
-		}
-		if (is_object ($this->dataset)) {
-			$this->dataset->__destruct();
-			unset ($this->dataset);
-		}
+		$this->saveUser();
 	}
 
 	/**
@@ -118,7 +151,6 @@ abstract class User extends _OWL
 	 */
 	public function login ($username, $password)
 	{
-		$this->setUsername ($username);
 		$this->dataset->reset(DATA_RESET_DATA);
 		$this->dataset->set('username', $username);
 		$this->dataset->set('password', $this->hashPassword ($password));
@@ -137,11 +169,9 @@ abstract class User extends _OWL
 			if ($this->user_data['verification'] !== '') {
 				$this->setStatus (USER_NOTCONFIRMED, array($username));
 			} else {
-				session_unset(); // Clear the session ... 
-				$this->session->setup(array( // ... and reinitialise
-					 'username' => $this->dataset->get('username')
-					,'uid' => $this->user_data['uid']
-				));
+				$this->clearUser();
+				$this->session->setSessionVar('uid', $this->user_data['uid']);
+				$this->newUser();
 				$this->setStatus (USER_LOGGEDIN, array (
 					  $this->session->getSessionVar('username')
 					, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->get('password'))
@@ -168,14 +198,12 @@ abstract class User extends _OWL
 		if (!$resetStatus) {
 			$this->saveStatus();
 		}
-		session_destroy();
-		$this->dataset->reset (DATA_RESET_FULL);
-		$this->session = new Session();
+		// TODO; destroy_on_logout must be true - find out why it doesn't work when false!
+		$this->clearUser(ConfigHandler::get ('session|destroy_on_logout', true));
 		if (!$resetStatus) {
 			$this->restoreStatus();
 		}
-
-		$this->setUsername (ConfigHandler::get ('session|default_user'));
+		$this->newUser();
 	}
 	/**
 	 * When a new session starts for a use that was logged in before
@@ -184,30 +212,7 @@ abstract class User extends _OWL
 	 */
 	private function readUserdata ()
 	{
-		if ($this->session->getSessionVar('uid') === null) {
-			return; // Nothing to do
-		}
-		$this->dataset->reset(DATA_RESET_META);
-		$this->dataset->set('uid', $this->session->getSessionVar('uid'));
-		$this->dataset->setKey ('uid');
-		$this->dataset->prepare ();
-		$this->dataset->db($this->user_data, __LINE__, __FILE__);
-		$_dbstat = $this->dataset->dbStatus();
-		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
-			$this->setStatus (USER_RESTORERR, $this->session->getSessionVar('uid'));
-		} else {
-			$this->user_data = $this->user_data[0]; // Shift up one level
-			$this->group = new Group($this->user_data['gid']);
-		}
-	}
-
-	/**
-	 * Set the username
-	 * \param[in] $username Username
-	 */
-	private function setUsername ($username)
-	{
-		if ($username === null) {
+		if ($this->getUserId() == 0) {
 			$username = ConfigHandler::get ('session|default_user');
 			$this->dataset->reset(DATA_RESET_META);
 			$this->dataset->set('username', $username);
@@ -217,7 +222,20 @@ abstract class User extends _OWL
 			$this->dataset->db($_data, __LINE__, __FILE__);
 			$this->session->setSessionVar('uid', $_data[0]['uid']);
 		}
-		$this->session->setSessionVar('username', $username);
+
+		$this->dataset->reset(DATA_RESET_META);
+		$this->dataset->set('uid', $this->getUserId());
+		$this->dataset->setKey ('uid');
+		$this->dataset->prepare ();
+		$this->dataset->db($this->user_data, __LINE__, __FILE__);
+		$_dbstat = $this->dataset->dbStatus();
+		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
+			$this->setStatus (USER_RESTORERR, $this->getUserId());
+		} else {
+			$this->user_data = $this->user_data[0]; // Shift up one level
+			$this->group = new Group($this->user_data['gid']);
+			$this->session->setSessionVar('username', $this->user_data['username']);
+		}
 	}
 
 	/**
@@ -446,11 +464,13 @@ abstract class User extends _OWL
 		$dataset->db($_data, __LINE__, __FILE__);
 		if ($dataset->dbStatus() !== DBHANDLE_NODATA) {
 			foreach ($_data as $_mbrship) {
-				$this->memberships[$_mbrship['gid']] = new Group($_mbrship['gid']);
-				$this->rights->mergeBitmaps(
-						  $this->memberships[$_mbrship['gid']]->get('right', 0)
-						, $this->memberships[$_mbrship['gid']]->get('aid', OWL_ID)
-				);
+				$this->memberships['m'.$_mbrship['gid']] = new Group($_mbrship['gid']);
+				$this->rights->mergeBitmaps($this->memberships['m'.$_mbrship['gid']]->getRights(OWL_ID), OWL_ID);
+				$this->rights->mergeBitmaps($this->memberships['m'.$_mbrship['gid']]->getRights(APPL_ID), APPL_ID);
+//				$this->rights->mergeBitmaps(
+//						  $this->memberships['m'.$_mbrship['gid']]->get('right', 0)
+//						, $this->memberships['m'.$_mbrship['gid']]->get('aid', OWL_ID)
+//				);
 			}
 		}
 	}

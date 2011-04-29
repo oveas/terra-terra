@@ -8,9 +8,9 @@ Default exception handler.
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static {\bf log\_\-exception} ({\bf OWLException} \$exception)
+static {\bf logException} ({\bf OWLException} \$exception)
 \item 
-static {\bf handle\_\-exception} ({\bf OWLException} \$exception)
+static {\bf handleException} ({\bf OWLException} \$exception)
 \end{DoxyCompactItemize}
 
 
@@ -26,13 +26,13 @@ Jul 29, 2008 -\/-\/ O van Eijk -\/-\/ Initial version
 
 
 \subsection{Member Function Documentation}
-\index{OWLExceptionHandler@{OWLExceptionHandler}!handle\_\-exception@{handle\_\-exception}}
-\index{handle\_\-exception@{handle\_\-exception}!OWLExceptionHandler@{OWLExceptionHandler}}
-\subsubsection[{handle\_\-exception}]{\setlength{\rightskip}{0pt plus 5cm}static OWLExceptionHandler::handle\_\-exception (
+\index{OWLExceptionHandler@{OWLExceptionHandler}!handleException@{handleException}}
+\index{handleException@{handleException}!OWLExceptionHandler@{OWLExceptionHandler}}
+\subsubsection[{handleException}]{\setlength{\rightskip}{0pt plus 5cm}static OWLExceptionHandler::handleException (
 \begin{DoxyParamCaption}
 \item[{{\bf OWLException} \$}]{exception}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLExceptionHandler_a9d10d18ec1d1eb31b5d8ef2a0f288402}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLExceptionHandler_af20e5905cf560b3481ca8aeaba1d3710}
 Catch an uncaught exception 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$exception} & The exception \\
@@ -40,15 +40,15 @@ Catch an uncaught exception
 \end{DoxyParams}
 
 
-References log\_\-exception().
+References logException().
 
-\index{OWLExceptionHandler@{OWLExceptionHandler}!log\_\-exception@{log\_\-exception}}
-\index{log\_\-exception@{log\_\-exception}!OWLExceptionHandler@{OWLExceptionHandler}}
-\subsubsection[{log\_\-exception}]{\setlength{\rightskip}{0pt plus 5cm}static OWLExceptionHandler::log\_\-exception (
+\index{OWLExceptionHandler@{OWLExceptionHandler}!logException@{logException}}
+\index{logException@{logException}!OWLExceptionHandler@{OWLExceptionHandler}}
+\subsubsection[{logException}]{\setlength{\rightskip}{0pt plus 5cm}static OWLExceptionHandler::logException (
 \begin{DoxyParamCaption}
 \item[{{\bf OWLException} \$}]{exception}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLExceptionHandler_a760bf3e7d648a7714abf5720f39369d8}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLExceptionHandler_a852d8657a89a27dd37400f327700ed0d}
 Show the stackdump of an exception 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$exception} & The exception \\
@@ -56,11 +56,11 @@ Show the stackdump of an exception
 \end{DoxyParams}
 
 
-References \$GLOBALS, OWL::factory(), ConfigHandler::get(), and OWLException::stack\_\-dump().
+References \$GLOBALS, OWL::factory(), ConfigHandler::get(), and OWLException::stackDump().
 
 
 
-Referenced by handle\_\-exception().
+Referenced by handleException().
 
 
 

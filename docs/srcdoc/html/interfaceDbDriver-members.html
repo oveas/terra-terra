@@ -106,12 +106,16 @@ This is the complete list of members for <a class="el" href="interfaceDbDriver.h
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a3b044c35e3548effe3adf89bef5043e6">dbCreate</a>(&amp;$_resource, $_name)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#ac8a3d40046bf719aada5a1807a915589">dbError</a>(&amp;$_resource, &amp;$_number, &amp;$_text)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#accaa33441d852734b2213937612e66f6">dbEscapeString</a>($_string)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a0b45d39ae1507571c29601a2ba5e0fc9">dbExec</a>(&amp;$_resource, $_statement)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#ab0faeafbd094c078e30929c884603833">dbFetchNextRecord</a>(&amp;$_data)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a437f10c4bd4a651dc4694178da4ef65a">dbInsertId</a>(&amp;$_resource, $_table, $_field)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a4747fcf9c24b722fd56c65111f9652dd">dbOpen</a>(&amp;$_resource, $_server, $_name, $_user, $_password)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#ac5343f76317816de2fb14e4a55eeb569">dbRead</a>(&amp;$_data, &amp;$_resource, $_query)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a958aa47c21cc8db3ee7831e8b3fb1eb7">dbRowCount</a>(&amp;$_data)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#abe6928bd50a1115dc1e9e6b283d9b065">dbTableList</a>(&amp;$_resource, $_pattern, $_views=false)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#ada53072d3b3edcabbeda95353279fadb">dbTransactionCommit</a>(&amp;$_resource, $_name, $_name=null, $_new=false)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#ae6fffd17ac4b45df6db83fa743c4725d">dbTransactionRollback</a>(&amp;$_resource, $_name, $_name=null, $_new=false)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a3f9f0c1234b3fe3fb263ff1393f13197">dbTransactionStart</a>(&amp;$_resource, $_name=null)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#ac99fd7eba511d8799fcc447006179c72">dbUnescapeString</a>($_string)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a461f60524cd8d1dd23dd3c70ca5fcab7">dbWrite</a>(&amp;$_resource, $_query)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a869608212113175cefe8782a1c6f25d8">functionConcat</a>($_field, array $_arguments=array())</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
@@ -137,7 +141,7 @@ This is the complete list of members for <a class="el" href="interfaceDbDriver.h
 </div>
 
 
-    <li class="footer">Generated on Tue Apr 26 2011 14:04:13 for OWL-PHP by
+    <li class="footer">Generated on Fri Apr 29 2011 16:53:07 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

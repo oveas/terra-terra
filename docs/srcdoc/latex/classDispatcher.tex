@@ -20,15 +20,15 @@ Inheritance diagram for Dispatcher:\begin{figure}[H]
 \item 
 {\bf dispatch} (\$\_\-dispatcher=null)
 \item 
-{\bf register\_\-callback} (\$\_\-dispatcher)
+{\bf registerCallback} (\$\_\-dispatcher)
 \item 
-{\bf register\_\-argument} (array \$\_\-argument)
+{\bf registerArgument} (array \$\_\-argument)
 \item 
-{\bf get\_\-callback} ()
+{\bf getCallback} ()
 \item 
-{\bf get\_\-status} ()
+{\bf getStatus} ()
 \item 
-{\bf get\_\-severity} (\$status=null)
+{\bf getSeverity} (\$status=null)
 \item 
 {\bf succeeded} (\$\_\-ok={\bf OWL\_\-SUCCESS}, \&\$\_\-object=null)
 \item 
@@ -39,28 +39,28 @@ Inheritance diagram for Dispatcher:\begin{figure}[H]
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static {\bf get\_\-instance} ()
+static {\bf getInstance} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\bf init} ()
 \item 
-{\bf set\_\-callback} (\$\_\-dispatcher)
+{\bf setCallback} (\$\_\-dispatcher)
 \item 
-{\bf set\_\-callback\_\-argument} (array \$\_\-arg)
+{\bf setCallbackArgument} (array \$\_\-arg)
 \item 
 {\bf reset} ()
 \item 
-{\bf save\_\-status} ()
+{\bf saveStatus} ()
 \item 
-{\bf restore\_\-status} ()
+{\bf restoreStatus} ()
 \item 
 {\bf check} (\&\$object, \$level={\bf OWL\_\-WARNING})
 \item 
-{\bf set\_\-status} (\$status, \$params=array())
+{\bf setStatus} (\$status, \$params=array())
 \item 
-{\bf set\_\-high\_\-severity} (\&\$object=null)
+{\bf setHighSeverity} (\&\$object=null)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -72,7 +72,7 @@ static {\bf get\_\-instance} ()
 \item 
 {\bf \_\-\_\-construct} ()
 \item 
-{\bf decode\_\-dispatcher} (\$\_\-dispatcher)
+{\bf decodeDispatcher} (\$\_\-dispatcher)
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -141,7 +141,7 @@ True if the severity level was correct (below the max), otherwise false
 \end{DoxyReturn}
 
 
-References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::traceback().
+References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
 
 
 
@@ -172,19 +172,19 @@ URL encoded dispatcher
 \end{DoxyReturn}
 
 
-References owlCrypt(), and \_\-OWL::set\_\-status().
+References owlCrypt(), and \_\-OWL::setStatus().
 
 
 
-Referenced by register\_\-argument(), and register\_\-callback().
+Referenced by registerArgument(), and registerCallback().
 
-\index{Dispatcher@{Dispatcher}!decode\_\-dispatcher@{decode\_\-dispatcher}}
-\index{decode\_\-dispatcher@{decode\_\-dispatcher}!Dispatcher@{Dispatcher}}
-\subsubsection[{decode\_\-dispatcher}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::decode\_\-dispatcher (
+\index{Dispatcher@{Dispatcher}!decodeDispatcher@{decodeDispatcher}}
+\index{decodeDispatcher@{decodeDispatcher}!Dispatcher@{Dispatcher}}
+\subsubsection[{decodeDispatcher}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::decodeDispatcher (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-dispatcher}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classDispatcher_a8d39feb182fd4491de589e8b0edc1d25}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classDispatcher_a30550e4f202be97433c483a1b8d8cc15}
 Check the format a a dispatcher and decode it 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-dispatcher} & \doxyref{Dispatcher}{p.}{classDispatcher} \\
@@ -199,7 +199,7 @@ References owlCrypt().
 
 
 
-Referenced by dispatch(), and register\_\-argument().
+Referenced by dispatch(), and registerArgument().
 
 \index{Dispatcher@{Dispatcher}!dispatch@{dispatch}}
 \index{dispatch@{dispatch}!Dispatcher@{Dispatcher}}
@@ -221,29 +221,29 @@ On errors during dispatch, the severity level, otherwise the return value of the
 \end{DoxyReturn}
 
 
-References \$\_\-form, decode\_\-dispatcher(), OWL::factory(), OWLloader::getClass(), and \_\-OWL::set\_\-status().
+References \$\_\-form, decodeDispatcher(), OWL::factory(), OWLloader::getClass(), and \_\-OWL::setStatus().
 
-\index{Dispatcher@{Dispatcher}!get\_\-callback@{get\_\-callback}}
-\index{get\_\-callback@{get\_\-callback}!Dispatcher@{Dispatcher}}
-\subsubsection[{get\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::get\_\-callback (
+\index{Dispatcher@{Dispatcher}!getCallback@{getCallback}}
+\index{getCallback@{getCallback}!Dispatcher@{Dispatcher}}
+\subsubsection[{getCallback}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::getCallback (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}\label{classDispatcher_af4b71fa3c4d25bab86187d9dc44182f2}
+)}\label{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}
 Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
 The dispatcher, or null when no dispatched was registered 
 \end{DoxyReturn}
 
 
-Reimplemented from {\bf \_\-OWL} \doxyref{}{p.}{class__OWL_abded13b1c97ea6e0cfe3c68cb6bcf7a5}.
+Reimplemented from {\bf \_\-OWL} \doxyref{}{p.}{class__OWL_acb46ff88f43ca66f1268d3f5199c3f8d}.
 
-\index{Dispatcher@{Dispatcher}!get\_\-instance@{get\_\-instance}}
-\index{get\_\-instance@{get\_\-instance}!Dispatcher@{Dispatcher}}
-\subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static Dispatcher::get\_\-instance (
+\index{Dispatcher@{Dispatcher}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Dispatcher@{Dispatcher}}
+\subsubsection[{getInstance}]{\setlength{\rightskip}{0pt plus 5cm}static Dispatcher::getInstance (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classDispatcher_af9998a41bc9dec229b58924e9d5e5e6a}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classDispatcher_aa88e6fb0ef12b48172fbc86dbbf6556c}
 Return a reference to my implementation. If necessary, create that implementation first.
 
 \begin{DoxyReturn}{Returns}
@@ -253,13 +253,13 @@ Severity level
 
 References \$instance.
 
-\index{Dispatcher@{Dispatcher}!get\_\-severity@{get\_\-severity}}
-\index{get\_\-severity@{get\_\-severity}!Dispatcher@{Dispatcher}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
+\index{Dispatcher@{Dispatcher}!getSeverity@{getSeverity}}
+\index{getSeverity@{getSeverity}!Dispatcher@{Dispatcher}}
+\subsubsection[{getSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getSeverity (
 \begin{DoxyParamCaption}
 \item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
 Get the current object severity level.
 
 
@@ -276,15 +276,15 @@ References \_\-OWL::\$status.
 
 
 
-Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandler::set\_\-key().
+Referenced by LogHandler::composeMessage(), LogHandler::log(), and DataHandler::setKey().
 
-\index{Dispatcher@{Dispatcher}!get\_\-status@{get\_\-status}}
-\index{get\_\-status@{get\_\-status}!Dispatcher@{Dispatcher}}
-\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status (
+\index{Dispatcher@{Dispatcher}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!Dispatcher@{Dispatcher}}
+\subsubsection[{getStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+)\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
 Get the current object status.
 
 \begin{DoxyReturn}{Returns}
@@ -303,19 +303,19 @@ Referenced by SchemeHandler::compare().
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
-References OWL::factory(), and \_\-OWL::set\_\-status().
+References OWL::factory(), and \_\-OWL::setStatus().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), \_\-\_\-construct(), and User::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), \_\-\_\-construct(), and User::construct().
 
-\index{Dispatcher@{Dispatcher}!register\_\-argument@{register\_\-argument}}
-\index{register\_\-argument@{register\_\-argument}!Dispatcher@{Dispatcher}}
-\subsubsection[{register\_\-argument}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::register\_\-argument (
+\index{Dispatcher@{Dispatcher}!registerArgument@{registerArgument}}
+\index{registerArgument@{registerArgument}!Dispatcher@{Dispatcher}}
+\subsubsection[{registerArgument}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::registerArgument (
 \begin{DoxyParamCaption}
 \item[{array \$}]{\_\-argument}
 \end{DoxyParamCaption}
-)}\label{classDispatcher_a1542eebbc07bb9bf848c5cbd90cd437e}
+)}\label{classDispatcher_ab71f53de33f512c64417399c75078062}
 Add an argument to a previously registered callback dispatcher 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-argument} & Argument, must be an array type. When non-\/ arrays should be passed as arguments, the must be set when the callback is registered already \\
@@ -326,15 +326,15 @@ True on success, false on failure
 \end{DoxyReturn}
 
 
-References composeDispatcher(), decode\_\-dispatcher(), \_\-OWL::set\_\-status(), and \_\-OWL::succeeded().
+References composeDispatcher(), decodeDispatcher(), \_\-OWL::setStatus(), and \_\-OWL::succeeded().
 
-\index{Dispatcher@{Dispatcher}!register\_\-callback@{register\_\-callback}}
-\index{register\_\-callback@{register\_\-callback}!Dispatcher@{Dispatcher}}
-\subsubsection[{register\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::register\_\-callback (
+\index{Dispatcher@{Dispatcher}!registerCallback@{registerCallback}}
+\index{registerCallback@{registerCallback}!Dispatcher@{Dispatcher}}
+\subsubsection[{registerCallback}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::registerCallback (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-dispatcher}
 \end{DoxyParamCaption}
-)}\label{classDispatcher_ab466a55a02d5c40d10da035942d55bd5}
+)}\label{classDispatcher_a911773d612d6b4df0f206a30a32292e2}
 \doxyref{Register}{p.}{classRegister} a callback that wal later be retrieved as dispatcher 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-dispatcher} & Dispatched, \\
@@ -348,7 +348,7 @@ True on success, false on failure
 \end{DoxyReturn}
 
 
-References composeDispatcher(), \_\-OWL::set\_\-status(), and \_\-OWL::succeeded().
+References composeDispatcher(), \_\-OWL::setStatus(), and \_\-OWL::succeeded().
 
 \index{Dispatcher@{Dispatcher}!reset@{reset}}
 \index{reset@{reset}!Dispatcher@{Dispatcher}}
@@ -363,45 +363,45 @@ Reimplemented in {\bf DbHandler} \doxyref{}{p.}{classDbHandler_a9982df4830f05803
 
 
 
-References \_\-OWL::reset\_\-calltree().
+References \_\-OWL::resetCalltree().
 
 
 
-Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::set\_\-status().
+Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::setStatus().
 
-\index{Dispatcher@{Dispatcher}!restore\_\-status@{restore\_\-status}}
-\index{restore\_\-status@{restore\_\-status}!Dispatcher@{Dispatcher}}
-\subsubsection[{restore\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restore\_\-status (
+\index{Dispatcher@{Dispatcher}!restoreStatus@{restoreStatus}}
+\index{restoreStatus@{restoreStatus}!Dispatcher@{Dispatcher}}
+\subsubsection[{restoreStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restoreStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a465eeaf40edd9f9c848841700c32ce55}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
 Restore the previously saved status object and destroy the copy 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 
 
 Referenced by User::logout().
 
-\index{Dispatcher@{Dispatcher}!save\_\-status@{save\_\-status}}
-\index{save\_\-status@{save\_\-status}!Dispatcher@{Dispatcher}}
-\subsubsection[{save\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::save\_\-status (
+\index{Dispatcher@{Dispatcher}!saveStatus@{saveStatus}}
+\index{saveStatus@{saveStatus}!Dispatcher@{Dispatcher}}
+\subsubsection[{saveStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::saveStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
 Create a copy of the status object 
 
 Referenced by User::logout().
 
-\index{Dispatcher@{Dispatcher}!set\_\-callback@{set\_\-callback}}
-\index{set\_\-callback@{set\_\-callback}!Dispatcher@{Dispatcher}}
-\subsubsection[{set\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback (
+\index{Dispatcher@{Dispatcher}!setCallback@{setCallback}}
+\index{setCallback@{setCallback}!Dispatcher@{Dispatcher}}
+\subsubsection[{setCallback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setCallback (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-dispatcher}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a28d9025eaf37b49d63cb334ed28c33f0}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a5f84d43cd4dc7810649f1e2ebecad360}
 Set a dispatcher for later callback 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-dispatcher} & Dispatched, \\
@@ -417,13 +417,13 @@ True on success, false on failure
 
 References OWL::factory().
 
-\index{Dispatcher@{Dispatcher}!set\_\-callback\_\-argument@{set\_\-callback\_\-argument}}
-\index{set\_\-callback\_\-argument@{set\_\-callback\_\-argument}!Dispatcher@{Dispatcher}}
-\subsubsection[{set\_\-callback\_\-argument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback\_\-argument (
+\index{Dispatcher@{Dispatcher}!setCallbackArgument@{setCallbackArgument}}
+\index{setCallbackArgument@{setCallbackArgument}!Dispatcher@{Dispatcher}}
+\subsubsection[{setCallbackArgument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setCallbackArgument (
 \begin{DoxyParamCaption}
 \item[{array \$}]{\_\-arg}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a1e26611ce858b237f5a98a91ea3c3a1b}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a4e9ebfbd3c0d76539bed4e44de9962c3}
 Add an argument to a previously registered callback dispatcher 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-arg} & Argument, must be an array type. When non-\/ arrays should be passed as arguments, the must be set when the callback is registered already \\
@@ -440,25 +440,25 @@ References OWL::factory().
 
 Referenced by User::register().
 
-\index{Dispatcher@{Dispatcher}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
-\index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!Dispatcher@{Dispatcher}}
-\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
+\index{Dispatcher@{Dispatcher}!setHighSeverity@{setHighSeverity}}
+\index{setHighSeverity@{setHighSeverity}!Dispatcher@{Dispatcher}}
+\subsubsection[{setHighSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setHighSeverity (
 \begin{DoxyParamCaption}
 \item[{\&\$}]{object = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
 Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
-\index{Dispatcher@{Dispatcher}!set\_\-status@{set\_\-status}}
-\index{set\_\-status@{set\_\-status}!Dispatcher@{Dispatcher}}
-\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
+\index{Dispatcher@{Dispatcher}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!Dispatcher@{Dispatcher}}
+\subsubsection[{setStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setStatus (
 \begin{DoxyParamCaption}
 \item[{\$}]{status, }
 \item[{\$}]{params = {\ttfamily array~()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+)\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
 Set the current object status to the specified value.
 
 
@@ -470,11 +470,11 @@ Set the current object status to the specified value.
 \end{DoxyParams}
 
 
-References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
+References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alter\_\-scheme(), FileHandler::close(), composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::create\_\-scheme(), SchemeHandler::define\_\-index(), SchemeHandler::define\_\-scheme(), dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::get\_\-table\_\-columns(), SchemeHandler::get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-field(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), User::read\_\-userdata(), User::register(), register\_\-argument(), register\_\-callback(), \_\-OWL::restore\_\-status(), SchemeHandler::scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), SchemeHandler::table\_\-description(), SchemeHandler::validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), DbHandler::read(), FileHandler::readLine(), User::readUserdata(), User::register(), registerArgument(), registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), SchemeHandler::validateScheme(), and DbHandler::write().
 
 \index{Dispatcher@{Dispatcher}!signal@{signal}}
 \index{signal@{signal}!Dispatcher@{Dispatcher}}
@@ -502,7 +502,7 @@ References ConfigHandler::get().
 
 
 
-Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
+Referenced by \_\-OWL::setStatus(), and \_\-OWL::traceback().
 
 \index{Dispatcher@{Dispatcher}!succeeded@{succeeded}}
 \index{succeeded@{succeeded}!Dispatcher@{Dispatcher}}
@@ -524,7 +524,7 @@ Boolean true when successfull
 \end{DoxyReturn}
 
 
-Referenced by User::construct(), register\_\-argument(), and register\_\-callback().
+Referenced by User::construct(), registerArgument(), and registerCallback().
 
 \index{Dispatcher@{Dispatcher}!traceback@{traceback}}
 \index{traceback@{traceback}!Dispatcher@{Dispatcher}}
@@ -565,12 +565,16 @@ string -\/ A dispatcher registered for callback \index{Dispatcher@{Dispatcher}!\
 \subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}Dispatcher::\$instance\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classDispatcher_a676b77546f23eb5bae93d28362664eb8}
 integer -\/ self reference 
 
-Referenced by get\_\-instance().
+Referenced by getInstance().
 
 \index{Dispatcher@{Dispatcher}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!Dispatcher@{Dispatcher}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
 Severity level of the current object status 
+
+Referenced by DbHandler::commitTransaction(), DbHandler::rollbackTransaction(), and DbHandler::startTransaction().
+
+
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 

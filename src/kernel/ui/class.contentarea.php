@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the abstract ContentArea class
- * \version $Id: class.contentarea.php,v 1.5 2011-04-27 11:50:07 oscar Exp $
+ * \version $Id: class.contentarea.php,v 1.6 2011-04-29 14:55:20 oscar Exp $
  */
 
 /**
@@ -24,7 +24,16 @@ abstract class ContentArea extends _OWL
 	 * This function must be reimplemented by all derived classes.
 	 * It creates an object of any container type(with as many nested objects as desired)
 	 * which holds all content for this area.
-	 * \return The container object
+	 * To check of a user has access to the current content area, the following check
+	 * should be used:
+	 * \code
+	 * 	if ($this->hasRight('(right)', OWL_ID) === false) {
+	 * 		return false;
+	 * 	}
+	 * \endcode
+	 * Where 'right' is the rightsbit to check (e.g. 'readregistered') and the second parameter
+	 * identifies the application (either OWL_ID or APP_ID)
+	 * \return The container object, or false when the user has no access
 	 * \public
 	 */
 	abstract public function loadArea();

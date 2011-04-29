@@ -123,7 +123,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#aca5c47b5530644a7877d32b1c04376f2">dbError</a> (&amp;$_resource, &amp;$_number, &amp;$_text)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a856919afd4bd3680410fdc98bd2eb865">dbConnect</a> (&amp;$_resource, $_server, $_name, $_user, $_password, $_multiple=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#adba97d7d125e5772ea5ffa61dcb2b9e3">dbOpen</a> (&amp;$_resource, $_server, $_name, $_user, $_password)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a935f49386759d4bcb109119e87a6010a">dbTransactionCommit</a> (&amp;$_resource, $_name, $_name=null, $_new=false)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a207f82ed5516848b7a25802fe236d3a2">dbTransactionRollback</a> (&amp;$_resource, $_name, $_name=null, $_new=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a9da288ed9ff36dc572a68165de8b5839">dbTableList</a> (&amp;$_resource, $_pattern, $_views=false)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a469902953a75fcdb3f65b822376c67c1">dbExec</a> (&amp;$_resource, $_statement)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#af85679f7912ab93293b31ad7609a7734">dbRead</a> (&amp;$_data, &amp;$_resource, $_query)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a5a7250d264b682ee2f4bdb14bb4aafd7">dbWrite</a> (&amp;$_resource, $_query)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#aaf69bfa761be38520c7d72ae11506dac">dbInsertId</a> (&amp;$_resource, $_table, $_field)</td></tr>
@@ -136,8 +139,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a2a247b2f8551feaf40548a597694c960">functionIfnull</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a5841248a1c642433fa9b0acc28551369">functionConcat</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#afc607b5c0a8d2320cd21f5746dde027e">__constructor</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a30ef8b1e115ed1dbdbd66b960c0e348d">dbTransactionStart</a> (&amp;$_resource, $_name=null)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a7ac3780695fb0d6e291ee123be7db020">dbUnescapeString</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#ae9ccdb445c7c4213eaff21677a03ed41">functionCount</a> ($_field, array $_arguments=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a3f9f0c1234b3fe3fb263ff1393f13197">dbTransactionStart</a> (&amp;$_resource, $_name=null)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ac99fd7eba511d8799fcc447006179c72">dbUnescapeString</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a58f24b8ba3d3c104cefac2d9c21ca67c">functionCount</a> ($_field, array $_arguments=array())</td></tr>
 </table>
@@ -417,6 +422,46 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a469902953a75fcdb3f65b822376c67c1"></a><!-- doxytag: member="MySQL::dbExec" ref="a469902953a75fcdb3f65b822376c67c1" args="(&amp;$_resource, $_statement)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MySQL::dbExec </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_statement</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Execute a database statement that does not return any value </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_statement</td><td>Statement to execute </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#a0b45d39ae1507571c29601a2ba5e0fc9">DbDriver</a>.</p>
+
+<p>Referenced by <a class="el" href="classMySQL.html#a935f49386759d4bcb109119e87a6010a">dbTransactionCommit()</a>, and <a class="el" href="classMySQL.html#a207f82ed5516848b7a25802fe236d3a2">dbTransactionRollback()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a2ebd12deacbdebd6ad876e279f34b4da"></a><!-- doxytag: member="MySQL::dbFetchNextRecord" ref="a2ebd12deacbdebd6ad876e279f34b4da" args="(&amp;$_data)" -->
 <div class="memitem">
 <div class="memproto">
@@ -671,28 +716,181 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac99fd7eba511d8799fcc447006179c72"></a><!-- doxytag: member="MySQL::dbUnescapeString" ref="ac99fd7eba511d8799fcc447006179c72" args="($_string)" -->
+<a class="anchor" id="a935f49386759d4bcb109119e87a6010a"></a><!-- doxytag: member="MySQL::dbTransactionCommit" ref="a935f49386759d4bcb109119e87a6010a" args="(&amp;$_resource, $_name, $_name=null, $_new=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DbDriver::dbUnescapeString </td>
+          <td class="memname">MySQL::dbTransactionCommit </td>
           <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_string</em></td><td>)</td>
-          <td><code> [inherited]</code></td>
+          <td class="paramname"><em>_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_new</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Unescape a string fthat is formatted for use in SQL This method is implemented by class <a class="el" href="classDbDefaults.html" title="Database driver defauls.">DbDefaults</a> </p>
+<p>Open a new transaction </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Transaction name for databases that support named transactions </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_new</td><td>Boolean, true when a new transaction should be started after the commit </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classDbDefaults.html#a8e061014dd32e328f70e0dd1661b74c6">DbDefaults</a>.</p>
+
+<p>References <a class="el" href="classMySQL.html#a469902953a75fcdb3f65b822376c67c1">dbExec()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a207f82ed5516848b7a25802fe236d3a2"></a><!-- doxytag: member="MySQL::dbTransactionRollback" ref="a207f82ed5516848b7a25802fe236d3a2" args="(&amp;$_resource, $_name, $_name=null, $_new=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MySQL::dbTransactionRollback </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_new</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Open a new transaction </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Transaction name for databases that support named transactions </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_new</td><td>Boolean, true when a new transaction should be started after the rollback </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classDbDefaults.html#a763074f5917f16755b2d00bf6d277a0a">DbDefaults</a>.</p>
+
+<p>References <a class="el" href="classMySQL.html#a469902953a75fcdb3f65b822376c67c1">dbExec()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a30ef8b1e115ed1dbdbd66b960c0e348d"></a><!-- doxytag: member="MySQL::dbTransactionStart" ref="a30ef8b1e115ed1dbdbd66b960c0e348d" args="(&amp;$_resource, $_name=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::dbTransactionStart </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Open a new transaction </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Transaction name for databases that support named transactions </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3f9f0c1234b3fe3fb263ff1393f13197"></a><!-- doxytag: member="MySQL::dbTransactionStart" ref="a3f9f0c1234b3fe3fb263ff1393f13197" args="(&amp;$_resource, $_name=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbTransactionStart </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Open a new transaction </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Transaction name for databases that support named transactions </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 
 </div>
 </div>
@@ -711,6 +909,31 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Unescape a string fthat is formatted for use in SQL </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac99fd7eba511d8799fcc447006179c72"></a><!-- doxytag: member="MySQL::dbUnescapeString" ref="ac99fd7eba511d8799fcc447006179c72" args="($_string)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbUnescapeString </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_string</em></td><td>)</td>
+          <td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Unescape a string fthat is formatted for use in SQL This method is implemented by class <a class="el" href="classDbDefaults.html" title="Database driver defauls.">DbDefaults</a> </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
@@ -799,12 +1022,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae9ccdb445c7c4213eaff21677a03ed41"></a><!-- doxytag: member="MySQL::functionCount" ref="ae9ccdb445c7c4213eaff21677a03ed41" args="($_field, array $_arguments=array())" -->
+<a class="anchor" id="a58f24b8ba3d3c104cefac2d9c21ca67c"></a><!-- doxytag: member="MySQL::functionCount" ref="a58f24b8ba3d3c104cefac2d9c21ca67c" args="($_field, array $_arguments=array())" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DbDefaults::functionCount </td>
+          <td class="memname">DbDriver::functionCount </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>_field</em>, </td>
@@ -835,12 +1058,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a58f24b8ba3d3c104cefac2d9c21ca67c"></a><!-- doxytag: member="MySQL::functionCount" ref="a58f24b8ba3d3c104cefac2d9c21ca67c" args="($_field, array $_arguments=array())" -->
+<a class="anchor" id="ae9ccdb445c7c4213eaff21677a03ed41"></a><!-- doxytag: member="MySQL::functionCount" ref="ae9ccdb445c7c4213eaff21677a03ed41" args="($_field, array $_arguments=array())" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DbDriver::functionCount </td>
+          <td class="memname">DbDefaults::functionCount </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>_field</em>, </td>
@@ -970,7 +1193,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Apr 26 2011 14:04:18 for OWL-PHP by
+    <li class="footer">Generated on Fri Apr 29 2011 16:53:10 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines default methods for the Database drivers
- * \version $Id: class.dbdefaults.php,v 1.1 2011-04-19 13:00:03 oscar Exp $
+ * \version $Id: class.dbdefaults.php,v 1.2 2011-04-29 14:55:20 oscar Exp $
  */
 
 
@@ -21,6 +21,41 @@ abstract class DbDefaults  {
 	public function __constructor()
 	{
 		
+	}
+
+	/**
+	 * Open a new transaction
+	 * \param[in] $_resource Link with the database server
+	 * \param[in] $_name Transaction name for databases that support named transactions
+	 * \return True on success, false on failures
+	 */
+	public function dbTransactionStart (&$_resource, $_name = null)
+	{
+		return ($this->dbExec($_resource, 'START TRANSACTION'));
+	}
+
+	/**
+	 * Open a new transaction
+	 * \param[in] $_resource Link with the database server
+	 * \param[in] $_name Transaction name for databases that support named transactions
+	 * \param[in] $_new Boolean, true when a new transaction should be started after the commit
+	 * \return True on success, false on failures
+	 */
+	public function dbTransactionCommit (&$_resource, $_name, $_name = null, $_new = false)
+	{
+		return ($this->dbExec($_resource, 'COMMIT WORK'));
+	}
+
+	/**
+	 * Open a new transaction
+	 * \param[in] $_resource Link with the database server
+	 * \param[in] $_name Transaction name for databases that support named transactions
+	 * \param[in] $_new Boolean, true when a new transaction should be started after the rollback
+	 * \return True on success, false on failures
+	 */
+	public function dbTransactionRollback (&$_resource, $_name, $_name = null, $_new = false)
+	{
+		return ($this->dbExec($_resource, 'ROLLBACK WORK'));
 	}
 
 	/**

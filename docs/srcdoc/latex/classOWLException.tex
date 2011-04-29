@@ -10,9 +10,9 @@ Exception handler.
 \item 
 {\bf \_\-\_\-construct} (\$msg=null, \$code=0, {\bf OWLException} \$caller=null)
 \item 
-{\bf get\_\-trace} ()
+{\bf \_\-getTrace} ()
 \item 
-{\bf stack\_\-dump} (\$textmode=true)
+{\bf stackDump} (\$textmode=true)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -22,7 +22,7 @@ Exception handler.
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bf check\_\-hide} (\$trace)
+{\bf checkHide} (\$trace)
 \item 
 {\bf traceback} (\$trace, \$step, \$textmode)
 \end{DoxyCompactItemize}
@@ -74,13 +74,24 @@ References \$caller, and ConfigHandler::get().
 
 
 \subsection{Member Function Documentation}
-\index{OWLException@{OWLException}!check\_\-hide@{check\_\-hide}}
-\index{check\_\-hide@{check\_\-hide}!OWLException@{OWLException}}
-\subsubsection[{check\_\-hide}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::check\_\-hide (
+\index{OWLException@{OWLException}!\_\-getTrace@{\_\-getTrace}}
+\index{\_\-getTrace@{\_\-getTrace}!OWLException@{OWLException}}
+\subsubsection[{\_\-getTrace}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::\_\-getTrace (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOWLException_ad5e583964eaccad8e9e6140e56367b14}
+Trace back the previous object in the stack 
+
+Referenced by stackDump().
+
+\index{OWLException@{OWLException}!checkHide@{checkHide}}
+\index{checkHide@{checkHide}!OWLException@{OWLException}}
+\subsubsection[{checkHide}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::checkHide (
 \begin{DoxyParamCaption}
 \item[{\$}]{trace}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classOWLException_ad5e675e393079574ff85ac862262baa0}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classOWLException_a2f2fa7401523c6b501b8becf8f163705}
 Check if this traced call has arguments that should be hidden in the stackdump. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$trace} & The call \\
@@ -97,24 +108,13 @@ References ConfigHandler::get().
 
 Referenced by traceback().
 
-\index{OWLException@{OWLException}!get\_\-trace@{get\_\-trace}}
-\index{get\_\-trace@{get\_\-trace}!OWLException@{OWLException}}
-\subsubsection[{get\_\-trace}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::get\_\-trace (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\label{classOWLException_abec096884c369f08040443561ac3b164}
-Trace back the previous object in the stack 
-
-Referenced by stack\_\-dump().
-
-\index{OWLException@{OWLException}!stack\_\-dump@{stack\_\-dump}}
-\index{stack\_\-dump@{stack\_\-dump}!OWLException@{OWLException}}
-\subsubsection[{stack\_\-dump}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::stack\_\-dump (
+\index{OWLException@{OWLException}!stackDump@{stackDump}}
+\index{stackDump@{stackDump}!OWLException@{OWLException}}
+\subsubsection[{stackDump}]{\setlength{\rightskip}{0pt plus 5cm}OWLException::stackDump (
 \begin{DoxyParamCaption}
 \item[{\$}]{textmode = {\ttfamily true}}
 \end{DoxyParamCaption}
-)}\label{classOWLException_acf2b94859fdebcefc22e8a75ac1a670d}
+)}\label{classOWLException_a60ce016fcb62831121e76b21b689e590}
 Create an overview of the calling stack
 
 
@@ -124,11 +124,11 @@ Create an overview of the calling stack
 \end{DoxyParams}
 
 
-References Register::get\_\-code(), Register::get\_\-severity(), get\_\-trace(), and traceback().
+References \_\-getTrace(), Register::getCode(), Register::getSeverity(), and traceback().
 
 
 
-Referenced by OWLExceptionHandler::log\_\-exception().
+Referenced by OWLExceptionHandler::logException().
 
 \index{OWLException@{OWLException}!traceback@{traceback}}
 \index{traceback@{traceback}!OWLException@{OWLException}}
@@ -152,11 +152,11 @@ Trace a single call from the stack
 \end{DoxyParams}
 
 
-References check\_\-hide(), and ConfigHandler::get().
+References checkHide(), and ConfigHandler::get().
 
 
 
-Referenced by stack\_\-dump().
+Referenced by stackDump().
 
 
 

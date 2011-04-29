@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.18 2011-04-27 11:50:07 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.19 2011-04-29 14:55:20 oscar Exp $
  */
 
 /**
@@ -169,11 +169,11 @@ class DbHandler extends _OWL
 	 * string - Prepared query type
 	 */
 	private $query_type;
-	
+
 	/**
-	 * integer - Last inserted Auto Increment value. Set after all write actions, so can be 0.
+	 * string - name of the open transaction (currently just used as a boolean)
 	 */
-	private $last_id;
+	private $transaction;
 
 	/**
 	 * boolean -  true when the object has been cloned
@@ -217,6 +217,7 @@ class DbHandler extends _OWL
 		$this->opened = false;
 		$this->errno = 0;
 		$this->error = '';
+		$this->transaction = '';
 		$this->db_prefix = ConfigHandler::get ('dbprefix');
 		$this->query_type = DBHANDLE_COMPLETED;
 		$this->setStatus (OWL_STATUS_OK);
@@ -263,6 +264,8 @@ class DbHandler extends _OWL
 	{
 		if ($this->cloned) {
 			$this->setStatus (DBHANDLE_CLONEACLONE);
+		} elseif ($this->transaction !== '') {
+			$this->setStatus (DBHANDLE_CLONEWHILETRANS);
 		} else {
 			$this->close();
 			self::$instance = ++self::$instance;
@@ -561,6 +564,73 @@ class DbHandler extends _OWL
 			$value = array(DBMATCH_EQ, $value);
 		}
 		return (array($fieldname, $value));
+	}
+
+	/**
+	 * Start a new database transaction
+	 * \param[in] $name Transaction name (reserverd for future use)
+	 * \return Object severity status
+	 */
+	public function startTransaction ($name)
+	{
+		if ($this->transaction !== '') {
+			$this->setStatus(DBHANDLE_TRANSOPEN);
+			return ($this->$severity);
+		} else {
+			if ($this->driver->dbTransactionStart ($this->id, $name) === false) {
+				$this->driver->dbError ($this->id, $this->errno, $this->error);
+				$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+			} else {
+				$this->transaction = $name;
+			}
+		}
+		return ($this->$severity);
+	}
+
+	/**
+	 * Commit database transaction
+	 * \param[in] $name Transaction name (reserverd for future use)
+	 * \param[in] $openNew Boolean set to true when a new transaction must be opened immediately
+	 * \return Object severity status
+	 */
+	public function commitTransaction ($name, $openNew = false)
+	{
+		if ($this->transaction === '') {
+			$this->setStatus(DBHANDLE_NOTRANSOPEN, array('COMMIT'));
+		} else {
+			if ($this->driver->dbTransactionCommit ($this->id, $name, $openNew) === false) {
+				$this->driver->dbError ($this->id, $this->errno, $this->error);
+				$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+			} else {
+				if ($openNew === false) {
+					$this->transaction = '';
+				}
+			}
+		}
+		return ($this->$severity);
+	}
+
+	/**
+	 * Rollback the current transaction
+	 * \param[in] $name Transaction name (reserverd for future use)
+	 * \param[in] $openNew Boolean set to true when a new transaction must be opened immediately
+	 * \return Object severity status
+	 */
+	public function rollbackTransaction($name, $openNew = false)
+	{
+		if ($this->transaction === '') {
+			$this->setStatus(DBHANDLE_NOTRANSOPEN, array('ROLLBACK'));
+		} else {
+			if ($this->driver->dbTransactionRollback ($this->id, $name, $openNew) === false) {
+				$this->driver->dbError ($this->id, $this->errno, $this->error);
+				$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+			} else {
+				if ($openNew === false) {
+					$this->transaction = '';
+				}
+			}
+		}
+		return ($this->$severity);
 	}
 
 	/**
@@ -1067,9 +1137,6 @@ class DbHandler extends _OWL
 				$this->query_type = DBHANDLE_COMPLETED;
 				return ($this->severity);
 		}
-		if ($this->query_type === DBHANDLE_INSERT) {
-			$this->last_id = $this->driver->dbInsertId($this->id, null, null); // Check for auto increment values
-		}
 		$this->query_type = DBHANDLE_COMPLETED;
 		$this->setStatus (DBHANDLE_UPDATED, array ('written', $_cnt));
 		if ($rows !== null) {
@@ -1081,12 +1148,13 @@ class DbHandler extends _OWL
 
 	/**
 	 * Return the last ID after a newly inserted record holding an AUTO_INCREMENT field
-	 * \public
+	 * \param[in] $table Table name holding the auto increment field
+	 * \param[in] $field Name of the auto increment field
 	 * \return The number that was last inserted 
 	 */
-	public function lastInsertedId ()
+	public function lastInsertedId ($table = null, $field = null)
 	{
-		return ($this->last_id);
+		return ($this->driver->dbInsertId($this->id, $table, $field));
 	}
 
 	/**
@@ -1127,18 +1195,22 @@ Register::registerCode ('DBHANDLE_IVTABLE');
 Register::registerCode ('DBHANDLE_NOTABLES');
 Register::registerCode ('DBHANDLE_NOVALUES');
 Register::registerCode ('DBHANDLE_IVFUNCTION');
+Register::registerCode ('DBHANDLE_TRANSOPEN');
+Register::registerCode ('DBHANDLE_NOTRANSOPEN');
 
 Register::setSeverity (OWL_BUG);
 
 Register::setSeverity (OWL_ERROR);
 Register::registerCode ('DBHANDLE_IVFLDFORMAT');
 Register::registerCode ('DBHANDLE_CLONEACLONE');
+Register::registerCode ('DBHANDLE_CLONEWHILETRANS');
 Register::registerCode ('DBHANDLE_NOTACLONE');
 Register::registerCode ('DBHANDLE_CONNECTERR');
 Register::registerCode ('DBHANDLE_OPENERR');
 Register::registerCode ('DBHANDLE_DBCLOSED');
 Register::registerCode ('DBHANDLE_QUERYERR');
 Register::registerCode ('DBHANDLE_CREATERR');
+Register::registerCode ('DBHANDLE_DRIVERERR');
 
 //Register::setSeverity (OWL_FATAL);
 //Register::setSeverity (OWL_CRITICAL);

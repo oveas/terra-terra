@@ -18,23 +18,23 @@ Inheritance diagram for SchemeHandler:\begin{figure}[H]
 \item 
 {\bf \_\-\_\-clone} ()
 \item 
-{\bf create\_\-scheme} (\$\_\-tblname)
+{\bf createScheme} (\$\_\-tblname)
 \item 
-{\bf define\_\-scheme} (\$\_\-scheme)
+{\bf defineScheme} (\$\_\-scheme)
 \item 
-{\bf define\_\-index} (\$\_\-index)
+{\bf defineIndex} (\$\_\-index)
 \item 
 {\bf scheme} (\$\_\-drops=false)
 \item 
-{\bf alter\_\-scheme} (\$\_\-field)
+{\bf alterScheme} (\$\_\-field)
 \item 
-{\bf table\_\-description} (\$tablename, \&\$data)
+{\bf tableDescription} (\$tablename, \&\$data)
 \item 
 {\bf reset} ()
 \item 
-{\bf get\_\-status} ()
+{\bf getStatus} ()
 \item 
-{\bf get\_\-severity} (\$status=null)
+{\bf getSeverity} (\$status=null)
 \item 
 {\bf succeeded} (\$\_\-ok={\bf OWL\_\-SUCCESS}, \&\$\_\-object=null)
 \item 
@@ -45,28 +45,28 @@ Inheritance diagram for SchemeHandler:\begin{figure}[H]
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static {\bf get\_\-instance} ()
+static {\bf getInstance} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\bf init} ()
 \item 
-{\bf set\_\-callback} (\$\_\-dispatcher)
+{\bf setCallback} (\$\_\-dispatcher)
 \item 
-{\bf set\_\-callback\_\-argument} (array \$\_\-arg)
+{\bf setCallbackArgument} (array \$\_\-arg)
 \item 
-{\bf get\_\-callback} ()
+{\bf getCallback} ()
 \item 
-{\bf save\_\-status} ()
+{\bf saveStatus} ()
 \item 
-{\bf restore\_\-status} ()
+{\bf restoreStatus} ()
 \item 
 {\bf check} (\&\$object, \$level={\bf OWL\_\-WARNING})
 \item 
-{\bf set\_\-status} (\$status, \$params=array())
+{\bf setStatus} (\$status, \$params=array())
 \item 
-{\bf set\_\-high\_\-severity} (\&\$object=null)
+{\bf setHighSeverity} (\&\$object=null)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -78,19 +78,19 @@ static {\bf get\_\-instance} ()
 \item 
 {\bf \_\-\_\-construct} ()
 \item 
-{\bf validate\_\-scheme} ()
+{\bf validateScheme} ()
 \item 
 {\bf compare} ()
 \item 
-{\bf create\_\-table} ()
+{\bf createTable} ()
 \item 
-{\bf alter\_\-table} (\$\_\-diffs, \$\_\-drops)
+{\bf alterTable} (\$\_\-diffs, \$\_\-drops)
 \item 
 {\bf \_\-define\_\-field} (\$\_\-desc)
 \item 
-{\bf get\_\-table\_\-columns} (\$\_\-tablename)
+{\bf getTableColumns} (\$\_\-tablename)
 \item 
-{\bf get\_\-table\_\-indexes} (\$\_\-tablename)
+{\bf getTableIndexes} (\$\_\-tablename)
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -135,7 +135,7 @@ Oct 7, 2010 -\/-\/ O van Eijk -\/-\/ initial version for \doxyref{OWL}{p.}{class
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_ae528fde31fe73647c614ef6f957c4caf}
 Class constructor 
 
-References get\_\-instance(), \_\-OWL::init(), and \_\-OWL::set\_\-status().
+References getInstance(), \_\-OWL::init(), and \_\-OWL::setStatus().
 
 \index{SchemeHandler@{SchemeHandler}!\_\-\_\-destruct@{\_\-\_\-destruct}}
 \index{\_\-\_\-destruct@{\_\-\_\-destruct}!SchemeHandler@{SchemeHandler}}
@@ -175,38 +175,38 @@ string SQL code
 \end{DoxyReturn}
 
 
-Referenced by alter\_\-table(), and create\_\-table().
+Referenced by alterTable(), and createTable().
 
-\index{SchemeHandler@{SchemeHandler}!alter\_\-scheme@{alter\_\-scheme}}
-\index{alter\_\-scheme@{alter\_\-scheme}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{alter\_\-scheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::alter\_\-scheme (
+\index{SchemeHandler@{SchemeHandler}!alterScheme@{alterScheme}}
+\index{alterScheme@{alterScheme}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{alterScheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::alterScheme (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-field}
 \end{DoxyParamCaption}
-)}\label{classSchemeHandler_aa8948e6382f7d19302a255ff0619765c}
+)}\label{classSchemeHandler_a4072b1c3c04e4915cbd0e8926a8efb7a}
 Modify 1 or more fields in an existing scheme definition 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-field} & Array holding 1 or more field descriptions \\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
-\doxyref{define\_\-scheme()}{p.}{classSchemeHandler_a07f6b7c5ac78e88f32584b90da53776b}
+\doxyref{defineScheme()}{p.}{classSchemeHandler_acadaf57e5f374f300501153056f227c5}
 \end{DoxySeeAlso}
 \begin{DoxyReturn}{Returns}
 Boolean; false if the table description contains errors 
 \end{DoxyReturn}
 
 
-References scheme(), \_\-OWL::set\_\-status(), and validate\_\-scheme().
+References scheme(), \_\-OWL::setStatus(), and validateScheme().
 
-\index{SchemeHandler@{SchemeHandler}!alter\_\-table@{alter\_\-table}}
-\index{alter\_\-table@{alter\_\-table}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{alter\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::alter\_\-table (
+\index{SchemeHandler@{SchemeHandler}!alterTable@{alterTable}}
+\index{alterTable@{alterTable}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{alterTable}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::alterTable (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-diffs, }
 \item[{\$}]{\_\-drops}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_a7652ae28d0407f5be24fd67ad1b79e8d}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_a498dc3fc0d51998422623ca64c84c52b}
 Make changes to the table 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-diffs} & Changes to make \\
@@ -244,7 +244,7 @@ True if the severity level was correct (below the max), otherwise false
 \end{DoxyReturn}
 
 
-References \_\-OWL::reset(), \_\-OWL::set\_\-high\_\-severity(), and \_\-OWL::traceback().
+References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
 
 
 
@@ -262,19 +262,19 @@ mixed True if there are no differences, False if the table does not exist, or an
 \end{DoxyReturn}
 
 
-References \_\-OWL::get\_\-status(), scheme(), and table\_\-description().
+References \_\-OWL::getStatus(), scheme(), and tableDescription().
 
 
 
 Referenced by scheme().
 
-\index{SchemeHandler@{SchemeHandler}!create\_\-scheme@{create\_\-scheme}}
-\index{create\_\-scheme@{create\_\-scheme}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{create\_\-scheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::create\_\-scheme (
+\index{SchemeHandler@{SchemeHandler}!createScheme@{createScheme}}
+\index{createScheme@{createScheme}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{createScheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::createScheme (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-tblname}
 \end{DoxyParamCaption}
-)}\label{classSchemeHandler_ae00497936108b220b41af512774cfc16}
+)}\label{classSchemeHandler_a49bc2a5dd43188f83824aafd9fbff9eb}
 Set a new tablename 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-tblname} & Name of the table to create, check or modify \\
@@ -282,15 +282,15 @@ Set a new tablename
 \end{DoxyParams}
 
 
-References reset(), and \_\-OWL::set\_\-status().
+References reset(), and \_\-OWL::setStatus().
 
-\index{SchemeHandler@{SchemeHandler}!create\_\-table@{create\_\-table}}
-\index{create\_\-table@{create\_\-table}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{create\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::create\_\-table (
+\index{SchemeHandler@{SchemeHandler}!createTable@{createTable}}
+\index{createTable@{createTable}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{createTable}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::createTable (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_a87f623cc6ac1e44576d2415e36804218}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_a7c5939939cb2ba71ed5a32bc987f0c71}
 Create the defined table 
 
 References \_\-define\_\-field(), and scheme().
@@ -299,13 +299,13 @@ References \_\-define\_\-field(), and scheme().
 
 Referenced by scheme().
 
-\index{SchemeHandler@{SchemeHandler}!define\_\-index@{define\_\-index}}
-\index{define\_\-index@{define\_\-index}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{define\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::define\_\-index (
+\index{SchemeHandler@{SchemeHandler}!defineIndex@{defineIndex}}
+\index{defineIndex@{defineIndex}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{defineIndex}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::defineIndex (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-index}
 \end{DoxyParamCaption}
-)}\label{classSchemeHandler_a92adefff835050da61337524b9ae907b}
+)}\label{classSchemeHandler_abc00b9ccfdf0681a3e5d333ad11db0e1}
 Define the indexes for a table 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-index} & Array holding the index description. This is a 2 dimensional array where the first level holds the indexname. The second array defines the attributes for each index:
@@ -319,15 +319,15 @@ Define the indexes for a table
 \end{DoxyParams}
 
 
-References \$\_\-index, scheme(), \_\-OWL::set\_\-status(), and validate\_\-scheme().
+References \$\_\-index, scheme(), \_\-OWL::setStatus(), and validateScheme().
 
-\index{SchemeHandler@{SchemeHandler}!define\_\-scheme@{define\_\-scheme}}
-\index{define\_\-scheme@{define\_\-scheme}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{define\_\-scheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::define\_\-scheme (
+\index{SchemeHandler@{SchemeHandler}!defineScheme@{defineScheme}}
+\index{defineScheme@{defineScheme}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{defineScheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::defineScheme (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-scheme}
 \end{DoxyParamCaption}
-)}\label{classSchemeHandler_a07f6b7c5ac78e88f32584b90da53776b}
+)}\label{classSchemeHandler_acadaf57e5f374f300501153056f227c5}
 Define the layout for a table 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-scheme} & Array holding the table description. This is a 2 dimensional array where the first level holds the fieldnames. The second array defines the attributes for each field:
@@ -344,33 +344,33 @@ Define the layout for a table
 \end{DoxyParams}
 
 
-References \$\_\-scheme, scheme(), \_\-OWL::set\_\-status(), and validate\_\-scheme().
+References \$\_\-scheme, scheme(), \_\-OWL::setStatus(), and validateScheme().
 
-\index{SchemeHandler@{SchemeHandler}!get\_\-callback@{get\_\-callback}}
-\index{get\_\-callback@{get\_\-callback}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{get\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-callback (
+\index{SchemeHandler@{SchemeHandler}!getCallback@{getCallback}}
+\index{getCallback@{getCallback}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{getCallback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getCallback (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_abded13b1c97ea6e0cfe3c68cb6bcf7a5}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_acb46ff88f43ca66f1268d3f5199c3f8d}
 Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
 The dispatcher, of null on failure. 
 \end{DoxyReturn}
 
 
-Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_af4b71fa3c4d25bab86187d9dc44182f2}.
+Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}.
 
 
 
 References OWL::factory().
 
-\index{SchemeHandler@{SchemeHandler}!get\_\-instance@{get\_\-instance}}
-\index{get\_\-instance@{get\_\-instance}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{get\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}static SchemeHandler::get\_\-instance (
+\index{SchemeHandler@{SchemeHandler}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{getInstance}]{\setlength{\rightskip}{0pt plus 5cm}static SchemeHandler::getInstance (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classSchemeHandler_a02edff8af08e3e33a7571e2da8f98cc7}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classSchemeHandler_aedfe445dbf679209066213b64d883c7d}
 Return a reference to my implementation. If necessary, create that implementation first.
 
 \begin{DoxyReturn}{Returns}
@@ -384,13 +384,13 @@ References \$instance.
 
 Referenced by \_\-\_\-construct().
 
-\index{SchemeHandler@{SchemeHandler}!get\_\-severity@{get\_\-severity}}
-\index{get\_\-severity@{get\_\-severity}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{get\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-severity (
+\index{SchemeHandler@{SchemeHandler}!getSeverity@{getSeverity}}
+\index{getSeverity@{getSeverity}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{getSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getSeverity (
 \begin{DoxyParamCaption}
 \item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_adf9509ef96858be7bdd9414c5ef129aa}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
 Get the current object severity level.
 
 
@@ -407,15 +407,15 @@ References \_\-OWL::\$status.
 
 
 
-Referenced by LogHandler::compose\_\-message(), LogHandler::log(), and DataHandler::set\_\-key().
+Referenced by LogHandler::composeMessage(), LogHandler::log(), and DataHandler::setKey().
 
-\index{SchemeHandler@{SchemeHandler}!get\_\-status@{get\_\-status}}
-\index{get\_\-status@{get\_\-status}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{get\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::get\_\-status (
+\index{SchemeHandler@{SchemeHandler}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{getStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_a99ec771fa2c5c279f80152cc09e489a8}
+)\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
 Get the current object status.
 
 \begin{DoxyReturn}{Returns}
@@ -425,13 +425,13 @@ Object's status code
 
 Referenced by compare().
 
-\index{SchemeHandler@{SchemeHandler}!get\_\-table\_\-columns@{get\_\-table\_\-columns}}
-\index{get\_\-table\_\-columns@{get\_\-table\_\-columns}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{get\_\-table\_\-columns}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::get\_\-table\_\-columns (
+\index{SchemeHandler@{SchemeHandler}!getTableColumns@{getTableColumns}}
+\index{getTableColumns@{getTableColumns}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{getTableColumns}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::getTableColumns (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-tablename}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_ab8f222514c3aa614190201a6a8a9cedd}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_abbf0ce7a23293498c32227e2554ce849}
 Get the columns for a given table
 
 
@@ -444,19 +444,19 @@ Indexed array holding all fields =$>$ datatypes, or null on errors
 \end{DoxyReturn}
 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 
 
-Referenced by table\_\-description().
+Referenced by tableDescription().
 
-\index{SchemeHandler@{SchemeHandler}!get\_\-table\_\-indexes@{get\_\-table\_\-indexes}}
-\index{get\_\-table\_\-indexes@{get\_\-table\_\-indexes}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{get\_\-table\_\-indexes}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::get\_\-table\_\-indexes (
+\index{SchemeHandler@{SchemeHandler}!getTableIndexes@{getTableIndexes}}
+\index{getTableIndexes@{getTableIndexes}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{getTableIndexes}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::getTableIndexes (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-tablename}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_a23070e6253bcd9b0bc343bc582219638}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_af40c242f4bddee235dbce50a7535b094}
 Get the indexes for a given table
 
 
@@ -469,11 +469,11 @@ Indexed array holding all fields =$>$ datatypes, or null on errors
 \end{DoxyReturn}
 
 
-References \$\_\-index, and \_\-OWL::set\_\-status().
+References \$\_\-index, and \_\-OWL::setStatus().
 
 
 
-Referenced by table\_\-description().
+Referenced by tableDescription().
 
 \index{SchemeHandler@{SchemeHandler}!init@{init}}
 \index{init@{init}!SchemeHandler@{SchemeHandler}}
@@ -484,11 +484,11 @@ Referenced by table\_\-description().
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
 This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
 
-References OWL::factory(), and \_\-OWL::set\_\-status().
+References OWL::factory(), and \_\-OWL::setStatus().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), \_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), GroupHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), \_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{SchemeHandler@{SchemeHandler}!reset@{reset}}
 \index{reset@{reset}!SchemeHandler@{SchemeHandler}}
@@ -507,30 +507,30 @@ References scheme().
 
 
 
-Referenced by create\_\-scheme().
+Referenced by createScheme().
 
-\index{SchemeHandler@{SchemeHandler}!restore\_\-status@{restore\_\-status}}
-\index{restore\_\-status@{restore\_\-status}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{restore\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restore\_\-status (
+\index{SchemeHandler@{SchemeHandler}!restoreStatus@{restoreStatus}}
+\index{restoreStatus@{restoreStatus}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{restoreStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restoreStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a465eeaf40edd9f9c848841700c32ce55}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
 Restore the previously saved status object and destroy the copy 
 
-References \_\-OWL::set\_\-status().
+References \_\-OWL::setStatus().
 
 
 
 Referenced by User::logout().
 
-\index{SchemeHandler@{SchemeHandler}!save\_\-status@{save\_\-status}}
-\index{save\_\-status@{save\_\-status}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{save\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::save\_\-status (
+\index{SchemeHandler@{SchemeHandler}!saveStatus@{saveStatus}}
+\index{saveStatus@{saveStatus}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{saveStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::saveStatus (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a9e49b9c76fbc021b244c6915ea536d71}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
 Create a copy of the status object 
 
 Referenced by User::logout().
@@ -552,19 +552,19 @@ Severity level
 \end{DoxyReturn}
 
 
-References alter\_\-table(), compare(), create\_\-table(), and \_\-OWL::set\_\-status().
+References alterTable(), compare(), createTable(), and \_\-OWL::setStatus().
 
 
 
-Referenced by alter\_\-scheme(), compare(), create\_\-table(), define\_\-index(), define\_\-scheme(), reset(), and validate\_\-scheme().
+Referenced by alterScheme(), compare(), createTable(), defineIndex(), defineScheme(), reset(), and validateScheme().
 
-\index{SchemeHandler@{SchemeHandler}!set\_\-callback@{set\_\-callback}}
-\index{set\_\-callback@{set\_\-callback}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{set\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback (
+\index{SchemeHandler@{SchemeHandler}!setCallback@{setCallback}}
+\index{setCallback@{setCallback}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{setCallback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setCallback (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-dispatcher}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a28d9025eaf37b49d63cb334ed28c33f0}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a5f84d43cd4dc7810649f1e2ebecad360}
 Set a dispatcher for later callback 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-dispatcher} & Dispatched, \\
@@ -580,13 +580,13 @@ True on success, false on failure
 
 References OWL::factory().
 
-\index{SchemeHandler@{SchemeHandler}!set\_\-callback\_\-argument@{set\_\-callback\_\-argument}}
-\index{set\_\-callback\_\-argument@{set\_\-callback\_\-argument}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{set\_\-callback\_\-argument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-callback\_\-argument (
+\index{SchemeHandler@{SchemeHandler}!setCallbackArgument@{setCallbackArgument}}
+\index{setCallbackArgument@{setCallbackArgument}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{setCallbackArgument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setCallbackArgument (
 \begin{DoxyParamCaption}
 \item[{array \$}]{\_\-arg}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a1e26611ce858b237f5a98a91ea3c3a1b}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a4e9ebfbd3c0d76539bed4e44de9962c3}
 Add an argument to a previously registered callback dispatcher 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-arg} & Argument, must be an array type. When non-\/ arrays should be passed as arguments, the must be set when the callback is registered already \\
@@ -603,25 +603,25 @@ References OWL::factory().
 
 Referenced by User::register().
 
-\index{SchemeHandler@{SchemeHandler}!set\_\-high\_\-severity@{set\_\-high\_\-severity}}
-\index{set\_\-high\_\-severity@{set\_\-high\_\-severity}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{set\_\-high\_\-severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-high\_\-severity (
+\index{SchemeHandler@{SchemeHandler}!setHighSeverity@{setHighSeverity}}
+\index{setHighSeverity@{setHighSeverity}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{setHighSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setHighSeverity (
 \begin{DoxyParamCaption}
 \item[{\&\$}]{object = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a576829692a3b66e3d518853bf43abae3}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
 Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
-\index{SchemeHandler@{SchemeHandler}!set\_\-status@{set\_\-status}}
-\index{set\_\-status@{set\_\-status}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{set\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::set\_\-status (
+\index{SchemeHandler@{SchemeHandler}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{setStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setStatus (
 \begin{DoxyParamCaption}
 \item[{\$}]{status, }
 \item[{\$}]{params = {\ttfamily array~()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_aea912d0ede9b3c2a69b79072d94d4787}
+)\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
 Set the current object status to the specified value.
 
 
@@ -633,11 +633,11 @@ Set the current object status to the specified value.
 \end{DoxyParams}
 
 
-References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::get\_\-code(), \_\-OWL::reset(), and \_\-OWL::signal().
+References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), \_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), alter\_\-scheme(), FileHandler::close(), Dispatcher::composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), create\_\-scheme(), define\_\-index(), define\_\-scheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), get\_\-table\_\-columns(), get\_\-table\_\-indexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::open\_\-logfile(), DataHandler::prepare(), DbHandler::prepare\_\-delete(), DbHandler::prepare\_\-field(), DbHandler::prepare\_\-insert(), DbHandler::prepare\_\-read(), DbHandler::prepare\_\-update(), DbHandler::read(), FileHandler::read\_\-line(), User::read\_\-userdata(), User::register(), Dispatcher::register\_\-argument(), Dispatcher::register\_\-callback(), \_\-OWL::restore\_\-status(), scheme(), FormHandler::set(), DataHandler::set\_\-join(), DataHandler::set\_\-key(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), table\_\-description(), validate\_\-scheme(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), \_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), BaseElement::\_\-getContent(), Form::addField(), FormFieldRadioPlugin::addOption(), BaseElement::addToContent(), DbHandler::alt(), alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), DbHandler::connect(), DbHandler::create(), createScheme(), defineIndex(), defineScheme(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), getTableColumns(), getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), DbHandler::read(), FileHandler::readLine(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), scheme(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), tableDescription(), validateScheme(), and DbHandler::write().
 
 \index{SchemeHandler@{SchemeHandler}!signal@{signal}}
 \index{signal@{signal}!SchemeHandler@{SchemeHandler}}
@@ -665,7 +665,7 @@ References ConfigHandler::get().
 
 
 
-Referenced by \_\-OWL::set\_\-status(), and \_\-OWL::traceback().
+Referenced by \_\-OWL::setStatus(), and \_\-OWL::traceback().
 
 \index{SchemeHandler@{SchemeHandler}!succeeded@{succeeded}}
 \index{succeeded@{succeeded}!SchemeHandler@{SchemeHandler}}
@@ -687,16 +687,16 @@ Boolean true when successfull
 \end{DoxyReturn}
 
 
-Referenced by User::construct(), Dispatcher::register\_\-argument(), and Dispatcher::register\_\-callback().
+Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher::registerCallback().
 
-\index{SchemeHandler@{SchemeHandler}!table\_\-description@{table\_\-description}}
-\index{table\_\-description@{table\_\-description}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{table\_\-description}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::table\_\-description (
+\index{SchemeHandler@{SchemeHandler}!tableDescription@{tableDescription}}
+\index{tableDescription@{tableDescription}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{tableDescription}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::tableDescription (
 \begin{DoxyParamCaption}
 \item[{\$}]{tablename, }
 \item[{\&\$}]{data}
 \end{DoxyParamCaption}
-)}\label{classSchemeHandler_a236edc61301c6926449e68385cc59a99}
+)}\label{classSchemeHandler_a3ec1c9bb94164aa23faa06dea8fa187e}
 Get a description of a database table 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$tablename} & The tablename \\
@@ -709,7 +709,7 @@ Severity level
 \end{DoxyReturn}
 
 
-References get\_\-table\_\-columns(), get\_\-table\_\-indexes(), and \_\-OWL::set\_\-status().
+References getTableColumns(), getTableIndexes(), and \_\-OWL::setStatus().
 
 
 
@@ -743,13 +743,13 @@ References \_\-OWL::signal().
 
 Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 
-\index{SchemeHandler@{SchemeHandler}!validate\_\-scheme@{validate\_\-scheme}}
-\index{validate\_\-scheme@{validate\_\-scheme}!SchemeHandler@{SchemeHandler}}
-\subsubsection[{validate\_\-scheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::validate\_\-scheme (
+\index{SchemeHandler@{SchemeHandler}!validateScheme@{validateScheme}}
+\index{validateScheme@{validateScheme}!SchemeHandler@{SchemeHandler}}
+\subsubsection[{validateScheme}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::validateScheme (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_a1d92dea6ea4643959609959bdce6f0d1}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_addc471d7e188ad7131f69fd7adbd268b}
 Validate the defined scheme. Some values will be modified to make sure the SQL statements can be prepared and \doxyref{compare()}{p.}{classSchemeHandler_ae2a981feae465ef5e46782b4a18da1ad} won't find differences on case diffs
 
 \begin{DoxyReturn}{Returns}
@@ -757,11 +757,11 @@ boolean False if there is an error in the scheme definition, True if no errors w
 \end{DoxyReturn}
 
 
-References scheme(), and \_\-OWL::set\_\-status().
+References scheme(), and \_\-OWL::setStatus().
 
 
 
-Referenced by alter\_\-scheme(), define\_\-index(), and define\_\-scheme().
+Referenced by alterScheme(), defineIndex(), and defineScheme().
 
 
 
@@ -777,7 +777,7 @@ integer -\/ Scheme Handle ID \index{SchemeHandler@{SchemeHandler}!\$instance@{\$
 \subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\$instance\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classSchemeHandler_a6f45c52527230b3f3b60d75a9b55e3c1}
 integer -\/ self reference 
 
-Referenced by get\_\-instance().
+Referenced by getInstance().
 
 \index{SchemeHandler@{SchemeHandler}!\$inuse@{\$inuse}}
 \index{\$inuse@{\$inuse}!SchemeHandler@{SchemeHandler}}
@@ -788,7 +788,11 @@ boolean -\/ True when a scheme is filled with data and not yet used \index{Schem
 Array -\/ table description \index{SchemeHandler@{SchemeHandler}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!SchemeHandler@{SchemeHandler}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
-Severity level of the current object status \index{SchemeHandler@{SchemeHandler}!\$table@{\$table}}
+Severity level of the current object status 
+
+Referenced by DbHandler::commitTransaction(), DbHandler::rollbackTransaction(), and DbHandler::startTransaction().
+
+\index{SchemeHandler@{SchemeHandler}!\$table@{\$table}}
 \index{\$table@{\$table}!SchemeHandler@{SchemeHandler}}
 \subsubsection[{\$table}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\$table = ''\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_aea92c0f74dbb2e1efd07bdb472660e20}
 Array -\/ table name 
