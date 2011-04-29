@@ -18,10 +18,10 @@ $document   = OWL::factory('Document', 'ui');
 $GLOBALS['MYAPP']['BodyContainer'] = new Container('div', '', array('class' => 'bodyContainer'));
 
 // Get this classfile (assuming the full path is '(MYAPP_UI)/user/login.php')
-$_lgi = OWLloader::getArea('login', MYAPP_UI . '/user');
-
-// Add it to the body container
-$_lgi->addToDocument($GLOBALS['MYAPP']['BodyContainer']);
+if (($_lgi = OWLloader::getArea('login', MYAPP_UI . '/user') !== null) {
+	// Add it to the body container
+	$_lgi->addToDocument($GLOBALS['MYAPP']['BodyContainer']);
+}
 
 // Load style and add content to the document
 $document->loadStyle(MYAPP_CSS . '/my-application.css');
@@ -50,7 +50,7 @@ class LoginArea extends ContentArea
 	{
 		// Check if the current user can see this form
 		if ($this->hasRight('readanonymous', OWL_ID) === false) {
-			return false;
+			return false; // Note; 'false' here causes OWLloader::getArea() to return false!
 		}
 
 		// Create a new form. The first argument defines the dispatcher, second is the form name
