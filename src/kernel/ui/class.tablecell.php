@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines a tablecell element
- * \version $Id: class.tablecell.php,v 1.4 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.tablecell.php,v 1.5 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -12,25 +13,22 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jan 9, 2011 -- O van Eijk -- initial version
  */
-
 class Tablecell extends BaseElement
 {
 	/**
 	 * Rowspan
-	 * \private
 	 */
 	private $rowspan = '';
 
 	/**
 	 * Colspan
-	 * \private
 	 */
 	private $colspan = '';
 	
 	/**
 	 * Class constructor;
 	 * \param[in] $_content HTML that will be placed in the table cell
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($_content = '&nbsp;')
 	{
@@ -41,7 +39,7 @@ class Tablecell extends BaseElement
 	/**
 	 * Set the rowspan value
 	 * \param[in] $_value Rowspan value
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setRowspan($_value)
 	{
@@ -51,7 +49,7 @@ class Tablecell extends BaseElement
 	/**
 	 * Set the colspan value
 	 * \param[in] $_value Rowspan value
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setColspan($_value)
 	{
@@ -60,8 +58,8 @@ class Tablecell extends BaseElement
 	
 	/**
 	 * Get the HTML code to display the tablecell
-	 * \public
 	 * \return string with the HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{

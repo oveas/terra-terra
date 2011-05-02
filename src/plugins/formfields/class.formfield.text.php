@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines a text-, password or hidden formfield element
- * \version $Id: class.formfield.text.php,v 1.3 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.formfield.text.php,v 1.4 2011-05-02 12:56:13 oscar Exp $
  */
 
 /**
@@ -17,20 +18,18 @@ class FormFieldTextPlugin extends FormFieldPlugin
 {
 	/**
 	 * Field size
-	 * \private
 	 */
 	private $size;
 
 	/**
 	 * Maximum field size
-	 * \private
 	 */
 	private $maxsize;
 
 	/**
 	 * Class constructor; 
 	 * \param[in] $type Element type: text (default), password or hidden
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($type = 'text')
 	{
@@ -41,6 +40,7 @@ class FormFieldTextPlugin extends FormFieldPlugin
 	/**
 	 * Set the Size attribute
 	 * \param[in] $size integer
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setSize ($size)
 	{
@@ -54,6 +54,7 @@ class FormFieldTextPlugin extends FormFieldPlugin
 	/**
 	 * Set the Maxsize attribute
 	 * \param[in] $maxsize integer
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setMaxsize ($maxsize)
 	{
@@ -66,8 +67,8 @@ class FormFieldTextPlugin extends FormFieldPlugin
 
 	/**
 	 * Return the HTML code to display the form element
-	 * \public
 	 * \return Textstring with the complete code for the form element
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement ()
 	{

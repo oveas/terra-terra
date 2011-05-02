@@ -1,11 +1,12 @@
 /**
  * \file
  * Default style sheet for OWL based products
- * \version $Id: owl.css,v 1.1 2008-08-22 12:02:13 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: owl.css,v 1.2 2011-05-02 12:56:15 oscar Exp $
  */
 
 /*
- * Default body layour
+ * Default body layout
  */
 BODY {
 	font-family : Helvetica, sans-serif, fantasy;
@@ -172,3 +173,11 @@ IMG {
 	font-size : 8pt;
 }
 
+/*
+ * Debug info
+ */
+.dbg {
+	font-family : Helvetica, sans-serif, fantasy;
+	color : #ccc;;
+	font-size : 9pt;
+}

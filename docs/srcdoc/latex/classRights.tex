@@ -74,6 +74,9 @@ Class constructor
 \mbox{\tt in}  & {\em \$owl} & By default, the owl bitmap will be setup as well. Set this to false to suppress this \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Reimplemented from {\bf Security} \doxyref{}{p.}{classSecurity_a52521de4bd0c0279bcf9eb57ca915c14}.
@@ -92,14 +95,20 @@ References OWLCache::get(), and registerRights().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classSecurity_aa45b726507989bfe49ac468b3ea1a7c2}
-Magic function for serialize; make sure only the required data is serialized \index{Rights@{Rights}!\_\-\_\-wakeup@{\_\-\_\-wakeup}}
+Magic function for serialize; make sure only the required data is serialized \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{Rights@{Rights}!\_\-\_\-wakeup@{\_\-\_\-wakeup}}
 \index{\_\-\_\-wakeup@{\_\-\_\-wakeup}!Rights@{Rights}}
 \subsubsection[{\_\-\_\-wakeup}]{\setlength{\rightskip}{0pt plus 5cm}Rights::\_\-\_\-wakeup (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}\label{classRights_ae593813ebe727ec950a5812e97d539a2}
-The rightslist is stored in cache, not in the serialized object, so we must retrieve it again on unserialize() 
+The rightslist is stored in cache, not in the serialized object, so we must retrieve it again on unserialize() \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References OWLCache::get(), and registerRights().
 
@@ -118,6 +127,9 @@ Get the bitvalue for a given name
 \begin{DoxyReturn}{Returns}
 Integer value 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Reimplemented from {\bf Security} \doxyref{}{p.}{classSecurity_ae643092625efa402b95502ac228aae30}.
@@ -143,6 +155,9 @@ Check, set or unset a bit in the current users bitmap. Enter description here ..
 \begin{DoxyReturn}{Returns}
 True if the bit was set ($\ast$before$\ast$ a set or unset action!) 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References toStrictBoolean().
@@ -159,6 +174,12 @@ Get the bitmap value for the given application
 \mbox{\tt in}  & {\em \$app} & Application ID \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bitmap value as an integer 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{Rights@{Rights}!initBitmap@{initBitmap}}
 \index{initBitmap@{initBitmap}!Rights@{Rights}}
 \subsubsection[{initBitmap}]{\setlength{\rightskip}{0pt plus 5cm}Security::initBitmap (
@@ -174,6 +195,9 @@ Get the bitmap value for the given application
 \mbox{\tt in}  & {\em \$app} & Application ID \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{Rights@{Rights}!mergeBitmaps@{mergeBitmaps}}
 \index{mergeBitmaps@{mergeBitmaps}!Rights@{Rights}}
 \subsubsection[{mergeBitmaps}]{\setlength{\rightskip}{0pt plus 5cm}Security::mergeBitmaps (
@@ -189,6 +213,9 @@ Merge a given gitmap with the current users bitmap
 \mbox{\tt in}  & {\em \$app} & Application the bitmap belongs to \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References Security::\$bitmap.
@@ -200,7 +227,10 @@ References Security::\$bitmap.
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classRights_ae7c51a4150f9a496569ed8d241e485f5}
-If the rightlist is not yet filled, do so now and store the list in cache 
+If the rightlist is not yet filled, do so now and store the list in cache \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References ConfigHandler::get(), and OWLCache::set().
 

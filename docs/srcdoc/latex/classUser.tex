@@ -138,7 +138,10 @@ Aug 27, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 {}
 \end{DoxyParamCaption}
 )}\label{classUser_accd20149a7414612c1505e022eb63ffc}
-When a run ends, write the sessiondata 
+When a run ends, write the sessiondata \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Reimplemented from {\bf \_\-OWL} \doxyref{}{p.}{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}.
 
@@ -169,6 +172,9 @@ This is a helper function for lazy developers. Some checks have to be made quite
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct (below the max), otherwise false 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
@@ -189,6 +195,9 @@ Cleanup the existing user environment
 \mbox{\tt in}  & {\em \$newSession} & Boolean set to true when a new session must be created \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by login(), and logout().
@@ -202,12 +211,15 @@ Referenced by login(), and logout().
 )\hspace{0.3cm}{\ttfamily  [protected]}}\label{classUser_acbcc13f994e50ee3f562e9949f6d0638}
 Confirm a user registration. 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$\_\-confirmation} & Array that must contain at least the keys 'uid' and 'vcode' \\
+\mbox{\tt in}  & {\em \$\_\-confirmation} & Array that must contain at least the keys 'uid' (\doxyref{User}{p.}{classUser} ID) and 'vcode' (Verification Code) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::setStatus().
@@ -219,13 +231,14 @@ References \_\-OWL::setStatus().
 \item[{\$}]{username = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected]}}\label{classUser_a9cf024c7e3148e45afd1bee7691ceefd}
-Class constructor; create a new user environment. This is not a regular constructor, since it's up to the application to decide if this is a normal object or a singleton.
-
-
+Class constructor; create a new user environment. This is not a regular constructor, since it's up to the application to decide if this is a normal object or a singleton. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$username} & Username when logged in. Default username is 'anonymous' \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get(), getUserId(), \_\-OWL::init(), newUser(), restoreUser(), OWLCache::set(), and \_\-OWL::succeeded().
@@ -240,6 +253,9 @@ References ConfigHandler::get(), getUserId(), \_\-OWL::init(), newUser(), restor
 Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
 The dispatcher, of null on failure. 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}.
@@ -255,7 +271,10 @@ References OWL::factory().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classUser_a8eb10dd2a2bae8101560be21baf0d2fc}
-Get the list of all objects this user is member of 
+Get the list of all objects this user is member of \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References \$dataset, ConfigHandler::get(), and getUserId().
 
@@ -270,11 +289,12 @@ Referenced by newUser().
 {}
 \end{DoxyParamCaption}
 )}\label{classUser_add04326316156848d19f3c7085513fe9}
-Return the current session ID
-
-\begin{DoxyReturn}{Returns}
+Return the current session ID \begin{DoxyReturn}{Returns}
 the session ID 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{User@{User}!getSessionVar@{getSessionVar}}
 \index{getSessionVar@{getSessionVar}!User@{User}}
 \subsubsection[{getSessionVar}]{\setlength{\rightskip}{0pt plus 5cm}User::getSessionVar (
@@ -283,9 +303,7 @@ the session ID
 \item[{\$}]{default = {\ttfamily null}}
 \end{DoxyParamCaption}
 )}\label{classUser_a60d4f0369fc769ee340d66c3081d978d}
-Get a session variable
-
-
+Get a session variable 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$var} & Variable name \\
 \hline
@@ -295,6 +313,9 @@ Get a session variable
 \begin{DoxyReturn}{Returns}
 The value from the session, null if not set 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by getUserId(), and restoreUser().
@@ -306,9 +327,7 @@ Referenced by getUserId(), and restoreUser().
 \item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
-Get the current object severity level.
-
-
+Get the current object severity level. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & An optional parameter to check an other status code i.s.o the object's current status. \\
 \hline
@@ -316,6 +335,9 @@ Get the current object severity level.
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::\$status.
@@ -331,11 +353,12 @@ Referenced by LogHandler::composeMessage(), LogHandler::log(), and DataHandler::
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
-Get the current object status.
-
-\begin{DoxyReturn}{Returns}
+Get the current object status. \begin{DoxyReturn}{Returns}
 Object's status code 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by SchemeHandler::compare().
@@ -347,7 +370,10 @@ Referenced by SchemeHandler::compare().
 {}
 \end{DoxyParamCaption}
 )}\label{classUser_a842606f37f63f53df58430db6e344b0f}
-Return the userID of the current session 
+Return the userID of the current session \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References getSessionVar().
 
@@ -362,16 +388,17 @@ Referenced by construct(), getMemberships(), and readUserdata().
 {}
 \end{DoxyParamCaption}
 )}\label{classUser_aea1f51a8f3da9bc8be76928866ec951f}
-Return the username of the current session \index{User@{User}!hashPassword@{hashPassword}}
+Return the username of the current session \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{User@{User}!hashPassword@{hashPassword}}
 \index{hashPassword@{hashPassword}!User@{User}}
 \subsubsection[{hashPassword}]{\setlength{\rightskip}{0pt plus 5cm}User::hashPassword (
 \begin{DoxyParamCaption}
 \item[{\$}]{password}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classUser_ae4fd2c77120152b487adea01b8c7f95f}
-Encrypt a given password
-
-
+Encrypt a given password 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$password} & Given password in plain text format \\
 \hline
@@ -379,6 +406,9 @@ Encrypt a given password
 \begin{DoxyReturn}{Returns}
 The encrypted password 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get().
@@ -405,6 +435,9 @@ Check if a rightsbit has been set for this user
 \begin{DoxyReturn}{Returns}
 Boolean; true when the bit is set 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{User@{User}!init@{init}}
 \index{init@{init}!User@{User}}
 \subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init (
@@ -412,7 +445,10 @@ Boolean; true when the bit is set
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References OWL::factory(), and \_\-OWL::setStatus().
 
@@ -430,6 +466,9 @@ Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(
 Check is the current user is logged in \begin{DoxyReturn}{Returns}
 True when logged in 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get().
@@ -442,9 +481,7 @@ References ConfigHandler::get().
 \item[{\$}]{password}
 \end{DoxyParamCaption}
 )}\label{classUser_a2c4fae5935ebf84e787126795bf42988}
-Log in
-
-
+Log in 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$username} & Given username. Might be taken from the session as well, but given as a parameter here to suppress the E\_\-STRICT Declaration warning \\
 \hline
@@ -454,6 +491,9 @@ Log in
 \begin{DoxyReturn}{Returns}
 True on success, False otherwise 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References clearUser(), ConfigHandler::get(), hashPassword(), logout(), newUser(), \_\-OWL::setStatus(), and \_\-OWL::traceback().
@@ -470,6 +510,9 @@ Log out the current user Note: After logging out, the session still continues. T
 \mbox{\tt in}  & {\em \$resetStatus} & When true (default) the object status will be reset \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References clearUser(), ConfigHandler::get(), newUser(), \_\-OWL::restoreStatus(), and \_\-OWL::saveStatus().
@@ -485,7 +528,10 @@ Referenced by login().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classUser_a35eff470817c317b6c1a001b3384804d}
-(Re)initialize the user environment 
+(Re)initialize the user environment \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References ConfigHandler::get(), getMemberships(), and readUserdata().
 
@@ -511,6 +557,9 @@ Calculate the strenbgth of a given password. This method uses string length and 
 \begin{DoxyReturn}{Returns}
 An integer from 0-\/10 indicating the strength, where 0 is the lowest and 10 the highest level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{User@{User}!readUserdata@{readUserdata}}
 \index{readUserdata@{readUserdata}!User@{User}}
 \subsubsection[{readUserdata}]{\setlength{\rightskip}{0pt plus 5cm}User::readUserdata (
@@ -518,7 +567,10 @@ An integer from 0-\/10 indicating the strength, where 0 is the lowest and 10 the
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classUser_a4cbb353323ec7eca9521da68fc2e34cf}
-When a new session starts for a use that was logged in before retrieve the userdata back from the database 
+When a new session starts for a use that was logged in before retrieve the userdata back from the database \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References ConfigHandler::get(), getUserId(), and \_\-OWL::setStatus().
 
@@ -537,9 +589,7 @@ Referenced by newUser(), and restoreUser().
 \item[{\$}]{group = {\ttfamily 0}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected]}}\label{classUser_a0454a21e40da25584033f99251540ab3}
-\doxyref{Register}{p.}{classRegister} a new username
-
-
+\doxyref{Register}{p.}{classRegister} a new username 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$username} & Given username \\
 \hline
@@ -555,6 +605,9 @@ Referenced by newUser(), and restoreUser().
 \begin{DoxyReturn}{Returns}
 New user ID or -\/1 on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$group, ConfigHandler::get(), hashPassword(), RandomString(), \_\-OWL::setCallbackArgument(), \_\-OWL::setStatus(), and usernameExists().
@@ -566,7 +619,10 @@ References \$group, ConfigHandler::get(), hashPassword(), RandomString(), \_\-OW
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
-General reset function for all objects. Should be called after each non-\/fatal error 
+General reset function for all objects. Should be called after each non-\/fatal error \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Reimplemented in {\bf DbHandler} \doxyref{}{p.}{classDbHandler_a9982df4830f05803935bb31bac7fae3d}, and {\bf SchemeHandler} \doxyref{}{p.}{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}.
 
@@ -585,7 +641,10 @@ Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), an
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
-Restore the previously saved status object and destroy the copy 
+Restore the previously saved status object and destroy the copy \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References \_\-OWL::setStatus().
 
@@ -600,7 +659,10 @@ Referenced by logout().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classUser_a9c69194002dc162de176e363abbd2e33}
-Restore a user environment 
+Restore a user environment \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References getSessionVar(), and readUserdata().
 
@@ -615,7 +677,10 @@ Referenced by construct().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
-Create a copy of the status object 
+Create a copy of the status object \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by logout().
 
@@ -626,7 +691,10 @@ Referenced by logout().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classUser_aeeaefbc1a010bff19c07b25b865bb617}
-Save the current user environment in the session 
+Save the current user environment in the session \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References setSessionVar().
 
@@ -652,6 +720,9 @@ Set a dispatcher for later callback
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -671,6 +742,9 @@ Add an argument to a previously registered callback dispatcher
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -686,7 +760,10 @@ Referenced by register().
 \item[{\&\$}]{object = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
-Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
@@ -699,9 +776,7 @@ Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and S
 \item[{\$}]{flg = {\ttfamily {\bf SESSIONVAR\_\-SET}}}
 \end{DoxyParamCaption}
 )}\label{classUser_a7182c07b394d1b42f25df90c97b98d0f}
-Set a session variable
-
-
+Set a session variable 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$var} & Variable name \\
 \hline
@@ -710,6 +785,9 @@ Set a session variable
 \mbox{\tt in}  & {\em \$flg} & How to handle the value. Default SESSIONVAR\_\-SET \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by saveUser().
@@ -722,15 +800,16 @@ Referenced by saveUser().
 \item[{\$}]{params = {\ttfamily array~()}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
-Set the current object status to the specified value.
-
-
+Set the current object status to the specified value. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & \doxyref{OWL}{p.}{classOWL} status code \\
 \hline
 \mbox{\tt in}  & {\em \$params} & \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
@@ -747,9 +826,7 @@ Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), Scheme
 \item[{\&\$}]{text = {\ttfamily false}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
-Display the message for the current object status
-
-
+Display the message for the current object status 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$level} & An optional severity level; message will only be displayed when it is at least of this level. \\
 \hline
@@ -759,6 +836,9 @@ Display the message for the current object status
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get().
@@ -785,6 +865,9 @@ Check if the object currenlty has a success state
 \begin{DoxyReturn}{Returns}
 Boolean true when successfull 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by construct(), Dispatcher::registerArgument(), and Dispatcher::registerCallback().
@@ -797,9 +880,7 @@ Referenced by construct(), Dispatcher::registerArgument(), and Dispatcher::regis
 \item[{\$}]{depth = {\ttfamily 0}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
-If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
-
-
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt out}  & {\em \$text} & Optional variable in which the message text can be stored. If not given, the text will be written to standard output \\
 \hline
@@ -809,6 +890,9 @@ If somehwere in the nested calls an error occured, we can traceback the original
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::signal().
@@ -832,6 +916,9 @@ Check is a given username exists
 \begin{DoxyReturn}{Returns}
 True when the username exists false otherwise 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by register().

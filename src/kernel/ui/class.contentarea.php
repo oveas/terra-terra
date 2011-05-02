@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the abstract ContentArea class
- * \version $Id: class.contentarea.php,v 1.6 2011-04-29 14:55:20 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.contentarea.php,v 1.7 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -16,7 +17,6 @@ abstract class ContentArea extends _OWL
 {
 	/**
 	 * The contentobject that must be filled by the derived class
-	 * \protected
 	 */
 	protected $contentObject;
 
@@ -34,7 +34,7 @@ abstract class ContentArea extends _OWL
 	 * Where 'right' is the rightsbit to check (e.g. 'readregistered') and the second parameter
 	 * identifies the application (either OWL_ID or APP_ID)
 	 * \return The container object, or false when the user has no access
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	abstract public function loadArea();
 	
@@ -42,6 +42,7 @@ abstract class ContentArea extends _OWL
 	 * Add the newly created container object to the given container document
 	 * \param[in] $_contnr Reference to the container object, by default (when null) the content will
 	 * be added to the main document.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function addToDocument(Container $_contnr = null)
 	{
@@ -57,13 +58,14 @@ abstract class ContentArea extends _OWL
 	 * Translate a textstring using the labels array
 	 * \param[in] $_string Text string to translate
 	 * \return The translation, or the input if none was found.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function trn ($_string)
 	{
 		if (array_key_exists($_string, $GLOBALS['labels'])) {
 			return $GLOBALS['labels'][$_string];
 		} else {
-			return ((ConfigHandler::get ('debug')?'(!)':'').$_string);
+			return ((ConfigHandler::get ('debug') > 0?'(!)':'').$_string);
 		}
 	}
 
@@ -72,6 +74,7 @@ abstract class ContentArea extends _OWL
 	 * \param[in] $bit Rightsbit to check
 	 * \param[in] $appl ID of the application the bit belongs to
 	 * \return Boolean; true when the user has the right
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function hasRight ($bit, $appl)
 	{

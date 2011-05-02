@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines a  selectlist formfield element
- * \version $Id: class.formfield.select.php,v 1.2 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.formfield.select.php,v 1.3 2011-05-02 12:56:13 oscar Exp $
  */
 
 /**
@@ -18,26 +19,23 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 
 	/**
 	 * Number of visible options
-	 * \private
 	 */
 	private $size;
 
 	/**
 	 * Boolean indicating a multiple select
-	 * \private
 	 */
 	private $multiple;
 
 	/**
 	 * Array with options for the select list
-	 * \private
 	 */
 	private $options;
 
 	const DefaultOptionGroup = '__OWL_OptGroup__';
 	/**
 	 * Class constructor; 
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ()
 	{
@@ -59,7 +57,7 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 	 *    ,'group'    => string  // Optional, label of the optgroup the option belongs to
 	 * )
 	 * \endcode
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setValue($_value)
 	{
@@ -101,6 +99,7 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 	/**
 	 * Set the Size attribute
 	 * \param[in] $size integer
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setSize ($size)
 	{
@@ -114,7 +113,7 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 	/**
 	 * Set the Multiple boolean
 	 * \param[in] $_value Value indicating true (default) or false
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setMultiple($_value = true)
 	{
@@ -123,8 +122,8 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 
 	/**
 	 * Return the HTML code to display the form elements
-	 * \public
 	 * \return String with the element formcode
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement ()
 	{
@@ -158,7 +157,7 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 		$_htmlCode .= '</select>';
 		return $_htmlCode;
 	}
-	}
+}
 
 
 //Register::setSeverity (OWL_DEBUG);

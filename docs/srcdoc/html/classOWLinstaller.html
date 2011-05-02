@@ -95,7 +95,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#pub-static-methods">Static Public Member Functions</a>  </div>
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a>  </div>
   <div class="headertitle">
 <div class="title">OWLinstaller Class Reference<div class="ingroups"><a class="el" href="group__OWL__SO__LAYER.html">Storage Object modules</a></div></div>  </div>
 </div>
@@ -110,6 +111,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a4ed45e29611ce17a8edf24e51979a5d7">installApplication</a> ($code, $name, $version, $description= '', $link= '', $author= '', $license= '')</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a381aeca103d4f10cf0d4edc7e436f4e7">enableApplication</a> ($id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a80d3dddb1d0c88cd216261beef8a19cb">parseSQLFile</a> ($fname)</td></tr>
+<tr><td colspan="2"><h2><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a62699be0fe7e64f36d61f56a87d4fd77">uncommentSQL</a> ($line)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Application installer. </p>
@@ -138,6 +143,7 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
@@ -211,9 +217,57 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The application ID </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Error checking </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Error checking </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a80d3dddb1d0c88cd216261beef8a19cb"></a><!-- doxytag: member="OWLinstaller::parseSQLFile" ref="a80d3dddb1d0c88cd216261beef8a19cb" args="($fname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static OWLinstaller::parseSQLFile </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>fname</em></td><td>)</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>References <a class="el" href="classOWLinstaller.html#a62699be0fe7e64f36d61f56a87d4fd77">uncommentSQL()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a62699be0fe7e64f36d61f56a87d4fd77"></a><!-- doxytag: member="OWLinstaller::uncommentSQL" ref="a62699be0fe7e64f36d61f56a87d4fd77" args="($line)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static OWLinstaller::uncommentSQL </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>line</em></td><td>)</td>
+          <td><code> [static, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Parse a line from an SQL file, stripping all comments </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$line</td><td>Line as read from the SQL file </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>String with a (part of the) SQL statement </dd></dl>
+
+<p>Referenced by <a class="el" href="classOWLinstaller.html#a80d3dddb1d0c88cd216261beef8a19cb">parseSQLFile()</a>.</p>
 
 </div>
 </div>
@@ -240,7 +294,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Fri Apr 29 2011 16:53:10 for OWL-PHP by
+    <li class="footer">Generated on Mon May 2 2011 14:53:21 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

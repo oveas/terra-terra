@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.26 2011-04-29 14:55:21 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.27 2011-05-02 12:56:15 oscar Exp $
  */
 
 // Error handling used during development
@@ -77,6 +77,7 @@ abstract class OWLloader
 	 * \param[in] $_classLocation Full path specification (can be as a constant) where the file can
 	 * be found
 	 * \return Reference to the object which is an instantiation of the class, null on erros
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getArea ($_classFile, $_classLocation)
 	{
@@ -102,6 +103,7 @@ abstract class OWLloader
 	 * \param[in] $_driverName Name of the class. Will be converted to lowercase to find the classfile
 	 * \param[in] $_driverType Driver type, must match the directoryname in OWL_DRIVERS where the classfile can be found
 	 * \return True on success
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getDriver ($_driverName, $_driverType)
 	{
@@ -114,6 +116,7 @@ abstract class OWLloader
 	 * \param[in] $_classLocation (Array of) location(s) where to look for the class
 	 * \param[in] $_loadMultiple Boolean; by default, the first matching classname will be loaded. Set this to true to load all files with the same name from multiple locations
 	 * \return True on success
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getClass ($_className, $_classLocation = array(OWL_SO_INC, OWL_BO_INC, OWL_UI_INC), $_loadMultiple = false)
 	{
@@ -139,6 +142,7 @@ abstract class OWLloader
 	 * \param[in] $_className Name of the classfile
 	 * \param[in] $_classLocation Location where to tru loading it from
 	 * \return True on success
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private static function _tryLoad ($_className, $_classLocation)
 	{
@@ -165,6 +169,11 @@ abstract class OWLloader
 		return OWLCache::set(OWLCACHE_CLASSES, $_classPath, true);
 	}
 
+	/**
+	 * Read OWL's own ID from the database
+	 * \return Application code for OWL
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
 	public static function getOWLId ()
 	{
 		$dataset = new DataHandler();
@@ -183,6 +192,7 @@ abstract class OWLloader
 	/**
 	 * Load the application environment
 	 * \param[in] $applic_code Application code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function loadApplication ($applic_code)
 	{
@@ -301,12 +311,12 @@ ConfigHandler::readConfig (array());
 $GLOBALS['logger'] = OWL::factory('LogHandler');
 
 // Select the (no)debug function libraries.
-if ($GLOBALS['config']['values']['debug']) {
+if ($GLOBALS['config']['values']['debug'] > 0) {
 	require (OWL_LIBRARY . '/owl.debug.functions.php');
 } else {
 	require (OWL_LIBRARY . '/owl.nodebug.functions.php');
 }
-//DBG_dumpval($GLOBALS);
+OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS, 'Globals after readConfig()');
 
 // Set up the label translations
 Register::registerLabels(true);
@@ -326,4 +336,5 @@ if (!defined('OWL___INSTALLER')) {
  * 
  * The aim is an environment that combines the best of several worlds; ease of use from Windows,
  * flexibility from Linux, robustness from OpenVMS and of course internet's platform and location independency.
+ * \author Oscar van Eijk, Oveas Functionality Provider
  */

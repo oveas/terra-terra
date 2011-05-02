@@ -3,7 +3,8 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the text for all labels in the default language
- * \version $Id: owl.labels.php,v 1.2 2011-04-06 14:42:15 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: owl.labels.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
  */
 
 $_labels = array (

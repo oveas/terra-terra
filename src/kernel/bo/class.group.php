@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the Group class
- * \version $Id: class.group.php,v 1.5 2011-04-29 14:55:20 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.group.php,v 1.6 2011-05-02 12:56:15 oscar Exp $
  */
 
 /**
@@ -22,6 +23,7 @@ class Group extends _OWL
 	/**
 	 * Class constructor
 	 * \param[in] $id Group ID
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($id)
 	{
@@ -39,6 +41,7 @@ class Group extends _OWL
 
 	/**
 	 * Read the group information from the database and store it in the internal dataset
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function getGroupData()
 	{
@@ -48,6 +51,10 @@ class Group extends _OWL
 		$this->group_data = $_data[0];
 	}
 
+	/**
+	 * Read the groupright bitmaps from the database and store them in the internal array
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
 	private function getGroupRights()
 	{
 		$dataset = new DataHandler ();
@@ -67,6 +74,7 @@ class Group extends _OWL
 	 * Return this groups rights bitmap for the given application
 	 * \param[in] $aid Application ID
 	 * \return Rights bitmap or 0 when not found
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getRights($aid)
 	{
@@ -81,6 +89,7 @@ class Group extends _OWL
 	 * \param[in] $item The item of which the value should be returned
 	 * \param[in] $default Default value it the item does not exist (default is null)
 	 * \return Value
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function get($item, $default = null)
 	{

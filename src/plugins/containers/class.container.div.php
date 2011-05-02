@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the div plugin for containers
- * \version $Id: class.container.div.php,v 1.2 2011-01-21 10:18:27 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.container.div.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -18,6 +19,7 @@ class ContainerDivPlugin extends ContainerPlugin
 
 	/**
 	 * Container constructor
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct()
 	{
@@ -27,6 +29,7 @@ class ContainerDivPlugin extends ContainerPlugin
 
 	/**
 	 * The DIV tag has no specific arguments, but this method is required by syntax
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 * \return Empty string
 	 */
 	public function showElement()

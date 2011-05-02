@@ -3,7 +3,8 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.8 2011-04-27 11:50:07 oscar Exp $
+ * \version $Id: class.exceptionhandler.php,v 1.9 2011-05-02 12:56:14 oscar Exp $
+	 * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
 
@@ -18,27 +19,25 @@ class OWLException extends Exception
 {
 	/**
 	 * Backlink to the calling object
-	 * \private
 	 */
 	private $caller;
 
 	/**
 	 * Array with function call info of which arguments should be hidden
-	 * \private
 	 */
 	private $hidden_args;
 
-		/**
+	/**
 	 * Store the error code to allow the logger to retrieve it
 	 */
 	public $thrown_code;
 
 	/**
 	 * Create the Exception handler object
-	 * \public
 	 * \param[in] $msg Message text
 	 * \param[in] $code Code of the event
 	 * \param[in] $caller Backlink to the calling object
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	function __construct($msg = null, $code = 0, OWLException $caller = null)
 	{
@@ -62,14 +61,9 @@ class OWLException extends Exception
 		}
 	}
 
-//	public function getCaller()
-//	{
-//		return $this->caller;
-//	}
-
 	/**
 	 * Trace back the previous object in the stack
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function _getTrace()
 	{
@@ -98,9 +92,10 @@ class OWLException extends Exception
 
 	/**
 	 * Create an overview of the calling stack
-	 * \public
 	 * \param[in] $textmode specify the format in which the stackdump should be
 	 * returned; text (true, default) of HTML (false).
+	 * \return Current stack
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function stackDump($textmode = true)
 	{
@@ -147,6 +142,7 @@ class OWLException extends Exception
 	 * \param[in] $trace The call
 	 * \return integer holding the argument index that should be hidden, of -1 if nothing
 	 * has to be hidden.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function checkHide ($trace)
 	{
@@ -171,11 +167,11 @@ class OWLException extends Exception
 
 	/**
 	 * Trace a single call from the stack
-	 * \private
 	 * \param[in] $trace The call
 	 * \param[in] $step Number of the call
-	 * \param[in] $textmode True if the stackdump is created as ASCII text,
-	 * False for HTML
+	 * \param[in] $textmode True if the stackdump is created as ASCII text, False for HTML
+	 * \return Call from the stack
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function traceback($trace, $step, $textmode)
 	{
@@ -314,6 +310,7 @@ class OWLExceptionHandler
 	/**
 	 * Show the stackdump of an exception
 	 * \param[in] $exception The exception
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */ 
 	public static function logException(OWLException $exception)
 	{
@@ -338,6 +335,7 @@ class OWLExceptionHandler
 	/**
 	 * Catch an uncaught exception
 	 * \param[in] $exception The exception
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */ 
 	public static function handleException (OWLException $exception)
 	{

@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the Formhandler class
- * \version $Id: class.formhandler.php,v 1.8 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.formhandler.php,v 1.9 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -43,20 +44,17 @@ class FormHandler extends _OWL
 {
 	/**
 	 * Create an array which will hold all (formatted) formvalues
-	 * \private
 	 */
 	private $owl_formvalues;
 
 	/**
 	 * integer - self reference
-	 * \private
-	 * \static
 	 */
 	private static $instance;
 
 	/**
 	 * Class constructor; Parse the incoming formdata.
-	 * \private
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function __construct ()
 	{
@@ -70,8 +68,8 @@ class FormHandler extends _OWL
 
 	/**
 	 * Return a reference to my implementation. If necessary, create that implementation first.
-	 * \public
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getInstance()
 	{
@@ -84,8 +82,8 @@ class FormHandler extends _OWL
 	/**
 	 * Parse a given form and store all data in the parent class, except values that
 	 * come from a multiple select; they will be stored locally.
-	 * \private
 	 * \param[in] $data The formdata array. 
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function parseFormdata ($data = null)
 	{
@@ -103,9 +101,9 @@ class FormHandler extends _OWL
 	 * Reimplement the get method; the parent's get will only be called
 	 * if the requested variable name is not in the 'local' array where multi-values
 	 * are stored.
-	 * \public
 	 * \param[in] $variable The variable name who's value should be set
 	 * \param[in] $value Value for the variable
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function set ($variable, $value)
 	{
@@ -124,7 +122,7 @@ class FormHandler extends _OWL
 			$this->owl_formvalues[$variable] = $value;
 		}
 
-		if (ConfigHandler::get ('debug') === true) {
+		if (ConfigHandler::get ('debug') > 0) {
 			$this->setStatus (FORM_STORVALUE,
 				array ($variable
 						, (
@@ -139,12 +137,12 @@ class FormHandler extends _OWL
 
 	/**
 	 * Get the value of a given formfield, formatted as specified
-	 * \public
 	 * \param[in] $variable The variable name who's value should be returned
 	 * \param[in] $format Specify how the field should be formatted
 	 * \param[in] $allows Array with allowd tags, used for the FORMDATA_CUSTOM format.
 	 * \param[in] $content Array with tags to allow completely, used for the FORMDATA_CUSTOM format.
 	 * \return Value as taken from the form; single value or array
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function get ($variable, $format = FORMDATA_STRICT, $allows = null, $content = array('script'))
 	{
@@ -202,7 +200,7 @@ class FormHandler extends _OWL
 			$this->setStatus (FORM_NOVALUE, $variable);
 		}
 
-		if (ConfigHandler::get ('debug') === true) {
+		if (ConfigHandler::get ('debug') > 0) {
 			$this->setStatus (FORM_RETVALUE, array ($variable, $_val));
 		}
 		return ($_val);
@@ -218,6 +216,7 @@ class FormHandler extends _OWL
 	 * \param[in] $remove_comment When true (default), content blocks will completely be removed. Set to false
 	 * to allow the content of a comment block. The tags themselves ('&lt;!--' and '--&gt;') will always be removed.
 	 * \return The string with all tags removed
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	function cleanString ($input , $allow = null , $content = null,  $remove_comment = true)
 	{
@@ -265,6 +264,7 @@ class FormHandler extends _OWL
 	/**
 	 * Get the complete formdata for logging purposes
 	 * \return Array with the parsed formdata
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getFormData()
 	{

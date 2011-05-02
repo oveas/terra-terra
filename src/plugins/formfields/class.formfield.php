@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines a formfield element plugin
- * \version $Id: class.formfield.php,v 1.3 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.formfield.php,v 1.4 2011-05-02 12:56:13 oscar Exp $
  */
 
 /**
@@ -17,31 +18,27 @@ abstract class FormFieldPlugin extends BaseElement
 {
 	/**
 	 * Field type
-	 * \protected
 	 */
 	protected $type;
 
 	/**
 	 * Field value
-	 * \protected
 	 */
 	protected $value;
 
 	/**
 	 * Boolean indicating a disabled field when true
-	 * \protected
 	 */
 	protected $disabled;
 
 	/**
 	 * Boolean indicating a readonly field when true
-	 * \protected
 	 */
 	protected $readonly;
 
 	/**
 	 * Class constructor; 
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ()
 	{
@@ -53,7 +50,7 @@ abstract class FormFieldPlugin extends BaseElement
 	/**
 	 * Set the field value
 	 * \param[in] $_value Field value
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setValue($_value)
 	{
@@ -63,7 +60,7 @@ abstract class FormFieldPlugin extends BaseElement
 	/**
 	 * Set the Disabled boolean
 	 * \param[in] $_value Value indicating true (default) or false
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setDisabled($_value = true)
 	{
@@ -73,7 +70,7 @@ abstract class FormFieldPlugin extends BaseElement
 	/**
 	 * Set the Readonly boolean
 	 * \param[in] $_value Value indicating true (default) or false
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setReadonly($_value = true)
 	{
@@ -83,7 +80,7 @@ abstract class FormFieldPlugin extends BaseElement
 	/**
 	 * Give the field type
 	 * \return Field type
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getType()
 	{
@@ -92,10 +89,10 @@ abstract class FormFieldPlugin extends BaseElement
 
 	/**
 	 * Return the attributes for an HTML formfield in the " attrib='value' [...]" format
-	 * \protected
 	 * \param[in] $_ignore Array with attributes names that should be ignored, e.g. for a textarea, the value
 	 * is not returned as an attribute.
 	 * \return Textstring with the HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function getGenericFieldAttributes($_ignore = array())
 	{
@@ -115,6 +112,7 @@ abstract class FormFieldPlugin extends BaseElement
 	 * This is a dummy implementation for the showElement() method, since it will be reimplemented
 	 * by the fieldtype specific classes.
 	 * \see BaseElement::showElement()
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{

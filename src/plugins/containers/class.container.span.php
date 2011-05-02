@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the span plugin for containers
- * \version $Id: class.container.span.php,v 1.2 2011-01-21 10:18:27 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.container.span.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -18,6 +19,7 @@ class ContainerSpanPlugin extends ContainerPlugin
 
 	/**
 	 * Container constructor
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct()
 	{
@@ -28,10 +30,10 @@ class ContainerSpanPlugin extends ContainerPlugin
 	/**
 	 * The SPAN tag has no specific arguments, but this method is required by syntax
 	 * \return Empty string
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{
 		return '';
 	}
-	
 }

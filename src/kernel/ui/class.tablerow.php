@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines a table row element
- * \version $Id: class.tablerow.php,v 1.4 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.tablerow.php,v 1.5 2011-05-02 12:56:14 oscar Exp $
  */
 
 if (!OWLloader::getClass('tablecell')) {
@@ -16,18 +17,16 @@ if (!OWLloader::getClass('tablecell')) {
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jan 9, 2011 -- O van Eijk -- initial version
  */
-
 class Tablerow extends BaseElement
 {
 	/**
 	 * Array with pointers to the tablecell objects
-	 * \private
 	 */
 	private $cells = array();
 
 	/**
 	 * Class constructor;
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ()
 	{
@@ -39,7 +38,7 @@ class Tablerow extends BaseElement
 	 * \param[in] $_content HTML code that will be placed in the cell
 	 * \param[in] $_attribs An optional array with HTML attributes
 	 * \return Reference to the cell object
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function addCell($_content = '&nbsp;', array $_attribs = array())
 	{
@@ -51,8 +50,8 @@ class Tablerow extends BaseElement
 	
 	/**
 	 * Get the HTML code to display the tablerow
-	 * \public
 	 * \return string with the HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{

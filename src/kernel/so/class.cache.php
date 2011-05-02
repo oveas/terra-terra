@@ -3,7 +3,8 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the cache class
- * \version $Id: class.cache.php,v 1.2 2011-04-14 11:40:55 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.cache.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -41,6 +42,7 @@ abstract class OWLCache
 
 	/**
 	 * Initialise the cache array with the predefined keys
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private static function init()
 	{
@@ -57,6 +59,7 @@ abstract class OWLCache
 	 * \param[in] $cache Name of the cache array
 	 * \param[in] $key Key in the cache array
 	 * \return Value that was found, of null when nothing was found
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function get ($cache, $key)
 	{
@@ -78,6 +81,7 @@ abstract class OWLCache
 	 * \param[in] $key Key in the cache array
 	 * \param[in] $value Value to store
 	 * \return The given value is also returned
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function set ($cache, $key, $value)
 	{
@@ -94,6 +98,7 @@ abstract class OWLCache
 	/**
 	 * Load cached data
 	 * \todo Data caching is not yet implemented - this is a placeholder for future use
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function loadCache ()
 	{
@@ -103,6 +108,7 @@ abstract class OWLCache
 	/**
 	 * Write data to te general cache
 	 * \todo Data caching is not yet implemented - this is a placeholder for future use
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function saveCache ()
 	{

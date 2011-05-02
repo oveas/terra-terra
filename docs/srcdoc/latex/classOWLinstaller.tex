@@ -11,6 +11,13 @@ Application installer.
 static {\bf installApplication} (\$code, \$name, \$version, \$description= '', \$link= '', \$author= '', \$license= '')
 \item 
 static {\bf enableApplication} (\$id)
+\item 
+static {\bf parseSQLFile} (\$fname)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf uncommentSQL} (\$line)
 \end{DoxyCompactItemize}
 
 
@@ -38,6 +45,9 @@ Enable an application
 \mbox{\tt in}  & {\em \$id} & Application ID \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get().
@@ -75,11 +85,47 @@ References ConfigHandler::get().
 \begin{DoxyReturn}{Returns}
 The application ID 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \begin{Desc}
 \item[{\bf Todo}]Error checking \end{Desc}
 
 
 References ConfigHandler::get().
+
+\index{OWLinstaller@{OWLinstaller}!parseSQLFile@{parseSQLFile}}
+\index{parseSQLFile@{parseSQLFile}!OWLinstaller@{OWLinstaller}}
+\subsubsection[{parseSQLFile}]{\setlength{\rightskip}{0pt plus 5cm}static OWLinstaller::parseSQLFile (
+\begin{DoxyParamCaption}
+\item[{\$}]{fname}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLinstaller_a80d3dddb1d0c88cd216261beef8a19cb}
+
+
+References uncommentSQL().
+
+\index{OWLinstaller@{OWLinstaller}!uncommentSQL@{uncommentSQL}}
+\index{uncommentSQL@{uncommentSQL}!OWLinstaller@{OWLinstaller}}
+\subsubsection[{uncommentSQL}]{\setlength{\rightskip}{0pt plus 5cm}static OWLinstaller::uncommentSQL (
+\begin{DoxyParamCaption}
+\item[{\$}]{line}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classOWLinstaller_a62699be0fe7e64f36d61f56a87d4fd77}
+Parse a line from an SQL file, stripping all comments 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$line} & Line as read from the SQL file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+String with a (part of the) SQL statement 
+\end{DoxyReturn}
+
+
+Referenced by parseSQLFile().
 
 
 

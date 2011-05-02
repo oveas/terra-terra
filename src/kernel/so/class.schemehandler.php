@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the Scheme Handler class
- * \version $Id: class.schemehandler.php,v 1.5 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.schemehandler.php,v 1.6 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -11,50 +12,44 @@
  * \brief Scheme handler 
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Oct 7, 2010 -- O van Eijk -- initial version for OWL
+ * \note A port of this class has been created for VirtueMart
  * \todo This handler currently doesn't use the DbDriver driver class
  */
 class SchemeHandler extends _OWL
 {
 	/**
 	 * integer - Scheme Handle ID
-	 * \private
 	 */
 	private $id;
 
 	/**
 	 * integer - Reference to the database class
-	 * \private
 	 */
 	private $db;
 
 	/**
 	 * Array - table description
-	 * \private
 	 */
 	private $scheme;
 
 	/**
 	 * Array - table name
-	 * \private
 	 */
 	private $table = '';
 
 	/**
 	 * integer - self reference
-	 * \private
-	 * \static
 	 */
 	private static $instance;
 
 	/**
 	 * boolean - True when a scheme is filled with data and not yet used
-	 * \private
 	 */
 	private $inuse = false;
 
 	/**
 	 * Class constructor
-	 * \private
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function __construct ()
 	{
@@ -65,7 +60,7 @@ class SchemeHandler extends _OWL
 
 	/**
 	 * Class destructor
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __destruct ()
 	{
@@ -77,7 +72,7 @@ class SchemeHandler extends _OWL
 	/**
 	 * Implementation of the __clone() function to prevent cloning of this singleton;
 	 * it triggers a fatal (user)error
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __clone ()
 	{
@@ -86,8 +81,8 @@ class SchemeHandler extends _OWL
 
 	/**
 	 * Return a reference to my implementation. If necessary, create that implementation first.
-	 * \public
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getInstance()
 	{
@@ -100,6 +95,7 @@ class SchemeHandler extends _OWL
 	/**
 	 * Set a new tablename
 	 * \param[in] $_tblname Name of the table to create, check or modify
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function createScheme ($_tblname)
 	{
@@ -123,6 +119,7 @@ class SchemeHandler extends _OWL
 	 * - default : Mixed; default value
 	 * - options : Array; for SET and ENUM types. the list of possible values
 	 * - comment : String; field comment
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function defineScheme($_scheme)
 	{
@@ -142,6 +139,8 @@ class SchemeHandler extends _OWL
 	 * - primary : Boolean; True for the primary key
 	 * - columns : Array; List with columnnames that will be indexed
 	 * - type : String (optional); Index type, currenty only supports 'FULLTEXT'
+	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function defineIndex($_index)
 	{
@@ -171,6 +170,7 @@ class SchemeHandler extends _OWL
 	 * If existing fields should be converted to new fields, call with DbScheme::scheme(false) first,
 	 * then do the conversions, next call DbScheme::scheme(true).
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	function scheme($_drops = false)
 	{
@@ -193,8 +193,8 @@ class SchemeHandler extends _OWL
 	 * Modify 1 or more fields in an existing scheme definition
 	 * \param[in] $_field Array holding 1 or more field descriptions
 	 * \see defineScheme()
-	 * \private
 	 * \return Boolean; false if the table description contains errors
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function alterScheme($_field)
 	{
@@ -211,8 +211,8 @@ class SchemeHandler extends _OWL
 	/**
 	 * Validate the defined scheme. Some values will be modified to make sure the SQL
 	 * statements can be prepared and compare() won't find differences on case diffs
-	 * \private
 	 * \return boolean False if there is an error in the scheme definition, True if no errors were found
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function validateScheme()
 	{
@@ -275,6 +275,7 @@ class SchemeHandler extends _OWL
 	 * Compare the scheme with an existing database table
 	 * \return mixed True if there are no differences, False if the table does not exist, or an
 	 * array with differences
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function compare ()
 	{
@@ -309,7 +310,7 @@ class SchemeHandler extends _OWL
 
 	/**
 	 * Create the defined table
-	 * \private
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function createTable()
 	{
@@ -348,7 +349,7 @@ class SchemeHandler extends _OWL
 	 * Make changes to the table
 	 * \param[in] $_diffs Changes to make
 	 * \param[in] $_drops True if existing fields should be dropped
-	 * \private
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function alterTable($_diffs, $_drops)
 	{
@@ -382,8 +383,8 @@ class SchemeHandler extends _OWL
 	/**
 	 * Create the SQL code for a field definition
 	 * \param[in] $_desc Indexed array with the field properties from scheme definition
-	 * \private
 	 * \return string SQL code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function _define_field($_desc)
 	{
@@ -417,9 +418,9 @@ class SchemeHandler extends _OWL
 
 	/**
 	 * Get the columns for a given table
-	 * \private
 	 * \param[in] $_tablename The tablename
 	 * \return Indexed array holding all fields =&gt; datatypes, or null on errors
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function getTableColumns($_tablename)
 	{
@@ -460,9 +461,9 @@ class SchemeHandler extends _OWL
 
 	/**
 	 * Get the indexes for a given table
-	 * \private
 	 * \param[in] $_tablename The tablename
 	 * \return Indexed array holding all fields =&gt; datatypes, or null on errors
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function getTableIndexes($_tablename)
 	{
@@ -489,6 +490,7 @@ class SchemeHandler extends _OWL
 	 * \param[in] $tablename The tablename
 	 * \param[out] $data Indexed array holding all fields =&gt; datatypes
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function tableDescription ($tablename, &$data)
 	{
@@ -504,6 +506,7 @@ class SchemeHandler extends _OWL
 	
 	/**
 	 * Reset the internal data structure
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function reset()
 	{
@@ -516,6 +519,7 @@ class SchemeHandler extends _OWL
 /**
  * \example exa.schemehandler.php
  * This example shows how to create or alter a table using the SchemeHandler class
+ * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
 /*

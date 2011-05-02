@@ -2,7 +2,8 @@
 /**
  * \file
  * Define a class for config handling
- * \version $Id: class.confighandler.php,v 1.12 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.confighandler.php,v 1.13 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -23,7 +24,6 @@ abstract class ConfigHandler
 
 	/**
 	 * Parse the given configuration source
-	 * \public
 	 * \param[in] $_source Array describing the configuration source. It can have the following keys:
 	 *  - file: Full path to the configuration file
 	 *  - table: Config tablename without prefix. Default 'config', MUST be given with the first call
@@ -34,6 +34,7 @@ abstract class ConfigHandler
 	 * 
 	 * The first call must always read from a file. On subsequent calls, if no filename is given,
 	 * the configuration is taken from the (owl_)config table
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function readConfig (array $_source)
 	{
@@ -53,6 +54,7 @@ abstract class ConfigHandler
 	/**
 	 * Parse a configuration file
 	 * \param[in] $_file Filename
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private static function configFile ($_file)
 	{
@@ -92,6 +94,7 @@ abstract class ConfigHandler
 	 * \param[in] $_group Group ID for which the config should be read
 	 * \param[in] $_user User ID for which the config should be read
 	 * \param[in] $_force Boolean that can force overwrite of protected values
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private static function configTable ($_table, $_applic, $_group, $_user, $_force)
 	{
@@ -117,9 +120,9 @@ abstract class ConfigHandler
 
 	/**
 	 * Convert values in character string format to a known value
-	 * \private
 	 * \param[in] $val The value as read from the config file
 	 * \return Value in the desired format (or as is if nothing set)
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private static function convert ($val)
 	{
@@ -142,6 +145,7 @@ abstract class ConfigHandler
 	 * \param[in] $_value Value of the config item
 	 * \param[in] $_protect Boolean indicating a protected value
 	 * \param[in] $_hide Boolean indicated a hidden value
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private static function parseItem ($_item, $_value, $_protect, $_hide)
 	{
@@ -164,15 +168,15 @@ abstract class ConfigHandler
 
 	/**
 	 * Return a configuration value.
-	 * Note! In order to use hidden values properly, this is the ONLY way configuration
+	 * \note In order to use hidden values properly, this is the ONLY way configuration
 	 * values should be retrieved!
-	 * \public
 	 * \param[in] $item The configuration item in the same format as it appears in the
 	 * configuration file (e.g. 'group|subject|item')
 	 * \param[in] $default The default value to return if the config item was not set. This defaults
 	 * to 'null'; if it is anything other than null, the CONFIG_NOVALUE status will not be set
 	 * \param[in] $force Boolean to force a reparse of the config item ignoring existing cache values
 	 * \return Corresponding value of null when nothing was found
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function get ($item, $default = null, $force = false)
 	{
@@ -218,10 +222,10 @@ abstract class ConfigHandler
 
 	/**
 	 * Set a configuration item. Existing values will be overwritten when not protected.
-	 * \public
 	 * \param[in] $_item The configuration item in the same format as it appears in the
 	 * configuration file (e.g. 'group|subject|item')
 	 * \param[in] $_value The new value of the item
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function set ($_item, $_value)
 	{
@@ -243,6 +247,7 @@ abstract class ConfigHandler
 	 * \param[in] $_item Item name or path (seperated with '|')
 	 * \param[in] $_value The calue to be set
 	 * \param[in] $_hide Boolean which it true when this is a hidden item
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private static function _set ($_item, $_value, $_hide)
 	{

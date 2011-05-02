@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the Oveas Web Library main class
- * \version $Id: class._owl.php,v 1.8 2011-04-27 11:50:08 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class._owl.php,v 1.9 2011-05-02 12:56:15 oscar Exp $
  */
 
 /**
@@ -15,35 +16,31 @@ abstract class _OWL
 {
 	/**
 	 * Current object status
-	 * \private 
 	 */
 	private $status;
 
 	/**
 	 * Copy of the status object
-	 * \private 
 	 */
 	private $saved_status;
 	
 	/**
 	 * Pointer to the object which holds the last nonsuccessfull (>= OWL_WARNING) status
-	 * \private
 	 */
 	private $pstatus;
 	
 	/**
 	 * Severity level of the current object status
-	 * \private
 	 */
 	protected $severity;
-//private $_i=0;
+
 	/**
 	 * This function should be called by all constuctors. It initializes
 	 * the general characteristics.
 	 * Status is 'warning' by default, it's up to the contructor to set
 	 * a proper status; if it's still 'warning', this *might* indicate
 	 * something went wrong.
-	 * \protected
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function init ()
 	{
@@ -54,19 +51,18 @@ abstract class _OWL
 	}
 
 	/**
-	 * Default class destructor; has to exist but can (should?) be reimplemented
-	 * \public
+	 * Default class destructor
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __destruct ()
 	{
-//echo "Destruct object " .get_class($this)."<br/>";
-//$this->_i++;
 	}
 
 	/**
 	 * Set a dispatcher for later callback
 	 * \param[in] $_dispatcher Dispatched, \see Dispatcher::composeDispatcher()
 	 * \return True on success, false on failure
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function setCallback($_dispatcher)
 	{
@@ -81,6 +77,7 @@ abstract class _OWL
 	 * Add an argument to a previously registered callback dispatcher
 	 * \param[in] $_arg Argument, must be an array type. When non- arrays should be passed as arguments, the must be set when the callback is registered already
 	 * \return True on success, false on failure
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function setCallbackArgument(array $_arg)
 	{
@@ -91,6 +88,7 @@ abstract class _OWL
 	/**
 	 * Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly.
 	 * \return The dispatcher, of null on failure.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function getCallback()
 	{
@@ -101,7 +99,7 @@ abstract class _OWL
 	/**
 	 * General reset function for all objects. Should be called after each
 	 * non-fatal error
-	 * \protected
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function reset ()
 	{
@@ -110,6 +108,7 @@ abstract class _OWL
 
 	/**
 	 * Create a copy of the status object
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function saveStatus()
 	{
@@ -118,6 +117,7 @@ abstract class _OWL
 
 	/**
 	 * Restore the previously saved status object and destroy the copy
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function restoreStatus()
 	{
@@ -130,9 +130,9 @@ abstract class _OWL
 	
 	/**
 	 * Reset the status in the complete calltree
-	 * \private
 	 * \param[in] $depth Keep track of the depth in recusrive calls. Should be empty
 	 * in the first call.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	final private function resetCalltree ($depth = 0)
 	{
@@ -154,6 +154,7 @@ abstract class _OWL
 	 * \param[in] $object Pointer to an object to check against
 	 * \param[in] $level The maximum severity level
 	 * \return True if the severity level was correct (below the max), otherwise false
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function check (&$object, $level = OWL_WARNING)
 	{
@@ -167,9 +168,9 @@ abstract class _OWL
 
 	/**
 	 * Set the current object status to the specified value.
-	 * \protected
 	 * \param[in] $status OWL status code
 	 * \param[in] $params
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected final function setStatus ($status, $params = array ())
 	{
@@ -197,7 +198,7 @@ abstract class _OWL
 
 			$this->signal (0, $msg);
 			if (ConfigHandler::get('exception|block_throws', false)) {
-//				// Can't call myself anymore but we wanna see this message.
+				// Can't call myself anymore but we wanna see this message.
 				$_msg = $msg; // Save the original 
 				$this->severity = $this->status->setCode(OWL_STATUS_THROWERR);
 				$this->signal (0, $msg);
@@ -212,8 +213,8 @@ abstract class _OWL
 
 	/**
 	 * Get the current object status.
-	 * \public
 	 * \return Object's status code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public final function getStatus ()
 	{
@@ -222,10 +223,10 @@ abstract class _OWL
 
 	/**
 	 * Get the current object severity level.
-	 * \public
 	 * \param[in] $status An optional parameter to check an other status code i.s.o the
 	 * object's current status.
 	 * \return Status severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getSeverity ($status = null)
 	{
@@ -237,6 +238,7 @@ abstract class _OWL
 	 * \param[in] $_ok The highest severity that's considered successfull, default OWL_SUCCESS
 	 * \param[in] $_object REference to the object to check, defaults to the current object
 	 * \return Boolean true when successfull
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function succeeded ($_ok = OWL_SUCCESS, &$_object = null)
 	{
@@ -249,7 +251,7 @@ abstract class _OWL
 	/**
 	 * Compare the severity level of the current object with a given one and set
 	 * my statuspointer to the object with the highest level.
-	 * \protected
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function setHighSeverity (&$object = null)
 	{
@@ -266,12 +268,12 @@ abstract class _OWL
 
 	/**
 	 * Display the message for the current object status
-	 * \public
 	 * \param[in] $level An optional severity level; message will only be displayed when
 	 * it is at least of this level.
 	 * \param[out] $text If this parameter is given, the message text is returned in this string
 	 * instead of echood.
 	 * \return The severity level for this object
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function signal ($level = OWL_INFO, &$text = false)
 	{
@@ -294,12 +296,12 @@ abstract class _OWL
 	/**
 	 * If somehwere in the nested calls an error occured, we can traceback the original
 	 * failing object with this function and signal the message.
-	 * \public
 	 * \param[out] $text Optional variable in which the message text can be stored. If not given,
 	 * the text will be written to standard output
 	 * \param[in] $depth This paramater should be initially empty. It calculates the depth in
 	 * recursive calls.
 	 * \return Severity code of the failing object
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function traceback (&$text = false, $depth = 0)
 	{

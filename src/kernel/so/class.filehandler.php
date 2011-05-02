@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the FileHandler class
- * \version $Id: class.filehandler.php,v 1.6 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.filehandler.php,v 1.7 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -37,7 +38,6 @@ class FileHandler extends _OWL
 
 	/**
 	 * Full filename as stored on the file system
-	 * \protected
 	 */	
 	protected $name; 
 	var $original_name;	// Original filename
@@ -53,13 +53,11 @@ class FileHandler extends _OWL
 
 	/**
 	 * Pointer to te file when opened
-	 * \private
 	 */	
 	private $fpointer;
 
 	/**
 	 * Boolean that's true when the file is opened
-	 * \private
 	 */	
 	private $opened;
 
@@ -69,9 +67,9 @@ class FileHandler extends _OWL
 
 	/**
 	 * Class constructor; setup the file characteristics
-	 * \public
 	 * \param[in] $name Filename
 	 * \param[in] $req True is the file must exist at object create time
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($name, $req = false)
 	{
@@ -110,7 +108,6 @@ class FileHandler extends _OWL
 
 	/**
 	 * Open the file
-	 * \protected
 	 * \param[in] $mode Mode in which the file should be opened: 
 	 *    - 'r'  	Open for reading only; place the file pointer at the beginning of the file.
 	 *    - 'r+' 	Open for reading and writing; place the file pointer at the beginning of the file.
@@ -118,6 +115,7 @@ class FileHandler extends _OWL
 	 *    - 'w+' 	Open for reading and writing; place the file pointer at the beginning of the file and truncate the file to zero length. If the file does not exist, attempt to create it.
 	 *    - 'a' 	Open for writing only; place the file pointer at the end of the file. If the file does not exist, attempt to create it.
 	 *    - 'a+' 	Open for reading and writing; place the file pointer at the end of the file. If the file does not exist, attempt to create it. 
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function open ($mode = 'r')
 	{
@@ -137,7 +135,7 @@ class FileHandler extends _OWL
 
 	/**
 	 * Close the file
-	 * \protected
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function close ()
 	{
@@ -152,7 +150,7 @@ class FileHandler extends _OWL
 
 	/**
 	 * Read the file contents and return as one dataset
-	 * \protected
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function readData ()
 	{
@@ -164,12 +162,12 @@ class FileHandler extends _OWL
 
 	/**
 	 * Read a single line from the file. File must be opened before
-	 * \protected
 	 * \param[in] $trim specify how the returned line should be trimmed:
 	 *    - FILE_NOTRIM
 	 *    - FILE_TRIM_L
 	 *    - FILE_TRIM_R
 	 *    - FILE_TRIM_C
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function readLine ($trim = FILE_NOTRIM)
 	{

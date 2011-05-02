@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the DataHandler class
- * \version $Id: class.datahandler.php,v 1.15 2011-04-29 14:55:20 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.datahandler.php,v 1.16 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -60,7 +61,6 @@ class DataHandler extends _OWL
 {
 	/**
 	 * Indexed array holding all data values.
-	 * \private
 	 */	
 	private $owl_data;
 
@@ -91,7 +91,6 @@ class DataHandler extends _OWL
 
 	/**
 	 * Boolean that indicates of a query has been prepared
-	 * \private
 	 */	
 	private $owl_prepared;
 
@@ -105,7 +104,7 @@ class DataHandler extends _OWL
 	 * since singleton classes (using private constructors) might derive from this class.
 	 * In stead we use the PHP4 compatible constructor.
 	 * \param[in] $tablename Default table name for this dataset
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($tablename = '')
 	{
@@ -122,6 +121,7 @@ class DataHandler extends _OWL
 	/**
 	 * Reset the object
 	 * \param[in] $level Bitmap indicating which items must be reset. Default is DATA_RESET_PREPARE
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function reset ($level = DATA_RESET_PREPARE)
 	{
@@ -144,6 +144,7 @@ class DataHandler extends _OWL
 	/**
 	 * Get the link to the actual database object of the dataset, which might be the original
 	 * singleton, or the clone in use.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getDbLink()
 	{
@@ -175,7 +176,9 @@ class DataHandler extends _OWL
 	 * The first argument passed to the method is always the fieldname, additional arguments will be taken from the array.
 	 * 	- match: The matchtype. When omitted, default is DBMATCH_EQ ('='). If the field should be in a SELECT list and not in the where clause, use the matchtype DBMATCH_NONE
 	 * (if no fields are set with DBMATCH_NONE, read queries will select with SELECT *)
+	 * 
 	 * \see exa.datahandler-set.php
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function set ($variable, $value, $table = null, array $fieldFunction = null, array $valueFunction = null)
 	{
@@ -217,6 +220,7 @@ class DataHandler extends _OWL
 	 * be overwritten on updates, but used in WHERE clauses.
 	 * \param[in] $variable Variable name to lock, optionally as an array (table, field)
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setKey ($variable)
 	{
@@ -238,9 +242,9 @@ class DataHandler extends _OWL
 
 	/**
 	 * Interface to the DbHander::escapeString()
-	 * \public
 	 * \param[in] $string String to escape
 	 * \return Return value of DbHandler::escapeString()
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function escapeString($string)
 	{
@@ -249,10 +253,10 @@ class DataHandler extends _OWL
 
 	/**
 	 * Try to exand a field to a fully qualified 'table\#field' name
-	 * \private
 	 * \param[in] $fld The fieldname that has to be expanded
 	 * \param[out] $expanded An array with all matching fully qualified fieldnames.
 	 * \return The number of matches
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function findField ($fld, &$expanded)
 	{
@@ -280,6 +284,7 @@ class DataHandler extends _OWL
 	 * and the second element is the actual value!
 	 * \param[in] $variable The name of the variable that should be retrieved
 	 * \return The value, or NULL when the value was not found or abigious.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function get ($variable)
 	{
@@ -305,12 +310,11 @@ class DataHandler extends _OWL
 	/**
 	 * Define a link between 2 fields that will be recognized when the
 	 * database query is built.
-	 * \public
 	 * \param[in] $lvalue Left value as array(table, field)
 	 * \param[in] $rvalue Right value as array(table, field)
-	 * \param[in] $linktype How are the fields linked. Can be any binary
-	 * operator as recognized by SQL.
+	 * \param[in] $linktype How are the fields linked. Can be any binary operator as recognized by SQL.
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setJoin ($lvalue, $rvalue, $linktype = '=')
 	{
@@ -349,8 +353,8 @@ class DataHandler extends _OWL
 
 	/**
 	 * Set or overwrite the default table name
-	 * \public
 	 * \param[in] $tblname Default table name
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setTablename ($tblname)
 	{
@@ -359,13 +363,13 @@ class DataHandler extends _OWL
 
 	/**
 	 * Prepare a database query
-	 * \public
 	 * \param[in] $type Specify which type of query should be prepared:
 	 *   - DATA_READ (default); Read data from the database 
 	 *   - DATA_WRITE; Write new data to the database
 	 *   - DATA_UPDATE; Update data in the database
 	 * \return Severity level
 	 * \todo add limit and cache
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function prepare ($type = DATA_READ)
 	{
@@ -424,11 +428,11 @@ class DataHandler extends _OWL
 	
 	/**
 	 * Forward a call to the DBHandler object (which is private in this DataHandler)
-	 * \public
 	 * \param[out] $data The result of DBHandler function, or false when no query was prepared yet 
 	 * \param[in] $line Line number of this call
 	 * \param[in] $file File that made the call to this method
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function db (&$data = null, $line = 0, $file = '[unknown]')
 	{
@@ -445,9 +449,6 @@ class DataHandler extends _OWL
 		if ($this->owl_prepared === DATA_WRITE) {
 			$this->last_id = $this->owl_database->lastInsertedId();
 		}
-//		if ($this->check($this->owl_database) === true) {
-//			$this->reset(DATA_RESET_DATA);
-//		}
 		return ($this->setHighSeverity ($this->owl_database));
 	}
 
@@ -455,6 +456,7 @@ class DataHandler extends _OWL
 	 * Overwrite the table prefix for this dataset.
 	 * Since the prefix is stored in the database handler object, a clone is used (or made) here.
 	 * \param[in] $prefix Table prefix
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setPrefix ($prefix)
 	{
@@ -472,8 +474,8 @@ class DataHandler extends _OWL
 
 	/**
 	 * Return the last status of the database
-	 * \public
 	 * \return Current status of the database object
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function dbStatus ()
 	{
@@ -483,6 +485,7 @@ class DataHandler extends _OWL
 	/**
 	 * Return the last inserted AutoIncrement value
 	 * \return Last ID
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function insertedId ()
 	{
@@ -492,6 +495,7 @@ class DataHandler extends _OWL
 /**
  * \example exa.datahandler-set.php
  * This example shows advanced use of the DataHandler::set() method
+ * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
 /*

@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the Oveas Web Library helper class
- * \version $Id: class.owl.php,v 1.5 2011-04-27 11:50:08 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.owl.php,v 1.6 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -14,13 +15,12 @@ class OWL extends _OWL
 {
 	/**
 	 * integer - self reference
-	 * \private
-	 * \static
 	 */
 	private static $instance;
 
 	/**
 	 * Constructor
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */	
 	private function __construct ()
 	{ 
@@ -30,7 +30,7 @@ class OWL extends _OWL
 	/**
 	 * Implementation of the __clone() function to prevent cloning of this singleton;
 	 * it triggers a fatal (user)error
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __clone ()
 	{
@@ -39,8 +39,8 @@ class OWL extends _OWL
 
 	/**
 	 * Return a reference to my implementation. If necessary, create that implementation first.
-	 * \public
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getInstance()
 	{
@@ -54,6 +54,7 @@ class OWL extends _OWL
 	 * Call to setStatus()
 	 * \param[in] $a First parameter for passthrough
 	 * \param[in] $b Second parameter for passthrough
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function stat ($a, $b = array())
 	{
@@ -66,6 +67,7 @@ class OWL extends _OWL
 	 * \param[in] $class Classname
 	 * \param[in] $layer Layer, defaults to 'so'
 	 * \return Reference to the object
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function factory($class, $layer = 'so')
 	{

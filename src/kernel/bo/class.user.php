@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the User class
- * \version $Id: class.user.php,v 1.15 2011-04-29 14:55:20 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.user.php,v 1.16 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -47,8 +48,8 @@ abstract class User extends _OWL
 	/**
 	 * Class constructor; create a new user environment. This is not a regular constructor,
 	 * since it's up to the application to decide if this is a normal object or a singleton.
-	 * \protected
 	 * \param[in] $username Username when logged in. Default username is 'anonymous'
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function construct ($username = null)
 	{
@@ -78,6 +79,7 @@ abstract class User extends _OWL
 	/**
 	 * Cleanup the existing user environment
 	 * \param[in] $newSession Boolean set to true when a new session must be created
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function clearUser($newSession = false)
 	{
@@ -97,6 +99,7 @@ abstract class User extends _OWL
 
 	/**
 	 * (Re)initialize the user environment
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function newUser()
 	{
@@ -114,6 +117,7 @@ abstract class User extends _OWL
 
 	/**
 	 * Save the current user environment in the session
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function saveUser()
 	{
@@ -123,6 +127,7 @@ abstract class User extends _OWL
 
 	/**
 	 * Restore a user environment
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function restoreUser()
 	{
@@ -133,7 +138,7 @@ abstract class User extends _OWL
 
 	/**
 	 * When a run ends, write the sessiondata
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __destruct ()
 	{
@@ -143,11 +148,11 @@ abstract class User extends _OWL
 
 	/**
 	 * Log in
-	 * \public
 	 * \param[in] $username Given username. Might be taken from the session as well, but given as a
 	 * parameter here to suppress the E_STRICT Declaration warning
 	 * \param[in] $password The user provided password
 	 * \return True on success, False otherwise
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function login ($username, $password)
 	{
@@ -191,7 +196,7 @@ abstract class User extends _OWL
 	 * take care of the forward (e.g. with a header('location: ' . $_SERVER['PHP_SELF'])
 	 * after a call to User::logout()).
 	 * \param[in] $resetStatus When true (default) the object status will be reset
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function logout ($resetStatus = true)
 	{
@@ -208,7 +213,7 @@ abstract class User extends _OWL
 	/**
 	 * When a new session starts for a use that was logged in before
 	 * retrieve the userdata back from the database
-	 * \private
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function readUserdata ()
 	{
@@ -240,9 +245,9 @@ abstract class User extends _OWL
 
 	/**
 	 * Encrypt a given password
-	 * \private
 	 * \param[in] $password Given password in plain text format
 	 * \return The encrypted password
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private  function hashPassword ($password)
 	{
@@ -253,6 +258,7 @@ abstract class User extends _OWL
 	 * Check is a given username exists
 	 * \param[in] $username The username to check
 	 * \return True when the username exists false otherwise
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function usernameExists ($username)
 	{
@@ -269,13 +275,13 @@ abstract class User extends _OWL
 
 	/**
 	 * Register a new username
-	 * \protected
 	 * \param[in] $username Given username
 	 * \param[in] $email Given username
 	 * \param[in] $password Given password
 	 * \param[in] $vpassword Given password
 	 * \param[in] $group Default Group ID, defaults to the user|default_group config setting
 	 * \return New user ID or -1 on failure
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function register($username, $email, $password, $vpassword, $group = 0)
 	{
@@ -314,8 +320,9 @@ abstract class User extends _OWL
 
 	/**
 	 * Confirm a user registration.
-	 * \param[in] $_confirmation Array that must contain at least the keys 'uid' and 'vcode'
+	 * \param[in] $_confirmation Array that must contain at least the keys 'uid' (User ID) and 'vcode' (Verification Code)
 	 * \return True on success, false on failure
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function confirm(array $_confirmation)
 	{
@@ -352,6 +359,7 @@ abstract class User extends _OWL
 	 * \param[in] $_compare An optional array of string to compare with, like username and or email address.
 	 * If the password if (part of) any of the strings in the array, the strength is decreased.
 	 * \return An integer from 0-10 indicating the strength, where 0 is the lowest and 10 the highest level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function passwordStrength($_pwd, $_compare = array())
 	{
@@ -406,6 +414,7 @@ abstract class User extends _OWL
 	 * \param[in] $bit Rightsbit to check
 	 * \param[in] $appl ID of the application the bit belongs to
 	 * \return Boolean; true when the bit is set
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function hasRight ($bit, $appl)
 	{
@@ -415,6 +424,7 @@ abstract class User extends _OWL
 	/**
 	 * Check is the current user is logged in
 	 * \return True when logged in
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function isLoggedIn()
 	{
@@ -423,7 +433,7 @@ abstract class User extends _OWL
 
 	/**
 	 * Return the username of the current session
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getUsername ()
 	{
@@ -432,7 +442,7 @@ abstract class User extends _OWL
 
 	/**
 	 * Return the userID of the current session
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getUserId ()
 	{
@@ -441,8 +451,8 @@ abstract class User extends _OWL
 	
 	/**
 	 * Return the current session ID
-	 * \public
 	 * \return the session ID
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getSessionId ()
 	{
@@ -451,6 +461,7 @@ abstract class User extends _OWL
 
 	/**
 	 * Get the list of all objects this user is member of
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function getMemberships()
 	{
@@ -467,20 +478,16 @@ abstract class User extends _OWL
 				$this->memberships['m'.$_mbrship['gid']] = new Group($_mbrship['gid']);
 				$this->rights->mergeBitmaps($this->memberships['m'.$_mbrship['gid']]->getRights(OWL_ID), OWL_ID);
 				$this->rights->mergeBitmaps($this->memberships['m'.$_mbrship['gid']]->getRights(APPL_ID), APPL_ID);
-//				$this->rights->mergeBitmaps(
-//						  $this->memberships['m'.$_mbrship['gid']]->get('right', 0)
-//						, $this->memberships['m'.$_mbrship['gid']]->get('aid', OWL_ID)
-//				);
 			}
 		}
 	}
 	
 	/**
 	 * Set a session variable
-	 * \public
 	 * \param[in] $var Variable name
 	 * \param[in] $val Variable value (default 0)
 	 * \param[in] $flg How to handle the value. Default SESSIONVAR_SET
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setSessionVar ($var, $val = 0, $flg = SESSIONVAR_SET)
 	{
@@ -489,10 +496,10 @@ abstract class User extends _OWL
 
 	/**
 	 * Get a session variable
-	 * \public
 	 * \param[in] $var Variable name
 	 * \param[in] $default Default value to return if the variable was not set (default null)
 	 * \return The value from the session, null if not set
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getSessionVar ($var, $default = null)
 	{

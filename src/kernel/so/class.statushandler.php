@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines status object that's user for all objects
- * \version $Id: class.statushandler.php,v 1.8 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.statushandler.php,v 1.9 2011-05-02 12:56:13 oscar Exp $
  */
 
 /**
@@ -17,20 +18,16 @@ class StatusHandler
 {
 	/**
 	 * Current object status
-	 * \private 
 	 */
 	private $code;
 
 	/**
 	 * Array with parameters that will be substituted in message text
-	 * \private 
 	 */
 	private $params;
 
 	/**
 	 * integer - self reference
-	 * \private
-	 * \static
 	 */
 	private static $instance;
 
@@ -38,8 +35,8 @@ class StatusHandler
 	 * Constructor; should be called only by _OWL::init().
 	 * The default status is initially a (generic) warning status. It should be set to
 	 * any successfull status after object initialisation completed.  
-	 * \public
 	 * \param[in] $code The status code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function __construct ($code = OWL_STATUS_WARNING)
 	{
@@ -48,8 +45,8 @@ class StatusHandler
 
 	/**
 	 * Return a reference to my implementation. If necessary, create that implementation first.
-	 * \public
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getInstance()
 	{
@@ -61,9 +58,9 @@ class StatusHandler
 
 	/**
 	 * Set the status of the owner object to the given value.
-	 * \public
 	 * \param[in] $code The status code
 	 * \return The severity level of the code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setCode ($code = OWL_STATUS_BUG)
 	{
@@ -73,7 +70,7 @@ class StatusHandler
 
 	/**
 	 * Reset the object status
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function reset ()
 	{
@@ -84,8 +81,8 @@ class StatusHandler
 	/**
 	 * If the status was set with optional parameters, they will be set in this subject
 	 * and substituted in the correct message
-	 * \public
 	 * \param[in] $params An array with parameters
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setParams ($params)
 	{
@@ -94,10 +91,10 @@ class StatusHandler
 
 	/**
 	 * Check the status of the given object and return its severity.
-	 * \public
 	 * \param[in] $status An optional parameter to check an other status code i.s.o the
 	 * object's current status.
 	 * \return The severity level of the current status
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getSeverity ($status = null)
 	{
@@ -107,8 +104,8 @@ class StatusHandler
 
 	/**
 	 * Return the status code
-	 * \public
 	 * \return The status code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getCode ()
 	{
@@ -120,8 +117,8 @@ class StatusHandler
 	 * parameters are set and wanted by the message text, replace them.
 	 * If more parameters are available then used in the message, there's a quote with the
 	 * unused parameter count added to the message.
-	 * \public
 	 * \return The message text
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getMessage ()
 	{
@@ -145,7 +142,6 @@ class StatusHandler
 			$_msg = $GLOBALS['messages'][$this->code];
 		} else {
 			$_msg = sprintf ('No message found for code %%X%08X (%d) (%s)', $this->code, $this->code, Register::getCode($this->code));
-//			$_msg = sprintf ('No message found for code %%X%08X (%s)', $this->code, Register::getCode($this->code));
 		}
 		for ($_i = 0; $_i < count ($this->params); $_i++) {
 			$_search[] = '$p' . ($_i + 1) . '$';
@@ -155,12 +151,6 @@ class StatusHandler
 			$_msg = str_replace ($_search, $this->params, $_msg);
 		}
 
-// TODO; Yea smartass... this works great :-S
-// But, do we indeed need such an option?
-//		$_unused = (count ($this->params) - count($_search));
-//		if ($_unused > 0) {
-//			$_msg .= ' (' . $_unused . ' extra parameters)'; 
-//		}
 		return ($_msg);
 	}
 

@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the link plugin for containers
- * \version $Id: class.container.link.php,v 1.2 2011-04-19 13:00:03 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.container.link.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -17,18 +18,17 @@ class ContainerLinkPlugin extends ContainerPlugin
 {
 	/**
 	 * Hypertext reference, defaults to '#'
-	 * \private
 	 */
 	private $href;
 	
 	/**
 	 * Link target
-	 * \private
 	 */
 	private $target;
 
 	/**
 	 * Container constructor
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct()
 	{
@@ -41,6 +41,7 @@ class ContainerLinkPlugin extends ContainerPlugin
 	/**
 	 * Set the href attribute
 	 * \param[in] $_url The hypertext reference
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setHref($_url)
 	{
@@ -50,6 +51,7 @@ class ContainerLinkPlugin extends ContainerPlugin
 	/**
 	 * Set the target attribute
 	 * \param[in] $_window Browser window identification
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setTarget($_window)
 	{
@@ -59,6 +61,7 @@ class ContainerLinkPlugin extends ContainerPlugin
 	/**
 	 * Set a dispatcher as href attribute. NOTE! This overwrites the href attribute!
 	 * \param[in] $_dispatcher OWL dispatcher as string or array, \see Dispatcher::composeDispatcher()
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setDispatcher($_dispatcher)
 	{
@@ -69,6 +72,7 @@ class ContainerLinkPlugin extends ContainerPlugin
 	/**
 	 * Show the A specific arguments. 
 	 * \return HTML code for use in the A tag
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{
@@ -78,5 +82,4 @@ class ContainerLinkPlugin extends ContainerPlugin
 		}
 		return $_htmlCode;
 	}
-	
 }

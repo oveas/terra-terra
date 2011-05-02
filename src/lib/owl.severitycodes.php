@@ -4,7 +4,8 @@
  * \ingroup OWL_LIBRARY
  * This file defines the Severity codes that all objects can have. It must be the very first file
  * that is inluded, since these codes are used from step 1.
- * \version $Id: owl.severitycodes.php,v 1.2 2008-08-22 12:02:13 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: owl.severitycodes.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**

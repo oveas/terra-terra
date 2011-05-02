@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the Session class
- * \version $Id: class.session.php,v 1.10 2011-04-29 14:55:20 oscar Exp $
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.session.php,v 1.11 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -21,7 +22,7 @@ class Session extends SessionHandler
 
 	/**
 	 * When a new run is initialised, restore an older session or create a new one
-	 * \public 
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ()
 	{
@@ -45,7 +46,7 @@ class Session extends SessionHandler
 	
 	/**
 	 * When a run ends, write the sessiondata
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __destruct ()
 	{
@@ -56,6 +57,7 @@ class Session extends SessionHandler
 
 	/**
 	 * Initialize a session
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function newSession ()
 	{
@@ -67,6 +69,7 @@ class Session extends SessionHandler
 
 	/**
 	 * Restore a session environment
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function restoreSession()
 	{
@@ -75,6 +78,7 @@ class Session extends SessionHandler
 
 	/**
 	 * Save active data to the session environment
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function saveSession()
 	{
@@ -86,6 +90,7 @@ class Session extends SessionHandler
 	 * \param[in] $bitmap The bitmap value which is either the default group value, or the complete
 	 * list of rights for this user (depending on the configuration)
 	 * \param[in] $app Application ID
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setRights($bitmap, $app = OWL_ID)
 	{
@@ -97,6 +102,7 @@ class Session extends SessionHandler
 	 * \param[in] $bit Rightsbit to check
 	 * \param[in] $appl ID of the application the bit belongs to
 	 * \return Boolean; true when the bit is set
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function hasRight ($bit, $appl)
 	{
@@ -105,10 +111,10 @@ class Session extends SessionHandler
 
 	/**
 	 * Set a session variable
-	 * \public
 	 * \param[in] $var Variable name
 	 * \param[in] $val Variable value (default 0)
 	 * \param[in] $flg How to handle the value. Default SESSIONVAR_SET
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setSessionVar ($var, $val = 0, $flg = SESSIONVAR_SET)
 	{
@@ -149,10 +155,10 @@ class Session extends SessionHandler
 
 	/**
 	 * Get a session variable
-	 * \public
 	 * \param[in] $var Variable name
 	 * \param[in] $default Default value to return if the variable was not set (default null)
 	 * \return The value from the session, null if not set
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getSessionVar ($var, $default = null)
 	{
@@ -167,6 +173,7 @@ class Session extends SessionHandler
 	 * Identify the clients IP address where the client can use a shared internet source (HTTP_CLIENT_IP),
 	 * a proxy server (HTTP_X_FORWARDED_FOR) is direct access (REMOTE_ADDR)
 	 * \return The IP address, or 0.0.0.0 when none was found
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function ipAddress()
 	{

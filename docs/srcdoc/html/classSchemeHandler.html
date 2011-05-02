@@ -180,7 +180,8 @@ Static Private Attributes</h2></td></tr>
 <p>Handler for all database schemes. This singleton class handles all updates to db tables </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>Oct 7, 2010 -- O van Eijk -- initial version for <a class="el" href="classOWL.html">OWL</a> </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>This handler currently doesn't use the <a class="el" href="interfaceDbDriver.html" title="Database driver interface.">DbDriver</a> driver class </dd></dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>A port of this class has been created for VirtueMart </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>This handler currently doesn't use the <a class="el" href="interfaceDbDriver.html" title="Database driver interface.">DbDriver</a> driver class </dd></dl>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ae528fde31fe73647c614ef6f957c4caf"></a><!-- doxytag: member="SchemeHandler::__construct" ref="ae528fde31fe73647c614ef6f957c4caf" args="()" -->
 <div class="memitem">
@@ -196,6 +197,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Class constructor </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classSchemeHandler.html#aedfe445dbf679209066213b64d883c7d">getInstance()</a>, <a class="el" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">_OWL::init()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -215,6 +217,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Class destructor </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class__OWL.html#a44fd2222476a3109286cc82d92b6bbcc">_OWL</a>.</p>
 
@@ -235,6 +238,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Implementation of the <a class="el" href="classSchemeHandler.html#af0a48894ea6bb36f3149ccd40bf37681">__clone()</a> function to prevent cloning of this singleton; it triggers a fatal (user)error </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -255,11 +259,12 @@ Static Private Attributes</h2></td></tr>
 <p>Create the SQL code for a field definition </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the field properties from scheme definition</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the field properties from scheme definition </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>string SQL code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classSchemeHandler.html#a498dc3fc0d51998422623ca64c84c52b">alterTable()</a>, and <a class="el" href="classSchemeHandler.html#a7c5939939cb2ba71ed5a32bc987f0c71">createTable()</a>.</p>
 
@@ -286,8 +291,9 @@ Static Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classSchemeHandler.html#acadaf57e5f374f300501153056f227c5">defineScheme()</a></dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classSchemeHandler.html#acadaf57e5f374f300501153056f227c5">defineScheme()</a> </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean; false if the table description contains errors </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classSchemeHandler.html#a1e843dc411d175818c7b2ab5374f021e">scheme()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, and <a class="el" href="classSchemeHandler.html#addc471d7e188ad7131f69fd7adbd268b">validateScheme()</a>.</p>
 
@@ -325,6 +331,7 @@ Static Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classSchemeHandler.html#a223d509509598fbc99741e910bda8cac">_define_field()</a>.</p>
 
@@ -365,6 +372,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if the severity level was correct (below the max), otherwise false </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">_OWL::reset()</a>, <a class="el" href="class__OWL.html#a97173dbe452428d3851406413264734d">_OWL::setHighSeverity()</a>, and <a class="el" href="class__OWL.html#aa29547995d6741b7d2b90c1d4ea99a13">_OWL::traceback()</a>.</p>
 
@@ -387,6 +395,7 @@ Static Private Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Compare the scheme with an existing database table </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>mixed True if there are no differences, False if the table does not exist, or an array with differences </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#ac1f1643ff5b5db7c326c30477603358d">_OWL::getStatus()</a>, <a class="el" href="classSchemeHandler.html#a1e843dc411d175818c7b2ab5374f021e">scheme()</a>, and <a class="el" href="classSchemeHandler.html#a3ec1c9bb94164aa23faa06dea8fa187e">tableDescription()</a>.</p>
 
@@ -415,6 +424,7 @@ Static Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classSchemeHandler.html#aa25feb4a70d67b3d571904be4b2f50bc">reset()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -434,6 +444,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Create the defined table </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classSchemeHandler.html#a223d509509598fbc99741e910bda8cac">_define_field()</a>, and <a class="el" href="classSchemeHandler.html#a1e843dc411d175818c7b2ab5374f021e">scheme()</a>.</p>
 
@@ -468,6 +479,8 @@ Static Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="index_8php.html#a8fba9293fc0e3b428610c8208c00297d">$_index</a>, <a class="el" href="classSchemeHandler.html#a1e843dc411d175818c7b2ab5374f021e">scheme()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, and <a class="el" href="classSchemeHandler.html#addc471d7e188ad7131f69fd7adbd268b">validateScheme()</a>.</p>
 
@@ -503,6 +516,7 @@ Static Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>, <a class="el" href="classSchemeHandler.html#a1e843dc411d175818c7b2ab5374f021e">scheme()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, and <a class="el" href="classSchemeHandler.html#addc471d7e188ad7131f69fd7adbd268b">validateScheme()</a>.</p>
 
@@ -523,6 +537,7 @@ Static Private Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The dispatcher, of null on failure. </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classDispatcher.html#a31c4bd4e4eaee7ef90b1ea364a901447">Dispatcher</a>.</p>
 
@@ -543,8 +558,9 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Return a reference to my implementation. If necessary, create that implementation first.</p>
+<p>Return a reference to my implementation. If necessary, create that implementation first. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classSchemeHandler.html#a6f45c52527230b3f3b60d75a9b55e3c1">$instance</a>.</p>
 
@@ -566,7 +582,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Get the current object severity level.</p>
+<p>Get the current object severity level. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$status</td><td>An optional parameter to check an other status code i.s.o the object's current status. </td></tr>
@@ -574,6 +590,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Status severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#aaf448f6bc8a90e20c09e9e2b8fe46eb5">_OWL::$status</a>.</p>
 
@@ -594,8 +611,9 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Get the current object status.</p>
+<p>Get the current object status. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object's status code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classSchemeHandler.html#ae2a981feae465ef5e46782b4a18da1ad">compare()</a>.</p>
 
@@ -615,7 +633,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Get the columns for a given table</p>
+<p>Get the columns for a given table </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_tablename</td><td>The tablename </td></tr>
@@ -623,6 +641,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Indexed array holding all fields =&gt; datatypes, or null on errors </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -644,7 +663,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Get the indexes for a given table</p>
+<p>Get the indexes for a given table </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_tablename</td><td>The tablename </td></tr>
@@ -652,6 +671,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Indexed array holding all fields =&gt; datatypes, or null on errors </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="index_8php.html#a8fba9293fc0e3b428610c8208c00297d">$_index</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -673,6 +693,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this *might* indicate something went wrong. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -694,6 +715,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Reset the internal data structure </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">_OWL</a>.</p>
 
@@ -717,6 +739,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Restore the previously saved status object and destroy the copy </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -738,6 +761,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Create a copy of the status object </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classUser.html#aa4dcab7801d74a6534e24f1df8924916">User::logout()</a>.</p>
 
@@ -765,6 +789,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classSchemeHandler.html#a498dc3fc0d51998422623ca64c84c52b">alterTable()</a>, <a class="el" href="classSchemeHandler.html#ae2a981feae465ef5e46782b4a18da1ad">compare()</a>, <a class="el" href="classSchemeHandler.html#a7c5939939cb2ba71ed5a32bc987f0c71">createTable()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -795,6 +820,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classDispatcher.html#a8a974bbbb30be7cda74f9929972fd2f6">Dispatcher::composeDispatcher()</a> </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failure </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>.</p>
 
@@ -822,6 +848,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failure </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>.</p>
 
@@ -844,6 +871,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="class__OWL.html#ae2e3c56e5f3c4ce4156c6b1bb1c50f63">_OWL::check()</a>, <a class="el" href="classDataHandler.html#ad0d98add797178eb7192333dcc2bab4c">DataHandler::db()</a>, <a class="el" href="classDataHandler.html#af3e7a17194e97300d499e9178f4913cb">DataHandler::prepare()</a>, and <a class="el" href="classSessionHandler.html#a58cc3e5bf5b14e7bfbc73162de1f5d2b">SessionHandler::read()</a>.</p>
 
@@ -873,7 +901,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Set the current object status to the specified value.</p>
+<p>Set the current object status to the specified value. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$status</td><td><a class="el" href="classOWL.html">OWL</a> status code </td></tr>
@@ -881,6 +909,7 @@ Static Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, <a class="el" href="class__OWL.html#aaf448f6bc8a90e20c09e9e2b8fe46eb5">_OWL::$status</a>, <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="classRegister.html#ae1e8ad7a7509a80bc008861282762c89">Register::getCode()</a>, <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">_OWL::reset()</a>, and <a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">_OWL::signal()</a>.</p>
 
@@ -912,7 +941,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Display the message for the current object status</p>
+<p>Display the message for the current object status </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$level</td><td>An optional severity level; message will only be displayed when it is at least of this level. </td></tr>
@@ -921,6 +950,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The severity level for this object </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
@@ -961,6 +991,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean true when successfull </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classUser.html#a9cf024c7e3148e45afd1bee7691ceefd">User::construct()</a>, <a class="el" href="classDispatcher.html#ab71f53de33f512c64417399c75078062">Dispatcher::registerArgument()</a>, and <a class="el" href="classDispatcher.html#a911773d612d6b4df0f206a30a32292e2">Dispatcher::registerCallback()</a>.</p>
 
@@ -999,6 +1030,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classSchemeHandler.html#abbf0ce7a23293498c32227e2554ce849">getTableColumns()</a>, <a class="el" href="classSchemeHandler.html#af40c242f4bddee235dbce50a7535b094">getTableIndexes()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -1030,7 +1062,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.</p>
+<p>If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">$text</td><td>Optional variable in which the message text can be stored. If not given, the text will be written to standard output </td></tr>
@@ -1039,6 +1071,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity code of the failing object </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">_OWL::signal()</a>.</p>
 
@@ -1059,8 +1092,9 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Validate the defined scheme. Some values will be modified to make sure the SQL statements can be prepared and <a class="el" href="classSchemeHandler.html#ae2a981feae465ef5e46782b4a18da1ad">compare()</a> won't find differences on case diffs</p>
+<p>Validate the defined scheme. Some values will be modified to make sure the SQL statements can be prepared and <a class="el" href="classSchemeHandler.html#ae2a981feae465ef5e46782b4a18da1ad">compare()</a> won't find differences on case diffs </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>boolean False if there is an error in the scheme definition, True if no errors were found </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classSchemeHandler.html#a1e843dc411d175818c7b2ab5374f021e">scheme()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -1194,7 +1228,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Fri Apr 29 2011 16:53:11 for OWL-PHP by
+    <li class="footer">Generated on Mon May 2 2011 14:53:22 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

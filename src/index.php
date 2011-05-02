@@ -2,15 +2,16 @@
 /**
  * \file
  * This is the entry point for OWL-PHP teststub
- * \version $Id: index.php,v 1.14 2011-04-27 11:50:08 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: index.php,v 1.15 2011-05-02 12:56:15 oscar Exp $
  */
 define ('APPL_CODE', 'OWL');
 define ('OWL_ROOT', '/home/oscar/projects/owl-php/src');
 require (OWL_ROOT . '/OWLloader.php');
 /*
-DBG_dumpval ($GLOBALS['config']);
-DBG_dumpval ($GLOBALS['register']);
-DBG_dumpval ($_SESSION);
+OWLdbg_add ($GLOBALS['config']);
+OWLdbg_add ($GLOBALS['register']);
+OWLdbg_add ($_SESSION);
 
 if (!OWLloader::getClass('form')) {
 	trigger_error('Error loading the Form class');
@@ -18,7 +19,7 @@ if (!OWLloader::getClass('form')) {
 $LoginForm = new Form('applic#include-path#classfile#class#method');
 
 $_form = OWL::factory('FormHandler');
-DBG_dumpval ($_form);
+OWLdbg_add ($_form);
 
 $_user = new User();
 

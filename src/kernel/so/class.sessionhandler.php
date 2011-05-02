@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the SessionHandler class
- * \version $Id: class.sessionhandler.php,v 1.14 2011-04-29 14:55:20 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.sessionhandler.php,v 1.15 2011-05-02 12:56:13 oscar Exp $
  */
 
 /**
@@ -39,19 +40,17 @@ class SessionHandler extends _OWL
 
 	/**
 	 * Link to a datahandler object. This dataset is used as an interface to all database IO.
-	 * \private
 	 */	
 	protected $dataset = null;
 
 	/**
 	 * Reference to the DB Singleton
-	 * \private
 	 */
 	private $db;
 	
 	/**
 	 * Class constructor; set the save_handler
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function __construct ()
 	{
@@ -90,7 +89,7 @@ class SessionHandler extends _OWL
 
 	/**
 	 * Write the session data back to the database
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __destruct ()
 	{
@@ -99,8 +98,8 @@ class SessionHandler extends _OWL
 
 	/**
 	 * Open the session
-	 * \public
 	 * \return bool
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function open ()
 	{
@@ -109,8 +108,8 @@ class SessionHandler extends _OWL
 
 	/**
 	 * Close the session
-	 * \public
 	 * \return bool
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function close ()
 	{
@@ -119,9 +118,9 @@ class SessionHandler extends _OWL
 
 	/**
 	 * Read the session
-	 * \public
 	 * \param[in] $id session id
 	 * \return Session data or null when not found
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function read ($id)
 	{
@@ -142,10 +141,10 @@ class SessionHandler extends _OWL
 
 	/**
 	 * Write the session
-	 * \public
 	 * \param[in] $id Session id
 	 * \param[in] $data Session data
 	 * \return True on success, Failure otherwise
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function write ($id, $data)
 	{
@@ -182,9 +181,9 @@ class SessionHandler extends _OWL
 
 	/**
 	 * Destroy a session
-	 * \public
 	 * \param[in] $id ID of the session to destroy
 	 * \return Boolean indicating success (true) or failure (false)
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function destroy ($id)
 	{
@@ -203,10 +202,10 @@ class SessionHandler extends _OWL
 	 * Garbage Collector. By default, this has a 1% change of being executed
 	 * (session.gc_probability/session.gc_divisor). The values can be changed
 	 * in the constructor.
-	 * \public
 	 * \param[in] $lifetime Session lifetime in seconds.
 	 * By default, 1440 seconds. This can be changed in the constructor
 	 * \return Status code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function gc ($lifetime)
 	{

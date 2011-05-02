@@ -3,7 +3,8 @@
  * \file
  * Configuration basics file for OWL; it stores some fixed configuration in a global
  * data structure 
- * \version $Id: config.php,v 1.6 2011-01-18 14:24:58 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: config.php,v 1.7 2011-05-02 12:56:15 oscar Exp $
  */
 
 

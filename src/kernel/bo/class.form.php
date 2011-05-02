@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the HTML Form class
- * \version $Id: class.form.php,v 1.9 2011-04-27 11:50:08 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.form.php,v 1.10 2011-05-02 12:56:14 oscar Exp $
  */
 
 OWLloader::getClass('formfield', OWL_PLUGINS . '/formfields');
@@ -19,25 +20,21 @@ class Form extends BaseElement
 
 	/**
 	 * Array holding all field objects
-	 * \private
 	 */
 	private $fields;
 
 	/**
 	 * String holding dispatch info.
-	 * \private
 	 */
 	private $dispatcher;
 
 	/**
 	 * Method; post (default) or get
-	 * \private
 	 */
 	private $method;
 
 	/**
 	 * Form encoding; application/x-www-form-urlencoded (defauls) or multipart/form-data
-	 * \private
 	 */
 	private $enctype;
 
@@ -45,7 +42,7 @@ class Form extends BaseElement
 	 * Class constructor
 	 * \param[in] $_dispatcher OWL dispatcher as string or array, \see Dispatcher::composeDispatcher()
 	 * \param[in] $_attribs Indexed array with the HTML attributes 
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($_dispatcher, $_attribs = array())
 	{
@@ -66,6 +63,7 @@ class Form extends BaseElement
 	 * Set the form method
 	 * \param[in] $method The method, GET and POST are supported
 	 * \return Severity level of the object status
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setMethod ($method)
 	{
@@ -82,6 +80,7 @@ class Form extends BaseElement
 	 * \param[in] $enctype The encoding type, multipart/form-data and application/x-www-form-urlencoded
 	 * are supported
 	 * \return Severity level of the object status
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setEncoding ($enctype)
 	{
@@ -102,6 +101,7 @@ class Form extends BaseElement
 	 * \param[in] $attributes Indexed array with additional values in the format, where the key must be a supported attributed
 	 * for the given type.
 	 * \return Reference to the field object, or the severity in case of errors
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function addField($type, $name, $value = '', $attributes = array())
 	{
@@ -153,6 +153,7 @@ class Form extends BaseElement
 	 * Set one or more formfield attributes
 	 * \param[in] $index Index of the fieldobject
 	 * \param[in] $attributes array with object name and values in the format ('attrib' => 'value')
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setFieldAttributes($index, $attributes)
 	{
@@ -170,6 +171,7 @@ class Form extends BaseElement
 	 * Set one or more formfield events
 	 * \param[in] $index Index of the fieldobject
 	 * \param[in] $events array with eventnames and JavaScript code in the format ('event' => 'action')
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setFieldEvents($index, $events)
 	{
@@ -182,6 +184,7 @@ class Form extends BaseElement
 	 * Get the HTML code for a given field
 	 * \param[in] $name Fieldname
 	 * \return HTML code defining the field
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showField($name)
 	{
@@ -195,6 +198,7 @@ class Form extends BaseElement
 	/**
 	 * Return the form code to open the form
 	 * \return HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function openForm()
 	{
@@ -207,6 +211,7 @@ class Form extends BaseElement
 	/**
 	 * Close the form and set a hidden field defining the dispatcher
 	 * \return HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function closeForm()
 	{
@@ -217,6 +222,7 @@ class Form extends BaseElement
 	/**
 	 * Display the form
 	 * \see BaseElement::showElement()
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{
@@ -227,7 +233,7 @@ class Form extends BaseElement
  * \example exa.form.php
  * This example shows how to create a form and display it. The example code in the comments
  * can be used in the mainpage, e.g. index.php.
- * 
+ * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
 /*

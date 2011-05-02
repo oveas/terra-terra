@@ -197,6 +197,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>When a run ends, write the sessiondata </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class__OWL.html#a44fd2222476a3109286cc82d92b6bbcc">_OWL</a>.</p>
 
@@ -238,6 +239,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if the severity level was correct (below the max), otherwise false </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">_OWL::reset()</a>, <a class="el" href="class__OWL.html#a97173dbe452428d3851406413264734d">_OWL::setHighSeverity()</a>, and <a class="el" href="class__OWL.html#aa29547995d6741b7d2b90c1d4ea99a13">_OWL::traceback()</a>.</p>
 
@@ -266,6 +268,7 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classUser.html#a2c4fae5935ebf84e787126795bf42988">login()</a>, and <a class="el" href="classUser.html#aa4dcab7801d74a6534e24f1df8924916">logout()</a>.</p>
 
@@ -288,11 +291,12 @@ Private Attributes</h2></td></tr>
 <p>Confirm a user registration. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_confirmation</td><td>Array that must contain at least the keys 'uid' and 'vcode' </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_confirmation</td><td>Array that must contain at least the keys 'uid' (<a class="el" href="classUser.html" title="the OWL-PHP user object">User</a> ID) and 'vcode' (Verification Code) </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failure </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -312,13 +316,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Class constructor; create a new user environment. This is not a regular constructor, since it's up to the application to decide if this is a normal object or a singleton.</p>
+<p>Class constructor; create a new user environment. This is not a regular constructor, since it's up to the application to decide if this is a normal object or a singleton. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$username</td><td>Username when logged in. Default username is 'anonymous' </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="classUser.html#a842606f37f63f53df58430db6e344b0f">getUserId()</a>, <a class="el" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">_OWL::init()</a>, <a class="el" href="classUser.html#a35eff470817c317b6c1a001b3384804d">newUser()</a>, <a class="el" href="classUser.html#a9c69194002dc162de176e363abbd2e33">restoreUser()</a>, <a class="el" href="classOWLCache.html#aa4f5e152fc2b1f5f88d2128a68322cc8">OWLCache::set()</a>, and <a class="el" href="class__OWL.html#a53ab4d3bbb2c6a56966c339ca4b4c805">_OWL::succeeded()</a>.</p>
 
@@ -339,6 +344,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The dispatcher, of null on failure. </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classDispatcher.html#a31c4bd4e4eaee7ef90b1ea364a901447">Dispatcher</a>.</p>
 
@@ -360,6 +366,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Get the list of all objects this user is member of </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classUser.html#ac516c03e30e262e4085151df30109b00">$dataset</a>, <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, and <a class="el" href="classUser.html#a842606f37f63f53df58430db6e344b0f">getUserId()</a>.</p>
 
@@ -380,8 +387,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Return the current session ID</p>
+<p>Return the current session ID </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>the session ID </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -409,7 +417,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Get a session variable</p>
+<p>Get a session variable </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$var</td><td>Variable name </td></tr>
@@ -418,6 +426,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The value from the session, null if not set </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classUser.html#a842606f37f63f53df58430db6e344b0f">getUserId()</a>, and <a class="el" href="classUser.html#a9c69194002dc162de176e363abbd2e33">restoreUser()</a>.</p>
 
@@ -437,7 +446,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Get the current object severity level.</p>
+<p>Get the current object severity level. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$status</td><td>An optional parameter to check an other status code i.s.o the object's current status. </td></tr>
@@ -445,6 +454,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Status severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#aaf448f6bc8a90e20c09e9e2b8fe46eb5">_OWL::$status</a>.</p>
 
@@ -465,8 +475,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Get the current object status.</p>
+<p>Get the current object status. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object's status code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classSchemeHandler.html#ae2a981feae465ef5e46782b4a18da1ad">SchemeHandler::compare()</a>.</p>
 
@@ -486,6 +497,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Return the userID of the current session </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classUser.html#a60d4f0369fc769ee340d66c3081d978d">getSessionVar()</a>.</p>
 
@@ -507,6 +519,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Return the username of the current session </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -524,7 +537,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Encrypt a given password</p>
+<p>Encrypt a given password </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$password</td><td>Given password in plain text format </td></tr>
@@ -532,6 +545,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The encrypted password </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
@@ -572,6 +586,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean; true when the bit is set </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -589,6 +604,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this *might* indicate something went wrong. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -611,6 +627,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Check is the current user is logged in </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True when logged in </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
@@ -640,7 +657,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Log in</p>
+<p>Log in </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$username</td><td>Given username. Might be taken from the session as well, but given as a parameter here to suppress the E_STRICT Declaration warning </td></tr>
@@ -649,6 +666,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, False otherwise </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classUser.html#aba4085a6e4105c8e0f53246a6f45f4f9">clearUser()</a>, <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="classUser.html#ae4fd2c77120152b487adea01b8c7f95f">hashPassword()</a>, <a class="el" href="classUser.html#aa4dcab7801d74a6534e24f1df8924916">logout()</a>, <a class="el" href="classUser.html#a35eff470817c317b6c1a001b3384804d">newUser()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, and <a class="el" href="class__OWL.html#aa29547995d6741b7d2b90c1d4ea99a13">_OWL::traceback()</a>.</p>
 
@@ -675,6 +693,7 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classUser.html#aba4085a6e4105c8e0f53246a6f45f4f9">clearUser()</a>, <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="classUser.html#a35eff470817c317b6c1a001b3384804d">newUser()</a>, <a class="el" href="class__OWL.html#a93de01a9bbbc3f228e1a62a0740e90f0">_OWL::restoreStatus()</a>, and <a class="el" href="class__OWL.html#add923dc756471318edca8883db3f4420">_OWL::saveStatus()</a>.</p>
 
@@ -696,6 +715,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>(Re)initialize the user environment </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="classUser.html#a8eb10dd2a2bae8101560be21baf0d2fc">getMemberships()</a>, and <a class="el" href="classUser.html#a4cbb353323ec7eca9521da68fc2e34cf">readUserdata()</a>.</p>
 
@@ -736,6 +756,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>An integer from 0-10 indicating the strength, where 0 is the lowest and 10 the highest level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -753,6 +774,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>When a new session starts for a use that was logged in before retrieve the userdata back from the database </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="classUser.html#a842606f37f63f53df58430db6e344b0f">getUserId()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -802,7 +824,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p><a class="el" href="classRegister.html">Register</a> a new username</p>
+<p><a class="el" href="classRegister.html">Register</a> a new username </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$username</td><td>Given username </td></tr>
@@ -814,6 +836,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>New user ID or -1 on failure </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classUser.html#a669fa9bfc33707ca3ee6102249acaf6f">$group</a>, <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="classUser.html#ae4fd2c77120152b487adea01b8c7f95f">hashPassword()</a>, <a class="el" href="owl_8helper_8functions_8php.html#a91f5481c5ca87b74848c1966639d490c">RandomString()</a>, <a class="el" href="class__OWL.html#a4e9ebfbd3c0d76539bed4e44de9962c3">_OWL::setCallbackArgument()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, and <a class="el" href="classUser.html#a3e2345ccf1e392fd244414939d1da8c7">usernameExists()</a>.</p>
 
@@ -833,6 +856,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>General reset function for all objects. Should be called after each non-fatal error </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classDbHandler.html#a9982df4830f05803935bb31bac7fae3d">DbHandler</a>, and <a class="el" href="classSchemeHandler.html#aa25feb4a70d67b3d571904be4b2f50bc">SchemeHandler</a>.</p>
 
@@ -856,6 +880,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Restore the previously saved status object and destroy the copy </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -877,6 +902,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Restore a user environment </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classUser.html#a60d4f0369fc769ee340d66c3081d978d">getSessionVar()</a>, and <a class="el" href="classUser.html#a4cbb353323ec7eca9521da68fc2e34cf">readUserdata()</a>.</p>
 
@@ -898,6 +924,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Create a copy of the status object </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classUser.html#aa4dcab7801d74a6534e24f1df8924916">logout()</a>.</p>
 
@@ -917,6 +944,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Save the current user environment in the session </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classUser.html#a7182c07b394d1b42f25df90c97b98d0f">setSessionVar()</a>.</p>
 
@@ -947,6 +975,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classDispatcher.html#a8a974bbbb30be7cda74f9929972fd2f6">Dispatcher::composeDispatcher()</a> </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failure </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>.</p>
 
@@ -974,6 +1003,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failure </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>.</p>
 
@@ -996,6 +1026,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="class__OWL.html#ae2e3c56e5f3c4ce4156c6b1bb1c50f63">_OWL::check()</a>, <a class="el" href="classDataHandler.html#ad0d98add797178eb7192333dcc2bab4c">DataHandler::db()</a>, <a class="el" href="classDataHandler.html#af3e7a17194e97300d499e9178f4913cb">DataHandler::prepare()</a>, and <a class="el" href="classSessionHandler.html#a58cc3e5bf5b14e7bfbc73162de1f5d2b">SessionHandler::read()</a>.</p>
 
@@ -1031,7 +1062,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Set a session variable</p>
+<p>Set a session variable </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$var</td><td>Variable name </td></tr>
@@ -1040,6 +1071,7 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classUser.html#aeeaefbc1a010bff19c07b25b865bb617">saveUser()</a>.</p>
 
@@ -1069,7 +1101,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Set the current object status to the specified value.</p>
+<p>Set the current object status to the specified value. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$status</td><td><a class="el" href="classOWL.html">OWL</a> status code </td></tr>
@@ -1077,6 +1109,7 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, <a class="el" href="class__OWL.html#aaf448f6bc8a90e20c09e9e2b8fe46eb5">_OWL::$status</a>, <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="classRegister.html#ae1e8ad7a7509a80bc008861282762c89">Register::getCode()</a>, <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">_OWL::reset()</a>, and <a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">_OWL::signal()</a>.</p>
 
@@ -1108,7 +1141,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Display the message for the current object status</p>
+<p>Display the message for the current object status </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$level</td><td>An optional severity level; message will only be displayed when it is at least of this level. </td></tr>
@@ -1117,6 +1150,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The severity level for this object </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
@@ -1157,6 +1191,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean true when successfull </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classUser.html#a9cf024c7e3148e45afd1bee7691ceefd">construct()</a>, <a class="el" href="classDispatcher.html#ab71f53de33f512c64417399c75078062">Dispatcher::registerArgument()</a>, and <a class="el" href="classDispatcher.html#a911773d612d6b4df0f206a30a32292e2">Dispatcher::registerCallback()</a>.</p>
 
@@ -1186,7 +1221,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.</p>
+<p>If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">$text</td><td>Optional variable in which the message text can be stored. If not given, the text will be written to standard output </td></tr>
@@ -1195,6 +1230,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity code of the failing object </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">_OWL::signal()</a>.</p>
 
@@ -1224,6 +1260,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True when the username exists false otherwise </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classUser.html#a0454a21e40da25584033f99251540ab3">register()</a>.</p>
 
@@ -1357,7 +1394,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Fri Apr 29 2011 16:53:12 for OWL-PHP by
+    <li class="footer">Generated on Mon May 2 2011 14:53:23 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

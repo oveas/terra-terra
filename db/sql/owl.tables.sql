@@ -31,7 +31,6 @@ CREATE  TABLE IF NOT EXISTS `owl_group` (
   `gid` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique identification' ,
   `groupname` VARCHAR(32) NOT NULL COMMENT 'Name of the group' ,
   `aid` INT UNSIGNED NOT NULL COMMENT 'Application the group belongs tor, owl for standard' ,
-  `right` BIGINT ZEROFILL UNSIGNED NOT NULL COMMENT '64 Right bits' ,
   PRIMARY KEY (`gid`) ,
   CONSTRAINT `fk_groupapplic`
     FOREIGN KEY (`aid` )
@@ -184,6 +183,32 @@ CREATE INDEX `fk_groupmember` ON `owl_memberships` (`gid` ASC) ;
 CREATE INDEX `fk_memberuser` ON `owl_memberships` (`uid` ASC) ;
 
 
+-- -----------------------------------------------------
+-- Table `owl_grouprights`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `owl_grouprights` (
+  `gid` INT UNSIGNED NOT NULL COMMENT 'Group ID\n' ,
+  `aid` INT UNSIGNED NOT NULL COMMENT 'Application the rights bitmap belongs to' ,
+  `right` BIGINT UNSIGNED ZEROFILL NOT NULL COMMENT '64 Right bits' ,
+  PRIMARY KEY (`gid`, `aid`) ,
+  CONSTRAINT `fk_grouprights_applic`
+    FOREIGN KEY (`aid` )
+    REFERENCES `owl_applications` (`aid` )
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_grouprights_group`
+    FOREIGN KEY (`gid` )
+    REFERENCES `owl_group` (`gid` )
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
+ENGINE = InnoDB
+COMMENT = 'All application specific rights for each group';
+
+CREATE INDEX `fk_grouprights_applic` ON `owl_grouprights` (`aid` ASC) ;
+
+CREATE INDEX `fk_grouprights_group` ON `owl_grouprights` (`gid` ASC) ;
+
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -201,8 +226,8 @@ COMMIT;
 -- Data for table `owl_group`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-INSERT INTO owl_group (`gid`, `groupname`, `aid`, `right`) VALUES (1, 'nogroup', 1, 1);
-INSERT INTO owl_group (`gid`, `groupname`, `aid`, `right`) VALUES (2, 'standard', 1, 93);
+INSERT INTO owl_group (`gid`, `groupname`, `aid`) VALUES (1, 'nogroup', 1);
+INSERT INTO owl_group (`gid`, `groupname`, `aid`) VALUES (2, 'standard', 1);
 
 COMMIT;
 
@@ -253,5 +278,14 @@ INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (11, 'addgro
 INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (12, 'managegroupusers', 1, 'Allowed to manage users in the primary group');
 INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (13, 'manageusers', 1, 'Allowed to manage all users in OWL');
 INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (14, 'installapps', 1, 'Allowed to install new applications');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `owl_grouprights`
+-- -----------------------------------------------------
+SET AUTOCOMMIT=0;
+INSERT INTO owl_grouprights (`gid`, `aid`, `right`) VALUES (1, 1, 3);
+INSERT INTO owl_grouprights (`gid`, `aid`, `right`) VALUES (2, 1, 93);
 
 COMMIT;

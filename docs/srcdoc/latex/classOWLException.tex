@@ -56,9 +56,7 @@ Jul 29, 2008 -\/-\/ O van Eijk -\/-\/ Initial version
 \item[{{\bf OWLException} \$}]{caller = {\ttfamily null}}
 \end{DoxyParamCaption}
 )}\label{classOWLException_a02821b324b42b7818c3fefe7638444e7}
-Create the Exception handler object
-
-
+Create the Exception handler object 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$msg} & Message text \\
 \hline
@@ -67,6 +65,9 @@ Create the Exception handler object
 \mbox{\tt in}  & {\em \$caller} & Backlink to the calling object \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$caller, and ConfigHandler::get().
@@ -81,7 +82,10 @@ References \$caller, and ConfigHandler::get().
 {}
 \end{DoxyParamCaption}
 )}\label{classOWLException_ad5e583964eaccad8e9e6140e56367b14}
-Trace back the previous object in the stack 
+Trace back the previous object in the stack \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by stackDump().
 
@@ -100,6 +104,9 @@ Check if this traced call has arguments that should be hidden in the stackdump.
 \begin{DoxyReturn}{Returns}
 integer holding the argument index that should be hidden, of -\/1 if nothing has to be hidden. 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get().
@@ -115,13 +122,17 @@ Referenced by traceback().
 \item[{\$}]{textmode = {\ttfamily true}}
 \end{DoxyParamCaption}
 )}\label{classOWLException_a60ce016fcb62831121e76b21b689e590}
-Create an overview of the calling stack
-
-
+Create an overview of the calling stack 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$textmode} & specify the format in which the stackdump should be returned; text (true, default) of HTML (false). \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Current stack 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-getTrace(), Register::getCode(), Register::getSeverity(), and traceback().
@@ -139,9 +150,7 @@ Referenced by OWLExceptionHandler::logException().
 \item[{\$}]{textmode}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classOWLException_a6e857cc079ee29428791e4926fe1677a}
-Trace a single call from the stack
-
-
+Trace a single call from the stack 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$trace} & The call \\
 \hline
@@ -150,6 +159,12 @@ Trace a single call from the stack
 \mbox{\tt in}  & {\em \$textmode} & True if the stackdump is created as ASCII text, False for HTML \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Call from the stack 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References checkHide(), and ConfigHandler::get().

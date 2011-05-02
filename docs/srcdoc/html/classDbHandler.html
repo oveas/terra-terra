@@ -256,7 +256,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Class constructor; opens the database connection.</p>
+<p>Class constructor; opens the database connection. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$srv</td><td>Database server </td></tr>
@@ -267,6 +267,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">_OWL::init()</a>, <a class="el" href="classDbHandler.html#ab4db7c4fa445700b96a2d4b1be6e50a4">loadDriver()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -286,6 +287,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 <div class="memdoc">
 <p>Class destructor; closes the database connection </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class__OWL.html#a44fd2222476a3109286cc82d92b6bbcc">_OWL</a>.</p>
 
@@ -308,6 +310,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 <div class="memdoc">
 <p>Implementation of the <a class="el" href="classDbHandler.html#ada20e62b915bc87a1de28389a2ee81e1">__clone()</a> function. The current connection will be closed, and a property will be set to indicate this is a cloned object. After that, the <a class="el" href="classDbHandler.html#ac3a8e0bfe2491e17bc527715505f90a7">alt()</a> method can be used to change connection info. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classDbHandler.html#a0859a862eac3e8ba14c6d04de0396710">$instance</a>, <a class="el" href="classDbHandler.html#ad3d2853bbd2d1962710907e34afb424f">close()</a>, <a class="el" href="classDbHandler.html#a9982df4830f05803935bb31bac7fae3d">reset()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -328,6 +331,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>Check if additional clauses (like GROUP BY, ORDER BY etc) have been defined, and compose this depending on the query type. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>String with additional clauses </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classDbHandler.html#ad8dac71adf4d540270b5b2c87da114a8">expandField()</a>.</p>
 
@@ -364,6 +368,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classDbHandler.html#ab4db7c4fa445700b96a2d4b1be6e50a4">loadDriver()</a>, <a class="el" href="classDbHandler.html#afccbfc69ead84f8445116e050d1cfc2d">open()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -402,6 +407,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if the severity level was correct (below the max), otherwise false </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">_OWL::reset()</a>, <a class="el" href="class__OWL.html#a97173dbe452428d3851406413264734d">_OWL::setHighSeverity()</a>, and <a class="el" href="class__OWL.html#aa29547995d6741b7d2b90c1d4ea99a13">_OWL::traceback()</a>.</p>
 
@@ -423,6 +429,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 <div class="memdoc">
 <p>Close the database and disconnect from the server. This function is called on program shutdown. Although the database will be closed already by PHP, this function might be called at any time manually; is also updates the 'opened' variable. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classDbHandler.html#ada20e62b915bc87a1de28389a2ee81e1">__clone()</a>, <a class="el" href="classDbHandler.html#a7cd6bd727d1f296eb5dbfae6ca36ab3f">__destruct()</a>, <a class="el" href="classDbHandler.html#ac9e93cb0ab57f03b2719eebd0c0ee2ef">create()</a>, and <a class="el" href="classDbHandler.html#a1a342f747e4e4c10c00d7d6066d50d59">forceReread()</a>.</p>
 
@@ -461,6 +468,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object severity status </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#ad26b40a9dbbacb33e299b17826f8327c">_OWL::$severity</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -479,8 +487,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Connect to the database server</p>
+<p>Connect to the database server </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, otherwise False </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -501,8 +510,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Create a new database</p>
+<p>Create a new database </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classDbHandler.html#ad3d2853bbd2d1962710907e34afb424f">close()</a>, <a class="el" href="classDbHandler.html#a9cf52ba614981a0082063d57290d3b7c">connect()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -538,7 +548,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Read from the database.</p>
+<p>Read from the database. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$qry</td><td>Database query string. </td></tr>
@@ -548,6 +558,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A 2D array with all data, or false on failures </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classDbHandler.html#a5ebfdc2acfcb0e9cbc2861fc55c7127c">read()</a>.</p>
 
@@ -567,7 +578,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Call the current DBtype's escape function for character strings.</p>
+<p>Call the current DBtype's escape function for character strings. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">$string</td><td>The string that should be escaped </td></tr>
@@ -575,6 +586,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The escaped string </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -610,6 +622,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classDbHandler.html#a05ea485a22c0ef87090f2313614c84c8">tablename()</a>.</p>
 
@@ -639,6 +652,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Array with tablenames </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="index_8php.html#ac0ee5b766d19cb282552a3449a1f8376">$_table</a>.</p>
 
@@ -659,7 +673,8 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Hmmm.... we need this method as the result of a race condition; if an alternative database (clone) is opened first, that's the default connection, which is probably the case in most situation since the owl config table is read early in the init phase. I need to think about it... is this solution acceptable? So we need something smarter here? This method is allowed to be called only once by OWLLoader; maybe some checks? </p>
+<p>Hmmm.... we need this method as the result of a race condition (sort of... I think...); if an alternative database (clone) is opened first, that's the default connection, which is probably the case in most situation since the owl config table is read early in the init phase. I need to think about it... is this solution acceptable? So we need something smarter here? This method is allowed to be called only once by OWLLoader; maybe some checks? </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classDbHandler.html#ad3d2853bbd2d1962710907e34afb424f">close()</a>, <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="classDbHandler.html#ab4db7c4fa445700b96a2d4b1be6e50a4">loadDriver()</a>, and <a class="el" href="classDbHandler.html#afccbfc69ead84f8445116e050d1cfc2d">open()</a>.</p>
 
@@ -680,6 +695,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The dispatcher, of null on failure. </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classDispatcher.html#a31c4bd4e4eaee7ef90b1ea364a901447">Dispatcher</a>.</p>
 
@@ -700,8 +716,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Return a reference to my implementation. If necessary, create that implementation first.</p>
+<p>Return a reference to my implementation. If necessary, create that implementation first. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object instance ID </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classDbHandler.html#a0859a862eac3e8ba14c6d04de0396710">$instance</a>, <a class="el" href="classDbHandler.html#a495ca4030e7ca7d5e8c7e2604e042dfe">$original_instance</a>, and <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
@@ -721,7 +738,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Get the current object severity level.</p>
+<p>Get the current object severity level. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$status</td><td>An optional parameter to check an other status code i.s.o the object's current status. </td></tr>
@@ -729,6 +746,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Status severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#aaf448f6bc8a90e20c09e9e2b8fe46eb5">_OWL::$status</a>.</p>
 
@@ -749,8 +767,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Get the current object status.</p>
+<p>Get the current object status. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object's status code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classSchemeHandler.html#ae2a981feae465ef5e46782b4a18da1ad">SchemeHandler::compare()</a>.</p>
 
@@ -770,6 +789,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 <div class="memdoc">
 <p>This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this *might* indicate something went wrong. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -790,8 +810,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Let other objects check if th database connection is opened</p>
+<p>Let other objects check if th database connection is opened </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>boolean, True when opened </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -828,6 +849,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number that was last inserted </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -845,6 +867,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 <div class="memdoc">
 <p>Create a new instance of the database driver </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWLloader.html#a5911bb36f76142aadfaa6d554113800c">OWLloader::getDriver()</a>, and <a class="el" href="owl_8helper_8functions_8php.html#a2c49978306cd0e2f4f9406c20373ed02">toStrictBoolean()</a>.</p>
 
@@ -865,8 +888,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Opens the database connection.</p>
+<p>Opens the database connection. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classDbHandler.html#a9cf52ba614981a0082063d57290d3b7c">connect()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -888,7 +912,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Prepare a delete query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table#field', where the table is not yet prefixed.</p>
+<p>Prepare a delete query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table#field', where the table is not yet prefixed. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$searches</td><td>Given values that have to match </td></tr>
@@ -896,8 +920,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>References <a class="el" href="classDbHandler.html#a9380a7c5c11003d51addd9ea02d41f89">additionalClauses()</a>, <a class="el" href="classDbHandler.html#ab900537e8f8170436f2be39e2a9026cf">extractTablelist()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, <a class="el" href="classDbHandler.html#a0ea7d40a222cf6f1bf77b42e8eba03e4">tablelist()</a>, and <a class="el" href="classDbHandler.html#a4458733bab22e5487f700f7107a4e091">whereClause()</a>.</p>
+<p>References <a class="el" href="classDbHandler.html#a9380a7c5c11003d51addd9ea02d41f89">additionalClauses()</a>, <a class="el" href="classDbHandler.html#ab900537e8f8170436f2be39e2a9026cf">extractTablelist()</a>, <a class="el" href="owl_8debug_8functions_8php.html#a3db581b35179f5b85569d62488ca3a8c">OWLdbg_add()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, <a class="el" href="classDbHandler.html#a0ea7d40a222cf6f1bf77b42e8eba03e4">tablelist()</a>, and <a class="el" href="classDbHandler.html#a4458733bab22e5487f700f7107a4e091">whereClause()</a>.</p>
 
 </div>
 </div>
@@ -924,6 +949,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </dl>
 <dl class="see"><dt><b>See also:</b></dt><dd>DbHandler::set() </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>An array with two elements: the fieldname in the format that will be handled by <a class="el" href="classDbHandler.html#ad8dac71adf4d540270b5b2c87da114a8">DbHandler::expandField()</a>, and the value which might be a normal value, an array of values of a value as set by a driver function (using database functions). On errors, null is returned. </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -943,7 +969,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Prepare an insert query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table#field', where the table is not yet prefixed.</p>
+<p>Prepare an insert query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table#field', where the table is not yet prefixed. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$values</td><td>Given database values </td></tr>
@@ -951,8 +977,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>References <a class="el" href="classDbHandler.html#a9380a7c5c11003d51addd9ea02d41f89">additionalClauses()</a>, <a class="el" href="classDbHandler.html#ad8dac71adf4d540270b5b2c87da114a8">expandField()</a>, <a class="el" href="classDbHandler.html#ab900537e8f8170436f2be39e2a9026cf">extractTablelist()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, and <a class="el" href="classDbHandler.html#a05ea485a22c0ef87090f2313614c84c8">tablename()</a>.</p>
+<p>References <a class="el" href="classDbHandler.html#a9380a7c5c11003d51addd9ea02d41f89">additionalClauses()</a>, <a class="el" href="classDbHandler.html#ad8dac71adf4d540270b5b2c87da114a8">expandField()</a>, <a class="el" href="classDbHandler.html#ab900537e8f8170436f2be39e2a9026cf">extractTablelist()</a>, <a class="el" href="owl_8debug_8functions_8php.html#a3db581b35179f5b85569d62488ca3a8c">OWLdbg_add()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, and <a class="el" href="classDbHandler.html#a05ea485a22c0ef87090f2313614c84c8">tablename()</a>.</p>
 
 </div>
 </div>
@@ -992,7 +1019,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Prepare a read query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table#field', where the table is not yet prefixed.</p>
+<p>Prepare a read query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table#field', where the table is not yet prefixed. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$values</td><td>Values that will be read </td></tr>
@@ -1003,8 +1030,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>References <a class="el" href="classDbHandler.html#a9380a7c5c11003d51addd9ea02d41f89">additionalClauses()</a>, <a class="el" href="classDbHandler.html#ad8dac71adf4d540270b5b2c87da114a8">expandField()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, <a class="el" href="classDbHandler.html#a0ea7d40a222cf6f1bf77b42e8eba03e4">tablelist()</a>, and <a class="el" href="classDbHandler.html#a4458733bab22e5487f700f7107a4e091">whereClause()</a>.</p>
+<p>References <a class="el" href="classDbHandler.html#a9380a7c5c11003d51addd9ea02d41f89">additionalClauses()</a>, <a class="el" href="classDbHandler.html#ad8dac71adf4d540270b5b2c87da114a8">expandField()</a>, <a class="el" href="owl_8debug_8functions_8php.html#a3db581b35179f5b85569d62488ca3a8c">OWLdbg_add()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, <a class="el" href="classDbHandler.html#a0ea7d40a222cf6f1bf77b42e8eba03e4">tablelist()</a>, and <a class="el" href="classDbHandler.html#a4458733bab22e5487f700f7107a4e091">whereClause()</a>.</p>
 
 </div>
 </div>
@@ -1038,7 +1066,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Prepare an update query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table#field', where the table is not yet prefixed.</p>
+<p>Prepare an update query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table#field', where the table is not yet prefixed. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$values</td><td>Given database values </td></tr>
@@ -1048,8 +1076,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>References <a class="el" href="classDbHandler.html#a9380a7c5c11003d51addd9ea02d41f89">additionalClauses()</a>, <a class="el" href="classDbHandler.html#ab900537e8f8170436f2be39e2a9026cf">extractTablelist()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, <a class="el" href="classDbHandler.html#a0ea7d40a222cf6f1bf77b42e8eba03e4">tablelist()</a>, <a class="el" href="classDbHandler.html#a1340ca63d23565b97218846e77272410">updateList()</a>, and <a class="el" href="classDbHandler.html#a4458733bab22e5487f700f7107a4e091">whereClause()</a>.</p>
+<p>References <a class="el" href="classDbHandler.html#a9380a7c5c11003d51addd9ea02d41f89">additionalClauses()</a>, <a class="el" href="classDbHandler.html#ab900537e8f8170436f2be39e2a9026cf">extractTablelist()</a>, <a class="el" href="owl_8debug_8functions_8php.html#a3db581b35179f5b85569d62488ca3a8c">OWLdbg_add()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, <a class="el" href="classDbHandler.html#a0ea7d40a222cf6f1bf77b42e8eba03e4">tablelist()</a>, <a class="el" href="classDbHandler.html#a1340ca63d23565b97218846e77272410">updateList()</a>, and <a class="el" href="classDbHandler.html#a4458733bab22e5487f700f7107a4e091">whereClause()</a>.</p>
 
 </div>
 </div>
@@ -1095,7 +1124,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Read from the database. The return value depends on the flag. By default, the selected rows(s) are returned in a 2d array.</p>
+<p>Read from the database. The return value depends on the flag. By default, the selected rows(s) are returned in a 2d array. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$flag</td><td>Flag that identifies how data should be returned; as data (default) or the number of rows </td></tr>
@@ -1115,6 +1144,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classDbHandler.html#a130e49aa639fecb46ce6719ddcb0d72f">dbread()</a>, <a class="el" href="classDbHandler.html#afccbfc69ead84f8445116e050d1cfc2d">open()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -1134,6 +1164,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 <div class="memdoc">
 <p>Reset the object </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">_OWL</a>.</p>
 
@@ -1155,6 +1186,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 <div class="memdoc">
 <p>Restore the previously saved status object and destroy the copy </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -1195,6 +1227,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object severity status </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#ad26b40a9dbbacb33e299b17826f8327c">_OWL::$severity</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -1214,6 +1247,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 <div class="memdoc">
 <p>Create a copy of the status object </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classUser.html#aa4dcab7801d74a6534e24f1df8924916">User::logout()</a>.</p>
 
@@ -1242,6 +1276,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </dl>
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classDispatcher.html#a8a974bbbb30be7cda74f9929972fd2f6">Dispatcher::composeDispatcher()</a> </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failure </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>.</p>
 
@@ -1269,6 +1304,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failure </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>.</p>
 
@@ -1291,6 +1327,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 <div class="memdoc">
 <p>Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="class__OWL.html#ae2e3c56e5f3c4ce4156c6b1bb1c50f63">_OWL::check()</a>, <a class="el" href="classDataHandler.html#ad0d98add797178eb7192333dcc2bab4c">DataHandler::db()</a>, <a class="el" href="classDataHandler.html#af3e7a17194e97300d499e9178f4913cb">DataHandler::prepare()</a>, and <a class="el" href="classSessionHandler.html#a58cc3e5bf5b14e7bfbc73162de1f5d2b">SessionHandler::read()</a>.</p>
 
@@ -1310,13 +1347,14 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Set the database query. This function should only be used if the query is too complex to be set with any of the prepare() functions.</p>
+<p>Set the database query. This function should only be used if the query is too complex to be set with any of the prepare() functions. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$qry</td><td>A complete database query. All tablenames must be prefixed (with the <a class="el" href="classDbHandler.html#a05ea485a22c0ef87090f2313614c84c8">tablename()</a> function)! </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -1344,7 +1382,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Set the current object status to the specified value.</p>
+<p>Set the current object status to the specified value. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$status</td><td><a class="el" href="classOWL.html">OWL</a> status code </td></tr>
@@ -1352,6 +1390,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, <a class="el" href="class__OWL.html#aaf448f6bc8a90e20c09e9e2b8fe46eb5">_OWL::$status</a>, <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="classRegister.html#ae1e8ad7a7509a80bc008861282762c89">Register::getCode()</a>, <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">_OWL::reset()</a>, and <a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">_OWL::signal()</a>.</p>
 
@@ -1383,7 +1422,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Display the message for the current object status</p>
+<p>Display the message for the current object status </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$level</td><td>An optional severity level; message will only be displayed when it is at least of this level. </td></tr>
@@ -1392,6 +1431,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The severity level for this object </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
@@ -1421,6 +1461,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object severity status </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#ad26b40a9dbbacb33e299b17826f8327c">_OWL::$severity</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -1459,6 +1500,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean true when successfull </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classUser.html#a9cf024c7e3148e45afd1bee7691ceefd">User::construct()</a>, <a class="el" href="classDispatcher.html#ab71f53de33f512c64417399c75078062">Dispatcher::registerArgument()</a>, and <a class="el" href="classDispatcher.html#a911773d612d6b4df0f206a30a32292e2">Dispatcher::registerCallback()</a>.</p>
 
@@ -1486,6 +1528,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True of the table exists </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classDbHandler.html#a05ea485a22c0ef87090f2313614c84c8">tablename()</a>.</p>
 
@@ -1505,7 +1548,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Create a list with tables, including prefixes, that can be interpreted by SQL</p>
+<p>Create a list with tables, including prefixes, that can be interpreted by SQL </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$tables</td><td>An array with tablenames </td></tr>
@@ -1513,6 +1556,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The tablelist </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="index_8php.html#ac0ee5b766d19cb282552a3449a1f8376">$_table</a>, and <a class="el" href="classDbHandler.html#a05ea485a22c0ef87090f2313614c84c8">tablename()</a>.</p>
 
@@ -1544,7 +1588,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Extend a tablename with the database prefix</p>
+<p>Extend a tablename with the database prefix </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$tablename</td><td><a class="el" href="classTable.html" title="Table.">Table</a> name to extend </td></tr>
@@ -1553,6 +1597,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Extended table name </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classDbHandler.html#ad8dac71adf4d540270b5b2c87da114a8">expandField()</a>, <a class="el" href="classDbHandler.html#a50f426084a888714b72bedb42de7ebc4">prepareInsert()</a>, <a class="el" href="classDbHandler.html#a139d99b594ab5b95da378d7b281ae8a0">tableExists()</a>, and <a class="el" href="classDbHandler.html#a0ea7d40a222cf6f1bf77b42e8eba03e4">tablelist()</a>.</p>
 
@@ -1582,7 +1627,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.</p>
+<p>If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">$text</td><td>Optional variable in which the message text can be stored. If not given, the text will be written to standard output </td></tr>
@@ -1591,6 +1636,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity code of the failing object </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">_OWL::signal()</a>.</p>
 
@@ -1612,7 +1658,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Call the current DBtype's unescape function for character strings.</p>
+<p>Call the current DBtype's unescape function for character strings. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">$string</td><td>The string that should be unescaped </td></tr>
@@ -1620,6 +1666,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The unescaped string </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -1637,7 +1684,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Create a string with 'field = value, ...' combinations in SQL format</p>
+<p>Create a string with 'field = value, ...' combinations in SQL format </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$updates</td><td>Array with fields to update (fieldname =&gt; values) </td></tr>
@@ -1645,6 +1692,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The UPDATE statement </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classDbHandler.html#ad8dac71adf4d540270b5b2c87da114a8">expandField()</a>.</p>
 
@@ -1676,7 +1724,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Create a WHERE clause that can be interpreted by SQL</p>
+<p>Create a WHERE clause that can be interpreted by SQL </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$searches</td><td>Array with values (fieldname =&gt; values) Values can be an array in which case more ORs for that field will be added to the where clause </td></tr>
@@ -1685,6 +1733,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The WHERE clause </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classDbHandler.html#ad8dac71adf4d540270b5b2c87da114a8">expandField()</a>.</p>
 
@@ -1722,7 +1771,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
       </table>
 </div>
 <div class="memdoc">
-<p>Database inserts and updates. The number of affected rows is stored in $this-&gt;rowcount</p>
+<p>Database inserts and updates. The number of affected rows is stored in $this-&gt;rowcount </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">$rows</td><td>(optional) The number of affected rows </td></tr>
@@ -1732,6 +1781,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -2048,7 +2098,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 
 
-    <li class="footer">Generated on Fri Apr 29 2011 16:53:07 for OWL-PHP by
+    <li class="footer">Generated on Mon May 2 2011 14:53:17 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

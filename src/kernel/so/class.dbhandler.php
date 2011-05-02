@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the Database Handler class
- * \version $Id: class.dbhandler.php,v 1.19 2011-04-29 14:55:20 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.dbhandler.php,v 1.20 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -192,12 +193,12 @@ class DbHandler extends _OWL
 
 	/**
 	 * Class constructor; opens the database connection.
-	 * \private
 	 * \param[in] $srv Database server
 	 * \param[in] $db Database name
 	 * \param[in] $usr Username to connect with
 	 * \param[in] $pwd Password to use for connection
 	 * \param[in] $dbtype Database type, used to load the driver
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function __construct ($srv = 'localhost'
 			,  $db = ''
@@ -225,7 +226,7 @@ class DbHandler extends _OWL
 
 	/**
 	 * Create a new instance of the database driver
-	 * \private
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function loadDriver()
 	{
@@ -243,7 +244,7 @@ class DbHandler extends _OWL
 
 	/**
 	 * Class destructor; closes the database connection
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __destruct ()
 	{
@@ -258,7 +259,7 @@ class DbHandler extends _OWL
 	 * The current connection will be closed, and a property will be set to indicate this
 	 * is a cloned object.
 	 * After that, the alt() method can be used to change connection info.
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __clone ()
 	{
@@ -284,6 +285,7 @@ class DbHandler extends _OWL
 	 * 	- username : Username to connect with
 	 * 	- password : Password to use for connection
 	 * 	- dbdriver : Database type (reserved for future use, currently only MySQL is implemented)
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function alt(array $properties)
 	{
@@ -311,8 +313,8 @@ class DbHandler extends _OWL
 	}
 	/**
 	 * Return a reference to my implementation. If necessary, create that implementation first.
-	 * \public
 	 * \return Object instance ID
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getInstance()
 	{
@@ -331,11 +333,13 @@ class DbHandler extends _OWL
 	}
 
 	/**
-	 * Hmmm.... we need this method as the result of a race condition; if an alternative
-	 * database (clone) is opened first, that's the default connection, which is probably 
-	 * the case in most situation since the owl config table is read early in the init phase.
+	 * Hmmm.... we need this method as the result of a race condition (sort of... I think...);
+	 * if an alternative database (clone) is opened first, that's the default connection, which
+	 * is probably the case in most situation since the owl config table is read early in the
+	 * init phase.
 	 * I need to think about it... is this solution acceptable? So we need something smarter here?
 	 * This method is allowed to be called only once by OWLLoader; maybe some checks?
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function forceReread ()
 	{
@@ -352,8 +356,8 @@ class DbHandler extends _OWL
 
 	/**
 	 * Create a new database
-	 * \public
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function create ()
 	{
@@ -375,8 +379,8 @@ class DbHandler extends _OWL
 
 	/**
 	 * Connect to the database server
-	 * \private
 	 * \return True on success, otherwise False
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function connect ()
 	{
@@ -400,8 +404,8 @@ class DbHandler extends _OWL
 
 	/**
 	 * Let other objects check if th database connection is opened
-	 * \public
 	 * \return boolean, True when opened
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function isOpen()
 	{
@@ -410,8 +414,8 @@ class DbHandler extends _OWL
 
 	/**
 	 * Opens the database connection.
-	 * \public
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function open ()
 	{
@@ -449,7 +453,7 @@ class DbHandler extends _OWL
 
 	/**
 	 * Reset the object
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function reset ()
 	{
@@ -464,10 +468,10 @@ class DbHandler extends _OWL
 
 	/**
 	 * Extend a tablename with the database prefix
-	 * \public
 	 * \param[in] $tablename Table name to extend
 	 * \param[in] $ignore_backticks Boolean to suppress backticks if set, default false
 	 * \return Extended table name
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function tablename ($tablename, $ignore_backticks = false)
 	{
@@ -479,9 +483,9 @@ class DbHandler extends _OWL
 	/**
 	 * Set the database query. This function should only be used if the query is too complex
 	 * to be set with any of the prepare() functions.
-	 * \public
 	 * \param[in] $qry A complete database query. All tablenames must be prefixed (with the
 	 * tablename() function)!
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setQuery ($qry)
 	{
@@ -496,6 +500,7 @@ class DbHandler extends _OWL
 	 * \return An array with two elements: the fieldname in the format that will be handled by
 	 * DbHandler::expandField(), and the value which might be a normal value, an array of values
 	 * of a value as set by a driver function (using database functions). On errors, null is returned.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function prepareField (array $fielddata)
 	{
@@ -570,6 +575,7 @@ class DbHandler extends _OWL
 	 * Start a new database transaction
 	 * \param[in] $name Transaction name (reserverd for future use)
 	 * \return Object severity status
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function startTransaction ($name)
 	{
@@ -592,6 +598,7 @@ class DbHandler extends _OWL
 	 * \param[in] $name Transaction name (reserverd for future use)
 	 * \param[in] $openNew Boolean set to true when a new transaction must be opened immediately
 	 * \return Object severity status
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function commitTransaction ($name, $openNew = false)
 	{
@@ -615,6 +622,7 @@ class DbHandler extends _OWL
 	 * \param[in] $name Transaction name (reserverd for future use)
 	 * \param[in] $openNew Boolean set to true when a new transaction must be opened immediately
 	 * \return Object severity status
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function rollbackTransaction($name, $openNew = false)
 	{
@@ -636,7 +644,6 @@ class DbHandler extends _OWL
 	/**
 	 * Read from the database. The return value depends on the flag. By default,
 	 * the selected rows(s) are returned in a 2d array.
-	 * \public
 	 * \param[in] $flag Flag that identifies how data should be returned; as data (default) or the number of rows
 	 * \param[out] $data The retrieved value in a format depending on the flag:
 	 *   - DBHANDLE_ROWCOUNT; Number of matching rows
@@ -649,6 +656,7 @@ class DbHandler extends _OWL
 	 * \param[in] $line Line number of this call
 	 * \param[in] $file File that made the call to this method
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function read ($flag = DBHANDLE_DATA, &$data, $quick_query = '', $line = 0, $file = '[unknown]')
 	{
@@ -688,7 +696,6 @@ class DbHandler extends _OWL
 					  $line
 					, $file
 				));
-//			return ($this->severity);
 		}
 
 		if ($flag == DBHANDLE_ROWCOUNT) {
@@ -709,11 +716,11 @@ class DbHandler extends _OWL
 
 	/**
 	 * Read from the database.
-	 * \private
 	 * \param[in] $qry Database query string.
 	 * \param[out] $rows Number of rows matched
 	 * \param[out] $fields Number of fields per row
 	 * \return A 2D array with all data, or false on failures
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function dbread ($qry, &$rows, &$fields)
 	{
@@ -742,6 +749,7 @@ class DbHandler extends _OWL
 	 * Check if a table exists in the database
 	 * \param[in] $tablename Name of the table to check
 	 * \return True of the table exists
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function tableExists($tablename)
 	{
@@ -752,9 +760,9 @@ class DbHandler extends _OWL
 
 	/**
 	 * Call the current DBtype's escape function for character strings.
-	 * \public
 	 * \param $string The string that should be escaped
 	 * \return The escaped string
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function escapeString ($string)
 	{
@@ -763,9 +771,9 @@ class DbHandler extends _OWL
 
 	/**
 	 * Call the current DBtype's unescape function for character strings.
-	 * \public
 	 * \param $string The string that should be unescaped
 	 * \return The unescaped string
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function unescapeString ($string)
 	{
@@ -778,6 +786,7 @@ class DbHandler extends _OWL
 	 * from the database driver and its arguments (that will be passed as an array)
 	 * \param[in,out] $field Fieldname to expand
 	 * \param[in] $check_name Boolean which is true if the fieldname should be returned with 'AS'. Default is false
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function expandField (&$field, $check_name = false)
 	{
@@ -808,9 +817,9 @@ class DbHandler extends _OWL
 
 	/**
 	 * Create a list with tables, including prefixes, that can be interpreted by SQL
-	 * \private
 	 * \param[in] $tables An array with tablenames
 	 * \return The tablelist
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function tablelist (array $tables)
 	{	
@@ -827,11 +836,11 @@ class DbHandler extends _OWL
 
 	/**
 	 * Create a WHERE clause that can be interpreted by SQL
-	 * \private
 	 * \param[in] $searches Array with values (fieldname => values) Values can be an array in which
 	 * case more ORs for that field will be added to the where clause
 	 * \param[in] $joins Array of arrays with values (field, linktype, field)
 	 * \return The WHERE clause
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function whereClause (array $searches, array $joins)
 	{	
@@ -877,9 +886,9 @@ class DbHandler extends _OWL
 
 	/**
 	 * Create a string with 'field = value, ...' combinations in SQL format
-	 * \private
 	 * \param[in] $updates Array with fields to update (fieldname => values)
 	 * \return The UPDATE statement
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function updateList (array $updates)
 	{
@@ -902,6 +911,7 @@ class DbHandler extends _OWL
 	 * the format (table#field => value, ...)
 	 * \param[in] $fields An array with fields
 	 * \return Array with tablenames
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function extractTablelist (array $fields)
 	{
@@ -919,6 +929,7 @@ class DbHandler extends _OWL
 	 * Check if additional clauses (like GROUP BY, ORDER BY etc) have been defined, and
 	 * compose this depending on the query type.
 	 * \return String with additional clauses
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function additionalClauses()
 	{
@@ -959,12 +970,12 @@ class DbHandler extends _OWL
 	/**
 	 * Prepare a read query. Data is taken from the arrays that are passed to this function.
 	 * All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
-	 * \public
 	 * \param[in] $values Values that will be read
 	 * \param[in] $tables Tables from which will be read
 	 * \param[in] $searches Given values that have to match
 	 * \param[in] $joins Joins on the given tables
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function prepareRead (
 			  array $values = array()
@@ -995,16 +1006,18 @@ class DbHandler extends _OWL
 		}
 
 		$this->query .= $this->additionalClauses();
-//echo ("Prepared query: <i>$this->query</i><br />");
+		if (function_exists('OWLdbg_add')) { // Skip during init phase
+			OWLdbg_add(OWLDEBUG_OWL_SQL, $this->query, 'Query prepared', 2);
+		}
 		return ($this->severity);
 	}
 
 	/**
 	 * Prepare a delete query. Data is taken from the arrays that are passed to this function.
 	 * All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
-	 * \public
 	 * \param[in] $searches Given values that have to match
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function prepareDelete (array $searches = array())
 	{
@@ -1021,19 +1034,21 @@ class DbHandler extends _OWL
 			$this->query_type = DBHANDLE_DELETE;
 			$this->setStatus (DBHANDLE_QPREPARED, array('delete', $this->query));
 		}
-//echo ("Prepared query: <i>$this->query</i> ($this->severity)<br />");
+		if (function_exists('OWLdbg_add')) { // Skip during init phase
+			OWLdbg_add(OWLDEBUG_OWL_SQL, $this->query, 'Query prepared', 2);
+		}
 		return ($this->severity);
 	}
 
 	/**
 	 * Prepare an update query. Data is taken from the arrays that are passed to this function.
 	 * All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
-	 * \public
 	 * \param[in] $values Given database values
 	 * \param[in] $searches List of fieldnames that will be used in the where clause. All fields not
 	 * in this array will be updated!
 	 * \param[in] $joins Joins on the given tables
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function prepareUpdate (array $values = array(), array $searches = array(), array $joins = array())
 	{
@@ -1067,17 +1082,18 @@ class DbHandler extends _OWL
 		$this->query .= $this->additionalClauses();
 
 		$this->setStatus (DBHANDLE_QPREPARED, array('update', $this->query));
-//echo ("Prepared query: <i>$this->query</i> ($this->severity)<br />");
-
+		if (function_exists('OWLdbg_add')) { // Skip during init phase
+			OWLdbg_add(OWLDEBUG_OWL_SQL, $this->query, 'Query prepared', 2);
+		}
 		return ($this->severity);
 	}
 
 	/**
 	 * Prepare an insert query. Data is taken from the arrays that are passed to this function.
 	 * All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
-	 * \public
 	 * \param[in] $values Given database values
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function prepareInsert (array $values = array())
 	{
@@ -1107,17 +1123,19 @@ class DbHandler extends _OWL
 		$this->query .= $this->additionalClauses();
 		$this->query_type = DBHANDLE_INSERT;
 		$this->setStatus (DBHANDLE_QPREPARED, array('write', $this->query));
-//echo ("Prepared query: <i>$this->query</i><br />");
+		if (function_exists('OWLdbg_add')) { // Skip during init phase
+			OWLdbg_add(OWLDEBUG_OWL_SQL, $this->query, 'Query prepared', 2);
+		}
 		return ($this->severity);
 	}
 
 	/**
 	 * Database inserts and updates. The number of affected rows is stored in $this->rowcount
-	 * \public
 	 * \param[out] $rows (optional) The number of affected rows
 	 * \param[in] $line Line number of this call
 	 * \param[in] $file File that made the call to this method
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function write (&$rows = null, $line = 0, $file = '[unknown]')
 	{
@@ -1151,6 +1169,7 @@ class DbHandler extends _OWL
 	 * \param[in] $table Table name holding the auto increment field
 	 * \param[in] $field Name of the auto increment field
 	 * \return The number that was last inserted 
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function lastInsertedId ($table = null, $field = null)
 	{
@@ -1163,7 +1182,7 @@ class DbHandler extends _OWL
 	 * Although the database will be closed already by PHP, this function
 	 * might be called at any time manually; is also updates the 'opened'
 	 * variable.
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function close () 
 	{

@@ -135,6 +135,9 @@ Class constructor. We don't use a standard constructor (\doxyref{\_\-\_\-constru
 \mbox{\tt in}  & {\em \$tablename} & Default table name for this dataset \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory(), \_\-OWL::init(), and \_\-OWL::setStatus().
@@ -162,6 +165,9 @@ This is a helper function for lazy developers. Some checks have to be made quite
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct (below the max), otherwise false 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
@@ -179,9 +185,7 @@ Referenced by SessionHandler::write().
 \item[{\$}]{file = {\ttfamily '[unknown]'}}
 \end{DoxyParamCaption}
 )}\label{classDataHandler_ad0d98add797178eb7192333dcc2bab4c}
-Forward a call to the DBHandler object (which is private in this \doxyref{DataHandler}{p.}{classDataHandler})
-
-
+Forward a call to the DBHandler object (which is private in this \doxyref{DataHandler}{p.}{classDataHandler}) 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt out}  & {\em \$data} & The result of DBHandler function, or false when no query was prepared yet \\
 \hline
@@ -193,6 +197,9 @@ Forward a call to the DBHandler object (which is private in this \doxyref{DataHa
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::setHighSeverity().
@@ -204,11 +211,12 @@ References \_\-OWL::setHighSeverity().
 {}
 \end{DoxyParamCaption}
 )}\label{classDataHandler_ada79b8820e5f5de52d2ac814c719a2ae}
-Return the last status of the database
-
-\begin{DoxyReturn}{Returns}
+Return the last status of the database \begin{DoxyReturn}{Returns}
 Current status of the database object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{DataHandler@{DataHandler}!escapeString@{escapeString}}
 \index{escapeString@{escapeString}!DataHandler@{DataHandler}}
 \subsubsection[{escapeString}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::escapeString (
@@ -216,9 +224,7 @@ Current status of the database object
 \item[{\$}]{string}
 \end{DoxyParamCaption}
 )}\label{classDataHandler_a43cc86bc12f402d7d82d6eba142938f2}
-Interface to the DbHander::escapeString()
-
-
+Interface to the DbHander::escapeString() 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$string} & String to escape \\
 \hline
@@ -226,6 +232,9 @@ Interface to the DbHander::escapeString()
 \begin{DoxyReturn}{Returns}
 Return value of \doxyref{DbHandler::escapeString()}{p.}{classDbHandler_a84d876a07a292f4a7bd49e5acfac9d14} 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{DataHandler@{DataHandler}!findField@{findField}}
 \index{findField@{findField}!DataHandler@{DataHandler}}
 \subsubsection[{findField}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::findField (
@@ -234,9 +243,7 @@ Return value of \doxyref{DbHandler::escapeString()}{p.}{classDbHandler_a84d876a0
 \item[{\&\$}]{expanded}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classDataHandler_ab1ee0b3baaaeff857e01b5d503cbae37}
-Try to exand a field to a fully qualified 'table\#field' name
-
-
+Try to exand a field to a fully qualified 'table\#field' name 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$fld} & The fieldname that has to be expanded \\
 \hline
@@ -246,6 +253,9 @@ Try to exand a field to a fully qualified 'table\#field' name
 \begin{DoxyReturn}{Returns}
 The number of matches 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by get().
@@ -268,6 +278,9 @@ The data array contains arrays where the first element is the matchtype (=, $<$,
 \begin{DoxyReturn}{Returns}
 The value, or NULL when the value was not found or abigious. 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References findField(), and \_\-OWL::setStatus().
@@ -282,6 +295,9 @@ References findField(), and \_\-OWL::setStatus().
 Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
 The dispatcher, of null on failure. 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}.
@@ -297,16 +313,17 @@ References OWL::factory().
 {}
 \end{DoxyParamCaption}
 )}\label{classDataHandler_a47ac87a4d43f785666d91ca85faed487}
-Get the link to the actual database object of the dataset, which might be the original singleton, or the clone in use. \index{DataHandler@{DataHandler}!getSeverity@{getSeverity}}
+Get the link to the actual database object of the dataset, which might be the original singleton, or the clone in use. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{DataHandler@{DataHandler}!getSeverity@{getSeverity}}
 \index{getSeverity@{getSeverity}!DataHandler@{DataHandler}}
 \subsubsection[{getSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getSeverity (
 \begin{DoxyParamCaption}
 \item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
-Get the current object severity level.
-
-
+Get the current object severity level. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & An optional parameter to check an other status code i.s.o the object's current status. \\
 \hline
@@ -314,6 +331,9 @@ Get the current object severity level.
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::\$status.
@@ -329,11 +349,12 @@ Referenced by LogHandler::composeMessage(), LogHandler::log(), and setKey().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
-Get the current object status.
-
-\begin{DoxyReturn}{Returns}
+Get the current object status. \begin{DoxyReturn}{Returns}
 Object's status code 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by SchemeHandler::compare().
@@ -345,7 +366,10 @@ Referenced by SchemeHandler::compare().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References OWL::factory(), and \_\-OWL::setStatus().
 
@@ -363,6 +387,9 @@ Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(
 Return the last inserted AutoIncrement value \begin{DoxyReturn}{Returns}
 Last ID 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{DataHandler@{DataHandler}!prepare@{prepare}}
 \index{prepare@{prepare}!DataHandler@{DataHandler}}
 \subsubsection[{prepare}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::prepare (
@@ -370,9 +397,7 @@ Last ID
 \item[{\$}]{type = {\ttfamily {\bf DATA\_\-READ}}}
 \end{DoxyParamCaption}
 )}\label{classDataHandler_af3e7a17194e97300d499e9178f4913cb}
-Prepare a database query
-
-
+Prepare a database query 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$type} & Specify which type of query should be prepared:
 \begin{DoxyItemize}
@@ -387,6 +412,9 @@ Severity level
 \end{DoxyReturn}
 \begin{Desc}
 \item[{\bf Todo}]add limit and cache \end{Desc}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$\_\-table, \_\-OWL::setHighSeverity(), and \_\-OWL::setStatus().
@@ -398,7 +426,10 @@ References \$\_\-table, \_\-OWL::setHighSeverity(), and \_\-OWL::setStatus().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
-General reset function for all objects. Should be called after each non-\/fatal error 
+General reset function for all objects. Should be called after each non-\/fatal error \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Reimplemented in {\bf DbHandler} \doxyref{}{p.}{classDbHandler_a9982df4830f05803935bb31bac7fae3d}, and {\bf SchemeHandler} \doxyref{}{p.}{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}.
 
@@ -422,6 +453,9 @@ Reset the object
 \mbox{\tt in}  & {\em \$level} & Bitmap indicating which items must be reset. Default is DATA\_\-RESET\_\-PREPARE \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::reset().
@@ -433,7 +467,10 @@ References \_\-OWL::reset().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
-Restore the previously saved status object and destroy the copy 
+Restore the previously saved status object and destroy the copy \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References \_\-OWL::setStatus().
 
@@ -448,7 +485,10 @@ Referenced by User::logout().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
-Create a copy of the status object 
+Create a copy of the status object \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by User::logout().
 
@@ -483,13 +523,16 @@ Define or override a variable in the data array
 \mbox{\tt in}  & {\em \$valueFunction} & An optional array with SQL functions and statements that apply to the value. This is an indexed array, where all keys must have an array as value. The following keys are supported:
 \begin{DoxyItemize}
 \item function: An array where the first element is an SQL function, which must exist in the database driver as 'functionFunction' (e.g., for 'function'=$>$ array(\char`\"{}ifnull\char`\"{}, \char`\"{}default\char`\"{}), the method \char`\"{}functionIfnull()\char`\"{} must exist). The first argument passed to the method is always the fieldname, additional arguments will be taken from the array.
-\item match: The matchtype. When omitted, default is DBMATCH\_\-EQ ('='). If the field should be in a SELECT list and not in the where clause, use the matchtype DBMATCH\_\-NONE (if no fields are set with DBMATCH\_\-NONE, read queries will select with SELECT $\ast$) 
+\item match: The matchtype. When omitted, default is DBMATCH\_\-EQ ('='). If the field should be in a SELECT list and not in the where clause, use the matchtype DBMATCH\_\-NONE (if no fields are set with DBMATCH\_\-NONE, read queries will select with SELECT $\ast$)
 \end{DoxyItemize}\\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
 exa.datahandler-\/set.php 
 \end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by setPrefix().
@@ -512,6 +555,9 @@ Set a dispatcher for later callback
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -531,6 +577,9 @@ Add an argument to a previously registered callback dispatcher
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -546,7 +595,10 @@ Referenced by User::register().
 \item[{\&\$}]{object = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
-Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by \_\-OWL::check(), db(), prepare(), and SessionHandler::read().
 
@@ -559,9 +611,7 @@ Referenced by \_\-OWL::check(), db(), prepare(), and SessionHandler::read().
 \item[{\$}]{linktype = {\ttfamily '='}}
 \end{DoxyParamCaption}
 )}\label{classDataHandler_aeb7dd4ddfbd17b1b33220cadd03df0ce}
-Define a link between 2 fields that will be recognized when the database query is built.
-
-
+Define a link between 2 fields that will be recognized when the database query is built. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$lvalue} & Left value as array(table, field) \\
 \hline
@@ -573,6 +623,9 @@ Define a link between 2 fields that will be recognized when the database query i
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::setStatus().
@@ -592,6 +645,9 @@ Lock variables for update by adding them to an array. Fields in this array will 
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::getSeverity(), and \_\-OWL::setStatus().
@@ -608,6 +664,9 @@ Overwrite the table prefix for this dataset. Since the prefix is stored in the d
 \mbox{\tt in}  & {\em \$prefix} & \doxyref{Table}{p.}{classTable} prefix \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory(), OWLCache::get(), and set().
@@ -620,15 +679,16 @@ References OWL::factory(), OWLCache::get(), and set().
 \item[{\$}]{params = {\ttfamily array~()}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
-Set the current object status to the specified value.
-
-
+Set the current object status to the specified value. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & \doxyref{OWL}{p.}{classOWL} status code \\
 \hline
 \mbox{\tt in}  & {\em \$params} & \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
@@ -644,13 +704,14 @@ Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), Scheme
 \item[{\$}]{tblname}
 \end{DoxyParamCaption}
 )}\label{classDataHandler_afc1663398705f3b7db49797ef4765a74}
-Set or overwrite the default table name
-
-
+Set or overwrite the default table name 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$tblname} & Default table name \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{DataHandler@{DataHandler}!signal@{signal}}
 \index{signal@{signal}!DataHandler@{DataHandler}}
 \subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (
@@ -659,9 +720,7 @@ Set or overwrite the default table name
 \item[{\&\$}]{text = {\ttfamily false}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
-Display the message for the current object status
-
-
+Display the message for the current object status 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$level} & An optional severity level; message will only be displayed when it is at least of this level. \\
 \hline
@@ -671,6 +730,9 @@ Display the message for the current object status
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get().
@@ -697,6 +759,9 @@ Check if the object currenlty has a success state
 \begin{DoxyReturn}{Returns}
 Boolean true when successfull 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher::registerCallback().
@@ -709,9 +774,7 @@ Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher:
 \item[{\$}]{depth = {\ttfamily 0}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
-If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
-
-
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt out}  & {\em \$text} & Optional variable in which the message text can be stored. If not given, the text will be written to standard output \\
 \hline
@@ -721,6 +784,9 @@ If somehwere in the nested calls an error occured, we can traceback the original
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::signal().

@@ -2,7 +2,8 @@
 /**
  * \file
  * Define the abstract Register class.
- * \version $Id: class.register.php,v 1.7 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.register.php,v 1.8 2011-05-02 12:56:14 oscar Exp $
  */
 
 
@@ -43,12 +44,14 @@ define ('OWL_SEVERITY_PATTERN',		0x0000000f);
  * their instances (objects) can have.
  * This is done in a global Register, which is maintained by this class.
  * \ingroup OWL_SO_LAYER
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version May 15, 2007 -- O van Eijk -- initial version
  */
 abstract class Register
 {
 	/**
 	 * Initialise the register array
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function init()
 	{
@@ -78,9 +81,9 @@ abstract class Register
 	}
 	/**
 	 * Store the specified application in the register
-	 * \public
 	 * \param[in] $name Name of the class
 	 * \param[in] $id Application ID
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function registerApp ($name, $id)
 	{
@@ -102,13 +105,12 @@ abstract class Register
 
 	/**
 	 * Store the specified class in the register, and setup an array to keep track of the codes
-	 * \public
 	 * \param[in] $name Name of the class
+	 * \todo Error handling when out of range
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function registerClass ($name)
 	{
-// TODO Error handling when out of range
-
 		$GLOBALS['register']['stack']['class'] += 0x00001000;
 		$id = $GLOBALS['register']['stack']['class']; 
 
@@ -125,8 +127,8 @@ abstract class Register
 
 	/**
 	 * Define a new statuscode
-	 * \public
 	 * \param[in] $code Symbolic name of the status code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function registerCode ($code)
 	{
@@ -159,9 +161,9 @@ abstract class Register
 
 	/**
 	 * Store the known severitylevels in the register
-	 * \public
 	 * \param[in] $level Symbolic name for the severity level
 	 * \param[in] $name Human readable value
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function registerSeverity ($level, $name)
 	{
@@ -171,9 +173,9 @@ abstract class Register
 
 	/**
 	 * Read a severity level from the register
-	 * \public
 	 * \param[in] $level Hex value of the severity level
 	 * \return Human readable value
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function getSeverity ($level)
 	{
@@ -187,9 +189,9 @@ abstract class Register
 	/**
 	 * This function is used by a config parse to translate a string value to
 	 * the appropriate severity level
-	 * \public
 	 * \param[in] $name The name of the severity level
 	 * \return Hex value of the severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function getSeverityLevel ($name)
 	{
@@ -202,7 +204,7 @@ abstract class Register
 
 	/**
 	 * Return the ID of the current run
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function getRunId ()
 	{
@@ -211,10 +213,10 @@ abstract class Register
 
 	/**
 	 * Translate an hex value code to the symbolic name
-	 * \public
 	 * \param[in] $value Hex value of the status code
 	 * \param[in] $unknown Return value if the code does not exist
 	 * \return Human readable value
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function getCode ($value, $unknown = '*unknown*')
 	{
@@ -228,8 +230,8 @@ abstract class Register
 	
 	/**
 	 * Point the register to the specified application.
-	 * \public
 	 * \param[in] $app_id Application ID
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function setApplication ($app_id)
 	{
@@ -238,8 +240,8 @@ abstract class Register
 
 	/**
 	 * Point the register to the specified class.
-	 * \public
 	 * \param[in] $class_id Class ID
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function setClass ($class_id)
 	{
@@ -248,8 +250,8 @@ abstract class Register
 
 	/**
 	 * Set the current severity to the specified level in the Register
-	 * \public
 	 * \param[in] $severity_level Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function setSeverity ($severity_level)
 	{
@@ -259,7 +261,7 @@ abstract class Register
 	/**
 	 * Load the message file for OWL and the application
 	 * \param[in] $_force Boolean to force a reload with (different) translations, defaults to false
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function registerMessages ($_force = false)
 	{
@@ -301,7 +303,7 @@ abstract class Register
 	/**
 	 * Load the labels file for OWL or the application
 	 * \param[in] $_owl When true, the OWL file(s) will be loaded, by default only the application's
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function registerLabels ($_owl = false)
 	{

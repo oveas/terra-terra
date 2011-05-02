@@ -3,7 +3,8 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.8 2011-04-12 14:57:34 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.9 2011-05-02 12:56:14 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
 /**
@@ -12,6 +13,7 @@
  * \param[in] $_trueValues Array with string values that should be considered 'true'. Defaults to 'yes', 'y', 'true' and '1'
  * \param[in] $_forceLowercase Compare the input in lowercase only, defaults to true.
  * \return Strict boolean value
+ * \author Oscar van Eijk, Oveas Functionality Provider
  */
 function toStrictBoolean ($_val, $_trueValues = array('yes', 'y', 'true', '1'), $_forceLowercase = true)
 {
@@ -33,6 +35,7 @@ function toStrictBoolean ($_val, $_trueValues = array('yes', 'y', 'true', '1'), 
  * be used only to hide non-critical info that must be transferred.
  * \param[in] $_string The string to be encrypted or decrypted
  * \return Encrypted or decrypted string
+ * \author Oscar van Eijk, Oveas Functionality Provider
  */
 function owlCrypt ($_string)
 {
@@ -66,6 +69,7 @@ function owlCrypt ($_string)
  * Return a random string. The string will contain characters only (A-Z)
  * \param[in] $_size The string size in characters
  * \param[in] $_lowercase Boolean that indicates the string should contain lowercase characters only. Default is uppercase only.
+ * \author Oscar van Eijk, Oveas Functionality Provider
  */
 function RandomString ($_size, $_lowercase = false)
 {
@@ -85,6 +89,7 @@ function RandomString ($_size, $_lowercase = false)
  * Translate a fully specified URL to the path specification
  * \param[in] $_file URL of the file
  * \return Path specification of the file, or null of the file is not on the local host
+ * \author Oscar van Eijk, Oveas Functionality Provider
  */
 function URL2Path ($_file)
 {
@@ -102,6 +107,7 @@ function URL2Path ($_file)
  * \param[in] $_file Location of the file, either a full URL or relative from the base url
  * (the path MUST start with 'http(s)://' or '/'!)
  * \return Fully qualified URL, or null when the input is invalid
+ * \author Oscar van Eijk, Oveas Functionality Provider
  */
 function ExpandURL($_file)
 {

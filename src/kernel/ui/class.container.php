@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines a container element
- * \version $Id: class.container.php,v 1.4 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.container.php,v 1.5 2011-05-02 12:56:14 oscar Exp $
  */
 
 OWLloader::getClass('container', OWL_PLUGINS . '/containers');
@@ -15,12 +16,10 @@ OWLloader::getClass('container', OWL_PLUGINS . '/containers');
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jan 11, 2011 -- O van Eijk -- initial version
  */
-
 class Container extends BaseElement
 {
 	/**
 	 * Type specific container object (plugin)
-	 * \private
 	 */
 	private $containerObject;
 
@@ -34,7 +33,7 @@ class Container extends BaseElement
 	 * \param[in] $_attribs Indexed array with the HTML attributes 
 	 * \param[in] $_type_attribs Indexed array with the type specific attributes.
 	 * Refer to the 'show&lt;Type&gt;Type()' method for details
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($_type, $_content = '&nbsp;', array $_attribs = array(), array $_type_attribs = array())
 	{
@@ -60,6 +59,7 @@ class Container extends BaseElement
 	/**
 	 * Set container specific attributes
 	 * \param[in] $_attribs Indexed array with the type specific attributes.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setContainer(array $_attribs = array())
 	{
@@ -68,8 +68,8 @@ class Container extends BaseElement
 
 	/**
 	 * Get the HTML code to display the container
-	 * \public
 	 * \return string with the HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{

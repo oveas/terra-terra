@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines a table element
- * \version $Id: class.table.php,v 1.4 2011-04-27 11:50:07 oscar Exp $
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.table.php,v 1.5 2011-05-02 12:56:14 oscar Exp $
  */
 
 if (!OWLloader::getClass('tablerow')) {
@@ -16,25 +17,22 @@ if (!OWLloader::getClass('tablerow')) {
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jan 9, 2011 -- O van Eijk -- initial version
  */
-
 class Table extends BaseElement
 {
 	/**
 	 * Border
-	 * \private
 	 */
 	private $border = '';
 
 	/**
 	 * Array with pointers to the row objects
-	 * \private
 	 */
 	private $rows = array();
 
 	/**
 	 * Class constructor;
 	 * \param[in] $_attribs Indexed array with the HTML attributes 
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct (array $_attribs = array())
 	{
@@ -47,7 +45,7 @@ class Table extends BaseElement
 	/**
 	 * Set the table border
 	 * \param[in] $_value Border value
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setBorder($_value)
 	{
@@ -58,7 +56,7 @@ class Table extends BaseElement
 	 * Add a new tablerow
 	 * \param[in] $_attribs An optional array with HTML attributes
 	 * \return Pointer to the row object
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function addRow(array $_attribs = array())
 	{
@@ -70,8 +68,8 @@ class Table extends BaseElement
 
 	/**
 	 * Get the HTML code to display the table
-	 * \public
 	 * \return string with the HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{

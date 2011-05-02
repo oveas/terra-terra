@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the top-level BaseElement class
- * \version $Id: class.baseelement.php,v 1.8 2011-04-27 11:50:07 oscar Exp $
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.baseelement.php,v 1.9 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -16,50 +17,43 @@ abstract class BaseElement extends _OWL
 {
 	/**
 	 * Class specification
-	 * \protected
 	 */
 	protected $class = '';
 
 	/**
 	 * Element style
-	 * \protected
 	 */
 	protected $style = '';
 
 	/**
 	 * Array with javascript events
-	 * \protected
 	 */
 	protected $events = array();
 
 	/**
 	 * Name of the element
-	 * \protected
 	 */
 	protected $name = '';
 
 	/**
 	 * Content for a container
-	 * \private
 	 */
 	private $content;
 
 	/**
 	 * Element ID
-	 * \protected
 	 */
 	protected $id = '';
 	
 	/**
 	 * Boolean for loop detection
-	 * \private
 	 */
 	private $shown = false;
 
 	/**
 	 * Set the element ID
 	 * \param[in] $_value Identification
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setId($_value)
 	{
@@ -68,8 +62,8 @@ abstract class BaseElement extends _OWL
 
 	/**
 	 * Get the element's HTML ID
-	 * \public
 	 * \return The ID
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getId()
 	{
@@ -79,7 +73,7 @@ abstract class BaseElement extends _OWL
 	/**
 	 * Set the element name
 	 * \param[in] $_value Element name
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setName($_value)
 	{
@@ -95,7 +89,7 @@ abstract class BaseElement extends _OWL
 	/**
 	 * Set the element style
 	 * \param[in] $_value Element style
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setStyle($_value)
 	{
@@ -105,7 +99,7 @@ abstract class BaseElement extends _OWL
 	/**
 	 * Set the element Class
 	 * \param[in] $_value Class name
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setClass($_value)
 	{
@@ -117,6 +111,7 @@ abstract class BaseElement extends _OWL
 	 * will be overwritten. If that is not desired, the addToContent method should be used instead.
 	 * \param[in] $_content Reference to the content, which can be HTML code or an object,
 	 * of which the showElement() method will be called to retrieve the HTML.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setContent(&$_content)
 	{
@@ -132,6 +127,7 @@ abstract class BaseElement extends _OWL
 	 * converted to obe.
 	 * \param[in] $_content Reference to the content, which can be HTML code or an object,
 	 * of which the showElement() method will be called to retrieve the HTML.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function addToContent(&$_content)
 	{
@@ -150,6 +146,7 @@ abstract class BaseElement extends _OWL
 	 * Get the content of the current container, which can be plain HTML, an object,
 	 * or an array which can mix both types.
 	 * \return HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getContent()
 	{
@@ -170,13 +167,14 @@ abstract class BaseElement extends _OWL
 	 * in which case the HTML will be retrieved from the object here.
 	 * \param[in] $_contentItem The (next) contentitem
 	 * \return HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function _getContent($_contentItem)
 	{
 		if (is_object($_contentItem)) {
 			if ($this->shown === true) {
-//				DBG_dumpval($this);
-//				DBG_dumpval($_contentItem);
+				OWLdbg_add(OWLDEBUG_OWL_OBJ, $this, 'ContentElement');
+				OWLdbg_add(OWLDEBUG_OWL_VAR, $_contentItem, 'ContentItem');
 				$this->setStatus (DOM_LOOPDETECT, array(
 					  get_class($_contentItem) . ' (' . $_contentItem->getId() . ')'
 					, get_class($this) . ' (' . $this->getId() . ')'
@@ -196,6 +194,7 @@ abstract class BaseElement extends _OWL
 	 * \param[in] $_action Javascript function or code
 	 * \param[in] $_add Boolean; when true, the action will be added if the event name already exists.
 	 * Default is false; overwrite the action for this event.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setEvent($_event, $_action, $_add = false)
 	{
@@ -214,7 +213,7 @@ abstract class BaseElement extends _OWL
 	/**
 	 * Return the HTML attribute list for events that where set for this element.
 	 * \return string, HTML code
-	 * \private
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function getEvents()
 	{
@@ -229,6 +228,7 @@ abstract class BaseElement extends _OWL
 	 * Set the attributes of the DOM element by calling the 'set&lt;Attrib&gt;' method for this class.
 	 * \param[in] $_attribs Array with attributes in the format attrib=>value
 	 * \return Severity level. The status increased when a set&lt;Attrib&gt; method does not exist.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setAttributes(array $_attribs)
 	{
@@ -248,7 +248,7 @@ abstract class BaseElement extends _OWL
 	 * Return the general element attributes that are set
 	 * \param[in] $_ignore Array with attributes names that should be ignored
 	 * \return string attributes in HTML format (' fld="value"...)
-	 * \protected
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function getAttributes(array $_ignore = array())
 	{
@@ -275,6 +275,7 @@ abstract class BaseElement extends _OWL
 	 * This function must be implemented by all elements.
 	 * \return The implementation must return a textstring with the complete 
 	 * HTML code to display the element
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	abstract public function showElement();
 }

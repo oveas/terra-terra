@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines a radio formfield element
- * \version $Id: class.formfield.radio.php,v 1.4 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.formfield.radio.php,v 1.5 2011-05-02 12:56:13 oscar Exp $
  */
 
 /**
@@ -17,31 +18,27 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 {
 	/**
 	 * Holds the value that must be preselected
-	 * \private
 	 */
 	private $selected;
 
 	/**
 	 * Array with labels for each option
-	 * \private
 	 */
 	private $label;
 
 	/**
 	 * List with options (values)
-	 * \private
 	 */
 	private $options;
 
 	/**
 	 * Indexed array with HTML ids for the options
-	 * \private
 	 */
 	private $option_ids;
 
 	/**
 	 * Class constructor; 
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ()
 	{
@@ -57,7 +54,7 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	 * \param[in] $_value Field value, defaults to 'option&lt;value&gt;'. This argument
 	 * is required in combination with a label container.
 	 * \param[in] $_id HTML ID for this option
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function addOption($_value, $_id = '')
 	{
@@ -72,7 +69,7 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	/**
 	 * Define the selected value
 	 * \param[in] $_value Preselected value
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setSelected($_value)
 	{
@@ -87,6 +84,7 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	 * Set the label for the given option
 	 * \param[in] $_val Value for which the label is set
 	 * \param[in] $_lbl The label, either as fixed HTML or as a reference to a (label) object
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setLabel($_val, $_lbl)
 	{
@@ -98,8 +96,8 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	}
 	/**
 	 * Return the HTML code to display the form elements
-	 * \public
 	 * \return Array with textstrings for each radio button in this this set.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement ()
 	{

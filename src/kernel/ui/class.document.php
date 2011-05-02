@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines an HTML document
- * \version $Id: class.document.php,v 1.5 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.document.php,v 1.6 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -12,74 +13,62 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jan 9, 2011 -- O van Eijk -- initial version
  */
-
 class Document extends BaseElement
 {
 	/**
 	 * Base URL for the application, defaults to the server top
-	 * \private
 	 */
 	private $base;
 
 	/**
 	 * Array for on-the-fly styles
-	 * \private
 	 */
 	private	$styles;
 
 	/**
 	 * Array for stylesheet sources
-	 * \private
 	 */
 	private	$css;
 
 	/**
 	 * Array for on-the-fly scripts
-	 * \private
 	 */
 	private	$scripts;
 
 	/**
 	 * Array for javascript sources;
-	 * \private
 	 */
 	private	$js;
 
 	/**
 	 * String for the document title
-	 * \private
 	 */
 	private $title;
 
 	/**
 	 * Array for meta tags
-	 * \private
 	 */
 	private $meta;
 
 	/**
 	 * String for the Favicon URL;
-	 * \private
 	 */
 	private $favicon;
 
 	/**
 	 * String for the content type
-	 * \private
 	 */
 	private $contentType;
 
 	/**
 	 * integer - self reference
-	 * \private
-	 * \static
 	 */
 	private static $instance;
 
 	/**
 	 * Class constructor;
 	 * \param[in] $_attribs Indexed array with the HTML attributes 
-	 * \private
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function __construct (array $_attribs = array())
 	{
@@ -103,8 +92,8 @@ class Document extends BaseElement
 
 	/**
 	 * Return a reference to my implementation. If necessary, create that implementation first.
-	 * \public
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getInstance()
 	{
@@ -117,6 +106,7 @@ class Document extends BaseElement
 	/**
 	 * Add an on-the-fly style tag to the document
 	 * \param $_style HTML code to define the style, without the &lt;(/)style&gt; tags
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function addStyle($_style = '')
 	{
@@ -129,6 +119,7 @@ class Document extends BaseElement
 	 * \param[in] $_condition Condition to specify the browser(s), e.g. "lte IE 6" means the stylesheet
 	 * will be loaded only for Internet Explorer up and including version 6.
 	 * \see http://www.thesitewizard.com/css/excludecss.shtml for the syntax
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function loadStyle($_style = '', $_condition = '')
 	{
@@ -159,6 +150,7 @@ class Document extends BaseElement
 	/**
 	 * Add an on-the-fly javascript to the document
 	 * \param $_script Script code without the &lt;(/)script&gt; tags
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function addScript($_script = '')
 	{
@@ -168,6 +160,7 @@ class Document extends BaseElement
 	/**
 	 * Add a Javascript sourcefile to the document
 	 * \param $_script URL of the scriptsource
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function loadScript($_script = '')
 	{
@@ -189,7 +182,7 @@ class Document extends BaseElement
 	/**
 	 * Set the page title
 	 * \param[in] $_value Title value
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setTitle($_value)
 	{
@@ -199,6 +192,7 @@ class Document extends BaseElement
 	/**
 	 * Set the Favorites Icon
 	 * \param[in] $_icon URL to the icon. It must be on the local site
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setFavicon($_icon)
 	{
@@ -217,6 +211,7 @@ class Document extends BaseElement
 	/**
 	 * Set the base URL for the site
 	 * \param[in] $_url Fully qualified URL
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setBase($_url)
 	{
@@ -227,6 +222,7 @@ class Document extends BaseElement
 	/**
 	 * Set, update or overwrite metatags. Only the 'generator' metatag cannot be overwritten
 	 * \param[in] $_tags Array with meta tags in the format 'name' => 'content'
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setMeta($_tags)
 	{
@@ -245,7 +241,7 @@ class Document extends BaseElement
 	/**
 	 * Set the page's content type
 	 * \param[in] $_value Title value
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setContenttype($_value)
 	{
@@ -255,7 +251,7 @@ class Document extends BaseElement
 	/**
 	 * Get the Base href
 	 * \return URL
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getBase()
 	{
@@ -265,6 +261,7 @@ class Document extends BaseElement
 	/**
 	 * Get the meta tags
 	 * \return HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function _getMeta()
 	{
@@ -284,6 +281,7 @@ class Document extends BaseElement
 	/**
 	 * Get the stylesheets to load
 	 * \return HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function _loadStyles()
 	{
@@ -305,6 +303,7 @@ class Document extends BaseElement
 	/**
 	 * Get the javascripts to load
 	 * \return HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function _loadScripts()
 	{
@@ -318,6 +317,7 @@ class Document extends BaseElement
 	/**
 	 * Get the on-the-fly styles
 	 * \return HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function _getStyles()
 	{
@@ -333,6 +333,7 @@ class Document extends BaseElement
 	/**
 	 * Get the on-the-fly javascript
 	 * \return HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function _getScripts()
 	{
@@ -349,8 +350,8 @@ class Document extends BaseElement
 
 	/**
 	 * Get the HTML code to display the document
-	 * \public
 	 * \return string with the HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{

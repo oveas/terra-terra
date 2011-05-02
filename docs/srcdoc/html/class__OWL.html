@@ -178,7 +178,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Default class destructor; has to exist but can (should?) be reimplemented </p>
+<p>Default class destructor </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classSession.html#aa498272c85524e4700abc3363883165b">Session</a>, <a class="el" href="classUser.html#accd20149a7414612c1505e022eb63ffc">User</a>, <a class="el" href="classDbHandler.html#a7cd6bd727d1f296eb5dbfae6ca36ab3f">DbHandler</a>, <a class="el" href="classFileHandler.html#a734859e8962992da99dd8f853da5ae43">FileHandler</a>, <a class="el" href="classLogHandler.html#aacd0c653489cf221423b9edd62e81458">LogHandler</a>, <a class="el" href="classSchemeHandler.html#a3d786efe6ef92858de21438b59774226">SchemeHandler</a>, and <a class="el" href="classSessionHandler.html#a461097c3ee6b1aecf833ce1225d02329">SessionHandler</a>.</p>
 
@@ -218,6 +219,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if the severity level was correct (below the max), otherwise false </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">reset()</a>, <a class="el" href="class__OWL.html#a97173dbe452428d3851406413264734d">setHighSeverity()</a>, and <a class="el" href="class__OWL.html#aa29547995d6741b7d2b90c1d4ea99a13">traceback()</a>.</p>
 
@@ -240,6 +242,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The dispatcher, of null on failure. </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classDispatcher.html#a31c4bd4e4eaee7ef90b1ea364a901447">Dispatcher</a>.</p>
 
@@ -261,7 +264,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Get the current object severity level.</p>
+<p>Get the current object severity level. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$status</td><td>An optional parameter to check an other status code i.s.o the object's current status. </td></tr>
@@ -269,6 +272,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Status severity level </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#aaf448f6bc8a90e20c09e9e2b8fe46eb5">$status</a>.</p>
 
@@ -289,8 +293,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Get the current object status.</p>
+<p>Get the current object status. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object's status code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classSchemeHandler.html#ae2a981feae465ef5e46782b4a18da1ad">SchemeHandler::compare()</a>.</p>
 
@@ -310,6 +315,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this *might* indicate something went wrong. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus()</a>.</p>
 
@@ -331,6 +337,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>General reset function for all objects. Should be called after each non-fatal error </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classDbHandler.html#a9982df4830f05803935bb31bac7fae3d">DbHandler</a>, and <a class="el" href="classSchemeHandler.html#aa25feb4a70d67b3d571904be4b2f50bc">SchemeHandler</a>.</p>
 
@@ -354,13 +361,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Reset the status in the complete calltree</p>
+<p>Reset the status in the complete calltree </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$depth</td><td>Keep track of the depth in recusrive calls. Should be empty in the first call. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">reset()</a>.</p>
 
@@ -380,6 +388,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Restore the previously saved status object and destroy the copy </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus()</a>.</p>
 
@@ -401,6 +410,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Create a copy of the status object </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classUser.html#aa4dcab7801d74a6534e24f1df8924916">User::logout()</a>.</p>
 
@@ -429,6 +439,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classDispatcher.html#a8a974bbbb30be7cda74f9929972fd2f6">Dispatcher::composeDispatcher()</a> </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failure </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>.</p>
 
@@ -456,6 +467,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failure </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>.</p>
 
@@ -478,6 +490,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="class__OWL.html#ae2e3c56e5f3c4ce4156c6b1bb1c50f63">check()</a>, <a class="el" href="classDataHandler.html#ad0d98add797178eb7192333dcc2bab4c">DataHandler::db()</a>, <a class="el" href="classDataHandler.html#af3e7a17194e97300d499e9178f4913cb">DataHandler::prepare()</a>, and <a class="el" href="classSessionHandler.html#a58cc3e5bf5b14e7bfbc73162de1f5d2b">SessionHandler::read()</a>.</p>
 
@@ -507,7 +520,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Set the current object status to the specified value.</p>
+<p>Set the current object status to the specified value. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$status</td><td><a class="el" href="classOWL.html">OWL</a> status code </td></tr>
@@ -515,6 +528,7 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, <a class="el" href="class__OWL.html#aaf448f6bc8a90e20c09e9e2b8fe46eb5">$status</a>, <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="classRegister.html#ae1e8ad7a7509a80bc008861282762c89">Register::getCode()</a>, <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">reset()</a>, and <a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">signal()</a>.</p>
 
@@ -546,7 +560,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Display the message for the current object status</p>
+<p>Display the message for the current object status </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$level</td><td>An optional severity level; message will only be displayed when it is at least of this level. </td></tr>
@@ -555,6 +569,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The severity level for this object </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
@@ -595,6 +610,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean true when successfull </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classUser.html#a9cf024c7e3148e45afd1bee7691ceefd">User::construct()</a>, <a class="el" href="classDispatcher.html#ab71f53de33f512c64417399c75078062">Dispatcher::registerArgument()</a>, and <a class="el" href="classDispatcher.html#a911773d612d6b4df0f206a30a32292e2">Dispatcher::registerCallback()</a>.</p>
 
@@ -624,7 +640,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.</p>
+<p>If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">$text</td><td>Optional variable in which the message text can be stored. If not given, the text will be written to standard output </td></tr>
@@ -633,6 +649,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity code of the failing object </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">signal()</a>.</p>
 
@@ -724,7 +741,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Fri Apr 29 2011 16:53:04 for OWL-PHP by
+    <li class="footer">Generated on Mon May 2 2011 14:53:14 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

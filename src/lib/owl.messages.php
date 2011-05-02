@@ -3,7 +3,8 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
- * \version $Id: owl.messages.php,v 1.21 2011-04-29 14:55:20 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: owl.messages.php,v 1.22 2011-05-02 12:56:14 oscar Exp $
  */
 
 $_messages = array (

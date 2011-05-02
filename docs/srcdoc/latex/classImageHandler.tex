@@ -104,15 +104,16 @@ Jul 30, 2008 -\/-\/ O van Eijk -\/-\/ Modified version for OWL-\/PHP
 \item[{\$}]{req = {\ttfamily false}}
 \end{DoxyParamCaption}
 )}\label{classImageHandler_aa61dc81d4cf98eed31b32e2197018309}
-Class constructor; setup the image characteristics
-
-
+Class constructor; setup the image characteristics 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$name} & Filename \\
 \hline
 \mbox{\tt in}  & {\em \$req} & True is the file must exist at object create time \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Reimplemented from {\bf FileHandler} \doxyref{}{p.}{classFileHandler_a8d75c8ea0c532acdeae0a0a4efa3704a}.
@@ -144,6 +145,9 @@ This is a helper function for lazy developers. Some checks have to be made quite
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct (below the max), otherwise false 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
@@ -159,7 +163,10 @@ Referenced by SessionHandler::write().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classFileHandler_aa48e7c3b67346e29b194d2f0ac5dd1f8}
-Close the file 
+Close the file \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References \_\-OWL::setStatus().
 
@@ -195,6 +202,9 @@ References FileHandler::readData().
 Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
 The dispatcher, of null on failure. 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}.
@@ -210,9 +220,7 @@ References OWL::factory().
 \item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
-Get the current object severity level.
-
-
+Get the current object severity level. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & An optional parameter to check an other status code i.s.o the object's current status. \\
 \hline
@@ -220,6 +228,9 @@ Get the current object severity level.
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::\$status.
@@ -235,11 +246,12 @@ Referenced by LogHandler::composeMessage(), LogHandler::log(), and DataHandler::
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
-Get the current object status.
-
-\begin{DoxyReturn}{Returns}
+Get the current object status. \begin{DoxyReturn}{Returns}
 Object's status code 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by SchemeHandler::compare().
@@ -251,7 +263,10 @@ Referenced by SchemeHandler::compare().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References OWL::factory(), and \_\-OWL::setStatus().
 
@@ -266,9 +281,7 @@ Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(
 \item[{\$}]{mode = {\ttfamily 'r'}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classFileHandler_a2a650b033c4eb1f98ba47fb05ce7b454}
-Open the file
-
-
+Open the file 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$mode} & Mode in which the file should be opened:
 \begin{DoxyItemize}
@@ -281,6 +294,9 @@ Open the file
 \end{DoxyItemize}\\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::setStatus().
@@ -296,7 +312,10 @@ Referenced by FileHandler::readData().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classFileHandler_a6f9263704f08f071a5e563aeb3216d95}
-Read the file contents and return as one dataset 
+Read the file contents and return as one dataset \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References FileHandler::close(), and FileHandler::open().
 
@@ -311,9 +330,7 @@ Referenced by FileHandler::encode().
 \item[{\$}]{trim = {\ttfamily {\bf FILE\_\-NOTRIM}}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classFileHandler_a2140ee43c68f088396b4573a56e3007c}
-Read a single line from the file. File must be opened before
-
-
+Read a single line from the file. File must be opened before 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$trim} & specify how the returned line should be trimmed:
 \begin{DoxyItemize}
@@ -324,6 +341,9 @@ Read a single line from the file. File must be opened before
 \end{DoxyItemize}\\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::setStatus().
@@ -335,7 +355,10 @@ References \_\-OWL::setStatus().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
-General reset function for all objects. Should be called after each non-\/fatal error 
+General reset function for all objects. Should be called after each non-\/fatal error \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Reimplemented in {\bf DbHandler} \doxyref{}{p.}{classDbHandler_a9982df4830f05803935bb31bac7fae3d}, and {\bf SchemeHandler} \doxyref{}{p.}{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}.
 
@@ -354,7 +377,10 @@ Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), an
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
-Restore the previously saved status object and destroy the copy 
+Restore the previously saved status object and destroy the copy \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References \_\-OWL::setStatus().
 
@@ -369,7 +395,10 @@ Referenced by User::logout().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
-Create a copy of the status object 
+Create a copy of the status object \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by User::logout().
 
@@ -391,6 +420,9 @@ Set a dispatcher for later callback
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -410,6 +442,9 @@ Add an argument to a previously registered callback dispatcher
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -425,7 +460,10 @@ Referenced by User::register().
 \item[{\&\$}]{object = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
-Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
@@ -437,15 +475,16 @@ Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and S
 \item[{\$}]{params = {\ttfamily array~()}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
-Set the current object status to the specified value.
-
-
+Set the current object status to the specified value. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & \doxyref{OWL}{p.}{classOWL} status code \\
 \hline
 \mbox{\tt in}  & {\em \$params} & \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
@@ -462,9 +501,7 @@ Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), Scheme
 \item[{\&\$}]{text = {\ttfamily false}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
-Display the message for the current object status
-
-
+Display the message for the current object status 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$level} & An optional severity level; message will only be displayed when it is at least of this level. \\
 \hline
@@ -474,6 +511,9 @@ Display the message for the current object status
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get().
@@ -500,6 +540,9 @@ Check if the object currenlty has a success state
 \begin{DoxyReturn}{Returns}
 Boolean true when successfull 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher::registerCallback().
@@ -512,9 +555,7 @@ Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher:
 \item[{\$}]{depth = {\ttfamily 0}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
-If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
-
-
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt out}  & {\em \$text} & Optional variable in which the message text can be stored. If not given, the text will be written to standard output \\
 \hline
@@ -524,6 +565,9 @@ If somehwere in the nested calls an error occured, we can traceback the original
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::signal().

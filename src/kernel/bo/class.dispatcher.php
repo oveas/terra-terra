@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the Oveas Web Library Dispatcher class
- * \version $Id: class.dispatcher.php,v 1.10 2011-04-27 11:50:08 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.dispatcher.php,v 1.11 2011-05-02 12:56:14 oscar Exp $
  */
 
 define ('OWL_DISPATCHER_NAME', 'd'); //< Formfield/HTTP var name for the dispatcher
@@ -18,8 +19,6 @@ class Dispatcher extends _OWL
 {
 	/**
 	 * integer - self reference
-	 * \private
-	 * \static
 	 */
 	private static $instance;
 
@@ -30,6 +29,7 @@ class Dispatcher extends _OWL
 	
 	/**
 	 * Constructor
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */	
 	private function __construct ()
 	{ 
@@ -40,7 +40,7 @@ class Dispatcher extends _OWL
 	/**
 	 * Implementation of the __clone() function to prevent cloning of this singleton;
 	 * it triggers a fatal (user)error
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __clone ()
 	{
@@ -49,8 +49,8 @@ class Dispatcher extends _OWL
 
 	/**
 	 * Return a reference to my implementation. If necessary, create that implementation first.
-	 * \public
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getInstance()
 	{
@@ -73,7 +73,7 @@ class Dispatcher extends _OWL
 	 * For short, a string in the format "application#include_path-path#class_file#class_name#method_name[#argument]"
 	 * may also be given.
 	 * \return URL encoded dispatcher
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function composeDispatcher($_dispatcher)
 	{
@@ -108,9 +108,9 @@ class Dispatcher extends _OWL
 	 * method specified.
 	 * \param[in] $_dispatcher An optional dispatcher can be given (\see Dispatcher::composeDispatcher()
 	 * for the format). When omitted, the dispatcher will be taken from the formdata.
-	 * \public
 	 * \return On errors during dispatch, the severity level, otherwise the return value
 	 * of the given method
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function dispatch($_dispatcher = null)
 	{
@@ -148,7 +148,7 @@ class Dispatcher extends _OWL
 		}
 
 		if (method_exists($_destination['class_name'], 'get_reference')) {
-			// user call_user_func() top be compatible with PHP v < 5.3.0
+			// user call_user_func() to be compatible with PHP v < 5.3.0
 			$_handler = call_user_func (array($_destination['class_name'], 'get_reference'));
 		} else {
 			$_handler = new $_destination['class_name']();
@@ -170,6 +170,7 @@ class Dispatcher extends _OWL
 	 * Check the format a a dispatcher and decode it
 	 * \param[in] $_dispatcher Dispatcher
 	 * \return Dispatcher as an indexed array
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function decodeDispatcher($_dispatcher)
 	{
@@ -198,8 +199,8 @@ class Dispatcher extends _OWL
 	/**
 	 * Register a callback that wal later be retrieved as dispatcher
 	 * \param[in] $_dispatcher Dispatched, \see Dispatcher::composeDispatcher() for the format
-	 * \public
 	 * \return True on success, false on failure
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function registerCallback($_dispatcher)
 	{
@@ -219,6 +220,7 @@ class Dispatcher extends _OWL
 	 * Add an argument to a previously registered callback dispatcher
 	 * \param[in] $_argument Argument, must be an array type. When non- arrays should be passed as arguments, the must be set when the callback is registered already
 	 * \return True on success, false on failure
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function registerArgument(array $_argument)
 	{
@@ -244,6 +246,7 @@ class Dispatcher extends _OWL
 	/**
 	 * Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly.
 	 * \return The dispatcher, or null when no dispatched was registered
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getCallback()
 	{

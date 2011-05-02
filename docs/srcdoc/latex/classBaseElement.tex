@@ -129,9 +129,12 @@ Get the HTML for a content item, which can be plain HTML or an object, in which 
 \begin{DoxyReturn}{Returns}
 HTML code 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
-References getId(), and \_\-OWL::setStatus().
+References getId(), OWLdbg\_\-add(), and \_\-OWL::setStatus().
 
 
 
@@ -149,6 +152,9 @@ Add a content to the container. If the container is not an array yet, it will be
 \mbox{\tt in}  & {\em \$\_\-content} & Reference to the content, which can be HTML code or an object, of which the \doxyref{showElement()}{p.}{classBaseElement_a63634d81fad745e3b72cda0100afebea} method will be called to retrieve the HTML. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \begin{Desc}
 \item[Examples: ]\par
 {\bf exa.form.php}.\end{Desc}
@@ -176,6 +182,9 @@ This is a helper function for lazy developers. Some checks have to be made quite
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct (below the max), otherwise false 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
@@ -199,6 +208,9 @@ Return the general element attributes that are set
 \begin{DoxyReturn}{Returns}
 string attributes in HTML format (' fld=\char`\"{}value\char`\"{}...) 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References getEvents().
@@ -217,6 +229,9 @@ Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Ta
 Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
 The dispatcher, of null on failure. 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}.
@@ -235,6 +250,9 @@ References OWL::factory().
 Get the content of the current container, which can be plain HTML, an object, or an array which can mix both types. \begin{DoxyReturn}{Returns}
 HTML code 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-getContent().
@@ -253,6 +271,9 @@ Referenced by Tablecell::showElement(), Document::showElement(), Container::show
 Return the HTML attribute list for events that where set for this element. \begin{DoxyReturn}{Returns}
 string, HTML code 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by getAttributes().
@@ -264,11 +285,12 @@ Referenced by getAttributes().
 {}
 \end{DoxyParamCaption}
 )}\label{classBaseElement_a4a7aa583ee21af392908d7fd42fde790}
-Get the element's HTML ID
-
-\begin{DoxyReturn}{Returns}
+Get the element's HTML ID \begin{DoxyReturn}{Returns}
 The ID 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by \_\-getContent().
@@ -280,9 +302,7 @@ Referenced by \_\-getContent().
 \item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
-Get the current object severity level.
-
-
+Get the current object severity level. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & An optional parameter to check an other status code i.s.o the object's current status. \\
 \hline
@@ -290,6 +310,9 @@ Get the current object severity level.
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::\$status.
@@ -305,11 +328,12 @@ Referenced by LogHandler::composeMessage(), LogHandler::log(), and DataHandler::
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
-Get the current object status.
-
-\begin{DoxyReturn}{Returns}
+Get the current object status. \begin{DoxyReturn}{Returns}
 Object's status code 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by SchemeHandler::compare().
@@ -321,7 +345,10 @@ Referenced by SchemeHandler::compare().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References OWL::factory(), and \_\-OWL::setStatus().
 
@@ -336,7 +363,10 @@ Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
-General reset function for all objects. Should be called after each non-\/fatal error 
+General reset function for all objects. Should be called after each non-\/fatal error \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Reimplemented in {\bf DbHandler} \doxyref{}{p.}{classDbHandler_a9982df4830f05803935bb31bac7fae3d}, and {\bf SchemeHandler} \doxyref{}{p.}{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}.
 
@@ -355,7 +385,10 @@ Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), an
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
-Restore the previously saved status object and destroy the copy 
+Restore the previously saved status object and destroy the copy \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References \_\-OWL::setStatus().
 
@@ -370,7 +403,10 @@ Referenced by User::logout().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
-Create a copy of the status object 
+Create a copy of the status object \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by User::logout().
 
@@ -389,6 +425,9 @@ Set the attributes of the DOM element by calling the 'set$<$Attrib$>$' method fo
 \begin{DoxyReturn}{Returns}
 Severity level. The status increased when a set$<$Attrib$>$ method does not exist. 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::setStatus().
@@ -415,6 +454,9 @@ Set a dispatcher for later callback
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -434,6 +476,9 @@ Add an argument to a previously registered callback dispatcher
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -454,6 +499,9 @@ Set the element Class
 \mbox{\tt in}  & {\em \$\_\-value} & Class name \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{BaseElement@{BaseElement}!setContent@{setContent}}
 \index{setContent@{setContent}!BaseElement@{BaseElement}}
 \subsubsection[{setContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setContent (
@@ -466,6 +514,9 @@ Fill the content for a container. Existing content (e.g. set during instantiatio
 \mbox{\tt in}  & {\em \$\_\-content} & Reference to the content, which can be HTML code or an object, of which the \doxyref{showElement()}{p.}{classBaseElement_a63634d81fad745e3b72cda0100afebea} method will be called to retrieve the HTML. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::setStatus().
@@ -492,6 +543,9 @@ Add an event to the events array
 \mbox{\tt in}  & {\em \$\_\-add} & Boolean; when true, the action will be added if the event name already exists. Default is false; overwrite the action for this event. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{BaseElement@{BaseElement}!setHighSeverity@{setHighSeverity}}
 \index{setHighSeverity@{setHighSeverity}!BaseElement@{BaseElement}}
 \subsubsection[{setHighSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setHighSeverity (
@@ -499,7 +553,10 @@ Add an event to the events array
 \item[{\&\$}]{object = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
-Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
@@ -515,6 +572,9 @@ Set the element ID
 \mbox{\tt in}  & {\em \$\_\-value} & Identification \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by setName().
@@ -531,6 +591,9 @@ Set the element name
 \mbox{\tt in}  & {\em \$\_\-value} & Element name \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References setId().
@@ -543,15 +606,16 @@ References setId().
 \item[{\$}]{params = {\ttfamily array~()}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
-Set the current object status to the specified value.
-
-
+Set the current object status to the specified value. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & \doxyref{OWL}{p.}{classOWL} status code \\
 \hline
 \mbox{\tt in}  & {\em \$params} & \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
@@ -572,6 +636,9 @@ Set the element style
 \mbox{\tt in}  & {\em \$\_\-value} & Element style \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{BaseElement@{BaseElement}!showElement@{showElement}}
 \index{showElement@{showElement}!BaseElement@{BaseElement}}
 \subsubsection[{showElement}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::showElement (
@@ -582,6 +649,9 @@ Set the element style
 This function must be implemented by all elements. \begin{DoxyReturn}{Returns}
 The implementation must return a textstring with the complete HTML code to display the element 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Reimplemented in {\bf Form} \doxyref{}{p.}{classForm_aeac5855c8b2406c34090a621d59df664}, {\bf Container} \doxyref{}{p.}{classContainer_a966af30a8c244fbc2ee61648fa59ffe3}, {\bf Document} \doxyref{}{p.}{classDocument_a20e6d0abbac866da5d651d1a49f8cf4f}, {\bf Table} \doxyref{}{p.}{classTable_a71c094dc93aee06ee427f2d53a6691c0}, {\bf Tablecell} \doxyref{}{p.}{classTablecell_a3dd7511a61bfb8100ff293435685209d}, {\bf Tablerow} \doxyref{}{p.}{classTablerow_a050c4f377fec4b9554734ff339aaade8}, {\bf ContainerDivPlugin} \doxyref{}{p.}{classContainerDivPlugin_a4d9cb8fa601b51f951e5f90aad4d1a3c}, {\bf ContainerFieldsetPlugin} \doxyref{}{p.}{classContainerFieldsetPlugin_aacca071df123a3068b0b6b8ed5dbdb83}, {\bf ContainerLabelPlugin} \doxyref{}{p.}{classContainerLabelPlugin_ab725a7631eae2f0467a1c04bbd5081d7}, {\bf ContainerLinkPlugin} \doxyref{}{p.}{classContainerLinkPlugin_af1568be54815de36bb7f3909989f0309}, {\bf ContainerSpanPlugin} \doxyref{}{p.}{classContainerSpanPlugin_a5a1d46ade3182c9cd270e6e01844e30c}, {\bf FormFieldButtonPlugin} \doxyref{}{p.}{classFormFieldButtonPlugin_a029b1662ddc1652b2a571cb2b72421b7}, {\bf FormFieldCheckboxPlugin} \doxyref{}{p.}{classFormFieldCheckboxPlugin_a0bed3773bd415fc026d042102c1d4740}, {\bf FormFieldPlugin} \doxyref{}{p.}{classFormFieldPlugin_a3983c0e5035930d864d40e606ab3670b}, {\bf FormFieldRadioPlugin} \doxyref{}{p.}{classFormFieldRadioPlugin_aade41bf9d88869342c319954da8df608}, {\bf FormFieldSelectPlugin} \doxyref{}{p.}{classFormFieldSelectPlugin_a65df2919c0789f499302f75ec2356876}, {\bf FormFieldTextPlugin} \doxyref{}{p.}{classFormFieldTextPlugin_ac6cee64e91f04b380e948973026bff4e}, and {\bf FormFieldTextareaPlugin} \doxyref{}{p.}{classFormFieldTextareaPlugin_ad2b4186a948dded848826a4870e7713b}.
@@ -594,9 +664,7 @@ Reimplemented in {\bf Form} \doxyref{}{p.}{classForm_aeac5855c8b2406c34090a621d5
 \item[{\&\$}]{text = {\ttfamily false}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
-Display the message for the current object status
-
-
+Display the message for the current object status 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$level} & An optional severity level; message will only be displayed when it is at least of this level. \\
 \hline
@@ -606,6 +674,9 @@ Display the message for the current object status
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get().
@@ -632,6 +703,9 @@ Check if the object currenlty has a success state
 \begin{DoxyReturn}{Returns}
 Boolean true when successfull 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher::registerCallback().
@@ -644,9 +718,7 @@ Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher:
 \item[{\$}]{depth = {\ttfamily 0}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
-If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
-
-
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt out}  & {\em \$text} & Optional variable in which the message text can be stored. If not given, the text will be written to standard output \\
 \hline
@@ -656,6 +728,9 @@ If somehwere in the nested calls an error occured, we can traceback the original
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::signal().

@@ -121,6 +121,9 @@ Oscar van Eijk, Oveas Functionality Provider
 \begin{DoxyVersion}{Version}
 Oct 7, 2010 -\/-\/ O van Eijk -\/-\/ initial version for \doxyref{OWL}{p.}{classOWL} 
 \end{DoxyVersion}
+\begin{DoxyNote}{Note}
+A port of this class has been created for VirtueMart 
+\end{DoxyNote}
 \begin{Desc}
 \item[{\bf Todo}]This handler currently doesn't use the \doxyref{DbDriver}{p.}{interfaceDbDriver} driver class \end{Desc}
 
@@ -133,7 +136,10 @@ Oct 7, 2010 -\/-\/ O van Eijk -\/-\/ initial version for \doxyref{OWL}{p.}{class
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_ae528fde31fe73647c614ef6f957c4caf}
-Class constructor 
+Class constructor \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References getInstance(), \_\-OWL::init(), and \_\-OWL::setStatus().
 
@@ -144,7 +150,10 @@ References getInstance(), \_\-OWL::init(), and \_\-OWL::setStatus().
 {}
 \end{DoxyParamCaption}
 )}\label{classSchemeHandler_a3d786efe6ef92858de21438b59774226}
-Class destructor 
+Class destructor \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Reimplemented from {\bf \_\-OWL} \doxyref{}{p.}{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}.
 
@@ -158,7 +167,10 @@ Reimplemented from {\bf \_\-OWL} \doxyref{}{p.}{class__OWL_a44fd2222476a3109286c
 {}
 \end{DoxyParamCaption}
 )}\label{classSchemeHandler_af0a48894ea6bb36f3149ccd40bf37681}
-Implementation of the \doxyref{\_\-\_\-clone()}{p.}{classSchemeHandler_af0a48894ea6bb36f3149ccd40bf37681} function to prevent cloning of this singleton; it triggers a fatal (user)error \index{SchemeHandler@{SchemeHandler}!\_\-define\_\-field@{\_\-define\_\-field}}
+Implementation of the \doxyref{\_\-\_\-clone()}{p.}{classSchemeHandler_af0a48894ea6bb36f3149ccd40bf37681} function to prevent cloning of this singleton; it triggers a fatal (user)error \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{SchemeHandler@{SchemeHandler}!\_\-define\_\-field@{\_\-define\_\-field}}
 \index{\_\-define\_\-field@{\_\-define\_\-field}!SchemeHandler@{SchemeHandler}}
 \subsubsection[{\_\-define\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}SchemeHandler::\_\-define\_\-field (
 \begin{DoxyParamCaption}
@@ -167,12 +179,15 @@ Implementation of the \doxyref{\_\-\_\-clone()}{p.}{classSchemeHandler_af0a48894
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_a223d509509598fbc99741e910bda8cac}
 Create the SQL code for a field definition 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$\_\-desc} & Indexed array with the field properties from scheme definition\\
+\mbox{\tt in}  & {\em \$\_\-desc} & Indexed array with the field properties from scheme definition \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 string SQL code 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by alterTable(), and createTable().
@@ -190,11 +205,14 @@ Modify 1 or more fields in an existing scheme definition
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
-\doxyref{defineScheme()}{p.}{classSchemeHandler_acadaf57e5f374f300501153056f227c5}
+\doxyref{defineScheme()}{p.}{classSchemeHandler_acadaf57e5f374f300501153056f227c5} 
 \end{DoxySeeAlso}
 \begin{DoxyReturn}{Returns}
 Boolean; false if the table description contains errors 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References scheme(), \_\-OWL::setStatus(), and validateScheme().
@@ -214,6 +232,9 @@ Make changes to the table
 \mbox{\tt in}  & {\em \$\_\-drops} & True if existing fields should be dropped \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-define\_\-field().
@@ -242,6 +263,9 @@ This is a helper function for lazy developers. Some checks have to be made quite
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct (below the max), otherwise false 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
@@ -260,6 +284,9 @@ Referenced by SessionHandler::write().
 Compare the scheme with an existing database table \begin{DoxyReturn}{Returns}
 mixed True if there are no differences, False if the table does not exist, or an array with differences 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::getStatus(), scheme(), and tableDescription().
@@ -280,6 +307,9 @@ Set a new tablename
 \mbox{\tt in}  & {\em \$\_\-tblname} & Name of the table to create, check or modify \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References reset(), and \_\-OWL::setStatus().
@@ -291,7 +321,10 @@ References reset(), and \_\-OWL::setStatus().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_a7c5939939cb2ba71ed5a32bc987f0c71}
-Create the defined table 
+Create the defined table \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References \_\-define\_\-field(), and scheme().
 
@@ -317,6 +350,12 @@ Define the indexes for a table
 \end{DoxyItemize}\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity level 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$\_\-index, scheme(), \_\-OWL::setStatus(), and validateScheme().
@@ -342,6 +381,9 @@ Define the layout for a table
 \end{DoxyItemize}\\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$\_\-scheme, scheme(), \_\-OWL::setStatus(), and validateScheme().
@@ -356,6 +398,9 @@ References \$\_\-scheme, scheme(), \_\-OWL::setStatus(), and validateScheme().
 Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
 The dispatcher, of null on failure. 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}.
@@ -371,11 +416,12 @@ References OWL::factory().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [static]}}\label{classSchemeHandler_aedfe445dbf679209066213b64d883c7d}
-Return a reference to my implementation. If necessary, create that implementation first.
-
-\begin{DoxyReturn}{Returns}
+Return a reference to my implementation. If necessary, create that implementation first. \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$instance.
@@ -391,9 +437,7 @@ Referenced by \_\-\_\-construct().
 \item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
-Get the current object severity level.
-
-
+Get the current object severity level. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & An optional parameter to check an other status code i.s.o the object's current status. \\
 \hline
@@ -401,6 +445,9 @@ Get the current object severity level.
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::\$status.
@@ -416,11 +463,12 @@ Referenced by LogHandler::composeMessage(), LogHandler::log(), and DataHandler::
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
-Get the current object status.
-
-\begin{DoxyReturn}{Returns}
+Get the current object status. \begin{DoxyReturn}{Returns}
 Object's status code 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by compare().
@@ -432,9 +480,7 @@ Referenced by compare().
 \item[{\$}]{\_\-tablename}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_abbf0ce7a23293498c32227e2554ce849}
-Get the columns for a given table
-
-
+Get the columns for a given table 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-tablename} & The tablename \\
 \hline
@@ -442,6 +488,9 @@ Get the columns for a given table
 \begin{DoxyReturn}{Returns}
 Indexed array holding all fields =$>$ datatypes, or null on errors 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::setStatus().
@@ -457,9 +506,7 @@ Referenced by tableDescription().
 \item[{\$}]{\_\-tablename}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_af40c242f4bddee235dbce50a7535b094}
-Get the indexes for a given table
-
-
+Get the indexes for a given table 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-tablename} & The tablename \\
 \hline
@@ -467,6 +514,9 @@ Get the indexes for a given table
 \begin{DoxyReturn}{Returns}
 Indexed array holding all fields =$>$ datatypes, or null on errors 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$\_\-index, and \_\-OWL::setStatus().
@@ -482,7 +532,10 @@ Referenced by tableDescription().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References OWL::factory(), and \_\-OWL::setStatus().
 
@@ -497,7 +550,10 @@ Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(
 {}
 \end{DoxyParamCaption}
 )}\label{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}
-Reset the internal data structure 
+Reset the internal data structure \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Reimplemented from {\bf \_\-OWL} \doxyref{}{p.}{class__OWL_a2f2a042bcf31965194c03033df0edc9b}.
 
@@ -516,7 +572,10 @@ Referenced by createScheme().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
-Restore the previously saved status object and destroy the copy 
+Restore the previously saved status object and destroy the copy \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References \_\-OWL::setStatus().
 
@@ -531,7 +590,10 @@ Referenced by User::logout().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
-Create a copy of the status object 
+Create a copy of the status object \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by User::logout().
 
@@ -550,6 +612,9 @@ If the table does not exist, or differs from the defined scheme, create of modif
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References alterTable(), compare(), createTable(), and \_\-OWL::setStatus().
@@ -576,6 +641,9 @@ Set a dispatcher for later callback
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -595,6 +663,9 @@ Add an argument to a previously registered callback dispatcher
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -610,7 +681,10 @@ Referenced by User::register().
 \item[{\&\$}]{object = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
-Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
@@ -622,15 +696,16 @@ Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and S
 \item[{\$}]{params = {\ttfamily array~()}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
-Set the current object status to the specified value.
-
-
+Set the current object status to the specified value. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & \doxyref{OWL}{p.}{classOWL} status code \\
 \hline
 \mbox{\tt in}  & {\em \$params} & \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
@@ -647,9 +722,7 @@ Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), \_\-\_
 \item[{\&\$}]{text = {\ttfamily false}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
-Display the message for the current object status
-
-
+Display the message for the current object status 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$level} & An optional severity level; message will only be displayed when it is at least of this level. \\
 \hline
@@ -659,6 +732,9 @@ Display the message for the current object status
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get().
@@ -685,6 +761,9 @@ Check if the object currenlty has a success state
 \begin{DoxyReturn}{Returns}
 Boolean true when successfull 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher::registerCallback().
@@ -707,6 +786,9 @@ Get a description of a database table
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References getTableColumns(), getTableIndexes(), and \_\-OWL::setStatus().
@@ -723,9 +805,7 @@ Referenced by compare().
 \item[{\$}]{depth = {\ttfamily 0}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
-If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
-
-
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt out}  & {\em \$text} & Optional variable in which the message text can be stored. If not given, the text will be written to standard output \\
 \hline
@@ -735,6 +815,9 @@ If somehwere in the nested calls an error occured, we can traceback the original
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::signal().
@@ -750,11 +833,12 @@ Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classSchemeHandler_addc471d7e188ad7131f69fd7adbd268b}
-Validate the defined scheme. Some values will be modified to make sure the SQL statements can be prepared and \doxyref{compare()}{p.}{classSchemeHandler_ae2a981feae465ef5e46782b4a18da1ad} won't find differences on case diffs
-
-\begin{DoxyReturn}{Returns}
+Validate the defined scheme. Some values will be modified to make sure the SQL statements can be prepared and \doxyref{compare()}{p.}{classSchemeHandler_ae2a981feae465ef5e46782b4a18da1ad} won't find differences on case diffs \begin{DoxyReturn}{Returns}
 boolean False if there is an error in the scheme definition, True if no errors were found 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References scheme(), and \_\-OWL::setStatus().

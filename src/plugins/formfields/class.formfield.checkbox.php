@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines a checkbox formfield element
- * \version $Id: class.formfield.checkbox.php,v 1.2 2011-04-27 11:50:08 oscar Exp $
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.formfield.checkbox.php,v 1.3 2011-05-02 12:56:13 oscar Exp $
  */
 
 /**
@@ -17,13 +18,12 @@ class FormFieldCheckboxPlugin extends FormFieldPlugin
 {
 	/**
 	 * Boolean set to true when the box is checked
-	 * \private
 	 */
 	private $checked;
 
 	/**
 	 * Class constructor; 
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ()
 	{
@@ -34,7 +34,7 @@ class FormFieldCheckboxPlugin extends FormFieldPlugin
 	/**
 	 * Set the Checked boolean
 	 * \param[in] $_value Value indicating true (default) or false
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setChecked($_value = true)
 	{
@@ -44,7 +44,7 @@ class FormFieldCheckboxPlugin extends FormFieldPlugin
 	/**
 	 * Reimplement; value defaults to 1 for checkboxes
 	 * \param[in] $_value Field value
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setValue($_value)
 	{
@@ -57,8 +57,8 @@ class FormFieldCheckboxPlugin extends FormFieldPlugin
 
 	/**
 	 * Return the HTML code to display the form element
-	 * \public
 	 * \return Textstring with the complete code for the form element
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement ()
 	{

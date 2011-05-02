@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines a button formfield element
- * \version $Id: class.formfield.button.php,v 1.2 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.formfield.button.php,v 1.3 2011-05-02 12:56:13 oscar Exp $
  */
 
 /**
@@ -17,20 +18,18 @@ class FormFieldButtonPlugin extends FormFieldPlugin
 {
 	/**
 	 * Alternate text (image-type only)
-	 * \public
 	 */
 	public $alt;
 
 	/**
 	 * Image src (image-type only)
-	 * \public
 	 */
 	public $src;
 
 	/**
 	 * Class constructor; 
 	 * \param[in] $type Element type: button (default), image, submit or reset
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($type = 'button')
 	{
@@ -41,6 +40,7 @@ class FormFieldButtonPlugin extends FormFieldPlugin
 	/**
 	 * Set the alt text for the button
 	 * \param[in] $_value text
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setText($_value)
 	{
@@ -50,6 +50,7 @@ class FormFieldButtonPlugin extends FormFieldPlugin
 	/**
 	 * Set the image source for the button
 	 * \param[in] $_value Image source
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setSource($_value)
 	{
@@ -58,8 +59,8 @@ class FormFieldButtonPlugin extends FormFieldPlugin
 
 	/**
 	 * Return the HTML code to display the form element
-	 * \public
 	 * \return Textstring with the complete code for the form element
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement ()
 	{

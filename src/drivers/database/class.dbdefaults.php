@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines default methods for the Database drivers
- * \version $Id: class.dbdefaults.php,v 1.2 2011-04-29 14:55:20 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.dbdefaults.php,v 1.3 2011-05-02 12:56:13 oscar Exp $
  */
 
 
@@ -17,6 +18,7 @@ abstract class DbDefaults  {
 
 	/**
 	 * Class constructor
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __constructor()
 	{
@@ -28,6 +30,7 @@ abstract class DbDefaults  {
 	 * \param[in] $_resource Link with the database server
 	 * \param[in] $_name Transaction name for databases that support named transactions
 	 * \return True on success, false on failures
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function dbTransactionStart (&$_resource, $_name = null)
 	{
@@ -40,6 +43,7 @@ abstract class DbDefaults  {
 	 * \param[in] $_name Transaction name for databases that support named transactions
 	 * \param[in] $_new Boolean, true when a new transaction should be started after the commit
 	 * \return True on success, false on failures
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function dbTransactionCommit (&$_resource, $_name, $_name = null, $_new = false)
 	{
@@ -52,6 +56,7 @@ abstract class DbDefaults  {
 	 * \param[in] $_name Transaction name for databases that support named transactions
 	 * \param[in] $_new Boolean, true when a new transaction should be started after the rollback
 	 * \return True on success, false on failures
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function dbTransactionRollback (&$_resource, $_name, $_name = null, $_new = false)
 	{
@@ -62,6 +67,7 @@ abstract class DbDefaults  {
 	 * Escape a given string for use in queries
 	 * \param[in] $_string The input string
 	 * \return String in SQL safe format
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function dbEscapeString ($_string)
 	{
@@ -72,6 +78,7 @@ abstract class DbDefaults  {
 	 * Unescape a string fthat is formatted for use in SQL
 	 * \param[in] $_string The input string in SQL safe format
 	 * \return String without SQL formatting
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function dbUnescapeString ($_string)
 	{
@@ -83,6 +90,7 @@ abstract class DbDefaults  {
 	 * \param[in] $_field Name of the field
 	 * \param[in] $_arguments Array with arguments, which is required by syntax
 	 * \return Complete SQL function code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function functionCount($_field, array $_arguments = array())
 	{

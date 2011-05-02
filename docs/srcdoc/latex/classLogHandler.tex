@@ -123,7 +123,10 @@ Aug 13, 2008 -\/-\/ O van Eijk -\/-\/ initial version
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_aacca49c4394109f4ccc494048a0b2cab}
-Class constructor 
+Class constructor \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References ConfigHandler::get(), \_\-OWL::init(), openLogfile(), and setFilename().
 
@@ -134,7 +137,10 @@ References ConfigHandler::get(), \_\-OWL::init(), openLogfile(), and setFilename
 {}
 \end{DoxyParamCaption}
 )}\label{classLogHandler_aacd0c653489cf221423b9edd62e81458}
-Class destructor 
+Class destructor \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Reimplemented from {\bf \_\-OWL} \doxyref{}{p.}{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}.
 
@@ -152,7 +158,10 @@ References closeLogfile().
 {}
 \end{DoxyParamCaption}
 )}\label{classLogHandler_a395099dd9f1e9794bfe6a0c771991c3c}
-Implementation of the \doxyref{\_\-\_\-clone()}{p.}{classLogHandler_a395099dd9f1e9794bfe6a0c771991c3c} function to prevent cloning of this singleton; it triggers a fatal (user)error \index{LogHandler@{LogHandler}!backtrace@{backtrace}}
+Implementation of the \doxyref{\_\-\_\-clone()}{p.}{classLogHandler_a395099dd9f1e9794bfe6a0c771991c3c} function to prevent cloning of this singleton; it triggers a fatal (user)error \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{LogHandler@{LogHandler}!backtrace@{backtrace}}
 \index{backtrace@{backtrace}!LogHandler@{LogHandler}}
 \subsubsection[{backtrace}]{\setlength{\rightskip}{0pt plus 5cm}LogHandler::backtrace (
 \begin{DoxyParamCaption}
@@ -161,12 +170,15 @@ Implementation of the \doxyref{\_\-\_\-clone()}{p.}{classLogHandler_a395099dd9f1
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_aaf2175a042c4c0f1e26f885c576bc304}
 Create a backtrace of the current log item 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$\_\-browser\_\-dump} & Just for \doxyref{OWL}{p.}{classOWL} development (early days...); when true, the trace is dumped to the browser.\\
+\mbox{\tt in}  & {\em \$\_\-browser\_\-dump} & Just for \doxyref{OWL}{p.}{classOWL} development (early days...); when true, the trace is dumped to the browser. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Trace information of this call. 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by log().
@@ -191,6 +203,9 @@ This is a helper function for lazy developers. Some checks have to be made quite
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct (below the max), otherwise false 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
@@ -206,7 +221,10 @@ Referenced by SessionHandler::write().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_adf4246ae948f34bebada251f5be84781}
-Close the logfile 
+Close the logfile \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by \_\-\_\-destruct(), log(), and setApplicLogfile().
 
@@ -218,15 +236,16 @@ Referenced by \_\-\_\-destruct(), log(), and setApplicLogfile().
 \item[{\$}]{code}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_af366e1232e6d440215b4a732e431225f}
-Compose the logmessage by adding a timestamp and -\/ when not writing multiple files -\/ the run ID
-
-
+Compose the logmessage by adding a timestamp and -\/ when not writing multiple files -\/ the run ID 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em \$msg} & Original message by the event \\
 \hline
 \mbox{\tt in}  & {\em \$code} & Status code of the message \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get(), Register::getCode(), Register::getRunId(), and \_\-OWL::getSeverity().
@@ -245,6 +264,9 @@ Referenced by log().
 Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
 The dispatcher, of null on failure. 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}.
@@ -260,11 +282,12 @@ References OWL::factory().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [static]}}\label{classLogHandler_a669066b3e01ca9a2c3eb33df8ae75765}
-Return a reference to my implementation. If necessary, create that implementation first.
-
-\begin{DoxyReturn}{Returns}
+Return a reference to my implementation. If necessary, create that implementation first. \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$instance.
@@ -276,9 +299,7 @@ References \$instance.
 \item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
-Get the current object severity level.
-
-
+Get the current object severity level. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & An optional parameter to check an other status code i.s.o the object's current status. \\
 \hline
@@ -286,6 +307,9 @@ Get the current object severity level.
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::\$status.
@@ -301,11 +325,12 @@ Referenced by composeMessage(), log(), and DataHandler::setKey().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
-Get the current object status.
-
-\begin{DoxyReturn}{Returns}
+Get the current object status. \begin{DoxyReturn}{Returns}
 Object's status code 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by SchemeHandler::compare().
@@ -317,7 +342,10 @@ Referenced by SchemeHandler::compare().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References OWL::factory(), and \_\-OWL::setStatus().
 
@@ -333,15 +361,16 @@ Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(
 \item[{\$}]{code}
 \end{DoxyParamCaption}
 )}\label{classLogHandler_a6d0139ed72f63093ca00f949ed5a73cb}
-Log an event signalled by \doxyref{OWL}{p.}{classOWL}
-
-
+Log an event signalled by \doxyref{OWL}{p.}{classOWL} 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$msg} & Message text \\
 \hline
 \mbox{\tt in}  & {\em \$code} & Status code of the message \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References backtrace(), closeLogfile(), composeMessage(), ConfigHandler::get(), \_\-OWL::getSeverity(), openLogfile(), and writeLogfile().
@@ -361,6 +390,9 @@ Log the user action in the database. This method is called from the Dispatcher::
 \mbox{\tt in}  & {\em \$form} & \doxyref{Form}{p.}{classForm} object \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get(), and OWLCache::get().
@@ -372,7 +404,10 @@ References ConfigHandler::get(), and OWLCache::get().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_aae86161ab4886bf901ce22773b32e193}
-Open the logfile for write 
+Open the logfile for write \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References \_\-OWL::setStatus().
 
@@ -387,7 +422,10 @@ Referenced by \_\-\_\-construct(), log(), and setApplicLogfile().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
-General reset function for all objects. Should be called after each non-\/fatal error 
+General reset function for all objects. Should be called after each non-\/fatal error \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Reimplemented in {\bf DbHandler} \doxyref{}{p.}{classDbHandler_a9982df4830f05803935bb31bac7fae3d}, and {\bf SchemeHandler} \doxyref{}{p.}{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}.
 
@@ -406,7 +444,10 @@ Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), an
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
-Restore the previously saved status object and destroy the copy 
+Restore the previously saved status object and destroy the copy \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References \_\-OWL::setStatus().
 
@@ -421,7 +462,10 @@ Referenced by User::logout().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
-Create a copy of the status object 
+Create a copy of the status object \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by User::logout().
 
@@ -432,6 +476,9 @@ Referenced by User::logout().
 {}
 \end{DoxyParamCaption}
 )}\label{classLogHandler_a23abe91efe4c2468f4ca5fdd115c4a13}
+Find out what the filename of the application specificlogfile should be. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References closeLogfile(), ConfigHandler::get(), openLogfile(), and setFilename().
@@ -454,6 +501,9 @@ Set a dispatcher for later callback
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -473,6 +523,9 @@ Add an argument to a previously registered callback dispatcher
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -488,7 +541,10 @@ Referenced by User::register().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_a81b42d2a82a4ff17ea2901ee801f1cb2}
-Find out what the filename of the logfile should be. When logs are written before the configuration is complete, a temporart startup logfile is created 
+Find out what the filename of the logfile should be. When logs are written before the configuration is complete, a temporart startup logfile is created \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References ConfigHandler::get(), and Register::getRunId().
 
@@ -503,7 +559,10 @@ Referenced by \_\-\_\-construct(), and setApplicLogfile().
 \item[{\&\$}]{object = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
-Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
@@ -515,15 +574,16 @@ Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and S
 \item[{\$}]{params = {\ttfamily array~()}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
-Set the current object status to the specified value.
-
-
+Set the current object status to the specified value. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & \doxyref{OWL}{p.}{classOWL} status code \\
 \hline
 \mbox{\tt in}  & {\em \$params} & \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
@@ -540,9 +600,7 @@ Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), Scheme
 \item[{\&\$}]{text = {\ttfamily false}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
-Display the message for the current object status
-
-
+Display the message for the current object status 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$level} & An optional severity level; message will only be displayed when it is at least of this level. \\
 \hline
@@ -552,6 +610,9 @@ Display the message for the current object status
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get().
@@ -578,6 +639,9 @@ Check if the object currenlty has a success state
 \begin{DoxyReturn}{Returns}
 Boolean true when successfull 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher::registerCallback().
@@ -590,9 +654,7 @@ Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher:
 \item[{\$}]{depth = {\ttfamily 0}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
-If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
-
-
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt out}  & {\em \$text} & Optional variable in which the message text can be stored. If not given, the text will be written to standard output \\
 \hline
@@ -602,6 +664,9 @@ If somehwere in the nested calls an error occured, we can traceback the original
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::signal().
@@ -617,13 +682,14 @@ Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 \item[{\$}]{msg}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classLogHandler_ad9213e0ef36a84216c023f86ac74db4e}
-Write a message to the logfile
-
-
+Write a message to the logfile 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$msg} & The complete log message \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by log().

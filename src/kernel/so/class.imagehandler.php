@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the FileHandler class
- * \version $Id: class.imagehandler.php,v 1.2 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.imagehandler.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -37,7 +38,6 @@ class ImageHandler extends FileHandler
 
 	/**
 	 * Full filename as stored on the file system
-	 * \private
 	 */	
 	private $name; 
 	var $original_name;	// Original filename
@@ -53,13 +53,11 @@ class ImageHandler extends FileHandler
 
 	/**
 	 * Pointer to te file when opened
-	 * \private
 	 */	
 	private $fpointer;
 
 	/**
 	 * Boolean that's true when the file is opened
-	 * \private
 	 */	
 	private $opened;
 
@@ -69,9 +67,9 @@ class ImageHandler extends FileHandler
 
 	/**
 	 * Class constructor; setup the image characteristics
-	 * \public
 	 * \param[in] $name Filename
 	 * \param[in] $req True is the file must exist at object create time
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($name, $req = false)
 	{

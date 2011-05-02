@@ -199,9 +199,7 @@ Jul 29, 2008 -\/-\/ O van Eijk -\/-\/ Modified version for \doxyref{OWL}{p.}{cla
 \item[{\$}]{dbtype = {\ttfamily '{\bf MySQL}'}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classDbHandler_ae54e9d4643f41a9296167086f6a769fc}
-Class constructor; opens the database connection.
-
-
+Class constructor; opens the database connection. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$srv} & Database server \\
 \hline
@@ -214,6 +212,9 @@ Class constructor; opens the database connection.
 \mbox{\tt in}  & {\em \$dbtype} & Database type, used to load the driver \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get(), \_\-OWL::init(), loadDriver(), and \_\-OWL::setStatus().
@@ -225,7 +226,10 @@ References ConfigHandler::get(), \_\-OWL::init(), loadDriver(), and \_\-OWL::set
 {}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_a7cd6bd727d1f296eb5dbfae6ca36ab3f}
-Class destructor; closes the database connection 
+Class destructor; closes the database connection \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Reimplemented from {\bf \_\-OWL} \doxyref{}{p.}{class__OWL_a44fd2222476a3109286cc82d92b6bbcc}.
 
@@ -243,7 +247,10 @@ References close().
 {}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1}
-Implementation of the \doxyref{\_\-\_\-clone()}{p.}{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1} function. The current connection will be closed, and a property will be set to indicate this is a cloned object. After that, the \doxyref{alt()}{p.}{classDbHandler_ac3a8e0bfe2491e17bc527715505f90a7} method can be used to change connection info. 
+Implementation of the \doxyref{\_\-\_\-clone()}{p.}{classDbHandler_ada20e62b915bc87a1de28389a2ee81e1} function. The current connection will be closed, and a property will be set to indicate this is a cloned object. After that, the \doxyref{alt()}{p.}{classDbHandler_ac3a8e0bfe2491e17bc527715505f90a7} method can be used to change connection info. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References \$instance, close(), reset(), and \_\-OWL::setStatus().
 
@@ -257,6 +264,9 @@ References \$instance, close(), reset(), and \_\-OWL::setStatus().
 Check if additional clauses (like GROUP BY, ORDER BY etc) have been defined, and compose this depending on the query type. \begin{DoxyReturn}{Returns}
 String with additional clauses 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References expandField().
@@ -285,6 +295,9 @@ On a cloned database object, set an alternative, prefix or connection.
 \end{DoxyItemize}\\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References loadDriver(), open(), and \_\-OWL::setStatus().
@@ -309,6 +322,9 @@ This is a helper function for lazy developers. Some checks have to be made quite
 \begin{DoxyReturn}{Returns}
 True if the severity level was correct (below the max), otherwise false 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
@@ -324,7 +340,10 @@ Referenced by SessionHandler::write().
 {}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_ad3d2853bbd2d1962710907e34afb424f}
-Close the database and disconnect from the server. This function is called on program shutdown. Although the database will be closed already by PHP, this function might be called at any time manually; is also updates the 'opened' variable. 
+Close the database and disconnect from the server. This function is called on program shutdown. Although the database will be closed already by PHP, this function might be called at any time manually; is also updates the 'opened' variable. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by \_\-\_\-clone(), \_\-\_\-destruct(), create(), and forceReread().
 
@@ -346,6 +365,9 @@ Commit database transaction
 \begin{DoxyReturn}{Returns}
 Object severity status 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::\$severity, and \_\-OWL::setStatus().
@@ -357,11 +379,12 @@ References \_\-OWL::\$severity, and \_\-OWL::setStatus().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classDbHandler_a9cf52ba614981a0082063d57290d3b7c}
-Connect to the database server
-
-\begin{DoxyReturn}{Returns}
+Connect to the database server \begin{DoxyReturn}{Returns}
 True on success, otherwise False 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get(), and \_\-OWL::setStatus().
@@ -377,11 +400,12 @@ Referenced by create(), and open().
 {}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_ac9e93cb0ab57f03b2719eebd0c0ee2ef}
-Create a new database
-
-\begin{DoxyReturn}{Returns}
+Create a new database \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References close(), connect(), and \_\-OWL::setStatus().
@@ -395,9 +419,7 @@ References close(), connect(), and \_\-OWL::setStatus().
 \item[{\&\$}]{fields}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classDbHandler_a130e49aa639fecb46ce6719ddcb0d72f}
-Read from the database.
-
-
+Read from the database. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$qry} & Database query string. \\
 \hline
@@ -409,6 +431,9 @@ Read from the database.
 \begin{DoxyReturn}{Returns}
 A 2D array with all data, or false on failures 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by read().
@@ -420,9 +445,7 @@ Referenced by read().
 \item[{\$}]{string}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_a84d876a07a292f4a7bd49e5acfac9d14}
-Call the current DBtype's escape function for character strings.
-
-
+Call the current DBtype's escape function for character strings. 
 \begin{DoxyParams}{Parameters}
 {\em \$string} & The string that should be escaped \\
 \hline
@@ -430,6 +453,9 @@ Call the current DBtype's escape function for character strings.
 \begin{DoxyReturn}{Returns}
 The escaped string 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{DbHandler@{DbHandler}!expandField@{expandField}}
 \index{expandField@{expandField}!DbHandler@{DbHandler}}
 \subsubsection[{expandField}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::expandField (
@@ -445,6 +471,9 @@ Change a fieldname in the format 'table\#field' to the format '`[prefix]table.fi
 \mbox{\tt in}  & {\em \$check\_\-name} & Boolean which is true if the fieldname should be returned with 'AS'. Default is false \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References tablename().
@@ -468,6 +497,9 @@ Create an array with unique tablenames as extracted from an array of fields in t
 \begin{DoxyReturn}{Returns}
 Array with tablenames 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$\_\-table.
@@ -483,7 +515,10 @@ Referenced by prepareDelete(), prepareInsert(), and prepareUpdate().
 {}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_a1a342f747e4e4c10c00d7d6066d50d59}
-Hmmm.... we need this method as the result of a race condition; if an alternative database (clone) is opened first, that's the default connection, which is probably the case in most situation since the owl config table is read early in the init phase. I need to think about it... is this solution acceptable? So we need something smarter here? This method is allowed to be called only once by OWLLoader; maybe some checks? 
+Hmmm.... we need this method as the result of a race condition (sort of... I think...); if an alternative database (clone) is opened first, that's the default connection, which is probably the case in most situation since the owl config table is read early in the init phase. I need to think about it... is this solution acceptable? So we need something smarter here? This method is allowed to be called only once by OWLLoader; maybe some checks? \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References close(), ConfigHandler::get(), loadDriver(), and open().
 
@@ -497,6 +532,9 @@ References close(), ConfigHandler::get(), loadDriver(), and open().
 Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
 The dispatcher, of null on failure. 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}.
@@ -512,11 +550,12 @@ References OWL::factory().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [static]}}\label{classDbHandler_a72b64ea1342d97d300d564a7641627d7}
-Return a reference to my implementation. If necessary, create that implementation first.
-
-\begin{DoxyReturn}{Returns}
+Return a reference to my implementation. If necessary, create that implementation first. \begin{DoxyReturn}{Returns}
 Object instance ID 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$instance, \$original\_\-instance, and ConfigHandler::get().
@@ -528,9 +567,7 @@ References \$instance, \$original\_\-instance, and ConfigHandler::get().
 \item[{\$}]{status = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
-Get the current object severity level.
-
-
+Get the current object severity level. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & An optional parameter to check an other status code i.s.o the object's current status. \\
 \hline
@@ -538,6 +575,9 @@ Get the current object severity level.
 \begin{DoxyReturn}{Returns}
 Status severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::\$status.
@@ -553,11 +593,12 @@ Referenced by LogHandler::composeMessage(), LogHandler::log(), and DataHandler::
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
-Get the current object status.
-
-\begin{DoxyReturn}{Returns}
+Get the current object status. \begin{DoxyReturn}{Returns}
 Object's status code 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by SchemeHandler::compare().
@@ -569,7 +610,10 @@ Referenced by SchemeHandler::compare().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
-This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. 
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References OWL::factory(), and \_\-OWL::setStatus().
 
@@ -584,11 +628,12 @@ Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(
 {}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_a71b713d7b974200e64bd606e3b099c38}
-Let other objects check if th database connection is opened
-
-\begin{DoxyReturn}{Returns}
+Let other objects check if th database connection is opened \begin{DoxyReturn}{Returns}
 boolean, True when opened 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{DbHandler@{DbHandler}!lastInsertedId@{lastInsertedId}}
 \index{lastInsertedId@{lastInsertedId}!DbHandler@{DbHandler}}
 \subsubsection[{lastInsertedId}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::lastInsertedId (
@@ -607,6 +652,9 @@ Return the last ID after a newly inserted record holding an AUTO\_\-INCREMENT fi
 \begin{DoxyReturn}{Returns}
 The number that was last inserted 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{DbHandler@{DbHandler}!loadDriver@{loadDriver}}
 \index{loadDriver@{loadDriver}!DbHandler@{DbHandler}}
 \subsubsection[{loadDriver}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::loadDriver (
@@ -614,7 +662,10 @@ The number that was last inserted
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classDbHandler_ab4db7c4fa445700b96a2d4b1be6e50a4}
-Create a new instance of the database driver 
+Create a new instance of the database driver \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References OWLloader::getDriver(), and toStrictBoolean().
 
@@ -629,11 +680,12 @@ Referenced by \_\-\_\-construct(), alt(), and forceReread().
 {}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_afccbfc69ead84f8445116e050d1cfc2d}
-Opens the database connection.
-
-\begin{DoxyReturn}{Returns}
+Opens the database connection. \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References connect(), and \_\-OWL::setStatus().
@@ -649,9 +701,7 @@ Referenced by alt(), forceReread(), and read().
 \item[{array \$}]{searches = {\ttfamily array()}}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_a4dce3c43b43a82a1ac0e3ba2c83309ee}
-Prepare a delete query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
-
-
+Prepare a delete query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$searches} & Given values that have to match \\
 \hline
@@ -659,9 +709,12 @@ Prepare a delete query. Data is taken from the arrays that are passed to this fu
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
-References additionalClauses(), extractTablelist(), \_\-OWL::setStatus(), tablelist(), and whereClause().
+References additionalClauses(), extractTablelist(), OWLdbg\_\-add(), \_\-OWL::setStatus(), tablelist(), and whereClause().
 
 \index{DbHandler@{DbHandler}!prepareField@{prepareField}}
 \index{prepareField@{prepareField}!DbHandler@{DbHandler}}
@@ -681,6 +734,9 @@ DbHandler::set()
 \begin{DoxyReturn}{Returns}
 An array with two elements: the fieldname in the format that will be handled by \doxyref{DbHandler::expandField()}{p.}{classDbHandler_ad8dac71adf4d540270b5b2c87da114a8}, and the value which might be a normal value, an array of values of a value as set by a driver function (using database functions). On errors, null is returned. 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::setStatus().
@@ -692,9 +748,7 @@ References \_\-OWL::setStatus().
 \item[{array \$}]{values = {\ttfamily array()}}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_a50f426084a888714b72bedb42de7ebc4}
-Prepare an insert query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
-
-
+Prepare an insert query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$values} & Given database values \\
 \hline
@@ -702,9 +756,12 @@ Prepare an insert query. Data is taken from the arrays that are passed to this f
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
-References additionalClauses(), expandField(), extractTablelist(), \_\-OWL::setStatus(), and tablename().
+References additionalClauses(), expandField(), extractTablelist(), OWLdbg\_\-add(), \_\-OWL::setStatus(), and tablename().
 
 \index{DbHandler@{DbHandler}!prepareRead@{prepareRead}}
 \index{prepareRead@{prepareRead}!DbHandler@{DbHandler}}
@@ -716,9 +773,7 @@ References additionalClauses(), expandField(), extractTablelist(), \_\-OWL::setS
 \item[{array \$}]{joins = {\ttfamily array()}}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_a2f749a426fa9dbfe1b58a7d0d4263d1f}
-Prepare a read query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
-
-
+Prepare a read query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$values} & Values that will be read \\
 \hline
@@ -732,9 +787,12 @@ Prepare a read query. Data is taken from the arrays that are passed to this func
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
-References additionalClauses(), expandField(), \_\-OWL::setStatus(), tablelist(), and whereClause().
+References additionalClauses(), expandField(), OWLdbg\_\-add(), \_\-OWL::setStatus(), tablelist(), and whereClause().
 
 \index{DbHandler@{DbHandler}!prepareUpdate@{prepareUpdate}}
 \index{prepareUpdate@{prepareUpdate}!DbHandler@{DbHandler}}
@@ -745,9 +803,7 @@ References additionalClauses(), expandField(), \_\-OWL::setStatus(), tablelist()
 \item[{array \$}]{joins = {\ttfamily array()}}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_abe6db4c3099ca5cfcfb75e9eb34ba2af}
-Prepare an update query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed.
-
-
+Prepare an update query. Data is taken from the arrays that are passed to this function. All fieldnames are in the format 'table\#field', where the table is not yet prefixed. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$values} & Given database values \\
 \hline
@@ -759,9 +815,12 @@ Prepare an update query. Data is taken from the arrays that are passed to this f
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
-References additionalClauses(), extractTablelist(), \_\-OWL::setStatus(), tablelist(), updateList(), and whereClause().
+References additionalClauses(), extractTablelist(), OWLdbg\_\-add(), \_\-OWL::setStatus(), tablelist(), updateList(), and whereClause().
 
 \index{DbHandler@{DbHandler}!read@{read}}
 \index{read@{read}!DbHandler@{DbHandler}}
@@ -774,9 +833,7 @@ References additionalClauses(), extractTablelist(), \_\-OWL::setStatus(), tablel
 \item[{\$}]{file = {\ttfamily '[unknown]'}}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_a5ebfdc2acfcb0e9cbc2861fc55c7127c}
-Read from the database. The return value depends on the flag. By default, the selected rows(s) are returned in a 2d array.
-
-
+Read from the database. The return value depends on the flag. By default, the selected rows(s) are returned in a 2d array. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$flag} & Flag that identifies how data should be returned; as data (default) or the number of rows \\
 \hline
@@ -800,6 +857,9 @@ Read from the database. The return value depends on the flag. By default, the se
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References dbread(), open(), and \_\-OWL::setStatus().
@@ -811,7 +871,10 @@ References dbread(), open(), and \_\-OWL::setStatus().
 {}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_a9982df4830f05803935bb31bac7fae3d}
-Reset the object 
+Reset the object \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Reimplemented from {\bf \_\-OWL} \doxyref{}{p.}{class__OWL_a2f2a042bcf31965194c03033df0edc9b}.
 
@@ -826,7 +889,10 @@ Referenced by \_\-\_\-clone().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
-Restore the previously saved status object and destroy the copy 
+Restore the previously saved status object and destroy the copy \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 References \_\-OWL::setStatus().
 
@@ -852,6 +918,9 @@ Rollback the current transaction
 \begin{DoxyReturn}{Returns}
 Object severity status 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::\$severity, and \_\-OWL::setStatus().
@@ -863,7 +932,10 @@ References \_\-OWL::\$severity, and \_\-OWL::setStatus().
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
-Create a copy of the status object 
+Create a copy of the status object \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by User::logout().
 
@@ -885,6 +957,9 @@ Set a dispatcher for later callback
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -904,6 +979,9 @@ Add an argument to a previously registered callback dispatcher
 \begin{DoxyReturn}{Returns}
 True on success, false on failure 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References OWL::factory().
@@ -919,7 +997,10 @@ Referenced by User::register().
 \item[{\&\$}]{object = {\ttfamily null}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
-Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. 
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
 
 Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
 
@@ -930,13 +1011,14 @@ Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and S
 \item[{\$}]{qry}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_a14787a81542efc8dea40060532e5ddca}
-Set the database query. This function should only be used if the query is too complex to be set with any of the prepare() functions.
-
-
+Set the database query. This function should only be used if the query is too complex to be set with any of the prepare() functions. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$qry} & A complete database query. All tablenames must be prefixed (with the \doxyref{tablename()}{p.}{classDbHandler_a05ea485a22c0ef87090f2313614c84c8} function)! \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{DbHandler@{DbHandler}!setStatus@{setStatus}}
 \index{setStatus@{setStatus}!DbHandler@{DbHandler}}
 \subsubsection[{setStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setStatus (
@@ -945,15 +1027,16 @@ Set the database query. This function should only be used if the query is too co
 \item[{\$}]{params = {\ttfamily array~()}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
-Set the current object status to the specified value.
-
-
+Set the current object status to the specified value. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$status} & \doxyref{OWL}{p.}{classOWL} status code \\
 \hline
 \mbox{\tt in}  & {\em \$params} & \\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
@@ -970,9 +1053,7 @@ Referenced by \_\-\_\-clone(), Container::\_\-\_\-construct(), SchemeHandler::\_
 \item[{\&\$}]{text = {\ttfamily false}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
-Display the message for the current object status
-
-
+Display the message for the current object status 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$level} & An optional severity level; message will only be displayed when it is at least of this level. \\
 \hline
@@ -982,6 +1063,9 @@ Display the message for the current object status
 \begin{DoxyReturn}{Returns}
 The severity level for this object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References ConfigHandler::get().
@@ -1005,6 +1089,9 @@ Start a new database transaction
 \begin{DoxyReturn}{Returns}
 Object severity status 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::\$severity, and \_\-OWL::setStatus().
@@ -1027,6 +1114,9 @@ Check if the object currenlty has a success state
 \begin{DoxyReturn}{Returns}
 Boolean true when successfull 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher::registerCallback().
@@ -1046,6 +1136,9 @@ Check if a table exists in the database
 \begin{DoxyReturn}{Returns}
 True of the table exists 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References tablename().
@@ -1057,9 +1150,7 @@ References tablename().
 \item[{array \$}]{tables}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classDbHandler_a0ea7d40a222cf6f1bf77b42e8eba03e4}
-Create a list with tables, including prefixes, that can be interpreted by SQL
-
-
+Create a list with tables, including prefixes, that can be interpreted by SQL 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$tables} & An array with tablenames \\
 \hline
@@ -1067,6 +1158,9 @@ Create a list with tables, including prefixes, that can be interpreted by SQL
 \begin{DoxyReturn}{Returns}
 The tablelist 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \$\_\-table, and tablename().
@@ -1083,9 +1177,7 @@ Referenced by prepareDelete(), prepareRead(), and prepareUpdate().
 \item[{\$}]{ignore\_\-backticks = {\ttfamily false}}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_a05ea485a22c0ef87090f2313614c84c8}
-Extend a tablename with the database prefix
-
-
+Extend a tablename with the database prefix 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$tablename} & \doxyref{Table}{p.}{classTable} name to extend \\
 \hline
@@ -1095,6 +1187,9 @@ Extend a tablename with the database prefix
 \begin{DoxyReturn}{Returns}
 Extended table name 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 Referenced by expandField(), prepareInsert(), tableExists(), and tablelist().
@@ -1107,9 +1202,7 @@ Referenced by expandField(), prepareInsert(), tableExists(), and tablelist().
 \item[{\$}]{depth = {\ttfamily 0}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
-If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message.
-
-
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt out}  & {\em \$text} & Optional variable in which the message text can be stored. If not given, the text will be written to standard output \\
 \hline
@@ -1119,6 +1212,9 @@ If somehwere in the nested calls an error occured, we can traceback the original
 \begin{DoxyReturn}{Returns}
 Severity code of the failing object 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::signal().
@@ -1134,9 +1230,7 @@ Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 \item[{\$}]{string}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_a03b7dab122b64aa5653dffb3e7150271}
-Call the current DBtype's unescape function for character strings.
-
-
+Call the current DBtype's unescape function for character strings. 
 \begin{DoxyParams}{Parameters}
 {\em \$string} & The string that should be unescaped \\
 \hline
@@ -1144,6 +1238,9 @@ Call the current DBtype's unescape function for character strings.
 \begin{DoxyReturn}{Returns}
 The unescaped string 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{DbHandler@{DbHandler}!updateList@{updateList}}
 \index{updateList@{updateList}!DbHandler@{DbHandler}}
 \subsubsection[{updateList}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::updateList (
@@ -1151,9 +1248,7 @@ The unescaped string
 \item[{array \$}]{updates}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classDbHandler_a1340ca63d23565b97218846e77272410}
-Create a string with 'field = value, ...' combinations in SQL format
-
-
+Create a string with 'field = value, ...' combinations in SQL format 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$updates} & Array with fields to update (fieldname =$>$ values) \\
 \hline
@@ -1161,6 +1256,9 @@ Create a string with 'field = value, ...' combinations in SQL format
 \begin{DoxyReturn}{Returns}
 The UPDATE statement 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References expandField().
@@ -1177,9 +1275,7 @@ Referenced by prepareUpdate().
 \item[{array \$}]{joins}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  [private]}}\label{classDbHandler_a4458733bab22e5487f700f7107a4e091}
-Create a WHERE clause that can be interpreted by SQL
-
-
+Create a WHERE clause that can be interpreted by SQL 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$searches} & Array with values (fieldname =$>$ values) Values can be an array in which case more ORs for that field will be added to the where clause \\
 \hline
@@ -1189,6 +1285,9 @@ Create a WHERE clause that can be interpreted by SQL
 \begin{DoxyReturn}{Returns}
 The WHERE clause 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References expandField().
@@ -1206,9 +1305,7 @@ Referenced by prepareDelete(), prepareRead(), and prepareUpdate().
 \item[{\$}]{file = {\ttfamily '[unknown]'}}
 \end{DoxyParamCaption}
 )}\label{classDbHandler_ac02a117c76d5d20ec950fcd5aae9cf8d}
-Database inserts and updates. The number of affected rows is stored in \$this-\/$>$rowcount
-
-
+Database inserts and updates. The number of affected rows is stored in \$this-\/$>$rowcount 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt out}  & {\em \$rows} & (optional) The number of affected rows \\
 \hline
@@ -1220,6 +1317,9 @@ Database inserts and updates. The number of affected rows is stored in \$this-\/
 \begin{DoxyReturn}{Returns}
 Severity level 
 \end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 References \_\-OWL::setStatus().

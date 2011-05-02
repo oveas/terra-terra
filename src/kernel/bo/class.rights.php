@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the Rights class
- * \version $Id: class.rights.php,v 1.5 2011-04-27 11:50:08 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.rights.php,v 1.6 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -23,6 +24,7 @@ class Rights extends Security
 	 * Class constructor
 	 * \param[in] $app code for which the bitmap array must be setup
 	 * \param[in] $owl By default, the owl bitmap will be setup as well. Set this to false to suppress this
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($app, $owl = true)
 	{
@@ -35,6 +37,7 @@ class Rights extends Security
 	/**
 	 * The rightslist is stored in cache, not in the serialized object, so we must retrieve it
 	 * again on unserialize()
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __wakeup()
 	{
@@ -47,6 +50,7 @@ class Rights extends Security
 	 * Get the bitvalue for a given name
 	 * \param[in] $name Name of the rights bit
 	 * \return Integer value
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function bitValue($name)
 	{
@@ -55,6 +59,7 @@ class Rights extends Security
 
 	/**
 	 * If the rightlist is not yet filled, do so now and store the list in cache
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function registerRights ()
 	{

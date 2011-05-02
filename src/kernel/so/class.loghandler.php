@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the Loghandler class
- * \version $Id: class.loghandler.php,v 1.10 2011-04-27 11:50:07 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.loghandler.php,v 1.11 2011-05-02 12:56:13 oscar Exp $
  */
 
 /**
@@ -16,19 +17,16 @@ class LogHandler extends _OWL
 {
 	/**
 	 * Boolean to keep track of the logfile status
-	 * \private
 	 */
 	private $opened;
 
 	/**
 	 * Name of the logfile
-	 * \private
 	 */
 	private $filename;
 
 	/**
 	 * File pointer
-	 * \private
 	 */
 	private $fpointer;
 
@@ -44,14 +42,12 @@ class LogHandler extends _OWL
 
 	/**
 	 * integer - self reference
-	 * \private
-	 * \static
 	 */
 	private static $instance;
 
 	/**
 	 * Class constructor
-	 * \private
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function __construct ()
 	{
@@ -72,7 +68,7 @@ class LogHandler extends _OWL
 
 	/**
 	 * Class destructor
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __destruct ()
 	{
@@ -86,7 +82,7 @@ class LogHandler extends _OWL
 	/**
 	 * Implementation of the __clone() function to prevent cloning of this singleton;
 	 * it triggers a fatal (user)error
-	 * \public
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __clone ()
 	{
@@ -95,8 +91,8 @@ class LogHandler extends _OWL
 
 	/**
 	 * Return a reference to my implementation. If necessary, create that implementation first.
-	 * \public
 	 * \return Severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getInstance()
 	{
@@ -106,6 +102,10 @@ class LogHandler extends _OWL
 		return LogHandler::$instance;
 	}
 
+	/**
+	 * Find out what the filename of the application specificlogfile should be.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
 	public function setApplicLogfile()
 	{
 		if (!ConfigHandler::get ('logging|multiple_file', false) &&
@@ -124,6 +124,7 @@ class LogHandler extends _OWL
 	 * and can be called moreoften, but only the first log is written.
 	 * \param[in] $dispatcher Array with dispatcher information
 	 * \param[in] $form Form object
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function logSession(array $dispatcher, FormHandler $form = null)
 	{
@@ -152,7 +153,7 @@ class LogHandler extends _OWL
 	/**
 	 * Find out what the filename of the logfile should be. When logs are written
 	 * before the configuration is complete, a temporart startup logfile is created
-	 * \private
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function setFilename ()
 	{
@@ -174,7 +175,7 @@ class LogHandler extends _OWL
 
 	/**
 	 * Open the logfile for write
-	 * \private
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function openLogfile ()
 	{
@@ -186,7 +187,7 @@ class LogHandler extends _OWL
 
 	/**
 	 * Close the logfile
-	 * \private
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function closeLogfile ()
 	{
@@ -198,8 +199,8 @@ class LogHandler extends _OWL
 
 	/**
 	 * Write a message to the logfile
-	 * \private
 	 * \param[in] $msg The complete log message
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function writeLogfile ($msg)
 	{
@@ -209,9 +210,9 @@ class LogHandler extends _OWL
 	/**
 	 * Compose the logmessage by adding a timestamp and - when not writing
 	 * multiple files - the run ID
-	 * \private
 	 * \param[in,out] $msg Original message by the event
 	 * \param[in] $code Status code of the message
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function composeMessage (&$msg, $code)
 	{
@@ -225,9 +226,9 @@ class LogHandler extends _OWL
 
 	/**
 	 * Log an event signalled by OWL
-	 * \public
 	 * \param[in] $msg Message text
 	 * \param[in] $code Status code of the message
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function log ($msg, $code)
 	{
@@ -259,8 +260,8 @@ class LogHandler extends _OWL
 	 * Create a backtrace of the current log item
 	 * \param[in] $_browser_dump Just for OWL development (early days...); when true, the
 	 * trace is dumped to the browser.
-	 * \private
 	 * \return Trace information of this call.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function backtrace ($_browser_dump = false)
 	{

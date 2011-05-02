@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the label plugin for containers
- * \version $Id: class.container.fieldset.php,v 1.2 2011-01-21 10:18:27 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.container.fieldset.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -18,12 +19,12 @@ class ContainerFieldsetPlugin extends ContainerPlugin
 
 	/**
 	 * Label that will be displayed for this fieldset
-	 * \private
 	 */
 	private $legend;
 
 	/**
 	 * Container constructor
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct()
 	{
@@ -35,6 +36,7 @@ class ContainerFieldsetPlugin extends ContainerPlugin
 	/**
 	 * Set the legend attribute, which will be a nested tag in the fieldset container
 	 * \param[in] $_legend Textstring to use
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setLegend($_legend)
 	{
@@ -47,6 +49,7 @@ class ContainerFieldsetPlugin extends ContainerPlugin
 	 * Hence, this method shows nothing, but adds the legend tag to the parent's array with
 	 * subtags that will be retrieved later.
 	 * \return empty string
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{
@@ -55,5 +58,4 @@ class ContainerFieldsetPlugin extends ContainerPlugin
 		}
 		return '';
 	}
-	
 }

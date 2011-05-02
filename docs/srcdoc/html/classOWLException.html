@@ -162,7 +162,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Create the Exception handler object</p>
+<p>Create the Exception handler object </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$msg</td><td>Message text </td></tr>
@@ -171,6 +171,7 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWLException.html#af59d0890c1de1187f43084ec617545f1">$caller</a>, and <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
@@ -191,6 +192,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Trace back the previous object in the stack </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Referenced by <a class="el" href="classOWLException.html#a60ce016fcb62831121e76b21b689e590">stackDump()</a>.</p>
 
@@ -218,6 +220,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>integer holding the argument index that should be hidden, of -1 if nothing has to be hidden. </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
@@ -239,13 +242,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Create an overview of the calling stack</p>
+<p>Create an overview of the calling stack </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$textmode</td><td>specify the format in which the stackdump should be returned; text (true, default) of HTML (false). </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Current stack </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWLException.html#ad5e583964eaccad8e9e6140e56367b14">_getTrace()</a>, <a class="el" href="classRegister.html#ae1e8ad7a7509a80bc008861282762c89">Register::getCode()</a>, <a class="el" href="classRegister.html#ab30a099321016bd399a1ee72e7a22d1d">Register::getSeverity()</a>, and <a class="el" href="classOWLException.html#a6e857cc079ee29428791e4926fe1677a">traceback()</a>.</p>
 
@@ -283,7 +288,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Trace a single call from the stack</p>
+<p>Trace a single call from the stack </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$trace</td><td>The call </td></tr>
@@ -292,6 +297,8 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Call from the stack </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classOWLException.html#a2f2fa7401523c6b501b8becf8f163705">checkHide()</a>, and <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
@@ -367,7 +374,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Fri Apr 29 2011 16:53:10 for OWL-PHP by
+    <li class="footer">Generated on Mon May 2 2011 14:53:21 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

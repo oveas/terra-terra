@@ -2,7 +2,8 @@
 /**
  * \file
  * This file defines the Security base class
- * \version $Id: class.security.php,v 1.6 2011-04-29 14:55:20 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.security.php,v 1.7 2011-05-02 12:56:14 oscar Exp $
  */
 
 /**
@@ -43,6 +44,7 @@ abstract class Security
 	 * Class constructor
 	 * \param[in] $app code for which the bitmap array must be setup
 	 * \param[in] $owl By default, the owl bitmap will be setup as well. Set this to false to suppress this
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($app, $owl = true)
 	{
@@ -54,6 +56,7 @@ abstract class Security
 
 	/**
 	 * Magic function for serialize; make sure only the required data is serialized
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __sleep()
 	{
@@ -64,6 +67,7 @@ abstract class Security
 	 * Get the bitvalue for a given name. This method must be reimplemented
 	 * \param[in] $name Name of the bit
 	 * \return Integer value
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	abstract public function bitValue($name);
 
@@ -71,6 +75,7 @@ abstract class Security
 	 * (Re)initialise the bitmap for the given application
 	 * \param[in] $value Bitmap value
 	 * \param[in] $app Application ID
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function initBitmap($value, $app)
 	{
@@ -80,6 +85,8 @@ abstract class Security
 	/**
 	 * Get the bitmap value for the given application
 	 * \param[in] $app Application ID
+	 * \return Bitmap value as an integer
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getBitmap($app)
 	{
@@ -90,6 +97,7 @@ abstract class Security
 	 * Merge a given gitmap with the current users bitmap
 	 * \param[in] $bitmap Rightlist bitmap
 	 * \param[in] $app Application the bitmap belongs to
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function mergeBitmaps($bitmap, $app)
 	{
@@ -107,6 +115,7 @@ abstract class Security
 	 * \param[in] $app Application ID the bit belongs to
 	 * \param[in] $controller Controller defining the action, defaults to check
 	 * \return True if the bit was set (*before* a set or unset action!)
+	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function controlBitmap ($bit, $app, $controller = BIT_CHECK)
 	{
