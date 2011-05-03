@@ -4,7 +4,7 @@
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.messages.php,v 1.22 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.23 2011-05-03 10:08:46 oscar Exp $
  */
 
 $_messages = array (
@@ -19,6 +19,7 @@ $_messages = array (
 //	, OWL_STATUS_IVKEY		=> 'Given security key does not match with this server'
 	, OWL_STATUS_NOSAVSTAT	=> 'Trying to restore a status that was not previously saved'
 	, OWL_STATUS_THROWERR	=> 'No context to throw an exception'
+	, OWL_APP_NOTFOUND		=> 'Application code $p1$ could not be found - is it installed already?'
 	, OWL_LOADERR			=> 'Error loading $p1$ file $p2$ from location $p3$'
 	, OWL_INSTERR			=> 'Error instantiating class $p1$'
 	, CONFIG_NOVALUE		=> 'Nonexising config value <i>$p1$</i> requested'

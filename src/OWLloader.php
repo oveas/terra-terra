@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.27 2011-05-02 12:56:15 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.28 2011-05-03 10:08:46 oscar Exp $
  */
 
 // Error handling used during development
@@ -206,6 +206,11 @@ abstract class OWLloader
 		$dataset->setKey('code');
 		$dataset->prepare();
 		$dataset->db($app_data, __LINE__, __FILE__);
+
+		if ($dataset->dbStatus() === DBHANDLE_NODATA) {
+			OWL::stat(OWL_APP_NOTFOUND, array($applic_code));
+			return;
+		}
 
 		/**
 		 * \name Global constants for the application
