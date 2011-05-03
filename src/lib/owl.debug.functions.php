@@ -4,7 +4,7 @@
  * \ingroup OWL_LIBRARY
  * This file defines helper functions in debug mode
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.debug.functions.php,v 1.2 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: owl.debug.functions.php,v 1.3 2011-05-03 09:21:59 oscar Exp $
  */
 
 /**
@@ -89,7 +89,7 @@ function OWLdbg_traceCall ($shiftUp)
  */
 function OWLdbg_add ($level, &$var, $name = 'Unknown variable', $shiftUp = 0)
 {
-	if (!($level & ConfigHandler::get('debug'))) {
+	if (!($level & ConfigHandler::get('debug', 0, true))) {
 		return;
 	}
 	$_caller = OWLdbg_traceCall($shiftUp);
@@ -139,7 +139,7 @@ function OWLdbg_add ($level, &$var, $name = 'Unknown variable', $shiftUp = 0)
  */
 function OWLdbg_show ()
 {
-	if (count($GLOBALS['OWLDebugData']) == 0) {
+	if (count($GLOBALS['OWLDebugData']) == 0 || ConfigHandler::get('debug', 0, true) == 0) {
 		return;
 	}
 	echo ('<div class="dbg"><hr/><em><u>Debug Data:</u></em><p>');

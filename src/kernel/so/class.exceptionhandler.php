@@ -3,7 +3,7 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.9 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.exceptionhandler.php,v 1.10 2011-05-03 09:21:58 oscar Exp $
 	 * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
@@ -321,7 +321,7 @@ class OWLExceptionHandler
 		}
 		$GLOBALS['logger']->log ($exception->stackDump(true), $exception->thrown_code);
 
-		if (ConfigHandler::get ('exception|show_in_browser')) {		
+		if (ConfigHandler::get ('exception|show_in_browser')) {
 			echo ($exception->stackDump(false));
 		} else {
 			echo ('<p class="exception"><b>An exception was thrown</b><br/>'
@@ -340,6 +340,7 @@ class OWLExceptionHandler
 	public static function handleException (OWLException $exception)
 	{
 		self::logException($exception);
+		OWLdbg_show();
 	}
 }
 

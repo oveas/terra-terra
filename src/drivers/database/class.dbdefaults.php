@@ -3,7 +3,7 @@
  * \file
  * This file defines default methods for the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdefaults.php,v 1.3 2011-05-02 12:56:13 oscar Exp $
+ * \version $Id: class.dbdefaults.php,v 1.4 2011-05-03 09:21:59 oscar Exp $
  */
 
 
@@ -86,7 +86,7 @@ abstract class DbDefaults  {
 	}
 
 	/**
-	 * Inplementation of the SQL COUNT() function.
+	 * Implementation of the SQL COUNT() function.
 	 * \param[in] $_field Name of the field
 	 * \param[in] $_arguments Array with arguments, which is required by syntax
 	 * \return Complete SQL function code
@@ -96,5 +96,31 @@ abstract class DbDefaults  {
 	{
 		// Arguments can be ignored here
 		return 'COUNT(' . $_field . ')';
+	}
+
+	/**
+	 * Implementation of the SQL MAX() function.
+	 * \param[in] $_field Name of the field
+	 * \param[in] $_arguments Array with arguments, which is required by syntax
+	 * \return Complete SQL function code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function functionMax($_field, array $_arguments = array())
+	{
+		// Arguments can be ignored here
+		return 'MAX(' . $_field . ')';
+	}
+
+	/**
+	 * Implementation of the SQL MIN() function.
+	 * \param[in] $_field Name of the field
+	 * \param[in] $_arguments Array with arguments, which is required by syntax
+	 * \return Complete SQL function code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function functionMin($_field, array $_arguments = array())
+	{
+		// Arguments can be ignored here
+		return 'MIN(' . $_field . ')';
 	}
 }

@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdriver.php,v 1.4 2011-05-02 12:56:13 oscar Exp $
+ * \version $Id: class.dbdriver.php,v 1.5 2011-05-03 09:21:59 oscar Exp $
  */
 
 /**
@@ -199,6 +199,24 @@ interface DbDriver
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function functionCount($_field, array $_arguments = array());
+
+	/**
+	 * Inplementation of the SQL MAX() function.
+	 * \param[in] $_field Name of the field
+	 * \param[in] $_arguments Array with arguments, which is required by syntax
+	 * \return Complete SQL function code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function functionMax($_field, array $_arguments = array());
+
+	/**
+	 * Inplementation of the SQL MIN() function.
+	 * \param[in] $_field Name of the field
+	 * \param[in] $_arguments Array with arguments, which is required by syntax
+	 * \return Complete SQL function code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function functionMin($_field, array $_arguments = array());
 
 	/**
 	 * Inplementation of the SQL IF() function.

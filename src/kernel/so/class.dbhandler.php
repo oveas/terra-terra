@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbhandler.php,v 1.20 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.21 2011-05-03 09:21:58 oscar Exp $
  */
 
 /**
@@ -248,6 +248,13 @@ class DbHandler extends _OWL
 	 */
 	public function __destruct ()
 	{
+		if ($this->transaction != '') {
+			if (ConfigHandler::get('autocommit', false) === true) {
+				$this->commitTransaction($this->transaction);
+			} else {
+				$this->rollbackTransaction($this->transaction);
+			}
+		}
 		if (parent::__destruct() === false) {
 			return;
 		}
@@ -742,6 +749,9 @@ class DbHandler extends _OWL
 		}
 		$this->driver->dbClear ($__result);
 		$fields = count($data_set[0]);
+		if (function_exists('OWLdbg_add')) {
+			OWLdbg_add(OWLDEBUG_OWL_RES, $data_set, 2);
+		}
 		return ($data_set);
 	}
 
