@@ -3,7 +3,7 @@
  * \file
  * This file defines default methods for the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdefaults.php,v 1.4 2011-05-03 09:21:59 oscar Exp $
+ * \version $Id: class.dbdefaults.php,v 1.1 2011-05-12 14:37:58 oscar Exp $
  */
 
 
@@ -14,8 +14,8 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 16, 2011 -- O van Eijk -- initial version
  */
-abstract class DbDefaults  {
-
+abstract class DbDefaults
+{
 	/**
 	 * Class constructor
 	 * \author Oscar van Eijk, Oveas Functionality Provider

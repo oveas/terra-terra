@@ -1,0 +1,108 @@
+\section{/home/oscar/projects/owl-\/php/src/kernel/so/class.sockethandler.php File Reference}
+\label{class_8sockethandler_8php}\index{/home/oscar/projects/owl-\/php/src/kernel/so/class.sockethandler.php@{/home/oscar/projects/owl-\/php/src/kernel/so/class.sockethandler.php}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf SocketHandler}
+\begin{DoxyCompactList}\small\item\em Socket handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{Indent}\paragraph*{Socket codes}
+{\em Definition of standard socket commands and returncodes }\begin{DoxyCompactItemize}
+\item 
+enum {\bf SOCK\_\-AVAIL} 
+\begin{DoxyCompactList}\small\item\em Response code indicating the socket is available. \end{DoxyCompactList}\item 
+enum {\bf SOCK\_\-ACCEPTED} 
+\begin{DoxyCompactList}\small\item\em Response code indicating the socket accepted the last command. \end{DoxyCompactList}\item 
+enum {\bf SOCK\_\-DATA\_\-STARTED} 
+\begin{DoxyCompactList}\small\item\em Response code indicating the socket is ready to receive data. \end{DoxyCompactList}\item 
+enum {\bf SOCK\_\-LINE\_\-END} 
+\begin{DoxyCompactList}\small\item\em Code to end a line. \end{DoxyCompactList}\item 
+enum {\bf SOCK\_\-DATA\_\-START} 
+\begin{DoxyCompactList}\small\item\em Command to start sending data. \end{DoxyCompactList}\item 
+enum {\bf SOCK\_\-DATA\_\-END} 
+\begin{DoxyCompactList}\small\item\em Commend to end datasend. \end{DoxyCompactList}\item 
+enum {\bf SOCK\_\-SESSION\_\-END} 
+\begin{DoxyCompactList}\small\item\em Command to end a session. \end{DoxyCompactList}\item 
+enum {\bf SOCK\_\-BUFFER\_\-SIZE} 
+\begin{DoxyCompactList}\small\item\em Size of a netwwork buffer. \end{DoxyCompactList}\item 
+enum {\bf SOCK\_\-TIMEOUT} 
+\begin{DoxyCompactList}\small\item\em Connect timeout in seconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+This file defines the Socket handler class \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyParagraph}{Id:}
+\doxyref{class.cache.php}{p.}{class_8cache_8php},v 1.3 2011-\/05-\/02 12:56:14 oscar Exp 
+\end{DoxyParagraph}
+
+
+\subsection{Enumeration Type Documentation}
+\index{class.sockethandler.php@{class.sockethandler.php}!SOCK\_\-ACCEPTED@{SOCK\_\-ACCEPTED}}
+\index{SOCK\_\-ACCEPTED@{SOCK\_\-ACCEPTED}!class.sockethandler.php@{class.sockethandler.php}}
+\subsubsection[{SOCK\_\-ACCEPTED}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SOCK\_\-ACCEPTED}}\label{class_8sockethandler_8php_a70cdc3085a0c0b1d009bb6c6c027f4b7}
+
+
+Response code indicating the socket accepted the last command. 
+
+\index{class.sockethandler.php@{class.sockethandler.php}!SOCK\_\-AVAIL@{SOCK\_\-AVAIL}}
+\index{SOCK\_\-AVAIL@{SOCK\_\-AVAIL}!class.sockethandler.php@{class.sockethandler.php}}
+\subsubsection[{SOCK\_\-AVAIL}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SOCK\_\-AVAIL}}\label{class_8sockethandler_8php_accae661aa033b18e7b3a4f0251068054}
+
+
+Response code indicating the socket is available. 
+
+\index{class.sockethandler.php@{class.sockethandler.php}!SOCK\_\-BUFFER\_\-SIZE@{SOCK\_\-BUFFER\_\-SIZE}}
+\index{SOCK\_\-BUFFER\_\-SIZE@{SOCK\_\-BUFFER\_\-SIZE}!class.sockethandler.php@{class.sockethandler.php}}
+\subsubsection[{SOCK\_\-BUFFER\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SOCK\_\-BUFFER\_\-SIZE}}\label{class_8sockethandler_8php_addf6a3bfe9c4b3ea5fb4465b4995462c}
+
+
+Size of a netwwork buffer. 
+
+\index{class.sockethandler.php@{class.sockethandler.php}!SOCK\_\-DATA\_\-END@{SOCK\_\-DATA\_\-END}}
+\index{SOCK\_\-DATA\_\-END@{SOCK\_\-DATA\_\-END}!class.sockethandler.php@{class.sockethandler.php}}
+\subsubsection[{SOCK\_\-DATA\_\-END}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SOCK\_\-DATA\_\-END}}\label{class_8sockethandler_8php_a1b2328e5842c10f2935d484c09b2e276}
+
+
+Commend to end datasend. 
+
+\index{class.sockethandler.php@{class.sockethandler.php}!SOCK\_\-DATA\_\-START@{SOCK\_\-DATA\_\-START}}
+\index{SOCK\_\-DATA\_\-START@{SOCK\_\-DATA\_\-START}!class.sockethandler.php@{class.sockethandler.php}}
+\subsubsection[{SOCK\_\-DATA\_\-START}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SOCK\_\-DATA\_\-START}}\label{class_8sockethandler_8php_a052beba56ae35492dea63f3da3920f25}
+
+
+Command to start sending data. 
+
+\index{class.sockethandler.php@{class.sockethandler.php}!SOCK\_\-DATA\_\-STARTED@{SOCK\_\-DATA\_\-STARTED}}
+\index{SOCK\_\-DATA\_\-STARTED@{SOCK\_\-DATA\_\-STARTED}!class.sockethandler.php@{class.sockethandler.php}}
+\subsubsection[{SOCK\_\-DATA\_\-STARTED}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SOCK\_\-DATA\_\-STARTED}}\label{class_8sockethandler_8php_a9ee7af60182959e6376497d2bd742ddc}
+
+
+Response code indicating the socket is ready to receive data. 
+
+\index{class.sockethandler.php@{class.sockethandler.php}!SOCK\_\-LINE\_\-END@{SOCK\_\-LINE\_\-END}}
+\index{SOCK\_\-LINE\_\-END@{SOCK\_\-LINE\_\-END}!class.sockethandler.php@{class.sockethandler.php}}
+\subsubsection[{SOCK\_\-LINE\_\-END}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SOCK\_\-LINE\_\-END}}\label{class_8sockethandler_8php_a8571754dd49019afda8dcfdfc0b1d91f}
+
+
+Code to end a line. 
+
+\index{class.sockethandler.php@{class.sockethandler.php}!SOCK\_\-SESSION\_\-END@{SOCK\_\-SESSION\_\-END}}
+\index{SOCK\_\-SESSION\_\-END@{SOCK\_\-SESSION\_\-END}!class.sockethandler.php@{class.sockethandler.php}}
+\subsubsection[{SOCK\_\-SESSION\_\-END}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SOCK\_\-SESSION\_\-END}}\label{class_8sockethandler_8php_ad6a66e19d03407d42d2d0316b3002421}
+
+
+Command to end a session. 
+
+\index{class.sockethandler.php@{class.sockethandler.php}!SOCK\_\-TIMEOUT@{SOCK\_\-TIMEOUT}}
+\index{SOCK\_\-TIMEOUT@{SOCK\_\-TIMEOUT}!class.sockethandler.php@{class.sockethandler.php}}
+\subsubsection[{SOCK\_\-TIMEOUT}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf SOCK\_\-TIMEOUT}}\label{class_8sockethandler_8php_a4839135f9ec06223c27916074cfd833c}
+
+
+Connect timeout in seconds. 
+

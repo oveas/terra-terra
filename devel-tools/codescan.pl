@@ -5,7 +5,7 @@
 #
 # Version 0.1 -- Initial version (2008-08-26)
 # (c) Oscar van Eijk, Oveas Functionality Provider
-# $Id: codescan.pl,v 1.3 2011-04-06 14:42:15 oscar Exp $
+# $Id: codescan.pl,v 1.4 2011-05-12 14:37:58 oscar Exp $
 #
 
 my $location = '/home/oscar/projects/owl-php/src';
@@ -77,7 +77,7 @@ sub checkfiles ($$) {
 #				print '-> ' . $loc . '/' . $file . "\n";
 				while (my $line = <FH>) {
 					$i++;
-					if ($line =~ /^\s*Register::register_code\s*\('([A-Z_]*?)'\)/i) {
+					if ($line =~ /^\s*Register::registerCode\s*\('([A-Z_]*?)'\)/i) {
 						if (!exists ($Messages{$1})) {
 							print '* [' . $1 . '] is not registered in file ' . $file . ' on line ' . $i . "\n";
 						} elsif ($Messages{$1} eq '') {

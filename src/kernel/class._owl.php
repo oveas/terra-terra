@@ -3,7 +3,7 @@
  * \file
  * This file defines the Oveas Web Library main class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class._owl.php,v 1.10 2011-05-03 10:08:47 oscar Exp $
+ * \version $Id: class._owl.php,v 1.11 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**
@@ -167,6 +167,21 @@ abstract class _OWL
 	}
 
 	/**
+	 * Get the last warning or error message.
+	 * \return null if there was no error (severity below OWL_WARNING), otherwise the error text. 
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function getLastWarning()
+	{
+		if ($this->severity >= OWL_WARNING) {
+			$this->signal(OWL_WARNING, $_err);
+			return ($_err);
+		} else {
+			return (null);
+		}
+	}
+
+	/**
 	 * Set the current object status to the specified value.
 	 * \param[in] $status OWL status code
 	 * \param[in] $params
@@ -280,8 +295,10 @@ abstract class _OWL
 		if (($_severity = $this->status->getSeverity()) >= $level) {
 			if ($text === false) {
 				if (ConfigHandler::get ('js_signal') === true) {
+					$_msg = $this->status->getMessage ($level);
+					$_msg = str_replace('"', '\"', $_msg);
 					echo '<script language="javascript">'
-						. 'alert("' . $this->status->getMessage ($level) . '");'
+						. 'alert("' . $_msg . '");'
 						. '</script>';
 				} else {
 					echo '<strong>OWL Message</strong>: ' . $this->status->getMessage ($level) . ' <br />';

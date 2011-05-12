@@ -113,10 +113,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="comment"> *</span>
 <span class="comment"> */</span>
 <span class="comment">// Het or instantiate the schemehandler</span>
-<a name="a0"></a><a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a> = <a name="a1"></a><a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory</a>(<span class="stringliteral">&#39;schemehandler&#39;</span>);
+$_scheme = <a name="a0"></a><a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory</a>(<span class="stringliteral">&#39;schemehandler&#39;</span>);
 
 <span class="comment">// Define the table layout</span>
-<a name="a2"></a><a class="code" href="index_8php.html#ac0ee5b766d19cb282552a3449a1f8376">$_table</a> = array(
+$_table = array(
          <span class="stringliteral">&#39;id&#39;</span> =&gt; array (
                          <span class="stringliteral">&#39;type&#39;</span> =&gt; <span class="stringliteral">&#39;INT&#39;</span>
                         ,<span class="stringliteral">&#39;length&#39;</span> =&gt; 11
@@ -150,7 +150,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 );
 
 <span class="comment">// Define the table indexes</span>
-<a name="a3"></a><a class="code" href="index_8php.html#a8fba9293fc0e3b428610c8208c00297d">$_index</a> = array (
+$_index = array (
          <span class="stringliteral">&#39;name&#39;</span> =&gt; array(
                          <span class="stringliteral">&#39;columns&#39;</span> =&gt; array (<span class="stringliteral">&#39;name&#39;</span>)
                         ,<span class="stringliteral">&#39;primary&#39;</span> =&gt; <span class="keyword">false</span>
@@ -165,14 +165,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         )
 );
 
-<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;createScheme(<span class="stringliteral">&#39;person&#39;</span>);       <span class="comment">// Create the scheme in the SchemeHandler </span>
-<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;defineScheme(<a class="code" href="index_8php.html#ac0ee5b766d19cb282552a3449a1f8376">$_table</a>);        <span class="comment">// Define the columns</span>
-<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;defineIndex(<a class="code" href="index_8php.html#a8fba9293fc0e3b428610c8208c00297d">$_index</a>);         <span class="comment">// Define the indexes</span>
-<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;scheme();                                     <span class="comment">// Check the table in the database and create or alter it</span>
-<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;reset();                                      <span class="comment">// Reset the schemehandler (clear the definitions)</span>
+$_scheme-&gt;createScheme(<span class="stringliteral">&#39;person&#39;</span>);       <span class="comment">// Create the scheme in the SchemeHandler </span>
+$_scheme-&gt;defineScheme($_table);        <span class="comment">// Define the columns</span>
+$_scheme-&gt;defineIndex($_index);         <span class="comment">// Define the indexes</span>
+$_scheme-&gt;scheme();                                     <span class="comment">// Check the table in the database and create or alter it</span>
+$_scheme-&gt;reset();                                      <span class="comment">// Reset the schemehandler (clear the definitions)</span>
 
 <span class="comment">// Now setup the same table in the schemehandler again, this time by reading from the database</span>
-<a class="code" href="index_8php.html#abb5321c25f21f089f5c253d5f2697502">$_scheme</a>-&gt;tableDescription(<span class="stringliteral">&#39;person&#39;</span>, $_data);
+$_scheme-&gt;tableDescription(<span class="stringliteral">&#39;person&#39;</span>, $_data);
 <span class="comment">// Show the result</span>
 echo <span class="stringliteral">&#39;&lt;pre&gt;&#39;</span>. print_r($_data, 1) . <span class="stringliteral">&#39;&lt;/pre&gt;&#39;</span>;
 
@@ -310,7 +310,7 @@ echo <span class="stringliteral">&#39;&lt;pre&gt;&#39;</span>. print_r($_data, 1
 </div>
 
 
-    <li class="footer">Generated on Mon May 2 2011 14:53:13 for OWL-PHP by
+    <li class="footer">Generated on Thu May 12 2011 16:32:15 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

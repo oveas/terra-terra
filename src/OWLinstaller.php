@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_SO_LAYER
  * This file defines the class to install applications
- * \version $Id: OWLinstaller.php,v 1.3 2011-05-03 09:21:59 oscar Exp $
+ * \version $Id: OWLinstaller.php,v 1.4 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**
@@ -184,11 +184,10 @@ abstract class OWLinstaller
 
 	/**
 	 * Execute the queries from a given SQL file to install all tables for this application
-	 * \param[in] $fname Full path specification of the file containing SQL statements
+	 * \param[in] $sqlFile Full path specification of the file containing SQL statements
 	 * \param[in] $prefix Table prefix to add if it's not in the SQL file. Specify 'false' to disable adding the prefix
 	 * \return Boolean indicating success (true) or any failure (false)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 * \todo Make sure the prefix is taken from the applic config file!
 	 */
 	public static function installTables($sqlFile, $prefix = null)
 	{
@@ -255,7 +254,7 @@ abstract class OWLinstaller
 	/**
 	 * Add the application specific groups to the database
 	 * \param[in] $aid Application ID
-	 * \param[in] $right Array of groups
+	 * \param[in] $grpname Array of groups
 	 * \return Boolean indicating success (true) or any failure (false)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */

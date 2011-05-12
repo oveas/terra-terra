@@ -1,0 +1,126 @@
+\section{RawSMTP Class Reference}
+\label{classRawSMTP}\index{RawSMTP@{RawSMTP}}
+
+
+\doxyref{Mail}{p.}{classMail} driver.  
+
+
+Inheritance diagram for RawSMTP:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classRawSMTP}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf getLastWarning} ()
+\item 
+{\bf mailSend} (array \$mail)
+\item 
+{\bf \_\-\_\-constructor} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$mailSocket}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Mail}{p.}{classMail} driver. 
+
+Class that defines the raw SMTP mail drivers \begin{DoxySeeAlso}{See also}
+class \doxyref{MailDriver}{p.}{interfaceMailDriver} 
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+May 11, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{RawSMTP@{RawSMTP}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!RawSMTP@{RawSMTP}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}RawSMTP::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classRawSMTP_a30ce20cc5117548d566492bf98e16bb7}
+Constructor; must exist but can be empty \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf MailDriver} \doxyref{}{p.}{interfaceMailDriver_a3d51643f0f29381d308bf8c49c13eb4f}.
+
+
+
+\subsection{Member Function Documentation}
+\index{RawSMTP@{RawSMTP}!\_\-\_\-constructor@{\_\-\_\-constructor}}
+\index{\_\-\_\-constructor@{\_\-\_\-constructor}!RawSMTP@{RawSMTP}}
+\subsubsection[{\_\-\_\-constructor}]{\setlength{\rightskip}{0pt plus 5cm}MailDefaults::\_\-\_\-constructor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classMailDefaults_a9098abe3149405947d7b089bd8425b2a}
+Class constructor \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{RawSMTP@{RawSMTP}!getLastWarning@{getLastWarning}}
+\index{getLastWarning@{getLastWarning}!RawSMTP@{RawSMTP}}
+\subsubsection[{getLastWarning}]{\setlength{\rightskip}{0pt plus 5cm}RawSMTP::getLastWarning (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classRawSMTP_a8fbeb3d7f3fedc3b02f09149d273d548}
+Reimplement \doxyref{\_\-OWL::getLastWarning()}{p.}{class__OWL_a1888f52fc2d0ec29e146925ccad70a6b} to get the last error message either of the socket object or my own \begin{DoxyReturn}{Returns}
+null if there was no error (no severity OWL\_\-WARNING or higher), otherwise the error text. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{RawSMTP@{RawSMTP}!mailSend@{mailSend}}
+\index{mailSend@{mailSend}!RawSMTP@{RawSMTP}}
+\subsubsection[{mailSend}]{\setlength{\rightskip}{0pt plus 5cm}RawSMTP::mailSend (
+\begin{DoxyParamCaption}
+\item[{array \$}]{mail}
+\end{DoxyParamCaption}
+)}\label{classRawSMTP_a35762165e6ff6010280bbfa42e27fdba}
+Open a socket and write the raw mailtext to it. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$mail} & Indexed array defining the mail \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean, true on success 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{MailDriver::mailSend()}{p.}{interfaceMailDriver_ad1ecb52a22acf83897bbaf328d9041d5} 
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf MailDriver} \doxyref{}{p.}{interfaceMailDriver_ad1ecb52a22acf83897bbaf328d9041d5}.
+
+
+
+References ConfigHandler::get().
+
+
+
+\subsection{Member Data Documentation}
+\index{RawSMTP@{RawSMTP}!\$mailSocket@{\$mailSocket}}
+\index{\$mailSocket@{\$mailSocket}!RawSMTP@{RawSMTP}}
+\subsubsection[{\$mailSocket}]{\setlength{\rightskip}{0pt plus 5cm}RawSMTP::\$mailSocket\hspace{0.3cm}{\ttfamily  [private]}}\label{classRawSMTP_acc4e441998d0988b684af036ae786c12}
+SMTP communication socket 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/drivers/mail/{\bf class.rawsmtp.php}\end{DoxyCompactItemize}

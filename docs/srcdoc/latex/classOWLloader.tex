@@ -124,7 +124,7 @@ References \_\-tryLoad().
 
 
 
-Referenced by Container::\_\-\_\-construct(), Form::addField(), and Dispatcher::dispatch().
+Referenced by Container::\_\-\_\-construct(), Form::addField(), Dispatcher::dispatch(), and getDriver().
 
 \index{OWLloader@{OWLloader}!getDriver@{getDriver}}
 \index{getDriver@{getDriver}!OWLloader@{OWLloader}}
@@ -138,7 +138,7 @@ Load a driverfile
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-driverName} & Name of the class. Will be converted to lowercase to find the classfile \\
 \hline
-\mbox{\tt in}  & {\em \$\_\-driverType} & Driver type, must match the directoryname in OWL\_\-DRIVERS where the classfile can be found \\
+\mbox{\tt in}  & {\em \$\_\-driverType} & Driver type, must match the directoryname in OWL\_\-DRIVERS where the classfile can be found, and the filenams for the interface (class.$<$driverType$>$driver.php) and abstract default class (class.$<$driverType$>$defaults.php) if they exist. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -149,7 +149,11 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-Referenced by DbHandler::loadDriver().
+References getClass().
+
+
+
+Referenced by Mail::\_\-\_\-construct(), and DbHandler::loadDriver().
 
 \index{OWLloader@{OWLloader}!getOWLId@{getOWLId}}
 \index{getOWLId@{getOWLId}!OWLloader@{OWLloader}}

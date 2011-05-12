@@ -27,6 +27,10 @@ Inheritance diagram for DbDefaults:\begin{figure}[H]
 {\bf dbUnescapeString} (\$\_\-string)
 \item 
 {\bf functionCount} (\$\_\-field, array \$\_\-arguments=array())
+\item 
+{\bf functionMax} (\$\_\-field, array \$\_\-arguments=array())
+\item 
+{\bf functionMin} (\$\_\-field, array \$\_\-arguments=array())
 \end{DoxyCompactItemize}
 
 
@@ -179,7 +183,49 @@ Oscar van Eijk, Oveas Functionality Provider
 \item[{array \$}]{\_\-arguments = {\ttfamily array()}}
 \end{DoxyParamCaption}
 )}\label{classDbDefaults_ae9ccdb445c7c4213eaff21677a03ed41}
-Inplementation of the SQL COUNT() function. 
+Implementation of the SQL COUNT() function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-arguments} & Array with arguments, which is required by syntax \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete SQL function code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{DbDefaults@{DbDefaults}!functionMax@{functionMax}}
+\index{functionMax@{functionMax}!DbDefaults@{DbDefaults}}
+\subsubsection[{functionMax}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::functionMax (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-field, }
+\item[{array \$}]{\_\-arguments = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)}\label{classDbDefaults_a2f125c1875530f1055845e36bd4799d3}
+Implementation of the SQL MAX() function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-arguments} & Array with arguments, which is required by syntax \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete SQL function code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{DbDefaults@{DbDefaults}!functionMin@{functionMin}}
+\index{functionMin@{functionMin}!DbDefaults@{DbDefaults}}
+\subsubsection[{functionMin}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::functionMin (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-field, }
+\item[{array \$}]{\_\-arguments = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)}\label{classDbDefaults_acf910cf9cecb56a1396cf317664bfd1c}
+Implementation of the SQL MIN() function. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
 \hline
@@ -196,4 +242,4 @@ Oscar van Eijk, Oveas Functionality Provider
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/projects/owl-\/php/src/drivers/database/{\bf class.dbdefaults.php}\end{DoxyCompactItemize}
+/home/oscar/projects/owl-\/php/src/drivers/db/{\bf class.dbdefaults.php}\end{DoxyCompactItemize}

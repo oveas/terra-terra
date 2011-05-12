@@ -3,7 +3,7 @@
  * \file
  * This file defines the Security base class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.security.php,v 1.7 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.security.php,v 1.8 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**
@@ -137,7 +137,7 @@ abstract class Security
 		} elseif ($controller == BIT_TOGGLE) {
 			$this->bitmap['a'.$app] = ($this->bitmap['a'.$app] ^ $_bit);
 		}
-		return (toStrictBoolean($_curr));
+		return (toBool($_curr));
 	}
 }
 Register::registerClass('Rights');

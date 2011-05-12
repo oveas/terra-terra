@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbhandler.php,v 1.21 2011-05-03 09:21:58 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.22 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**
@@ -231,12 +231,15 @@ class DbHandler extends _OWL
 	private function loadDriver()
 	{
 		if (!class_exists($this->database['engine'])) {
-			if (OWLloader::getDriver($this->database['engine'], 'database') === true) {
+			if (OWLloader::getDriver($this->database['engine'], 'db') === true) {
 				$this->driver = new $this->database['engine'];
+			} else {
+				// User trigger_error now, since we're probably at the very start of out boot
+				trigger_error('Error loading driver class '. $this->database['engine'], E_USER_ERROR);
 			}
 		}
 		if (defined('USE_BACKTICKS')) {
-			$this->use_backticks = toStrictBoolean(USE_BACKTICKS);
+			$this->use_backticks = toBool(USE_BACKTICKS);
 		} else {
 			$this->use_backticks = false;
 		}
@@ -1165,8 +1168,22 @@ class DbHandler extends _OWL
 				$this->query_type = DBHANDLE_COMPLETED;
 				return ($this->severity);
 		}
+		switch ($this->query_type) {
+			case (DBHANDLE_UPDATE):
+				$_msgP1 = 'updated';
+				break;
+			case (DBHANDLE_DELETE):
+				$_msgP1 = 'deleted';
+				break;
+			case (DBHANDLE_INSERT):
+				$_msgP1 = 'inserted';
+				break;
+			default:
+				$_msgP1 = 'huh?'; // Can't happen
+		}
 		$this->query_type = DBHANDLE_COMPLETED;
-		$this->setStatus (DBHANDLE_UPDATED, array ('written', $_cnt));
+		
+		$this->setStatus (DBHANDLE_WRITTEN, array ($_msgP1, $_cnt));
 		if ($rows !== null) {
 			$rows = $_cnt;
 		}
@@ -1216,7 +1233,7 @@ Register::registerCode ('DBHANDLE_ROWSREAD');
 //Register::setSeverity (OWL_OK);
 Register::setSeverity (OWL_SUCCESS);
 Register::registerCode ('DBHANDLE_OPENED');
-Register::registerCode ('DBHANDLE_UPDATED');
+Register::registerCode ('DBHANDLE_WRITTEN');
 Register::registerCode ('DBHANDLE_NODATA');
 
 Register::setSeverity (OWL_WARNING);

@@ -4,7 +4,7 @@
  * \ingroup OWL_LIBRARY
  * This file defines helper functions in debug mode
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.debug.functions.php,v 1.3 2011-05-03 09:21:59 oscar Exp $
+ * \version $Id: owl.debug.functions.php,v 1.4 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**
@@ -89,11 +89,14 @@ function OWLdbg_traceCall ($shiftUp)
  */
 function OWLdbg_add ($level, &$var, $name = 'Unknown variable', $shiftUp = 0)
 {
+	static $dbgRow = 1;
+
 	if (!($level & ConfigHandler::get('debug', 0, true))) {
 		return;
 	}
 	$_caller = OWLdbg_traceCall($shiftUp);
 
+	$dbgRow = 1 - $dbgRow;
 	$_dbg = '';
 /*
 	$_dbg .= '<tr>'
@@ -103,14 +106,14 @@ function OWLdbg_add ($level, &$var, $name = 'Unknown variable', $shiftUp = 0)
 			. '</td>'
 			. '</tr>';
  */
-	$_dbg .= '<tr>'
+	$_dbg .= "<tr class='OWLdbgr$dbgRow'>"
 			. '<td valign="top">File:</td>'
 			. '<td valign="top">'
 			. $_caller['file']
 			. '</td>'
 			. '</tr>';
 
-	$_dbg .= '<tr>'
+	$_dbg .= "<tr class='OWLdbgr$dbgRow'>"
 			. '<td valign="top" valign="top" style="width: 30%;">Line:</td>'
 			. '<td valign="top">'
 			. $_caller['line']
@@ -123,7 +126,7 @@ function OWLdbg_add ($level, &$var, $name = 'Unknown variable', $shiftUp = 0)
 	} else {
 		$_vdata = $var;
 	}
-	$_dbg .= '<tr>'
+	$_dbg .= "<tr class='OWLdbgr$dbgRow'>"
 			. '<td valign="top">'.$name.'</td>'
 			. '<td valign="top">'
 			. $_vdata
@@ -142,8 +145,8 @@ function OWLdbg_show ()
 	if (count($GLOBALS['OWLDebugData']) == 0 || ConfigHandler::get('debug', 0, true) == 0) {
 		return;
 	}
-	echo ('<div class="dbg"><hr/><em><u>Debug Data:</u></em><p>');
-	echo ('<table style="cellspacing: 3px; border: 0px, width: 100%;">');
+	echo ('<div class="OWLdbg"><hr/><em><u>Debug Data:</u></em><p>');
+	echo ('<table class="OWLdbg">');
 	echo implode('', $GLOBALS['OWLDebugData']);
 	echo ('</table>');
 	echo ('</p></div>');

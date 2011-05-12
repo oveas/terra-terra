@@ -3,7 +3,7 @@
  * \file
  * This file defines a formfield element plugin
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.formfield.php,v 1.4 2011-05-02 12:56:13 oscar Exp $
+ * \version $Id: class.formfield.php,v 1.5 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**
@@ -64,7 +64,7 @@ abstract class FormFieldPlugin extends BaseElement
 	 */
 	public function setDisabled($_value = true)
 	{
-		$this->disabled = toStrictBoolean($_value, array('yes', 'y', 'true', '1', 'disabled'));
+		$this->disabled = toBool($_value, array('yes', 'y', 'true', '1', 'disabled'));
 	}
 
 	/**
@@ -74,7 +74,7 @@ abstract class FormFieldPlugin extends BaseElement
 	 */
 	public function setReadonly($_value = true)
 	{
-		$this->readonly = toStrictBoolean($_value, array('yes', 'y', 'true', '1', 'readonly'));
+		$this->readonly = toBool($_value, array('yes', 'y', 'true', '1', 'readonly'));
 	}
 
 	/**

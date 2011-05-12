@@ -155,7 +155,7 @@ Variables</h2></td></tr>
 <div class="textblock"><p>This file defines helper functions in debug mode </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd></dd></dl>
-<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="owl_8debug_8functions_8php.html">owl.debug.functions.php</a>,v 1.1 2010-12-03 12:07:42 oscar Exp </dd></dl>
+<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="owl_8debug_8functions_8php.html">owl.debug.functions.php</a>,v 1.3 2011-05-03 09:21:59 oscar Exp </dd></dl>
 </div><hr/><h2>Enumeration Type Documentation</h2>
 <a class="anchor" id="aff6093c4a9f8ad32c086f96efbc2d9b1"></a><!-- doxytag: member="owl.debug.functions.php::OWLDEBUG_APP_BLK" ref="aff6093c4a9f8ad32c086f96efbc2d9b1" args="" -->
 <div class="memitem">
@@ -654,7 +654,7 @@ Variables</h2></td></tr>
 
 <p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, and <a class="el" href="owl_8debug_8functions_8php.html#ac5d3daa3d0997372129af1a59b8bc10e">OWLdbg_traceCall()</a>.</p>
 
-<p>Referenced by <a class="el" href="classBaseElement.html#a47ba10cdad3babe40e7644cf17e68e5c">BaseElement::_getContent()</a>, <a class="el" href="classDbHandler.html#a4dce3c43b43a82a1ac0e3ba2c83309ee">DbHandler::prepareDelete()</a>, <a class="el" href="classDbHandler.html#a50f426084a888714b72bedb42de7ebc4">DbHandler::prepareInsert()</a>, <a class="el" href="classDbHandler.html#a2f749a426fa9dbfe1b58a7d0d4263d1f">DbHandler::prepareRead()</a>, and <a class="el" href="classDbHandler.html#abe6db4c3099ca5cfcfb75e9eb34ba2af">DbHandler::prepareUpdate()</a>.</p>
+<p>Referenced by <a class="el" href="classBaseElement.html#a47ba10cdad3babe40e7644cf17e68e5c">BaseElement::_getContent()</a>, <a class="el" href="classDbHandler.html#a130e49aa639fecb46ce6719ddcb0d72f">DbHandler::dbread()</a>, <a class="el" href="classOWLinstaller.html#ac7b18c361051e050b6e9ee54224b2a7f">OWLinstaller::installTables()</a>, <a class="el" href="classOWLinstaller.html#a80d3dddb1d0c88cd216261beef8a19cb">OWLinstaller::parseSQLFile()</a>, <a class="el" href="classDbHandler.html#a4dce3c43b43a82a1ac0e3ba2c83309ee">DbHandler::prepareDelete()</a>, <a class="el" href="classDbHandler.html#a50f426084a888714b72bedb42de7ebc4">DbHandler::prepareInsert()</a>, <a class="el" href="classDbHandler.html#a2f749a426fa9dbfe1b58a7d0d4263d1f">DbHandler::prepareRead()</a>, and <a class="el" href="classDbHandler.html#abe6db4c3099ca5cfcfb75e9eb34ba2af">DbHandler::prepareUpdate()</a>.</p>
 
 </div>
 </div>
@@ -674,7 +674,9 @@ Variables</h2></td></tr>
 <p>Show the debug data that was filled during this run. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>.</p>
+<p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, and <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
+
+<p>Referenced by <a class="el" href="classOWLExceptionHandler.html#af20e5905cf560b3481ca8aeaba1d3710">OWLExceptionHandler::handleException()</a>.</p>
 
 </div>
 </div>
@@ -740,7 +742,7 @@ Variables</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 2 2011 14:53:13 for OWL-PHP by
+    <li class="footer">Generated on Thu May 12 2011 16:32:16 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

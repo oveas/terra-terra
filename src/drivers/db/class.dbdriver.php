@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdriver.php,v 1.5 2011-05-03 09:21:59 oscar Exp $
+ * \version $Id: class.dbdriver.php,v 1.1 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**

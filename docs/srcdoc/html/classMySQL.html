@@ -142,9 +142,13 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a30ef8b1e115ed1dbdbd66b960c0e348d">dbTransactionStart</a> (&amp;$_resource, $_name=null)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a7ac3780695fb0d6e291ee123be7db020">dbUnescapeString</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#ae9ccdb445c7c4213eaff21677a03ed41">functionCount</a> ($_field, array $_arguments=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a2f125c1875530f1055845e36bd4799d3">functionMax</a> ($_field, array $_arguments=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#acf910cf9cecb56a1396cf317664bfd1c">functionMin</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a3f9f0c1234b3fe3fb263ff1393f13197">dbTransactionStart</a> (&amp;$_resource, $_name=null)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ac99fd7eba511d8799fcc447006179c72">dbUnescapeString</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a58f24b8ba3d3c104cefac2d9c21ca67c">functionCount</a> ($_field, array $_arguments=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#af488697aef28243a0d358c2800752217">functionMax</a> ($_field, array $_arguments=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a87433f8e6a93197b09d60a99e8dac3e1">functionMin</a> ($_field, array $_arguments=array())</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Database driver. </p>
@@ -913,32 +917,6 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7ac3780695fb0d6e291ee123be7db020"></a><!-- doxytag: member="MySQL::dbUnescapeString" ref="a7ac3780695fb0d6e291ee123be7db020" args="($_string)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DbDefaults::dbUnescapeString </td>
-          <td>(</td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_string</em></td><td>)</td>
-          <td><code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Unescape a string fthat is formatted for use in SQL </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
-<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="ac99fd7eba511d8799fcc447006179c72"></a><!-- doxytag: member="MySQL::dbUnescapeString" ref="ac99fd7eba511d8799fcc447006179c72" args="($_string)" -->
 <div class="memitem">
 <div class="memproto">
@@ -954,6 +932,32 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Unescape a string fthat is formatted for use in SQL This method is implemented by class <a class="el" href="classDbDefaults.html" title="Database driver defauls.">DbDefaults</a> </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7ac3780695fb0d6e291ee123be7db020"></a><!-- doxytag: member="MySQL::dbUnescapeString" ref="a7ac3780695fb0d6e291ee123be7db020" args="($_string)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::dbUnescapeString </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_string</em></td><td>)</td>
+          <td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Unescape a string fthat is formatted for use in SQL </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
@@ -1045,12 +1049,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a58f24b8ba3d3c104cefac2d9c21ca67c"></a><!-- doxytag: member="MySQL::functionCount" ref="a58f24b8ba3d3c104cefac2d9c21ca67c" args="($_field, array $_arguments=array())" -->
+<a class="anchor" id="ae9ccdb445c7c4213eaff21677a03ed41"></a><!-- doxytag: member="MySQL::functionCount" ref="ae9ccdb445c7c4213eaff21677a03ed41" args="($_field, array $_arguments=array())" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DbDriver::functionCount </td>
+          <td class="memname">DbDefaults::functionCount </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>_field</em>, </td>
@@ -1069,7 +1073,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL COUNT() function. </p>
+<p>Implementation of the SQL COUNT() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1082,12 +1086,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae9ccdb445c7c4213eaff21677a03ed41"></a><!-- doxytag: member="MySQL::functionCount" ref="ae9ccdb445c7c4213eaff21677a03ed41" args="($_field, array $_arguments=array())" -->
+<a class="anchor" id="a58f24b8ba3d3c104cefac2d9c21ca67c"></a><!-- doxytag: member="MySQL::functionCount" ref="a58f24b8ba3d3c104cefac2d9c21ca67c" args="($_field, array $_arguments=array())" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DbDefaults::functionCount </td>
+          <td class="memname">DbDriver::functionCount </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>_field</em>, </td>
@@ -1197,8 +1201,156 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a2f125c1875530f1055845e36bd4799d3"></a><!-- doxytag: member="MySQL::functionMax" ref="a2f125c1875530f1055845e36bd4799d3" args="($_field, array $_arguments=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::functionMax </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_arguments</em> = <code>array()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Implementation of the SQL MAX() function. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_arguments</td><td>Array with arguments, which is required by syntax </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af488697aef28243a0d358c2800752217"></a><!-- doxytag: member="MySQL::functionMax" ref="af488697aef28243a0d358c2800752217" args="($_field, array $_arguments=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::functionMax </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_arguments</em> = <code>array()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Inplementation of the SQL MAX() function. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_arguments</td><td>Array with arguments, which is required by syntax </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a87433f8e6a93197b09d60a99e8dac3e1"></a><!-- doxytag: member="MySQL::functionMin" ref="a87433f8e6a93197b09d60a99e8dac3e1" args="($_field, array $_arguments=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::functionMin </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_arguments</em> = <code>array()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Inplementation of the SQL MIN() function. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_arguments</td><td>Array with arguments, which is required by syntax </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="acf910cf9cecb56a1396cf317664bfd1c"></a><!-- doxytag: member="MySQL::functionMin" ref="acf910cf9cecb56a1396cf317664bfd1c" args="($_field, array $_arguments=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::functionMin </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_arguments</em> = <code>array()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Implementation of the SQL MIN() function. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_arguments</td><td>Array with arguments, which is required by syntax </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/oscar/projects/owl-php/src/drivers/database/<a class="el" href="class_8mysql_8php.html">class.mysql.php</a></li>
+<li>/home/oscar/projects/owl-php/src/drivers/db/<a class="el" href="class_8mysql_8php.html">class.mysql.php</a></li>
 </ul>
 </div>
 </div>
@@ -1220,7 +1372,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 2 2011 14:53:21 for OWL-PHP by
+    <li class="footer">Generated on Thu May 12 2011 16:32:25 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

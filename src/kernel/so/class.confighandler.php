@@ -3,7 +3,7 @@
  * \file
  * Define a class for config handling
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.confighandler.php,v 1.13 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.14 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**
@@ -46,7 +46,7 @@ abstract class ConfigHandler
 				,(array_key_exists('aid', $_source) ? $_source['aid'] : OWL_ID)
 				,(array_key_exists('group', $_source) ? $_source['group'] : 0)
 				,(array_key_exists('user', $_source) ? $_source['user'] : 0)
-				,(array_key_exists('force', $_source) ? toStrictBoolean($_source['force']) : false)
+				,(array_key_exists('force', $_source) ? toBool($_source['force']) : false)
 			);
 		}
 	}
@@ -129,7 +129,7 @@ abstract class ConfigHandler
 		if (($_s = Register::getSeverityLevel($val)) > 0) {
 			return ($_s);
 		}
-		// TODO; We've got toStrictBoolean() for this now
+		// TODO; We've got toBool() for this now
 		if ($val === 'true' || $val === 'True' || $val === 'TRUE' || $val === '1') {
 			return (true);
 		}

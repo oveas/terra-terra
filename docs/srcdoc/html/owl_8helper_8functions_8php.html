@@ -102,45 +102,55 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a2c49978306cd0e2f4f9406c20373ed02">toStrictBoolean</a> ($_val, $_trueValues=array('yes', 'y', 'true', '1'), $_forceLowercase=true)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a200737757773a5e4412741580843428d">toBool</a> ($_val, $_trueValues=array('yes', 'y', 'true', '1'), $_forceLowercase=true)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a0836b830fe9e399265d4cf910c5dff28">owlCrypt</a> ($_string)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a91f5481c5ca87b74848c1966639d490c">RandomString</a> ($_size, $_lowercase=false)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a0eb759657249228d1a2473ffa7de921c">URL2Path</a> ($_file)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a08f49d79aaaa581551e49017424cbe77">ExpandURL</a> ($_file)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a1b9924257d4b653e4452216fef7767ee">randomString</a> ($_size, $_lowercase=false)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#ad6b164401cd7e98fbad6ec111f8419ff">urlToPath</a> ($_file)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#ab709d759f5911560cc584496d423b569">urlExpand</a> ($_file)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a3cadca012ce78639bbe95d396acce409">getReferer</a> ($def= 'http://localhost/', $hostOnly=true)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#ae133bd84230ea3637a10a7d0fb2a73b0">verifyMailAddress</a> ($email, $extract=true)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This file defines general helper functions </p>
 <dl class="version"><dt><b>Version:</b></dt><dd></dd></dl>
-<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="owl_8helper_8functions_8php.html">owl.helper.functions.php</a>,v 1.8 2011-04-12 14:57:34 oscar Exp </dd></dl>
+<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="owl_8helper_8functions_8php.html">owl.helper.functions.php</a>,v 1.9 2011-05-02 12:56:14 oscar Exp </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 </div><hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a08f49d79aaaa581551e49017424cbe77"></a><!-- doxytag: member="owl.helper.functions.php::ExpandURL" ref="a08f49d79aaaa581551e49017424cbe77" args="($_file)" -->
+<a class="anchor" id="a3cadca012ce78639bbe95d396acce409"></a><!-- doxytag: member="owl.helper.functions.php::getReferer" ref="a3cadca012ce78639bbe95d396acce409" args="($def= 'http://localhost/', $hostOnly=true)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ExpandURL </td>
+          <td class="memname">getReferer </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_file</em></td><td>)</td>
+          <td class="paramname"><em>def</em> = <code>'http://localhost/'</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>hostOnly</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Expand a given location to a fully qualified URL </p>
+<p>Get the current requests refering page </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_file</td><td>Location of the file, either a full URL or relative from the base url (the path MUST start with 'http(s)://' or '/'!) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$def</td><td>Default when no referer is found </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$hostOnly</td><td>Boolean; true (default) when only the hostname should be returned </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Fully qualified URL, or null when the input is invalid </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The HTTP referer </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
-
-<p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>.</p>
-
-<p>Referenced by <a class="el" href="classDocument.html#a9e088502436fe985b501cb5650ab022d">Document::loadScript()</a>, <a class="el" href="classDocument.html#a90810fa2ea28179748a865531c7fc263">Document::loadStyle()</a>, and <a class="el" href="classDocument.html#afca18e2b74a78d2954303a96ffa3d63d">Document::setFavicon()</a>.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>This function is based on the unreliable HTTP_REFERER... but what else can we use?? </dd></dl>
 
 </div>
 </div>
@@ -167,6 +177,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Encrypted or decrypted string </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Add a method to decrypt strings (dispatchers) that were crypted ad a remote server (using keyrings) </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
 
@@ -174,12 +185,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a91f5481c5ca87b74848c1966639d490c"></a><!-- doxytag: member="owl.helper.functions.php::RandomString" ref="a91f5481c5ca87b74848c1966639d490c" args="($_size, $_lowercase=false)" -->
+<a class="anchor" id="a1b9924257d4b653e4452216fef7767ee"></a><!-- doxytag: member="owl.helper.functions.php::randomString" ref="a1b9924257d4b653e4452216fef7767ee" args="($_size, $_lowercase=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">RandomString </td>
+          <td class="memname">randomString </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>_size</em>, </td>
@@ -212,12 +223,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2c49978306cd0e2f4f9406c20373ed02"></a><!-- doxytag: member="owl.helper.functions.php::toStrictBoolean" ref="a2c49978306cd0e2f4f9406c20373ed02" args="($_val, $_trueValues=array('yes', 'y', 'true', '1'), $_forceLowercase=true)" -->
+<a class="anchor" id="a200737757773a5e4412741580843428d"></a><!-- doxytag: member="owl.helper.functions.php::toBool" ref="a200737757773a5e4412741580843428d" args="($_val, $_trueValues=array('yes', 'y', 'true', '1'), $_forceLowercase=true)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">toStrictBoolean </td>
+          <td class="memname">toBool </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>_val</em>, </td>
@@ -258,12 +269,42 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a0eb759657249228d1a2473ffa7de921c"></a><!-- doxytag: member="owl.helper.functions.php::URL2Path" ref="a0eb759657249228d1a2473ffa7de921c" args="($_file)" -->
+<a class="anchor" id="ab709d759f5911560cc584496d423b569"></a><!-- doxytag: member="owl.helper.functions.php::urlExpand" ref="ab709d759f5911560cc584496d423b569" args="($_file)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">URL2Path </td>
+          <td class="memname">urlExpand </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Expand a given location to a fully qualified URL </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_file</td><td>Location of the file, either a full URL or relative from the base url (the path MUST start with 'http(s)://' or '/'!) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Fully qualified URL, or null when the input is invalid </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory()</a>.</p>
+
+<p>Referenced by <a class="el" href="classDocument.html#a9e088502436fe985b501cb5650ab022d">Document::loadScript()</a>, <a class="el" href="classDocument.html#a90810fa2ea28179748a865531c7fc263">Document::loadStyle()</a>, and <a class="el" href="classDocument.html#afca18e2b74a78d2954303a96ffa3d63d">Document::setFavicon()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad6b164401cd7e98fbad6ec111f8419ff"></a><!-- doxytag: member="owl.helper.functions.php::urlToPath" ref="ad6b164401cd7e98fbad6ec111f8419ff" args="($_file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">urlToPath </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>_file</em></td><td>)</td>
@@ -288,6 +329,45 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae133bd84230ea3637a10a7d0fb2a73b0"></a><!-- doxytag: member="owl.helper.functions.php::verifyMailAddress" ref="ae133bd84230ea3637a10a7d0fb2a73b0" args="($email, $extract=true)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">verifyMailAddress </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>email</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>extract</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>See if the given string contants a valid email address. Refer to <a class="el" href="interfaceMailDriver.html#ad1ecb52a22acf83897bbaf328d9041d5">MailDriver::mailSend()</a> for an explanation what I mean with 'displayable'. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$email</td><td>String that contains the (displayable) mail address </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$extract</td><td>Boolean, set to false when the email address must be exact (not extract from a displayable address) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The valid mail address or an empty string when none was found </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Referenced by <a class="el" href="classMail.html#afe6761fa82dfc7dc30c7f159cf870845">Mail::addBcc()</a>, <a class="el" href="classMail.html#a0016f8c2f77b5ebe84a8559d959ca2e3">Mail::addCc()</a>, <a class="el" href="classMail.html#a983d3b2e60fd8c40603b814941523cea">Mail::addTo()</a>, <a class="el" href="classMail.html#a452d8c608c7b7e199e13ba50ea768ac7">Mail::setFrom()</a>, and <a class="el" href="classMail.html#ac85a300a49c25388dd18b52d811b07cc">Mail::setSender()</a>.</p>
+
+</div>
+</div>
 </div>
 </div>
   <div id="nav-path" class="navpath">
@@ -308,7 +388,7 @@ Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 2 2011 14:53:13 for OWL-PHP by
+    <li class="footer">Generated on Thu May 12 2011 16:32:16 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

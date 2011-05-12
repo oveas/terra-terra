@@ -3,7 +3,7 @@
  * \file
  * This file defines status object that's user for all objects
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.statushandler.php,v 1.9 2011-05-02 12:56:13 oscar Exp $
+ * \version $Id: class.statushandler.php,v 1.10 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**
@@ -127,11 +127,11 @@ class StatusHandler
 		// Check if the messages have already been loaded
 		if (!array_key_exists ($this->code, $GLOBALS['messages'])) {
 			Register::registerMessages();
-		} else {
+
 			// Check if the messages code exists. If not, it might belong to a class
 			// that was loaded later; translate the code
 			if (!array_key_exists ($this->code, $GLOBALS['messages'])) {
-				if (($_mcode = Register::getCode($this->code, null) !== null)) {
+				if (($_mcode = Register::getCode($this->code, null)) !== null) {
 					$GLOBALS['messages'][$this->code] = $GLOBALS['messages'][$_mcode];
 					unset($GLOBALS['messages'][$_mcode]);
 				}

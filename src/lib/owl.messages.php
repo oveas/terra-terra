@@ -4,7 +4,7 @@
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.messages.php,v 1.23 2011-05-03 10:08:46 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.24 2011-05-12 14:37:58 oscar Exp $
  */
 
 $_messages = array (
@@ -54,6 +54,7 @@ $_messages = array (
 	, DBHANDLE_TRANSOPEN	=> 'A new transaction cannot be started - commit or rollback the open transaction first'
 	, DBHANDLE_NOTRANSOPEN	=> 'No transaction is open - cannot $p1$'
 	, DBHANDLE_DRIVERERR	=> 'The database driver returned error <i>$p1$</i><br />Message was: <b>$p2$</b>'
+	, DBHANDLE_WRITTEN		=> 'Succesfully $p1$ $p2$ records'
 	, DATA_KEYSET			=> 'Variable $p1$ locked as a key'
 	, DATA_JOINSET			=> 'Table join ($p1$) has been defined on $p2$ and $p3$'
 	, DATA_PREPARED			=> 'Prepared database query for $p1$'
@@ -64,6 +65,20 @@ $_messages = array (
 	, DATA_AMBFIELD			=> 'The variable $p1$ occured more than once'
 	, DATA_NODBLINK			=> 'A database query shoukld be prepared, but there is no database handler set yet'
 	, DATA_IVPREPARE		=> 'A database query was prepared with an invalid prepare flag'
+	, SOCKET_CONNECTED		=> 'This socket is already connected'
+	, SOCKET_NOTCONNECTED	=> 'This socket is not connected'
+	, SOCKET_READ			=> 'Line "$p1$" was read from the socket'
+	, SOCKET_CONNERROR		=> 'Error $p1$ connecting to the socket at $p3$ port $p4$ ($p2$)'
+	, SOCKET_CONNECTOK		=> 'Successfully connected to host $p1$ port $p2$'
+	, SOCKET_READERROR		=> 'Error readong from the socket'
+	, SOCKET_EXPECTED		=> 'Socket gave the expected response ($p1$)'
+	, SOCKET_UNEXPECTED		=> 'Socket gave an unexpected response: "$p1$", expected "$p2$ [...]"'
+	, SOCKET_WRITEERROR		=> 'Error writing to the socket'
+	, SOCKET_NOPORT			=> 'No $p2$ port found for service $p1$'
+	, MAIL_SEND				=> 'Mail with subject <em>$p1$</em> was successfully sent to $p2$'
+	, MAIL_IVMAILADDR		=> 'Invalid mail address: $p1$'
+	, MAIL_SENDERR			=> 'Error send the mail with subject <em>$p1$</em>. Driver reported the error: $p2$'
+	, MAIL_NODRIVER			=> 'Cannot send mail - the requested driver $p1$ does not exist'
 	, USER_LOGINFAIL		=> 'Error logging in with username $p1$ and password $p2$'
 	, USER_NOTCONFIRMED		=> 'Username $p1$ is not confirmed yet, please follow the link in the email you received'
 	, USER_LOGGEDIN			=> 'User $p1$ logged in with password $p2$'
@@ -71,6 +86,7 @@ $_messages = array (
 	, USER_DUPLUSERNAME		=> 'A user with the name $p1$ already exists'
 	, USER_PWDVERFAILED		=> 'The given passwords to not match'
 	, USER_WEAKPASSWD		=> 'Your password os too weak. Please use more variety, like mixed case characters, a mix of digits and (special) characters etc.'
+	, USER_CONFIRMED		=> 'Your registration has been confirmed, you can now login'
 	, FORM_RETVALUE			=> 'Retrieve value $p2$ for formvariable $p1$'
 	, FORM_STORVALUE		=> 'Storing formvariable $p1$ with value $p2$'
 	, FORM_PARSE			=> 'Start parsing the incoming formdata'

@@ -99,7 +99,7 @@ Oscar van Eijk, Oveas Functionality Provider
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id:}
-\doxyref{owl.debug.functions.php}{p.}{owl_8debug_8functions_8php},v 1.1 2010-\/12-\/03 12:07:42 oscar Exp 
+\doxyref{owl.debug.functions.php}{p.}{owl_8debug_8functions_8php},v 1.3 2011-\/05-\/03 09:21:59 oscar Exp 
 \end{DoxyParagraph}
 
 
@@ -233,7 +233,7 @@ References \$GLOBALS, ConfigHandler::get(), and OWLdbg\_\-traceCall().
 
 
 
-Referenced by BaseElement::\_\-getContent(), DbHandler::prepareDelete(), DbHandler::prepareInsert(), DbHandler::prepareRead(), and DbHandler::prepareUpdate().
+Referenced by BaseElement::\_\-getContent(), DbHandler::dbread(), OWLinstaller::installTables(), OWLinstaller::parseSQLFile(), DbHandler::prepareDelete(), DbHandler::prepareInsert(), DbHandler::prepareRead(), and DbHandler::prepareUpdate().
 
 \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLdbg\_\-show@{OWLdbg\_\-show}}
 \index{OWLdbg\_\-show@{OWLdbg\_\-show}!owl.debug.functions.php@{owl.debug.functions.php}}
@@ -247,7 +247,11 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References \$GLOBALS.
+References \$GLOBALS, and ConfigHandler::get().
+
+
+
+Referenced by OWLExceptionHandler::handleException().
 
 \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLdbg\_\-traceCall@{OWLdbg\_\-traceCall}}
 \index{OWLdbg\_\-traceCall@{OWLdbg\_\-traceCall}!owl.debug.functions.php@{owl.debug.functions.php}}

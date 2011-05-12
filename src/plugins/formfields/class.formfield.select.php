@@ -3,7 +3,7 @@
  * \file
  * This file defines a  selectlist formfield element
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.formfield.select.php,v 1.3 2011-05-02 12:56:13 oscar Exp $
+ * \version $Id: class.formfield.select.php,v 1.4 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**
@@ -88,7 +88,7 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 			$_valueArray['value'] = $_option['value'];
 			$_valueArray['text'] = (array_key_exists('text', $_option) ? $_option['text'] : $_option['value']);
 			if (array_key_exists('selected', $_option)) {
-				$_valueArray['selected'] = toStrictBoolean($_option['selected'],array('yes', 'y', 'true', '1', 'checked', 'selected'));
+				$_valueArray['selected'] = toBool($_option['selected'],array('yes', 'y', 'true', '1', 'checked', 'selected'));
 			} else {
 				$_valueArray['selected'] = false;
 			}
@@ -117,7 +117,7 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 	 */
 	public function setMultiple($_value = true)
 	{
-		$this->multiple = toStrictBoolean($_value);
+		$this->multiple = toBool($_value);
 	}
 
 	/**

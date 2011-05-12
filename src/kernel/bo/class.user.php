@@ -3,7 +3,7 @@
  * \file
  * This file defines the User class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.user.php,v 1.16 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.user.php,v 1.17 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**
@@ -302,7 +302,7 @@ abstract class User extends _OWL
 			$group = ConfigHandler::get('user|default_group');
 		}
 
-		$_vstring = RandomString(45);
+		$_vstring = randomString(45);
 		$this->dataset->set('uid', null);
 		$this->dataset->set('username', $username);
 		$this->dataset->set('password', $this->hashPassword($password));

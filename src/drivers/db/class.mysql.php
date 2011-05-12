@@ -3,7 +3,7 @@
  * \file
  * This file defines the MySQL drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.mysql.php,v 1.6 2011-05-02 12:56:13 oscar Exp $
+ * \version $Id: class.mysql.php,v 1.1 2011-05-12 14:37:58 oscar Exp $
  */
 
 define('USE_BACKTICKS', true);

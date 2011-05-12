@@ -1,0 +1,781 @@
+\section{Mail Class Reference}
+\label{classMail}\index{Mail@{Mail}}
+
+
+\doxyref{Mail}{p.}{classMail} class.  
+
+
+Inheritance diagram for Mail:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMail}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf setSender} (\$addr)
+\item 
+{\bf setFrom} (\$addr)
+\item 
+{\bf setSubject} (\$subject)
+\item 
+{\bf setDate} (\$date=null)
+\item 
+{\bf setBody} (\$text)
+\item 
+{\bf addToBody} (\$text)
+\item 
+{\bf addTo} (\$addr)
+\item 
+{\bf addCc} (\$addr)
+\item 
+{\bf addBcc} (\$addr)
+\item 
+{\bf addHeaders} (array \$headers)
+\item 
+{\bf get} (\$item)
+\item 
+{\bf send} ()
+\item 
+{\bf makeDisplayableAddress} (\$address, array \$name)
+\item 
+{\bf getLastWarning} ()
+\item 
+{\bf getStatus} ()
+\item 
+{\bf getSeverity} (\$status=null)
+\item 
+{\bf succeeded} (\$\_\-ok={\bf OWL\_\-SUCCESS}, \&\$\_\-object=null)
+\item 
+{\bf signal} (\$level={\bf OWL\_\-INFO}, \&\$text=false)
+\item 
+{\bf traceback} (\&\$text=false, \$depth=0)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf init} ()
+\item 
+{\bf setCallback} (\$\_\-dispatcher)
+\item 
+{\bf setCallbackArgument} (array \$\_\-arg)
+\item 
+{\bf getCallback} ()
+\item 
+{\bf reset} ()
+\item 
+{\bf saveStatus} ()
+\item 
+{\bf restoreStatus} ()
+\item 
+{\bf check} (\&\$object, \$level={\bf OWL\_\-WARNING})
+\item 
+{\bf setStatus} (\$status, \$params=array())
+\item 
+{\bf setHighSeverity} (\&\$object=null)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$severity}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf addRecipient} (\$addr)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$driver}
+\item 
+{\bf \$mail}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Mail}{p.}{classMail} class. 
+
+Define an email for sending. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+May 11, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Mail@{Mail}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!Mail@{Mail}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}Mail::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classMail_aeed5d07076a358f294f84769915d5029}
+Class constructor; loads the maildriver \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References addHeaders(), get(), OWLloader::getDriver(), \_\-OWL::init(), and \_\-OWL::setStatus().
+
+
+
+\subsection{Member Function Documentation}
+\index{Mail@{Mail}!addBcc@{addBcc}}
+\index{addBcc@{addBcc}!Mail@{Mail}}
+\subsubsection[{addBcc}]{\setlength{\rightskip}{0pt plus 5cm}Mail::addBcc (
+\begin{DoxyParamCaption}
+\item[{\$}]{addr}
+\end{DoxyParamCaption}
+)}\label{classMail_afe6761fa82dfc7dc30c7f159cf870845}
+Check the given mail address and add it to the recipients list 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$addr} & A (displayable) email address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean; true on success. False indicates an invalid mail address 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References addRecipient(), \_\-OWL::setStatus(), and verifyMailAddress().
+
+\index{Mail@{Mail}!addCc@{addCc}}
+\index{addCc@{addCc}!Mail@{Mail}}
+\subsubsection[{addCc}]{\setlength{\rightskip}{0pt plus 5cm}Mail::addCc (
+\begin{DoxyParamCaption}
+\item[{\$}]{addr}
+\end{DoxyParamCaption}
+)}\label{classMail_a0016f8c2f77b5ebe84a8559d959ca2e3}
+Check the given mail address and add it to the recipients and the CC-\/ list 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$addr} & A (displayable) email address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean; true on success. False indicates an invalid mail address 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References addRecipient(), \_\-OWL::setStatus(), and verifyMailAddress().
+
+\index{Mail@{Mail}!addHeaders@{addHeaders}}
+\index{addHeaders@{addHeaders}!Mail@{Mail}}
+\subsubsection[{addHeaders}]{\setlength{\rightskip}{0pt plus 5cm}Mail::addHeaders (
+\begin{DoxyParamCaption}
+\item[{array \$}]{headers}
+\end{DoxyParamCaption}
+)}\label{classMail_ae85b1e87b746d8a77f03746ad289400f}
+Add one or more headers to this mail. Headers that already exist will be overwritten. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$headers} & Indexed array with the header info in the format (header =$>$ value) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by \_\-\_\-construct().
+
+\index{Mail@{Mail}!addRecipient@{addRecipient}}
+\index{addRecipient@{addRecipient}!Mail@{Mail}}
+\subsubsection[{addRecipient}]{\setlength{\rightskip}{0pt plus 5cm}Mail::addRecipient (
+\begin{DoxyParamCaption}
+\item[{\$}]{addr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classMail_a152196aca8879fb77a968882924b3659}
+Add an email address to the list of recipients. This list is for use by the SMTP driver only and will not appear in the headers 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$addr} & A validated email address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean; true on success. False indicates an invalid mail address 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by addBcc(), addCc(), and addTo().
+
+\index{Mail@{Mail}!addTo@{addTo}}
+\index{addTo@{addTo}!Mail@{Mail}}
+\subsubsection[{addTo}]{\setlength{\rightskip}{0pt plus 5cm}Mail::addTo (
+\begin{DoxyParamCaption}
+\item[{\$}]{addr}
+\end{DoxyParamCaption}
+)}\label{classMail_a983d3b2e60fd8c40603b814941523cea}
+Check the given mail address and add it to the recipients and the To-\/ list 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$addr} & A (displayable) email address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean; true on success. False indicates an invalid mail address 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References addRecipient(), \_\-OWL::setStatus(), and verifyMailAddress().
+
+\index{Mail@{Mail}!addToBody@{addToBody}}
+\index{addToBody@{addToBody}!Mail@{Mail}}
+\subsubsection[{addToBody}]{\setlength{\rightskip}{0pt plus 5cm}Mail::addToBody (
+\begin{DoxyParamCaption}
+\item[{\$}]{text}
+\end{DoxyParamCaption}
+)}\label{classMail_aa63ba10b6ace4b3f73fb15564805f286}
+Add text to the mailbody 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$text} & \doxyref{Mail}{p.}{classMail} text \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{Mail@{Mail}!check@{check}}
+\index{check@{check}!Mail@{Mail}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{object, }
+\item[{\$}]{level = {\ttfamily {\bf OWL\_\-WARNING}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae2e3c56e5f3c4ce4156c6b1bb1c50f63}
+This is a helper function for lazy developers. Some checks have to be made quite often, this is a kinda macro to handle that. It compares the own severity level with that of a given object. If the highest level is above a given max, a traceback and reset are performed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$object} & Pointer to an object to check against \\
+\hline
+\mbox{\tt in}  & {\em \$level} & The maximum severity level \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the severity level was correct (below the max), otherwise false 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback().
+
+
+
+Referenced by SessionHandler::write().
+
+\index{Mail@{Mail}!get@{get}}
+\index{get@{get}!Mail@{Mail}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}Mail::get (
+\begin{DoxyParamCaption}
+\item[{\$}]{item}
+\end{DoxyParamCaption}
+)}\label{classMail_a5d0512010844defe043ea3aae8104f6f}
+Get previously set data from the email 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$item} & One of the items as specified in \doxyref{MailDriver::mailSend()}{p.}{interfaceMailDriver_ad1ecb52a22acf83897bbaf328d9041d5} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Item value, or null if it does not exist 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by \_\-\_\-construct().
+
+\index{Mail@{Mail}!getCallback@{getCallback}}
+\index{getCallback@{getCallback}!Mail@{Mail}}
+\subsubsection[{getCallback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getCallback (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_acb46ff88f43ca66f1268d3f5199c3f8d}
+Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly. \begin{DoxyReturn}{Returns}
+The dispatcher, of null on failure. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7ef90b1ea364a901447}.
+
+
+
+References OWL::factory().
+
+\index{Mail@{Mail}!getLastWarning@{getLastWarning}}
+\index{getLastWarning@{getLastWarning}!Mail@{Mail}}
+\subsubsection[{getLastWarning}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getLastWarning (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a1888f52fc2d0ec29e146925ccad70a6b}
+Get the last warning or error message. \begin{DoxyReturn}{Returns}
+null if there was no error (severity below OWL\_\-WARNING), otherwise the error text. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-OWL::signal().
+
+\index{Mail@{Mail}!getSeverity@{getSeverity}}
+\index{getSeverity@{getSeverity}!Mail@{Mail}}
+\subsubsection[{getSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getSeverity (
+\begin{DoxyParamCaption}
+\item[{\$}]{status = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a2374613f9bb7eccf49a5dbc9a9ef4751}
+Get the current object severity level. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$status} & An optional parameter to check an other status code i.s.o the object's current status. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status severity level 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-OWL::\$status.
+
+
+
+Referenced by LogHandler::composeMessage(), LogHandler::log(), and DataHandler::setKey().
+
+\index{Mail@{Mail}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!Mail@{Mail}}
+\subsubsection[{getStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getStatus (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [final, inherited]}}\label{class__OWL_ac1f1643ff5b5db7c326c30477603358d}
+Get the current object status. \begin{DoxyReturn}{Returns}
+Object's status code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by SchemeHandler::compare().
+
+\index{Mail@{Mail}!init@{init}}
+\index{init@{init}!Mail@{Mail}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ae0ef3ded56e8a6b34b6461e5a721cd3e}
+This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this $\ast$might$\ast$ indicate something went wrong. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References OWL::factory(), and \_\-OWL::setStatus().
+
+
+
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), \_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
+
+\index{Mail@{Mail}!makeDisplayableAddress@{makeDisplayableAddress}}
+\index{makeDisplayableAddress@{makeDisplayableAddress}!Mail@{Mail}}
+\subsubsection[{makeDisplayableAddress}]{\setlength{\rightskip}{0pt plus 5cm}Mail::makeDisplayableAddress (
+\begin{DoxyParamCaption}
+\item[{\$}]{address, }
+\item[{array \$}]{name}
+\end{DoxyParamCaption}
+)}\label{classMail_ac11c251bd31aa40f3459563c923f8484}
+Create a displayable email address based on name and mail address info. Refer to \doxyref{MailDriver::mailSend()}{p.}{interfaceMailDriver_ad1ecb52a22acf83897bbaf328d9041d5} for an explanation what I mean with 'displayable'. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$address} & Email address \\
+\hline
+\mbox{\tt in}  & {\em \$name} & Indexed array with either 1 key ('name') holding the full name, or one or more seperate keys for first name ('fname'), middle name ('mname') and last name ('lname') that will be checked and combined \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Displayable mail address in the format \char`\"{}Personal name $<$email@example.org$>$\char`\"{} 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{Mail@{Mail}!reset@{reset}}
+\index{reset@{reset}!Mail@{Mail}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a2f2a042bcf31965194c03033df0edc9b}
+General reset function for all objects. Should be called after each non-\/fatal error \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Reimplemented in {\bf DbHandler} \doxyref{}{p.}{classDbHandler_a9982df4830f05803935bb31bac7fae3d}, and {\bf SchemeHandler} \doxyref{}{p.}{classSchemeHandler_aa25feb4a70d67b3d571904be4b2f50bc}.
+
+
+
+References \_\-OWL::resetCalltree().
+
+
+
+Referenced by \_\-OWL::check(), SessionHandler::read(), DataHandler::reset(), and \_\-OWL::setStatus().
+
+\index{Mail@{Mail}!restoreStatus@{restoreStatus}}
+\index{restoreStatus@{restoreStatus}!Mail@{Mail}}
+\subsubsection[{restoreStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restoreStatus (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a93de01a9bbbc3f228e1a62a0740e90f0}
+Restore the previously saved status object and destroy the copy \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-OWL::setStatus().
+
+
+
+Referenced by User::logout().
+
+\index{Mail@{Mail}!saveStatus@{saveStatus}}
+\index{saveStatus@{saveStatus}!Mail@{Mail}}
+\subsubsection[{saveStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::saveStatus (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_add923dc756471318edca8883db3f4420}
+Create a copy of the status object \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by User::logout().
+
+\index{Mail@{Mail}!send@{send}}
+\index{send@{send}!Mail@{Mail}}
+\subsubsection[{send}]{\setlength{\rightskip}{0pt plus 5cm}Mail::send (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classMail_a6520941b529c223c1b59ec7544f7f7d6}
+Call the maildriver's mailSend() method and check the result. \begin{DoxyReturn}{Returns}
+Object severity 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-OWL::setStatus().
+
+\index{Mail@{Mail}!setBody@{setBody}}
+\index{setBody@{setBody}!Mail@{Mail}}
+\subsubsection[{setBody}]{\setlength{\rightskip}{0pt plus 5cm}Mail::setBody (
+\begin{DoxyParamCaption}
+\item[{\$}]{text}
+\end{DoxyParamCaption}
+)}\label{classMail_a30a360a8f34d32c66fe61360bdd25285}
+Set the body for the email 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$text} & \doxyref{Mail}{p.}{classMail} text \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{Mail@{Mail}!setCallback@{setCallback}}
+\index{setCallback@{setCallback}!Mail@{Mail}}
+\subsubsection[{setCallback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setCallback (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-dispatcher}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a5f84d43cd4dc7810649f1e2ebecad360}
+Set a dispatcher for later callback 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-dispatcher} & Dispatched, \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxyref{Dispatcher::composeDispatcher()}{p.}{classDispatcher_a8a974bbbb30be7cda74f9929972fd2f6} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+True on success, false on failure 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References OWL::factory().
+
+\index{Mail@{Mail}!setCallbackArgument@{setCallbackArgument}}
+\index{setCallbackArgument@{setCallbackArgument}!Mail@{Mail}}
+\subsubsection[{setCallbackArgument}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setCallbackArgument (
+\begin{DoxyParamCaption}
+\item[{array \$}]{\_\-arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a4e9ebfbd3c0d76539bed4e44de9962c3}
+Add an argument to a previously registered callback dispatcher 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-arg} & Argument, must be an array type. When non-\/ arrays should be passed as arguments, the must be set when the callback is registered already \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failure 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References OWL::factory().
+
+
+
+Referenced by User::register().
+
+\index{Mail@{Mail}!setDate@{setDate}}
+\index{setDate@{setDate}!Mail@{Mail}}
+\subsubsection[{setDate}]{\setlength{\rightskip}{0pt plus 5cm}Mail::setDate (
+\begin{DoxyParamCaption}
+\item[{\$}]{date = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}\label{classMail_afdb9681d59f37b2cea558983e73da519}
+Set the maildate, if it should not be the actual timestamp 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$date} & Date, oir null to use the actual \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{Mail@{Mail}!setFrom@{setFrom}}
+\index{setFrom@{setFrom}!Mail@{Mail}}
+\subsubsection[{setFrom}]{\setlength{\rightskip}{0pt plus 5cm}Mail::setFrom (
+\begin{DoxyParamCaption}
+\item[{\$}]{addr}
+\end{DoxyParamCaption}
+)}\label{classMail_a452d8c608c7b7e199e13ba50ea768ac7}
+Check and set the from address 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$addr} & A (displayable) email address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean; true on success. False indicates an invalid mail address 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-OWL::setStatus(), and verifyMailAddress().
+
+
+
+Referenced by setSender().
+
+\index{Mail@{Mail}!setHighSeverity@{setHighSeverity}}
+\index{setHighSeverity@{setHighSeverity}!Mail@{Mail}}
+\subsubsection[{setHighSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setHighSeverity (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{object = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_a97173dbe452428d3851406413264734d}
+Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by \_\-OWL::check(), DataHandler::db(), DataHandler::prepare(), and SessionHandler::read().
+
+\index{Mail@{Mail}!setSender@{setSender}}
+\index{setSender@{setSender}!Mail@{Mail}}
+\subsubsection[{setSender}]{\setlength{\rightskip}{0pt plus 5cm}Mail::setSender (
+\begin{DoxyParamCaption}
+\item[{\$}]{addr}
+\end{DoxyParamCaption}
+)}\label{classMail_ac85a300a49c25388dd18b52d811b07cc}
+Check and set the Sender address as it appears in the header. It no from address is set yet, this method will also set the same address for the from SMTP command by calling \doxyref{setFrom()}{p.}{classMail_a452d8c608c7b7e199e13ba50ea768ac7} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$addr} & A (displayable) email address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean; true on success. False indicates an invalid mail address 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References setFrom(), \_\-OWL::setStatus(), and verifyMailAddress().
+
+\index{Mail@{Mail}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!Mail@{Mail}}
+\subsubsection[{setStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setStatus (
+\begin{DoxyParamCaption}
+\item[{\$}]{status, }
+\item[{\$}]{params = {\ttfamily array~()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [final, protected, inherited]}}\label{class__OWL_a80e2fe01c3663dbb0ab685eebe33fd1e}
+Set the current object status to the specified value. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$status} & \doxyref{OWL}{p.}{classOWL} status code \\
+\hline
+\mbox{\tt in}  & {\em \$params} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode(), \_\-OWL::reset(), and \_\-OWL::signal().
+
+
+
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), \_\-\_\-construct(), BaseElement::\_\-getContent(), addBcc(), addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), SchemeHandler::validateScheme(), SocketHandler::write(), and DbHandler::write().
+
+\index{Mail@{Mail}!setSubject@{setSubject}}
+\index{setSubject@{setSubject}!Mail@{Mail}}
+\subsubsection[{setSubject}]{\setlength{\rightskip}{0pt plus 5cm}Mail::setSubject (
+\begin{DoxyParamCaption}
+\item[{\$}]{subject}
+\end{DoxyParamCaption}
+)}\label{classMail_a2041fc7746c7d86cc65baa4638df4cfa}
+Set the mail subject 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$subject} & Subject line \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{Mail@{Mail}!signal@{signal}}
+\index{signal@{signal}!Mail@{Mail}}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::signal (
+\begin{DoxyParamCaption}
+\item[{\$}]{level = {\ttfamily {\bf OWL\_\-INFO}}, }
+\item[{\&\$}]{text = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a51ba4a16409acf2a2f61f286939091a5}
+Display the message for the current object status 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$level} & An optional severity level; message will only be displayed when it is at least of this level. \\
+\hline
+\mbox{\tt out}  & {\em \$text} & If this parameter is given, the message text is returned in this string instead of echood. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The severity level for this object 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References ConfigHandler::get().
+
+
+
+Referenced by \_\-OWL::getLastWarning(), \_\-OWL::setStatus(), and \_\-OWL::traceback().
+
+\index{Mail@{Mail}!succeeded@{succeeded}}
+\index{succeeded@{succeeded}!Mail@{Mail}}
+\subsubsection[{succeeded}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::succeeded (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-ok = {\ttfamily {\bf OWL\_\-SUCCESS}}, }
+\item[{\&\$}]{\_\-object = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_a53ab4d3bbb2c6a56966c339ca4b4c805}
+Check if the object currenlty has a success state 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-ok} & The highest severity that's considered successfull, default OWL\_\-SUCCESS \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-object} & REference to the object to check, defaults to the current object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean true when successfull 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by User::construct(), Dispatcher::registerArgument(), and Dispatcher::registerCallback().
+
+\index{Mail@{Mail}!traceback@{traceback}}
+\index{traceback@{traceback}!Mail@{Mail}}
+\subsubsection[{traceback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::traceback (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{text = {\ttfamily false}, }
+\item[{\$}]{depth = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{class__OWL_aa29547995d6741b7d2b90c1d4ea99a13}
+If somehwere in the nested calls an error occured, we can traceback the original failing object with this function and signal the message. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em \$text} & Optional variable in which the message text can be stored. If not given, the text will be written to standard output \\
+\hline
+\mbox{\tt in}  & {\em \$depth} & This paramater should be initially empty. It calculates the depth in recursive calls. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity code of the failing object 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-OWL::signal().
+
+
+
+Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
+
+
+
+\subsection{Member Data Documentation}
+\index{Mail@{Mail}!\$driver@{\$driver}}
+\index{\$driver@{\$driver}!Mail@{Mail}}
+\subsubsection[{\$driver}]{\setlength{\rightskip}{0pt plus 5cm}Mail::\$driver\hspace{0.3cm}{\ttfamily  [private]}}\label{classMail_a01a831bc4881df64848d9f176bb7d330}
+\doxyref{Mail}{p.}{classMail} driver object \index{Mail@{Mail}!\$mail@{\$mail}}
+\index{\$mail@{\$mail}!Mail@{Mail}}
+\subsubsection[{\$mail}]{\setlength{\rightskip}{0pt plus 5cm}Mail::\$mail\hspace{0.3cm}{\ttfamily  [private]}}\label{classMail_afb3d8003b6c59e8607bbcaf9b3646b78}
+Array defining the mail. This is an indexed array; see \doxyref{MailDriver::mailSend()}{p.}{interfaceMailDriver_ad1ecb52a22acf83897bbaf328d9041d5} for the layout \index{Mail@{Mail}!\$severity@{\$severity}}
+\index{\$severity@{\$severity}!Mail@{Mail}}
+\subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
+Severity level of the current object status 
+
+Referenced by DbHandler::commitTransaction(), DbHandler::rollbackTransaction(), and DbHandler::startTransaction().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/bo/{\bf class.mail.php}\end{DoxyCompactItemize}

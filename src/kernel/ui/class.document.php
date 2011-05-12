@@ -3,7 +3,7 @@
  * \file
  * This file defines an HTML document
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.document.php,v 1.6 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.document.php,v 1.7 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**
@@ -123,13 +123,13 @@ class Document extends BaseElement
 	 */
 	public function loadStyle($_style = '', $_condition = '')
 	{
-		$_path = URL2Path($_style);
+		$_path = urlToPath($_style);
 		// If not null the file is on the local host; check if it's there
 		if ($_path !== null && !file_exists($_path)) {
 			$this->setStatus(DOC_NOSUCHFILE, array('stylesheet', $_style));
 			return;
 		}
-		if (($_styleUrl = ExpandURL($_style)) === null) {
+		if (($_styleUrl = urlExpand($_style)) === null) {
 			$this->setStatus(DOC_IVFILESPEC, array('stylesheet', $_script));
 			return;
 		}
@@ -164,13 +164,13 @@ class Document extends BaseElement
 	 */
 	public function loadScript($_script = '')
 	{
-		$_path = URL2Path($_script);
+		$_path = urlToPath($_script);
 		// If not null the file is on the local host; check if it's there
 		if ($_path !== null && !file_exists($_path)) {
 			$this->setStatus(DOC_NOSUCHFILE, array('javascript', $_script));
 			return;
 		}
-		if (($_scriptUrl = ExpandURL($_script)) === null) {
+		if (($_scriptUrl = urlExpand($_script)) === null) {
 			$this->setStatus(DOC_IVFILESPEC, array('javascript', $_script));
 			return;
 		}
@@ -196,12 +196,12 @@ class Document extends BaseElement
 	 */
 	public function setFavicon($_icon)
 	{
-		$_path = URL2Path($_icon);
+		$_path = urlToPath($_icon);
 		if ($_path === null || !file_exists($_path)) {
 			$this->setStatus(DOC_NOSUCHFILE, array('favicon', $_icon));
 			return;
 		}
-		if (($_iconURL = ExpandURL($_icon)) === null) {
+		if (($_iconURL = urlExpand($_icon)) === null) {
 			$this->setStatus(DOC_IVFILESPEC, array('favicon', $_icon));
 			return;
 		}

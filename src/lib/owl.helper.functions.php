@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.9 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.10 2011-05-12 14:37:58 oscar Exp $
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
@@ -15,7 +15,7 @@
  * \return Strict boolean value
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
-function toStrictBoolean ($_val, $_trueValues = array('yes', 'y', 'true', '1'), $_forceLowercase = true)
+function toBool ($_val, $_trueValues = array('yes', 'y', 'true', '1'), $_forceLowercase = true)
 {
 	if (is_string($_val)) {
 		return (in_array(
@@ -36,9 +36,12 @@ function toStrictBoolean ($_val, $_trueValues = array('yes', 'y', 'true', '1'), 
  * \param[in] $_string The string to be encrypted or decrypted
  * \return Encrypted or decrypted string
  * \author Oscar van Eijk, Oveas Functionality Provider
+ * \todo Add a method to decrypt strings (dispatchers) that were crypted ad a remote server (using keyrings)
  */
 function owlCrypt ($_string)
 {
+//	$_locker = getReferer();
+
 	$_key = ConfigHandler::get ('crypt_key');
 	$_maxKeySize = 32;
 
@@ -71,7 +74,7 @@ function owlCrypt ($_string)
  * \param[in] $_lowercase Boolean that indicates the string should contain lowercase characters only. Default is uppercase only.
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
-function RandomString ($_size, $_lowercase = false)
+function randomString ($_size, $_lowercase = false)
 {
 	$_string = '';
 	if ($_lowercase) {
@@ -91,7 +94,7 @@ function RandomString ($_size, $_lowercase = false)
  * \return Path specification of the file, or null of the file is not on the local host
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
-function URL2Path ($_file)
+function urlToPath ($_file)
 {
 	$_rex = '/^(http)(s)?:\/\/(?<host>[\w-]+)/i';
 	if (preg_match($_rex, $_file, $_match)) {
@@ -109,7 +112,7 @@ function URL2Path ($_file)
  * \return Fully qualified URL, or null when the input is invalid
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
-function ExpandURL($_file)
+function urlExpand($_file)
 {
 	$_rex = '/^(http)(s)?:\/\/(?<host>[\w-]+)/i';
 	if (!preg_match('/^(http)(s)?:\/\/[\w-]+/i', $_file)) {
@@ -123,4 +126,65 @@ function ExpandURL($_file)
 		$_file = $_document->getBase() . $_file;
 	}
 	return $_file;
+}
+
+/**
+ * Get the current requests refering page
+ * \param[in] $def Default when no referer is found
+ * \param[in] $hostOnly Boolean; true (default) when only the hostname should be returned
+ * \return The HTTP referer
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \todo This function is based on the unreliable HTTP_REFERER... but what else can we use??
+ */
+function getReferer ($def = 'http://localhost/', $hostOnly = true)
+{
+	if (!array_key_exists('HTTP_REFERER', $_SERVER)) {
+		$_ref = $def;
+	} else {
+		$_ref = $_SERVER['HTTP_REFERER'];
+	}
+	if ($hostOnly === false) {
+		return ($_ref);
+	}
+	if (!preg_match('/http(s)?:\/\/([a-z0-9\.-_]+?)\//', $_ref, $_match)) {
+		return ($_ref); // Might be an error or an unmatching default given; let the caller sort it out...
+	} else {
+		return ($_match[2]);
+	}
+}
+
+/**
+ * See if the given string contants a valid email address. Refer to MailDriver::mailSend() for an
+ * explanation what I mean with 'displayable'.
+ * \param[in] $email String that contains the (displayable) mail address
+ * \param[in] $extract Boolean, set to false when the email address must be exact (not extract from a displayable address)
+ * \return The valid mail address or an empty string when none was found
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ */
+function verifyMailAddress ($email, $extract = true)
+{
+	if ($email == '') {
+		return ($email);
+	}
+	if (preg_match("/(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/", $email) ||			// contains invalid charachers or
+		(!preg_match("/^.+\@[a-zA-Z0-9\-\.]+\.([a-zA-Z0-9]+)$/", $email) &&	// Not a DNS name (name@host.com) and
+		!preg_match("/^.+\@\[(\d{1,3}\.){3}\d{1,3}\]$/", $email))) {		// Not an IP address (name@[ip-address])
+
+		if (!$extract) {
+			return (''); //Invalid
+		}
+
+		/*
+		 * Attempt to extract the mail address from input strings like:
+		 *	'Oscar <mymail@myhost.com>'
+		 *	'Oscar "mymail@myhost.com"'
+		 *	'Oscar <mymail@[192.168.162.41]>'
+		 *	'"mymail@myhost.com" (Oscar)'
+		 * etc.
+		*/
+		preg_match("/(.)*([\s\<\{\(\"])(((\w+([\.-](\w))*)+(@)((\w+)([\.-](\w))*)(\.)(\w{2,})|(\w+([\.-](\w))*)+(@)(\[(\d{1,3}\.){3}\d{1,3}\])))(.)*/", $email, $_extract);
+		return (verifyMailAddress ($_extract[3])); // Recursive call to verify what we found
+	} else {
+		return ($email); // Valid email address given; return it
+	}
 }

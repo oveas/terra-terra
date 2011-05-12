@@ -54,6 +54,10 @@ Inheritance diagram for DbDriver:\begin{figure}[H]
 \item 
 {\bf functionCount} (\$\_\-field, array \$\_\-arguments=array())
 \item 
+{\bf functionMax} (\$\_\-field, array \$\_\-arguments=array())
+\item 
+{\bf functionMin} (\$\_\-field, array \$\_\-arguments=array())
+\item 
 {\bf functionIf} (\$\_\-field, array \$\_\-arguments=array())
 \item 
 {\bf functionIfnull} (\$\_\-field, array \$\_\-arguments=array())
@@ -646,8 +650,50 @@ Oscar van Eijk, Oveas Functionality Provider
 
 Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a2a247b2f8551feaf40548a597694c960}.
 
+\index{DbDriver@{DbDriver}!functionMax@{functionMax}}
+\index{functionMax@{functionMax}!DbDriver@{DbDriver}}
+\subsubsection[{functionMax}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionMax (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-field, }
+\item[{array \$}]{\_\-arguments = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_af488697aef28243a0d358c2800752217}
+Inplementation of the SQL MAX() function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-arguments} & Array with arguments, which is required by syntax \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete SQL function code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{DbDriver@{DbDriver}!functionMin@{functionMin}}
+\index{functionMin@{functionMin}!DbDriver@{DbDriver}}
+\subsubsection[{functionMin}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionMin (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-field, }
+\item[{array \$}]{\_\-arguments = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a87433f8e6a93197b09d60a99e8dac3e1}
+Inplementation of the SQL MIN() function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-arguments} & Array with arguments, which is required by syntax \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete SQL function code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 The documentation for this interface was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/projects/owl-\/php/src/drivers/database/{\bf class.dbdriver.php}\end{DoxyCompactItemize}
+/home/oscar/projects/owl-\/php/src/drivers/db/{\bf class.dbdriver.php}\end{DoxyCompactItemize}

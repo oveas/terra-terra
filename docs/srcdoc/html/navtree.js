@@ -22,6 +22,7 @@ var NAVTREE =
           [ "Dispatcher", "classDispatcher.html", null ],
           [ "Form", "classForm.html", null ],
           [ "Group", "classGroup.html", null ],
+          [ "Mail", "classMail.html", null ],
           [ "Rights", "classRights.html", null ],
           [ "Security", "classSecurity.html", null ],
           [ "Session", "classSession.html", null ],
@@ -43,6 +44,7 @@ var NAVTREE =
           [ "Register", "classRegister.html", null ],
           [ "SchemeHandler", "classSchemeHandler.html", null ],
           [ "SessionHandler", "classSessionHandler.html", null ],
+          [ "SocketHandler", "classSocketHandler.html", null ],
           [ "StatusHandler", "classStatusHandler.html", null ],
           [ "OWLinstaller", "classOWLinstaller.html", null ],
           [ "OWLloader", "classOWLloader.html", null ]
@@ -54,6 +56,7 @@ var NAVTREE =
       [ "Library (codes, messages files etc.)", "group__OWL__LIBRARY.html", [
         [ "Files", "group__OWL__LIBRARY.html", [
           [ "class.cache.php", "class_8cache_8php.html", null ],
+          [ "class.sockethandler.php", "class_8sockethandler_8php.html", null ],
           [ "owl.debug.functions.php", "owl_8debug_8functions_8php.html", null ],
           [ "owl.helper.functions.php", "owl_8helper_8functions_8php.html", null ],
           [ "owl.labels.php", "owl_8labels_8php.html", null ],
@@ -78,7 +81,10 @@ var NAVTREE =
         [ "Classes", "group__OWL__DRIVERS.html", [
           [ "DbDefaults", "classDbDefaults.html", null ],
           [ "DbDriver", "interfaceDbDriver.html", null ],
-          [ "MySQL", "classMySQL.html", null ]
+          [ "MySQL", "classMySQL.html", null ],
+          [ "MailDefaults", "classMailDefaults.html", null ],
+          [ "MailDriver", "interfaceMailDriver.html", null ],
+          [ "RawSMTP", "classRawSMTP.html", null ]
         ] ]
       ] ]
     ] ],
@@ -114,6 +120,9 @@ var NAVTREE =
       [ "Group", "classGroup.html", null ],
       [ "ImageHandler", "classImageHandler.html", null ],
       [ "LogHandler", "classLogHandler.html", null ],
+      [ "Mail", "classMail.html", null ],
+      [ "MailDefaults", "classMailDefaults.html", null ],
+      [ "MailDriver", "interfaceMailDriver.html", null ],
       [ "MySQL", "classMySQL.html", null ],
       [ "OldOFMStuff", "classOldOFMStuff.html", null ],
       [ "OWL", "classOWL.html", null ],
@@ -122,12 +131,14 @@ var NAVTREE =
       [ "OWLExceptionHandler", "classOWLExceptionHandler.html", null ],
       [ "OWLinstaller", "classOWLinstaller.html", null ],
       [ "OWLloader", "classOWLloader.html", null ],
+      [ "RawSMTP", "classRawSMTP.html", null ],
       [ "Register", "classRegister.html", null ],
       [ "Rights", "classRights.html", null ],
       [ "SchemeHandler", "classSchemeHandler.html", null ],
       [ "Security", "classSecurity.html", null ],
       [ "Session", "classSession.html", null ],
       [ "SessionHandler", "classSessionHandler.html", null ],
+      [ "SocketHandler", "classSocketHandler.html", null ],
       [ "StatusHandler", "classStatusHandler.html", null ],
       [ "Table", "classTable.html", null ],
       [ "Tablecell", "classTablecell.html", null ],
@@ -171,11 +182,13 @@ var NAVTREE =
         [ "FormHandler", "classFormHandler.html", null ],
         [ "Group", "classGroup.html", null ],
         [ "LogHandler", "classLogHandler.html", null ],
+        [ "Mail", "classMail.html", null ],
         [ "OWL", "classOWL.html", null ],
         [ "SchemeHandler", "classSchemeHandler.html", null ],
         [ "SessionHandler", "classSessionHandler.html", [
           [ "Session", "classSession.html", null ]
         ] ],
+        [ "SocketHandler", "classSocketHandler.html", null ],
         [ "User", "classUser.html", null ]
       ] ],
       [ "ConfigHandler", "classConfigHandler.html", null ],
@@ -184,6 +197,12 @@ var NAVTREE =
       ] ],
       [ "DbDriver", "interfaceDbDriver.html", [
         [ "MySQL", "classMySQL.html", null ]
+      ] ],
+      [ "MailDefaults", "classMailDefaults.html", [
+        [ "RawSMTP", "classRawSMTP.html", null ]
+      ] ],
+      [ "MailDriver", "interfaceMailDriver.html", [
+        [ "RawSMTP", "classRawSMTP.html", null ]
       ] ],
       [ "OldOFMStuff", "classOldOFMStuff.html", null ],
       [ "OWLCache", "classOWLCache.html", null ],
@@ -200,17 +219,20 @@ var NAVTREE =
     [ "Class Members", "functions.html", null ],
     [ "File List", "files.html", [
       [ "/home/oscar/projects/owl-php/src/config.php", "config_8php.html", null ],
-      [ "/home/oscar/projects/owl-php/src/index.php", "index_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/OWLinstaller.php", "OWLinstaller_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/OWLloader.php", "OWLloader_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/OWLrundown.php", "OWLrundown_8php.html", null ],
-      [ "/home/oscar/projects/owl-php/src/drivers/database/class.dbdefaults.php", "class_8dbdefaults_8php.html", null ],
-      [ "/home/oscar/projects/owl-php/src/drivers/database/class.dbdriver.php", "class_8dbdriver_8php.html", null ],
-      [ "/home/oscar/projects/owl-php/src/drivers/database/class.mysql.php", "class_8mysql_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/src/drivers/db/class.dbdefaults.php", "class_8dbdefaults_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/src/drivers/db/class.dbdriver.php", "class_8dbdriver_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/src/drivers/db/class.mysql.php", "class_8mysql_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/src/drivers/mail/class.maildefaults.php", "class_8maildefaults_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/src/drivers/mail/class.maildriver.php", "class_8maildriver_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/src/drivers/mail/class.rawsmtp.php", "class_8rawsmtp_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/class._owl.php", "class_8__owl_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/bo/class.dispatcher.php", "class_8dispatcher_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/bo/class.form.php", "class_8form_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/bo/class.group.php", "class_8group_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/src/kernel/bo/class.mail.php", "class_8mail_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/bo/class.owl.php", "class_8owl_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/bo/class.rights.php", "class_8rights_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/bo/class.security.php", "class_8security_8php.html", null ],
@@ -228,6 +250,7 @@ var NAVTREE =
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.register.php", "class_8register_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.schemehandler.php", "class_8schemehandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.sessionhandler.php", "class_8sessionhandler_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/src/kernel/so/class.sockethandler.php", "class_8sockethandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.statushandler.php", "class_8statushandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/ui/class.baseelement.php", "class_8baseelement_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/ui/class.container.php", "kernel_2ui_2class_8container_8php.html", null ],

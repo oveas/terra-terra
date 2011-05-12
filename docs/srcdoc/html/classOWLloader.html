@@ -248,7 +248,7 @@ Static Private Member Functions</h2></td></tr>
 </dl>
 <p>References <a class="el" href="classOWLloader.html#a763911b4bc08982e24f1f897362f8c90">_tryLoad()</a>.</p>
 
-<p>Referenced by <a class="el" href="classContainer.html#a799507f94eb27d074923dff88d419235">Container::__construct()</a>, <a class="el" href="classForm.html#a880197a858a70581146d6f0d275eff02">Form::addField()</a>, and <a class="el" href="classDispatcher.html#a55f3a6e89f797e2986d32166cfa49486">Dispatcher::dispatch()</a>.</p>
+<p>Referenced by <a class="el" href="classContainer.html#a799507f94eb27d074923dff88d419235">Container::__construct()</a>, <a class="el" href="classForm.html#a880197a858a70581146d6f0d275eff02">Form::addField()</a>, <a class="el" href="classDispatcher.html#a55f3a6e89f797e2986d32166cfa49486">Dispatcher::dispatch()</a>, and <a class="el" href="classOWLloader.html#a5911bb36f76142aadfaa6d554113800c">getDriver()</a>.</p>
 
 </div>
 </div>
@@ -280,14 +280,16 @@ Static Private Member Functions</h2></td></tr>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_driverName</td><td>Name of the class. Will be converted to lowercase to find the classfile </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_driverType</td><td>Driver type, must match the directoryname in OWL_DRIVERS where the classfile can be found </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_driverType</td><td>Driver type, must match the directoryname in OWL_DRIVERS where the classfile can be found, and the filenams for the interface (class.&lt;driverType&gt;driver.php) and abstract default class (class.&lt;driverType&gt;defaults.php) if they exist. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Referenced by <a class="el" href="classDbHandler.html#ab4db7c4fa445700b96a2d4b1be6e50a4">DbHandler::loadDriver()</a>.</p>
+<p>References <a class="el" href="classOWLloader.html#a271d6508b029b3989db57f4d9b9b7677">getClass()</a>.</p>
+
+<p>Referenced by <a class="el" href="classMail.html#aeed5d07076a358f294f84769915d5029">Mail::__construct()</a>, and <a class="el" href="classDbHandler.html#ab4db7c4fa445700b96a2d4b1be6e50a4">DbHandler::loadDriver()</a>.</p>
 
 </div>
 </div>
@@ -335,7 +337,7 @@ Static Private Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 2 2011 14:53:21 for OWL-PHP by
+    <li class="footer">Generated on Thu May 12 2011 16:32:26 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

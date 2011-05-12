@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.28 2011-05-03 10:08:46 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.29 2011-05-12 14:37:58 oscar Exp $
  */
 
 // Error handling used during development
@@ -57,6 +57,9 @@ define ('OWL_DRIVERS',	OWL_ROOT . '/drivers');
 //! Toplocation of this site
 define ('OWL_SITE_TOP', $_SERVER['DOCUMENT_ROOT']);
 
+//! OWL default stylesheets
+define ('OWL_STYLE',	OWL_ROOT . '/style');
+
 //! @}
 
 /**
@@ -101,12 +104,19 @@ abstract class OWLloader
 	/**
 	 * Load a driverfile
 	 * \param[in] $_driverName Name of the class. Will be converted to lowercase to find the classfile
-	 * \param[in] $_driverType Driver type, must match the directoryname in OWL_DRIVERS where the classfile can be found
+	 * \param[in] $_driverType Driver type, must match the directoryname in OWL_DRIVERS where the classfile can be found,
+	 * and the filenams for the interface (class.&lt;driverType&gt;driver.php) and abstract default
+	 * class (class.&lt;driverType&gt;defaults.php) if they exist.
 	 * \return True on success
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getDriver ($_driverName, $_driverType)
 	{
+		// First load the interface and abstract default class, ignoring any errors, since they
+		// might not exist or have been loaded already.
+		self::getClass($_driverType . 'driver', OWL_DRIVERS . '/' . $_driverType);
+		self::getClass($_driverType . 'defaults', OWL_DRIVERS . '/' . $_driverType);
+
 		return (self::getClass(strtolower($_driverName), OWL_DRIVERS . '/' . $_driverType));
 	}
 
@@ -292,9 +302,6 @@ OWLloader::getClass('baseelement', OWL_UI_INC);
 OWLloader::getClass('container', OWL_UI_INC);
 OWLloader::getClass('contentarea', OWL_UI_INC);
 
-// Drivers
-OWLloader::getClass('dbdriver', OWL_DRIVERS . '/database');
-OWLloader::getClass('dbdefaults', OWL_DRIVERS . '/database');
 
 $GLOBALS['messages'] = array ();
 $GLOBALS['labels'] = array ();
@@ -318,6 +325,8 @@ $GLOBALS['logger'] = OWL::factory('LogHandler');
 // Select the (no)debug function libraries.
 if ($GLOBALS['config']['values']['debug'] > 0) {
 	require (OWL_LIBRARY . '/owl.debug.functions.php');
+	$_doc  = OWL::factory('Document', 'ui');
+	$_doc->loadStyle(OWL_STYLE . '/owl_debug.css');
 } else {
 	require (OWL_LIBRARY . '/owl.nodebug.functions.php');
 }
@@ -341,5 +350,12 @@ if (!defined('OWL___INSTALLER')) {
  * 
  * The aim is an environment that combines the best of several worlds; ease of use from Windows,
  * flexibility from Linux, robustness from OpenVMS and of course internet's platform and location independency.
+ * The design principles of OWL-PHP ensure a 100% safe web development platform; since the library itself
+ * is unhackable, so are the applications built with it!
+ * 
+ * Together with the planned OWL-JS, you might consider the OWL family as the basis of what Web2.2 will look like ;)
+ * 
+ * Much of this code started as the project Terra-Terra in 2001 (http://terra-terra.org), a project that
+ * was abandoned when AJAX became popular from 2005 onwards.
  * \author Oscar van Eijk, Oveas Functionality Provider
  */

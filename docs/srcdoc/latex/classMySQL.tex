@@ -62,11 +62,19 @@ Inheritance diagram for MySQL:\begin{figure}[H]
 \item 
 {\bf functionCount} (\$\_\-field, array \$\_\-arguments=array())
 \item 
+{\bf functionMax} (\$\_\-field, array \$\_\-arguments=array())
+\item 
+{\bf functionMin} (\$\_\-field, array \$\_\-arguments=array())
+\item 
 {\bf dbTransactionStart} (\&\$\_\-resource, \$\_\-name=null)
 \item 
 {\bf dbUnescapeString} (\$\_\-string)
 \item 
 {\bf functionCount} (\$\_\-field, array \$\_\-arguments=array())
+\item 
+{\bf functionMax} (\$\_\-field, array \$\_\-arguments=array())
+\item 
+{\bf functionMin} (\$\_\-field, array \$\_\-arguments=array())
 \end{DoxyCompactItemize}
 
 
@@ -583,12 +591,12 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 \index{MySQL@{MySQL}!dbUnescapeString@{dbUnescapeString}}
 \index{dbUnescapeString@{dbUnescapeString}!MySQL@{MySQL}}
-\subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::dbUnescapeString (
+\subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbUnescapeString (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-string}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_a7ac3780695fb0d6e291ee123be7db020}
-Unescape a string fthat is formatted for use in SQL 
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_ac99fd7eba511d8799fcc447006179c72}
+Unescape a string fthat is formatted for use in SQL This method is implemented by class \doxyref{DbDefaults}{p.}{classDbDefaults} 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-string} & The input string in SQL safe format \\
 \hline
@@ -601,12 +609,12 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 \index{MySQL@{MySQL}!dbUnescapeString@{dbUnescapeString}}
 \index{dbUnescapeString@{dbUnescapeString}!MySQL@{MySQL}}
-\subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbUnescapeString (
+\subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::dbUnescapeString (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-string}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_ac99fd7eba511d8799fcc447006179c72}
-Unescape a string fthat is formatted for use in SQL This method is implemented by class \doxyref{DbDefaults}{p.}{classDbDefaults} 
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_a7ac3780695fb0d6e291ee123be7db020}
+Unescape a string fthat is formatted for use in SQL 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-string} & The input string in SQL safe format \\
 \hline
@@ -673,13 +681,13 @@ Implements {\bf DbDriver} \doxyref{}{p.}{interfaceDbDriver_a869608212113175cefe8
 
 \index{MySQL@{MySQL}!functionCount@{functionCount}}
 \index{functionCount@{functionCount}!MySQL@{MySQL}}
-\subsubsection[{functionCount}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionCount (
+\subsubsection[{functionCount}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::functionCount (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-field, }
 \item[{array \$}]{\_\-arguments = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_a58f24b8ba3d3c104cefac2d9c21ca67c}
-Inplementation of the SQL COUNT() function. 
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_ae9ccdb445c7c4213eaff21677a03ed41}
+Implementation of the SQL COUNT() function. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
 \hline
@@ -694,12 +702,12 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 \index{MySQL@{MySQL}!functionCount@{functionCount}}
 \index{functionCount@{functionCount}!MySQL@{MySQL}}
-\subsubsection[{functionCount}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::functionCount (
+\subsubsection[{functionCount}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionCount (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-field, }
 \item[{array \$}]{\_\-arguments = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_ae9ccdb445c7c4213eaff21677a03ed41}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_a58f24b8ba3d3c104cefac2d9c21ca67c}
 Inplementation of the SQL COUNT() function. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
@@ -763,8 +771,92 @@ Oscar van Eijk, Oveas Functionality Provider
 
 Implements {\bf DbDriver} \doxyref{}{p.}{interfaceDbDriver_a3196a4aa4f7f75c464593894f63ae2f0}.
 
+\index{MySQL@{MySQL}!functionMax@{functionMax}}
+\index{functionMax@{functionMax}!MySQL@{MySQL}}
+\subsubsection[{functionMax}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::functionMax (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-field, }
+\item[{array \$}]{\_\-arguments = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_a2f125c1875530f1055845e36bd4799d3}
+Implementation of the SQL MAX() function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-arguments} & Array with arguments, which is required by syntax \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete SQL function code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{MySQL@{MySQL}!functionMax@{functionMax}}
+\index{functionMax@{functionMax}!MySQL@{MySQL}}
+\subsubsection[{functionMax}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionMax (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-field, }
+\item[{array \$}]{\_\-arguments = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_af488697aef28243a0d358c2800752217}
+Inplementation of the SQL MAX() function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-arguments} & Array with arguments, which is required by syntax \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete SQL function code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{MySQL@{MySQL}!functionMin@{functionMin}}
+\index{functionMin@{functionMin}!MySQL@{MySQL}}
+\subsubsection[{functionMin}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionMin (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-field, }
+\item[{array \$}]{\_\-arguments = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_a87433f8e6a93197b09d60a99e8dac3e1}
+Inplementation of the SQL MIN() function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-arguments} & Array with arguments, which is required by syntax \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete SQL function code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{MySQL@{MySQL}!functionMin@{functionMin}}
+\index{functionMin@{functionMin}!MySQL@{MySQL}}
+\subsubsection[{functionMin}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::functionMin (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-field, }
+\item[{array \$}]{\_\-arguments = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_acf910cf9cecb56a1396cf317664bfd1c}
+Implementation of the SQL MIN() function. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-arguments} & Array with arguments, which is required by syntax \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete SQL function code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/home/oscar/projects/owl-\/php/src/drivers/database/{\bf class.mysql.php}\end{DoxyCompactItemize}
+/home/oscar/projects/owl-\/php/src/drivers/db/{\bf class.mysql.php}\end{DoxyCompactItemize}

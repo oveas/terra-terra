@@ -101,6 +101,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <dt>Member <a class="el" href="classDbHandler.html#a3a05faa4d14c6c5117ed8b70fc37d778">DbHandler::$limit</a>  </dt>
 <dd>this ain't implemented yet </dd>
 </dl>
+<p><a class="anchor" id="_todo000008"></a> </p>
+<dl>
+<dt>Member <a class="el" href="owl_8helper_8functions_8php.html#a3cadca012ce78639bbe95d396acce409">getReferer</a> ($def= 'http://localhost/', $hostOnly=true) </dt>
+<dd>This function is based on the unreliable HTTP_REFERER... but what else can we use?? </dd>
+</dl>
 <p><a class="anchor" id="_todo000001"></a> </p>
 <dl>
 <dt>Member <a class="el" href="classOWLCache.html#afcd10dcca169bdd1f77a848eb1349f3f">OWLCache::loadCache</a> () </dt>
@@ -112,6 +117,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <dd>Data caching is not yet implemented - this is a placeholder for future use </dd>
 </dl>
 <p><a class="anchor" id="_todo000007"></a> </p>
+<dl>
+<dt>Member <a class="el" href="owl_8helper_8functions_8php.html#a0836b830fe9e399265d4cf910c5dff28">owlCrypt</a> ($_string) </dt>
+<dd>Add a method to decrypt strings (dispatchers) that were crypted ad a remote server (using keyrings) </dd>
+</dl>
+<p><a class="anchor" id="_todo000010"></a> </p>
+<dl>
+<dt>Member <a class="el" href="classOWLinstaller.html#ac53f7e652c448c66c8fd4a81bfc95be1">OWLinstaller::addTablePrefix</a> ($q, $prefix) </dt>
+<dd><p class="startdd">Add support for UPDATE, DELETE, RENAME and other statements that *might* occur in SQL install files </p>
+<p class="enddd">Handle constraints ([...] REFERENCES `tblname` (...)) </p>
+</dd>
+</dl>
+<p><a class="anchor" id="_todo000009"></a> </p>
 <dl>
 <dt>Member <a class="el" href="classOWLinstaller.html#a4ed45e29611ce17a8edf24e51979a5d7">OWLinstaller::installApplication</a> ($code, $name, $version, $description= '', $link= '', $author= '', $license= '') </dt>
 <dd>Error checking </dd>
@@ -145,7 +162,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon May 2 2011 14:53:13 for OWL-PHP by
+    <li class="footer">Generated on Thu May 12 2011 16:32:16 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

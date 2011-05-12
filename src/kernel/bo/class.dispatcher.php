@@ -3,7 +3,7 @@
  * \file
  * This file defines the Oveas Web Library Dispatcher class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dispatcher.php,v 1.11 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.dispatcher.php,v 1.12 2011-05-12 14:37:58 oscar Exp $
  */
 
 define ('OWL_DISPATCHER_NAME', 'd'); //< Formfield/HTTP var name for the dispatcher
@@ -147,9 +147,9 @@ class Dispatcher extends _OWL
 			return ($this->severity);
 		}
 
-		if (method_exists($_destination['class_name'], 'get_reference')) {
+		if (method_exists($_destination['class_name'], 'getReference')) {
 			// user call_user_func() to be compatible with PHP v < 5.3.0
-			$_handler = call_user_func (array($_destination['class_name'], 'get_reference'));
+			$_handler = call_user_func (array($_destination['class_name'], 'getReference'));
 		} else {
 			$_handler = new $_destination['class_name']();
 		}

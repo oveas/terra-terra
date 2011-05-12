@@ -3,15 +3,19 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bf toStrictBoolean} (\$\_\-val, \$\_\-trueValues=array('yes', 'y', 'true', '1'), \$\_\-forceLowercase=true)
+{\bf toBool} (\$\_\-val, \$\_\-trueValues=array('yes', 'y', 'true', '1'), \$\_\-forceLowercase=true)
 \item 
 {\bf owlCrypt} (\$\_\-string)
 \item 
-{\bf RandomString} (\$\_\-size, \$\_\-lowercase=false)
+{\bf randomString} (\$\_\-size, \$\_\-lowercase=false)
 \item 
-{\bf URL2Path} (\$\_\-file)
+{\bf urlToPath} (\$\_\-file)
 \item 
-{\bf ExpandURL} (\$\_\-file)
+{\bf urlExpand} (\$\_\-file)
+\item 
+{\bf getReferer} (\$def= 'http://localhost/', \$hostOnly=true)
+\item 
+{\bf verifyMailAddress} (\$email, \$extract=true)
 \end{DoxyCompactItemize}
 
 
@@ -20,7 +24,7 @@ This file defines general helper functions \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id:}
-\doxyref{owl.helper.functions.php}{p.}{owl_8helper_8functions_8php},v 1.8 2011-\/04-\/12 14:57:34 oscar Exp 
+\doxyref{owl.helper.functions.php}{p.}{owl_8helper_8functions_8php},v 1.9 2011-\/05-\/02 12:56:14 oscar Exp 
 \end{DoxyParagraph}
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
@@ -28,32 +32,29 @@ Oscar van Eijk, Oveas Functionality Provider
 
 
 \subsection{Function Documentation}
-\index{owl.helper.functions.php@{owl.helper.functions.php}!ExpandURL@{ExpandURL}}
-\index{ExpandURL@{ExpandURL}!owl.helper.functions.php@{owl.helper.functions.php}}
-\subsubsection[{ExpandURL}]{\setlength{\rightskip}{0pt plus 5cm}ExpandURL (
+\index{owl.helper.functions.php@{owl.helper.functions.php}!getReferer@{getReferer}}
+\index{getReferer@{getReferer}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{getReferer}]{\setlength{\rightskip}{0pt plus 5cm}getReferer (
 \begin{DoxyParamCaption}
-\item[{\$}]{\_\-file}
+\item[{\$}]{def = {\ttfamily 'http://localhost/'}, }
+\item[{\$}]{hostOnly = {\ttfamily true}}
 \end{DoxyParamCaption}
-)}\label{owl_8helper_8functions_8php_a08f49d79aaaa581551e49017424cbe77}
-Expand a given location to a fully qualified URL 
+)}\label{owl_8helper_8functions_8php_a3cadca012ce78639bbe95d396acce409}
+Get the current requests refering page 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$\_\-file} & Location of the file, either a full URL or relative from the base url (the path MUST start with 'http(s)://' or '/'!) \\
+\mbox{\tt in}  & {\em \$def} & Default when no referer is found \\
+\hline
+\mbox{\tt in}  & {\em \$hostOnly} & Boolean; true (default) when only the hostname should be returned \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Fully qualified URL, or null when the input is invalid 
+The HTTP referer 
 \end{DoxyReturn}
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
-
-
-References OWL::factory().
-
-
-
-Referenced by Document::loadScript(), Document::loadStyle(), and Document::setFavicon().
-
+\begin{Desc}
+\item[{\bf Todo}]This function is based on the unreliable HTTP\_\-REFERER... but what else can we use?? \end{Desc}
 \index{owl.helper.functions.php@{owl.helper.functions.php}!owlCrypt@{owlCrypt}}
 \index{owlCrypt@{owlCrypt}!owl.helper.functions.php@{owl.helper.functions.php}}
 \subsubsection[{owlCrypt}]{\setlength{\rightskip}{0pt plus 5cm}owlCrypt (
@@ -72,6 +73,8 @@ Encrypted or decrypted string
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
+\begin{Desc}
+\item[{\bf Todo}]Add a method to decrypt strings (dispatchers) that were crypted ad a remote server (using keyrings) \end{Desc}
 
 
 References ConfigHandler::get().
@@ -80,14 +83,14 @@ References ConfigHandler::get().
 
 Referenced by ConfigHandler::\_\-set(), Dispatcher::composeDispatcher(), Dispatcher::decodeDispatcher(), and ConfigHandler::get().
 
-\index{owl.helper.functions.php@{owl.helper.functions.php}!RandomString@{RandomString}}
-\index{RandomString@{RandomString}!owl.helper.functions.php@{owl.helper.functions.php}}
-\subsubsection[{RandomString}]{\setlength{\rightskip}{0pt plus 5cm}RandomString (
+\index{owl.helper.functions.php@{owl.helper.functions.php}!randomString@{randomString}}
+\index{randomString@{randomString}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{randomString}]{\setlength{\rightskip}{0pt plus 5cm}randomString (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-size, }
 \item[{\$}]{\_\-lowercase = {\ttfamily false}}
 \end{DoxyParamCaption}
-)}\label{owl_8helper_8functions_8php_a91f5481c5ca87b74848c1966639d490c}
+)}\label{owl_8helper_8functions_8php_a1b9924257d4b653e4452216fef7767ee}
 Return a random string. The string will contain characters only (A-\/Z) 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-size} & The string size in characters \\
@@ -102,15 +105,15 @@ Oscar van Eijk, Oveas Functionality Provider
 
 Referenced by User::register().
 
-\index{owl.helper.functions.php@{owl.helper.functions.php}!toStrictBoolean@{toStrictBoolean}}
-\index{toStrictBoolean@{toStrictBoolean}!owl.helper.functions.php@{owl.helper.functions.php}}
-\subsubsection[{toStrictBoolean}]{\setlength{\rightskip}{0pt plus 5cm}toStrictBoolean (
+\index{owl.helper.functions.php@{owl.helper.functions.php}!toBool@{toBool}}
+\index{toBool@{toBool}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{toBool}]{\setlength{\rightskip}{0pt plus 5cm}toBool (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-val, }
 \item[{\$}]{\_\-trueValues = {\ttfamily array('yes',~'y',~'true',~'1')}, }
 \item[{\$}]{\_\-forceLowercase = {\ttfamily true}}
 \end{DoxyParamCaption}
-)}\label{owl_8helper_8functions_8php_a2c49978306cd0e2f4f9406c20373ed02}
+)}\label{owl_8helper_8functions_8php_a200737757773a5e4412741580843428d}
 Convert a given value to a strict boolean. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-val} & Value to convert, can be any type \\
@@ -130,13 +133,39 @@ Oscar van Eijk, Oveas Functionality Provider
 
 Referenced by Security::controlBitmap(), DbHandler::loadDriver(), ConfigHandler::readConfig(), FormFieldCheckboxPlugin::setChecked(), FormFieldPlugin::setDisabled(), FormFieldSelectPlugin::setMultiple(), FormFieldPlugin::setReadonly(), and FormFieldSelectPlugin::setValue().
 
-\index{owl.helper.functions.php@{owl.helper.functions.php}!URL2Path@{URL2Path}}
-\index{URL2Path@{URL2Path}!owl.helper.functions.php@{owl.helper.functions.php}}
-\subsubsection[{URL2Path}]{\setlength{\rightskip}{0pt plus 5cm}URL2Path (
+\index{owl.helper.functions.php@{owl.helper.functions.php}!urlExpand@{urlExpand}}
+\index{urlExpand@{urlExpand}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{urlExpand}]{\setlength{\rightskip}{0pt plus 5cm}urlExpand (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-file}
 \end{DoxyParamCaption}
-)}\label{owl_8helper_8functions_8php_a0eb759657249228d1a2473ffa7de921c}
+)}\label{owl_8helper_8functions_8php_ab709d759f5911560cc584496d423b569}
+Expand a given location to a fully qualified URL 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-file} & Location of the file, either a full URL or relative from the base url (the path MUST start with 'http(s)://' or '/'!) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Fully qualified URL, or null when the input is invalid 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References OWL::factory().
+
+
+
+Referenced by Document::loadScript(), Document::loadStyle(), and Document::setFavicon().
+
+\index{owl.helper.functions.php@{owl.helper.functions.php}!urlToPath@{urlToPath}}
+\index{urlToPath@{urlToPath}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{urlToPath}]{\setlength{\rightskip}{0pt plus 5cm}urlToPath (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-file}
+\end{DoxyParamCaption}
+)}\label{owl_8helper_8functions_8php_ad6b164401cd7e98fbad6ec111f8419ff}
 Translate a fully specified URL to the path specification 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-file} & URL of the file \\
@@ -155,4 +184,29 @@ References \$GLOBALS.
 
 
 Referenced by Document::loadScript(), Document::loadStyle(), and Document::setFavicon().
+
+\index{owl.helper.functions.php@{owl.helper.functions.php}!verifyMailAddress@{verifyMailAddress}}
+\index{verifyMailAddress@{verifyMailAddress}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{verifyMailAddress}]{\setlength{\rightskip}{0pt plus 5cm}verifyMailAddress (
+\begin{DoxyParamCaption}
+\item[{\$}]{email, }
+\item[{\$}]{extract = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{owl_8helper_8functions_8php_ae133bd84230ea3637a10a7d0fb2a73b0}
+See if the given string contants a valid email address. Refer to \doxyref{MailDriver::mailSend()}{p.}{interfaceMailDriver_ad1ecb52a22acf83897bbaf328d9041d5} for an explanation what I mean with 'displayable'. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$email} & String that contains the (displayable) mail address \\
+\hline
+\mbox{\tt in}  & {\em \$extract} & Boolean, set to false when the email address must be exact (not extract from a displayable address) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The valid mail address or an empty string when none was found 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by Mail::addBcc(), Mail::addCc(), Mail::addTo(), Mail::setFrom(), and Mail::setSender().
 

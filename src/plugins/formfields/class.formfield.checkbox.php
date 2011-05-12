@@ -3,7 +3,7 @@
  * \file
  * This file defines a checkbox formfield element
 	 * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.formfield.checkbox.php,v 1.3 2011-05-02 12:56:13 oscar Exp $
+ * \version $Id: class.formfield.checkbox.php,v 1.4 2011-05-12 14:37:58 oscar Exp $
  */
 
 /**
@@ -38,7 +38,7 @@ class FormFieldCheckboxPlugin extends FormFieldPlugin
 	 */
 	public function setChecked($_value = true)
 	{
-		$this->checked = toStrictBoolean($_value, array('yes', 'y', 'true', '1', 'checked', 'selected'));
+		$this->checked = toBool($_value, array('yes', 'y', 'true', '1', 'checked', 'selected'));
 	}
 
 	/**
