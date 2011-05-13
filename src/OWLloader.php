@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.29 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.30 2011-05-13 16:39:19 oscar Exp $
  */
 
 // Error handling used during development
@@ -20,7 +20,7 @@
  */
 
 /**
- * \name Global constants
+ * \defgroup OWL_Globals Global constants
  * These constants define all paths for OWL
  * @{
  */
@@ -223,7 +223,7 @@ abstract class OWLloader
 		}
 
 		/**
-		 * \name Global constants for the application
+		 * \defgroup OWL_Application_Globals Global constants for the application
 		 * These constants define sime paths for the application that are also required by OWL
 		 * @{
 		 */

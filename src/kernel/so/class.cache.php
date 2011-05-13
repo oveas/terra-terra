@@ -4,11 +4,11 @@
  * \ingroup OWL_LIBRARY
  * This file defines the cache class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.cache.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.cache.php,v 1.4 2011-05-13 16:39:19 oscar Exp $
  */
 
 /**
- * \name Cache areas
+ * \defgroup CACHE_Areas Cache areas
  * These are the predefined cache areas. New areas can be added dynamically by the application
  * @{
  */

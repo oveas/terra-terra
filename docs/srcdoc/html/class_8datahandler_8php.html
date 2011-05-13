@@ -94,7 +94,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">/home/oscar/projects/owl-php/src/kernel/so/class.datahandler.php File Reference</div>  </div>
 </div>
@@ -106,190 +107,33 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classOWL.html">OWL</a> Data object.  <a href="classDataHandler.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Query preparation tools</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These flags define what type of queries can be prepared </p>
-</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8datahandler_8php.html#a21c8184f96d445f8f608321e0e8fffc9">DATA_UNPREPARED</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default value; no query prepared yet.  <a href="class_8datahandler_8php.html#a21c8184f96d445f8f608321e0e8fffc9">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8datahandler_8php.html#ac28f74b49007773d24ca2207baac6d32">DATA_READ</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from the database.  <a href="class_8datahandler_8php.html#ac28f74b49007773d24ca2207baac6d32">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8datahandler_8php.html#a5d8b54a2eb4767a05a2e577c2db9193a">DATA_WRITE</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write new data to the database.  <a href="class_8datahandler_8php.html#a5d8b54a2eb4767a05a2e577c2db9193a">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8datahandler_8php.html#a9a817a8e9190bfc1eb884f9b4c3cb7c8">DATA_UPDATE</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Update data in the database.  <a href="class_8datahandler_8php.html#a9a817a8e9190bfc1eb884f9b4c3cb7c8">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8datahandler_8php.html#ab4fa180fa2d24c38e425ff9ca4c913fa">DATA_DELETE</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove data from the database.  <a href="class_8datahandler_8php.html#ab4fa180fa2d24c38e425ff9ca4c913fa">More...</a><br/></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Reset flags</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These flags how an object should be performed. All values includes all lower values as well! </p>
-</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8datahandler_8php.html#a9266811d651cb3ff8c5fdf00111e677b">DATA_RESET_STATUS</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset object status only.  <a href="class_8datahandler_8php.html#a9266811d651cb3ff8c5fdf00111e677b">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8datahandler_8php.html#a19a99423705b41e563424ae76d7fe184">DATA_RESET_PREPARE</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset prepared queries.  <a href="class_8datahandler_8php.html#a19a99423705b41e563424ae76d7fe184">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8datahandler_8php.html#a3ce9f928f9ba75096925bd4157246bbb">DATA_RESET_META</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all locks and joins.  <a href="class_8datahandler_8php.html#a3ce9f928f9ba75096925bd4157246bbb">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8datahandler_8php.html#a7c6305f5e748976aa75d367420a408ea">DATA_RESET_DATA</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Erase all data from the object.  <a href="class_8datahandler_8php.html#a7c6305f5e748976aa75d367420a408ea">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8datahandler_8php.html#a2a28429433990da242faa223d5a49f0a">DATA_RESET_FULL</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Short for All bits set.  <a href="class_8datahandler_8php.html#a2a28429433990da242faa223d5a49f0a">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DATA__PrepareType.html#ga21c8184f96d445f8f608321e0e8fffc9">DATA_UNPREPARED</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default value; no query prepared yet.  <a href="group__DATA__PrepareType.html#ga21c8184f96d445f8f608321e0e8fffc9">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DATA__PrepareType.html#gac28f74b49007773d24ca2207baac6d32">DATA_READ</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from the database.  <a href="group__DATA__PrepareType.html#gac28f74b49007773d24ca2207baac6d32">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DATA__PrepareType.html#ga5d8b54a2eb4767a05a2e577c2db9193a">DATA_WRITE</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write new data to the database.  <a href="group__DATA__PrepareType.html#ga5d8b54a2eb4767a05a2e577c2db9193a">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DATA__PrepareType.html#ga9a817a8e9190bfc1eb884f9b4c3cb7c8">DATA_UPDATE</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Update data in the database.  <a href="group__DATA__PrepareType.html#ga9a817a8e9190bfc1eb884f9b4c3cb7c8">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DATA__PrepareType.html#gab4fa180fa2d24c38e425ff9ca4c913fa">DATA_DELETE</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove data from the database.  <a href="group__DATA__PrepareType.html#gab4fa180fa2d24c38e425ff9ca4c913fa">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DATA__ResetFlags.html#ga9266811d651cb3ff8c5fdf00111e677b">DATA_RESET_STATUS</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset object status only.  <a href="group__DATA__ResetFlags.html#ga9266811d651cb3ff8c5fdf00111e677b">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DATA__ResetFlags.html#ga19a99423705b41e563424ae76d7fe184">DATA_RESET_PREPARE</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset prepared queries.  <a href="group__DATA__ResetFlags.html#ga19a99423705b41e563424ae76d7fe184">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DATA__ResetFlags.html#ga3ce9f928f9ba75096925bd4157246bbb">DATA_RESET_META</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all locks and joins.  <a href="group__DATA__ResetFlags.html#ga3ce9f928f9ba75096925bd4157246bbb">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DATA__ResetFlags.html#ga7c6305f5e748976aa75d367420a408ea">DATA_RESET_DATA</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Erase all data from the object.  <a href="group__DATA__ResetFlags.html#ga7c6305f5e748976aa75d367420a408ea">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DATA__ResetFlags.html#ga2a28429433990da242faa223d5a49f0a">DATA_RESET_FULL</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Short for All bits set.  <a href="group__DATA__ResetFlags.html#ga2a28429433990da242faa223d5a49f0a">More...</a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This file defines the <a class="el" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a> class </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd></dd></dl>
 <dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="class_8datahandler_8php.html">class.datahandler.php</a>,v 1.16 2011-05-02 12:56:14 oscar Exp </dd></dl>
-</div><hr/><h2>Enumeration Type Documentation</h2>
-<a class="anchor" id="ab4fa180fa2d24c38e425ff9ca4c913fa"></a><!-- doxytag: member="class.datahandler.php::DATA_DELETE" ref="ab4fa180fa2d24c38e425ff9ca4c913fa" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8datahandler_8php.html#ab4fa180fa2d24c38e425ff9ca4c913fa">DATA_DELETE</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Remove data from the database. </p>
-
-</div>
-</div>
-<a class="anchor" id="ac28f74b49007773d24ca2207baac6d32"></a><!-- doxytag: member="class.datahandler.php::DATA_READ" ref="ac28f74b49007773d24ca2207baac6d32" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8datahandler_8php.html#ac28f74b49007773d24ca2207baac6d32">DATA_READ</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Read data from the database. </p>
-
-</div>
-</div>
-<a class="anchor" id="a7c6305f5e748976aa75d367420a408ea"></a><!-- doxytag: member="class.datahandler.php::DATA_RESET_DATA" ref="a7c6305f5e748976aa75d367420a408ea" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8datahandler_8php.html#a7c6305f5e748976aa75d367420a408ea">DATA_RESET_DATA</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Erase all data from the object. </p>
-
-</div>
-</div>
-<a class="anchor" id="a2a28429433990da242faa223d5a49f0a"></a><!-- doxytag: member="class.datahandler.php::DATA_RESET_FULL" ref="a2a28429433990da242faa223d5a49f0a" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8datahandler_8php.html#a2a28429433990da242faa223d5a49f0a">DATA_RESET_FULL</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Short for All bits set. </p>
-
-</div>
-</div>
-<a class="anchor" id="a3ce9f928f9ba75096925bd4157246bbb"></a><!-- doxytag: member="class.datahandler.php::DATA_RESET_META" ref="a3ce9f928f9ba75096925bd4157246bbb" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8datahandler_8php.html#a3ce9f928f9ba75096925bd4157246bbb">DATA_RESET_META</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Remove all locks and joins. </p>
-
-</div>
-</div>
-<a class="anchor" id="a19a99423705b41e563424ae76d7fe184"></a><!-- doxytag: member="class.datahandler.php::DATA_RESET_PREPARE" ref="a19a99423705b41e563424ae76d7fe184" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8datahandler_8php.html#a19a99423705b41e563424ae76d7fe184">DATA_RESET_PREPARE</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Reset prepared queries. </p>
-
-</div>
-</div>
-<a class="anchor" id="a9266811d651cb3ff8c5fdf00111e677b"></a><!-- doxytag: member="class.datahandler.php::DATA_RESET_STATUS" ref="a9266811d651cb3ff8c5fdf00111e677b" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8datahandler_8php.html#a9266811d651cb3ff8c5fdf00111e677b">DATA_RESET_STATUS</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Reset object status only. </p>
-
-</div>
-</div>
-<a class="anchor" id="a21c8184f96d445f8f608321e0e8fffc9"></a><!-- doxytag: member="class.datahandler.php::DATA_UNPREPARED" ref="a21c8184f96d445f8f608321e0e8fffc9" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8datahandler_8php.html#a21c8184f96d445f8f608321e0e8fffc9">DATA_UNPREPARED</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Default value; no query prepared yet. </p>
-
-</div>
-</div>
-<a class="anchor" id="a9a817a8e9190bfc1eb884f9b4c3cb7c8"></a><!-- doxytag: member="class.datahandler.php::DATA_UPDATE" ref="a9a817a8e9190bfc1eb884f9b4c3cb7c8" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8datahandler_8php.html#a9a817a8e9190bfc1eb884f9b4c3cb7c8">DATA_UPDATE</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Update data in the database. </p>
-
-</div>
-</div>
-<a class="anchor" id="a5d8b54a2eb4767a05a2e577c2db9193a"></a><!-- doxytag: member="class.datahandler.php::DATA_WRITE" ref="a5d8b54a2eb4767a05a2e577c2db9193a" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8datahandler_8php.html#a5d8b54a2eb4767a05a2e577c2db9193a">DATA_WRITE</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Write new data to the database. </p>
-
-</div>
-</div>
-</div>
+</div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
@@ -309,7 +153,7 @@ Enumerations</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu May 12 2011 16:32:15 for OWL-PHP by
+    <li class="footer">Generated on Fri May 13 2011 18:32:55 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

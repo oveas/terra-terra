@@ -94,7 +94,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">/home/oscar/projects/owl-php/src/kernel/so/class.dbhandler.php File Reference</div>  </div>
 </div>
@@ -106,330 +107,49 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Database handler.  <a href="classDbHandler.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Return Flags</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These flags that define what value should be returned by read() </p>
-</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#acc5178c2a582eafa4ef488ed3394b725">DBHANDLE_DATA</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the read values (default)  <a href="class_8dbhandler_8php.html#acc5178c2a582eafa4ef488ed3394b725">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a4752b0fc86256fd568adf6ef216418c7">DBHANDLE_SINGLEFIELD</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the read value as a single field (i.s.o. a 2D array)  <a href="class_8dbhandler_8php.html#a4752b0fc86256fd568adf6ef216418c7">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a5c8464b7bfbb63bd605046e8b615dbbe">DBHANDLE_SINGLEROW</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the read value as a single row (a 1D array)  <a href="class_8dbhandler_8php.html#a5c8464b7bfbb63bd605046e8b615dbbe">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#ac904f05455a162c07c216c330ad7c5c6">DBHANDLE_ROWCOUNT</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of rows.  <a href="class_8dbhandler_8php.html#ac904f05455a162c07c216c330ad7c5c6">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#afda554c4527b03446f287291626c12ad">DBHANDLE_FIELDCOUNT</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of fields per row.  <a href="class_8dbhandler_8php.html#afda554c4527b03446f287291626c12ad">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#aa74936d65eaded5fe8d34047a73e4cea">DBHANDLE_TOTALFIELDCOUNT</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the total number of fields.  <a href="class_8dbhandler_8php.html#aa74936d65eaded5fe8d34047a73e4cea">More...</a><br/></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Action types</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These flags define what type of queries is prepared or the last execution state </p>
-</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a4dbfa42638414eb755b9e798ba993573">DBHANDLE_READ</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from the database.  <a href="class_8dbhandler_8php.html#a4dbfa42638414eb755b9e798ba993573">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a9b823a1d51ed910255c944dfe313129a">DBHANDLE_INSERT</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write new data to the database.  <a href="class_8dbhandler_8php.html#a9b823a1d51ed910255c944dfe313129a">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a44c5292f8bc0072b38e9651b63cc04d8">DBHANDLE_UPDATE</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Update data in the database.  <a href="class_8dbhandler_8php.html#a44c5292f8bc0072b38e9651b63cc04d8">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a978ad3c1b4647dae1fe77c7f8c757da5">DBHANDLE_DELETE</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove data from the database.  <a href="class_8dbhandler_8php.html#a978ad3c1b4647dae1fe77c7f8c757da5">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#acf3fd82991e7c67a3472b81dc1ce9904">DBHANDLE_FAILED</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Last prepare action failed.  <a href="class_8dbhandler_8php.html#acf3fd82991e7c67a3472b81dc1ce9904">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a81abd823ff43027e2a788e4d5993790f">DBHANDLE_COMPLETED</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Last prepared query was executed. Chect object staus for the result.  <a href="class_8dbhandler_8php.html#a81abd823ff43027e2a788e4d5993790f">More...</a><br/></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Match types</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These defines are used to compare values in SQL </p>
-</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a2e63f10508e2c30c83d0ee42b25a70f0">DBMATCH_EQ</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Left and right values should match (default) (when the value contains percent signs, 'LIKE' will be used;.  <a href="class_8dbhandler_8php.html#a2e63f10508e2c30c83d0ee42b25a70f0">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#ab2d0950007e46fa8e0ef79981bb7071a">DBMATCH_LT</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Left value should be less than right value.  <a href="class_8dbhandler_8php.html#ab2d0950007e46fa8e0ef79981bb7071a">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a798942d1de0d7c694fa3bf29af7fb31b">DBMATCH_GT</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Left value should be greater than right value.  <a href="class_8dbhandler_8php.html#a798942d1de0d7c694fa3bf29af7fb31b">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#a7aed795cca306387e0819a3ebf7412fe">DBMATCH_LE</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Left value should be less than or equal to right value.  <a href="class_8dbhandler_8php.html#a7aed795cca306387e0819a3ebf7412fe">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#add3424a7f2fae29b9ef51fefe16e67b5">DBMATCH_GE</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Left value should be greater than or equal to right value.  <a href="class_8dbhandler_8php.html#add3424a7f2fae29b9ef51fefe16e67b5">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_8dbhandler_8php.html#ab8861dd59bb18f73f87f060e75b26ea1">DBMATCH_NONE</a> </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Don't match on this field, use it in the SELECT list instead.  <a href="class_8dbhandler_8php.html#ab8861dd59bb18f73f87f060e75b26ea1">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__ReturnFlags.html#gacc5178c2a582eafa4ef488ed3394b725">DBHANDLE_DATA</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the read values (default)  <a href="group__DBHANDLE__ReturnFlags.html#gacc5178c2a582eafa4ef488ed3394b725">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__ReturnFlags.html#ga4752b0fc86256fd568adf6ef216418c7">DBHANDLE_SINGLEFIELD</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the read value as a single field (i.s.o. a 2D array)  <a href="group__DBHANDLE__ReturnFlags.html#ga4752b0fc86256fd568adf6ef216418c7">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__ReturnFlags.html#ga5c8464b7bfbb63bd605046e8b615dbbe">DBHANDLE_SINGLEROW</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the read value as a single row (a 1D array)  <a href="group__DBHANDLE__ReturnFlags.html#ga5c8464b7bfbb63bd605046e8b615dbbe">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__ReturnFlags.html#gac904f05455a162c07c216c330ad7c5c6">DBHANDLE_ROWCOUNT</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of rows.  <a href="group__DBHANDLE__ReturnFlags.html#gac904f05455a162c07c216c330ad7c5c6">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__ReturnFlags.html#gafda554c4527b03446f287291626c12ad">DBHANDLE_FIELDCOUNT</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of fields per row.  <a href="group__DBHANDLE__ReturnFlags.html#gafda554c4527b03446f287291626c12ad">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__ReturnFlags.html#gaa74936d65eaded5fe8d34047a73e4cea">DBHANDLE_TOTALFIELDCOUNT</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the total number of fields.  <a href="group__DBHANDLE__ReturnFlags.html#gaa74936d65eaded5fe8d34047a73e4cea">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__ActionTypes.html#ga4dbfa42638414eb755b9e798ba993573">DBHANDLE_READ</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from the database.  <a href="group__DBHANDLE__ActionTypes.html#ga4dbfa42638414eb755b9e798ba993573">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__ActionTypes.html#ga9b823a1d51ed910255c944dfe313129a">DBHANDLE_INSERT</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write new data to the database.  <a href="group__DBHANDLE__ActionTypes.html#ga9b823a1d51ed910255c944dfe313129a">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__ActionTypes.html#ga44c5292f8bc0072b38e9651b63cc04d8">DBHANDLE_UPDATE</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Update data in the database.  <a href="group__DBHANDLE__ActionTypes.html#ga44c5292f8bc0072b38e9651b63cc04d8">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__ActionTypes.html#ga978ad3c1b4647dae1fe77c7f8c757da5">DBHANDLE_DELETE</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove data from the database.  <a href="group__DBHANDLE__ActionTypes.html#ga978ad3c1b4647dae1fe77c7f8c757da5">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__ActionTypes.html#gacf3fd82991e7c67a3472b81dc1ce9904">DBHANDLE_FAILED</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Last prepare action failed.  <a href="group__DBHANDLE__ActionTypes.html#gacf3fd82991e7c67a3472b81dc1ce9904">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__ActionTypes.html#ga81abd823ff43027e2a788e4d5993790f">DBHANDLE_COMPLETED</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Last prepared query was executed. Chect object staus for the result.  <a href="group__DBHANDLE__ActionTypes.html#ga81abd823ff43027e2a788e4d5993790f">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__MatchType.html#ga2e63f10508e2c30c83d0ee42b25a70f0">DBMATCH_EQ</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Left and right values should match (default) (when the value contains percent signs, 'LIKE' will be used;.  <a href="group__DBHANDLE__MatchType.html#ga2e63f10508e2c30c83d0ee42b25a70f0">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__MatchType.html#gab2d0950007e46fa8e0ef79981bb7071a">DBMATCH_LT</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Left value should be less than right value.  <a href="group__DBHANDLE__MatchType.html#gab2d0950007e46fa8e0ef79981bb7071a">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__MatchType.html#ga798942d1de0d7c694fa3bf29af7fb31b">DBMATCH_GT</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Left value should be greater than right value.  <a href="group__DBHANDLE__MatchType.html#ga798942d1de0d7c694fa3bf29af7fb31b">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__MatchType.html#ga7aed795cca306387e0819a3ebf7412fe">DBMATCH_LE</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Left value should be less than or equal to right value.  <a href="group__DBHANDLE__MatchType.html#ga7aed795cca306387e0819a3ebf7412fe">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__MatchType.html#gadd3424a7f2fae29b9ef51fefe16e67b5">DBMATCH_GE</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Left value should be greater than or equal to right value.  <a href="group__DBHANDLE__MatchType.html#gadd3424a7f2fae29b9ef51fefe16e67b5">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DBHANDLE__MatchType.html#gab8861dd59bb18f73f87f060e75b26ea1">DBMATCH_NONE</a> </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Don't match on this field, use it in the SELECT list instead.  <a href="group__DBHANDLE__MatchType.html#gab8861dd59bb18f73f87f060e75b26ea1">More...</a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This file defines the Database Handler class </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd></dd></dl>
-<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="class_8dbhandler_8php.html">class.dbhandler.php</a>,v 1.21 2011-05-03 09:21:58 oscar Exp </dd></dl>
-</div><hr/><h2>Enumeration Type Documentation</h2>
-<a class="anchor" id="a81abd823ff43027e2a788e4d5993790f"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_COMPLETED" ref="a81abd823ff43027e2a788e4d5993790f" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a81abd823ff43027e2a788e4d5993790f">DBHANDLE_COMPLETED</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Last prepared query was executed. Chect object staus for the result. </p>
-
-</div>
-</div>
-<a class="anchor" id="acc5178c2a582eafa4ef488ed3394b725"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_DATA" ref="acc5178c2a582eafa4ef488ed3394b725" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#acc5178c2a582eafa4ef488ed3394b725">DBHANDLE_DATA</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Return the read values (default) </p>
-
-</div>
-</div>
-<a class="anchor" id="a978ad3c1b4647dae1fe77c7f8c757da5"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_DELETE" ref="a978ad3c1b4647dae1fe77c7f8c757da5" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a978ad3c1b4647dae1fe77c7f8c757da5">DBHANDLE_DELETE</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Remove data from the database. </p>
-
-</div>
-</div>
-<a class="anchor" id="acf3fd82991e7c67a3472b81dc1ce9904"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_FAILED" ref="acf3fd82991e7c67a3472b81dc1ce9904" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#acf3fd82991e7c67a3472b81dc1ce9904">DBHANDLE_FAILED</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Last prepare action failed. </p>
-
-</div>
-</div>
-<a class="anchor" id="afda554c4527b03446f287291626c12ad"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_FIELDCOUNT" ref="afda554c4527b03446f287291626c12ad" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#afda554c4527b03446f287291626c12ad">DBHANDLE_FIELDCOUNT</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Return the number of fields per row. </p>
-
-</div>
-</div>
-<a class="anchor" id="a9b823a1d51ed910255c944dfe313129a"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_INSERT" ref="a9b823a1d51ed910255c944dfe313129a" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a9b823a1d51ed910255c944dfe313129a">DBHANDLE_INSERT</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Write new data to the database. </p>
-
-</div>
-</div>
-<a class="anchor" id="a4dbfa42638414eb755b9e798ba993573"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_READ" ref="a4dbfa42638414eb755b9e798ba993573" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a4dbfa42638414eb755b9e798ba993573">DBHANDLE_READ</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Read data from the database. </p>
-
-</div>
-</div>
-<a class="anchor" id="ac904f05455a162c07c216c330ad7c5c6"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_ROWCOUNT" ref="ac904f05455a162c07c216c330ad7c5c6" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#ac904f05455a162c07c216c330ad7c5c6">DBHANDLE_ROWCOUNT</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Return the number of rows. </p>
-
-</div>
-</div>
-<a class="anchor" id="a4752b0fc86256fd568adf6ef216418c7"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_SINGLEFIELD" ref="a4752b0fc86256fd568adf6ef216418c7" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a4752b0fc86256fd568adf6ef216418c7">DBHANDLE_SINGLEFIELD</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Return the read value as a single field (i.s.o. a 2D array) </p>
-
-</div>
-</div>
-<a class="anchor" id="a5c8464b7bfbb63bd605046e8b615dbbe"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_SINGLEROW" ref="a5c8464b7bfbb63bd605046e8b615dbbe" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a5c8464b7bfbb63bd605046e8b615dbbe">DBHANDLE_SINGLEROW</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Return the read value as a single row (a 1D array) </p>
-
-</div>
-</div>
-<a class="anchor" id="aa74936d65eaded5fe8d34047a73e4cea"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_TOTALFIELDCOUNT" ref="aa74936d65eaded5fe8d34047a73e4cea" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#aa74936d65eaded5fe8d34047a73e4cea">DBHANDLE_TOTALFIELDCOUNT</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Return the total number of fields. </p>
-
-</div>
-</div>
-<a class="anchor" id="a44c5292f8bc0072b38e9651b63cc04d8"></a><!-- doxytag: member="class.dbhandler.php::DBHANDLE_UPDATE" ref="a44c5292f8bc0072b38e9651b63cc04d8" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a44c5292f8bc0072b38e9651b63cc04d8">DBHANDLE_UPDATE</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Update data in the database. </p>
-
-</div>
-</div>
-<a class="anchor" id="a2e63f10508e2c30c83d0ee42b25a70f0"></a><!-- doxytag: member="class.dbhandler.php::DBMATCH_EQ" ref="a2e63f10508e2c30c83d0ee42b25a70f0" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a2e63f10508e2c30c83d0ee42b25a70f0">DBMATCH_EQ</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Left and right values should match (default) (when the value contains percent signs, 'LIKE' will be used;. </p>
-<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classDataHandler.html#a00cad7b4cee6e867dc985451f40ae404">DataHandler::set()</a>) </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="add3424a7f2fae29b9ef51fefe16e67b5"></a><!-- doxytag: member="class.dbhandler.php::DBMATCH_GE" ref="add3424a7f2fae29b9ef51fefe16e67b5" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#add3424a7f2fae29b9ef51fefe16e67b5">DBMATCH_GE</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Left value should be greater than or equal to right value. </p>
-
-</div>
-</div>
-<a class="anchor" id="a798942d1de0d7c694fa3bf29af7fb31b"></a><!-- doxytag: member="class.dbhandler.php::DBMATCH_GT" ref="a798942d1de0d7c694fa3bf29af7fb31b" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a798942d1de0d7c694fa3bf29af7fb31b">DBMATCH_GT</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Left value should be greater than right value. </p>
-
-</div>
-</div>
-<a class="anchor" id="a7aed795cca306387e0819a3ebf7412fe"></a><!-- doxytag: member="class.dbhandler.php::DBMATCH_LE" ref="a7aed795cca306387e0819a3ebf7412fe" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#a7aed795cca306387e0819a3ebf7412fe">DBMATCH_LE</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Left value should be less than or equal to right value. </p>
-
-</div>
-</div>
-<a class="anchor" id="ab2d0950007e46fa8e0ef79981bb7071a"></a><!-- doxytag: member="class.dbhandler.php::DBMATCH_LT" ref="ab2d0950007e46fa8e0ef79981bb7071a" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#ab2d0950007e46fa8e0ef79981bb7071a">DBMATCH_LT</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Left value should be less than right value. </p>
-
-</div>
-</div>
-<a class="anchor" id="ab8861dd59bb18f73f87f060e75b26ea1"></a><!-- doxytag: member="class.dbhandler.php::DBMATCH_NONE" ref="ab8861dd59bb18f73f87f060e75b26ea1" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_8dbhandler_8php.html#ab8861dd59bb18f73f87f060e75b26ea1">DBMATCH_NONE</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Don't match on this field, use it in the SELECT list instead. </p>
-
-</div>
-</div>
-</div>
+<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="class_8dbhandler_8php.html">class.dbhandler.php</a>,v 1.22 2011-05-12 14:37:58 oscar Exp </dd></dl>
+</div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
@@ -449,7 +169,7 @@ Enumerations</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu May 12 2011 16:32:15 for OWL-PHP by
+    <li class="footer">Generated on Fri May 13 2011 18:32:55 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

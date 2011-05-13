@@ -3,11 +3,11 @@
  * \file
  * This file defines the SessionHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.sessionhandler.php,v 1.15 2011-05-02 12:56:13 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.16 2011-05-13 16:39:18 oscar Exp $
  */
 
 /**
- * \name Session variable Flags
+ * \defgroup SESSION_VariableFlags Session variable Flags
  * These flags that define how to treat values when setting session variables
  * @{
  */

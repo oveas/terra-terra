@@ -4,11 +4,11 @@
  * \ingroup OWL_LIBRARY
  * This file defines helper functions in debug mode
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.debug.functions.php,v 1.4 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: owl.debug.functions.php,v 1.5 2011-05-13 16:39:19 oscar Exp $
  */
 
 /**
- * \name Application debug level
+ * \defgroup DEBUG_ApplicLevel Application debug level
  * These constants define the debug bits that can be used by the application
  * @{
  */
@@ -31,7 +31,7 @@ define ('OWLDEBUG_APP_S08',		     32768); /**< Special 8, reserved for the appli
 //! @}
 
 /**
- * \name OWL debug levels
+ * \defgroup DEBUG_OWLLevel debug levels
  * These constants define the debug bits that are used by OWL
  * @{
  */

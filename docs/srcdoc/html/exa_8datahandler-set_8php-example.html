@@ -131,11 +131,11 @@ function useSqlFunctions($date)
                 , null                  <span class="comment">// Use the default tablename (sqlfunc)</span>
                 , array(                <span class="comment">// Array with functions for the fielname. All keys MUST have an array as value!</span>
                           <span class="stringliteral">&#39;function&#39;</span> =&gt; array(<span class="stringliteral">&#39;count&#39;</span>)          <span class="comment">// Use the COUNT() function (from the db driver); no extra arguments</span>
-                        , <span class="stringliteral">&#39;having&#39;</span> =&gt; array(<a class="code" href="class_8dbhandler_8php.html#a798942d1de0d7c694fa3bf29af7fb31b" title="Left value should be greater than right value.">DBMATCH_GT</a>, 3)      <span class="comment">// Make sure we only get results when the count is more than 3</span>
+                        , <span class="stringliteral">&#39;having&#39;</span> =&gt; array(<a class="code" href="group__DBHANDLE__MatchType.html#ga798942d1de0d7c694fa3bf29af7fb31b" title="Left value should be greater than right value.">DBMATCH_GT</a>, 3)      <span class="comment">// Make sure we only get results when the count is more than 3</span>
                         , <span class="stringliteral">&#39;name&#39;</span> =&gt; array(<span class="stringliteral">&#39;no_mbrships&#39;</span>)        <span class="comment">// Set the index name for the result array</span>
                 )
                 , array(                <span class="comment">// Array with functions for the value. All keys MUST have an array as value!</span>
-                          <span class="stringliteral">&#39;match&#39;</span> =&gt; array(<a class="code" href="class_8dbhandler_8php.html#ab8861dd59bb18f73f87f060e75b26ea1" title="Don&#39;t match on this field, use it in the SELECT list instead.">DBMATCH_NONE</a>) <span class="comment">//Don&#39;t match on this field, but use it in the SELECT list.</span>
+                          <span class="stringliteral">&#39;match&#39;</span> =&gt; array(<a class="code" href="group__DBHANDLE__MatchType.html#gab8861dd59bb18f73f87f060e75b26ea1" title="Don&#39;t match on this field, use it in the SELECT list instead.">DBMATCH_NONE</a>) <span class="comment">//Don&#39;t match on this field, but use it in the SELECT list.</span>
                 )
         );
 
@@ -149,7 +149,7 @@ function useSqlFunctions($date)
                                                 <span class="comment">// ** NOTE**, to use an exact dat, this value must be quoted, e.g. &quot;&#39;2011-04-18&#39;&quot; !</span>
                 )
                 , array(                <span class="comment">// Array with functions for the value. All keys MUST have an array as value!</span>
-                          <span class="stringliteral">&#39;match&#39;</span> =&gt; array(<a class="code" href="class_8dbhandler_8php.html#add3424a7f2fae29b9ef51fefe16e67b5" title="Left value should be greater than or equal to right value.">DBMATCH_GE</a>) <span class="comment">// Match with &quot;&gt;=&quot;, default is &#39;DBMATCH_EQ (&#39;=&#39;)</span>
+                          <span class="stringliteral">&#39;match&#39;</span> =&gt; array(<a class="code" href="group__DBHANDLE__MatchType.html#gadd3424a7f2fae29b9ef51fefe16e67b5" title="Left value should be greater than or equal to right value.">DBMATCH_GE</a>) <span class="comment">// Match with &quot;&gt;=&quot;, default is &#39;DBMATCH_EQ (&#39;=&#39;)</span>
                 )
         );
 
@@ -186,7 +186,7 @@ function useSqlFunctions($date)
 </div>
 
 
-    <li class="footer">Generated on Thu May 12 2011 16:32:15 for OWL-PHP by
+    <li class="footer">Generated on Fri May 13 2011 18:32:55 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

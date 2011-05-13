@@ -3,7 +3,7 @@
  * \file
  * This file defines the MySQL drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.mysql.php,v 1.1 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: class.mysql.php,v 1.2 2011-05-13 16:39:19 oscar Exp $
  */
 
 define('USE_BACKTICKS', true);
@@ -62,6 +62,33 @@ class MySQL extends DbDefaults implements DbDriver
 			. ' NO RELEASE';
 		return ($this->dbExec($_resource, $_q));
 	}
+
+	public function tableLock(&$_resource, $_table, $_type = DBDRIVER_LOCKTYPE_READ)
+	{
+		switch ($_type) {
+			case (DBDRIVER_LOCKTYPE_READ) :
+				$_lockType = 'READ';
+				break;
+			case (DBDRIVER_LOCKTYPE_WRITE) :
+				$_lockType = 'WRITE';
+				break;
+			default:
+				return (false); // Nothing more implemented (yet?)
+		}
+
+		$_q = 'LOCK TABLES ';
+		if (is_array($_table)) {
+			$_q .= implode(',', $_table);
+		}
+		$_q .= " $_lockType";
+		return ($this->dbExec($_resource, $_q));
+	}
+
+	public function tableUnlock(&$_resource, $_table = array())
+	{
+		return ($this->dbExec($_resource, 'UNLOCK TABLES'));
+	}
+	
 
 	public function dbTableList (&$_resource, $_pattern, $_views = false)
 	{
@@ -136,7 +163,7 @@ class MySQL extends DbDefaults implements DbDriver
 			return (mysql_escape_string($_string));
 		}
 	}
-
+	
 	public function functionIf($_field, array $_arguments = array())
 	{
 		return 'IF(' . $_field . ' ' . $_arguments[0] . ' ' . $_arguments[1]

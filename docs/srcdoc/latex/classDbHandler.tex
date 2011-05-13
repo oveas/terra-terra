@@ -42,6 +42,10 @@ Inheritance diagram for DbHandler:\begin{figure}[H]
 \item 
 {\bf rollbackTransaction} (\$name, \$openNew=false)
 \item 
+{\bf lockTable} (\$tablename, \$locktype)
+\item 
+{\bf unlockTable} (\$tablename=array())
+\item 
 {\bf read} (\$flag={\bf DBHANDLE\_\-DATA}, \&\$data, \$quick\_\-query= '', \$line=0, \$file= '[unknown]')
 \item 
 {\bf tableExists} (\$tablename)
@@ -164,6 +168,8 @@ static {\bf getInstance} ()
 {\bf \$query\_\-type}
 \item 
 {\bf \$transaction}
+\item 
+{\bf \$locks}
 \item 
 {\bf \$cloned}
 \end{DoxyCompactItemize}
@@ -372,7 +378,7 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References \_\-OWL::\$severity, and \_\-OWL::setStatus().
+References \_\-OWL::setStatus().
 
 
 
@@ -642,7 +648,7 @@ References OWL::factory(), and \_\-OWL::setStatus().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Mail::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), HDataHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Mail::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{DbHandler@{DbHandler}!isOpen@{isOpen}}
 \index{isOpen@{isOpen}!DbHandler@{DbHandler}}
@@ -695,6 +701,31 @@ References OWLloader::getDriver(), and toBool().
 
 
 Referenced by \_\-\_\-construct(), alt(), and forceReread().
+
+\index{DbHandler@{DbHandler}!lockTable@{lockTable}}
+\index{lockTable@{lockTable}!DbHandler@{DbHandler}}
+\subsubsection[{lockTable}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::lockTable (
+\begin{DoxyParamCaption}
+\item[{\$}]{tablename, }
+\item[{\$}]{locktype}
+\end{DoxyParamCaption}
+)}\label{classDbHandler_a27c45a702ae53310ccc159a88bc4234f}
+Lock one or more tables 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$tablename} & Tablename or array of tables \\
+\hline
+\mbox{\tt in}  & {\em \$locktype} & Locktype as defined in \doxyref{Table lock type}{p.}{group__DBDRIVER__TableLock} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object severity status 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References ConfigHandler::get(), and \_\-OWL::setStatus().
 
 \index{DbHandler@{DbHandler}!open@{open}}
 \index{open@{open}!DbHandler@{DbHandler}}
@@ -946,7 +977,7 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References \_\-OWL::\$severity, and \_\-OWL::setStatus().
+References \_\-OWL::setStatus().
 
 
 
@@ -1070,7 +1101,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode
 
 
 
-Referenced by \_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), Mail::addBcc(), Mail::addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), Mail::addTo(), BaseElement::addToContent(), alt(), SchemeHandler::alterScheme(), FileHandler::close(), commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), connect(), create(), SchemeHandler::createScheme(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), User::login(), FileHandler::open(), open(), LogHandler::openLogfile(), DataHandler::prepare(), prepareDelete(), prepareField(), prepareInsert(), prepareRead(), prepareUpdate(), SocketHandler::read(), read(), FileHandler::readLine(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), startTransaction(), SchemeHandler::tableDescription(), SchemeHandler::validateScheme(), SocketHandler::write(), and write().
+Referenced by \_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), Mail::addBcc(), Mail::addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), Mail::addTo(), BaseElement::addToContent(), alt(), SchemeHandler::alterScheme(), FileHandler::close(), commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), connect(), create(), SchemeHandler::createScheme(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), lockTable(), User::login(), FileHandler::open(), open(), LogHandler::openLogfile(), DataHandler::prepare(), prepareDelete(), prepareField(), prepareInsert(), prepareRead(), prepareUpdate(), SocketHandler::read(), read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), startTransaction(), SchemeHandler::tableDescription(), unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), and write().
 
 \index{DbHandler@{DbHandler}!signal@{signal}}
 \index{signal@{signal}!DbHandler@{DbHandler}}
@@ -1121,7 +1152,7 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References \_\-OWL::\$severity, and \_\-OWL::setStatus().
+References \_\-OWL::setStatus().
 
 \index{DbHandler@{DbHandler}!succeeded@{succeeded}}
 \index{succeeded@{succeeded}!DbHandler@{DbHandler}}
@@ -1268,6 +1299,28 @@ The unescaped string
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
+\index{DbHandler@{DbHandler}!unlockTable@{unlockTable}}
+\index{unlockTable@{unlockTable}!DbHandler@{DbHandler}}
+\subsubsection[{unlockTable}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::unlockTable (
+\begin{DoxyParamCaption}
+\item[{\$}]{tablename = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)}\label{classDbHandler_a09617f79a9c3b699f0237cd682a97d96}
+Unlock one or more tables 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$tablename} & Tablename or array of tables. An empty array (default) results in releaseing all current locks \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object severity status 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References ConfigHandler::get(), and \_\-OWL::setStatus().
+
 \index{DbHandler@{DbHandler}!updateList@{updateList}}
 \index{updateList@{updateList}!DbHandler@{DbHandler}}
 \subsubsection[{updateList}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::updateList (
@@ -1393,7 +1446,10 @@ Referenced by \_\-\_\-clone(), and getInstance().
 \subsubsection[{\$limit}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$limit\hspace{0.3cm}{\ttfamily  [private]}}\label{classDbHandler_a3a05faa4d14c6c5117ed8b70fc37d778}
 array with 2 elements to limit the query \begin{Desc}
 \item[{\bf Todo}]this ain't implemented yet \end{Desc}
-\index{DbHandler@{DbHandler}!\$opened@{\$opened}}
+\index{DbHandler@{DbHandler}!\$locks@{\$locks}}
+\index{\$locks@{\$locks}!DbHandler@{DbHandler}}
+\subsubsection[{\$locks}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$locks\hspace{0.3cm}{\ttfamily  [private]}}\label{classDbHandler_a05f47a3d47e57349f05dec8c8a88b0c2}
+array -\/ list of tables that are currently locked \index{DbHandler@{DbHandler}!\$opened@{\$opened}}
 \index{\$opened@{\$opened}!DbHandler@{DbHandler}}
 \subsubsection[{\$opened}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$opened\hspace{0.3cm}{\ttfamily  [private]}}\label{classDbHandler_a71e36ffbff0d157b1d91dc000bc6f821}
 boolean -\/ True if the database is opened \index{DbHandler@{DbHandler}!\$ordering@{\$ordering}}
@@ -1418,11 +1474,7 @@ string -\/ Prepared query type \index{DbHandler@{DbHandler}!\$rowcount@{\$rowcou
 integer -\/ Row counter \index{DbHandler@{DbHandler}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!DbHandler@{DbHandler}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
-Severity level of the current object status 
-
-Referenced by commitTransaction(), rollbackTransaction(), and startTransaction().
-
-\index{DbHandler@{DbHandler}!\$transaction@{\$transaction}}
+Severity level of the current object status \index{DbHandler@{DbHandler}!\$transaction@{\$transaction}}
 \index{\$transaction@{\$transaction}!DbHandler@{DbHandler}}
 \subsubsection[{\$transaction}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::\$transaction\hspace{0.3cm}{\ttfamily  [private]}}\label{classDbHandler_a4b95a0aa4fbae5d63d6f960984a276af}
 string -\/ name of the open transaction (currently just used as a boolean) \index{DbHandler@{DbHandler}!\$use\_\-backticks@{\$use\_\-backticks}}

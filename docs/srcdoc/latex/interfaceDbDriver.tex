@@ -48,6 +48,10 @@ Inheritance diagram for DbDriver:\begin{figure}[H]
 \item 
 {\bf dbTransactionRollback} (\&\$\_\-resource, \$\_\-name, \$\_\-name=null, \$\_\-new=false)
 \item 
+{\bf tableLock} (\&\$\_\-resource, \$\_\-table, \$\_\-type={\bf DBDRIVER\_\-LOCKTYPE\_\-READ})
+\item 
+{\bf tableUnlock} (\&\$\_\-resource, \$\_\-table=array())
+\item 
 {\bf dbEscapeString} (\$\_\-string)
 \item 
 {\bf dbUnescapeString} (\$\_\-string)
@@ -692,6 +696,59 @@ Complete SQL function code
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
+\index{DbDriver@{DbDriver}!tableLock@{tableLock}}
+\index{tableLock@{tableLock}!DbDriver@{DbDriver}}
+\subsubsection[{tableLock}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::tableLock (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-table, }
+\item[{\$}]{\_\-type = {\ttfamily {\bf DBDRIVER\_\-LOCKTYPE\_\-READ}}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_abf14f6d96125561b06631649d4a1985a}
+Lock one or more tables for read or write 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-table} & Either a single table name, of a list of tables as array \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-type} & Lock type (read or write, defaults to read) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_ad91158ef04d929b3da397997c9a38ded}.
+
+\index{DbDriver@{DbDriver}!tableUnlock@{tableUnlock}}
+\index{tableUnlock@{tableUnlock}!DbDriver@{DbDriver}}
+\subsubsection[{tableUnlock}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::tableUnlock (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-table = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a76b1a0d819d13533ba9ff323fe3ca152}
+Unlock (a) previously locked table(s) 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-table} & Either a single table name, of a list of tables as array. Defaults to an empty array top unlock all \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a4ac65030ba349b57c476993460703d02}.
+
 
 
 The documentation for this interface was generated from the following file:\begin{DoxyCompactItemize}

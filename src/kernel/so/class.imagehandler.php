@@ -3,11 +3,11 @@
  * \file
  * This file defines the FileHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.imagehandler.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.imagehandler.php,v 1.4 2011-05-13 16:39:19 oscar Exp $
  */
 
 /**
- * \name Dataline trim flags
+ * \defgroup FILR_TrimFlags Dataline trim flags
  * These flags define how datalines should be trimmed when read from a file
  * @{
  */

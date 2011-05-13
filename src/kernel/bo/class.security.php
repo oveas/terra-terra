@@ -3,11 +3,11 @@
  * \file
  * This file defines the Security base class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.security.php,v 1.8 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: class.security.php,v 1.9 2011-05-13 16:39:19 oscar Exp $
  */
 
 /**
- * \name Bit control actions
+ * \defgroup SECURITY_BitConrol Security bit control actions
  * These constants define the possible actions that can be performed on a bitmap
  * @{
  */

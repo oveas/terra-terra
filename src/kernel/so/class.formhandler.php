@@ -3,11 +3,11 @@
  * \file
  * This file defines the Formhandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.formhandler.php,v 1.9 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.formhandler.php,v 1.10 2011-05-13 16:39:19 oscar Exp $
  */
 
 /**
- * \name Format flags
+ * \defgroup FORM_ParseFlags Form parse format flags
  * These flags define how formdata should be returned
  * @{
  */

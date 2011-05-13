@@ -3,11 +3,11 @@
  * \file
  * This file defines the DataHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.datahandler.php,v 1.16 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.17 2011-05-13 16:39:19 oscar Exp $
  */
 
 /**
- * \name Query preparation tools
+ * \defgroup DATA_PrepareType Query preparation types
  * These flags define what type of queries can be prepared
  * @{
  */
@@ -29,7 +29,7 @@ define ('DATA_DELETE',		3);
 //! @}
 
 /**
- * \name Reset flags
+ * \defgroup DATA_ResetFlags Dataset Reset flags
  * These flags how an object should be performed. All values includes all lower values as well!
  * @{
  */
@@ -81,13 +81,13 @@ class DataHandler extends _OWL
 	 * For datasets that are not read from or written to a database, the
 	 * tablename can be null.
 	 */	
-	private $owl_tablename;
+	protected $owl_tablename;
 
 	/**
 	 * An optional link to a database object. This has to be specified if the data needs to
 	 * be written to or read from a dabatase.
 	 */	
-	private $owl_database;
+	protected  $owl_database;
 
 	/**
 	 * Boolean that indicates of a query has been prepared
@@ -100,9 +100,7 @@ class DataHandler extends _OWL
 	private $last_id;
 
 	/**
-	 * Class constructor. We don't use a standard constructor (__construct()) here,
-	 * since singleton classes (using private constructors) might derive from this class.
-	 * In stead we use the PHP4 compatible constructor.
+	 * Class constructor.
 	 * \param[in] $tablename Default table name for this dataset
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -517,6 +515,7 @@ Register::setSeverity (OWL_WARNING);
 Register::registerCode ('DATA_NOTFOUND');
 Register::registerCode ('DATA_NOSELECT');
 Register::registerCode ('DATA_AMBFIELD');
+Register::registerCode ('DATA_DBWARNING');
 
 Register::setSeverity (OWL_BUG);
 Register::registerCode ('DATA_IVARRAY');

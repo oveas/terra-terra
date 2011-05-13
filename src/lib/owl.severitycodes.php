@@ -5,11 +5,11 @@
  * This file defines the Severity codes that all objects can have. It must be the very first file
  * that is inluded, since these codes are used from step 1.
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.severitycodes.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: owl.severitycodes.php,v 1.4 2011-05-13 16:39:19 oscar Exp $
  */
 
 /**
- * \name Severity codes
+ * \defgroup OWL_SeverityCodes Severity codes
  * Define the Severity values for all status codes as returned by _OWL::severity().
  * @{
  */

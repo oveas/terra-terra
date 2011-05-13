@@ -1,8 +1,7 @@
 \section{/home/oscar/projects/owl-\/php/src/lib/owl.debug.functions.php File Reference}
 \label{owl_8debug_8functions_8php}\index{/home/oscar/projects/owl-\/php/src/lib/owl.debug.functions.php@{/home/oscar/projects/owl-\/php/src/lib/owl.debug.functions.php}}
 \subsection*{Enumerations}
-\begin{Indent}\paragraph*{Application debug level}
-{\em These constants define the debug bits that can be used by the application }\begin{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
 \item 
 enum {\bf OWLDEBUG\_\-APP\_\-VAR} 
 \item 
@@ -35,12 +34,6 @@ enum {\bf OWLDEBUG\_\-APP\_\-S06}
 enum {\bf OWLDEBUG\_\-APP\_\-S07} 
 \item 
 enum {\bf OWLDEBUG\_\-APP\_\-S08} 
-\end{DoxyCompactItemize}
-\end{Indent}
-\begin{Indent}\paragraph*{OWL debug levels}
-{\em $<$ Special 8, reserved for the application
-
-These constants define the debug bits that are used by \doxyref{OWL}{p.}{classOWL} }\begin{DoxyCompactItemize}
 \item 
 enum {\bf OWLDEBUG\_\-OWL\_\-VAR} 
 \item 
@@ -74,7 +67,6 @@ enum {\bf OWLDEBUG\_\-OWL\_\-S07}
 \item 
 enum {\bf OWLDEBUG\_\-OWL\_\-S08} 
 \end{DoxyCompactItemize}
-\end{Indent}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -99,107 +91,8 @@ Oscar van Eijk, Oveas Functionality Provider
 
 \end{DoxyVersion}
 \begin{DoxyParagraph}{Id:}
-\doxyref{owl.debug.functions.php}{p.}{owl_8debug_8functions_8php},v 1.3 2011-\/05-\/03 09:21:59 oscar Exp 
+\doxyref{owl.debug.functions.php}{p.}{owl_8debug_8functions_8php},v 1.4 2011-\/05-\/12 14:37:58 oscar Exp 
 \end{DoxyParagraph}
-
-
-\subsection{Enumeration Type Documentation}
-\index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-BLK@{OWLDEBUG\_\-APP\_\-BLK}}
-\index{OWLDEBUG\_\-APP\_\-BLK@{OWLDEBUG\_\-APP\_\-BLK}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-BLK}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-BLK}}\label{owl_8debug_8functions_8php_aff6093c4a9f8ad32c086f96efbc2d9b1}
-$<$ Debug at function level \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-FUN@{OWLDEBUG\_\-APP\_\-FUN}}
-\index{OWLDEBUG\_\-APP\_\-FUN@{OWLDEBUG\_\-APP\_\-FUN}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-FUN}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-FUN}}\label{owl_8debug_8functions_8php_a81c9d4abaa04ee71f2c34a1fcdfc10e4}
-$<$ Dump object contents \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-LOOP@{OWLDEBUG\_\-APP\_\-LOOP}}
-\index{OWLDEBUG\_\-APP\_\-LOOP@{OWLDEBUG\_\-APP\_\-LOOP}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-LOOP}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-LOOP}}\label{owl_8debug_8functions_8php_af0705b893839a5e5cebb7738e38ae1fb}
-$<$ Debug at block leven within a function \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-OBJ@{OWLDEBUG\_\-APP\_\-OBJ}}
-\index{OWLDEBUG\_\-APP\_\-OBJ@{OWLDEBUG\_\-APP\_\-OBJ}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-OBJ}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-OBJ}}\label{owl_8debug_8functions_8php_ae3518d29e239ab98416a13bfc4ef1aaa}
-$<$ Show contents of variables \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-RES@{OWLDEBUG\_\-APP\_\-RES}}
-\index{OWLDEBUG\_\-APP\_\-RES@{OWLDEBUG\_\-APP\_\-RES}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-RES}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-RES}}\label{owl_8debug_8functions_8php_a7db55854a0e2c40dab318c688ba7122d}
-$<$ Show return value \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-RET@{OWLDEBUG\_\-APP\_\-RET}}
-\index{OWLDEBUG\_\-APP\_\-RET@{OWLDEBUG\_\-APP\_\-RET}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-RET}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-RET}}\label{owl_8debug_8functions_8php_a44d8a20f606d22d16261fa7a3372bdc5}
-$<$ Show SQL statements \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-S01@{OWLDEBUG\_\-APP\_\-S01}}
-\index{OWLDEBUG\_\-APP\_\-S01@{OWLDEBUG\_\-APP\_\-S01}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-S01}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-S01}}\label{owl_8debug_8functions_8php_a1ff5f0cdfa1d46b3ee17c7d3fe774fc0}
-$<$ Show results of a statement \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-S02@{OWLDEBUG\_\-APP\_\-S02}}
-\index{OWLDEBUG\_\-APP\_\-S02@{OWLDEBUG\_\-APP\_\-S02}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-S02}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-S02}}\label{owl_8debug_8functions_8php_af4ff10b6cd70fb5b15e7e209e8fc1deb}
-$<$ Special 1, reserved for the application \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-S03@{OWLDEBUG\_\-APP\_\-S03}}
-\index{OWLDEBUG\_\-APP\_\-S03@{OWLDEBUG\_\-APP\_\-S03}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-S03}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-S03}}\label{owl_8debug_8functions_8php_abedbff8780239d03b96503ef77cb0e1f}
-$<$ Special 2, reserved for the application \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-S04@{OWLDEBUG\_\-APP\_\-S04}}
-\index{OWLDEBUG\_\-APP\_\-S04@{OWLDEBUG\_\-APP\_\-S04}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-S04}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-S04}}\label{owl_8debug_8functions_8php_afa71b962e432b8708a9a0703556600f0}
-$<$ Special 3, reserved for the application \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-S05@{OWLDEBUG\_\-APP\_\-S05}}
-\index{OWLDEBUG\_\-APP\_\-S05@{OWLDEBUG\_\-APP\_\-S05}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-S05}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-S05}}\label{owl_8debug_8functions_8php_a8ec8662785e74e276e061384e8ab7d66}
-$<$ Special 4, reserved for the application \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-S06@{OWLDEBUG\_\-APP\_\-S06}}
-\index{OWLDEBUG\_\-APP\_\-S06@{OWLDEBUG\_\-APP\_\-S06}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-S06}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-S06}}\label{owl_8debug_8functions_8php_a10bd9907133b6f454ca2944990e5426c}
-$<$ Special 5, reserved for the application \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-S07@{OWLDEBUG\_\-APP\_\-S07}}
-\index{OWLDEBUG\_\-APP\_\-S07@{OWLDEBUG\_\-APP\_\-S07}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-S07}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-S07}}\label{owl_8debug_8functions_8php_a4f6ce35defcd068788d73705a6a25a60}
-$<$ Special 6, reserved for the application \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-S08@{OWLDEBUG\_\-APP\_\-S08}}
-\index{OWLDEBUG\_\-APP\_\-S08@{OWLDEBUG\_\-APP\_\-S08}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-S08}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-S08}}\label{owl_8debug_8functions_8php_a7e2b5044e4535bc98c44a4096b40a1d5}
-$<$ Special 7, reserved for the application \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-SQL@{OWLDEBUG\_\-APP\_\-SQL}}
-\index{OWLDEBUG\_\-APP\_\-SQL@{OWLDEBUG\_\-APP\_\-SQL}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-SQL}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-SQL}}\label{owl_8debug_8functions_8php_a9c4bf7c52eaaccf4bf10d7883d999310}
-$<$ Debug a loop (do/while/foreach etc) \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-APP\_\-VAR@{OWLDEBUG\_\-APP\_\-VAR}}
-\index{OWLDEBUG\_\-APP\_\-VAR@{OWLDEBUG\_\-APP\_\-VAR}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-APP\_\-VAR}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-APP\_\-VAR}}\label{owl_8debug_8functions_8php_a75d026ef83b1f2565d555725a8f9db5a}
-\index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-BLK@{OWLDEBUG\_\-OWL\_\-BLK}}
-\index{OWLDEBUG\_\-OWL\_\-BLK@{OWLDEBUG\_\-OWL\_\-BLK}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-BLK}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-BLK}}\label{owl_8debug_8functions_8php_a26513e36b7954d9a9fa27548c75a0e30}
-$<$ Debug at function level \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-FUN@{OWLDEBUG\_\-OWL\_\-FUN}}
-\index{OWLDEBUG\_\-OWL\_\-FUN@{OWLDEBUG\_\-OWL\_\-FUN}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-FUN}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-FUN}}\label{owl_8debug_8functions_8php_a0fd2afc34585e557975688a5098ab437}
-$<$ Dump object contents \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-LOOP@{OWLDEBUG\_\-OWL\_\-LOOP}}
-\index{OWLDEBUG\_\-OWL\_\-LOOP@{OWLDEBUG\_\-OWL\_\-LOOP}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-LOOP}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-LOOP}}\label{owl_8debug_8functions_8php_a033d1541f382c7935e788a3962d488df}
-$<$ Debug at block leven within a function \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-OBJ@{OWLDEBUG\_\-OWL\_\-OBJ}}
-\index{OWLDEBUG\_\-OWL\_\-OBJ@{OWLDEBUG\_\-OWL\_\-OBJ}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-OBJ}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-OBJ}}\label{owl_8debug_8functions_8php_ae53040cc8ceaf74050e8656e8b95293d}
-$<$ Show contents of variables \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-RES@{OWLDEBUG\_\-OWL\_\-RES}}
-\index{OWLDEBUG\_\-OWL\_\-RES@{OWLDEBUG\_\-OWL\_\-RES}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-RES}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-RES}}\label{owl_8debug_8functions_8php_a7231a4666d953b558ecc47b5655e2bcf}
-$<$ Show return value \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-RET@{OWLDEBUG\_\-OWL\_\-RET}}
-\index{OWLDEBUG\_\-OWL\_\-RET@{OWLDEBUG\_\-OWL\_\-RET}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-RET}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-RET}}\label{owl_8debug_8functions_8php_a3304b9ea5815c06b79f11f17f81bc647}
-$<$ Show SQL statements \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-S01@{OWLDEBUG\_\-OWL\_\-S01}}
-\index{OWLDEBUG\_\-OWL\_\-S01@{OWLDEBUG\_\-OWL\_\-S01}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-S01}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-S01}}\label{owl_8debug_8functions_8php_a374d5b9eb7eca20f723580dffddcdbba}
-$<$ Show results of a statement \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-S02@{OWLDEBUG\_\-OWL\_\-S02}}
-\index{OWLDEBUG\_\-OWL\_\-S02@{OWLDEBUG\_\-OWL\_\-S02}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-S02}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-S02}}\label{owl_8debug_8functions_8php_a7c77ba938123a74af31ee57299bd4b35}
-$<$ Special 1 (reserved) \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-S03@{OWLDEBUG\_\-OWL\_\-S03}}
-\index{OWLDEBUG\_\-OWL\_\-S03@{OWLDEBUG\_\-OWL\_\-S03}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-S03}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-S03}}\label{owl_8debug_8functions_8php_adea8c55580fdc5a5009a68e0ba01a586}
-$<$ Special 2 (reserved) \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-S04@{OWLDEBUG\_\-OWL\_\-S04}}
-\index{OWLDEBUG\_\-OWL\_\-S04@{OWLDEBUG\_\-OWL\_\-S04}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-S04}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-S04}}\label{owl_8debug_8functions_8php_af5ed1b1c454cb11289b6ce9f795c2621}
-$<$ Special 3 (reserved) \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-S05@{OWLDEBUG\_\-OWL\_\-S05}}
-\index{OWLDEBUG\_\-OWL\_\-S05@{OWLDEBUG\_\-OWL\_\-S05}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-S05}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-S05}}\label{owl_8debug_8functions_8php_ae1081659c88bff9a5e8843ca0e60aa8e}
-$<$ Special 4 (reserved) \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-S06@{OWLDEBUG\_\-OWL\_\-S06}}
-\index{OWLDEBUG\_\-OWL\_\-S06@{OWLDEBUG\_\-OWL\_\-S06}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-S06}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-S06}}\label{owl_8debug_8functions_8php_ab3405c1b1ee12a76901638c054ddd302}
-$<$ Special 5 (reserved) \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-S07@{OWLDEBUG\_\-OWL\_\-S07}}
-\index{OWLDEBUG\_\-OWL\_\-S07@{OWLDEBUG\_\-OWL\_\-S07}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-S07}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-S07}}\label{owl_8debug_8functions_8php_ae2893ef4d040432a10755e621634b96c}
-$<$ Special 6 (reserved) \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-S08@{OWLDEBUG\_\-OWL\_\-S08}}
-\index{OWLDEBUG\_\-OWL\_\-S08@{OWLDEBUG\_\-OWL\_\-S08}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-S08}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-S08}}\label{owl_8debug_8functions_8php_ac8753dde543e82b18d844f3c0c42dd84}
-$<$ Special 7 (reserved) \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-SQL@{OWLDEBUG\_\-OWL\_\-SQL}}
-\index{OWLDEBUG\_\-OWL\_\-SQL@{OWLDEBUG\_\-OWL\_\-SQL}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-SQL}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-SQL}}\label{owl_8debug_8functions_8php_adb01d87fbe6f527ba8e279af9403b6d8}
-$<$ Debug a loop (do/while/foreach etc) \index{owl.debug.functions.php@{owl.debug.functions.php}!OWLDEBUG\_\-OWL\_\-VAR@{OWLDEBUG\_\-OWL\_\-VAR}}
-\index{OWLDEBUG\_\-OWL\_\-VAR@{OWLDEBUG\_\-OWL\_\-VAR}!owl.debug.functions.php@{owl.debug.functions.php}}
-\subsubsection[{OWLDEBUG\_\-OWL\_\-VAR}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf OWLDEBUG\_\-OWL\_\-VAR}}\label{owl_8debug_8functions_8php_ab4f1e86d9189e634a8cffee50c15b517}
 
 
 \subsection{Function Documentation}

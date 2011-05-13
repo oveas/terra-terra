@@ -3,11 +3,11 @@
  * \file
  * This file defines the Database Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbhandler.php,v 1.22 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.23 2011-05-13 16:39:19 oscar Exp $
  */
 
 /**
- * \name Return Flags
+ * \defgroup DBHANDLE_ReturnFlags Return values
  * These flags that define what value should be returned by read()
  * @{
  */
@@ -32,7 +32,7 @@ define ('DBHANDLE_TOTALFIELDCOUNT', 5);
 //! @}
 
 /**
- * \name Action types
+ * \defgroup DBHANDLE_ActionTypes Database handler action types
  * These flags define what type of queries is prepared or the last execution state
  * @{
  */
@@ -57,7 +57,7 @@ define ('DBHANDLE_COMPLETED',	11);
 //! @}
 
 /**
- * \name Match types
+ * \defgroup DBHANDLE_MatchType Database handler match types
  * These defines are used to compare values in SQL
  * @{
  */
@@ -177,6 +177,11 @@ class DbHandler extends _OWL
 	private $transaction;
 
 	/**
+	 * array - list of tables that are currently locked
+	 */
+	private $locks;
+
+	/**
 	 * boolean -  true when the object has been cloned
 	 */
 	private $cloned;
@@ -221,6 +226,7 @@ class DbHandler extends _OWL
 		$this->transaction = '';
 		$this->db_prefix = ConfigHandler::get ('dbprefix');
 		$this->query_type = DBHANDLE_COMPLETED;
+		$this->locks = array();
 		$this->setStatus (OWL_STATUS_OK);
 	}
 
@@ -591,7 +597,7 @@ class DbHandler extends _OWL
 	{
 		if ($this->transaction !== '') {
 			$this->setStatus(DBHANDLE_TRANSOPEN);
-			return ($this->$severity);
+			return ($this->severity);
 		} else {
 			if ($this->driver->dbTransactionStart ($this->id, $name) === false) {
 				$this->driver->dbError ($this->id, $this->errno, $this->error);
@@ -600,7 +606,7 @@ class DbHandler extends _OWL
 				$this->transaction = $name;
 			}
 		}
-		return ($this->$severity);
+		return ($this->severity);
 	}
 
 	/**
@@ -624,7 +630,7 @@ class DbHandler extends _OWL
 				}
 			}
 		}
-		return ($this->$severity);
+		return ($this->severity);
 	}
 
 	/**
@@ -648,9 +654,88 @@ class DbHandler extends _OWL
 				}
 			}
 		}
-		return ($this->$severity);
+		return ($this->severity);
 	}
 
+	/**
+	 * Lock one or more tables
+	 * \param[in] $tablename Tablename or array of tables
+	 * \param[in] $locktype Locktype as defined in \ref DBDRIVER_TableLock
+	 * \return Object severity status
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function lockTable ($tablename, $locktype)
+	{
+		if (ConfigHandler::get('dbdriver|locking_enabled', true) === false) {
+			$this->setStatus(DBHANDLE_LOCKDISABLED);
+			return ($this->severity);
+		}
+		if (!is_array($tablename)) {
+			$tablename = array($tablename);
+		}
+		foreach ($tablename as $tbl) {
+			if (array_key_exists($tbl, $this->locks)) {
+				$this->setStatus(DBHANDLE_TBLLOCKED, array($tbl, $this->locks[$tbl]));
+				return ($this->severity);
+			}
+			$this->locks[$tbl] = $locktype;
+		}
+		if ($this->driver->dbtableLock ($this->id, $tablename, $locktype) === false) {
+			$this->driver->dbError ($this->id, $this->errno, $this->error);
+			$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+			// Okey... remove the list again :-S
+			foreach ($tablename as $tbl) {
+				unset($this->locks[$tbl]);
+			}
+		}
+		return ($this->severity);
+	}
+
+	/**
+	 * Unlock one or more tables
+	 * \param[in] $tablename Tablename or array of tables. An empty array (default) results in releaseing all current locks
+	 * \return Object severity status
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function unlockTable ($tablename = array())
+	{
+		if (ConfigHandler::get('dbdriver|locking_enabled', true) === false) {
+			$this->setStatus(DBHANDLE_LOCKDISABLED);
+			return ($this->severity);
+		}
+		$_skipCheck = false;
+
+		if (!is_array($tablename)) {
+			$tablename = array($tablename);
+		} else {
+			if (count($tablename) == 0) {
+				// Ok, fill the array with all current locks
+				foreach ($this->locks as $table => $locktype) {
+					$tablename[] = $tbl;
+				}
+				$_skipCheck = true; // Just prevent an extra loop below...
+			}
+		}
+
+		if ($_skipCheck === false) {
+			foreach ($tablename as $tbl) {
+				if (!array_key_exists($tbl, $this->locks)) {
+					$this->setStatus(DBHANDLE_TBLNOTLOCKED, array($tbl));
+				}
+			}
+		}
+
+		if ($this->driver->dbtableUnock ($this->id, $tablename) === false) {
+			$this->driver->dbError ($this->id, $this->errno, $this->error);
+			$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+		} else {
+			foreach ($tablename as $tbl) {
+				unset($this->locks[$tbl]);
+			}
+		}
+		return ($this->severity);
+	}
+	
 	/**
 	 * Read from the database. The return value depends on the flag. By default,
 	 * the selected rows(s) are returned in a 2d array.
@@ -1229,7 +1314,10 @@ Register::setSeverity (OWL_DEBUG);
 Register::registerCode ('DBHANDLE_QPREPARED');
 Register::registerCode ('DBHANDLE_ROWSREAD');
 
-//Register::setSeverity (OWL_INFO);
+Register::setSeverity (OWL_INFO);
+Register::registerCode ('DBHANDLE_LOCKDISABLED');
+Register::registerCode ('DBHANDLE_TBLNOTLOCKED');
+
 //Register::setSeverity (OWL_OK);
 Register::setSeverity (OWL_SUCCESS);
 Register::registerCode ('DBHANDLE_OPENED');
@@ -1243,6 +1331,7 @@ Register::registerCode ('DBHANDLE_NOVALUES');
 Register::registerCode ('DBHANDLE_IVFUNCTION');
 Register::registerCode ('DBHANDLE_TRANSOPEN');
 Register::registerCode ('DBHANDLE_NOTRANSOPEN');
+Register::registerCode ('DBHANDLE_TBLLOCKED');
 
 Register::setSeverity (OWL_BUG);
 

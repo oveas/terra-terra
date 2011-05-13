@@ -3,8 +3,22 @@
  * \file
  * This file defines the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdriver.php,v 1.1 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: class.dbdriver.php,v 1.2 2011-05-13 16:39:19 oscar Exp $
  */
+
+/**
+ * \defgroup DBDRIVER_TableLock Table lock type
+ * These flags specify the available locktype
+ * @{
+ */
+//! Lock table for read
+define ('DBDRIVER_LOCKTYPE_READ',	0);
+
+//! Lock table for write
+define ('DBDRIVER_LOCKTYPE_WRITE',	1);
+
+//! @}
+
 
 /**
  * \ingroup OWL_DRIVERS
@@ -172,6 +186,25 @@ interface DbDriver
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function dbTransactionRollback (&$_resource, $_name, $_name = null, $_new = false);
+
+	/**
+	 * Lock one or more tables for read or write
+	 * \param[in] $_resource Link with the database server
+	 * \param[in] $_table Either a single table name, of a list of tables as array
+	 * \param[in] $_type Lock type (read or write, defaults to read)
+	 * \return True on success, false on failures
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function tableLock(&$_resource, $_table, $_type = DBDRIVER_LOCKTYPE_READ);
+
+	/**
+	 * Unlock (a) previously locked table(s)
+	 * \param[in] $_resource Link with the database server
+	 * \param[in] $_table Either a single table name, of a list of tables as array. Defaults to an empty array top unlock all
+	 * \return True on success, false on failures
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function tableUnlock(&$_resource, $_table = array());
 
 	/**
 	 * Escape a given string for use in queries

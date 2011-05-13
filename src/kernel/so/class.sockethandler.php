@@ -4,11 +4,11 @@
  * \ingroup OWL_LIBRARY
  * This file defines the Socket handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.sockethandler.php,v 1.1 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: class.sockethandler.php,v 1.2 2011-05-13 16:39:19 oscar Exp $
  */
 
 /**
- * \name Socket codes
+ * \defgroup SOCKET_Codes Socket codes
  * Definition of standard socket commands and returncodes
  * @{
  */

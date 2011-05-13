@@ -3,12 +3,12 @@
  * \file
  * Define the abstract Register class.
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.register.php,v 1.8 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.register.php,v 1.9 2011-05-13 16:39:19 oscar Exp $
  */
 
 
 /**
- * \name Bitmaps
+ * \defgroup OWL_Bitmaps Status code bitmaps
  * These bitmaps define the layout of status codes. They are used to extract information from the code
  * @{
  */

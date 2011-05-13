@@ -249,7 +249,7 @@ INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, 
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|datetime', 'd-M-Y H:i:s', 0, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|log_date', 'd-m-Y', 0, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|log_time', 'H:i:s.u', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|lang', 'en-uk', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|lang', 'en-UK', 0, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|lifetime', '1440', 0, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|pwd_minstrength', '2', 0, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|check_ip', 'true', 0, 0);
@@ -257,6 +257,7 @@ INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, 
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'logging|log_form_data', 'true', 0, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'user|default_group', '2', 0, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|default_rights_all', '0', 1, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'mail|driver', 'RawSMTP', 0, 0);
 
 COMMIT;
 
