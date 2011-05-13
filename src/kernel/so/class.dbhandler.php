@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbhandler.php,v 1.23 2011-05-13 16:39:19 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.24 2011-05-13 16:44:12 oscar Exp $
  */
 
 /**
@@ -263,6 +263,9 @@ class DbHandler extends _OWL
 			} else {
 				$this->rollbackTransaction($this->transaction);
 			}
+		}
+		if (count($this->locks) > 0) {
+			$this->unlockTable(array()); // Release all locks
 		}
 		if (parent::__destruct() === false) {
 			return;
