@@ -20,6 +20,8 @@ Inheritance diagram for DbDriver:\begin{figure}[H]
 \item 
 {\bf dbError} (\&\$\_\-resource, \&\$\_\-number, \&\$\_\-text)
 \item 
+{\bf isRetryable} (\$\_\-errorCode)
+\item 
 {\bf dbConnect} (\&\$\_\-resource, \$\_\-server, \$\_\-name, \$\_\-user, \$\_\-password, \$\_\-multiple=false)
 \item 
 {\bf dbOpen} (\&\$\_\-resource, \$\_\-server, \$\_\-name, \$\_\-user, \$\_\-password)
@@ -692,6 +694,24 @@ Inplementation of the SQL MIN() function.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Complete SQL function code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{DbDriver@{DbDriver}!isRetryable@{isRetryable}}
+\index{isRetryable@{isRetryable}!DbDriver@{DbDriver}}
+\subsubsection[{isRetryable}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::isRetryable (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-errorCode}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a0faed62206bfa6538e5093dfaa8b9653}
+Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-errorCode} & The errorcode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible 
 \end{DoxyReturn}
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 

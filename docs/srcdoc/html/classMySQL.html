@@ -143,9 +143,11 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#afc607b5c0a8d2320cd21f5746dde027e">__constructor</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a30ef8b1e115ed1dbdbd66b960c0e348d">dbTransactionStart</a> (&amp;$_resource, $_name=null)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a7ac3780695fb0d6e291ee123be7db020">dbUnescapeString</a> ($_string)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a9cb29749650ea6a3b7a7181a5783f48f">isRetryable</a> ($_errorCode)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#ae9ccdb445c7c4213eaff21677a03ed41">functionCount</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a2f125c1875530f1055845e36bd4799d3">functionMax</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#acf910cf9cecb56a1396cf317664bfd1c">functionMin</a> ($_field, array $_arguments=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a0faed62206bfa6538e5093dfaa8b9653">isRetryable</a> ($_errorCode)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a3f9f0c1234b3fe3fb263ff1393f13197">dbTransactionStart</a> (&amp;$_resource, $_name=null)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ac99fd7eba511d8799fcc447006179c72">dbUnescapeString</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a58f24b8ba3d3c104cefac2d9c21ca67c">functionCount</a> ($_field, array $_arguments=array())</td></tr>
@@ -919,32 +921,6 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7ac3780695fb0d6e291ee123be7db020"></a><!-- doxytag: member="MySQL::dbUnescapeString" ref="a7ac3780695fb0d6e291ee123be7db020" args="($_string)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DbDefaults::dbUnescapeString </td>
-          <td>(</td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_string</em></td><td>)</td>
-          <td><code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Unescape a string fthat is formatted for use in SQL </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
-<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="ac99fd7eba511d8799fcc447006179c72"></a><!-- doxytag: member="MySQL::dbUnescapeString" ref="ac99fd7eba511d8799fcc447006179c72" args="($_string)" -->
 <div class="memitem">
 <div class="memproto">
@@ -960,6 +936,32 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Unescape a string fthat is formatted for use in SQL This method is implemented by class <a class="el" href="classDbDefaults.html" title="Database driver defauls.">DbDefaults</a> </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7ac3780695fb0d6e291ee123be7db020"></a><!-- doxytag: member="MySQL::dbUnescapeString" ref="a7ac3780695fb0d6e291ee123be7db020" args="($_string)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::dbUnescapeString </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_string</em></td><td>)</td>
+          <td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Unescape a string fthat is formatted for use in SQL </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
@@ -1351,6 +1353,58 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a9cb29749650ea6a3b7a7181a5783f48f"></a><!-- doxytag: member="MySQL::isRetryable" ref="a9cb29749650ea6a3b7a7181a5783f48f" args="($_errorCode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::isRetryable </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_errorCode</em></td><td>)</td>
+          <td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. Retries can be enabled at driver level, by default retries are never possible. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_errorCode</td><td>The errorcode </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0faed62206bfa6538e5093dfaa8b9653"></a><!-- doxytag: member="MySQL::isRetryable" ref="a0faed62206bfa6538e5093dfaa8b9653" args="($_errorCode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::isRetryable </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_errorCode</em></td><td>)</td>
+          <td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_errorCode</td><td>The errorcode </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ad91158ef04d929b3da397997c9a38ded"></a><!-- doxytag: member="MySQL::tableLock" ref="ad91158ef04d929b3da397997c9a38ded" args="(&amp;$_resource, $_table, $_type=DBDRIVER_LOCKTYPE_READ)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1463,7 +1517,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Fri May 13 2011 18:33:04 for OWL-PHP by
+    <li class="footer">Generated on Mon May 16 2011 19:15:16 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

@@ -3,7 +3,7 @@
  * \file
  * This file defines default methods for the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdefaults.php,v 1.1 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: class.dbdefaults.php,v 1.2 2011-05-16 17:20:18 oscar Exp $
  */
 
 
@@ -85,6 +85,19 @@ abstract class DbDefaults
 		return (stripslashes($_string));
 	}
 
+	/**
+	 * Check is the given error code is a retryable error (e.g. table locked, server starting etc)
+	 * and advice how long to wait before retry. Retries can be enabled at driver level, by default
+	 * retries are never possible.
+	 * \param[in] $_errorCode The errorcode
+	 * \return Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function isRetryable ($_errorCode)
+	{
+		return (0);
+	}
+	
 	/**
 	 * Implementation of the SQL COUNT() function.
 	 * \param[in] $_field Name of the field

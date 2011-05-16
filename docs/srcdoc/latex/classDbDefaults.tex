@@ -26,6 +26,8 @@ Inheritance diagram for DbDefaults:\begin{figure}[H]
 \item 
 {\bf dbUnescapeString} (\$\_\-string)
 \item 
+{\bf isRetryable} (\$\_\-errorCode)
+\item 
 {\bf functionCount} (\$\_\-field, array \$\_\-arguments=array())
 \item 
 {\bf functionMax} (\$\_\-field, array \$\_\-arguments=array())
@@ -234,6 +236,24 @@ Implementation of the SQL MIN() function.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Complete SQL function code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{DbDefaults@{DbDefaults}!isRetryable@{isRetryable}}
+\index{isRetryable@{isRetryable}!DbDefaults@{DbDefaults}}
+\subsubsection[{isRetryable}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::isRetryable (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-errorCode}
+\end{DoxyParamCaption}
+)}\label{classDbDefaults_a9cb29749650ea6a3b7a7181a5783f48f}
+Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. Retries can be enabled at driver level, by default retries are never possible. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-errorCode} & The errorcode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible 
 \end{DoxyReturn}
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 

@@ -1,0 +1,39 @@
+\section{Follow crosslinks}
+\label{group__HDATA__FollowXLink}\index{Follow crosslinks@{Follow crosslinks}}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bf HDATA\_\-XLINK\_\-FOLLOW\_\-NO} 
+\begin{DoxyCompactList}\small\item\em Do not follow crosslinks; only retrieve the direct offspring. \end{DoxyCompactList}\item 
+enum {\bf HDATA\_\-XLINK\_\-FOLLOW\_\-ONCE} 
+\begin{DoxyCompactList}\small\item\em Retrieve trees for crosslinks that link directly to the maintree. \end{DoxyCompactList}\item 
+enum {\bf HDATA\_\-XLINK\_\-FOLLOW\_\-UNLIMITED} 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+These flags if and to what level crosslinks should be followed when full trees are retrieved 
+
+\subsection{Enumeration Type Documentation}
+\index{Follow crosslinks@{Follow crosslinks}!HDATA\_\-XLINK\_\-FOLLOW\_\-NO@{HDATA\_\-XLINK\_\-FOLLOW\_\-NO}}
+\index{HDATA\_\-XLINK\_\-FOLLOW\_\-NO@{HDATA\_\-XLINK\_\-FOLLOW\_\-NO}!Follow crosslinks@{Follow crosslinks}}
+\subsubsection[{HDATA\_\-XLINK\_\-FOLLOW\_\-NO}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf HDATA\_\-XLINK\_\-FOLLOW\_\-NO}}\label{group__HDATA__FollowXLink_ga621a720020ad830bc44e142b282e0e09}
+
+
+Do not follow crosslinks; only retrieve the direct offspring. 
+
+\index{Follow crosslinks@{Follow crosslinks}!HDATA\_\-XLINK\_\-FOLLOW\_\-ONCE@{HDATA\_\-XLINK\_\-FOLLOW\_\-ONCE}}
+\index{HDATA\_\-XLINK\_\-FOLLOW\_\-ONCE@{HDATA\_\-XLINK\_\-FOLLOW\_\-ONCE}!Follow crosslinks@{Follow crosslinks}}
+\subsubsection[{HDATA\_\-XLINK\_\-FOLLOW\_\-ONCE}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf HDATA\_\-XLINK\_\-FOLLOW\_\-ONCE}}\label{group__HDATA__FollowXLink_gab45af51ca6c938ae4d0e419121e79d8e}
+
+
+Retrieve trees for crosslinks that link directly to the maintree. 
+
+\index{Follow crosslinks@{Follow crosslinks}!HDATA\_\-XLINK\_\-FOLLOW\_\-UNLIMITED@{HDATA\_\-XLINK\_\-FOLLOW\_\-UNLIMITED}}
+\index{HDATA\_\-XLINK\_\-FOLLOW\_\-UNLIMITED@{HDATA\_\-XLINK\_\-FOLLOW\_\-UNLIMITED}!Follow crosslinks@{Follow crosslinks}}
+\subsubsection[{HDATA\_\-XLINK\_\-FOLLOW\_\-UNLIMITED}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf HDATA\_\-XLINK\_\-FOLLOW\_\-UNLIMITED}}\label{group__HDATA__FollowXLink_ga43ea68a13a3004ff23d10c1e28fb166e}
+Follow all crosslinks and crosslinks of crosslinks. \begin{DoxyWarning}{Warning}
+This might cause many queries resulting and a huge amount of data on large tables! 
+
+This might cause loops! 
+\end{DoxyWarning}

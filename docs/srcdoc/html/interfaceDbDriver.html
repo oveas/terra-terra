@@ -120,6 +120,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a0f4423a9599ea3197d97b110f6a4e3ee">__construct</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a3b044c35e3548effe3adf89bef5043e6">dbCreate</a> (&amp;$_resource, $_name)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ac8a3d40046bf719aada5a1807a915589">dbError</a> (&amp;$_resource, &amp;$_number, &amp;$_text)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a0faed62206bfa6538e5093dfaa8b9653">isRetryable</a> ($_errorCode)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a46e195260ab444a3223f578fbc6c22c9">dbConnect</a> (&amp;$_resource, $_server, $_name, $_user, $_password, $_multiple=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a4747fcf9c24b722fd56c65111f9652dd">dbOpen</a> (&amp;$_resource, $_server, $_name, $_user, $_password)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#abe6928bd50a1115dc1e9e6b283d9b065">dbTableList</a> (&amp;$_resource, $_pattern, $_views=false)</td></tr>
@@ -1133,6 +1134,32 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a0faed62206bfa6538e5093dfaa8b9653"></a><!-- doxytag: member="DbDriver::isRetryable" ref="a0faed62206bfa6538e5093dfaa8b9653" args="($_errorCode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::isRetryable </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_errorCode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_errorCode</td><td>The errorcode </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="abf14f6d96125561b06631649d4a1985a"></a><!-- doxytag: member="DbDriver::tableLock" ref="abf14f6d96125561b06631649d4a1985a" args="(&amp;$_resource, $_table, $_type=DBDRIVER_LOCKTYPE_READ)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1241,7 +1268,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Fri May 13 2011 18:32:59 for OWL-PHP by
+    <li class="footer">Generated on Mon May 16 2011 19:15:11 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

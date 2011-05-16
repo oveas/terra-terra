@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbhandler.php,v 1.24 2011-05-13 16:44:12 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.25 2011-05-16 17:20:17 oscar Exp $
  */
 
 /**
@@ -89,6 +89,7 @@ define ('DBMATCH_NONE',			'!');
  * This class should not be called directly; it is implemented by class DataHandler
  * \brief Database handler 
  * \author Oscar van Eijk, Oveas Functionality Provider
+ * \todo Implement retries using the isRetryable() driver method, a max_retries and a max_retry_wait config settings
  * \version May 15, 2007 -- O van Eijk -- initial version for Terra-Terra
  * \version Jul 29, 2008 -- O van Eijk -- Modified version for OWL
  */
@@ -666,6 +667,10 @@ class DbHandler extends _OWL
 	 * \param[in] $locktype Locktype as defined in \ref DBDRIVER_TableLock
 	 * \return Object severity status
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \note In MySQL, locks will be released implicetly when a new lock is requested. Also
+	 * when a new transaction is started, all existing locks are released, so when table locking
+	 * is required within a transaction, always call lockTable() <em>after</em> startTransaction()
+	 * \todo This method currenly supports only 1 table and no aliases, must be changed!
 	 */
 	public function lockTable ($tablename, $locktype)
 	{

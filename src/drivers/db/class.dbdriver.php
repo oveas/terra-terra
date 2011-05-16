@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdriver.php,v 1.2 2011-05-13 16:39:19 oscar Exp $
+ * \version $Id: class.dbdriver.php,v 1.3 2011-05-16 17:20:18 oscar Exp $
  */
 
 /**
@@ -53,7 +53,15 @@ interface DbDriver
 	 */
 	public function dbError (&$_resource, &$_number, &$_text);
 
-	
+	/**
+	 * Check is the given error code is a retryable error (e.g. table locked, server starting etc)
+	 * and advice how long to wait before retry.
+	 * \param[in] $_errorCode The errorcode
+	 * \return Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function isRetryable ($_errorCode);
+
 	/**
 	 * Make a connection with a database server
 	 * \param[out] $_resource Link with the database server

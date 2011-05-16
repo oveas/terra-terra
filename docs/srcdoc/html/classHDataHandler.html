@@ -125,12 +125,21 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#aa816b8254ee67e121f00012fa6c309a3">__construct</a> ($tablename= '')</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a98d028d448397b82bdeba213836dcff8">setLeft</a> ($fieldname)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#aec8cb1c540a4556d08c777ff2dc656e6">setRight</a> ($fieldname)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#afc9f75f48ab94ce77194e376f37c9bf4">enableCrossLink</a> ($fieldname)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#aab4fd96d30373fbae7d87a1643ac31ac">setPrimaryKey</a> ($fieldname)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a307f718becb790b68fe4eec90cf88489">getLeafNodes</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#adf10aa963f4e0d037d0e96c0d1c16487">getNode</a> ($field, $value)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#afe911eabb98cf073d9103fb3c75580e7">getPathByChild</a> ($field, $value)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a09a223084837031e2d22a004f31606b2">getPathByParent</a> ($field, $value)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a84158b1cbae1cb825d0ded360c1e142f">getNodeDepth</a> ($field, $value=null)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#ad3e951acc4e57ea1f074e6d873197325">getFullOffspring</a> ($field, $value)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a1c0fd19bb5ec55ba6dd39f8e35cb18f9">getDirectChildren</a> ($field, $value)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a32c39327409934716578182b5196ed81">getFullOffspring</a> ($field, $value, $follow=<a class="el" href="group__HDATA__FollowXLink.html#ga621a720020ad830bc44e142b282e0e09">HDATA_XLINK_FOLLOW_NO</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a489af96561085e83caf736906338da76">getDirectChildren</a> ($field, $value, $xlink=true)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#aedab806f5303459bd57d2a2b6c0227b6">getNodesByDepth</a> ($depth, $field, $value=null)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#abbff85e96fd88c6eb57cb9fb47d1a7c8">insertNode</a> (array $data, array $parent, $position=-1)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a2c97b22e524ce609361c429278a409d8">addParent</a> (array $node, array $parent)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a68d8b9169dadd846a1b4a4355c77a87c">removeNode</a> ($field, $value)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#ae91a216dc0d71fbdf6a4d6744cfa7969">removeTree</a> ($field, $value)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a8526c24a0174845ee2ba40b3590a59c0">moveNode</a> ($field, $value, array $newParent, $position=-1)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#ab89e1aaad9cd0a37f1c7f13c1d9c0d57">reset</a> ($level=<a class="el" href="group__DATA__ResetFlags.html#ga19a99423705b41e563424ae76d7fe184">DATA_RESET_PREPARE</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#a47ac87a4d43f785666d91ca85faed487">getDbLink</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataHandler.html#a00cad7b4cee6e867dc985451f40ae404">set</a> ($variable, $value, $table=null, array $fieldFunction=null, array $valueFunction=null)</td></tr>
@@ -170,10 +179,14 @@ Protected Attributes</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a79db5a49cddb4f36d0aa4bc1837f762a">readQuery</a> ($query, $line)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a40771d812447d7e1bbac1f1b0ecf0b4b">_getNewLeft</a> (array $parent, $position=-1)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#ab1ac8ad41a1402e725ac4a759f42eb3c">writeQuery</a> ($query, $line)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a809bc5831b9d104f88f16f27dde55c73">$left</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a6cc978e6fa3fb468f73c5f94b1c07b23">$right</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#a62035bf09b58d2fd9da069567f54d2a5">$xlink</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHDataHandler.html#ab6b77e535c310ce86efc93197e6fe6da">$xlinkID</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classOWL.html">OWL</a> Hierarchical Data object. </p>
@@ -211,6 +224,86 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a40771d812447d7e1bbac1f1b0ecf0b4b"></a><!-- doxytag: member="HDataHandler::_getNewLeft" ref="a40771d812447d7e1bbac1f1b0ecf0b4b" args="(array $parent, $position=&#45;1)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::_getNewLeft </td>
+          <td>(</td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>position</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get the new left position for a node being moved or inserted </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$parent</td><td>Parent under which the (new) node will be added. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$position</td><td>Position at which the new node will be inserted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The value for the left position </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="classHDataHandler.html#a489af96561085e83caf736906338da76">getDirectChildren()</a>, <a class="el" href="classHDataHandler.html#adf10aa963f4e0d037d0e96c0d1c16487">getNode()</a>, <a class="el" href="classHDataHandler.html#aedab806f5303459bd57d2a2b6c0227b6">getNodesByDepth()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
+
+<p>Referenced by <a class="el" href="classHDataHandler.html#abbff85e96fd88c6eb57cb9fb47d1a7c8">insertNode()</a>, and <a class="el" href="classHDataHandler.html#a8526c24a0174845ee2ba40b3590a59c0">moveNode()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2c97b22e524ce609361c429278a409d8"></a><!-- doxytag: member="HDataHandler::addParent" ref="a2c97b22e524ce609361c429278a409d8" args="(array $node, array $parent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::addParent </td>
+          <td>(</td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Add a crosslink so a given node, adding (or overwriting) a second parent. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$node</td><td>Identification if the node to change. This must be an indexed array with the keys 'field' and 'value' identifying the node, where field is the name of a unique indexed tablefield and value the value for the requested node. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$parent</td><td>Identification of the additional parent. This must be an indexed array with the keys 'field' and 'value' identifying the parent node, where field is the name of a unique indexed tablefield and value the value for the requested parent. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on errors </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="classHDataHandler.html#adf10aa963f4e0d037d0e96c0d1c16487">getNode()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, and <a class="el" href="classHDataHandler.html#ab1ac8ad41a1402e725ac4a759f42eb3c">writeQuery()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ae2e3c56e5f3c4ce4156c6b1bb1c50f63"></a><!-- doxytag: member="HDataHandler::check" ref="ae2e3c56e5f3c4ce4156c6b1bb1c50f63" args="(&amp;$object, $level=OWL_WARNING)" -->
 <div class="memitem">
 <div class="memproto">
@@ -315,6 +408,36 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Current status of the database object </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
+<p>Referenced by <a class="el" href="classHDataHandler.html#a32c39327409934716578182b5196ed81">getFullOffspring()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afc9f75f48ab94ce77194e376f37c9bf4"></a><!-- doxytag: member="HDataHandler::enableCrossLink" ref="afc9f75f48ab94ce77194e376f37c9bf4" args="($fieldname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::enableCrossLink </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>fieldname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Enable crosslinks allowing items in the hierarchy to be reachable via 2 parents </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$fieldname</td><td>Name of the field holding the additional parent </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false when the ID field has not been defined yet </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a43cc86bc12f402d7d82d6eba142938f2"></a><!-- doxytag: member="HDataHandler::escapeString" ref="a43cc86bc12f402d7d82d6eba142938f2" args="($string)" -->
@@ -413,7 +536,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1c0fd19bb5ec55ba6dd39f8e35cb18f9"></a><!-- doxytag: member="HDataHandler::getDirectChildren" ref="a1c0fd19bb5ec55ba6dd39f8e35cb18f9" args="($field, $value)" -->
+<a class="anchor" id="a489af96561085e83caf736906338da76"></a><!-- doxytag: member="HDataHandler::getDirectChildren" ref="a489af96561085e83caf736906338da76" args="($field, $value, $xlink=true)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -427,7 +550,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>xlink</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -440,19 +569,22 @@ Private Attributes</h2></td></tr>
 <p>Retrieve the direct chilren of a given parent </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>Name of the field on which the parent should be matched </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>Name of the field on which the parent should be matched, must be a primary key or unique indexed field </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Value of the parent's field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$xlink</td><td>True (default) of crosslinked childnodes should be included </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Array with all matched records holding the fieldvalue and the depth (always 1, but required for the match) </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Array with all matched records including the depth (always 1, but required for the match) </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>References <a class="el" href="classHDataHandler.html#a79db5a49cddb4f36d0aa4bc1837f762a">readQuery()</a>.</p>
+<p>References <a class="el" href="classHDataHandler.html#a62035bf09b58d2fd9da069567f54d2a5">$xlink</a>, <a class="el" href="classHDataHandler.html#a79db5a49cddb4f36d0aa4bc1837f762a">readQuery()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
+
+<p>Referenced by <a class="el" href="classHDataHandler.html#a40771d812447d7e1bbac1f1b0ecf0b4b">_getNewLeft()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ad3e951acc4e57ea1f074e6d873197325"></a><!-- doxytag: member="HDataHandler::getFullOffspring" ref="ad3e951acc4e57ea1f074e6d873197325" args="($field, $value)" -->
+<a class="anchor" id="a32c39327409934716578182b5196ed81"></a><!-- doxytag: member="HDataHandler::getFullOffspring" ref="a32c39327409934716578182b5196ed81" args="($field, $value, $follow=HDATA_XLINK_FOLLOW_NO)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -466,7 +598,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>follow</em> = <code><a class="el" href="group__HDATA__FollowXLink.html#ga621a720020ad830bc44e142b282e0e09">HDATA_XLINK_FOLLOW_NO</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -479,15 +617,17 @@ Private Attributes</h2></td></tr>
 <p>Retrieve all childnodes starting with a given parent </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>Name of the field on which the parent should be matched </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>Name of the field on which the parent should be matched, must be a primary key or unique indexed field </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Value of the parent's field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$follow</td><td>When crosslinks are enabled, this identifies to what level crosslinks should be followed. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="warning"><dt><b>Warning:</b></dt><dd><a class="el" href="classUser.html" title="the OWL-PHP user object">User</a> yje $follow parameter with care! Right now, only 3 options are implemented. HDATA_XLINK_FOLLOW_NO is the default value, but checks are made only for HDATA_XLINK_FOLLOW_NO and HDATA_XLINK_FOLLOW_ONCE. Any other value will be interpreted as HDATA_XLINK_FOLLOW_UNLIMITED! See <a class="el" href="group__HDATA__FollowXLink.html">Follow crosslinks</a> for more info! </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>2-D array with all records for all direct children, or false on errors </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>References <a class="el" href="classHDataHandler.html#a79db5a49cddb4f36d0aa4bc1837f762a">readQuery()</a>.</p>
+<p>References <a class="el" href="classDataHandler.html#ada79b8820e5f5de52d2ac814c719a2ae">DataHandler::dbStatus()</a>, <a class="el" href="classHDataHandler.html#a79db5a49cddb4f36d0aa4bc1837f762a">readQuery()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
 </div>
 </div>
@@ -533,6 +673,47 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="adf10aa963f4e0d037d0e96c0d1c16487"></a><!-- doxytag: member="HDataHandler::getNode" ref="adf10aa963f4e0d037d0e96c0d1c16487" args="($field, $value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::getNode </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get the record for a single node </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>Name of the field on which the value should be matched, must be a primary key or unique indexed field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Value of the field to match </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Array with all fields for this node, or false on errors </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="classHDataHandler.html#a79db5a49cddb4f36d0aa4bc1837f762a">readQuery()</a>.</p>
+
+<p>Referenced by <a class="el" href="classHDataHandler.html#a40771d812447d7e1bbac1f1b0ecf0b4b">_getNewLeft()</a>, <a class="el" href="classHDataHandler.html#a2c97b22e524ce609361c429278a409d8">addParent()</a>, <a class="el" href="classHDataHandler.html#a8526c24a0174845ee2ba40b3590a59c0">moveNode()</a>, <a class="el" href="classHDataHandler.html#a68d8b9169dadd846a1b4a4355c77a87c">removeNode()</a>, and <a class="el" href="classHDataHandler.html#ae91a216dc0d71fbdf6a4d6744cfa7969">removeTree()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a84158b1cbae1cb825d0ded360c1e142f"></a><!-- doxytag: member="HDataHandler::getNodeDepth" ref="a84158b1cbae1cb825d0ded360c1e142f" args="($field, $value=null)" -->
 <div class="memitem">
 <div class="memproto">
@@ -560,15 +741,64 @@ Private Attributes</h2></td></tr>
 <p>Get the depth of all nodes or a single node. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>The fieldname of which value that will be returned with the depth </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>The fieldname of which value that will be returned with the depth, must be a primary key or unique indexed field </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>An optional value to match if only the depth of 1 field is requested </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Array with all matched records holding the fieldvalue and the depth </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Array with all matched records including the depth </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="classHDataHandler.html#a79db5a49cddb4f36d0aa4bc1837f762a">readQuery()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aedab806f5303459bd57d2a2b6c0227b6"></a><!-- doxytag: member="HDataHandler::getNodesByDepth" ref="aedab806f5303459bd57d2a2b6c0227b6" args="($depth, $field, $value=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::getNodesByDepth </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>depth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>value</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get all nodes from the given depth, optionally from a given tree </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$depth</td><td>Depth level, where 0 is the toplevel </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>Fieldname of a unique indexed field used to identify records. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Value for fieldname identifying the top node for a tree. When this is null (default), all nodes with the same depth will be returned. If depth eqs 0, the value is ignored. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>Crosslinks, when enabled, are not followed in this method </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Array with all matched records including the given depth (required for the match) </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="classHDataHandler.html#a79db5a49cddb4f36d0aa4bc1837f762a">readQuery()</a>.</p>
+
+<p>Referenced by <a class="el" href="classHDataHandler.html#a40771d812447d7e1bbac1f1b0ecf0b4b">_getNewLeft()</a>.</p>
 
 </div>
 </div>
@@ -599,7 +829,7 @@ Private Attributes</h2></td></tr>
 <p>Get the complete path of ancestors for a given node </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>Name of the field on which the field should be matched </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>Name of the field on which the field should be matched, must be a primary key or unique indexed field </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Value of the field to match </td></tr>
   </table>
   </dd>
@@ -638,7 +868,7 @@ Private Attributes</h2></td></tr>
 <p>Get the complete path of offspring for a given node </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>Name of the field on which the field should be matched </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>Name of the field on which the field should be matched, must be a primary key or unique indexed field </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Value of the field to match </td></tr>
   </table>
   </dd>
@@ -742,6 +972,105 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="abbff85e96fd88c6eb57cb9fb47d1a7c8"></a><!-- doxytag: member="HDataHandler::insertNode" ref="abbff85e96fd88c6eb57cb9fb47d1a7c8" args="(array $data, array $parent, $position=&#45;1)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::insertNode </td>
+          <td>(</td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>position</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Insert a new node </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$data</td><td>Indexed array with the data, in the format (field =&gt; value, ...) where all table fields must be provided that are not allowed to be null. The fields for left and right will be ignored, if the primary key is an auto increment, this must not be given in the array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$parent</td><td>Parent under which the new node will be added. This must be an indexed array with the keys 'field' and 'value' identifying the parent node, where field is the name of a unique indexed tablefield and value the value for the requested parent. To insert a new node at toplevel, leave out the value, but 'field' is always required! </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$position</td><td>Position at which the new node will be inserted, where '0' results as an insert as the leftmost childnode, and any negative value (default) or a value greater than the current number of children will result in an insert as the rightmost child. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on errors </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="classHDataHandler.html#a40771d812447d7e1bbac1f1b0ecf0b4b">_getNewLeft()</a>, and <a class="el" href="classHDataHandler.html#ab1ac8ad41a1402e725ac4a759f42eb3c">writeQuery()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8526c24a0174845ee2ba40b3590a59c0"></a><!-- doxytag: member="HDataHandler::moveNode" ref="a8526c24a0174845ee2ba40b3590a59c0" args="($field, $value, array $newParent, $position=&#45;1)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::moveNode </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>newParent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>position</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">unknown_type</td><td class="paramname">$field</td><td></td></tr>
+    <tr><td class="paramtype">unknown_type</td><td class="paramname">$value</td><td></td></tr>
+    <tr><td class="paramtype">array</td><td class="paramname">$newParent</td><td></td></tr>
+    <tr><td class="paramtype">unknown_type</td><td class="paramname">$position</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>To keep a complete tree together while being moved, the left anf right values are temporarily set to a negative value. Therefore, this method will not work when the left and right values are defined as UNSIGNED! </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd></dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="classHDataHandler.html#a40771d812447d7e1bbac1f1b0ecf0b4b">_getNewLeft()</a>, <a class="el" href="classHDataHandler.html#adf10aa963f4e0d037d0e96c0d1c16487">getNode()</a>, <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>, and <a class="el" href="classHDataHandler.html#ab1ac8ad41a1402e725ac4a759f42eb3c">writeQuery()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="af3e7a17194e97300d499e9178f4913cb"></a><!-- doxytag: member="HDataHandler::prepare" ref="af3e7a17194e97300d499e9178f4913cb" args="($type=DATA_READ)" -->
 <div class="memitem">
 <div class="memproto">
@@ -813,7 +1142,86 @@ Private Attributes</h2></td></tr>
 
 <p>References <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
-<p>Referenced by <a class="el" href="classHDataHandler.html#a1c0fd19bb5ec55ba6dd39f8e35cb18f9">getDirectChildren()</a>, <a class="el" href="classHDataHandler.html#ad3e951acc4e57ea1f074e6d873197325">getFullOffspring()</a>, <a class="el" href="classHDataHandler.html#a307f718becb790b68fe4eec90cf88489">getLeafNodes()</a>, <a class="el" href="classHDataHandler.html#a84158b1cbae1cb825d0ded360c1e142f">getNodeDepth()</a>, <a class="el" href="classHDataHandler.html#afe911eabb98cf073d9103fb3c75580e7">getPathByChild()</a>, and <a class="el" href="classHDataHandler.html#a09a223084837031e2d22a004f31606b2">getPathByParent()</a>.</p>
+<p>Referenced by <a class="el" href="classHDataHandler.html#a489af96561085e83caf736906338da76">getDirectChildren()</a>, <a class="el" href="classHDataHandler.html#a32c39327409934716578182b5196ed81">getFullOffspring()</a>, <a class="el" href="classHDataHandler.html#a307f718becb790b68fe4eec90cf88489">getLeafNodes()</a>, <a class="el" href="classHDataHandler.html#adf10aa963f4e0d037d0e96c0d1c16487">getNode()</a>, <a class="el" href="classHDataHandler.html#a84158b1cbae1cb825d0ded360c1e142f">getNodeDepth()</a>, <a class="el" href="classHDataHandler.html#aedab806f5303459bd57d2a2b6c0227b6">getNodesByDepth()</a>, <a class="el" href="classHDataHandler.html#afe911eabb98cf073d9103fb3c75580e7">getPathByChild()</a>, and <a class="el" href="classHDataHandler.html#a09a223084837031e2d22a004f31606b2">getPathByParent()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a68d8b9169dadd846a1b4a4355c77a87c"></a><!-- doxytag: member="HDataHandler::removeNode" ref="a68d8b9169dadd846a1b4a4355c77a87c" args="($field, $value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::removeNode </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Delete a single node from the table. If the node has children, they will be added to the deleted nodes parent (so if the deleted node is a toplevel node, the children will be toplevel). All exising cross references will be removed (nullified). </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>Name of the field on which the value should be matched, must be a primary key or unique indexed field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Value of the field to match </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="classHDataHandler.html#adf10aa963f4e0d037d0e96c0d1c16487">getNode()</a>, and <a class="el" href="classHDataHandler.html#ab1ac8ad41a1402e725ac4a759f42eb3c">writeQuery()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae91a216dc0d71fbdf6a4d6744cfa7969"></a><!-- doxytag: member="HDataHandler::removeTree" ref="ae91a216dc0d71fbdf6a4d6744cfa7969" args="($field, $value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::removeTree </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Delete a complete tree, removeing all cross references to from outside the tree to any of the nodes being deleted. All exising cross references will be removed (nullified). </p>
+<dl class="warning"><dt><b>Warning:</b></dt><dd>This deletes the given node and all values under it! Use with care! </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$field</td><td>Name of the field on which the value should be matched, must be a primary key or unique indexed field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Value of the field identifying the toplevel of the tree </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="classHDataHandler.html#adf10aa963f4e0d037d0e96c0d1c16487">getNode()</a>, and <a class="el" href="classHDataHandler.html#ab1ac8ad41a1402e725ac4a759f42eb3c">writeQuery()</a>.</p>
 
 </div>
 </div>
@@ -1187,6 +1595,31 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aab4fd96d30373fbae7d87a1643ac31ac"></a><!-- doxytag: member="HDataHandler::setPrimaryKey" ref="aab4fd96d30373fbae7d87a1643ac31ac" args="($fieldname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::setPrimaryKey </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>fieldname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Set the name of the primary key field. This is required for crosslinks </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$fieldname</td><td>Name of the field </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="aec8cb1c540a4556d08c777ff2dc656e6"></a><!-- doxytag: member="HDataHandler::setRight" ref="aec8cb1c540a4556d08c777ff2dc656e6" args="($fieldname)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1248,7 +1681,7 @@ Private Attributes</h2></td></tr>
 
 <p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, <a class="el" href="class__OWL.html#aaf448f6bc8a90e20c09e9e2b8fe46eb5">_OWL::$status</a>, <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, <a class="el" href="classRegister.html#ae1e8ad7a7509a80bc008861282762c89">Register::getCode()</a>, <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">_OWL::reset()</a>, and <a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">_OWL::signal()</a>.</p>
 
-<p>Referenced by <a class="el" href="classDbHandler.html#ada20e62b915bc87a1de28389a2ee81e1">DbHandler::__clone()</a>, <a class="el" href="classContainer.html#a799507f94eb27d074923dff88d419235">Container::__construct()</a>, <a class="el" href="classSocketHandler.html#a967be81cde9617867d2fa1a5fa39a4e9">SocketHandler::__construct()</a>, <a class="el" href="classSchemeHandler.html#ae528fde31fe73647c614ef6f957c4caf">SchemeHandler::__construct()</a>, <a class="el" href="classImageHandler.html#aa61dc81d4cf98eed31b32e2197018309">ImageHandler::__construct()</a>, <a class="el" href="classFormHandler.html#a1ef7ad4fe143dd8339c8ab66423a1934">FormHandler::__construct()</a>, <a class="el" href="classFileHandler.html#a8d75c8ea0c532acdeae0a0a4efa3704a">FileHandler::__construct()</a>, <a class="el" href="classDbHandler.html#ae54e9d4643f41a9296167086f6a769fc">DbHandler::__construct()</a>, <a class="el" href="classDataHandler.html#a4fd274c45bf06283b05e757b7c081439">DataHandler::__construct()</a>, <a class="el" href="classSession.html#a36373ba15d6c8f932aeea02d7320d7c8">Session::__construct()</a>, <a class="el" href="classMail.html#aeed5d07076a358f294f84769915d5029">Mail::__construct()</a>, <a class="el" href="classBaseElement.html#a47ba10cdad3babe40e7644cf17e68e5c">BaseElement::_getContent()</a>, <a class="el" href="classMail.html#afe6761fa82dfc7dc30c7f159cf870845">Mail::addBcc()</a>, <a class="el" href="classMail.html#a0016f8c2f77b5ebe84a8559d959ca2e3">Mail::addCc()</a>, <a class="el" href="classForm.html#a880197a858a70581146d6f0d275eff02">Form::addField()</a>, <a class="el" href="classFormFieldRadioPlugin.html#a4f4a3e0975f18c30339598d8bc2143d4">FormFieldRadioPlugin::addOption()</a>, <a class="el" href="classMail.html#a983d3b2e60fd8c40603b814941523cea">Mail::addTo()</a>, <a class="el" href="classBaseElement.html#abd48eef64ca4f419f26d66a0c0419908">BaseElement::addToContent()</a>, <a class="el" href="classDbHandler.html#ac3a8e0bfe2491e17bc527715505f90a7">DbHandler::alt()</a>, <a class="el" href="classSchemeHandler.html#a4072b1c3c04e4915cbd0e8926a8efb7a">SchemeHandler::alterScheme()</a>, <a class="el" href="classFileHandler.html#aa48e7c3b67346e29b194d2f0ac5dd1f8">FileHandler::close()</a>, <a class="el" href="classDbHandler.html#ae31ec569a60f730fb1de2ac2b1265338">DbHandler::commitTransaction()</a>, <a class="el" href="classDispatcher.html#a8a974bbbb30be7cda74f9929972fd2f6">Dispatcher::composeDispatcher()</a>, <a class="el" href="classUser.html#acbcc13f994e50ee3f562e9949f6d0638">User::confirm()</a>, <a class="el" href="classSocketHandler.html#aeb9e20774923ae8f160aed9ec4239046">SocketHandler::connect()</a>, <a class="el" href="classDbHandler.html#a9cf52ba614981a0082063d57290d3b7c">DbHandler::connect()</a>, <a class="el" href="classDbHandler.html#ac9e93cb0ab57f03b2719eebd0c0ee2ef">DbHandler::create()</a>, <a class="el" href="classSchemeHandler.html#a49bc2a5dd43188f83824aafd9fbff9eb">SchemeHandler::createScheme()</a>, <a class="el" href="classSchemeHandler.html#abc00b9ccfdf0681a3e5d333ad11db0e1">SchemeHandler::defineIndex()</a>, <a class="el" href="classSchemeHandler.html#acadaf57e5f374f300501153056f227c5">SchemeHandler::defineScheme()</a>, <a class="el" href="classSocketHandler.html#ad347ae90bd4fb9a2a2174b06c45eaac4">SocketHandler::disconnect()</a>, <a class="el" href="classDispatcher.html#a55f3a6e89f797e2986d32166cfa49486">Dispatcher::dispatch()</a>, <a class="el" href="classFormHandler.html#a4dbeaa44aa51a795b16379ae703d893a">FormHandler::get()</a>, <a class="el" href="classDataHandler.html#a7dcf85dac419f51ad4daa166c928a399">DataHandler::get()</a>, <a class="el" href="classSchemeHandler.html#abbf0ce7a23293498c32227e2554ce849">SchemeHandler::getTableColumns()</a>, <a class="el" href="classSchemeHandler.html#af40c242f4bddee235dbce50a7535b094">SchemeHandler::getTableIndexes()</a>, <a class="el" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">_OWL::init()</a>, <a class="el" href="classDocument.html#a9e088502436fe985b501cb5650ab022d">Document::loadScript()</a>, <a class="el" href="classDocument.html#a90810fa2ea28179748a865531c7fc263">Document::loadStyle()</a>, <a class="el" href="classDbHandler.html#a27c45a702ae53310ccc159a88bc4234f">DbHandler::lockTable()</a>, <a class="el" href="classUser.html#a2c4fae5935ebf84e787126795bf42988">User::login()</a>, <a class="el" href="classFileHandler.html#a2a650b033c4eb1f98ba47fb05ce7b454">FileHandler::open()</a>, <a class="el" href="classDbHandler.html#afccbfc69ead84f8445116e050d1cfc2d">DbHandler::open()</a>, <a class="el" href="classLogHandler.html#aae86161ab4886bf901ce22773b32e193">LogHandler::openLogfile()</a>, <a class="el" href="classDataHandler.html#af3e7a17194e97300d499e9178f4913cb">DataHandler::prepare()</a>, <a class="el" href="classDbHandler.html#a4dce3c43b43a82a1ac0e3ba2c83309ee">DbHandler::prepareDelete()</a>, <a class="el" href="classDbHandler.html#aab87f0d23357d708c7f327e3875366ad">DbHandler::prepareField()</a>, <a class="el" href="classDbHandler.html#a50f426084a888714b72bedb42de7ebc4">DbHandler::prepareInsert()</a>, <a class="el" href="classDbHandler.html#a2f749a426fa9dbfe1b58a7d0d4263d1f">DbHandler::prepareRead()</a>, <a class="el" href="classDbHandler.html#abe6db4c3099ca5cfcfb75e9eb34ba2af">DbHandler::prepareUpdate()</a>, <a class="el" href="classSocketHandler.html#a38b7e3dac396947963d79d1e0ca4f16c">SocketHandler::read()</a>, <a class="el" href="classDbHandler.html#a5ebfdc2acfcb0e9cbc2861fc55c7127c">DbHandler::read()</a>, <a class="el" href="classFileHandler.html#a2140ee43c68f088396b4573a56e3007c">FileHandler::readLine()</a>, <a class="el" href="classHDataHandler.html#a79db5a49cddb4f36d0aa4bc1837f762a">readQuery()</a>, <a class="el" href="classUser.html#a4cbb353323ec7eca9521da68fc2e34cf">User::readUserdata()</a>, <a class="el" href="classUser.html#a0454a21e40da25584033f99251540ab3">User::register()</a>, <a class="el" href="classDispatcher.html#ab71f53de33f512c64417399c75078062">Dispatcher::registerArgument()</a>, <a class="el" href="classDispatcher.html#a911773d612d6b4df0f206a30a32292e2">Dispatcher::registerCallback()</a>, <a class="el" href="class__OWL.html#a93de01a9bbbc3f228e1a62a0740e90f0">_OWL::restoreStatus()</a>, <a class="el" href="classDbHandler.html#ad62c686d350ee350849ea42687492a48">DbHandler::rollbackTransaction()</a>, <a class="el" href="classSchemeHandler.html#a1e843dc411d175818c7b2ab5374f021e">SchemeHandler::scheme()</a>, <a class="el" href="classMail.html#a6520941b529c223c1b59ec7544f7f7d6">Mail::send()</a>, <a class="el" href="classFormHandler.html#a5fcc8aef0de87e31ceee65ad1eadb96c">FormHandler::set()</a>, <a class="el" href="classBaseElement.html#a7d8ddd64ceb3401a7cb84548656b3709">BaseElement::setAttributes()</a>, <a class="el" href="classBaseElement.html#a164a9c6e4ee68afa0ad343942ba54d28">BaseElement::setContent()</a>, <a class="el" href="classForm.html#a2b1f9bb23c4da0558002b62f60b55078">Form::setEncoding()</a>, <a class="el" href="classDocument.html#afca18e2b74a78d2954303a96ffa3d63d">Document::setFavicon()</a>, <a class="el" href="classForm.html#a83cd5bed7649ecfe202dd97a8129f6f8">Form::setFieldAttributes()</a>, <a class="el" href="classMail.html#a452d8c608c7b7e199e13ba50ea768ac7">Mail::setFrom()</a>, <a class="el" href="classDataHandler.html#aeb7dd4ddfbd17b1b33220cadd03df0ce">DataHandler::setJoin()</a>, <a class="el" href="classDataHandler.html#a5f7880312f274837ec9f970e745a6994">DataHandler::setKey()</a>, <a class="el" href="classFormFieldTextPlugin.html#af6515309ad2c85640d0d15eebaf19a73">FormFieldTextPlugin::setMaxsize()</a>, <a class="el" href="classDocument.html#ace35c2c3f3b17e07468c740eaed49ecb">Document::setMeta()</a>, <a class="el" href="classForm.html#a2dc6461afb09effeefe444847ad9b562">Form::setMethod()</a>, <a class="el" href="classFormFieldRadioPlugin.html#a164e0d24210ebccb5eb4ce69a934d9c5">FormFieldRadioPlugin::setSelected()</a>, <a class="el" href="classMail.html#ac85a300a49c25388dd18b52d811b07cc">Mail::setSender()</a>, <a class="el" href="classFormFieldTextPlugin.html#af3867f1bd1b31695e66f73b8afadf7f6">FormFieldTextPlugin::setSize()</a>, <a class="el" href="classFormFieldSelectPlugin.html#ac356a73d7b186f01b2c48136fc74847c">FormFieldSelectPlugin::setSize()</a>, <a class="el" href="classFormFieldSelectPlugin.html#a376e5cfa2c8cbba192a547a09b5cd429">FormFieldSelectPlugin::setValue()</a>, <a class="el" href="classForm.html#a29e01263557e33fab02ee5c3aaa0b3f5">Form::showField()</a>, <a class="el" href="classDbHandler.html#a19f0cb54f362ab3f919cfc2b940800c0">DbHandler::startTransaction()</a>, <a class="el" href="classSchemeHandler.html#a3ec1c9bb94164aa23faa06dea8fa187e">SchemeHandler::tableDescription()</a>, <a class="el" href="classDbHandler.html#a09617f79a9c3b699f0237cd682a97d96">DbHandler::unlockTable()</a>, <a class="el" href="classSchemeHandler.html#addc471d7e188ad7131f69fd7adbd268b">SchemeHandler::validateScheme()</a>, <a class="el" href="classSocketHandler.html#acee1131587cadec65ef710e2c500aebd">SocketHandler::write()</a>, and <a class="el" href="classDbHandler.html#ac02a117c76d5d20ec950fcd5aae9cf8d">DbHandler::write()</a>.</p>
+<p>Referenced by <a class="el" href="classDbHandler.html#ada20e62b915bc87a1de28389a2ee81e1">DbHandler::__clone()</a>, <a class="el" href="classContainer.html#a799507f94eb27d074923dff88d419235">Container::__construct()</a>, <a class="el" href="classSocketHandler.html#a967be81cde9617867d2fa1a5fa39a4e9">SocketHandler::__construct()</a>, <a class="el" href="classSchemeHandler.html#ae528fde31fe73647c614ef6f957c4caf">SchemeHandler::__construct()</a>, <a class="el" href="classImageHandler.html#aa61dc81d4cf98eed31b32e2197018309">ImageHandler::__construct()</a>, <a class="el" href="classFormHandler.html#a1ef7ad4fe143dd8339c8ab66423a1934">FormHandler::__construct()</a>, <a class="el" href="classFileHandler.html#a8d75c8ea0c532acdeae0a0a4efa3704a">FileHandler::__construct()</a>, <a class="el" href="classDbHandler.html#ae54e9d4643f41a9296167086f6a769fc">DbHandler::__construct()</a>, <a class="el" href="classDataHandler.html#a4fd274c45bf06283b05e757b7c081439">DataHandler::__construct()</a>, <a class="el" href="classSession.html#a36373ba15d6c8f932aeea02d7320d7c8">Session::__construct()</a>, <a class="el" href="classMail.html#aeed5d07076a358f294f84769915d5029">Mail::__construct()</a>, <a class="el" href="classBaseElement.html#a47ba10cdad3babe40e7644cf17e68e5c">BaseElement::_getContent()</a>, <a class="el" href="classHDataHandler.html#a40771d812447d7e1bbac1f1b0ecf0b4b">_getNewLeft()</a>, <a class="el" href="classMail.html#afe6761fa82dfc7dc30c7f159cf870845">Mail::addBcc()</a>, <a class="el" href="classMail.html#a0016f8c2f77b5ebe84a8559d959ca2e3">Mail::addCc()</a>, <a class="el" href="classForm.html#a880197a858a70581146d6f0d275eff02">Form::addField()</a>, <a class="el" href="classFormFieldRadioPlugin.html#a4f4a3e0975f18c30339598d8bc2143d4">FormFieldRadioPlugin::addOption()</a>, <a class="el" href="classHDataHandler.html#a2c97b22e524ce609361c429278a409d8">addParent()</a>, <a class="el" href="classMail.html#a983d3b2e60fd8c40603b814941523cea">Mail::addTo()</a>, <a class="el" href="classBaseElement.html#abd48eef64ca4f419f26d66a0c0419908">BaseElement::addToContent()</a>, <a class="el" href="classDbHandler.html#ac3a8e0bfe2491e17bc527715505f90a7">DbHandler::alt()</a>, <a class="el" href="classSchemeHandler.html#a4072b1c3c04e4915cbd0e8926a8efb7a">SchemeHandler::alterScheme()</a>, <a class="el" href="classFileHandler.html#aa48e7c3b67346e29b194d2f0ac5dd1f8">FileHandler::close()</a>, <a class="el" href="classDbHandler.html#ae31ec569a60f730fb1de2ac2b1265338">DbHandler::commitTransaction()</a>, <a class="el" href="classDispatcher.html#a8a974bbbb30be7cda74f9929972fd2f6">Dispatcher::composeDispatcher()</a>, <a class="el" href="classUser.html#acbcc13f994e50ee3f562e9949f6d0638">User::confirm()</a>, <a class="el" href="classSocketHandler.html#aeb9e20774923ae8f160aed9ec4239046">SocketHandler::connect()</a>, <a class="el" href="classDbHandler.html#a9cf52ba614981a0082063d57290d3b7c">DbHandler::connect()</a>, <a class="el" href="classDbHandler.html#ac9e93cb0ab57f03b2719eebd0c0ee2ef">DbHandler::create()</a>, <a class="el" href="classSchemeHandler.html#a49bc2a5dd43188f83824aafd9fbff9eb">SchemeHandler::createScheme()</a>, <a class="el" href="classSchemeHandler.html#abc00b9ccfdf0681a3e5d333ad11db0e1">SchemeHandler::defineIndex()</a>, <a class="el" href="classSchemeHandler.html#acadaf57e5f374f300501153056f227c5">SchemeHandler::defineScheme()</a>, <a class="el" href="classSocketHandler.html#ad347ae90bd4fb9a2a2174b06c45eaac4">SocketHandler::disconnect()</a>, <a class="el" href="classDispatcher.html#a55f3a6e89f797e2986d32166cfa49486">Dispatcher::dispatch()</a>, <a class="el" href="classHDataHandler.html#afc9f75f48ab94ce77194e376f37c9bf4">enableCrossLink()</a>, <a class="el" href="classFormHandler.html#a4dbeaa44aa51a795b16379ae703d893a">FormHandler::get()</a>, <a class="el" href="classDataHandler.html#a7dcf85dac419f51ad4daa166c928a399">DataHandler::get()</a>, <a class="el" href="classHDataHandler.html#a489af96561085e83caf736906338da76">getDirectChildren()</a>, <a class="el" href="classHDataHandler.html#a32c39327409934716578182b5196ed81">getFullOffspring()</a>, <a class="el" href="classSchemeHandler.html#abbf0ce7a23293498c32227e2554ce849">SchemeHandler::getTableColumns()</a>, <a class="el" href="classSchemeHandler.html#af40c242f4bddee235dbce50a7535b094">SchemeHandler::getTableIndexes()</a>, <a class="el" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">_OWL::init()</a>, <a class="el" href="classDocument.html#a9e088502436fe985b501cb5650ab022d">Document::loadScript()</a>, <a class="el" href="classDocument.html#a90810fa2ea28179748a865531c7fc263">Document::loadStyle()</a>, <a class="el" href="classDbHandler.html#a27c45a702ae53310ccc159a88bc4234f">DbHandler::lockTable()</a>, <a class="el" href="classUser.html#a2c4fae5935ebf84e787126795bf42988">User::login()</a>, <a class="el" href="classHDataHandler.html#a8526c24a0174845ee2ba40b3590a59c0">moveNode()</a>, <a class="el" href="classFileHandler.html#a2a650b033c4eb1f98ba47fb05ce7b454">FileHandler::open()</a>, <a class="el" href="classDbHandler.html#afccbfc69ead84f8445116e050d1cfc2d">DbHandler::open()</a>, <a class="el" href="classLogHandler.html#aae86161ab4886bf901ce22773b32e193">LogHandler::openLogfile()</a>, <a class="el" href="classDataHandler.html#af3e7a17194e97300d499e9178f4913cb">DataHandler::prepare()</a>, <a class="el" href="classDbHandler.html#a4dce3c43b43a82a1ac0e3ba2c83309ee">DbHandler::prepareDelete()</a>, <a class="el" href="classDbHandler.html#aab87f0d23357d708c7f327e3875366ad">DbHandler::prepareField()</a>, <a class="el" href="classDbHandler.html#a50f426084a888714b72bedb42de7ebc4">DbHandler::prepareInsert()</a>, <a class="el" href="classDbHandler.html#a2f749a426fa9dbfe1b58a7d0d4263d1f">DbHandler::prepareRead()</a>, <a class="el" href="classDbHandler.html#abe6db4c3099ca5cfcfb75e9eb34ba2af">DbHandler::prepareUpdate()</a>, <a class="el" href="classSocketHandler.html#a38b7e3dac396947963d79d1e0ca4f16c">SocketHandler::read()</a>, <a class="el" href="classDbHandler.html#a5ebfdc2acfcb0e9cbc2861fc55c7127c">DbHandler::read()</a>, <a class="el" href="classFileHandler.html#a2140ee43c68f088396b4573a56e3007c">FileHandler::readLine()</a>, <a class="el" href="classHDataHandler.html#a79db5a49cddb4f36d0aa4bc1837f762a">readQuery()</a>, <a class="el" href="classUser.html#a4cbb353323ec7eca9521da68fc2e34cf">User::readUserdata()</a>, <a class="el" href="classUser.html#a0454a21e40da25584033f99251540ab3">User::register()</a>, <a class="el" href="classDispatcher.html#ab71f53de33f512c64417399c75078062">Dispatcher::registerArgument()</a>, <a class="el" href="classDispatcher.html#a911773d612d6b4df0f206a30a32292e2">Dispatcher::registerCallback()</a>, <a class="el" href="class__OWL.html#a93de01a9bbbc3f228e1a62a0740e90f0">_OWL::restoreStatus()</a>, <a class="el" href="classDbHandler.html#ad62c686d350ee350849ea42687492a48">DbHandler::rollbackTransaction()</a>, <a class="el" href="classSchemeHandler.html#a1e843dc411d175818c7b2ab5374f021e">SchemeHandler::scheme()</a>, <a class="el" href="classMail.html#a6520941b529c223c1b59ec7544f7f7d6">Mail::send()</a>, <a class="el" href="classFormHandler.html#a5fcc8aef0de87e31ceee65ad1eadb96c">FormHandler::set()</a>, <a class="el" href="classBaseElement.html#a7d8ddd64ceb3401a7cb84548656b3709">BaseElement::setAttributes()</a>, <a class="el" href="classBaseElement.html#a164a9c6e4ee68afa0ad343942ba54d28">BaseElement::setContent()</a>, <a class="el" href="classForm.html#a2b1f9bb23c4da0558002b62f60b55078">Form::setEncoding()</a>, <a class="el" href="classDocument.html#afca18e2b74a78d2954303a96ffa3d63d">Document::setFavicon()</a>, <a class="el" href="classForm.html#a83cd5bed7649ecfe202dd97a8129f6f8">Form::setFieldAttributes()</a>, <a class="el" href="classMail.html#a452d8c608c7b7e199e13ba50ea768ac7">Mail::setFrom()</a>, <a class="el" href="classDataHandler.html#aeb7dd4ddfbd17b1b33220cadd03df0ce">DataHandler::setJoin()</a>, <a class="el" href="classDataHandler.html#a5f7880312f274837ec9f970e745a6994">DataHandler::setKey()</a>, <a class="el" href="classFormFieldTextPlugin.html#af6515309ad2c85640d0d15eebaf19a73">FormFieldTextPlugin::setMaxsize()</a>, <a class="el" href="classDocument.html#ace35c2c3f3b17e07468c740eaed49ecb">Document::setMeta()</a>, <a class="el" href="classForm.html#a2dc6461afb09effeefe444847ad9b562">Form::setMethod()</a>, <a class="el" href="classFormFieldRadioPlugin.html#a164e0d24210ebccb5eb4ce69a934d9c5">FormFieldRadioPlugin::setSelected()</a>, <a class="el" href="classMail.html#ac85a300a49c25388dd18b52d811b07cc">Mail::setSender()</a>, <a class="el" href="classFormFieldTextPlugin.html#af3867f1bd1b31695e66f73b8afadf7f6">FormFieldTextPlugin::setSize()</a>, <a class="el" href="classFormFieldSelectPlugin.html#ac356a73d7b186f01b2c48136fc74847c">FormFieldSelectPlugin::setSize()</a>, <a class="el" href="classFormFieldSelectPlugin.html#a376e5cfa2c8cbba192a547a09b5cd429">FormFieldSelectPlugin::setValue()</a>, <a class="el" href="classForm.html#a29e01263557e33fab02ee5c3aaa0b3f5">Form::showField()</a>, <a class="el" href="classDbHandler.html#a19f0cb54f362ab3f919cfc2b940800c0">DbHandler::startTransaction()</a>, <a class="el" href="classSchemeHandler.html#a3ec1c9bb94164aa23faa06dea8fa187e">SchemeHandler::tableDescription()</a>, <a class="el" href="classDbHandler.html#a09617f79a9c3b699f0237cd682a97d96">DbHandler::unlockTable()</a>, <a class="el" href="classSchemeHandler.html#addc471d7e188ad7131f69fd7adbd268b">SchemeHandler::validateScheme()</a>, <a class="el" href="classSocketHandler.html#acee1131587cadec65ef710e2c500aebd">SocketHandler::write()</a>, <a class="el" href="classDbHandler.html#ac02a117c76d5d20ec950fcd5aae9cf8d">DbHandler::write()</a>, and <a class="el" href="classHDataHandler.html#ab1ac8ad41a1402e725ac4a759f42eb3c">writeQuery()</a>.</p>
 
 </div>
 </div>
@@ -1398,6 +1831,47 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ab1ac8ad41a1402e725ac4a759f42eb3c"></a><!-- doxytag: member="HDataHandler::writeQuery" ref="ab1ac8ad41a1402e725ac4a759f42eb3c" args="($query, $line)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::writeQuery </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>query</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Internal helper method to execute a write query </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$query</td><td>Query to execute </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$line</td><td>Line number from which this method is called </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Number of lines written, false on errors </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
+
+<p>Referenced by <a class="el" href="classHDataHandler.html#a2c97b22e524ce609361c429278a409d8">addParent()</a>, <a class="el" href="classHDataHandler.html#abbff85e96fd88c6eb57cb9fb47d1a7c8">insertNode()</a>, <a class="el" href="classHDataHandler.html#a8526c24a0174845ee2ba40b3590a59c0">moveNode()</a>, <a class="el" href="classHDataHandler.html#a68d8b9169dadd846a1b4a4355c77a87c">removeNode()</a>, and <a class="el" href="classHDataHandler.html#ae91a216dc0d71fbdf6a4d6744cfa7969">removeTree()</a>.</p>
+
+</div>
+</div>
 <hr/><h2>Member Data Documentation</h2>
 <a class="anchor" id="a809bc5831b9d104f88f16f27dde55c73"></a><!-- doxytag: member="HDataHandler::$left" ref="a809bc5831b9d104f88f16f27dde55c73" args="" -->
 <div class="memitem">
@@ -1469,6 +1943,36 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a62035bf09b58d2fd9da069567f54d2a5"></a><!-- doxytag: member="HDataHandler::$xlink" ref="a62035bf09b58d2fd9da069567f54d2a5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::$xlink<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Name of the crosslink field to allow multiple parents </p>
+
+<p>Referenced by <a class="el" href="classHDataHandler.html#a489af96561085e83caf736906338da76">getDirectChildren()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab6b77e535c310ce86efc93197e6fe6da"></a><!-- doxytag: member="HDataHandler::$xlinkID" ref="ab6b77e535c310ce86efc93197e6fe6da" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HDataHandler::$xlinkID<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Name if the primary key field, required for closslinks </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/oscar/projects/owl-php/src/kernel/so/<a class="el" href="class_8datahandlerh_8php.html">class.datahandlerh.php</a></li>
 </ul>
@@ -1492,7 +1996,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Fri May 13 2011 18:33:03 for OWL-PHP by
+    <li class="footer">Generated on Mon May 16 2011 19:15:14 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

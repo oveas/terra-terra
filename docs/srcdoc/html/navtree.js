@@ -46,6 +46,13 @@ var NAVTREE =
           [ "DATA_RESET_STATUS", "group__DATA__ResetFlags.html#ga9266811d651cb3ff8c5fdf00111e677b", null ]
         ] ]
       ] ],
+      [ "Follow crosslinks", "group__HDATA__FollowXLink.html", [
+        [ "Enumerations", "group__HDATA__FollowXLink.html", [
+          [ "HDATA_XLINK_FOLLOW_NO", "group__HDATA__FollowXLink.html#ga621a720020ad830bc44e142b282e0e09", null ],
+          [ "HDATA_XLINK_FOLLOW_ONCE", "group__HDATA__FollowXLink.html#gab45af51ca6c938ae4d0e419121e79d8e", null ],
+          [ "HDATA_XLINK_FOLLOW_UNLIMITED", "group__HDATA__FollowXLink.html#ga43ea68a13a3004ff23d10c1e28fb166e", null ]
+        ] ]
+      ] ],
       [ "Return values", "group__DBHANDLE__ReturnFlags.html", [
         [ "Enumerations", "group__DBHANDLE__ReturnFlags.html", [
           [ "DBHANDLE_DATA", "group__DBHANDLE__ReturnFlags.html#gacc5178c2a582eafa4ef488ed3394b725", null ],

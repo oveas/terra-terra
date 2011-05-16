@@ -64,11 +64,15 @@ Inheritance diagram for MySQL:\begin{figure}[H]
 \item 
 {\bf dbUnescapeString} (\$\_\-string)
 \item 
+{\bf isRetryable} (\$\_\-errorCode)
+\item 
 {\bf functionCount} (\$\_\-field, array \$\_\-arguments=array())
 \item 
 {\bf functionMax} (\$\_\-field, array \$\_\-arguments=array())
 \item 
 {\bf functionMin} (\$\_\-field, array \$\_\-arguments=array())
+\item 
+{\bf isRetryable} (\$\_\-errorCode)
 \item 
 {\bf dbTransactionStart} (\&\$\_\-resource, \$\_\-name=null)
 \item 
@@ -595,12 +599,12 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 \index{MySQL@{MySQL}!dbUnescapeString@{dbUnescapeString}}
 \index{dbUnescapeString@{dbUnescapeString}!MySQL@{MySQL}}
-\subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::dbUnescapeString (
+\subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbUnescapeString (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-string}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_a7ac3780695fb0d6e291ee123be7db020}
-Unescape a string fthat is formatted for use in SQL 
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_ac99fd7eba511d8799fcc447006179c72}
+Unescape a string fthat is formatted for use in SQL This method is implemented by class \doxyref{DbDefaults}{p.}{classDbDefaults} 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-string} & The input string in SQL safe format \\
 \hline
@@ -613,12 +617,12 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 \index{MySQL@{MySQL}!dbUnescapeString@{dbUnescapeString}}
 \index{dbUnescapeString@{dbUnescapeString}!MySQL@{MySQL}}
-\subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::dbUnescapeString (
+\subsubsection[{dbUnescapeString}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::dbUnescapeString (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-string}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_ac99fd7eba511d8799fcc447006179c72}
-Unescape a string fthat is formatted for use in SQL This method is implemented by class \doxyref{DbDefaults}{p.}{classDbDefaults} 
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_a7ac3780695fb0d6e291ee123be7db020}
+Unescape a string fthat is formatted for use in SQL 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-string} & The input string in SQL safe format \\
 \hline
@@ -855,6 +859,42 @@ Inplementation of the SQL MIN() function.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Complete SQL function code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{MySQL@{MySQL}!isRetryable@{isRetryable}}
+\index{isRetryable@{isRetryable}!MySQL@{MySQL}}
+\subsubsection[{isRetryable}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::isRetryable (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-errorCode}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_a9cb29749650ea6a3b7a7181a5783f48f}
+Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. Retries can be enabled at driver level, by default retries are never possible. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-errorCode} & The errorcode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{MySQL@{MySQL}!isRetryable@{isRetryable}}
+\index{isRetryable@{isRetryable}!MySQL@{MySQL}}
+\subsubsection[{isRetryable}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::isRetryable (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-errorCode}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_a0faed62206bfa6538e5093dfaa8b9653}
+Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-errorCode} & The errorcode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible 
 \end{DoxyReturn}
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 

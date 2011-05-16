@@ -3,8 +3,8 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.10 2011-05-03 09:21:58 oscar Exp $
-	 * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.exceptionhandler.php,v 1.11 2011-05-16 17:20:17 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
 
@@ -14,6 +14,9 @@
  * \brief Exception handler 
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jul 29, 2008 -- O van Eijk -- Initial version
+ * \todo The oldest code in OWL dates back to 2001; by now PHP4 support is dropped anyway,
+ * so implementing the errorhandling using try/catch would be an improvemt! Especially the class DbHandler in combination with the class DataHandler
+ * should be changed that way.
  */
 class OWLException extends Exception
 {

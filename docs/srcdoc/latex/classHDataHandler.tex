@@ -20,7 +20,13 @@ Inheritance diagram for HDataHandler:\begin{figure}[H]
 \item 
 {\bf setRight} (\$fieldname)
 \item 
+{\bf enableCrossLink} (\$fieldname)
+\item 
+{\bf setPrimaryKey} (\$fieldname)
+\item 
 {\bf getLeafNodes} ()
+\item 
+{\bf getNode} (\$field, \$value)
 \item 
 {\bf getPathByChild} (\$field, \$value)
 \item 
@@ -28,9 +34,21 @@ Inheritance diagram for HDataHandler:\begin{figure}[H]
 \item 
 {\bf getNodeDepth} (\$field, \$value=null)
 \item 
-{\bf getFullOffspring} (\$field, \$value)
+{\bf getFullOffspring} (\$field, \$value, \$follow={\bf HDATA\_\-XLINK\_\-FOLLOW\_\-NO})
 \item 
-{\bf getDirectChildren} (\$field, \$value)
+{\bf getDirectChildren} (\$field, \$value, \$xlink=true)
+\item 
+{\bf getNodesByDepth} (\$depth, \$field, \$value=null)
+\item 
+{\bf insertNode} (array \$data, array \$parent, \$position=-\/1)
+\item 
+{\bf addParent} (array \$node, array \$parent)
+\item 
+{\bf removeNode} (\$field, \$value)
+\item 
+{\bf removeTree} (\$field, \$value)
+\item 
+{\bf moveNode} (\$field, \$value, array \$newParent, \$position=-\/1)
 \item 
 {\bf reset} (\$level={\bf DATA\_\-RESET\_\-PREPARE})
 \item 
@@ -106,6 +124,10 @@ Inheritance diagram for HDataHandler:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 {\bf readQuery} (\$query, \$line)
+\item 
+{\bf \_\-getNewLeft} (array \$parent, \$position=-\/1)
+\item 
+{\bf writeQuery} (\$query, \$line)
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -113,6 +135,10 @@ Inheritance diagram for HDataHandler:\begin{figure}[H]
 {\bf \$left}
 \item 
 {\bf \$right}
+\item 
+{\bf \$xlink}
+\item 
+{\bf \$xlinkID}
 \end{DoxyCompactItemize}
 
 
@@ -154,6 +180,60 @@ References \_\-OWL::init().
 
 
 \subsection{Member Function Documentation}
+\index{HDataHandler@{HDataHandler}!\_\-getNewLeft@{\_\-getNewLeft}}
+\index{\_\-getNewLeft@{\_\-getNewLeft}!HDataHandler@{HDataHandler}}
+\subsubsection[{\_\-getNewLeft}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::\_\-getNewLeft (
+\begin{DoxyParamCaption}
+\item[{array \$}]{parent, }
+\item[{\$}]{position = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classHDataHandler_a40771d812447d7e1bbac1f1b0ecf0b4b}
+Get the new left position for a node being moved or inserted 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$parent} & Parent under which the (new) node will be added. \\
+\hline
+\mbox{\tt in}  & {\em \$position} & Position at which the new node will be inserted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value for the left position 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References getDirectChildren(), getNode(), getNodesByDepth(), and \_\-OWL::setStatus().
+
+
+
+Referenced by insertNode(), and moveNode().
+
+\index{HDataHandler@{HDataHandler}!addParent@{addParent}}
+\index{addParent@{addParent}!HDataHandler@{HDataHandler}}
+\subsubsection[{addParent}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::addParent (
+\begin{DoxyParamCaption}
+\item[{array \$}]{node, }
+\item[{array \$}]{parent}
+\end{DoxyParamCaption}
+)}\label{classHDataHandler_a2c97b22e524ce609361c429278a409d8}
+Add a crosslink so a given node, adding (or overwriting) a second parent. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$node} & Identification if the node to change. This must be an indexed array with the keys 'field' and 'value' identifying the node, where field is the name of a unique indexed tablefield and value the value for the requested node. \\
+\hline
+\mbox{\tt in}  & {\em \$parent} & Identification of the additional parent. This must be an indexed array with the keys 'field' and 'value' identifying the parent node, where field is the name of a unique indexed tablefield and value the value for the requested parent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on errors 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References getNode(), \_\-OWL::setStatus(), and writeQuery().
+
 \index{HDataHandler@{HDataHandler}!check@{check}}
 \index{check@{check}!HDataHandler@{HDataHandler}}
 \subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
@@ -226,6 +306,32 @@ Current status of the database object
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
+
+
+Referenced by getFullOffspring().
+
+\index{HDataHandler@{HDataHandler}!enableCrossLink@{enableCrossLink}}
+\index{enableCrossLink@{enableCrossLink}!HDataHandler@{HDataHandler}}
+\subsubsection[{enableCrossLink}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::enableCrossLink (
+\begin{DoxyParamCaption}
+\item[{\$}]{fieldname}
+\end{DoxyParamCaption}
+)}\label{classHDataHandler_afc9f75f48ab94ce77194e376f37c9bf4}
+Enable crosslinks allowing items in the hierarchy to be reachable via 2 parents 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$fieldname} & Name of the field holding the additional parent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false when the ID field has not been defined yet 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-OWL::setStatus().
+
 \index{HDataHandler@{HDataHandler}!escapeString@{escapeString}}
 \index{escapeString@{escapeString}!HDataHandler@{HDataHandler}}
 \subsubsection[{escapeString}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::escapeString (
@@ -305,41 +411,54 @@ Oscar van Eijk, Oveas Functionality Provider
 \subsubsection[{getDirectChildren}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::getDirectChildren (
 \begin{DoxyParamCaption}
 \item[{\$}]{field, }
-\item[{\$}]{value}
+\item[{\$}]{value, }
+\item[{\$}]{xlink = {\ttfamily true}}
 \end{DoxyParamCaption}
-)}\label{classHDataHandler_a1c0fd19bb5ec55ba6dd39f8e35cb18f9}
+)}\label{classHDataHandler_a489af96561085e83caf736906338da76}
 Retrieve the direct chilren of a given parent 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$field} & Name of the field on which the parent should be matched \\
+\mbox{\tt in}  & {\em \$field} & Name of the field on which the parent should be matched, must be a primary key or unique indexed field \\
 \hline
 \mbox{\tt in}  & {\em \$value} & Value of the parent's field \\
 \hline
+\mbox{\tt in}  & {\em \$xlink} & True (default) of crosslinked childnodes should be included \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Array with all matched records holding the fieldvalue and the depth (always 1, but required for the match) 
+Array with all matched records including the depth (always 1, but required for the match) 
 \end{DoxyReturn}
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
 
 
-References readQuery().
+References \$xlink, readQuery(), and \_\-OWL::setStatus().
+
+
+
+Referenced by \_\-getNewLeft().
 
 \index{HDataHandler@{HDataHandler}!getFullOffspring@{getFullOffspring}}
 \index{getFullOffspring@{getFullOffspring}!HDataHandler@{HDataHandler}}
 \subsubsection[{getFullOffspring}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::getFullOffspring (
 \begin{DoxyParamCaption}
 \item[{\$}]{field, }
-\item[{\$}]{value}
+\item[{\$}]{value, }
+\item[{\$}]{follow = {\ttfamily {\bf HDATA\_\-XLINK\_\-FOLLOW\_\-NO}}}
 \end{DoxyParamCaption}
-)}\label{classHDataHandler_ad3e951acc4e57ea1f074e6d873197325}
+)}\label{classHDataHandler_a32c39327409934716578182b5196ed81}
 Retrieve all childnodes starting with a given parent 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$field} & Name of the field on which the parent should be matched \\
+\mbox{\tt in}  & {\em \$field} & Name of the field on which the parent should be matched, must be a primary key or unique indexed field \\
 \hline
 \mbox{\tt in}  & {\em \$value} & Value of the parent's field \\
 \hline
+\mbox{\tt in}  & {\em \$follow} & When crosslinks are enabled, this identifies to what level crosslinks should be followed. \\
+\hline
 \end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+\doxyref{User}{p.}{classUser} yje \$follow parameter with care! Right now, only 3 options are implemented. HDATA\_\-XLINK\_\-FOLLOW\_\-NO is the default value, but checks are made only for HDATA\_\-XLINK\_\-FOLLOW\_\-NO and HDATA\_\-XLINK\_\-FOLLOW\_\-ONCE. Any other value will be interpreted as HDATA\_\-XLINK\_\-FOLLOW\_\-UNLIMITED! See \doxyref{Follow crosslinks}{p.}{group__HDATA__FollowXLink} for more info! 
+\end{DoxyWarning}
 \begin{DoxyReturn}{Returns}
 2-\/D array with all records for all direct children, or false on errors 
 \end{DoxyReturn}
@@ -348,7 +467,7 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References readQuery().
+References DataHandler::dbStatus(), readQuery(), and \_\-OWL::setStatus().
 
 \index{HDataHandler@{HDataHandler}!getLastWarning@{getLastWarning}}
 \index{getLastWarning@{getLastWarning}!HDataHandler@{HDataHandler}}
@@ -384,6 +503,35 @@ Oscar van Eijk, Oveas Functionality Provider
 
 References readQuery().
 
+\index{HDataHandler@{HDataHandler}!getNode@{getNode}}
+\index{getNode@{getNode}!HDataHandler@{HDataHandler}}
+\subsubsection[{getNode}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::getNode (
+\begin{DoxyParamCaption}
+\item[{\$}]{field, }
+\item[{\$}]{value}
+\end{DoxyParamCaption}
+)}\label{classHDataHandler_adf10aa963f4e0d037d0e96c0d1c16487}
+Get the record for a single node 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$field} & Name of the field on which the value should be matched, must be a primary key or unique indexed field \\
+\hline
+\mbox{\tt in}  & {\em \$value} & Value of the field to match \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array with all fields for this node, or false on errors 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References readQuery().
+
+
+
+Referenced by \_\-getNewLeft(), addParent(), moveNode(), removeNode(), and removeTree().
+
 \index{HDataHandler@{HDataHandler}!getNodeDepth@{getNodeDepth}}
 \index{getNodeDepth@{getNodeDepth}!HDataHandler@{HDataHandler}}
 \subsubsection[{getNodeDepth}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::getNodeDepth (
@@ -394,13 +542,13 @@ References readQuery().
 )}\label{classHDataHandler_a84158b1cbae1cb825d0ded360c1e142f}
 Get the depth of all nodes or a single node. 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$field} & The fieldname of which value that will be returned with the depth \\
+\mbox{\tt in}  & {\em \$field} & The fieldname of which value that will be returned with the depth, must be a primary key or unique indexed field \\
 \hline
 \mbox{\tt in}  & {\em \$value} & An optional value to match if only the depth of 1 field is requested \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Array with all matched records holding the fieldvalue and the depth 
+Array with all matched records including the depth 
 \end{DoxyReturn}
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
@@ -408,6 +556,41 @@ Oscar van Eijk, Oveas Functionality Provider
 
 
 References readQuery().
+
+\index{HDataHandler@{HDataHandler}!getNodesByDepth@{getNodesByDepth}}
+\index{getNodesByDepth@{getNodesByDepth}!HDataHandler@{HDataHandler}}
+\subsubsection[{getNodesByDepth}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::getNodesByDepth (
+\begin{DoxyParamCaption}
+\item[{\$}]{depth, }
+\item[{\$}]{field, }
+\item[{\$}]{value = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}\label{classHDataHandler_aedab806f5303459bd57d2a2b6c0227b6}
+Get all nodes from the given depth, optionally from a given tree 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$depth} & Depth level, where 0 is the toplevel \\
+\hline
+\mbox{\tt in}  & {\em \$field} & Fieldname of a unique indexed field used to identify records. \\
+\hline
+\mbox{\tt in}  & {\em \$value} & Value for fieldname identifying the top node for a tree. When this is null (default), all nodes with the same depth will be returned. If depth eqs 0, the value is ignored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Crosslinks, when enabled, are not followed in this method 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Array with all matched records including the given depth (required for the match) 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References readQuery().
+
+
+
+Referenced by \_\-getNewLeft().
 
 \index{HDataHandler@{HDataHandler}!getPathByChild@{getPathByChild}}
 \index{getPathByChild@{getPathByChild}!HDataHandler@{HDataHandler}}
@@ -419,7 +602,7 @@ References readQuery().
 )}\label{classHDataHandler_afe911eabb98cf073d9103fb3c75580e7}
 Get the complete path of ancestors for a given node 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$field} & Name of the field on which the field should be matched \\
+\mbox{\tt in}  & {\em \$field} & Name of the field on which the field should be matched, must be a primary key or unique indexed field \\
 \hline
 \mbox{\tt in}  & {\em \$value} & Value of the field to match \\
 \hline
@@ -444,7 +627,7 @@ References readQuery().
 )}\label{classHDataHandler_a09a223084837031e2d22a004f31606b2}
 Get the complete path of offspring for a given node 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$field} & Name of the field on which the field should be matched \\
+\mbox{\tt in}  & {\em \$field} & Name of the field on which the field should be matched, must be a primary key or unique indexed field \\
 \hline
 \mbox{\tt in}  & {\em \$value} & Value of the field to match \\
 \hline
@@ -533,6 +716,68 @@ Last ID
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
+\index{HDataHandler@{HDataHandler}!insertNode@{insertNode}}
+\index{insertNode@{insertNode}!HDataHandler@{HDataHandler}}
+\subsubsection[{insertNode}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::insertNode (
+\begin{DoxyParamCaption}
+\item[{array \$}]{data, }
+\item[{array \$}]{parent, }
+\item[{\$}]{position = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}\label{classHDataHandler_abbff85e96fd88c6eb57cb9fb47d1a7c8}
+Insert a new node 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$data} & Indexed array with the data, in the format (field =$>$ value, ...) where all table fields must be provided that are not allowed to be null. The fields for left and right will be ignored, if the primary key is an auto increment, this must not be given in the array. \\
+\hline
+\mbox{\tt in}  & {\em \$parent} & Parent under which the new node will be added. This must be an indexed array with the keys 'field' and 'value' identifying the parent node, where field is the name of a unique indexed tablefield and value the value for the requested parent. To insert a new node at toplevel, leave out the value, but 'field' is always required! \\
+\hline
+\mbox{\tt in}  & {\em \$position} & Position at which the new node will be inserted, where '0' results as an insert as the leftmost childnode, and any negative value (default) or a value greater than the current number of children will result in an insert as the rightmost child. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on errors 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-getNewLeft(), and writeQuery().
+
+\index{HDataHandler@{HDataHandler}!moveNode@{moveNode}}
+\index{moveNode@{moveNode}!HDataHandler@{HDataHandler}}
+\subsubsection[{moveNode}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::moveNode (
+\begin{DoxyParamCaption}
+\item[{\$}]{field, }
+\item[{\$}]{value, }
+\item[{array \$}]{newParent, }
+\item[{\$}]{position = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}\label{classHDataHandler_a8526c24a0174845ee2ba40b3590a59c0}
+
+\begin{DoxyParams}[1]{Parameters}
+unknown\_\-type & {\em \$field} & \\
+\hline
+unknown\_\-type & {\em \$value} & \\
+\hline
+array & {\em \$newParent} & \\
+\hline
+unknown\_\-type & {\em \$position} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+To keep a complete tree together while being moved, the left anf right values are temporarily set to a negative value. Therefore, this method will not work when the left and right values are defined as UNSIGNED! 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-getNewLeft(), getNode(), \_\-OWL::setStatus(), and writeQuery().
+
 \index{HDataHandler@{HDataHandler}!prepare@{prepare}}
 \index{prepare@{prepare}!HDataHandler@{HDataHandler}}
 \subsubsection[{prepare}]{\setlength{\rightskip}{0pt plus 5cm}DataHandler::prepare (
@@ -589,7 +834,60 @@ References \_\-OWL::setStatus().
 
 
 
-Referenced by getDirectChildren(), getFullOffspring(), getLeafNodes(), getNodeDepth(), getPathByChild(), and getPathByParent().
+Referenced by getDirectChildren(), getFullOffspring(), getLeafNodes(), getNode(), getNodeDepth(), getNodesByDepth(), getPathByChild(), and getPathByParent().
+
+\index{HDataHandler@{HDataHandler}!removeNode@{removeNode}}
+\index{removeNode@{removeNode}!HDataHandler@{HDataHandler}}
+\subsubsection[{removeNode}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::removeNode (
+\begin{DoxyParamCaption}
+\item[{\$}]{field, }
+\item[{\$}]{value}
+\end{DoxyParamCaption}
+)}\label{classHDataHandler_a68d8b9169dadd846a1b4a4355c77a87c}
+Delete a single node from the table. If the node has children, they will be added to the deleted nodes parent (so if the deleted node is a toplevel node, the children will be toplevel). All exising cross references will be removed (nullified). 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$field} & Name of the field on which the value should be matched, must be a primary key or unique indexed field \\
+\hline
+\mbox{\tt in}  & {\em \$value} & Value of the field to match \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References getNode(), and writeQuery().
+
+\index{HDataHandler@{HDataHandler}!removeTree@{removeTree}}
+\index{removeTree@{removeTree}!HDataHandler@{HDataHandler}}
+\subsubsection[{removeTree}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::removeTree (
+\begin{DoxyParamCaption}
+\item[{\$}]{field, }
+\item[{\$}]{value}
+\end{DoxyParamCaption}
+)}\label{classHDataHandler_ae91a216dc0d71fbdf6a4d6744cfa7969}
+Delete a complete tree, removeing all cross references to from outside the tree to any of the nodes being deleted. All exising cross references will be removed (nullified). \begin{DoxyWarning}{Warning}
+This deletes the given node and all values under it! Use with care! 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$field} & Name of the field on which the value should be matched, must be a primary key or unique indexed field \\
+\hline
+\mbox{\tt in}  & {\em \$value} & Value of the field identifying the toplevel of the tree \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References getNode(), and writeQuery().
 
 \index{HDataHandler@{HDataHandler}!reset@{reset}}
 \index{reset@{reset}!HDataHandler@{HDataHandler}}
@@ -858,6 +1156,21 @@ Oscar van Eijk, Oveas Functionality Provider
 
 References OWL::factory(), OWLCache::get(), and DataHandler::set().
 
+\index{HDataHandler@{HDataHandler}!setPrimaryKey@{setPrimaryKey}}
+\index{setPrimaryKey@{setPrimaryKey}!HDataHandler@{HDataHandler}}
+\subsubsection[{setPrimaryKey}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::setPrimaryKey (
+\begin{DoxyParamCaption}
+\item[{\$}]{fieldname}
+\end{DoxyParamCaption}
+)}\label{classHDataHandler_aab4fd96d30373fbae7d87a1643ac31ac}
+Set the name of the primary key field. This is required for crosslinks 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$fieldname} & Name of the field \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{HDataHandler@{HDataHandler}!setRight@{setRight}}
 \index{setRight@{setRight}!HDataHandler@{HDataHandler}}
 \subsubsection[{setRight}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::setRight (
@@ -897,7 +1210,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), Mail::addBcc(), Mail::addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), FormHandler::get(), DataHandler::get(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), and DbHandler::write().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), \_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), enableCrossLink(), FormHandler::get(), DataHandler::get(), getDirectChildren(), getFullOffspring(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and writeQuery().
 
 \index{HDataHandler@{HDataHandler}!setTablename@{setTablename}}
 \index{setTablename@{setTablename}!HDataHandler@{HDataHandler}}
@@ -997,6 +1310,35 @@ References \_\-OWL::signal().
 
 Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 
+\index{HDataHandler@{HDataHandler}!writeQuery@{writeQuery}}
+\index{writeQuery@{writeQuery}!HDataHandler@{HDataHandler}}
+\subsubsection[{writeQuery}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::writeQuery (
+\begin{DoxyParamCaption}
+\item[{\$}]{query, }
+\item[{\$}]{line}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classHDataHandler_ab1ac8ad41a1402e725ac4a759f42eb3c}
+Internal helper method to execute a write query 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$query} & Query to execute \\
+\hline
+\mbox{\tt in}  & {\em \$line} & Line number from which this method is called \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of lines written, false on errors 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-OWL::setStatus().
+
+
+
+Referenced by addParent(), insertNode(), moveNode(), removeNode(), and removeTree().
+
 
 
 \subsection{Member Data Documentation}
@@ -1015,7 +1357,17 @@ All variable names are expected to be fields in a database as well. If a table n
 Field name of the Right position indicator. Defaults to 'rgt' \index{HDataHandler@{HDataHandler}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!HDataHandler@{HDataHandler}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
-Severity level of the current object status 
+Severity level of the current object status \index{HDataHandler@{HDataHandler}!\$xlink@{\$xlink}}
+\index{\$xlink@{\$xlink}!HDataHandler@{HDataHandler}}
+\subsubsection[{\$xlink}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::\$xlink\hspace{0.3cm}{\ttfamily  [private]}}\label{classHDataHandler_a62035bf09b58d2fd9da069567f54d2a5}
+Name of the crosslink field to allow multiple parents 
+
+Referenced by getDirectChildren().
+
+\index{HDataHandler@{HDataHandler}!\$xlinkID@{\$xlinkID}}
+\index{\$xlinkID@{\$xlinkID}!HDataHandler@{HDataHandler}}
+\subsubsection[{\$xlinkID}]{\setlength{\rightskip}{0pt plus 5cm}HDataHandler::\$xlinkID\hspace{0.3cm}{\ttfamily  [private]}}\label{classHDataHandler_ab6b77e535c310ce86efc93197e6fe6da}
+Name if the primary key field, required for closslinks 
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
