@@ -3,7 +3,7 @@
  * \file
  * This file defines the Hierarchical DataHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.datahandlerh.php,v 1.2 2011-05-16 17:20:17 oscar Exp $
+ * \version $Id: class.datahandlerh.php,v 1.3 2011-05-16 17:27:12 oscar Exp $
  */
 
 /**
@@ -624,16 +624,20 @@ class HDataHandler extends DataHandler
 	}
 
 	/**
-	 * 
-	 * 
-	 * @param unknown_type $field
-	 * @param unknown_type $value
-	 * @param array $newParent
-	 * @param unknown_type $position
-	 * \note To keep a complete tree together while being moved, the left anf right values are
+	 * Move a node or a complete tree to a new parent.
+	 * \param[in] $field Name of the field on which the value should be matched, must be a primary key or unique indexed field
+	 * \param[in] $value Value of the field to match to identifying the node
+	 * \param[in] $newParent Parent to which the node will be moved. This must be an indexed array
+	 * with the keys 'field' and 'value' identifying the parent node, where field is the name of a unique
+	 * indexed tablefield and value the value for the requested parent.
+	 * \param[in] $position Position at which the node will be inserted, where '0' results as
+	 * an insert as the leftmost childnode, and any negative value (default) or a value greater than
+	 * the current number of children will result in an postision as the rightmost child.
+	 * \note To keep a complete tree together while being moved, the left and right values are
 	 * temporarily set to a negative value. Therefore, this method will not work when the left and right
 	 * values are defined as UNSIGNED!
-	 * \return 
+	 * \return True on success
+	 * \todo Is the tree being moved contains crosslinks to the new parent already, they should be deleted
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function moveNode ($field, $value, array $newParent, $position = -1)

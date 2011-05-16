@@ -96,25 +96,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <dt>Member <a class="el" href="classDataHandler.html#af3e7a17194e97300d499e9178f4913cb">DataHandler::prepare</a> ($type=DATA_READ) </dt>
 <dd>add limit and cache </dd>
 </dl>
-<p><a class="anchor" id="_todo000004"></a> </p>
+<p><a class="anchor" id="_todo000005"></a> </p>
 <dl>
 <dt>Class <a class="el" href="classDbHandler.html">DbHandler</a>  </dt>
 <dd>Implement retries using the isRetryable() driver method, a max_retries and a max_retry_wait config settings </dd>
 </dl>
-<p><a class="anchor" id="_todo000005"></a> </p>
+<p><a class="anchor" id="_todo000006"></a> </p>
 <dl>
 <dt>Member <a class="el" href="classDbHandler.html#a3a05faa4d14c6c5117ed8b70fc37d778">DbHandler::$limit</a>  </dt>
 <dd>this ain't implemented yet </dd>
 </dl>
-<p><a class="anchor" id="_todo000006"></a> </p>
+<p><a class="anchor" id="_todo000007"></a> </p>
 <dl>
 <dt>Member <a class="el" href="classDbHandler.html#a27c45a702ae53310ccc159a88bc4234f">DbHandler::lockTable</a> ($tablename, $locktype) </dt>
 <dd>This method currenly supports only 1 table and no aliases, must be changed! </dd>
 </dl>
-<p><a class="anchor" id="_todo000011"></a> </p>
+<p><a class="anchor" id="_todo000012"></a> </p>
 <dl>
 <dt>Member <a class="el" href="owl_8helper_8functions_8php.html#a3cadca012ce78639bbe95d396acce409">getReferer</a> ($def= 'http://localhost/', $hostOnly=true) </dt>
 <dd>This function is based on the unreliable HTTP_REFERER... but what else can we use?? </dd>
+</dl>
+<p><a class="anchor" id="_todo000004"></a> </p>
+<dl>
+<dt>Member <a class="el" href="classHDataHandler.html#a8526c24a0174845ee2ba40b3590a59c0">HDataHandler::moveNode</a> ($field, $value, array $newParent, $position=-1) </dt>
+<dd>Is the tree being moved contains crosslinks to the new parent already, they should be deleted </dd>
 </dl>
 <p><a class="anchor" id="_todo000001"></a> </p>
 <dl>
@@ -126,34 +131,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <dt>Member <a class="el" href="classOWLCache.html#ad7685dc7d8ea322c576413a6366ef503">OWLCache::saveCache</a> () </dt>
 <dd>Data caching is not yet implemented - this is a placeholder for future use </dd>
 </dl>
-<p><a class="anchor" id="_todo000010"></a> </p>
+<p><a class="anchor" id="_todo000011"></a> </p>
 <dl>
 <dt>Member <a class="el" href="owl_8helper_8functions_8php.html#a0836b830fe9e399265d4cf910c5dff28">owlCrypt</a> ($_string) </dt>
 <dd>Add a method to decrypt strings (dispatchers) that were crypted ad a remote server (using keyrings) </dd>
 </dl>
-<p><a class="anchor" id="_todo000007"></a> </p>
+<p><a class="anchor" id="_todo000008"></a> </p>
 <dl>
 <dt>Class <a class="el" href="classOWLException.html">OWLException</a>  </dt>
 <dd>The oldest code in <a class="el" href="classOWL.html">OWL</a> dates back to 2001; by now PHP4 support is dropped anyway, so implementing the errorhandling using try/catch would be an improvemt! Especially the class <a class="el" href="classDbHandler.html" title="Database handler.">DbHandler</a> in combination with the class <a class="el" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a> should be changed that way. </dd>
 </dl>
-<p><a class="anchor" id="_todo000013"></a> </p>
+<p><a class="anchor" id="_todo000014"></a> </p>
 <dl>
 <dt>Member <a class="el" href="classOWLinstaller.html#ac53f7e652c448c66c8fd4a81bfc95be1">OWLinstaller::addTablePrefix</a> ($q, $prefix) </dt>
 <dd><p class="startdd">Add support for UPDATE, DELETE, RENAME and other statements that *might* occur in SQL install files </p>
 <p class="enddd">Handle constraints ([...] REFERENCES `tblname` (...)) </p>
 </dd>
 </dl>
-<p><a class="anchor" id="_todo000012"></a> </p>
+<p><a class="anchor" id="_todo000013"></a> </p>
 <dl>
 <dt>Member <a class="el" href="classOWLinstaller.html#a4ed45e29611ce17a8edf24e51979a5d7">OWLinstaller::installApplication</a> ($code, $name, $version, $description= '', $link= '', $author= '', $license= '') </dt>
 <dd>Error checking </dd>
 </dl>
-<p><a class="anchor" id="_todo000008"></a> </p>
+<p><a class="anchor" id="_todo000009"></a> </p>
 <dl>
 <dt>Member <a class="el" href="classRegister.html#a7f8f9dd6364815e162fe098327177943">Register::registerClass</a> ($name) </dt>
 <dd>Error handling when out of range </dd>
 </dl>
-<p><a class="anchor" id="_todo000009"></a> </p>
+<p><a class="anchor" id="_todo000010"></a> </p>
 <dl>
 <dt>Class <a class="el" href="classSchemeHandler.html">SchemeHandler</a>  </dt>
 <dd>This handler currently doesn't use the <a class="el" href="interfaceDbDriver.html" title="Database driver interface.">DbDriver</a> driver class </dd>
@@ -177,7 +182,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon May 16 2011 19:15:07 for OWL-PHP by
+    <li class="footer">Generated on Mon May 16 2011 19:21:11 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

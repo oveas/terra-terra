@@ -754,23 +754,25 @@ References \_\-getNewLeft(), and writeQuery().
 \item[{\$}]{position = {\ttfamily -\/1}}
 \end{DoxyParamCaption}
 )}\label{classHDataHandler_a8526c24a0174845ee2ba40b3590a59c0}
-
+Move a node or a complete tree to a new parent. 
 \begin{DoxyParams}[1]{Parameters}
-unknown\_\-type & {\em \$field} & \\
+\mbox{\tt in}  & {\em \$field} & Name of the field on which the value should be matched, must be a primary key or unique indexed field \\
 \hline
-unknown\_\-type & {\em \$value} & \\
+\mbox{\tt in}  & {\em \$value} & Value of the field to match to identifying the node \\
 \hline
-array & {\em \$newParent} & \\
+\mbox{\tt in}  & {\em \$newParent} & Parent to which the node will be moved. This must be an indexed array with the keys 'field' and 'value' identifying the parent node, where field is the name of a unique indexed tablefield and value the value for the requested parent. \\
 \hline
-unknown\_\-type & {\em \$position} & \\
+\mbox{\tt in}  & {\em \$position} & Position at which the node will be inserted, where '0' results as an insert as the leftmost childnode, and any negative value (default) or a value greater than the current number of children will result in an postision as the rightmost child. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyNote}{Note}
-To keep a complete tree together while being moved, the left anf right values are temporarily set to a negative value. Therefore, this method will not work when the left and right values are defined as UNSIGNED! 
+To keep a complete tree together while being moved, the left and right values are temporarily set to a negative value. Therefore, this method will not work when the left and right values are defined as UNSIGNED! 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
-
+True on success 
 \end{DoxyReturn}
+\begin{Desc}
+\item[{\bf Todo}]Is the tree being moved contains crosslinks to the new parent already, they should be deleted \end{Desc}
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}

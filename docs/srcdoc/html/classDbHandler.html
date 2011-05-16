@@ -214,7 +214,7 @@ Static Private Attributes</h2></td></tr>
 <div class="textblock"><p>Database handler. </p>
 <p>Handler for all database I/O. This singleton class uses an (abstract) class for the actual storage. This class should not be called directly; it is implemented by class <a class="el" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a> </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Implement retries using the isRetryable() driver method, a max_retries and a max_retry_wait config settings </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Implement retries using the isRetryable() driver method, a max_retries and a max_retry_wait config settings </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>May 15, 2007 -- O van Eijk -- initial version for Terra-Terra </dd>
 <dd>
 Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.html">OWL</a> </dd></dl>
@@ -938,7 +938,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object severity status </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="note"><dt><b>Note:</b></dt><dd>In <a class="el" href="classMySQL.html" title="Database driver.">MySQL</a>, locks will be released implicetly when a new lock is requested. Also when a new transaction is started, all existing locks are released, so when table locking is required within a transaction, always call <a class="el" href="classDbHandler.html#a27c45a702ae53310ccc159a88bc4234f">lockTable()</a> <em>after</em> <a class="el" href="classDbHandler.html#a19f0cb54f362ab3f919cfc2b940800c0">startTransaction()</a> </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>This method currenly supports only 1 table and no aliases, must be changed! </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>This method currenly supports only 1 table and no aliases, must be changed! </dd></dl>
 
 <p>References <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>, and <a class="el" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">_OWL::setStatus()</a>.</p>
 
@@ -2042,7 +2042,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 <div class="memdoc">
 <p>array with 2 elements to limit the query </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>this ain't implemented yet </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>this ain't implemented yet </dd></dl>
 
 </div>
 </div>
@@ -2211,7 +2211,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 
 
-    <li class="footer">Generated on Mon May 16 2011 19:15:11 for OWL-PHP by
+    <li class="footer">Generated on Mon May 16 2011 19:21:14 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>
