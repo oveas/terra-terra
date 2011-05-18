@@ -1,0 +1,62 @@
+\section{/home/oscar/projects/owl-\/php/src/lib/contrib/enabled/formtable.helpers.php File Reference}
+\label{formtable_8helpers_8php}\index{/home/oscar/projects/owl-\/php/src/lib/contrib/enabled/formtable.helpers.php@{/home/oscar/projects/owl-\/php/src/lib/contrib/enabled/formtable.helpers.php}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf addFormRow} ({\bf Table} \&\$table, {\bf Form} \&\$form, \$fieldType, \$fieldName, \$fieldValue, array \$fieldAttributes, \$label, array \$labelAttributes)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file provides some helper functions for lazy developers like me setting up form tables \begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyParagraph}{Id:}
+\doxyref{owl.helper.functions.php}{p.}{owl_8helper_8functions_8php},v 1.10 2011-\/05-\/12 14:37:58 oscar Exp 
+\end{DoxyParagraph}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{formtable.helpers.php@{formtable.helpers.php}!addFormRow@{addFormRow}}
+\index{addFormRow@{addFormRow}!formtable.helpers.php@{formtable.helpers.php}}
+\subsubsection[{addFormRow}]{\setlength{\rightskip}{0pt plus 5cm}addFormRow (
+\begin{DoxyParamCaption}
+\item[{{\bf Table} \&\$}]{table, }
+\item[{{\bf Form} \&\$}]{form, }
+\item[{\$}]{fieldType, }
+\item[{\$}]{fieldName, }
+\item[{\$}]{fieldValue, }
+\item[{array \$}]{fieldAttributes, }
+\item[{\$}]{label, }
+\item[{array \$}]{labelAttributes}
+\end{DoxyParamCaption}
+)}\label{formtable_8helpers_8php_a165109a2c762d77b582398a6343d3182}
+This function adds a new table row to an exising form with 2 cells; in the right cell a new formfield that is created as well, left the label that should be displayed. To make sure no mistakes are made in the long list of arguments, no defaults are accepted. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$table} & Reference to the table object to which the row is added \\
+\hline
+\mbox{\tt in}  & {\em \$form} & Reference to the form object to which the field is added \\
+\hline
+\mbox{\tt in}  & {\em \$fieldType} & \doxyref{Form}{p.}{classForm} field type (text, password, textarea etc) \\
+\hline
+\mbox{\tt in}  & {\em \$fieldName} & Name of the field as it will appear in the form \\
+\hline
+\mbox{\tt in}  & {\em \$fieldValue} & Optional fieldvalue \\
+\hline
+\mbox{\tt in}  & {\em \$fieldAttributes} & Optional HTML attributes for the field \\
+\hline
+\mbox{\tt in}  & {\em \$label} & Label as it will appear in the form (must be translated already!) \\
+\hline
+\mbox{\tt in}  & {\em \$labelAttributes} & Optional HTML attributes for the label \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References Form::addField(), Table::addRow(), and Form::showField().
+

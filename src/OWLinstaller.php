@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_SO_LAYER
  * This file defines the class to install applications
- * \version $Id: OWLinstaller.php,v 1.4 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: OWLinstaller.php,v 1.5 2011-05-18 12:03:48 oscar Exp $
  */
 
 /**
@@ -254,19 +254,20 @@ abstract class OWLinstaller
 	/**
 	 * Add the application specific groups to the database
 	 * \param[in] $aid Application ID
-	 * \param[in] $grpname Array of groups
+	 * \param[in] $grps Array of groups in the format (groupname => groupdescription)
 	 * \return Boolean indicating success (true) or any failure (false)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function addGroups($aid, $grpname)
+	public static function addGroups($aid, array $grps)
 	{
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('owltables', true)) {
 				$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
 		}
 		$dataset->setTablename('group');
-		foreach ($grpname as $_grp) {
+		foreach ($grps as $_grp => $_desc) {
 			$dataset->set('groupname', $_grp);
+			$dataset->set('description', $_desc);
 			$dataset->set('aid', $aid);
 			$dataset->prepare(DATA_WRITE);
 			$dataset->db($_dummy, __LINE__, __FILE__);

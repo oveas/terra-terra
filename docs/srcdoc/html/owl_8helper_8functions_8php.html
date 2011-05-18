@@ -109,6 +109,7 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#ab709d759f5911560cc584496d423b569">urlExpand</a> ($_file)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a3cadca012ce78639bbe95d396acce409">getReferer</a> ($def= 'http://localhost/', $hostOnly=true)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#ae133bd84230ea3637a10a7d0fb2a73b0">verifyMailAddress</a> ($email, $extract=true)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a4be3eb2fc55be16227d3e3666c6da1f7">isSerialized</a> ($value, &amp;$result=null)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This file defines general helper functions </p>
@@ -151,6 +152,63 @@ Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The HTTP referer </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>This function is based on the unreliable HTTP_REFERER... but what else can we use?? </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4be3eb2fc55be16227d3e3666c6da1f7"></a><!-- doxytag: member="owl.helper.functions.php::isSerialized" ref="a4be3eb2fc55be16227d3e3666c6da1f7" args="($value, &amp;$result=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">isSerialized </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>result</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tests if an input is valid PHP serialized string.</p>
+<p>Checks if a string is serialized using quick string manipulation to throw out obviously incorrect strings. Unserialize is then run on the string to perform the final verification.</p>
+<p>Valid serialized forms are the following: </p>
+<ul>
+<li>
+boolean: <code>b:1;</code> </li>
+<li>
+integer: <code>i:1;</code> </li>
+<li>
+double: <code>d:0.2;</code> </li>
+<li>
+string: <code>s:4:"test";</code> </li>
+<li>
+array: <code>a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}</code> </li>
+<li>
+object: <code>O:8:"stdClass":0:{}</code> </li>
+<li>
+null: <code>N;</code> </li>
+</ul>
+<dl class="author"><dt><b>Author:</b></dt><dd>Chris Smith &lt;<a href="mailto:code+php@chris.cs278.org">code+php@chris.cs278.org</a>&gt;  Copyright (c) 2009 Chris Smith (<a href="http://www.cs278.org/">http://www.cs278.org/</a>)  <a href="http://sam.zoy.org/wtfpl/">http://sam.zoy.org/wtfpl/</a> WTFPL </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Value to test for serialized form </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$result</td><td>Result of unserialize() of the $value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>boolean True if $value is serialized data, otherwise false </dd></dl>
+
+<p>Referenced by <a class="el" href="classDispatcher.html#a30550e4f202be97433c483a1b8d8cc15">Dispatcher::decodeDispatcher()</a>.</p>
 
 </div>
 </div>
@@ -388,7 +446,7 @@ Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 16 2011 19:21:11 for OWL-PHP by
+    <li class="footer">Generated on Wed May 18 2011 13:57:26 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

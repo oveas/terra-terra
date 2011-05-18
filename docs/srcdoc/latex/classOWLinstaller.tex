@@ -20,7 +20,7 @@ static {\bf installTables} (\$sqlFile, \$prefix=null)
 \item 
 static {\bf addGroupRights} (\$aid, \$grp, array \$rights)
 \item 
-static {\bf addGroups} (\$aid, \$grpname)
+static {\bf addGroups} (\$aid, array \$grps)
 \item 
 static {\bf addRights} (\$aid, array \$rights)
 \item 
@@ -124,14 +124,14 @@ References ConfigHandler::get().
 \subsubsection[{addGroups}]{\setlength{\rightskip}{0pt plus 5cm}static OWLinstaller::addGroups (
 \begin{DoxyParamCaption}
 \item[{\$}]{aid, }
-\item[{\$}]{grpname}
+\item[{array \$}]{grps}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLinstaller_a1e2b337479e3c2d67e5669da1003175e}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLinstaller_a58006b3763431df6b723a51b2a7d35fb}
 Add the application specific groups to the database 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$aid} & Application ID \\
 \hline
-\mbox{\tt in}  & {\em \$grpname} & Array of groups \\
+\mbox{\tt in}  & {\em \$grps} & Array of groups in the format (groupname =$>$ groupdescription) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

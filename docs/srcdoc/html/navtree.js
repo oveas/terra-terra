@@ -245,6 +245,7 @@ var NAVTREE =
         [ "Files", "group__OWL__LIBRARY.html", [
           [ "class.cache.php", "class_8cache_8php.html", null ],
           [ "class.sockethandler.php", "class_8sockethandler_8php.html", null ],
+          [ "owl.contrib.loader.php", "owl_8contrib_8loader_8php.html", null ],
           [ "owl.debug.functions.php", "owl_8debug_8functions_8php.html", null ],
           [ "owl.helper.functions.php", "owl_8helper_8functions_8php.html", null ],
           [ "owl.labels.php", "owl_8labels_8php.html", null ],
@@ -253,6 +254,11 @@ var NAVTREE =
           [ "owl.severitycodes.php", "owl_8severitycodes_8php.html", null ],
           [ "OWLloader.php", "OWLloader_8php.html", null ],
           [ "OWLrundown.php", "OWLrundown_8php.html", null ]
+        ] ]
+      ] ],
+      [ "Contributed helper functions", "group__OWL__CONTRIB.html", [
+        [ "Files", "group__OWL__CONTRIB.html", [
+          [ "formtable.helpers.php", "formtable_8helpers_8php.html", null ]
         ] ]
       ] ],
       [ "Plugins for the presentation modules", "group__OWL__UI__PLUGINS.html", [
@@ -278,6 +284,7 @@ var NAVTREE =
       [ "Global constants", "group__OWL__Globals.html", [
         [ "Enumerations", "group__OWL__Globals.html", [
           [ "OWL_BO_INC", "group__OWL__Globals.html#gaca50646bc73c3addf0e0f25081eae0ae", null ],
+          [ "OWL_CONTRIB", "group__OWL__Globals.html#ga66b119ac9cfcd8ecf89024e30bf73956", null ],
           [ "OWL_DRIVERS", "group__OWL__Globals.html#gaf6ffde4ef80c21c2e105c89dab9c011e", null ],
           [ "OWL_INCLUDE", "group__OWL__Globals.html#ga4d33a8f2fcc9c83cbeea921c4cb23a7f", null ],
           [ "OWL_LIBRARY", "group__OWL__Globals.html#ga74eed08508c8b70677c4167acf49e427", null ],
@@ -473,6 +480,8 @@ var NAVTREE =
       [ "/home/oscar/projects/owl-php/src/lib/owl.messages.php", "owl_8messages_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/lib/owl.nodebug.functions.php", "owl_8nodebug_8functions_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/lib/owl.severitycodes.php", "owl_8severitycodes_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/src/lib/contrib/owl.contrib.loader.php", "owl_8contrib_8loader_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/src/lib/contrib/enabled/formtable.helpers.php", "formtable_8helpers_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/plugins/containers/class.container.div.php", "class_8container_8div_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/plugins/containers/class.container.fieldset.php", "class_8container_8fieldset_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/plugins/containers/class.container.label.php", "class_8container_8label_8php.html", null ],

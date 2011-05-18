@@ -4,7 +4,7 @@
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.messages.php,v 1.24 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.25 2011-05-18 12:03:48 oscar Exp $
  */
 
 $_messages = array (
@@ -54,7 +54,7 @@ $_messages = array (
 	, DBHANDLE_TRANSOPEN	=> 'A new transaction cannot be started - commit or rollback the open transaction first'
 	, DBHANDLE_NOTRANSOPEN	=> 'No transaction is open - cannot $p1$'
 	, DBHANDLE_DRIVERERR	=> 'The database driver returned error <i>$p1$</i><br />Message was: <b>$p2$</b>'
-	, DBHANDLE_WRITTEN		=> 'Succesfully $p1$ $p2$ records'
+	, DBHANDLE_WRITTEN		=> 'Succesfully $p2$ $p3$ records with query $p1$'
 	, DATA_KEYSET			=> 'Variable $p1$ locked as a key'
 	, DATA_JOINSET			=> 'Table join ($p1$) has been defined on $p2$ and $p3$'
 	, DATA_PREPARED			=> 'Prepared database query for $p1$'

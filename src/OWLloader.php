@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.30 2011-05-13 16:39:19 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.31 2011-05-18 12:03:48 oscar Exp $
  */
 
 // Error handling used during development
@@ -15,6 +15,7 @@
  * \defgroup OWL_BO_LAYER Business Object modules
  * \defgroup OWL_SO_LAYER Storage Object modules
  * \defgroup OWL_LIBRARY Library (codes, messages files etc.)
+ * \defgroup OWL_CONTRIB Contributed helper functions
  * \defgroup OWL_UI_PLUGINS Plugins for the presentation modules
  * \defgroup OWL_DRIVERS Drivers
  */
@@ -54,6 +55,9 @@ define ('OWL_PLUGINS',	OWL_ROOT . '/plugins');
 //! OWL divers directory
 define ('OWL_DRIVERS',	OWL_ROOT . '/drivers');
 
+//! Location for all contributed plugins
+define ('OWL_CONTRIB',	OWL_LIBRARY . '/contrib');
+
 //! Toplocation of this site
 define ('OWL_SITE_TOP', $_SERVER['DOCUMENT_ROOT']);
 
@@ -79,10 +83,13 @@ abstract class OWLloader
 	 * be 'myspot'
 	 * \param[in] $_classLocation Full path specification (can be as a constant) where the file can
 	 * be found
+	 * \param[in] $_argument An optional argument that will be passed to the loadArea() method. The
+	 * classmethod must accept this argument and must always have a default specified, since nothing
+	 * will be passed if $_argument is null (also not 'null'!)
 	 * \return Reference to the object which is an instantiation of the class, null on erros
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function getArea ($_classFile, $_classLocation)
+	public static function getArea ($_classFile, $_classLocation, $_argument = null)
 	{
 		if (!self::_tryLoad($_classFile . '.php', $_classLocation)) {
 			OWL::stat(OWL_LOADERR, array('Area class', $_classFile, $_classLocation));
@@ -94,7 +101,12 @@ abstract class OWLloader
 			return null;
 		}
 		$_cArea = new $_className();
-		if ($_cArea->loadArea() === false) {
+		if ($_argument === null) {
+			$_loadResult = $_cArea->loadArea();
+		} else {
+			$_loadResult = $_cArea->loadArea($_argument);
+		}
+		if ($_loadResult === false) {
 			return null;
 		} else {
 			return $_cArea;
@@ -318,6 +330,9 @@ ConfigHandler::readConfig (array('file' => $GLOBALS['config']['configfiles']['ow
 define('OWL_ID',OWLloader::getOWLId());
 // Get the dynamic OWL configuration from the database
 ConfigHandler::readConfig (array());
+
+// Load the contributed plugins
+require (OWL_CONTRIB . '/owl.contrib.loader.php');
 
 // Set up the logger
 $GLOBALS['logger'] = OWL::factory('LogHandler');

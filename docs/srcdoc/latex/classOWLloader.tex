@@ -8,7 +8,7 @@ Class loader.
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static {\bf getArea} (\$\_\-classFile, \$\_\-classLocation)
+static {\bf getArea} (\$\_\-classFile, \$\_\-classLocation, \$\_\-argument=null)
 \item 
 static {\bf getDriver} (\$\_\-driverName, \$\_\-driverType)
 \item 
@@ -71,14 +71,17 @@ Referenced by getClass().
 \subsubsection[{getArea}]{\setlength{\rightskip}{0pt plus 5cm}static OWLloader::getArea (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-classFile, }
-\item[{\$}]{\_\-classLocation}
+\item[{\$}]{\_\-classLocation, }
+\item[{\$}]{\_\-argument = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLloader_a7a405369cad4d0a09f82cad218bc4824}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLloader_aa806781955f5233828d8068129039640}
 Load a contentarea. This is done by calling the loadArea() method of the given class. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-classFile} & Name of the classfile. This must the full filename without '.php' The name must be equal to the name of the class without 'Area in camelcase, so if the name of the classfile is 'myspot.php', the classname must be 'MyspotArea' and this argument must be 'myspot' \\
 \hline
 \mbox{\tt in}  & {\em \$\_\-classLocation} & Full path specification (can be as a constant) where the file can be found \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-argument} & An optional argument that will be passed to the loadArea() method. The classmethod must accept this argument and must always have a default specified, since nothing will be passed if \$\_\-argument is null (also not 'null'!) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

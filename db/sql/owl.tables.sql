@@ -18,8 +18,8 @@ CREATE  TABLE IF NOT EXISTS `owl_applications` (
   `author` VARCHAR(45) NULL COMMENT 'Author or copyright holder of the application' ,
   `license` VARCHAR(45) NULL COMMENT 'Application license type if applicable' ,
   PRIMARY KEY (`aid`) )
-ENGINE = InnoDB
-COMMENT = 'All known applications';
+ENGINE = InnoDB, 
+COMMENT = 'All known applications' ;
 
 CREATE UNIQUE INDEX `appcode` ON `owl_applications` (`code` ASC) ;
 
@@ -30,6 +30,7 @@ CREATE UNIQUE INDEX `appcode` ON `owl_applications` (`code` ASC) ;
 CREATE  TABLE IF NOT EXISTS `owl_group` (
   `gid` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique identification' ,
   `groupname` VARCHAR(32) NOT NULL COMMENT 'Name of the group' ,
+  `description` TEXT NULL COMMENT 'Optional description of the group' ,
   `aid` INT UNSIGNED NOT NULL COMMENT 'Application the group belongs tor, owl for standard' ,
   PRIMARY KEY (`gid`) ,
   CONSTRAINT `fk_groupapplic`
@@ -37,8 +38,8 @@ CREATE  TABLE IF NOT EXISTS `owl_group` (
     REFERENCES `owl_applications` (`aid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-ENGINE = InnoDB
-COMMENT = 'Standard OWL and application groups';
+ENGINE = InnoDB, 
+COMMENT = 'Standard OWL and application groups' ;
 
 CREATE INDEX `group` ON `owl_group` (`groupname` ASC) ;
 
@@ -65,8 +66,8 @@ CREATE  TABLE IF NOT EXISTS `owl_user` (
     REFERENCES `owl_group` (`gid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-ENGINE = InnoDB
-COMMENT = 'Basic userdata for all OWL based applications';
+ENGINE = InnoDB, 
+COMMENT = 'Basic userdata for all OWL based applications' ;
 
 CREATE UNIQUE INDEX `username` USING BTREE ON `owl_user` (`username` ASC) ;
 
@@ -81,8 +82,8 @@ CREATE  TABLE IF NOT EXISTS `owl_session` (
   `stimestamp` INT(10) NOT NULL COMMENT 'Timestamp of the sessions last activity' ,
   `sdata` TEXT NULL COMMENT 'Room to store the last session data' ,
   PRIMARY KEY (`sid`) )
-ENGINE = InnoDB
-COMMENT = 'This table is used to store all OWL session data';
+ENGINE = InnoDB, 
+COMMENT = 'This table is used to store all OWL session data' ;
 
 
 -- -----------------------------------------------------
@@ -121,8 +122,8 @@ CREATE  TABLE IF NOT EXISTS `owl_config` (
     REFERENCES `owl_applications` (`aid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-ENGINE = InnoDB
-COMMENT = 'Dynamic configuration for OWL and applications';
+ENGINE = InnoDB, 
+COMMENT = 'Dynamic configuration for OWL and applications' ;
 
 CREATE UNIQUE INDEX `configitem` ON `owl_config` (`aid` ASC, `name` ASC) ;
 
@@ -149,8 +150,8 @@ CREATE  TABLE IF NOT EXISTS `owl_rights` (
     REFERENCES `owl_applications` (`aid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-ENGINE = InnoDB
-COMMENT = 'Rights that can be granted within owl applications';
+ENGINE = InnoDB, 
+COMMENT = 'Rights that can be granted within owl applications' ;
 
 CREATE UNIQUE INDEX `right` ON `owl_rights` (`name` ASC) ;
 
@@ -175,8 +176,8 @@ CREATE  TABLE IF NOT EXISTS `owl_memberships` (
     REFERENCES `owl_user` (`uid` )
     ON DELETE CASCADE
     ON UPDATE CASCADE)
-ENGINE = InnoDB
-COMMENT = 'Defenition of all memberships for a user';
+ENGINE = InnoDB, 
+COMMENT = 'Defenition of all memberships for a user' ;
 
 CREATE INDEX `fk_groupmember` ON `owl_memberships` (`gid` ASC) ;
 
@@ -201,8 +202,8 @@ CREATE  TABLE IF NOT EXISTS `owl_grouprights` (
     REFERENCES `owl_group` (`gid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-ENGINE = InnoDB
-COMMENT = 'All application specific rights for each group';
+ENGINE = InnoDB, 
+COMMENT = 'All application specific rights for each group' ;
 
 CREATE INDEX `fk_grouprights_applic` ON `owl_grouprights` (`aid` ASC) ;
 
@@ -217,7 +218,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 -- Data for table `owl_applications`
 -- -----------------------------------------------------
-SET AUTOCOMMIT=0;
+START TRANSACTION;
 INSERT INTO owl_applications (`aid`, `code`, `name`, `version`, `description`, `installed`, `enabled`, `link`, `author`, `license`) VALUES (1, 'OWL', 'OWL-PHP', '0.1.0', 'Oveas Web Library for PHP', 1, 1, 'http://oveas.com', 'Oscar van Eijk', NULL);
 
 COMMIT;
@@ -225,16 +226,16 @@ COMMIT;
 -- -----------------------------------------------------
 -- Data for table `owl_group`
 -- -----------------------------------------------------
-SET AUTOCOMMIT=0;
-INSERT INTO owl_group (`gid`, `groupname`, `aid`) VALUES (1, 'nogroup', 1);
-INSERT INTO owl_group (`gid`, `groupname`, `aid`) VALUES (2, 'standard', 1);
+START TRANSACTION;
+INSERT INTO owl_group (`gid`, `groupname`, `description`, `aid`) VALUES (1, 'nogroup', 'Default group for anonymous users', 1);
+INSERT INTO owl_group (`gid`, `groupname`, `description`, `aid`) VALUES (2, 'standard', 'Default group for all registered users', 1);
 
 COMMIT;
 
 -- -----------------------------------------------------
 -- Data for table `owl_user`
 -- -----------------------------------------------------
-SET AUTOCOMMIT=0;
+START TRANSACTION;
 INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (2, 'oscar', 'f5a1ee88f62cb3d1cc9d801b5f2910bbb0c3b525', 'oscar@oveas.com', 'NOW()', '', 2, 0);
 INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (1, 'anonymous', '', '', 'NOW()', '', 1, 0);
 
@@ -243,7 +244,7 @@ COMMIT;
 -- -----------------------------------------------------
 -- Data for table `owl_config`
 -- -----------------------------------------------------
-SET AUTOCOMMIT=0;
+START TRANSACTION;
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|date', 'd-M-Y', 0, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|time', 'H:i', 0, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|datetime', 'd-M-Y H:i:s', 0, 0);
@@ -256,7 +257,7 @@ INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, 
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|default_user', 'anonymous', 1, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'logging|log_form_data', 'true', 0, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'user|default_group', '2', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|default_rights_all', '0', 1, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|default_rights_all', '1', 1, 0);
 INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'mail|driver', 'RawSMTP', 0, 0);
 
 COMMIT;
@@ -264,7 +265,7 @@ COMMIT;
 -- -----------------------------------------------------
 -- Data for table `owl_rights`
 -- -----------------------------------------------------
-SET AUTOCOMMIT=0;
+START TRANSACTION;
 INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (1, 'readpublic', 1, 'Allowed to see all content that has been either unmarked, or marked as public');
 INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (2, 'readanonymous', 1, 'Allowed to see anonymous only content');
 INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (3, 'readregistered', 1, 'Allowed to see all content that has been marked for registered users');
@@ -285,7 +286,7 @@ COMMIT;
 -- -----------------------------------------------------
 -- Data for table `owl_grouprights`
 -- -----------------------------------------------------
-SET AUTOCOMMIT=0;
+START TRANSACTION;
 INSERT INTO owl_grouprights (`gid`, `aid`, `right`) VALUES (1, 1, 3);
 INSERT INTO owl_grouprights (`gid`, `aid`, `right`) VALUES (2, 1, 93);
 

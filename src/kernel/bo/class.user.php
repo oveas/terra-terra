@@ -3,7 +3,7 @@
  * \file
  * This file defines the User class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.user.php,v 1.17 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: class.user.php,v 1.18 2011-05-18 12:03:48 oscar Exp $
  */
 
 /**
@@ -319,6 +319,36 @@ abstract class User extends _OWL
 	}
 
 	/**
+	 * Add a new membership for the given user
+	 * \param[in] $groupName Name of the new group
+	 * \param[in] $aid Application ID the group belongs to, defaults to OWL_ID
+	 * \param[in] $uid Given userID
+	 * \return True on success
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	protected function addMembership($groupName, $aid = OWL_ID, $uid = 0)
+	{
+		if ($uid == 0) {
+			$uid = $this->getUserId();
+		}
+		$group = new Group();
+		if (($gid = $group->getGroupByName($groupName, $aid)) === false) {
+			return (false);
+		}
+
+		$dataset = new DataHandler ();
+		if (ConfigHandler::get ('owltables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		}
+		$dataset->setTablename('memberships');
+		$dataset->set('uid', $uid);
+		$dataset->set('gid', $gid);
+		$dataset->prepare(DATA_WRITE);
+		$dataset->db ($_result, __LINE__, __FILE__);
+		return (true);
+	}
+
+	/**
 	 * Confirm a user registration.
 	 * \param[in] $_confirmation Array that must contain at least the keys 'uid' (User ID) and 'vcode' (Verification Code)
 	 * \return True on success, false on failure
@@ -469,10 +499,14 @@ abstract class User extends _OWL
 		if (ConfigHandler::get ('owltables', true)) {
 			$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
 		}
+		// Initialize with the values for the primary group
+		$this->rights->mergeBitmaps($this->group->getRights(OWL_ID), OWL_ID);
+		$this->rights->mergeBitmaps($this->group->getRights(APPL_ID), APPL_ID);
 		$dataset->setTablename('memberships');
 		$dataset->set('uid', $this->getUserId());
 		$dataset->prepare();
 		$dataset->db($_data, __LINE__, __FILE__);
+
 		if ($dataset->dbStatus() !== DBHANDLE_NODATA) {
 			foreach ($_data as $_mbrship) {
 				$this->memberships['m'.$_mbrship['gid']] = new Group($_mbrship['gid']);

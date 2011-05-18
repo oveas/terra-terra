@@ -3,7 +3,7 @@
  * \file
  * This file defines the Hierarchical DataHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.datahandlerh.php,v 1.3 2011-05-16 17:27:12 oscar Exp $
+ * \version $Id: class.datahandlerh.php,v 1.4 2011-05-18 12:03:48 oscar Exp $
  */
 
 /**
@@ -148,7 +148,7 @@ class HDataHandler extends DataHandler
 		if (($_node = $this->readQuery($query, __LINE__)) === false) {
 			return (false);
 		} else {
-			return ($node[0]);
+			return (count($_node) > 0 ? $_node[0] : $_node);
 		}
 	}
 
@@ -380,6 +380,9 @@ class HDataHandler extends DataHandler
 	 * \param[in] $position Position at which the new node will be inserted, where '0' results as
 	 * an insert as the leftmost childnode, and any negative value (default) or a value greater than
 	 * the current number of children will result in an insert as the rightmost child.
+	 * \note During the insert operation, left and right values are changed and might be conflicting at a certain point.
+	 * Technically that is no problem during a transaction, but some databases will fail when the left and right values
+	 * are indexed unique, so these fields should be indexed nut <em>not</em> UNIQUE!
 	 * \return True on success, false on errors
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -440,7 +443,7 @@ class HDataHandler extends DataHandler
 	 */
 	private function _getNewLeft (array $parent, $position = -1)
 	{
-		if ($parent === array()) {
+		if (!array_key_exists('value', $parent)) {
 			$topLevel = true;
 		} else {
 			$topLevel = false;
@@ -466,7 +469,7 @@ class HDataHandler extends DataHandler
 		} else {
 			if ($position > count($childNodes) || $position < 0) {
 				// Insert as the rightmost
-				$newLeft = $childNodes[count($childNodes)][$this->right] + 1;
+				$newLeft = $childNodes[count($childNodes)-1][$this->right] + 1;
 			} else {
 				// Insert left of the node currently at this position
 				$newLeft = $childNodes[$position][$this->left];
@@ -582,22 +585,29 @@ class HDataHandler extends DataHandler
 		$table = $this->owl_database->tablename($this->owl_tablename);
 		$node = $this->getNode($field, $value);
 		$this->owl_database->startTransaction('insertNode');
-		$this->owl_database->lockTable($table, DBDRIVER_LOCKTYPE_WRITE);
 		$_stat = true;
 		if ($this->xlink !== null) {
-			// First, set all crosslinks to this tree to NULL
+			// First, set all crosslinks to this tree to NULL.
+			// TODO This must be done before locking the table, since we can't lock for read and write yet. Fix the locking mechanism first!
+
+			// Use an extra select; the same table cannot be an update target and used in subselects
+			$_ids = $this->readQuery("SELECT $this->xlinkID "
+							. "FROM $table "
+							. "WHERE $this->left BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
+							, __LINE__);
+			$_idList = array();
+			foreach ($_ids as $_id) {
+				$_idList[] = $_id[$this->xlinkID];
+			}
 			$_stat = $this->writeQuery("UPDATE $table "
 									. "SET $this->xlink = NULL "
-									. "WHERE $this->xlink IN ("
-										. "SELECT $this->xlinkID "
-										. "FROM $table "
-										. "WHERE $this->left BETWEEN " . $this->left . ' AND ' . $node[$this->right] . ' '
-										. ')'
+									. "WHERE $this->xlink IN (" . implode(',',$_idList) . ') '
 									, __LINE__);
 		}
+		$this->owl_database->lockTable($table, DBDRIVER_LOCKTYPE_WRITE);
 		if ($_stat !== false) {
 			$_stat = $this->writeQuery("DELETE FROM $table "
-								. "WHERE $this->left BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->left] . ' '
+								. "WHERE $this->left BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
 								, __LINE__);
 		}
 		$width = $node[$this->right] - $node[$this->right] + 1;
@@ -694,7 +704,7 @@ class HDataHandler extends DataHandler
 		// TODO Since _getNewLeft() reads from the table using aliases, we can't access the table
 		// using the active lock (at least in MySQL), so we temporarily release the lock now
 		$this->owl_database->unlockTable($table); 
-		$_newLeft = $this->_getNewLeft($parent, $position);
+		$_newLeft = $this->_getNewLeft($newParent, $position);
 		$this->owl_database->lockTable($table, DBDRIVER_LOCKTYPE_WRITE); 
 		$_newRight = $_newLeft + $_width - 1;
 		$_move = $node[$this->left] - $_newLeft;
@@ -751,7 +761,8 @@ class HDataHandler extends DataHandler
 	 */
 	private function writeQuery ($query, $line)
 	{
-		if ($this->owl_database->read (DBHANDLE_DATA, $rowCount, $query, $line, __FILE__) >= OWL_WARNING) {
+		$this->owl_database->setQuery($query);
+		if ($this->owl_database->write ($rowCount, $line, __FILE__) >= OWL_WARNING) {
 			$this->setStatus(DATA_DBWARNING, array($this->owl_database->getLastWarning()));
 			return (false);
 		}

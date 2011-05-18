@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbhandler.php,v 1.25 2011-05-16 17:20:17 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.26 2011-05-18 12:03:48 oscar Exp $
  */
 
 /**
@@ -688,7 +688,7 @@ class DbHandler extends _OWL
 			}
 			$this->locks[$tbl] = $locktype;
 		}
-		if ($this->driver->dbtableLock ($this->id, $tablename, $locktype) === false) {
+		if ($this->driver->tableLock ($this->id, $tablename, $locktype) === false) {
 			$this->driver->dbError ($this->id, $this->errno, $this->error);
 			$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
 			// Okey... remove the list again :-S
@@ -733,7 +733,7 @@ class DbHandler extends _OWL
 			}
 		}
 
-		if ($this->driver->dbtableUnock ($this->id, $tablename) === false) {
+		if ($this->driver->tableUnlock ($this->id, $tablename) === false) {
 			$this->driver->dbError ($this->id, $this->errno, $this->error);
 			$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
 		} else {
@@ -833,6 +833,7 @@ class DbHandler extends _OWL
 		$fields = 0;
 		if ($this->driver->dbRead($__result, $this->id, $qry) === false) {
 			$this->driver->dbError ($this->id, $this->errno, $this->error);
+			$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
 			return (false);
 		}
 
@@ -1276,7 +1277,7 @@ class DbHandler extends _OWL
 		}
 		$this->query_type = DBHANDLE_COMPLETED;
 		
-		$this->setStatus (DBHANDLE_WRITTEN, array ($_msgP1, $_cnt));
+		$this->setStatus (DBHANDLE_WRITTEN, array ($this->query, $_msgP1, $_cnt));
 		if ($rows !== null) {
 			$rows = $_cnt;
 		}

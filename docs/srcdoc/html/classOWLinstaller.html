@@ -116,7 +116,7 @@ Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a80d3dddb1d0c88cd216261beef8a19cb">parseSQLFile</a> ($fname)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#ac7b18c361051e050b6e9ee54224b2a7f">installTables</a> ($sqlFile, $prefix=null)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a6f8db3684178332da05b3dc15b9f3648">addGroupRights</a> ($aid, $grp, array $rights)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a1e2b337479e3c2d67e5669da1003175e">addGroups</a> ($aid, $grpname)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a58006b3763431df6b723a51b2a7d35fb">addGroups</a> ($aid, array $grps)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#aa6571c34c5e4e40a3684ea6a11386d48">addRights</a> ($aid, array $rights)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a2c93d2eed7940a681a463d46a1083089">addConfig</a> ($aid, $item, $value, $protect=false, $hide=false, $group=null)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-static-methods"></a>
@@ -247,7 +247,7 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1e2b337479e3c2d67e5669da1003175e"></a><!-- doxytag: member="OWLinstaller::addGroups" ref="a1e2b337479e3c2d67e5669da1003175e" args="($aid, $grpname)" -->
+<a class="anchor" id="a58006b3763431df6b723a51b2a7d35fb"></a><!-- doxytag: member="OWLinstaller::addGroups" ref="a58006b3763431df6b723a51b2a7d35fb" args="($aid, array $grps)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -260,8 +260,8 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>grpname</em>&#160;</td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>grps</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -275,7 +275,7 @@ Static Private Attributes</h2></td></tr>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$aid</td><td>Application ID </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$grpname</td><td>Array of groups </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$grps</td><td>Array of groups in the format (groupname =&gt; groupdescription) </td></tr>
   </table>
   </dd>
 </dl>
@@ -646,7 +646,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 16 2011 19:21:20 for OWL-PHP by
+    <li class="footer">Generated on Wed May 18 2011 13:57:36 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

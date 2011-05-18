@@ -3,7 +3,7 @@
  * \file
  * This file defines the Formhandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.formhandler.php,v 1.10 2011-05-13 16:39:19 oscar Exp $
+ * \version $Id: class.formhandler.php,v 1.11 2011-05-18 12:03:48 oscar Exp $
  */
 
 /**
@@ -141,7 +141,7 @@ class FormHandler extends _OWL
 	 * \param[in] $format Specify how the field should be formatted
 	 * \param[in] $allows Array with allowd tags, used for the FORMDATA_CUSTOM format.
 	 * \param[in] $content Array with tags to allow completely, used for the FORMDATA_CUSTOM format.
-	 * \return Value as taken from the form; single value or array
+	 * \return Value as taken from the form; single value or array, or null when the field doesn't exist
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function get ($variable, $format = FORMDATA_STRICT, $allows = null, $content = array('script'))

@@ -58,6 +58,8 @@ static {\bf passwordStrength} (\$\_\-pwd, \$\_\-compare=array())
 \item 
 {\bf register} (\$username, \$email, \$password, \$vpassword, \$group=0)
 \item 
+{\bf addMembership} (\$groupName, \$aid={\bf OWL\_\-ID}, \$uid=0)
+\item 
 {\bf confirm} (array \$\_\-confirmation)
 \item 
 {\bf init} ()
@@ -154,6 +156,34 @@ References saveUser().
 
 
 \subsection{Member Function Documentation}
+\index{User@{User}!addMembership@{addMembership}}
+\index{addMembership@{addMembership}!User@{User}}
+\subsubsection[{addMembership}]{\setlength{\rightskip}{0pt plus 5cm}User::addMembership (
+\begin{DoxyParamCaption}
+\item[{\$}]{groupName, }
+\item[{\$}]{aid = {\ttfamily {\bf OWL\_\-ID}}, }
+\item[{\$}]{uid = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected]}}\label{classUser_a81907d416db995f7c71a1c3c06be57df}
+Add a new membership for the given user 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$groupName} & Name of the new group \\
+\hline
+\mbox{\tt in}  & {\em \$aid} & Application ID the group belongs to, defaults to OWL\_\-ID \\
+\hline
+\mbox{\tt in}  & {\em \$uid} & Given userID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \$dataset, \$group, ConfigHandler::get(), and getUserId().
+
 \index{User@{User}!check@{check}}
 \index{check@{check}!User@{User}}
 \subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::check (
@@ -398,7 +428,7 @@ References getSessionVar().
 
 
 
-Referenced by construct(), getMemberships(), and readUserdata().
+Referenced by addMembership(), construct(), getMemberships(), and readUserdata().
 
 \index{User@{User}!getUsername@{getUsername}}
 \index{getUsername@{getUsername}!User@{User}}
@@ -835,7 +865,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), readUserdata(), register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), readUserdata(), register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
 
 \index{User@{User}!signal@{signal}}
 \index{signal@{signal}!User@{User}}
@@ -950,14 +980,14 @@ Referenced by register().
 \subsubsection[{\$dataset}]{\setlength{\rightskip}{0pt plus 5cm}User::\$dataset\hspace{0.3cm}{\ttfamily  [private]}}\label{classUser_ac516c03e30e262e4085151df30109b00}
 Link to a datahandler object. This dataset is used as an interface to all database IO. 
 
-Referenced by getMemberships().
+Referenced by addMembership(), and getMemberships().
 
 \index{User@{User}!\$group@{\$group}}
 \index{\$group@{\$group}!User@{User}}
 \subsubsection[{\$group}]{\setlength{\rightskip}{0pt plus 5cm}User::\$group\hspace{0.3cm}{\ttfamily  [private]}}\label{classUser_a669fa9bfc33707ca3ee6102249acaf6f}
 Primary group object 
 
-Referenced by register().
+Referenced by addMembership(), and register().
 
 \index{User@{User}!\$memberships@{\$memberships}}
 \index{\$memberships@{\$memberships}!User@{User}}

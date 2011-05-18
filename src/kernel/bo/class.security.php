@@ -3,7 +3,7 @@
  * \file
  * This file defines the Security base class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.security.php,v 1.9 2011-05-13 16:39:19 oscar Exp $
+ * \version $Id: class.security.php,v 1.10 2011-05-18 12:03:48 oscar Exp $
  */
 
 /**
@@ -119,7 +119,6 @@ abstract class Security
 	 */
 	public function controlBitmap ($bit, $app, $controller = BIT_CHECK)
 	{
-//echo "Check bit $bit in ".$this->bitmap[$app]."<br>";
 		if (!array_key_exists('a'.$app, $this->bitmap)) {
 			$this->bitmap['a'.$app] = 0;
 			$_curr = 0;

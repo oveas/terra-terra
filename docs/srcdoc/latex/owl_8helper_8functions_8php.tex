@@ -16,6 +16,8 @@
 {\bf getReferer} (\$def= 'http://localhost/', \$hostOnly=true)
 \item 
 {\bf verifyMailAddress} (\$email, \$extract=true)
+\item 
+{\bf isSerialized} (\$value, \&\$result=null)
 \end{DoxyCompactItemize}
 
 
@@ -55,6 +57,46 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 \begin{Desc}
 \item[{\bf Todo}]This function is based on the unreliable HTTP\_\-REFERER... but what else can we use?? \end{Desc}
+\index{owl.helper.functions.php@{owl.helper.functions.php}!isSerialized@{isSerialized}}
+\index{isSerialized@{isSerialized}!owl.helper.functions.php@{owl.helper.functions.php}}
+\subsubsection[{isSerialized}]{\setlength{\rightskip}{0pt plus 5cm}isSerialized (
+\begin{DoxyParamCaption}
+\item[{\$}]{value, }
+\item[{\&\$}]{result = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}\label{owl_8helper_8functions_8php_a4be3eb2fc55be16227d3e3666c6da1f7}
+Tests if an input is valid PHP serialized string.
+
+Checks if a string is serialized using quick string manipulation to throw out obviously incorrect strings. Unserialize is then run on the string to perform the final verification.
+
+Valid serialized forms are the following: 
+\begin{DoxyItemize}
+\item boolean: {\ttfamily b:1;} 
+\item integer: {\ttfamily i:1;} 
+\item double: {\ttfamily d:0.2;} 
+\item string: {\ttfamily s:4:\char`\"{}test\char`\"{};} 
+\item array: {\ttfamily a:3:\{i:0;i:1;i:1;i:2;i:2;i:3;\}} 
+\item object: {\ttfamily O:8:\char`\"{}stdClass\char`\"{}:0:\{\}} 
+\item null: {\ttfamily N;} 
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+Chris Smith $<${\tt code+php@chris.cs278.org}$>$  Copyright (c) 2009 Chris Smith ({\tt http://www.cs278.org/})  {\tt http://sam.zoy.org/wtfpl/} WTFPL 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$value} & Value to test for serialized form \\
+\hline
+\mbox{\tt in}  & {\em \$result} & Result of unserialize() of the \$value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean True if \$value is serialized data, otherwise false 
+\end{DoxyReturn}
+
+
+Referenced by Dispatcher::decodeDispatcher().
+
 \index{owl.helper.functions.php@{owl.helper.functions.php}!owlCrypt@{owlCrypt}}
 \index{owlCrypt@{owlCrypt}!owl.helper.functions.php@{owl.helper.functions.php}}
 \subsubsection[{owlCrypt}]{\setlength{\rightskip}{0pt plus 5cm}owlCrypt (

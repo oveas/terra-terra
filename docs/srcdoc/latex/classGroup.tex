@@ -14,7 +14,9 @@ Inheritance diagram for Group:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bf \_\-\_\-construct} (\$id)
+{\bf \_\-\_\-construct} (\$id=0)
+\item 
+{\bf getGroupByName} (\$name, \$aid={\bf OWL\_\-ID})
 \item 
 {\bf getRights} (\$aid)
 \item 
@@ -71,6 +73,8 @@ Inheritance diagram for Group:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 {\bf \$rights}
+\item 
+{\bf \$id}
 \end{DoxyCompactItemize}
 
 
@@ -90,12 +94,12 @@ Apr 14, 2011 -\/-\/ O van Eijk -\/-\/ initial version
 \index{\_\-\_\-construct@{\_\-\_\-construct}!Group@{Group}}
 \subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}Group::\_\-\_\-construct (
 \begin{DoxyParamCaption}
-\item[{\$}]{id}
+\item[{\$}]{id = {\ttfamily 0}}
 \end{DoxyParamCaption}
-)}\label{classGroup_a4658f7a59e927da6c639071ef75a5931}
+)}\label{classGroup_abff26c617def5ef2edd2091ddf9a8cfe}
 Class constructor 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$id} & \doxyref{Group}{p.}{classGroup} ID \\
+\mbox{\tt in}  & {\em \$id} & Optional \doxyref{Group}{p.}{classGroup} ID. When ommittedm the group can be setup using the name with \doxyref{getGroupByName()}{p.}{classGroup_a6e17a1781036917e7eebee1f96aac657} \\
 \hline
 \end{DoxyParams}
 \begin{DoxyAuthor}{Author}
@@ -103,7 +107,7 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References ConfigHandler::get(), getGroupData(), getGroupRights(), and \_\-OWL::init().
+References \$id, ConfigHandler::get(), getGroupData(), getGroupRights(), and \_\-OWL::init().
 
 
 
@@ -181,6 +185,31 @@ Reimplemented in {\bf Dispatcher} \doxyref{}{p.}{classDispatcher_a31c4bd4e4eaee7
 
 References OWL::factory().
 
+\index{Group@{Group}!getGroupByName@{getGroupByName}}
+\index{getGroupByName@{getGroupByName}!Group@{Group}}
+\subsubsection[{getGroupByName}]{\setlength{\rightskip}{0pt plus 5cm}Group::getGroupByName (
+\begin{DoxyParamCaption}
+\item[{\$}]{name, }
+\item[{\$}]{aid = {\ttfamily {\bf OWL\_\-ID}}}
+\end{DoxyParamCaption}
+)}\label{classGroup_a6e17a1781036917e7eebee1f96aac657}
+Initialize the group object based on the groupname 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$name} & Name of the group \\
+\hline
+\mbox{\tt in}  & {\em \$aid} & Application ID the group belongs to, defaults to \doxyref{OWL}{p.}{classOWL} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The group ID, or false when not found 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References getGroupRights(), and \_\-OWL::setStatus().
+
 \index{Group@{Group}!getGroupData@{getGroupData}}
 \index{getGroupData@{getGroupData}!Group@{Group}}
 \subsubsection[{getGroupData}]{\setlength{\rightskip}{0pt plus 5cm}Group::getGroupData (
@@ -211,7 +240,7 @@ References ConfigHandler::get().
 
 
 
-Referenced by \_\-\_\-construct().
+Referenced by \_\-\_\-construct(), and getGroupByName().
 
 \index{Group@{Group}!getLastWarning@{getLastWarning}}
 \index{getLastWarning@{getLastWarning}!Group@{Group}}
@@ -452,7 +481,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
 
 \index{Group@{Group}!signal@{signal}}
 \index{signal@{signal}!Group@{Group}}
@@ -540,6 +569,13 @@ Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 
 
 \subsection{Member Data Documentation}
+\index{Group@{Group}!\$id@{\$id}}
+\index{\$id@{\$id}!Group@{Group}}
+\subsubsection[{\$id}]{\setlength{\rightskip}{0pt plus 5cm}Group::\$id\hspace{0.3cm}{\ttfamily  [private]}}\label{classGroup_ac63f8adf9c9c19686fee49593fc8b5cb}
+\doxyref{Group}{p.}{classGroup} ID 
+
+Referenced by \_\-\_\-construct().
+
 \index{Group@{Group}!\$rights@{\$rights}}
 \index{\$rights@{\$rights}!Group@{Group}}
 \subsubsection[{\$rights}]{\setlength{\rightskip}{0pt plus 5cm}Group::\$rights\hspace{0.3cm}{\ttfamily  [private]}}\label{classGroup_af97dff6eda8fffaa14b0aa644b3147ec}

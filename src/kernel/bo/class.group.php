@@ -3,7 +3,7 @@
  * \file
  * This file defines the Group class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.group.php,v 1.6 2011-05-02 12:56:15 oscar Exp $
+ * \version $Id: class.group.php,v 1.7 2011-05-18 12:03:48 oscar Exp $
  */
 
 /**
@@ -21,11 +21,16 @@ class Group extends _OWL
 	private $rights;
 
 	/**
+	 * Group ID
+	 */
+	private $id;
+
+	/**
 	 * Class constructor
-	 * \param[in] $id Group ID
+	 * \param[in] $id Optional Group ID. When ommittedm the group can be setup using the name with getGroupByName()
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function __construct ($id)
+	public function __construct ($id = 0)
 	{
 		_OWL::init();
 		$this->dataset = new DataHandler ();
@@ -35,8 +40,10 @@ class Group extends _OWL
 		$this->dataset->setTablename('group');
 		$this->id = $id;
 		$this->rights = array();
-		$this->getGroupData();
-		$this->getGroupRights();
+		if ($this->id !== 0) {
+			$this->getGroupData();
+			$this->getGroupRights();
+		}
 	}
 
 	/**
@@ -51,6 +58,29 @@ class Group extends _OWL
 		$this->group_data = $_data[0];
 	}
 
+	/**
+	 * Initialize the group object based on the groupname
+	 * \param[in] $name Name of the group
+	 * \param[in] $aid Application ID the group belongs to, defaults to OWL
+	 * \return The group ID, or false when not found
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function getGroupByName($name, $aid = OWL_ID)
+	{
+		$this->dataset->set('groupname', $name);
+		$this->dataset->set('aid', $aid);
+		$this->dataset->prepare();
+		$this->dataset->db($_data, __LINE__, __FILE__);
+		if (count($_data) == 0) {
+			$this->setStatus(GROUP_NOSUCHNAME, array($name));
+			return (false);
+		}
+		$this->group_data = $_data[0];
+		$this->id = $this->group_data['gid'];
+		$this->getGroupRights();
+		return ($this->id);
+		
+	}
 	/**
 	 * Read the groupright bitmaps from the database and store them in the internal array
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -101,3 +131,13 @@ class Group extends _OWL
 	}
 }
 Register::registerClass('Group');
+//Register::setSeverity (OWL_DEBUG);
+//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (OWL_OK);
+//Register::setSeverity (OWL_SUCCESS);
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('GROUP_NOSUCHNAME');
+//Register::setSeverity (OWL_BUG);
+//Register::setSeverity (OWL_ERROR);
+//Register::setSeverity (OWL_FATAL);
+//Register::setSeverity (OWL_CRITICAL);
