@@ -3,7 +3,7 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.11 2011-05-16 17:20:17 oscar Exp $
+ * \version $Id: class.exceptionhandler.php,v 1.12 2011-05-18 13:22:18 oscar Exp $
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
@@ -333,6 +333,8 @@ class OWLExceptionHandler
 		if ($_tmp_logger === true) {
 			unset ($GLOBALS['logger']);
 		}
+		// Define a constants to let destructors know we're not in a clean shutdown
+		define ('OWL_EMERGENCY_SHUTDOWN', 1);
 	}
   
 	/**

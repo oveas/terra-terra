@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbhandler.php,v 1.26 2011-05-18 12:03:48 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.27 2011-05-18 13:22:18 oscar Exp $
  */
 
 /**
@@ -259,10 +259,15 @@ class DbHandler extends _OWL
 	public function __destruct ()
 	{
 		if ($this->transaction != '') {
-			if (ConfigHandler::get('autocommit', false) === true) {
-				$this->commitTransaction($this->transaction);
-			} else {
+			if (defined('OWL_EMERGENCY_SHUTDOWN')) {
+				// The application crashed, tollback all changes
 				$this->rollbackTransaction($this->transaction);
+			} else {
+				if (ConfigHandler::get('autocommit', false) === true) {
+					$this->commitTransaction($this->transaction);
+				} else {
+					$this->rollbackTransaction($this->transaction);
+				}
 			}
 		}
 		if (count($this->locks) > 0) {
