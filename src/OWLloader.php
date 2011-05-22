@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.31 2011-05-18 12:03:48 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.32 2011-05-22 10:56:03 oscar Exp $
  */
 
 // Error handling used during development
@@ -281,6 +281,13 @@ OWLloader::getClass('cache', OWL_SO_INC);
 OWLloader::getClass('owl.severitycodes.php', OWL_LIBRARY);
 OWLloader::getClass('config.php', OWL_ROOT);
 
+if (!defined ('OWL_TIMERS_ENABLED')) {
+	// If timers aren't enabled, default to false (make sure the constant exists)
+	define ('OWL_TIMERS_ENABLED', false);
+}
+OWLloader::getClass('timers', OWL_SO_INC);
+OWLTimers::startTimer(OWL_MAIN_TIMER);
+
 // Abstract classes
 OWLloader::getClass('exceptionhandler', OWL_SO_INC);
 OWLloader::getClass('register', OWL_SO_INC);
@@ -337,10 +344,11 @@ require (OWL_CONTRIB . '/owl.contrib.loader.php');
 // Set up the logger
 $GLOBALS['logger'] = OWL::factory('LogHandler');
 
+$_doc  = OWL::factory('Document', 'ui');
+$_doc->loadStyle(OWL_STYLE . '/owl.css');
 // Select the (no)debug function libraries.
 if ($GLOBALS['config']['values']['debug'] > 0) {
 	require (OWL_LIBRARY . '/owl.debug.functions.php');
-	$_doc  = OWL::factory('Document', 'ui');
 	$_doc->loadStyle(OWL_STYLE . '/owl_debug.css');
 } else {
 	require (OWL_LIBRARY . '/owl.nodebug.functions.php');

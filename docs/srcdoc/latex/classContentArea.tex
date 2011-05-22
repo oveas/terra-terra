@@ -18,7 +18,7 @@ Inheritance diagram for ContentArea:\begin{figure}[H]
 \item 
 {\bf addToDocument} ({\bf Container} \$\_\-contnr=null)
 \item 
-{\bf trn} (\$\_\-string)
+{\bf trn} (\$\_\-string, \$\_\-params=array())
 \item 
 {\bf getLastWarning} ()
 \item 
@@ -31,6 +31,11 @@ Inheritance diagram for ContentArea:\begin{figure}[H]
 {\bf signal} (\$level={\bf OWL\_\-INFO}, \&\$text=false)
 \item 
 {\bf traceback} (\&\$text=false, \$depth=0)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf translate} (\$\_\-string, \$\_\-params=array())
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
@@ -512,16 +517,48 @@ References \_\-OWL::signal().
 
 Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 
+\index{ContentArea@{ContentArea}!translate@{translate}}
+\index{translate@{translate}!ContentArea@{ContentArea}}
+\subsubsection[{translate}]{\setlength{\rightskip}{0pt plus 5cm}static ContentArea::translate (
+\begin{DoxyParamCaption}
+\item[{\$}]{\_\-string, }
+\item[{\$}]{\_\-params = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classContentArea_a3e327b0c06a0cc9bf760e167b42f1a5e}
+Translate a textstring using the labels array 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-string} & Text string to translate \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-params} & An optional parameter or array with paramets that will by substituted in the translated text. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The translation, or the input if none was found. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \$GLOBALS, and ConfigHandler::get().
+
+
+
+Referenced by OWLdbg\_\-show(), OWLTimers::showTimer(), OWLTimers::startTimer(), and OWLTimers::stopTimer().
+
 \index{ContentArea@{ContentArea}!trn@{trn}}
 \index{trn@{trn}!ContentArea@{ContentArea}}
 \subsubsection[{trn}]{\setlength{\rightskip}{0pt plus 5cm}ContentArea::trn (
 \begin{DoxyParamCaption}
-\item[{\$}]{\_\-string}
+\item[{\$}]{\_\-string, }
+\item[{\$}]{\_\-params = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)}\label{classContentArea_a36a662f1463162a8a8abea718a1f70ba}
-Translate a textstring using the labels array 
+)}\label{classContentArea_a0914dde98d5a26bfba3af5495f54986e}
+Translate a textstring using the labels array. This method just calls the static translate method. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-string} & Text string to translate \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-params} & An optional parameter or array with paramets that will by substituted in the translated text. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -533,10 +570,6 @@ Oscar van Eijk, Oveas Functionality Provider
 \begin{Desc}
 \item[Examples: ]\par
 {\bf exa.form.php}.\end{Desc}
-
-
-References \$GLOBALS, and ConfigHandler::get().
-
 
 
 \subsection{Member Data Documentation}

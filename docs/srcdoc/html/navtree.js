@@ -234,10 +234,12 @@ var NAVTREE =
           [ "SessionHandler", "classSessionHandler.html", null ],
           [ "SocketHandler", "classSocketHandler.html", null ],
           [ "StatusHandler", "classStatusHandler.html", null ],
+          [ "OWLTimers", "classOWLTimers.html", null ],
           [ "OWLinstaller", "classOWLinstaller.html", null ],
           [ "OWLloader", "classOWLloader.html", null ]
         ] ],
         [ "Files", "group__OWL__SO__LAYER.html", [
+          [ "class.timers.php", "class_8timers_8php.html", null ],
           [ "OWLinstaller.php", "OWLinstaller_8php.html", null ]
         ] ]
       ] ],
@@ -343,6 +345,7 @@ var NAVTREE =
       [ "OWLExceptionHandler", "classOWLExceptionHandler.html", null ],
       [ "OWLinstaller", "classOWLinstaller.html", null ],
       [ "OWLloader", "classOWLloader.html", null ],
+      [ "OWLTimers", "classOWLTimers.html", null ],
       [ "RawSMTP", "classRawSMTP.html", null ],
       [ "Register", "classRegister.html", null ],
       [ "Rights", "classRights.html", null ],
@@ -424,6 +427,7 @@ var NAVTREE =
       [ "OWLExceptionHandler", "classOWLExceptionHandler.html", null ],
       [ "OWLinstaller", "classOWLinstaller.html", null ],
       [ "OWLloader", "classOWLloader.html", null ],
+      [ "OWLTimers", "classOWLTimers.html", null ],
       [ "Register", "classRegister.html", null ],
       [ "Security", "classSecurity.html", [
         [ "Rights", "classRights.html", null ]
@@ -467,6 +471,7 @@ var NAVTREE =
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.sessionhandler.php", "class_8sessionhandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.sockethandler.php", "class_8sockethandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.statushandler.php", "class_8statushandler_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/src/kernel/so/class.timers.php", "class_8timers_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/ui/class.baseelement.php", "class_8baseelement_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/ui/class.container.php", "kernel_2ui_2class_8container_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/ui/class.contentarea.php", "class_8contentarea_8php.html", null ],

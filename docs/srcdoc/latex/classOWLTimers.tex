@@ -1,0 +1,150 @@
+\section{OWLTimers Class Reference}
+\label{classOWLTimers}\index{OWLTimers@{OWLTimers}}
+
+
+Timer handler.  
+
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf startTimer} (\$name)
+\item 
+static {\bf stopTimer} (\$name)
+\item 
+static {\bf showTimer} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf mtimeFloat} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf \$activeTimers} = array()
+\item 
+static {\bf \$timers} = array()
+\item 
+static {\bf \$warnings} = array()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Timer handler. 
+
+This abstract class sets up timers that can be used to check the runtime of both the total and parts.
+
+To enable timers, the constant OWL\_\-TIMERS\_\-ENABLES must be defined by the application {\itshape before\/} \doxyref{OWLloader.php}{p.}{OWLloader_8php} is included, e.g.: 
+\begin{DoxyCode}
+ define ('OWL_TIMERS_ENABLED', true);
+ require (OWL_ROOT . '/OWLloader.php');
+\end{DoxyCode}
+
+
+Timers can be started anywhere in the code. When timers are not enabled, it won't have any effect. Starting timers can be done with \doxyref{OWLTimers::startTimer}{p.}{classOWLTimers_a3e9df1345159263a223da62b775140a8}('name'). Later in the code they can be stopped with \doxyref{OWLTimers::stopTimer}{p.}{classOWLTimers_a1ba41542f07dff9ae48f15fb60d028c7}('name'), where 'name' must be unique.
+
+At the end of the run, the total running time of the application will be displayed, end the running time of the individual timers (the part between \doxyref{startTimer()}{p.}{classOWLTimers_a3e9df1345159263a223da62b775140a8} and \doxyref{stopTimer()}{p.}{classOWLTimers_a1ba41542f07dff9ae48f15fb60d028c7}) with their percentage of the total time.
+
+Timers that are not stopped, will be timed until the application rundown. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+May 21, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{OWLTimers@{OWLTimers}!mtimeFloat@{mtimeFloat}}
+\index{mtimeFloat@{mtimeFloat}!OWLTimers@{OWLTimers}}
+\subsubsection[{mtimeFloat}]{\setlength{\rightskip}{0pt plus 5cm}static OWLTimers::mtimeFloat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classOWLTimers_a8e4a8f49bcc6bc93da106d66fd313e39}
+Get the current microtime \begin{DoxyReturn}{Returns}
+Microtime as a floating int value 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by startTimer(), and stopTimer().
+
+\index{OWLTimers@{OWLTimers}!showTimer@{showTimer}}
+\index{showTimer@{showTimer}!OWLTimers@{OWLTimers}}
+\subsubsection[{showTimer}]{\setlength{\rightskip}{0pt plus 5cm}static OWLTimers::showTimer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLTimers_adc7cb4879b9ddf24626f193346230514}
+Show all timers. This method is called by OCLrundown.php at the end of the run \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References stopTimer(), and ContentArea::translate().
+
+\index{OWLTimers@{OWLTimers}!startTimer@{startTimer}}
+\index{startTimer@{startTimer}!OWLTimers@{OWLTimers}}
+\subsubsection[{startTimer}]{\setlength{\rightskip}{0pt plus 5cm}static OWLTimers::startTimer (
+\begin{DoxyParamCaption}
+\item[{\$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLTimers_a3e9df1345159263a223da62b775140a8}
+Start a new timer, creating an array key with the actual timestamp. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$name} & Unique name of the timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References mtimeFloat(), and ContentArea::translate().
+
+\index{OWLTimers@{OWLTimers}!stopTimer@{stopTimer}}
+\index{stopTimer@{stopTimer}!OWLTimers@{OWLTimers}}
+\subsubsection[{stopTimer}]{\setlength{\rightskip}{0pt plus 5cm}static OWLTimers::stopTimer (
+\begin{DoxyParamCaption}
+\item[{\$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOWLTimers_a1ba41542f07dff9ae48f15fb60d028c7}
+Stop an active timer and update the array key with the execution time since the start timestamp. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$name} & Unique name of the timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References mtimeFloat(), and ContentArea::translate().
+
+
+
+Referenced by showTimer().
+
+
+
+\subsection{Member Data Documentation}
+\index{OWLTimers@{OWLTimers}!\$activeTimers@{\$activeTimers}}
+\index{\$activeTimers@{\$activeTimers}!OWLTimers@{OWLTimers}}
+\subsubsection[{\$activeTimers}]{\setlength{\rightskip}{0pt plus 5cm}OWLTimers::\$activeTimers = array()\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classOWLTimers_a49e803c06913c63a2e19895035f91b39}
+Array holding the timers that are currently active \index{OWLTimers@{OWLTimers}!\$timers@{\$timers}}
+\index{\$timers@{\$timers}!OWLTimers@{OWLTimers}}
+\subsubsection[{\$timers}]{\setlength{\rightskip}{0pt plus 5cm}OWLTimers::\$timers = array()\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classOWLTimers_abdb1496c411f236397161e8a75d868ca}
+Array holding all timers and their values \index{OWLTimers@{OWLTimers}!\$warnings@{\$warnings}}
+\index{\$warnings@{\$warnings}!OWLTimers@{OWLTimers}}
+\subsubsection[{\$warnings}]{\setlength{\rightskip}{0pt plus 5cm}OWLTimers::\$warnings = array()\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classOWLTimers_ad9be6e6627fc814df856a1a81fc154d4}
+Array with warning messages if applicable 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/so/{\bf class.timers.php}\end{DoxyCompactItemize}

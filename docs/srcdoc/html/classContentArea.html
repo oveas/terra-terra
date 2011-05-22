@@ -96,6 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
@@ -121,13 +122,16 @@ Inheritance diagram for ContentArea:</div>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classContentArea.html#ac399e7f1f13387302f6f97e6e7672e67">loadArea</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classContentArea.html#ad9ae724b94dedfde7fa9d7d3057a034d">addToDocument</a> (<a class="el" href="classContainer.html">Container</a> $_contnr=null)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classContentArea.html#a36a662f1463162a8a8abea718a1f70ba">trn</a> ($_string)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classContentArea.html#a0914dde98d5a26bfba3af5495f54986e">trn</a> ($_string, $_params=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#a1888f52fc2d0ec29e146925ccad70a6b">getLastWarning</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#ac1f1643ff5b5db7c326c30477603358d">getStatus</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#a2374613f9bb7eccf49a5dbc9a9ef4751">getSeverity</a> ($status=null)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#a53ab4d3bbb2c6a56966c339ca4b4c805">succeeded</a> ($_ok=<a class="el" href="group__OWL__SeverityCodes.html#ga96223f06ba27bf5cbefa6e9d702897c2">OWL_SUCCESS</a>, &amp;$_object=null)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#a51ba4a16409acf2a2f61f286939091a5">signal</a> ($level=<a class="el" href="group__OWL__SeverityCodes.html#ga139328861128689f2f4def6a399d9057">OWL_INFO</a>, &amp;$text=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__OWL.html#aa29547995d6741b7d2b90c1d4ea99a13">traceback</a> (&amp;$text=false, $depth=0)</td></tr>
+<tr><td colspan="2"><h2><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classContentArea.html#a3e327b0c06a0cc9bf760e167b42f1a5e">translate</a> ($_string, $_params=array())</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classContentArea.html#a96d964cfdb842fbe40edaa602584a034">hasRight</a> ($bit, $appl)</td></tr>
@@ -711,16 +715,26 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a36a662f1463162a8a8abea718a1f70ba"></a><!-- doxytag: member="ContentArea::trn" ref="a36a662f1463162a8a8abea718a1f70ba" args="($_string)" -->
+<a class="anchor" id="a3e327b0c06a0cc9bf760e167b42f1a5e"></a><!-- doxytag: member="ContentArea::translate" ref="a3e327b0c06a0cc9bf760e167b42f1a5e" args="($_string, $_params=array())" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ContentArea::trn </td>
+          <td class="memname">static ContentArea::translate </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_string</em></td><td>)</td>
+          <td class="paramname"><em>_string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_params</em> = <code>array()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [static]</code></td>
         </tr>
       </table>
 </div>
@@ -729,6 +743,48 @@ Protected Attributes</h2></td></tr>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>Text string to translate </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_params</td><td>An optional parameter or array with paramets that will by substituted in the translated text. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The translation, or the input if none was found. </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, and <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
+
+<p>Referenced by <a class="el" href="owl_8debug_8functions_8php.html#a8023866265541fcd3991cfd3c854cd18">OWLdbg_show()</a>, <a class="el" href="classOWLTimers.html#adc7cb4879b9ddf24626f193346230514">OWLTimers::showTimer()</a>, <a class="el" href="classOWLTimers.html#a3e9df1345159263a223da62b775140a8">OWLTimers::startTimer()</a>, and <a class="el" href="classOWLTimers.html#a1ba41542f07dff9ae48f15fb60d028c7">OWLTimers::stopTimer()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0914dde98d5a26bfba3af5495f54986e"></a><!-- doxytag: member="ContentArea::trn" ref="a0914dde98d5a26bfba3af5495f54986e" args="($_string, $_params=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ContentArea::trn </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_params</em> = <code>array()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Translate a textstring using the labels array. This method just calls the static translate method. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>Text string to translate </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_params</td><td>An optional parameter or array with paramets that will by substituted in the translated text. </td></tr>
   </table>
   </dd>
 </dl>
@@ -736,8 +792,6 @@ Protected Attributes</h2></td></tr>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="exa_8form_8php-example.html#a6">exa.form.php</a>.</dd>
 </dl>
-<p>References <a class="el" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>, and <a class="el" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get()</a>.</p>
-
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
@@ -792,7 +846,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed May 18 2011 13:57:30 for OWL-PHP by
+    <li class="footer">Generated on Sun May 22 2011 12:37:46 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

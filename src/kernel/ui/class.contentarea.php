@@ -3,7 +3,7 @@
  * \file
  * This file defines the abstract ContentArea class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.contentarea.php,v 1.7 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.contentarea.php,v 1.8 2011-05-22 10:56:04 oscar Exp $
  */
 
 /**
@@ -55,18 +55,47 @@ abstract class ContentArea extends _OWL
 	}
 
 	/**
-	 * Translate a textstring using the labels array
+	 * Translate a textstring using the labels array. This method just calls the static
+	 * translate method.
 	 * \param[in] $_string Text string to translate
+	 * \param[in] $_params An optional parameter or array with paramets that will by substituted in
+	 * the translated text.
 	 * \return The translation, or the input if none was found.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function trn ($_string)
+	public function trn ($_string, $_params = array())
+	{
+		return (self::translate($_string, $_params));
+	}
+
+	/**
+	 * Translate a textstring using the labels array
+	 * \param[in] $_string Text string to translate
+	 * \param[in] $_params An optional parameter or array with paramets that will by substituted in
+	 * the translated text.
+	 * \return The translation, or the input if none was found.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	static public function translate ($_string, $_params = array())
 	{
 		if (array_key_exists($_string, $GLOBALS['labels'])) {
-			return $GLOBALS['labels'][$_string];
+			$translation = $GLOBALS['labels'][$_string];
 		} else {
-			return ((ConfigHandler::get ('debug') > 0?'(!)':'').$_string);
+			$translation = ((ConfigHandler::get ('debug') > 0?'(!)':'').$_string);
 		}
+		if ($_params === array()) {
+			return ($translation);
+		}
+		if (is_string($_params)) {
+			$_params = array($_params);
+		}
+		for ($_i = 0; $_i < count ($_params); $_i++) {
+			$_search[] = '$p' . ($_i + 1) . '$';
+		}
+		if ($_i > 0) {
+			$translation = str_replace ($_search, $_params, $translation);
+		}
+		return ($translation);
 	}
 
 	/**

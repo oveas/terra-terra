@@ -170,7 +170,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                 <span class="comment">// Add the Username field to the form</span>
                 $_usrFld = $_frm-&gt;addField(<span class="stringliteral">&#39;text&#39;</span>, <span class="stringliteral">&#39;usr&#39;</span>, <span class="stringliteral">&#39;&#39;</span>, array(<span class="stringliteral">&#39;size&#39;</span> =&gt; 20));
                 <span class="comment">// Get the translation for the label</span>
-                $_usrLabel = $this-&gt;<a name="a6"></a><a class="code" href="classContentArea.html#a36a662f1463162a8a8abea718a1f70ba">trn</a>(<span class="stringliteral">&#39;Username&#39;</span>);
+                $_usrLabel = $this-&gt;<a name="a6"></a><a class="code" href="classContentArea.html#a0914dde98d5a26bfba3af5495f54986e">trn</a>(<span class="stringliteral">&#39;Username&#39;</span>);
                 <span class="comment">// Create a &lt;label&gt; container for the username field with the translation as content</span>
                 $_usrContnr = <span class="keyword">new</span> <a name="_a7"></a><a class="code" href="classContainer.html" title="Container.">Container</a>(<span class="stringliteral">&#39;label&#39;</span>, $_usrLabel, array(), array(<span class="stringliteral">&#39;for&#39;</span> =&gt; &amp;$_usrFld));
                 <span class="comment">// Add a new cell to the tablerow</span>
@@ -183,7 +183,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                 <span class="comment">// Same story for the password</span>
                 $_rowP = $_liTable-&gt;addRow();
                 $_pwdFld = $_frm-&gt;addField(<span class="stringliteral">&#39;password&#39;</span>, <span class="stringliteral">&#39;pwd&#39;</span>, <span class="stringliteral">&#39;&#39;</span>, array(<span class="stringliteral">&#39;size&#39;</span> =&gt; 15));
-                $_pwdLabel = $this-&gt;<a class="code" href="classContentArea.html#a36a662f1463162a8a8abea718a1f70ba">trn</a>(<span class="stringliteral">&#39;Password&#39;</span>);
+                $_pwdLabel = $this-&gt;<a class="code" href="classContentArea.html#a0914dde98d5a26bfba3af5495f54986e">trn</a>(<span class="stringliteral">&#39;Password&#39;</span>);
                 $_pwdContnr = <span class="keyword">new</span> <a class="code" href="classContainer.html" title="Container.">Container</a>(<span class="stringliteral">&#39;label&#39;</span>, $_pwdLabel, array(), array(<span class="stringliteral">&#39;for&#39;</span> =&gt; &amp;$_pwdFld));
                 $_pwdCell = $_rowP-&gt;addCell();
                 $_pwdCell-&gt;setContent($_pwdContnr);
@@ -191,7 +191,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
                 <span class="comment">// And a bit simpler for the submit button</span>
                 $_rowS = $_liTable-&gt;addRow();
-                $_frm-&gt;addField(<span class="stringliteral">&#39;submit&#39;</span>, <span class="stringliteral">&#39;act&#39;</span>, $this-&gt;<a class="code" href="classContentArea.html#a36a662f1463162a8a8abea718a1f70ba">trn</a>(<span class="stringliteral">&#39;Login&#39;</span>));
+                $_frm-&gt;addField(<span class="stringliteral">&#39;submit&#39;</span>, <span class="stringliteral">&#39;act&#39;</span>, $this-&gt;<a class="code" href="classContentArea.html#a0914dde98d5a26bfba3af5495f54986e">trn</a>(<span class="stringliteral">&#39;Login&#39;</span>));
                 $_rowS-&gt;addCell(
                           $_frm-&gt;showField(<span class="stringliteral">&#39;act&#39;</span>)
                         , array(<span class="stringliteral">&#39;colspan&#39;</span>=&gt;2
@@ -203,7 +203,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                           <span class="stringliteral">&#39;fieldset&#39;</span>
                         , $_liTable-&gt;showElement()
                         , array()
-                        , array(<span class="stringliteral">&#39;legend&#39;</span> =&gt; $this-&gt;<a class="code" href="classContentArea.html#a36a662f1463162a8a8abea718a1f70ba">trn</a>(<span class="stringliteral">&#39;Login Form&#39;</span>))
+                        , array(<span class="stringliteral">&#39;legend&#39;</span> =&gt; $this-&gt;<a class="code" href="classContentArea.html#a0914dde98d5a26bfba3af5495f54986e">trn</a>(<span class="stringliteral">&#39;Login Form&#39;</span>))
                 );
 
                 <span class="comment">// Add the fieldset to the form</span>
@@ -235,7 +235,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Wed May 18 2011 13:57:26 for OWL-PHP by
+    <li class="footer">Generated on Sun May 22 2011 12:37:42 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

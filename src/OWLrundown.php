@@ -4,7 +4,7 @@
  * \ingroup OWL_LIBRARY
  * Make sure all objects are destroyed in the proper order
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: OWLrundown.php,v 1.9 2011-05-02 12:56:15 oscar Exp $
+ * \version $Id: OWLrundown.php,v 1.10 2011-05-22 10:56:03 oscar Exp $
  */
 
 OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['messages'], 'Messages during rundown');
@@ -41,4 +41,5 @@ $_form->__destruct();
 // Destroy the main class
 //$GLOBALS['owl_object']->__destruct();
 //unset ($GLOBALS['owl_object']);
+OWLTimers::showTimer();
 //echo "rundown complete<br/>";

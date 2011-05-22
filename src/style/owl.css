@@ -2,7 +2,7 @@
  * \file
  * Default style sheet for OWL based products
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.css,v 1.1 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: owl.css,v 1.2 2011-05-22 10:56:04 oscar Exp $
  */
 
 /*
@@ -173,3 +173,16 @@ IMG {
 	font-size : 8pt;
 }
 
+/*
+ * OWL Timers
+ */
+.OWLtimers, .OWLtimerWarnings {
+	font-family			: Arial, sans-serif;
+	font-size			: 8px;
+}
+.OWLtimers {
+	color				: #333333;
+}
+.OWLtimerWarnings {
+	color				: #aa3333;
+}
