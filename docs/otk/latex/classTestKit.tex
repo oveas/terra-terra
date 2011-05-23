@@ -1,0 +1,184 @@
+\section{TestKit Class Reference}
+\label{classTestKit}\index{TestKit@{TestKit}}
+
+
+Testset loader.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf getTestSets} ()
+\item 
+{\bf performTests} (\$testSet)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf getInstance} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf loadTestSet} (\$name)
+\item 
+{\bf getClassName} (\$setName)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$sets}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf \$instance}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Testset loader. 
+
+Singleton class that loads all testsets \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+May 19, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{TestKit@{TestKit}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!TestKit@{TestKit}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}TestKit::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestKit_a8b1c19958ea1fef97afb0ef02838f83e}
+Class constructor; scan the testsets directory for subdirectories that can contain testsets, and load all testset -\/ classfiles that have been found. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References loadTestSet().
+
+
+
+\subsection{Member Function Documentation}
+\index{TestKit@{TestKit}!getClassName@{getClassName}}
+\index{getClassName@{getClassName}!TestKit@{TestKit}}
+\subsubsection[{getClassName}]{\setlength{\rightskip}{0pt plus 5cm}TestKit::getClassName (
+\begin{DoxyParamCaption}
+\item[{\$}]{setName}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestKit_a1fed7be3ce14ebafe682244b3ca017a5}
+Translate the setname (taken from the directory name) into a classname in the required format 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$setName} & Name of the set and directory \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Classname 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by loadTestSet(), and performTests().
+
+\index{TestKit@{TestKit}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!TestKit@{TestKit}}
+\subsubsection[{getInstance}]{\setlength{\rightskip}{0pt plus 5cm}static TestKit::getInstance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classTestKit_ab2fdf74a60ab20ebcc1ed7a087951355}
+Return a reference to my implementation. If necessary, create that implementation first. \begin{DoxyReturn}{Returns}
+Object instance ID 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \$instance.
+
+\index{TestKit@{TestKit}!getTestSets@{getTestSets}}
+\index{getTestSets@{getTestSets}!TestKit@{TestKit}}
+\subsubsection[{getTestSets}]{\setlength{\rightskip}{0pt plus 5cm}TestKit::getTestSets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classTestKit_a831800f63e9299bfbbe46ed3a2f19480}
+Return the available tests \begin{DoxyReturn}{Returns}
+Testsets as an indexed array in the format (name =$>$ description) 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{TestKit@{TestKit}!loadTestSet@{loadTestSet}}
+\index{loadTestSet@{loadTestSet}!TestKit@{TestKit}}
+\subsubsection[{loadTestSet}]{\setlength{\rightskip}{0pt plus 5cm}TestKit::loadTestSet (
+\begin{DoxyParamCaption}
+\item[{\$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestKit_a2dc6a2ac4e931bb8b9a0bd909e6f5233}
+Check if a directory contains a testset. If so, load the classfile and add the testset name and description to the internal array. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$name} & Name of the directory to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+null if the directory contains no valid testset, true when successfully loaded, false on errors. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References getClassName().
+
+
+
+Referenced by \_\-\_\-construct().
+
+\index{TestKit@{TestKit}!performTests@{performTests}}
+\index{performTests@{performTests}!TestKit@{TestKit}}
+\subsubsection[{performTests}]{\setlength{\rightskip}{0pt plus 5cm}TestKit::performTests (
+\begin{DoxyParamCaption}
+\item[{\$}]{testSet}
+\end{DoxyParamCaption}
+)}\label{classTestKit_adf785b6be468866f96c0b627d7a1e868}
+Perform the testcases of a given testset 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$testSet} & Testset to perform \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References getClassName().
+
+
+
+\subsection{Member Data Documentation}
+\index{TestKit@{TestKit}!\$instance@{\$instance}}
+\index{\$instance@{\$instance}!TestKit@{TestKit}}
+\subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}TestKit::\$instance\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classTestKit_a3d2f4e29a9b1aba210a38cf8d1826adc}
+Self reference 
+
+Referenced by getInstance().
+
+\index{TestKit@{TestKit}!\$sets@{\$sets}}
+\index{\$sets@{\$sets}!TestKit@{TestKit}}
+\subsubsection[{\$sets}]{\setlength{\rightskip}{0pt plus 5cm}TestKit::\$sets\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestKit_af6d52c4544fdaa0c717aefeafcd5688e}
+Indexed array with all testsets and their descriptions 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/owltestkit/so/{\bf class.testkit.php}\end{DoxyCompactItemize}

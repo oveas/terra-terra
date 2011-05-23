@@ -1,0 +1,107 @@
+\section{OTKHdata\_\-First Class Reference}
+\label{classOTKHdata__First}\index{OTKHdata\_\-First@{OTKHdata\_\-First}}
+
+
+HData Testcase.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf prepareTest} ()
+\item 
+{\bf performTest} ()
+\item 
+{\bf cleanupTest} ()
+\item 
+{\bf getDetails} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$tablename}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+HData Testcase. 
+
+This testcase creates a database table that will be used in all HData tests \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+May 23, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{OTKHdata\_\-First@{OTKHdata\_\-First}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!OTKHdata_First@{OTKHdata\_\-First}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-First::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdata__First_a5f565719287cedfca6c95b79ca0eae7f}
+
+
+References OTKHdata\_\-Tablename().
+
+
+
+\subsection{Member Function Documentation}
+\index{OTKHdata\_\-First@{OTKHdata\_\-First}!cleanupTest@{cleanupTest}}
+\index{cleanupTest@{cleanupTest}!OTKHdata_First@{OTKHdata\_\-First}}
+\subsubsection[{cleanupTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-First::cleanupTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdata__First_aeedd9ae405d5e5e6f2e37b597b2e798e}
+\index{OTKHdata\_\-First@{OTKHdata\_\-First}!getDetails@{getDetails}}
+\index{getDetails@{getDetails}!OTKHdata_First@{OTKHdata\_\-First}}
+\subsubsection[{getDetails}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-First::getDetails (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdata__First_a7da202076d69c882a2b0cbed36556c26}
+\index{OTKHdata\_\-First@{OTKHdata\_\-First}!performTest@{performTest}}
+\index{performTest@{performTest}!OTKHdata_First@{OTKHdata\_\-First}}
+\subsubsection[{performTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-First::performTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdata__First_a5fc1c37ab0f64861e37688df17922a00}
+Perform the test(s) for this testcase. Multiple tests can be performed, each writing a single message in an internal array explaining what the result was ('step X completed succefully', an error message in case of failures etc). Additional (private) methods can be created for each step. \begin{DoxyReturn}{Returns}
+A 2 dimensional array with messages for all steps that were performed in this testcase. Each step in the testcase has exactly 1 element in the array, being an array with 2 elements: first is an human readable message, the second is true if the step succeeded, false if it failed and null when the step was skipped, e.g. 
+\begin{DoxyCode}
+        array(
+                 array('Step 1 completed successfully', true)
+                ,array('Step 2 completed successfully', true)
+                ,array('Step 3 failed with code XX', false)
+                ,array('Step 4 was skipped', null)
+        )
+\end{DoxyCode}
+ 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{OTKHdata\_\-First@{OTKHdata\_\-First}!prepareTest@{prepareTest}}
+\index{prepareTest@{prepareTest}!OTKHdata_First@{OTKHdata\_\-First}}
+\subsubsection[{prepareTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-First::prepareTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdata__First_afb8f48a3f84fda934fc4005032bb3547}
+
+
+\subsection{Member Data Documentation}
+\index{OTKHdata\_\-First@{OTKHdata\_\-First}!\$tablename@{\$tablename}}
+\index{\$tablename@{\$tablename}!OTKHdata_First@{OTKHdata\_\-First}}
+\subsubsection[{\$tablename}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-First::\$tablename\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKHdata__First_a9dc7c3a7b777b7a142fdb67c4793b7fa}
+Name of the temporary database table that will be used in this testcase 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/owltestkit/testsets/hdata/{\bf case.first.php}\end{DoxyCompactItemize}

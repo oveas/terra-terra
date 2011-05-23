@@ -28,7 +28,9 @@ Inheritance diagram for Document:\begin{figure}[H]
 \item 
 {\bf setBase} (\$\_\-url)
 \item 
-{\bf setMeta} (\$\_\-tags)
+{\bf setMeta} (array \$\_\-tags)
+\item 
+{\bf setHeader} (array \$\_\-hdrs)
 \item 
 {\bf setContenttype} (\$\_\-value)
 \item 
@@ -76,6 +78,8 @@ static {\bf getInstance} ()
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+{\bf \_\-\_\-construct} (array \$\_\-attribs=array())
+\item 
 {\bf getAttributes} (array \$\_\-ignore=array())
 \item 
 {\bf init} ()
@@ -113,10 +117,13 @@ static {\bf getInstance} ()
 \item 
 {\bf \$severity}
 \end{DoxyCompactItemize}
-\subsection*{Private Member Functions}
+\subsection*{Static Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-{\bf \_\-\_\-construct} (array \$\_\-attribs=array())
+static {\bf \$instance}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
 \item 
 {\bf \_\-getMeta} ()
 \item 
@@ -145,21 +152,18 @@ static {\bf getInstance} ()
 \item 
 {\bf \$meta}
 \item 
+{\bf \$headers}
+\item 
 {\bf \$favicon}
 \item 
 {\bf \$contentType}
-\end{DoxyCompactItemize}
-\subsection*{Static Private Attributes}
-\begin{DoxyCompactItemize}
-\item 
-static {\bf \$instance}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 \doxyref{Document}{p.}{classDocument}. 
 
-Class for \doxyref{Document}{p.}{classDocument} singletons \begin{DoxyAuthor}{Author}
+Class for \doxyref{Document}{p.}{classDocument} singletons. This class can be extended defining other document types \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
@@ -174,7 +178,7 @@ Jan 9, 2011 -\/-\/ O van Eijk -\/-\/ initial version
 \begin{DoxyParamCaption}
 \item[{array \$}]{\_\-attribs = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [private]}}\label{classDocument_a826011efca3734aa7e11e467e5978af2}
+)\hspace{0.3cm}{\ttfamily  [protected]}}\label{classDocument_a826011efca3734aa7e11e467e5978af2}
 Class constructor; 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-attribs} & Indexed array with the HTML attributes \\
@@ -834,6 +838,21 @@ Oscar van Eijk, Oveas Functionality Provider
 
 References \_\-OWL::setStatus(), urlExpand(), and urlToPath().
 
+\index{Document@{Document}!setHeader@{setHeader}}
+\index{setHeader@{setHeader}!Document@{Document}}
+\subsubsection[{setHeader}]{\setlength{\rightskip}{0pt plus 5cm}Document::setHeader (
+\begin{DoxyParamCaption}
+\item[{array \$}]{\_\-hdrs}
+\end{DoxyParamCaption}
+)}\label{classDocument_a4768096f1f05f16299e8ee391166cb55}
+Set, update or overwrite HTML headers. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-tags} & Array with headers in the format 'header' =$>$ 'value' \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{Document@{Document}!setHighSeverity@{setHighSeverity}}
 \index{setHighSeverity@{setHighSeverity}!Document@{Document}}
 \subsubsection[{setHighSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setHighSeverity (
@@ -871,9 +890,9 @@ Referenced by BaseElement::setName().
 \index{setMeta@{setMeta}!Document@{Document}}
 \subsubsection[{setMeta}]{\setlength{\rightskip}{0pt plus 5cm}Document::setMeta (
 \begin{DoxyParamCaption}
-\item[{\$}]{\_\-tags}
+\item[{array \$}]{\_\-tags}
 \end{DoxyParamCaption}
-)}\label{classDocument_ace35c2c3f3b17e07468c740eaed49ecb}
+)}\label{classDocument_aa1b8faac9bfe65d27902b69ea0024849}
 Set, update or overwrite metatags. Only the 'generator' metatag cannot be overwritten 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-tags} & Array with meta tags in the format 'name' =$>$ 'content' \\
@@ -1090,12 +1109,15 @@ Referenced by Form::setFieldEvents().
 \index{Document@{Document}!\$favicon@{\$favicon}}
 \index{\$favicon@{\$favicon}!Document@{Document}}
 \subsubsection[{\$favicon}]{\setlength{\rightskip}{0pt plus 5cm}Document::\$favicon\hspace{0.3cm}{\ttfamily  [private]}}\label{classDocument_ad74353c065d3fe06667bc549ed0977e7}
-String for the Favicon URL; \index{Document@{Document}!\$id@{\$id}}
+String for the Favicon URL; \index{Document@{Document}!\$headers@{\$headers}}
+\index{\$headers@{\$headers}!Document@{Document}}
+\subsubsection[{\$headers}]{\setlength{\rightskip}{0pt plus 5cm}Document::\$headers\hspace{0.3cm}{\ttfamily  [private]}}\label{classDocument_a7c34afba61dcd192d6d85f63ae0a01ca}
+Array for HTML headers \index{Document@{Document}!\$id@{\$id}}
 \index{\$id@{\$id}!Document@{Document}}
 \subsubsection[{\$id}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$id = ''\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classBaseElement_a11b6989c43b53869a09f5ce65aa55b45}
 Element ID \index{Document@{Document}!\$instance@{\$instance}}
 \index{\$instance@{\$instance}!Document@{Document}}
-\subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}Document::\$instance\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classDocument_a2699d681667ea5a811ec6da1bf2a5087}
+\subsubsection[{\$instance}]{\setlength{\rightskip}{0pt plus 5cm}Document::\$instance\hspace{0.3cm}{\ttfamily  [static, protected]}}\label{classDocument_a2699d681667ea5a811ec6da1bf2a5087}
 integer -\/ self reference 
 
 Referenced by getInstance().

@@ -3,7 +3,7 @@
  * \file
  * This file defines the Mail class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.mail.php,v 1.1 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: class.mail.php,v 1.2 2011-05-23 17:56:18 oscar Exp $
  */
 
 /**
@@ -91,11 +91,11 @@ class Mail extends _OWL
 
 	/**
 	 * Set the maildate, if it should not be the actual timestamp
-	 * \param[in] $date Date, oir null to use the actual
+	 * \param[in] $date Date, or null to use the actual
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setDate ($date = null)
-	{
+	{	// Format: Date: Fri, 20 May 2011 18:05:06 +0200
 		// TODO write this function.... what checks do we need to make??
 	}
 

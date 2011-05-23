@@ -3,12 +3,13 @@
  * \file
  * This file defines an HTML document
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.document.php,v 1.7 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: class.document.php,v 1.8 2011-05-23 17:56:18 oscar Exp $
  */
 
 /**
  * \ingroup OWL_UI_LAYER
- * Class for Document singletons
+ * Class for Document singletons.
+ * This class can be extended defining other document types
  * \brief Document 
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jan 9, 2011 -- O van Eijk -- initial version
@@ -51,6 +52,11 @@ class Document extends BaseElement
 	private $meta;
 
 	/**
+	 * Array for HTML headers
+	 */
+	private $headers;
+
+	/**
 	 * String for the Favicon URL;
 	 */
 	private $favicon;
@@ -63,14 +69,14 @@ class Document extends BaseElement
 	/**
 	 * integer - self reference
 	 */
-	private static $instance;
+	protected static $instance;
 
 	/**
 	 * Class constructor;
 	 * \param[in] $_attribs Indexed array with the HTML attributes 
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private function __construct (array $_attribs = array())
+	protected function __construct (array $_attribs = array())
 	{
 		_OWL::init();
 		$_proto = explode('/', $_SERVER['SERVER_PROTOCOL']);
@@ -86,6 +92,7 @@ class Document extends BaseElement
 			, 'description'	=> 'OWL-PHP - Oveas Web Library for PHP'
 			, 'generator'	=> 'OWL-PHP v'.OWL_VERSION.' - Oveas Web Library for PHP, (c)2006-2011 Oveas Functionality Provider'
 		);
+		$this->header = array();
 		$this->favicon = '';
 		$this->contentType = 'text/html; charset=utf-8';
 	}
@@ -224,7 +231,7 @@ class Document extends BaseElement
 	 * \param[in] $_tags Array with meta tags in the format 'name' => 'content'
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function setMeta($_tags)
+	public function setMeta(array $_tags)
 	{
 		foreach ($_tags as $_name => $_content) {
 			if ($_name == 'keywords') {
@@ -235,6 +242,18 @@ class Document extends BaseElement
 			} else {
 				$this->meta[$_name] = $_content;
 			}
+		}
+	}
+
+	/**
+	 * Set, update or overwrite HTML headers.
+	 * \param[in] $_tags Array with headers in the format 'header' => 'value'
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function setHeader (array $_hdrs)
+	{
+		foreach ($_hdrs as $_hdr => $_val) {
+			$this->headers[$_hdr] = $_val;
 		}
 	}
 
@@ -355,6 +374,11 @@ class Document extends BaseElement
 	 */
 	public function showElement()
 	{
+		if (count($this->headers) > 0) {
+			foreach ($this->headers as $_hdr => $_val) {
+				header("$_hdr: $_val");
+			}
+		}
 		$_htmlCode  = '<html xmlns="http://www.w3.org/1999/xhtml">'."\n";
 		$_htmlCode .= "<head>\n";
 		$_htmlCode .= '<base href="'.$this->getBase().'" />'."\n";

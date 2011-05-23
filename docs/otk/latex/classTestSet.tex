@@ -1,0 +1,189 @@
+\section{TestSet Class Reference}
+\label{classTestSet}\index{TestSet@{TestSet}}
+
+
+Testset.  
+
+
+Inheritance diagram for TestSet:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTestSet}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf loadTestcases} (\$location)
+\item 
+{\bf performTests} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf getDescription} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf doTest} (\$name, \$file)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$setName}
+\item 
+{\bf \$helper}
+\item 
+{\bf \$testCases}
+\item 
+{\bf \$testResults}
+\item 
+{\bf \$errors}
+\item 
+{\bf \$warnings}
+\item 
+{\bf \$succeeded}
+\item 
+{\bf \$skipped}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Testset. 
+
+Baseclass that defines the testsets. Classes that derive from this baseclass must have the name {\itshape \doxyref{OTK}{p.}{classOTK}$<$Location$>$\/}, where 'location' is the name of the subdirectory in OTK\_\-TESTSETS. The filename must be {\itshape \doxyref{testset.php}{p.}{testset_8php}\/}.
+
+The classes only need to reimplement the static \doxyref{getDescription()}{p.}{classTestSet_ab5b54e632b3de37daaceea3d922658bf} method, all other required methods are in this baseclass.
+
+The class collects all files belonging to a testset that contain testcases and helper functions. All files must be in the same directory as {\itshape \doxyref{testset.php}{p.}{testset_8php}\/}.
+
+Files that contain testcases must have the name {\itshape case.$<$name$>$.php\/}. Refer to the interface \doxyref{TestCase}{p.}{interfaceTestCase} for more information.
+
+Optionally, testset directories can contain a file with the name {\itshape \doxyref{helper.php}{p.}{helper_8php}\/}. This can be a file containing one or more classes or functions. That file will be included but not called; it is up to the testcases to make the proper calls to these files. In order prevent duplicate class or function names, it is a good practice to include the name of the testset in in all names. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+May 19, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{TestSet@{TestSet}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!TestSet@{TestSet}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classTestSet_a668ef2c881ce68d460d10ac3fb0791ef}
+Class constructor \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\index{TestSet@{TestSet}!doTest@{doTest}}
+\index{doTest@{doTest}!TestSet@{TestSet}}
+\subsubsection[{doTest}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::doTest (
+\begin{DoxyParamCaption}
+\item[{\$}]{name, }
+\item[{\$}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestSet_acd364b694ebba50bd71260398314369e}
+Execute a single testcase 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$name} & Name of the testcase \\
+\hline
+\mbox{\tt in}  & {\em \$file} & Full path to the testcase file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by performTests().
+
+\index{TestSet@{TestSet}!getDescription@{getDescription}}
+\index{getDescription@{getDescription}!TestSet@{TestSet}}
+\subsubsection[{getDescription}]{\setlength{\rightskip}{0pt plus 5cm}static TestSet::getDescription (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classTestSet_ab5b54e632b3de37daaceea3d922658bf}
+This is the only required method that should be implemented by Testset classes; it shows a description of the testset. \begin{DoxyNote}{Note}
+This method must be reimplemented, but it cannot be declared abstract since it is a static method. Since it is static, it does belong to the class itself, meaning this method here will never be called; it is included just for documentation purposes. 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A textstring (HTML allowed) describing the testset 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Reimplemented in {\bf OTKHdata} \doxyref{}{p.}{classOTKHdata_a483426fa42c2f7c1718b207b03046a0f}.
+
+\index{TestSet@{TestSet}!loadTestcases@{loadTestcases}}
+\index{loadTestcases@{loadTestcases}!TestSet@{TestSet}}
+\subsubsection[{loadTestcases}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::loadTestcases (
+\begin{DoxyParamCaption}
+\item[{\$}]{location}
+\end{DoxyParamCaption}
+)}\label{classTestSet_a81918b70986d21e7406d9dbec9e3d801}
+Scan the testset directory for all files holeing either testcases ({\itshape case.$<$name$>$.php\/}) or helper functions or class ({\itshape \doxyref{helper.php}{p.}{helper_8php}\/}). 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$location} & Directory to scan \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{TestSet@{TestSet}!performTests@{performTests}}
+\index{performTests@{performTests}!TestSet@{TestSet}}
+\subsubsection[{performTests}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::performTests (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classTestSet_a1885d85f93b94cff6a04a038a676c63e}
+Go through all selected testcases and execute them \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References doTest().
+
+
+
+\subsection{Member Data Documentation}
+\index{TestSet@{TestSet}!\$errors@{\$errors}}
+\index{\$errors@{\$errors}!TestSet@{TestSet}}
+\subsubsection[{\$errors}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::\$errors\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestSet_a0746e54ef54b321e6a785ac115a9b8cb}
+Total number of teststeps that ended in an error \index{TestSet@{TestSet}!\$helper@{\$helper}}
+\index{\$helper@{\$helper}!TestSet@{TestSet}}
+\subsubsection[{\$helper}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::\$helper\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestSet_af924384ac634f0444aa4f6ac1776fe50}
+Full path to the helper file ('helper.php') if this set contains one \index{TestSet@{TestSet}!\$setName@{\$setName}}
+\index{\$setName@{\$setName}!TestSet@{TestSet}}
+\subsubsection[{\$setName}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::\$setName\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestSet_a1f1174f715346d8a39e67970f700a677}
+Name of the testset. It will be taken from the classname (without the leading 'OTK') \index{TestSet@{TestSet}!\$skipped@{\$skipped}}
+\index{\$skipped@{\$skipped}!TestSet@{TestSet}}
+\subsubsection[{\$skipped}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::\$skipped\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestSet_acd7b0a8534a6841a0bce26fee6cc769c}
+Total number of teststeps that have been skipped \index{TestSet@{TestSet}!\$succeeded@{\$succeeded}}
+\index{\$succeeded@{\$succeeded}!TestSet@{TestSet}}
+\subsubsection[{\$succeeded}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::\$succeeded\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestSet_a0b8f595a3c60d672e7dac630cf09132b}
+Total number of teststeps that completed successfull \index{TestSet@{TestSet}!\$testCases@{\$testCases}}
+\index{\$testCases@{\$testCases}!TestSet@{TestSet}}
+\subsubsection[{\$testCases}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::\$testCases\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestSet_abe27f3fb31dd64d909963914412ac866}
+Indexed array holding all testcases found in this set \index{TestSet@{TestSet}!\$testResults@{\$testResults}}
+\index{\$testResults@{\$testResults}!TestSet@{TestSet}}
+\subsubsection[{\$testResults}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::\$testResults\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestSet_a9841ef8a6c8ce307f780bce7c2a30bb0}
+Indexed array with the results of all steps per testcase \index{TestSet@{TestSet}!\$warnings@{\$warnings}}
+\index{\$warnings@{\$warnings}!TestSet@{TestSet}}
+\subsubsection[{\$warnings}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::\$warnings\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestSet_a805a35b038909669a923c67b97f76082}
+Total number of teststeps that ended with a warning 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/owltestkit/bo/{\bf class.testset.php}\end{DoxyCompactItemize}

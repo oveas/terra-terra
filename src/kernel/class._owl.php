@@ -3,7 +3,7 @@
  * \file
  * This file defines the Oveas Web Library main class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class._owl.php,v 1.11 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: class._owl.php,v 1.12 2011-05-23 17:56:18 oscar Exp $
  */
 
 /**
@@ -209,7 +209,7 @@ abstract class _OWL
 		}
 
 		if (ConfigHandler::get ('exception|throw_level') >= 0
-				&& $this->severity >= ConfigHandler::get ('exception|throw_level')) {
+				&& $this->severity >= ConfigHandler::get ('exception|throw_level', OWL_BUG, true)) {
 
 			$this->signal (0, $msg);
 			if (ConfigHandler::get('exception|block_throws', false)) {

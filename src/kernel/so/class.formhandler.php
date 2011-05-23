@@ -3,7 +3,7 @@
  * \file
  * This file defines the Formhandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.formhandler.php,v 1.11 2011-05-18 12:03:48 oscar Exp $
+ * \version $Id: class.formhandler.php,v 1.12 2011-05-23 17:56:18 oscar Exp $
  */
 
 /**
@@ -179,14 +179,23 @@ class FormHandler extends _OWL
 			$_val = $this->owl_formvalues[$variable];
 			if ($format !== FORMDATA_RAW) {
 				if (is_array($_val)) {
-					$_cnt = count($_val);
+//					$_cnt = count($_val);
+					foreach ($_val as $_HTMLfld => $_HTMLval) {
+						if ($format === FORMDATA_HTML_CODE) {
+							$_val[$_HTMLfld] = htmlentities($_HTMLval, ENT_COMPAT, ConfigHandler::get('charset', 'ISO-8859-1'));
+						} else {
+							$_val[$_HTMLfld] = $this->cleanString($_HTMLval, $_allow, $_content);
+						}
+					}
+/*
 					for ($_i = 0; $_i < $_cnt; $_i++) {
 						if ($format === FORMDATA_HTML_CODE) {
 							$_val[$_i] = htmlentities($_val[$_i], ENT_COMPAT, ConfigHandler::get('charset', 'ISO-8859-1'));
 						} else {
-							$_val[$_i] = cleanString($_val[$_i], $_allow, $_content);
+							$_val[$_i] = $this->cleanString($_val[$_i], $_allow, $_content);
 						}
 					}
+ */
 				} else {
 					if ($format === FORMDATA_HTML_CODE) {
 						$_val = htmlentities($_val, ENT_COMPAT, ConfigHandler::get('charset', 'ISO-8859-1'));
@@ -201,7 +210,7 @@ class FormHandler extends _OWL
 		}
 
 		if (ConfigHandler::get ('debug') > 0) {
-			$this->setStatus (FORM_RETVALUE, array ($variable, $_val));
+			$this->setStatus (FORM_RETVALUE, array ($variable, (is_array($_val)?print_r($_val, 1):$_val)));
 		}
 		return ($_val);
 	}

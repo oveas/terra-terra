@@ -1,0 +1,116 @@
+\section{TestCase Interface Reference}
+\label{interfaceTestCase}\index{TestCase@{TestCase}}
+
+
+Testcase.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf prepareTest} ()
+\item 
+{\bf performTest} ()
+\item 
+{\bf cleanupTest} ()
+\item 
+{\bf getDetails} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Testcase. 
+
+Interface that defines the testcase classes. Classes that implement this interface must be in a file called 'case.$<$casename$>$.php'. The classname must be 'OTK$<$Setname$>$\_\-$<$Casename$>$ where $<$casename$>$ is the name of the testcase and $<$setname$>$ the name of the testset it belongs to.
+
+Two special casenames are reserverd: {\itshape first\/} and {\itshape last\/}, which will be the first and last testcases executed in a testset. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+May 19, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{TestCase@{TestCase}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!TestCase@{TestCase}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}TestCase::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfaceTestCase_a9aac459e4d579b75426c95718790e88f}
+Class constuctor. All testcases must be implemented. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\index{TestCase@{TestCase}!cleanupTest@{cleanupTest}}
+\index{cleanupTest@{cleanupTest}!TestCase@{TestCase}}
+\subsubsection[{cleanupTest}]{\setlength{\rightskip}{0pt plus 5cm}TestCase::cleanupTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfaceTestCase_a71e9fd70c840ce0b535146f566e9b623}
+Cleanup the testenvironment, e.g. drop temporary tables \begin{DoxyReturn}{Returns}
+OTK\_\-RESULT\_\-SUCCESS on success, OTK\_\-RESULT\_\-NONE when this testcase needs no cleanup or an error message when failed 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{TestCase@{TestCase}!getDetails@{getDetails}}
+\index{getDetails@{getDetails}!TestCase@{TestCase}}
+\subsubsection[{getDetails}]{\setlength{\rightskip}{0pt plus 5cm}TestCase::getDetails (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfaceTestCase_a1abfe816e79d30871ce314dedbdf5f9d}
+Gather all testdetails. During the tests, the testcase can collect all additional information in an internal datastructure, e.g. further details or explanations concerning failed tests. After finishing the testcase (and after \doxyref{cleanupTest()}{p.}{interfaceTestCase_a71e9fd70c840ce0b535146f566e9b623}), the information will be retrieved. \begin{DoxyReturn}{Returns}
+Tekstblock, can contain HTML. Null and an empty textstring are allowed if no details are available. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{TestCase@{TestCase}!performTest@{performTest}}
+\index{performTest@{performTest}!TestCase@{TestCase}}
+\subsubsection[{performTest}]{\setlength{\rightskip}{0pt plus 5cm}TestCase::performTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfaceTestCase_a5fcf5fd51066de41206fe02c67139c76}
+Perform the test(s) for this testcase. Multiple tests can be performed, each writing a single message in an internal array explaining what the result was ('step X completed succefully', an error message in case of failures etc). Additional (private) methods can be created for each step. \begin{DoxyReturn}{Returns}
+A 2 dimensional array with messages for all steps that were performed in this testcase. Each step in the testcase has exactly 1 element in the array, being an array with 2 elements: first is the code as defined in \doxyref{Test result code}{p.}{group__Test__Results}, the second is an human readable message. null when the step was skipped, e.g. 
+\begin{DoxyCode}
+        array(
+                 array(OTK_RESULT_SUCCESS, 'Step 1 completed successfully')
+                ,array(OTK_RESULT_SUCCESS, 'Step 2 completed successfully')
+                ,array(OTK_RESULT_FAIL, 'Step 3 failed with code XX')
+                ,array(OTK_RESULT_SKIPPED, 'Step 4 could not execute because step
+       3 failed')
+        )
+\end{DoxyCode}
+ 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{TestCase@{TestCase}!prepareTest@{prepareTest}}
+\index{prepareTest@{prepareTest}!TestCase@{TestCase}}
+\subsubsection[{prepareTest}]{\setlength{\rightskip}{0pt plus 5cm}TestCase::prepareTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfaceTestCase_ae2fd5738550a83f15afe1cbc5365f3e8}
+Prepare a testcase, e.g. create some database tables that are required for this testcase. \begin{DoxyReturn}{Returns}
+OTK\_\-RESULT\_\-SUCCESS on success, OTK\_\-RESULT\_\-NONE when this testcase needs no preparation or an error message when failed 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+The documentation for this interface was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/owltestkit/bo/{\bf class.testcase.php}\end{DoxyCompactItemize}

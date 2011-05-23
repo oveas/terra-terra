@@ -1,0 +1,124 @@
+\section{OTKHdataFirst Class Reference}
+\label{classOTKHdataFirst}\index{OTKHdataFirst@{OTKHdataFirst}}
+
+
+Testcase.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf prepareTest} ()
+\item 
+{\bf performTest} ()
+\item 
+{\bf cleanupTest} ()
+\item 
+{\bf getDetails} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$tablename}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Testcase. 
+
+This testcase just creates a database table that will be used i \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+May 23, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{OTKHdataFirst@{OTKHdataFirst}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!OTKHdataFirst@{OTKHdataFirst}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdataFirst::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdataFirst_a4b96083957305f7f90aa6da20357ab1a}
+Class constuctor. All testcases must be implemented. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\index{OTKHdataFirst@{OTKHdataFirst}!cleanupTest@{cleanupTest}}
+\index{cleanupTest@{cleanupTest}!OTKHdataFirst@{OTKHdataFirst}}
+\subsubsection[{cleanupTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdataFirst::cleanupTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdataFirst_ab71e45c58a1cc57cd232173f12a8dd6a}
+Cleanup the testenvironment, e.g. drop temporary tables \begin{DoxyReturn}{Returns}
+True on success, an error message when failed 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{OTKHdataFirst@{OTKHdataFirst}!getDetails@{getDetails}}
+\index{getDetails@{getDetails}!OTKHdataFirst@{OTKHdataFirst}}
+\subsubsection[{getDetails}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdataFirst::getDetails (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdataFirst_a219dc86dfedde4bc72fb8035c4a6f9b5}
+Gather all testdetails. During the tests, the testcase can collect all additional information in an internal datastructure, e.g. further details or explanations concerning failed tests. After finishing the testcase (and after \doxyref{cleanupTest()}{p.}{classOTKHdataFirst_ab71e45c58a1cc57cd232173f12a8dd6a}), the information will be retrieved. \begin{DoxyReturn}{Returns}
+Tekstblock, can contain HTML. Null and an empty textstring are allowed if no details are available. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{OTKHdataFirst@{OTKHdataFirst}!performTest@{performTest}}
+\index{performTest@{performTest}!OTKHdataFirst@{OTKHdataFirst}}
+\subsubsection[{performTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdataFirst::performTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdataFirst_a241eaaad1d4913b106a2da17efca4b34}
+Perform the test(s) for this testcase. Multiple tests can be performed, each writing a single message in an internal array explaining what the result was ('step X completed succefully', an error message in case of failures etc). Additional (private) methods can be created for each step. \begin{DoxyReturn}{Returns}
+A 2 dimensional array with messages for all steps that were performed in this testcase. Each step in the testcase has exactly 1 element in the array, being an array with 2 elements: first is an human readable message, the second is true if the step succeeded, false if it failed and null when the step was skipped, e.g. 
+\begin{DoxyCode}
+        array(
+                 array('Step 1 completed successfully', true)
+                ,array('Step 2 completed successfully', true)
+                ,array('Step 3 failed with code XX', false)
+                ,array('Step 4 was skipped', null)
+        )
+\end{DoxyCode}
+ 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{OTKHdataFirst@{OTKHdataFirst}!prepareTest@{prepareTest}}
+\index{prepareTest@{prepareTest}!OTKHdataFirst@{OTKHdataFirst}}
+\subsubsection[{prepareTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdataFirst::prepareTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdataFirst_adc2ed4833df4898a4f26ca47891470f1}
+Prepare a testcase, e.g. create some database tables that are required for this testcase. \begin{DoxyReturn}{Returns}
+True on success, an error message when failed (the internal array us 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+\subsection{Member Data Documentation}
+\index{OTKHdataFirst@{OTKHdataFirst}!\$tablename@{\$tablename}}
+\index{\$tablename@{\$tablename}!OTKHdataFirst@{OTKHdataFirst}}
+\subsubsection[{\$tablename}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdataFirst::\$tablename\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKHdataFirst_aaf18501108967a155e612590a42b0343}
+Name of the temporary database table that will be used in this testcase 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/owltestkit/testsets/hdata/{\bf case.first.php}\end{DoxyCompactItemize}
