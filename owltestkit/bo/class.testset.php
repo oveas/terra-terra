@@ -3,7 +3,7 @@
  * \file
  * This file defines the testset baseclass
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.testset.php,v 1.1 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: class.testset.php,v 1.2 2011-05-23 18:21:31 oscar Exp $
  */
 
 /**
@@ -154,6 +154,7 @@ abstract class TestSet
 	 */
 	public function performTests ()
 	{
+		OWLTimers::startTimer($this->setName);
 		if ($this->helper !== null) {
 			require $this->helper;
 		}
@@ -168,6 +169,8 @@ abstract class TestSet
 		if (array_key_exists('last', $this->testCases)) {
 			$this->doTest ('last', $this->testCases['last']);
 		}
+		OWLTimers::stopTimer($this->setName);
+print_r ($this->testResults);
 	}
 
 	/**
@@ -233,7 +236,7 @@ abstract class TestSet
 			}
 		}
 
-		if (($_r = $_case->cleanupTest()) === true) {
+		if (($_r = $_case->cleanupTest()) === OTK_RESULT_SUCCESS) {
 			$this->testResults[$name][] = array(OTK_RESULT_SUCCESS, 'Test cleanup completed successfully');
 			$this->succeeded++;
 		} elseif ($_r === OTK_RESULT_NONE) {

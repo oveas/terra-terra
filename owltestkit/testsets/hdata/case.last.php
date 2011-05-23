@@ -1,19 +1,19 @@
 <?php 
 /**
  * \file
- * This file defines the first testcase for the Hierarchical Dataset
+ * This file defines the last testcase for the Hierarchical Dataset
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.first.php,v 1.2 2011-05-23 18:21:31 oscar Exp $
+ * \version $Id: case.last.php,v 1.1 2011-05-23 18:21:31 oscar Exp $
  */
 
 /**
  * \ingroup OTK_TESTSETS
- * This testcase creates a database table that will be used in all HData tests
+ * This testcase dropt a database table that was used in all HData tests
  * \brief HData Testcase
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 23, 2011 -- O van Eijk -- initial version
  */
-class OTKHdata_First
+class OTKHdata_Last
 {
 	/**
 	 * Name of the temporary database table that will be used in this testcase
@@ -27,25 +27,7 @@ class OTKHdata_First
 
 	public function prepareTest ()
 	{
-		$db = DbHandler::getInstance();
-		$db->setQuery ('CREATE  TABLE ' . $db->tablename($this->tablename) . ' ('
-			. ' `id` INT UNSIGNED NOT NULL AUTO_INCREMENT '
-			. ',`lval` INT NOT NULL '
-			. ',`rval` INT NOT NULL '
-			. ',`field` VARCHAR(45) NOT NULL '
-			. ',`xlink` INT UNSIGNED NULL '
-			. ',PRIMARY KEY (`id`) '
-			. ',INDEX (`lval`) '
-			. ',INDEX (`rval`) '
-			. ',UNIQUE INDEX (`field`) '
-			. ',INDEX (`xlink`) '
-			. ')');
-		if (($S=$db->write($dummy, __LINE__, __FILE__)) <= OWL_SUCCESS) {
-			return OTK_RESULT_SUCCESS;
-		} else {
-			$db->signal(OWL_WARNING, $msg);
-			return $msg;
-		}
+		return OTK_RESULT_NONE;
 	}
 
 	/**
@@ -70,12 +52,18 @@ class OTKHdata_First
 	public function performTest ()
 	{
 		$db = DbHandler::getInstance();
-		
 	}
 
 	public function cleanupTest ()
 	{
-		return OTK_RESULT_NONE;
+		$db = DbHandler::getInstance();
+		$db->setQuery ('DROP TABLE ' . $db->tablename($this->tablename));
+		if ($db->write($dummy, __LINE__, __FILE__) <= OWL_SUCCESS) {
+			return OTK_RESULT_SUCCESS;
+		} else {
+			$db->signal(OWL_WARNING, $msg);
+			return $msg;
+		}
 	}
 
 	public function getDetails ()
