@@ -5,31 +5,39 @@
  * and the actual page is displayed.
  * \ingroup OTK_UI_LAYER
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: mainpage.php,v 1.1 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: mainpage.php,v 1.2 2011-05-25 12:04:30 oscar Exp $
  */
 
 // First, get all required instances
 $dispatcher = OWL::factory('Dispatcher');
 $document   = OWL::factory('Document', 'ui');
+// Load the stypesheet
+$document->loadStyle(OTK_CSS . '/testkit.css');
 
-// Create the main containers
+// Create the header container
 $GLOBALS['OTK']['HeaderContainer'] = new Container('div', '', array('class' => 'headerContainer'));
-$GLOBALS['OTK']['BodyContainer'] = new Container('div', '', array('class' => 'bodyContainer'));
 
 // Create the 'Home' link
 $_home = OWLloader::getArea('homelink', OTK_UI);
 $_home->addToDocument($GLOBALS['OTK']['HeaderContainer']);
 
-$dispatcher->dispatch(); // Parse the formdata
-if ($dispatcher->getStatus() === DISP_NOARG) {
+// Make a check first to see if we are gonna execute tests (don't wait for the dispatcher)
+$_form = OWL::factory('FormHandler');
+$_d = $_form->get(OWL_DISPATCHER_NAME);
+if ($_form->getStatus() === FORM_NOVALUE || !$_d) {
+	// Create the body container
+	$GLOBALS['OTK']['BodyContainer'] = new Container('div', '', array('class' => 'headerContainer'));
 	$dispatcher->dispatch('owltestkit#OTK_BO#otk#OTK#selectTestCases');
+	// Add the containers to the document
+	$document->addToContent($GLOBALS['OTK']['HeaderContainer']);
+	$document->addToContent($GLOBALS['OTK']['BodyContainer']);
+	// Display the document
+	echo $document->showElement();
+} else {
+	// Show the contents immedialty (without using a header container) to make sure we
+	// don't have to wait 'til all tests are completed
+	$document->addToContent($GLOBALS['OTK']['HeaderContainer']);
+	echo $document->showElement();
+	$dispatcher->dispatch(); // Run the tests. All output will be echoed immediatly
 }
-
-// Load the style and add the maincontainer
-$document->loadStyle(OTK_CSS . '/testkit.css');
-$document->addToContent($GLOBALS['OTK']['HeaderContainer']);
-$document->addToContent($GLOBALS['OTK']['BodyContainer']);
-
-// Now display the document
-echo $document->showElement();
 

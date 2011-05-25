@@ -3,7 +3,7 @@
  * \file
  * This file defines the abstract ContentArea class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.contentarea.php,v 1.8 2011-05-22 10:56:04 oscar Exp $
+ * \version $Id: class.contentarea.php,v 1.9 2011-05-25 12:04:30 oscar Exp $
  */
 
 /**
@@ -33,10 +33,11 @@ abstract class ContentArea extends _OWL
 	 * \endcode
 	 * Where 'right' is the rightsbit to check (e.g. 'readregistered') and the second parameter
 	 * identifies the application (either OWL_ID or APP_ID)
+	 * \param[in] $arg An optional argument (see OWLloader::getArea())
 	 * \return The container object, or false when the user has no access
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	abstract public function loadArea();
+	abstract public function loadArea($arg = null);
 	
 	/**
 	 * Add the newly created container object to the given container document
@@ -52,6 +53,16 @@ abstract class ContentArea extends _OWL
 		} else {
 			$_contnr->addToContent($this->contentObject);
 		}
+	}
+
+	/**
+	 * Retrieve the content of this area
+	 * \return HTML code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function getArea ()
+	{
+		return $this->contentObject->showElement();
 	}
 
 	/**

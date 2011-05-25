@@ -3,7 +3,7 @@
  * \file
  * This file defines the Loghandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.loghandler.php,v 1.11 2011-05-02 12:56:13 oscar Exp $
+ * \version $Id: class.loghandler.php,v 1.12 2011-05-25 12:04:30 oscar Exp $
  */
 
 /**
@@ -125,23 +125,38 @@ class LogHandler extends _OWL
 	 * \param[in] $dispatcher Array with dispatcher information
 	 * \param[in] $form Form object
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \todo Create some proper values when the global userobject is not set (no instance at application level)
 	 */
 	public function logSession(array $dispatcher, FormHandler $form = null)
 	{
 		if ($this->session_logged === true) {
 			return;
 		}
-		$user = OWLCache::get(OWLCACHE_OBJECTS, 'user');
+		if (($user = OWLCache::get(OWLCACHE_OBJECTS, 'user')) === null) {
+			$_u = array(
+				 'sid' => '*unknown*'
+				,'step' => 0
+				,'uid' => 0
+				,'ip' => '0.0.0.0'
+			);
+		} else {
+			$_u = array(
+				 'sid' => $user->getSessionId()
+				,'step' => $user->getSessionVar('step', 0)
+				,'uid' => $user->getUserId()
+				,'ip' => $user->getSessionVar('ip')
+			);
+		}
 		if (ConfigHandler::get('logging|log_form_data', true) === true && $form !== null) {
 			$formdata = serialize($form->getFormData());
 		} else {
 			$formdata = null;
 		}
-		$this->dataset->set('sid', $user->getSessionId());
-		$this->dataset->set('step', $user->getSessionVar('step', 0));
-		$this->dataset->set('uid', $user->getUserId());
+		$this->dataset->set('sid', $_u['sid']);
+		$this->dataset->set('step', $_u['step']);
+		$this->dataset->set('uid', $_u['uid']);
 		$this->dataset->set('applic', APPL_NAME);
-		$this->dataset->set('ip', $user->getSessionVar('ip'));
+		$this->dataset->set('ip', $_u['ip']);
 		$this->dataset->set('referer', (array_key_exists('HTTP_REFERER', $_SERVER) ? $_SERVER['HTTP_REFERER'] : ''));
 		$this->dataset->set('dispatcher', serialize($dispatcher));
 		$this->dataset->set('formdata', $formdata);

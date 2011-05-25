@@ -3,7 +3,7 @@
  * \file
  * This file defines the Oveas Web Library main class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class._owl.php,v 1.12 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: class._owl.php,v 1.13 2011-05-25 12:04:30 oscar Exp $
  */
 
 /**
@@ -351,9 +351,7 @@ Register::registerCode ('OWL_STATUS_WARNING');
 //Register::registerCode ('OWL_STATUS_ROPENERR');
 //Register::registerCode ('OWL_STATUS_WOPENERR');
 
-//Register::setSeverity (OWL_BUG);
-
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (OWL_BUG);
 Register::registerCode ('OWL_STATUS_BUG');
 
 Register::setSeverity (OWL_ERROR);

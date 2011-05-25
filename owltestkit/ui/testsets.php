@@ -4,14 +4,14 @@
  * \ingroup OTK_UI_LAYER
  * This file creates the area to list testsets
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: testsets.php,v 1.1 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: testsets.php,v 1.2 2011-05-25 12:04:30 oscar Exp $
  */
 if (!OWLloader::getClass('form')) {
 	trigger_error('Error loading the Form class', E_USER_ERROR);
 }
 /**
  * \ingroup ICV_UI_LAYER
- * Setup the contentarea showing all kowledge items
+ * Setup the contentarea showing all testcases
  * \brief List knowledge
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 18, 2011 -- O van Eijk -- initial version
@@ -19,11 +19,12 @@ if (!OWLloader::getClass('form')) {
 class TestsetsArea extends ContentArea
 {
 	private $testKit;
+
 	/**
-	 * List the Knowledge table
-	 * \todo This one must be rewritten using AJAX
+	 * Show the list to select available testcases
+	 * \param[in] $arg Not used here but required by ContentArea
 	 */
-	public function loadArea()
+	public function loadArea($arg = null)
 	{
 		// Create a new form
 		$form = new Form(

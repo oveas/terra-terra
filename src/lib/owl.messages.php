@@ -4,7 +4,7 @@
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.messages.php,v 1.25 2011-05-18 12:03:48 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.26 2011-05-25 12:04:30 oscar Exp $
  */
 
 $_messages = array (
@@ -65,6 +65,7 @@ $_messages = array (
 	, DATA_AMBFIELD			=> 'The variable $p1$ occured more than once'
 	, DATA_NODBLINK			=> 'A database query shoukld be prepared, but there is no database handler set yet'
 	, DATA_IVPREPARE		=> 'A database query was prepared with an invalid prepare flag'
+	, DATA_DBWARNING		=> 'Database handler signalled a warning: $p1$'
 	, SOCKET_CONNECTED		=> 'This socket is already connected'
 	, SOCKET_NOTCONNECTED	=> 'This socket is not connected'
 	, SOCKET_READ			=> 'Line "$p1$" was read from the socket'

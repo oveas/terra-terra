@@ -4,7 +4,7 @@
  * \ingroup OTK_UI_LAYER
  * This file creates link to the homepage
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: homelink.php,v 1.1 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: homelink.php,v 1.2 2011-05-25 12:04:30 oscar Exp $
  */
 
 /**
@@ -17,9 +17,10 @@
 class HomelinkArea extends ContentArea
 {
 	/**
-	 *  Generate the link
+	 * Generate the link
+	 * \param[in] $arg Not used here, but required by syntax
 	 */
-	public function loadArea()
+	public function loadArea($arg = null)
 	{
 		$_txt = $this->trn('Home');
 		$_lnk = new Container('link', $_txt);

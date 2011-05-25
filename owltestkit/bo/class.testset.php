@@ -3,7 +3,7 @@
  * \file
  * This file defines the testset baseclass
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.testset.php,v 1.2 2011-05-23 18:21:31 oscar Exp $
+ * \version $Id: class.testset.php,v 1.3 2011-05-25 12:04:30 oscar Exp $
  */
 
 /**
@@ -69,6 +69,11 @@ abstract class TestSet
 	private $testCases;
 
 	/**
+	 * Details description of the testresults
+	 */
+	private $details;
+
+	/**
 	 * Indexed array with the results of all steps per testcase 
 	 */
 	private $testResults;
@@ -108,6 +113,7 @@ abstract class TestSet
 		$this->succeeded = 0;
 		$this->skipped = 0;
 		$this->warnings = 0;
+		$this->details = '';
 	}
 
 	/**
@@ -170,7 +176,7 @@ abstract class TestSet
 			$this->doTest ('last', $this->testCases['last']);
 		}
 		OWLTimers::stopTimer($this->setName);
-print_r ($this->testResults);
+		$this->showTestResults();
 	}
 
 	/**
@@ -244,6 +250,26 @@ print_r ($this->testResults);
 		} else {
 			$this->testResults[$name][] = array(OTK_RESULT_WARNING, $_r);
 			$this->warnings++;
+		}
+		if (($_details = $_case->getDetails()) !== null) {
+			$this->details .= $_details;
+		}
+	}
+
+	/**
+	 * Create the contentarea to display the results.
+	 * To make sure we don't need to wait until all tests completed, the output is echoed immediatly.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private function showTestResults ()
+	{
+		$results = array(
+			 'testset' => $this->setName
+			,'result' => $this->testResults
+			,'details' => $this->details
+		);
+		if (($_area = OWLloader::getArea('testresults', OTK_UI, $results)) !== null) {
+			echo $_area->getArea();
 		}
 	}
 }

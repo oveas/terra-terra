@@ -3,7 +3,7 @@
  * \file
  * This file defines a table element
 	 * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.table.php,v 1.5 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.table.php,v 1.6 2011-05-25 12:04:30 oscar Exp $
  */
 
 if (!OWLloader::getClass('tablerow')) {
@@ -55,12 +55,13 @@ class Table extends BaseElement
 	/**
 	 * Add a new tablerow
 	 * \param[in] $_attribs An optional array with HTML attributes
+	 * \param[in] $_header True if the new row must be a header row
 	 * \return Pointer to the row object
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function addRow(array $_attribs = array())
+	public function addRow(array $_attribs = array(), $_header = false)
 	{
-		$_row = new Tablerow($_attribs);
+		$_row = new Tablerow($_attribs, $_header);
 		$_row->setAttributes($_attribs);
 		$this->rows[] = $_row;
 		return $_row;

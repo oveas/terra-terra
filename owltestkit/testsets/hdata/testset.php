@@ -3,8 +3,12 @@
  * \file
  * This file defines the testset for hierarchical data
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: testset.php,v 1.1 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: testset.php,v 1.2 2011-05-25 12:04:30 oscar Exp $
  */
+
+if (!OWLloader::getClass('datahandlerh')) {
+	trigger_error('Error loading the DataHandelerH class', E_USER_ERROR);
+}
 
 /**
  * \ingroup OTK_TESTSETS

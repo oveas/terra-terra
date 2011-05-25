@@ -3,7 +3,7 @@
  * \file
  * This file defines the Oveas Web Library Dispatcher class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dispatcher.php,v 1.13 2011-05-18 12:03:48 oscar Exp $
+ * \version $Id: class.dispatcher.php,v 1.14 2011-05-25 12:04:30 oscar Exp $
  */
 
 define ('OWL_DISPATCHER_NAME', 'd'); //< Formfield/HTTP var name for the dispatcher
@@ -109,7 +109,7 @@ class Dispatcher extends _OWL
 	 * \param[in] $_dispatcher An optional dispatcher can be given (\see Dispatcher::composeDispatcher()
 	 * for the format). When omitted, the dispatcher will be taken from the formdata.
 	 * \return On errors during dispatch, the severity level, otherwise the return value
-	 * of the given method
+	 * of the given method. If no dispatcher code was found, DISP_NOARG is returned
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function dispatch($_dispatcher = null)
@@ -121,7 +121,7 @@ class Dispatcher extends _OWL
 			$_dispatcher = $_form->get(OWL_DISPATCHER_NAME);
 			if ($_form->getStatus() === FORM_NOVALUE || !$_dispatcher) {
 				$this->setStatus(DISP_NOARG);
-				return;
+				return DISP_NOARG;
 			}
 			$_destination = $this->decodeDispatcher($_dispatcher);
 		} else {

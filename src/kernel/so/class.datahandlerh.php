@@ -3,7 +3,7 @@
  * \file
  * This file defines the Hierarchical DataHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.datahandlerh.php,v 1.4 2011-05-18 12:03:48 oscar Exp $
+ * \version $Id: class.datahandlerh.php,v 1.5 2011-05-25 12:04:30 oscar Exp $
  */
 
 /**
@@ -339,9 +339,9 @@ class HDataHandler extends DataHandler
 		if ($value !== null && $depth > 0) {
 			$query .= ", $table AS parents ";
 		}
-		$query.= "WHERE node.$this->left BETWEEN ancestor.lft AND ancestor.$this->right ";
+		$query.= "WHERE node.$this->left BETWEEN ancestor.$this->left AND ancestor.$this->right ";
 		if ($value !== null && $depth > 0) {
-				$query .= "AND node.$this->left  BETWEEN parents.lft AND parents.$this->right "
+				$query .= "AND node.$this->left  BETWEEN parents.$this->left AND parents.$this->right "
 						. "AND parents.$field = '$value' "
 				;
 		}

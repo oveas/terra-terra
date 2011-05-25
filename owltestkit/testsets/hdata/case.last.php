@@ -3,7 +3,7 @@
  * \file
  * This file defines the last testcase for the Hierarchical Dataset
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.last.php,v 1.1 2011-05-23 18:21:31 oscar Exp $
+ * \version $Id: case.last.php,v 1.2 2011-05-25 12:04:30 oscar Exp $
  */
 
 /**
@@ -15,14 +15,16 @@
  */
 class OTKHdata_Last
 {
-	/**
-	 * Name of the temporary database table that will be used in this testcase
-	 */
+	// Name of the temporary database table that will be used in this testcase
 	private $tablename;
 
+	// Hold details of the testresults
+	private $details;
+	
 	public function __construct()
 	{
-		$this->tablename = OTKHdata_Tablename();
+		$this->tablename = OTKHdata_tableName();
+		$this->details = '';
 	}
 
 	public function prepareTest ()
@@ -30,28 +32,33 @@ class OTKHdata_Last
 		return OTK_RESULT_NONE;
 	}
 
-	/**
-	 * Perform the test(s) for this testcase. Multiple tests can be performed, each writing a single
-	 * message in an internal array explaining what the result was ('step X completed succefully', an
-	 * error message in case of failures etc).
-	 * Additional (private) methods can be created for each step.
-	 * \return A 2 dimensional array with messages for all steps that were performed in this testcase.
-	 * Each step in the testcase has exactly 1 element in the array, being an array with 2 elements: first
-	 * is an human readable message, the second is true if the step succeeded, false if it failed and
-	 * null when the step was skipped, e.g.
-	 * \code
-	 * 	array(
-	 * 		 array('Step 1 completed successfully', true)
-	 * 		,array('Step 2 completed successfully', true)
-	 * 		,array('Step 3 failed with code XX', false)
-	 * 		,array('Step 4 was skipped', null)
-	 * 	)
-	 * \endcode
-	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 */
 	public function performTest ()
 	{
-		$db = DbHandler::getInstance();
+		$returnCodes = array();
+
+		// Step 1; remove the complete tree
+		$hd = new HDataHandler();
+		$hd->setTablename(OTKHdata_tableName());
+		$hd->setLeft('lval');
+		$hd->setRight('rval');
+		if ($hd->removeTree('node', 'Musical instruments') === false) {
+			$returnCodes[] = array(OTK_RESULT_FAIL, 'Removing the root node failed: ' . $hd->getLastWarning());
+		} else {
+			switch (OTKHdata_getData($data)) {
+				case null:
+					$returnCodes[] = array(OTK_RESULT_SUCCESS, 'Successfully removed the root node "Musical instruments"');
+					break;
+				case false:
+					$returnCodes[] = array(OTK_RESULT_FAIL, 'Failure while retrieving the results: ' . $data);
+					break;
+				case true:
+					$returnCodes[] = array(OTK_RESULT_FAIL, 'The root node and its tree were not removed.');
+					$this->details .= '<p>The table should be emptiedm but still contains the following data:<br/><pre>'
+							. print_r($data, 1) . '</pre></p>';
+					break;
+			}
+		}
+		return $returnCodes;
 	}
 
 	public function cleanupTest ()
@@ -68,7 +75,7 @@ class OTKHdata_Last
 
 	public function getDetails ()
 	{
-		return null;
+		return $this->details;
 	}
 	
 }

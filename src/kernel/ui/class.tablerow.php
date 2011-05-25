@@ -3,7 +3,7 @@
  * \file
  * This file defines a table row element
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.tablerow.php,v 1.5 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.tablerow.php,v 1.6 2011-05-25 12:04:30 oscar Exp $
  */
 
 if (!OWLloader::getClass('tablecell')) {
@@ -25,12 +25,19 @@ class Tablerow extends BaseElement
 	private $cells = array();
 
 	/**
+	 * Boolean indicating this is a head-row
+	 */
+	private $isHead;
+
+	/**
 	 * Class constructor;
+	 * \param[in] $_head True is this is a header row
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function __construct ()
+	public function __construct ($_head = false)
 	{
 		_OWL::init();
+		$this->isHead = $_head;
 	}
 
 	/**
@@ -42,12 +49,26 @@ class Tablerow extends BaseElement
 	 */
 	public function addCell($_content = '&nbsp;', array $_attribs = array())
 	{
-		$_cell = new Tablecell($_content);
+		$_cell = new Tablecell($_content, $this->isHead);
 		$_cell->setAttributes($_attribs);
 		$this->cells[] = $_cell;
 		return $_cell;
 	}
-	
+
+	/**
+	 * Make this row a header row.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function setHeader ()
+	{
+		$this->isHead = true;
+		if (count($this->cells) > 0) {
+			foreach ($this->cells as $_cell) {
+				$_cell->setHeader();
+			}
+		}
+	}
+
 	/**
 	 * Get the HTML code to display the tablerow
 	 * \return string with the HTML code

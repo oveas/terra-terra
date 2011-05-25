@@ -3,7 +3,7 @@
  * \file
  * This file defines a tablecell element
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.tablecell.php,v 1.5 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.tablecell.php,v 1.6 2011-05-25 12:04:30 oscar Exp $
  */
 
 /**
@@ -24,16 +24,23 @@ class Tablecell extends BaseElement
 	 * Colspan
 	 */
 	private $colspan = '';
-	
+
+	/**
+	 * Boolean indicating this cells belongs to a head-row
+	 */
+	private $isHead;
+
 	/**
 	 * Class constructor;
 	 * \param[in] $_content HTML that will be placed in the table cell
+	 * \param[in] $_head True is this cells belongs to a table head
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function __construct ($_content = '&nbsp;')
+	public function __construct ($_content = '&nbsp;', $_head = false)
 	{
 		_OWL::init();
 		$this->setContent($_content);
+		$this->isHead = $_head;
 	}
 
 	/**
@@ -57,13 +64,23 @@ class Tablecell extends BaseElement
 	}
 	
 	/**
+	 * Make this a header cell
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function setHeader ()
+	{
+		$this->isHead = true;
+	}
+
+	/**
 	 * Get the HTML code to display the tablecell
 	 * \return string with the HTML code
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{
-		$_htmlCode = "\t<td";
+		$tag = (($this->isHead===true)?'th':'td');
+		$_htmlCode = "\t<$tag";
 		if (!empty($this->rowspan)) {
 			$_htmlCode .= ' rowspan="' . $this->rowspan . '"';
 		}
@@ -71,7 +88,7 @@ class Tablecell extends BaseElement
 			$_htmlCode .= ' colspan="' . $this->colspan . '"';
 		}
 		$_htmlCode .= $this->getAttributes();
-		$_htmlCode .= '>' . $this->getContent() . "</td>\n";
+		$_htmlCode .= '>' . $this->getContent() . "</$tag>\n";
 		return $_htmlCode;
 	}
 }
