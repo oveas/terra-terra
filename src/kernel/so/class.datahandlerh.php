@@ -3,7 +3,7 @@
  * \file
  * This file defines the Hierarchical DataHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.datahandlerh.php,v 1.5 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: class.datahandlerh.php,v 1.6 2011-05-26 12:26:30 oscar Exp $
  */
 
 /**
@@ -280,7 +280,7 @@ class HDataHandler extends DataHandler
 	public function getDirectChildren ($field, $value, $xlink = true)
 	{
 		$table = $this->owl_database->tablename($this->owl_tablename);
-		$query = "SELECT node.* "
+		$query = "(SELECT node.* "
 				. ",    (COUNT(parent.$field) - (dtree.depth + 1)) AS depth "
 				. "FROM $table AS node "
 				. ",    $table AS parent "
@@ -298,8 +298,7 @@ class HDataHandler extends DataHandler
 				. "AND   node.$this->left BETWEEN subparent.$this->left AND subparent.$this->right "
 				. "AND   subparent.$field = dtree.$field "
 				. "GROUP BY node.$field "
-				. "HAVING depth = 1 "
-				. "ORDER BY node.$this->left "
+				. "HAVING depth = 1)"
 			;
 		if ($this->xlink !== null && $xlink === true) {
 			if ($this->owl_database->read(DBHANDLE_SINGLEFIELD, $id 
@@ -309,12 +308,13 @@ class HDataHandler extends DataHandler
 				return (false);
 			}
 			$query .= 'UNION '
-					. "SELECT node.$field "
-					. ',      0 AS depth ' // TODO Do we need the depth here??
+					. "(SELECT node.* "
+					. ',      1 AS depth ' // TODO Do we need the depth here??
 					. "FROM $table AS node "
-					. "WHERE node.$this->xlink = $id "
+					. "WHERE node.$this->xlink = $id)"
 			;
 		}
+		$query .= "ORDER BY $this->left ";
 		return ($this->readQuery($query, __LINE__));
 	}
 
@@ -610,7 +610,7 @@ class HDataHandler extends DataHandler
 								. "WHERE $this->left BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
 								, __LINE__);
 		}
-		$width = $node[$this->right] - $node[$this->right] + 1;
+		$width = $node[$this->right] - $node[$this->left] + 1;
 		if ($_stat !== false) {
 			$_stat = $this->writeQuery("UPDATE $table "
 									. "SET $this->right = $this->right - $width "

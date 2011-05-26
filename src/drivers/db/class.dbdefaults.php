@@ -3,7 +3,7 @@
  * \file
  * This file defines default methods for the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdefaults.php,v 1.2 2011-05-16 17:20:18 oscar Exp $
+ * \version $Id: class.dbdefaults.php,v 1.3 2011-05-26 12:26:30 oscar Exp $
  */
 
 
@@ -83,6 +83,18 @@ abstract class DbDefaults
 	public function dbUnescapeString ($_string)
 	{
 		return (stripslashes($_string));
+	}
+
+	/**
+	 * Empty a table
+	 * \param[in] $_resource Link with the database server
+	 * \param[in] $_table Table name
+	 * \return True on success, false on failures
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function emptyTable (&$_resource, $_table)
+	{
+		return ($this->dbExec($_resource, 'DELETE FROM ' . $_table));
 	}
 
 	/**

@@ -3,7 +3,7 @@
  * \file
  * This file defines the MySQL drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.mysql.php,v 1.2 2011-05-13 16:39:19 oscar Exp $
+ * \version $Id: class.mysql.php,v 1.3 2011-05-26 12:26:30 oscar Exp $
  */
 
 define('USE_BACKTICKS', true);
@@ -89,6 +89,11 @@ class MySQL extends DbDefaults implements DbDriver
 		return ($this->dbExec($_resource, 'UNLOCK TABLES'));
 	}
 	
+
+	public function emptyTable (&$_resource, $_table)
+	{
+		return ($this->dbExec($_resource, 'TRUNCATE ' . $_table));
+	}
 
 	public function dbTableList (&$_resource, $_pattern, $_views = false)
 	{

@@ -4,7 +4,7 @@
  * This file loads the OWL Test Kit application
  * \ingroup OTK_LIBRARY
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: otk.applic.loader.php,v 1.1 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: otk.applic.loader.php,v 1.2 2011-05-26 12:26:30 oscar Exp $
  */
 
 /*
@@ -40,5 +40,6 @@ define ('OTK_TESTSETS', APPL_SITE_TOP . '/testsets');
 if (!OWLloader::getClass('otkuser', OTK_BO)) {
 	trigger_error('Error loading classfile OTKUser from '. OTK_BO, E_USER_ERROR);
 }
-
 $GLOBALS['OTK']['user'] = OTKUser::getReference();
+
+OWLloader::getClass('otkhelpers', OTK_BO);

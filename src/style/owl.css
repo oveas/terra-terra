@@ -3,7 +3,7 @@
  * \file
  * Style sheet for OWL generated output
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.css,v 1.3 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: owl.css,v 1.4 2011-05-26 12:26:30 oscar Exp $
  */
 
 /*
@@ -32,11 +32,11 @@
  */
 .OWLtimers, .OWLtimerWarnings {
 	font-family			: Arial, sans-serif;
-	font-size			: 8px;
+	font-size			: 9px;
 }
 .OWLtimers {
-	color				: #333333;
+	color				: #86a985;
 }
 .OWLtimerWarnings {
-	color				: #aa3333;
+	color				: #be533f;
 }

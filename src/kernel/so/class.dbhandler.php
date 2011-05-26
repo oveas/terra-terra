@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbhandler.php,v 1.27 2011-05-18 13:22:18 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.28 2011-05-26 12:26:30 oscar Exp $
  */
 
 /**
@@ -662,6 +662,21 @@ class DbHandler extends _OWL
 					$this->transaction = '';
 				}
 			}
+		}
+		return ($this->severity);
+	}
+
+	/**
+	 * Erase the full contents of a table and reset counters if applicable
+	 * \param[in] $table Table name
+	 * \return Objects severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function resetTable ($table)
+	{
+		if ($this->driver->emptyTable ($this->id, $table) === false) {
+			$this->driver->dbError ($this->id, $this->errno, $this->error);
+			$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
 		}
 		return ($this->severity);
 	}

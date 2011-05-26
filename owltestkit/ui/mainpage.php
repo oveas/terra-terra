@@ -5,7 +5,7 @@
  * and the actual page is displayed.
  * \ingroup OTK_UI_LAYER
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: mainpage.php,v 1.2 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: mainpage.php,v 1.3 2011-05-26 12:26:30 oscar Exp $
  */
 
 // First, get all required instances
@@ -26,7 +26,7 @@ $_form = OWL::factory('FormHandler');
 $_d = $_form->get(OWL_DISPATCHER_NAME);
 if ($_form->getStatus() === FORM_NOVALUE || !$_d) {
 	// Create the body container
-	$GLOBALS['OTK']['BodyContainer'] = new Container('div', '', array('class' => 'headerContainer'));
+	$GLOBALS['OTK']['BodyContainer'] = new Container('div', '', array('class' => 'bodyContainer'));
 	$dispatcher->dispatch('owltestkit#OTK_BO#otk#OTK#selectTestCases');
 	// Add the containers to the document
 	$document->addToContent($GLOBALS['OTK']['HeaderContainer']);

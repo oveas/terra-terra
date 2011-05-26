@@ -3,7 +3,7 @@
  * \file
  * This file defines a tablecell element
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.tablecell.php,v 1.6 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: class.tablecell.php,v 1.7 2011-05-26 12:26:30 oscar Exp $
  */
 
 /**
@@ -18,13 +18,18 @@ class Tablecell extends BaseElement
 	/**
 	 * Rowspan
 	 */
-	private $rowspan = '';
+	private $rowspan = null;
 
 	/**
 	 * Colspan
 	 */
-	private $colspan = '';
+	private $colspan = null;
 
+	/**
+	 * Vertical alignment
+	 */
+	private $valign = null;
+	
 	/**
 	 * Boolean indicating this cells belongs to a head-row
 	 */
@@ -62,7 +67,17 @@ class Tablecell extends BaseElement
 	{
 		$this->colspan = $_value;
 	}
-	
+
+	/**
+	 * Set the vertical alignment
+	 * \param[in] $_value Vertical alignment
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function setValign($_value)
+	{
+		$this->valign = $_value;
+	}
+
 	/**
 	 * Make this a header cell
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -81,11 +96,14 @@ class Tablecell extends BaseElement
 	{
 		$tag = (($this->isHead===true)?'th':'td');
 		$_htmlCode = "\t<$tag";
-		if (!empty($this->rowspan)) {
+		if ($this->rowspan !== null) {
 			$_htmlCode .= ' rowspan="' . $this->rowspan . '"';
 		}
-		if (!empty($this->colspan)) {
+		if ($this->colspan !== null) {
 			$_htmlCode .= ' colspan="' . $this->colspan . '"';
+		}
+		if ($this->valign !== null) {
+			$_htmlCode .= ' valign="' . $this->valign . '"';
 		}
 		$_htmlCode .= $this->getAttributes();
 		$_htmlCode .= '>' . $this->getContent() . "</$tag>\n";

@@ -3,8 +3,10 @@
  * \file
  * This file defines the testset baseclass
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.testset.php,v 1.3 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: class.testset.php,v 1.4 2011-05-26 12:26:30 oscar Exp $
  */
+
+OWLloader::getClass('testcase', OTK_BO);
 
 /**
  * \defgroup Test_Results Test result code
@@ -196,7 +198,7 @@ abstract class TestSet
 			$this->testResults[$name][] = array(OTK_RESULT_SUCCESS, 'Test preparation completed successfully');
 			$this->succeeded++;
 		} elseif ($_r === OTK_RESULT_NONE) {
-			; // Nothing to do
+			$this->testResults[$name][] = array(OTK_RESULT_NONE, '--- will be ignored ---');
 		} else {
 			$this->testResults[$name][] = array(OTK_RESULT_FAIL, $_r);
 			$this->errors++;

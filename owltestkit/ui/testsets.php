@@ -4,7 +4,7 @@
  * \ingroup OTK_UI_LAYER
  * This file creates the area to list testsets
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: testsets.php,v 1.2 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: testsets.php,v 1.3 2011-05-26 12:26:30 oscar Exp $
  */
 if (!OWLloader::getClass('form')) {
 	trigger_error('Error loading the Form class', E_USER_ERROR);
@@ -43,8 +43,6 @@ class TestsetsArea extends ContentArea
 		$this->testKit = OWL::factory('testkit', OTK_SO);
 		$sets = $this->testKit->getTestSets();
 
-		$_html = $this->trn('Available testsets');
-
 		foreach ($sets as $n => $d) {
 			$_fld = $form->addField('checkbox', "set[$n]", 1);
 			$_lbl = $d . '<br/>';
@@ -56,7 +54,7 @@ class TestsetsArea extends ContentArea
 		$_fld = $form->addField('submit', 'act', $this->trn('Start tests'));
 		$form->addToContent($_fld);
 		
-		$this->contentObject = new Container('div', $_html, array('class' => 'testArea'));
+		$this->contentObject = new Container('div', $this->trn('Available testsets'), array('class' => 'testArea'));
 		$this->contentObject->addToContent($form);
 	}
 }

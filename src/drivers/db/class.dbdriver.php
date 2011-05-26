@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdriver.php,v 1.3 2011-05-16 17:20:18 oscar Exp $
+ * \version $Id: class.dbdriver.php,v 1.4 2011-05-26 12:26:30 oscar Exp $
  */
 
 /**
@@ -213,6 +213,15 @@ interface DbDriver
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function tableUnlock(&$_resource, $_table = array());
+
+	/**
+	 * Empty a table
+	 * \param[in] $_resource Link with the database server
+	 * \param[in] $_table Table name
+	 * \return True on success, false on failures
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function emptyTable (&$_resource, $_table);
 
 	/**
 	 * Escape a given string for use in queries

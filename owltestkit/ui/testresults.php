@@ -4,7 +4,7 @@
  * \ingroup OTK_UI_LAYER
  * This file creates the area to show the testresults
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: testresults.php,v 1.1 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: testresults.php,v 1.2 2011-05-26 12:26:30 oscar Exp $
  */
 /**
  * \ingroup ICV_UI_LAYER
@@ -27,9 +27,13 @@ class TestresultsArea extends ContentArea
 
 		foreach ($arg['result'] as $_case => $_res) {
 			$_html .= '<h3>' . $this->trn('Testcase $p1$', array($_case)) . '</h3>';
+			$_counter = 0;
 			foreach ($_res as $_step) {
-				$_code = $_step[0];
-				$_msg = $_step[1];
+				if (($_code = $_step[0]) === OTK_RESULT_NONE) {
+					$_counter++;
+					continue;
+				}
+				$_msg = $_counter++ . '. ' . $_step[1];
 				switch ($_code) {
 					case OTK_RESULT_FAIL :
 						$_class = 'resultFail';
@@ -49,11 +53,14 @@ class TestresultsArea extends ContentArea
 			}
 		}
 		if ($arg['details']) {
-			$_div = new Container('div', $arg['details'], array('class' => 'resultDetails'));
+			$_div = new Container('div'
+				, '<h3>' . $this->trn('Details') . '</h3>' . $arg['details']
+				, array('class' => 'resultDetails')
+			);
 			$_html .= $_div->showElement();
 		}
 
-		$this->contentObject = new Container('div', $_html, array('class' => 'testResults'));
+		$this->contentObject = new Container('div', $_html, array('class' => 'testArea'));
 		$this->contentObject->addToContent($form);
 	}
 }

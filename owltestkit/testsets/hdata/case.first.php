@@ -3,7 +3,7 @@
  * \file
  * This file defines the first testcase for the Hierarchical Dataset
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.first.php,v 1.3 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: case.first.php,v 1.4 2011-05-26 12:26:30 oscar Exp $
  */
 
 /**
@@ -13,7 +13,7 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 23, 2011 -- O van Eijk -- initial version
  */
-class OTKHdata_First
+class OTKHdata_First implements TestCase
 {
 	// Name of the temporary database table that will be used in this testcase
 	private $tablename;
