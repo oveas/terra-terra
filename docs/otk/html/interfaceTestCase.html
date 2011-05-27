@@ -49,7 +49,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -102,6 +101,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <!-- doxytag: class="TestCase" -->
 <p>Testcase.  
  <a href="interfaceTestCase.html#details">More...</a></p>
+<div class="dynheader">
+Inheritance diagram for TestCase:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="interfaceTestCase.png" usemap="#TestCase_map" alt=""/>
+  <map id="TestCase_map" name="TestCase_map">
+<area href="classOTKHdata__First.html" title="HData Testcase." alt="OTKHdata_First" shape="rect" coords="0,56,155,80"/>
+<area href="classOTKHdata__Last.html" title="HData Testcase." alt="OTKHdata_Last" shape="rect" coords="165,56,320,80"/>
+<area href="classOTKHdata__Nodehandling.html" title="HData Node Testcase." alt="OTKHdata_Nodehandling" shape="rect" coords="330,56,485,80"/>
+</map>
+ </div></div>
 
 <p><a href="interfaceTestCase-members.html">List of all members.</a></p>
 <table class="memberdecls">
@@ -136,6 +146,8 @@ Public Member Functions</h2></td></tr>
 <p>Class constuctor. All testcases must be implemented. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
+<p>Implemented in <a class="el" href="classOTKHdata__First.html#a5f565719287cedfca6c95b79ca0eae7f">OTKHdata_First</a>, <a class="el" href="classOTKHdata__Last.html#a4fc76277cb956a1e1c0e809548343ef7">OTKHdata_Last</a>, and <a class="el" href="classOTKHdata__Nodehandling.html#a79e51b077cfa3a8cc736fa7e5a43ec18">OTKHdata_Nodehandling</a>.</p>
+
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -156,6 +168,8 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>OTK_RESULT_SUCCESS on success, OTK_RESULT_NONE when this testcase needs no cleanup or an error message when failed </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
+<p>Implemented in <a class="el" href="classOTKHdata__First.html#aeedd9ae405d5e5e6f2e37b597b2e798e">OTKHdata_First</a>, <a class="el" href="classOTKHdata__Last.html#a32e85aa7cf89f51918ae384368e6ab4a">OTKHdata_Last</a>, and <a class="el" href="classOTKHdata__Nodehandling.html#adc72384179796a95e75ef4a6d0f69588">OTKHdata_Nodehandling</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a1abfe816e79d30871ce314dedbdf5f9d"></a><!-- doxytag: member="TestCase::getDetails" ref="a1abfe816e79d30871ce314dedbdf5f9d" args="()" -->
@@ -174,6 +188,8 @@ Public Member Functions</h2></td></tr>
 <p>Gather all testdetails. During the tests, the testcase can collect all additional information in an internal datastructure, e.g. further details or explanations concerning failed tests. After finishing the testcase (and after <a class="el" href="interfaceTestCase.html#a71e9fd70c840ce0b535146f566e9b623">cleanupTest()</a>), the information will be retrieved. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Tekstblock, can contain HTML. Null and an empty textstring are allowed if no details are available. </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classOTKHdata__First.html#a7da202076d69c882a2b0cbed36556c26">OTKHdata_First</a>, <a class="el" href="classOTKHdata__Last.html#ac7631fb6fe1e243712297633dc8f2327">OTKHdata_Last</a>, and <a class="el" href="classOTKHdata__Nodehandling.html#a2dab1f57aceab77f7c2d35fbb6eaeb31">OTKHdata_Nodehandling</a>.</p>
 
 </div>
 </div>
@@ -200,6 +216,8 @@ Public Member Functions</h2></td></tr>
 </pre></div> </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
+<p>Implemented in <a class="el" href="classOTKHdata__First.html#a5fc1c37ab0f64861e37688df17922a00">OTKHdata_First</a>, <a class="el" href="classOTKHdata__Last.html#a9de03c5d9a332cf4ebde0be7c2a2cf79">OTKHdata_Last</a>, and <a class="el" href="classOTKHdata__Nodehandling.html#a060b9a2f755669a6a229eb8aa66c0a78">OTKHdata_Nodehandling</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ae2fd5738550a83f15afe1cbc5365f3e8"></a><!-- doxytag: member="TestCase::prepareTest" ref="ae2fd5738550a83f15afe1cbc5365f3e8" args="()" -->
@@ -218,6 +236,8 @@ Public Member Functions</h2></td></tr>
 <p>Prepare a testcase, e.g. create some database tables that are required for this testcase. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>OTK_RESULT_SUCCESS on success, OTK_RESULT_NONE when this testcase needs no preparation or an error message when failed </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classOTKHdata__First.html#afb8f48a3f84fda934fc4005032bb3547">OTKHdata_First</a>, <a class="el" href="classOTKHdata__Last.html#ad0bb7c57dac131cf01c4a1ff9df4bf47">OTKHdata_Last</a>, and <a class="el" href="classOTKHdata__Nodehandling.html#ad2cb9552cb84824650696dce9f59bcc7">OTKHdata_Nodehandling</a>.</p>
 
 </div>
 </div>
@@ -244,7 +264,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 23 2011 19:49:02 for OWLTestKit by
+    <li class="footer">Generated on Fri May 27 2011 15:10:40 for OWLTestKit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

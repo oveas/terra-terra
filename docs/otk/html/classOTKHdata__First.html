@@ -49,7 +49,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -100,9 +99,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">OTKHdata_First Class Reference<div class="ingroups"><a class="el" href="group__OTK__TESTSETS.html">Test sets</a></div></div>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="OTKHdata_First" -->
+<!-- doxytag: class="OTKHdata_First" --><!-- doxytag: inherits="TestCase" -->
 <p>HData Testcase.  
  <a href="classOTKHdata__First.html#details">More...</a></p>
+<div class="dynheader">
+Inheritance diagram for OTKHdata_First:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classOTKHdata__First.png" usemap="#OTKHdata_First_map" alt=""/>
+  <map id="OTKHdata_First_map" name="OTKHdata_First_map">
+<area href="interfaceTestCase.html" title="Testcase." alt="TestCase" shape="rect" coords="0,0,102,24"/>
+</map>
+ </div></div>
 
 <p><a href="classOTKHdata__First-members.html">List of all members.</a></p>
 <table class="memberdecls">
@@ -116,6 +124,7 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOTKHdata__First.html#a9dc7c3a7b777b7a142fdb67c4793b7fa">$tablename</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOTKHdata__First.html#ae10f7341b0ee5c1099da6e8126acbffe">$details</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>HData Testcase. </p>
@@ -136,8 +145,12 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Class constuctor. All testcases must be implemented. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>References <a class="el" href="helper_8php.html#ab7e6896cb9f00fb023d1e0d0f44579ee">OTKHdata_Tablename()</a>.</p>
+<p>Implements <a class="el" href="interfaceTestCase.html#a9aac459e4d579b75426c95718790e88f">TestCase</a>.</p>
+
+<p>References <a class="el" href="helper_8php.html#a61b7591d1eb4fe1018cb9391e88abde2">OTKHdata_tableName()</a>.</p>
 
 </div>
 </div>
@@ -155,6 +168,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Cleanup the testenvironment, e.g. drop temporary tables </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>OTK_RESULT_SUCCESS on success, OTK_RESULT_NONE when this testcase needs no cleanup or an error message when failed </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceTestCase.html#a71e9fd70c840ce0b535146f566e9b623">TestCase</a>.</p>
 
 </div>
 </div>
@@ -171,6 +189,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Gather all testdetails. During the tests, the testcase can collect all additional information in an internal datastructure, e.g. further details or explanations concerning failed tests. After finishing the testcase (and after <a class="el" href="classOTKHdata__First.html#aeedd9ae405d5e5e6f2e37b597b2e798e">cleanupTest()</a>), the information will be retrieved. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Tekstblock, can contain HTML. Null and an empty textstring are allowed if no details are available. </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceTestCase.html#a1abfe816e79d30871ce314dedbdf5f9d">TestCase</a>.</p>
 
 </div>
 </div>
@@ -188,14 +211,18 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Perform the test(s) for this testcase. Multiple tests can be performed, each writing a single message in an internal array explaining what the result was ('step X completed succefully', an error message in case of failures etc). Additional (private) methods can be created for each step. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>A 2 dimensional array with messages for all steps that were performed in this testcase. Each step in the testcase has exactly 1 element in the array, being an array with 2 elements: first is an human readable message, the second is true if the step succeeded, false if it failed and null when the step was skipped, e.g. <div class="fragment"><pre class="fragment">        array(
-                 array(<span class="stringliteral">&#39;Step 1 completed successfully&#39;</span>, <span class="keyword">true</span>)
-                ,array(<span class="stringliteral">&#39;Step 2 completed successfully&#39;</span>, <span class="keyword">true</span>)
-                ,array(<span class="stringliteral">&#39;Step 3 failed with code XX&#39;</span>, <span class="keyword">false</span>)
-                ,array(<span class="stringliteral">&#39;Step 4 was skipped&#39;</span>, null)
+<dl class="return"><dt><b>Returns:</b></dt><dd>A 2 dimensional array with messages for all steps that were performed in this testcase. Each step in the testcase has exactly 1 element in the array, being an array with 2 elements: first is the code as defined in <a class="el" href="group__Test__Results.html">Test result code</a>, the second is an human readable message. null when the step was skipped, e.g. <div class="fragment"><pre class="fragment">        array(
+                 array(<a class="code" href="group__Test__Results.html#ga3edb448eb67c540e4343ec5797555604" title="The testscase ended successfully.">OTK_RESULT_SUCCESS</a>, <span class="stringliteral">&#39;Step 1 completed successfully&#39;</span>)
+                ,array(<a class="code" href="group__Test__Results.html#ga3edb448eb67c540e4343ec5797555604" title="The testscase ended successfully.">OTK_RESULT_SUCCESS</a>, <span class="stringliteral">&#39;Step 2 completed successfully&#39;</span>)
+                ,array(<a class="code" href="group__Test__Results.html#gaeb82ae39d76794b6ba8ff719fb456f06" title="Testcase ended with a failure.">OTK_RESULT_FAIL</a>, <span class="stringliteral">&#39;Step 3 failed with code XX&#39;</span>)
+                ,array(<a class="code" href="group__Test__Results.html#gaff709930ec00f9e05e0b93fa421e214e" title="The testcase was skipped as a result of an earlier failure or warning.">OTK_RESULT_SKIPPED</a>, <span class="stringliteral">&#39;Step 4 could not execute because step 3 failed&#39;</span>)
         )
 </pre></div> </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceTestCase.html#a5fcf5fd51066de41206fe02c67139c76">TestCase</a>.</p>
+
+<p>References <a class="el" href="helper_8php.html#a5f32fb16f086bc5a25bc7d6ffd01c2b9">OTKHdata_getData()</a>, and <a class="el" href="helper_8php.html#a61b7591d1eb4fe1018cb9391e88abde2">OTKHdata_tableName()</a>.</p>
 
 </div>
 </div>
@@ -212,10 +239,28 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Prepare a testcase, e.g. create some database tables that are required for this testcase. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>OTK_RESULT_SUCCESS on success, OTK_RESULT_NONE when this testcase needs no preparation or an error message when failed </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceTestCase.html#ae2fd5738550a83f15afe1cbc5365f3e8">TestCase</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="ae10f7341b0ee5c1099da6e8126acbffe"></a><!-- doxytag: member="OTKHdata_First::$details" ref="ae10f7341b0ee5c1099da6e8126acbffe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">OTKHdata_First::$details<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a9dc7c3a7b777b7a142fdb67c4793b7fa"></a><!-- doxytag: member="OTKHdata_First::$tablename" ref="a9dc7c3a7b777b7a142fdb67c4793b7fa" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -226,7 +271,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Name of the temporary database table that will be used in this testcase </p>
 
 </div>
 </div>
@@ -253,7 +297,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 23 2011 19:49:02 for OWLTestKit by
+    <li class="footer">Generated on Fri May 27 2011 15:10:40 for OWLTestKit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

@@ -2,19 +2,19 @@
 /**
  * \file
  * \ingroup OTK_UI_LAYER
- * This file creates link to the homepage
+ * This file creates the main menu
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: homelink.php,v 1.2 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: mainmenu.php,v 1.1 2011-05-27 13:15:15 oscar Exp $
  */
 
 /**
  * \ingroup OTK_UI_LAYER
- * Setup the contentarea holding the Home link
- * \brief Home link
+ * Setup the contentarea holding the main menu
+ * \brief Main manu
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 19, 2011 -- O van Eijk -- initial version
  */
-class HomelinkArea extends ContentArea
+class MainmenuArea extends ContentArea
 {
 	/**
 	 * Generate the link
@@ -22,12 +22,13 @@ class HomelinkArea extends ContentArea
 	 */
 	public function loadArea($arg = null)
 	{
+		// Create the container for menu items
+		$this->contentObject = new Container('list', '', array('class' => 'mainMenu'));
+
+		// Home link
 		$_txt = $this->trn('Home');
 		$_lnk = new Container('link', $_txt);
 		$_lnk->setContainer(array('href' => $_SERVER['PHP_SELF']));
-		
-		// Now create the container, add the link and return a reference to the container
-		$this->contentObject = new Container('span', '', array('class' => 'homeLink'));
-		$this->contentObject->setContent($_lnk);
+		$this->contentObject->addContainer('item', $_lnk);
 	}
 }

@@ -49,7 +49,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -128,11 +127,13 @@ Static Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestSet.html#acd364b694ebba50bd71260398314369e">doTest</a> ($name, $file)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestSet.html#a5ded5b652032e19ae4f638f6fe63a3fa">showTestResults</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestSet.html#a1f1174f715346d8a39e67970f700a677">$setName</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestSet.html#af924384ac634f0444aa4f6ac1776fe50">$helper</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestSet.html#abe27f3fb31dd64d909963914412ac866">$testCases</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestSet.html#aca0a0b885b900339ebd965bbaeef33e6">$details</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestSet.html#a9841ef8a6c8ce307f780bce7c2a30bb0">$testResults</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestSet.html#a0746e54ef54b321e6a785ac115a9b8cb">$errors</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestSet.html#a805a35b038909669a923c67b97f76082">$warnings</a></td></tr>
@@ -141,7 +142,7 @@ Private Attributes</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Testset. </p>
-<p>Baseclass that defines the testsets. Classes that derive from this baseclass must have the name <em><a class="el" href="classOTK.html">OTK</a>&lt;Location&gt;</em>, where 'location' is the name of the subdirectory in OTK_TESTSETS. The filename must be <em><a class="el" href="testset_8php.html">testset.php</a></em>.</p>
+<p>Baseclass that defines the testsets. Classes that derive from this baseclass must have the name <em><a class="el" href="classOTK.html" title="OTK mainclass.">OTK</a>&lt;Location&gt;</em>, where 'location' is the name of the subdirectory in OTK_TESTSETS. The filename must be <em><a class="el" href="testset_8php.html">testset.php</a></em>.</p>
 <p>The classes only need to reimplement the static <a class="el" href="classTestSet.html#ab5b54e632b3de37daaceea3d922658bf">getDescription()</a> method, all other required methods are in this baseclass.</p>
 <p>The class collects all files belonging to a testset that contain testcases and helper functions. All files must be in the same directory as <em><a class="el" href="testset_8php.html">testset.php</a></em>.</p>
 <p>Files that contain testcases must have the name <em>case.&lt;name&gt;.php</em>. Refer to the interface <a class="el" href="interfaceTestCase.html" title="Testcase.">TestCase</a> for more information.</p>
@@ -269,11 +270,45 @@ Private Attributes</h2></td></tr>
 <p>Go through all selected testcases and execute them </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>References <a class="el" href="classTestSet.html#acd364b694ebba50bd71260398314369e">doTest()</a>.</p>
+<p>References <a class="el" href="classTestSet.html#acd364b694ebba50bd71260398314369e">doTest()</a>, and <a class="el" href="classTestSet.html#a5ded5b652032e19ae4f638f6fe63a3fa">showTestResults()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5ded5b652032e19ae4f638f6fe63a3fa"></a><!-- doxytag: member="TestSet::showTestResults" ref="a5ded5b652032e19ae4f638f6fe63a3fa" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TestSet::showTestResults </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create the contentarea to display the results. To make sure we don't need to wait until all tests completed, the output is echoed immediatly. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Referenced by <a class="el" href="classTestSet.html#a1885d85f93b94cff6a04a038a676c63e">performTests()</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="aca0a0b885b900339ebd965bbaeef33e6"></a><!-- doxytag: member="TestSet::$details" ref="aca0a0b885b900339ebd965bbaeef33e6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TestSet::$details<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Details description of the testresults </p>
+
+</div>
+</div>
 <a class="anchor" id="a0746e54ef54b321e6a785ac115a9b8cb"></a><!-- doxytag: member="TestSet::$errors" ref="a0746e54ef54b321e6a785ac115a9b8cb" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -409,7 +444,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 23 2011 19:49:02 for OWLTestKit by
+    <li class="footer">Generated on Fri May 27 2011 15:10:40 for OWLTestKit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

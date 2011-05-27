@@ -29,6 +29,8 @@ static {\bf getDescription} ()
 \begin{DoxyCompactItemize}
 \item 
 {\bf doTest} (\$name, \$file)
+\item 
+{\bf showTestResults} ()
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -38,6 +40,8 @@ static {\bf getDescription} ()
 {\bf \$helper}
 \item 
 {\bf \$testCases}
+\item 
+{\bf \$details}
 \item 
 {\bf \$testResults}
 \item 
@@ -153,12 +157,29 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References doTest().
+References doTest(), and showTestResults().
+
+\index{TestSet@{TestSet}!showTestResults@{showTestResults}}
+\index{showTestResults@{showTestResults}!TestSet@{TestSet}}
+\subsubsection[{showTestResults}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::showTestResults (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestSet_a5ded5b652032e19ae4f638f6fe63a3fa}
+Create the contentarea to display the results. To make sure we don't need to wait until all tests completed, the output is echoed immediatly. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by performTests().
 
 
 
 \subsection{Member Data Documentation}
-\index{TestSet@{TestSet}!\$errors@{\$errors}}
+\index{TestSet@{TestSet}!\$details@{\$details}}
+\index{\$details@{\$details}!TestSet@{TestSet}}
+\subsubsection[{\$details}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::\$details\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestSet_aca0a0b885b900339ebd965bbaeef33e6}
+Details description of the testresults \index{TestSet@{TestSet}!\$errors@{\$errors}}
 \index{\$errors@{\$errors}!TestSet@{TestSet}}
 \subsubsection[{\$errors}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::\$errors\hspace{0.3cm}{\ttfamily  [private]}}\label{classTestSet_a0746e54ef54b321e6a785ac115a9b8cb}
 Total number of teststeps that ended in an error \index{TestSet@{TestSet}!\$helper@{\$helper}}

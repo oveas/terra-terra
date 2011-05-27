@@ -1,9 +1,6 @@
 var NAVTREE =
 [
   [ "OWLTestKit", "index.html", [
-    [ "Related Pages", "pages.html", [
-      [ "Todo List", "todo.html", null ]
-    ] ],
     [ "Modules", "modules.html", [
       [ "Test result code", "group__Test__Results.html", [
         [ "Enumerations", "group__Test__Results.html", [
@@ -16,16 +13,18 @@ var NAVTREE =
       ] ],
       [ "Presentation modules", "group__OTK__UI__LAYER.html", [
         [ "Classes", "group__OTK__UI__LAYER.html", [
-          [ "HomelinkArea", "classHomelinkArea.html", null ]
+          [ "MainmenuArea", "classMainmenuArea.html", null ]
         ] ],
         [ "Files", "group__OTK__UI__LAYER.html", [
-          [ "homelink.php", "homelink_8php.html", null ],
+          [ "mainmenu.php", "mainmenu_8php.html", null ],
           [ "mainpage.php", "mainpage_8php.html", null ],
+          [ "testresults.php", "testresults_8php.html", null ],
           [ "testsets.php", "testsets_8php.html", null ]
         ] ]
       ] ],
       [ "Business Object modules", "group__OTK__BO__LAYER.html", [
         [ "Classes", "group__OTK__BO__LAYER.html", [
+          [ "OTKHelpers", "classOTKHelpers.html", null ],
           [ "OTKUser", "classOTKUser.html", null ]
         ] ]
       ] ],
@@ -45,6 +44,8 @@ var NAVTREE =
       [ "Test sets", "group__OTK__TESTSETS.html", [
         [ "Classes", "group__OTK__TESTSETS.html", [
           [ "OTKHdata_First", "classOTKHdata__First.html", null ],
+          [ "OTKHdata_Last", "classOTKHdata__Last.html", null ],
+          [ "OTKHdata_Nodehandling", "classOTKHdata__Nodehandling.html", null ],
           [ "OTKHdata", "classOTKHdata.html", null ]
         ] ],
         [ "Files", "group__OTK__TESTSETS.html", [
@@ -54,24 +55,33 @@ var NAVTREE =
       [ "Test cases", "group__OTK__TESTCASES.html", null ]
     ] ],
     [ "Class List", "annotated.html", [
-      [ "HomelinkArea", "classHomelinkArea.html", null ],
+      [ "MainmenuArea", "classMainmenuArea.html", null ],
       [ "OTK", "classOTK.html", null ],
       [ "OTKHdata", "classOTKHdata.html", null ],
       [ "OTKHdata_First", "classOTKHdata__First.html", null ],
+      [ "OTKHdata_Last", "classOTKHdata__Last.html", null ],
+      [ "OTKHdata_Nodehandling", "classOTKHdata__Nodehandling.html", null ],
+      [ "OTKHelpers", "classOTKHelpers.html", null ],
       [ "OTKUser", "classOTKUser.html", null ],
       [ "TestCase", "interfaceTestCase.html", null ],
       [ "TestKit", "classTestKit.html", null ],
+      [ "TestresultsArea", "classTestresultsArea.html", null ],
       [ "TestSet", "classTestSet.html", null ],
       [ "TestsetsArea", "classTestsetsArea.html", null ]
     ] ],
     [ "Class Index", "classes.html", null ],
     [ "Class Hierarchy", "hierarchy.html", [
-      [ "HomelinkArea", "classHomelinkArea.html", null ],
+      [ "MainmenuArea", "classMainmenuArea.html", null ],
       [ "OTK", "classOTK.html", null ],
-      [ "OTKHdata_First", "classOTKHdata__First.html", null ],
+      [ "OTKHelpers", "classOTKHelpers.html", null ],
       [ "OTKUser", "classOTKUser.html", null ],
-      [ "TestCase", "interfaceTestCase.html", null ],
+      [ "TestCase", "interfaceTestCase.html", [
+        [ "OTKHdata_First", "classOTKHdata__First.html", null ],
+        [ "OTKHdata_Last", "classOTKHdata__Last.html", null ],
+        [ "OTKHdata_Nodehandling", "classOTKHdata__Nodehandling.html", null ]
+      ] ],
       [ "TestKit", "classTestKit.html", null ],
+      [ "TestresultsArea", "classTestresultsArea.html", null ],
       [ "TestSet", "classTestSet.html", [
         [ "OTKHdata", "classOTKHdata.html", null ]
       ] ],
@@ -82,6 +92,7 @@ var NAVTREE =
       [ "/home/oscar/projects/owl-php/owltestkit/index.php", "index_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/admin/install.php", "install_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/bo/class.otk.php", "class_8otk_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/owltestkit/bo/class.otkhelpers.php", "class_8otkhelpers_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/bo/class.otkuser.php", "class_8otkuser_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/bo/class.testcase.php", "class_8testcase_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/bo/class.testset.php", "class_8testset_8php.html", null ],
@@ -90,10 +101,13 @@ var NAVTREE =
       [ "/home/oscar/projects/owl-php/owltestkit/lib/otk.messages.php", "otk_8messages_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/so/class.testkit.php", "class_8testkit_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/testsets/hdata/case.first.php", "case_8first_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/owltestkit/testsets/hdata/case.last.php", "case_8last_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/owltestkit/testsets/hdata/case.nodehandling.php", "case_8nodehandling_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/testsets/hdata/helper.php", "helper_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/testsets/hdata/testset.php", "testset_8php.html", null ],
-      [ "/home/oscar/projects/owl-php/owltestkit/ui/homelink.php", "homelink_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/owltestkit/ui/mainmenu.php", "mainmenu_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/ui/mainpage.php", "mainpage_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/owltestkit/ui/testresults.php", "testresults_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/ui/testsets.php", "testsets_8php.html", null ]
     ] ],
     [ "File Members", "globals.html", null ]

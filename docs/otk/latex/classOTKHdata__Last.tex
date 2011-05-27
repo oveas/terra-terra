@@ -1,0 +1,164 @@
+\section{OTKHdata\_\-Last Class Reference}
+\label{classOTKHdata__Last}\index{OTKHdata\_\-Last@{OTKHdata\_\-Last}}
+
+
+HData Testcase.  
+
+
+Inheritance diagram for OTKHdata\_\-Last:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classOTKHdata__Last}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf prepareTest} ()
+\item 
+{\bf performTest} ()
+\item 
+{\bf cleanupTest} ()
+\item 
+{\bf getDetails} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$tablename}
+\item 
+{\bf \$details}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+HData Testcase. 
+
+This testcase dropt a database table that was used in all HData tests \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+May 23, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{OTKHdata\_\-Last@{OTKHdata\_\-Last}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!OTKHdata_Last@{OTKHdata\_\-Last}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-Last::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdata__Last_a4fc76277cb956a1e1c0e809548343ef7}
+Class constuctor. All testcases must be implemented. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a9aac459e4d579b75426c95718790e88f}.
+
+
+
+References OTKHdata\_\-tableName().
+
+
+
+\subsection{Member Function Documentation}
+\index{OTKHdata\_\-Last@{OTKHdata\_\-Last}!cleanupTest@{cleanupTest}}
+\index{cleanupTest@{cleanupTest}!OTKHdata_Last@{OTKHdata\_\-Last}}
+\subsubsection[{cleanupTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-Last::cleanupTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdata__Last_a32e85aa7cf89f51918ae384368e6ab4a}
+Cleanup the testenvironment, e.g. drop temporary tables \begin{DoxyReturn}{Returns}
+OTK\_\-RESULT\_\-SUCCESS on success, OTK\_\-RESULT\_\-NONE when this testcase needs no cleanup or an error message when failed 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a71e9fd70c840ce0b535146f566e9b623}.
+
+\index{OTKHdata\_\-Last@{OTKHdata\_\-Last}!getDetails@{getDetails}}
+\index{getDetails@{getDetails}!OTKHdata_Last@{OTKHdata\_\-Last}}
+\subsubsection[{getDetails}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-Last::getDetails (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdata__Last_ac7631fb6fe1e243712297633dc8f2327}
+Gather all testdetails. During the tests, the testcase can collect all additional information in an internal datastructure, e.g. further details or explanations concerning failed tests. After finishing the testcase (and after \doxyref{cleanupTest()}{p.}{classOTKHdata__Last_a32e85aa7cf89f51918ae384368e6ab4a}), the information will be retrieved. \begin{DoxyReturn}{Returns}
+Tekstblock, can contain HTML. Null and an empty textstring are allowed if no details are available. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a1abfe816e79d30871ce314dedbdf5f9d}.
+
+\index{OTKHdata\_\-Last@{OTKHdata\_\-Last}!performTest@{performTest}}
+\index{performTest@{performTest}!OTKHdata_Last@{OTKHdata\_\-Last}}
+\subsubsection[{performTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-Last::performTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdata__Last_a9de03c5d9a332cf4ebde0be7c2a2cf79}
+Perform the test(s) for this testcase. Multiple tests can be performed, each writing a single message in an internal array explaining what the result was ('step X completed succefully', an error message in case of failures etc). Additional (private) methods can be created for each step. \begin{DoxyReturn}{Returns}
+A 2 dimensional array with messages for all steps that were performed in this testcase. Each step in the testcase has exactly 1 element in the array, being an array with 2 elements: first is the code as defined in \doxyref{Test result code}{p.}{group__Test__Results}, the second is an human readable message. null when the step was skipped, e.g. 
+\begin{DoxyCode}
+        array(
+                 array(OTK_RESULT_SUCCESS, 'Step 1 completed successfully')
+                ,array(OTK_RESULT_SUCCESS, 'Step 2 completed successfully')
+                ,array(OTK_RESULT_FAIL, 'Step 3 failed with code XX')
+                ,array(OTK_RESULT_SKIPPED, 'Step 4 could not execute because step
+       3 failed')
+        )
+\end{DoxyCode}
+ 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a5fcf5fd51066de41206fe02c67139c76}.
+
+
+
+References OTKHdata\_\-getData(), and OTKHdata\_\-tableName().
+
+\index{OTKHdata\_\-Last@{OTKHdata\_\-Last}!prepareTest@{prepareTest}}
+\index{prepareTest@{prepareTest}!OTKHdata_Last@{OTKHdata\_\-Last}}
+\subsubsection[{prepareTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-Last::prepareTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKHdata__Last_ad0bb7c57dac131cf01c4a1ff9df4bf47}
+Prepare a testcase, e.g. create some database tables that are required for this testcase. \begin{DoxyReturn}{Returns}
+OTK\_\-RESULT\_\-SUCCESS on success, OTK\_\-RESULT\_\-NONE when this testcase needs no preparation or an error message when failed 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_ae2fd5738550a83f15afe1cbc5365f3e8}.
+
+
+
+\subsection{Member Data Documentation}
+\index{OTKHdata\_\-Last@{OTKHdata\_\-Last}!\$details@{\$details}}
+\index{\$details@{\$details}!OTKHdata_Last@{OTKHdata\_\-Last}}
+\subsubsection[{\$details}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-Last::\$details\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKHdata__Last_a74e4a933ca7c77efa05bd7aa5599f855}
+\index{OTKHdata\_\-Last@{OTKHdata\_\-Last}!\$tablename@{\$tablename}}
+\index{\$tablename@{\$tablename}!OTKHdata_Last@{OTKHdata\_\-Last}}
+\subsubsection[{\$tablename}]{\setlength{\rightskip}{0pt plus 5cm}OTKHdata\_\-Last::\$tablename\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKHdata__Last_ac9389478f14f71c1711870353b704e49}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/owltestkit/testsets/hdata/{\bf case.last.php}\end{DoxyCompactItemize}

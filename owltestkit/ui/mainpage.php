@@ -5,7 +5,7 @@
  * and the actual page is displayed.
  * \ingroup OTK_UI_LAYER
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: mainpage.php,v 1.3 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: mainpage.php,v 1.4 2011-05-27 13:15:15 oscar Exp $
  */
 
 // First, get all required instances
@@ -18,7 +18,7 @@ $document->loadStyle(OTK_CSS . '/testkit.css');
 $GLOBALS['OTK']['HeaderContainer'] = new Container('div', '', array('class' => 'headerContainer'));
 
 // Create the 'Home' link
-$_home = OWLloader::getArea('homelink', OTK_UI);
+$_home = OWLloader::getArea('mainmenu', OTK_UI);
 $_home->addToDocument($GLOBALS['OTK']['HeaderContainer']);
 
 // Make a check first to see if we are gonna execute tests (don't wait for the dispatcher)

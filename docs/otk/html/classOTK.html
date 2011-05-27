@@ -49,7 +49,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -101,6 +100,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="OTK" -->
+<p><a class="el" href="classOTK.html" title="OTK mainclass.">OTK</a> mainclass.  
+ <a href="classOTK.html#details">More...</a></p>
+
 <p><a href="classOTK-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
@@ -108,12 +110,16 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOTK.html#a9a05ec6dd02b4dc6574473a812888480">__construct</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOTK.html#a192cccba7a56fb485fc576f5f5afdc76">selectTestCases</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOTK.html#a52498e87de15d4b6aff1d932fbbfbb64">doTests</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOTK.html#a46e10914196bc06ae2cc887e8c34e521">showOptions</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOTK.html#a0e26e36f48d1ad26dcefe8528b7f32e7">$testKit</a></td></tr>
 </table>
-<hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classOTK.html" title="OTK mainclass.">OTK</a> mainclass. </p>
+<p>Class that contains all methods that will be called by the OWL dispatchers </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+<dl class="version"><dt><b>Version:</b></dt><dd>May 19, 2011 -- O van Eijk -- initial version </dd></dl>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a9a05ec6dd02b4dc6574473a812888480"></a><!-- doxytag: member="OTK::__construct" ref="a9a05ec6dd02b4dc6574473a812888480" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -127,6 +133,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Class constructor </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -144,6 +152,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Read from the formdata which testsets must be executed and perform those tests. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>References <a class="el" href="mainpage_8php.html#ab14b242803551e0f269742a7103f149d">$_form</a>.</p>
 
 </div>
 </div>
@@ -160,26 +172,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Load the area from which the testsets can be selected for execution </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>References <a class="el" href="otk_8applic_8loader_8php.html#ad9587c269106efedd641848ebbf0dcdf">$GLOBALS</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a46e10914196bc06ae2cc887e8c34e521"></a><!-- doxytag: member="OTK::showOptions" ref="a46e10914196bc06ae2cc887e8c34e521" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">OTK::showOptions </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>References <a class="el" href="mainpage_8php.html#ab1d5b769b8d51cf3de5b1f1c4a9e6298">$dispatcher</a>, and <a class="el" href="otk_8applic_8loader_8php.html#ad9587c269106efedd641848ebbf0dcdf">$GLOBALS</a>.</p>
 
 </div>
 </div>
@@ -194,6 +190,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Reference to the Testkit containerobject </p>
 
 </div>
 </div>
@@ -220,7 +217,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 23 2011 19:49:01 for OWLTestKit by
+    <li class="footer">Generated on Fri May 27 2011 15:10:39 for OWLTestKit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>
