@@ -137,6 +137,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ae6fffd17ac4b45df6db83fa743c4725d">dbTransactionRollback</a> (&amp;$_resource, $_name, $_name=null, $_new=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#abf14f6d96125561b06631649d4a1985a">tableLock</a> (&amp;$_resource, $_table, $_type=<a class="el" href="group__DBDRIVER__TableLock.html#ga5c56b5f9057593dbaa31052f7c7fc08f">DBDRIVER_LOCKTYPE_READ</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a76b1a0d819d13533ba9ff323fe3ca152">tableUnlock</a> (&amp;$_resource, $_table=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a5644828646305a736b8d16cdfade0d21">emptyTable</a> (&amp;$_resource, $_table)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#accaa33441d852734b2213937612e66f6">dbEscapeString</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ac99fd7eba511d8799fcc447006179c72">dbUnescapeString</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a58f24b8ba3d3c104cefac2d9c21ca67c">functionCount</a> ($_field, array $_arguments=array())</td></tr>
@@ -508,7 +509,7 @@ Public Member Functions</h2></td></tr>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td><a class="el" href="classTable.html" title="Table.">Table</a> to take the value from </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table to take the value from </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the Auto field </td></tr>
   </table>
   </dd>
@@ -906,6 +907,45 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a5644828646305a736b8d16cdfade0d21"></a><!-- doxytag: member="DbDriver::emptyTable" ref="a5644828646305a736b8d16cdfade0d21" args="(&amp;$_resource, $_table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::emptyTable </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Empty a table </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classMySQL.html#a310c8c88ce3d36a23d51f66ec5b0f9d2">MySQL</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a869608212113175cefe8782a1c6f25d8"></a><!-- doxytag: member="DbDriver::functionConcat" ref="a869608212113175cefe8782a1c6f25d8" args="($_field, array $_arguments=array())" -->
 <div class="memitem">
 <div class="memproto">
@@ -1268,7 +1308,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 23 2011 19:49:12 for OWL-PHP by
+    <li class="footer">Generated on Fri May 27 2011 14:35:09 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

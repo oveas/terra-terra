@@ -14,9 +14,11 @@ Inheritance diagram for ContentArea:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bf loadArea} ()
+{\bf loadArea} (\$arg=null)
 \item 
 {\bf addToDocument} ({\bf Container} \$\_\-contnr=null)
+\item 
+{\bf getArea} ()
 \item 
 {\bf trn} (\$\_\-string, \$\_\-params=array())
 \item 
@@ -140,6 +142,19 @@ References \_\-OWL::reset(), \_\-OWL::setHighSeverity(), and \_\-OWL::traceback(
 
 Referenced by SessionHandler::write().
 
+\index{ContentArea@{ContentArea}!getArea@{getArea}}
+\index{getArea@{getArea}!ContentArea@{ContentArea}}
+\subsubsection[{getArea}]{\setlength{\rightskip}{0pt plus 5cm}ContentArea::getArea (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classContentArea_a3688312b41a627ca11f8485dd1052d0c}
+Retrieve the content of this area \begin{DoxyReturn}{Returns}
+HTML code 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{ContentArea@{ContentArea}!getCallback@{getCallback}}
 \index{getCallback@{getCallback}!ContentArea@{ContentArea}}
 \subsubsection[{getCallback}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getCallback (
@@ -265,22 +280,27 @@ References OWL::factory(), and \_\-OWL::setStatus().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), HDataHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Mail::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), HDataHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Mail::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{ContentArea@{ContentArea}!loadArea@{loadArea}}
 \index{loadArea@{loadArea}!ContentArea@{ContentArea}}
 \subsubsection[{loadArea}]{\setlength{\rightskip}{0pt plus 5cm}ContentArea::loadArea (
 \begin{DoxyParamCaption}
-{}
+\item[{\$}]{arg = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [abstract]}}\label{classContentArea_ac399e7f1f13387302f6f97e6e7672e67}
+)\hspace{0.3cm}{\ttfamily  [abstract]}}\label{classContentArea_a02a9d91a3662521c8d5cec2ad58a645d}
 This function must be reimplemented by all derived classes. It creates an object of any container type(with as many nested objects as desired) which holds all content for this area. To check of a user has access to the current content area, the following check should be used: 
 \begin{DoxyCode}
         if ($this->hasRight('(right)', OWL_ID) === false) {
                 return false;
         }
 \end{DoxyCode}
- Where 'right' is the rightsbit to check (e.g. 'readregistered') and the second parameter identifies the application (either OWL\_\-ID or APP\_\-ID) \begin{DoxyReturn}{Returns}
+ Where 'right' is the rightsbit to check (e.g. 'readregistered') and the second parameter identifies the application (either OWL\_\-ID or APP\_\-ID) 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$arg} & An optional argument (see \doxyref{OWLloader::getArea()}{p.}{classOWLloader_aa806781955f5233828d8068129039640}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
 The container object, or false when the user has no access 
 \end{DoxyReturn}
 \begin{DoxyAuthor}{Author}
@@ -432,7 +452,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Container::addContainer(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), DbHandler::resetTable(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
 
 \index{ContentArea@{ContentArea}!signal@{signal}}
 \index{signal@{signal}!ContentArea@{ContentArea}}

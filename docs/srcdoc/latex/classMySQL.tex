@@ -32,6 +32,8 @@ Inheritance diagram for MySQL:\begin{figure}[H]
 \item 
 {\bf tableUnlock} (\&\$\_\-resource, \$\_\-table=array())
 \item 
+{\bf emptyTable} (\&\$\_\-resource, \$\_\-table)
+\item 
 {\bf dbTableList} (\&\$\_\-resource, \$\_\-pattern, \$\_\-views=false)
 \item 
 {\bf dbExec} (\&\$\_\-resource, \$\_\-statement)
@@ -313,7 +315,7 @@ Implements {\bf DbDriver} \doxyref{}{p.}{interfaceDbDriver_a0b45d39ae1507571c296
 
 
 
-Referenced by dbTransactionCommit(), dbTransactionRollback(), tableLock(), and tableUnlock().
+Referenced by dbTransactionCommit(), dbTransactionRollback(), emptyTable(), tableLock(), and tableUnlock().
 
 \index{MySQL@{MySQL}!dbFetchNextRecord@{dbFetchNextRecord}}
 \index{dbFetchNextRecord@{dbFetchNextRecord}!MySQL@{MySQL}}
@@ -354,7 +356,7 @@ Retrieve the last auto generated ID value
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
 \hline
-\mbox{\tt in}  & {\em \$\_\-table} & \doxyref{Table}{p.}{classTable} to take the value from \\
+\mbox{\tt in}  & {\em \$\_\-table} & Table to take the value from \\
 \hline
 \mbox{\tt in}  & {\em \$\_\-field} & Name of the Auto field \\
 \hline
@@ -662,6 +664,35 @@ Implements {\bf DbDriver} \doxyref{}{p.}{interfaceDbDriver_a461f60524cd8d1dd23dd
 
 Referenced by dbCreate().
 
+\index{MySQL@{MySQL}!emptyTable@{emptyTable}}
+\index{emptyTable@{emptyTable}!MySQL@{MySQL}}
+\subsubsection[{emptyTable}]{\setlength{\rightskip}{0pt plus 5cm}MySQL::emptyTable (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-table}
+\end{DoxyParamCaption}
+)}\label{classMySQL_a310c8c88ce3d36a23d51f66ec5b0f9d2}
+Empty a table 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-table} & Table name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Reimplemented from {\bf DbDefaults} \doxyref{}{p.}{classDbDefaults_a40f0ad68f9278baf0948920d17bbb3e1}.
+
+
+
+References dbExec().
+
 \index{MySQL@{MySQL}!functionConcat@{functionConcat}}
 \index{functionConcat@{functionConcat}!MySQL@{MySQL}}
 \subsubsection[{functionConcat}]{\setlength{\rightskip}{0pt plus 5cm}MySQL::functionConcat (
@@ -781,13 +812,13 @@ Implements {\bf DbDriver} \doxyref{}{p.}{interfaceDbDriver_a3196a4aa4f7f75c46459
 
 \index{MySQL@{MySQL}!functionMax@{functionMax}}
 \index{functionMax@{functionMax}!MySQL@{MySQL}}
-\subsubsection[{functionMax}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionMax (
+\subsubsection[{functionMax}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::functionMax (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-field, }
 \item[{array \$}]{\_\-arguments = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_af488697aef28243a0d358c2800752217}
-Inplementation of the SQL MAX() function. 
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_a2f125c1875530f1055845e36bd4799d3}
+Implementation of the SQL MAX() function. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
 \hline
@@ -802,13 +833,13 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 \index{MySQL@{MySQL}!functionMax@{functionMax}}
 \index{functionMax@{functionMax}!MySQL@{MySQL}}
-\subsubsection[{functionMax}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::functionMax (
+\subsubsection[{functionMax}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::functionMax (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-field, }
 \item[{array \$}]{\_\-arguments = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_a2f125c1875530f1055845e36bd4799d3}
-Implementation of the SQL MAX() function. 
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_af488697aef28243a0d358c2800752217}
+Inplementation of the SQL MAX() function. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-field} & Name of the field \\
 \hline
@@ -865,12 +896,12 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 \index{MySQL@{MySQL}!isRetryable@{isRetryable}}
 \index{isRetryable@{isRetryable}!MySQL@{MySQL}}
-\subsubsection[{isRetryable}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::isRetryable (
+\subsubsection[{isRetryable}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::isRetryable (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-errorCode}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_a9cb29749650ea6a3b7a7181a5783f48f}
-Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. Retries can be enabled at driver level, by default retries are never possible. 
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_a0faed62206bfa6538e5093dfaa8b9653}
+Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-errorCode} & The errorcode \\
 \hline
@@ -883,12 +914,12 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 \index{MySQL@{MySQL}!isRetryable@{isRetryable}}
 \index{isRetryable@{isRetryable}!MySQL@{MySQL}}
-\subsubsection[{isRetryable}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::isRetryable (
+\subsubsection[{isRetryable}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::isRetryable (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-errorCode}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{interfaceDbDriver_a0faed62206bfa6538e5093dfaa8b9653}
-Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. 
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classDbDefaults_a9cb29749650ea6a3b7a7181a5783f48f}
+Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. Retries can be enabled at driver level, by default retries are never possible. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-errorCode} & The errorcode \\
 \hline

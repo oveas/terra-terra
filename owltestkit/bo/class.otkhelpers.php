@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the OWL TestKit helper class
- * \version $Id: class.otkhelpers.php,v 1.1 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: class.otkhelpers.php,v 1.2 2011-05-27 12:42:20 oscar Exp $
  */
 
 /**
@@ -26,20 +26,20 @@ abstract class OTKHelpers
 		if (!OWLloader::getClass('table')) {
 			trigger_error('Error loading the Table class', E_USER_ERROR);
 		}
-		$table = new Table(array('style'=>'border: 1px; width: 100%;'));
-		$hdrRow = $table->addRow();
+		$table = new Table('table', '', array('style'=>'border: 1px; width: 100%;'));
+		$hdrRow = $table->addContainer('row');
 		$hdrRow->setHeader();
-		$hdrRow->addCell(ContentArea::translate('Expected result'));
-		$hdrRow->addCell(ContentArea::translate('Actual result'));
-		$row = $table->addRow();
+		$hdrRow->addContainer('cell', ContentArea::translate('Expected result'));
+		$hdrRow->addContainer('cell', ContentArea::translate('Actual result'));
+		$row = $table->addContainer('row');
 		if (is_array($expected)) {
 			$expected = print_r($expected, 1);
 		}
 		if (is_array($actual)) {
 			$actual = print_r($actual, 1);
 		}
-		$row->addCell('<pre>'.$expected.'</pre>', array('valign' => 'top'));
-		$row->addCell('<pre>'.$actual.'</pre>', array('valign' => 'top'));
+		$row->addContainer('cell', '<pre>'.$expected.'</pre>', array('valign' => 'top'));
+		$row->addContainer('cell', '<pre>'.$actual.'</pre>', array('valign' => 'top'));
 		return $table->showElement();
 	}
 }

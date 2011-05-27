@@ -26,6 +26,8 @@ Inheritance diagram for DbDefaults:\begin{figure}[H]
 \item 
 {\bf dbUnescapeString} (\$\_\-string)
 \item 
+{\bf emptyTable} (\&\$\_\-resource, \$\_\-table)
+\item 
 {\bf isRetryable} (\$\_\-errorCode)
 \item 
 {\bf functionCount} (\$\_\-field, array \$\_\-arguments=array())
@@ -177,6 +179,31 @@ String without SQL formatting
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
+\index{DbDefaults@{DbDefaults}!emptyTable@{emptyTable}}
+\index{emptyTable@{emptyTable}!DbDefaults@{DbDefaults}}
+\subsubsection[{emptyTable}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::emptyTable (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-table}
+\end{DoxyParamCaption}
+)}\label{classDbDefaults_a40f0ad68f9278baf0948920d17bbb3e1}
+Empty a table 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-table} & Table name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Reimplemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a310c8c88ce3d36a23d51f66ec5b0f9d2}.
+
 \index{DbDefaults@{DbDefaults}!functionCount@{functionCount}}
 \index{functionCount@{functionCount}!DbDefaults@{DbDefaults}}
 \subsubsection[{functionCount}]{\setlength{\rightskip}{0pt plus 5cm}DbDefaults::functionCount (

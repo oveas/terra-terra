@@ -3,7 +3,7 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bf addFormRow} ({\bf Table} \&\$table, {\bf Form} \&\$form, \$fieldType, \$fieldName, \$fieldValue, array \$fieldAttributes, \$label, array \$labelAttributes)
+{\bf addFormRow} ({\bf Container} \&\$table, {\bf Form} \&\$form, \$fieldType, \$fieldName, \$fieldValue, array \$fieldAttributes, \$label, array \$labelAttributes)
 \end{DoxyCompactItemize}
 
 
@@ -24,7 +24,7 @@ Oscar van Eijk, Oveas Functionality Provider
 \index{addFormRow@{addFormRow}!formtable.helpers.php@{formtable.helpers.php}}
 \subsubsection[{addFormRow}]{\setlength{\rightskip}{0pt plus 5cm}addFormRow (
 \begin{DoxyParamCaption}
-\item[{{\bf Table} \&\$}]{table, }
+\item[{{\bf Container} \&\$}]{table, }
 \item[{{\bf Form} \&\$}]{form, }
 \item[{\$}]{fieldType, }
 \item[{\$}]{fieldName, }
@@ -33,10 +33,10 @@ Oscar van Eijk, Oveas Functionality Provider
 \item[{\$}]{label, }
 \item[{array \$}]{labelAttributes}
 \end{DoxyParamCaption}
-)}\label{formtable_8helpers_8php_a165109a2c762d77b582398a6343d3182}
+)}\label{formtable_8helpers_8php_a50a15263eee016e70bfbc284564f550b}
 This function adds a new table row to an exising form with 2 cells; in the right cell a new formfield that is created as well, left the label that should be displayed. To make sure no mistakes are made in the long list of arguments, no defaults are accepted. 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$table} & Reference to the table object to which the row is added \\
+\mbox{\tt in}  & {\em \$table} & Reference to the table container object to which the row is added \\
 \hline
 \mbox{\tt in}  & {\em \$form} & Reference to the form object to which the field is added \\
 \hline
@@ -58,5 +58,5 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References Form::addField(), Table::addRow(), and Form::showField().
+References Container::addContainer(), Form::addField(), and Form::showField().
 

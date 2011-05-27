@@ -3,7 +3,7 @@
  * \file
  * This file defines the label plugin for containers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.container.fieldset.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.container.fieldset.php,v 1.4 2011-05-27 12:42:20 oscar Exp $
  */
 
 /**
@@ -18,7 +18,7 @@ class ContainerFieldsetPlugin extends ContainerPlugin
 {
 
 	/**
-	 * Label that will be displayed for this fieldset
+	 * Reference to the Legend container object
 	 */
 	private $legend;
 
@@ -29,33 +29,46 @@ class ContainerFieldsetPlugin extends ContainerPlugin
 	public function __construct()
 	{
 		$this->type = 'fieldset';
-		$this->legend = '';
+		$this->legend = null;
 		parent::__construct();
 	}
 
 	/**
-	 * Set the legend attribute, which will be a nested tag in the fieldset container
-	 * \param[in] $_legend Textstring to use
+	 * Add a legend container to the fieldset
+	 * \param[in] $_content Texstring
+	 * \param[in] $_attribs An optional array with HTML attributes
+	 * \param[in] $_type_attribs Array with container type specific arguments; not used here
+	 * \return Reference to the legend object
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function setLegend($_legend)
+	public function addLegend($_content = '&nbsp;', array $_attribs = array(), array $_type_attribs = array())
 	{
-		$this->legend = $_legend;
+		$this->legend = new Container('legend', $_content, $_attribs, $_type_attribs);
+		return $this->legend;
 	}
 
 	/**
-	 * The fieldset specific legend will not be displayed as argument for the fieldset tag,
-	 * but as a subtag.
-	 * Hence, this method shows nothing, but adds the legend tag to the parent's array with
-	 * subtags that will be retrieved later.
-	 * \return empty string
+	 * The FIELDSET tag has no specific arguments, but this method is required by syntax
+	 * \return Empty string
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{
-		if ($this->legend !== '') {
-			parent::addSubTag('<legend>' . $this->legend . '</legend>');
-		}
 		return '';
 	}
+
+	/**
+	 * If a legend is set, return the content
+	 * \return HTML code or an empty string
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function getContent()
+	{
+		if ($this->legend !== null) {
+			return $this->legend->showElement();
+		} else {
+			return '';
+		}
+	}
+
 }

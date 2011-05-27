@@ -14,9 +14,13 @@ Inheritance diagram for Container:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bf \_\-\_\-construct} (\$\_\-type, \$\_\-content= '\&nbsp;', array \$\_\-attribs=array(), array \$\_\-type\_\-attribs=array())
+{\bf \_\-\_\-construct} (\$\_\-type, \$\_\-content= '', array \$\_\-attribs=array(), array \$\_\-type\_\-attribs=array())
+\item 
+{\bf setAttributes} (array \$\_\-attribs)
 \item 
 {\bf setContainer} (array \$\_\-attribs=array())
+\item 
+{\bf addContainer} (\$type, \$\_\-content= '', array \$\_\-attribs=array(), array \$\_\-type\_\-attribs=array())
 \item 
 {\bf showElement} ()
 \item 
@@ -37,8 +41,6 @@ Inheritance diagram for Container:\begin{figure}[H]
 {\bf getContent} ()
 \item 
 {\bf setEvent} (\$\_\-event, \$\_\-action, \$\_\-add=false)
-\item 
-{\bf setAttributes} (array \$\_\-attribs)
 \item 
 {\bf getLastWarning} ()
 \item 
@@ -123,11 +125,11 @@ Jan 11, 2011 -\/-\/ O van Eijk -\/-\/ initial version
 \subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}Container::\_\-\_\-construct (
 \begin{DoxyParamCaption}
 \item[{\$}]{\_\-type, }
-\item[{\$}]{\_\-content = {\ttfamily '\&nbsp;'}, }
+\item[{\$}]{\_\-content = {\ttfamily ''}, }
 \item[{array \$}]{\_\-attribs = {\ttfamily array()}, }
 \item[{array \$}]{\_\-type\_\-attribs = {\ttfamily array()}}
 \end{DoxyParamCaption}
-)}\label{classContainer_a799507f94eb27d074923dff88d419235}
+)}\label{classContainer_ac281ecbb24340f3c3a40a6324bdde02a}
 Class constructor; 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-type} & The container type. Currently supported are:
@@ -141,7 +143,7 @@ Class constructor;
 \hline
 \mbox{\tt in}  & {\em \$\_\-attribs} & Indexed array with the HTML attributes \\
 \hline
-\mbox{\tt in}  & {\em \$\_\-type\_\-attribs} & Indexed array with the type specific attributes. Refer to the 'show$<$Type$>$Type()' method for details \\
+\mbox{\tt in}  & {\em \$\_\-type\_\-attribs} & Indexed array with the type specific attributes. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyAuthor}{Author}
@@ -149,11 +151,46 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References OWLloader::getClass(), \_\-OWL::init(), BaseElement::setAttributes(), BaseElement::setContent(), and \_\-OWL::setStatus().
+References OWLloader::getClass(), \_\-OWL::init(), setAttributes(), BaseElement::setContent(), and \_\-OWL::setStatus().
 
 
 
 \subsection{Member Function Documentation}
+\index{Container@{Container}!addContainer@{addContainer}}
+\index{addContainer@{addContainer}!Container@{Container}}
+\subsubsection[{addContainer}]{\setlength{\rightskip}{0pt plus 5cm}Container::addContainer (
+\begin{DoxyParamCaption}
+\item[{\$}]{type, }
+\item[{\$}]{\_\-content = {\ttfamily ''}, }
+\item[{array \$}]{\_\-attribs = {\ttfamily array()}, }
+\item[{array \$}]{\_\-type\_\-attribs = {\ttfamily array()}}
+\end{DoxyParamCaption}
+)}\label{classContainer_a1157dd89981699a7aa712e28c65d0ea6}
+Add a new subcontainer to this container. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$type} & Supported container thpe. The method {\itshape add$<$Type$>$()\/} must exist in this container. \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-content} & Optional HTML content \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-attribs} & General HTML attributes \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-type\_\-attribs} & Type specific attributes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Severity level in case of errors or the return value of the containers {\itshape add$<$Type$>$()\/} method, which is usually a reference to the new container object 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-OWL::setStatus().
+
+
+
+Referenced by addFormRow().
+
 \index{Container@{Container}!addToContent@{addToContent}}
 \index{addToContent@{addToContent}!Container@{Container}}
 \subsubsection[{addToContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::addToContent (
@@ -231,7 +268,7 @@ References BaseElement::getEvents().
 
 
 
-Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Tablerow::showElement(), Tablecell::showElement(), Table::showElement(), Document::showElement(), and showElement().
+Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Document::showElement(), and showElement().
 
 \index{Container@{Container}!getCallback@{getCallback}}
 \index{getCallback@{getCallback}!Container@{Container}}
@@ -269,11 +306,15 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
+Reimplemented in {\bf ContainerFieldsetPlugin} \doxyref{}{p.}{classContainerFieldsetPlugin_aa58cac299f04d3b6ac2b62703cc0195b}, {\bf ContainerListPlugin} \doxyref{}{p.}{classContainerListPlugin_abad8661a1ec37c551d0a3680921724f8}, {\bf ContainerTablePlugin} \doxyref{}{p.}{classContainerTablePlugin_a885bb956f115989679f6f86f627aab0d}, and {\bf ContainerTablerowPlugin} \doxyref{}{p.}{classContainerTablerowPlugin_a3cd25368662c44ad2a86f621a25a63fd}.
+
+
+
 References BaseElement::\_\-getContent().
 
 
 
-Referenced by Tablecell::showElement(), Document::showElement(), showElement(), and Form::showElement().
+Referenced by Document::showElement(), showElement(), and Form::showElement().
 
 \index{Container@{Container}!getId@{getId}}
 \index{getId@{getId}!Container@{Container}}
@@ -368,7 +409,7 @@ References OWL::factory(), and \_\-OWL::setStatus().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), \_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), HDataHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Mail::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), \_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), HDataHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Mail::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{Container@{Container}!reset@{reset}}
 \index{reset@{reset}!Container@{Container}}
@@ -426,29 +467,26 @@ Referenced by User::logout().
 
 \index{Container@{Container}!setAttributes@{setAttributes}}
 \index{setAttributes@{setAttributes}!Container@{Container}}
-\subsubsection[{setAttributes}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::setAttributes (
+\subsubsection[{setAttributes}]{\setlength{\rightskip}{0pt plus 5cm}Container::setAttributes (
 \begin{DoxyParamCaption}
 \item[{array \$}]{\_\-attribs}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classBaseElement_a7d8ddd64ceb3401a7cb84548656b3709}
-Set the attributes of the DOM element by calling the 'set$<$Attrib$>$' method for this class. 
+)}\label{classContainer_a30a2a62fafb96a382ac910167f38d20f}
+Call the containers \doxyref{setAttributes()}{p.}{classContainer_a30a2a62fafb96a382ac910167f38d20f} method 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$\_\-attribs} & Array with attributes in the format attrib=$>$value \\
+\mbox{\tt in}  & {\em \$\_\-attribs} & Array with HTML attributes \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Severity level. The status increased when a set$<$Attrib$>$ method does not exist. 
-\end{DoxyReturn}
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
 
 
-References \_\-OWL::setStatus().
+Reimplemented from {\bf BaseElement} \doxyref{}{p.}{classBaseElement_a7d8ddd64ceb3401a7cb84548656b3709}.
 
 
 
-Referenced by Table::\_\-\_\-construct(), \_\-\_\-construct(), and Form::\_\-\_\-construct().
+Referenced by \_\-\_\-construct().
 
 \index{Container@{Container}!setCallback@{setCallback}}
 \index{setCallback@{setCallback}!Container@{Container}}
@@ -552,7 +590,7 @@ References \_\-OWL::setStatus().
 
 
 
-Referenced by Tablecell::\_\-\_\-construct(), and \_\-\_\-construct().
+Referenced by \_\-\_\-construct().
 
 \index{Container@{Container}!setEvent@{setEvent}}
 \index{setEvent@{setEvent}!Container@{Container}}
@@ -651,7 +689,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), \_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
+Referenced by DbHandler::\_\-\_\-clone(), \_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), addContainer(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), DbHandler::resetTable(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
 
 \index{Container@{Container}!setStyle@{setStyle}}
 \index{setStyle@{setStyle}!Container@{Container}}

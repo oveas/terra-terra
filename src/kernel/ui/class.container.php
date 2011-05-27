@@ -3,7 +3,7 @@
  * \file
  * This file defines a container element
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.container.php,v 1.5 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.container.php,v 1.6 2011-05-27 12:42:20 oscar Exp $
  */
 
 OWLloader::getClass('container', OWL_PLUGINS . '/containers');
@@ -30,15 +30,15 @@ class Container extends BaseElement
 	 * 	- label
 	 * 	- frameset
 	 * \param[in] $_content HTML that will be placed in the table cell
-	 * \param[in] $_attribs Indexed array with the HTML attributes 
+	 * \param[in] $_attribs Indexed array with the HTML attributes
 	 * \param[in] $_type_attribs Indexed array with the type specific attributes.
-	 * Refer to the 'show&lt;Type&gt;Type()' method for details
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function __construct ($_type, $_content = '&nbsp;', array $_attribs = array(), array $_type_attribs = array())
+	public function __construct ($_type, $_content = '', array $_attribs = array(), array $_type_attribs = array())
 	{
 		_OWL::init();
-		$this->showMethod = 'show' . ucfirst($_type) . 'Type';
+//	 * Refer to the 'show&lt;Type&gt;Type()' method for details
+//		$this->showMethod = 'show' . ucfirst($_type) . 'Type';
 
 		if (!OWLloader::getClass('container.'.$_type, OWL_PLUGINS . '/containers')) {
 			$this->setStatus(CONTAINER_IVTYPE, array($_type));
@@ -57,6 +57,16 @@ class Container extends BaseElement
 	}
 
 	/**
+	 * Call the containers setAttributes() method
+	 * \param[in] $_attribs Array with HTML attributes
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function setAttributes(array $_attribs)
+	{
+		$this->containerObject->setAttributes($_attribs);
+	}
+
+	/**
 	 * Set container specific attributes
 	 * \param[in] $_attribs Indexed array with the type specific attributes.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -64,6 +74,26 @@ class Container extends BaseElement
 	public function setContainer(array $_attribs = array())
 	{
 		$this->containerObject->setAttributes($_attribs);
+	}
+
+	/**
+	 * Add a new subcontainer to this container.
+	 * \param[in] $type Supported container thpe. The method <em>add&lt;Type&gt;()</em> must exist in this container.
+	 * \param[in] $_content Optional HTML content
+	 * \param[in] $_attribs General HTML attributes
+	 * \param[in] $_type_attribs Type specific attributes
+	 * \return Severity level in case of errors or the return value of the containers <em>add&lt;Type&gt;()</em>
+	 * method, which is usually a reference to the new container object
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function addContainer ($type, $_content = '', array $_attribs = array(), array $_type_attribs = array())
+	{
+		$addContainer = 'add' . ucfirst($type);
+		if (!method_exists($this->containerObject, $addContainer)) {
+			$this->setStatus (CONTAINER_IVSUBCONTNR, array($_type, getclass($this->containerObject)));
+			return ($this->severity);
+		}
+		return $this->containerObject->$addContainer ($_content, $_attribs, $_type_attribs);
 	}
 
 	/**
@@ -77,7 +107,9 @@ class Container extends BaseElement
 		$_htmlCode .= $this->getAttributes();
 		$_htmlCode .= $this->containerObject->showElement();
 		$_htmlCode .= ">\n";
-		$_htmlCode .= $this->containerObject->getSubTags();
+		if (method_exists($this->containerObject, 'getContent')) {
+			$_htmlCode .= $this->containerObject->getContent();
+		}
 		$_htmlCode .= $this->getContent();
 		$_htmlCode .= '</' . $this->containerObject->getType() . ">\n";
 		return $_htmlCode;
@@ -97,6 +129,7 @@ Register::registerClass ('Container');
 //Register::setSeverity (OWL_WARNING);
 Register::setSeverity (OWL_BUG);
 Register::registerCode ('CONTAINER_IVCLASSNAME');
+Register::registerCode ('CONTAINER_IVSUBCONTNR');
 
 Register::setSeverity (OWL_ERROR);
 Register::registerCode ('CONTAINER_IVTYPE');

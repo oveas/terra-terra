@@ -123,6 +123,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a763074f5917f16755b2d00bf6d277a0a">dbTransactionRollback</a> (&amp;$_resource, $_name, $_name=null, $_new=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a8fcdd03995e94df3567ada9dcc975968">dbEscapeString</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a7ac3780695fb0d6e291ee123be7db020">dbUnescapeString</a> ($_string)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a40f0ad68f9278baf0948920d17bbb3e1">emptyTable</a> (&amp;$_resource, $_table)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a9cb29749650ea6a3b7a7181a5783f48f">isRetryable</a> ($_errorCode)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#ae9ccdb445c7c4213eaff21677a03ed41">functionCount</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a2f125c1875530f1055845e36bd4799d3">functionMax</a> ($_field, array $_arguments=array())</td></tr>
@@ -347,6 +348,45 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a40f0ad68f9278baf0948920d17bbb3e1"></a><!-- doxytag: member="DbDefaults::emptyTable" ref="a40f0ad68f9278baf0948920d17bbb3e1" args="(&amp;$_resource, $_table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::emptyTable </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Empty a table </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classMySQL.html#a310c8c88ce3d36a23d51f66ec5b0f9d2">MySQL</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ae9ccdb445c7c4213eaff21677a03ed41"></a><!-- doxytag: member="DbDefaults::functionCount" ref="ae9ccdb445c7c4213eaff21677a03ed41" args="($_field, array $_arguments=array())" -->
 <div class="memitem">
 <div class="memproto">
@@ -507,7 +547,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 23 2011 19:49:11 for OWL-PHP by
+    <li class="footer">Generated on Fri May 27 2011 14:35:09 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

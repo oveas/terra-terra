@@ -42,6 +42,8 @@ Inheritance diagram for DbHandler:\begin{figure}[H]
 \item 
 {\bf rollbackTransaction} (\$name, \$openNew=false)
 \item 
+{\bf resetTable} (\$table)
+\item 
 {\bf lockTable} (\$tablename, \$locktype)
 \item 
 {\bf unlockTable} (\$tablename=array())
@@ -650,7 +652,7 @@ References OWL::factory(), and \_\-OWL::setStatus().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), HDataHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Mail::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Document::\_\-\_\-construct(), ContainerPlugin::\_\-\_\-construct(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), HDataHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Mail::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{DbHandler@{DbHandler}!isOpen@{isOpen}}
 \index{isOpen@{isOpen}!DbHandler@{DbHandler}}
@@ -675,7 +677,7 @@ Oscar van Eijk, Oveas Functionality Provider
 )}\label{classDbHandler_a8e1ac478bf6f4e2285d13141fd75bb9e}
 Return the last ID after a newly inserted record holding an AUTO\_\-INCREMENT field 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$table} & \doxyref{Table}{p.}{classTable} name holding the auto increment field \\
+\mbox{\tt in}  & {\em \$table} & Table name holding the auto increment field \\
 \hline
 \mbox{\tt in}  & {\em \$field} & Name of the auto increment field \\
 \hline
@@ -943,6 +945,28 @@ Reimplemented from {\bf \_\-OWL} \doxyref{}{p.}{class__OWL_a2f2a042bcf31965194c0
 
 Referenced by \_\-\_\-clone().
 
+\index{DbHandler@{DbHandler}!resetTable@{resetTable}}
+\index{resetTable@{resetTable}!DbHandler@{DbHandler}}
+\subsubsection[{resetTable}]{\setlength{\rightskip}{0pt plus 5cm}DbHandler::resetTable (
+\begin{DoxyParamCaption}
+\item[{\$}]{table}
+\end{DoxyParamCaption}
+)}\label{classDbHandler_abbef28b434626bedd9d16d85526adde8}
+Erase the full contents of a table and reset counters if applicable 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$table} & Table name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Objects severity level 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-OWL::setStatus().
+
 \index{DbHandler@{DbHandler}!restoreStatus@{restoreStatus}}
 \index{restoreStatus@{restoreStatus}!DbHandler@{DbHandler}}
 \subsubsection[{restoreStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::restoreStatus (
@@ -1108,7 +1132,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode
 
 
 
-Referenced by \_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), alt(), SchemeHandler::alterScheme(), FileHandler::close(), commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), connect(), create(), SchemeHandler::createScheme(), dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), open(), LogHandler::openLogfile(), DataHandler::prepare(), prepareDelete(), prepareField(), prepareInsert(), prepareRead(), prepareUpdate(), SocketHandler::read(), read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), startTransaction(), SchemeHandler::tableDescription(), unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), write(), and HDataHandler::writeQuery().
+Referenced by \_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), \_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Container::addContainer(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), alt(), SchemeHandler::alterScheme(), FileHandler::close(), commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), connect(), create(), SchemeHandler::createScheme(), dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), open(), LogHandler::openLogfile(), DataHandler::prepare(), prepareDelete(), prepareField(), prepareInsert(), prepareRead(), prepareUpdate(), SocketHandler::read(), read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), resetTable(), \_\-OWL::restoreStatus(), rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), startTransaction(), SchemeHandler::tableDescription(), unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), write(), and HDataHandler::writeQuery().
 
 \index{DbHandler@{DbHandler}!signal@{signal}}
 \index{signal@{signal}!DbHandler@{DbHandler}}
@@ -1244,7 +1268,7 @@ Referenced by prepareDelete(), prepareRead(), and prepareUpdate().
 )}\label{classDbHandler_a05ea485a22c0ef87090f2313614c84c8}
 Extend a tablename with the database prefix 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$tablename} & \doxyref{Table}{p.}{classTable} name to extend \\
+\mbox{\tt in}  & {\em \$tablename} & Table name to extend \\
 \hline
 \mbox{\tt in}  & {\em \$ignore\_\-backticks} & Boolean to suppress backticks if set, default false \\
 \hline

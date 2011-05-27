@@ -3,14 +3,14 @@
  * \file
  * This file defines an HTML document
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.document.php,v 1.8 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: class.document.php,v 1.9 2011-05-27 12:42:20 oscar Exp $
  */
 
 /**
  * \ingroup OWL_UI_LAYER
  * Class for Document singletons.
  * This class can be extended defining other document types
- * \brief Document 
+ * \brief Document
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jan 9, 2011 -- O van Eijk -- initial version
  */
@@ -73,7 +73,7 @@ class Document extends BaseElement
 
 	/**
 	 * Class constructor;
-	 * \param[in] $_attribs Indexed array with the HTML attributes 
+	 * \param[in] $_attribs Indexed array with the HTML attributes
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function __construct (array $_attribs = array())
@@ -140,7 +140,7 @@ class Document extends BaseElement
 			$this->setStatus(DOC_IVFILESPEC, array('stylesheet', $_script));
 			return;
 		}
-		
+
 		if ($_condition != '') {
 			if (!array_key_exists($_condition, $this->css)) {
 				$this->css[$_condition] = array();
@@ -247,7 +247,7 @@ class Document extends BaseElement
 
 	/**
 	 * Set, update or overwrite HTML headers.
-	 * \param[in] $_tags Array with headers in the format 'header' => 'value'
+	 * \param[in] $_hdrs Array with headers in the format 'header' => 'value'
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setHeader (array $_hdrs)

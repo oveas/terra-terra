@@ -8,13 +8,11 @@ ContainerPlugins.
 Inheritance diagram for ContainerPlugin:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.909091cm]{classContainerPlugin}
+\includegraphics[height=12.000000cm]{classContainerPlugin}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
-\item 
-{\bf getSubTags} ()
 \item 
 {\bf getType} ()
 \item 
@@ -57,8 +55,6 @@ Inheritance diagram for ContainerPlugin:\begin{figure}[H]
 \item 
 {\bf \_\-\_\-construct} ()
 \item 
-{\bf addSubTag} (\$\_\-tag)
-\item 
 {\bf getAttributes} (array \$\_\-ignore=array())
 \item 
 {\bf init} ()
@@ -98,11 +94,6 @@ Inheritance diagram for ContainerPlugin:\begin{figure}[H]
 \item 
 {\bf \$severity}
 \end{DoxyCompactItemize}
-\subsection*{Private Attributes}
-\begin{DoxyCompactItemize}
-\item 
-{\bf \$subtags}
-\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -129,7 +120,7 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-Reimplemented in {\bf ContainerDivPlugin} \doxyref{}{p.}{classContainerDivPlugin_abef3fec02ab48d32cc3ef88e89d5a006}, {\bf ContainerFieldsetPlugin} \doxyref{}{p.}{classContainerFieldsetPlugin_aeed6d20b8154f88d01a3883f275f500d}, {\bf ContainerLabelPlugin} \doxyref{}{p.}{classContainerLabelPlugin_ac93c71e4460ec7e2369d93d277ff9fdd}, {\bf ContainerLinkPlugin} \doxyref{}{p.}{classContainerLinkPlugin_a8f6993ba02eb044075b704aee8e4e1d7}, and {\bf ContainerSpanPlugin} \doxyref{}{p.}{classContainerSpanPlugin_a6f636b02be5387b10e4744e4cae725f0}.
+Reimplemented in {\bf ContainerDivPlugin} \doxyref{}{p.}{classContainerDivPlugin_abef3fec02ab48d32cc3ef88e89d5a006}, {\bf ContainerFieldsetPlugin} \doxyref{}{p.}{classContainerFieldsetPlugin_aeed6d20b8154f88d01a3883f275f500d}, {\bf ContainerItemPlugin} \doxyref{}{p.}{classContainerItemPlugin_aec0104173aa5b6ae821d32ce6145cc78}, {\bf ContainerLabelPlugin} \doxyref{}{p.}{classContainerLabelPlugin_ac93c71e4460ec7e2369d93d277ff9fdd}, {\bf ContainerLegendPlugin} \doxyref{}{p.}{classContainerLegendPlugin_ac73d7afced669663cc751e3741a81886}, {\bf ContainerLinkPlugin} \doxyref{}{p.}{classContainerLinkPlugin_a8f6993ba02eb044075b704aee8e4e1d7}, {\bf ContainerListPlugin} \doxyref{}{p.}{classContainerListPlugin_aaa99dd8b9eb1a617e2a0133e28702f86}, {\bf ContainerSpanPlugin} \doxyref{}{p.}{classContainerSpanPlugin_a6f636b02be5387b10e4744e4cae725f0}, {\bf ContainerTablePlugin} \doxyref{}{p.}{classContainerTablePlugin_a228a2c6ed1da9ff0d47f58c7f8d087db}, {\bf ContainerTablecellPlugin} \doxyref{}{p.}{classContainerTablecellPlugin_a1fb81618f6c4320fc6ff1be673ffc0f8}, and {\bf ContainerTablerowPlugin} \doxyref{}{p.}{classContainerTablerowPlugin_a5e4f8755982920818e87eb00dd51e02b}.
 
 
 
@@ -138,25 +129,6 @@ References \_\-OWL::init().
 
 
 \subsection{Member Function Documentation}
-\index{ContainerPlugin@{ContainerPlugin}!addSubTag@{addSubTag}}
-\index{addSubTag@{addSubTag}!ContainerPlugin@{ContainerPlugin}}
-\subsubsection[{addSubTag}]{\setlength{\rightskip}{0pt plus 5cm}ContainerPlugin::addSubTag (
-\begin{DoxyParamCaption}
-\item[{\$}]{\_\-tag}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [protected]}}\label{classContainerPlugin_a6ab0fc9f0317bf85ae8bbb87ba621578}
-Add an complete tag to the subtags array 
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em \$\_\-tag} & HTML code \\
-\hline
-\end{DoxyParams}
-\begin{DoxyAuthor}{Author}
-Oscar van Eijk, Oveas Functionality Provider 
-\end{DoxyAuthor}
-
-
-Referenced by ContainerFieldsetPlugin::showElement().
-
 \index{ContainerPlugin@{ContainerPlugin}!addToContent@{addToContent}}
 \index{addToContent@{addToContent}!ContainerPlugin@{ContainerPlugin}}
 \subsubsection[{addToContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::addToContent (
@@ -234,7 +206,7 @@ References BaseElement::getEvents().
 
 
 
-Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Tablerow::showElement(), Tablecell::showElement(), Table::showElement(), Document::showElement(), and Container::showElement().
+Referenced by FormFieldPlugin::getGenericFieldAttributes(), Form::openForm(), Document::showElement(), and Container::showElement().
 
 \index{ContainerPlugin@{ContainerPlugin}!getCallback@{getCallback}}
 \index{getCallback@{getCallback}!ContainerPlugin@{ContainerPlugin}}
@@ -272,11 +244,15 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
+Reimplemented in {\bf ContainerFieldsetPlugin} \doxyref{}{p.}{classContainerFieldsetPlugin_aa58cac299f04d3b6ac2b62703cc0195b}, {\bf ContainerListPlugin} \doxyref{}{p.}{classContainerListPlugin_abad8661a1ec37c551d0a3680921724f8}, {\bf ContainerTablePlugin} \doxyref{}{p.}{classContainerTablePlugin_a885bb956f115989679f6f86f627aab0d}, and {\bf ContainerTablerowPlugin} \doxyref{}{p.}{classContainerTablerowPlugin_a3cd25368662c44ad2a86f621a25a63fd}.
+
+
+
 References BaseElement::\_\-getContent().
 
 
 
-Referenced by Tablecell::showElement(), Document::showElement(), Container::showElement(), and Form::showElement().
+Referenced by Document::showElement(), Container::showElement(), and Form::showElement().
 
 \index{ContainerPlugin@{ContainerPlugin}!getId@{getId}}
 \index{getId@{getId}!ContainerPlugin@{ContainerPlugin}}
@@ -355,19 +331,6 @@ Oscar van Eijk, Oveas Functionality Provider
 
 Referenced by SchemeHandler::compare().
 
-\index{ContainerPlugin@{ContainerPlugin}!getSubTags@{getSubTags}}
-\index{getSubTags@{getSubTags}!ContainerPlugin@{ContainerPlugin}}
-\subsubsection[{getSubTags}]{\setlength{\rightskip}{0pt plus 5cm}ContainerPlugin::getSubTags (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\label{classContainerPlugin_a09e2c6dc8c9bfe4fd01a74b6764a0eb4}
-Retrieve all subtags for this container type \begin{DoxyReturn}{Returns}
-HTML code or an empty string if no subtags are set 
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Oscar van Eijk, Oveas Functionality Provider 
-\end{DoxyAuthor}
 \index{ContainerPlugin@{ContainerPlugin}!getType@{getType}}
 \index{getType@{getType}!ContainerPlugin@{ContainerPlugin}}
 \subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}ContainerPlugin::getType (
@@ -397,7 +360,7 @@ References OWL::factory(), and \_\-OWL::setStatus().
 
 
 
-Referenced by FormFieldPlugin::\_\-\_\-construct(), Tablerow::\_\-\_\-construct(), Tablecell::\_\-\_\-construct(), Table::\_\-\_\-construct(), Document::\_\-\_\-construct(), \_\-\_\-construct(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), HDataHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Mail::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
+Referenced by FormFieldPlugin::\_\-\_\-construct(), Document::\_\-\_\-construct(), \_\-\_\-construct(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SessionHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), LogHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), HDataHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), OWL::\_\-\_\-construct(), Mail::\_\-\_\-construct(), Group::\_\-\_\-construct(), Form::\_\-\_\-construct(), Dispatcher::\_\-\_\-construct(), and User::construct().
 
 \index{ContainerPlugin@{ContainerPlugin}!reset@{reset}}
 \index{reset@{reset}!ContainerPlugin@{ContainerPlugin}}
@@ -473,11 +436,15 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
+Reimplemented in {\bf Container} \doxyref{}{p.}{classContainer_a30a2a62fafb96a382ac910167f38d20f}.
+
+
+
 References \_\-OWL::setStatus().
 
 
 
-Referenced by Table::\_\-\_\-construct(), Container::\_\-\_\-construct(), and Form::\_\-\_\-construct().
+Referenced by Form::\_\-\_\-construct().
 
 \index{ContainerPlugin@{ContainerPlugin}!setCallback@{setCallback}}
 \index{setCallback@{setCallback}!ContainerPlugin@{ContainerPlugin}}
@@ -566,7 +533,7 @@ References \_\-OWL::setStatus().
 
 
 
-Referenced by Tablecell::\_\-\_\-construct(), and Container::\_\-\_\-construct().
+Referenced by Container::\_\-\_\-construct().
 
 \index{ContainerPlugin@{ContainerPlugin}!setEvent@{setEvent}}
 \index{setEvent@{setEvent}!ContainerPlugin@{ContainerPlugin}}
@@ -665,7 +632,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
+Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Container::addContainer(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), DbHandler::resetTable(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
 
 \index{ContainerPlugin@{ContainerPlugin}!setStyle@{setStyle}}
 \index{setStyle@{setStyle}!ContainerPlugin@{ContainerPlugin}}
@@ -697,7 +664,7 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-Reimplemented in {\bf Form} \doxyref{}{p.}{classForm_aeac5855c8b2406c34090a621d59df664}, {\bf Container} \doxyref{}{p.}{classContainer_a966af30a8c244fbc2ee61648fa59ffe3}, {\bf Document} \doxyref{}{p.}{classDocument_a20e6d0abbac866da5d651d1a49f8cf4f}, {\bf Table} \doxyref{}{p.}{classTable_a71c094dc93aee06ee427f2d53a6691c0}, {\bf Tablecell} \doxyref{}{p.}{classTablecell_a3dd7511a61bfb8100ff293435685209d}, {\bf Tablerow} \doxyref{}{p.}{classTablerow_a050c4f377fec4b9554734ff339aaade8}, {\bf ContainerDivPlugin} \doxyref{}{p.}{classContainerDivPlugin_a4d9cb8fa601b51f951e5f90aad4d1a3c}, {\bf ContainerFieldsetPlugin} \doxyref{}{p.}{classContainerFieldsetPlugin_aacca071df123a3068b0b6b8ed5dbdb83}, {\bf ContainerLabelPlugin} \doxyref{}{p.}{classContainerLabelPlugin_ab725a7631eae2f0467a1c04bbd5081d7}, {\bf ContainerLinkPlugin} \doxyref{}{p.}{classContainerLinkPlugin_af1568be54815de36bb7f3909989f0309}, {\bf ContainerSpanPlugin} \doxyref{}{p.}{classContainerSpanPlugin_a5a1d46ade3182c9cd270e6e01844e30c}, {\bf FormFieldButtonPlugin} \doxyref{}{p.}{classFormFieldButtonPlugin_a029b1662ddc1652b2a571cb2b72421b7}, {\bf FormFieldCheckboxPlugin} \doxyref{}{p.}{classFormFieldCheckboxPlugin_a0bed3773bd415fc026d042102c1d4740}, {\bf FormFieldPlugin} \doxyref{}{p.}{classFormFieldPlugin_a3983c0e5035930d864d40e606ab3670b}, {\bf FormFieldRadioPlugin} \doxyref{}{p.}{classFormFieldRadioPlugin_aade41bf9d88869342c319954da8df608}, {\bf FormFieldSelectPlugin} \doxyref{}{p.}{classFormFieldSelectPlugin_a65df2919c0789f499302f75ec2356876}, {\bf FormFieldTextPlugin} \doxyref{}{p.}{classFormFieldTextPlugin_ac6cee64e91f04b380e948973026bff4e}, and {\bf FormFieldTextareaPlugin} \doxyref{}{p.}{classFormFieldTextareaPlugin_ad2b4186a948dded848826a4870e7713b}.
+Reimplemented in {\bf Form} \doxyref{}{p.}{classForm_aeac5855c8b2406c34090a621d59df664}, {\bf Container} \doxyref{}{p.}{classContainer_a966af30a8c244fbc2ee61648fa59ffe3}, {\bf Document} \doxyref{}{p.}{classDocument_a20e6d0abbac866da5d651d1a49f8cf4f}, {\bf ContainerDivPlugin} \doxyref{}{p.}{classContainerDivPlugin_a4d9cb8fa601b51f951e5f90aad4d1a3c}, {\bf ContainerFieldsetPlugin} \doxyref{}{p.}{classContainerFieldsetPlugin_aacca071df123a3068b0b6b8ed5dbdb83}, {\bf ContainerItemPlugin} \doxyref{}{p.}{classContainerItemPlugin_aaff1140c302b762daa7fb338d5fac068}, {\bf ContainerLabelPlugin} \doxyref{}{p.}{classContainerLabelPlugin_ab725a7631eae2f0467a1c04bbd5081d7}, {\bf ContainerLegendPlugin} \doxyref{}{p.}{classContainerLegendPlugin_a7c9c4d7a3606143678ada5f46904d2b4}, {\bf ContainerLinkPlugin} \doxyref{}{p.}{classContainerLinkPlugin_af1568be54815de36bb7f3909989f0309}, {\bf ContainerListPlugin} \doxyref{}{p.}{classContainerListPlugin_a080c08575cfdd8e65e366dc186a31cc4}, {\bf ContainerSpanPlugin} \doxyref{}{p.}{classContainerSpanPlugin_a5a1d46ade3182c9cd270e6e01844e30c}, {\bf ContainerTablePlugin} \doxyref{}{p.}{classContainerTablePlugin_ada2947cfd9bab911b76b56dd57d07b57}, {\bf ContainerTablecellPlugin} \doxyref{}{p.}{classContainerTablecellPlugin_a187749e76e596eac29762548882884d9}, {\bf ContainerTablerowPlugin} \doxyref{}{p.}{classContainerTablerowPlugin_a952e8f0aaa840f41ac41931b02479c86}, {\bf FormFieldButtonPlugin} \doxyref{}{p.}{classFormFieldButtonPlugin_a029b1662ddc1652b2a571cb2b72421b7}, {\bf FormFieldCheckboxPlugin} \doxyref{}{p.}{classFormFieldCheckboxPlugin_a0bed3773bd415fc026d042102c1d4740}, {\bf FormFieldPlugin} \doxyref{}{p.}{classFormFieldPlugin_a3983c0e5035930d864d40e606ab3670b}, {\bf FormFieldRadioPlugin} \doxyref{}{p.}{classFormFieldRadioPlugin_aade41bf9d88869342c319954da8df608}, {\bf FormFieldSelectPlugin} \doxyref{}{p.}{classFormFieldSelectPlugin_a65df2919c0789f499302f75ec2356876}, {\bf FormFieldTextPlugin} \doxyref{}{p.}{classFormFieldTextPlugin_ac6cee64e91f04b380e948973026bff4e}, and {\bf FormFieldTextareaPlugin} \doxyref{}{p.}{classFormFieldTextareaPlugin_ad2b4186a948dded848826a4870e7713b}.
 
 \index{ContainerPlugin@{ContainerPlugin}!signal@{signal}}
 \index{signal@{signal}!ContainerPlugin@{ContainerPlugin}}
@@ -811,10 +778,7 @@ Referenced by Form::addField(), and Form::showField().
 Severity level of the current object status \index{ContainerPlugin@{ContainerPlugin}!\$style@{\$style}}
 \index{\$style@{\$style}!ContainerPlugin@{ContainerPlugin}}
 \subsubsection[{\$style}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$style = ''\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classBaseElement_a429a3d642dd95f30e1059ef29564b87d}
-Element style \index{ContainerPlugin@{ContainerPlugin}!\$subtags@{\$subtags}}
-\index{\$subtags@{\$subtags}!ContainerPlugin@{ContainerPlugin}}
-\subsubsection[{\$subtags}]{\setlength{\rightskip}{0pt plus 5cm}ContainerPlugin::\$subtags\hspace{0.3cm}{\ttfamily  [private]}}\label{classContainerPlugin_a559a0cff173532268223e7a13fbef8d3}
-For containerst that have subtags i.s.o. arguments this array will hold all subtags as complete HTML code composed by the type specific plugin. \index{ContainerPlugin@{ContainerPlugin}!\$type@{\$type}}
+Element style \index{ContainerPlugin@{ContainerPlugin}!\$type@{\$type}}
 \index{\$type@{\$type}!ContainerPlugin@{ContainerPlugin}}
 \subsubsection[{\$type}]{\setlength{\rightskip}{0pt plus 5cm}ContainerPlugin::\$type\hspace{0.3cm}{\ttfamily  [protected]}}\label{classContainerPlugin_a4322b57179b2fb28ab6c9587e393842f}
 Type; the container type, which must match the HTML tag. 

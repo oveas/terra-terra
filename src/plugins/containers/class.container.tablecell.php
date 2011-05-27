@@ -1,20 +1,23 @@
 <?php
 /**
  * \file
- * This file defines a tablecell element
+ * This file defines the Tablecell plugin for containers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.tablecell.php,v 1.7 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: class.container.tablecell.php,v 1.1 2011-05-27 12:42:20 oscar Exp $
  */
 
 /**
- * \ingroup OWL_UI_LAYER
- * Class for Table cell elements
- * \brief Tablecell
+ * \ingroup OWL_UI_PLUGINS
+ * Class defining Tablecell container plugin
+ * \brief Tablecell Container
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jan 9, 2011 -- O van Eijk -- initial version
+ * \version May 27, 2011 -- O van Eijk -- Rewritten the UI object as plugin
  */
-class Tablecell extends BaseElement
+
+class ContainerTablecellPlugin extends ContainerPlugin
 {
+
 	/**
 	 * Rowspan
 	 */
@@ -29,23 +32,25 @@ class Tablecell extends BaseElement
 	 * Vertical alignment
 	 */
 	private $valign = null;
-	
-	/**
-	 * Boolean indicating this cells belongs to a head-row
-	 */
-	private $isHead;
 
 	/**
-	 * Class constructor;
-	 * \param[in] $_content HTML that will be placed in the table cell
-	 * \param[in] $_head True is this cells belongs to a table head
+	 * Container constructor
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function __construct ($_content = '&nbsp;', $_head = false)
+	public function __construct()
 	{
-		_OWL::init();
-		$this->setContent($_content);
-		$this->isHead = $_head;
+		parent::__construct();
+		$this->type = 'td';
+	}
+
+	/**
+	 * Make this cell from row a header by chabging the type
+	 * \param[in] $isheader True or false
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function setHeader ($isheader = true)
+	{
+		$this->type = (($isheader === true) ? 'th' : 'td');
 	}
 
 	/**
@@ -79,23 +84,13 @@ class Tablecell extends BaseElement
 	}
 
 	/**
-	 * Make this a header cell
-	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 */
-	public function setHeader ()
-	{
-		$this->isHead = true;
-	}
-
-	/**
-	 * Get the HTML code to display the tablecell
+	 * Show the tablecell specific arguments.
 	 * \return string with the HTML code
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{
-		$tag = (($this->isHead===true)?'th':'td');
-		$_htmlCode = "\t<$tag";
+		$_htmlCode = '';
 		if ($this->rowspan !== null) {
 			$_htmlCode .= ' rowspan="' . $this->rowspan . '"';
 		}
@@ -105,24 +100,6 @@ class Tablecell extends BaseElement
 		if ($this->valign !== null) {
 			$_htmlCode .= ' valign="' . $this->valign . '"';
 		}
-		$_htmlCode .= $this->getAttributes();
-		$_htmlCode .= '>' . $this->getContent() . "</$tag>\n";
 		return $_htmlCode;
 	}
 }
-
-/*
- * Register this class and all status codes
- */
-Register::registerClass ('Tablecell');
-
-//Register::setSeverity (OWL_DEBUG);
-
-//Register::setSeverity (OWL_INFO);
-//Register::setSeverity (OWL_OK);
-//Register::setSeverity (OWL_SUCCESS);
-//Register::setSeverity (OWL_WARNING);
-//Register::setSeverity (OWL_BUG);
-//Register::setSeverity (OWL_ERROR);
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);

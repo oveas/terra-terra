@@ -54,6 +54,8 @@ Inheritance diagram for DbDriver:\begin{figure}[H]
 \item 
 {\bf tableUnlock} (\&\$\_\-resource, \$\_\-table=array())
 \item 
+{\bf emptyTable} (\&\$\_\-resource, \$\_\-table)
+\item 
 {\bf dbEscapeString} (\$\_\-string)
 \item 
 {\bf dbUnescapeString} (\$\_\-string)
@@ -311,7 +313,7 @@ Retrieve the last auto generated ID value
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
 \hline
-\mbox{\tt in}  & {\em \$\_\-table} & \doxyref{Table}{p.}{classTable} to take the value from \\
+\mbox{\tt in}  & {\em \$\_\-table} & Table to take the value from \\
 \hline
 \mbox{\tt in}  & {\em \$\_\-field} & Name of the Auto field \\
 \hline
@@ -559,6 +561,31 @@ Oscar van Eijk, Oveas Functionality Provider
 
 
 Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a5a7250d264b682ee2f4bdb14bb4aafd7}.
+
+\index{DbDriver@{DbDriver}!emptyTable@{emptyTable}}
+\index{emptyTable@{emptyTable}!DbDriver@{DbDriver}}
+\subsubsection[{emptyTable}]{\setlength{\rightskip}{0pt plus 5cm}DbDriver::emptyTable (
+\begin{DoxyParamCaption}
+\item[{\&\$}]{\_\-resource, }
+\item[{\$}]{\_\-table}
+\end{DoxyParamCaption}
+)}\label{interfaceDbDriver_a5644828646305a736b8d16cdfade0d21}
+Empty a table 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$\_\-resource} & Link with the database server \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-table} & Table name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on failures 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implemented in {\bf MySQL} \doxyref{}{p.}{classMySQL_a310c8c88ce3d36a23d51f66ec5b0f9d2}.
 
 \index{DbDriver@{DbDriver}!functionConcat@{functionConcat}}
 \index{functionConcat@{functionConcat}!DbDriver@{DbDriver}}

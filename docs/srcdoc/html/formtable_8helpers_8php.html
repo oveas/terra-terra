@@ -102,7 +102,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formtable_8helpers_8php.html#a165109a2c762d77b582398a6343d3182">addFormRow</a> (<a class="el" href="classTable.html">Table</a> &amp;$table, <a class="el" href="classForm.html">Form</a> &amp;$form, $fieldType, $fieldName, $fieldValue, array $fieldAttributes, $label, array $labelAttributes)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formtable_8helpers_8php.html#a50a15263eee016e70bfbc284564f550b">addFormRow</a> (<a class="el" href="classContainer.html">Container</a> &amp;$table, <a class="el" href="classForm.html">Form</a> &amp;$form, $fieldType, $fieldName, $fieldValue, array $fieldAttributes, $label, array $labelAttributes)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This file provides some helper functions for lazy developers like me setting up form tables </p>
@@ -110,14 +110,14 @@ Functions</h2></td></tr>
 <dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="formtable_8helpers_8php.html">formtable.helpers.php</a>,v 1.1 2011-05-18 12:03:49 oscar Exp </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 </div><hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a165109a2c762d77b582398a6343d3182"></a><!-- doxytag: member="formtable.helpers.php::addFormRow" ref="a165109a2c762d77b582398a6343d3182" args="(Table &amp;$table, Form &amp;$form, $fieldType, $fieldName, $fieldValue, array $fieldAttributes, $label, array $labelAttributes)" -->
+<a class="anchor" id="a50a15263eee016e70bfbc284564f550b"></a><!-- doxytag: member="formtable.helpers.php::addFormRow" ref="a50a15263eee016e70bfbc284564f550b" args="(Container &amp;$table, Form &amp;$form, $fieldType, $fieldName, $fieldValue, array $fieldAttributes, $label, array $labelAttributes)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">addFormRow </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classTable.html">Table</a> &amp;$&#160;</td>
+          <td class="paramtype"><a class="el" href="classContainer.html">Container</a> &amp;$&#160;</td>
           <td class="paramname"><em>table</em>, </td>
         </tr>
         <tr>
@@ -173,7 +173,7 @@ Functions</h2></td></tr>
 <p>This function adds a new table row to an exising form with 2 cells; in the right cell a new formfield that is created as well, left the label that should be displayed. To make sure no mistakes are made in the long list of arguments, no defaults are accepted. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$table</td><td>Reference to the table object to which the row is added </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$table</td><td>Reference to the table container object to which the row is added </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$form</td><td>Reference to the form object to which the field is added </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$fieldType</td><td><a class="el" href="classForm.html" title="Form Element class.">Form</a> field type (text, password, textarea etc) </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$fieldName</td><td>Name of the field as it will appear in the form </td></tr>
@@ -186,7 +186,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>References <a class="el" href="classForm.html#a880197a858a70581146d6f0d275eff02">Form::addField()</a>, <a class="el" href="classTable.html#aa7790dca70cb9dbcf90ea311c82e0db1">Table::addRow()</a>, and <a class="el" href="classForm.html#a29e01263557e33fab02ee5c3aaa0b3f5">Form::showField()</a>.</p>
+<p>References <a class="el" href="classContainer.html#a1157dd89981699a7aa712e28c65d0ea6">Container::addContainer()</a>, <a class="el" href="classForm.html#a880197a858a70581146d6f0d275eff02">Form::addField()</a>, and <a class="el" href="classForm.html#a29e01263557e33fab02ee5c3aaa0b3f5">Form::showField()</a>.</p>
 
 </div>
 </div>
@@ -210,7 +210,7 @@ Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon May 23 2011 19:49:08 for OWL-PHP by
+    <li class="footer">Generated on Fri May 27 2011 14:35:04 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

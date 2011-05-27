@@ -3,13 +3,13 @@
  * \file
  * This file defines the top-level BaseElement class
 	 * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.baseelement.php,v 1.9 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.baseelement.php,v 1.10 2011-05-27 12:42:20 oscar Exp $
  */
 
 /**
  * \ingroup OWL_UI_LAYER
  * Abstract base class for all DOM elements
- * \brief DOM Element base class 
+ * \brief DOM Element base class
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 29, 2008 -- O van Eijk -- initial version
  */
@@ -44,7 +44,7 @@ abstract class BaseElement extends _OWL
 	 * Element ID
 	 */
 	protected $id = '';
-	
+
 	/**
 	 * Boolean for loop detection
 	 */
@@ -83,7 +83,7 @@ abstract class BaseElement extends _OWL
 		if (empty($this->id)) {
 			$this->setId($_value);
 		}
-		
+
 	}
 
 	/**
@@ -273,7 +273,7 @@ abstract class BaseElement extends _OWL
 
 	/**
 	 * This function must be implemented by all elements.
-	 * \return The implementation must return a textstring with the complete 
+	 * \return The implementation must return a textstring with the complete
 	 * HTML code to display the element
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
