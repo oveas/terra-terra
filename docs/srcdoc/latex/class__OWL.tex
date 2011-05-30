@@ -45,6 +45,8 @@ Inheritance diagram for \_\-OWL:\begin{figure}[H]
 {\bf setStatus} (\$status, \$params=array())
 \item 
 {\bf setHighSeverity} (\&\$object=null)
+\item 
+{\bf stackMessage} (\$level={\bf OWL\_\-WARNING})
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -411,11 +413,33 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References ConfigHandler::get().
+References ConfigHandler::get(), OutputHandler::outputLine(), and OutputHandler::outputRaw().
 
 
 
-Referenced by getLastWarning(), setStatus(), and traceback().
+Referenced by getLastWarning(), setStatus(), stackMessage(), and traceback().
+
+\index{\_\-OWL@{\_\-OWL}!stackMessage@{stackMessage}}
+\index{stackMessage@{stackMessage}!_OWL@{\_\-OWL}}
+\subsubsection[{stackMessage}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::stackMessage (
+\begin{DoxyParamCaption}
+\item[{\$}]{level = {\ttfamily {\bf OWL\_\-WARNING}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected]}}\label{class__OWL_acbb85f4949ca4bbd8bb2408362632cbc}
+Add the message for the latests status change to the document \begin{DoxySeeAlso}{See also}
+\doxyref{Document::addMessage()}{p.}{classDocument_aee4ecb0f14972dafd3114659b57048b3} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$level} & Minimum severity level \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \$\_\-doc, \$severity, OWL::factory(), and signal().
 
 \index{\_\-OWL@{\_\-OWL}!succeeded@{succeeded}}
 \index{succeeded@{succeeded}!_OWL@{\_\-OWL}}
@@ -483,7 +507,11 @@ Pointer to the object which holds the last nonsuccessfull ($>$= OWL\_\-WARNING) 
 Copy of the status object \index{\_\-OWL@{\_\-OWL}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!_OWL@{\_\-OWL}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
-Severity level of the current object status \index{\_\-OWL@{\_\-OWL}!\$status@{\$status}}
+Severity level of the current object status 
+
+Referenced by stackMessage().
+
+\index{\_\-OWL@{\_\-OWL}!\$status@{\$status}}
 \index{\$status@{\$status}!_OWL@{\_\-OWL}}
 \subsubsection[{\$status}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$status\hspace{0.3cm}{\ttfamily  [private]}}\label{class__OWL_aaf448f6bc8a90e20c09e9e2b8fe46eb5}
 Current object status 

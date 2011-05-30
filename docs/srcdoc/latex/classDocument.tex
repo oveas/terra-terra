@@ -14,6 +14,8 @@ Inheritance diagram for Document:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+{\bf addMessage} (\$stack, \$message)
+\item 
 {\bf addStyle} (\$\_\-style= '')
 \item 
 {\bf loadStyle} (\$\_\-style= '', \$\_\-condition= '')
@@ -50,7 +52,7 @@ Inheritance diagram for Document:\begin{figure}[H]
 \item 
 {\bf setContent} (\&\$\_\-content)
 \item 
-{\bf addToContent} (\&\$\_\-content)
+{\bf addToContent} (\&\$\_\-content, \$\_\-front=false)
 \item 
 {\bf getContent} ()
 \item 
@@ -101,6 +103,8 @@ static {\bf getInstance} ()
 {\bf setStatus} (\$status, \$params=array())
 \item 
 {\bf setHighSeverity} (\&\$object=null)
+\item 
+{\bf stackMessage} (\$level={\bf OWL\_\-WARNING})
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -134,6 +138,8 @@ static {\bf \$instance}
 {\bf \_\-getStyles} ()
 \item 
 {\bf \_\-getScripts} ()
+\item 
+{\bf addMessagesToContent} ()
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -157,6 +163,8 @@ static {\bf \$instance}
 {\bf \$favicon}
 \item 
 {\bf \$contentType}
+\item 
+{\bf \$messages}
 \end{DoxyCompactItemize}
 
 
@@ -279,6 +287,42 @@ Oscar van Eijk, Oveas Functionality Provider
 
 Referenced by showElement().
 
+\index{Document@{Document}!addMessage@{addMessage}}
+\index{addMessage@{addMessage}!Document@{Document}}
+\subsubsection[{addMessage}]{\setlength{\rightskip}{0pt plus 5cm}Document::addMessage (
+\begin{DoxyParamCaption}
+\item[{\$}]{stack, }
+\item[{\$}]{message}
+\end{DoxyParamCaption}
+)}\label{classDocument_aee4ecb0f14972dafd3114659b57048b3}
+Add a new message to the proper message stack. For each severity level a seperate stack will be created. When the document is displayed, these messages will be formatted and added the the documents output 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$stack} & Severity level, indicating the stack \\
+\hline
+\mbox{\tt in}  & {\em \$message} & The complete message as composed by \doxyref{signal()}{p.}{class__OWL_a51ba4a16409acf2a2f61f286939091a5} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{Document@{Document}!addMessagesToContent@{addMessagesToContent}}
+\index{addMessagesToContent@{addMessagesToContent}!Document@{Document}}
+\subsubsection[{addMessagesToContent}]{\setlength{\rightskip}{0pt plus 5cm}Document::addMessagesToContent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classDocument_a34c15dbe043870c53dcdc32aca4517d5}
+If messages have been generated during this run that have been added to the messages stacks, generate the containers now and add them to the front of the content objectlist \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References BaseElement::\$class, and BaseElement::addToContent().
+
+
+
+Referenced by showElement().
+
 \index{Document@{Document}!addScript@{addScript}}
 \index{addScript@{addScript}!Document@{Document}}
 \subsubsection[{addScript}]{\setlength{\rightskip}{0pt plus 5cm}Document::addScript (
@@ -313,12 +357,15 @@ Oscar van Eijk, Oveas Functionality Provider
 \index{addToContent@{addToContent}!Document@{Document}}
 \subsubsection[{addToContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::addToContent (
 \begin{DoxyParamCaption}
-\item[{\&\$}]{\_\-content}
+\item[{\&\$}]{\_\-content, }
+\item[{\$}]{\_\-front = {\ttfamily false}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classBaseElement_abd48eef64ca4f419f26d66a0c0419908}
-Add a content to the container. If the container is not an array yet, it will be converted to obe. 
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classBaseElement_acce6358c518156aae1c35e273f1a8d75}
+Add a content to the container. If the container is not an array yet, it will be converted to one. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-content} & Reference to the content, which can be HTML code or an object, of which the \doxyref{showElement()}{p.}{classBaseElement_a63634d81fad745e3b72cda0100afebea} method will be called to retrieve the HTML. \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-front} & When true, the content item will be the first item in the list with content items. By default, it is added to the end of the list. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyAuthor}{Author}
@@ -330,6 +377,10 @@ Oscar van Eijk, Oveas Functionality Provider
 
 
 References \_\-OWL::setStatus().
+
+
+
+Referenced by addMessagesToContent().
 
 \index{Document@{Document}!check@{check}}
 \index{check@{check}!Document@{Document}}
@@ -1007,7 +1058,7 @@ Reimplemented from {\bf BaseElement} \doxyref{}{p.}{classBaseElement_a63634d81fa
 
 
 
-References \_\-getMeta(), \_\-getScripts(), \_\-getStyles(), \_\-loadScripts(), \_\-loadStyles(), BaseElement::getAttributes(), and BaseElement::getContent().
+References \_\-getMeta(), \_\-getScripts(), \_\-getStyles(), \_\-loadScripts(), \_\-loadStyles(), addMessagesToContent(), BaseElement::getAttributes(), and BaseElement::getContent().
 
 \index{Document@{Document}!signal@{signal}}
 \index{signal@{signal}!Document@{Document}}
@@ -1032,11 +1083,33 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References ConfigHandler::get().
+References ConfigHandler::get(), OutputHandler::outputLine(), and OutputHandler::outputRaw().
 
 
 
-Referenced by \_\-OWL::getLastWarning(), \_\-OWL::setStatus(), and \_\-OWL::traceback().
+Referenced by \_\-OWL::getLastWarning(), \_\-OWL::setStatus(), \_\-OWL::stackMessage(), and \_\-OWL::traceback().
+
+\index{Document@{Document}!stackMessage@{stackMessage}}
+\index{stackMessage@{stackMessage}!Document@{Document}}
+\subsubsection[{stackMessage}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::stackMessage (
+\begin{DoxyParamCaption}
+\item[{\$}]{level = {\ttfamily {\bf OWL\_\-WARNING}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_acbb85f4949ca4bbd8bb2408362632cbc}
+Add the message for the latests status change to the document \begin{DoxySeeAlso}{See also}
+\doxyref{Document::addMessage()}{p.}{classDocument_aee4ecb0f14972dafd3114659b57048b3} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$level} & Minimum severity level \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \$\_\-doc, \_\-OWL::\$severity, OWL::factory(), and \_\-OWL::signal().
 
 \index{Document@{Document}!succeeded@{succeeded}}
 \index{succeeded@{succeeded}!Document@{Document}}
@@ -1101,7 +1174,11 @@ Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 Base URL for the application, defaults to the server top \index{Document@{Document}!\$class@{\$class}}
 \index{\$class@{\$class}!Document@{Document}}
 \subsubsection[{\$class}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$class = ''\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classBaseElement_a99976a8e967db92e7800309f359b0803}
-Class specification \index{Document@{Document}!\$contentType@{\$contentType}}
+Class specification 
+
+Referenced by addMessagesToContent().
+
+\index{Document@{Document}!\$contentType@{\$contentType}}
 \index{\$contentType@{\$contentType}!Document@{Document}}
 \subsubsection[{\$contentType}]{\setlength{\rightskip}{0pt plus 5cm}Document::\$contentType\hspace{0.3cm}{\ttfamily  [private]}}\label{classDocument_ab1cd325e8c6dc65ec0512e759d120b0e}
 String for the content type \index{Document@{Document}!\$css@{\$css}}
@@ -1133,7 +1210,10 @@ Referenced by getInstance().
 \index{Document@{Document}!\$js@{\$js}}
 \index{\$js@{\$js}!Document@{Document}}
 \subsubsection[{\$js}]{\setlength{\rightskip}{0pt plus 5cm}Document::\$js\hspace{0.3cm}{\ttfamily  [private]}}\label{classDocument_aff8d5c694d27719238793df5c3dbe55f}
-Array for javascript sources; \index{Document@{Document}!\$meta@{\$meta}}
+Array for javascript sources; \index{Document@{Document}!\$messages@{\$messages}}
+\index{\$messages@{\$messages}!Document@{Document}}
+\subsubsection[{\$messages}]{\setlength{\rightskip}{0pt plus 5cm}Document::\$messages\hspace{0.3cm}{\ttfamily  [private]}}\label{classDocument_a6a4ddc27ac0aa7920ebdbc6f176fbd99}
+List of errors, warnings and other requested messages \index{Document@{Document}!\$meta@{\$meta}}
 \index{\$meta@{\$meta}!Document@{Document}}
 \subsubsection[{\$meta}]{\setlength{\rightskip}{0pt plus 5cm}Document::\$meta\hspace{0.3cm}{\ttfamily  [private]}}\label{classDocument_a4b2a3fc78ec084611daef3343dca3756}
 Array for meta tags \index{Document@{Document}!\$name@{\$name}}
@@ -1149,7 +1229,11 @@ Referenced by Form::addField(), and Form::showField().
 Array for on-\/the-\/fly scripts \index{Document@{Document}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!Document@{Document}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
-Severity level of the current object status \index{Document@{Document}!\$style@{\$style}}
+Severity level of the current object status 
+
+Referenced by \_\-OWL::stackMessage().
+
+\index{Document@{Document}!\$style@{\$style}}
 \index{\$style@{\$style}!Document@{Document}}
 \subsubsection[{\$style}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$style = ''\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classBaseElement_a429a3d642dd95f30e1059ef29564b87d}
 Element style \index{Document@{Document}!\$styles@{\$styles}}

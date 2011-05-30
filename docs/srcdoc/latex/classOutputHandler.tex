@@ -1,0 +1,182 @@
+\section{OutputHandler Class Reference}
+\label{classOutputHandler}\index{OutputHandler@{OutputHandler}}
+
+
+Output handler.  
+
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf output} (\$text, \$method={\bf OWL\_\-OUTPUT\_\-RAW}, \$class=null)
+\item 
+static {\bf outputRaw} (\$text)
+\item 
+static {\bf outputAjax} (\$text)
+\item 
+static {\bf outputLine} (\$text, \$class=null)
+\item 
+static {\bf outputPar} (\$text, \$class=null)
+\item 
+static {\bf outputStarted} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf \$outputStarted} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Output handler. 
+
+This abstract class contains all methods to send output to different channels. Although the normal echo statement can be used, it is adviseable to use the methods from this class. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+May 30, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{OutputHandler@{OutputHandler}!output@{output}}
+\index{output@{output}!OutputHandler@{OutputHandler}}
+\subsubsection[{output}]{\setlength{\rightskip}{0pt plus 5cm}static OutputHandler::output (
+\begin{DoxyParamCaption}
+\item[{\$}]{text, }
+\item[{\$}]{method = {\ttfamily {\bf OWL\_\-OUTPUT\_\-RAW}}, }
+\item[{\$}]{class = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOutputHandler_ac361423ec689b1d91625c3a324bcfc7e}
+Entry method for the output class which calls to correct method for the required output, although these output methods can also be called directly. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$text} & Text that should be send to the output channel. Can contain HTML \\
+\hline
+\mbox{\tt in}  & {\em \$method} & Format method, must be a method as defined in \doxyref{Methods to send output to the output channel}{p.}{group__OutputMethods}. If anything else is given, OWL\_\-OUTPUT\_\-RAW is assumed. \\
+\hline
+\mbox{\tt in}  & {\em \$class} & Optional CSS class (ignored for OWL\_\-OUTPUT\_\-RAW and OWL\_\-OUTPUT\_\-AJAX) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References outputAjax(), outputLine(), outputPar(), and outputRaw().
+
+\index{OutputHandler@{OutputHandler}!outputAjax@{outputAjax}}
+\index{outputAjax@{outputAjax}!OutputHandler@{OutputHandler}}
+\subsubsection[{outputAjax}]{\setlength{\rightskip}{0pt plus 5cm}static OutputHandler::outputAjax (
+\begin{DoxyParamCaption}
+\item[{\$}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOutputHandler_a352fd7f6f490c8b1dbac1455d95f6dfd}
+Send the output unformatted to output channel for Ajax 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$text} & Text that should be send to the output channel. Can contain HTML \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[{\bf Todo}]Write this method.... \end{Desc}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by output().
+
+\index{OutputHandler@{OutputHandler}!outputLine@{outputLine}}
+\index{outputLine@{outputLine}!OutputHandler@{OutputHandler}}
+\subsubsection[{outputLine}]{\setlength{\rightskip}{0pt plus 5cm}static OutputHandler::outputLine (
+\begin{DoxyParamCaption}
+\item[{\$}]{text, }
+\item[{\$}]{class = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOutputHandler_a13bf1b95480cf632fba8a6a560e4365a}
+Send the output to the standard output channel, formatted with a $<$span$>$ and terminated with $<$br/$>$ 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$text} & Text that should be send to the output channel. Can contain HTML \\
+\hline
+\mbox{\tt in}  & {\em \$class} & Optional CSS class used for the span tag \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by output(), and \_\-OWL::signal().
+
+\index{OutputHandler@{OutputHandler}!outputPar@{outputPar}}
+\index{outputPar@{outputPar}!OutputHandler@{OutputHandler}}
+\subsubsection[{outputPar}]{\setlength{\rightskip}{0pt plus 5cm}static OutputHandler::outputPar (
+\begin{DoxyParamCaption}
+\item[{\$}]{text, }
+\item[{\$}]{class = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOutputHandler_afa5474f4d977c5b4c7a66b947b294ae5}
+Send the output to the standard output channel, formatted with a $<$div$>$ 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$text} & Text that should be send to the output channel. Can contain HTML \\
+\hline
+\mbox{\tt in}  & {\em \$class} & Optional CSS class used for the div tag \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by output(), OWLdbg\_\-show(), and OWLTimers::showTimer().
+
+\index{OutputHandler@{OutputHandler}!outputRaw@{outputRaw}}
+\index{outputRaw@{outputRaw}!OutputHandler@{OutputHandler}}
+\subsubsection[{outputRaw}]{\setlength{\rightskip}{0pt plus 5cm}static OutputHandler::outputRaw (
+\begin{DoxyParamCaption}
+\item[{\$}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOutputHandler_ad7a9c0fda089e7107789bb4d425e95a6}
+Send the output unformatted to the standard output channel 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$text} & Text that should be send to the output channel. Can contain HTML \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Referenced by LogHandler::backtrace(), OWLExceptionHandler::logException(), output(), and \_\-OWL::signal().
+
+\index{OutputHandler@{OutputHandler}!outputStarted@{outputStarted}}
+\index{outputStarted@{outputStarted}!OutputHandler@{OutputHandler}}
+\subsubsection[{outputStarted}]{\setlength{\rightskip}{0pt plus 5cm}static OutputHandler::outputStarted (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOutputHandler_adb4f080ddf3c5dc6c23956c4dde70e02}
+Check if output has been sent to the browser already \begin{DoxyReturn}{Returns}
+True if output was sent 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \$outputStarted.
+
+
+
+\subsection{Member Data Documentation}
+\index{OutputHandler@{OutputHandler}!\$outputStarted@{\$outputStarted}}
+\index{\$outputStarted@{\$outputStarted}!OutputHandler@{OutputHandler}}
+\subsubsection[{\$outputStarted}]{\setlength{\rightskip}{0pt plus 5cm}OutputHandler::\$outputStarted = false\hspace{0.3cm}{\ttfamily  [static, private]}}\label{classOutputHandler_aa3ba528acf7b85d205b2b15ad55c017b}
+Boolean to keep track if the brow 
+
+Referenced by outputStarted().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/src/kernel/so/{\bf class.outputhandler.php}\end{DoxyCompactItemize}

@@ -3,7 +3,7 @@
  * \file
  * This file defines the top-level BaseElement class
 	 * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.baseelement.php,v 1.10 2011-05-27 12:42:20 oscar Exp $
+ * \version $Id: class.baseelement.php,v 1.11 2011-05-30 17:00:19 oscar Exp $
  */
 
 /**
@@ -124,12 +124,14 @@ abstract class BaseElement extends _OWL
 
 	/**
 	 * Add a content to the container. If the container is not an array yet, it will be
-	 * converted to obe.
+	 * converted to one.
 	 * \param[in] $_content Reference to the content, which can be HTML code or an object,
 	 * of which the showElement() method will be called to retrieve the HTML.
+	 * \param[in] $_front When true, the content item will be the first item in the list with
+	 * content items. By default, it is added to the end of the list.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function addToContent(&$_content)
+	public function addToContent(&$_content, $_front = false)
 	{
 		if (is_object($_content) && ($_content === $this)) {
 			$this->setStatus (DOM_SELFREF, get_class($this));
@@ -139,7 +141,11 @@ abstract class BaseElement extends _OWL
 			$_existingContent = $this->content;
 			$this->content = array($_existingContent);
 		}
-		$this->content[] = $_content;
+		if ($_front === true) {
+			array_unshift($this->content, $_content);
+		} else {
+			$this->content[] = $_content;
+		}
 	}
 
 	/**

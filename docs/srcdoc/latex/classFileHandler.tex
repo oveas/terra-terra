@@ -69,6 +69,8 @@ Inheritance diagram for FileHandler:\begin{figure}[H]
 {\bf setStatus} (\$status, \$params=array())
 \item 
 {\bf setHighSeverity} (\&\$object=null)
+\item 
+{\bf stackMessage} (\$level={\bf OWL\_\-WARNING})
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -555,11 +557,33 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References ConfigHandler::get().
+References ConfigHandler::get(), OutputHandler::outputLine(), and OutputHandler::outputRaw().
 
 
 
-Referenced by \_\-OWL::getLastWarning(), \_\-OWL::setStatus(), and \_\-OWL::traceback().
+Referenced by \_\-OWL::getLastWarning(), \_\-OWL::setStatus(), \_\-OWL::stackMessage(), and \_\-OWL::traceback().
+
+\index{FileHandler@{FileHandler}!stackMessage@{stackMessage}}
+\index{stackMessage@{stackMessage}!FileHandler@{FileHandler}}
+\subsubsection[{stackMessage}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::stackMessage (
+\begin{DoxyParamCaption}
+\item[{\$}]{level = {\ttfamily {\bf OWL\_\-WARNING}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_acbb85f4949ca4bbd8bb2408362632cbc}
+Add the message for the latests status change to the document \begin{DoxySeeAlso}{See also}
+\doxyref{Document::addMessage()}{p.}{classDocument_aee4ecb0f14972dafd3114659b57048b3} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$level} & Minimum severity level \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \$\_\-doc, \_\-OWL::\$severity, OWL::factory(), and \_\-OWL::signal().
 
 \index{FileHandler@{FileHandler}!succeeded@{succeeded}}
 \index{succeeded@{succeeded}!FileHandler@{FileHandler}}
@@ -654,6 +678,10 @@ Reimplemented in {\bf ImageHandler} \doxyref{}{p.}{classImageHandler_a1712c9444d
 \index{\$severity@{\$severity}!FileHandler@{FileHandler}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
 Severity level of the current object status 
+
+Referenced by \_\-OWL::stackMessage().
+
+
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 

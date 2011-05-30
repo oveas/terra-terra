@@ -110,6 +110,14 @@ var NAVTREE =
           [ "FILE_TRIM_R", "group__FILR__TrimFlags.html#ga7ee25ec88036b90f5a0ae8be7bc41769", null ]
         ] ]
       ] ],
+      [ "Methods to send output to the output channel", "group__OutputMethods.html", [
+        [ "Enumerations", "group__OutputMethods.html", [
+          [ "OWL_OUTPUT_AJAX", "group__OutputMethods.html#gaf963854f30d42f9f1084aa5e69f0ecf3", null ],
+          [ "OWL_OUTPUT_LINE", "group__OutputMethods.html#ga22df175128017a07052b70a9cd32e0b9", null ],
+          [ "OWL_OUTPUT_PAR", "group__OutputMethods.html#ga9234cef7d373a9dfc12f42f5faba95f4", null ],
+          [ "OWL_OUTPUT_RAW", "group__OutputMethods.html#gaece303afa452cc3e7644cd854e01642a", null ]
+        ] ]
+      ] ],
       [ "Status code bitmaps", "group__OWL__Bitmaps.html", [
         [ "Enumerations", "group__OWL__Bitmaps.html", [
           [ "OWL_APPLICATION_PATTERN", "group__OWL__Bitmaps.html#ga22359c406b8745e8fa2412ec96d5e74c", null ],
@@ -226,6 +234,7 @@ var NAVTREE =
           [ "FormHandler", "classFormHandler.html", null ],
           [ "ImageHandler", "classImageHandler.html", null ],
           [ "LogHandler", "classLogHandler.html", null ],
+          [ "OutputHandler", "classOutputHandler.html", null ],
           [ "Register", "classRegister.html", null ],
           [ "SchemeHandler", "classSchemeHandler.html", null ],
           [ "SessionHandler", "classSessionHandler.html", null ],
@@ -348,6 +357,7 @@ var NAVTREE =
       [ "MailDriver", "interfaceMailDriver.html", null ],
       [ "MySQL", "classMySQL.html", null ],
       [ "OldOFMStuff", "classOldOFMStuff.html", null ],
+      [ "OutputHandler", "classOutputHandler.html", null ],
       [ "OWL", "classOWL.html", null ],
       [ "OWLCache", "classOWLCache.html", null ],
       [ "OWLException", "classOWLException.html", null ],
@@ -431,6 +441,7 @@ var NAVTREE =
         [ "RawSMTP", "classRawSMTP.html", null ]
       ] ],
       [ "OldOFMStuff", "classOldOFMStuff.html", null ],
+      [ "OutputHandler", "classOutputHandler.html", null ],
       [ "OWLCache", "classOWLCache.html", null ],
       [ "OWLException", "classOWLException.html", null ],
       [ "OWLExceptionHandler", "classOWLExceptionHandler.html", null ],
@@ -475,6 +486,7 @@ var NAVTREE =
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.formhandler.php", "class_8formhandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.imagehandler.php", "class_8imagehandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.loghandler.php", "class_8loghandler_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/src/kernel/so/class.outputhandler.php", "class_8outputhandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.register.php", "class_8register_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.schemehandler.php", "class_8schemehandler_8php.html", null ],
       [ "/home/oscar/projects/owl-php/src/kernel/so/class.sessionhandler.php", "class_8sessionhandler_8php.html", null ],

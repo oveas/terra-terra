@@ -81,6 +81,8 @@ static {\bf passwordStrength} (\$\_\-pwd, \$\_\-compare=array())
 {\bf setStatus} (\$status, \$params=array())
 \item 
 {\bf setHighSeverity} (\&\$object=null)
+\item 
+{\bf stackMessage} (\$level={\bf OWL\_\-WARNING})
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -890,11 +892,33 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References ConfigHandler::get().
+References ConfigHandler::get(), OutputHandler::outputLine(), and OutputHandler::outputRaw().
 
 
 
-Referenced by \_\-OWL::getLastWarning(), \_\-OWL::setStatus(), and \_\-OWL::traceback().
+Referenced by \_\-OWL::getLastWarning(), \_\-OWL::setStatus(), \_\-OWL::stackMessage(), and \_\-OWL::traceback().
+
+\index{User@{User}!stackMessage@{stackMessage}}
+\index{stackMessage@{stackMessage}!User@{User}}
+\subsubsection[{stackMessage}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::stackMessage (
+\begin{DoxyParamCaption}
+\item[{\$}]{level = {\ttfamily {\bf OWL\_\-WARNING}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_acbb85f4949ca4bbd8bb2408362632cbc}
+Add the message for the latests status change to the document \begin{DoxySeeAlso}{See also}
+\doxyref{Document::addMessage()}{p.}{classDocument_aee4ecb0f14972dafd3114659b57048b3} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$level} & Minimum severity level \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \$\_\-doc, \_\-OWL::\$severity, OWL::factory(), and \_\-OWL::signal().
 
 \index{User@{User}!succeeded@{succeeded}}
 \index{succeeded@{succeeded}!User@{User}}
@@ -1001,7 +1025,11 @@ This users rightslist \index{User@{User}!\$session@{\$session}}
 The PHP session object \index{User@{User}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!User@{User}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
-Severity level of the current object status \index{User@{User}!\$user\_\-data@{\$user\_\-data}}
+Severity level of the current object status 
+
+Referenced by \_\-OWL::stackMessage().
+
+\index{User@{User}!\$user\_\-data@{\$user\_\-data}}
 \index{\$user\_\-data@{\$user\_\-data}!User@{User}}
 \subsubsection[{\$user\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}User::\$user\_\-data\hspace{0.3cm}{\ttfamily  [private]}}\label{classUser_a214012afca3e92dfeed14a9a1f80a268}
 An indexed array with the user information as take from the database 

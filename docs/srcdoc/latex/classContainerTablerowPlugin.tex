@@ -38,7 +38,7 @@ Inheritance diagram for ContainerTablerowPlugin:\begin{figure}[H]
 \item 
 {\bf setContent} (\&\$\_\-content)
 \item 
-{\bf addToContent} (\&\$\_\-content)
+{\bf addToContent} (\&\$\_\-content, \$\_\-front=false)
 \item 
 {\bf setEvent} (\$\_\-event, \$\_\-action, \$\_\-add=false)
 \item 
@@ -80,6 +80,8 @@ Inheritance diagram for ContainerTablerowPlugin:\begin{figure}[H]
 {\bf setStatus} (\$status, \$params=array())
 \item 
 {\bf setHighSeverity} (\&\$object=null)
+\item 
+{\bf stackMessage} (\$level={\bf OWL\_\-WARNING})
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -166,12 +168,15 @@ Oscar van Eijk, Oveas Functionality Provider
 \index{addToContent@{addToContent}!ContainerTablerowPlugin@{ContainerTablerowPlugin}}
 \subsubsection[{addToContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::addToContent (
 \begin{DoxyParamCaption}
-\item[{\&\$}]{\_\-content}
+\item[{\&\$}]{\_\-content, }
+\item[{\$}]{\_\-front = {\ttfamily false}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classBaseElement_abd48eef64ca4f419f26d66a0c0419908}
-Add a content to the container. If the container is not an array yet, it will be converted to obe. 
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classBaseElement_acce6358c518156aae1c35e273f1a8d75}
+Add a content to the container. If the container is not an array yet, it will be converted to one. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$\_\-content} & Reference to the content, which can be HTML code or an object, of which the \doxyref{showElement()}{p.}{classBaseElement_a63634d81fad745e3b72cda0100afebea} method will be called to retrieve the HTML. \\
+\hline
+\mbox{\tt in}  & {\em \$\_\-front} & When true, the content item will be the first item in the list with content items. By default, it is added to the end of the list. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyAuthor}{Author}
@@ -183,6 +188,10 @@ Oscar van Eijk, Oveas Functionality Provider
 
 
 References \_\-OWL::setStatus().
+
+
+
+Referenced by Document::addMessagesToContent().
 
 \index{ContainerTablerowPlugin@{ContainerTablerowPlugin}!check@{check}}
 \index{check@{check}!ContainerTablerowPlugin@{ContainerTablerowPlugin}}
@@ -729,11 +738,33 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-References ConfigHandler::get().
+References ConfigHandler::get(), OutputHandler::outputLine(), and OutputHandler::outputRaw().
 
 
 
-Referenced by \_\-OWL::getLastWarning(), \_\-OWL::setStatus(), and \_\-OWL::traceback().
+Referenced by \_\-OWL::getLastWarning(), \_\-OWL::setStatus(), \_\-OWL::stackMessage(), and \_\-OWL::traceback().
+
+\index{ContainerTablerowPlugin@{ContainerTablerowPlugin}!stackMessage@{stackMessage}}
+\index{stackMessage@{stackMessage}!ContainerTablerowPlugin@{ContainerTablerowPlugin}}
+\subsubsection[{stackMessage}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::stackMessage (
+\begin{DoxyParamCaption}
+\item[{\$}]{level = {\ttfamily {\bf OWL\_\-WARNING}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_acbb85f4949ca4bbd8bb2408362632cbc}
+Add the message for the latests status change to the document \begin{DoxySeeAlso}{See also}
+\doxyref{Document::addMessage()}{p.}{classDocument_aee4ecb0f14972dafd3114659b57048b3} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$level} & Minimum severity level \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \$\_\-doc, \_\-OWL::\$severity, OWL::factory(), and \_\-OWL::signal().
 
 \index{ContainerTablerowPlugin@{ContainerTablerowPlugin}!succeeded@{succeeded}}
 \index{succeeded@{succeeded}!ContainerTablerowPlugin@{ContainerTablerowPlugin}}
@@ -798,7 +829,11 @@ Referenced by \_\-OWL::check(), User::login(), and SessionHandler::read().
 Array with pointers to the tablecell objects \index{ContainerTablerowPlugin@{ContainerTablerowPlugin}!\$class@{\$class}}
 \index{\$class@{\$class}!ContainerTablerowPlugin@{ContainerTablerowPlugin}}
 \subsubsection[{\$class}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$class = ''\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classBaseElement_a99976a8e967db92e7800309f359b0803}
-Class specification \index{ContainerTablerowPlugin@{ContainerTablerowPlugin}!\$events@{\$events}}
+Class specification 
+
+Referenced by Document::addMessagesToContent().
+
+\index{ContainerTablerowPlugin@{ContainerTablerowPlugin}!\$events@{\$events}}
 \index{\$events@{\$events}!ContainerTablerowPlugin@{ContainerTablerowPlugin}}
 \subsubsection[{\$events}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$events = array()\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classBaseElement_a02cebe45d277b4ff8f29db08bad371ba}
 Array with javascript events 
@@ -821,7 +856,11 @@ Referenced by Form::addField(), and Form::showField().
 \index{ContainerTablerowPlugin@{ContainerTablerowPlugin}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!ContainerTablerowPlugin@{ContainerTablerowPlugin}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
-Severity level of the current object status \index{ContainerTablerowPlugin@{ContainerTablerowPlugin}!\$style@{\$style}}
+Severity level of the current object status 
+
+Referenced by \_\-OWL::stackMessage().
+
+\index{ContainerTablerowPlugin@{ContainerTablerowPlugin}!\$style@{\$style}}
 \index{\$style@{\$style}!ContainerTablerowPlugin@{ContainerTablerowPlugin}}
 \subsubsection[{\$style}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$style = ''\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classBaseElement_a429a3d642dd95f30e1059ef29564b87d}
 Element style \index{ContainerTablerowPlugin@{ContainerTablerowPlugin}!\$type@{\$type}}

@@ -3,13 +3,13 @@
  * \file
  * This file defines the Loghandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.loghandler.php,v 1.12 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: class.loghandler.php,v 1.13 2011-05-30 17:00:19 oscar Exp $
  */
 
 /**
  * \ingroup OWL_SO_LAYER
- * This singleton class handles all OWL logging 
- * \brief Log handler 
+ * This singleton class handles all OWL logging
+ * \brief Log handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 13, 2008 -- O van Eijk -- initial version
  */
@@ -179,13 +179,13 @@ class LogHandler extends _OWL
 			array_unshift($_segments, constant($_first));
 			$_file = implode('/', $_segments);
 		}
-		
+
 		if (ConfigHandler::get ('logging|multiple_file', false)) {
 			$this->filename = $_file . '.' . Register::getRunId();
 		} else {
 			$this->filename = $_file;
 		}
-		
+
 	}
 
 	/**
@@ -232,7 +232,7 @@ class LogHandler extends _OWL
 	private function composeMessage (&$msg, $code)
 	{
 		$_prefix = date (ConfigHandler::get ('locale|log_date')) . ':'
-				 . date (ConfigHandler::get ('locale|log_time')); 
+				 . date (ConfigHandler::get ('locale|log_time'));
 		if (!ConfigHandler::get ('logging|multiple_file')) {
 			$_prefix .= ' [' . Register::getRunId() . ']';
 		}
@@ -254,7 +254,7 @@ class LogHandler extends _OWL
 		$_replace = array("/<\/?b>/", "/<\/?i>/", "/<br\s*\/?>/");
 		$_with = array('*', '"', "\n");
 		$msg = preg_replace($_replace, $_with, $msg);
-		
+
 		$this->composeMessage ($msg, $code);
 
 		$this->writeLogfile ($msg);
@@ -282,7 +282,7 @@ class LogHandler extends _OWL
 	{
 		$_trace = "(start trace)\n" . print_r(debug_backtrace(), true) . "\n(end trace)\n";
 		if ($_browser_dump === true) {
-			echo '<pre>' .$_trace . '</pre>';
+			OutputHandler::outputRaw ('<pre>' .$_trace . '</pre>');
 		}
 		return $_trace;
 	}

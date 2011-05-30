@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.32 2011-05-22 10:56:03 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.33 2011-05-30 17:00:19 oscar Exp $
  */
 
 // Error handling used during development
@@ -254,7 +254,7 @@ abstract class OWLloader
 		//! @}
 
 		// If an APP_CONFIG file has been defined, add it to the config files array
-		// Values in this config file will overwrite the OWL defaults. 
+		// Values in this config file will overwrite the OWL defaults.
 		if (defined('APP_CONFIG_FILE')) {
 			$GLOBALS['config']['configfiles']['app'][] = APP_CONFIG_FILE;
 		}
@@ -300,6 +300,7 @@ OWLloader::getClass('_owl', OWL_INCLUDE);
 OWLloader::getClass('confighandler', OWL_SO_INC);
 OWLloader::getClass('loghandler', OWL_SO_INC);
 OWLloader::getClass('sessionhandler', OWL_SO_INC);
+OWLloader::getClass('outputhandler', OWL_SO_INC);
 OWLloader::getClass('dbhandler', OWL_SO_INC);
 OWLloader::getClass('datahandler', OWL_SO_INC);
 OWLloader::getClass('formhandler', OWL_SO_INC);
@@ -346,14 +347,6 @@ $GLOBALS['logger'] = OWL::factory('LogHandler');
 
 $_doc  = OWL::factory('Document', 'ui');
 $_doc->loadStyle(OWL_STYLE . '/owl.css');
-// Select the (no)debug function libraries.
-if ($GLOBALS['config']['values']['debug'] > 0) {
-	require (OWL_LIBRARY . '/owl.debug.functions.php');
-	$_doc->loadStyle(OWL_STYLE . '/owl_debug.css');
-} else {
-	require (OWL_LIBRARY . '/owl.nodebug.functions.php');
-}
-OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS, 'Globals after readConfig()');
 
 // Set up the label translations
 Register::registerLabels(true);
@@ -367,17 +360,27 @@ if (!defined('OWL___INSTALLER')) {
 	}
 }
 
+// Select the (no)debug function libraries.
+if ($GLOBALS['config']['values']['debug'] > 0) {
+	require (OWL_LIBRARY . '/owl.debug.functions.php');
+	$_doc->loadStyle(OWL_STYLE . '/owl_debug.css');
+} else {
+	require (OWL_LIBRARY . '/owl.nodebug.functions.php');
+}
+
+OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after loadApplication()');
+
 /**
  * \mainpage
  * Oveas Web Library for PHP is a development framework for webbased applications.
- * 
+ *
  * The aim is an environment that combines the best of several worlds; ease of use from Windows,
  * flexibility from Linux, robustness from OpenVMS and of course internet's platform and location independency.
  * The design principles of OWL-PHP ensure a 100% safe web development platform; since the library itself
  * is unhackable, so are the applications built with it!
- * 
+ *
  * Together with the planned OWL-JS, you might consider the OWL family as the basis of what Web2.2 will look like ;)
- * 
+ *
  * Much of this code started as the project Terra-Terra in 2001 (http://terra-terra.org), a project that
  * was abandoned when AJAX became popular from 2005 onwards.
  * \author Oscar van Eijk, Oveas Functionality Provider

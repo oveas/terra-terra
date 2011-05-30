@@ -3,7 +3,7 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.12 2011-05-18 13:22:18 oscar Exp $
+ * \version $Id: class.exceptionhandler.php,v 1.13 2011-05-30 17:00:19 oscar Exp $
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
@@ -11,7 +11,7 @@
 /**
  * \ingroup OWL_SO_LAYER
  * Extend the default PHP Exception handler .
- * \brief Exception handler 
+ * \brief Exception handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jul 29, 2008 -- O van Eijk -- Initial version
  * \todo The oldest code in OWL dates back to 2001; by now PHP4 support is dropped anyway,
@@ -160,7 +160,7 @@ class OWLException extends Exception
 		}
 
 		foreach ($this->hidden_args as $_arg) {
-			if ($trace['class'] == $_arg['class'] && 
+			if ($trace['class'] == $_arg['class'] &&
 				$trace['function'] == $_arg['function']) {
 					return ($_arg['argument'] - 1); // We want an array index
 			}
@@ -292,7 +292,7 @@ class OWLException extends Exception
 							break;
 					}
 				}
-			}		  
+			}
 			$_text .= ($textmode ? ") \n" : ')<br />');
 		}
 		return ($_text);
@@ -303,18 +303,18 @@ class OWLException extends Exception
  * \ingroup OWL_SO_LAYER
  * Establish a default exception handler. En exception is thrown whenever a status is set
  * above a specified severity level. These exceptions are caught only by this default handler
- * \brief Default exception handler 
+ * \brief Default exception handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jul 29, 2008 -- O van Eijk -- Initial version
  */
 class OWLExceptionHandler
-{  
+{
 
 	/**
 	 * Show the stackdump of an exception
 	 * \param[in] $exception The exception
 	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 */ 
+	 */
 	public static function logException(OWLException $exception)
 	{
 		$_tmp_logger = false;
@@ -325,9 +325,9 @@ class OWLExceptionHandler
 		$GLOBALS['logger']->log ($exception->stackDump(true), $exception->thrown_code);
 
 		if (ConfigHandler::get ('exception|show_in_browser')) {
-			echo ($exception->stackDump(false));
+			OutputHandler::outputRaw ($exception->stackDump(false));
 		} else {
-			echo ('<p class="exception"><b>An exception was thrown</b><br/>'
+			OutputHandler::outputRaw ('<p class="exception"><b>An exception was thrown</b><br/>'
 				. 'Check the logfile for details</p>');
 		}
 		if ($_tmp_logger === true) {
@@ -336,12 +336,12 @@ class OWLExceptionHandler
 		// Define a constants to let destructors know we're not in a clean shutdown
 		define ('OWL_EMERGENCY_SHUTDOWN', 1);
 	}
-  
+
 	/**
 	 * Catch an uncaught exception
 	 * \param[in] $exception The exception
 	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 */ 
+	 */
 	public static function handleException (OWLException $exception)
 	{
 		self::logException($exception);

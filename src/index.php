@@ -3,7 +3,7 @@
  * \file
  * This is the entry point for OWL-PHP teststub
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: index.php,v 1.15 2011-05-02 12:56:15 oscar Exp $
+ * \version $Id: index.php,v 1.16 2011-05-30 17:00:19 oscar Exp $
  */
 define ('APPL_CODE', 'OWL');
 define ('OWL_ROOT', '/home/oscar/projects/owl-php/src');
@@ -45,7 +45,7 @@ switch ($_form->get('act')) {
 </head>
 <body>
 <pre>
-<?php 
+<?php
 $_scheme = OWL::factory('schemehandler');
 //$_data1 = array();
 //$_scheme->tableDescription('test2', $_data1);
@@ -104,7 +104,7 @@ $_scheme->defineIndex($_index);
 $_scheme->scheme();
 $_scheme->reset();
 $_scheme->tableDescription('person', $_data);
-echo '<pre>'. print_r($_data, 1) . '</pre>';
+OutputHandler::outputRaw('<pre>'. print_r($_data, 1) . '</pre>');
 ?>
 
 </pre>

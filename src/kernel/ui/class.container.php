@@ -3,7 +3,7 @@
  * \file
  * This file defines a container element
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.container.php,v 1.6 2011-05-27 12:42:20 oscar Exp $
+ * \version $Id: class.container.php,v 1.7 2011-05-30 17:00:19 oscar Exp $
  */
 
 OWLloader::getClass('container', OWL_PLUGINS . '/containers');
@@ -25,11 +25,8 @@ class Container extends BaseElement
 
 	/**
 	 * Class constructor;
-	 * \param[in] $_type The container type. Currently supported are:
-	 * 	- div
-	 * 	- label
-	 * 	- frameset
-	 * \param[in] $_content HTML that will be placed in the table cell
+	 * \param[in] $_type The container type. Supported containertypes are located in plugins/containers
+	 * \param[in] $_content HTML that will be placed in the container
 	 * \param[in] $_attribs Indexed array with the HTML attributes
 	 * \param[in] $_type_attribs Indexed array with the type specific attributes.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -37,8 +34,6 @@ class Container extends BaseElement
 	public function __construct ($_type, $_content = '', array $_attribs = array(), array $_type_attribs = array())
 	{
 		_OWL::init();
-//	 * Refer to the 'show&lt;Type&gt;Type()' method for details
-//		$this->showMethod = 'show' . ucfirst($_type) . 'Type';
 
 		if (!OWLloader::getClass('container.'.$_type, OWL_PLUGINS . '/containers')) {
 			$this->setStatus(CONTAINER_IVTYPE, array($_type));

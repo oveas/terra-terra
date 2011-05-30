@@ -3,7 +3,7 @@
  * \file
  * This file defines the testset baseclass
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.testset.php,v 1.4 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: class.testset.php,v 1.5 2011-05-30 17:00:19 oscar Exp $
  */
 
 OWLloader::getClass('testcase', OTK_BO);
@@ -34,16 +34,16 @@ define ('OTK_RESULT_NONE'		, 3);
  * Baseclass that defines the testsets.
  * Classes that derive from this baseclass must have the name <em>OTK&lt;Location&gt;</em>, where
  * 'location' is the name of the subdirectory in OTK_TESTSETS. The filename must be <em>testset.php</em>.
- * 
+ *
  * The classes only need to reimplement the static getDescription() method, all other required methods
  * are in this baseclass.
- * 
+ *
  * The class collects all files belonging to a testset that contain testcases and helper functions. All
  * files must be in the same directory as <em>testset.php</em>.
- * 
+ *
  * Files that contain testcases must have the name <em>case.&lt;name&gt;.php</em>. Refer to the interface TestCase
  * for more information.
- * 
+ *
  * Optionally, testset directories can contain a file with the name <em>helper.php</em>. This can be a
  * file containing one or more classes or functions. That file will be included but not called; it is
  * up to the testcases to make the proper calls to these files.
@@ -76,7 +76,7 @@ abstract class TestSet
 	private $details;
 
 	/**
-	 * Indexed array with the results of all steps per testcase 
+	 * Indexed array with the results of all steps per testcase
 	 */
 	private $testResults;
 
@@ -84,12 +84,12 @@ abstract class TestSet
 	 * Total number of teststeps that ended in an error
 	 */
 	private $errors;
-	
+
 	/**
 	 * Total number of teststeps that ended with a warning
 	 */
 	private $warnings;
-	
+
 	/**
 	 * Total number of teststeps that completed successfull
 	 */
@@ -271,7 +271,7 @@ abstract class TestSet
 			,'details' => $this->details
 		);
 		if (($_area = OWLloader::getArea('testresults', OTK_UI, $results)) !== null) {
-			echo $_area->getArea();
+			OutputHandler::outputRaw($_area->getArea());
 		}
 	}
 }

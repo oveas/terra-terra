@@ -4,7 +4,7 @@
  * \ingroup OWL_LIBRARY
  * This file defines helper functions in debug mode
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.debug.functions.php,v 1.6 2011-05-22 10:56:03 oscar Exp $
+ * \version $Id: owl.debug.functions.php,v 1.7 2011-05-30 17:00:19 oscar Exp $
  */
 
 /**
@@ -132,7 +132,7 @@ function OWLdbg_add ($level, &$var, $name = 'Unknown variable', $shiftUp = 0)
 			. $_vdata
 			. '</td>'
 			. '</tr>';
-			
+
 	$GLOBALS['OWLDebugData'][] = $_dbg;
 }
 
@@ -145,9 +145,12 @@ function OWLdbg_show ()
 	if (count($GLOBALS['OWLDebugData']) == 0 || ConfigHandler::get('debug', 0, true) == 0) {
 		return;
 	}
-	echo ('<div class="OWLdbg"><hr/><em><u>' . ContentArea::translate('Debug Data:') . '</u></em><p>');
-	echo ('<table class="OWLdbg">');
-	echo implode('', $GLOBALS['OWLDebugData']);
-	echo ('</table>');
-	echo ('</p></div>');
+	OutputHandler::outputPar(
+			  '<hr/><em><u>' . ContentArea::translate('Debug Data:') . '</u></em><p>'
+			. '<table class="OWLdbg">'
+			. implode('', $GLOBALS['OWLDebugData'])
+			. '</table>'
+			. '</p>'
+		, 'OWLdbg'
+	);
 }

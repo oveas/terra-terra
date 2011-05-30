@@ -5,7 +5,7 @@
  * and the actual page is displayed.
  * \ingroup OTK_UI_LAYER
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: mainpage.php,v 1.4 2011-05-27 13:15:15 oscar Exp $
+ * \version $Id: mainpage.php,v 1.5 2011-05-30 17:00:19 oscar Exp $
  */
 
 // First, get all required instances
@@ -32,12 +32,12 @@ if ($_form->getStatus() === FORM_NOVALUE || !$_d) {
 	$document->addToContent($GLOBALS['OTK']['HeaderContainer']);
 	$document->addToContent($GLOBALS['OTK']['BodyContainer']);
 	// Display the document
-	echo $document->showElement();
+	OutputHandler::outputRaw($document->showElement());
 } else {
 	// Show the contents immedialty (without using a header container) to make sure we
 	// don't have to wait 'til all tests are completed
 	$document->addToContent($GLOBALS['OTK']['HeaderContainer']);
-	echo $document->showElement();
+	OutputHandler::outputRaw($document->showElement());
 	$dispatcher->dispatch(); // Run the tests. All output will be echoed immediatly
 }
 

@@ -3,7 +3,7 @@
  * \file
  * This file defines an HTML document
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.document.php,v 1.9 2011-05-27 12:42:20 oscar Exp $
+ * \version $Id: class.document.php,v 1.10 2011-05-30 17:00:19 oscar Exp $
  */
 
 /**
@@ -72,6 +72,11 @@ class Document extends BaseElement
 	protected static $instance;
 
 	/**
+	 * List of errors, warnings and other requested messages
+	 */
+	private $messages;
+
+	/**
 	 * Class constructor;
 	 * \param[in] $_attribs Indexed array with the HTML attributes
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -93,6 +98,7 @@ class Document extends BaseElement
 			, 'generator'	=> 'OWL-PHP v'.OWL_VERSION.' - Oveas Web Library for PHP, (c)2006-2011 Oveas Functionality Provider'
 		);
 		$this->header = array();
+		$this->messages = array();
 		$this->favicon = '';
 		$this->contentType = 'text/html; charset=utf-8';
 	}
@@ -108,6 +114,25 @@ class Document extends BaseElement
 			Document::$instance = new self();
 		}
 		return Document::$instance;
+	}
+
+	/**
+	 * Add a new message to the proper message stack. For each severity level a seperate
+	 * stack will be created. When the document is displayed, these messages will be formatted
+	 * and added the the documents output
+	 * \param[in] $stack Severity level, indicating the stack
+	 * \param[in] $message The complete message as composed by signal()
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function addMessage($stack, $message)
+	{
+		if (!array_key_exists('s'.$stack, $this->messages)) {
+			$this->messages['s'.$stack] = array(
+				 'stack' => $stack
+				,'messages' => array()
+			);
+		}
+		$this->messages['s'.$stack]['messages'][] = $message;
 	}
 
 	/**
@@ -368,12 +393,49 @@ class Document extends BaseElement
 	}
 
 	/**
+	 * If messages have been generated during this run that have been added to the messages
+	 * stacks, generate the containers now and add them to the front of the content objectlist
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private function addMessagesToContent()
+	{
+		foreach ($this->messages as $stack) {
+			switch ($stack['stack']) {
+				case OWL_DEBUG :
+					$class = 'debugMessages';
+					break;
+				case OWL_INFO :
+				case OWL_OK :
+					$class = 'infoMessages';
+					break;
+				case OWL_SUCCESS :
+					$class = 'successMessages';
+					break;
+				case OWL_WARNING :
+					$class = 'warningMessages';
+					break;
+				case OWL_BUG :
+				case OWL_ERROR :
+				case OWL_FATAL :
+				case OWL_CRITICAL :
+					$class = 'errorMessages';
+					break;
+			}
+			$_msgList = implode('<br />', $stack['messages']);
+			$_msgContainer = new Container('div', $_msgList, array('class' => $class));
+			$this->addToContent($_msgContainer, true);
+		}
+	}
+
+	/**
 	 * Get the HTML code to display the document
 	 * \return string with the HTML code
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function showElement()
 	{
+		$this->addMessagesToContent();
+
 		if (count($this->headers) > 0) {
 			foreach ($this->headers as $_hdr => $_val) {
 				header("$_hdr: $_val");

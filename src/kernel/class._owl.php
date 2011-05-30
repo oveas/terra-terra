@@ -3,7 +3,7 @@
  * \file
  * This file defines the Oveas Web Library main class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class._owl.php,v 1.13 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: class._owl.php,v 1.14 2011-05-30 17:00:19 oscar Exp $
  */
 
 /**
@@ -23,12 +23,12 @@ abstract class _OWL
 	 * Copy of the status object
 	 */
 	private $saved_status;
-	
+
 	/**
 	 * Pointer to the object which holds the last nonsuccessfull (>= OWL_WARNING) status
 	 */
 	private $pstatus;
-	
+
 	/**
 	 * Severity level of the current object status
 	 */
@@ -84,7 +84,7 @@ abstract class _OWL
 		$_disp = OWL::factory('Dispatcher', 'bo');
 		return ($_disp->registerArgument($_arg));
 	}
-	
+
 	/**
 	 * Retrieve a previously set (callback) dispatcher. The (callback) dispatcher is cleared immediatly.
 	 * \return The dispatcher, of null on failure.
@@ -127,7 +127,7 @@ abstract class _OWL
 		$this->status = clone $this->saved_status;
 		$this->saved_status = null;
 	}
-	
+
 	/**
 	 * Reset the status in the complete calltree
 	 * \param[in] $depth Keep track of the depth in recusrive calls. Should be empty
@@ -147,7 +147,7 @@ abstract class _OWL
 
 	/**
 	 * This is a helper function for lazy developers.
-	 * Some checks have to be made quite often, this is a kinda macro to handle that. It 
+	 * Some checks have to be made quite often, this is a kinda macro to handle that. It
 	 * compares the own severity level with that of a given object. If the highest level
 	 * is above a given max, a traceback and reset are performed.
 	 * \protected
@@ -168,7 +168,7 @@ abstract class _OWL
 
 	/**
 	 * Get the last warning or error message.
-	 * \return null if there was no error (severity below OWL_WARNING), otherwise the error text. 
+	 * \return null if there was no error (severity below OWL_WARNING), otherwise the error text.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getLastWarning()
@@ -214,7 +214,7 @@ abstract class _OWL
 			$this->signal (0, $msg);
 			if (ConfigHandler::get('exception|block_throws', false)) {
 				// Can't call myself anymore but we wanna see this message.
-				$_msg = $msg; // Save the original 
+				$_msg = $msg; // Save the original
 				$this->severity = $this->status->setCode(OWL_STATUS_THROWERR);
 				$this->signal (0, $msg);
 				trigger_error($msg, E_USER_NOTICE);
@@ -297,11 +297,11 @@ abstract class _OWL
 				if (ConfigHandler::get ('js_signal') === true) {
 					$_msg = $this->status->getMessage ($level);
 					$_msg = str_replace('"', '\"', $_msg);
-					echo '<script language="javascript">'
+					OutputHandler::outputRaw ('<script language="javascript">'
 						. 'alert("' . $_msg . '");'
-						. '</script>';
+						. '</script>');
 				} else {
-					echo '<strong>OWL Message</strong>: ' . $this->status->getMessage ($level) . ' <br />';
+					OutputHandler::outputLine ('<strong>OWL Message</strong>: ' . $this->status->getMessage ($level));
 				}
 			} else {
 				$text = $this->status->getMessage ($level);
@@ -309,7 +309,26 @@ abstract class _OWL
 		}
 		return ($_severity);
 	}
-	
+
+	/**
+	 * Add the message for the latests status change to the document
+	 * \see Document::addMessage()
+	 * \param[in] $level Minimum severity level
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	protected function stackMessage ($level = OWL_WARNING)
+	{
+		$severity = $this->signal($level, $message);
+		if ($message !== false) {
+			if (get_class ($this) == 'Document') {
+				$_doc = $this;
+			} else {
+				$_doc = OWL::factory('Document', OWL_UI_INC);
+			}
+			$_doc->addMessage($severity, $message);
+		}
+	}
+
 	/**
 	 * If somehwere in the nested calls an error occured, we can traceback the original
 	 * failing object with this function and signal the message.

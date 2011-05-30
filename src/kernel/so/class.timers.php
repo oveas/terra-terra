@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_SO_LAYER
  * This file loads the class to handle timers
- * \version $Id: class.timers.php,v 1.1 2011-05-22 10:56:04 oscar Exp $
+ * \version $Id: class.timers.php,v 1.2 2011-05-30 17:00:19 oscar Exp $
  */
 
 // Main timer, will be started by OWLloader when timers are enabled
@@ -13,24 +13,24 @@ define ('OWL_MAIN_TIMER', 'OWLmain');
  * \ingroup OWL_SO_LAYER
  * This abstract class sets up timers that can be used to check the runtime of both the total
  * and parts.
- * 
+ *
  * To enable timers, the constant OWL_TIMERS_ENABLES must be defined by the application <em>before</em>
  * OWLloader.php is included, e.g.:
  * \code
  * define ('OWL_TIMERS_ENABLED', true);
  * require (OWL_ROOT . '/OWLloader.php');
  * \endcode
- * 
+ *
  * Timers can be started anywhere in the code. When timers are not enabled, it won't have any effect.
  * Starting timers can be done with OWLTimers::startTimer('name'). Later in the code they can be stopped
  * with OWLTimers::stopTimer('name'), where 'name' must be unique.
- * 
+ *
  * At the end of the run, the total running time of the application will be displayed, end the running
  * time of the individual timers (the part between startTimer() and stopTimer()) with their percentage
  * of the total time.
- * 
+ *
  * Timers that are not stopped, will be timed until the application rundown.
- * \brief Timer handler 
+ * \brief Timer handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 21, 2011 -- O van Eijk -- initial version
  */
@@ -83,7 +83,7 @@ abstract class OWLTimers
 	/**
 	 * Stop an active timer and update the array key with the execution time since the start timestamp.
 	 * \param[in] $name Unique name of the timer.
-	 * \return 
+	 * \return
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function stopTimer($name)
@@ -111,26 +111,29 @@ abstract class OWLTimers
 		foreach (self::$activeTimers as $timer => $dummy) {
 			self::stopTimer($timer);
 		}
-		
-		echo ('<div class="OWLtimers"><hr/><em><u>' . ContentArea::translate('OWL timers') . '</u></em><p>');
+		$txt = '<hr/><em><u>' . ContentArea::translate('OWL timers') . '</u></em><p>';
+
 		$mem = memory_get_peak_usage(true)/1024;
 		$time = self::$timers[OWL_MAIN_TIMER];
 		foreach (self::$timers as $timer => $value) {
 			if ($timer !== OWL_MAIN_TIMER) {
 				$perc = ($value / $time) * 100;
-				echo ContentArea::translate('Timer value'
+				$txt .= ContentArea::translate('Timer value'
 					, array($timer, $value, $perc)) . '<br/>';
 			}
 		}
-		echo ContentArea::translate('Timer total', array($time, $mem));
-		echo ('</table>');
-		echo ('</p></div>');
+		$txt .= ContentArea::translate('Timer total', array($time, $mem));
+		$txt .= '</p>';
+		OutputHandler::outputPar($txt, 'OWLtimers');
+
 		if (count(self::$warnings) > 0) {
-			echo ('<div class="OWLtimerWarnings"><hr/><em><u>' . ContentArea::translate('Timer warnings') . '</u></em><p>');
+
+			$txt = '<hr/><em><u>' . ContentArea::translate('Timer warnings') . '</u></em><p>';
 			foreach (self::$warnings as $warn) {
-			echo $warn . "<br/>";
-			echo ('</p></div>');
+				$txt .= $warn . "<br/>";
 			}
+			$txt .= '</p>';
+			OutputHandler::outputPar($txt, 'OWLtimerWarnings');
 		}
 
 	}

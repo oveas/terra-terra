@@ -3,14 +3,14 @@
  * \file
  * Define a class for config handling
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.confighandler.php,v 1.14 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.15 2011-05-30 17:00:19 oscar Exp $
  */
 
 /**
  * \ingroup OWL_SO_LAYER
  * This abstract class reads configution from file ort database, and fills and
  * reads the global datastructure with config items
- * \brief Configuration handler 
+ * \brief Configuration handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 20, 2008 -- O van Eijk -- initial version
  */
@@ -19,7 +19,7 @@ abstract class ConfigHandler
 
 	/**
 	 * Datahandler object for database access
-	 */	
+	 */
 	private static $dataset = null;
 
 	/**
@@ -31,7 +31,7 @@ abstract class ConfigHandler
 	 *  - group: Application name for which the config should be read, default 0
 	 *  - user: Application name for which the config should be read, default 0
 	 *  - force: Boolean that can force overwrite of protected values, default false
-	 * 
+	 *
 	 * The first call must always read from a file. On subsequent calls, if no filename is given,
 	 * the configuration is taken from the (owl_)config table
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -187,7 +187,7 @@ abstract class ConfigHandler
 		$_cache =& $GLOBALS['owl_cache']['cget'][$item];
 		$_c =& $GLOBALS['config']['values'];
 		$_h =& $GLOBALS['config']['hidden_values'];
-		
+
 		if (strpos ($item, '|') !== false) {
 			$item = explode ('|', $item);
 			foreach ($item as $_k => $_v) {
@@ -205,7 +205,7 @@ abstract class ConfigHandler
 
 		if (!isset ($_c)) {
 			if ($default === null) {
-				OWL::stat (CONFIG_NOVALUE, (is_array($item)?implode('|', $item):$item)); 
+				OWL::stat (CONFIG_NOVALUE, (is_array($item)?implode('|', $item):$item));
 				return (null);
 			} else {
 				return $default;
@@ -229,17 +229,12 @@ abstract class ConfigHandler
 	 */
 	public static function set ($_item, $_value)
 	{
-		if (isset ($GLOBALS['owl_cache']['cget'][$_item])) {
-			// Clean the cache
-			unset ($GLOBALS['owl_cache']['cget'][$_item]);
-		}
-
 		if (in_array($_item, $GLOBALS['config']['protected_values'])) {
 			OWL::stat(CONFIG_PROTECTED, $_item);
 			return;
 		}
 		self::_set($_item, $_value, array_key_exists($_item, $GLOBALS['config']['hidden_values']));
-		
+
 	}
 
 	/**
@@ -254,7 +249,15 @@ abstract class ConfigHandler
 		if ($_hide) {
 			$_value = owlCrypt($_value);
 		}
-		
+
+		// Make sure the cache is cleaned
+		if (array_key_exists('owl_cache', $GLOBALS)
+			&& array_key_exists('cget', $GLOBALS['owl_cache'])
+			&& array_key_exists($_item, $GLOBALS['owl_cache']['cget'])) {
+				unset ($GLOBALS['owl_cache']['cget'][$_item]);
+		}
+
+		$_resetItem = $_item; // Used for the quick'n'dirty overwrite at the end of this method....
 		if (strpos ($_item, '|') !== false) {
 			$_item = explode ('|', $_item);
 			$_pointer =& $GLOBALS['config']['values'];
@@ -264,7 +267,7 @@ abstract class ConfigHandler
 			foreach ($_item as $_k => $_v) {
 				if ($_k == (count ($_item)-1)) {
 					if ($_hide) {
-						$_hidden[$_v] = $_value; 
+						$_hidden[$_v] = $_value;
 						$_pointer[$_v] = $GLOBALS['config']['config']['hide_value'];
 					} else {
 						$_pointer[$_v] = $_value;

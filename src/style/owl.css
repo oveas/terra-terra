@@ -3,7 +3,7 @@
  * \file
  * Style sheet for OWL generated output
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.css,v 1.4 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: owl.css,v 1.5 2011-05-30 17:00:19 oscar Exp $
  */
 
 /*
@@ -16,6 +16,38 @@
 .stackdump {
 	color : #990044;
 	font-style : italic;
+}
+
+/*
+ * Message handling (stacked messages)
+ */
+.debugMessages, .infoMessages, .successMessages, .warningMessages, .errorMessages {
+	width : 60%;
+	border : 1px;
+	background-color : #def3dd;
+	font-family : Helvetica, sans-serif, fantasy;
+	font-size : 10pt;
+}
+
+.debugMessages {
+	color : #86a985;
+	font-style : italic;
+}
+.infoMessages {
+	color : #275324;
+}
+	
+.successMessages {
+	color : #43903f;
+}
+	
+.warningMessages {
+	background-color : #d7df77;
+}
+	
+.errorMessages {
+	font-weight : bold;
+	background-color : #be533f;
 }
 
 /*
