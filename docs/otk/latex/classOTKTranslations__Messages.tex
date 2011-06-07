@@ -1,0 +1,216 @@
+\section{OTKTranslations\_\-Messages Class Reference}
+\label{classOTKTranslations__Messages}\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}}
+
+
+Check message codes.  
+
+
+Inheritance diagram for OTKTranslations\_\-Messages:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classOTKTranslations__Messages}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf prepareTest} ()
+\item 
+{\bf performTest} ()
+\item 
+{\bf checkCodes} ()
+\item 
+{\bf cleanupTest} ()
+\item 
+{\bf getDetails} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf checkDirectory} (\$dir)
+\item 
+{\bf checkFile} (\$file)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$messages}
+\item 
+{\bf \$details}
+\item 
+{\bf \$returnCodes}
+\item 
+{\bf \$statusCodes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Check message codes. 
+
+Check all messages codes that are registered with Register::registerCode() but not in the message file \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Jun 7, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!OTKTranslations_Messages@{OTKTranslations\_\-Messages}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Messages::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKTranslations__Messages_a6462f7b6b0ea3720392a448a1dacfc42}
+Class constuctor. All testcases must be implemented. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a9aac459e4d579b75426c95718790e88f}.
+
+
+
+\subsection{Member Function Documentation}
+\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}!checkCodes@{checkCodes}}
+\index{checkCodes@{checkCodes}!OTKTranslations_Messages@{OTKTranslations\_\-Messages}}
+\subsubsection[{checkCodes}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Messages::checkCodes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKTranslations__Messages_acec7b5c3bcf6bfe1370b80803f0a5da7}
+
+
+Referenced by performTest().
+
+\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}!checkDirectory@{checkDirectory}}
+\index{checkDirectory@{checkDirectory}!OTKTranslations_Messages@{OTKTranslations\_\-Messages}}
+\subsubsection[{checkDirectory}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Messages::checkDirectory (
+\begin{DoxyParamCaption}
+\item[{\$}]{dir}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKTranslations__Messages_aefd506b7cf254d57d090da9389048562}
+
+
+References checkFile().
+
+
+
+Referenced by performTest().
+
+\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}!checkFile@{checkFile}}
+\index{checkFile@{checkFile}!OTKTranslations_Messages@{OTKTranslations\_\-Messages}}
+\subsubsection[{checkFile}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Messages::checkFile (
+\begin{DoxyParamCaption}
+\item[{\$}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKTranslations__Messages_a75b0541014fa66fd205410480f87a864}
+
+
+Referenced by checkDirectory().
+
+\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}!cleanupTest@{cleanupTest}}
+\index{cleanupTest@{cleanupTest}!OTKTranslations_Messages@{OTKTranslations\_\-Messages}}
+\subsubsection[{cleanupTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Messages::cleanupTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKTranslations__Messages_a3cf1534e4d2a4294c95562ff62ccf367}
+Cleanup the testenvironment, e.g. drop temporary tables \begin{DoxyReturn}{Returns}
+OTK\_\-RESULT\_\-SUCCESS on success, OTK\_\-RESULT\_\-NONE when this testcase needs no cleanup or an error message when failed 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a71e9fd70c840ce0b535146f566e9b623}.
+
+\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}!getDetails@{getDetails}}
+\index{getDetails@{getDetails}!OTKTranslations_Messages@{OTKTranslations\_\-Messages}}
+\subsubsection[{getDetails}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Messages::getDetails (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKTranslations__Messages_a74e7ec342bfb1c0130921a1d5f282dbf}
+Gather all testdetails. During the tests, the testcase can collect all additional information in an internal datastructure, e.g. further details or explanations concerning failed tests. After finishing the testcase (and after \doxyref{cleanupTest()}{p.}{classOTKTranslations__Messages_a3cf1534e4d2a4294c95562ff62ccf367}), the information will be retrieved. \begin{DoxyReturn}{Returns}
+Tekstblock, can contain HTML. Null and an empty textstring are allowed if no details are available. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a1abfe816e79d30871ce314dedbdf5f9d}.
+
+\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}!performTest@{performTest}}
+\index{performTest@{performTest}!OTKTranslations_Messages@{OTKTranslations\_\-Messages}}
+\subsubsection[{performTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Messages::performTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKTranslations__Messages_a2b2de47926411b5d79aa4daf5d36570b}
+Perform the test(s) for this testcase. Multiple tests can be performed, each writing a single message in an internal array explaining what the result was ('step X completed succefully', an error message in case of failures etc). Additional (private) methods can be created for each step. \begin{DoxyReturn}{Returns}
+A 2 dimensional array with messages for all steps that were performed in this testcase. Each step in the testcase has exactly 1 element in the array, being an array with 2 elements: first is the code as defined in \doxyref{Test result code}{p.}{group__Test__Results}, the second is an human readable message. null when the step was skipped, e.g. 
+\begin{DoxyCode}
+        array(
+                 array(OTK_RESULT_SUCCESS, 'Step 1 completed successfully')
+                ,array(OTK_RESULT_SUCCESS, 'Step 2 completed successfully')
+                ,array(OTK_RESULT_FAIL, 'Step 3 failed with code XX')
+                ,array(OTK_RESULT_SKIPPED, 'Step 4 could not execute because step
+       3 failed')
+        )
+\end{DoxyCode}
+ 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a5fcf5fd51066de41206fe02c67139c76}.
+
+
+
+References checkCodes(), and checkDirectory().
+
+\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}!prepareTest@{prepareTest}}
+\index{prepareTest@{prepareTest}!OTKTranslations_Messages@{OTKTranslations\_\-Messages}}
+\subsubsection[{prepareTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Messages::prepareTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKTranslations__Messages_a8695218421416f2836f768df5213a17f}
+Prepare a testcase, e.g. create some database tables that are required for this testcase. \begin{DoxyReturn}{Returns}
+OTK\_\-RESULT\_\-SUCCESS on success, OTK\_\-RESULT\_\-NONE when this testcase needs no preparation or an error message when failed 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_ae2fd5738550a83f15afe1cbc5365f3e8}.
+
+
+
+\subsection{Member Data Documentation}
+\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}!\$details@{\$details}}
+\index{\$details@{\$details}!OTKTranslations_Messages@{OTKTranslations\_\-Messages}}
+\subsubsection[{\$details}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Messages::\$details\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKTranslations__Messages_a4bf30089295a5ce53241c42b8a1ed5e4}
+\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}!\$messages@{\$messages}}
+\index{\$messages@{\$messages}!OTKTranslations_Messages@{OTKTranslations\_\-Messages}}
+\subsubsection[{\$messages}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Messages::\$messages\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKTranslations__Messages_adc31b8f2665e3d0980667ed302df7d85}
+\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}!\$returnCodes@{\$returnCodes}}
+\index{\$returnCodes@{\$returnCodes}!OTKTranslations_Messages@{OTKTranslations\_\-Messages}}
+\subsubsection[{\$returnCodes}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Messages::\$returnCodes\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKTranslations__Messages_aad3e9e9b4ec93156b2bcf7cdd20ecb52}
+\index{OTKTranslations\_\-Messages@{OTKTranslations\_\-Messages}!\$statusCodes@{\$statusCodes}}
+\index{\$statusCodes@{\$statusCodes}!OTKTranslations_Messages@{OTKTranslations\_\-Messages}}
+\subsubsection[{\$statusCodes}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Messages::\$statusCodes\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKTranslations__Messages_a07eaa3a3117003ab68390e8b2a28aedf}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/owltestkit/testsets/translations/{\bf case.messages.php}\end{DoxyCompactItemize}

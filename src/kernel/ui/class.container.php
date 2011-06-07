@@ -3,7 +3,7 @@
  * \file
  * This file defines a container element
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.container.php,v 1.7 2011-05-30 17:00:19 oscar Exp $
+ * \version $Id: class.container.php,v 1.8 2011-06-07 14:06:56 oscar Exp $
  */
 
 OWLloader::getClass('container', OWL_PLUGINS . '/containers');
@@ -22,6 +22,11 @@ class Container extends BaseElement
 	 * Type specific container object (plugin)
 	 */
 	private $containerObject;
+
+	/**
+	 * Container type
+	 */
+	private $containerType;
 
 	/**
 	 * Class constructor;
@@ -49,6 +54,23 @@ class Container extends BaseElement
 		}
 		$this->containerObject->setAttributes($_type_attribs);
 		$this->setContent($_content);
+		$this->containerType = $_type;
+	}
+
+	/**
+	 * Magic method to call container specific methods
+	 * \param[in] $method Method name that should be called
+	 * \param[in] $arguments Arguments for the method
+	 * \return Return value of the method called, or the severity level on an error
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function __call ($method, $arguments = null)
+	{
+		if (!method_exists($this->containerObject, $method)) {
+			$this->setStatus(CONTAINER_IVMETHOD, array($this->containerType));
+			return $this->severity;
+		}
+		return call_user_func_array(array($this->containerObject, $method), $arguments);
 	}
 
 	/**
@@ -85,7 +107,7 @@ class Container extends BaseElement
 	{
 		$addContainer = 'add' . ucfirst($type);
 		if (!method_exists($this->containerObject, $addContainer)) {
-			$this->setStatus (CONTAINER_IVSUBCONTNR, array($_type, getclass($this->containerObject)));
+			$this->setStatus (CONTAINER_IVSUBCONTNR, array($type, get_class($this->containerObject)));
 			return ($this->severity);
 		}
 		return $this->containerObject->$addContainer ($_content, $_attribs, $_type_attribs);
@@ -101,11 +123,12 @@ class Container extends BaseElement
 		$_htmlCode = '<' . $this->containerObject->getType();
 		$_htmlCode .= $this->getAttributes();
 		$_htmlCode .= $this->containerObject->showElement();
-		$_htmlCode .= ">\n";
+		$_htmlCode .= '>' . $this->containerObject->getNestedType() . "\n";
 		if (method_exists($this->containerObject, 'getContent')) {
 			$_htmlCode .= $this->containerObject->getContent();
 		}
 		$_htmlCode .= $this->getContent();
+		$_htmlCode .= $this->containerObject->getNestedType(true);
 		$_htmlCode .= '</' . $this->containerObject->getType() . ">\n";
 		return $_htmlCode;
 	}
@@ -125,6 +148,7 @@ Register::registerClass ('Container');
 Register::setSeverity (OWL_BUG);
 Register::registerCode ('CONTAINER_IVCLASSNAME');
 Register::registerCode ('CONTAINER_IVSUBCONTNR');
+Register::registerCode ('CONTAINER_IVMETHOD');
 
 Register::setSeverity (OWL_ERROR);
 Register::registerCode ('CONTAINER_IVTYPE');

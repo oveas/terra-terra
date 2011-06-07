@@ -1,0 +1,93 @@
+\section{OTKTranslations Class Reference}
+\label{classOTKTranslations}\index{OTKTranslations@{OTKTranslations}}
+
+
+Translation testset.  
+
+
+Inheritance diagram for OTKTranslations:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classOTKTranslations}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf loadTestcases} (\$location)
+\item 
+{\bf performTests} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf getDescription} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Translation testset. 
+
+This class defines the testsets for the translation checks. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Jun 7, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{OTKTranslations@{OTKTranslations}!getDescription@{getDescription}}
+\index{getDescription@{getDescription}!OTKTranslations@{OTKTranslations}}
+\subsubsection[{getDescription}]{\setlength{\rightskip}{0pt plus 5cm}static OTKTranslations::getDescription (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classOTKTranslations_a79ba280f3d7cd932c872e80d87bb9d93}
+This is the only required method that should be implemented by Testset classes; it shows a description of the testset. \begin{DoxyNote}{Note}
+This method must be reimplemented, but it cannot be declared abstract since it is a static method. Since it is static, it does belong to the class itself, meaning this method here will never be called; it is included just for documentation purposes. 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A textstring (HTML allowed) describing the testset 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Reimplemented from {\bf TestSet} \doxyref{}{p.}{classTestSet_ab5b54e632b3de37daaceea3d922658bf}.
+
+\index{OTKTranslations@{OTKTranslations}!loadTestcases@{loadTestcases}}
+\index{loadTestcases@{loadTestcases}!OTKTranslations@{OTKTranslations}}
+\subsubsection[{loadTestcases}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::loadTestcases (
+\begin{DoxyParamCaption}
+\item[{\$}]{location}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classTestSet_a81918b70986d21e7406d9dbec9e3d801}
+Scan the testset directory for all files holeing either testcases ({\itshape case.$<$name$>$.php\/}) or helper functions or class ({\itshape \doxyref{helper.php}{p.}{helper_8php}\/}). 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$location} & Directory to scan \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\index{OTKTranslations@{OTKTranslations}!performTests@{performTests}}
+\index{performTests@{performTests}!OTKTranslations@{OTKTranslations}}
+\subsubsection[{performTests}]{\setlength{\rightskip}{0pt plus 5cm}TestSet::performTests (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classTestSet_a1885d85f93b94cff6a04a038a676c63e}
+Go through all selected testcases and execute them \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References TestSet::doTest(), and TestSet::showTestResults().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/owltestkit/testsets/translations/{\bf testset.php}\end{DoxyCompactItemize}

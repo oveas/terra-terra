@@ -96,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><pre class="fragment">&lt;?php
 <span class="comment">/*</span>
 <span class="comment"> * This class shows how to add a login form to the document.</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> * In this example, a new form is created with a username field, a password field and a</span>
 <span class="comment"> * submit button.</span>
 <span class="comment"> * A table is created with one row for each field, and the table is set as content for a fieldset.</span>
@@ -166,7 +166,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                 $_liTable = <span class="keyword">new</span> Table(array(<span class="stringliteral">&#39;style&#39;</span>=&gt;<span class="stringliteral">&#39;border: 0px; width: 100%;&#39;</span>));
 
                 <span class="comment">// Add a new row for the Username field</span>
-                $_rowU = $_liTable-&gt;addRow();
+                $_rowU = $_liTable-&gt;addContainer(<span class="stringliteral">&#39;row&#39;</span>);
                 <span class="comment">// Add the Username field to the form</span>
                 $_usrFld = $_frm-&gt;addField(<span class="stringliteral">&#39;text&#39;</span>, <span class="stringliteral">&#39;usr&#39;</span>, <span class="stringliteral">&#39;&#39;</span>, array(<span class="stringliteral">&#39;size&#39;</span> =&gt; 20));
                 <span class="comment">// Get the translation for the label</span>
@@ -174,26 +174,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                 <span class="comment">// Create a &lt;label&gt; container for the username field with the translation as content</span>
                 $_usrContnr = <span class="keyword">new</span> <a name="_a6"></a><a class="code" href="classContainer.html" title="Container.">Container</a>(<span class="stringliteral">&#39;label&#39;</span>, $_usrLabel, array(), array(<span class="stringliteral">&#39;for&#39;</span> =&gt; &amp;$_usrFld));
                 <span class="comment">// Add a new cell to the tablerow</span>
-                $_usrCell = $_rowU-&gt;addCell();
+                $_usrCell = $_rowU-&gt;addContainer(<span class="stringliteral">&#39;cell&#39;</span>);
                 <span class="comment">// Set the &lt;label&gt; containter as content for the new cell</span>
+                <span class="comment">// Can be done in one statemenr as well:</span>
+                <span class="comment">// $_usrCell = $_rowU-&gt;addContainer(&#39;cell&#39;, $_usrContnr);</span>
+                <span class="comment">// This will be done with the passwoed field</span>
                 $_usrCell-&gt;setContent($_usrContnr);
-                <span class="comment">// Add a new cell and set the form field as container</span>
-                $_rowU-&gt;addCell($_frm-&gt;showField(<span class="stringliteral">&#39;usr&#39;</span>));
+                <span class="comment">// Add a new cell for the formfield</span>
+                $_rowU-&gt;addContainer(<span class="stringliteral">&#39;cell&#39;</span>, $_frm-&gt;showField(<span class="stringliteral">&#39;usr&#39;</span>));
+                <span class="comment">// Set the formfield as content</span>
+                $_usrCell-&gt;setContent($_frm-&gt;showField(<span class="stringliteral">&#39;usr&#39;</span>));
+
+                <span class="comment">/*</span>
+<span class="comment">                 * Alternatively you can use the addFormRow() helper function:</span>
+<span class="comment">                 */</span>
+<span class="comment">//              addFormRow($_liTable, $_frm, &#39;text&#39;, &#39;usr&#39;, &#39;&#39;, array(&#39;size&#39;=&gt; 20, $this-&gt;trn(&#39;Username&#39;), array());</span>
 
                 <span class="comment">// Same story for the password</span>
-                $_rowP = $_liTable-&gt;addRow();
+                $_rowP = $_liTable-&gt;addContainer(<span class="stringliteral">&#39;row&#39;</span>);
                 $_pwdFld = $_frm-&gt;addField(<span class="stringliteral">&#39;password&#39;</span>, <span class="stringliteral">&#39;pwd&#39;</span>, <span class="stringliteral">&#39;&#39;</span>, array(<span class="stringliteral">&#39;size&#39;</span> =&gt; 15));
                 $_pwdLabel = $this-&gt;<a class="code" href="classContentArea.html#a0914dde98d5a26bfba3af5495f54986e">trn</a>(<span class="stringliteral">&#39;Password&#39;</span>);
                 $_pwdContnr = <span class="keyword">new</span> <a class="code" href="classContainer.html" title="Container.">Container</a>(<span class="stringliteral">&#39;label&#39;</span>, $_pwdLabel, array(), array(<span class="stringliteral">&#39;for&#39;</span> =&gt; &amp;$_pwdFld));
-                $_pwdCell = $_rowP-&gt;addCell();
-                $_pwdCell-&gt;setContent($_pwdContnr);
-                $_rowP-&gt;addCell($_frm-&gt;showField(<span class="stringliteral">&#39;pwd&#39;</span>));
+                $_pwdCell = $_rowP-&gt;addContainer(<span class="stringliteral">&#39;cell&#39;</span>, $_pwdContnr); <span class="comment">// in one step this time...</span>
+                $_rowP-&gt;addContainer(<span class="stringliteral">&#39;cell&#39;</span>, $_frm-&gt;showField(<span class="stringliteral">&#39;pwd&#39;</span>));
 
                 <span class="comment">// And a bit simpler for the submit button</span>
-                $_rowS = $_liTable-&gt;addRow();
+                $_rowS = $_liTable-&gt;addContainer(<span class="stringliteral">&#39;row&#39;</span>);
                 $_frm-&gt;addField(<span class="stringliteral">&#39;submit&#39;</span>, <span class="stringliteral">&#39;act&#39;</span>, $this-&gt;<a class="code" href="classContentArea.html#a0914dde98d5a26bfba3af5495f54986e">trn</a>(<span class="stringliteral">&#39;Login&#39;</span>));
-                $_rowS-&gt;addCell(
-                          $_frm-&gt;showField(<span class="stringliteral">&#39;act&#39;</span>)
+                $_rowS-&gt;addContainer(
+                          <span class="stringliteral">&#39;cell&#39;</span>
+                        , $_frm-&gt;showField(<span class="stringliteral">&#39;act&#39;</span>)
                         , array(<span class="stringliteral">&#39;colspan&#39;</span>=&gt;2
                         , <span class="stringliteral">&#39;style&#39;</span>=&gt;<span class="stringliteral">&#39;text-align:center;&#39;</span>)
                 );
@@ -209,7 +219,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                 <span class="comment">// Add the fieldset to the form</span>
                 $_frm-&gt;<a name="a7"></a><a class="code" href="classBaseElement.html#acce6358c518156aae1c35e273f1a8d75">addToContent</a>($_fldSet);
 
-                <span class="comment">// Now create the DIV, add the form </span>
+                <span class="comment">// Now create the DIV, add the form</span>
                 $this-&gt;contentObject = <span class="keyword">new</span> <a class="code" href="classContainer.html" title="Container.">Container</a>(<span class="stringliteral">&#39;div&#39;</span>, <span class="stringliteral">&#39;&#39;</span>, array(<span class="stringliteral">&#39;class&#39;</span> =&gt; <span class="stringliteral">&#39;loginArea&#39;</span>));
                 $this-&gt;contentObject-&gt;setContent($_frm);
         }
@@ -235,7 +245,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon May 30 2011 18:54:52 for OWL-PHP by
+    <li class="footer">Generated on Tue Jun 7 2011 16:01:03 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

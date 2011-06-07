@@ -3,13 +3,13 @@
  * \file
  * This file defines the Rights class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.rights.php,v 1.6 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.rights.php,v 1.7 2011-06-07 14:06:56 oscar Exp $
  */
 
 /**
  * \ingroup OWL_BO_LAYER
- * This class handles the Rights bitmaps 
- * \brief the OWL-PHP rights object 
+ * This class handles the Rights bitmaps
+ * \brief the OWL-PHP rights object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 14, 2011 -- O van Eijk -- initial version
  */

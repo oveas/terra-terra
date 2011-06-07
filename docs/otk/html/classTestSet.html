@@ -110,7 +110,8 @@ Inheritance diagram for TestSet:</div>
  <div class="center">
   <img src="classTestSet.png" usemap="#TestSet_map" alt=""/>
   <map id="TestSet_map" name="TestSet_map">
-<area href="classOTKHdata.html" title="HDataHandler testset." alt="OTKHdata" shape="rect" coords="0,56,70,80"/>
+<area href="classOTKHdata.html" title="HDataHandler testset." alt="OTKHdata" shape="rect" coords="0,56,105,80"/>
+<area href="classOTKTranslations.html" title="Translation testset." alt="OTKTranslations" shape="rect" coords="115,56,220,80"/>
 </map>
  </div></div>
 
@@ -142,9 +143,9 @@ Private Attributes</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Testset. </p>
-<p>Baseclass that defines the testsets. Classes that derive from this baseclass must have the name <em><a class="el" href="classOTK.html" title="OTK mainclass.">OTK</a>&lt;Location&gt;</em>, where 'location' is the name of the subdirectory in OTK_TESTSETS. The filename must be <em><a class="el" href="testset_8php.html">testset.php</a></em>.</p>
+<p>Baseclass that defines the testsets. Classes that derive from this baseclass must have the name <em><a class="el" href="classOTK.html" title="OTK mainclass.">OTK</a>&lt;Location&gt;</em>, where 'location' is the name of the subdirectory in OTK_TESTSETS. The filename must be <em>testset.php</em>.</p>
 <p>The classes only need to reimplement the static <a class="el" href="classTestSet.html#ab5b54e632b3de37daaceea3d922658bf">getDescription()</a> method, all other required methods are in this baseclass.</p>
-<p>The class collects all files belonging to a testset that contain testcases and helper functions. All files must be in the same directory as <em><a class="el" href="testset_8php.html">testset.php</a></em>.</p>
+<p>The class collects all files belonging to a testset that contain testcases and helper functions. All files must be in the same directory as <em>testset.php</em>.</p>
 <p>Files that contain testcases must have the name <em>case.&lt;name&gt;.php</em>. Refer to the interface <a class="el" href="interfaceTestCase.html" title="Testcase.">TestCase</a> for more information.</p>
 <p>Optionally, testset directories can contain a file with the name <em><a class="el" href="helper_8php.html">helper.php</a></em>. This can be a file containing one or more classes or functions. That file will be included but not called; it is up to the testcases to make the proper calls to these files. In order prevent duplicate class or function names, it is a good practice to include the name of the testset in in all names. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
@@ -225,7 +226,7 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A textstring (HTML allowed) describing the testset </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classOTKHdata.html#a483426fa42c2f7c1718b207b03046a0f">OTKHdata</a>.</p>
+<p>Reimplemented in <a class="el" href="classOTKHdata.html#a483426fa42c2f7c1718b207b03046a0f">OTKHdata</a>, and <a class="el" href="classOTKTranslations.html#a79ba280f3d7cd932c872e80d87bb9d93">OTKTranslations</a>.</p>
 
 </div>
 </div>
@@ -444,7 +445,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Fri May 27 2011 15:10:40 for OWLTestKit by
+    <li class="footer">Generated on Tue Jun 7 2011 16:02:10 for OWLTestKit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

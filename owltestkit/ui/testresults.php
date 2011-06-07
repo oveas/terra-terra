@@ -4,7 +4,7 @@
  * \ingroup OTK_UI_LAYER
  * This file creates the area to show the testresults
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: testresults.php,v 1.2 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: testresults.php,v 1.3 2011-06-07 14:06:56 oscar Exp $
  */
 /**
  * \ingroup ICV_UI_LAYER
@@ -19,7 +19,7 @@ class TestresultsArea extends ContentArea
 
 	/**
 	 * Show all results for a given testset
-	 * \param[in] $_arg Array with all results
+	 * \param[in] $arg Array with all results
 	 */
 	public function loadArea($arg = null)
 	{

@@ -46,7 +46,10 @@ var NAVTREE =
           [ "OTKHdata_First", "classOTKHdata__First.html", null ],
           [ "OTKHdata_Last", "classOTKHdata__Last.html", null ],
           [ "OTKHdata_Nodehandling", "classOTKHdata__Nodehandling.html", null ],
-          [ "OTKHdata", "classOTKHdata.html", null ]
+          [ "OTKHdata", "classOTKHdata.html", null ],
+          [ "OTKTranslations_Labels", "classOTKTranslations__Labels.html", null ],
+          [ "OTKTranslations_Messages", "classOTKTranslations__Messages.html", null ],
+          [ "OTKTranslations", "classOTKTranslations.html", null ]
         ] ],
         [ "Files", "group__OTK__TESTSETS.html", [
           [ "helper.php", "helper_8php.html", null ]
@@ -62,6 +65,9 @@ var NAVTREE =
       [ "OTKHdata_Last", "classOTKHdata__Last.html", null ],
       [ "OTKHdata_Nodehandling", "classOTKHdata__Nodehandling.html", null ],
       [ "OTKHelpers", "classOTKHelpers.html", null ],
+      [ "OTKTranslations", "classOTKTranslations.html", null ],
+      [ "OTKTranslations_Labels", "classOTKTranslations__Labels.html", null ],
+      [ "OTKTranslations_Messages", "classOTKTranslations__Messages.html", null ],
       [ "OTKUser", "classOTKUser.html", null ],
       [ "TestCase", "interfaceTestCase.html", null ],
       [ "TestKit", "classTestKit.html", null ],
@@ -78,12 +84,15 @@ var NAVTREE =
       [ "TestCase", "interfaceTestCase.html", [
         [ "OTKHdata_First", "classOTKHdata__First.html", null ],
         [ "OTKHdata_Last", "classOTKHdata__Last.html", null ],
-        [ "OTKHdata_Nodehandling", "classOTKHdata__Nodehandling.html", null ]
+        [ "OTKHdata_Nodehandling", "classOTKHdata__Nodehandling.html", null ],
+        [ "OTKTranslations_Labels", "classOTKTranslations__Labels.html", null ],
+        [ "OTKTranslations_Messages", "classOTKTranslations__Messages.html", null ]
       ] ],
       [ "TestKit", "classTestKit.html", null ],
       [ "TestresultsArea", "classTestresultsArea.html", null ],
       [ "TestSet", "classTestSet.html", [
-        [ "OTKHdata", "classOTKHdata.html", null ]
+        [ "OTKHdata", "classOTKHdata.html", null ],
+        [ "OTKTranslations", "classOTKTranslations.html", null ]
       ] ],
       [ "TestsetsArea", "classTestsetsArea.html", null ]
     ] ],
@@ -104,7 +113,10 @@ var NAVTREE =
       [ "/home/oscar/projects/owl-php/owltestkit/testsets/hdata/case.last.php", "case_8last_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/testsets/hdata/case.nodehandling.php", "case_8nodehandling_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/testsets/hdata/helper.php", "helper_8php.html", null ],
-      [ "/home/oscar/projects/owl-php/owltestkit/testsets/hdata/testset.php", "testset_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/owltestkit/testsets/hdata/testset.php", "hdata_2testset_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/owltestkit/testsets/translations/case.labels.php", "case_8labels_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/owltestkit/testsets/translations/case.messages.php", "case_8messages_8php.html", null ],
+      [ "/home/oscar/projects/owl-php/owltestkit/testsets/translations/testset.php", "translations_2testset_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/ui/mainmenu.php", "mainmenu_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/ui/mainpage.php", "mainpage_8php.html", null ],
       [ "/home/oscar/projects/owl-php/owltestkit/ui/testresults.php", "testresults_8php.html", null ],

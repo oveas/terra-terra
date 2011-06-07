@@ -8,7 +8,7 @@ List \doxyref{Container}{p.}{classContainer}.
 Inheritance diagram for ContainerListPlugin:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=4.000000cm]{classContainerListPlugin}
+\includegraphics[height=5.000000cm]{classContainerListPlugin}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -25,6 +25,8 @@ Inheritance diagram for ContainerListPlugin:\begin{figure}[H]
 {\bf getContent} ()
 \item 
 {\bf getType} ()
+\item 
+{\bf getNestedType} (\$close=false)
 \item 
 {\bf setId} (\$\_\-value)
 \item 
@@ -88,6 +90,8 @@ Inheritance diagram for ContainerListPlugin:\begin{figure}[H]
 \item 
 {\bf \$type}
 \item 
+{\bf \$nested\_\-type}
+\item 
 {\bf \$class} = ''
 \item 
 {\bf \$style} = ''
@@ -135,6 +139,10 @@ Reimplemented from {\bf ContainerPlugin} \doxyref{}{p.}{classContainerPlugin_a20
 
 
 
+Reimplemented in {\bf ContainerMenuPlugin} \doxyref{}{p.}{classContainerMenuPlugin_aff395de652f94f93ad844c01684246e9}.
+
+
+
 \subsection{Member Function Documentation}
 \index{ContainerListPlugin@{ContainerListPlugin}!addItem@{addItem}}
 \index{addItem@{addItem}!ContainerListPlugin@{ContainerListPlugin}}
@@ -160,6 +168,10 @@ Pointer to the item object
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
+
+
+Reimplemented in {\bf ContainerMenuPlugin} \doxyref{}{p.}{classContainerMenuPlugin_aba54f871852812552aebbd595b9c5d37}.
+
 \index{ContainerListPlugin@{ContainerListPlugin}!addToContent@{addToContent}}
 \index{addToContent@{addToContent}!ContainerListPlugin@{ContainerListPlugin}}
 \subsubsection[{addToContent}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::addToContent (
@@ -284,6 +296,10 @@ Oscar van Eijk, Oveas Functionality Provider
 
 Reimplemented from {\bf BaseElement} \doxyref{}{p.}{classBaseElement_af8c86b93bcdcfbc415bf96c622dc5516}.
 
+
+
+Reimplemented in {\bf ContainerMenuPlugin} \doxyref{}{p.}{classContainerMenuPlugin_ad570379a4a963b0d36cf1b35590c8cce}.
+
 \index{ContainerListPlugin@{ContainerListPlugin}!getId@{getId}}
 \index{getId@{getId}!ContainerListPlugin@{ContainerListPlugin}}
 \subsubsection[{getId}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::getId (
@@ -318,6 +334,24 @@ Oscar van Eijk, Oveas Functionality Provider
 
 References \_\-OWL::signal().
 
+\index{ContainerListPlugin@{ContainerListPlugin}!getNestedType@{getNestedType}}
+\index{getNestedType@{getNestedType}!ContainerListPlugin@{ContainerListPlugin}}
+\subsubsection[{getNestedType}]{\setlength{\rightskip}{0pt plus 5cm}ContainerPlugin::getNestedType (
+\begin{DoxyParamCaption}
+\item[{\$}]{close = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classContainerPlugin_ad36ff2103d78c5f999029e7e9c0ae83a}
+Return the complete HTML tag for a nested type, or an empty string if the current container doesn't have one 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$close} & Boolean that's set to true when the closing tag must be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Full HTML tag 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{ContainerListPlugin@{ContainerListPlugin}!getSeverity@{getSeverity}}
 \index{getSeverity@{getSeverity}!ContainerListPlugin@{ContainerListPlugin}}
 \subsubsection[{getSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getSeverity (
@@ -653,6 +687,10 @@ Set the listtype by changing the type property
 \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
+
+
+Reimplemented in {\bf ContainerMenuPlugin} \doxyref{}{p.}{classContainerMenuPlugin_ae241e25f7cd4adfee2f9dae122c788c0}.
+
 \index{ContainerListPlugin@{ContainerListPlugin}!setStatus@{setStatus}}
 \index{setStatus@{setStatus}!ContainerListPlugin@{ContainerListPlugin}}
 \subsubsection[{setStatus}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::setStatus (
@@ -677,7 +715,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Container::addContainer(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), DbHandler::resetTable(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
+Referenced by Container::\_\-\_\-call(), DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Container::addContainer(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), DbHandler::resetTable(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
 
 \index{ContainerListPlugin@{ContainerListPlugin}!setStyle@{setStyle}}
 \index{setStyle@{setStyle}!ContainerListPlugin@{ContainerListPlugin}}
@@ -710,6 +748,10 @@ Oscar van Eijk, Oveas Functionality Provider
 
 
 Reimplemented from {\bf BaseElement} \doxyref{}{p.}{classBaseElement_a63634d81fad745e3b72cda0100afebea}.
+
+
+
+Reimplemented in {\bf ContainerMenuPlugin} \doxyref{}{p.}{classContainerMenuPlugin_a69cdc83b0bfdc370db69e103193d30db}.
 
 \index{ContainerListPlugin@{ContainerListPlugin}!signal@{signal}}
 \index{signal@{signal}!ContainerListPlugin@{ContainerListPlugin}}
@@ -839,14 +881,21 @@ Referenced by Form::setFieldEvents().
 Element ID \index{ContainerListPlugin@{ContainerListPlugin}!\$items@{\$items}}
 \index{\$items@{\$items}!ContainerListPlugin@{ContainerListPlugin}}
 \subsubsection[{\$items}]{\setlength{\rightskip}{0pt plus 5cm}ContainerListPlugin::\$items\hspace{0.3cm}{\ttfamily  [private]}}\label{classContainerListPlugin_a2345b71486f05482dc4884643cb93a35}
-Array with pointers to the item objects \index{ContainerListPlugin@{ContainerListPlugin}!\$name@{\$name}}
+Array with pointers to the item objects 
+
+Reimplemented in {\bf ContainerMenuPlugin} \doxyref{}{p.}{classContainerMenuPlugin_ab8bb59d712eaa7e642a06d0903491f3c}.
+
+\index{ContainerListPlugin@{ContainerListPlugin}!\$name@{\$name}}
 \index{\$name@{\$name}!ContainerListPlugin@{ContainerListPlugin}}
 \subsubsection[{\$name}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$name = ''\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classBaseElement_a30b8cff187a9de659a70daf287d66f45}
 Name of the element 
 
 Referenced by Form::addField(), and Form::showField().
 
-\index{ContainerListPlugin@{ContainerListPlugin}!\$severity@{\$severity}}
+\index{ContainerListPlugin@{ContainerListPlugin}!\$nested\_\-type@{\$nested\_\-type}}
+\index{\$nested\_\-type@{\$nested\_\-type}!ContainerListPlugin@{ContainerListPlugin}}
+\subsubsection[{\$nested\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}ContainerPlugin::\$nested\_\-type\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classContainerPlugin_a39ec7e2dc8e8e3f650dafd466ab81f49}
+Optional nested type \index{ContainerListPlugin@{ContainerListPlugin}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!ContainerListPlugin@{ContainerListPlugin}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
 Severity level of the current object status 

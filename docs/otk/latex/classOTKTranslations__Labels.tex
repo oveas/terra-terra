@@ -1,0 +1,198 @@
+\section{OTKTranslations\_\-Labels Class Reference}
+\label{classOTKTranslations__Labels}\index{OTKTranslations\_\-Labels@{OTKTranslations\_\-Labels}}
+
+
+Check labels.  
+
+
+Inheritance diagram for OTKTranslations\_\-Labels:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classOTKTranslations__Labels}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf prepareTest} ()
+\item 
+{\bf performTest} ()
+\item 
+{\bf cleanupTest} ()
+\item 
+{\bf getDetails} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf checkDirectory} (\$dir)
+\item 
+{\bf checkFile} (\$file)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$labels}
+\item 
+{\bf \$details}
+\item 
+{\bf \$returnCodes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Check labels. 
+
+Check all labels that are called for translation but not in the label file \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Jun 7, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{OTKTranslations\_\-Labels@{OTKTranslations\_\-Labels}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!OTKTranslations_Labels@{OTKTranslations\_\-Labels}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Labels::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKTranslations__Labels_afd405b061305a8eff86234bbf1816cc3}
+Class constuctor. All testcases must be implemented. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a9aac459e4d579b75426c95718790e88f}.
+
+
+
+\subsection{Member Function Documentation}
+\index{OTKTranslations\_\-Labels@{OTKTranslations\_\-Labels}!checkDirectory@{checkDirectory}}
+\index{checkDirectory@{checkDirectory}!OTKTranslations_Labels@{OTKTranslations\_\-Labels}}
+\subsubsection[{checkDirectory}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Labels::checkDirectory (
+\begin{DoxyParamCaption}
+\item[{\$}]{dir}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKTranslations__Labels_ade4ec177d3e35268c04d7ca5aaaa8820}
+
+
+References checkFile().
+
+
+
+Referenced by performTest().
+
+\index{OTKTranslations\_\-Labels@{OTKTranslations\_\-Labels}!checkFile@{checkFile}}
+\index{checkFile@{checkFile}!OTKTranslations_Labels@{OTKTranslations\_\-Labels}}
+\subsubsection[{checkFile}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Labels::checkFile (
+\begin{DoxyParamCaption}
+\item[{\$}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKTranslations__Labels_a1214091d1f3754ee9b610fec3b423e03}
+
+
+Referenced by checkDirectory().
+
+\index{OTKTranslations\_\-Labels@{OTKTranslations\_\-Labels}!cleanupTest@{cleanupTest}}
+\index{cleanupTest@{cleanupTest}!OTKTranslations_Labels@{OTKTranslations\_\-Labels}}
+\subsubsection[{cleanupTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Labels::cleanupTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKTranslations__Labels_ac691c68fa8a35d6e5685fd04b1d14a5b}
+Cleanup the testenvironment, e.g. drop temporary tables \begin{DoxyReturn}{Returns}
+OTK\_\-RESULT\_\-SUCCESS on success, OTK\_\-RESULT\_\-NONE when this testcase needs no cleanup or an error message when failed 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a71e9fd70c840ce0b535146f566e9b623}.
+
+\index{OTKTranslations\_\-Labels@{OTKTranslations\_\-Labels}!getDetails@{getDetails}}
+\index{getDetails@{getDetails}!OTKTranslations_Labels@{OTKTranslations\_\-Labels}}
+\subsubsection[{getDetails}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Labels::getDetails (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKTranslations__Labels_ae4a004a59e68a4a9321d56d1a594aea3}
+Gather all testdetails. During the tests, the testcase can collect all additional information in an internal datastructure, e.g. further details or explanations concerning failed tests. After finishing the testcase (and after \doxyref{cleanupTest()}{p.}{classOTKTranslations__Labels_ac691c68fa8a35d6e5685fd04b1d14a5b}), the information will be retrieved. \begin{DoxyReturn}{Returns}
+Tekstblock, can contain HTML. Null and an empty textstring are allowed if no details are available. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a1abfe816e79d30871ce314dedbdf5f9d}.
+
+\index{OTKTranslations\_\-Labels@{OTKTranslations\_\-Labels}!performTest@{performTest}}
+\index{performTest@{performTest}!OTKTranslations_Labels@{OTKTranslations\_\-Labels}}
+\subsubsection[{performTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Labels::performTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKTranslations__Labels_abf394fe332bbdc9dc38b28d33b88637c}
+Perform the test(s) for this testcase. Multiple tests can be performed, each writing a single message in an internal array explaining what the result was ('step X completed succefully', an error message in case of failures etc). Additional (private) methods can be created for each step. \begin{DoxyReturn}{Returns}
+A 2 dimensional array with messages for all steps that were performed in this testcase. Each step in the testcase has exactly 1 element in the array, being an array with 2 elements: first is the code as defined in \doxyref{Test result code}{p.}{group__Test__Results}, the second is an human readable message. null when the step was skipped, e.g. 
+\begin{DoxyCode}
+        array(
+                 array(OTK_RESULT_SUCCESS, 'Step 1 completed successfully')
+                ,array(OTK_RESULT_SUCCESS, 'Step 2 completed successfully')
+                ,array(OTK_RESULT_FAIL, 'Step 3 failed with code XX')
+                ,array(OTK_RESULT_SKIPPED, 'Step 4 could not execute because step
+       3 failed')
+        )
+\end{DoxyCode}
+ 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a5fcf5fd51066de41206fe02c67139c76}.
+
+
+
+References checkDirectory().
+
+\index{OTKTranslations\_\-Labels@{OTKTranslations\_\-Labels}!prepareTest@{prepareTest}}
+\index{prepareTest@{prepareTest}!OTKTranslations_Labels@{OTKTranslations\_\-Labels}}
+\subsubsection[{prepareTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Labels::prepareTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKTranslations__Labels_a0ff19826602fd6503ddc25fdf00ff034}
+Prepare a testcase, e.g. create some database tables that are required for this testcase. \begin{DoxyReturn}{Returns}
+OTK\_\-RESULT\_\-SUCCESS on success, OTK\_\-RESULT\_\-NONE when this testcase needs no preparation or an error message when failed 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_ae2fd5738550a83f15afe1cbc5365f3e8}.
+
+
+
+\subsection{Member Data Documentation}
+\index{OTKTranslations\_\-Labels@{OTKTranslations\_\-Labels}!\$details@{\$details}}
+\index{\$details@{\$details}!OTKTranslations_Labels@{OTKTranslations\_\-Labels}}
+\subsubsection[{\$details}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Labels::\$details\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKTranslations__Labels_a47bd559f69797a4c4f02eb958c63ddd3}
+\index{OTKTranslations\_\-Labels@{OTKTranslations\_\-Labels}!\$labels@{\$labels}}
+\index{\$labels@{\$labels}!OTKTranslations_Labels@{OTKTranslations\_\-Labels}}
+\subsubsection[{\$labels}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Labels::\$labels\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKTranslations__Labels_aee61f30bf5e3df9fcc40f70b1f695b4c}
+\index{OTKTranslations\_\-Labels@{OTKTranslations\_\-Labels}!\$returnCodes@{\$returnCodes}}
+\index{\$returnCodes@{\$returnCodes}!OTKTranslations_Labels@{OTKTranslations\_\-Labels}}
+\subsubsection[{\$returnCodes}]{\setlength{\rightskip}{0pt plus 5cm}OTKTranslations\_\-Labels::\$returnCodes\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKTranslations__Labels_a458fdc750a191e07019fb77369052c0a}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/owltestkit/testsets/translations/{\bf case.labels.php}\end{DoxyCompactItemize}

@@ -20,6 +20,8 @@ Inheritance diagram for ContainerSpanPlugin:\begin{figure}[H]
 \item 
 {\bf getType} ()
 \item 
+{\bf getNestedType} (\$close=false)
+\item 
 {\bf setId} (\$\_\-value)
 \item 
 {\bf getId} ()
@@ -83,6 +85,8 @@ Inheritance diagram for ContainerSpanPlugin:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 {\bf \$type}
+\item 
+{\bf \$nested\_\-type}
 \item 
 {\bf \$class} = ''
 \item 
@@ -249,7 +253,7 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-Reimplemented in {\bf ContainerFieldsetPlugin} \doxyref{}{p.}{classContainerFieldsetPlugin_aa58cac299f04d3b6ac2b62703cc0195b}, {\bf ContainerListPlugin} \doxyref{}{p.}{classContainerListPlugin_abad8661a1ec37c551d0a3680921724f8}, {\bf ContainerTablePlugin} \doxyref{}{p.}{classContainerTablePlugin_a885bb956f115989679f6f86f627aab0d}, and {\bf ContainerTablerowPlugin} \doxyref{}{p.}{classContainerTablerowPlugin_a3cd25368662c44ad2a86f621a25a63fd}.
+Reimplemented in {\bf ContainerFieldsetPlugin} \doxyref{}{p.}{classContainerFieldsetPlugin_aa58cac299f04d3b6ac2b62703cc0195b}, {\bf ContainerListPlugin} \doxyref{}{p.}{classContainerListPlugin_abad8661a1ec37c551d0a3680921724f8}, {\bf ContainerMenuPlugin} \doxyref{}{p.}{classContainerMenuPlugin_ad570379a4a963b0d36cf1b35590c8cce}, {\bf ContainerTablePlugin} \doxyref{}{p.}{classContainerTablePlugin_a885bb956f115989679f6f86f627aab0d}, and {\bf ContainerTablerowPlugin} \doxyref{}{p.}{classContainerTablerowPlugin_a3cd25368662c44ad2a86f621a25a63fd}.
 
 
 
@@ -293,6 +297,24 @@ Oscar van Eijk, Oveas Functionality Provider
 
 References \_\-OWL::signal().
 
+\index{ContainerSpanPlugin@{ContainerSpanPlugin}!getNestedType@{getNestedType}}
+\index{getNestedType@{getNestedType}!ContainerSpanPlugin@{ContainerSpanPlugin}}
+\subsubsection[{getNestedType}]{\setlength{\rightskip}{0pt plus 5cm}ContainerPlugin::getNestedType (
+\begin{DoxyParamCaption}
+\item[{\$}]{close = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inherited]}}\label{classContainerPlugin_ad36ff2103d78c5f999029e7e9c0ae83a}
+Return the complete HTML tag for a nested type, or an empty string if the current container doesn't have one 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$close} & Boolean that's set to true when the closing tag must be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Full HTML tag 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
 \index{ContainerSpanPlugin@{ContainerSpanPlugin}!getSeverity@{getSeverity}}
 \index{getSeverity@{getSeverity}!ContainerSpanPlugin@{ContainerSpanPlugin}}
 \subsubsection[{getSeverity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::getSeverity (
@@ -637,7 +659,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Container::addContainer(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), DbHandler::resetTable(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
+Referenced by Container::\_\-\_\-call(), DbHandler::\_\-\_\-clone(), Container::\_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), Container::addContainer(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), DbHandler::resetTable(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
 
 \index{ContainerSpanPlugin@{ContainerSpanPlugin}!setStyle@{setStyle}}
 \index{setStyle@{setStyle}!ContainerSpanPlugin@{ContainerSpanPlugin}}
@@ -803,7 +825,10 @@ Name of the element
 
 Referenced by Form::addField(), and Form::showField().
 
-\index{ContainerSpanPlugin@{ContainerSpanPlugin}!\$severity@{\$severity}}
+\index{ContainerSpanPlugin@{ContainerSpanPlugin}!\$nested\_\-type@{\$nested\_\-type}}
+\index{\$nested\_\-type@{\$nested\_\-type}!ContainerSpanPlugin@{ContainerSpanPlugin}}
+\subsubsection[{\$nested\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}ContainerPlugin::\$nested\_\-type\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classContainerPlugin_a39ec7e2dc8e8e3f650dafd466ab81f49}
+Optional nested type \index{ContainerSpanPlugin@{ContainerSpanPlugin}!\$severity@{\$severity}}
 \index{\$severity@{\$severity}!ContainerSpanPlugin@{ContainerSpanPlugin}}
 \subsubsection[{\$severity}]{\setlength{\rightskip}{0pt plus 5cm}\_\-OWL::\$severity\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{class__OWL_ad26b40a9dbbacb33e299b17826f8327c}
 Severity level of the current object status 

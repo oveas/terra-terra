@@ -3,7 +3,7 @@
  * \file
  * This file defines the Security base class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.security.php,v 1.10 2011-05-18 12:03:48 oscar Exp $
+ * \version $Id: class.security.php,v 1.11 2011-06-07 14:06:56 oscar Exp $
  */
 
 /**
@@ -28,7 +28,7 @@ define ('BIT_TOGGLE',	4);
 /**
  * \ingroup OWL_BO_LAYER
  * This class handles OWL security
- * \brief the OWL-PHP security objects 
+ * \brief the OWL-PHP security objects
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 16, 2011 -- O van Eijk -- initial version
  */
@@ -110,7 +110,6 @@ abstract class Security
 
 	/**
 	 * Check, set or unset a bit in the current users bitmap.
-	 * Enter description here ...
 	 * \param[in] $bit Bit that should be checked or (un)set
 	 * \param[in] $app Application ID the bit belongs to
 	 * \param[in] $controller Controller defining the action, defaults to check

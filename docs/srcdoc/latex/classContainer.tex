@@ -16,6 +16,8 @@ Inheritance diagram for Container:\begin{figure}[H]
 \item 
 {\bf \_\-\_\-construct} (\$\_\-type, \$\_\-content= '', array \$\_\-attribs=array(), array \$\_\-type\_\-attribs=array())
 \item 
+{\bf \_\-\_\-call} (\$method, \$arguments=null)
+\item 
 {\bf setAttributes} (array \$\_\-attribs)
 \item 
 {\bf setContainer} (array \$\_\-attribs=array())
@@ -100,6 +102,8 @@ Inheritance diagram for Container:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 {\bf \$containerObject}
+\item 
+{\bf \$containerType}
 \end{DoxyCompactItemize}
 
 
@@ -153,6 +157,31 @@ References OWLloader::getClass(), \_\-OWL::init(), setAttributes(), BaseElement:
 
 
 \subsection{Member Function Documentation}
+\index{Container@{Container}!\_\-\_\-call@{\_\-\_\-call}}
+\index{\_\-\_\-call@{\_\-\_\-call}!Container@{Container}}
+\subsubsection[{\_\-\_\-call}]{\setlength{\rightskip}{0pt plus 5cm}Container::\_\-\_\-call (
+\begin{DoxyParamCaption}
+\item[{\$}]{method, }
+\item[{\$}]{arguments = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}\label{classContainer_aa3f4b0353ce8507e9351687653fc60a1}
+Magic method to call container specific methods 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$method} & Method name that should be called \\
+\hline
+\mbox{\tt in}  & {\em \$arguments} & Arguments for the method \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return value of the method called, or the severity level on an error 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+References \_\-OWL::setStatus().
+
 \index{Container@{Container}!addContainer@{addContainer}}
 \index{addContainer@{addContainer}!Container@{Container}}
 \subsubsection[{addContainer}]{\setlength{\rightskip}{0pt plus 5cm}Container::addContainer (
@@ -310,7 +339,7 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-Reimplemented in {\bf ContainerFieldsetPlugin} \doxyref{}{p.}{classContainerFieldsetPlugin_aa58cac299f04d3b6ac2b62703cc0195b}, {\bf ContainerListPlugin} \doxyref{}{p.}{classContainerListPlugin_abad8661a1ec37c551d0a3680921724f8}, {\bf ContainerTablePlugin} \doxyref{}{p.}{classContainerTablePlugin_a885bb956f115989679f6f86f627aab0d}, and {\bf ContainerTablerowPlugin} \doxyref{}{p.}{classContainerTablerowPlugin_a3cd25368662c44ad2a86f621a25a63fd}.
+Reimplemented in {\bf ContainerFieldsetPlugin} \doxyref{}{p.}{classContainerFieldsetPlugin_aa58cac299f04d3b6ac2b62703cc0195b}, {\bf ContainerListPlugin} \doxyref{}{p.}{classContainerListPlugin_abad8661a1ec37c551d0a3680921724f8}, {\bf ContainerMenuPlugin} \doxyref{}{p.}{classContainerMenuPlugin_ad570379a4a963b0d36cf1b35590c8cce}, {\bf ContainerTablePlugin} \doxyref{}{p.}{classContainerTablePlugin_a885bb956f115989679f6f86f627aab0d}, and {\bf ContainerTablerowPlugin} \doxyref{}{p.}{classContainerTablerowPlugin_a3cd25368662c44ad2a86f621a25a63fd}.
 
 
 
@@ -693,7 +722,7 @@ References \$GLOBALS, \_\-OWL::\$status, ConfigHandler::get(), Register::getCode
 
 
 
-Referenced by DbHandler::\_\-\_\-clone(), \_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), addContainer(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), DbHandler::resetTable(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
+Referenced by \_\-\_\-call(), DbHandler::\_\-\_\-clone(), \_\-\_\-construct(), SocketHandler::\_\-\_\-construct(), SchemeHandler::\_\-\_\-construct(), ImageHandler::\_\-\_\-construct(), FormHandler::\_\-\_\-construct(), FileHandler::\_\-\_\-construct(), DbHandler::\_\-\_\-construct(), DataHandler::\_\-\_\-construct(), Session::\_\-\_\-construct(), Mail::\_\-\_\-construct(), BaseElement::\_\-getContent(), HDataHandler::\_\-getNewLeft(), Mail::addBcc(), Mail::addCc(), addContainer(), Form::addField(), FormFieldRadioPlugin::addOption(), HDataHandler::addParent(), Mail::addTo(), BaseElement::addToContent(), DbHandler::alt(), SchemeHandler::alterScheme(), FileHandler::close(), DbHandler::commitTransaction(), Dispatcher::composeDispatcher(), User::confirm(), SocketHandler::connect(), DbHandler::connect(), DbHandler::create(), SchemeHandler::createScheme(), DbHandler::dbread(), SchemeHandler::defineIndex(), SchemeHandler::defineScheme(), SocketHandler::disconnect(), Dispatcher::dispatch(), HDataHandler::enableCrossLink(), FormHandler::get(), DataHandler::get(), HDataHandler::getDirectChildren(), HDataHandler::getFullOffspring(), Group::getGroupByName(), SchemeHandler::getTableColumns(), SchemeHandler::getTableIndexes(), \_\-OWL::init(), Document::loadScript(), Document::loadStyle(), DbHandler::lockTable(), User::login(), HDataHandler::moveNode(), FileHandler::open(), DbHandler::open(), LogHandler::openLogfile(), DataHandler::prepare(), DbHandler::prepareDelete(), DbHandler::prepareField(), DbHandler::prepareInsert(), DbHandler::prepareRead(), DbHandler::prepareUpdate(), SocketHandler::read(), DbHandler::read(), FileHandler::readLine(), HDataHandler::readQuery(), User::readUserdata(), User::register(), Dispatcher::registerArgument(), Dispatcher::registerCallback(), DbHandler::resetTable(), \_\-OWL::restoreStatus(), DbHandler::rollbackTransaction(), SchemeHandler::scheme(), Mail::send(), FormHandler::set(), BaseElement::setAttributes(), BaseElement::setContent(), Form::setEncoding(), Document::setFavicon(), Form::setFieldAttributes(), Mail::setFrom(), DataHandler::setJoin(), DataHandler::setKey(), FormFieldTextPlugin::setMaxsize(), Document::setMeta(), Form::setMethod(), FormFieldRadioPlugin::setSelected(), Mail::setSender(), FormFieldTextPlugin::setSize(), FormFieldSelectPlugin::setSize(), FormFieldSelectPlugin::setValue(), Form::showField(), DbHandler::startTransaction(), SchemeHandler::tableDescription(), DbHandler::unlockTable(), SchemeHandler::validateScheme(), SocketHandler::write(), DbHandler::write(), and HDataHandler::writeQuery().
 
 \index{Container@{Container}!setStyle@{setStyle}}
 \index{setStyle@{setStyle}!Container@{Container}}
@@ -849,7 +878,10 @@ Referenced by Document::addMessagesToContent().
 \index{Container@{Container}!\$containerObject@{\$containerObject}}
 \index{\$containerObject@{\$containerObject}!Container@{Container}}
 \subsubsection[{\$containerObject}]{\setlength{\rightskip}{0pt plus 5cm}Container::\$containerObject\hspace{0.3cm}{\ttfamily  [private]}}\label{classContainer_a65102889a42244acc956c3ec6a52ffec}
-Type specific container object (plugin) \index{Container@{Container}!\$events@{\$events}}
+Type specific container object (plugin) \index{Container@{Container}!\$containerType@{\$containerType}}
+\index{\$containerType@{\$containerType}!Container@{Container}}
+\subsubsection[{\$containerType}]{\setlength{\rightskip}{0pt plus 5cm}Container::\$containerType\hspace{0.3cm}{\ttfamily  [private]}}\label{classContainer_add0a385e75f5a7cfde2fd88c1bef0caa}
+\doxyref{Container}{p.}{classContainer} type \index{Container@{Container}!\$events@{\$events}}
 \index{\$events@{\$events}!Container@{Container}}
 \subsubsection[{\$events}]{\setlength{\rightskip}{0pt plus 5cm}BaseElement::\$events = array()\hspace{0.3cm}{\ttfamily  [protected, inherited]}}\label{classBaseElement_a02cebe45d277b4ff8f29db08bad371ba}
 Array with javascript events 
