@@ -3,7 +3,7 @@
  * \file
  * This file loads all testsets
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.testkit.php,v 1.1 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: class.testkit.php,v 1.2 2011-06-07 15:03:31 oscar Exp $
  */
 if (!OWLloader::getClass('testset', OTK_BO)) {
 	trigger_error('Error loading the TestSet baseclass', E_USER_ERROR);
@@ -60,7 +60,7 @@ class TestKit
 		}
 		return TestKit::$instance;
 	}
-	
+
 	/**
 	 * Check if a directory contains a testset. If so, load the classfile and add the testset name
 	 * and description to the internal array.
@@ -105,6 +105,7 @@ class TestKit
 		$set = new $_class();
 		$set->loadTestcases (OTK_TESTSETS.'/'.strtolower($testSet));
 		$set->performTests();
+		flush(); // Send buffer now
 	}
 
 	/**

@@ -3,7 +3,7 @@
  * \file
  * This file defines the testcase that checks untranslated messages codes
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.messages.php,v 1.1 2011-06-07 14:06:56 oscar Exp $
+ * \version $Id: case.messages.php,v 1.2 2011-06-07 15:03:31 oscar Exp $
  */
 
 /**
@@ -27,6 +27,15 @@ class OTKTranslations_Messages implements TestCase
 	// List of all status codes
 	private $statusCodes;
 
+	// Toplocation
+	private $topLocation;
+
+	// Location of the message file
+	private $libLocation;
+
+	// Application code
+	private $applCode;
+
 	public function __construct()
 	{
 		$this->details = '';
@@ -35,16 +44,20 @@ class OTKTranslations_Messages implements TestCase
 			 'statusSet' => array() // All codes used in setStatus
 			,'statusReg' => array() // All codes defined in registerCode
 		);
+
+		$this->topLocation = OTKTranslations_topLocation();
+		$this->libLocation = OTKTranslations_libLocation();
+		$this->applCode = OTKTranslations_applicCode();
 	}
 
 	public function prepareTest ()
 	{
 		// Load messages
 		$_lang = ConfigHandler::get ('locale|lang');
-		if (file_exists (OWL_LIBRARY . '/owl.messages.' . $_lang . '.php')) {
-			$file = OWL_LIBRARY . '/owl.messages.' . $_lang . '.php';
-		} elseif (file_exists (OWL_LIBRARY . '/owl.messages.php')) {
-			$file = OWL_LIBRARY . '/owl.messages.php';
+		if (file_exists ($this->libLocation . '/' . $this->applCode . '.messages.' . $_lang . '.php')) {
+			$file = $this->libLocation . '/' . $this->applCode . '.messages.' . $_lang . '.php';
+		} elseif (file_exists ($this->libLocation . '/' . $this->applCode . '.messages.php')) {
+			$file = $this->libLocation . '/' . $this->applCode . '.messages.php';
 		} else {
 			return 'No message file found for language code ' . $_lang . ' and the default file is missing';
 		}
@@ -60,7 +73,6 @@ class OTKTranslations_Messages implements TestCase
 			}
 		}
 		fclose($mFile);
-
 		return OTK_RESULT_SUCCESS;
 	}
 
@@ -68,8 +80,7 @@ class OTKTranslations_Messages implements TestCase
 	{
 		$this->returnCodes = array();
 
-		$topLocation = OWL_ROOT;
-		$this->checkDirectory ($topLocation);
+		$this->checkDirectory ($this->topLocation);
 		$this->checkCodes();
 		if (count($this->returnCodes) == 0) {
 			$this->returnCodes[] = array(OTK_RESULT_SUCCESS, "All messages codes have been registered");
@@ -99,6 +110,7 @@ class OTKTranslations_Messages implements TestCase
 
 	private function checkFile ($file)
 	{
+		// TODO Existing OWL codes are not checked when checking a different application
 		if (($fHandle = fopen($file, 'r')) === false) {
 			$this->returnCodes[] = array(OTK_RESULT_WARNING, "Error opening file $file for read");
 			return;

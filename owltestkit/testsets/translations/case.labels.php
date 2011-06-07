@@ -3,7 +3,7 @@
  * \file
  * This file defines the testcase that checks untranslated labels
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.labels.php,v 1.1 2011-06-07 14:06:55 oscar Exp $
+ * \version $Id: case.labels.php,v 1.2 2011-06-07 15:03:31 oscar Exp $
  */
 
 /**
@@ -18,26 +18,43 @@ class OTKTranslations_Labels implements TestCase
 	// List of messages
 	private $labels;
 
+	// Checked labels
+	private $checked;
+
 	// Hold details of the testresults
 	private $details;
 
 	// Array with return values
 	private $returnCodes;
 
+	// Toplocation
+	private $topLocation;
+
+	// Location of the label file
+	private $libLocation;
+
+	// Application code
+	private $applCode;
+
 	public function __construct()
 	{
 		$this->details = '';
 		$this->labels = array();
+		$this->checked = array();
+
+		$this->topLocation = OTKTranslations_topLocation();
+		$this->libLocation = OTKTranslations_libLocation();
+		$this->applCode = OTKTranslations_applicCode();
 	}
 
 	public function prepareTest ()
 	{
 		// Load messages
 		$_lang = ConfigHandler::get ('locale|lang');
-		if (file_exists (OWL_LIBRARY . '/owl.labels.' . $_lang . '.php')) {
-			$file = OWL_LIBRARY . '/owl.labels.' . $_lang . '.php';
-		} elseif (file_exists (OWL_LIBRARY . '/owl.labels.php')) {
-			$file = OWL_LIBRARY . '/owl.labels.php';
+		if (file_exists ($this->libLocation . '/' . $this->applCode . '.labels.' . $_lang . '.php')) {
+			$file = $this->libLocation . '/' . $this->applCode . '.labels.' . $_lang . '.php';
+		} elseif (file_exists ($this->libLocation . '/' . $this->applCode . '.labels.php')) {
+			$file = $this->libLocation . '/' . $this->applCode . '.labels.php';
 		} else {
 			return 'No label file found for language code ' . $_lang . ' and the default file is missing';
 		}
@@ -48,8 +65,10 @@ class OTKTranslations_Labels implements TestCase
 		}
 
 		while (($line = fgets($mFile, 1024)) !== false) {
-			if (preg_match("/\s+,?\s+('|\")(.*?)(\1)\s+=>\s+'(.*?)'/i", $line, $match)) {
-				$this->labels[$match[1]] = $match[3];
+			// TODO I'ld prefer to use backrefs, but somehow the following won't find matches:
+//			if (preg_match("/\s+,?\s+('|\")(.*?)(\1)\s+=>\s+('|\")(.*?)(\4)/i", $line, $match)) {
+			if (preg_match("/\s+,?\s+('|\")(.*?)('|\")\s+=>\s+('|\")(.*?)('|\")/i", $line, $match)) {
+				$this->labels[$match[2]] = $match[5];
 			}
 		}
 		fclose($mFile);
@@ -61,8 +80,7 @@ class OTKTranslations_Labels implements TestCase
 	{
 		$this->returnCodes = array();
 
-		$topLocation = OWL_ROOT;
-		$this->checkDirectory ($topLocation);
+		$this->checkDirectory ($this->topLocation);
 		if (count($this->returnCodes) == 0) {
 			$this->returnCodes[] = array(OTK_RESULT_SUCCESS, "All labels have been translated");
 		}
@@ -91,6 +109,7 @@ class OTKTranslations_Labels implements TestCase
 
 	private function checkFile ($file)
 	{
+		// TODO Existing OWL labels are not checked when checking a different application
 		if (($fHandle = fopen($file, 'r')) === false) {
 			$this->returnCodes[] = array(OTK_RESULT_WARNING, "Error opening file $file for read");
 			return;
@@ -99,8 +118,11 @@ class OTKTranslations_Labels implements TestCase
 		while ($line = fgets($fHandle, 1024)) {
 			$lineCounter++;
 			if (preg_match("/(::translate|->trn)\s*\('(.*?)'\)/i", $line, $matches)) {
-				if (!array_key_exists($matches[2], $this->labels)) {
-					$this->returnCodes[] = array(OTK_RESULT_WARNING, "Label <u><em>$matches[2]</em></u> has no translation in file $file on line $lineCounter");
+				if (!in_array($matches[2], $this->checked)) {
+					if (!array_key_exists($matches[2], $this->labels)) {
+						$this->returnCodes[] = array(OTK_RESULT_WARNING, "Label <u><em>$matches[2]</em></u> has no translation in file $file on line $lineCounter");
+					}
+					$this->checked[] = $matches[2];
 				}
 			}
 		}
