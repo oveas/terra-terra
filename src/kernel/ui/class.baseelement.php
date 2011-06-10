@@ -3,7 +3,7 @@
  * \file
  * This file defines the top-level BaseElement class
 	 * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.baseelement.php,v 1.11 2011-05-30 17:00:19 oscar Exp $
+ * \version $Id: class.baseelement.php,v 1.12 2011-06-10 11:57:17 oscar Exp $
  */
 
 /**
@@ -104,6 +104,22 @@ abstract class BaseElement extends _OWL
 	public function setClass($_value)
 	{
 		$this->class = $_value;
+	}
+
+	/**
+	 * Add a new value to the class element. This can either be used for chained CSS classes,
+	 * of as a selector by the OWL-JS
+	 * <a href="../../owl-js/html/lib/owl_js.html#library2fgetElementsByClass">getElementByClass()</a> function.
+	 * \param[in] $_value Class name
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function addClass($_value)
+	{
+		if ($this->class === '') {
+			$this->class = $_value;
+		} else {
+			$this->class .= " $_value";
+		}
 	}
 
 	/**

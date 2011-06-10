@@ -3,7 +3,7 @@
  * \file
  * This file defines the HTML Form class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.form.php,v 1.10 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.form.php,v 1.11 2011-06-10 11:57:17 oscar Exp $
  */
 
 OWLloader::getClass('formfield', OWL_PLUGINS . '/formfields');
@@ -11,7 +11,7 @@ OWLloader::getClass('formfield', OWL_PLUGINS . '/formfields');
 /**
  * \ingroup OWL_BO_LAYER
  * Define an HTML Form.
- * \brief Form Element class 
+ * \brief Form Element class
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 29, 2008 -- O van Eijk -- initial version
  */
@@ -41,7 +41,7 @@ class Form extends BaseElement
 	/**
 	 * Class constructor
 	 * \param[in] $_dispatcher OWL dispatcher as string or array, \see Dispatcher::composeDispatcher()
-	 * \param[in] $_attribs Indexed array with the HTML attributes 
+	 * \param[in] $_attribs Indexed array with the HTML attributes
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($_dispatcher, $_attribs = array())
@@ -92,7 +92,7 @@ class Form extends BaseElement
 		$this->enctype = $enctype;
 		return ($this->severity);
 	}
-	
+
 	/**
 	 * Add a formfield to the formelement
 	 * \param[in] $type Field type
@@ -231,8 +231,8 @@ class Form extends BaseElement
 }
 /**
  * \example exa.form.php
- * This example shows how to create a form and display it. The example code in the comments
- * can be used in the mainpage, e.g. index.php.
+ * This example shows how to create a form and add it to the HTML document. To see how the form can
+ * be displayed, refer to the example given with the Document class.
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 

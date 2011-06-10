@@ -3,7 +3,7 @@
  * \file
  * This file defines an HTML document
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.document.php,v 1.10 2011-05-30 17:00:19 oscar Exp $
+ * \version $Id: class.document.php,v 1.11 2011-06-10 11:57:17 oscar Exp $
  */
 
 /**
@@ -464,6 +464,11 @@ class Document extends BaseElement
 		return $_htmlCode;
 	}
 }
+/**
+ * \example exa.document.php
+ * This example shows how to create an HTML document, add some content to it and display it.
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ */
 
 /*
  * Register this class and all status codes
