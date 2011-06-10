@@ -1,0 +1,56 @@
+options:
+	--tell
+	--html
+	--multidoc
+	--toc
+	--syntaxcolors
+	--internal
+	--tabsize 4
+	--index
+	--sections
+	--nopre
+	--masterindex "Master Index,masterindex"
+	--documenttitle "OWL-JS Oveas Web Library for JavaScript"
+	--doc "/home/oscar/projects/owl-php/docs/owl-js/html"
+	--src "/home/oscar/projects/owl-js/src"
+	--css "/home/oscar/projects/owl-php/docs/srcdoc/owlstyle.css"
+
+items:
+	NAME
+	DESCRIPTION
+	INPUTS
+	OUTPUTS
+	RESULT
+	SYNOPSIS
+	SOURCE
+	EXAMPLE
+	AUTHOR
+	HISTORY
+	TODO
+	DERIVED FROM
+	DERIVED BY
+	NOTES
+	WARNINGS
+	SEE ALSO
+	COPYRIGHT
+
+preformatted items:
+	EXAMPLE
+	SOURCE
+
+source items:
+	SYNOPSIS
+
+item order:
+	NAME
+	DESCRIPTION
+	INPUTS
+	OUTPUTS
+	RESULT
+	SYNOPSIS
+	SOURCE
+	EXAMPLE
+	AUTHOR
+	HISTORY
+	TODO
+	COPYRIGHT

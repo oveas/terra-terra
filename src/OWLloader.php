@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.33 2011-05-30 17:00:19 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.34 2011-06-10 10:55:19 oscar Exp $
  */
 
 // Error handling used during development
@@ -379,9 +379,11 @@ OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after 
  * The design principles of OWL-PHP ensure a 100% safe web development platform; since the library itself
  * is unhackable, so are the applications built with it!
  *
- * Together with the planned OWL-JS, you might consider the OWL family as the basis of what Web2.2 will look like ;)
+ * Together with the planned <a href="../../owl-js/html/index.html">OWL-JS</a>, you might consider the OWL family as the basis of what Web2.2 will look like ;)
  *
  * Much of this code started as the project Terra-Terra in 2001 (http://terra-terra.org), a project that
  * was abandoned when AJAX became popular from 2005 onwards.
  * \author Oscar van Eijk, Oveas Functionality Provider
+ * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license Yet to be determined.....
  */

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="../robodoc.css" type="text/css" />
+<title>/home/oscar/projects/owl-js/src/lib/requesthandler.js</title>
+<!-- Source: /home/oscar/projects/owl-js/src/lib/requesthandler.js -->
+<!-- Generated with ROBODoc Version 4.99.38 (May  2 2009) -->
+</head>
+<body>
+<div id="logo">
+<a name="robo_top_of_doc">OWL-JS Oveas Web Library for JavaScript</a>
+</div> <!-- logo -->
+<div id="navigation">
+<a class="menuitem" href="../toc_index.html#top">Table of Contents</a>
+<a class="menuitem" href="../robo_sourcefiles.html#top">Sourcefiles</a>
+<a class="menuitem" href="../masterindex.html#top">Master Index</a>
+<a class="menuitem" href="../robo_classes.html#top">Classes</a>
+<a class="menuitem" href="../robo_functions.html#top">Functions</a>
+<a class="menuitem" href="../robo_methods.html#top">Methods</a>
+<a class="menuitem" href="../robo_variables.html#top">Variables</a>
+</div> <!-- navigation -->
+<div id="content">
+<h3>TABLE OF CONTENTS</h3>
+<ul>
+<li>1. <a href="#robo3">library/requestHandler</a></li>
+<ul>
+<li>1.1. <a href="#robo5">requestHandler/getResponseText</a></li>
+<li>1.2. <a href="#robo6">requestHandler/sendRequest</a></li>
+<li>1.3. <a href="#robo7">requestHandler/setCallback</a></li>
+<li>1.4. <a href="#robo8">requestHandler/whenComplete</a></li>
+<li>1.5. <a href="#robo9">requestHandler/whenInteractive</a></li>
+<li>1.6. <a href="#robo10">requestHandler/whenLoaded</a></li>
+<li>1.7. <a href="#robo11">requestHandler/whenLoading</a></li>
+<li>1.8. <a href="#robo12">requestHandler/whenUninitialized</a></li>
+</ul>
+</ul>
+<hr />
+<a name="library2frequestHandler"></a>
+<a name="robo3"></a><h2>library/requestHandler [ Classes ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="./owl_js.html#robo4">library</a> ] [ <a href="../robo_classes.html#robo_top_of_doc">Classes</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>requestHandler</strong> - XMLHttp Request Handler
+</p>
+<p class="item_name">DESCRIPTION</p>
+<p>  Define the class for XMLHttp Request handling. When constructed, the browser dependent
+  object is instantiated
+</p>
+<p class="item_name">EXAMPLE</p>
+<pre>  var reqHandler;
+  
+  function myFunction()
+  {
+      serverResponse = reqHandler.<a href="#robo5">getResponseText</a>();
+      document.write(serverResponse);
+  }
+  
+  reqHandler = new <strong>requestHandler</strong>();
+  reqHandler.<a href="#robo8">whenComplete</a>(myFunction);
+  reqHandler.<a href="#robo6">sendRequest</a>("serverPage.php", "variable=value");
+</pre>
+<p class="item_name">AUTHOR</p>
+<p>  Oscar van Eijk, Oveas Functionality Provider
+</p>
+<p class="item_name">HISTORY</p>
+<ul><li>  Jun 8, 2011 -- O van Eijk -- initial version
+</li>
+</ul>
+<p></p>
+
+<hr />
+<a name="requestHandler2fgetResponseText"></a>
+<a name="robo5"></a><h2>requestHandler/getResponseText [ Methods ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">requestHandler</a> ] [ <a href="../robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>getResponseText</strong> - Get the response from the server
+</p>
+<p class="item_name">DESCRIPTION</p>
+<p>  Get the complete server response without any formatting
+</p>
+<p class="item_name">RESULT</p>
+<ul><li>  Complete response as received from the server
+</li>
+</ul>
+<p></p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">    this<span class="sign">.</span><strong>getResponseText</strong> <span class="sign">=</span> function<span class="sign">(</span><span class="sign">)</span>
+</pre>
+<p class="item_name">AUTHOR</p>
+<p>  Oscar van Eijk, Oveas Functionality Provider
+</p>
+
+<hr />
+<a name="requestHandler2fsendRequest"></a>
+<a name="robo6"></a><h2>requestHandler/sendRequest [ Methods ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">requestHandler</a> ] [ <a href="../robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>sendRequest</strong> - Send a request to the server
+</p>
+<p class="item_name">INPUTS</p>
+<ul><li>  reqUrl -- URL to open for the request
+</li>
+<li>  reqParams -- Parameter list
+</li>
+<li>  reqMethod -- Request method, defaults to 'POST'
+</li>
+<li>  reqContentType -- Content type, defaults to 'application/x-www-form-urlencoded'
+</li>
+</ul>
+<p></p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">    this<span class="sign">.</span><strong>sendRequest</strong> <span class="sign">=</span> function<span class="sign">(</span>reqUrl<span class="sign">,</span> reqParams<span class="sign">,</span> reqMethod<span class="sign">,</span> reqContentType<span class="sign">)</span>
+</pre>
+<p class="item_name">AUTHOR</p>
+<p>  Oscar van Eijk, Oveas Functionality Provider
+</p>
+
+<hr />
+<a name="requestHandler2fsetCallback"></a>
+<a name="robo7"></a><h2>requestHandler/setCallback [ Methods ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">requestHandler</a> ] [ <a href="../robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>setCallback</strong> - Define the callback function
+</p>
+<p class="item_name">DESCRIPTION</p>
+<p>  Define the callback function that will check for which statechange userFunctions have
+  been defined and call them accordingly.
+</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">    this<span class="sign">.</span><strong>setCallback</strong> <span class="sign">=</span> function<span class="sign">(</span><span class="sign">)</span>
+</pre>
+<p class="item_name">AUTHOR</p>
+<p>  Oscar van Eijk, Oveas Functionality Provider
+</p>
+
+<hr />
+<a name="requestHandler2fwhenComplete"></a>
+<a name="robo8"></a><h2>requestHandler/whenComplete [ Methods ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">requestHandler</a> ] [ <a href="../robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>whenComplete</strong> - Set a callback function for the 'complete' state
+</p>
+<p class="item_name">DESCRIPTION</p>
+<p>  This method registers a callback function that will be called when the state of
+  the <a href="#robo3">requestHandler</a> object changes to 'complete' (4).
+</p>
+
+<p>  If no callback function for this state is set, nothing will be done.
+</p>
+<p class="item_name">INPUTS</p>
+<ul><li>  userFunction -- Function to call when the <a href="#robo3">requestHandler</a> goes to the 'complete' state
+</li>
+</ul>
+<p></p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">    this<span class="sign">.</span><strong>whenComplete</strong> <span class="sign">=</span> function<span class="sign">(</span>userFunction<span class="sign">)</span>
+</pre>
+<p class="item_name">AUTHOR</p>
+<p>  Oscar van Eijk, Oveas Functionality Provider
+</p>
+
+<hr />
+<a name="requestHandler2fwhenInteractive"></a>
+<a name="robo9"></a><h2>requestHandler/whenInteractive [ Methods ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">requestHandler</a> ] [ <a href="../robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>whenInteractive</strong> - Set a callback function for the 'uninitialized' state
+</p>
+<p class="item_name">DESCRIPTION</p>
+<p>  This method registers a callback function that will be called when the state of
+  the <a href="#robo3">requestHandler</a> object changes to 'interactive' (3).
+</p>
+
+<p>  If no callback function for this state is set, nothing will be done.
+</p>
+<p class="item_name">INPUTS</p>
+<ul><li>  userFunction -- Function to call when the <a href="#robo3">requestHandler</a> goes to the 'interactive' state
+</li>
+</ul>
+<p></p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">    this<span class="sign">.</span><strong>whenInteractive</strong> <span class="sign">=</span> function<span class="sign">(</span>method<span class="sign">)</span>
+</pre>
+<p class="item_name">AUTHOR</p>
+<p>  Oscar van Eijk, Oveas Functionality Provider
+</p>
+
+<hr />
+<a name="requestHandler2fwhenLoaded"></a>
+<a name="robo10"></a><h2>requestHandler/whenLoaded [ Methods ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">requestHandler</a> ] [ <a href="../robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>whenLoaded</strong> - Set a callback function for the 'uninitialized' state
+</p>
+<p class="item_name">DESCRIPTION</p>
+<p>  This method registers a callback function that will be called when the state of
+  the <a href="#robo3">requestHandler</a> object changes to 'loaded' (2).
+</p>
+
+<p>  If no callback function for this state is set, nothing will be done.
+</p>
+<p class="item_name">INPUTS</p>
+<ul><li>  userFunction -- Function to call when the <a href="#robo3">requestHandler</a> goes to the 'loaded' state
+</li>
+</ul>
+<p></p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">    this<span class="sign">.</span><strong>whenLoaded</strong> <span class="sign">=</span> function<span class="sign">(</span>userFunction<span class="sign">)</span>
+</pre>
+<p class="item_name">AUTHOR</p>
+<p>  Oscar van Eijk, Oveas Functionality Provider
+</p>
+
+<hr />
+<a name="requestHandler2fwhenLoading"></a>
+<a name="robo11"></a><h2>requestHandler/whenLoading [ Methods ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">requestHandler</a> ] [ <a href="../robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>whenLoading</strong> - Set a callback function for the 'uninitialized' state
+</p>
+<p class="item_name">DESCRIPTION</p>
+<p>  This method registers a callback function that will be called when the state of
+  the <a href="#robo3">requestHandler</a> object changes to 'loading' (1).
+</p>
+
+<p>  If no callback function for this state is set, nothing will be done.
+</p>
+<p class="item_name">INPUTS</p>
+<ul><li>  userFunction -- Function to call when the <a href="#robo3">requestHandler</a> goes to the 'loading' state
+</li>
+</ul>
+<p></p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">    this<span class="sign">.</span><strong>whenLoading</strong> <span class="sign">=</span> function<span class="sign">(</span>userFunction<span class="sign">)</span>
+</pre>
+<p class="item_name">AUTHOR</p>
+<p>  Oscar van Eijk, Oveas Functionality Provider
+</p>
+
+<hr />
+<a name="requestHandler2fwhenUninitialized"></a>
+<a name="robo12"></a><h2>requestHandler/whenUninitialized [ Methods ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">requestHandler</a> ] [ <a href="../robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>whenUninitialized</strong> - Set a callback function for the 'uninitialized' state
+</p>
+<p class="item_name">DESCRIPTION</p>
+<p>  This method registers a callback function that will be called when the state of
+  the <a href="#robo3">requestHandler</a> object changes to 'uninitialized' (0).
+</p>
+
+<p>  If no callback function for this state is set, nothing will be done.
+</p>
+<p class="item_name">INPUTS</p>
+<ul><li>  userFunction -- Function to call when the <a href="#robo3">requestHandler</a> goes to the 'uninitialized' state
+</li>
+</ul>
+<p></p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">    this<span class="sign">.</span><strong>whenUninitialized</strong> <span class="sign">=</span> function<span class="sign">(</span>userFunction<span class="sign">)</span>
+</pre>
+<p class="item_name">AUTHOR</p>
+<p>  Oscar van Eijk, Oveas Functionality Provider
+</p>
+
+</div> <!-- content -->
+<div id="footer">
+<p>Generated from /home/oscar/projects/owl-js/src/lib/requesthandler.js with <a href="http://www.xs4all.nl/~rfsber/Robo/robodoc.html">ROBODoc</a> V4.99.38 on Fri Jun 10 2011 12:49:51
+</p>
+</div> <!-- footer -->
+</body>
+</html>
