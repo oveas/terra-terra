@@ -124,9 +124,11 @@ Inheritance diagram for Document:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#a9a9b28356530084930aace4317a49215">enableOWL_JS</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#a3707a3e47aadcb8fc42912ef3c12de29">addJSPlugin</a> ($type, $name)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#aee4ecb0f14972dafd3114659b57048b3">addMessage</a> ($stack, $message)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#a11fb4959fcf6fd570e00d09dd572ca61">addStyle</a> ($_style= '')</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#a90810fa2ea28179748a865531c7fc263">loadStyle</a> ($_style= '', $_condition= '')</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#afc30c79b16eaeebf97cc76eb8c1e36ae">loadStyle</a> ($_style= '', $_condition= '', $_try=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#a0e77dfc94e5f3572a2fc912b704378c8">addScript</a> ($_script= '')</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#a9e088502436fe985b501cb5650ab022d">loadScript</a> ($_script= '')</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#acf134e4b0894a2a8ad1757b17f18bd9e">setTitle</a> ($_value)</td></tr>
@@ -204,6 +206,7 @@ Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#ad74353c065d3fe06667bc549ed0977e7">$favicon</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#ab1cd325e8c6dc65ec0512e759d120b0e">$contentType</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#a6a4ddc27ac0aa7920ebdbc6f176fbd99">$messages</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDocument.html#a983e2cc98eb38ea7b4ba49d0c68b705f">$owl_jsEnabled</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classDocument.html" title="Document.">Document</a>. </p>
@@ -236,7 +239,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00084">84</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00089">89</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 <p>References <a class="el" href="class_8__owl_8php_source.html#l00045">_OWL::init()</a>.</p>
 
@@ -260,9 +263,9 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>HTML code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00310">310</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00369">369</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00435">showElement()</a>.</p>
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00494">showElement()</a>.</p>
 
 </div>
 </div>
@@ -283,9 +286,9 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>HTML code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00382">382</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00441">441</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00435">showElement()</a>.</p>
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00494">showElement()</a>.</p>
 
 </div>
 </div>
@@ -306,9 +309,9 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>HTML code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00366">366</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00425">425</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00435">showElement()</a>.</p>
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00494">showElement()</a>.</p>
 
 </div>
 </div>
@@ -329,9 +332,9 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>HTML code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00352">352</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00411">411</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00435">showElement()</a>.</p>
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00494">showElement()</a>.</p>
 
 </div>
 </div>
@@ -352,9 +355,9 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>HTML code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00330">330</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00389">389</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00435">showElement()</a>.</p>
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00494">showElement()</a>.</p>
 
 </div>
 </div>
@@ -382,6 +385,46 @@ Private Attributes</h2></td></tr>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Definition at line <a class="el" href="class_8baseelement_8php_source.html#l00116">116</a> of file <a class="el" href="class_8baseelement_8php_source.html">class.baseelement.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3707a3e47aadcb8fc42912ef3c12de29"></a><!-- doxytag: member="Document::addJSPlugin" ref="a3707a3e47aadcb8fc42912ef3c12de29" args="($type, $name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Document::addJSPlugin </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Add an OWL-JD plugin to the document. If necessary, OWL-JS is enabled first. Also, an attempt will be made to load a style sheet in case the plugin requires one. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$type</td><td>The plugin type, must be a directory name in the OWL-JS plugin directory </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$name</td><td>Name of the plugin which must match (in lowercase) the filename of the plugin without '.js'. If the plugin requires a special style sheet, it must be in the same location with the same name and extension '.css'. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00156">156</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+
+<p>References <a class="el" href="class_8baseelement_8php_source.html#l00036">BaseElement::$name</a>, <a class="el" href="class_8document_8php_source.html#l00130">enableOWL_JS()</a>, <a class="el" href="class_8document_8php_source.html#l00251">loadScript()</a>, and <a class="el" href="class_8document_8php_source.html#l00202">loadStyle()</a>.</p>
 
 </div>
 </div>
@@ -419,7 +462,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00127">127</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00171">171</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 </div>
 </div>
@@ -439,11 +482,11 @@ Private Attributes</h2></td></tr>
 <p>If messages have been generated during this run that have been added to the messages stacks, generate the containers now and add them to the front of the content objectlist </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00400">400</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00459">459</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 <p>References <a class="el" href="class_8baseelement_8php_source.html#l00021">BaseElement::$class</a>, and <a class="el" href="class_8baseelement_8php_source.html#l00150">BaseElement::addToContent()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00435">showElement()</a>.</p>
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00494">showElement()</a>.</p>
 
 </div>
 </div>
@@ -470,7 +513,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00187">187</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00241">241</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00130">enableOWL_JS()</a>.</p>
 
 </div>
 </div>
@@ -497,7 +542,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00143">143</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00187">187</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 </div>
 </div>
@@ -540,7 +585,7 @@ Private Attributes</h2></td></tr>
 
 <p>References <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00400">addMessagesToContent()</a>.</p>
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00459">addMessagesToContent()</a>.</p>
 
 </div>
 </div>
@@ -587,6 +632,30 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a9a9b28356530084930aace4317a49215"></a><!-- doxytag: member="Document::enableOWL_JS" ref="a9a9b28356530084930aace4317a49215" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Document::enableOWL_JS </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>This method can be called at any time to enable OWL-JS. It writes some global variables to the document for use by JavaScript, and loads the library file with the core functionality. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00130">130</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+
+<p>References <a class="el" href="class_8document_8php_source.html#l00241">addScript()</a>, and <a class="el" href="class_8document_8php_source.html#l00251">loadScript()</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00156">addJSPlugin()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a5cb9a5224e12b4d7017531ee5e2c9778"></a><!-- doxytag: member="Document::getAttributes" ref="a5cb9a5224e12b4d7017531ee5e2c9778" args="(array $_ignore=array())" -->
 <div class="memitem">
 <div class="memproto">
@@ -615,7 +684,7 @@ Private Attributes</h2></td></tr>
 
 <p>References <a class="el" href="class_8baseelement_8php_source.html#l00240">BaseElement::getEvents()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8formfield_8php_source.html#l00097">FormFieldPlugin::getGenericFieldAttributes()</a>, <a class="el" href="class_8form_8php_source.html#l00203">Form::openForm()</a>, <a class="el" href="class_8document_8php_source.html#l00435">showElement()</a>, and <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00121">Container::showElement()</a>.</p>
+<p>Referenced by <a class="el" href="class_8formfield_8php_source.html#l00097">FormFieldPlugin::getGenericFieldAttributes()</a>, <a class="el" href="class_8form_8php_source.html#l00203">Form::openForm()</a>, <a class="el" href="class_8document_8php_source.html#l00494">showElement()</a>, and <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00121">Container::showElement()</a>.</p>
 
 </div>
 </div>
@@ -636,7 +705,7 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>URL </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00300">300</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00359">359</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 </div>
 </div>
@@ -688,7 +757,7 @@ Private Attributes</h2></td></tr>
 
 <p>References <a class="el" href="class_8baseelement_8php_source.html#l00194">BaseElement::_getContent()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8form_8php_source.html#l00227">Form::showElement()</a>, <a class="el" href="class_8document_8php_source.html#l00435">showElement()</a>, and <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00121">Container::showElement()</a>.</p>
+<p>Referenced by <a class="el" href="class_8form_8php_source.html#l00227">Form::showElement()</a>, <a class="el" href="class_8document_8php_source.html#l00494">showElement()</a>, and <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00121">Container::showElement()</a>.</p>
 
 </div>
 </div>
@@ -732,7 +801,7 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00111">111</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00117">117</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 <p>References <a class="el" href="class_8document_8php_source.html#l00072">$instance</a>.</p>
 
@@ -836,7 +905,7 @@ Private Attributes</h2></td></tr>
 
 <p>References <a class="el" href="class_8owl_8php_source.html#l00072">OWL::factory()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8sockethandler_8php_source.html#l00077">SocketHandler::__construct()</a>, <a class="el" href="class_8sessionhandler_8php_source.html#l00055">SessionHandler::__construct()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00054">SchemeHandler::__construct()</a>, <a class="el" href="class_8owl_8php_source.html#l00025">OWL::__construct()</a>, <a class="el" href="class_8mail_8php_source.html#l00032">Mail::__construct()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00052">LogHandler::__construct()</a>, <a class="el" href="class_8imagehandler_8php_source.html#l00074">ImageHandler::__construct()</a>, <a class="el" href="class_8group_8php_source.html#l00033">Group::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00059">FormHandler::__construct()</a>, <a class="el" href="class_8formfield_8php_source.html#l00043">FormFieldPlugin::__construct()</a>, <a class="el" href="class_8form_8php_source.html#l00047">Form::__construct()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00074">FileHandler::__construct()</a>, <a class="el" href="class_8document_8php_source.html#l00084">__construct()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00034">Dispatcher::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00209">DbHandler::__construct()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00062">HDataHandler::__construct()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00107">DataHandler::__construct()</a>, <a class="el" href="plugins_2containers_2class_8container_8php_source.html#l00034">ContainerPlugin::__construct()</a>, <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00039">Container::__construct()</a>, and <a class="el" href="class_8user_8php_source.html#l00054">User::construct()</a>.</p>
+<p>Referenced by <a class="el" href="class_8sockethandler_8php_source.html#l00077">SocketHandler::__construct()</a>, <a class="el" href="class_8sessionhandler_8php_source.html#l00055">SessionHandler::__construct()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00054">SchemeHandler::__construct()</a>, <a class="el" href="class_8owl_8php_source.html#l00025">OWL::__construct()</a>, <a class="el" href="class_8mail_8php_source.html#l00032">Mail::__construct()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00052">LogHandler::__construct()</a>, <a class="el" href="class_8imagehandler_8php_source.html#l00074">ImageHandler::__construct()</a>, <a class="el" href="class_8group_8php_source.html#l00033">Group::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00059">FormHandler::__construct()</a>, <a class="el" href="class_8formfield_8php_source.html#l00043">FormFieldPlugin::__construct()</a>, <a class="el" href="class_8form_8php_source.html#l00047">Form::__construct()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00074">FileHandler::__construct()</a>, <a class="el" href="class_8document_8php_source.html#l00089">__construct()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00034">Dispatcher::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00209">DbHandler::__construct()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00062">HDataHandler::__construct()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00107">DataHandler::__construct()</a>, <a class="el" href="plugins_2containers_2class_8container_8php_source.html#l00034">ContainerPlugin::__construct()</a>, <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00039">Container::__construct()</a>, and <a class="el" href="class_8user_8php_source.html#l00054">User::construct()</a>.</p>
 
 </div>
 </div>
@@ -863,13 +932,15 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00197">197</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00251">251</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 <p>References <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>, <a class="el" href="owl_8helper_8functions_8php_source.html#l00115">urlExpand()</a>, and <a class="el" href="owl_8helper_8functions_8php_source.html#l00097">urlToPath()</a>.</p>
 
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00156">addJSPlugin()</a>, and <a class="el" href="class_8document_8php_source.html#l00130">enableOWL_JS()</a>.</p>
+
 </div>
 </div>
-<a class="anchor" id="a90810fa2ea28179748a865531c7fc263"></a><!-- doxytag: member="Document::loadStyle" ref="a90810fa2ea28179748a865531c7fc263" args="($_style= '', $_condition= '')" -->
+<a class="anchor" id="afc30c79b16eaeebf97cc76eb8c1e36ae"></a><!-- doxytag: member="Document::loadStyle" ref="afc30c79b16eaeebf97cc76eb8c1e36ae" args="($_style= '', $_condition= '', $_try=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -883,7 +954,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_condition</em> = <code>''</code>&#160;</td>
+          <td class="paramname"><em>_condition</em> = <code>''</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_try</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -901,12 +978,20 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="see"><dt><b>See also:</b></dt><dd><a href="http://www.thesitewizard.com/css/excludecss.shtml">http://www.thesitewizard.com/css/excludecss.shtml</a> for the syntax </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a href="http://www.thesitewizard.com/css/excludecss.shtml">http://www.thesitewizard.com/css/excludecss.shtml</a> for the full syntax of conditions </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_try</td><td>When true, just try to load the stylesheet, ignoring (not logging) any errors. This is used for loading OWL-JS plugins and defaults to false. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00156">156</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00202">202</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 <p>References <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>, <a class="el" href="owl_8helper_8functions_8php_source.html#l00115">urlExpand()</a>, and <a class="el" href="owl_8helper_8functions_8php_source.html#l00097">urlToPath()</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00156">addJSPlugin()</a>.</p>
 
 </div>
 </div>
@@ -1039,7 +1124,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00248">248</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00307">307</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 </div>
 </div>
@@ -1187,7 +1272,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00290">290</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00349">349</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 </div>
 </div>
@@ -1259,7 +1344,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00229">229</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00288">288</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 <p>References <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>, <a class="el" href="owl_8helper_8functions_8php_source.html#l00115">urlExpand()</a>, and <a class="el" href="owl_8helper_8functions_8php_source.html#l00097">urlToPath()</a>.</p>
 
@@ -1288,7 +1373,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00278">278</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00337">337</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 </div>
 </div>
@@ -1340,7 +1425,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="class_8baseelement_8php_source.html#l00058">58</a> of file <a class="el" href="class_8baseelement_8php_source.html">class.baseelement.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8baseelement_8php_source.html#l00078">BaseElement::setName()</a>.</p>
+<p>Referenced by <a class="el" href="class_8container_8menu_8php_source.html#l00080">ContainerMenuPlugin::menuType()</a>, and <a class="el" href="class_8baseelement_8php_source.html#l00078">BaseElement::setName()</a>.</p>
 
 </div>
 </div>
@@ -1367,7 +1452,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00259">259</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00318">318</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 <p>References <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
 
@@ -1440,7 +1525,7 @@ Private Attributes</h2></td></tr>
 
 <p>References <a class="el" href="config_8php_source.html#l00011">$GLOBALS</a>, <a class="el" href="class_8__owl_8php_source.html#l00020">_OWL::$status</a>, <a class="el" href="class_8confighandler_8php_source.html#l00181">ConfigHandler::get()</a>, <a class="el" href="class_8register_8php_source.html#l00221">Register::getCode()</a>, <a class="el" href="class_8__owl_8php_source.html#l00104">_OWL::reset()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00293">_OWL::signal()</a>.</p>
 
-<p>Referenced by <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00067">Container::__call()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00289">DbHandler::__clone()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00077">SocketHandler::__construct()</a>, <a class="el" href="class_8session_8php_source.html#l00027">Session::__construct()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00054">SchemeHandler::__construct()</a>, <a class="el" href="class_8mail_8php_source.html#l00032">Mail::__construct()</a>, <a class="el" href="class_8imagehandler_8php_source.html#l00074">ImageHandler::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00059">FormHandler::__construct()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00074">FileHandler::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00209">DbHandler::__construct()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00107">DataHandler::__construct()</a>, <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00039">Container::__construct()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00194">BaseElement::_getContent()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00444">HDataHandler::_getNewLeft()</a>, <a class="el" href="class_8mail_8php_source.html#l00170">Mail::addBcc()</a>, <a class="el" href="class_8mail_8php_source.html#l00149">Mail::addCc()</a>, <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00106">Container::addContainer()</a>, <a class="el" href="class_8form_8php_source.html#l00106">Form::addField()</a>, <a class="el" href="class_8formfield_8radio_8php_source.html#l00059">FormFieldRadioPlugin::addOption()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00492">HDataHandler::addParent()</a>, <a class="el" href="class_8mail_8php_source.html#l00128">Mail::addTo()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00150">BaseElement::addToContent()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00315">DbHandler::alt()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00199">SchemeHandler::alterScheme()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00140">FileHandler::close()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00628">DbHandler::commitTransaction()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00078">Dispatcher::composeDispatcher()</a>, <a class="el" href="class_8user_8php_source.html#l00357">User::confirm()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00112">SocketHandler::connect()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00410">DbHandler::connect()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00387">DbHandler::create()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00100">SchemeHandler::createScheme()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00848">DbHandler::dbread()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00145">SchemeHandler::defineIndex()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00124">SchemeHandler::defineScheme()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00143">SocketHandler::disconnect()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00115">Dispatcher::dispatch()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00098">HDataHandler::enableCrossLink()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00147">FormHandler::get()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00287">DataHandler::get()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00280">HDataHandler::getDirectChildren()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00232">HDataHandler::getFullOffspring()</a>, <a class="el" href="class_8group_8php_source.html#l00068">Group::getGroupByName()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00425">SchemeHandler::getTableColumns()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00468">SchemeHandler::getTableIndexes()</a>, <a class="el" href="class_8__owl_8php_source.html#l00045">_OWL::init()</a>, <a class="el" href="class_8document_8php_source.html#l00197">loadScript()</a>, <a class="el" href="class_8document_8php_source.html#l00156">loadStyle()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00695">DbHandler::lockTable()</a>, <a class="el" href="class_8user_8php_source.html#l00157">User::login()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00653">HDataHandler::moveNode()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00120">FileHandler::open()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00445">DbHandler::open()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00195">LogHandler::openLogfile()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00372">DataHandler::prepare()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01149">DbHandler::prepareDelete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00530">DbHandler::prepareField()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01225">DbHandler::prepareInsert()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01107">DbHandler::prepareRead()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01180">DbHandler::prepareUpdate()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00192">SocketHandler::read()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00784">DbHandler::read()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00172">FileHandler::readLine()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00362">HDataHandler::readQuery()</a>, <a class="el" href="class_8user_8php_source.html#l00218">User::readUserdata()</a>, <a class="el" href="class_8user_8php_source.html#l00286">User::register()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00227">Dispatcher::registerArgument()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00207">Dispatcher::registerCallback()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00675">DbHandler::resetTable()</a>, <a class="el" href="class_8__owl_8php_source.html#l00122">_OWL::restoreStatus()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00652">DbHandler::rollbackTransaction()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00175">SchemeHandler::scheme()</a>, <a class="el" href="class_8mail_8php_source.html#l00231">Mail::send()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00108">FormHandler::set()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00255">BaseElement::setAttributes()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00132">BaseElement::setContent()</a>, <a class="el" href="class_8form_8php_source.html#l00085">Form::setEncoding()</a>, <a class="el" href="class_8document_8php_source.html#l00229">setFavicon()</a>, <a class="el" href="class_8form_8php_source.html#l00158">Form::setFieldAttributes()</a>, <a class="el" href="class_8mail_8php_source.html#l00071">Mail::setFrom()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00317">DataHandler::setJoin()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00223">DataHandler::setKey()</a>, <a class="el" href="class_8formfield_8text_8php_source.html#l00059">FormFieldTextPlugin::setMaxsize()</a>, <a class="el" href="class_8document_8php_source.html#l00259">setMeta()</a>, <a class="el" href="class_8form_8php_source.html#l00068">Form::setMethod()</a>, <a class="el" href="class_8formfield_8radio_8php_source.html#l00074">FormFieldRadioPlugin::setSelected()</a>, <a class="el" href="class_8mail_8php_source.html#l00053">Mail::setSender()</a>, <a class="el" href="class_8formfield_8text_8php_source.html#l00045">FormFieldTextPlugin::setSize()</a>, <a class="el" href="class_8formfield_8select_8php_source.html#l00104">FormFieldSelectPlugin::setSize()</a>, <a class="el" href="class_8formfield_8select_8php_source.html#l00062">FormFieldSelectPlugin::setValue()</a>, <a class="el" href="class_8form_8php_source.html#l00189">Form::showField()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00605">DbHandler::startTransaction()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00495">SchemeHandler::tableDescription()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00728">DbHandler::unlockTable()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00217">SchemeHandler::validateScheme()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00161">SocketHandler::write()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01267">DbHandler::write()</a>, and <a class="el" href="class_8datahandlerh_8php_source.html#l00762">HDataHandler::writeQuery()</a>.</p>
+<p>Referenced by <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00067">Container::__call()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00289">DbHandler::__clone()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00077">SocketHandler::__construct()</a>, <a class="el" href="class_8session_8php_source.html#l00027">Session::__construct()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00054">SchemeHandler::__construct()</a>, <a class="el" href="class_8mail_8php_source.html#l00032">Mail::__construct()</a>, <a class="el" href="class_8imagehandler_8php_source.html#l00074">ImageHandler::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00059">FormHandler::__construct()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00074">FileHandler::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00209">DbHandler::__construct()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00107">DataHandler::__construct()</a>, <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00039">Container::__construct()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00194">BaseElement::_getContent()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00444">HDataHandler::_getNewLeft()</a>, <a class="el" href="class_8mail_8php_source.html#l00170">Mail::addBcc()</a>, <a class="el" href="class_8mail_8php_source.html#l00149">Mail::addCc()</a>, <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00106">Container::addContainer()</a>, <a class="el" href="class_8form_8php_source.html#l00106">Form::addField()</a>, <a class="el" href="class_8formfield_8radio_8php_source.html#l00059">FormFieldRadioPlugin::addOption()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00492">HDataHandler::addParent()</a>, <a class="el" href="class_8mail_8php_source.html#l00128">Mail::addTo()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00150">BaseElement::addToContent()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00315">DbHandler::alt()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00199">SchemeHandler::alterScheme()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00140">FileHandler::close()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00628">DbHandler::commitTransaction()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00078">Dispatcher::composeDispatcher()</a>, <a class="el" href="class_8user_8php_source.html#l00357">User::confirm()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00112">SocketHandler::connect()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00410">DbHandler::connect()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00387">DbHandler::create()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00100">SchemeHandler::createScheme()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00848">DbHandler::dbread()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00145">SchemeHandler::defineIndex()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00124">SchemeHandler::defineScheme()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00143">SocketHandler::disconnect()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00115">Dispatcher::dispatch()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00098">HDataHandler::enableCrossLink()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00147">FormHandler::get()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00287">DataHandler::get()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00280">HDataHandler::getDirectChildren()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00232">HDataHandler::getFullOffspring()</a>, <a class="el" href="class_8group_8php_source.html#l00068">Group::getGroupByName()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00425">SchemeHandler::getTableColumns()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00468">SchemeHandler::getTableIndexes()</a>, <a class="el" href="class_8__owl_8php_source.html#l00045">_OWL::init()</a>, <a class="el" href="class_8document_8php_source.html#l00251">loadScript()</a>, <a class="el" href="class_8document_8php_source.html#l00202">loadStyle()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00695">DbHandler::lockTable()</a>, <a class="el" href="class_8user_8php_source.html#l00157">User::login()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00653">HDataHandler::moveNode()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00120">FileHandler::open()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00445">DbHandler::open()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00195">LogHandler::openLogfile()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00372">DataHandler::prepare()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01149">DbHandler::prepareDelete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00530">DbHandler::prepareField()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01225">DbHandler::prepareInsert()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01107">DbHandler::prepareRead()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01180">DbHandler::prepareUpdate()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00192">SocketHandler::read()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00784">DbHandler::read()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00172">FileHandler::readLine()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00362">HDataHandler::readQuery()</a>, <a class="el" href="class_8user_8php_source.html#l00218">User::readUserdata()</a>, <a class="el" href="class_8user_8php_source.html#l00286">User::register()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00227">Dispatcher::registerArgument()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00207">Dispatcher::registerCallback()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00675">DbHandler::resetTable()</a>, <a class="el" href="class_8__owl_8php_source.html#l00122">_OWL::restoreStatus()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00652">DbHandler::rollbackTransaction()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00175">SchemeHandler::scheme()</a>, <a class="el" href="class_8mail_8php_source.html#l00231">Mail::send()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00108">FormHandler::set()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00255">BaseElement::setAttributes()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00132">BaseElement::setContent()</a>, <a class="el" href="class_8form_8php_source.html#l00085">Form::setEncoding()</a>, <a class="el" href="class_8document_8php_source.html#l00288">setFavicon()</a>, <a class="el" href="class_8form_8php_source.html#l00158">Form::setFieldAttributes()</a>, <a class="el" href="class_8mail_8php_source.html#l00071">Mail::setFrom()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00317">DataHandler::setJoin()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00223">DataHandler::setKey()</a>, <a class="el" href="class_8formfield_8text_8php_source.html#l00059">FormFieldTextPlugin::setMaxsize()</a>, <a class="el" href="class_8document_8php_source.html#l00318">setMeta()</a>, <a class="el" href="class_8form_8php_source.html#l00068">Form::setMethod()</a>, <a class="el" href="class_8formfield_8radio_8php_source.html#l00074">FormFieldRadioPlugin::setSelected()</a>, <a class="el" href="class_8mail_8php_source.html#l00053">Mail::setSender()</a>, <a class="el" href="class_8formfield_8text_8php_source.html#l00045">FormFieldTextPlugin::setSize()</a>, <a class="el" href="class_8formfield_8select_8php_source.html#l00104">FormFieldSelectPlugin::setSize()</a>, <a class="el" href="class_8formfield_8select_8php_source.html#l00062">FormFieldSelectPlugin::setValue()</a>, <a class="el" href="class_8form_8php_source.html#l00189">Form::showField()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00605">DbHandler::startTransaction()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00495">SchemeHandler::tableDescription()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00728">DbHandler::unlockTable()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00217">SchemeHandler::validateScheme()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00161">SocketHandler::write()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01267">DbHandler::write()</a>, and <a class="el" href="class_8datahandlerh_8php_source.html#l00762">HDataHandler::writeQuery()</a>.</p>
 
 </div>
 </div>
@@ -1494,7 +1579,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00219">219</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00278">278</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 </div>
 </div>
@@ -1517,9 +1602,9 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classBaseElement.html#a63634d81fad745e3b72cda0100afebea">BaseElement</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00435">435</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00494">494</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
-<p>References <a class="el" href="class_8document_8php_source.html#l00310">_getMeta()</a>, <a class="el" href="class_8document_8php_source.html#l00382">_getScripts()</a>, <a class="el" href="class_8document_8php_source.html#l00366">_getStyles()</a>, <a class="el" href="class_8document_8php_source.html#l00352">_loadScripts()</a>, <a class="el" href="class_8document_8php_source.html#l00330">_loadStyles()</a>, <a class="el" href="class_8document_8php_source.html#l00400">addMessagesToContent()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00275">BaseElement::getAttributes()</a>, and <a class="el" href="class_8baseelement_8php_source.html#l00173">BaseElement::getContent()</a>.</p>
+<p>References <a class="el" href="class_8document_8php_source.html#l00369">_getMeta()</a>, <a class="el" href="class_8document_8php_source.html#l00441">_getScripts()</a>, <a class="el" href="class_8document_8php_source.html#l00425">_getStyles()</a>, <a class="el" href="class_8document_8php_source.html#l00411">_loadScripts()</a>, <a class="el" href="class_8document_8php_source.html#l00389">_loadStyles()</a>, <a class="el" href="class_8document_8php_source.html#l00459">addMessagesToContent()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00275">BaseElement::getAttributes()</a>, and <a class="el" href="class_8baseelement_8php_source.html#l00173">BaseElement::getContent()</a>.</p>
 
 </div>
 </div>
@@ -1592,7 +1677,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00319">319</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="OWLloader_8php_source.html#l00348">$_doc</a>, <a class="el" href="class_8__owl_8php_source.html#l00035">_OWL::$severity</a>, <a class="el" href="class_8owl_8php_source.html#l00072">OWL::factory()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00293">_OWL::signal()</a>.</p>
+<p>References <a class="el" href="OWLloader_8php_source.html#l00363">$_doc</a>, <a class="el" href="class_8__owl_8php_source.html#l00035">_OWL::$severity</a>, <a class="el" href="class_8owl_8php_source.html#l00072">OWL::factory()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00293">_OWL::signal()</a>.</p>
 
 </div>
 </div>
@@ -1711,7 +1796,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="class_8baseelement_8php_source.html#l00021">21</a> of file <a class="el" href="class_8baseelement_8php_source.html">class.baseelement.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00400">addMessagesToContent()</a>.</p>
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00459">addMessagesToContent()</a>.</p>
 
 </div>
 </div>
@@ -1827,7 +1912,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="class_8document_8php_source.html#l00072">72</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00111">getInstance()</a>.</p>
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00117">getInstance()</a>.</p>
 
 </div>
 </div>
@@ -1893,7 +1978,23 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="class_8baseelement_8php_source.html#l00036">36</a> of file <a class="el" href="class_8baseelement_8php_source.html">class.baseelement.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8form_8php_source.html#l00106">Form::addField()</a>, and <a class="el" href="class_8form_8php_source.html#l00189">Form::showField()</a>.</p>
+<p>Referenced by <a class="el" href="class_8form_8php_source.html#l00106">Form::addField()</a>, <a class="el" href="class_8document_8php_source.html#l00156">addJSPlugin()</a>, and <a class="el" href="class_8form_8php_source.html#l00189">Form::showField()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a983e2cc98eb38ea7b4ba49d0c68b705f"></a><!-- doxytag: member="Document::$owl_jsEnabled" ref="a983e2cc98eb38ea7b4ba49d0c68b705f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Document::$owl_jsEnabled<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Switch that will be set to True when OWL-JS is enabled </p>
+
+<p>Definition at line <a class="el" href="class_8document_8php_source.html#l00082">82</a> of file <a class="el" href="class_8document_8php_source.html">class.document.php</a>.</p>
 
 </div>
 </div>
@@ -2002,7 +2103,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Fri Jun 10 2011 13:50:20 for OWL-PHP by
+    <li class="footer">Generated on Sun Jun 12 2011 13:00:22 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

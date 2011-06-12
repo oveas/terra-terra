@@ -3,7 +3,7 @@
  * \file
  * This file defines an HTML document
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.document.php,v 1.11 2011-06-10 11:57:17 oscar Exp $
+ * \version $Id: class.document.php,v 1.12 2011-06-12 11:03:38 oscar Exp $
  */
 
 /**
@@ -77,6 +77,11 @@ class Document extends BaseElement
 	private $messages;
 
 	/**
+	 * Switch that will be set to True when OWL-JS is enabled
+	 */
+	private $owl_jsEnabled;
+
+	/**
 	 * Class constructor;
 	 * \param[in] $_attribs Indexed array with the HTML attributes
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -101,6 +106,7 @@ class Document extends BaseElement
 		$this->messages = array();
 		$this->favicon = '';
 		$this->contentType = 'text/html; charset=utf-8';
+		$this->owl_jsEnabled = false;
 	}
 
 	/**
@@ -114,6 +120,44 @@ class Document extends BaseElement
 			Document::$instance = new self();
 		}
 		return Document::$instance;
+	}
+
+	/**
+	 * This method can be called at any time to enable OWL-JS. It writes some global variables
+	 * to the document for use by JavaScript, and loads the library file with the core functionality.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function enableOWL_JS()
+	{
+		if ($this->owl_jsEnabled === true) {
+			return;
+		}
+		$this->owl_jsEnabled = true;
+		$this->addScript("// These variables are written here by OWL-PHP. If any of them need to change,\n"
+						. "// you should change them in OWLloader.php (will affect both OWL-PHP and OWL-JS), section OWL_Globals.\n"
+						. "// The defines in OWL-PHP have the same name as the variables here.");
+		$this->addScript("\n// Top URL of OWL-JS\n" . 'var OWL_JS_TOP = "' . OWL_JS_TOP . '";');
+		$this->addScript("\n// Location of the OWL-JS standard libfiles\n" . 'var OWL_JS_LIB = "' . OWL_JS_LIB . '";');
+		$this->addScript("\n// Top location of the OWL-JS plugins\n" . 'var OWL_JS_PLUGINS = "' . OWL_JS_PLUGINS . '";');
+		$this->addScript("\n// Name of the OWL dispatcher as it should appear in requests\n" . 'var OWL_DISPATCHER_NAME = "' . OWL_DISPATCHER_NAME . '";');
+		$this->addScript("\n// Callback URL for requests (AJAX, Form, links etc).\n" . 'var OWL_CALLBACK_URL = "' . OWL_CALLBACK_URL . '";');
+		$this->loadScript(OWL_JS_LIB . '/owl.js');
+	}
+
+	/**
+	 * Add an OWL-JD plugin to the document. If necessary, OWL-JS is enabled first.
+	 * Also, an attempt will be made to load a style sheet in case the plugin requires one.
+	 * \param[in] $type The plugin type, must be a directory name in the OWL-JS plugin directory
+	 * \param[in] $name Name of the plugin which must match (in lowercase) the filename of the plugin
+	 * without '.js'. If the plugin requires a special style sheet, it must be in the same location with
+	 * the same name and extension '.css'.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function addJSPlugin($type, $name)
+	{
+		$this->enableOWL_JS();
+		$this->loadScript(OWL_JS_PLUGINS . '/' . $type  . '/' . strtolower($name) . '.js');
+		$this->loadStyle(OWL_JS_PLUGINS . '/' . $type  . '/' . strtolower($name) . '.css', '', true);
 	}
 
 	/**
@@ -150,19 +194,29 @@ class Document extends BaseElement
 	 * \param[in] $_style URL of the stylesheet
 	 * \param[in] $_condition Condition to specify the browser(s), e.g. "lte IE 6" means the stylesheet
 	 * will be loaded only for Internet Explorer up and including version 6.
-	 * \see http://www.thesitewizard.com/css/excludecss.shtml for the syntax
+	 * \see http://www.thesitewizard.com/css/excludecss.shtml for the full syntax of conditions
+	 * \param[in] $_try When true, just try to load the stylesheet, ignoring (not logging) any errors. This is used for
+	 * loading OWL-JS plugins and defaults to false.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function loadStyle($_style = '', $_condition = '')
+	public function loadStyle($_style = '', $_condition = '', $_try = false)
 	{
 		$_path = urlToPath($_style);
 		// If not null the file is on the local host; check if it's there
-		if ($_path !== null && !file_exists($_path)) {
-			$this->setStatus(DOC_NOSUCHFILE, array('stylesheet', $_style));
-			return;
+		if ($_path !== null) {
+			if (file_exists(OWL_SITE_TOP . $_style)) {
+				$_style = OWL_SITE_TOP . $_style;
+			} elseif (!file_exists($_style)) {
+				if ($_try !== true) {
+					$this->setStatus(DOC_NOSUCHFILE, array('stylesheet', $_style));
+				}
+				return;
+			}
 		}
 		if (($_styleUrl = urlExpand($_style)) === null) {
-			$this->setStatus(DOC_IVFILESPEC, array('stylesheet', $_script));
+			if ($_try !== true) {
+				$this->setStatus(DOC_IVFILESPEC, array('stylesheet', $_script));
+			}
 			return;
 		}
 
@@ -197,10 +251,15 @@ class Document extends BaseElement
 	public function loadScript($_script = '')
 	{
 		$_path = urlToPath($_script);
+
 		// If not null the file is on the local host; check if it's there
-		if ($_path !== null && !file_exists($_path)) {
-			$this->setStatus(DOC_NOSUCHFILE, array('javascript', $_script));
-			return;
+		if ($_path !== null) {
+			if (file_exists(OWL_SITE_TOP . $_script)) {
+				$_script = OWL_SITE_TOP . $_script;
+			} elseif (!file_exists($_script)) {
+				$this->setStatus(DOC_NOSUCHFILE, array('javascript', $_script));
+				return;
+			}
 		}
 		if (($_scriptUrl = urlExpand($_script)) === null) {
 			$this->setStatus(DOC_IVFILESPEC, array('javascript', $_script));
@@ -353,7 +412,7 @@ class Document extends BaseElement
 	{
 		$_htmlCode = '';
 		foreach ($this->js as $_src) {
-			$_htmlCode .= '<script type="text/javascript" src="'.$_src.'" />'."\n";
+			$_htmlCode .= '<script language="javascript" type="text/javascript" src="'.$_src.'" ></script>'."\n";
 		}
 		return $_htmlCode;
 	}
@@ -383,10 +442,10 @@ class Document extends BaseElement
 	{
 		$_htmlCode = '';
 		if (count($this->scripts) > 0) {
-			$_htmlCode .= '<script type="text/javascript">//<![CDATA['."\n";
+			$_htmlCode .= '<script language="javascript" type="text/javascript">//<![CDATA['."\n";
 			$_htmlCode .= "<!--\n";
 			$_htmlCode .= implode("\n", $this->scripts);
-			$_htmlCode .= "// -->\n";
+			$_htmlCode .= "\n// -->\n";
 			$_htmlCode .= "//]]></script>\n";
 		}
 		return $_htmlCode;
@@ -450,6 +509,7 @@ class Document extends BaseElement
 			$_htmlCode .= '<link href="'.$this->favicon.'" rel="shortcut icon" type="image/x-icon" />'."\n";
 		}
 		$_htmlCode .= $this->_loadStyles();
+		$_htmlCode .= $this->_getScripts();
 		$_htmlCode .= $this->_loadScripts();
 
 		$_htmlCode .= "</head>\n";
@@ -457,7 +517,6 @@ class Document extends BaseElement
 		$_htmlCode .= $this->getAttributes();
 		$_htmlCode .= ">\n";
 		$_htmlCode .= $this->_getStyles();
-		$_htmlCode .= $this->_getScripts();
 		$_htmlCode .= $this->getContent() . "\n";
 		$_htmlCode .= "</body>\n";
 		$_htmlCode .= "</html>\n";

@@ -3,13 +3,13 @@
  * \file
  * This file defines the User class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.user.php,v 1.18 2011-05-18 12:03:48 oscar Exp $
+ * \version $Id: class.user.php,v 1.19 2011-06-12 11:03:38 oscar Exp $
  */
 
 /**
  * \ingroup OWL_BO_LAYER
- * This class handles the OWL users 
- * \brief the OWL-PHP user object 
+ * This class handles the OWL users
+ * \brief the OWL-PHP user object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 27, 2008 -- O van Eijk -- initial version
  */
@@ -17,12 +17,12 @@ abstract class User extends _OWL
 {
 	/**
 	 * The PHP session object
-	 */	
+	 */
 	private $session;
 
 	/**
 	 * Link to a datahandler object. This dataset is used as an interface to all database IO.
-	 */	
+	 */
 	private $dataset;
 
 	/**
@@ -84,7 +84,7 @@ abstract class User extends _OWL
 	private function clearUser($newSession = false)
 	{
 		if ($newSession === true) {
-			session_destroy(); // Clear the session ... 
+			session_destroy(); // Clear the session ...
 			unset ($this->session);
 			$this->session = new Session();
 		}
@@ -192,7 +192,7 @@ abstract class User extends _OWL
 
 	/**
 	 * Log out the current user
-	 * Note: After logging out, the session still continues. The calling app must
+	 * \note After logging out, the session still continues. The calling app must
 	 * take care of the forward (e.g. with a header('location: ' . $_SERVER['PHP_SELF'])
 	 * after a call to User::logout()).
 	 * \param[in] $resetStatus When true (default) the object status will be reset
@@ -478,7 +478,7 @@ abstract class User extends _OWL
 	{
 		return ($this->getSessionVar('uid', 0));
 	}
-	
+
 	/**
 	 * Return the current session ID
 	 * \return the session ID
@@ -515,7 +515,7 @@ abstract class User extends _OWL
 			}
 		}
 	}
-	
+
 	/**
 	 * Set a session variable
 	 * \param[in] $var Variable name

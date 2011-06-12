@@ -3,7 +3,7 @@
  * \file
  * This file defines a container element
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.container.php,v 1.8 2011-06-07 14:06:56 oscar Exp $
+ * \version $Id: class.container.php,v 1.9 2011-06-12 11:03:39 oscar Exp $
  */
 
 OWLloader::getClass('container', OWL_PLUGINS . '/containers');
@@ -121,7 +121,7 @@ class Container extends BaseElement
 	public function showElement()
 	{
 		$_htmlCode = '<' . $this->containerObject->getType();
-		$_htmlCode .= $this->getAttributes();
+		$_htmlCode .= $this->containerObject->getAttributes() . $this->getAttributes();
 		$_htmlCode .= $this->containerObject->showElement();
 		$_htmlCode .= '>' . $this->containerObject->getNestedType() . "\n";
 		if (method_exists($this->containerObject, 'getContent')) {

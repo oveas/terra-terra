@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.11 2011-05-18 12:03:48 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.12 2011-06-12 11:03:39 oscar Exp $
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
@@ -208,7 +208,7 @@ function verifyMailAddress ($email, $extract = true)
  * </ul>
  *
  * \author Chris Smith <code+php@chris.cs278.org>
- * \copyright Copyright (c) 2009 Chris Smith (http://www.cs278.org/)
+ * \copyright{2009} Chris Smith (http://www.cs278.org/)
  * \license http://sam.zoy.org/wtfpl/ WTFPL
  * \param[in] $value Value to test for serialized form
  * \param[in] $result Result of unserialize() of the $value

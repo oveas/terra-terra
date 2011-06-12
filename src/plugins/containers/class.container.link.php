@@ -3,7 +3,7 @@
  * \file
  * This file defines the link plugin for containers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.container.link.php,v 1.3 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.container.link.php,v 1.4 2011-06-12 11:03:38 oscar Exp $
  */
 
 /**
@@ -20,7 +20,7 @@ class ContainerLinkPlugin extends ContainerPlugin
 	 * Hypertext reference, defaults to '#'
 	 */
 	private $href;
-	
+
 	/**
 	 * Link target
 	 */
@@ -59,18 +59,19 @@ class ContainerLinkPlugin extends ContainerPlugin
 	}
 
 	/**
-	 * Set a dispatcher as href attribute. NOTE! This overwrites the href attribute!
+	 * Set a dispatcher as href attribute
+	 * \note This overwrites the href attribute
 	 * \param[in] $_dispatcher OWL dispatcher as string or array, \see Dispatcher::composeDispatcher()
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setDispatcher($_dispatcher)
 	{
 		$_disp = OWL::factory('Dispatcher', 'bo');
-		$this->href = $_SERVER['PHP_SELF'] . '?' . OWL_DISPATCHER_NAME . '=' . $_disp->composeDispatcher($_dispatcher);
+		$this->href = OWL_CALLBACK_URL . '?' . OWL_DISPATCHER_NAME . '=' . $_disp->composeDispatcher($_dispatcher);
 	}
 
 	/**
-	 * Show the A specific arguments. 
+	 * Show the A specific arguments.
 	 * \return HTML code for use in the A tag
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */

@@ -3,7 +3,7 @@
  * \file
  * This file defines the menu plugin for containers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.container.menu.php,v 1.1 2011-06-07 14:06:55 oscar Exp $
+ * \version $Id: class.container.menu.php,v 1.2 2011-06-12 11:03:38 oscar Exp $
  */
 
 if (!class_exists('ContainerListPlugin') && !OWLloader::getClass('container.list', OWL_PLUGINS . '/containers')) {
@@ -66,6 +66,28 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	}
 
 	/**
+	 * Set the menu type. The type must exist in the plugins/menu location of OWL-JS
+	 * as lowercase&lt;typename&gt;.js; that file is loaded from here.
+	 *
+	 * At the same time, a JavaScript array is created with the name &lt;type&gt;List that
+	 * holds all ID's of the menus of this type. The OWL-JS plugin can use this array for handling
+	 * and/or initialising the menus.
+	 * \param[in] $type The menu type, must exist as an OWL-JS menu plugin
+	 * \param[in] $menuID ID to set the div element to that holds this menu. This can be used
+	 * by the OWL-JS plugin
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function menuType ($type, $menuID = array())
+	{
+		$doc = OWL::factory('Document', OWL_UI_INC);
+		$doc->addJSPlugin('menu', $type);
+		$jsListname = $type . 'MenuList';
+		$doc->addScript("if (typeof($jsListname) == 'undefined') $jsListname = new Array();\n"
+				. "$jsListname.push('$menuID')");
+		$this->setId($menuID);
+	}
+
+	/**
 	 * Add a submenu to the current menu
 	 * \param[in] $_title Title as it will appear in the parent menu
 	 * \param[in] $_attribs An optional array with HTML attributes
@@ -78,8 +100,10 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	 */
 	public function addSubMenu($_title = '', array $_attribs = array(), array $_type_attribs = array())
 	{
+		$_lnk = new Container('link', $_title);
+		$_lnk->setHref('#');
 		$_newMenu = new Container('menu');
-		$_subMenu = $this->addItem($_title, $_attribs, $_type_attribs);
+		$_subMenu = $this->addItem($_lnk, $_attribs, $_type_attribs);
 		$_subMenu->addToContent($_newMenu);
 		return $_newMenu;
 	}

@@ -3,7 +3,7 @@
  * \file
  * This file defines the HTML Form class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.form.php,v 1.11 2011-06-10 11:57:17 oscar Exp $
+ * \version $Id: class.form.php,v 1.12 2011-06-12 11:03:38 oscar Exp $
  */
 
 OWLloader::getClass('formfield', OWL_PLUGINS . '/formfields');
@@ -202,7 +202,7 @@ class Form extends BaseElement
 	 */
 	private function openForm()
 	{
-		return '<form action="'.$_SERVER['PHP_SELF'].'" '
+		return '<form action="'.OWL_CALLBACK_URL.'" '
 			. parent::getAttributes()
 			. ' enctype="'.$this->enctype.'"'
 			. ' method="'.$this->method.'">'."\n";

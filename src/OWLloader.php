@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.34 2011-06-10 10:55:19 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.35 2011-06-12 11:03:39 oscar Exp $
  */
 
 // Error handling used during development
@@ -58,12 +58,27 @@ define ('OWL_DRIVERS',	OWL_ROOT . '/drivers');
 //! Location for all contributed plugins
 define ('OWL_CONTRIB',	OWL_LIBRARY . '/contrib');
 
-//! Toplocation of this site
+//! Toplocation of this site (directory)
 define ('OWL_SITE_TOP', $_SERVER['DOCUMENT_ROOT']);
+
+//! Toplocation of OWL-PHP (URL)
+define ('OWL_OWL_URL', str_replace(OWL_SITE_TOP, '', OWL_ROOT));
+
+//! Default URL used for all callbacks (like form actions, AJAX requests etc)
+define ('OWL_CALLBACK_URL', $_SERVER['PHP_SELF']);
 
 //! OWL default stylesheets
 define ('OWL_STYLE',	OWL_ROOT . '/style');
 
+//! Top location (URL) of OWL-JS
+//define ('OWL_JS_TOP', OWL_OWL_URL . '/owl-js');
+define ('OWL_JS_TOP', '/owl-js');
+
+//! Location of the OWL-JS library files
+define ('OWL_JS_LIB', OWL_JS_TOP . '/lib');
+
+//! Location of the OWL-JS plugins
+define ('OWL_JS_PLUGINS', OWL_JS_TOP . '/plugins');
 //! @}
 
 /**

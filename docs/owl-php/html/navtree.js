@@ -299,11 +299,16 @@ var NAVTREE =
       [ "Global constants", "group__OWL__Globals.html", [
         [ "Enumerations", "group__OWL__Globals.html", [
           [ "OWL_BO_INC", "group__OWL__Globals.html#gaca50646bc73c3addf0e0f25081eae0ae", null ],
+          [ "OWL_CALLBACK_URL", "group__OWL__Globals.html#ga852a175212533e96f5299c0d2c2262cf", null ],
           [ "OWL_CONTRIB", "group__OWL__Globals.html#ga66b119ac9cfcd8ecf89024e30bf73956", null ],
           [ "OWL_DRIVERS", "group__OWL__Globals.html#gaf6ffde4ef80c21c2e105c89dab9c011e", null ],
           [ "OWL_INCLUDE", "group__OWL__Globals.html#ga4d33a8f2fcc9c83cbeea921c4cb23a7f", null ],
+          [ "OWL_JS_LIB", "group__OWL__Globals.html#ga4ade368ca54f320d72593d54f8134496", null ],
+          [ "OWL_JS_PLUGINS", "group__OWL__Globals.html#ga071b796d980b71487cc7100f1008a09c", null ],
+          [ "OWL_JS_TOP", "group__OWL__Globals.html#ga92234f5e71d5fa05e09b93028c6b9174", null ],
           [ "OWL_LIBRARY", "group__OWL__Globals.html#ga74eed08508c8b70677c4167acf49e427", null ],
           [ "OWL_LOG", "group__OWL__Globals.html#gae3fe8a897196b3cb98b8827a9a940ccb", null ],
+          [ "OWL_OWL_URL", "group__OWL__Globals.html#gad1364289da63f426f35de93fe576d96c", null ],
           [ "OWL_PLUGINS", "group__OWL__Globals.html#gacb1e6e914bd3c0c96fc20ae6bb3a8a99", null ],
           [ "OWL_SITE_TOP", "group__OWL__Globals.html#ga462de9ae02e394313337afac5d1a5f95", null ],
           [ "OWL_SO_INC", "group__OWL__Globals.html#ga75dffdef5ba58a0ba5f21ed40627897f", null ],
