@@ -3,7 +3,7 @@
  * \file
  * This file defines an HTML document
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.document.php,v 1.12 2011-06-12 11:03:38 oscar Exp $
+ * \version $Id: class.document.php,v 1.13 2011-06-13 13:54:56 oscar Exp $
  */
 
 /**
@@ -142,6 +142,21 @@ class Document extends BaseElement
 		$this->addScript("\n// Name of the OWL dispatcher as it should appear in requests\n" . 'var OWL_DISPATCHER_NAME = "' . OWL_DISPATCHER_NAME . '";');
 		$this->addScript("\n// Callback URL for requests (AJAX, Form, links etc).\n" . 'var OWL_CALLBACK_URL = "' . OWL_CALLBACK_URL . '";');
 		$this->loadScript(OWL_JS_LIB . '/owl.js');
+
+		// Now load the language extentions.
+		// TODO This can be removed when I got languageExtentions() in owl.js working...
+		$lextDir = OWL_SITE_TOP . OWL_JS_LIB . '/lext/';
+		if ($dH = opendir($lextDir)) {
+			while (($fName = readdir($dH)) !== false) {
+				if (is_file($lextDir . $fName)) {
+					$fElements = explode('.', $fName);
+					if (array_pop($fElements) == 'js') {
+						$this->loadScript(OWL_JS_LIB . '/lext/' . $fName);
+					}
+				}
+			}
+		}
+		closedir($dH);
 	}
 
 	/**
@@ -184,7 +199,7 @@ class Document extends BaseElement
 	 * \param $_style HTML code to define the style, without the &lt;(/)style&gt; tags
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function addStyle($_style = '')
+	public function addStyle($_style)
 	{
 		$this->styles[] = $_style;
 	}
@@ -193,13 +208,13 @@ class Document extends BaseElement
 	 * Add a CSS stylesheet to the document
 	 * \param[in] $_style URL of the stylesheet
 	 * \param[in] $_condition Condition to specify the browser(s), e.g. "lte IE 6" means the stylesheet
-	 * will be loaded only for Internet Explorer up and including version 6.
-	 * \see http://www.thesitewizard.com/css/excludecss.shtml for the full syntax of conditions
+	 * will be loaded only for Internet Explorer up and including version 6. See
+	 * http://www.thesitewizard.com/css/excludecss.shtml for the full syntax of conditions
 	 * \param[in] $_try When true, just try to load the stylesheet, ignoring (not logging) any errors. This is used for
 	 * loading OWL-JS plugins and defaults to false.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function loadStyle($_style = '', $_condition = '', $_try = false)
+	public function loadStyle($_style, $_condition = '', $_try = false)
 	{
 		$_path = urlToPath($_style);
 		// If not null the file is on the local host; check if it's there
@@ -238,7 +253,7 @@ class Document extends BaseElement
 	 * \param $_script Script code without the &lt;(/)script&gt; tags
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function addScript($_script = '')
+	public function addScript($_script)
 	{
 		$this->scripts[] = $_script;
 	}
@@ -248,7 +263,7 @@ class Document extends BaseElement
 	 * \param $_script URL of the scriptsource
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function loadScript($_script = '')
+	public function loadScript($_script)
 	{
 		$_path = urlToPath($_script);
 

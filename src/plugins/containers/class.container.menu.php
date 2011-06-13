@@ -3,7 +3,7 @@
  * \file
  * This file defines the menu plugin for containers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.container.menu.php,v 1.2 2011-06-12 11:03:38 oscar Exp $
+ * \version $Id: class.container.menu.php,v 1.3 2011-06-13 13:54:56 oscar Exp $
  */
 
 if (!class_exists('ContainerListPlugin') && !OWLloader::getClass('container.list', OWL_PLUGINS . '/containers')) {
@@ -28,6 +28,11 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	private $items;
 
 	/**
+	 * Array with all lists that have been initialised for JavaScript.
+	 */
+	static private $knownLists;
+
+	/**
 	 * Container constructor
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -37,6 +42,7 @@ class ContainerMenuPlugin extends ContainerListPlugin
 		$this->type = 'div';
 		$this->nested_type = 'ul'; // We want <div [attribs...]><ul> (...) </ul></div> here
 		$this->items = array();
+		self::$knownLists = array();
 	}
 
 	/**
@@ -77,13 +83,17 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	 * by the OWL-JS plugin
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function menuType ($type, $menuID = array())
+	public function menuType ($type, $menuID)
 	{
 		$doc = OWL::factory('Document', OWL_UI_INC);
 		$doc->addJSPlugin('menu', $type);
 		$jsListname = $type . 'MenuList';
-		$doc->addScript("if (typeof($jsListname) == 'undefined') $jsListname = new Array();\n"
-				. "$jsListname.push('$menuID')");
+
+		if (!in_array($jsListname, self::$knownLists)) {
+			$doc->addScript("if (typeof($jsListname) == 'undefined') $jsListname = new Array();");
+			self::$knownLists[] = $jsListname;
+		}
+		$doc->addScript("$jsListname.push('$menuID')");
 		$this->setId($menuID);
 	}
 
@@ -102,6 +112,7 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	{
 		$_lnk = new Container('link', $_title);
 		$_lnk->setHref('#');
+		$_lnk->setEvent('onClick', 'return false;');
 		$_newMenu = new Container('menu');
 		$_subMenu = $this->addItem($_lnk, $_attribs, $_type_attribs);
 		$_subMenu->addToContent($_newMenu);

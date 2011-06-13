@@ -9,7 +9,6 @@ options:
 	--index
 	--sections
 	--nopre
-	--masterindex "Master Index,masterindex"
 	--documenttitle "OWL-JS Oveas Web Library for JavaScript"
 	--doc "/home/oscar/projects/owl-php/docs/owl-js/html"
 	--src "/home/oscar/projects/owl-js/src"
@@ -33,6 +32,7 @@ items:
 	WARNINGS
 	SEE ALSO
 	COPYRIGHT
+	LICENSE
 
 preformatted items:
 	EXAMPLE
@@ -54,3 +54,8 @@ item order:
 	HISTORY
 	TODO
 	COPYRIGHT
+	LICENSE
+
+headertypes:
+	p	"Plugins"		robo_plugins
+	I	"Introduction"	index			2
