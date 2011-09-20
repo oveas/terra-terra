@@ -17,38 +17,71 @@
 <div id="navigation">
 <a class="menuitem" href="../toc_index.html#top">Table of Contents</a>
 <a class="menuitem" href="../robo_sourcefiles.html#top">Sourcefiles</a>
-<a class="menuitem" href="../masterindex.html#top">Master Index</a>
+<a class="menuitem" href="../masterindex.html#top">Index</a>
+<a class="menuitem" href="../index.html#top">Introduction</a>
 <a class="menuitem" href="../robo_classes.html#top">Classes</a>
 <a class="menuitem" href="../robo_functions.html#top">Functions</a>
+<a class="menuitem" href="../robo_modules.html#top">Modules</a>
 <a class="menuitem" href="../robo_methods.html#top">Methods</a>
+<a class="menuitem" href="../robo_plugins.html#top">Plugins</a>
 <a class="menuitem" href="../robo_variables.html#top">Variables</a>
 </div> <!-- navigation -->
 <div id="content">
 <h3>TABLE OF CONTENTS</h3>
 <ul>
-<li>1. <a href="#robo4">OWL-JS/library</a></li>
+<li>1. <a href="#robo1">OWL-JS/library</a></li>
 <ul>
-<li>1.1. <a href="#robo0">library/getElementsByClass</a></li>
-<li>1.2. <a href="#robo1">library/importScript</a></li>
-<li>1.3. <a href="#robo2">library/OWLscripts</a></li>
-<li>1.4. <a href="./requesthandler_js.html#robo3">library/requestHandler</a></li>
+<li>1.1. <a href="#robo6">library/getElementsByClass</a></li>
+<li>1.2. <a href="#robo7">library/importScript</a></li>
+<li>1.3. <a href="#robo8">library/initFunctions</a></li>
+<li>1.4. <a href="#robo9">library/languageExtentions</a></li>
 <ul>
-<li>1.4.1. <a href="./requesthandler_js.html#robo5">requestHandler/getResponseText</a></li>
-<li>1.4.2. <a href="./requesthandler_js.html#robo6">requestHandler/sendRequest</a></li>
-<li>1.4.3. <a href="./requesthandler_js.html#robo7">requestHandler/setCallback</a></li>
-<li>1.4.4. <a href="./requesthandler_js.html#robo8">requestHandler/whenComplete</a></li>
-<li>1.4.5. <a href="./requesthandler_js.html#robo9">requestHandler/whenInteractive</a></li>
-<li>1.4.6. <a href="./requesthandler_js.html#robo10">requestHandler/whenLoaded</a></li>
-<li>1.4.7. <a href="./requesthandler_js.html#robo11">requestHandler/whenLoading</a></li>
-<li>1.4.8. <a href="./requesthandler_js.html#robo12">requestHandler/whenUninitialized</a></li>
+<li>1.4.1. <a href="./lext/array_indexof_js.html#robo4">languageExtentions/Array.indexOf</a></li>
+<li>1.4.2. <a href="./lext/htmlelement_addclass_js.html#robo5">languageExtentions/HTMLElement.addClass</a></li>
+</ul>
+<li>1.5. <a href="#robo10">library/OWLinitF</a></li>
+<li>1.6. <a href="#robo11">library/OWLscripts</a></li>
+<li>1.7. <a href="./requesthandler_js.html#robo12">library/requestHandler</a></li>
+<ul>
+<li>1.7.1. <a href="./requesthandler_js.html#robo14">requestHandler/getResponseText</a></li>
+<li>1.7.2. <a href="./requesthandler_js.html#robo15">requestHandler/sendRequest</a></li>
+<li>1.7.3. <a href="./requesthandler_js.html#robo16">requestHandler/setCallback</a></li>
+<li>1.7.4. <a href="./requesthandler_js.html#robo17">requestHandler/whenComplete</a></li>
+<li>1.7.5. <a href="./requesthandler_js.html#robo18">requestHandler/whenInteractive</a></li>
+<li>1.7.6. <a href="./requesthandler_js.html#robo19">requestHandler/whenLoaded</a></li>
+<li>1.7.7. <a href="./requesthandler_js.html#robo20">requestHandler/whenLoading</a></li>
+<li>1.7.8. <a href="./requesthandler_js.html#robo21">requestHandler/whenUninitialized</a></li>
 </ul>
 </ul>
 </ul>
 <hr />
-<a name="library2fgetElementsByClass"></a>
-<a name="robo0"></a><h2>library/getElementsByClass [ Functions ]</h2>
+<a name="OWL2dJS2flibrary"></a>
+<a name="robo1"></a><h2>OWL-JS/library [ Modules ]</h2>
 
-<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo4">library</a> ] [ <a href="../robo_functions.html#robo_top_of_doc">Functions</a> ]</p>
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="../robo_modules.html#robo_top_of_doc">Modules</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>library</strong> - General routines
+</p>
+<p class="item_name">DESCRIPTION</p>
+<p>  This file contains generally used <strong>library</strong> functions. When using OWL-JS, this script must
+  always be included in the document by the application.
+</p>
+<p class="item_name">AUTHOR</p>
+<p>  Oscar van Eijk, Oveas Functionality Provider
+</p>
+<p class="item_name">HISTORY</p>
+<ul><li>  Nov 16, 2002 -- O van Eijk -- initial version for Terra-Terra 
+</li>
+<li>  Jun 8, 2011 -- O van Eijk -- initial version for OWL
+</li>
+</ul>
+<p></p>
+
+<hr />
+<a name="library2fgetElementsByClass"></a>
+<a name="robo6"></a><h2>library/getElementsByClass [ Functions ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo1">library</a> ] [ <a href="../robo_functions.html#robo_top_of_doc">Functions</a> ]</p>
 <p class="item_name">NAME</p>
 <p>  <strong>getElementsByClass</strong> - Retrieve all elements that have the given class in the class-attribute
 </p>
@@ -79,9 +112,9 @@
 
 <hr />
 <a name="library2fimportScript"></a>
-<a name="robo1"></a><h2>library/importScript [ Functions ]</h2>
+<a name="robo7"></a><h2>library/importScript [ Functions ]</h2>
 
-<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo4">library</a> ] [ <a href="../robo_functions.html#robo_top_of_doc">Functions</a> ]</p>
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo1">library</a> ] [ <a href="../robo_functions.html#robo_top_of_doc">Functions</a> ]</p>
 <p class="item_name">NAME</p>
 <p>  <strong>importScript</strong> - Load a new JavaScript source
 </p>
@@ -95,17 +128,91 @@
 <p>  or relative.
 </p>
 <p class="item_name">SYNOPSIS</p>
-<pre class="source">function <strong>importScript</strong><span class="sign">(</span>src<span class="sign">)</span>
+<pre class="source">function <strong>importScript</strong><span class="sign">(</span>src<span class="sign">,</span> initFunction<span class="sign">)</span>
 </pre>
 <p class="item_name">AUTHOR</p>
 <p>  Oscar van Eijk, Oveas Functionality Provider
 </p>
 
 <hr />
-<a name="library2fOWLscripts"></a>
-<a name="robo2"></a><h2>library/OWLscripts [ Variables ]</h2>
+<a name="library2finitFunctions"></a>
+<a name="robo8"></a><h2>library/initFunctions [ Functions ]</h2>
 
-<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo4">library</a> ] [ <a href="../robo_variables.html#robo_top_of_doc">Variables</a> ]</p>
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo1">library</a> ] [ <a href="../robo_functions.html#robo_top_of_doc">Functions</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>initFunctions</strong> - Execute all initialisation scripts
+</p>
+<p class="item_name">DESCRIPTION</p>
+<p>  All plugins that are loaded and need initialisation, must call addInitFunction() to
+  define the initialisation function.
+  This function will be called after the document is loaded
+</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">function <strong>initFunctions</strong><span class="sign">(</span><span class="sign">)</span>
+</pre>
+<p class="item_name">AUTHOR</p>
+<p>  Oscar van Eijk, Oveas Functionality Provider
+</p>
+
+<hr />
+<a name="library2flanguageExtentions"></a>
+<a name="robo9"></a><h2>library/languageExtentions [ Functions ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo1">library</a> ] [ <a href="../robo_functions.html#robo_top_of_doc">Functions</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>languageExtentions</strong> - Load language extentions that are not supported by this browser
+</p>
+<p class="item_name">DESCRIPTION</p>
+<p>  This function, which is called when the script is loaded, checks for functions and methods
+  that are used by OWL-JS scripts but not supported by all browsers. Missing features will be
+  loaded from the lib/lext directory.
+</p>
+
+<p>  All new additions that are placed in lib/lext must be added to this function with the
+  appropriate check, the scripts are not autoloaded!
+</p>
+<p class="item_name">SOURCE</p>
+<pre class="source">function <strong>languageExtentions</strong> <span class="sign">(</span><span class="sign">)</span>
+<span class="sign">{</span>
+    if <span class="sign">(</span><span class="sign">!</span>Array<span class="sign">.</span>prototype<span class="sign">.</span>indexOf<span class="sign">)</span> <a href="#robo7">importScript</a><span class="sign">(</span>OWL_JS_LIB <span class="sign">+</span> <span class="squote">'lext/<a href="./lext/array_indexof_js.html#robo_top_of_doc">array_indexof.js</a>'</span><span class="sign">)</span><span class="sign">;</span>
+    if <span class="sign">(</span><span class="sign">!</span>HTMLElement<span class="sign">.</span>prototype<span class="sign">.</span>addClass<span class="sign">)</span> <a href="#robo7">importScript</a><span class="sign">(</span>OWL_JS_LIB <span class="sign">+</span> <span class="squote">'lext/<a href="./lext/htmlelement_addclass_js.html#robo_top_of_doc">htmlelement_addclass.js</a>'</span><span class="sign">)</span><span class="sign">;</span>
+<span class="sign">}</span>
+</pre>
+<p class="item_name">AUTHOR</p>
+<p>  Oscar van Eijk, Oveas Functionality Provider
+</p>
+<p class="item_name">TODO</p>
+<p>  This function is not used since it doesn't seem to work... The code in the script
+  is not executed when loaded and somehow I can't get the onLoad and onReadyStateChange properties
+  to work in <a href="#robo7">importScript</a>().
+</p>
+  
+<p>  Insteas, all language extentions are now loaded in the PHP code from Document::enableOWL_JS()
+  and the checks are made in the loaded scripts themselve.
+</p>
+
+<hr />
+<a name="library2fOWLinitF"></a>
+<a name="robo10"></a><h2>library/OWLinitF [ Variables ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo1">library</a> ] [ <a href="../robo_variables.html#robo_top_of_doc">Variables</a> ]</p>
+<p class="item_name">NAME</p>
+<p>  <strong>OWLinitF</strong> - List of initialisation functions
+</p>
+<p class="item_name">DESCRIPTION</p>
+<p>  Global array that holds all initialisation functions which must be called when
+  the document has loaded.
+</p>
+<p class="item_name">SOURCE</p>
+<pre class="source">if <span class="sign">(</span>typeof<span class="sign">(</span><strong>OWLinitF</strong><span class="sign">)</span> <span class="sign">=</span><span class="sign">=</span> <span class="squote">'undefined'</span><span class="sign">)</span>
+    var <strong>OWLinitF</strong> <span class="sign">=</span> new Array<span class="sign">(</span><span class="sign">)</span><span class="sign">;</span>
+</pre>
+
+<hr />
+<a name="library2fOWLscripts"></a>
+<a name="robo11"></a><h2>library/OWLscripts [ Variables ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo1">library</a> ] [ <a href="../robo_variables.html#robo_top_of_doc">Variables</a> ]</p>
 <p class="item_name">NAME</p>
 <p>  <strong>OWLscripts</strong> - General routines
 </p>
@@ -113,40 +220,13 @@
 <p>  Global object that keeps track of all scripts that have been loaded
 </p>
 <p class="item_name">SOURCE</p>
-<pre class="source">if <span class="sign">(</span>typeof<span class="sign">(</span><strong>OWLscripts</strong><span class="sign">)</span> <span class="sign">=</span><span class="sign">=</span> <span class="squote">'undefined'</span><span class="sign">)</span> <span class="sign">{</span>
-    var <strong>OWLscripts</strong> <span class="sign">=</span> new Object<span class="sign">(</span><span class="sign">)</span><span class="sign">;</span>
-<span class="sign">}</span>
+<pre class="source">if <span class="sign">(</span>typeof<span class="sign">(</span><strong>OWLscripts</strong><span class="sign">)</span> <span class="sign">=</span><span class="sign">=</span> <span class="squote">'undefined'</span><span class="sign">)</span>
+    var <strong>OWLscripts</strong> <span class="sign">=</span> new Array<span class="sign">(</span><span class="sign">)</span><span class="sign">;</span>
 </pre>
-<p class="item_name">AUTHOR</p>
-<p>  Oscar van Eijk, Oveas Functionality Provider
-</p>
-
-<hr />
-<a name="OWL2dJS2flibrary"></a>
-<a name="robo4"></a><h2>OWL-JS/library [ Methods ]</h2>
-
-<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="../robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
-<p class="item_name">NAME</p>
-<p>  <strong>library</strong> - General routines
-</p>
-<p class="item_name">DESCRIPTION</p>
-<p>  This file contains generally used <strong>library</strong> functions. When using OWL-JS, this script must
-  always be included in the document by the application.
-</p>
-<p class="item_name">AUTHOR</p>
-<p>  Oscar van Eijk, Oveas Functionality Provider
-</p>
-<p class="item_name">HISTORY</p>
-<ul><li>  Nov 16, 2002 -- O van Eijk -- initial version for Terra-Terra 
-</li>
-<li>  Jun 8, 2011 -- O van Eijk -- initial version for OWL
-</li>
-</ul>
-<p></p>
 
 </div> <!-- content -->
 <div id="footer">
-<p>Generated from /home/oscar/projects/owl-js/src/lib/owl.js with <a href="http://www.xs4all.nl/~rfsber/Robo/robodoc.html">ROBODoc</a> V4.99.38 on Fri Jun 10 2011 12:49:51
+<p>Generated from /home/oscar/projects/owl-js/src/lib/owl.js with <a href="http://www.xs4all.nl/~rfsber/Robo/robodoc.html">ROBODoc</a> V4.99.38 on Mon Jun 13 2011 15:50:24
 </p>
 </div> <!-- footer -->
 </body>

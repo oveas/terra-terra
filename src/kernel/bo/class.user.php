@@ -3,7 +3,7 @@
  * \file
  * This file defines the User class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.user.php,v 1.19 2011-06-12 11:03:38 oscar Exp $
+ * \version $Id: class.user.php,v 1.20 2011-09-20 05:24:11 oscar Exp $
  */
 
 /**
@@ -251,7 +251,34 @@ abstract class User extends _OWL
 	 */
 	private  function hashPassword ($password)
 	{
-		return (hash (ConfigHandler::get ('session|password_crypt'), $password));
+/*
+// get a new salt - 8 hexadecimal characters long
+// current PHP installations should not exceed 8 characters
+// on dechex( mt_rand() )
+// but we future proof it anyway with substr()
+function getPasswordSalt()
+{
+    return substr( str_pad( dechex( mt_rand() ), 8, '0',
+                                           STR_PAD_LEFT ), -8 );
+}
+
+// calculate the hash from a salt and a password
+function getPasswordHash( $salt, $password )
+{
+    return $salt . ( hash( 'whirlpool', $salt . $password ) );
+}
+
+// compare a password to a hash
+function comparePassword( $password, $hash )
+{
+    $salt = substr( $hash, 0, 8 );
+    return $hash == getPasswordHash( $salt, $password );
+}
+
+// get a new hash for a password
+$hash = getPasswordHash( getPasswordSalt(), $password );
+*/
+return (hash (ConfigHandler::get ('session|password_crypt'), $password));
 	}
 
 	/**

@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_SO_LAYER
  * This file defines the class to install applications
- * \version $Id: OWLinstaller.php,v 1.5 2011-05-18 12:03:48 oscar Exp $
+ * \version $Id: OWLinstaller.php,v 1.6 2011-09-20 05:24:10 oscar Exp $
  */
 
 /**
@@ -144,7 +144,7 @@ abstract class OWLinstaller
 	/**
 	 * Check an SQL statement and lok for table names. When a tablename has been found, the
 	 * table prefix will be added.
-	 * 
+	 *
 	 * The following SQL queries are supported by the regular expressions (with and without backticks):
 	 * 	- CREATE [TEMPORARY] TABLE [IF NOT EXISTS] `tblname`
 	 * 	- ALTER [IGNORE] TABLE `tblname`
@@ -155,6 +155,7 @@ abstract class OWLinstaller
 	 * \param[in] $prefix Prefix, or null to use the default
 	 * \return SQL statement with the prefixed tablename
 	 * \todo Add support for UPDATE, DELETE, RENAME and other statements that *might* occur in SQL install files
+	 * \todo Add support for other databases (e.g. Oracle, using quotes iso backticks)
 	 * \todo Handle constraints ([...] REFERENCES `tblname` (...))
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */

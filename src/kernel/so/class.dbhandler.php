@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbhandler.php,v 1.28 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.29 2011-09-20 05:24:10 oscar Exp $
  */
 
 /**
@@ -87,7 +87,7 @@ define ('DBMATCH_NONE',			'!');
  * Handler for all database I/O.  This singleton class uses an (abstract) class for the
  * actual storage.
  * This class should not be called directly; it is implemented by class DataHandler
- * \brief Database handler 
+ * \brief Database handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \todo Implement retries using the isRetryable() driver method, a max_retries and a max_retry_wait config settings
  * \version May 15, 2007 -- O van Eijk -- initial version for Terra-Terra
@@ -121,10 +121,10 @@ class DbHandler extends _OWL
 	private $driver;
 
 	/**
-	 * boolean - true when Backticks should be used in the queries, this can be defined in the driver
-	 * using the constant USE_BACKTICKS. Default is false
+	 * char - An optional character to enclose field- en table names in queries, e.g. the backticks in MySQL.
+	 * Can be set in the dbdriver using the constant OWLDB_QUOTES. Default is empty
 	 */
-	private $use_backticks;
+	private $db_quotes;
 
 	/**
 	 * integer - Row counter
@@ -186,7 +186,7 @@ class DbHandler extends _OWL
 	 * boolean -  true when the object has been cloned
 	 */
 	private $cloned;
-	
+
 	/**
 	 * integer - self reference
 	 */
@@ -245,10 +245,10 @@ class DbHandler extends _OWL
 				trigger_error('Error loading driver class '. $this->database['engine'], E_USER_ERROR);
 			}
 		}
-		if (defined('USE_BACKTICKS')) {
-			$this->use_backticks = toBool(USE_BACKTICKS);
+		if (defined('OWLDB_QUOTES')) {
+			$this->db_quotes = OWLDB_QUOTES;
 		} else {
-			$this->use_backticks = false;
+			$this->db_quotes = '';
 		}
 	}
 
@@ -494,15 +494,15 @@ class DbHandler extends _OWL
 	/**
 	 * Extend a tablename with the database prefix
 	 * \param[in] $tablename Table name to extend
-	 * \param[in] $ignore_backticks Boolean to suppress backticks if set, default false
+	 * \param[in] $ignore_quotes Boolean to suppress backticks or quotes if set, default false
 	 * \return Extended table name
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function tablename ($tablename, $ignore_backticks = false)
+	public function tablename ($tablename, $ignore_quotes = false)
 	{
-		return (($this->use_backticks === true && $ignore_backticks === false) ? '`' : '')
+		return (($ignore_quotes === false) ? $this->db_quotes : '')
 			. $this->db_prefix . $tablename
-			. (($this->use_backticks === true && $ignore_backticks === false) ? '`' : '');
+			. (($ignore_quotes === false) ? $this->db_quotes : '');
 	}
 
 	/**
@@ -574,7 +574,7 @@ class DbHandler extends _OWL
 			}
 			$this->having[] = array($fieldname, $fielddata['having'][0] . ' ' . $fielddata['having'][1]);
 		}
-		
+
 		if (array_key_exists('valuefunction', $fielddata)) {
 			// A function was specified that works on the value. Format the value immediatly
 			// by calling the proper driver function
@@ -763,7 +763,7 @@ class DbHandler extends _OWL
 		}
 		return ($this->severity);
 	}
-	
+
 	/**
 	 * Read from the database. The return value depends on the flag. By default,
 	 * the selected rows(s) are returned in a 2d array.
@@ -925,13 +925,13 @@ class DbHandler extends _OWL
 		} else {
 			$_as = null;
 		}
-		
+
 		$field =
 			  $this->tablename ($_tablename)
 			. '.'
-			. (($this->use_backticks === true) ? '`' : '')
+			. $this->db_quotes
 			. $_fieldname
-			. (($this->use_backticks === true) ? '`' : '')
+			. $this->db_quotes
 		;
 		if (count($_f) > 0) {
 			$_method = array_shift($_f);
@@ -949,7 +949,7 @@ class DbHandler extends _OWL
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function tablelist (array $tables)
-	{	
+	{
 		$_i = 0;
 		foreach ($tables as $_table) {
 			if ($_i++ == 0) {
@@ -958,7 +958,7 @@ class DbHandler extends _OWL
 				$_list .= ', ' . $this->tablename ($_table) . ' ';
 			}
 		}
-		return $_list; 
+		return $_list;
 	}
 
 	/**
@@ -970,7 +970,7 @@ class DbHandler extends _OWL
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function whereClause (array $searches, array $joins)
-	{	
+	{
 		$_where = '';
 		$_i = 0;
 		if (count ($searches) > 0) {
@@ -990,7 +990,7 @@ class DbHandler extends _OWL
 							 . ((preg_match('/(^%|[^\\\]%)/', $_v) == 0) ? (' ' . $_match . ' ') : ' LIKE ')
 							 . (($_v === null) ? 'NULL ' : (" '" . $_v . "' "));
 					}
-					$_where .= '(' . implode(' OR ', $_or). ')'; 
+					$_where .= '(' . implode(' OR ', $_or). ')';
 				} else {
 					$_where .= $_fld
 							 . ((preg_match('/(^%|[^\\\]%)/', $_val) == 0) ? (' ' . $_match . ' ') : ' LIKE ')
@@ -1232,20 +1232,20 @@ class DbHandler extends _OWL
 			$this->setStatus (DBHANDLE_NOTABLES);
 			return ($this->severity);
 		}
-		
+
 		foreach ($values as $_f => $_v) {
 			$this->expandField ($_f);
 			$_fld[] = $_f;
 			// $_v[0] contains the eq sign here; can be ignored
 			$_val[] = ($_v[1] === null ? 'NULL' : "'$_v[1]'");
 		}
-	
+
 		if (count ($_tables) > 1) {
 			// TODO: Make $this->query an array with a transaction (commit/rollback)
 		} else {
 			$this->query = 'INSERT INTO ' . $this->tablename ($_tables[0]) . ' '
-						 . ' (' . join (', ', $_fld) . ') ' 
-						 . ' VALUES (' . join (', ', $_val) . ') '; 
+						 . ' (' . join (', ', $_fld) . ') '
+						 . ' VALUES (' . join (', ', $_val) . ') ';
 		}
 		$this->query .= $this->additionalClauses();
 		$this->query_type = DBHANDLE_INSERT;
@@ -1270,7 +1270,7 @@ class DbHandler extends _OWL
 			$this->setStatus (DBHANDLE_DBCLOSED);
 			return ($this->severity);
 		}
-		
+
 		if (($_cnt = $this->driver->dbWrite($this->id, $this->query)) < 0) {
 			$this->driver->dbError ($this->id, $this->errno, $this->error);
 			$this->setStatus (DBHANDLE_QUERYERR, array (
@@ -1296,12 +1296,12 @@ class DbHandler extends _OWL
 				$_msgP1 = 'huh?'; // Can't happen
 		}
 		$this->query_type = DBHANDLE_COMPLETED;
-		
+
 		$this->setStatus (DBHANDLE_WRITTEN, array ($this->query, $_msgP1, $_cnt));
 		if ($rows !== null) {
 			$rows = $_cnt;
 		}
-		
+
 		return ($this->severity);
 	}
 
@@ -1309,7 +1309,7 @@ class DbHandler extends _OWL
 	 * Return the last ID after a newly inserted record holding an AUTO_INCREMENT field
 	 * \param[in] $table Table name holding the auto increment field
 	 * \param[in] $field Name of the auto increment field
-	 * \return The number that was last inserted 
+	 * \return The number that was last inserted
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function lastInsertedId ($table = null, $field = null)
@@ -1325,7 +1325,7 @@ class DbHandler extends _OWL
 	 * variable.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function close () 
+	public function close ()
 	{
 		if ($this->opened) {
 			$this->driver->dbClose($this->id);
