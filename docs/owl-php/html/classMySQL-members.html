@@ -99,6 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 This is the complete list of members for <a class="el" href="classMySQL.html">MySQL</a>, including all inherited members.<table>
+  <tr class="memlist"><td><a class="el" href="classDbDefaults.html#a5efc5806d1fe1f2efd17809774e8289f">$quoting</a></td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a0fc0de8fcae17604dea97d9dfc12cfba">__construct</a>()</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbDefaults.html#afc607b5c0a8d2320cd21f5746dde027e">__constructor</a>()</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a88191ab56d8ff3389b4519b712d74c32">dbClear</a>(&amp;$_data)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
@@ -111,11 +112,13 @@ This is the complete list of members for <a class="el" href="classMySQL.html">My
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a2ebd12deacbdebd6ad876e279f34b4da">dbFetchNextRecord</a>(&amp;$_data)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#aaf69bfa761be38520c7d72ae11506dac">dbInsertId</a>(&amp;$_resource, $_table, $_field)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#adba97d7d125e5772ea5ffa61dcb2b9e3">dbOpen</a>(&amp;$_resource, $_server, $_name, $_user, $_password)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">DbDefaults::dbQuote</a>($_string)</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#abfbd28048fdcf147302e976dc98681eb">DbDriver::dbQuote</a>($_string)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#af85679f7912ab93293b31ad7609a7734">dbRead</a>(&amp;$_data, &amp;$_resource, $_query)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a69ec9e11642d3ef0dddcecf95acc6907">dbRowCount</a>(&amp;$_data)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a9da288ed9ff36dc572a68165de8b5839">dbTableList</a>(&amp;$_resource, $_pattern, $_views=false)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classMySQL.html#a935f49386759d4bcb109119e87a6010a">dbTransactionCommit</a>(&amp;$_resource, $_name, $_name=null, $_new=false)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classMySQL.html#a207f82ed5516848b7a25802fe236d3a2">dbTransactionRollback</a>(&amp;$_resource, $_name, $_name=null, $_new=false)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMySQL.html#ad639e6c42d1ad72ef55244b38b2c32ca">dbTransactionCommit</a>(&amp;$_resource, $_name=null, $_new=false)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMySQL.html#a94ca8ff0d1a4072f80c14e598274fdca">dbTransactionRollback</a>(&amp;$_resource, $_name=null, $_new=false)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbDefaults.html#a30ef8b1e115ed1dbdbd66b960c0e348d">DbDefaults::dbTransactionStart</a>(&amp;$_resource, $_name=null)</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a3f9f0c1234b3fe3fb263ff1393f13197">DbDriver::dbTransactionStart</a>(&amp;$_resource, $_name=null)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbDefaults.html#a7ac3780695fb0d6e291ee123be7db020">DbDefaults::dbUnescapeString</a>($_string)</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td></td></tr>
@@ -154,7 +157,7 @@ This is the complete list of members for <a class="el" href="classMySQL.html">My
 </div>
 
 
-    <li class="footer">Generated on Mon Jun 13 2011 15:50:24 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 09:53:21 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

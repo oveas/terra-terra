@@ -115,7 +115,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00060"></a>00060         <span class="keywordflow">if</span> (strpos($_mtime, <span class="charliteral">&#39;.&#39;</span>) === <span class="keyword">false</span>) {
 <a name="l00061"></a>00061             $_mtime .= <span class="stringliteral">&#39;.0&#39;</span>;
 <a name="l00062"></a>00062         }
-<a name="l00063"></a>00063         
+<a name="l00063"></a>00063 
 <a name="l00064"></a>00064         list ($_s, $_m) = explode (<span class="charliteral">&#39;.&#39;</span>, $_mtime);
 <a name="l00065"></a>00065         $_s = sprintf (<span class="stringliteral">&#39;%X&#39;</span>, $_s);
 <a name="l00066"></a>00066         $_m = sprintf (<span class="stringliteral">&#39;%X&#39;</span>, $_m);
@@ -132,7 +132,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00077"></a>00077                 , <span class="stringliteral">&#39;code_symbols&#39;</span>    =&gt; array()
 <a name="l00078"></a>00078                 , <span class="stringliteral">&#39;stack&#39;</span>           =&gt; array()
 <a name="l00079"></a>00079                 );
-<a name="l00080"></a>00080         
+<a name="l00080"></a>00080 
 <a name="l00081"></a>00081     }
 <a name="l00088"></a><a class="code" href="classRegister.html#a6763d4478157270eb88ac0d8349d3e67">00088</a>     <span class="keyword">static</span> <span class="keyword">public</span> function <a class="code" href="classRegister.html#a6763d4478157270eb88ac0d8349d3e67">registerApp</a> ($name, $id)
 <a name="l00089"></a>00089     {
@@ -155,7 +155,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00112"></a><a class="code" href="classRegister.html#a7f8f9dd6364815e162fe098327177943">00112</a>     <span class="keyword">static</span> <span class="keyword">public</span> function <a class="code" href="classRegister.html#a7f8f9dd6364815e162fe098327177943">registerClass</a> ($name)
 <a name="l00113"></a>00113     {
 <a name="l00114"></a>00114         <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;register&#39;</span>][<span class="stringliteral">&#39;stack&#39;</span>][<span class="stringliteral">&#39;class&#39;</span>] += 0x00001000;
-<a name="l00115"></a>00115         $id = <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;register&#39;</span>][<span class="stringliteral">&#39;stack&#39;</span>][<span class="stringliteral">&#39;class&#39;</span>]; 
+<a name="l00115"></a>00115         $id = <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;register&#39;</span>][<span class="stringliteral">&#39;stack&#39;</span>][<span class="stringliteral">&#39;class&#39;</span>];
 <a name="l00116"></a>00116 
 <a name="l00117"></a>00117         <span class="comment">// use isset() here, since array_key_exists() gives a warning if the hex $id</span>
 <a name="l00118"></a>00118         <span class="comment">// has a negative integer value.</span>
@@ -184,7 +184,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00146"></a>00146         <span class="comment">// Cast the $_class ID below to a string to make sure it&#39;s not interpreted as an index</span>
 <a name="l00147"></a>00147         $_codes =&amp; <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;register&#39;</span>][<span class="stringliteral">&#39;codes&#39;</span>][<span class="stringliteral">&quot;$_class&quot;</span>];
 <a name="l00148"></a>00148         $_sev = <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;register&#39;</span>][<span class="stringliteral">&#39;stack&#39;</span>][<span class="stringliteral">&#39;severity&#39;</span>];
-<a name="l00149"></a>00149      
+<a name="l00149"></a>00149 
 <a name="l00150"></a>00150         <span class="keywordflow">if</span> (!isset($_codes[$_sev])) {
 <a name="l00151"></a>00151             $_codes[$_sev] = 0x00000000;
 <a name="l00152"></a>00152 <span class="comment">//          echo &quot;----&amp;gt; New code: $_codes[$_sev]&lt;br&gt;&quot;;</span>
@@ -235,7 +235,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00227"></a>00227         }
 <a name="l00228"></a>00228     }
 <a name="l00229"></a>00229 
-<a name="l00230"></a>00230     
+<a name="l00230"></a>00230 
 <a name="l00236"></a><a class="code" href="classRegister.html#aba1dda2414f79a72795beb16adc07273">00236</a>     <span class="keyword">static</span> <span class="keyword">public</span> function <a class="code" href="classRegister.html#aba1dda2414f79a72795beb16adc07273">setApplication</a> ($app_id)
 <a name="l00237"></a>00237     {
 <a name="l00238"></a>00238         <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;register&#39;</span>][<span class="stringliteral">&#39;stack&#39;</span>][<span class="stringliteral">&#39;app&#39;</span>] = $app_id;
@@ -243,7 +243,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00240"></a>00240 
 <a name="l00246"></a><a class="code" href="classRegister.html#a79c9ab87540d73ee2afda02f370d4cec">00246</a>     <span class="keyword">static</span> <span class="keyword">public</span> function <a class="code" href="classRegister.html#a79c9ab87540d73ee2afda02f370d4cec">setClass</a> ($class_id)
 <a name="l00247"></a>00247     {
-<a name="l00248"></a>00248         <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;register&#39;</span>][<span class="stringliteral">&#39;stack&#39;</span>][<span class="stringliteral">&#39;class&#39;</span>] = $class_id; 
+<a name="l00248"></a>00248         <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;register&#39;</span>][<span class="stringliteral">&#39;stack&#39;</span>][<span class="stringliteral">&#39;class&#39;</span>] = $class_id;
 <a name="l00249"></a>00249     }
 <a name="l00250"></a>00250 
 <a name="l00256"></a><a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">00256</a>     <span class="keyword">static</span> <span class="keyword">public</span> function <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">setSeverity</a> ($severity_level)
@@ -253,7 +253,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00260"></a>00260 
 <a name="l00266"></a><a class="code" href="classRegister.html#a621b284845f02aeee3221041409af7e3">00266</a>     <span class="keyword">static</span> <span class="keyword">public</span> function <a class="code" href="classRegister.html#a621b284845f02aeee3221041409af7e3">registerMessages</a> ($_force = <span class="keyword">false</span>)
 <a name="l00267"></a>00267     {
-<a name="l00268"></a>00268         $_lang = <a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;locale|lang&#39;</span>);
+<a name="l00268"></a>00268         $_lang = <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;locale&#39;</span>, <span class="stringliteral">&#39;lang&#39;</span>);
 <a name="l00269"></a>00269         <span class="comment">// Suppress &#39;Undefined constants&#39; notices for codes not (yet) registered</span>
 <a name="l00270"></a>00270         $_er = error_reporting(~E_NOTICE);
 <a name="l00271"></a>00271         <span class="keywordflow">if</span> (<a class="code" href="classOWLCache.html#a5c9e800ea5a9e0b0829b31466e94b539">OWLCache::get</a>(<a class="code" href="group__CACHE__Areas.html#gae55be4307f9104de754eb3da6d94ee17" title="List of all language specific messagesfiles that have been loaded.">OWLCACHE_MESSAGE</a>, <span class="stringliteral">&#39;owlMessages&#39;</span>) === null) {
@@ -290,7 +290,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00302"></a>00302 
 <a name="l00308"></a><a class="code" href="classRegister.html#a1fef7a441bef05fd4d09f66a4d573663">00308</a>     <span class="keyword">static</span> <span class="keyword">public</span> function <a class="code" href="classRegister.html#a1fef7a441bef05fd4d09f66a4d573663">registerLabels</a> ($_owl = <span class="keyword">false</span>)
 <a name="l00309"></a>00309     {
-<a name="l00310"></a>00310         $_lang = <a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;locale|lang&#39;</span>);
+<a name="l00310"></a>00310         $_lang = <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;locale&#39;</span>, <span class="stringliteral">&#39;lang&#39;</span>);
 <a name="l00311"></a>00311         <span class="comment">// Suppress &#39;Undefined constants&#39; notices for codes not (yet) registered</span>
 <a name="l00312"></a>00312         <span class="keywordflow">if</span> ($_owl) {
 <a name="l00313"></a>00313             <span class="keywordflow">if</span> (<a class="code" href="classOWLCache.html#a5c9e800ea5a9e0b0829b31466e94b539">OWLCache::get</a>(<a class="code" href="group__CACHE__Areas.html#gad4a4a5cbb5f8ee148e301224fdc229f2" title="List of all language specific labelfiles that have been loaded.">OWLCACHE_LABELS</a>, <span class="stringliteral">&#39;owlLabels&#39;</span>) === null) {
@@ -347,7 +347,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon Jun 13 2011 15:50:21 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 09:53:18 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

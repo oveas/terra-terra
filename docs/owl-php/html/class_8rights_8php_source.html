@@ -125,8 +125,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00064"></a><a class="code" href="classRights.html#ae7c51a4150f9a496569ed8d241e485f5">00064</a>     <span class="keyword">private</span> function <a class="code" href="classRights.html#ae7c51a4150f9a496569ed8d241e485f5">registerRights</a> ()
 <a name="l00065"></a>00065     {
 <a name="l00066"></a>00066         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a> ();
-<a name="l00067"></a>00067         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
-<a name="l00068"></a>00068             $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00067"></a>00067         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
+<a name="l00068"></a>00068             $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
 <a name="l00069"></a>00069         }
 <a name="l00070"></a>00070         $dataset-&gt;setTablename(<span class="stringliteral">&#39;rights&#39;</span>);
 <a name="l00071"></a>00071         $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, array(<a class="code" href="OWLloader_8php.html#a507991b99af2ce469bf269f05aa90126">OWL_ID</a>, APPL_ID));
@@ -163,7 +163,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon Jun 13 2011 15:50:21 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 09:53:18 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

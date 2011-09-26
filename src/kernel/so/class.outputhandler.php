@@ -3,7 +3,7 @@
  * \file
  * Define all output methods
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.outputhandler.php,v 1.1 2011-05-30 17:00:19 oscar Exp $
+ * \version $Id: class.outputhandler.php,v 1.2 2011-09-26 10:50:17 oscar Exp $
  */
 
 /**
@@ -71,6 +71,41 @@ abstract class OutputHandler
 	{
 		self::$outputStarted = true;
 		echo $text;
+	}
+
+	/**
+	 * Send the output to the standard output channel as an array statement parseable by PHP.
+	 * This is a developer helper function.
+	 * \param[in] $array Array that should be sent to the output channel.
+	 * \author machuidel (taken from http://php.net/manual/en/function.print-r.php)
+	 */
+	static public function outputPhpArray(array &$array, $root = '$myArray', $depth = 0)
+	{
+		$items = array();
+		$output = '';
+		foreach($array as $key => &$value) {
+			if(is_array($value)) {
+				$output .= self::outputPhpArray($value, $root . '[\'' . $key . '\']', $depth + 1);
+			} else {
+				$items[$key] = $value;
+			}
+		}
+
+		if(count($items) > 0) {
+			$output .= $root . ' = array(';
+			$prefix = '';
+			foreach($items as $key => &$value) {
+				$output .= $prefix . '\'' . $key . '\' => \'' . addslashes($value) . '\'';
+				$prefix = ', ';
+			}
+			$output .= ');' . "\n";
+		}
+		if ($depth === 0) {
+			self::$outputStarted = true;
+			echo '<pre>'.$output.'</pre>';
+		} else {
+			return $output;
+		}
 	}
 
 	/**

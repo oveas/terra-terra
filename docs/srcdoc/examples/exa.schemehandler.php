@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
  * This example users class SchemeHandler to create the table exa_person in the database,
  * or alters the table conforming the description if already existing.
@@ -55,6 +55,8 @@ $_table = array(
 );
 
 // Define the table indexes
+// Note the field 'id' is not specified here; since it
+// is an autoincrement field, it will be primary key by default.
 $_index = array (
 	 'name' => array(
 			 'columns' => array ('name')
@@ -70,7 +72,7 @@ $_index = array (
 	)
 );
 
-$_scheme->createScheme('person');	// Create the scheme in the SchemeHandler 
+$_scheme->createScheme('person');	// Create the scheme in the SchemeHandler
 $_scheme->defineScheme($_table);	// Define the columns
 $_scheme->defineIndex($_index);		// Define the indexes
 $_scheme->scheme();					// Check the table in the database and create or alter it
@@ -91,51 +93,51 @@ echo '<pre>'. print_r($_data, 1) . '</pre>';
  *                 (
  *                     [type] => int
  *                     [length] => 11
- *                     [unsigned] => 
- *                     [zerofill] => 
- *                     [null] => 
+ *                     [unsigned] =>
+ *                     [zerofill] =>
+ *                     [null] =>
  *                     [auto_inc] => 1
- *                     [default] => 
- *                     [comment] => 
+ *                     [default] =>
+ *                     [comment] =>
  *                 )
- * 
+ *
  *             [name] => Array
  *                 (
  *                     [type] => varchar
  *                     [length] => 24
- *                     [unsigned] => 
- *                     [zerofill] => 
- *                     [null] => 
+ *                     [unsigned] =>
+ *                     [zerofill] =>
+ *                     [null] =>
  *                     [auto_inc] => 0
- *                     [default] => 
- *                     [comment] => 
+ *                     [default] =>
+ *                     [comment] =>
  *                 )
- * 
+ *
  *             [address] => Array
  *                 (
  *                     [type] => text
- *                     [null] => 
+ *                     [null] =>
  *                     [auto_inc] => 0
- *                     [default] => 
- *                     [comment] => 
+ *                     [default] =>
+ *                     [comment] =>
  *                 )
- * 
+ *
  *             [phone] => Array
  *                 (
  *                     [type] => varchar
  *                     [length] => 16
- *                     [unsigned] => 
- *                     [zerofill] => 
+ *                     [unsigned] =>
+ *                     [zerofill] =>
  *                     [null] => 1
  *                     [auto_inc] => 0
- *                     [default] => 
- *                     [comment] => 
+ *                     [default] =>
+ *                     [comment] =>
  *                 )
- * 
+ *
  *             [country] => Array
  *                 (
  *                     [type] => enum
- *                     [null] => 
+ *                     [null] =>
  *                     [auto_inc] => 0
  *                     [options] => Array
  *                         (
@@ -145,13 +147,13 @@ echo '<pre>'. print_r($_data, 1) . '</pre>';
  *                             [3] => 'FR'
  *                             [4] => 'ES'
  *                         )
- * 
+ *
  *                     [default] => ES
- *                     [comment] => 
+ *                     [comment] =>
  *                 )
- * 
+ *
  *         )
- * 
+ *
  *     [indexes] => Array
  *         (
  *             [PRIMARY] => Array
@@ -160,38 +162,38 @@ echo '<pre>'. print_r($_data, 1) . '</pre>';
  *                         (
  *                             [1] => id
  *                         )
- * 
+ *
  *                     [unique] => 1
  *                     [type] => BTREE
- *                     [comment] => 
+ *                     [comment] =>
  *                 )
- * 
+ *
  *             [name] => Array
  *                 (
  *                     [columns] => Array
  *                         (
  *                             [1] => name
  *                         )
- * 
- *                     [unique] => 
+ *
+ *                     [unique] =>
  *                     [type] => BTREE
- *                     [comment] => 
+ *                     [comment] =>
  *                 )
- * 
+ *
  *             [address] => Array
  *                 (
  *                     [columns] => Array
  *                         (
  *                             [1] => address
  *                         )
- * 
- *                     [unique] => 
+ *
+ *                     [unique] =>
  *                     [type] => FULLTEXT
- *                     [comment] => 
+ *                     [comment] =>
  *                 )
- * 
+ *
  *         )
- * 
+ *
  * )
  */
 ?>

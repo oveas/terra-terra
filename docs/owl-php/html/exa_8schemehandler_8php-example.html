@@ -93,7 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <p>This example shows how to create or alter a table using the <a class="el" href="classSchemeHandler.html" title="Scheme handler.">SchemeHandler</a> class </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider</dd></dl>
-<div class="fragment"><pre class="fragment">&lt;?php 
+<div class="fragment"><pre class="fragment">&lt;?php
 <span class="comment">/*</span>
 <span class="comment"> * This example users class SchemeHandler to create the table exa_person in the database,</span>
 <span class="comment"> * or alters the table conforming the description if already existing.</span>
@@ -150,6 +150,8 @@ $_table = array(
 );
 
 <span class="comment">// Define the table indexes</span>
+<span class="comment">// Note the field &#39;id&#39; is not specified here; since it</span>
+<span class="comment">// is an autoincrement field, it will be primary key by default.</span>
 $_index = array (
      <span class="stringliteral">&#39;name&#39;</span> =&gt; array(
              <span class="stringliteral">&#39;columns&#39;</span> =&gt; array (<span class="stringliteral">&#39;name&#39;</span>)
@@ -165,7 +167,7 @@ $_index = array (
     )
 );
 
-$_scheme-&gt;createScheme(<span class="stringliteral">&#39;person&#39;</span>);   <span class="comment">// Create the scheme in the SchemeHandler </span>
+$_scheme-&gt;createScheme(<span class="stringliteral">&#39;person&#39;</span>);   <span class="comment">// Create the scheme in the SchemeHandler</span>
 $_scheme-&gt;defineScheme($_table);    <span class="comment">// Define the columns</span>
 $_scheme-&gt;defineIndex($_index);     <span class="comment">// Define the indexes</span>
 $_scheme-&gt;scheme();                 <span class="comment">// Check the table in the database and create or alter it</span>
@@ -186,51 +188,51 @@ echo <span class="stringliteral">&#39;&lt;pre&gt;&#39;</span>. print_r($_data, 1
 <span class="comment"> *                 (</span>
 <span class="comment"> *                     [type] =&gt; int</span>
 <span class="comment"> *                     [length] =&gt; 11</span>
-<span class="comment"> *                     [unsigned] =&gt; </span>
-<span class="comment"> *                     [zerofill] =&gt; </span>
-<span class="comment"> *                     [null] =&gt; </span>
+<span class="comment"> *                     [unsigned] =&gt;</span>
+<span class="comment"> *                     [zerofill] =&gt;</span>
+<span class="comment"> *                     [null] =&gt;</span>
 <span class="comment"> *                     [auto_inc] =&gt; 1</span>
-<span class="comment"> *                     [default] =&gt; </span>
-<span class="comment"> *                     [comment] =&gt; </span>
+<span class="comment"> *                     [default] =&gt;</span>
+<span class="comment"> *                     [comment] =&gt;</span>
 <span class="comment"> *                 )</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> *             [name] =&gt; Array</span>
 <span class="comment"> *                 (</span>
 <span class="comment"> *                     [type] =&gt; varchar</span>
 <span class="comment"> *                     [length] =&gt; 24</span>
-<span class="comment"> *                     [unsigned] =&gt; </span>
-<span class="comment"> *                     [zerofill] =&gt; </span>
-<span class="comment"> *                     [null] =&gt; </span>
+<span class="comment"> *                     [unsigned] =&gt;</span>
+<span class="comment"> *                     [zerofill] =&gt;</span>
+<span class="comment"> *                     [null] =&gt;</span>
 <span class="comment"> *                     [auto_inc] =&gt; 0</span>
-<span class="comment"> *                     [default] =&gt; </span>
-<span class="comment"> *                     [comment] =&gt; </span>
+<span class="comment"> *                     [default] =&gt;</span>
+<span class="comment"> *                     [comment] =&gt;</span>
 <span class="comment"> *                 )</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> *             [address] =&gt; Array</span>
 <span class="comment"> *                 (</span>
 <span class="comment"> *                     [type] =&gt; text</span>
-<span class="comment"> *                     [null] =&gt; </span>
+<span class="comment"> *                     [null] =&gt;</span>
 <span class="comment"> *                     [auto_inc] =&gt; 0</span>
-<span class="comment"> *                     [default] =&gt; </span>
-<span class="comment"> *                     [comment] =&gt; </span>
+<span class="comment"> *                     [default] =&gt;</span>
+<span class="comment"> *                     [comment] =&gt;</span>
 <span class="comment"> *                 )</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> *             [phone] =&gt; Array</span>
 <span class="comment"> *                 (</span>
 <span class="comment"> *                     [type] =&gt; varchar</span>
 <span class="comment"> *                     [length] =&gt; 16</span>
-<span class="comment"> *                     [unsigned] =&gt; </span>
-<span class="comment"> *                     [zerofill] =&gt; </span>
+<span class="comment"> *                     [unsigned] =&gt;</span>
+<span class="comment"> *                     [zerofill] =&gt;</span>
 <span class="comment"> *                     [null] =&gt; 1</span>
 <span class="comment"> *                     [auto_inc] =&gt; 0</span>
-<span class="comment"> *                     [default] =&gt; </span>
-<span class="comment"> *                     [comment] =&gt; </span>
+<span class="comment"> *                     [default] =&gt;</span>
+<span class="comment"> *                     [comment] =&gt;</span>
 <span class="comment"> *                 )</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> *             [country] =&gt; Array</span>
 <span class="comment"> *                 (</span>
 <span class="comment"> *                     [type] =&gt; enum</span>
-<span class="comment"> *                     [null] =&gt; </span>
+<span class="comment"> *                     [null] =&gt;</span>
 <span class="comment"> *                     [auto_inc] =&gt; 0</span>
 <span class="comment"> *                     [options] =&gt; Array</span>
 <span class="comment"> *                         (</span>
@@ -240,13 +242,13 @@ echo <span class="stringliteral">&#39;&lt;pre&gt;&#39;</span>. print_r($_data, 1
 <span class="comment"> *                             [3] =&gt; &#39;FR&#39;</span>
 <span class="comment"> *                             [4] =&gt; &#39;ES&#39;</span>
 <span class="comment"> *                         )</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> *                     [default] =&gt; ES</span>
-<span class="comment"> *                     [comment] =&gt; </span>
+<span class="comment"> *                     [comment] =&gt;</span>
 <span class="comment"> *                 )</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> *         )</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> *     [indexes] =&gt; Array</span>
 <span class="comment"> *         (</span>
 <span class="comment"> *             [PRIMARY] =&gt; Array</span>
@@ -255,38 +257,38 @@ echo <span class="stringliteral">&#39;&lt;pre&gt;&#39;</span>. print_r($_data, 1
 <span class="comment"> *                         (</span>
 <span class="comment"> *                             [1] =&gt; id</span>
 <span class="comment"> *                         )</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> *                     [unique] =&gt; 1</span>
 <span class="comment"> *                     [type] =&gt; BTREE</span>
-<span class="comment"> *                     [comment] =&gt; </span>
+<span class="comment"> *                     [comment] =&gt;</span>
 <span class="comment"> *                 )</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> *             [name] =&gt; Array</span>
 <span class="comment"> *                 (</span>
 <span class="comment"> *                     [columns] =&gt; Array</span>
 <span class="comment"> *                         (</span>
 <span class="comment"> *                             [1] =&gt; name</span>
 <span class="comment"> *                         )</span>
-<span class="comment"> * </span>
-<span class="comment"> *                     [unique] =&gt; </span>
+<span class="comment"> *</span>
+<span class="comment"> *                     [unique] =&gt;</span>
 <span class="comment"> *                     [type] =&gt; BTREE</span>
-<span class="comment"> *                     [comment] =&gt; </span>
+<span class="comment"> *                     [comment] =&gt;</span>
 <span class="comment"> *                 )</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> *             [address] =&gt; Array</span>
 <span class="comment"> *                 (</span>
 <span class="comment"> *                     [columns] =&gt; Array</span>
 <span class="comment"> *                         (</span>
 <span class="comment"> *                             [1] =&gt; address</span>
 <span class="comment"> *                         )</span>
-<span class="comment"> * </span>
-<span class="comment"> *                     [unique] =&gt; </span>
+<span class="comment"> *</span>
+<span class="comment"> *                     [unique] =&gt;</span>
 <span class="comment"> *                     [type] =&gt; FULLTEXT</span>
-<span class="comment"> *                     [comment] =&gt; </span>
+<span class="comment"> *                     [comment] =&gt;</span>
 <span class="comment"> *                 )</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> *         )</span>
-<span class="comment"> * </span>
+<span class="comment"> *</span>
 <span class="comment"> * )</span>
 <span class="comment"> */</span>
 ?&gt;
@@ -310,7 +312,7 @@ echo <span class="stringliteral">&#39;&lt;pre&gt;&#39;</span>. print_r($_data, 1
 </div>
 
 
-    <li class="footer">Generated on Mon Jun 13 2011 15:50:20 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 09:53:18 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

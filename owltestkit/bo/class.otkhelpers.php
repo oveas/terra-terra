@@ -2,7 +2,7 @@
 /**
  * \file
  * This file defines the OWL TestKit helper class
- * \version $Id: class.otkhelpers.php,v 1.2 2011-05-27 12:42:20 oscar Exp $
+ * \version $Id: class.otkhelpers.php,v 1.3 2011-09-26 10:50:19 oscar Exp $
  */
 
 /**
@@ -23,10 +23,8 @@ abstract class OTKHelpers
 	 */
 	static public function compareTable($expected, $actual)
 	{
-		if (!OWLloader::getClass('table')) {
-			trigger_error('Error loading the Table class', E_USER_ERROR);
-		}
-		$table = new Table('table', '', array('style'=>'border: 1px; width: 100%;'));
+		$table = new Container('table', '', array('style'=>'border: 1px; width: 100%;'));
+
 		$hdrRow = $table->addContainer('row');
 		$hdrRow->setHeader();
 		$hdrRow->addContainer('cell', ContentArea::translate('Expected result'));
@@ -38,8 +36,8 @@ abstract class OTKHelpers
 		if (is_array($actual)) {
 			$actual = print_r($actual, 1);
 		}
-		$row->addContainer('cell', '<pre>'.$expected.'</pre>', array('valign' => 'top'));
-		$row->addContainer('cell', '<pre>'.$actual.'</pre>', array('valign' => 'top'));
+		$row->addContainer('cell', '<pre>'.$expected.'</pre>', array(), array('valign' => 'top'));
+		$row->addContainer('cell', '<pre>'.$actual.'</pre>', array(), array('valign' => 'top'));
 		return $table->showElement();
 	}
 }

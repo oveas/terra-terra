@@ -3,7 +3,7 @@
  * \file
  * This file defines the User class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.user.php,v 1.20 2011-09-20 05:24:11 oscar Exp $
+ * \version $Id: class.user.php,v 1.21 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
@@ -56,8 +56,8 @@ abstract class User extends _OWL
 		_OWL::init();
 
 		$this->dataset = new DataHandler ();
-		if (ConfigHandler::get ('owltables', true)) {
-			$this->dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$this->dataset->setTablename('user');
 
@@ -106,7 +106,7 @@ abstract class User extends _OWL
 		$this->readUserdata();
 		$this->rights = new Rights(APPL_ID);
 		$this->getMemberships();
-		if (ConfigHandler::get('session|default_rights_all', false) === true) {
+		if (ConfigHandler::get('session', 'default_rights_all', false) === true) {
 			$this->session->setRights($this->rights->getBitmap(OWL_ID), OWL_ID);
 			$this->session->setRights($this->rights->getBitmap(APPL_ID), APPL_ID);
 		} else {
@@ -167,7 +167,7 @@ abstract class User extends _OWL
 		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
 			$this->setStatus (USER_LOGINFAIL, array (
 				  $_SESSION['username']
-				, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->get('password'))
+				, (ConfigHandler::get ('logging', 'hide_passwords') ? '*****' : $this->dataset->get('password'))
 			));
 		} elseif ($_dbstat === DBHANDLE_ROWSREAD) {
 			$this->user_data = $this->user_data[0]; // Shift up one level
@@ -179,7 +179,7 @@ abstract class User extends _OWL
 				$this->newUser();
 				$this->setStatus (USER_LOGGEDIN, array (
 					  $this->session->getSessionVar('username')
-					, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->dataset->get('password'))
+					, (ConfigHandler::get ('logging', 'hide_passwords') ? '*****' : $this->dataset->get('password'))
 				));
 				return (true);
 			}
@@ -204,7 +204,7 @@ abstract class User extends _OWL
 			$this->saveStatus();
 		}
 		// TODO; destroy_on_logout must be true - find out why it doesn't work when false!
-		$this->clearUser(ConfigHandler::get ('session|destroy_on_logout', true));
+		$this->clearUser(ConfigHandler::get ('session', 'destroy_on_logout', true));
 		if (!$resetStatus) {
 			$this->restoreStatus();
 		}
@@ -218,7 +218,7 @@ abstract class User extends _OWL
 	private function readUserdata ()
 	{
 		if ($this->getUserId() == 0) {
-			$username = ConfigHandler::get ('session|default_user');
+			$username = ConfigHandler::get ('session', 'default_user');
 			$this->dataset->reset(DATA_RESET_META);
 			$this->dataset->set('username', $username);
 			$this->dataset->set('uid', null, null, null, array('match' => array(DBMATCH_NONE)));
@@ -278,7 +278,7 @@ function comparePassword( $password, $hash )
 // get a new hash for a password
 $hash = getPasswordHash( getPasswordSalt(), $password );
 */
-return (hash (ConfigHandler::get ('session|password_crypt'), $password));
+return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	}
 
 	/**
@@ -316,7 +316,7 @@ return (hash (ConfigHandler::get ('session|password_crypt'), $password));
 			$this->setStatus (USER_DUPLUSERNAME, array ($username));
 			return -1;
 		}
-		$_minPwdStrength = ConfigHandler::get ('session|pwd_minstrength');
+		$_minPwdStrength = ConfigHandler::get ('session', 'pwd_minstrength');
 		if ($_minPwdStrength > 0 && self::passwordStrength($password, array($username, $email)) < $_minPwdStrength) {
 			$this->setStatus (USER_WEAKPASSWD);
 			return -1;
@@ -326,7 +326,7 @@ return (hash (ConfigHandler::get ('session|password_crypt'), $password));
 			return -1;
 		}
 		if ($group === 0) {
-			$group = ConfigHandler::get('user|default_group');
+			$group = ConfigHandler::get('user', 'default_group');
 		}
 
 		$_vstring = randomString(45);
@@ -364,8 +364,8 @@ return (hash (ConfigHandler::get ('session|password_crypt'), $password));
 		}
 
 		$dataset = new DataHandler ();
-		if (ConfigHandler::get ('owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('memberships');
 		$dataset->set('uid', $uid);
@@ -485,7 +485,7 @@ return (hash (ConfigHandler::get ('session|password_crypt'), $password));
 	 */
 	public function isLoggedIn()
 	{
-		return (!($this->session->getSessionVar('username', ConfigHandler::get ('session|default_user')) == ConfigHandler::get ('session|default_user')));
+		return (!($this->session->getSessionVar('username', ConfigHandler::get ('session ', 'default_user')) == ConfigHandler::get ('session|default_user')));
 	}
 
 	/**
@@ -523,8 +523,8 @@ return (hash (ConfigHandler::get ('session|password_crypt'), $password));
 	private function getMemberships()
 	{
 		$dataset = new DataHandler ();
-		if (ConfigHandler::get ('owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		// Initialize with the values for the primary group
 		$this->rights->mergeBitmaps($this->group->getRights(OWL_ID), OWL_ID);

@@ -3,7 +3,7 @@
  * \file
  * Define the abstract Register class.
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.register.php,v 1.9 2011-05-13 16:39:19 oscar Exp $
+ * \version $Id: class.register.php,v 1.10 2011-09-26 10:50:18 oscar Exp $
  */
 
 
@@ -60,7 +60,7 @@ abstract class Register
 		if (strpos($_mtime, '.') === false) {
 			$_mtime .= '.0';
 		}
-		
+
 		list ($_s, $_m) = explode ('.', $_mtime);
 		$_s = sprintf ('%X', $_s);
 		$_m = sprintf ('%X', $_m);
@@ -77,7 +77,7 @@ abstract class Register
 				, 'code_symbols'	=> array()
 				, 'stack'			=> array()
 				);
-		
+
 	}
 	/**
 	 * Store the specified application in the register
@@ -112,7 +112,7 @@ abstract class Register
 	static public function registerClass ($name)
 	{
 		$GLOBALS['register']['stack']['class'] += 0x00001000;
-		$id = $GLOBALS['register']['stack']['class']; 
+		$id = $GLOBALS['register']['stack']['class'];
 
 		// use isset() here, since array_key_exists() gives a warning if the hex $id
 		// has a negative integer value.
@@ -146,7 +146,7 @@ abstract class Register
 		// Cast the $_class ID below to a string to make sure it's not interpreted as an index
 		$_codes =& $GLOBALS['register']['codes']["$_class"];
 		$_sev = $GLOBALS['register']['stack']['severity'];
-	 
+
 		if (!isset($_codes[$_sev])) {
 			$_codes[$_sev] = 0x00000000;
 //			echo "----&gt; New code: $_codes[$_sev]<br>";
@@ -227,7 +227,7 @@ abstract class Register
 		}
 	}
 
-	
+
 	/**
 	 * Point the register to the specified application.
 	 * \param[in] $app_id Application ID
@@ -245,7 +245,7 @@ abstract class Register
 	 */
 	static public function setClass ($class_id)
 	{
-		$GLOBALS['register']['stack']['class'] = $class_id; 
+		$GLOBALS['register']['stack']['class'] = $class_id;
 	}
 
 	/**
@@ -265,7 +265,7 @@ abstract class Register
 	 */
 	static public function registerMessages ($_force = false)
 	{
-		$_lang = ConfigHandler::get ('locale|lang');
+		$_lang = ConfigHandler::get ('locale', 'lang');
 		// Suppress 'Undefined constants' notices for codes not (yet) registered
 		$_er = error_reporting(~E_NOTICE);
 		if (OWLCache::get(OWLCACHE_MESSAGE, 'owlMessages') === null) {
@@ -307,7 +307,7 @@ abstract class Register
 	 */
 	static public function registerLabels ($_owl = false)
 	{
-		$_lang = ConfigHandler::get ('locale|lang');
+		$_lang = ConfigHandler::get ('locale', 'lang');
 		// Suppress 'Undefined constants' notices for codes not (yet) registered
 		if ($_owl) {
 			if (OWLCache::get(OWLCACHE_LABELS, 'owlLabels') === null) {

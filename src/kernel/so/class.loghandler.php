@@ -3,7 +3,7 @@
  * \file
  * This file defines the Loghandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.loghandler.php,v 1.13 2011-05-30 17:00:19 oscar Exp $
+ * \version $Id: class.loghandler.php,v 1.14 2011-09-26 10:50:17 oscar Exp $
  */
 
 /**
@@ -55,13 +55,13 @@ class LogHandler extends _OWL
 		$this->opened = false;
 		$this->created = false;
 		$this->setFilename();
-		if (ConfigHandler::get ('logging|multiple_file', false) ||
-			ConfigHandler::get ('logging|persistant', false)) {
+		if (ConfigHandler::get ('logging', 'multiple_file', false) ||
+			ConfigHandler::get ('logging', 'persistant', false)) {
 			$this->openLogfile();
 		}
 		$this->dataset = new DataHandler ();
-		if (ConfigHandler::get ('owltables', true)) {
-			$this->dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$this->dataset->setTablename('sessionlog');
 	}
@@ -108,13 +108,13 @@ class LogHandler extends _OWL
 	 */
 	public function setApplicLogfile()
 	{
-		if (!ConfigHandler::get ('logging|multiple_file', false) &&
-			!ConfigHandler::get ('logging|persistant', false)) {
+		if (!ConfigHandler::get ('logging', 'multiple_file', false) &&
+			!ConfigHandler::get ('logging', 'persistant', false)) {
 			$this->closeLogfile();
 		}
 		$this->setFilename();
-		if (ConfigHandler::get ('logging|multiple_file', false) ||
-			ConfigHandler::get ('logging|persistant', false)) {
+		if (ConfigHandler::get ('logging', 'multiple_file', false) ||
+			ConfigHandler::get ('logging', 'persistant', false)) {
 			$this->openLogfile();
 		}
 	}
@@ -147,7 +147,7 @@ class LogHandler extends _OWL
 				,'ip' => $user->getSessionVar('ip')
 			);
 		}
-		if (ConfigHandler::get('logging|log_form_data', true) === true && $form !== null) {
+		if (ConfigHandler::get('logging', 'log_form_data', true) === true && $form !== null) {
 			$formdata = serialize($form->getFormData());
 		} else {
 			$formdata = null;
@@ -172,7 +172,7 @@ class LogHandler extends _OWL
 	 */
 	private function setFilename ()
 	{
-		$_file = ConfigHandler::get ('logging|filename', OWL_LOG . '/owl.startup.log', true);
+		$_file = ConfigHandler::get ('logging', 'filename', OWL_LOG . '/owl.startup.log', true);
 		$_segments = explode('/', $_file);
 		$_first = array_shift($_segments);
 		if (defined($_first)) {
@@ -180,7 +180,7 @@ class LogHandler extends _OWL
 			$_file = implode('/', $_segments);
 		}
 
-		if (ConfigHandler::get ('logging|multiple_file', false)) {
+		if (ConfigHandler::get ('logging', 'multiple_file', false)) {
 			$this->filename = $_file . '.' . Register::getRunId();
 		} else {
 			$this->filename = $_file;
@@ -231,9 +231,9 @@ class LogHandler extends _OWL
 	 */
 	private function composeMessage (&$msg, $code)
 	{
-		$_prefix = date (ConfigHandler::get ('locale|log_date')) . ':'
-				 . date (ConfigHandler::get ('locale|log_time'));
-		if (!ConfigHandler::get ('logging|multiple_file')) {
+		$_prefix = date (ConfigHandler::get ('locale', 'log_date')) . ':'
+				 . date (ConfigHandler::get ('locale', 'log_time'));
+		if (!ConfigHandler::get ('logging', 'multiple_file')) {
 			$_prefix .= ' [' . Register::getRunId() . ']';
 		}
 		$msg = $_prefix . ' (' . Register::getSeverity ($this->getSeverity($code)) . ':' . Register::getCode ($code) . ') ' . $msg;
@@ -260,13 +260,13 @@ class LogHandler extends _OWL
 		$this->writeLogfile ($msg);
 
 		$_severity = $this->getSeverity($code);
-		if ($_severity >= ConfigHandler::get ('logging|trace_level', 0xf)
-			&& $_severity < ConfigHandler::get ('exception|throw_level', 0x0) ) { // Will already be logged
+		if ($_severity >= ConfigHandler::get ('logging', 'trace_level', 0xf)
+			&& $_severity < ConfigHandler::get ('exception', 'throw_level', 0x0) ) { // Will already be logged
 			$_trace = $this->backtrace();
 			$this->writeLogfile ($_trace);
 		}
-		if (!ConfigHandler::get ('logging|multiple_file', false) &&
-			!ConfigHandler::get ('logging|persistant', false)) {
+		if (!ConfigHandler::get ('logging', 'multiple_file', false) &&
+			!ConfigHandler::get ('logging', 'persistant', false)) {
 			$this->closeLogfile();
 		}
 	}

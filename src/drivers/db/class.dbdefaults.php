@@ -3,9 +3,8 @@
  * \file
  * This file defines default methods for the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdefaults.php,v 1.3 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: class.dbdefaults.php,v 1.4 2011-09-26 10:50:19 oscar Exp $
  */
-
 
 /**
  * \ingroup OWL_DRIVERS
@@ -17,12 +16,17 @@
 abstract class DbDefaults
 {
 	/**
+	 * char - Defines quotes or backtacks that will be used to enclose field- and tablesnames in
+	 */
+	protected $quoting;
+
+	/**
 	 * Class constructor
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __constructor()
 	{
-		
+		$this->quoting = ConfigHandler::get ('database', 'quotes', '');
 	}
 
 	/**
@@ -45,9 +49,9 @@ abstract class DbDefaults
 	 * \return True on success, false on failures
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function dbTransactionCommit (&$_resource, $_name, $_name = null, $_new = false)
+	public function dbTransactionCommit (&$_resource, $_name = null, $_new = false)
 	{
-		return ($this->dbExec($_resource, 'COMMIT WORK'));
+		return ($this->dbExec($_resource, 'COMMIT'));
 	}
 
 	/**
@@ -58,9 +62,9 @@ abstract class DbDefaults
 	 * \return True on success, false on failures
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function dbTransactionRollback (&$_resource, $_name, $_name = null, $_new = false)
+	public function dbTransactionRollback (&$_resource, $_name = null, $_new = false)
 	{
-		return ($this->dbExec($_resource, 'ROLLBACK WORK'));
+		return ($this->dbExec($_resource, 'ROLLBACK'));
 	}
 
 	/**
@@ -83,6 +87,18 @@ abstract class DbDefaults
 	public function dbUnescapeString ($_string)
 	{
 		return (stripslashes($_string));
+	}
+
+	/**
+	 * Enclose a string (field- or table name) with quotes or backticks,
+	 * if so specified in the driver.
+	 * \param[in] $_string The input string in SQL safe format
+	 * \return Quoted textstring
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dbQuote ($_string)
+	{
+		return ($this->quoting . $_string . $this->quoting);
 	}
 
 	/**
@@ -109,7 +125,7 @@ abstract class DbDefaults
 	{
 		return (0);
 	}
-	
+
 	/**
 	 * Implementation of the SQL COUNT() function.
 	 * \param[in] $_field Name of the field

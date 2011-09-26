@@ -101,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00010"></a>00010 <a class="code" href="owl_8debug_8functions_8php.html#a3db581b35179f5b85569d62488ca3a8c">OWLdbg_add</a>(<a class="code" href="group__DEBUG__OWLLevel.html#ga374d5b9eb7eca20f723580dffddcdbba">OWLDEBUG_OWL_S01</a>, <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;messages&#39;</span>], <span class="stringliteral">&#39;Messages during rundown&#39;</span>);
 <a name="l00011"></a>00011 
 <a name="l00012"></a>00012 <span class="comment">// Make sure no exceptions are thrown anymore from this point!</span>
-<a name="l00013"></a>00013 <a class="code" href="classConfigHandler.html#a0f6d68b5d2f4da014209d449fc0f5996">ConfigHandler::set</a>(<span class="stringliteral">&#39;exception|block_throws&#39;</span>, <span class="keyword">true</span>);
+<a name="l00013"></a>00013 <a class="code" href="classConfigHandler.html#a222891a8908d308e19c43fa6cbd42b91">ConfigHandler::set</a>(<span class="stringliteral">&#39;exception&#39;</span>, <span class="stringliteral">&#39;block_throws&#39;</span>, <span class="keyword">true</span>);
 <a name="l00014"></a>00014 
 <a name="l00015"></a>00015 <span class="comment">//echo &quot;Start rundown&lt;br/&gt;&quot;;</span>
 <a name="l00016"></a>00016 
@@ -111,29 +111,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00020"></a>00020 <span class="comment">// Show collected debug data</span>
 <a name="l00021"></a>00021 <a class="code" href="owl_8debug_8functions_8php.html#a8023866265541fcd3991cfd3c854cd18">OWLdbg_show</a> ();
 <a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="comment">// Destroy the Formhandler singleton</span>
-<a name="l00024"></a><a class="code" href="OWLrundown_8php.html#ab14b242803551e0f269742a7103f149d">00024</a> <a class="code" href="OWLrundown_8php.html#ab14b242803551e0f269742a7103f149d">$_form</a> = <a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory</a>(<span class="stringliteral">&#39;FormHandler&#39;</span>);
-<a name="l00025"></a>00025 <a class="code" href="OWLrundown_8php.html#ab14b242803551e0f269742a7103f149d">$_form</a>-&gt;__destruct();
-<a name="l00026"></a>00026 <span class="comment">//unset ($GLOBALS[&#39;formdata&#39;]);</span>
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028 <span class="comment">// Destroy the user and session</span>
-<a name="l00029"></a>00029 <span class="comment">//$GLOBALS[&#39;user&#39;]-&gt;__destruct();</span>
-<a name="l00030"></a>00030 <span class="comment">//unset ($GLOBALS[&#39;user&#39;]);</span>
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 <span class="comment">// Destroy the database object</span>
-<a name="l00033"></a>00033 <span class="comment">//$_db = OWL::factory(&#39;DbHandler&#39;);</span>
-<a name="l00034"></a>00034 <span class="comment">//$_db-&gt;__destruct();</span>
-<a name="l00035"></a>00035 <span class="comment">//unset ($GLOBALS[&#39;db&#39;]);</span>
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037 <span class="comment">// Destroy the logger object</span>
-<a name="l00038"></a>00038 <span class="comment">//$GLOBALS[&#39;logger&#39;]-&gt;__destruct();</span>
-<a name="l00039"></a>00039 <span class="comment">//unset ($GLOBALS[&#39;logger&#39;]);</span>
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 <span class="comment">// Destroy the main class</span>
-<a name="l00042"></a>00042 <span class="comment">//$GLOBALS[&#39;owl_object&#39;]-&gt;__destruct();</span>
-<a name="l00043"></a>00043 <span class="comment">//unset ($GLOBALS[&#39;owl_object&#39;]);</span>
-<a name="l00044"></a>00044 <a class="code" href="classOWLTimers.html#adc7cb4879b9ddf24626f193346230514">OWLTimers::showTimer</a>();
-<a name="l00045"></a>00045 <span class="comment">//echo &quot;rundown complete&lt;br/&gt;&quot;;</span>
+<a name="l00023"></a>00023 <a class="code" href="classOWLTimers.html#adc7cb4879b9ddf24626f193346230514">OWLTimers::showTimer</a>();
+<a name="l00024"></a>00024 <span class="comment">//echo &quot;rundown complete&lt;br/&gt;&quot;;</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -154,7 +133,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon Jun 13 2011 15:50:21 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 09:53:18 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

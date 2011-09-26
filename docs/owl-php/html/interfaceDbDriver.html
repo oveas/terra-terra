@@ -110,6 +110,7 @@ Inheritance diagram for DbDriver:</div>
   <img src="interfaceDbDriver.png" usemap="#DbDriver_map" alt=""/>
   <map id="DbDriver_map" name="DbDriver_map">
 <area href="classMySQL.html" title="Database driver." alt="MySQL" shape="rect" coords="0,56,64,80"/>
+<area href="classOracle.html" title="Database driver." alt="Oracle" shape="rect" coords="74,56,138,80"/>
 </map>
  </div></div>
 
@@ -133,13 +134,14 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a713cd43a5493bfcc0025523074568579">dbClear</a> (&amp;$_data)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#afa98f626bf20cb750d114857ba0a33e1">dbClose</a> (&amp;$_resource)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a3f9f0c1234b3fe3fb263ff1393f13197">dbTransactionStart</a> (&amp;$_resource, $_name=null)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ada53072d3b3edcabbeda95353279fadb">dbTransactionCommit</a> (&amp;$_resource, $_name, $_name=null, $_new=false)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ae6fffd17ac4b45df6db83fa743c4725d">dbTransactionRollback</a> (&amp;$_resource, $_name, $_name=null, $_new=false)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ae0bc420eb8a1e249ee0668803cb7707a">dbTransactionCommit</a> (&amp;$_resource, $_name=null, $_new=false)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a520748a1f9c89199c281eae5062300ea">dbTransactionRollback</a> (&amp;$_resource, $_name=null, $_new=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#abf14f6d96125561b06631649d4a1985a">tableLock</a> (&amp;$_resource, $_table, $_type=<a class="el" href="group__DBDRIVER__TableLock.html#ga5c56b5f9057593dbaa31052f7c7fc08f">DBDRIVER_LOCKTYPE_READ</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a76b1a0d819d13533ba9ff323fe3ca152">tableUnlock</a> (&amp;$_resource, $_table=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a5644828646305a736b8d16cdfade0d21">emptyTable</a> (&amp;$_resource, $_table)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#accaa33441d852734b2213937612e66f6">dbEscapeString</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ac99fd7eba511d8799fcc447006179c72">dbUnescapeString</a> ($_string)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#abfbd28048fdcf147302e976dc98681eb">dbQuote</a> ($_string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a58f24b8ba3d3c104cefac2d9c21ca67c">functionCount</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#af488697aef28243a0d358c2800752217">functionMax</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a87433f8e6a93197b09d60a99e8dac3e1">functionMin</a> ($_field, array $_arguments=array())</td></tr>
@@ -171,7 +173,7 @@ Public Member Functions</h2></td></tr>
 <p>Constructor; must exist but can be empty </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a0fc0de8fcae17604dea97d9dfc12cfba">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a0fc0de8fcae17604dea97d9dfc12cfba">MySQL</a>, and <a class="el" href="classOracle.html#a08de4cfed9291760ab6585679549bf5f">Oracle</a>.</p>
 
 </div>
 </div>
@@ -199,7 +201,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a88191ab56d8ff3389b4519b712d74c32">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a88191ab56d8ff3389b4519b712d74c32">MySQL</a>, and <a class="el" href="classOracle.html#a20607648430ff35b66d3cfc4e1e315e4">Oracle</a>.</p>
 
 </div>
 </div>
@@ -227,7 +229,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#af37ce7304d8326337363a12631835d1b">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#af37ce7304d8326337363a12631835d1b">MySQL</a>, and <a class="el" href="classOracle.html#a39c79959f8c750638a103a6799fd2fdb">Oracle</a>.</p>
 
 </div>
 </div>
@@ -294,7 +296,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a856919afd4bd3680410fdc98bd2eb865">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a856919afd4bd3680410fdc98bd2eb865">MySQL</a>, and <a class="el" href="classOracle.html#a0b4f126b50cfb8ababb094a2778a2ed6">Oracle</a>.</p>
 
 </div>
 </div>
@@ -333,7 +335,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>a negative value on failures, any other integer on success </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a54c2526c30d48b65d34c51581ddbabd2">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a54c2526c30d48b65d34c51581ddbabd2">MySQL</a>, and <a class="el" href="classOracle.html#a88f9a34cc1e26e60a4afa0002b8a4367">Oracle</a>.</p>
 
 </div>
 </div>
@@ -378,7 +380,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#aca5c47b5530644a7877d32b1c04376f2">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#aca5c47b5530644a7877d32b1c04376f2">MySQL</a>, and <a class="el" href="classOracle.html#af71661159866cdc729164205143d0f06">Oracle</a>.</p>
 
 </div>
 </div>
@@ -406,7 +408,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>String in SQL safe format </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a7f4b581ad71a3ee8922d51c9ef28a18c">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a7f4b581ad71a3ee8922d51c9ef28a18c">MySQL</a>, and <a class="el" href="classOracle.html#aa6192ea7d8c581bd12bfd9f6abc4aa16">Oracle</a>.</p>
 
 </div>
 </div>
@@ -445,7 +447,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a469902953a75fcdb3f65b822376c67c1">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a469902953a75fcdb3f65b822376c67c1">MySQL</a>, and <a class="el" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">Oracle</a>.</p>
 
 </div>
 </div>
@@ -473,7 +475,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Record as an associative array (fieldname =&gt; fieldvalue) </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a2ebd12deacbdebd6ad876e279f34b4da">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a2ebd12deacbdebd6ad876e279f34b4da">MySQL</a>, and <a class="el" href="classOracle.html#a38d4f6c016eddfadfe88c490c9d48800">Oracle</a>.</p>
 
 </div>
 </div>
@@ -519,7 +521,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The last generated ID, or 0 when not found </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#aaf69bfa761be38520c7d72ae11506dac">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#aaf69bfa761be38520c7d72ae11506dac">MySQL</a>, and <a class="el" href="classOracle.html#a94f735e71cb88ab2a7178e739f989b3b">Oracle</a>.</p>
 
 </div>
 </div>
@@ -579,7 +581,33 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#adba97d7d125e5772ea5ffa61dcb2b9e3">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#adba97d7d125e5772ea5ffa61dcb2b9e3">MySQL</a>, and <a class="el" href="classOracle.html#ae155b3602c3e7c41d40206f959f75a8f">Oracle</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abfbd28048fdcf147302e976dc98681eb"></a><!-- doxytag: member="DbDriver::dbQuote" ref="abfbd28048fdcf147302e976dc98681eb" args="($_string)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbQuote </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_string</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Enclose a string (field- or table name) with quotes or backticks, if so specified in the driver. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Quoted textstring </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -625,7 +653,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#af85679f7912ab93293b31ad7609a7734">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#af85679f7912ab93293b31ad7609a7734">MySQL</a>, and <a class="el" href="classOracle.html#ae6d88fa762cd297d6d372dc36257e3ac">Oracle</a>.</p>
 
 </div>
 </div>
@@ -653,7 +681,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Number of rows in the set </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a69ec9e11642d3ef0dddcecf95acc6907">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a69ec9e11642d3ef0dddcecf95acc6907">MySQL</a>, and <a class="el" href="classOracle.html#a8da17edc19ebc4351cef03e99e7113f5">Oracle</a>.</p>
 
 </div>
 </div>
@@ -699,11 +727,11 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Indexed array with matching tables and their attributes </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a9da288ed9ff36dc572a68165de8b5839">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a9da288ed9ff36dc572a68165de8b5839">MySQL</a>, and <a class="el" href="classOracle.html#a7ca6440a70108e32a3e4df6beebabe0e">Oracle</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ada53072d3b3edcabbeda95353279fadb"></a><!-- doxytag: member="DbDriver::dbTransactionCommit" ref="ada53072d3b3edcabbeda95353279fadb" args="(&amp;$_resource, $_name, $_name=null, $_new=false)" -->
+<a class="anchor" id="ae0bc420eb8a1e249ee0668803cb7707a"></a><!-- doxytag: member="DbDriver::dbTransactionCommit" ref="ae0bc420eb8a1e249ee0668803cb7707a" args="(&amp;$_resource, $_name=null, $_new=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -712,12 +740,6 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&amp;$&#160;</td>
           <td class="paramname"><em>_resource</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_name</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -751,11 +773,11 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a935f49386759d4bcb109119e87a6010a">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#ad639e6c42d1ad72ef55244b38b2c32ca">MySQL</a>, and <a class="el" href="classOracle.html#af4ca1e7907ea34baf442aa55f9da909d">Oracle</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ae6fffd17ac4b45df6db83fa743c4725d"></a><!-- doxytag: member="DbDriver::dbTransactionRollback" ref="ae6fffd17ac4b45df6db83fa743c4725d" args="(&amp;$_resource, $_name, $_name=null, $_new=false)" -->
+<a class="anchor" id="a520748a1f9c89199c281eae5062300ea"></a><!-- doxytag: member="DbDriver::dbTransactionRollback" ref="a520748a1f9c89199c281eae5062300ea" args="(&amp;$_resource, $_name=null, $_new=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -764,12 +786,6 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&amp;$&#160;</td>
           <td class="paramname"><em>_resource</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_name</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -803,7 +819,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a207f82ed5516848b7a25802fe236d3a2">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a94ca8ff0d1a4072f80c14e598274fdca">MySQL</a>, and <a class="el" href="classOracle.html#a4b28587042e6451e05b11dd0b143bf4e">Oracle</a>.</p>
 
 </div>
 </div>
@@ -905,7 +921,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Number of affected rows, or -1 on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a5a7250d264b682ee2f4bdb14bb4aafd7">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a5a7250d264b682ee2f4bdb14bb4aafd7">MySQL</a>, and <a class="el" href="classOracle.html#a70c2dcc12160ed465c8018ea87398cf4">Oracle</a>.</p>
 
 </div>
 </div>
@@ -944,7 +960,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a310c8c88ce3d36a23d51f66ec5b0f9d2">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a310c8c88ce3d36a23d51f66ec5b0f9d2">MySQL</a>, and <a class="el" href="classOracle.html#a45dd64f96e2b765c8de618812c371142">Oracle</a>.</p>
 
 </div>
 </div>
@@ -983,7 +999,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a5841248a1c642433fa9b0acc28551369">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a5841248a1c642433fa9b0acc28551369">MySQL</a>, and <a class="el" href="classOracle.html#aeea528c9fd8004d8da45405e5c2b815e">Oracle</a>.</p>
 
 </div>
 </div>
@@ -1059,7 +1075,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#af4c29d70b7d95c95d2b3ed400a6a28f5">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#af4c29d70b7d95c95d2b3ed400a6a28f5">MySQL</a>, and <a class="el" href="classOracle.html#a70193ef9d60499297f50124b6d92dadb">Oracle</a>.</p>
 
 </div>
 </div>
@@ -1098,7 +1114,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a2a247b2f8551feaf40548a597694c960">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a2a247b2f8551feaf40548a597694c960">MySQL</a>, and <a class="el" href="classOracle.html#a65427bd6446ae039eefb1dc6762fea26">Oracle</a>.</p>
 
 </div>
 </div>
@@ -1244,7 +1260,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#ad91158ef04d929b3da397997c9a38ded">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#ad91158ef04d929b3da397997c9a38ded">MySQL</a>, and <a class="el" href="classOracle.html#a5a065b071962915ca375e10767fac355">Oracle</a>.</p>
 
 </div>
 </div>
@@ -1283,7 +1299,7 @@ Public Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#a4ac65030ba349b57c476993460703d02">MySQL</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#a4ac65030ba349b57c476993460703d02">MySQL</a>, and <a class="el" href="classOracle.html#ab586f620767fb6bec93327f5965c6114">Oracle</a>.</p>
 
 </div>
 </div>
@@ -1310,7 +1326,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon Jun 13 2011 15:50:23 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 09:53:21 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

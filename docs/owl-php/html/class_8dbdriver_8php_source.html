@@ -139,9 +139,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00168"></a>00168 
 <a name="l00176"></a>00176     <span class="keyword">public</span> function dbTransactionStart (&amp;$_resource, $_name = null);
 <a name="l00177"></a>00177 
-<a name="l00186"></a>00186     <span class="keyword">public</span> function dbTransactionCommit (&amp;$_resource, $_name, $_name = null, $_new = <span class="keyword">false</span>);
+<a name="l00186"></a>00186     <span class="keyword">public</span> function dbTransactionCommit (&amp;$_resource, $_name = null, $_new = <span class="keyword">false</span>);
 <a name="l00187"></a>00187 
-<a name="l00196"></a>00196     <span class="keyword">public</span> function dbTransactionRollback (&amp;$_resource, $_name, $_name = null, $_new = <span class="keyword">false</span>);
+<a name="l00196"></a>00196     <span class="keyword">public</span> function dbTransactionRollback (&amp;$_resource, $_name = null, $_new = <span class="keyword">false</span>);
 <a name="l00197"></a>00197 
 <a name="l00206"></a>00206     <span class="keyword">public</span> function tableLock(&amp;$_resource, $_table, $_type = <a class="code" href="group__DBDRIVER__TableLock.html#ga5c56b5f9057593dbaa31052f7c7fc08f" title="Lock table for read.">DBDRIVER_LOCKTYPE_READ</a>);
 <a name="l00207"></a>00207 
@@ -153,18 +153,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00234"></a>00234 
 <a name="l00242"></a>00242     <span class="keyword">public</span> function dbUnescapeString ($_string);
 <a name="l00243"></a>00243 
-<a name="l00251"></a>00251     <span class="keyword">public</span> function functionCount($_field, array $_arguments = array());
+<a name="l00251"></a>00251     <span class="keyword">public</span> function dbQuote ($_string);
 <a name="l00252"></a>00252 
-<a name="l00260"></a>00260     <span class="keyword">public</span> function functionMax($_field, array $_arguments = array());
+<a name="l00260"></a>00260     <span class="keyword">public</span> function functionCount($_field, array $_arguments = array());
 <a name="l00261"></a>00261 
-<a name="l00269"></a>00269     <span class="keyword">public</span> function functionMin($_field, array $_arguments = array());
+<a name="l00269"></a>00269     <span class="keyword">public</span> function functionMax($_field, array $_arguments = array());
 <a name="l00270"></a>00270 
-<a name="l00279"></a>00279     <span class="keyword">public</span> function functionIf($_field, array $_arguments = array());
-<a name="l00280"></a>00280 
-<a name="l00289"></a>00289     <span class="keyword">public</span> function functionIfnull($_field, array $_arguments = array());
-<a name="l00290"></a>00290 
-<a name="l00299"></a>00299     <span class="keyword">public</span> function functionConcat($_field, array $_arguments = array());
-<a name="l00300"></a>00300 }
+<a name="l00278"></a>00278     <span class="keyword">public</span> function functionMin($_field, array $_arguments = array());
+<a name="l00279"></a>00279 
+<a name="l00288"></a>00288     <span class="keyword">public</span> function functionIf($_field, array $_arguments = array());
+<a name="l00289"></a>00289 
+<a name="l00298"></a>00298     <span class="keyword">public</span> function functionIfnull($_field, array $_arguments = array());
+<a name="l00299"></a>00299 
+<a name="l00308"></a>00308     <span class="keyword">public</span> function functionConcat($_field, array $_arguments = array());
+<a name="l00309"></a>00309 }
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -185,7 +187,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon Jun 13 2011 15:50:20 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 09:53:18 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

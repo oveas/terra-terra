@@ -3,7 +3,7 @@
  * \file
  * This file defines the testcase that checks untranslated labels
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.labels.php,v 1.2 2011-06-07 15:03:31 oscar Exp $
+ * \version $Id: case.labels.php,v 1.3 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
@@ -50,7 +50,7 @@ class OTKTranslations_Labels implements TestCase
 	public function prepareTest ()
 	{
 		// Load messages
-		$_lang = ConfigHandler::get ('locale|lang');
+		$_lang = ConfigHandler::get ('locale', 'lang');
 		if (file_exists ($this->libLocation . '/' . $this->applCode . '.labels.' . $_lang . '.php')) {
 			$file = $this->libLocation . '/' . $this->applCode . '.labels.' . $_lang . '.php';
 		} elseif (file_exists ($this->libLocation . '/' . $this->applCode . '.labels.php')) {

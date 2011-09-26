@@ -1,9 +1,9 @@
-<?php 
+<?php
 /**
  * \file
  * This file defines the testcase that does all node handling
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.nodehandling.php,v 1.1 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: case.nodehandling.php,v 1.2 2011-09-26 10:50:19 oscar Exp $
  */
 
 /**
@@ -72,7 +72,7 @@ class OTKHdata_Nodehandling implements TestCase
 		// Step 1; check the prepared values and move some nodes there
 		$retVal = OTKHdata_getData($data);
 		$this->checkResult ($retVal, $data, 1, 'Inserting the "Musical instruments" tree');
-	
+
 		// Step 2; add some subcategories
 		$this->insertNodes('Single reed', 'Wood');
 		$this->insertNodes('Double reed', 'Wood');
@@ -126,8 +126,8 @@ class OTKHdata_Nodehandling implements TestCase
 					$this->returnCodes[] = array(OTK_RESULT_SUCCESS, $stepDescription . ' succeeded');
 				} else {
 					$this->returnCodes[] = array(OTK_RESULT_FAIL, $stepDescription . ' failed');
-					
-					$this->details .= "<p>The datatree in step $step differed from the exected structure: "
+
+					$this->details .= "<p>The datatree in step $step differed from the expected structure: "
 						. OTKHelpers::compareTable($_expectedResult, $data);
 				}
 				break;

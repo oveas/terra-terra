@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdriver.php,v 1.4 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: class.dbdriver.php,v 1.5 2011-09-26 10:50:19 oscar Exp $
  */
 
 /**
@@ -88,7 +88,7 @@ interface DbDriver
 	public function dbOpen (&$_resource, $_server, $_name, $_user, $_password);
 
 	/**
-	 * Get a list with tablenames 
+	 * Get a list with tablenames
 	 * \param[in] $_resource Link with the database server
 	 * \param[in] $_pattern Search pattern
 	 * \param[in] $_views True when views should be included. Default is false
@@ -183,7 +183,7 @@ interface DbDriver
 	 * \return True on success, false on failures
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function dbTransactionCommit (&$_resource, $_name, $_name = null, $_new = false);
+	public function dbTransactionCommit (&$_resource, $_name = null, $_new = false);
 
 	/**
 	 * Rollback a transaction
@@ -193,7 +193,7 @@ interface DbDriver
 	 * \return True on success, false on failures
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function dbTransactionRollback (&$_resource, $_name, $_name = null, $_new = false);
+	public function dbTransactionRollback (&$_resource, $_name = null, $_new = false);
 
 	/**
 	 * Lock one or more tables for read or write
@@ -240,6 +240,15 @@ interface DbDriver
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function dbUnescapeString ($_string);
+
+	/**
+	 * Enclose a string (field- or table name) with quotes or backticks,
+	 * if so specified in the driver.
+	 * \param[in] $_string The input string in SQL safe format
+	 * \return Quoted textstring
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dbQuote ($_string);
 
 	/**
 	 * Inplementation of the SQL COUNT() function.

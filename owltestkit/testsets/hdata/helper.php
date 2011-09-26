@@ -4,7 +4,7 @@
  * \file
  * This file defines some helper functions for the HData testset
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: helper.php,v 1.3 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: helper.php,v 1.4 2011-09-26 10:50:19 oscar Exp $
  */
 
 /**
@@ -31,10 +31,10 @@ function OTKHdata_getData (&$data, $rootNode = null)
 	$db = DbHandler::getInstance();
 	$_q = 'SELECT * FROM ' . $db->tablename(OTKHdata_tableName());
 	if ($rootNode !== null) {
-		$_q .= ' WHERE `lval` >= (SELECT `lval` FROM ' . $db->tablename(OTKHdata_tableName()) . " WHERE `node` = '$rootNode')"
-			. ' AND  `rval` <= (SELECT `rval` FROM ' . $db->tablename(OTKHdata_tableName()) . " WHERE `node` = '$rootNode')";
+		$_q .= ' WHERE ' . $db->quote('lval') . ' >= (SELECT ' . $db->quote('lval') . ' FROM ' . $db->tablename(OTKHdata_tableName()) . ' WHERE ' . $db->quote('node') . " = '$rootNode')"
+			. ' AND  ' . $db->quote('rval') . ' <= (SELECT ' . $db->quote('rval') . ' FROM ' . $db->tablename(OTKHdata_tableName()) . ' WHERE ' . $db->quote('node') . " = '$rootNode')";
 	}
-	$_q .= ' ORDER BY `lval`';
+	$_q .= ' ORDER BY ' . $db->quote('lval');
 	$db->read(DBHANDLE_DATA, $_data, $_q, __LINE__, __FILE__);
 	$data = null;
 	if ($db->getStatus () === DBHANDLE_NODATA) {
@@ -54,5 +54,5 @@ function OTKHdata_getData (&$data, $rootNode = null)
 		}
 		return (true);
 	}
-	
+
 }

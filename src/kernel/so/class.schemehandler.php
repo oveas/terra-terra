@@ -3,13 +3,13 @@
  * \file
  * This file defines the Scheme Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.schemehandler.php,v 1.6 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.schemehandler.php,v 1.7 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
  * \ingroup OWL_SO_LAYER
  * Handler for all database schemes. This singleton class handles all updates to db tables
- * \brief Scheme handler 
+ * \brief Scheme handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Oct 7, 2010 -- O van Eijk -- initial version for OWL
  * \note A port of this class has been created for VirtueMart
@@ -118,6 +118,8 @@ class SchemeHandler extends _OWL
 	 * - auto-inc : Boolean; True for auto-increment values (will be set as primary key)
 	 * - default : Mixed; default value
 	 * - options : Array; for SET and ENUM types. the list of possible values
+	 * - unsigned : Boolean; True for UNSIGNED numeric values
+	 * - zerofill : Boolean; True when numberic values should be represented with leading zeros
 	 * - comment : String; field comment
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -150,7 +152,7 @@ class SchemeHandler extends _OWL
 		}
 		$_primary = false;
 		foreach ($_index as $_name => $_descr) {
-			if ($_descr['primary']) {
+			if (array_key_exists('primary', $_descr) && $_descr['primary']) {
 				if ($_primary) {
 					$this->setStatus (SCHEMEHANDLE_DUPLPRKEY, $this->table);
 					return false;
@@ -186,7 +188,11 @@ class SchemeHandler extends _OWL
 		} else {
 			$_stat = $this->alterTable($_return, $_drops); // differences found
 		}
-		return ($_stat === OWL_SUCCESS);
+		if ($_stat > OWL_SUCCESS) {
+			$this->db->signal (OWL_WARNING, $msg);
+			$this->setStatus (SCHEMEHANDLE_DBERROR, $msg);
+		}
+		return ($this->severity);
 	}
 
 	/**
@@ -248,7 +254,7 @@ class SchemeHandler extends _OWL
 					}
 				}
 			}
-			
+
 		}
 		if (!array_key_exists('indexes', $this->scheme) || count($this->scheme['indexes']) == 0) {
 			$this->setStatus (SCHEMEHANDLE_NOINDEX, $this->table);
@@ -329,9 +335,9 @@ class SchemeHandler extends _OWL
 			if ($_idx == 'PRIMARY') {
 				$_qry .= ',PRIMARY KEY ';
 			} else {
-				if ($_desc['unique']) {
+				if (array_key_exists('unique', $_desc) && $_desc['unique']) {
 					$_qry .= ',UNIQUE KEY ';
-				} elseif ($_desc['type'] == 'FULLTEXT') {
+				} elseif (array_key_exists('type', $_desc) && $_desc['type'] == 'FULLTEXT') {
 					$_qry .= ',FULLTEXT KEY ';
 				} else {
 					$_qry .= ',KEY ';
@@ -356,7 +362,7 @@ class SchemeHandler extends _OWL
 		if ($_drops === true && array_key_exists('drop', $_diffs) && count($_diffs['drop']['columns']) > 0) {
 			foreach ($_diffs['drop']['columns'] as $_fld => $_desc) {
 				$this->db->setQuery('ALTER TABLE ' . $this->db->tablename($this->table) . ' DROP ' . $_fld);
-				$this->db->write(false, __LINE__, __FILE__);
+				$this->db->write($_dummy, __LINE__, __FILE__);
 			}
 		}
 		if (array_key_exists('mod', $_diffs) && count($_diffs['mod']['columns']) > 0) {
@@ -365,7 +371,7 @@ class SchemeHandler extends _OWL
 					. ' CHANGE `' . $_fld . '` `' .$_fld . '` ' . $_desc['type']
 					. $this->_define_field($_desc);
 				$this->db->setQuery($_qry);
-				$this->db->write(false, __LINE__, __FILE__);
+				$this->db->write($_dummy, __LINE__, __FILE__);
 			}
 		}
 		if (array_key_exists('add', $_diffs) && count($_diffs['add']['columns']) > 0) {
@@ -374,7 +380,7 @@ class SchemeHandler extends _OWL
 					. ' ADD `' . $_fld . '` ' . $_desc['type']
 					. $this->_define_field($_desc);
 				$this->db->setQuery($_qry);
-				$this->db->write(false, __LINE__, __FILE__);
+				$this->db->write($_dummy, __LINE__, __FILE__);
 			}
 		}
 		return OWL_SUCCESS; // TODO proper checking
@@ -503,7 +509,7 @@ class SchemeHandler extends _OWL
 		$data['indexes'] = $this->getTableIndexes($tablename);
 		return ($this->severity);
 	}
-	
+
 	/**
 	 * Reset the internal data structure
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -538,18 +544,19 @@ Register::registerCode ('SCHEMEHANDLE_NOINDEX');
 
 Register::setSeverity (OWL_WARNING);
 Register::registerCode ('SCHEMEHANDLE_IVTABLE');
-			
+
 Register::setSeverity (OWL_BUG);
 Register::registerCode ('SCHEMEHANDLE_INUSE');
 Register::registerCode ('SCHEMEHANDLE_NOUSE');
 Register::registerCode ('SCHEMEHANDLE_EMPTYTABLE');
-					
+
 Register::setSeverity (OWL_ERROR);
+Register::registerCode ('SCHEMEHANDLE_DBERROR');
 Register::registerCode ('SCHEMEHANDLE_DUPLPRKEY');
 Register::registerCode ('SCHEMEHANDLE_MULAUTOINC');
 Register::registerCode ('SCHEMEHANDLE_NOCOLIDX');
 Register::registerCode ('SCHEMEHANDLE_IVCOLIDX');
 Register::registerCode ('SCHEMEHANDLE_NOCOLS');
 
-//Register::setSeverity (OWL_FATAL);
+Register::setSeverity (OWL_FATAL);
 //Register::setSeverity (OWL_CRITICAL);

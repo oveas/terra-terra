@@ -3,7 +3,7 @@
  * \file
  * Define a class for config handling
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.confighandler.php,v 1.15 2011-05-30 17:00:19 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.16 2011-09-26 10:50:17 oscar Exp $
  */
 
 /**
@@ -61,6 +61,7 @@ abstract class ConfigHandler
 		if (($fpointer = fopen ($_file, 'r')) === false) {
 			die ('Fatal error reading configuration file: ' . $_file);
 		}
+		$_section = '';
 		while (!feof($fpointer)) {
 			$_line = fgets ($fpointer, 8192);
 			$_line = preg_replace ('/^\s*;.*/', '', $_line);
@@ -69,6 +70,14 @@ abstract class ConfigHandler
 				continue;
 			}
 
+			if (preg_match ('/^\[(\w+)\]$/', $_line, $_m)) {
+				$_section = $_m[1];
+				continue;
+			}
+			if ($_section == '') {
+				OWL::stat(CONFIG_EMPTYSECTION, array($_item));
+				continue;
+			}
 			list ($_item, $_value) = explode ('=', $_line, 2);
 			$_item = trim ($_item);
 			if ($_item == '') {
@@ -82,7 +91,7 @@ abstract class ConfigHandler
 			$_hide = strpos ($_item, $GLOBALS['config']['config']['hide_tag']);
 			$_hide = ($_hide !== false);
 
-			self::parseItem($_item, $_value, $_protect, $_hide);
+			self::parseItem($_section, $_item, $_value, $_protect, $_hide);
 		}
 		fclose ($fpointer);
 	}
@@ -100,20 +109,34 @@ abstract class ConfigHandler
 	{
 		if (self::$dataset === null) {
 			self::$dataset = new DataHandler();
-			if (self::get ('owltables', true)) {
-				self::$dataset->setPrefix(self::get ('owlprefix'));
+			if (self::get ('database', 'owltables', true)) {
+				self::$dataset->setPrefix(self::get ('database', 'owlprefix'));
 			}
 			self::$dataset->setTablename($_table);
 		}
+
+		// Values to read
+		self::$dataset->set('name', null, null, array('name' => array('name')), array('match' => array(DBMATCH_NONE)));
+		self::$dataset->set('value', null, null, array('name' => array('value')), array('match' => array(DBMATCH_NONE)));
+		self::$dataset->set('protect', null, null, array('name' => array('protect')), array('match' => array(DBMATCH_NONE)));
+		self::$dataset->set('hide', null, null, array('name' => array('hide')), array('match' => array(DBMATCH_NONE)));
+		self::$dataset->set('name', null, 'config_sections', array('name' => array('section')), array('match' => array(DBMATCH_NONE)));
+
+		// Searches
 		self::$dataset->set('aid', $_applic);
 		self::$dataset->set('gid', $_group);
 		self::$dataset->set('uid', $_user);
+
+		// Joins
+		self::$dataset->setJoin('sid', array('config_sections', 'sid'));
+
 		self::$dataset->prepare ();
 		$_cfg = null;
 		self::$dataset->db ($_cfg, __LINE__, __FILE__);
+
 		if (count($_cfg) > 0) {
 			foreach ($_cfg as $_item) {
-				self::parseItem($_item['name'], $_item['value'], $_item['protect'], $_item['hide']);
+				self::parseItem($_item['section'], $_item['name'], $_item['value'], $_item['protect'], $_item['hide']);
 			}
 		}
 	}
@@ -129,7 +152,7 @@ abstract class ConfigHandler
 		if (($_s = Register::getSeverityLevel($val)) > 0) {
 			return ($_s);
 		}
-		// TODO; We've got toBool() for this now
+		// TODO; We've got toBool() for this now (but then.... we don't always want a boolean :-S )
 		if ($val === 'true' || $val === 'True' || $val === 'TRUE' || $val === '1') {
 			return (true);
 		}
@@ -141,14 +164,16 @@ abstract class ConfigHandler
 
 	/**
 	 * Parse a configuration item as read from the file or database, and store is
+	 * \param[in] $_section Name of the config section
 	 * \param[in] $_item Name of the config item
 	 * \param[in] $_value Value of the config item
 	 * \param[in] $_protect Boolean indicating a protected value
 	 * \param[in] $_hide Boolean indicated a hidden value
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private static function parseItem ($_item, $_value, $_protect, $_hide)
+	private static function parseItem ($_section, $_item, $_value, $_protect, $_hide)
 	{
+		$_item = "$_section|$_item";
 		if ($_protect === true) {
 			$_item = str_replace($GLOBALS['config']['config']['protect_tag'], '', $_item);
 			$GLOBALS['config']['protected_values'][] = $_item;
@@ -167,19 +192,50 @@ abstract class ConfigHandler
 	}
 
 	/**
+	 * Get of create a config section ID
+	 * \param[in] $section The configuration section the item should be taken from
+	 * \param[in] $create Boolean set to true (e.g. by the OWLinstaller) when a non-existing
+	 * section must be created.
+	 * \return Section id or -1 when not found and not created
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public static function configSection ($section, $create = false)
+	{
+		$_dataset = new DataHandler();
+		$_dataset->setTablename('config_sections');
+		$_dataset->set('name', $section);
+		$_dataset->prepare ();
+		$_secID = null;
+		$_dataset->db ($_secID, __LINE__, __FILE__);
+		if (count($_secID) == 0) {
+			if ($create) {
+				$_dataset->prepare (DATA_WRITE);
+				$_dataset->db($_secID, __LINE__, __FILE__);
+				return ($_dataset->insertedId());
+			} else {
+				OWL::stat(CONFIG_NOSUCHSECTION, $_item);
+				return -1;
+			}
+		} else {
+			return $_secID[0]['sid'];
+		}
+	}
+
+	/**
 	 * Return a configuration value.
 	 * \note In order to use hidden values properly, this is the ONLY way configuration
 	 * values should be retrieved!
-	 * \param[in] $item The configuration item in the same format as it appears in the
-	 * configuration file (e.g. 'group|subject|item')
+	 * \param[in] $section The configuration section the item should be taken from
+	 * \param[in] $item The configuration item
 	 * \param[in] $default The default value to return if the config item was not set. This defaults
 	 * to 'null'; if it is anything other than null, the CONFIG_NOVALUE status will not be set
 	 * \param[in] $force Boolean to force a reparse of the config item ignoring existing cache values
 	 * \return Corresponding value of null when nothing was found
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function get ($item, $default = null, $force = false)
+	public static function get ($section, $item, $default = null, $force = false)
 	{
+		$item = "$section|$item";
 		if ($force === false && isset ($GLOBALS['owl_cache']['cget'][$item])) {
 			return ($GLOBALS['owl_cache']['cget'][$item]);
 		}
@@ -222,13 +278,14 @@ abstract class ConfigHandler
 
 	/**
 	 * Set a configuration item. Existing values will be overwritten when not protected.
-	 * \param[in] $_item The configuration item in the same format as it appears in the
-	 * configuration file (e.g. 'group|subject|item')
+	 * \param[in] $_section The configuration section the item should be set in
+	 * \param[in] $_item The configuration item
 	 * \param[in] $_value The new value of the item
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function set ($_item, $_value)
+	public static function set ($_section, $_item, $_value)
 	{
+		$_item = "$_section|$_item";
 		if (in_array($_item, $GLOBALS['config']['protected_values'])) {
 			OWL::stat(CONFIG_PROTECTED, $_item);
 			return;
@@ -308,7 +365,9 @@ Register::registerCode ('CONFIG_PROTECTED');
 
 //Register::setSeverity (OWL_OK);
 //Register::setSeverity (OWL_SUCCESS);
-//Register::setSeverity (OWL_WARNING);
+Register::setSeverity (OWL_WARNING);
+Register::registerCode ('CONFIG_NOSUCHSECTION');
+Register::registerCode ('CONFIG_EMPTYSECTION');
 
 //Register::setSeverity (OWL_BUG);
 

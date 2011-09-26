@@ -118,7 +118,7 @@ Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a6f8db3684178332da05b3dc15b9f3648">addGroupRights</a> ($aid, $grp, array $rights)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a58006b3763431df6b723a51b2a7d35fb">addGroups</a> ($aid, array $grps)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#aa6571c34c5e4e40a3684ea6a11386d48">addRights</a> ($aid, array $rights)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a2c93d2eed7940a681a463d46a1083089">addConfig</a> ($aid, $item, $value, $protect=false, $hide=false, $group=null)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a3a615039ed473587d58b47ca33007b91">addConfig</a> ($aid, $section, $item, $value, $protect=false, $hide=false, $group=null)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOWLinstaller.html#a62699be0fe7e64f36d61f56a87d4fd77">uncommentSQL</a> ($line)</td></tr>
@@ -136,7 +136,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00016">16</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
 </div><hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a2c93d2eed7940a681a463d46a1083089"></a><!-- doxytag: member="OWLinstaller::addConfig" ref="a2c93d2eed7940a681a463d46a1083089" args="($aid, $item, $value, $protect=false, $hide=false, $group=null)" -->
+<a class="anchor" id="a3a615039ed473587d58b47ca33007b91"></a><!-- doxytag: member="OWLinstaller::addConfig" ref="a3a615039ed473587d58b47ca33007b91" args="($aid, $section, $item, $value, $protect=false, $hide=false, $group=null)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -145,6 +145,12 @@ Static Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>aid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>section</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -188,7 +194,8 @@ Static Private Attributes</h2></td></tr>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$aid</td><td>Application ID </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$item</td><td>Name of the configuration item in the same format it appears in the configuration file (e.g. 'group|subject|item) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$section</td><td>Name of the configuration section </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$item</td><td>Name of the configuration item </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$value</td><td>Value of the configuration item </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$protect</td><td>True if this is a protected item </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">$hide</td><td>True if this is an hidden item </td></tr>
@@ -199,9 +206,9 @@ Static Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean indicating success (true) or any failure (false) </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00334">334</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
+<p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00336">336</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00181">ConfigHandler::get()</a>, and <a class="el" href="class_8confighandler_8php_source.html#l00230">ConfigHandler::set()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00202">ConfigHandler::configSection()</a>, <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>, and <a class="el" href="class_8confighandler_8php_source.html#l00286">ConfigHandler::set()</a>.</p>
 
 </div>
 </div>
@@ -247,9 +254,9 @@ Static Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean indicating success (true) or any failure (false) </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00221">221</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
+<p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00222">222</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00181">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
 
 </div>
 </div>
@@ -288,9 +295,9 @@ Static Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean indicating success (true) or any failure (false) </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00261">261</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
+<p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00262">262</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00181">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
 
 </div>
 </div>
@@ -329,9 +336,9 @@ Static Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean indicating success (true) or any failure (false) </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00287">287</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
+<p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00288">288</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00181">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
 
 </div>
 </div>
@@ -374,18 +381,19 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>SQL statement with the prefixed tablename </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000016">Todo:</a></b></dt><dd><p class="startdd">Add support for UPDATE, DELETE, RENAME and other statements that *might* occur in SQL install files </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000017">Todo:</a></b></dt><dd><p class="startdd">Add support for UPDATE, DELETE, RENAME and other statements that *might* occur in SQL install files </p>
+<p>Add support for other databases (e.g. <a class="el" href="classOracle.html" title="Database driver.">Oracle</a>, using quotes iso backticks) </p>
 <p class="enddd">Handle constraints ([...] REFERENCES `tblname` (...)) </p>
 </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 </li>
 </ul>
 
-<p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00161">161</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
+<p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00162">162</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00181">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
 
-<p>Referenced by <a class="el" href="OWLinstaller_8php_source.html#l00192">installTables()</a>.</p>
+<p>Referenced by <a class="el" href="OWLinstaller_8php_source.html#l00193">installTables()</a>.</p>
 
 </div>
 </div>
@@ -407,7 +415,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00032">32</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00181">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
 
 </div>
 </div>
@@ -436,7 +444,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00085">85</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00181">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
 
 </div>
 </div>
@@ -509,11 +517,11 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The application ID </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000015">Todo:</a></b></dt><dd>Error checking </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000016">Todo:</a></b></dt><dd>Error checking </dd></dl>
 
 <p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00061">61</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00181">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
 
 </div>
 </div>
@@ -552,9 +560,9 @@ Static Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean indicating success (true) or any failure (false) </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00192">192</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
+<p>Definition at line <a class="el" href="OWLinstaller_8php_source.html#l00193">193</a> of file <a class="el" href="OWLinstaller_8php_source.html">OWLinstaller.php</a>.</p>
 
-<p>References <a class="el" href="OWLinstaller_8php_source.html#l00161">addTablePrefix()</a>, <a class="el" href="class_8owl_8php_source.html#l00072">OWL::factory()</a>, and <a class="el" href="owl_8debug_8functions_8php_source.html#l00090">OWLdbg_add()</a>.</p>
+<p>References <a class="el" href="OWLinstaller_8php_source.html#l00162">addTablePrefix()</a>, <a class="el" href="class_8owl_8php_source.html#l00072">OWL::factory()</a>, and <a class="el" href="owl_8debug_8functions_8php_source.html#l00090">OWLdbg_add()</a>.</p>
 
 </div>
 </div>
@@ -674,7 +682,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon Jun 13 2011 15:50:24 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 09:53:22 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

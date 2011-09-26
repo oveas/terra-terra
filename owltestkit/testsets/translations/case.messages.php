@@ -3,7 +3,7 @@
  * \file
  * This file defines the testcase that checks untranslated messages codes
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.messages.php,v 1.2 2011-06-07 15:03:31 oscar Exp $
+ * \version $Id: case.messages.php,v 1.3 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
@@ -53,7 +53,7 @@ class OTKTranslations_Messages implements TestCase
 	public function prepareTest ()
 	{
 		// Load messages
-		$_lang = ConfigHandler::get ('locale|lang');
+		$_lang = ConfigHandler::get ('locale', 'lang');
 		if (file_exists ($this->libLocation . '/' . $this->applCode . '.messages.' . $_lang . '.php')) {
 			$file = $this->libLocation . '/' . $this->applCode . '.messages.' . $_lang . '.php';
 		} elseif (file_exists ($this->libLocation . '/' . $this->applCode . '.messages.php')) {

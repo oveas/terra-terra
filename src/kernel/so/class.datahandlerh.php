@@ -3,7 +3,7 @@
  * \file
  * This file defines the Hierarchical DataHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.datahandlerh.php,v 1.6 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: class.datahandlerh.php,v 1.7 2011-09-26 10:50:17 oscar Exp $
  */
 
 /**
@@ -28,7 +28,7 @@ define ('HDATA_XLINK_FOLLOW_UNLIMITED',	99);
 /**
  * \ingroup OWL_SO_LAYER
  * This class contains DB datasets for hierarchical tables
- * \brief The OWL Hierarchical Data object 
+ * \brief The OWL Hierarchical Data object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 13, 2011 -- O van Eijk -- initial version
  */
@@ -191,7 +191,7 @@ class HDataHandler extends DataHandler
 		;
 		return ($this->readQuery($query, __LINE__));
 	}
-	
+
 	/**
 	 * Get the depth of all nodes or a single node.
 	 * \param[in] $field The fieldname of which value that will be returned with the depth, must be a primary key or unique indexed field
@@ -301,7 +301,7 @@ class HDataHandler extends DataHandler
 				. "HAVING depth = 1)"
 			;
 		if ($this->xlink !== null && $xlink === true) {
-			if ($this->owl_database->read(DBHANDLE_SINGLEFIELD, $id 
+			if ($this->owl_database->read(DBHANDLE_SINGLEFIELD, $id
 						, "SELECT $this->xlinkID FROM $table WHERE $field = '$value' "
 						, __LINE__, __FILE__)  >= OWL_WARNING) {
 				$this->setStatus(DATA_DBWARNING, array($this->owl_database->getLastWarning()));
@@ -345,8 +345,13 @@ class HDataHandler extends DataHandler
 						. "AND parents.$field = '$value' "
 				;
 		}
+		// TODO for Oracle compatibility
+		// - Group By requires all fields, also the ones in ORDER BY.
+		//   Check how this works in Oracle with the SELECT *
 		$query .= "GROUP BY node.$field "
-				. "HAVING ancestors = $depth "
+				// Oracle doesn't understand aliases here :-(
+				. "HAVING COUNT(ancestor.$field) - 1 = $depth "
+//				. "HAVING ancestors = $depth "
 				. "ORDER BY node.$this->left "
 		;
 		return ($this->readQuery($query, __LINE__));
@@ -393,7 +398,7 @@ class HDataHandler extends DataHandler
 		$table = $this->owl_database->tablename($this->owl_tablename);
 		$this->owl_database->startTransaction('insertNode');
 		$this->owl_database->lockTable($table, DBDRIVER_LOCKTYPE_WRITE);
-		
+
 		$_stat = true;
 		$_stat = $this->writeQuery("UPDATE $table "
 							. "SET $this->right = $this->right + 2 "
@@ -570,7 +575,7 @@ class HDataHandler extends DataHandler
 			return (true);
 		}
 	}
-	
+
 	/**
 	 * Delete a complete tree, removeing all cross references to from outside the tree to any of the nodes being deleted.
 	 * All exising cross references will be removed (nullified).
@@ -659,9 +664,9 @@ class HDataHandler extends DataHandler
 		$table = $this->owl_database->tablename($this->owl_tablename);
 		$node = $this->getNode($field, $value);
 		$this->owl_database->startTransaction('insertNode');
-		$this->owl_database->lockTable($table, DBDRIVER_LOCKTYPE_WRITE); 
+		$this->owl_database->lockTable($table, DBDRIVER_LOCKTYPE_WRITE);
 		$_stat = true;
-		
+
 		if ($_stat !== false) {
 			$_stat = $this->writeQuery("UPDATE $table "
 									. "SET $this->left = 0 "
@@ -703,9 +708,9 @@ class HDataHandler extends DataHandler
 
 		// TODO Since _getNewLeft() reads from the table using aliases, we can't access the table
 		// using the active lock (at least in MySQL), so we temporarily release the lock now
-		$this->owl_database->unlockTable($table); 
+		$this->owl_database->unlockTable($table);
 		$_newLeft = $this->_getNewLeft($newParent, $position);
-		$this->owl_database->lockTable($table, DBDRIVER_LOCKTYPE_WRITE); 
+		$this->owl_database->lockTable($table, DBDRIVER_LOCKTYPE_WRITE);
 		$_newRight = $_newLeft + $_width - 1;
 		$_move = $node[$this->left] - $_newLeft;
 
@@ -732,7 +737,7 @@ class HDataHandler extends DataHandler
 									. "AND   $this->right = 0 "
 									, __LINE__);
 		}
-		
+
 		if ($_stat !== false) {
 			// And finally move the tree to the correct position
 			$_stat = $this->writeQuery("UPDATE $table "

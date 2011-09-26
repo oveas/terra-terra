@@ -3,7 +3,7 @@
  * \file
  * This file defines the abstract ContentArea class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.contentarea.php,v 1.9 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: class.contentarea.php,v 1.10 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
@@ -38,7 +38,7 @@ abstract class ContentArea extends _OWL
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	abstract public function loadArea($arg = null);
-	
+
 	/**
 	 * Add the newly created container object to the given container document
 	 * \param[in] $_contnr Reference to the container object, by default (when null) the content will
@@ -92,7 +92,7 @@ abstract class ContentArea extends _OWL
 		if (array_key_exists($_string, $GLOBALS['labels'])) {
 			$translation = $GLOBALS['labels'][$_string];
 		} else {
-			$translation = ((ConfigHandler::get ('debug') > 0?'(!)':'').$_string);
+			$translation = ((ConfigHandler::get ('general', 'debug') > 0?'(!)':'').$_string);
 		}
 		if ($_params === array()) {
 			return ($translation);

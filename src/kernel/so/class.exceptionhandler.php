@@ -3,7 +3,7 @@
  * \file
  * This file defines the OWL Exception handler class and a default exception handler, for
  * which a special class is created.
- * \version $Id: class.exceptionhandler.php,v 1.13 2011-05-30 17:00:19 oscar Exp $
+ * \version $Id: class.exceptionhandler.php,v 1.14 2011-09-26 10:50:17 oscar Exp $
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
@@ -49,7 +49,7 @@ class OWLException extends Exception
 		$this->thrown_code = $code;
 
 		$this->hidden_args = array();
-		$_hide_arguments = ConfigHandler::get ('exception|hide_arguments', 0);
+		$_hide_arguments = ConfigHandler::get ('exception', 'hide_arguments', 0);
 		if ($_hide_arguments !== 0) {
 			$_hidden_args = explode (',', $_hide_arguments);
 			foreach ($_hidden_args as $_argument) {
@@ -149,7 +149,7 @@ class OWLException extends Exception
 	 */
 	private function checkHide ($trace)
 	{
-		if (!ConfigHandler::get ('exception|show_values', false)) {
+		if (!ConfigHandler::get ('exception', 'show_values', false)) {
 			return -1; // Won't be shown anyway
 		}
 		if (count($this->hidden_args) == 0) {
@@ -229,12 +229,12 @@ class OWLException extends Exception
 								if ($textmode) {
 									$_text .= $value;
 								} else {
-									if (ConfigHandler::get ('exception|show_values', false)) {
-										if (strlen ($value) > ConfigHandler::get ('exception|max_value_len', 30)) {
+									if (ConfigHandler::get ('exception', 'show_values', false)) {
+										if (strlen ($value) > ConfigHandler::get ('exception', 'max_value_len', 30)) {
 											$_text .= substr (
 														  $value
 														, 0
-														, ConfigHandler::get ('exception|max_value_len', 30)
+														, ConfigHandler::get ('exception', 'max_value_len', 30)
 													) . '...';
 										} else {
 											$_text .= $value;
@@ -259,12 +259,12 @@ class OWLException extends Exception
 							if ($textmode) {
 								$_text .= "'$value'";
 							} else {
-								if (ConfigHandler::get ('exception|show_values', false)) {
-									if (strlen ($value) > ConfigHandler::get ('exception|max_value_len', 30)) {
+								if (ConfigHandler::get ('exception', 'show_values', false)) {
+									if (strlen ($value) > ConfigHandler::get ('exception', 'max_value_len', 30)) {
 										$_text .= substr (
 													  $value
 													, 0
-													, ConfigHandler::get ('exception|max_value_len', 30)
+													, ConfigHandler::get ('exception', 'max_value_len', 30)
 												) . '...';
 									} else {
 										$_text .= $value;
@@ -324,7 +324,7 @@ class OWLExceptionHandler
 		}
 		$GLOBALS['logger']->log ($exception->stackDump(true), $exception->thrown_code);
 
-		if (ConfigHandler::get ('exception|show_in_browser')) {
+		if (ConfigHandler::get ('exception', 'show_in_browser')) {
 			OutputHandler::outputRaw ($exception->stackDump(false));
 		} else {
 			OutputHandler::outputRaw ('<p class="exception"><b>An exception was thrown</b><br/>'

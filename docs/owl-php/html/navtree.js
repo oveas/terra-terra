@@ -291,6 +291,7 @@ var NAVTREE =
           [ "DbDefaults", "classDbDefaults.html", null ],
           [ "DbDriver", "interfaceDbDriver.html", null ],
           [ "MySQL", "classMySQL.html", null ],
+          [ "Oracle", "classOracle.html", null ],
           [ "MailDefaults", "classMailDefaults.html", null ],
           [ "MailDriver", "interfaceMailDriver.html", null ],
           [ "RawSMTP", "classRawSMTP.html", null ]
@@ -364,6 +365,7 @@ var NAVTREE =
       [ "MailDriver", "interfaceMailDriver.html", null ],
       [ "MySQL", "classMySQL.html", null ],
       [ "OldOFMStuff", "classOldOFMStuff.html", null ],
+      [ "Oracle", "classOracle.html", null ],
       [ "OutputHandler", "classOutputHandler.html", null ],
       [ "OWL", "classOWL.html", null ],
       [ "OWLCache", "classOWLCache.html", null ],
@@ -438,10 +440,12 @@ var NAVTREE =
       ] ],
       [ "ConfigHandler", "classConfigHandler.html", null ],
       [ "DbDefaults", "classDbDefaults.html", [
-        [ "MySQL", "classMySQL.html", null ]
+        [ "MySQL", "classMySQL.html", null ],
+        [ "Oracle", "classOracle.html", null ]
       ] ],
       [ "DbDriver", "interfaceDbDriver.html", [
-        [ "MySQL", "classMySQL.html", null ]
+        [ "MySQL", "classMySQL.html", null ],
+        [ "Oracle", "classOracle.html", null ]
       ] ],
       [ "MailDefaults", "classMailDefaults.html", [
         [ "RawSMTP", "classRawSMTP.html", null ]
@@ -510,6 +514,7 @@ var NAVTREE =
       [ "class.maildefaults.php", "class_8maildefaults_8php.html", null ],
       [ "class.maildriver.php", "class_8maildriver_8php.html", null ],
       [ "class.mysql.php", "class_8mysql_8php.html", null ],
+      [ "class.oracle.php", "class_8oracle_8php.html", null ],
       [ "class.outputhandler.php", "class_8outputhandler_8php.html", null ],
       [ "class.owl.php", "class_8owl_8php.html", null ],
       [ "class.rawsmtp.php", "class_8rawsmtp_8php.html", null ],
@@ -537,6 +542,7 @@ var NAVTREE =
       [ "OWLrundown.php", "OWLrundown_8php.html", null ]
     ] ],
     [ "Examples", "examples.html", [
+      [ "exa.datahandler-join.php", "exa_8datahandler-join_8php-example.html", null ],
       [ "exa.datahandler-set.php", "exa_8datahandler-set_8php-example.html", null ],
       [ "exa.document.php", "exa_8document_8php-example.html", null ],
       [ "exa.form.php", "exa_8form_8php-example.html", null ],

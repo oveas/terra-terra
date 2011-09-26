@@ -102,7 +102,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00011"></a>00011     trigger_error(<span class="stringliteral">&#39;Error loading classfile sockethandler from &#39;</span>. <a class="code" href="group__OWL__Globals.html#ga75dffdef5ba58a0ba5f21ed40627897f" title="Storage layer includes.">OWL_SO_INC</a>, E_USER_ERROR);
 <a name="l00012"></a>00012 }
 <a name="l00013"></a>00013 
-<a name="l00022"></a><a class="code" href="classRawSMTP.html">00022</a> <span class="keyword">class </span><a class="code" href="classRawSMTP.html" title="Mail driver.">RawSMTP</a> <span class="keyword">extends</span> <a class="code" href="classMailDefaults.html" title="Mail driver defauls.">MailDefaults</a> implements <a class="code" href="interfaceMailDriver.html" title="Mail driver interface.">MailDriver</a> 
+<a name="l00022"></a><a class="code" href="classRawSMTP.html">00022</a> <span class="keyword">class </span><a class="code" href="classRawSMTP.html" title="Mail driver.">RawSMTP</a> <span class="keyword">extends</span> <a class="code" href="classMailDefaults.html" title="Mail driver defauls.">MailDefaults</a> implements <a class="code" href="interfaceMailDriver.html" title="Mail driver interface.">MailDriver</a>
 <a name="l00023"></a>00023 {
 <a name="l00027"></a><a class="code" href="classRawSMTP.html#acc4e441998d0988b684af036ae786c12">00027</a>     <span class="keyword">private</span> <a class="code" href="classRawSMTP.html#acc4e441998d0988b684af036ae786c12">$mailSocket</a>;
 <a name="l00028"></a>00028 
@@ -121,12 +121,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00046"></a>00046 
 <a name="l00054"></a><a class="code" href="classRawSMTP.html#a35762165e6ff6010280bbfa42e27fdba">00054</a>     <span class="keyword">public</span> function <a class="code" href="classRawSMTP.html#a35762165e6ff6010280bbfa42e27fdba">mailSend</a> (array $mail)
 <a name="l00055"></a>00055     {
-<a name="l00056"></a>00056         $_server = <a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a>(<span class="stringliteral">&#39;mail|smtp_server&#39;</span>, <span class="stringliteral">&#39;localhost&#39;</span>);
+<a name="l00056"></a>00056         $_server = <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a>(<span class="stringliteral">&#39;mail&#39;</span>, <span class="stringliteral">&#39;smtp_server&#39;</span>, <span class="stringliteral">&#39;localhost&#39;</span>);
 <a name="l00057"></a>00057         $this-&gt;mailSocket = <span class="keyword">new</span> <a class="code" href="classSocketHandler.html" title="Socket handler.">SocketHandler</a>(<span class="stringliteral">&#39;smtp&#39;</span>, $_server);
 <a name="l00058"></a>00058         <span class="keywordflow">if</span> ($this-&gt;mailSocket-&gt;connect() &gt;= <a class="code" href="group__OWL__SeverityCodes.html#gace886152e2e86cd2e91cb833fd495adb">OWL_WARNING</a>) {
 <a name="l00059"></a>00059             <span class="keywordflow">return</span> (<span class="keyword">false</span>);
 <a name="l00060"></a>00060         }
-<a name="l00061"></a>00061         $_myhost = <a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a>(<span class="stringliteral">&#39;mail|my_hostname&#39;</span>, gethostname());
+<a name="l00061"></a>00061         $_myhost = <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a>(<span class="stringliteral">&#39;mail&#39;</span>, <span class="stringliteral">&#39;my_hostname&#39;</span>, gethostname());
 <a name="l00062"></a>00062 
 <a name="l00063"></a>00063         <span class="keywordflow">if</span> ($this-&gt;mailSocket-&gt;write (<span class="stringliteral">&#39;HELO &#39;</span> .$_myhost, <a class="code" href="group__SOCKET__Codes.html#ga70cdc3085a0c0b1d009bb6c6c027f4b7" title="Response code indicating the socket accepted the last command.">SOCK_ACCEPTED</a>) &gt;= <a class="code" href="group__OWL__SeverityCodes.html#gace886152e2e86cd2e91cb833fd495adb">OWL_WARNING</a>) {
 <a name="l00064"></a>00064             <span class="keywordflow">return</span> (<span class="keyword">false</span>);
@@ -212,7 +212,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon Jun 13 2011 15:50:20 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 09:53:18 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

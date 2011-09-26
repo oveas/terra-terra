@@ -1,9 +1,9 @@
-<?php 
+<?php
 /**
  * \file
  * This file defines the last testcase for the Hierarchical Dataset
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.last.php,v 1.3 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: case.last.php,v 1.4 2011-09-26 10:50:19 oscar Exp $
  */
 
 /**
@@ -20,7 +20,7 @@ class OTKHdata_Last implements TestCase
 
 	// Hold details of the testresults
 	private $details;
-	
+
 	public function __construct()
 	{
 		$this->tablename = OTKHdata_tableName();
@@ -63,6 +63,7 @@ class OTKHdata_Last implements TestCase
 
 	public function cleanupTest ()
 	{
+		// TODO Use SchemeHandler here (once ported to the DbDriver functionality)
 		$db = DbHandler::getInstance();
 		$db->setQuery ('DROP TABLE ' . $db->tablename($this->tablename));
 		if ($db->write($dummy, __LINE__, __FILE__) <= OWL_SUCCESS) {
@@ -77,5 +78,5 @@ class OTKHdata_Last implements TestCase
 	{
 		return $this->details;
 	}
-	
+
 }

@@ -6,6 +6,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 -- -----------------------------------------------------
 -- Table `owl_applications`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `owl_applications` ;
+
 CREATE  TABLE IF NOT EXISTS `owl_applications` (
   `aid` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique ID' ,
   `code` VARCHAR(12) NOT NULL COMMENT 'Application code' ,
@@ -27,6 +29,8 @@ CREATE UNIQUE INDEX `appcode` ON `owl_applications` (`code` ASC) ;
 -- -----------------------------------------------------
 -- Table `owl_group`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `owl_group` ;
+
 CREATE  TABLE IF NOT EXISTS `owl_group` (
   `gid` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique identification' ,
   `groupname` VARCHAR(32) NOT NULL COMMENT 'Name of the group' ,
@@ -51,6 +55,8 @@ CREATE INDEX `fk_groupapplic` ON `owl_group` (`aid` ASC) ;
 -- -----------------------------------------------------
 -- Table `owl_user`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `owl_user` ;
+
 CREATE  TABLE IF NOT EXISTS `owl_user` (
   `uid` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Internally user user identification' ,
   `username` VARCHAR(32) NOT NULL COMMENT 'Username, must be unique' ,
@@ -77,6 +83,8 @@ CREATE INDEX `fk_usergroup` ON `owl_user` (`gid` ASC) ;
 -- -----------------------------------------------------
 -- Table `owl_session`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `owl_session` ;
+
 CREATE  TABLE IF NOT EXISTS `owl_session` (
   `sid` VARCHAR(255) NOT NULL COMMENT 'Unique session ID' ,
   `stimestamp` INT(10) NOT NULL COMMENT 'Timestamp of the sessions last activity' ,
@@ -89,6 +97,8 @@ COMMENT = 'This table is used to store all OWL session data' ;
 -- -----------------------------------------------------
 -- Table `owl_sessionlog`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `owl_sessionlog` ;
+
 CREATE  TABLE IF NOT EXISTS `owl_sessionlog` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `sid` VARCHAR(255) NOT NULL COMMENT 'Session ID being logged' ,
@@ -105,13 +115,29 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `owl_config_sections`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `owl_config_sections` ;
+
+CREATE  TABLE IF NOT EXISTS `owl_config_sections` (
+  `sid` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`sid`) )
+ENGINE = InnoDB, 
+COMMENT = 'Configuration sections' ;
+
+
+-- -----------------------------------------------------
 -- Table `owl_config`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `owl_config` ;
+
 CREATE  TABLE IF NOT EXISTS `owl_config` (
   `cid` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `aid` INT UNSIGNED NOT NULL COMMENT 'Application this item belongs to' ,
   `gid` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Group ID for group specific configuration' ,
   `uid` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'User ID for user specific configuration' ,
+  `sid` INT NOT NULL DEFAULT 0 COMMENT 'Configuration section for this item' ,
   `name` VARCHAR(64) NOT NULL COMMENT 'Name of the configuration item' ,
   `value` TEXT NULL COMMENT 'Value for the configuration item' ,
   `protect` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Prevent overwrite at lower level' ,
@@ -120,6 +146,11 @@ CREATE  TABLE IF NOT EXISTS `owl_config` (
   CONSTRAINT `fk_configapp`
     FOREIGN KEY (`aid` )
     REFERENCES `owl_applications` (`aid` )
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_configsect`
+    FOREIGN KEY (`sid` )
+    REFERENCES `owl_config_sections` (`sid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB, 
@@ -135,10 +166,14 @@ CREATE INDEX `user` ON `owl_config` (`uid` ASC) ;
 
 CREATE INDEX `fk_configapp` ON `owl_config` (`aid` ASC) ;
 
+CREATE INDEX `fk_configsect` ON `owl_config` (`sid` ASC) ;
+
 
 -- -----------------------------------------------------
 -- Table `owl_rights`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `owl_rights` ;
+
 CREATE  TABLE IF NOT EXISTS `owl_rights` (
   `rid` TINYINT UNSIGNED NOT NULL COMMENT 'Bit identification for this right' ,
   `name` VARCHAR(32) NOT NULL COMMENT 'Name for this right' ,
@@ -161,6 +196,8 @@ CREATE INDEX `fk_rightsapp` ON `owl_rights` (`aid` ASC) ;
 -- -----------------------------------------------------
 -- Table `owl_memberships`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `owl_memberships` ;
+
 CREATE  TABLE IF NOT EXISTS `owl_memberships` (
   `mid` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique identification' ,
   `uid` INT UNSIGNED NOT NULL COMMENT 'User ID' ,
@@ -187,6 +224,8 @@ CREATE INDEX `fk_memberuser` ON `owl_memberships` (`uid` ASC) ;
 -- -----------------------------------------------------
 -- Table `owl_grouprights`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `owl_grouprights` ;
+
 CREATE  TABLE IF NOT EXISTS `owl_grouprights` (
   `gid` INT UNSIGNED NOT NULL COMMENT 'Group ID\n' ,
   `aid` INT UNSIGNED NOT NULL COMMENT 'Application the rights bitmap belongs to' ,
@@ -242,23 +281,37 @@ INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `ver
 COMMIT;
 
 -- -----------------------------------------------------
+-- Data for table `owl_config_sections`
+-- -----------------------------------------------------
+START TRANSACTION;
+INSERT INTO owl_config_sections (`sid`, `name`) VALUES (1, 'general');
+INSERT INTO owl_config_sections (`sid`, `name`) VALUES (2, 'database');
+INSERT INTO owl_config_sections (`sid`, `name`) VALUES (3, 'logging');
+INSERT INTO owl_config_sections (`sid`, `name`) VALUES (4, 'session');
+INSERT INTO owl_config_sections (`sid`, `name`) VALUES (5, 'user');
+INSERT INTO owl_config_sections (`sid`, `name`) VALUES (6, 'locale');
+INSERT INTO owl_config_sections (`sid`, `name`) VALUES (7, 'mail');
+
+COMMIT;
+
+-- -----------------------------------------------------
 -- Data for table `owl_config`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|date', 'd-M-Y', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|time', 'H:i', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|datetime', 'd-M-Y H:i:s', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|log_date', 'd-m-Y', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|log_time', 'H:i:s.u', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'locale|lang', 'en-UK', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|lifetime', '1440', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|pwd_minstrength', '2', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|check_ip', 'true', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|default_user', 'anonymous', 1, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'logging|log_form_data', 'true', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'user|default_group', '2', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'session|default_rights_all', '1', 1, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 'mail|driver', 'RawSMTP', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 6, 'date', 'd-M-Y', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 6, 'time', 'H:i', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 6, 'datetime', 'd-M-Y H:i:s', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 6, 'log_date', 'd-m-Y', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 6, 'log_time', 'H:i:s.u', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 6, 'lang', 'en-UK', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 4, 'lifetime', '1440', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 4, 'pwd_minstrength', '2', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 4, 'check_ip', 'true', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 4, 'default_user', 'anonymous', 1, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 3, 'log_form_data', 'true', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 5, 'default_group', '2', 0, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 4, 'default_rights_all', '1', 1, 0);
+INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 7, 'driver', 'RawSMTP', 0, 0);
 
 COMMIT;
 

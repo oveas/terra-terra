@@ -3,7 +3,7 @@
  * \file
  * This file defines the raw maildriver
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.rawsmtp.php,v 1.1 2011-05-12 14:37:58 oscar Exp $
+ * \version $Id: class.rawsmtp.php,v 1.2 2011-09-26 10:50:17 oscar Exp $
  */
 
 
@@ -14,12 +14,12 @@ if (!OWLloader::getClass('sockethandler', OWL_SO_INC)) {
 /**
  * \ingroup OWL_DRIVERS
  * Class that defines the raw SMTP mail drivers
- * \brief Mail driver 
+ * \brief Mail driver
  * \see class MailDriver
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 11, 2011 -- O van Eijk -- initial version
  */
-class RawSMTP extends MailDefaults implements MailDriver 
+class RawSMTP extends MailDefaults implements MailDriver
 {
 	/**
 	 * SMTP communication socket
@@ -31,8 +31,8 @@ class RawSMTP extends MailDefaults implements MailDriver
 	}
 
 	/**
-	 * Reimplement _OWL::getLastWarning() to get the last error message either of the socket object or my own 
-	 * \return null if there was no error (no severity OWL_WARNING or higher), otherwise the error text. 
+	 * Reimplement _OWL::getLastWarning() to get the last error message either of the socket object or my own
+	 * \return null if there was no error (no severity OWL_WARNING or higher), otherwise the error text.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getLastWarning()
@@ -53,12 +53,12 @@ class RawSMTP extends MailDefaults implements MailDriver
 	 */
 	public function mailSend (array $mail)
 	{
-		$_server = ConfigHandler::get('mail|smtp_server', 'localhost');
+		$_server = ConfigHandler::get('mail', 'smtp_server', 'localhost');
 		$this->mailSocket = new SocketHandler('smtp', $_server);
 		if ($this->mailSocket->connect() >= OWL_WARNING) {
 			return (false);
 		}
-		$_myhost = ConfigHandler::get('mail|my_hostname', gethostname());
+		$_myhost = ConfigHandler::get('mail', 'my_hostname', gethostname());
 
 		if ($this->mailSocket->write ('HELO ' .$_myhost, SOCK_ACCEPTED) >= OWL_WARNING) {
 			return (false);

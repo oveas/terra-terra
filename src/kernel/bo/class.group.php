@@ -3,13 +3,13 @@
  * \file
  * This file defines the Group class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.group.php,v 1.7 2011-05-18 12:03:48 oscar Exp $
+ * \version $Id: class.group.php,v 1.8 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
  * \ingroup OWL_BO_LAYER
- * This class handles the OWL groups 
- * \brief the group object 
+ * This class handles the OWL groups
+ * \brief the group object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 14, 2011 -- O van Eijk -- initial version
  */
@@ -34,8 +34,8 @@ class Group extends _OWL
 	{
 		_OWL::init();
 		$this->dataset = new DataHandler ();
-		if (ConfigHandler::get ('owltables', true)) {
-			$this->dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$this->dataset->setTablename('group');
 		$this->id = $id;
@@ -79,7 +79,7 @@ class Group extends _OWL
 		$this->id = $this->group_data['gid'];
 		$this->getGroupRights();
 		return ($this->id);
-		
+
 	}
 	/**
 	 * Read the groupright bitmaps from the database and store them in the internal array
@@ -88,8 +88,8 @@ class Group extends _OWL
 	private function getGroupRights()
 	{
 		$dataset = new DataHandler ();
-		if (ConfigHandler::get ('owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('grouprights');
 		$dataset->set('gid', $this->id);

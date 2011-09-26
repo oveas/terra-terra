@@ -3,7 +3,7 @@
  * \file
  * This file defines the Rights class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.rights.php,v 1.7 2011-06-07 14:06:56 oscar Exp $
+ * \version $Id: class.rights.php,v 1.8 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
@@ -64,8 +64,8 @@ class Rights extends Security
 	private function registerRights ()
 	{
 		$dataset = new DataHandler ();
-		if (ConfigHandler::get ('owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('rights');
 		$dataset->set('aid', array(OWL_ID, APPL_ID));

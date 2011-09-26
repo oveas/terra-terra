@@ -108,8 +108,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00034"></a>00034     {
 <a name="l00035"></a>00035         <a class="code" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">_OWL::init</a>();
 <a name="l00036"></a>00036         $this-&gt;dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a> ();
-<a name="l00037"></a>00037         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
-<a name="l00038"></a>00038             $this-&gt;dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00037"></a>00037         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
+<a name="l00038"></a>00038             $this-&gt;dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
 <a name="l00039"></a>00039         }
 <a name="l00040"></a>00040         $this-&gt;dataset-&gt;setTablename(<span class="stringliteral">&#39;group&#39;</span>);
 <a name="l00041"></a>00041         $this-&gt;<span class="keywordtype">id</span> = <a class="code" href="classGroup.html#ac63f8adf9c9c19686fee49593fc8b5cb">$id</a>;
@@ -142,13 +142,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00079"></a>00079         $this-&gt;<span class="keywordtype">id</span> = $this-&gt;group_data[<span class="stringliteral">&#39;gid&#39;</span>];
 <a name="l00080"></a>00080         $this-&gt;<a class="code" href="classGroup.html#af1327539a4b4ecabefab6ab23c2d210f">getGroupRights</a>();
 <a name="l00081"></a>00081         <span class="keywordflow">return</span> ($this-&gt;<span class="keywordtype">id</span>);
-<a name="l00082"></a>00082         
+<a name="l00082"></a>00082 
 <a name="l00083"></a>00083     }
 <a name="l00088"></a><a class="code" href="classGroup.html#af1327539a4b4ecabefab6ab23c2d210f">00088</a>     <span class="keyword">private</span> function <a class="code" href="classGroup.html#af1327539a4b4ecabefab6ab23c2d210f">getGroupRights</a>()
 <a name="l00089"></a>00089     {
 <a name="l00090"></a>00090         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a> ();
-<a name="l00091"></a>00091         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
-<a name="l00092"></a>00092             $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00091"></a>00091         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
+<a name="l00092"></a>00092             $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
 <a name="l00093"></a>00093         }
 <a name="l00094"></a>00094         $dataset-&gt;setTablename(<span class="stringliteral">&#39;grouprights&#39;</span>);
 <a name="l00095"></a>00095         $dataset-&gt;set(<span class="stringliteral">&#39;gid&#39;</span>, $this-&gt;<span class="keywordtype">id</span>);
@@ -207,7 +207,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon Jun 13 2011 15:50:20 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 09:53:18 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

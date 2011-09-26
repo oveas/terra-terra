@@ -107,8 +107,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00032"></a><a class="code" href="classOWLinstaller.html#adca94d428f4798c78100527c51fc11ff">00032</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#adca94d428f4798c78100527c51fc11ff">construct</a>()
 <a name="l00033"></a>00033     {
 <a name="l00034"></a>00034         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
-<a name="l00035"></a>00035         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
-<a name="l00036"></a>00036                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00035"></a>00035         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
+<a name="l00036"></a>00036                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
 <a name="l00037"></a>00037         }
 <a name="l00038"></a>00038         $dataset-&gt;setTablename(<span class="stringliteral">&#39;group&#39;</span>);
 <a name="l00039"></a>00039         $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, <a class="code" href="OWLloader_8php.html#a507991b99af2ce469bf269f05aa90126">OWL_ID</a>);
@@ -123,8 +123,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00061"></a><a class="code" href="classOWLinstaller.html#a4ed45e29611ce17a8edf24e51979a5d7">00061</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#a4ed45e29611ce17a8edf24e51979a5d7">installApplication</a> ($code, $name, $version, $description = <span class="stringliteral">&#39;&#39;</span>, $link = <span class="stringliteral">&#39;&#39;</span>, $author = <span class="stringliteral">&#39;&#39;</span>, $license = <span class="stringliteral">&#39;&#39;</span>)
 <a name="l00062"></a>00062     {
 <a name="l00063"></a>00063         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
-<a name="l00064"></a>00064         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
-<a name="l00065"></a>00065                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00064"></a>00064         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
+<a name="l00065"></a>00065                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
 <a name="l00066"></a>00066         }
 <a name="l00067"></a>00067         $dataset-&gt;setTablename(<span class="stringliteral">&#39;applications&#39;</span>);
 <a name="l00068"></a>00068         $dataset-&gt;set(<span class="stringliteral">&#39;code&#39;</span>, $code);
@@ -142,8 +142,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00085"></a><a class="code" href="classOWLinstaller.html#a381aeca103d4f10cf0d4edc7e436f4e7">00085</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#a381aeca103d4f10cf0d4edc7e436f4e7">enableApplication</a> ($id)
 <a name="l00086"></a>00086     {
 <a name="l00087"></a>00087         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
-<a name="l00088"></a>00088         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
-<a name="l00089"></a>00089                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00088"></a>00088         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
+<a name="l00089"></a>00089                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
 <a name="l00090"></a>00090         }
 <a name="l00091"></a>00091         $dataset-&gt;setTablename(<span class="stringliteral">&#39;applications&#39;</span>);
 <a name="l00092"></a>00092         $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $id);
@@ -186,176 +186,179 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00141"></a>00141         <span class="keywordflow">return</span> ($queries);
 <a name="l00142"></a>00142     }
 <a name="l00143"></a>00143 
-<a name="l00161"></a><a class="code" href="classOWLinstaller.html#ac53f7e652c448c66c8fd4a81bfc95be1">00161</a>     <span class="keyword">private</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#ac53f7e652c448c66c8fd4a81bfc95be1">addTablePrefix</a> ($q, $prefix)
-<a name="l00162"></a>00162     {
-<a name="l00163"></a>00163         <span class="comment">// Abuse a datahandler to get the proper db handler</span>
-<a name="l00164"></a>00164         $_d = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
-<a name="l00165"></a>00165         <span class="keywordflow">if</span> ($prefix !== null) {
-<a name="l00166"></a>00166             $_d-&gt;setPrefix($prefix);
-<a name="l00167"></a>00167         } <span class="keywordflow">else</span> {
-<a name="l00168"></a>00168             $_d-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a>(<span class="stringliteral">&#39;dbprefix&#39;</span>, null, <span class="keyword">true</span>));
-<a name="l00169"></a>00169         }
-<a name="l00170"></a>00170         $db = $_d-&gt;getDbLink();
-<a name="l00171"></a>00171         $tblRegEx = <span class="stringliteral">&#39;((create|drop|alter)\s+((temporary|ignore)\s+)?(table)(\s*if\s*(not\s*)?(exists))?)&#39;</span>;
-<a name="l00172"></a>00172         $idxRegEx = <span class="stringliteral">&#39;((create)\s+((unique|fulltext|spatial)\s+)?((index\s+)([a-z_`]+\s*)(using\s+[a-z]+\s+)?on))&#39;</span>;
-<a name="l00173"></a>00173         $insRegEx = <span class="stringliteral">&#39;((insert)(\s*(low_priority|delayed|high_priority))?(\s*ignore\s*)?(\s*into)?)&#39;</span>;
-<a name="l00174"></a>00174 
-<a name="l00175"></a>00175         $tblName = <span class="stringliteral">&#39;\s+`?([a-z_]+)`?\s*&#39;</span>;
-<a name="l00176"></a>00176         $_regexp = <span class="stringliteral">&quot;/^\s*($tblRegEx|$idxRegEx|$insRegEx)$tblName/i&quot;</span>;
-<a name="l00177"></a>00177         preg_match ($_regexp, $q, $matches);
-<a name="l00178"></a>00178         <span class="keywordflow">if</span> (count($matches) &gt; 24) {
-<a name="l00179"></a>00179             $_tblName = $db-&gt;tablename($matches[24], <span class="keyword">true</span>);
-<a name="l00180"></a>00180             $q = preg_replace(<span class="stringliteral">&quot;/$matches[24]/&quot;</span>, $_tblName, $q);
-<a name="l00181"></a>00181         }
-<a name="l00182"></a>00182         <span class="keywordflow">return</span> $q;
-<a name="l00183"></a>00183     }
-<a name="l00184"></a>00184 
-<a name="l00192"></a><a class="code" href="classOWLinstaller.html#ac7b18c361051e050b6e9ee54224b2a7f">00192</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#ac7b18c361051e050b6e9ee54224b2a7f">installTables</a>($sqlFile, $prefix = null)
-<a name="l00193"></a>00193     {
-<a name="l00194"></a>00194         <span class="keywordflow">if</span> (($q = self::parseSQLFile($sqlFile)) === null) {
-<a name="l00195"></a>00195             trigger_error(<span class="stringliteral">&#39;Error reading SQL file &#39;</span> . $sqlFile, E_USER_ERROR);
-<a name="l00196"></a>00196             <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00197"></a>00197         }
-<a name="l00198"></a>00198         <span class="keywordflow">if</span> (count($q) == 0) {
-<a name="l00199"></a>00199             <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// Noting to do</span>
-<a name="l00200"></a>00200         }
-<a name="l00201"></a>00201         $db = <a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory</a>(<span class="stringliteral">&#39;DbHandler&#39;</span>);
-<a name="l00202"></a>00202         <span class="keywordflow">foreach</span> ($q as $_qry) {
-<a name="l00203"></a>00203             <span class="keywordflow">if</span> ($prefix !== <span class="keyword">false</span>) {
-<a name="l00204"></a>00204                 $_qry = <a class="code" href="classOWLinstaller.html#ac53f7e652c448c66c8fd4a81bfc95be1">self::addTablePrefix</a>($_qry, $prefix);
-<a name="l00205"></a>00205             }
-<a name="l00206"></a>00206             <a class="code" href="owl_8debug_8functions_8php.html#a3db581b35179f5b85569d62488ca3a8c">OWLdbg_add</a>(<a class="code" href="group__DEBUG__OWLLevel.html#ga033d1541f382c7935e788a3962d488df">OWLDEBUG_OWL_LOOP</a>, $_qry, <span class="stringliteral">&#39;SQL statement&#39;</span>);
-<a name="l00207"></a>00207             $db-&gt;setQuery ($_qry);
-<a name="l00208"></a>00208             $db-&gt;write($_dummy, __LINE__, __FILE__);
-<a name="l00209"></a>00209         }
-<a name="l00210"></a>00210         <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00211"></a>00211     }
-<a name="l00212"></a>00212 
-<a name="l00221"></a><a class="code" href="classOWLinstaller.html#a6f8db3684178332da05b3dc15b9f3648">00221</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#a6f8db3684178332da05b3dc15b9f3648">addGroupRights</a>($aid, $grp, array <a class="code" href="classOWLinstaller.html#a17096619ba831be33e941b7719fd32bf">$rights</a>)
-<a name="l00222"></a>00222     {
-<a name="l00223"></a>00223         <span class="keywordflow">if</span> (array_key_exists($grp . <span class="stringliteral">&#39;__AID__&#39;</span> . $aid, self::$groups)) {
-<a name="l00224"></a>00224             $_grpID = self::$groups[$grp . <span class="stringliteral">&#39;__AID__&#39;</span> . $aid];
-<a name="l00225"></a>00225         } <span class="keywordflow">else</span> {
-<a name="l00226"></a>00226             <span class="keywordflow">if</span> (array_key_exists($grp . <span class="stringliteral">&#39;__AID__&#39;</span> . <a class="code" href="OWLloader_8php.html#a507991b99af2ce469bf269f05aa90126">OWL_ID</a>, self::$groups)) {
-<a name="l00227"></a>00227                 $_grpID = self::$groups[$grp . <span class="stringliteral">&#39;__AID__&#39;</span> . <a class="code" href="OWLloader_8php.html#a507991b99af2ce469bf269f05aa90126">OWL_ID</a>];
-<a name="l00228"></a>00228             } <span class="keywordflow">else</span> {
-<a name="l00229"></a>00229                 trigger_error(<span class="stringliteral">&#39;Group &#39;</span> . $grp . <span class="stringliteral">&#39; has not been registered yet&#39;</span>, E_USER_ERROR);
-<a name="l00230"></a>00230                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00231"></a>00231             }
-<a name="l00232"></a>00232         }
-<a name="l00233"></a>00233         $_val = 0;
-<a name="l00234"></a>00234         <span class="keywordflow">foreach</span> ($rights as $_r) {
-<a name="l00235"></a>00235             <span class="keywordflow">if</span> (!array_key_exists($_r, self::$rights)) {
-<a name="l00236"></a>00236                 trigger_error(<span class="stringliteral">&#39;Rightsbit &#39;</span> . $_r . <span class="stringliteral">&#39; has not been registered yet&#39;</span>, E_USER_ERROR);
-<a name="l00237"></a>00237                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00238"></a>00238             }
-<a name="l00239"></a>00239             $_val += self::$rights[$_r];
-<a name="l00240"></a>00240         }
-<a name="l00241"></a>00241         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
-<a name="l00242"></a>00242         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
-<a name="l00243"></a>00243                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owlprefix&#39;</span>));
-<a name="l00244"></a>00244         }
-<a name="l00245"></a>00245         $dataset-&gt;setTablename(<span class="stringliteral">&#39;grouprights&#39;</span>);
-<a name="l00246"></a>00246         $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $aid);
-<a name="l00247"></a>00247         $dataset-&gt;set(<span class="stringliteral">&#39;gid&#39;</span>, $_grpID);
-<a name="l00248"></a>00248         $dataset-&gt;set(<span class="stringliteral">&#39;right&#39;</span>, $_val);
-<a name="l00249"></a>00249         $dataset-&gt;prepare(<a class="code" href="group__DATA__PrepareType.html#ga5d8b54a2eb4767a05a2e577c2db9193a" title="Write new data to the database.">DATA_WRITE</a>);
-<a name="l00250"></a>00250         $dataset-&gt;db($_dummy, __LINE__, __FILE__);
-<a name="l00251"></a>00251         <span class="keywordflow">return</span> (<span class="keyword">true</span>);
-<a name="l00252"></a>00252     }
-<a name="l00253"></a>00253 
-<a name="l00261"></a><a class="code" href="classOWLinstaller.html#a58006b3763431df6b723a51b2a7d35fb">00261</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#a58006b3763431df6b723a51b2a7d35fb">addGroups</a>($aid, array $grps)
-<a name="l00262"></a>00262     {
-<a name="l00263"></a>00263         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
-<a name="l00264"></a>00264         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
-<a name="l00265"></a>00265                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owlprefix&#39;</span>));
-<a name="l00266"></a>00266         }
-<a name="l00267"></a>00267         $dataset-&gt;setTablename(<span class="stringliteral">&#39;group&#39;</span>);
-<a name="l00268"></a>00268         <span class="keywordflow">foreach</span> ($grps as $_grp =&gt; $_desc) {
-<a name="l00269"></a>00269             $dataset-&gt;set(<span class="stringliteral">&#39;groupname&#39;</span>, $_grp);
-<a name="l00270"></a>00270             $dataset-&gt;set(<span class="stringliteral">&#39;description&#39;</span>, $_desc);
-<a name="l00271"></a>00271             $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $aid);
-<a name="l00272"></a>00272             $dataset-&gt;prepare(<a class="code" href="group__DATA__PrepareType.html#ga5d8b54a2eb4767a05a2e577c2db9193a" title="Write new data to the database.">DATA_WRITE</a>);
-<a name="l00273"></a>00273             $dataset-&gt;db($_dummy, __LINE__, __FILE__);
-<a name="l00274"></a>00274             $_id = $dataset-&gt;insertedId();
-<a name="l00275"></a>00275             self::$groups[$_grp . <span class="stringliteral">&#39;__AID__&#39;</span> . $aid] = $_id;
-<a name="l00276"></a>00276         }
-<a name="l00277"></a>00277         <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00278"></a>00278     }
-<a name="l00279"></a>00279 
-<a name="l00287"></a><a class="code" href="classOWLinstaller.html#aa6571c34c5e4e40a3684ea6a11386d48">00287</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#aa6571c34c5e4e40a3684ea6a11386d48">addRights</a>($aid, array <a class="code" href="classOWLinstaller.html#a17096619ba831be33e941b7719fd32bf">$rights</a>)
-<a name="l00288"></a>00288     {
-<a name="l00289"></a>00289         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
-<a name="l00290"></a>00290         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
-<a name="l00291"></a>00291                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owlprefix&#39;</span>));
-<a name="l00292"></a>00292         }
-<a name="l00293"></a>00293         $dataset-&gt;setTablename(<span class="stringliteral">&#39;rights&#39;</span>);
-<a name="l00294"></a>00294         $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $aid);
-<a name="l00295"></a>00295         $dataset-&gt;set(<span class="stringliteral">&#39;rid&#39;</span>, null, null
-<a name="l00296"></a>00296                     ,array(<span class="stringliteral">&#39;function&#39;</span> =&gt; array(<span class="stringliteral">&#39;max&#39;</span>)
-<a name="l00297"></a>00297                             ,<span class="stringliteral">&#39;name&#39;</span> =&gt; array(<span class="stringliteral">&#39;rid&#39;</span>))
-<a name="l00298"></a>00298                     ,array(<span class="stringliteral">&#39;match&#39;</span> =&gt; array(<a class="code" href="group__DBHANDLE__MatchType.html#gab8861dd59bb18f73f87f060e75b26ea1" title="Don&#39;t match on this field, use it in the SELECT list instead.">DBMATCH_NONE</a>))
-<a name="l00299"></a>00299         );
-<a name="l00300"></a>00300         $dataset-&gt;prepare();
-<a name="l00301"></a>00301         $dataset-&gt;db($_rid, __LINE__, __FILE__);
-<a name="l00302"></a>00302         <span class="keywordflow">if</span> (count($_rid) == 0) {
-<a name="l00303"></a>00303             $rid = 1;
-<a name="l00304"></a>00304         } <span class="keywordflow">else</span> {
-<a name="l00305"></a>00305             $rid = $_rid[0][<span class="stringliteral">&#39;rid&#39;</span>] + 1;
-<a name="l00306"></a>00306         }
-<a name="l00307"></a>00307         $dataset-&gt;reset(<a class="code" href="group__DATA__ResetFlags.html#ga2a28429433990da242faa223d5a49f0a" title="Short for All bits set.">DATA_RESET_FULL</a>);
-<a name="l00308"></a>00308 
-<a name="l00309"></a>00309         <span class="keywordflow">foreach</span> ($rights as $_right =&gt; $_descr) {
-<a name="l00310"></a>00310             $dataset-&gt;set(<span class="stringliteral">&#39;rid&#39;</span>, $rid);
-<a name="l00311"></a>00311             $dataset-&gt;set(<span class="stringliteral">&#39;name&#39;</span>, $_right);
-<a name="l00312"></a>00312             $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $aid);
-<a name="l00313"></a>00313             $dataset-&gt;set(<span class="stringliteral">&#39;description&#39;</span>, $_descr);
-<a name="l00314"></a>00314             $dataset-&gt;prepare(<a class="code" href="group__DATA__PrepareType.html#ga5d8b54a2eb4767a05a2e577c2db9193a" title="Write new data to the database.">DATA_WRITE</a>);
-<a name="l00315"></a>00315             $dataset-&gt;db($_dummy, __LINE__, __FILE__);
-<a name="l00316"></a>00316             self::$rights[$_right] = pow(2, $rid-1);
-<a name="l00317"></a>00317             $rid++;
-<a name="l00318"></a>00318         }
-<a name="l00319"></a>00319         <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00320"></a>00320     }
-<a name="l00321"></a>00321 
-<a name="l00334"></a><a class="code" href="classOWLinstaller.html#a2c93d2eed7940a681a463d46a1083089">00334</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#a2c93d2eed7940a681a463d46a1083089">addConfig</a> ($aid, $item, $value, $protect = <span class="keyword">false</span>, $hide = <span class="keyword">false</span>, $group = null)
-<a name="l00335"></a>00335     {
-<a name="l00336"></a>00336         <span class="keywordflow">if</span> ($group === null) {
-<a name="l00337"></a>00337             $_grpID = 0;
-<a name="l00338"></a>00338         } <span class="keywordflow">else</span> {
-<a name="l00339"></a>00339             <span class="keywordflow">if</span> (array_key_exists($grp . <span class="stringliteral">&#39;__AID__&#39;</span> . $aid, self::$groups)) {
-<a name="l00340"></a>00340                 $_grpID = self::$groups[$grp . <span class="stringliteral">&#39;__AID__&#39;</span> . $aid];
-<a name="l00341"></a>00341             } <span class="keywordflow">else</span> {
-<a name="l00342"></a>00342                 trigger_error(<span class="stringliteral">&#39;Group &#39;</span> . $grp . <span class="stringliteral">&#39; has not been registered yet&#39;</span>, E_USER_ERROR);
-<a name="l00343"></a>00343                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00344"></a>00344             }
-<a name="l00345"></a>00345         }
-<a name="l00346"></a>00346         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
-<a name="l00347"></a>00347         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
-<a name="l00348"></a>00348                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owlprefix&#39;</span>));
-<a name="l00349"></a>00349         }
-<a name="l00350"></a>00350         $dataset-&gt;setTablename(<span class="stringliteral">&#39;config&#39;</span>);
-<a name="l00351"></a>00351         $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $aid);
-<a name="l00352"></a>00352         $dataset-&gt;set(<span class="stringliteral">&#39;gid&#39;</span>, $_grpID);
-<a name="l00353"></a>00353         $dataset-&gt;set(<span class="stringliteral">&#39;uid&#39;</span>, 0);
-<a name="l00354"></a>00354         $dataset-&gt;set(<span class="stringliteral">&#39;name&#39;</span>, $item);
-<a name="l00355"></a>00355         $dataset-&gt;set(<span class="stringliteral">&#39;value&#39;</span>, $value);
-<a name="l00356"></a>00356         $dataset-&gt;set(<span class="stringliteral">&#39;protect&#39;</span>, ($protect === <span class="keyword">true</span>)?1:0);
-<a name="l00357"></a>00357         $dataset-&gt;set(<span class="stringliteral">&#39;hide&#39;</span>, ($hide === <span class="keyword">true</span>)?1:0);
-<a name="l00358"></a>00358         $dataset-&gt;prepare(<a class="code" href="group__DATA__PrepareType.html#ga5d8b54a2eb4767a05a2e577c2db9193a" title="Write new data to the database.">DATA_WRITE</a>);
-<a name="l00359"></a>00359         $dataset-&gt;db($_dummy, __LINE__, __FILE__);
-<a name="l00360"></a>00360         <a class="code" href="classConfigHandler.html#a0f6d68b5d2f4da014209d449fc0f5996">ConfigHandler::set</a>($item, $value);
-<a name="l00361"></a>00361         <span class="keywordflow">return</span> (<span class="keyword">true</span>);
-<a name="l00362"></a>00362     }
-<a name="l00363"></a>00363 }
-<a name="l00364"></a>00364 
-<a name="l00366"></a>00366 <span class="keywordflow">if</span> (!defined(<span class="stringliteral">&#39;OWL_ROOT&#39;</span>)) { trigger_error(<span class="stringliteral">&#39;OWL_ROOT must be defined by the application&#39;</span>, E_USER_ERROR); }
-<a name="l00367"></a>00367 
-<a name="l00368"></a>00368 <span class="comment">// Make sure the loader does not attempt to load the application</span>
-<a name="l00369"></a><a class="code" href="OWLinstaller_8php.html#a2bc9404581f1c7cdc523de6aa53839dd">00369</a> define(<span class="stringliteral">&#39;OWL___INSTALLER&#39;</span>, 1);
-<a name="l00370"></a>00370 require (OWL_ROOT . <span class="stringliteral">&#39;/OWLloader.php&#39;</span>);
-<a name="l00371"></a>00371 
-<a name="l00372"></a>00372 <a class="code" href="classOWLinstaller.html#adca94d428f4798c78100527c51fc11ff">OWLinstaller::construct</a>();
+<a name="l00162"></a><a class="code" href="classOWLinstaller.html#ac53f7e652c448c66c8fd4a81bfc95be1">00162</a>     <span class="keyword">private</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#ac53f7e652c448c66c8fd4a81bfc95be1">addTablePrefix</a> ($q, $prefix)
+<a name="l00163"></a>00163     {
+<a name="l00164"></a>00164         <span class="comment">// Abuse a datahandler to get the proper db handler</span>
+<a name="l00165"></a>00165         $_d = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
+<a name="l00166"></a>00166         <span class="keywordflow">if</span> ($prefix !== null) {
+<a name="l00167"></a>00167             $_d-&gt;setPrefix($prefix);
+<a name="l00168"></a>00168         } <span class="keywordflow">else</span> {
+<a name="l00169"></a>00169             $_d-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a>(<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;prefix&#39;</span>, null, <span class="keyword">true</span>));
+<a name="l00170"></a>00170         }
+<a name="l00171"></a>00171         $db = $_d-&gt;getDbLink();
+<a name="l00172"></a>00172         $tblRegEx = <span class="stringliteral">&#39;((create|drop|alter)\s+((temporary|ignore)\s+)?(table)(\s*if\s*(not\s*)?(exists))?)&#39;</span>;
+<a name="l00173"></a>00173         $idxRegEx = <span class="stringliteral">&#39;((create)\s+((unique|fulltext|spatial)\s+)?((index\s+)([a-z_`]+\s*)(using\s+[a-z]+\s+)?on))&#39;</span>;
+<a name="l00174"></a>00174         $insRegEx = <span class="stringliteral">&#39;((insert)(\s*(low_priority|delayed|high_priority))?(\s*ignore\s*)?(\s*into)?)&#39;</span>;
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176         $tblName = <span class="stringliteral">&#39;\s+`?([a-z_]+)`?\s*&#39;</span>;
+<a name="l00177"></a>00177         $_regexp = <span class="stringliteral">&quot;/^\s*($tblRegEx|$idxRegEx|$insRegEx)$tblName/i&quot;</span>;
+<a name="l00178"></a>00178         preg_match ($_regexp, $q, $matches);
+<a name="l00179"></a>00179         <span class="keywordflow">if</span> (count($matches) &gt; 24) {
+<a name="l00180"></a>00180             $_tblName = $db-&gt;tablename($matches[24], <span class="keyword">true</span>);
+<a name="l00181"></a>00181             $q = preg_replace(<span class="stringliteral">&quot;/$matches[24]/&quot;</span>, $_tblName, $q);
+<a name="l00182"></a>00182         }
+<a name="l00183"></a>00183         <span class="keywordflow">return</span> $q;
+<a name="l00184"></a>00184     }
+<a name="l00185"></a>00185 
+<a name="l00193"></a><a class="code" href="classOWLinstaller.html#ac7b18c361051e050b6e9ee54224b2a7f">00193</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#ac7b18c361051e050b6e9ee54224b2a7f">installTables</a>($sqlFile, $prefix = null)
+<a name="l00194"></a>00194     {
+<a name="l00195"></a>00195         <span class="keywordflow">if</span> (($q = self::parseSQLFile($sqlFile)) === null) {
+<a name="l00196"></a>00196             trigger_error(<span class="stringliteral">&#39;Error reading SQL file &#39;</span> . $sqlFile, E_USER_ERROR);
+<a name="l00197"></a>00197             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00198"></a>00198         }
+<a name="l00199"></a>00199         <span class="keywordflow">if</span> (count($q) == 0) {
+<a name="l00200"></a>00200             <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// Noting to do</span>
+<a name="l00201"></a>00201         }
+<a name="l00202"></a>00202         $db = <a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory</a>(<span class="stringliteral">&#39;DbHandler&#39;</span>);
+<a name="l00203"></a>00203         <span class="keywordflow">foreach</span> ($q as $_qry) {
+<a name="l00204"></a>00204             <span class="keywordflow">if</span> ($prefix !== <span class="keyword">false</span>) {
+<a name="l00205"></a>00205                 $_qry = <a class="code" href="classOWLinstaller.html#ac53f7e652c448c66c8fd4a81bfc95be1">self::addTablePrefix</a>($_qry, $prefix);
+<a name="l00206"></a>00206             }
+<a name="l00207"></a>00207             <a class="code" href="owl_8debug_8functions_8php.html#a3db581b35179f5b85569d62488ca3a8c">OWLdbg_add</a>(<a class="code" href="group__DEBUG__OWLLevel.html#ga033d1541f382c7935e788a3962d488df">OWLDEBUG_OWL_LOOP</a>, $_qry, <span class="stringliteral">&#39;SQL statement&#39;</span>);
+<a name="l00208"></a>00208             $db-&gt;setQuery ($_qry);
+<a name="l00209"></a>00209             $db-&gt;write($_dummy, __LINE__, __FILE__);
+<a name="l00210"></a>00210         }
+<a name="l00211"></a>00211         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00212"></a>00212     }
+<a name="l00213"></a>00213 
+<a name="l00222"></a><a class="code" href="classOWLinstaller.html#a6f8db3684178332da05b3dc15b9f3648">00222</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#a6f8db3684178332da05b3dc15b9f3648">addGroupRights</a>($aid, $grp, array <a class="code" href="classOWLinstaller.html#a17096619ba831be33e941b7719fd32bf">$rights</a>)
+<a name="l00223"></a>00223     {
+<a name="l00224"></a>00224         <span class="keywordflow">if</span> (array_key_exists($grp . <span class="stringliteral">&#39;__AID__&#39;</span> . $aid, self::$groups)) {
+<a name="l00225"></a>00225             $_grpID = self::$groups[$grp . <span class="stringliteral">&#39;__AID__&#39;</span> . $aid];
+<a name="l00226"></a>00226         } <span class="keywordflow">else</span> {
+<a name="l00227"></a>00227             <span class="keywordflow">if</span> (array_key_exists($grp . <span class="stringliteral">&#39;__AID__&#39;</span> . <a class="code" href="OWLloader_8php.html#a507991b99af2ce469bf269f05aa90126">OWL_ID</a>, self::$groups)) {
+<a name="l00228"></a>00228                 $_grpID = self::$groups[$grp . <span class="stringliteral">&#39;__AID__&#39;</span> . <a class="code" href="OWLloader_8php.html#a507991b99af2ce469bf269f05aa90126">OWL_ID</a>];
+<a name="l00229"></a>00229             } <span class="keywordflow">else</span> {
+<a name="l00230"></a>00230                 trigger_error(<span class="stringliteral">&#39;Group &#39;</span> . $grp . <span class="stringliteral">&#39; has not been registered yet&#39;</span>, E_USER_ERROR);
+<a name="l00231"></a>00231                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00232"></a>00232             }
+<a name="l00233"></a>00233         }
+<a name="l00234"></a>00234         $_val = 0;
+<a name="l00235"></a>00235         <span class="keywordflow">foreach</span> ($rights as $_r) {
+<a name="l00236"></a>00236             <span class="keywordflow">if</span> (!array_key_exists($_r, self::$rights)) {
+<a name="l00237"></a>00237                 trigger_error(<span class="stringliteral">&#39;Rightsbit &#39;</span> . $_r . <span class="stringliteral">&#39; has not been registered yet&#39;</span>, E_USER_ERROR);
+<a name="l00238"></a>00238                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00239"></a>00239             }
+<a name="l00240"></a>00240             $_val += self::$rights[$_r];
+<a name="l00241"></a>00241         }
+<a name="l00242"></a>00242         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
+<a name="l00243"></a>00243         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
+<a name="l00244"></a>00244                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00245"></a>00245         }
+<a name="l00246"></a>00246         $dataset-&gt;setTablename(<span class="stringliteral">&#39;grouprights&#39;</span>);
+<a name="l00247"></a>00247         $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $aid);
+<a name="l00248"></a>00248         $dataset-&gt;set(<span class="stringliteral">&#39;gid&#39;</span>, $_grpID);
+<a name="l00249"></a>00249         $dataset-&gt;set(<span class="stringliteral">&#39;right&#39;</span>, $_val);
+<a name="l00250"></a>00250         $dataset-&gt;prepare(<a class="code" href="group__DATA__PrepareType.html#ga5d8b54a2eb4767a05a2e577c2db9193a" title="Write new data to the database.">DATA_WRITE</a>);
+<a name="l00251"></a>00251         $dataset-&gt;db($_dummy, __LINE__, __FILE__);
+<a name="l00252"></a>00252         <span class="keywordflow">return</span> (<span class="keyword">true</span>);
+<a name="l00253"></a>00253     }
+<a name="l00254"></a>00254 
+<a name="l00262"></a><a class="code" href="classOWLinstaller.html#a58006b3763431df6b723a51b2a7d35fb">00262</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#a58006b3763431df6b723a51b2a7d35fb">addGroups</a>($aid, array $grps)
+<a name="l00263"></a>00263     {
+<a name="l00264"></a>00264         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
+<a name="l00265"></a>00265         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
+<a name="l00266"></a>00266                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00267"></a>00267         }
+<a name="l00268"></a>00268         $dataset-&gt;setTablename(<span class="stringliteral">&#39;group&#39;</span>);
+<a name="l00269"></a>00269         <span class="keywordflow">foreach</span> ($grps as $_grp =&gt; $_desc) {
+<a name="l00270"></a>00270             $dataset-&gt;set(<span class="stringliteral">&#39;groupname&#39;</span>, $_grp);
+<a name="l00271"></a>00271             $dataset-&gt;set(<span class="stringliteral">&#39;description&#39;</span>, $_desc);
+<a name="l00272"></a>00272             $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $aid);
+<a name="l00273"></a>00273             $dataset-&gt;prepare(<a class="code" href="group__DATA__PrepareType.html#ga5d8b54a2eb4767a05a2e577c2db9193a" title="Write new data to the database.">DATA_WRITE</a>);
+<a name="l00274"></a>00274             $dataset-&gt;db($_dummy, __LINE__, __FILE__);
+<a name="l00275"></a>00275             $_id = $dataset-&gt;insertedId();
+<a name="l00276"></a>00276             self::$groups[$_grp . <span class="stringliteral">&#39;__AID__&#39;</span> . $aid] = $_id;
+<a name="l00277"></a>00277         }
+<a name="l00278"></a>00278         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00279"></a>00279     }
+<a name="l00280"></a>00280 
+<a name="l00288"></a><a class="code" href="classOWLinstaller.html#aa6571c34c5e4e40a3684ea6a11386d48">00288</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#aa6571c34c5e4e40a3684ea6a11386d48">addRights</a>($aid, array <a class="code" href="classOWLinstaller.html#a17096619ba831be33e941b7719fd32bf">$rights</a>)
+<a name="l00289"></a>00289     {
+<a name="l00290"></a>00290         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
+<a name="l00291"></a>00291         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
+<a name="l00292"></a>00292                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00293"></a>00293         }
+<a name="l00294"></a>00294         $dataset-&gt;setTablename(<span class="stringliteral">&#39;rights&#39;</span>);
+<a name="l00295"></a>00295         $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $aid);
+<a name="l00296"></a>00296         $dataset-&gt;set(<span class="stringliteral">&#39;rid&#39;</span>, null, null
+<a name="l00297"></a>00297                     ,array(<span class="stringliteral">&#39;function&#39;</span> =&gt; array(<span class="stringliteral">&#39;max&#39;</span>)
+<a name="l00298"></a>00298                             ,<span class="stringliteral">&#39;name&#39;</span> =&gt; array(<span class="stringliteral">&#39;rid&#39;</span>))
+<a name="l00299"></a>00299                     ,array(<span class="stringliteral">&#39;match&#39;</span> =&gt; array(<a class="code" href="group__DBHANDLE__MatchType.html#gab8861dd59bb18f73f87f060e75b26ea1" title="Don&#39;t match on this field, use it in the SELECT list instead.">DBMATCH_NONE</a>))
+<a name="l00300"></a>00300         );
+<a name="l00301"></a>00301         $dataset-&gt;prepare();
+<a name="l00302"></a>00302         $dataset-&gt;db($_rid, __LINE__, __FILE__);
+<a name="l00303"></a>00303         <span class="keywordflow">if</span> (count($_rid) == 0) {
+<a name="l00304"></a>00304             $rid = 1;
+<a name="l00305"></a>00305         } <span class="keywordflow">else</span> {
+<a name="l00306"></a>00306             $rid = $_rid[0][<span class="stringliteral">&#39;rid&#39;</span>] + 1;
+<a name="l00307"></a>00307         }
+<a name="l00308"></a>00308         $dataset-&gt;reset(<a class="code" href="group__DATA__ResetFlags.html#ga2a28429433990da242faa223d5a49f0a" title="Short for All bits set.">DATA_RESET_FULL</a>);
+<a name="l00309"></a>00309 
+<a name="l00310"></a>00310         <span class="keywordflow">foreach</span> ($rights as $_right =&gt; $_descr) {
+<a name="l00311"></a>00311             $dataset-&gt;set(<span class="stringliteral">&#39;rid&#39;</span>, $rid);
+<a name="l00312"></a>00312             $dataset-&gt;set(<span class="stringliteral">&#39;name&#39;</span>, $_right);
+<a name="l00313"></a>00313             $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $aid);
+<a name="l00314"></a>00314             $dataset-&gt;set(<span class="stringliteral">&#39;description&#39;</span>, $_descr);
+<a name="l00315"></a>00315             $dataset-&gt;prepare(<a class="code" href="group__DATA__PrepareType.html#ga5d8b54a2eb4767a05a2e577c2db9193a" title="Write new data to the database.">DATA_WRITE</a>);
+<a name="l00316"></a>00316             $dataset-&gt;db($_dummy, __LINE__, __FILE__);
+<a name="l00317"></a>00317             self::$rights[$_right] = pow(2, $rid-1);
+<a name="l00318"></a>00318             $rid++;
+<a name="l00319"></a>00319         }
+<a name="l00320"></a>00320         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00321"></a>00321     }
+<a name="l00322"></a>00322 
+<a name="l00336"></a><a class="code" href="classOWLinstaller.html#a3a615039ed473587d58b47ca33007b91">00336</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWLinstaller.html#a3a615039ed473587d58b47ca33007b91">addConfig</a> ($aid, $section, $item, $value, $protect = <span class="keyword">false</span>, $hide = <span class="keyword">false</span>, $group = null)
+<a name="l00337"></a>00337     {
+<a name="l00338"></a>00338         <span class="keywordflow">if</span> ($group === null) {
+<a name="l00339"></a>00339             $_grpID = 0;
+<a name="l00340"></a>00340         } <span class="keywordflow">else</span> {
+<a name="l00341"></a>00341             <span class="keywordflow">if</span> (array_key_exists($grp . <span class="stringliteral">&#39;__AID__&#39;</span> . $aid, self::$groups)) {
+<a name="l00342"></a>00342                 $_grpID = self::$groups[$grp . <span class="stringliteral">&#39;__AID__&#39;</span> . $aid];
+<a name="l00343"></a>00343             } <span class="keywordflow">else</span> {
+<a name="l00344"></a>00344                 trigger_error(<span class="stringliteral">&#39;Group &#39;</span> . $grp . <span class="stringliteral">&#39; has not been registered yet&#39;</span>, E_USER_ERROR);
+<a name="l00345"></a>00345                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00346"></a>00346             }
+<a name="l00347"></a>00347         }
+<a name="l00348"></a>00348         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a>();
+<a name="l00349"></a>00349         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
+<a name="l00350"></a>00350                 $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00351"></a>00351         }
+<a name="l00352"></a>00352 
+<a name="l00353"></a>00353         $_secId = <a class="code" href="classConfigHandler.html#afc9b17a01ecda6adb5bce65d4d853b9d">ConfigHandler::configSection</a>($section, <span class="keyword">true</span>);
+<a name="l00354"></a>00354         $dataset-&gt;setTablename(<span class="stringliteral">&#39;config&#39;</span>);
+<a name="l00355"></a>00355         $dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $aid);
+<a name="l00356"></a>00356         $dataset-&gt;set(<span class="stringliteral">&#39;gid&#39;</span>, $_grpID);
+<a name="l00357"></a>00357         $dataset-&gt;set(<span class="stringliteral">&#39;uid&#39;</span>, 0);
+<a name="l00358"></a>00358         $dataset-&gt;set(<span class="stringliteral">&#39;sid&#39;</span>, $_secId);
+<a name="l00359"></a>00359         $dataset-&gt;set(<span class="stringliteral">&#39;name&#39;</span>, $item);
+<a name="l00360"></a>00360         $dataset-&gt;set(<span class="stringliteral">&#39;value&#39;</span>, $value);
+<a name="l00361"></a>00361         $dataset-&gt;set(<span class="stringliteral">&#39;protect&#39;</span>, ($protect === <span class="keyword">true</span>)?1:0);
+<a name="l00362"></a>00362         $dataset-&gt;set(<span class="stringliteral">&#39;hide&#39;</span>, ($hide === <span class="keyword">true</span>)?1:0);
+<a name="l00363"></a>00363         $dataset-&gt;prepare(<a class="code" href="group__DATA__PrepareType.html#ga5d8b54a2eb4767a05a2e577c2db9193a" title="Write new data to the database.">DATA_WRITE</a>);
+<a name="l00364"></a>00364         $dataset-&gt;db($_dummy, __LINE__, __FILE__);
+<a name="l00365"></a>00365         <a class="code" href="classConfigHandler.html#a222891a8908d308e19c43fa6cbd42b91">ConfigHandler::set</a>($section, $item, $value);
+<a name="l00366"></a>00366         <span class="keywordflow">return</span> (<span class="keyword">true</span>);
+<a name="l00367"></a>00367     }
+<a name="l00368"></a>00368 }
+<a name="l00369"></a>00369 
+<a name="l00371"></a>00371 <span class="keywordflow">if</span> (!defined(<span class="stringliteral">&#39;OWL_ROOT&#39;</span>)) { trigger_error(<span class="stringliteral">&#39;OWL_ROOT must be defined by the application&#39;</span>, E_USER_ERROR); }
+<a name="l00372"></a>00372 
+<a name="l00373"></a>00373 <span class="comment">// Make sure the loader does not attempt to load the application</span>
+<a name="l00374"></a><a class="code" href="OWLinstaller_8php.html#a2bc9404581f1c7cdc523de6aa53839dd">00374</a> define(<span class="stringliteral">&#39;OWL___INSTALLER&#39;</span>, 1);
+<a name="l00375"></a>00375 require (OWL_ROOT . <span class="stringliteral">&#39;/OWLloader.php&#39;</span>);
+<a name="l00376"></a>00376 
+<a name="l00377"></a>00377 <a class="code" href="classOWLinstaller.html#adca94d428f4798c78100527c51fc11ff">OWLinstaller::construct</a>();
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -376,7 +379,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon Jun 13 2011 15:50:21 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 09:53:18 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

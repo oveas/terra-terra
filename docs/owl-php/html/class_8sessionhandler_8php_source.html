@@ -116,13 +116,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00044"></a><a class="code" href="classSessionHandler.html#a74c46fcfbadd4c4e6bacc73ddf350056">00044</a>     <span class="keyword">protected</span> <a class="code" href="classSessionHandler.html#a74c46fcfbadd4c4e6bacc73ddf350056">$dataset</a> = null;
 <a name="l00045"></a>00045 
 <a name="l00049"></a><a class="code" href="classSessionHandler.html#a0bb7c3206f3664f2a4b8e96edf49a3bc">00049</a>     <span class="keyword">private</span> <a class="code" href="classSessionHandler.html#a0bb7c3206f3664f2a4b8e96edf49a3bc">$db</a>;
-<a name="l00050"></a>00050     
+<a name="l00050"></a>00050 
 <a name="l00055"></a><a class="code" href="classSessionHandler.html#a546ba6d31a1ce532de13f65aadc3be0e">00055</a>     <span class="keyword">protected</span> function <a class="code" href="classSessionHandler.html#a546ba6d31a1ce532de13f65aadc3be0e">__construct</a> ()
 <a name="l00056"></a>00056     {
 <a name="l00057"></a>00057         <a class="code" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">_OWL::init</a>();
 <a name="l00058"></a>00058 
-<a name="l00059"></a>00059         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>) === <span class="keyword">true</span>) {
-<a name="l00060"></a>00060             $this-&gt;dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a> (<span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00059"></a>00059         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>) === <span class="keyword">true</span>) {
+<a name="l00060"></a>00060             $this-&gt;dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
 <a name="l00061"></a>00061         }
 <a name="l00062"></a>00062         $this-&gt;dataset-&gt;setTablename(<span class="stringliteral">&#39;session&#39;</span>);
 <a name="l00063"></a>00063 
@@ -135,11 +135,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00070"></a>00070 <span class="comment">//      ini_set (&#39;session.gc_probability&#39;, 1);</span>
 <a name="l00071"></a>00071 <span class="comment">//      ini_set (&#39;session.gc_divisor&#39;, 100);</span>
 <a name="l00072"></a>00072 
-<a name="l00073"></a>00073 <span class="comment">//      ini_set (&#39;session.gc_maxlifetime&#39;, ConfigHandler::get (&#39;session|lifetime&#39;));</span>
+<a name="l00073"></a>00073 <span class="comment">//      ini_set (&#39;session.gc_maxlifetime&#39;, ConfigHandler::get (&#39;session&#39;, &#39;lifetime&#39;));</span>
 <a name="l00074"></a>00074 
 <a name="l00075"></a>00075         <span class="keywordflow">if</span> (!ini_set (<span class="stringliteral">&#39;session.save_handler&#39;</span>, <span class="stringliteral">&#39;user&#39;</span>));
 <a name="l00076"></a>00076         ini_set (<span class="stringliteral">&#39;session.use_trans_sid&#39;</span>, <span class="keyword">true</span>);
-<a name="l00077"></a>00077         <span class="keywordflow">if</span> (($_sessName = <a class="code" href="classConfigHandler.html#a97bd7376cd88d47cb6e45bd8a5db567f">ConfigHandler::get</a>(<span class="stringliteral">&#39;session|name&#39;</span>)) != null) {
+<a name="l00077"></a>00077         <span class="keywordflow">if</span> (($_sessName = <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a>(<span class="stringliteral">&#39;session&#39;</span>, <span class="stringliteral">&#39;name&#39;</span>)) != null) {
 <a name="l00078"></a>00078             session_name($_sessName);
 <a name="l00079"></a>00079         }
 <a name="l00080"></a>00080         session_set_save_handler (
@@ -212,7 +212,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00174"></a>00174                 <span class="keywordflow">return</span> (<span class="keyword">false</span>);
 <a name="l00175"></a>00175             }
 <a name="l00176"></a>00176         }
-<a name="l00177"></a>00177         
+<a name="l00177"></a>00177 
 <a name="l00178"></a>00178         $this-&gt;dataset-&gt;db ($_data, __LINE__, __FILE__);
 <a name="l00179"></a>00179         <span class="keywordflow">return</span> (<span class="keyword">true</span>);
 <a name="l00180"></a>00180     }
@@ -232,40 +232,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00200"></a>00200 
 <a name="l00210"></a><a class="code" href="classSessionHandler.html#ac33097332375ae3f8a43c31cef6db0e8">00210</a>     <span class="keyword">public</span> function <a class="code" href="classSessionHandler.html#ac33097332375ae3f8a43c31cef6db0e8">gc</a> ($lifetime)
 <a name="l00211"></a>00211     {
-<a name="l00212"></a>00212         $this-&gt;db-&gt;setQuery(
-<a name="l00213"></a>00213                   <span class="stringliteral">&#39;DELETE FROM &#39;</span> . $this-&gt;db-&gt;tablename (<span class="stringliteral">&#39;sessiondata&#39;</span>)
-<a name="l00214"></a>00214                 . <span class="stringliteral">&#39; WHERE stimestamp &lt; &#39;</span> . time() - $lifetime
-<a name="l00215"></a>00215             );
-<a name="l00216"></a>00216         <span class="keywordflow">return</span> $this-&gt;db-&gt;write ($_dummy, __LINE__, __FILE__);
-<a name="l00217"></a>00217     }
-<a name="l00218"></a>00218 }
-<a name="l00219"></a>00219 
-<a name="l00220"></a>00220 <span class="comment">/*</span>
-<a name="l00221"></a>00221 <span class="comment"> * Register this class and all status codes</span>
-<a name="l00222"></a>00222 <span class="comment"> */</span>
-<a name="l00223"></a>00223 <a class="code" href="classRegister.html#a7f8f9dd6364815e162fe098327177943">Register::registerClass</a>(<span class="stringliteral">&#39;SessionHandler&#39;</span>);
-<a name="l00224"></a>00224 
-<a name="l00225"></a>00225 <span class="comment">//Register::setSeverity (OWL_DEBUG);</span>
-<a name="l00226"></a>00226 <span class="comment">//Register::setSeverity (OWL_INFO);</span>
-<a name="l00227"></a>00227 <span class="comment">//Register::setSeverity (OWL_OK);</span>
-<a name="l00228"></a>00228 <span class="comment">//Register::setSeverity (OWL_SUCCESS);</span>
-<a name="l00229"></a>00229 
-<a name="l00230"></a>00230 <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">Register::setSeverity</a> (<a class="code" href="group__OWL__SeverityCodes.html#gace886152e2e86cd2e91cb833fd495adb">OWL_WARNING</a>);
-<a name="l00231"></a>00231 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_INVUSERNAME&#39;</span>);
-<a name="l00232"></a>00232 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_INVPASSWORD&#39;</span>);
-<a name="l00233"></a>00233 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_TIMEOUT&#39;</span>);
-<a name="l00234"></a>00234 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_NOACCESS&#39;</span>);
-<a name="l00235"></a>00235 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_DISABLED&#39;</span>);
-<a name="l00236"></a>00236 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_IVSESSION&#39;</span>);
-<a name="l00237"></a>00237 
-<a name="l00238"></a>00238 <span class="comment">//Register::setSeverity (OWL_BUG);</span>
-<a name="l00239"></a>00239 
-<a name="l00240"></a>00240 <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">Register::setSeverity</a> (<a class="code" href="group__OWL__SeverityCodes.html#gab57d46c4dff0628f7f46aa11db9325c9">OWL_ERROR</a>);
-<a name="l00241"></a>00241 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_NODATASET&#39;</span>);
-<a name="l00242"></a>00242 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_WRITEERR&#39;</span>);
-<a name="l00243"></a>00243 
-<a name="l00244"></a>00244 <span class="comment">//Register::setSeverity (OWL_FATAL);</span>
-<a name="l00245"></a>00245 <span class="comment">//Register::setSeverity (OWL_CRITICAL);</span>
+<a name="l00212"></a>00212         $_ts = time() - $lifetime;
+<a name="l00213"></a>00213         $this-&gt;db-&gt;setQuery(
+<a name="l00214"></a>00214                   <span class="stringliteral">&#39;DELETE FROM &#39;</span> . $this-&gt;db-&gt;tablename (<span class="stringliteral">&#39;sessiondata&#39;</span>)
+<a name="l00215"></a>00215                 . <span class="stringliteral">&#39; WHERE stimestamp &lt; &#39;</span> . $_ts
+<a name="l00216"></a>00216             );
+<a name="l00217"></a>00217         <span class="keywordflow">return</span> $this-&gt;db-&gt;write ($_dummy, __LINE__, __FILE__);
+<a name="l00218"></a>00218     }
+<a name="l00219"></a>00219 }
+<a name="l00220"></a>00220 
+<a name="l00221"></a>00221 <span class="comment">/*</span>
+<a name="l00222"></a>00222 <span class="comment"> * Register this class and all status codes</span>
+<a name="l00223"></a>00223 <span class="comment"> */</span>
+<a name="l00224"></a>00224 <a class="code" href="classRegister.html#a7f8f9dd6364815e162fe098327177943">Register::registerClass</a>(<span class="stringliteral">&#39;SessionHandler&#39;</span>);
+<a name="l00225"></a>00225 
+<a name="l00226"></a>00226 <span class="comment">//Register::setSeverity (OWL_DEBUG);</span>
+<a name="l00227"></a>00227 <span class="comment">//Register::setSeverity (OWL_INFO);</span>
+<a name="l00228"></a>00228 <span class="comment">//Register::setSeverity (OWL_OK);</span>
+<a name="l00229"></a>00229 <span class="comment">//Register::setSeverity (OWL_SUCCESS);</span>
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">Register::setSeverity</a> (<a class="code" href="group__OWL__SeverityCodes.html#gace886152e2e86cd2e91cb833fd495adb">OWL_WARNING</a>);
+<a name="l00232"></a>00232 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_INVUSERNAME&#39;</span>);
+<a name="l00233"></a>00233 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_INVPASSWORD&#39;</span>);
+<a name="l00234"></a>00234 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_TIMEOUT&#39;</span>);
+<a name="l00235"></a>00235 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_NOACCESS&#39;</span>);
+<a name="l00236"></a>00236 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_DISABLED&#39;</span>);
+<a name="l00237"></a>00237 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_IVSESSION&#39;</span>);
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239 <span class="comment">//Register::setSeverity (OWL_BUG);</span>
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241 <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">Register::setSeverity</a> (<a class="code" href="group__OWL__SeverityCodes.html#gab57d46c4dff0628f7f46aa11db9325c9">OWL_ERROR</a>);
+<a name="l00242"></a>00242 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_NODATASET&#39;</span>);
+<a name="l00243"></a>00243 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;SESSION_WRITEERR&#39;</span>);
+<a name="l00244"></a>00244 
+<a name="l00245"></a>00245 <span class="comment">//Register::setSeverity (OWL_FATAL);</span>
+<a name="l00246"></a>00246 <span class="comment">//Register::setSeverity (OWL_CRITICAL);</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -286,7 +287,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon Jun 13 2011 15:50:21 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 09:53:18 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbhandler.php,v 1.29 2011-09-20 05:24:10 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.30 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
@@ -58,7 +58,7 @@ define ('DBHANDLE_COMPLETED',	11);
 
 /**
  * \defgroup DBHANDLE_MatchType Database handler match types
- * These defines are used to compare values in SQL
+ * These defines are used create WHERE clauses
  * @{
  */
 //! Left and right values should match (default) (when the value contains percent signs, 'LIKE' will be used; \see DataHandler::set())
@@ -119,12 +119,6 @@ class DbHandler extends _OWL
 	 * object - The database driver
 	 */
 	private $driver;
-
-	/**
-	 * char - An optional character to enclose field- en table names in queries, e.g. the backticks in MySQL.
-	 * Can be set in the dbdriver using the constant OWLDB_QUOTES. Default is empty
-	 */
-	private $db_quotes;
 
 	/**
 	 * integer - Row counter
@@ -225,7 +219,7 @@ class DbHandler extends _OWL
 		$this->errno = 0;
 		$this->error = '';
 		$this->transaction = '';
-		$this->db_prefix = ConfigHandler::get ('dbprefix');
+		$this->db_prefix = ConfigHandler::get ('database', 'prefix');
 		$this->query_type = DBHANDLE_COMPLETED;
 		$this->locks = array();
 		$this->setStatus (OWL_STATUS_OK);
@@ -245,11 +239,6 @@ class DbHandler extends _OWL
 				trigger_error('Error loading driver class '. $this->database['engine'], E_USER_ERROR);
 			}
 		}
-		if (defined('OWLDB_QUOTES')) {
-			$this->db_quotes = OWLDB_QUOTES;
-		} else {
-			$this->db_quotes = '';
-		}
 	}
 
 	/**
@@ -263,7 +252,7 @@ class DbHandler extends _OWL
 				// The application crashed, tollback all changes
 				$this->rollbackTransaction($this->transaction);
 			} else {
-				if (ConfigHandler::get('autocommit', false) === true) {
+				if (ConfigHandler::get('database', 'autocommit', false) === true) {
 					$this->commitTransaction($this->transaction);
 				} else {
 					$this->rollbackTransaction($this->transaction);
@@ -309,7 +298,7 @@ class DbHandler extends _OWL
 	 * 	- name     : Database name
 	 * 	- username : Username to connect with
 	 * 	- password : Password to use for connection
-	 * 	- dbdriver : Database type (reserved for future use, currently only MySQL is implemented)
+	 * 	- driver   : Database type (reserved for future use)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function alt(array $properties)
@@ -328,7 +317,7 @@ class DbHandler extends _OWL
 					$this->database['username'] = $v;
 				} elseif ($k == 'password') {
 					$this->database['password'] = $v;
-				} elseif ($k == 'dbdriver') {
+				} elseif ($k == 'driver') {
 					$this->database['engine'] = $v;
 				}
 				$this->loadDriver();
@@ -345,11 +334,11 @@ class DbHandler extends _OWL
 	{
 		if (!DbHandler::$instance instanceof self) {
 			DbHandler::$original_instance = DbHandler::$instance = new self(
-					  ConfigHandler::get ('dbserver')
-					, ConfigHandler::get ('dbname')
-					, ConfigHandler::get ('dbuser')
-					, ConfigHandler::get ('dbpasswd')
-					, ConfigHandler::get ('dbdriver', 'MySQL')
+					  ConfigHandler::get ('database', 'server')
+					, ConfigHandler::get ('database', 'name')
+					, ConfigHandler::get ('database', 'user')
+					, ConfigHandler::get ('database', 'passwd')
+					, ConfigHandler::get ('database', 'driver', 'MySQL')
 			);
 			DbHandler::$instance->open();
 		}
@@ -369,12 +358,12 @@ class DbHandler extends _OWL
 	public function forceReread ()
 	{
 		$this->close();
-		$this->database['server']	= ConfigHandler::get ('dbserver', null, true);
-		$this->database['name']		= ConfigHandler::get ('dbname', null, true);
-		$this->database['username']	= ConfigHandler::get ('dbuser', null, true);
-		$this->database['password']	= ConfigHandler::get ('dbpasswd', null, true);
-		$this->database['engine']	= ConfigHandler::get ('dbdriver', 'MySQL', true);
-		$this->db_prefix			= ConfigHandler::get ('dbprefix', null, true);
+		$this->database['server']	= ConfigHandler::get ('database', 'server', null, true);
+		$this->database['name']		= ConfigHandler::get ('database', 'name', null, true);
+		$this->database['username']	= ConfigHandler::get ('database', 'user', null, true);
+		$this->database['password']	= ConfigHandler::get ('database', 'passwd', null, true);
+		$this->database['engine']	= ConfigHandler::get ('database', 'driver', 'MySQL', true);
+		$this->db_prefix			= ConfigHandler::get ('database', 'prefix', null, true);
 		$this->loadDriver();
 		$this->open();
 	}
@@ -420,7 +409,7 @@ class DbHandler extends _OWL
 			$this->setStatus (DBHANDLE_CONNECTERR, array (
 					  $this->database['server']
 					, $this->database['username']
-					, (ConfigHandler::get ('logging|hide_passwords') ? '*****' : $this->database['password'])
+					, (ConfigHandler::get ('logging', 'hide_passwords') ? '*****' : $this->database['password'])
 				  ));
 			return (false);
 		}
@@ -500,9 +489,19 @@ class DbHandler extends _OWL
 	 */
 	public function tablename ($tablename, $ignore_quotes = false)
 	{
-		return (($ignore_quotes === false) ? $this->db_quotes : '')
-			. $this->db_prefix . $tablename
-			. (($ignore_quotes === false) ? $this->db_quotes : '');
+		$_table = $this->db_prefix . $tablename;
+		return (($ignore_quotes === true) ? $_table : $this->driver->dbQuote($_table));
+	}
+
+	/**
+	 * Forward function to the driver allowing quoting by other objects
+	 * \param[in] $string to quote
+	 * \return Quoted string
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function quote ($string)
+	{
+		return $this->driver->dbQuote($string);
 	}
 
 	/**
@@ -592,6 +591,9 @@ class DbHandler extends _OWL
 			$value = array($fielddata['match'][0], $value);
 		} else {
 			$value = array(DBMATCH_EQ, $value);
+		}
+		if (array_key_exists('name', $fielddata) && $value[0] == DBMATCH_NONE) {
+			$fieldname .= '='. $fielddata['name'][0];
 		}
 		return (array($fieldname, $value));
 	}
@@ -694,7 +696,7 @@ class DbHandler extends _OWL
 	 */
 	public function lockTable ($tablename, $locktype)
 	{
-		if (ConfigHandler::get('dbdriver|locking_enabled', true) === false) {
+		if (ConfigHandler::get('database', 'locking_enabled', true) === false) {
 			$this->setStatus(DBHANDLE_LOCKDISABLED);
 			return ($this->severity);
 		}
@@ -727,7 +729,7 @@ class DbHandler extends _OWL
 	 */
 	public function unlockTable ($tablename = array())
 	{
-		if (ConfigHandler::get('dbdriver|locking_enabled', true) === false) {
+		if (ConfigHandler::get('database', 'locking_enabled', true) === false) {
 			$this->setStatus(DBHANDLE_LOCKDISABLED);
 			return ($this->severity);
 		}
@@ -873,6 +875,18 @@ class DbHandler extends _OWL
 	}
 
 	/**
+	 * Get a list of tables from the database
+	 * \param[in] $search Search pattern, defaults to '%' (all tables)
+	 * \return True of the table exists
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function getTableList($search = "%")
+	{
+//		$_tablename = $this->tablename($search, true);
+		return $this->driver->dbTableList($this->id, $search);
+	}
+
+	/**
 	 * Check if a table exists in the database
 	 * \param[in] $tablename Name of the table to check
 	 * \return True of the table exists
@@ -881,7 +895,7 @@ class DbHandler extends _OWL
 	public function tableExists($tablename)
 	{
 		$_tablename = $this->tablename($tablename, true);
-		$_tables = $this->driver->dbTableList($this->id, $_tablename);
+		$_tables = $this->getTableList($_tablename);
 		return (count($_tables) > 0);
 	}
 
@@ -929,9 +943,7 @@ class DbHandler extends _OWL
 		$field =
 			  $this->tablename ($_tablename)
 			. '.'
-			. $this->db_quotes
-			. $_fieldname
-			. $this->db_quotes
+			. $this->driver->dbQuote($_fieldname)
 		;
 		if (count($_f) > 0) {
 			$_method = array_shift($_f);
@@ -1293,7 +1305,7 @@ class DbHandler extends _OWL
 				$_msgP1 = 'inserted';
 				break;
 			default:
-				$_msgP1 = 'huh?'; // Can't happen
+				$_msgP1 = 'huh?'; // Can't happen... I hope....
 		}
 		$this->query_type = DBHANDLE_COMPLETED;
 
@@ -1311,6 +1323,7 @@ class DbHandler extends _OWL
 	 * \param[in] $field Name of the auto increment field
 	 * \return The number that was last inserted
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \todo For databases not supporting auto_increment, this won't work if $table and $field are not set
 	 */
 	public function lastInsertedId ($table = null, $field = null)
 	{

@@ -3,10 +3,8 @@
  * \file
  * This file defines the Oracle drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.oracle.php,v 1.1 2011-09-20 05:24:11 oscar Exp $
+ * \version $Id: class.oracle.php,v 1.2 2011-09-26 10:50:19 oscar Exp $
  */
-
-define('OWLDB_QUOTES', '`');
 
 /**
  * \ingroup OWL_DRIVERS
@@ -18,9 +16,15 @@ define('OWLDB_QUOTES', '`');
  */
 class Oracle extends DbDefaults implements DbDriver
 {
+	/**
+	 * boolean -  when no dbQuotes are used, Oracle translates all field- and table names to uppercase
+	 */
+	private $uppercaseNames;
+
 	public function __construct()
 	{
-
+		parent::__constructor();
+		$this->uppercaseNames = ($this->quoting == '');
 	}
 
 	public function dbCreate (&$_resource, $_name)
@@ -50,12 +54,12 @@ class Oracle extends DbDefaults implements DbDriver
 		return true;
 	}
 
-	public function dbTransactionCommit (&$_resource, $_name, $_name = null, $_new = false)
+	public function dbTransactionCommit (&$_resource, $_name = null, $_new = false)
 	{
 		return oci_commit($_resource);
 	}
 
-	public function dbTransactionRollback (&$_resource, $_name, $_name = null, $_new = false)
+	public function dbTransactionRollback (&$_resource, $_name = null, $_new = false)
 	{
 		return oci_rollback($_resource);
 	}
@@ -98,17 +102,26 @@ class Oracle extends DbDefaults implements DbDriver
 
 	public function dbTableList (&$_resource, $_pattern, $_views = false)
 	{
-		// TODO
 		$_data = null;
-		$_query = "SHOW FULL TABLES LIKE '$_pattern'";
+
+		if ($this->uppercaseNames) {
+			$_pattern = strtoupper($_pattern);
+		}
+		$_query = 'SELECT * '
+				. 'FROM USER_OBJECTS '
+		;
+		if ($_views) {
+			$_query .= "AND OBJECT_TYPE IN ('TABLE', 'VIEW') ";
+		} else {
+			$_query .= "AND OBJECT_TYPE = 'TABLE' ";
+		}
+		$_query .= "AND OBJECT_NAME LIKE '$_pattern' ";
+
 		if (!$this->dbRead($_data, $_resource, $_query)) {
 			return array();
 		}
 		$_tables = array();
 		while ($_r = $this->dbFetchNextRecord($_data)) {
-			if (!$_views && $_r['Table_type'] != 'BASE TABLE') {
-				continue;
-			}
 			$_tables[$_r[0]] = null; // \todo Columns, attributes etc, see SchemeHandler
 		}
 		$this->dbClear($_data);
@@ -138,8 +151,14 @@ class Oracle extends DbDefaults implements DbDriver
 
 	public function dbInsertId (&$_resource, $_table, $_field)
 	{
-		// TODO (as done in perl)
-		return (mysql_insert_id($_resource));
+		$_data = null;
+		$_q = 'SELECT ' . $this->functionMax($_field) . ' AS id '
+			. 'FROM ' . OWLDB_QUOTES . $_table . OWLDB_QUOTES . ' ';
+		if (!$this->dbRead($_data, $_resource, $_qry)) {
+			return -1;
+		}
+		$_r = $this->dbFetchNextRecord($_data);
+		return $_r[0];
 	}
 
 	public function dbRowCount (&$_data)

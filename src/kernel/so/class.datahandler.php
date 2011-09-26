@@ -3,7 +3,7 @@
  * \file
  * This file defines the DataHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.datahandler.php,v 1.17 2011-05-13 16:39:19 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.18 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
@@ -36,7 +36,7 @@ define ('DATA_DELETE',		3);
 //! Reset object status only
 define ('DATA_RESET_STATUS',	1);
 
-//! Reset prepared queries 
+//! Reset prepared queries
 define ('DATA_RESET_PREPARE',	2);
 
 //! Remove all locks and joins
@@ -53,7 +53,7 @@ define ('DATA_RESET_FULL',		15);
 /**
  * \ingroup OWL_SO_LAYER
  * This class contains DB datasets
- * \brief The OWL Data object 
+ * \brief The OWL Data object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 4, 2008 -- O van Eijk -- initial version
  */
@@ -61,17 +61,17 @@ class DataHandler extends _OWL
 {
 	/**
 	 * Indexed array holding all data values.
-	 */	
+	 */
 	private $owl_data;
 
 	/**
 	 * 2D Array holding all relationships between the data.
-	 */	
+	 */
 	private $owl_joins;
 
 	/**
 	 * Array with variable names that are used in WHERE clauses on updates
-	 */	
+	 */
 	private $owl_keys;
 
 	/**
@@ -80,18 +80,18 @@ class DataHandler extends _OWL
 	 * This is useful for datasets that come from only one database table.
 	 * For datasets that are not read from or written to a database, the
 	 * tablename can be null.
-	 */	
+	 */
 	protected $owl_tablename;
 
 	/**
 	 * An optional link to a database object. This has to be specified if the data needs to
 	 * be written to or read from a dabatase.
-	 */	
+	 */
 	protected  $owl_database;
 
 	/**
 	 * Boolean that indicates of a query has been prepared
-	 */	
+	 */
 	private $owl_prepared;
 
 	/**
@@ -152,7 +152,10 @@ class DataHandler extends _OWL
 	/**
 	 * Define or override a variable in the data array
 	 * \param[in] $variable The name of the variable that should be set.
-	 * \param[in] $value Value to set the variable to. For read operations, this can be a value, in which case the fieldname be will looked for matching all given values. Values with unescaped percent signs will be searched using the SQL LIKE keyword. If the matchtype is DBMATCH_NONE, the value is ignored.
+	 * \param[in] $value Value to set the variable to. For read operations, this can be a value,
+	 * in which case the fieldname be will looked for matching all given values.
+	 * Values with unescaped percent signs will be searched using the SQL LIKE keyword.
+	 * If the matchtype is DBMATCH_NONE, the value is ignored and the field will be in the SELECT list.
 	 * \param[in] $table An optional tablename for this field. Defaults to $this->owl_tablename
 	 * \param[in] $fieldFunction An optional array with SQL functions and statements that apply to the fieldname. This is an indexed array, where all keys must have an array as value.
 	 * The following keys are supported:
@@ -174,7 +177,7 @@ class DataHandler extends _OWL
 	 * The first argument passed to the method is always the fieldname, additional arguments will be taken from the array.
 	 * 	- match: The matchtype. When omitted, default is DBMATCH_EQ ('='). If the field should be in a SELECT list and not in the where clause, use the matchtype DBMATCH_NONE
 	 * (if no fields are set with DBMATCH_NONE, read queries will select with SELECT *)
-	 * 
+	 *
 	 * \see exa.datahandler-set.php
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -212,7 +215,7 @@ class DataHandler extends _OWL
 		list ($_f, $_v) = $this->owl_database->prepareField($fieldData);
 		$this->owl_data[$_f] = $_v;
 	}
-	
+
 	/**
 	 * Lock variables for update by adding them to an array. Fields in this array will not
 	 * be overwritten on updates, but used in WHERE clauses.
@@ -306,12 +309,14 @@ class DataHandler extends _OWL
 	}
 
 	/**
-	 * Define a link between 2 fields that will be recognized when the
+	 * Define a link between 2 tables that will be recognized when the
 	 * database query is built.
+	 * \note This method currently only supports implicit inner joins
 	 * \param[in] $lvalue Left value as array(table, field)
 	 * \param[in] $rvalue Right value as array(table, field)
 	 * \param[in] $linktype How are the fields linked. Can be any binary operator as recognized by SQL.
 	 * \return Severity level
+	 * \see exa.datahandler-join.php
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setJoin ($lvalue, $rvalue, $linktype = '=')
@@ -335,15 +340,16 @@ class DataHandler extends _OWL
 		} else {
 			$rvalue = $this->owl_tablename . '#' . $rvalue;
 		}
-
-		if (!array_key_exists ($lvalue, $this->data)) {
+/*
+		if (!array_key_exists ($lvalue, $this->owl_data)) {
 			$this->setStatus (DATA_NOSUCHFLD, $lvalue);
 			return ($this->severity);
 		}
-		if (!array_key_exists ($rvalue, $this->data)) {
+		if (!array_key_exists ($rvalue, $this->owl_data)) {
 			$this->setStatus (DATA_NOSUCHFLD, $rvalue);
 			return ($this->severity);
 		}
+*/
 		$this->owl_joins[] = array ($lvalue, $linktype, $rvalue);
 		$this->setStatus (DATA_JOINSET, array($linktype, $lvalue, $rvalue));
 		return ($this->severity);
@@ -362,7 +368,7 @@ class DataHandler extends _OWL
 	/**
 	 * Prepare a database query
 	 * \param[in] $type Specify which type of query should be prepared:
-	 *   - DATA_READ (default); Read data from the database 
+	 *   - DATA_READ (default); Read data from the database
 	 *   - DATA_WRITE; Write new data to the database
 	 *   - DATA_UPDATE; Update data in the database
 	 * \return Severity level
@@ -423,10 +429,10 @@ class DataHandler extends _OWL
 		}
 		return ($this->setHighSeverity ($this->owl_database));
 	}
-	
+
 	/**
 	 * Forward a call to the DBHandler object (which is private in this DataHandler)
-	 * \param[out] $data The result of DBHandler function, or false when no query was prepared yet 
+	 * \param[out] $data The result of DBHandler function, or false when no query was prepared yet
 	 * \param[in] $line Line number of this call
 	 * \param[in] $file File that made the call to this method
 	 * \return Severity level
@@ -493,6 +499,11 @@ class DataHandler extends _OWL
 /**
  * \example exa.datahandler-set.php
  * This example shows advanced use of the DataHandler::set() method
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ */
+/**
+ * \example exa.datahandler-join.php
+ * This example shows how to create implicit inner joins using the DataHandler::setJoin() method
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 

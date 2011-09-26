@@ -4,7 +4,7 @@
  * This is installer for the OWL Testkit
  * \ingroup OTK_ADMIN
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: install.php,v 1.1 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: install.php,v 1.2 2011-09-26 10:50:19 oscar Exp $
  */
 
 // Toplevel where OWL can be found
@@ -14,9 +14,9 @@ require (OWL_ROOT . '/OWLinstaller.php');
 
 $_id = OWLinstaller::installApplication('OTK', 'OWLTestKit', 'v0.1', 'Testapplication for OWL-PHP', 'http://localhost', 'Oscar van Eijk');
 
-OWLinstaller::addConfig($_id, 'debug', 16711935);
-OWLinstaller::addConfig($_id, 'dbprefix', 'otk_', true);
-OWLinstaller::addConfig($_id, 'js_signal', true);
+OWLinstaller::addConfig($_id, 'general', 'debug', 16711935);
+OWLinstaller::addConfig($_id, 'database', 'prefix', 'otk_', true);
+OWLinstaller::addConfig($_id, 'general', 'js_signal', true);
 
 OWLinstaller::addRights($_id
 	,array(

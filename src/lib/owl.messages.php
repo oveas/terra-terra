@@ -4,7 +4,7 @@
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.messages.php,v 1.26 2011-05-25 12:04:30 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.27 2011-09-26 10:50:18 oscar Exp $
  */
 
 $_messages = array (
@@ -111,6 +111,7 @@ $_messages = array (
 	, FILE_OPENED			=> ''
 	, FILE_CLOSED			=> ''
 	, FILE_OPENERR			=> ''
+	, SCHEMEHANDLE_DBERROR	=> 'The database handler returned an error:<blockquote>$p1$</blockquote>'
 	, SCHEMEHANDLE_NOTABLE	=> 'The table $p1$ does not exist'
 	, SCHEMEHANDLE_NOINDEX	=> 'The table $p1$ has no indexes'
 	, SCHEMEHANDLE_IVTABLE	=> 'Creating a table with an invalid or empty tablename'

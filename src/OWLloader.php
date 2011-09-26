@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.35 2011-06-12 11:03:39 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.36 2011-09-26 10:50:18 oscar Exp $
  */
 
 // Error handling used during development
@@ -214,8 +214,8 @@ abstract class OWLloader
 	public static function getOWLId ()
 	{
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('owlprefix', 'owl'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix', 'owl'));
 		}
 		$dataset->setTablename('applications');
 
@@ -234,8 +234,8 @@ abstract class OWLloader
 	public static function loadApplication ($applic_code)
 	{
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('owlprefix', 'owl'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix', 'owl'));
 		}
 		$dataset->setTablename('applications');
 
@@ -376,7 +376,7 @@ if (!defined('OWL___INSTALLER')) {
 }
 
 // Select the (no)debug function libraries.
-if ($GLOBALS['config']['values']['debug'] > 0) {
+if ($GLOBALS['config']['values']['general']['debug'] > 0) {
 	require (OWL_LIBRARY . '/owl.debug.functions.php');
 	$_doc->loadStyle(OWL_STYLE . '/owl_debug.css');
 } else {

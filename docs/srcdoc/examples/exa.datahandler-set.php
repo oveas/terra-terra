@@ -1,7 +1,7 @@
 <?php
 /*
  * This function demonstrates the use of the DataHandler::set() method to use SQL functions.
- * This example uses the following database table:
+ * This example uses the following database table (CREATE TABLE statements here is in MySQL format):
  *
  *	CREATE TABLE `exa_sqlfunc` (
  *	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -16,23 +16,26 @@
 function useSqlFunctions($date)
 {
 	$dataset = new DataHandler();
-	$dataset->set_tablename('sqlfunc');
-	
+	$dataset->setTablename('sqlfunc');
+
 	// Set the 'name' field
 	$dataset->set(
 		  'name'		// Fieldname to get
-		, null			// We must read this value, so set it to null
+		, null			// We will read this value with SELECT, so his will be ignored
 		, null			// Use the default tablename (sqlfunc)
 		, array(		// Array with functions for the fielname. All keys MUST have an array as value!
 			  'groupby' => array()			// No arguments, so use an empty array
 			, 'orderby' => array('desc')	// Ordering; desc here, can be empty (default to the SQL default: asc)
+		)
+		, array(
+			'match' => array(DBMATCH_NONE) //Don't match on this field, but use it in the SELECT list.
 		)
 	);
 
 	// Set the 'membership' field
 	$dataset->set(
 		  'membership'	// Fieldname to get
-		, null			// We will read this value, so his will be ignored
+		, null			// We will read this value with SELECT, so his will be ignored
 		, null			// Use the default tablename (sqlfunc)
 		, array(		// Array with functions for the fielname. All keys MUST have an array as value!
 			  'function' => array('count')		// Use the COUNT() function (from the db driver); no extra arguments
@@ -59,7 +62,7 @@ function useSqlFunctions($date)
 	);
 
 	$dataset->prepare (); // Default prepare action is DATA_READ
-	// The following query is prepared:
+	// The following query is prepared (assuming the MySQL driver and using backticks):
 	// SELECT `exa_sqlfunc`.`name`, COUNT(`exa_sqlfunc`.`membership`) AS no_mbrships
 	// FROM `exa_sqlfunc`
 	// WHERE IFNULL(`exa_sqlfunc`.`expires`, NOW()) >= '(given date)'

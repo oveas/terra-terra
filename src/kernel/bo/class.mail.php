@@ -3,7 +3,7 @@
  * \file
  * This file defines the Mail class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.mail.php,v 1.2 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: class.mail.php,v 1.3 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
@@ -32,7 +32,7 @@ class Mail extends _OWL
 	public function __construct ()
 	{
 		_OWL::init();
-		$_driver = ConfigHandler::get('mail|driver');
+		$_driver = ConfigHandler::get('mail', 'driver');
 		if (OWLloader::getDriver($_driver, 'mail') === true) {
 			$this->driver = new $_driver;
 		} else {
@@ -61,7 +61,7 @@ class Mail extends _OWL
 			return (true);
 		}
 	}
-	
+
 	/**
 	 * Check and set the from address
 	 * \param[in] $addr A (displayable) email address

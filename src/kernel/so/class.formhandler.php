@@ -3,7 +3,7 @@
  * \file
  * This file defines the Formhandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.formhandler.php,v 1.12 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: class.formhandler.php,v 1.13 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
@@ -36,7 +36,7 @@ define ('FORMDATA_RAW',				6);
 /**
  * \ingroup OWL_SO_LAYER
  * Handler for all incoming formdata.
- * \brief Formhandler 
+ * \brief Formhandler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 28, 2008 -- O van Eijk -- initial version
  */
@@ -78,11 +78,11 @@ class FormHandler extends _OWL
 		}
 		return FormHandler::$instance;
 	}
-	
+
 	/**
 	 * Parse a given form and store all data in the parent class, except values that
 	 * come from a multiple select; they will be stored locally.
-	 * \param[in] $data The formdata array. 
+	 * \param[in] $data The formdata array.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function parseFormdata ($data = null)
@@ -91,7 +91,7 @@ class FormHandler extends _OWL
 			return;
 		}
 		foreach ($data as $_k => $_v) {
-			
+
 			$this->set($_k, $_v);
 		}
 
@@ -122,7 +122,7 @@ class FormHandler extends _OWL
 			$this->owl_formvalues[$variable] = $value;
 		}
 
-		if (ConfigHandler::get ('debug') > 0) {
+		if (ConfigHandler::get ('general', 'debug') > 0) {
 			$this->setStatus (FORM_STORVALUE,
 				array ($variable
 						, (
@@ -182,7 +182,7 @@ class FormHandler extends _OWL
 //					$_cnt = count($_val);
 					foreach ($_val as $_HTMLfld => $_HTMLval) {
 						if ($format === FORMDATA_HTML_CODE) {
-							$_val[$_HTMLfld] = htmlentities($_HTMLval, ENT_COMPAT, ConfigHandler::get('charset', 'ISO-8859-1'));
+							$_val[$_HTMLfld] = htmlentities($_HTMLval, ENT_COMPAT, ConfigHandler::get('general', 'charset', 'ISO-8859-1'));
 						} else {
 							$_val[$_HTMLfld] = $this->cleanString($_HTMLval, $_allow, $_content);
 						}
@@ -190,7 +190,7 @@ class FormHandler extends _OWL
 /*
 					for ($_i = 0; $_i < $_cnt; $_i++) {
 						if ($format === FORMDATA_HTML_CODE) {
-							$_val[$_i] = htmlentities($_val[$_i], ENT_COMPAT, ConfigHandler::get('charset', 'ISO-8859-1'));
+							$_val[$_i] = htmlentities($_val[$_i], ENT_COMPAT, ConfigHandler::get('general', 'charset', 'ISO-8859-1'));
 						} else {
 							$_val[$_i] = $this->cleanString($_val[$_i], $_allow, $_content);
 						}
@@ -198,7 +198,7 @@ class FormHandler extends _OWL
  */
 				} else {
 					if ($format === FORMDATA_HTML_CODE) {
-						$_val = htmlentities($_val, ENT_COMPAT, ConfigHandler::get('charset', 'ISO-8859-1'));
+						$_val = htmlentities($_val, ENT_COMPAT, ConfigHandler::get('general', 'charset', 'ISO-8859-1'));
 					} else {
 						$_val = $this->cleanString($_val, $_allow, $_content);
 					}
@@ -209,7 +209,7 @@ class FormHandler extends _OWL
 			$this->setStatus (FORM_NOVALUE, $variable);
 		}
 
-		if (ConfigHandler::get ('debug') > 0) {
+		if (ConfigHandler::get ('general', 'debug') > 0) {
 			$this->setStatus (FORM_RETVALUE, array ($variable, (is_array($_val)?print_r($_val, 1):$_val)));
 		}
 		return ($_val);

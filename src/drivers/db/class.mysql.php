@@ -3,10 +3,8 @@
  * \file
  * This file defines the MySQL drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.mysql.php,v 1.4 2011-09-20 05:24:11 oscar Exp $
+ * \version $Id: class.mysql.php,v 1.5 2011-09-26 10:50:19 oscar Exp $
  */
-
-define('OWLDB_QUOTES', '`');
 
 /**
  * \ingroup OWL_DRIVERS
@@ -20,7 +18,7 @@ class MySQL extends DbDefaults implements DbDriver
 {
 	public function __construct()
 	{
-
+		parent::__constructor();
 	}
 
 	public function dbCreate (&$_resource, $_name)
@@ -47,7 +45,7 @@ class MySQL extends DbDefaults implements DbDriver
 		return (mysql_select_db ($_name, $_resource));
 	}
 
-	public function dbTransactionCommit (&$_resource, $_name, $_name = null, $_new = false)
+	public function dbTransactionCommit (&$_resource, $_name = null, $_new = false)
 	{
 		$_q = 'COMMIT WORK'
 			. ' AND ' . (($_new === true) ? ' ' : 'NO ') . 'CHAIN'
@@ -55,7 +53,7 @@ class MySQL extends DbDefaults implements DbDriver
 		return ($this->dbExec($_resource, $_q));
 	}
 
-	public function dbTransactionRollback (&$_resource, $_name, $_name = null, $_new = false)
+	public function dbTransactionRollback (&$_resource, $_name = null, $_new = false)
 	{
 		$_q = 'ROLLBACK WORK'
 			. ' AND ' . (($_new === true) ? ' ' : 'NO ') . 'CHAIN'
@@ -104,10 +102,11 @@ class MySQL extends DbDefaults implements DbDriver
 		}
 		$_tables = array();
 		while ($_r = $this->dbFetchNextRecord($_data)) {
-			if (!$_views && $_r['Table_type'] != 'BASE TABLE') {
+			if (!$_views && $_r['Table_type'] == 'VIEW') { // != 'BASE TABLE'
 				continue;
 			}
-			$_tables[$_r[0]] = null; // \todo Columns, attributes etc, see SchemeHandler
+			$_tName = array_shift($_r);
+			$_tables[$_tName] = null; // \todo Columns, attributes etc, see SchemeHandler
 		}
 		$this->dbClear($_data);
 		return ($_tables);

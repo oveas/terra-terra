@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.12 2011-06-12 11:03:39 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.13 2011-09-26 10:50:18 oscar Exp $
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
@@ -42,7 +42,7 @@ function owlCrypt ($_string)
 {
 //	$_locker = getReferer();
 
-	$_key = ConfigHandler::get ('crypt_key');
+	$_key = ConfigHandler::get ('general', 'crypt_key');
 	$_maxKeySize = 32;
 
 	$_keysize = strlen($_key);

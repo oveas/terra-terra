@@ -3,13 +3,13 @@
  * \file
  * This file defines the Session class
 	 * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.session.php,v 1.11 2011-05-02 12:56:14 oscar Exp $
+ * \version $Id: class.session.php,v 1.12 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
  * \ingroup OWL_BO_LAYER
- * This class handles the OWL session 
- * \brief the OWL-PHP session object 
+ * This class handles the OWL session
+ * \brief the OWL-PHP session object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 13, 2008 -- O van Eijk -- initial version
  */
@@ -35,7 +35,7 @@ class Session extends SessionHandler
 			$this->newSession();
 		} else {
 			$this->restoreSession();
-			if (ConfigHandler::get('session|check_ip') === true) {
+			if (ConfigHandler::get('session', 'check_ip') === true) {
 				if ($this->getSessionVar('ip') != $this->ipAddress()) {
 					$this->setStatus (SESSION_IPCHKFAIL);
 				}
@@ -43,7 +43,7 @@ class Session extends SessionHandler
 		}
 		$this->setSessionVar('step', 0, SESSIONVAR_INCR);
 	}
-	
+
 	/**
 	 * When a run ends, write the sessiondata
 	 * \author Oscar van Eijk, Oveas Functionality Provider

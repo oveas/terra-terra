@@ -3,7 +3,7 @@
  * \file
  * This file defines the SessionHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.sessionhandler.php,v 1.16 2011-05-13 16:39:18 oscar Exp $
+ * \version $Id: class.sessionhandler.php,v 1.17 2011-09-26 10:50:17 oscar Exp $
  */
 
 /**
@@ -31,7 +31,7 @@ define ('SESSIONVAR_ARRAY',		4);
 /**
  * \ingroup OWL_SO_LAYER
  * This class saves and (re)stores the user sessions
- * \brief the PHP session object 
+ * \brief the PHP session object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jul 29, 2008 -- O van Eijk -- initial version
  */
@@ -40,14 +40,14 @@ class SessionHandler extends _OWL
 
 	/**
 	 * Link to a datahandler object. This dataset is used as an interface to all database IO.
-	 */	
+	 */
 	protected $dataset = null;
 
 	/**
 	 * Reference to the DB Singleton
 	 */
 	private $db;
-	
+
 	/**
 	 * Class constructor; set the save_handler
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -56,8 +56,8 @@ class SessionHandler extends _OWL
 	{
 		_OWL::init();
 
-		if (ConfigHandler::get ('owltables', true) === true) {
-			$this->dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true) === true) {
+			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$this->dataset->setTablename('session');
 
@@ -70,11 +70,11 @@ class SessionHandler extends _OWL
 //		ini_set ('session.gc_probability', 1);
 //		ini_set ('session.gc_divisor', 100);
 
-//		ini_set ('session.gc_maxlifetime', ConfigHandler::get ('session|lifetime'));
+//		ini_set ('session.gc_maxlifetime', ConfigHandler::get ('session', 'lifetime'));
 
 		if (!ini_set ('session.save_handler', 'user'));
 		ini_set ('session.use_trans_sid', true);
-		if (($_sessName = ConfigHandler::get('session|name')) != null) {
+		if (($_sessName = ConfigHandler::get('session', 'name')) != null) {
 			session_name($_sessName);
 		}
 		session_set_save_handler (
@@ -174,7 +174,7 @@ class SessionHandler extends _OWL
 				return (false);
 			}
 		}
-		
+
 		$this->dataset->db ($_data, __LINE__, __FILE__);
 		return (true);
 	}
@@ -209,9 +209,10 @@ class SessionHandler extends _OWL
 	 */
 	public function gc ($lifetime)
 	{
+		$_ts = time() - $lifetime;
 		$this->db->setQuery(
 				  'DELETE FROM ' . $this->db->tablename ('sessiondata')
-				. ' WHERE stimestamp < ' . time() - $lifetime
+				. ' WHERE stimestamp < ' . $_ts
 			);
 		return $this->db->write ($_dummy, __LINE__, __FILE__);
 	}

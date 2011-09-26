@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_SO_LAYER
  * This file defines the class to install applications
- * \version $Id: OWLinstaller.php,v 1.6 2011-09-20 05:24:10 oscar Exp $
+ * \version $Id: OWLinstaller.php,v 1.7 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
@@ -32,8 +32,8 @@ abstract class OWLinstaller
 	public static function construct()
 	{
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('group');
 		$dataset->set('aid', OWL_ID);
@@ -61,8 +61,8 @@ abstract class OWLinstaller
 	public static function installApplication ($code, $name, $version, $description = '', $link = '', $author = '', $license = '')
 	{
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('applications');
 		$dataset->set('code', $code);
@@ -85,8 +85,8 @@ abstract class OWLinstaller
 	public static function enableApplication ($id)
 	{
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('applications');
 		$dataset->set('aid', $id);
@@ -166,7 +166,7 @@ abstract class OWLinstaller
 		if ($prefix !== null) {
 			$_d->setPrefix($prefix);
 		} else {
-			$_d->setPrefix(ConfigHandler::get('dbprefix', null, true));
+			$_d->setPrefix(ConfigHandler::get('database', 'prefix', null, true));
 		}
 		$db = $_d->getDbLink();
 		$tblRegEx = '((create|drop|alter)\s+((temporary|ignore)\s+)?(table)(\s*if\s*(not\s*)?(exists))?)';
@@ -240,8 +240,8 @@ abstract class OWLinstaller
 			$_val += self::$rights[$_r];
 		}
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('grouprights');
 		$dataset->set('aid', $aid);
@@ -262,8 +262,8 @@ abstract class OWLinstaller
 	public static function addGroups($aid, array $grps)
 	{
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('group');
 		foreach ($grps as $_grp => $_desc) {
@@ -288,8 +288,8 @@ abstract class OWLinstaller
 	public static function addRights($aid, array $rights)
 	{
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('rights');
 		$dataset->set('aid', $aid);
@@ -324,7 +324,8 @@ abstract class OWLinstaller
 	 * Add an application specific dynamic config item. It is set or overwritten in the current
 	 * configuration immediately.
 	 * \param[in] $aid Application ID
-	 * \param[in] $item Name of the configuration item in the same format it appears in the configuration file (e.g. 'group|subject|item)
+	 * \param[in] $section Name of the configuration section
+	 * \param[in] $item Name of the configuration item
 	 * \param[in] $value Value of the configuration item
 	 * \param[in] $protect True if this is a protected item
 	 * \param[in] $hide True if this is an hidden item
@@ -332,7 +333,7 @@ abstract class OWLinstaller
 	 * \return Boolean indicating success (true) or any failure (false)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function addConfig ($aid, $item, $value, $protect = false, $hide = false, $group = null)
+	public static function addConfig ($aid, $section, $item, $value, $protect = false, $hide = false, $group = null)
 	{
 		if ($group === null) {
 			$_grpID = 0;
@@ -345,20 +346,23 @@ abstract class OWLinstaller
 			}
 		}
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('owlprefix'));
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
+
+		$_secId = ConfigHandler::configSection($section, true);
 		$dataset->setTablename('config');
 		$dataset->set('aid', $aid);
 		$dataset->set('gid', $_grpID);
 		$dataset->set('uid', 0);
+		$dataset->set('sid', $_secId);
 		$dataset->set('name', $item);
 		$dataset->set('value', $value);
 		$dataset->set('protect', ($protect === true)?1:0);
 		$dataset->set('hide', ($hide === true)?1:0);
 		$dataset->prepare(DATA_WRITE);
 		$dataset->db($_dummy, __LINE__, __FILE__);
-		ConfigHandler::set($item, $value);
+		ConfigHandler::set($section, $item, $value);
 		return (true);
 	}
 }

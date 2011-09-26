@@ -3,7 +3,7 @@
  * \file
  * This file defines the Oveas Web Library main class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class._owl.php,v 1.14 2011-05-30 17:00:19 oscar Exp $
+ * \version $Id: class._owl.php,v 1.15 2011-09-26 10:50:18 oscar Exp $
  */
 
 /**
@@ -190,7 +190,7 @@ abstract class _OWL
 	protected final function setStatus ($status, $params = array ())
 	{
 		static $loopdetect = 0;
-		$loopdetect++;
+//		$loopdetect++;
 		if ($loopdetect > 1) {
 			trigger_error ('Fatal error - loop detected while handling the status: ' . Register::getCode($status), E_USER_ERROR);
 		}
@@ -201,18 +201,18 @@ abstract class _OWL
 		} else {
 			$this->status->setParams (array ($params));
 		}
-		if ($this->severity >= ConfigHandler::get ('logging|log_level')) {
+		if ($this->severity >= ConfigHandler::get ('logging', 'log_level')) {
 			$this->signal (0, $msg);
 			if (@is_object($GLOBALS['logger'])) {
 				$GLOBALS['logger']->log ($msg, $status);
 			}
 		}
 
-		if (ConfigHandler::get ('exception|throw_level') >= 0
-				&& $this->severity >= ConfigHandler::get ('exception|throw_level', OWL_BUG, true)) {
+		if (ConfigHandler::get ('exception', 'throw_level') >= 0
+				&& $this->severity >= ConfigHandler::get ('exception', 'throw_level', OWL_BUG, true)) {
 
 			$this->signal (0, $msg);
-			if (ConfigHandler::get('exception|block_throws', false)) {
+			if (ConfigHandler::get('exception', 'block_throws', false)) {
 				// Can't call myself anymore but we wanna see this message.
 				$_msg = $msg; // Save the original
 				$this->severity = $this->status->setCode(OWL_STATUS_THROWERR);
@@ -294,7 +294,7 @@ abstract class _OWL
 	{
 		if (($_severity = $this->status->getSeverity()) >= $level) {
 			if ($text === false) {
-				if (ConfigHandler::get ('js_signal') === true) {
+				if (ConfigHandler::get ('general', 'js_signal') === true) {
 					$_msg = $this->status->getMessage ($level);
 					$_msg = str_replace('"', '\"', $_msg);
 					OutputHandler::outputRaw ('<script language="javascript">'

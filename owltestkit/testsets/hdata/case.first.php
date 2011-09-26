@@ -1,9 +1,9 @@
-<?php 
+<?php
 /**
  * \file
  * This file defines the first testcase for the Hierarchical Dataset
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.first.php,v 1.4 2011-05-26 12:26:30 oscar Exp $
+ * \version $Id: case.first.php,v 1.5 2011-09-26 10:50:19 oscar Exp $
  */
 
 /**
@@ -29,23 +29,60 @@ class OTKHdata_First implements TestCase
 
 	public function prepareTest ()
 	{
-		$db = DbHandler::getInstance();
-		$db->setQuery ('CREATE  TABLE ' . $db->tablename($this->tablename) . ' ('
-			. ' `id` INT UNSIGNED NOT NULL AUTO_INCREMENT '
-			. ',`lval` INT NOT NULL '
-			. ',`rval` INT NOT NULL '
-			. ',`node` VARCHAR(45) NOT NULL '
-			. ',`xlink` INT UNSIGNED NULL '
-			. ',PRIMARY KEY (`id`) '
-			. ',INDEX (`lval`) '
-			. ',INDEX (`rval`) '
-			. ',UNIQUE INDEX (`node`) '
-			. ',INDEX (`xlink`) '
-			. ')');
-		if ($db->write($dummy, __LINE__, __FILE__) <= OWL_SUCCESS) {
+		$_scheme = OWL::factory('schemehandler');
+		$_table = array(
+			 'id' => array (
+				 'type' => 'INT'
+				,'auto_inc' => true
+				,'null' => false
+				,'unsigned' => true
+			)
+			,'lval' => array (
+				 'type' => 'INT'
+				,'null' => false
+			)
+			,'rval' => array (
+				 'type' => 'INT'
+				,'null' => false
+			)
+			,'node' => array (
+				 'type' => 'VARCHAR'
+				,'length' => 45
+				,'null' => false
+			)
+			,'xlink' => array (
+				 'type' => 'INT'
+				,'null' => true
+				,'unsigned' => true
+			)
+		);
+		$_index = array (
+			 'lval' => array(
+				 'columns' => array ('lval')
+			)
+			,'rval' => array(
+				 'columns' => array ('rval')
+			)
+			,'node' => array(
+				 'columns' => array ('node')
+				,'unique' => true
+			)
+			,'xlink' => array(
+				 'columns' => array ('xlink')
+			)
+		);
+
+
+		$_scheme->createScheme($this->tablename);
+		$_scheme->defineScheme($_table);
+		$_scheme->defineIndex($_index);
+		$_scheme->scheme();
+		if ($_scheme->scheme() <= OWL_SUCCESS) {
+			$_scheme->reset();
 			return OTK_RESULT_SUCCESS;
 		} else {
-			$db->signal(OWL_WARNING, $msg);
+			$_scheme->signal(OWL_WARNING, $msg);
+			$_scheme->reset();
 			return $msg;
 		}
 	}
@@ -101,5 +138,5 @@ class OTKHdata_First implements TestCase
 	{
 		return $this->details;
 	}
-	
+
 }
