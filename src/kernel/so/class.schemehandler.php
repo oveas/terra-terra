@@ -3,7 +3,7 @@
  * \file
  * This file defines the Scheme Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.schemehandler.php,v 1.7 2011-09-26 10:50:18 oscar Exp $
+ * \version $Id: class.schemehandler.php,v 1.8 2011-09-26 16:04:36 oscar Exp $
  */
 
 /**
@@ -13,7 +13,6 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Oct 7, 2010 -- O van Eijk -- initial version for OWL
  * \note A port of this class has been created for VirtueMart
- * \todo This handler currently doesn't use the DbDriver driver class
  */
 class SchemeHandler extends _OWL
 {
@@ -112,8 +111,9 @@ class SchemeHandler extends _OWL
 	 * Define the layout for a table
 	 * \param[in] $_scheme Array holding the table description. This is a 2 dimensional array where the
 	 * first level holds the fieldnames. The second array defines the attributes for each field:
-	 * - type : String; the field-type (INT|TINYINT|VARCHAR|MEDIUMTEXT|TEXT|LONGTEXT|BLOB|LONGBLOB|ENUM|SET)
+	 * - type : String; the field-type (INT|TINYINT|DECIMAL|VARCHAR|MEDIUMTEXT|TEXT|LONGTEXT|BLOB|LONGBLOB|ENUM|SET)
 	 * - length : Integer; indicating the length for fieldtypes that use that (like INT and VARCHAR)
+	 * - precision : Integer; indicating the precision for floating point values
 	 * - null : Boolean; when true the value can be NULL
 	 * - auto-inc : Boolean; True for auto-increment values (will be set as primary key)
 	 * - default : Mixed; default value
@@ -121,6 +121,7 @@ class SchemeHandler extends _OWL
 	 * - unsigned : Boolean; True for UNSIGNED numeric values
 	 * - zerofill : Boolean; True when numberic values should be represented with leading zeros
 	 * - comment : String; field comment
+	 *
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function defineScheme($_scheme)
@@ -188,9 +189,10 @@ class SchemeHandler extends _OWL
 		} else {
 			$_stat = $this->alterTable($_return, $_drops); // differences found
 		}
-		if ($_stat > OWL_SUCCESS) {
-			$this->db->signal (OWL_WARNING, $msg);
-			$this->setStatus (SCHEMEHANDLE_DBERROR, $msg);
+		if (!$_stat) {
+			$_db = $this->db->getResource(); // Create a variable since it's passed by reference
+			$this->db->getDriver()->dbError($_db, $_nr, $_msg);
+			$this->setStatus (SCHEMEHANDLE_DBERROR, $_msg);
 		}
 		return ($this->severity);
 	}
@@ -320,107 +322,53 @@ class SchemeHandler extends _OWL
 	 */
 	private function createTable()
 	{
-		$_qry = 'CREATE TABLE ' . $this->db->tablename($this->table) . '(';
-		$_first = true;
+
+		$_colDefs = array();
+		$_idxDefs = array();
 		foreach ($this->scheme['columns'] as $_fld => $_desc) {
-			if ($_first) {
-				$_first = false;
-			} else {
-				$_qry .= ',';
-			}
-			$_qry .= ('`' . $_fld . '` ' . $_desc['type']
-				. $this->_define_field($_desc));
+			$_colDefs[] = $this->db->getDriver()->dbDefineField($this->db->tablename($this->table, true), $_fld, $_desc);
 		}
 		foreach ($this->scheme['indexes'] as $_idx => $_desc) {
-			if ($_idx == 'PRIMARY') {
-				$_qry .= ',PRIMARY KEY ';
-			} else {
-				if (array_key_exists('unique', $_desc) && $_desc['unique']) {
-					$_qry .= ',UNIQUE KEY ';
-				} elseif (array_key_exists('type', $_desc) && $_desc['type'] == 'FULLTEXT') {
-					$_qry .= ',FULLTEXT KEY ';
-				} else {
-					$_qry .= ',KEY ';
-				}
-				$_qry .= "`$_idx` ";
-			}
-			$_qry .= ('(' . implode(',',$_desc['columns']) . ')');
+			$_idxDefs[] = $this->db->getDriver()->dbDefineIndex($this->db->tablename($this->table, true), $_idx, $_desc);
 		}
-		$_qry .= ')';
-		$this->db->setQuery($_qry);
-		return ($this->db->write($_dummy, __LINE__, __FILE__));
+		$_db = $this->db->getResource(); // Create a variable since it's passed by reference
+		return ($this->db->getDriver()->dbCreateTable($_db, $this->db->tablename($this->table), $_colDefs, $_idxDefs));
 	}
 
 	/**
 	 * Make changes to the table
 	 * \param[in] $_diffs Changes to make
 	 * \param[in] $_drops True if existing fields should be dropped
+	 * \return True on success
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function alterTable($_diffs, $_drops)
 	{
+		$_db = $this->db->getResource(); // Create a variable since it's passed by reference
 		if ($_drops === true && array_key_exists('drop', $_diffs) && count($_diffs['drop']['columns']) > 0) {
 			foreach ($_diffs['drop']['columns'] as $_fld => $_desc) {
-				$this->db->setQuery('ALTER TABLE ' . $this->db->tablename($this->table) . ' DROP ' . $_fld);
-				$this->db->write($_dummy, __LINE__, __FILE__);
+				if (!$this->db->getDriver()->dbDropField($_db, $this->db->tablename($this->table, true), $_fld)) {
+					return (false);
+				}
 			}
 		}
 		if (array_key_exists('mod', $_diffs) && count($_diffs['mod']['columns']) > 0) {
 			foreach ($_diffs['mod']['columns'] as $_fld => $_desc) {
-				$_qry = 'ALTER TABLE ' . $this->db->tablename($this->table)
-					. ' CHANGE `' . $_fld . '` `' .$_fld . '` ' . $_desc['type']
-					. $this->_define_field($_desc);
-				$this->db->setQuery($_qry);
-				$this->db->write($_dummy, __LINE__, __FILE__);
+				if (!$this->db->getDriver()->dbAlterField($_db, $this->db->tablename($this->table, true), $_fld, $_desc)) {
+					return (false);
+				}
 			}
 		}
 		if (array_key_exists('add', $_diffs) && count($_diffs['add']['columns']) > 0) {
 			foreach ($_diffs['add']['columns'] as $_fld => $_desc) {
-				$_qry = 'ALTER TABLE ' . $this->db->tablename($this->table)
-					. ' ADD `' . $_fld . '` ' . $_desc['type']
-					. $this->_define_field($_desc);
-				$this->db->setQuery($_qry);
-				$this->db->write($_dummy, __LINE__, __FILE__);
+				if (!$this->db->getDriver()->dbAddField($_db, $this->db->tablename($this->table, true), $_fld, $_desc)) {
+					return (false);
+				}
 			}
 		}
-		return OWL_SUCCESS; // TODO proper checking
+		return true;
 	}
 
-	/**
-	 * Create the SQL code for a field definition
-	 * \param[in] $_desc Indexed array with the field properties from scheme definition
-	 * \return string SQL code
-	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 */
-	private function _define_field($_desc)
-	{
-		$_qry = '';
-		if (array_key_exists('length', $_desc) && $_desc['length'] > 0) {
-			$_qry .= ('(' . $_desc['length'] . ')');
-		}
-		if (array_key_exists('options', $_desc)) {
-			$_qry .= ('(' . implode(',',$_desc['options']) . ')');
-		}
-		if (array_key_exists('unsigned', $_desc) && $_desc['unsigned']) {
-			$_qry .= ' UNSIGNED';
-		}
-		if (array_key_exists('zerofill', $_desc) && $_desc['zerofill']) {
-			$_qry .= ' ZEROFILL';
-		}
-		if (!array_key_exists('null', $_desc) || !$_desc['null']) {
-			$_qry .= ' NOT NULL';
-		}
-		if (array_key_exists('auto_inc', $_desc) && $_desc['auto_inc']) {
-			$_qry .= ' AUTO_INCREMENT';
-		}
-		if (array_key_exists('default', $_desc) && !empty($_desc['default'])) {
-			$_qry .= (' DEFAULT \'' . $_desc['default'] . "'");
-		}
-		if (array_key_exists('comment', $_desc) && !empty($_desc['comment'])) {
-			$_qry .= (' COMMENT \'' . $_desc['comment'] . "'");
-		}
-		return $_qry;
-	}
 
 	/**
 	 * Get the columns for a given table
@@ -430,39 +378,12 @@ class SchemeHandler extends _OWL
 	 */
 	private function getTableColumns($_tablename)
 	{
-		$_descr = array ();
-		$_data  = array ();
-		$_qry = 'SHOW FULL COLUMNS FROM ' . $this->db->tablename($_tablename);
-
-		$this->db->read (DBHANDLE_DATA, $_data, $_qry, __LINE__, __FILE__);
-		if ($this->db->getStatus() === 'DBHANDLE_NODATA') {
-			// A table without fields.... not likely.... some bug somewhere
+		$_columns = $this->db->getDriver()->dbTableColumns($this->db, $this->db->tablename($_tablename, true));
+		if ($_columns === null) {
 			$this->setStatus (SCHEMEHANDLE_EMPTYTABLE, $_tablename);
 			return null;
 		}
-		foreach ($_data as $_record) {
-			if (preg_match("/(.+)\((\d+,?\d*)\)\s?(unsigned)?\s?(zerofill)?/i", $_record['Type'], $_matches)) {
-				$_descr[$_record['Field']]['type'] = $_matches[1];
-				$_descr[$_record['Field']]['length'] = $_matches[2];
-				$_descr[$_record['Field']]['unsigned'] = (@$_matches[3] == 'unsigned');
-				$_descr[$_record['Field']]['zerofill'] = (@$_matches[4] == 'zerofill');
-			} else {
-				$_descr[$_record['Field']]['type'] = $_record['Type'];
-			}
-			$_descr[$_record['Field']]['null']     = ($_record['Null'] == 'YES');
-			$_descr[$_record['Field']]['auto_inc'] = (preg_match("/auto_inc/i", $_record['Extra']));
-
-			if (preg_match("/(enum|set)\((.+),?\)/i", $_record['Type'], $_matches)) {
-				// Value list for ENUM and SET type
-				$_descr[$_record['Field']]['type'] = $_matches[1];
-				$_descr[$_record['Field']]['options']  = explode(',', $_matches[2]);
-			}
-
-			$_descr[$_record['Field']]['default'] = ($_record['Default'] == 'NULL') ? '' : $_record['Default'];
-			$_descr[$_record['Field']]['comment'] = $_record['Comment'];
-//			$_descr[$_record['Field']]['index'] = substr(0, 1, $_record['Key']); // P[RI], U[NI] or M[UL]
-		}
-		return $_descr;
+		return $_columns;
 	}
 
 	/**
@@ -473,22 +394,12 @@ class SchemeHandler extends _OWL
 	 */
 	private function getTableIndexes($_tablename)
 	{
-		$_descr = array ();
-		$_data  = array ();
-		$_qry = 'SHOW INDEXES FROM ' . $this->db->tablename($_tablename);
-
-		$this->db->read (DBHANDLE_DATA, $_data, $_qry, __LINE__, __FILE__);
-		if ($this->db->getStatus() === 'DBHANDLE_NODATA') {
+		$_indexes = $this->db->getDriver()->dbTableIndexes($this->db, $this->db->tablename($_tablename, true));
+		if ($_indexes === null) {
 			$this->setStatus (SCHEMEHANDLE_NOINDEX, $_tablename);
 			return null;
 		}
-		foreach ($_data as $_record) {
-			$_index[$_record['Key_name']]['columns'][$_record['Seq_in_index']] = $_record['Column_name'];
-			$_index[$_record['Key_name']]['unique'] = (!$_record['Non_unique']);
-			$_index[$_record['Key_name']]['type'] = $_record['Index_type'];
-			$_index[$_record['Key_name']]['comment'] = $_record['Comment'];
-		}
-		return $_index;
+		return $_indexes;
 	}
 
 	/**

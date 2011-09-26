@@ -3,7 +3,7 @@
  * \file
  * This file defines default methods for the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdefaults.php,v 1.4 2011-09-26 10:50:19 oscar Exp $
+ * \version $Id: class.dbdefaults.php,v 1.5 2011-09-26 16:04:37 oscar Exp $
  */
 
 /**
@@ -21,12 +21,55 @@ abstract class DbDefaults
 	protected $quoting;
 
 	/**
+	 * array - Cached queries. This cache is used by drivers that need more SQL statements to
+	 * achieve a single result, e.g. an AUTO INCREMENT emulation in Oracle using a sequence and trigger
+	 */
+	private $cachedSQL;
+
+	/**
 	 * Class constructor
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __constructor()
 	{
 		$this->quoting = ConfigHandler::get ('database', 'quotes', '');
+		$this->cachedSQL = array();
+	}
+
+	/**
+	 * Add an SQL statement to the query cache
+	 * \param[in] $_qry Fully formatted SQL statement
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	final protected function queryCacheAdd ($_qry)
+	{
+		$this->cachedSQL[] = $_qry;
+	}
+
+	/**
+	 * Execute all cached statements
+	 * \param[in] $_resource Link with the database server
+	 * \return boolean, true on success, false on the first error.
+	 * When an error occurs, all other statements will be skipped
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	final protected function queryCacheExec (&$_resource)
+	{
+		foreach ($this->cachedSQL as $_qry) {
+			if (!$this->dbExec($_resource, $_qry)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Clear the cached SQL statements
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	final protected function queryCacheClear ()
+	{
+		$this->cachedSQL = array();
 	}
 
 	/**

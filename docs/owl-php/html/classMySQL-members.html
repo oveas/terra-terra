@@ -102,10 +102,17 @@ This is the complete list of members for <a class="el" href="classMySQL.html">My
   <tr class="memlist"><td><a class="el" href="classDbDefaults.html#a5efc5806d1fe1f2efd17809774e8289f">$quoting</a></td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a0fc0de8fcae17604dea97d9dfc12cfba">__construct</a>()</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbDefaults.html#afc607b5c0a8d2320cd21f5746dde027e">__constructor</a>()</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMySQL.html#a5d5fff0efa81d6e450d29b2ed1e188c6">dbAddField</a>(&amp;$_resource, $_table, $_field, array $_desc)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMySQL.html#a728dd15813e09381c98bfac6e6e5b57c">dbAlterField</a>(&amp;$_resource, $_table, $_field, array $_desc)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a88191ab56d8ff3389b4519b712d74c32">dbClear</a>(&amp;$_data)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#af37ce7304d8326337363a12631835d1b">dbClose</a>(&amp;$_resource)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a856919afd4bd3680410fdc98bd2eb865">dbConnect</a>(&amp;$_resource, $_server, $_name, $_user, $_password, $_multiple=false)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a54c2526c30d48b65d34c51581ddbabd2">dbCreate</a>(&amp;$_resource, $_name)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMySQL.html#a18c5e7b6a209c1e0704ec2e358a35c35">dbCreateTable</a>(&amp;$_resource, $_table, array $_colDefs, array $_idxDefs)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMySQL.html#a2bc5e21c1accad70003346dfb5bee00a">dbDefineField</a>($_table, $_name, array $_desc)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMySQL.html#a23bf47e83fba2692188cc7567d4da1d8">dbDefineIndex</a>($_table, $_name, array $_desc)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMySQL.html#a35dff4aced926b1945adf8148fb904f8">dbDropField</a>(&amp;$_resource, $_table, $_field)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMySQL.html#a0eb517b993e13ac7af641a47b1e727d4">dbDropTable</a>(&amp;$_resource, $_table)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#aca5c47b5530644a7877d32b1c04376f2">dbError</a>(&amp;$_resource, &amp;$_number, &amp;$_text)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a7f4b581ad71a3ee8922d51c9ef28a18c">dbEscapeString</a>($_string)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a469902953a75fcdb3f65b822376c67c1">dbExec</a>(&amp;$_resource, $_statement)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
@@ -116,6 +123,8 @@ This is the complete list of members for <a class="el" href="classMySQL.html">My
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#abfbd28048fdcf147302e976dc98681eb">DbDriver::dbQuote</a>($_string)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#af85679f7912ab93293b31ad7609a7734">dbRead</a>(&amp;$_data, &amp;$_resource, $_query)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a69ec9e11642d3ef0dddcecf95acc6907">dbRowCount</a>(&amp;$_data)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMySQL.html#abf8335ce880548661e42efc40ce72282">dbTableColumns</a>(&amp;$_dbHandler, $_table)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMySQL.html#ab4ae37d6dbcedceb225d53fe31ffd531">dbTableIndexes</a>(&amp;$_dbHandler, $_table)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a9da288ed9ff36dc572a68165de8b5839">dbTableList</a>(&amp;$_resource, $_pattern, $_views=false)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#ad639e6c42d1ad72ef55244b38b2c32ca">dbTransactionCommit</a>(&amp;$_resource, $_name=null, $_new=false)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a94ca8ff0d1a4072f80c14e598274fdca">dbTransactionRollback</a>(&amp;$_resource, $_name=null, $_new=false)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
@@ -136,6 +145,10 @@ This is the complete list of members for <a class="el" href="classMySQL.html">My
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a87433f8e6a93197b09d60a99e8dac3e1">DbDriver::functionMin</a>($_field, array $_arguments=array())</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbDefaults.html#a9cb29749650ea6a3b7a7181a5783f48f">DbDefaults::isRetryable</a>($_errorCode)</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a0faed62206bfa6538e5093dfaa8b9653">DbDriver::isRetryable</a>($_errorCode)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMySQL.html#ab49a086475f5858f0e459090d28366ed">mapType</a>($_type)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a>($_qry)</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDbDefaults.html#acae6e1f7f0ced6921724165e7a9b7290">queryCacheClear</a>()</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDbDefaults.html#a0817a1c69dcbf9791d985755485eefc7">queryCacheExec</a>(&amp;$_resource)</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#ad91158ef04d929b3da397997c9a38ded">tableLock</a>(&amp;$_resource, $_table, $_type=DBDRIVER_LOCKTYPE_READ)</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMySQL.html#a4ac65030ba349b57c476993460703d02">tableUnlock</a>(&amp;$_resource, $_table=array())</td><td><a class="el" href="classMySQL.html">MySQL</a></td><td></td></tr>
 </table></div>
@@ -157,7 +170,7 @@ This is the complete list of members for <a class="el" href="classMySQL.html">My
 </div>
 
 
-    <li class="footer">Generated on Mon Sep 26 2011 09:53:21 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 18:07:04 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

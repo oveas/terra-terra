@@ -109,64 +109,84 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00031"></a>00031 {
 <a name="l00036"></a>00036     <span class="keyword">public</span> function __construct();
 <a name="l00037"></a>00037 
-<a name="l00045"></a>00045     <span class="keyword">public</span> function dbCreate (&amp;$_resource, $_name);
-<a name="l00046"></a>00046 
-<a name="l00054"></a>00054     <span class="keyword">public</span> function dbError (&amp;$_resource, &amp;$_number, &amp;$_text);
-<a name="l00055"></a>00055 
-<a name="l00063"></a>00063     <span class="keyword">public</span> function isRetryable ($_errorCode);
-<a name="l00064"></a>00064 
-<a name="l00076"></a>00076     <span class="keyword">public</span> function dbConnect (&amp;$_resource, $_server, $_name, $_user, $_password, $_multiple = <span class="keyword">false</span>);
-<a name="l00077"></a>00077 
-<a name="l00088"></a>00088     <span class="keyword">public</span> function dbOpen (&amp;$_resource, $_server, $_name, $_user, $_password);
-<a name="l00089"></a>00089 
-<a name="l00098"></a>00098     <span class="keyword">public</span> function dbTableList (&amp;$_resource, $_pattern, $_views = <span class="keyword">false</span>);
-<a name="l00099"></a>00099 
-<a name="l00107"></a>00107     <span class="keyword">public</span> function dbExec (&amp;$_resource, $_statement);
-<a name="l00108"></a>00108 
-<a name="l00117"></a>00117     <span class="keyword">public</span> function dbRead (&amp;$_data, &amp;$_resource, $_query);
-<a name="l00118"></a>00118 
-<a name="l00126"></a>00126     <span class="keyword">public</span> function dbWrite (&amp;$_resource, $_query);
-<a name="l00127"></a>00127 
-<a name="l00136"></a>00136     <span class="keyword">public</span> function dbInsertId (&amp;$_resource, $_table, $_field);
+<a name="l00047"></a>00047     <span class="keyword">public</span> function dbCreateTable(&amp;$_resource, $_table, array $_colDefs, array $_idxDefs);
+<a name="l00048"></a>00048 
+<a name="l00057"></a>00057     <span class="keyword">public</span> function dbTableColumns(&amp;$_dbHandler, $_table);
+<a name="l00058"></a>00058 
+<a name="l00067"></a>00067     <span class="keyword">public</span> function dbTableIndexes(&amp;$_dbHandler, $_table);
+<a name="l00068"></a>00068 
+<a name="l00077"></a>00077     <span class="keyword">public</span> function dbDefineField ($_table, $_name, array $_desc);
+<a name="l00078"></a>00078 
+<a name="l00087"></a>00087     <span class="keyword">public</span> function dbDefineIndex ($_table, $_name, array $_desc);
+<a name="l00088"></a>00088 
+<a name="l00095"></a>00095     <span class="keyword">public</span> function mapType ($_type);
+<a name="l00096"></a>00096 
+<a name="l00104"></a>00104     <span class="keyword">public</span> function dbDropTable (&amp;$_resource, $_table);
+<a name="l00105"></a>00105 
+<a name="l00114"></a>00114     <span class="keyword">public</span> function dbDropField (&amp;$_resource, $_table, $_field);
+<a name="l00115"></a>00115 
+<a name="l00125"></a>00125     <span class="keyword">public</span> function dbAlterField (&amp;$_resource, $_table, $_field, array $_desc);
+<a name="l00126"></a>00126 
+<a name="l00136"></a>00136     <span class="keyword">public</span> function dbAddField (&amp;$_resource, $_table, $_field, array $_desc);
 <a name="l00137"></a>00137 
-<a name="l00144"></a>00144     <span class="keyword">public</span> function dbRowCount (&amp;$_data);
-<a name="l00145"></a>00145 
-<a name="l00152"></a>00152     <span class="keyword">public</span> function dbFetchNextRecord (&amp;$_data);
-<a name="l00153"></a>00153 
-<a name="l00159"></a>00159     <span class="keyword">public</span> function dbClear (&amp;$_data);
-<a name="l00160"></a>00160 
-<a name="l00167"></a>00167     <span class="keyword">public</span> function dbClose (&amp;$_resource);
-<a name="l00168"></a>00168 
-<a name="l00176"></a>00176     <span class="keyword">public</span> function dbTransactionStart (&amp;$_resource, $_name = null);
+<a name="l00145"></a>00145     <span class="keyword">public</span> function dbCreate (&amp;$_resource, $_name);
+<a name="l00146"></a>00146 
+<a name="l00154"></a>00154     <span class="keyword">public</span> function dbError (&amp;$_resource, &amp;$_number, &amp;$_text);
+<a name="l00155"></a>00155 
+<a name="l00163"></a>00163     <span class="keyword">public</span> function isRetryable ($_errorCode);
+<a name="l00164"></a>00164 
+<a name="l00176"></a>00176     <span class="keyword">public</span> function dbConnect (&amp;$_resource, $_server, $_name, $_user, $_password, $_multiple = <span class="keyword">false</span>);
 <a name="l00177"></a>00177 
-<a name="l00186"></a>00186     <span class="keyword">public</span> function dbTransactionCommit (&amp;$_resource, $_name = null, $_new = <span class="keyword">false</span>);
-<a name="l00187"></a>00187 
-<a name="l00196"></a>00196     <span class="keyword">public</span> function dbTransactionRollback (&amp;$_resource, $_name = null, $_new = <span class="keyword">false</span>);
-<a name="l00197"></a>00197 
-<a name="l00206"></a>00206     <span class="keyword">public</span> function tableLock(&amp;$_resource, $_table, $_type = <a class="code" href="group__DBDRIVER__TableLock.html#ga5c56b5f9057593dbaa31052f7c7fc08f" title="Lock table for read.">DBDRIVER_LOCKTYPE_READ</a>);
-<a name="l00207"></a>00207 
-<a name="l00215"></a>00215     <span class="keyword">public</span> function tableUnlock(&amp;$_resource, $_table = array());
-<a name="l00216"></a>00216 
-<a name="l00224"></a>00224     <span class="keyword">public</span> function emptyTable (&amp;$_resource, $_table);
-<a name="l00225"></a>00225 
-<a name="l00233"></a>00233     <span class="keyword">public</span> function dbEscapeString ($_string);
-<a name="l00234"></a>00234 
-<a name="l00242"></a>00242     <span class="keyword">public</span> function dbUnescapeString ($_string);
-<a name="l00243"></a>00243 
-<a name="l00251"></a>00251     <span class="keyword">public</span> function dbQuote ($_string);
-<a name="l00252"></a>00252 
-<a name="l00260"></a>00260     <span class="keyword">public</span> function functionCount($_field, array $_arguments = array());
-<a name="l00261"></a>00261 
-<a name="l00269"></a>00269     <span class="keyword">public</span> function functionMax($_field, array $_arguments = array());
-<a name="l00270"></a>00270 
-<a name="l00278"></a>00278     <span class="keyword">public</span> function functionMin($_field, array $_arguments = array());
-<a name="l00279"></a>00279 
-<a name="l00288"></a>00288     <span class="keyword">public</span> function functionIf($_field, array $_arguments = array());
-<a name="l00289"></a>00289 
-<a name="l00298"></a>00298     <span class="keyword">public</span> function functionIfnull($_field, array $_arguments = array());
-<a name="l00299"></a>00299 
-<a name="l00308"></a>00308     <span class="keyword">public</span> function functionConcat($_field, array $_arguments = array());
-<a name="l00309"></a>00309 }
+<a name="l00188"></a>00188     <span class="keyword">public</span> function dbOpen (&amp;$_resource, $_server, $_name, $_user, $_password);
+<a name="l00189"></a>00189 
+<a name="l00198"></a>00198     <span class="keyword">public</span> function dbTableList (&amp;$_resource, $_pattern, $_views = <span class="keyword">false</span>);
+<a name="l00199"></a>00199 
+<a name="l00207"></a>00207     <span class="keyword">public</span> function dbExec (&amp;$_resource, $_statement);
+<a name="l00208"></a>00208 
+<a name="l00217"></a>00217     <span class="keyword">public</span> function dbRead (&amp;$_data, &amp;$_resource, $_query);
+<a name="l00218"></a>00218 
+<a name="l00226"></a>00226     <span class="keyword">public</span> function dbWrite (&amp;$_resource, $_query);
+<a name="l00227"></a>00227 
+<a name="l00236"></a>00236     <span class="keyword">public</span> function dbInsertId (&amp;$_resource, $_table, $_field);
+<a name="l00237"></a>00237 
+<a name="l00244"></a>00244     <span class="keyword">public</span> function dbRowCount (&amp;$_data);
+<a name="l00245"></a>00245 
+<a name="l00252"></a>00252     <span class="keyword">public</span> function dbFetchNextRecord (&amp;$_data);
+<a name="l00253"></a>00253 
+<a name="l00259"></a>00259     <span class="keyword">public</span> function dbClear (&amp;$_data);
+<a name="l00260"></a>00260 
+<a name="l00267"></a>00267     <span class="keyword">public</span> function dbClose (&amp;$_resource);
+<a name="l00268"></a>00268 
+<a name="l00276"></a>00276     <span class="keyword">public</span> function dbTransactionStart (&amp;$_resource, $_name = null);
+<a name="l00277"></a>00277 
+<a name="l00286"></a>00286     <span class="keyword">public</span> function dbTransactionCommit (&amp;$_resource, $_name = null, $_new = <span class="keyword">false</span>);
+<a name="l00287"></a>00287 
+<a name="l00296"></a>00296     <span class="keyword">public</span> function dbTransactionRollback (&amp;$_resource, $_name = null, $_new = <span class="keyword">false</span>);
+<a name="l00297"></a>00297 
+<a name="l00306"></a>00306     <span class="keyword">public</span> function tableLock(&amp;$_resource, $_table, $_type = <a class="code" href="group__DBDRIVER__TableLock.html#ga5c56b5f9057593dbaa31052f7c7fc08f" title="Lock table for read.">DBDRIVER_LOCKTYPE_READ</a>);
+<a name="l00307"></a>00307 
+<a name="l00315"></a>00315     <span class="keyword">public</span> function tableUnlock(&amp;$_resource, $_table = array());
+<a name="l00316"></a>00316 
+<a name="l00324"></a>00324     <span class="keyword">public</span> function emptyTable (&amp;$_resource, $_table);
+<a name="l00325"></a>00325 
+<a name="l00333"></a>00333     <span class="keyword">public</span> function dbEscapeString ($_string);
+<a name="l00334"></a>00334 
+<a name="l00342"></a>00342     <span class="keyword">public</span> function dbUnescapeString ($_string);
+<a name="l00343"></a>00343 
+<a name="l00351"></a>00351     <span class="keyword">public</span> function dbQuote ($_string);
+<a name="l00352"></a>00352 
+<a name="l00360"></a>00360     <span class="keyword">public</span> function functionCount($_field, array $_arguments = array());
+<a name="l00361"></a>00361 
+<a name="l00369"></a>00369     <span class="keyword">public</span> function functionMax($_field, array $_arguments = array());
+<a name="l00370"></a>00370 
+<a name="l00378"></a>00378     <span class="keyword">public</span> function functionMin($_field, array $_arguments = array());
+<a name="l00379"></a>00379 
+<a name="l00388"></a>00388     <span class="keyword">public</span> function functionIf($_field, array $_arguments = array());
+<a name="l00389"></a>00389 
+<a name="l00398"></a>00398     <span class="keyword">public</span> function functionIfnull($_field, array $_arguments = array());
+<a name="l00399"></a>00399 
+<a name="l00408"></a>00408     <span class="keyword">public</span> function functionConcat($_field, array $_arguments = array());
+<a name="l00409"></a>00409 }
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -187,7 +207,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon Sep 26 2011 09:53:18 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 18:07:01 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

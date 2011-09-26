@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdriver.php,v 1.5 2011-09-26 10:50:19 oscar Exp $
+ * \version $Id: class.dbdriver.php,v 1.6 2011-09-26 16:04:37 oscar Exp $
  */
 
 /**
@@ -34,6 +34,106 @@ interface DbDriver
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct();
+
+	/**
+	 * Create a database table
+	 * \param[in] $_resource Link with the database server
+	 * \param[in] $_table Quoted table name
+	 * \param[in] $_colDefs Array with the field definitions
+	 * \param[in] $_idxDefs Array with the index definitions
+	 * \return True on success
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dbCreateTable(&$_resource, $_table, array $_colDefs, array $_idxDefs);
+
+	/**
+	 * Get a description of the table fields
+	 * \param[in] $_dbHandler Link to the database handler.
+	 * \param[in] $_table Table name with prefix but unquoted
+	 * \return Array with the fields in the format accepted by the SchemeHandler.
+	 * \see SchemeHandler::defineScheme()
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dbTableColumns(&$_dbHandler, $_table);
+
+	/**
+	 * Get a description of the table indexes
+	 * \param[in] $_dbHandler Link to the database handler.
+	 * \param[in] $_table Table name with prefix but unquoted
+	 * \return Array with the indexes in the format accepted by the SchemeHandler.
+	 * \see SchemeHandler::defineIndex()
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dbTableIndexes(&$_dbHandler, $_table);
+
+	/**
+	 * Create the SQL code for a field definition
+	 * \param[in] $_table Table name for the field, with prefix but without quotes
+	 * \param[in] $_name Field name
+	 * \param[in] $_desc Indexed array with the field properties
+	 * \return string SQL code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dbDefineField ($_table, $_name, array $_desc);
+
+	/**
+	 * Create the SQL code for an index definition
+	 * \param[in] $_table Table name for the index, with prefix but without quotes
+	 * \param[in] $_name Index name
+	 * \param[in] $_desc Indexed array with the index properties
+	 * \return string SQL code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dbDefineIndex ($_table, $_name, array $_desc);
+
+	/**
+	 * Map a datatype as used by OWL-PHP (which is a MySQL datatype) to the database specific type
+	 * \param[in] $_type OWL (=MySQL) datatype
+	 * \return Database specific datatype
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function mapType ($_type);
+
+	/**
+	 * Remove a database table
+	 * \param[in] $_resource Link with the database server
+	 * \param[in] $_table Table name
+	 * \return True on success
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dbDropTable (&$_resource, $_table);
+
+	/**
+	 * Remove a table field
+	 * \param[in] $_resource Link with the database server
+	 * \param[in] $_table Table name. Note the tablename should NOT be quoted!
+	 * \param[in] $_field Field name
+	 * \return True on success
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dbDropField (&$_resource, $_table, $_field);
+
+	/**
+	 * Alter a table field
+	 * \param[in] $_resource Link with the database server
+	 * \param[in] $_table Table name. Note the tablename should NOT be quoted!
+	 * \param[in] $_field Field name
+	 * \param[in] $_desc Indexed array with the table description
+	 * \return True on success
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dbAlterField (&$_resource, $_table, $_field, array $_desc);
+
+	/**
+	 * Add a table field
+	 * \param[in] $_resource Link with the database server
+	 * \param[in] $_table Table name. Note the tablename should NOT be quoted!
+	 * \param[in] $_field Field name
+	 * \param[in] $_desc Indexed array with the table description
+	 * \return True on success
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dbAddField (&$_resource, $_table, $_field, array $_desc);
 
 	/**
 	 * Create a new database
@@ -251,7 +351,7 @@ interface DbDriver
 	public function dbQuote ($_string);
 
 	/**
-	 * Inplementation of the SQL COUNT() function.
+	 * Implementation of the SQL COUNT() function.
 	 * \param[in] $_field Name of the field
 	 * \param[in] $_arguments Array with arguments, which is required by syntax
 	 * \return Complete SQL function code
@@ -260,7 +360,7 @@ interface DbDriver
 	public function functionCount($_field, array $_arguments = array());
 
 	/**
-	 * Inplementation of the SQL MAX() function.
+	 * Implementation of the SQL MAX() function.
 	 * \param[in] $_field Name of the field
 	 * \param[in] $_arguments Array with arguments, which is required by syntax
 	 * \return Complete SQL function code
@@ -269,7 +369,7 @@ interface DbDriver
 	public function functionMax($_field, array $_arguments = array());
 
 	/**
-	 * Inplementation of the SQL MIN() function.
+	 * Implementation of the SQL MIN() function.
 	 * \param[in] $_field Name of the field
 	 * \param[in] $_arguments Array with arguments, which is required by syntax
 	 * \return Complete SQL function code
@@ -278,7 +378,7 @@ interface DbDriver
 	public function functionMin($_field, array $_arguments = array());
 
 	/**
-	 * Inplementation of the SQL IF() function.
+	 * Implementation of the SQL IF() function.
 	 * \param[in] $_field Name of the field
 	 * \param[in] $_arguments Array with arguments. This array should be
 	 * in the format (check, value, then, else), e.g. array('<', 5 , 'Less then 5', '5 or more')
@@ -288,7 +388,7 @@ interface DbDriver
 	public function functionIf($_field, array $_arguments = array());
 
 	/**
-	 * Inplementation of the SQL IFNULL() function.
+	 * Implementation of the SQL IFNULL() function.
 	 * \param[in] $_field Name of the field
 	 * \param[in] $_arguments Array with arguments. The array should have 1 element, which is the
 	 * default value when $_field is empty. Note for literal string values this field must be quoted, e.g. "'value'"!
@@ -298,7 +398,7 @@ interface DbDriver
 	public function functionIfnull($_field, array $_arguments = array());
 
 	/**
-	 * Inplementation of the SQL CONCAT() function.
+	 * Implementation of the SQL CONCAT() function.
 	 * \param[in] $_field Name of the field
 	 * \param[in] $_arguments Array with arguments.  The array should have 1 element, which is the
 	 * value that will be concatenaterd to $_field. Note for literal string values this field must be quoted, e.g. "'value'"!

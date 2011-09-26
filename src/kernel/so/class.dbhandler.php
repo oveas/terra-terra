@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbhandler.php,v 1.30 2011-09-26 10:50:18 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.31 2011-09-26 16:04:36 oscar Exp $
  */
 
 /**
@@ -494,14 +494,23 @@ class DbHandler extends _OWL
 	}
 
 	/**
-	 * Forward function to the driver allowing quoting by other objects
-	 * \param[in] $string to quote
-	 * \return Quoted string
+	 * Return the database driver
+	 * \return Reference to the driver
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function quote ($string)
+	public function getDriver ()
 	{
-		return $this->driver->dbQuote($string);
+		return $this->driver;
+	}
+
+	/**
+	 * Return the database resource
+	 * \return Reference to database resource
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function getResource ()
+	{
+		return $this->id;
 	}
 
 	/**

@@ -3,7 +3,7 @@
  * \file
  * Define all output methods
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.outputhandler.php,v 1.2 2011-09-26 10:50:17 oscar Exp $
+ * \version $Id: class.outputhandler.php,v 1.3 2011-09-26 16:04:36 oscar Exp $
  */
 
 /**
@@ -77,6 +77,9 @@ abstract class OutputHandler
 	 * Send the output to the standard output channel as an array statement parseable by PHP.
 	 * This is a developer helper function.
 	 * \param[in] $array Array that should be sent to the output channel.
+	 * \param[in] $root Name of the array at the current level. By default, starts with 'myArray'
+	 * \param[in] $depth Current depth. Starts with 0 and increases on every recursive call
+	 * \todo Change this method to support the output in a single define including all sublevels.
 	 * \author machuidel (taken from http://php.net/manual/en/function.print-r.php)
 	 */
 	static public function outputPhpArray(array &$array, $root = '$myArray', $depth = 0)

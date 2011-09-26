@@ -202,35 +202,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00111"></a>00111     , FILE_OPENED           =&gt; <span class="stringliteral">&#39;&#39;</span>
 <a name="l00112"></a>00112     , FILE_CLOSED           =&gt; <span class="stringliteral">&#39;&#39;</span>
 <a name="l00113"></a>00113     , FILE_OPENERR          =&gt; <span class="stringliteral">&#39;&#39;</span>
-<a name="l00114"></a>00114     , SCHEMEHANDLE_NOTABLE  =&gt; <span class="stringliteral">&#39;The table $p1$ does not exist&#39;</span>
-<a name="l00115"></a>00115     , SCHEMEHANDLE_NOINDEX  =&gt; <span class="stringliteral">&#39;The table $p1$ has no indexes&#39;</span>
-<a name="l00116"></a>00116     , SCHEMEHANDLE_IVTABLE  =&gt; <span class="stringliteral">&#39;Creating a table with an invalid or empty tablename&#39;</span>
-<a name="l00117"></a>00117     , SCHEMEHANDLE_EMPTYTABLE   =&gt; <span class="stringliteral">&#39;The tabl $p1$ exists but has no fields - this can\&#39;t be possible :-/&#39;</span>
-<a name="l00118"></a>00118     , SCHEMEHANDLE_INUSE    =&gt; <span class="stringliteral">&#39;Cannot create a new table while $p1$ is in use - call reset() first&#39;</span>
-<a name="l00119"></a>00119     , SCHEMEHANDLE_INUSE    =&gt; <span class="stringliteral">&#39;No table in use to alter&#39;</span>
-<a name="l00120"></a>00120     , SCHEMEHANDLE_NOINDEX  =&gt; <span class="stringliteral">&#39;No index defined for scheme $p1$&#39;</span>
-<a name="l00121"></a>00121     , SCHEMEHANDLE_MULAUTOINC   =&gt; <span class="stringliteral">&#39;Multiple AUTO_INCREMENT fields defined for scheme $p1$&#39;</span>
-<a name="l00122"></a>00122     , SCHEMEHANDLE_NOCOLIDX =&gt; <span class="stringliteral">&#39;No columns defined for index $p2$ on scheme  $p1$&#39;</span>
-<a name="l00123"></a>00123     , SCHEMEHANDLE_IVCOLID  =&gt; <span class="stringliteral">&#39;Column $p3$ for index $p2$ on scheme does not exist&#39;</span>
-<a name="l00124"></a>00124     , SCHEMEHANDLE_NOCOLS   =&gt; <span class="stringliteral">&#39;No columns defined for scheme $p1$&#39;</span>
-<a name="l00125"></a>00125     , SCHEMEHANDLE_DUPLPRKEY    =&gt; <span class="stringliteral">&#39;Duplicate primary key found for scheme $p1$&#39;</span>
-<a name="l00126"></a>00126     , DISP_ALREGIST         =&gt; <span class="stringliteral">&#39;Another dispatcher was already registered&#39;</span>
-<a name="l00127"></a>00127     , DISP_NOARG            =&gt; <span class="stringliteral">&#39;Dispatcher received no arguments&#39;</span>
-<a name="l00128"></a>00128     , DISP_INCOMPAT         =&gt; <span class="stringliteral">&#39;Trying to register incompatible arguments - a non- array argument was registered before&#39;</span>
-<a name="l00129"></a>00129     , DISP_IVDISPATCH       =&gt; <span class="stringliteral">&#39;Invalid argument $p1$ in dispatcher&#39;</span>
-<a name="l00130"></a>00130     , DISP_INSARG           =&gt; <span class="stringliteral">&#39;Insufficient arguments passed to the dispatcher&#39;</span>
-<a name="l00131"></a>00131     , DISP_NOCLASS          =&gt; <span class="stringliteral">&#39;Cannot instantiate class $p1$&#39;</span>
-<a name="l00132"></a>00132     , DISP_NOCLASSF         =&gt; <span class="stringliteral">&#39;Classfile $p1$ not found in $p2$&#39;</span>
-<a name="l00133"></a>00133     , DISP_NOMETHOD         =&gt; <span class="stringliteral">&#39;Method $p1$ not found in class $p2$&#39;</span>
-<a name="l00134"></a>00134     , DOM_IVATTRIB          =&gt; <span class="stringliteral">&#39;Invalid attribute $p1$&#39;</span>
-<a name="l00135"></a>00135     , DOM_SELFREF           =&gt; <span class="stringliteral">&#39;Cannot set the content with a reference to myself in element $p1$&#39;</span>
-<a name="l00136"></a>00136     , DOM_LOOPDETECT        =&gt; <span class="stringliteral">&#39;Loop detected - parent item $p1$ is used as content in $p2$&#39;</span>
-<a name="l00137"></a>00137     , CONTAINER_IVTYPE      =&gt; <span class="stringliteral">&#39;Invalid container type $p1$&#39;</span>
-<a name="l00138"></a>00138     , CONTAINER_IVCLASSNAME =&gt; <span class="stringliteral">&#39;Invalid classname for containertype $p1$ - cannot instantiate $p2$&#39;</span>
-<a name="l00139"></a>00139     , DOC_NOSUCHFILE        =&gt; <span class="stringliteral">&#39;Cannot load $p1$ file $p2$ - file does not exist&#39;</span>
-<a name="l00140"></a>00140     , DOC_PROTTAG           =&gt; <span class="stringliteral">&#39;Attemt to overwrite the protected $p1$ tag $p2$&#39;</span>
-<a name="l00141"></a>00141     , DOC_IVFILESPEC        =&gt; <span class="stringliteral">&#39;Cannot load $p1$ file $p2$ is an invalid location specification&#39;</span>
-<a name="l00142"></a>00142 );
+<a name="l00114"></a>00114     , SCHEMEHANDLE_DBERROR  =&gt; <span class="stringliteral">&#39;The database handler returned an error:&lt;blockquote&gt;$p1$&lt;/blockquote&gt;&#39;</span>
+<a name="l00115"></a>00115     , SCHEMEHANDLE_NOTABLE  =&gt; <span class="stringliteral">&#39;The table $p1$ does not exist&#39;</span>
+<a name="l00116"></a>00116     , SCHEMEHANDLE_NOINDEX  =&gt; <span class="stringliteral">&#39;The table $p1$ has no indexes&#39;</span>
+<a name="l00117"></a>00117     , SCHEMEHANDLE_IVTABLE  =&gt; <span class="stringliteral">&#39;Creating a table with an invalid or empty tablename&#39;</span>
+<a name="l00118"></a>00118     , SCHEMEHANDLE_EMPTYTABLE   =&gt; <span class="stringliteral">&#39;The tabl $p1$ exists but has no fields - this can\&#39;t be possible :-/&#39;</span>
+<a name="l00119"></a>00119     , SCHEMEHANDLE_INUSE    =&gt; <span class="stringliteral">&#39;Cannot create a new table while $p1$ is in use - call reset() first&#39;</span>
+<a name="l00120"></a>00120     , SCHEMEHANDLE_INUSE    =&gt; <span class="stringliteral">&#39;No table in use to alter&#39;</span>
+<a name="l00121"></a>00121     , SCHEMEHANDLE_NOINDEX  =&gt; <span class="stringliteral">&#39;No index defined for scheme $p1$&#39;</span>
+<a name="l00122"></a>00122     , SCHEMEHANDLE_MULAUTOINC   =&gt; <span class="stringliteral">&#39;Multiple AUTO_INCREMENT fields defined for scheme $p1$&#39;</span>
+<a name="l00123"></a>00123     , SCHEMEHANDLE_NOCOLIDX =&gt; <span class="stringliteral">&#39;No columns defined for index $p2$ on scheme  $p1$&#39;</span>
+<a name="l00124"></a>00124     , SCHEMEHANDLE_IVCOLID  =&gt; <span class="stringliteral">&#39;Column $p3$ for index $p2$ on scheme does not exist&#39;</span>
+<a name="l00125"></a>00125     , SCHEMEHANDLE_NOCOLS   =&gt; <span class="stringliteral">&#39;No columns defined for scheme $p1$&#39;</span>
+<a name="l00126"></a>00126     , SCHEMEHANDLE_DUPLPRKEY    =&gt; <span class="stringliteral">&#39;Duplicate primary key found for scheme $p1$&#39;</span>
+<a name="l00127"></a>00127     , DISP_ALREGIST         =&gt; <span class="stringliteral">&#39;Another dispatcher was already registered&#39;</span>
+<a name="l00128"></a>00128     , DISP_NOARG            =&gt; <span class="stringliteral">&#39;Dispatcher received no arguments&#39;</span>
+<a name="l00129"></a>00129     , DISP_INCOMPAT         =&gt; <span class="stringliteral">&#39;Trying to register incompatible arguments - a non- array argument was registered before&#39;</span>
+<a name="l00130"></a>00130     , DISP_IVDISPATCH       =&gt; <span class="stringliteral">&#39;Invalid argument $p1$ in dispatcher&#39;</span>
+<a name="l00131"></a>00131     , DISP_INSARG           =&gt; <span class="stringliteral">&#39;Insufficient arguments passed to the dispatcher&#39;</span>
+<a name="l00132"></a>00132     , DISP_NOCLASS          =&gt; <span class="stringliteral">&#39;Cannot instantiate class $p1$&#39;</span>
+<a name="l00133"></a>00133     , DISP_NOCLASSF         =&gt; <span class="stringliteral">&#39;Classfile $p1$ not found in $p2$&#39;</span>
+<a name="l00134"></a>00134     , DISP_NOMETHOD         =&gt; <span class="stringliteral">&#39;Method $p1$ not found in class $p2$&#39;</span>
+<a name="l00135"></a>00135     , DOM_IVATTRIB          =&gt; <span class="stringliteral">&#39;Invalid attribute $p1$&#39;</span>
+<a name="l00136"></a>00136     , DOM_SELFREF           =&gt; <span class="stringliteral">&#39;Cannot set the content with a reference to myself in element $p1$&#39;</span>
+<a name="l00137"></a>00137     , DOM_LOOPDETECT        =&gt; <span class="stringliteral">&#39;Loop detected - parent item $p1$ is used as content in $p2$&#39;</span>
+<a name="l00138"></a>00138     , CONTAINER_IVTYPE      =&gt; <span class="stringliteral">&#39;Invalid container type $p1$&#39;</span>
+<a name="l00139"></a>00139     , CONTAINER_IVCLASSNAME =&gt; <span class="stringliteral">&#39;Invalid classname for containertype $p1$ - cannot instantiate $p2$&#39;</span>
+<a name="l00140"></a>00140     , DOC_NOSUCHFILE        =&gt; <span class="stringliteral">&#39;Cannot load $p1$ file $p2$ - file does not exist&#39;</span>
+<a name="l00141"></a>00141     , DOC_PROTTAG           =&gt; <span class="stringliteral">&#39;Attemt to overwrite the protected $p1$ tag $p2$&#39;</span>
+<a name="l00142"></a>00142     , DOC_IVFILESPEC        =&gt; <span class="stringliteral">&#39;Cannot load $p1$ file $p2$ is an invalid location specification&#39;</span>
+<a name="l00143"></a>00143 );
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -251,7 +252,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Mon Sep 26 2011 09:53:18 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 18:07:01 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

@@ -100,10 +100,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 This is the complete list of members for <a class="el" href="interfaceDbDriver.html">DbDriver</a>, including all inherited members.<table>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a0f4423a9599ea3197d97b110f6a4e3ee">__construct</a>()</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#aaa4f5a98c39d2d755774b5d131ce3b9b">dbAddField</a>(&amp;$_resource, $_table, $_field, array $_desc)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a06f9ce42d704f358d61436d3561863e5">dbAlterField</a>(&amp;$_resource, $_table, $_field, array $_desc)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a713cd43a5493bfcc0025523074568579">dbClear</a>(&amp;$_data)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#afa98f626bf20cb750d114857ba0a33e1">dbClose</a>(&amp;$_resource)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a46e195260ab444a3223f578fbc6c22c9">dbConnect</a>(&amp;$_resource, $_server, $_name, $_user, $_password, $_multiple=false)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a3b044c35e3548effe3adf89bef5043e6">dbCreate</a>(&amp;$_resource, $_name)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a1a8c7a75098f57415a9375d309a38490">dbCreateTable</a>(&amp;$_resource, $_table, array $_colDefs, array $_idxDefs)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#ad529647ef747756008a3e4c8f450f42d">dbDefineField</a>($_table, $_name, array $_desc)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a5f6189e421fcc332191af28715978c82">dbDefineIndex</a>($_table, $_name, array $_desc)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#abce80b81950a4b45c68dcd75415b6a07">dbDropField</a>(&amp;$_resource, $_table, $_field)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#ae61edb4c74b215246d34ca11798df97d">dbDropTable</a>(&amp;$_resource, $_table)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#ac8a3d40046bf719aada5a1807a915589">dbError</a>(&amp;$_resource, &amp;$_number, &amp;$_text)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#accaa33441d852734b2213937612e66f6">dbEscapeString</a>($_string)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a0b45d39ae1507571c29601a2ba5e0fc9">dbExec</a>(&amp;$_resource, $_statement)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
@@ -113,6 +120,8 @@ This is the complete list of members for <a class="el" href="interfaceDbDriver.h
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#abfbd28048fdcf147302e976dc98681eb">dbQuote</a>($_string)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#ac5343f76317816de2fb14e4a55eeb569">dbRead</a>(&amp;$_data, &amp;$_resource, $_query)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a958aa47c21cc8db3ee7831e8b3fb1eb7">dbRowCount</a>(&amp;$_data)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a4b28160bdfe03289dda28b0d8a6ea263">dbTableColumns</a>(&amp;$_dbHandler, $_table)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a5708a49a9fc36eb0071d053a8ae28d44">dbTableIndexes</a>(&amp;$_dbHandler, $_table)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#abe6928bd50a1115dc1e9e6b283d9b065">dbTableList</a>(&amp;$_resource, $_pattern, $_views=false)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#ae0bc420eb8a1e249ee0668803cb7707a">dbTransactionCommit</a>(&amp;$_resource, $_name=null, $_new=false)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a520748a1f9c89199c281eae5062300ea">dbTransactionRollback</a>(&amp;$_resource, $_name=null, $_new=false)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
@@ -127,6 +136,7 @@ This is the complete list of members for <a class="el" href="interfaceDbDriver.h
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#af488697aef28243a0d358c2800752217">functionMax</a>($_field, array $_arguments=array())</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a87433f8e6a93197b09d60a99e8dac3e1">functionMin</a>($_field, array $_arguments=array())</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a0faed62206bfa6538e5093dfaa8b9653">isRetryable</a>($_errorCode)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a28cf92c9b5b9046ac2ebd2a2ade1fae7">mapType</a>($_type)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#abf14f6d96125561b06631649d4a1985a">tableLock</a>(&amp;$_resource, $_table, $_type=DBDRIVER_LOCKTYPE_READ)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a76b1a0d819d13533ba9ff323fe3ca152">tableUnlock</a>(&amp;$_resource, $_table=array())</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
 </table></div>
@@ -148,7 +158,7 @@ This is the complete list of members for <a class="el" href="interfaceDbDriver.h
 </div>
 
 
-    <li class="footer">Generated on Mon Sep 26 2011 09:53:21 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 18:07:03 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

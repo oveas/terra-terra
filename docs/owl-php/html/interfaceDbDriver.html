@@ -119,6 +119,16 @@ Inheritance diagram for DbDriver:</div>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a0f4423a9599ea3197d97b110f6a4e3ee">__construct</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a1a8c7a75098f57415a9375d309a38490">dbCreateTable</a> (&amp;$_resource, $_table, array $_colDefs, array $_idxDefs)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a4b28160bdfe03289dda28b0d8a6ea263">dbTableColumns</a> (&amp;$_dbHandler, $_table)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a5708a49a9fc36eb0071d053a8ae28d44">dbTableIndexes</a> (&amp;$_dbHandler, $_table)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ad529647ef747756008a3e4c8f450f42d">dbDefineField</a> ($_table, $_name, array $_desc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a5f6189e421fcc332191af28715978c82">dbDefineIndex</a> ($_table, $_name, array $_desc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a28cf92c9b5b9046ac2ebd2a2ade1fae7">mapType</a> ($_type)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ae61edb4c74b215246d34ca11798df97d">dbDropTable</a> (&amp;$_resource, $_table)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#abce80b81950a4b45c68dcd75415b6a07">dbDropField</a> (&amp;$_resource, $_table, $_field)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a06f9ce42d704f358d61436d3561863e5">dbAlterField</a> (&amp;$_resource, $_table, $_field, array $_desc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#aaa4f5a98c39d2d755774b5d131ce3b9b">dbAddField</a> (&amp;$_resource, $_table, $_field, array $_desc)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a3b044c35e3548effe3adf89bef5043e6">dbCreate</a> (&amp;$_resource, $_name)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ac8a3d40046bf719aada5a1807a915589">dbError</a> (&amp;$_resource, &amp;$_number, &amp;$_text)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a0faed62206bfa6538e5093dfaa8b9653">isRetryable</a> ($_errorCode)</td></tr>
@@ -178,6 +188,112 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="aaa4f5a98c39d2d755774b5d131ce3b9b"></a><!-- doxytag: member="DbDriver::dbAddField" ref="aaa4f5a98c39d2d755774b5d131ce3b9b" args="(&amp;$_resource, $_table, $_field, array $_desc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbAddField </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Add a table field </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name. Note the tablename should NOT be quoted! </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Field name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the table description </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classMySQL.html#a5d5fff0efa81d6e450d29b2ed1e188c6">MySQL</a>, and <a class="el" href="classOracle.html#a2800da3cbbdbe99987a81e543660ab52">Oracle</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a06f9ce42d704f358d61436d3561863e5"></a><!-- doxytag: member="DbDriver::dbAlterField" ref="a06f9ce42d704f358d61436d3561863e5" args="(&amp;$_resource, $_table, $_field, array $_desc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbAlterField </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Alter a table field </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name. Note the tablename should NOT be quoted! </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Field name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the table description </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classMySQL.html#a728dd15813e09381c98bfac6e6e5b57c">MySQL</a>, and <a class="el" href="classOracle.html#a94772dce83d1354a292aa2b52ab5d730">Oracle</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a713cd43a5493bfcc0025523074568579"></a><!-- doxytag: member="DbDriver::dbClear" ref="a713cd43a5493bfcc0025523074568579" args="(&amp;$_data)" -->
 <div class="memitem">
 <div class="memproto">
@@ -336,6 +452,236 @@ Public Member Functions</h2></td></tr>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Implemented in <a class="el" href="classMySQL.html#a54c2526c30d48b65d34c51581ddbabd2">MySQL</a>, and <a class="el" href="classOracle.html#a88f9a34cc1e26e60a4afa0002b8a4367">Oracle</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1a8c7a75098f57415a9375d309a38490"></a><!-- doxytag: member="DbDriver::dbCreateTable" ref="a1a8c7a75098f57415a9375d309a38490" args="(&amp;$_resource, $_table, array $_colDefs, array $_idxDefs)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbCreateTable </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_colDefs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_idxDefs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create a database table </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Quoted table name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_colDefs</td><td>Array with the field definitions </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_idxDefs</td><td>Array with the index definitions </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classMySQL.html#a18c5e7b6a209c1e0704ec2e358a35c35">MySQL</a>, and <a class="el" href="classOracle.html#a5d799ab80f502841c7db3a9dc70c1b82">Oracle</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad529647ef747756008a3e4c8f450f42d"></a><!-- doxytag: member="DbDriver::dbDefineField" ref="ad529647ef747756008a3e4c8f450f42d" args="($_table, $_name, array $_desc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbDefineField </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create the SQL code for a field definition </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name for the field, with prefix but without quotes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Field name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the field properties </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>string SQL code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classMySQL.html#a2bc5e21c1accad70003346dfb5bee00a">MySQL</a>, and <a class="el" href="classOracle.html#a8e931693518cc2ad22ed53cd49932596">Oracle</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5f6189e421fcc332191af28715978c82"></a><!-- doxytag: member="DbDriver::dbDefineIndex" ref="a5f6189e421fcc332191af28715978c82" args="($_table, $_name, array $_desc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbDefineIndex </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create the SQL code for an index definition </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name for the index, with prefix but without quotes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Index name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the index properties </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>string SQL code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classMySQL.html#a23bf47e83fba2692188cc7567d4da1d8">MySQL</a>, and <a class="el" href="classOracle.html#aededf6b7edbce1a2eba024fea490ce60">Oracle</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abce80b81950a4b45c68dcd75415b6a07"></a><!-- doxytag: member="DbDriver::dbDropField" ref="abce80b81950a4b45c68dcd75415b6a07" args="(&amp;$_resource, $_table, $_field)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbDropField </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Remove a table field </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name. Note the tablename should NOT be quoted! </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Field name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classMySQL.html#a35dff4aced926b1945adf8148fb904f8">MySQL</a>, and <a class="el" href="classOracle.html#abbebb40c407c77879d5e9bcf564d7df7">Oracle</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae61edb4c74b215246d34ca11798df97d"></a><!-- doxytag: member="DbDriver::dbDropTable" ref="ae61edb4c74b215246d34ca11798df97d" args="(&amp;$_resource, $_table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbDropTable </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Remove a database table </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classMySQL.html#a0eb517b993e13ac7af641a47b1e727d4">MySQL</a>, and <a class="el" href="classOracle.html#a8d88166426bb44950bfe16202b4a72c4">Oracle</a>.</p>
 
 </div>
 </div>
@@ -685,6 +1031,86 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a4b28160bdfe03289dda28b0d8a6ea263"></a><!-- doxytag: member="DbDriver::dbTableColumns" ref="a4b28160bdfe03289dda28b0d8a6ea263" args="(&amp;$_dbHandler, $_table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbTableColumns </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_dbHandler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get a description of the table fields </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_dbHandler</td><td>Link to the database handler. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name with prefix but unquoted </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Array with the fields in the format accepted by the <a class="el" href="classSchemeHandler.html" title="Scheme handler.">SchemeHandler</a>. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classSchemeHandler.html#acadaf57e5f374f300501153056f227c5">SchemeHandler::defineScheme()</a> </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classMySQL.html#abf8335ce880548661e42efc40ce72282">MySQL</a>, and <a class="el" href="classOracle.html#a92ee852520a3330c50b86ddaddced4bb">Oracle</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5708a49a9fc36eb0071d053a8ae28d44"></a><!-- doxytag: member="DbDriver::dbTableIndexes" ref="a5708a49a9fc36eb0071d053a8ae28d44" args="(&amp;$_dbHandler, $_table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbTableIndexes </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_dbHandler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get a description of the table indexes </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_dbHandler</td><td>Link to the database handler. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name with prefix but unquoted </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Array with the indexes in the format accepted by the <a class="el" href="classSchemeHandler.html" title="Scheme handler.">SchemeHandler</a>. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classSchemeHandler.html#abc00b9ccfdf0681a3e5d333ad11db0e1">SchemeHandler::defineIndex()</a> </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classMySQL.html#ab4ae37d6dbcedceb225d53fe31ffd531">MySQL</a>, and <a class="el" href="classOracle.html#af4055093a49deb297b2ab2312911a7f4">Oracle</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="abe6928bd50a1115dc1e9e6b283d9b065"></a><!-- doxytag: member="DbDriver::dbTableList" ref="abe6928bd50a1115dc1e9e6b283d9b065" args="(&amp;$_resource, $_pattern, $_views=false)" -->
 <div class="memitem">
 <div class="memproto">
@@ -988,7 +1414,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL CONCAT() function. </p>
+<p>Implementation of the SQL CONCAT() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1027,7 +1453,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL COUNT() function. </p>
+<p>Implementation of the SQL COUNT() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1064,7 +1490,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL IF() function. </p>
+<p>Implementation of the SQL IF() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1103,7 +1529,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL IFNULL() function. </p>
+<p>Implementation of the SQL IFNULL() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1142,7 +1568,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL MAX() function. </p>
+<p>Implementation of the SQL MAX() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1179,7 +1605,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL MIN() function. </p>
+<p>Implementation of the SQL MIN() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1215,6 +1641,34 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a28cf92c9b5b9046ac2ebd2a2ade1fae7"></a><!-- doxytag: member="DbDriver::mapType" ref="a28cf92c9b5b9046ac2ebd2a2ade1fae7" args="($_type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::mapType </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Map a datatype as used by OWL-PHP (which is a <a class="el" href="classMySQL.html" title="Database driver.">MySQL</a> datatype) to the database specific type </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_type</td><td><a class="el" href="classOWL.html">OWL</a> (=MySQL) datatype </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Database specific datatype </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implemented in <a class="el" href="classMySQL.html#ab49a086475f5858f0e459090d28366ed">MySQL</a>, and <a class="el" href="classOracle.html#ad31e5b3e28231f54a41aff42ff5a9b42">Oracle</a>.</p>
 
 </div>
 </div>
@@ -1326,7 +1780,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon Sep 26 2011 09:53:21 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 18:07:03 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

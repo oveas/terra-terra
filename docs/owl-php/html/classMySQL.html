@@ -96,6 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">MySQL Class Reference<div class="ingroups"><a class="el" href="group__OWL__DRIVERS.html">Drivers</a></div></div>  </div>
@@ -121,6 +122,16 @@ Inheritance diagram for MySQL:</div>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a0fc0de8fcae17604dea97d9dfc12cfba">__construct</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a54c2526c30d48b65d34c51581ddbabd2">dbCreate</a> (&amp;$_resource, $_name)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a18c5e7b6a209c1e0704ec2e358a35c35">dbCreateTable</a> (&amp;$_resource, $_table, array $_colDefs, array $_idxDefs)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a2bc5e21c1accad70003346dfb5bee00a">dbDefineField</a> ($_table, $_name, array $_desc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a23bf47e83fba2692188cc7567d4da1d8">dbDefineIndex</a> ($_table, $_name, array $_desc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#ab49a086475f5858f0e459090d28366ed">mapType</a> ($_type)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a0eb517b993e13ac7af641a47b1e727d4">dbDropTable</a> (&amp;$_resource, $_table)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a35dff4aced926b1945adf8148fb904f8">dbDropField</a> (&amp;$_resource, $_table, $_field)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a728dd15813e09381c98bfac6e6e5b57c">dbAlterField</a> (&amp;$_resource, $_table, $_field, array $_desc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a5d5fff0efa81d6e450d29b2ed1e188c6">dbAddField</a> (&amp;$_resource, $_table, $_field, array $_desc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#abf8335ce880548661e42efc40ce72282">dbTableColumns</a> (&amp;$_dbHandler, $_table)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#ab4ae37d6dbcedceb225d53fe31ffd531">dbTableIndexes</a> (&amp;$_dbHandler, $_table)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#aca5c47b5530644a7877d32b1c04376f2">dbError</a> (&amp;$_resource, &amp;$_number, &amp;$_text)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a856919afd4bd3680410fdc98bd2eb865">dbConnect</a> (&amp;$_resource, $_server, $_name, $_user, $_password, $_multiple=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#adba97d7d125e5772ea5ffa61dcb2b9e3">dbOpen</a> (&amp;$_resource, $_server, $_name, $_user, $_password)</td></tr>
@@ -157,6 +168,11 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a58f24b8ba3d3c104cefac2d9c21ca67c">functionCount</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#af488697aef28243a0d358c2800752217">functionMax</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a87433f8e6a93197b09d60a99e8dac3e1">functionMin</a> ($_field, array $_arguments=array())</td></tr>
+<tr><td colspan="2"><h2><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a> ($_qry)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a0817a1c69dcbf9791d985755485eefc7">queryCacheExec</a> (&amp;$_resource)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#acae6e1f7f0ced6921724165e7a9b7290">queryCacheClear</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a5efc5806d1fe1f2efd17809774e8289f">$quoting</a></td></tr>
@@ -190,7 +206,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00019">19</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00027">DbDefaults::__constructor()</a>.</p>
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00033">DbDefaults::__constructor()</a>.</p>
 
 </div>
 </div>
@@ -211,11 +227,125 @@ Protected Attributes</h2></td></tr>
 <p>Class constructor </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00027">27</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00033">33</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 <p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00024">Oracle::__construct()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00019">__construct()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00029">Oracle::__construct()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00019">__construct()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5d5fff0efa81d6e450d29b2ed1e188c6"></a><!-- doxytag: member="MySQL::dbAddField" ref="a5d5fff0efa81d6e450d29b2ed1e188c6" args="(&amp;$_resource, $_table, $_field, array $_desc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MySQL::dbAddField </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Add a table field </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name. Note the tablename should NOT be quoted! </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Field name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the table description </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#aaa4f5a98c39d2d755774b5d131ce3b9b">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00119">119</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00036">dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00096">mapType()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a728dd15813e09381c98bfac6e6e5b57c"></a><!-- doxytag: member="MySQL::dbAlterField" ref="a728dd15813e09381c98bfac6e6e5b57c" args="(&amp;$_resource, $_table, $_field, array $_desc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MySQL::dbAlterField </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Alter a table field </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name. Note the tablename should NOT be quoted! </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Field name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the table description </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#a06f9ce42d704f358d61436d3561863e5">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00111">111</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00036">dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>, and <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
 
 </div>
 </div>
@@ -244,9 +374,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a713cd43a5493bfcc0025523074568579">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00152">152</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00306">306</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00096">dbTableList()</a>.</p>
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00250">dbTableList()</a>.</p>
 
 </div>
 </div>
@@ -276,7 +406,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#afa98f626bf20cb750d114857ba0a33e1">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00157">157</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00311">311</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -345,7 +475,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a46e195260ab444a3223f578fbc6c22c9">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00035">35</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00189">189</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -388,7 +518,259 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00024">24</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00129">dbWrite()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00283">dbWrite()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a18c5e7b6a209c1e0704ec2e358a35c35"></a><!-- doxytag: member="MySQL::dbCreateTable" ref="a18c5e7b6a209c1e0704ec2e358a35c35" args="(&amp;$_resource, $_table, array $_colDefs, array $_idxDefs)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MySQL::dbCreateTable </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_colDefs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_idxDefs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create a database table </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Quoted table name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_colDefs</td><td>Array with the field definitions </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_idxDefs</td><td>Array with the index definitions </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#a1a8c7a75098f57415a9375d309a38490">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00029">29</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2bc5e21c1accad70003346dfb5bee00a"></a><!-- doxytag: member="MySQL::dbDefineField" ref="a2bc5e21c1accad70003346dfb5bee00a" args="($_table, $_name, array $_desc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MySQL::dbDefineField </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create the SQL code for a field definition </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name for the field, with prefix but without quotes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Field name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the field properties </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>string SQL code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#ad529647ef747756008a3e4c8f450f42d">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00036">36</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00096">mapType()</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00119">dbAddField()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00111">dbAlterField()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a23bf47e83fba2692188cc7567d4da1d8"></a><!-- doxytag: member="MySQL::dbDefineIndex" ref="a23bf47e83fba2692188cc7567d4da1d8" args="($_table, $_name, array $_desc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MySQL::dbDefineIndex </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create the SQL code for an index definition </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name for the index, with prefix but without quotes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Index name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the index properties </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>string SQL code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#a5f6189e421fcc332191af28715978c82">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00071">71</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a35dff4aced926b1945adf8148fb904f8"></a><!-- doxytag: member="MySQL::dbDropField" ref="a35dff4aced926b1945adf8148fb904f8" args="(&amp;$_resource, $_table, $_field)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MySQL::dbDropField </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Remove a table field </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name. Note the tablename should NOT be quoted! </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Field name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#abce80b81950a4b45c68dcd75415b6a07">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00106">106</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>, and <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0eb517b993e13ac7af641a47b1e727d4"></a><!-- doxytag: member="MySQL::dbDropTable" ref="a0eb517b993e13ac7af641a47b1e727d4" args="(&amp;$_resource, $_table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MySQL::dbDropTable </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Remove a database table </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#ae61edb4c74b215246d34ca11798df97d">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00101">101</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -435,7 +817,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#ac8a3d40046bf719aada5a1807a915589">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00029">29</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00183">183</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -465,7 +847,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classDbDefaults.html#a8fcdd03995e94df3567ada9dcc975968">DbDefaults</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00162">162</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00316">316</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -506,9 +888,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a0b45d39ae1507571c29601a2ba5e0fc9">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00115">115</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00269">269</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00048">dbTransactionCommit()</a>, <a class="el" href="class_8mysql_8php_source.html#l00056">dbTransactionRollback()</a>, <a class="el" href="class_8mysql_8php_source.html#l00091">emptyTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00064">tableLock()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00085">tableUnlock()</a>.</p>
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00119">dbAddField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00111">dbAlterField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00029">dbCreateTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00106">dbDropField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00101">dbDropTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00202">dbTransactionCommit()</a>, <a class="el" href="class_8mysql_8php_source.html#l00210">dbTransactionRollback()</a>, <a class="el" href="class_8mysql_8php_source.html#l00245">emptyTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00218">tableLock()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00239">tableUnlock()</a>.</p>
 
 </div>
 </div>
@@ -538,9 +920,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#ab0faeafbd094c078e30929c884603833">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00147">147</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00301">301</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00096">dbTableList()</a>.</p>
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00250">dbTableList()</a>.</p>
 
 </div>
 </div>
@@ -588,7 +970,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a437f10c4bd4a651dc4694178da4ef65a">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00137">137</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00291">291</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -650,7 +1032,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a4747fcf9c24b722fd56c65111f9652dd">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00043">43</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00197">197</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -678,7 +1060,9 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Quoted textstring </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00099">99</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00142">142</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00148">Oracle::dbAlterField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00111">dbAlterField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00074">Oracle::dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00036">dbDefineField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00106">Oracle::dbDefineIndex()</a>, <a class="el" href="class_8mysql_8php_source.html#l00071">dbDefineIndex()</a>, <a class="el" href="class_8oracle_8php_source.html#l00143">Oracle::dbDropField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00106">dbDropField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00164">Oracle::dbTableColumns()</a>, <a class="el" href="class_8mysql_8php_source.html#l00127">dbTableColumns()</a>, <a class="el" href="class_8oracle_8php_source.html#l00199">Oracle::dbTableIndexes()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00164">dbTableIndexes()</a>.</p>
 
 </div>
 </div>
@@ -752,9 +1136,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#ac5343f76317816de2fb14e4a55eeb569">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00120">120</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00274">274</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00096">dbTableList()</a>.</p>
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00250">dbTableList()</a>.</p>
 
 </div>
 </div>
@@ -784,7 +1168,95 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a958aa47c21cc8db3ee7831e8b3fb1eb7">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00142">142</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00296">296</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abf8335ce880548661e42efc40ce72282"></a><!-- doxytag: member="MySQL::dbTableColumns" ref="abf8335ce880548661e42efc40ce72282" args="(&amp;$_dbHandler, $_table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MySQL::dbTableColumns </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_dbHandler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get a description of the table fields </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_dbHandler</td><td>Link to the database handler. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name with prefix but unquoted </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Array with the fields in the format accepted by the <a class="el" href="classSchemeHandler.html" title="Scheme handler.">SchemeHandler</a>. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classSchemeHandler.html#acadaf57e5f374f300501153056f227c5">SchemeHandler::defineScheme()</a> </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#a4b28160bdfe03289dda28b0d8a6ea263">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00127">127</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab4ae37d6dbcedceb225d53fe31ffd531"></a><!-- doxytag: member="MySQL::dbTableIndexes" ref="ab4ae37d6dbcedceb225d53fe31ffd531" args="(&amp;$_dbHandler, $_table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MySQL::dbTableIndexes </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_dbHandler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get a description of the table indexes </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_dbHandler</td><td>Link to the database handler. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name with prefix but unquoted </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Array with the indexes in the format accepted by the <a class="el" href="classSchemeHandler.html" title="Scheme handler.">SchemeHandler</a>. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classSchemeHandler.html#abc00b9ccfdf0681a3e5d333ad11db0e1">SchemeHandler::defineIndex()</a> </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#a5708a49a9fc36eb0071d053a8ae28d44">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00164">164</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
 
 </div>
 </div>
@@ -832,9 +1304,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#abe6928bd50a1115dc1e9e6b283d9b065">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00096">96</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00250">250</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00152">dbClear()</a>, <a class="el" href="class_8mysql_8php_source.html#l00147">dbFetchNextRecord()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00120">dbRead()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00306">dbClear()</a>, <a class="el" href="class_8mysql_8php_source.html#l00301">dbFetchNextRecord()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00274">dbRead()</a>.</p>
 
 </div>
 </div>
@@ -882,9 +1354,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classDbDefaults.html#a4519ed7e730dd5539ef54ca4fe766ef5">DbDefaults</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00048">48</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00202">202</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00115">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -932,9 +1404,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classDbDefaults.html#afd19d31d68daa9f87760d5b0902f8646">DbDefaults</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00056">56</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00210">210</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00115">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -1010,33 +1482,7 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00039">39</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac99fd7eba511d8799fcc447006179c72"></a><!-- doxytag: member="MySQL::dbUnescapeString" ref="ac99fd7eba511d8799fcc447006179c72" args="($_string)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DbDriver::dbUnescapeString </td>
-          <td>(</td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_string</em></td><td>)</td>
-          <td><code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Unescape a string fthat is formatted for use in SQL This method is implemented by class <a class="el" href="classDbDefaults.html" title="Database driver defauls.">DbDefaults</a> </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
-<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00082">82</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -1064,7 +1510,33 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00087">87</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00130">130</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac99fd7eba511d8799fcc447006179c72"></a><!-- doxytag: member="MySQL::dbUnescapeString" ref="ac99fd7eba511d8799fcc447006179c72" args="($_string)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbUnescapeString </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_string</em></td><td>)</td>
+          <td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Unescape a string fthat is formatted for use in SQL This method is implemented by class <a class="el" href="classDbDefaults.html" title="Database driver defauls.">DbDefaults</a> </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -1105,7 +1577,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a461f60524cd8d1dd23dd3c70ca5fcab7">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00129">129</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00283">283</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 <p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00024">dbCreate()</a>.</p>
 
@@ -1148,9 +1620,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classDbDefaults.html#a40f0ad68f9278baf0948920d17bbb3e1">DbDefaults</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00091">91</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00245">245</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00115">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -1178,7 +1650,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL CONCAT() function. </p>
+<p>Implementation of the SQL CONCAT() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1191,44 +1663,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a869608212113175cefe8782a1c6f25d8">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00183">183</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a58f24b8ba3d3c104cefac2d9c21ca67c"></a><!-- doxytag: member="MySQL::functionCount" ref="a58f24b8ba3d3c104cefac2d9c21ca67c" args="($_field, array $_arguments=array())" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DbDriver::functionCount </td>
-          <td>(</td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_field</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">array $&#160;</td>
-          <td class="paramname"><em>_arguments</em> = <code>array()</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Inplementation of the SQL COUNT() function. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_arguments</td><td>Array with arguments, which is required by syntax </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
-<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00337">337</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -1267,7 +1702,44 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00136">136</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00179">179</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a58f24b8ba3d3c104cefac2d9c21ca67c"></a><!-- doxytag: member="MySQL::functionCount" ref="a58f24b8ba3d3c104cefac2d9c21ca67c" args="($_field, array $_arguments=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::functionCount </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_arguments</em> = <code>array()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Implementation of the SQL COUNT() function. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_arguments</td><td>Array with arguments, which is required by syntax </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -1295,7 +1767,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL IF() function. </p>
+<p>Implementation of the SQL IF() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1308,7 +1780,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a8b33be0c4168bcb0078afa8494e5f374">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00171">171</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00325">325</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -1336,7 +1808,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL IFNULL() function. </p>
+<p>Implementation of the SQL IFNULL() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1349,7 +1821,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a3196a4aa4f7f75c464593894f63ae2f0">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00178">178</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00332">332</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -1388,9 +1860,9 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00149">149</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00192">192</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00152">Oracle::dbInsertId()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00336">Oracle::dbInsertId()</a>.</p>
 
 </div>
 </div>
@@ -1418,7 +1890,44 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL MAX() function. </p>
+<p>Implementation of the SQL MAX() function. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_arguments</td><td>Array with arguments, which is required by syntax </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a87433f8e6a93197b09d60a99e8dac3e1"></a><!-- doxytag: member="MySQL::functionMin" ref="a87433f8e6a93197b09d60a99e8dac3e1" args="($_field, array $_arguments=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::functionMin </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_arguments</em> = <code>array()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Implementation of the SQL MIN() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1466,44 +1975,35 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00162">162</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00205">205</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a87433f8e6a93197b09d60a99e8dac3e1"></a><!-- doxytag: member="MySQL::functionMin" ref="a87433f8e6a93197b09d60a99e8dac3e1" args="($_field, array $_arguments=array())" -->
+<a class="anchor" id="a9cb29749650ea6a3b7a7181a5783f48f"></a><!-- doxytag: member="MySQL::isRetryable" ref="a9cb29749650ea6a3b7a7181a5783f48f" args="($_errorCode)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DbDriver::functionMin </td>
+          <td class="memname">DbDefaults::isRetryable </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_field</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">array $&#160;</td>
-          <td class="paramname"><em>_arguments</em> = <code>array()</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inherited]</code></td>
+          <td class="paramname"><em>_errorCode</em></td><td>)</td>
+          <td><code> [inherited]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL MIN() function. </p>
+<p>Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. Retries can be enabled at driver level, by default retries are never possible. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_arguments</td><td>Array with arguments, which is required by syntax </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_errorCode</td><td>The errorcode </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00167">167</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -1533,31 +2033,110 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9cb29749650ea6a3b7a7181a5783f48f"></a><!-- doxytag: member="MySQL::isRetryable" ref="a9cb29749650ea6a3b7a7181a5783f48f" args="($_errorCode)" -->
+<a class="anchor" id="ab49a086475f5858f0e459090d28366ed"></a><!-- doxytag: member="MySQL::mapType" ref="ab49a086475f5858f0e459090d28366ed" args="($_type)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DbDefaults::isRetryable </td>
+          <td class="memname">MySQL::mapType </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_errorCode</em></td><td>)</td>
-          <td><code> [inherited]</code></td>
+          <td class="paramname"><em>_type</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. Retries can be enabled at driver level, by default retries are never possible. </p>
+<p>Map a datatype as used by OWL-PHP (which is a <a class="el" href="classMySQL.html" title="Database driver.">MySQL</a> datatype) to the database specific type </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_errorCode</td><td>The errorcode </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_type</td><td><a class="el" href="classOWL.html">OWL</a> (=MySQL) datatype </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Database specific datatype </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00124">124</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Implements <a class="el" href="interfaceDbDriver.html#a28cf92c9b5b9046ac2ebd2a2ade1fae7">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00096">96</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00119">dbAddField()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00036">dbDefineField()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a56d190343880c73c40dcf0a9b93824b1"></a><!-- doxytag: member="MySQL::queryCacheAdd" ref="a56d190343880c73c40dcf0a9b93824b1" args="($_qry)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::queryCacheAdd </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_qry</em></td><td>)</td>
+          <td><code> [final, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Add an SQL statement to the query cache </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_qry</td><td>Fully formatted SQL statement </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00044">44</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acae6e1f7f0ced6921724165e7a9b7290"></a><!-- doxytag: member="MySQL::queryCacheClear" ref="acae6e1f7f0ced6921724165e7a9b7290" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::queryCacheClear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [final, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Clear the cached SQL statements </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00070">70</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0817a1c69dcbf9791d985755485eefc7"></a><!-- doxytag: member="MySQL::queryCacheExec" ref="a0817a1c69dcbf9791d985755485eefc7" args="(&amp;$_resource)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::queryCacheExec </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em></td><td>)</td>
+          <td><code> [final, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Execute all cached statements </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>boolean, true on success, false on the first error. When an error occurs, all other statements will be skipped </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00056">56</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -1605,9 +2184,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#abf14f6d96125561b06631649d4a1985a">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00064">64</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00218">218</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00115">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -1648,9 +2227,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a76b1a0d819d13533ba9ff323fe3ca152">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00085">85</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00239">239</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00115">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -1694,7 +2273,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon Sep 26 2011 09:53:21 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 18:07:04 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

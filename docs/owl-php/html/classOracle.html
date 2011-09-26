@@ -96,6 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle">
@@ -122,6 +123,16 @@ Inheritance diagram for Oracle:</div>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#a08de4cfed9291760ab6585679549bf5f">__construct</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#a88f9a34cc1e26e60a4afa0002b8a4367">dbCreate</a> (&amp;$_resource, $_name)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#a5d799ab80f502841c7db3a9dc70c1b82">dbCreateTable</a> (&amp;$_resource, $_table, array $_colDefs, array $_idxDefs)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#a8e931693518cc2ad22ed53cd49932596">dbDefineField</a> ($_table, $_name, array $_desc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#aededf6b7edbce1a2eba024fea490ce60">dbDefineIndex</a> ($_table, $_name, array $_desc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#ad31e5b3e28231f54a41aff42ff5a9b42">mapType</a> ($_type)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#a8d88166426bb44950bfe16202b4a72c4">dbDropTable</a> (&amp;$_resource, $_table)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#abbebb40c407c77879d5e9bcf564d7df7">dbDropField</a> (&amp;$_resource, $_table, $_field)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#a94772dce83d1354a292aa2b52ab5d730">dbAlterField</a> (&amp;$_resource, $_table, $_field, array $_desc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#a2800da3cbbdbe99987a81e543660ab52">dbAddField</a> (&amp;$_resource, $_table, $_field, array $_desc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#a92ee852520a3330c50b86ddaddced4bb">dbTableColumns</a> (&amp;$_dbHandler, $_table)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#af4055093a49deb297b2ab2312911a7f4">dbTableIndexes</a> (&amp;$_dbHandler, $_table)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#af71661159866cdc729164205143d0f06">dbError</a> (&amp;$_resource, &amp;$_number, &amp;$_text)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#a0b4f126b50cfb8ababb094a2778a2ed6">dbConnect</a> (&amp;$_resource, $_server, $_name, $_user, $_password, $_multiple=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#ae155b3602c3e7c41d40206f959f75a8f">dbOpen</a> (&amp;$_resource, $_server, $_name, $_user, $_password)</td></tr>
@@ -158,12 +169,18 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a58f24b8ba3d3c104cefac2d9c21ca67c">functionCount</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#af488697aef28243a0d358c2800752217">functionMax</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a87433f8e6a93197b09d60a99e8dac3e1">functionMin</a> ($_field, array $_arguments=array())</td></tr>
+<tr><td colspan="2"><h2><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a> ($_qry)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a0817a1c69dcbf9791d985755485eefc7">queryCacheExec</a> (&amp;$_resource)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#acae6e1f7f0ced6921724165e7a9b7290">queryCacheClear</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a5efc5806d1fe1f2efd17809774e8289f">$quoting</a></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#a2f1d2c78c40565b670ca7790559069a4">$uppercaseNames</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOracle.html#a7b0d3ee9022ac88ef60c3c42dc4dd12e">$typeMaps</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Database driver. </p>
@@ -192,9 +209,9 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a0f4423a9599ea3197d97b110f6a4e3ee">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00024">24</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00029">29</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00027">DbDefaults::__constructor()</a>.</p>
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00033">DbDefaults::__constructor()</a>.</p>
 
 </div>
 </div>
@@ -215,11 +232,125 @@ Private Attributes</h2></td></tr>
 <p>Class constructor </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00027">27</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00033">33</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 <p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00024">__construct()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00019">MySQL::__construct()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00029">__construct()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00019">MySQL::__construct()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2800da3cbbdbe99987a81e543660ab52"></a><!-- doxytag: member="Oracle::dbAddField" ref="a2800da3cbbdbe99987a81e543660ab52" args="(&amp;$_resource, $_table, $_field, array $_desc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Oracle::dbAddField </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Add a table field </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name. Note the tablename should NOT be quoted! </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Field name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the table description </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#aaa4f5a98c39d2d755774b5d131ce3b9b">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00156">156</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+
+<p>References <a class="el" href="class_8oracle_8php_source.html#l00074">dbDefineField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00315">dbExec()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00132">mapType()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a94772dce83d1354a292aa2b52ab5d730"></a><!-- doxytag: member="Oracle::dbAlterField" ref="a94772dce83d1354a292aa2b52ab5d730" args="(&amp;$_resource, $_table, $_field, array $_desc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Oracle::dbAlterField </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Alter a table field </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name. Note the tablename should NOT be quoted! </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Field name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the table description </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#a06f9ce42d704f358d61436d3561863e5">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00148">148</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+
+<p>References <a class="el" href="class_8oracle_8php_source.html#l00074">dbDefineField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00315">dbExec()</a>, and <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
 
 </div>
 </div>
@@ -248,9 +379,9 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a713cd43a5493bfcc0025523074568579">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00174">174</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00358">358</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00103">dbTableList()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00287">dbTableList()</a>.</p>
 
 </div>
 </div>
@@ -280,7 +411,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#afa98f626bf20cb750d114857ba0a33e1">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00179">179</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00363">363</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
 </div>
 </div>
@@ -349,7 +480,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a46e195260ab444a3223f578fbc6c22c9">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00043">43</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00227">227</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
 </div>
 </div>
@@ -390,9 +521,261 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a3b044c35e3548effe3adf89bef5043e6">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00030">30</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00062">62</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
-<p>References <a class="el" href="class_8oracle_8php_source.html#l00143">dbWrite()</a>.</p>
+<p>References <a class="el" href="class_8oracle_8php_source.html#l00327">dbWrite()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5d799ab80f502841c7db3a9dc70c1b82"></a><!-- doxytag: member="Oracle::dbCreateTable" ref="a5d799ab80f502841c7db3a9dc70c1b82" args="(&amp;$_resource, $_table, array $_colDefs, array $_idxDefs)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Oracle::dbCreateTable </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_colDefs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_idxDefs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create a database table </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Quoted table name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_colDefs</td><td>Array with the field definitions </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_idxDefs</td><td>Array with the index definitions </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#a1a8c7a75098f57415a9375d309a38490">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00067">67</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+
+<p>References <a class="el" href="class_8oracle_8php_source.html#l00315">dbExec()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8e931693518cc2ad22ed53cd49932596"></a><!-- doxytag: member="Oracle::dbDefineField" ref="a8e931693518cc2ad22ed53cd49932596" args="($_table, $_name, array $_desc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Oracle::dbDefineField </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create the SQL code for a field definition </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name for the field, with prefix but without quotes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Field name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the field properties </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>string SQL code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#ad529647ef747756008a3e4c8f450f42d">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00074">74</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00132">mapType()</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00156">dbAddField()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00148">dbAlterField()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aededf6b7edbce1a2eba024fea490ce60"></a><!-- doxytag: member="Oracle::dbDefineIndex" ref="aededf6b7edbce1a2eba024fea490ce60" args="($_table, $_name, array $_desc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Oracle::dbDefineIndex </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create the SQL code for an index definition </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name for the index, with prefix but without quotes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_name</td><td>Index name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_desc</td><td>Indexed array with the index properties </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>string SQL code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#a5f6189e421fcc332191af28715978c82">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00106">106</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abbebb40c407c77879d5e9bcf564d7df7"></a><!-- doxytag: member="Oracle::dbDropField" ref="abbebb40c407c77879d5e9bcf564d7df7" args="(&amp;$_resource, $_table, $_field)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Oracle::dbDropField </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Remove a table field </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name. Note the tablename should NOT be quoted! </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Field name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#abce80b81950a4b45c68dcd75415b6a07">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00143">143</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+
+<p>References <a class="el" href="class_8oracle_8php_source.html#l00315">dbExec()</a>, and <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8d88166426bb44950bfe16202b4a72c4"></a><!-- doxytag: member="Oracle::dbDropTable" ref="a8d88166426bb44950bfe16202b4a72c4" args="(&amp;$_resource, $_table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Oracle::dbDropTable </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Remove a database table </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True on success </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#ae61edb4c74b215246d34ca11798df97d">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00138">138</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+
+<p>References <a class="el" href="class_8oracle_8php_source.html#l00315">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -439,7 +822,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#ac8a3d40046bf719aada5a1807a915589">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00035">35</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00219">219</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
 </div>
 </div>
@@ -469,7 +852,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classDbDefaults.html#a8fcdd03995e94df3567ada9dcc975968">DbDefaults</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00184">184</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00368">368</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
 </div>
 </div>
@@ -510,9 +893,9 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a0b45d39ae1507571c29601a2ba5e0fc9">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00131">131</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00315">315</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00098">emptyTable()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00067">tableLock()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00156">dbAddField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00148">dbAlterField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00067">dbCreateTable()</a>, <a class="el" href="class_8oracle_8php_source.html#l00143">dbDropField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00138">dbDropTable()</a>, <a class="el" href="class_8oracle_8php_source.html#l00282">emptyTable()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00251">tableLock()</a>.</p>
 
 </div>
 </div>
@@ -542,9 +925,9 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#ab0faeafbd094c078e30929c884603833">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00169">169</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00353">353</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00152">dbInsertId()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00103">dbTableList()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00336">dbInsertId()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00287">dbTableList()</a>.</p>
 
 </div>
 </div>
@@ -592,9 +975,9 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a437f10c4bd4a651dc4694178da4ef65a">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00152">152</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00336">336</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
-<p>References <a class="el" href="class_8oracle_8php_source.html#l00169">dbFetchNextRecord()</a>, <a class="el" href="class_8oracle_8php_source.html#l00137">dbRead()</a>, and <a class="el" href="class_8dbdefaults_8php_source.html#l00149">DbDefaults::functionMax()</a>.</p>
+<p>References <a class="el" href="class_8oracle_8php_source.html#l00353">dbFetchNextRecord()</a>, <a class="el" href="class_8oracle_8php_source.html#l00321">dbRead()</a>, and <a class="el" href="class_8dbdefaults_8php_source.html#l00192">DbDefaults::functionMax()</a>.</p>
 
 </div>
 </div>
@@ -656,7 +1039,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a4747fcf9c24b722fd56c65111f9652dd">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00052">52</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00236">236</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
 </div>
 </div>
@@ -684,7 +1067,9 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Quoted textstring </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00099">99</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00142">142</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00148">dbAlterField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00111">MySQL::dbAlterField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00074">dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00036">MySQL::dbDefineField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00106">dbDefineIndex()</a>, <a class="el" href="class_8mysql_8php_source.html#l00071">MySQL::dbDefineIndex()</a>, <a class="el" href="class_8oracle_8php_source.html#l00143">dbDropField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00106">MySQL::dbDropField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00164">dbTableColumns()</a>, <a class="el" href="class_8mysql_8php_source.html#l00127">MySQL::dbTableColumns()</a>, <a class="el" href="class_8oracle_8php_source.html#l00199">dbTableIndexes()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00164">MySQL::dbTableIndexes()</a>.</p>
 
 </div>
 </div>
@@ -758,9 +1143,9 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#ac5343f76317816de2fb14e4a55eeb569">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00137">137</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00321">321</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00152">dbInsertId()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00103">dbTableList()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00336">dbInsertId()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00287">dbTableList()</a>.</p>
 
 </div>
 </div>
@@ -790,7 +1175,95 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a958aa47c21cc8db3ee7831e8b3fb1eb7">DbDriver</a>.</p>
 
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00348">348</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a92ee852520a3330c50b86ddaddced4bb"></a><!-- doxytag: member="Oracle::dbTableColumns" ref="a92ee852520a3330c50b86ddaddced4bb" args="(&amp;$_dbHandler, $_table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Oracle::dbTableColumns </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_dbHandler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get a description of the table fields </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_dbHandler</td><td>Link to the database handler. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name with prefix but unquoted </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Array with the fields in the format accepted by the <a class="el" href="classSchemeHandler.html" title="Scheme handler.">SchemeHandler</a>. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classSchemeHandler.html#acadaf57e5f374f300501153056f227c5">SchemeHandler::defineScheme()</a> </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#a4b28160bdfe03289dda28b0d8a6ea263">DbDriver</a>.</p>
+
 <p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00164">164</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af4055093a49deb297b2ab2312911a7f4"></a><!-- doxytag: member="Oracle::dbTableIndexes" ref="af4055093a49deb297b2ab2312911a7f4" args="(&amp;$_dbHandler, $_table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Oracle::dbTableIndexes </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_dbHandler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get a description of the table indexes </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_dbHandler</td><td>Link to the database handler. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name with prefix but unquoted </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Array with the indexes in the format accepted by the <a class="el" href="classSchemeHandler.html" title="Scheme handler.">SchemeHandler</a>. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classSchemeHandler.html#abc00b9ccfdf0681a3e5d333ad11db0e1">SchemeHandler::defineIndex()</a> </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Implements <a class="el" href="interfaceDbDriver.html#a5708a49a9fc36eb0071d053a8ae28d44">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00199">199</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
 
 </div>
 </div>
@@ -838,9 +1311,9 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#abe6928bd50a1115dc1e9e6b283d9b065">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00103">103</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00287">287</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
-<p>References <a class="el" href="class_8oracle_8php_source.html#l00174">dbClear()</a>, <a class="el" href="class_8oracle_8php_source.html#l00169">dbFetchNextRecord()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00137">dbRead()</a>.</p>
+<p>References <a class="el" href="class_8oracle_8php_source.html#l00358">dbClear()</a>, <a class="el" href="class_8oracle_8php_source.html#l00353">dbFetchNextRecord()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00321">dbRead()</a>.</p>
 
 </div>
 </div>
@@ -888,7 +1361,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classDbDefaults.html#a4519ed7e730dd5539ef54ca4fe766ef5">DbDefaults</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00057">57</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00241">241</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
 </div>
 </div>
@@ -936,7 +1409,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classDbDefaults.html#afd19d31d68daa9f87760d5b0902f8646">DbDefaults</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00062">62</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00246">246</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
 </div>
 </div>
@@ -1012,33 +1485,7 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00039">39</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac99fd7eba511d8799fcc447006179c72"></a><!-- doxytag: member="Oracle::dbUnescapeString" ref="ac99fd7eba511d8799fcc447006179c72" args="($_string)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DbDriver::dbUnescapeString </td>
-          <td>(</td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_string</em></td><td>)</td>
-          <td><code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Unescape a string fthat is formatted for use in SQL This method is implemented by class <a class="el" href="classDbDefaults.html" title="Database driver defauls.">DbDefaults</a> </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
-<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00082">82</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -1066,7 +1513,33 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00087">87</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00130">130</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac99fd7eba511d8799fcc447006179c72"></a><!-- doxytag: member="Oracle::dbUnescapeString" ref="ac99fd7eba511d8799fcc447006179c72" args="($_string)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::dbUnescapeString </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_string</em></td><td>)</td>
+          <td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Unescape a string fthat is formatted for use in SQL This method is implemented by class <a class="el" href="classDbDefaults.html" title="Database driver defauls.">DbDefaults</a> </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_string</td><td>The input string in SQL safe format </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -1107,9 +1580,9 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a461f60524cd8d1dd23dd3c70ca5fcab7">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00143">143</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00327">327</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00030">dbCreate()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00062">dbCreate()</a>.</p>
 
 </div>
 </div>
@@ -1150,9 +1623,9 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classDbDefaults.html#a40f0ad68f9278baf0948920d17bbb3e1">DbDefaults</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00098">98</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00282">282</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
-<p>References <a class="el" href="class_8oracle_8php_source.html#l00131">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8oracle_8php_source.html#l00315">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -1180,7 +1653,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL CONCAT() function. </p>
+<p>Implementation of the SQL CONCAT() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1193,44 +1666,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a869608212113175cefe8782a1c6f25d8">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00201">201</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a58f24b8ba3d3c104cefac2d9c21ca67c"></a><!-- doxytag: member="Oracle::functionCount" ref="a58f24b8ba3d3c104cefac2d9c21ca67c" args="($_field, array $_arguments=array())" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DbDriver::functionCount </td>
-          <td>(</td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_field</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">array $&#160;</td>
-          <td class="paramname"><em>_arguments</em> = <code>array()</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Inplementation of the SQL COUNT() function. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_arguments</td><td>Array with arguments, which is required by syntax </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
-<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00385">385</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
 </div>
 </div>
@@ -1269,7 +1705,44 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00136">136</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00179">179</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a58f24b8ba3d3c104cefac2d9c21ca67c"></a><!-- doxytag: member="Oracle::functionCount" ref="a58f24b8ba3d3c104cefac2d9c21ca67c" args="($_field, array $_arguments=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::functionCount </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_arguments</em> = <code>array()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Implementation of the SQL COUNT() function. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_arguments</td><td>Array with arguments, which is required by syntax </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 </div>
 </div>
@@ -1297,7 +1770,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL IF() function. </p>
+<p>Implementation of the SQL IF() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1310,7 +1783,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a8b33be0c4168bcb0078afa8494e5f374">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00189">189</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00373">373</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
 </div>
 </div>
@@ -1338,7 +1811,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL IFNULL() function. </p>
+<p>Implementation of the SQL IFNULL() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1351,7 +1824,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a3196a4aa4f7f75c464593894f63ae2f0">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00196">196</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00380">380</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
 </div>
 </div>
@@ -1390,9 +1863,9 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00149">149</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00192">192</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00152">dbInsertId()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00336">dbInsertId()</a>.</p>
 
 </div>
 </div>
@@ -1420,7 +1893,44 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL MAX() function. </p>
+<p>Implementation of the SQL MAX() function. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_arguments</td><td>Array with arguments, which is required by syntax </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a87433f8e6a93197b09d60a99e8dac3e1"></a><!-- doxytag: member="Oracle::functionMin" ref="a87433f8e6a93197b09d60a99e8dac3e1" args="($_field, array $_arguments=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDriver::functionMin </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&#160;</td>
+          <td class="paramname"><em>_arguments</em> = <code>array()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Implementation of the SQL MIN() function. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
@@ -1468,44 +1978,35 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00162">162</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00205">205</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a87433f8e6a93197b09d60a99e8dac3e1"></a><!-- doxytag: member="Oracle::functionMin" ref="a87433f8e6a93197b09d60a99e8dac3e1" args="($_field, array $_arguments=array())" -->
+<a class="anchor" id="a9cb29749650ea6a3b7a7181a5783f48f"></a><!-- doxytag: member="Oracle::isRetryable" ref="a9cb29749650ea6a3b7a7181a5783f48f" args="($_errorCode)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DbDriver::functionMin </td>
+          <td class="memname">DbDefaults::isRetryable </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_field</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">array $&#160;</td>
-          <td class="paramname"><em>_arguments</em> = <code>array()</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inherited]</code></td>
+          <td class="paramname"><em>_errorCode</em></td><td>)</td>
+          <td><code> [inherited]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Inplementation of the SQL MIN() function. </p>
+<p>Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. Retries can be enabled at driver level, by default retries are never possible. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_field</td><td>Name of the field </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_arguments</td><td>Array with arguments, which is required by syntax </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_errorCode</td><td>The errorcode </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00167">167</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -1535,31 +2036,110 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9cb29749650ea6a3b7a7181a5783f48f"></a><!-- doxytag: member="Oracle::isRetryable" ref="a9cb29749650ea6a3b7a7181a5783f48f" args="($_errorCode)" -->
+<a class="anchor" id="ad31e5b3e28231f54a41aff42ff5a9b42"></a><!-- doxytag: member="Oracle::mapType" ref="ad31e5b3e28231f54a41aff42ff5a9b42" args="($_type)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DbDefaults::isRetryable </td>
+          <td class="memname">Oracle::mapType </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>_errorCode</em></td><td>)</td>
-          <td><code> [inherited]</code></td>
+          <td class="paramname"><em>_type</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Check is the given error code is a retryable error (e.g. table locked, server starting etc) and advice how long to wait before retry. Retries can be enabled at driver level, by default retries are never possible. </p>
+<p>Map a datatype as used by OWL-PHP (which is a <a class="el" href="classMySQL.html" title="Database driver.">MySQL</a> datatype) to the database specific type </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_errorCode</td><td>The errorcode </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_type</td><td><a class="el" href="classOWL.html">OWL</a> (=MySQL) datatype </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Database specific datatype </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00124">124</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Implements <a class="el" href="interfaceDbDriver.html#a28cf92c9b5b9046ac2ebd2a2ade1fae7">DbDriver</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00132">132</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00156">dbAddField()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00074">dbDefineField()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a56d190343880c73c40dcf0a9b93824b1"></a><!-- doxytag: member="Oracle::queryCacheAdd" ref="a56d190343880c73c40dcf0a9b93824b1" args="($_qry)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::queryCacheAdd </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_qry</em></td><td>)</td>
+          <td><code> [final, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Add an SQL statement to the query cache </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_qry</td><td>Fully formatted SQL statement </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00044">44</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acae6e1f7f0ced6921724165e7a9b7290"></a><!-- doxytag: member="Oracle::queryCacheClear" ref="acae6e1f7f0ced6921724165e7a9b7290" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::queryCacheClear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [final, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Clear the cached SQL statements </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00070">70</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0817a1c69dcbf9791d985755485eefc7"></a><!-- doxytag: member="Oracle::queryCacheExec" ref="a0817a1c69dcbf9791d985755485eefc7" args="(&amp;$_resource)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::queryCacheExec </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em></td><td>)</td>
+          <td><code> [final, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Execute all cached statements </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>boolean, true on success, false on the first error. When an error occurs, all other statements will be skipped </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00056">56</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -1607,9 +2187,9 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#abf14f6d96125561b06631649d4a1985a">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00067">67</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00251">251</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
-<p>References <a class="el" href="class_8oracle_8php_source.html#l00131">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8oracle_8php_source.html#l00315">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -1650,7 +2230,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a76b1a0d819d13533ba9ff323fe3ca152">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00092">92</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00276">276</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
 </div>
 </div>
@@ -1668,6 +2248,22 @@ Private Attributes</h2></td></tr>
 <p>char - Defines quotes or backtacks that will be used to enclose field- and tablesnames in </p>
 
 <p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00021">21</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7b0d3ee9022ac88ef60c3c42dc4dd12e"></a><!-- doxytag: member="Oracle::$typeMaps" ref="a7b0d3ee9022ac88ef60c3c42dc4dd12e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Oracle::$typeMaps<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>array - holds all <a class="el" href="classOWL.html">OWL</a> (<a class="el" href="classMySQL.html" title="Database driver.">MySQL</a>) datatypes and their <a class="el" href="classOracle.html" title="Database driver.">Oracle</a> translations </p>
+
+<p>Definition at line <a class="el" href="class_8oracle_8php_source.html#l00027">27</a> of file <a class="el" href="class_8oracle_8php_source.html">class.oracle.php</a>.</p>
 
 </div>
 </div>
@@ -1710,7 +2306,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon Sep 26 2011 09:53:21 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 18:07:04 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

@@ -3,7 +3,7 @@
  * \file
  * This file defines the last testcase for the Hierarchical Dataset
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.last.php,v 1.4 2011-09-26 10:50:19 oscar Exp $
+ * \version $Id: case.last.php,v 1.5 2011-09-26 16:04:36 oscar Exp $
  */
 
 /**
@@ -63,14 +63,13 @@ class OTKHdata_Last implements TestCase
 
 	public function cleanupTest ()
 	{
-		// TODO Use SchemeHandler here (once ported to the DbDriver functionality)
-		$db = DbHandler::getInstance();
-		$db->setQuery ('DROP TABLE ' . $db->tablename($this->tablename));
-		if ($db->write($dummy, __LINE__, __FILE__) <= OWL_SUCCESS) {
+		$db = OWL::factory('dbhandler');
+		$dbId = $db->getResource();
+		if ($db->getDriver()->dbDropTable($dbId, $db->tablename($this->tablename))) {
 			return OTK_RESULT_SUCCESS;
 		} else {
-			$db->signal(OWL_WARNING, $msg);
-			return $msg;
+			$db->getDriver()->dbError($dbId,$nr, $msg);
+			return "Could not drop the table; database driver returned the error <em>$msg</em>";
 		}
 	}
 

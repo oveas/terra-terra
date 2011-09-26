@@ -96,7 +96,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a>  </div>
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">DbDefaults Class Reference<div class="ingroups"><a class="el" href="group__OWL__DRIVERS.html">Drivers</a></div></div>  </div>
 </div>
@@ -131,9 +133,17 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#ae9ccdb445c7c4213eaff21677a03ed41">functionCount</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a2f125c1875530f1055845e36bd4799d3">functionMax</a> ($_field, array $_arguments=array())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#acf910cf9cecb56a1396cf317664bfd1c">functionMin</a> ($_field, array $_arguments=array())</td></tr>
+<tr><td colspan="2"><h2><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a> ($_qry)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a0817a1c69dcbf9791d985755485eefc7">queryCacheExec</a> (&amp;$_resource)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#acae6e1f7f0ced6921724165e7a9b7290">queryCacheClear</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a5efc5806d1fe1f2efd17809774e8289f">$quoting</a></td></tr>
+<tr><td colspan="2"><h2><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#ad83613f8ef67d3ff44636e410ef89e12">$cachedSQL</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Database driver defauls. </p>
@@ -159,11 +169,11 @@ Protected Attributes</h2></td></tr>
 <p>Class constructor </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00027">27</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00033">33</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 <p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00024">Oracle::__construct()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00019">MySQL::__construct()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00029">Oracle::__construct()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00019">MySQL::__construct()</a>.</p>
 
 </div>
 </div>
@@ -193,7 +203,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classMySQL.html#a7f4b581ad71a3ee8922d51c9ef28a18c">MySQL</a>, and <a class="el" href="classOracle.html#aa6192ea7d8c581bd12bfd9f6abc4aa16">Oracle</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00076">76</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00119">119</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -221,7 +231,9 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Quoted textstring </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00099">99</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00142">142</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00148">Oracle::dbAlterField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00111">MySQL::dbAlterField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00074">Oracle::dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00036">MySQL::dbDefineField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00106">Oracle::dbDefineIndex()</a>, <a class="el" href="class_8mysql_8php_source.html#l00071">MySQL::dbDefineIndex()</a>, <a class="el" href="class_8oracle_8php_source.html#l00143">Oracle::dbDropField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00106">MySQL::dbDropField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00164">Oracle::dbTableColumns()</a>, <a class="el" href="class_8mysql_8php_source.html#l00127">MySQL::dbTableColumns()</a>, <a class="el" href="class_8oracle_8php_source.html#l00199">Oracle::dbTableIndexes()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00164">MySQL::dbTableIndexes()</a>.</p>
 
 </div>
 </div>
@@ -269,7 +281,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classMySQL.html#ad639e6c42d1ad72ef55244b38b2c32ca">MySQL</a>, and <a class="el" href="classOracle.html#af4ca1e7907ea34baf442aa55f9da909d">Oracle</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00052">52</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00095">95</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -317,7 +329,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classMySQL.html#a94ca8ff0d1a4072f80c14e598274fdca">MySQL</a>, and <a class="el" href="classOracle.html#a4b28587042e6451e05b11dd0b143bf4e">Oracle</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00065">65</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00108">108</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -356,7 +368,7 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00039">39</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00082">82</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -384,7 +396,7 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00087">87</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00130">130</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -425,7 +437,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classMySQL.html#a310c8c88ce3d36a23d51f66ec5b0f9d2">MySQL</a>, and <a class="el" href="classOracle.html#a45dd64f96e2b765c8de618812c371142">Oracle</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00111">111</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00154">154</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -464,7 +476,7 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00136">136</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00179">179</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -503,9 +515,9 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00149">149</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00192">192</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00152">Oracle::dbInsertId()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00336">Oracle::dbInsertId()</a>.</p>
 
 </div>
 </div>
@@ -544,7 +556,7 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00162">162</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00205">205</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -572,11 +584,102 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00124">124</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00167">167</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a56d190343880c73c40dcf0a9b93824b1"></a><!-- doxytag: member="DbDefaults::queryCacheAdd" ref="a56d190343880c73c40dcf0a9b93824b1" args="($_qry)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::queryCacheAdd </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_qry</em></td><td>)</td>
+          <td><code> [final, protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Add an SQL statement to the query cache </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_qry</td><td>Fully formatted SQL statement </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00044">44</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acae6e1f7f0ced6921724165e7a9b7290"></a><!-- doxytag: member="DbDefaults::queryCacheClear" ref="acae6e1f7f0ced6921724165e7a9b7290" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::queryCacheClear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [final, protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Clear the cached SQL statements </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00070">70</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0817a1c69dcbf9791d985755485eefc7"></a><!-- doxytag: member="DbDefaults::queryCacheExec" ref="a0817a1c69dcbf9791d985755485eefc7" args="(&amp;$_resource)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::queryCacheExec </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_resource</em></td><td>)</td>
+          <td><code> [final, protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Execute all cached statements </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>boolean, true on success, false on the first error. When an error occurs, all other statements will be skipped </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00056">56</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="ad83613f8ef67d3ff44636e410ef89e12"></a><!-- doxytag: member="DbDefaults::$cachedSQL" ref="ad83613f8ef67d3ff44636e410ef89e12" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::$cachedSQL<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>array - Cached queries. This cache is used by drivers that need more SQL statements to achieve a single result, e.g. an AUTO INCREMENT emulation in <a class="el" href="classOracle.html" title="Database driver.">Oracle</a> using a sequence and trigger </p>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00027">27</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a5efc5806d1fe1f2efd17809774e8289f"></a><!-- doxytag: member="DbDefaults::$quoting" ref="a5efc5806d1fe1f2efd17809774e8289f" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -616,7 +719,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon Sep 26 2011 09:53:21 for OWL-PHP by
+    <li class="footer">Generated on Mon Sep 26 2011 18:07:03 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

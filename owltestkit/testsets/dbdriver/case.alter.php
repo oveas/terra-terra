@@ -3,7 +3,7 @@
  * \file
  * This file defines the testcase that does all table alterings
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.alter.php,v 1.1 2011-09-26 10:50:18 oscar Exp $
+ * \version $Id: case.alter.php,v 1.2 2011-09-26 16:04:36 oscar Exp $
  */
 
 /**
@@ -37,12 +37,13 @@ class OTKDbdriver_Alter implements TestCase
 		$returnCodes = array();
 		$_scheme = OWL::factory('schemehandler');
 
+		$step = 1;
 		$_scheme->createScheme($this->tablename);
 		$_scheme->tableDescription($this->tablename, $data);
 		$data['columns']['lastname']['length'] = 48;
 		$_scheme->defineScheme($data['columns']);
 		$_scheme->defineIndex($data['indexes']);
-		// Step 1: alter the table
+		// Step 1: alter a field
 		if ($_scheme->scheme() <= OWL_SUCCESS) {
 			$_scheme->reset();
 			$returnCodes[] = array(OTK_RESULT_SUCCESS, 'Successfully altered the table');
@@ -54,7 +55,26 @@ class OTKDbdriver_Alter implements TestCase
 		}
 
 		// Step 2: Check the results
-		$_expectedResult = $this->getExpected();
+		$_expectedResult = $this->getExpected($step);
+		if ($data == $_expectedResult) { // Just 2 '=' signs since not all datatypes (int vs string) might match
+			$returnCodes[] = array(OTK_RESULT_SUCCESS, 'Table comparison succeeded');
+		} else {
+			$returnCodes[] = array(OTK_RESULT_FAIL, 'Table comparison failed');
+
+			$this->details .= "<p>The table definition differed from the exected structure: "
+				. OTKHelpers::compareTable($_expectedResult, $data);
+		}
+
+		// Step 3: Add a field
+		$data['columns']['donation'] = array (
+					 'type' => 'decimal'
+					,'length' => 3
+					,'precision' => 2
+					,'default' => 999.99
+		);
+		$step++;
+		// Step 4: Check the results
+		$_expectedResult = $this->getExpected($step);
 		if ($data == $_expectedResult) { // Just 2 '=' signs since not all datatypes (int vs string) might match
 			$returnCodes[] = array(OTK_RESULT_SUCCESS, 'Table comparison succeeded');
 		} else {
@@ -77,9 +97,9 @@ class OTKDbdriver_Alter implements TestCase
 		return $this->details;
 	}
 
-	private function getExpected ()
+	private function getExpected ($_step)
 	{
-		return array(
+		$_c =  array(
 			 'columns' => array(
 				 'id' => array(
 					  'type' => 'int'
@@ -169,8 +189,16 @@ class OTKDbdriver_Alter implements TestCase
 					, 'type' => 'FULLTEXT'
 					, 'comment' => ''
 				)
-
 			)
 		);
+		if ($_step == 2) {
+			$_c['columns']['donation'] = array(
+				  'type' => 'decimal'
+				, 'length' => '3'
+				, 'precision' => '2'
+				, 'default' => '999.99'
+			);
+		}
+		return $_c;
 	}
 }

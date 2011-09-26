@@ -3,7 +3,7 @@
  * \file
  * This file defines the last testcase for the Hierarchical Dataset
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.last.php,v 1.1 2011-09-26 10:50:18 oscar Exp $
+ * \version $Id: case.last.php,v 1.2 2011-09-26 16:04:36 oscar Exp $
  */
 
 /**
@@ -35,15 +35,14 @@ class OTKDbdriver_Last implements TestCase
 	public function performTest ()
 	{
 		$returnCodes = array();
-		// TODO Use SchemeHandler here (once ported to the DbDriver functionality)
-		$db = DbHandler::getInstance();
-		$db->setQuery ('DROP TABLE ' . $db->tablename($this->tablename));
-		if ($db->write($dummy, __LINE__, __FILE__) <= OWL_SUCCESS) {
+		$db = OWL::factory('dbhandler');
+		$dbId = $db->getResource();
+		if ($db->getDriver()->dbDropTable($dbId, $db->tablename($this->tablename))) {
 			$returnCodes[] = array(OTK_RESULT_SUCCESS, 'Successfully removed the table "' . $this->tablename . '"');
 		} else {
 			$returnCodes[] = array(OTK_RESULT_FAIL, 'Table "' . $this->tablename . '" could not be removed');
-			$db->signal(OWL_WARNING, $msg);
-			$this->details .= '<p>Dropping the table failed with error messase<br/><em>' . $msg . '</em></p>';
+			$db->getDriver()->dbError($dbId,$nr, $msg);
+			$this->details .= '<p>Dropping the table failed with error message<br/><em>' . $msg . '</em></p>';
 		}
 		return $returnCodes;
 	}
