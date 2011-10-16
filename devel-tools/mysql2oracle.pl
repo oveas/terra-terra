@@ -54,13 +54,16 @@
 # --------
 # v0.0.0.0-000000001, Sep 12, 2011 - Initial version
 # v0.0.0.0-000000002, Sep 22, 2011 - Added the $main::oracleQuotes config option
+# v0.0.0.0-000000003, Sep 28, 2011 - Made trigger- sequence and constraint names OWL compatible
 #
 use strict;
 
 $main::thisScript = 'mysql2oracle.pl';
-$main::thisVersion = '0.0.0.0-000000002';
+$main::thisVersion = '0.0.0.0-000000003';
 
-
+$main::suffixSequence = '_seq';
+$main::suffixTrigger = '_trg';
+$main::suffixConstraint = '_cst';
 
 $main::tblSpace = 'dacota'; # Tablespace name in Oracle
 $main::mysqlScheme = 'Dacota'; # MySQL scheme name
@@ -111,14 +114,14 @@ $main::oracleQuotes = '"'; # Replacement for the MySQL backticks
 sub addAutoInc($$)
 {
 	my ($tbl, $col) = @_;
-	my $seq = $col . '_seq';
-	my $trg = $tbl . '_trg';
+	my $trg = $col . $main::suffixTrigger;
+	my $seq = $tbl . $main::suffixSequence;
 
-	if (length($col) > 28) {
-		$seq = substr ($col, 0, 28) . '_seq';
+	if ((length($col) + length($main::suffixTrigger)) > 30) {
+		$trg = substr ($col, 0, (30 - length($main::suffixTrigger))) . $main::suffixTrigger;
 	}
-	if (length($tbl) > 28) {
-		$trg = substr ($tbl, 0, 28) . '_seq';
+	if ((length($col) + length($main::suffixSequence)) > 30) {
+		$seq = substr ($col, 0, (30 - length($main::suffixSequence))) . $main::suffixSequence;
 	}
 	
 	return "CREATE SEQUENCE $main::oracleQuotes$seq$main::oracleQuotes \n"
@@ -171,9 +174,9 @@ sub addAutoInc($$)
 sub addConstraint($$$$)
 {
 	my ($tbl, $col, $vals, $mSize) = @_;
-	my $ctr = $col . '_constr';
-	if (length($col) > 25) {
-		$ctr = substr ($col, 0, 25) . '_constr';
+	my $cst = $col . $main::suffixConstraint;
+	if ((length($col) + length($main::suffixConstraint)) > 30) {
+		$cst = substr ($col, 0, (30 - length($main::suffixConstraint))) . $main::suffixConstraint;
 	}
 	$$mSize = 0;
 	my @values = split (/\s*,\s*/, $vals);
@@ -183,7 +186,7 @@ sub addConstraint($$$$)
 		}
 	}
 	return "ALTER TABLE $main::oracleQuotes$tbl$main::oracleQuotes\n"
-		. "    ADD CONSTRAINT $main::oracleQuotes$ctr$main::oracleQuotes\n"
+		. "    ADD CONSTRAINT $main::oracleQuotes$cst$main::oracleQuotes\n"
 		. "    CHECK ($main::oracleQuotes$col$main::oracleQuotes IN ($vals))"
 		. ";\n";
 }

@@ -3,7 +3,23 @@
  * \file
  * This file loads all testsets
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.testkit.php,v 1.2 2011-06-07 15:03:31 oscar Exp $
+ * \version $Id: class.testkit.php,v 1.3 2011-10-16 11:11:46 oscar Exp $
+ * \copyright{2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OTK.
+ *
+ * OTK is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OTK is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OTK. If not, see http://www.gnu.org/licenses/.
  */
 if (!OWLloader::getClass('testset', OTK_BO)) {
 	trigger_error('Error loading the TestSet baseclass', E_USER_ERROR);

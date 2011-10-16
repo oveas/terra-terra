@@ -103,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="MySQL" --><!-- doxytag: inherits="DbDefaults,DbDriver" -->
-<p>Database driver.  
+<p><a class="el" href="classMySQL.html" title="MySQL database driver.">MySQL</a> database driver.  
  <a href="classMySQL.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for MySQL:</div>
@@ -125,7 +125,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a18c5e7b6a209c1e0704ec2e358a35c35">dbCreateTable</a> (&amp;$_resource, $_table, array $_colDefs, array $_idxDefs)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a2bc5e21c1accad70003346dfb5bee00a">dbDefineField</a> ($_table, $_name, array $_desc)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a23bf47e83fba2692188cc7567d4da1d8">dbDefineIndex</a> ($_table, $_name, array $_desc)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#ab49a086475f5858f0e459090d28366ed">mapType</a> ($_type)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#afc1eadbd86890823826b59c1087d6c6b">mapType</a> (array &amp;$_type)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a0eb517b993e13ac7af641a47b1e727d4">dbDropTable</a> (&amp;$_resource, $_table)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a35dff4aced926b1945adf8148fb904f8">dbDropField</a> (&amp;$_resource, $_table, $_field)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMySQL.html#a728dd15813e09381c98bfac6e6e5b57c">dbAlterField</a> (&amp;$_resource, $_table, $_field, array $_desc)</td></tr>
@@ -178,8 +178,8 @@ Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a5efc5806d1fe1f2efd17809774e8289f">$quoting</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Database driver. </p>
-<p>Abstract class that defines the database drivers </p>
+<div class="textblock"><p><a class="el" href="classMySQL.html" title="MySQL database driver.">MySQL</a> database driver. </p>
+<p>Class that defines the <a class="el" href="classMySQL.html" title="MySQL database driver.">MySQL</a> database driver </p>
 <dl class="see"><dt><b>See also:</b></dt><dd>class <a class="el" href="interfaceDbDriver.html" title="Database driver interface.">DbDriver</a> </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>Apr 12, 2011 -- O van Eijk -- initial version </dd></dl>
@@ -206,7 +206,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00019">19</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00033">DbDefaults::__constructor()</a>.</p>
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00049">DbDefaults::__constructor()</a>.</p>
 
 </div>
 </div>
@@ -227,11 +227,11 @@ Protected Attributes</h2></td></tr>
 <p>Class constructor </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00033">33</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00049">49</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 <p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00029">Oracle::__construct()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00019">__construct()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00042">Oracle::__construct()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00019">__construct()</a>.</p>
 
 </div>
 </div>
@@ -286,9 +286,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#aaa4f5a98c39d2d755774b5d131ce3b9b">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00119">119</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00121">121</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00036">dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00096">mapType()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00038">dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00271">dbExec()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00098">mapType()</a>.</p>
 
 </div>
 </div>
@@ -343,9 +343,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a06f9ce42d704f358d61436d3561863e5">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00111">111</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00113">113</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00036">dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>, and <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00038">dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00271">dbExec()</a>, and <a class="el" href="class_8dbdefaults_8php_source.html#l00158">DbDefaults::dbQuote()</a>.</p>
 
 </div>
 </div>
@@ -374,9 +374,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a713cd43a5493bfcc0025523074568579">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00306">306</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00308">308</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00250">dbTableList()</a>.</p>
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00252">dbTableList()</a>.</p>
 
 </div>
 </div>
@@ -406,7 +406,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#afa98f626bf20cb750d114857ba0a33e1">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00311">311</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00313">313</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -475,7 +475,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a46e195260ab444a3223f578fbc6c22c9">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00189">189</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00191">191</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -518,7 +518,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00024">24</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00283">dbWrite()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00285">dbWrite()</a>.</p>
 
 </div>
 </div>
@@ -575,7 +575,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00029">29</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00271">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -623,11 +623,11 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#ad529647ef747756008a3e4c8f450f42d">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00036">36</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00038">38</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00096">mapType()</a>.</p>
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00158">DbDefaults::dbQuote()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00098">mapType()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00119">dbAddField()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00111">dbAlterField()</a>.</p>
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00121">dbAddField()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00113">dbAlterField()</a>.</p>
 
 </div>
 </div>
@@ -670,14 +670,14 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>string SQL code </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>string SQL code or NULL when a a seperate statement is used </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a5f6189e421fcc332191af28715978c82">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00071">71</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00073">73</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00158">DbDefaults::dbQuote()</a>.</p>
 
 </div>
 </div>
@@ -725,9 +725,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#abce80b81950a4b45c68dcd75415b6a07">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00106">106</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00108">108</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>, and <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00271">dbExec()</a>, and <a class="el" href="class_8dbdefaults_8php_source.html#l00158">DbDefaults::dbQuote()</a>.</p>
 
 </div>
 </div>
@@ -768,9 +768,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#ae61edb4c74b215246d34ca11798df97d">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00101">101</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00103">103</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00271">dbExec()</a>, and <a class="el" href="class_8dbdefaults_8php_source.html#l00158">DbDefaults::dbQuote()</a>.</p>
 
 </div>
 </div>
@@ -817,7 +817,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#ac8a3d40046bf719aada5a1807a915589">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00183">183</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00185">185</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -847,7 +847,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classDbDefaults.html#a8fcdd03995e94df3567ada9dcc975968">DbDefaults</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00316">316</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00318">318</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -888,9 +888,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a0b45d39ae1507571c29601a2ba5e0fc9">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00269">269</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00271">271</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00119">dbAddField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00111">dbAlterField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00029">dbCreateTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00106">dbDropField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00101">dbDropTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00202">dbTransactionCommit()</a>, <a class="el" href="class_8mysql_8php_source.html#l00210">dbTransactionRollback()</a>, <a class="el" href="class_8mysql_8php_source.html#l00245">emptyTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00218">tableLock()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00239">tableUnlock()</a>.</p>
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00121">dbAddField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00113">dbAlterField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00029">dbCreateTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00108">dbDropField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00103">dbDropTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00204">dbTransactionCommit()</a>, <a class="el" href="class_8mysql_8php_source.html#l00212">dbTransactionRollback()</a>, <a class="el" href="class_8mysql_8php_source.html#l00247">emptyTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00220">tableLock()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00241">tableUnlock()</a>.</p>
 
 </div>
 </div>
@@ -920,9 +920,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#ab0faeafbd094c078e30929c884603833">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00301">301</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00303">303</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00250">dbTableList()</a>.</p>
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00252">dbTableList()</a>.</p>
 
 </div>
 </div>
@@ -970,7 +970,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a437f10c4bd4a651dc4694178da4ef65a">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00291">291</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00293">293</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -1032,7 +1032,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a4747fcf9c24b722fd56c65111f9652dd">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00197">197</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00199">199</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -1060,9 +1060,9 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Quoted textstring </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00142">142</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00158">158</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00148">Oracle::dbAlterField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00111">dbAlterField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00074">Oracle::dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00036">dbDefineField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00106">Oracle::dbDefineIndex()</a>, <a class="el" href="class_8mysql_8php_source.html#l00071">dbDefineIndex()</a>, <a class="el" href="class_8oracle_8php_source.html#l00143">Oracle::dbDropField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00106">dbDropField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00164">Oracle::dbTableColumns()</a>, <a class="el" href="class_8mysql_8php_source.html#l00127">dbTableColumns()</a>, <a class="el" href="class_8oracle_8php_source.html#l00199">Oracle::dbTableIndexes()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00164">dbTableIndexes()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00337">Oracle::dbAlterField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00113">dbAlterField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00089">Oracle::dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00038">dbDefineField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00125">Oracle::dbDefineIndex()</a>, <a class="el" href="class_8mysql_8php_source.html#l00073">dbDefineIndex()</a>, <a class="el" href="class_8oracle_8php_source.html#l00332">Oracle::dbDropField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00108">dbDropField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00327">Oracle::dbDropTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00103">dbDropTable()</a>, <a class="el" href="class_8oracle_8php_source.html#l00364">Oracle::dbTableColumns()</a>, <a class="el" href="class_8mysql_8php_source.html#l00129">dbTableColumns()</a>, <a class="el" href="class_8oracle_8php_source.html#l00398">Oracle::dbTableIndexes()</a>, <a class="el" href="class_8mysql_8php_source.html#l00166">dbTableIndexes()</a>, <a class="el" href="class_8oracle_8php_source.html#l00191">Oracle::setAutoIncrement()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00253">Oracle::setEnumConstraint()</a>.</p>
 
 </div>
 </div>
@@ -1136,9 +1136,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#ac5343f76317816de2fb14e4a55eeb569">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00274">274</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00276">276</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00250">dbTableList()</a>.</p>
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00252">dbTableList()</a>.</p>
 
 </div>
 </div>
@@ -1168,7 +1168,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a958aa47c21cc8db3ee7831e8b3fb1eb7">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00296">296</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00298">298</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -1210,9 +1210,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a4b28160bdfe03289dda28b0d8a6ea263">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00127">127</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00129">129</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00158">DbDefaults::dbQuote()</a>.</p>
 
 </div>
 </div>
@@ -1254,9 +1254,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a5708a49a9fc36eb0071d053a8ae28d44">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00164">164</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00166">166</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00142">DbDefaults::dbQuote()</a>.</p>
+<p>References <a class="el" href="class_8dbdefaults_8php_source.html#l00158">DbDefaults::dbQuote()</a>.</p>
 
 </div>
 </div>
@@ -1304,9 +1304,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#abe6928bd50a1115dc1e9e6b283d9b065">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00250">250</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00252">252</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00306">dbClear()</a>, <a class="el" href="class_8mysql_8php_source.html#l00301">dbFetchNextRecord()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00274">dbRead()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00308">dbClear()</a>, <a class="el" href="class_8mysql_8php_source.html#l00303">dbFetchNextRecord()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00276">dbRead()</a>.</p>
 
 </div>
 </div>
@@ -1354,9 +1354,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classDbDefaults.html#a4519ed7e730dd5539ef54ca4fe766ef5">DbDefaults</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00202">202</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00204">204</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00271">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -1404,9 +1404,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classDbDefaults.html#afd19d31d68daa9f87760d5b0902f8646">DbDefaults</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00210">210</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00212">212</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00271">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -1482,7 +1482,7 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00082">82</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00098">98</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -1510,7 +1510,7 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00130">130</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00146">146</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -1577,7 +1577,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a461f60524cd8d1dd23dd3c70ca5fcab7">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00283">283</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00285">285</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 <p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00024">dbCreate()</a>.</p>
 
@@ -1620,9 +1620,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classDbDefaults.html#a40f0ad68f9278baf0948920d17bbb3e1">DbDefaults</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00245">245</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00247">247</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00271">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -1663,7 +1663,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a869608212113175cefe8782a1c6f25d8">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00337">337</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00339">339</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -1702,7 +1702,7 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00179">179</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00195">195</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -1780,7 +1780,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a8b33be0c4168bcb0078afa8494e5f374">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00325">325</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00327">327</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -1821,7 +1821,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a3196a4aa4f7f75c464593894f63ae2f0">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00332">332</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00334">334</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
 </div>
 </div>
@@ -1860,9 +1860,9 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00192">192</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00208">208</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00336">Oracle::dbInsertId()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00537">Oracle::dbInsertId()</a>.</p>
 
 </div>
 </div>
@@ -1975,7 +1975,7 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00205">205</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00221">221</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -2003,7 +2003,7 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00167">167</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00183">183</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -2033,35 +2033,35 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab49a086475f5858f0e459090d28366ed"></a><!-- doxytag: member="MySQL::mapType" ref="ab49a086475f5858f0e459090d28366ed" args="($_type)" -->
+<a class="anchor" id="afc1eadbd86890823826b59c1087d6c6b"></a><!-- doxytag: member="MySQL::mapType" ref="afc1eadbd86890823826b59c1087d6c6b" args="(array &amp;$_type)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">MySQL::mapType </td>
           <td>(</td>
-          <td class="paramtype">$&#160;</td>
+          <td class="paramtype">array &amp;$&#160;</td>
           <td class="paramname"><em>_type</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Map a datatype as used by OWL-PHP (which is a <a class="el" href="classMySQL.html" title="Database driver.">MySQL</a> datatype) to the database specific type </p>
+<p>Map a datatype as used by OWL-PHP (which is mainly a <a class="el" href="classMySQL.html" title="MySQL database driver.">MySQL</a> datatype) to the database specific type </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_type</td><td><a class="el" href="classOWL.html">OWL</a> (=MySQL) datatype </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">$_type</td><td>Description of the datatype as accepted by the <a class="el" href="classSchemeHandler.html" title="Scheme handler.">SchemeHandler</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Database specific datatype </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classSchemeHandler.html#acadaf57e5f374f300501153056f227c5">SchemeHandler::defineScheme()</a> </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implements <a class="el" href="interfaceDbDriver.html#a28cf92c9b5b9046ac2ebd2a2ade1fae7">DbDriver</a>.</p>
+<p>Implements <a class="el" href="interfaceDbDriver.html#ac9167229b1d270d340d7f6bf3a60e095">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00096">96</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00098">98</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00119">dbAddField()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00036">dbDefineField()</a>.</p>
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00121">dbAddField()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00038">dbDefineField()</a>.</p>
 
 </div>
 </div>
@@ -2088,7 +2088,9 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00044">44</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00060">60</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00089">Oracle::dbDefineField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00125">Oracle::dbDefineIndex()</a>, <a class="el" href="class_8oracle_8php_source.html#l00191">Oracle::setAutoIncrement()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00253">Oracle::setEnumConstraint()</a>.</p>
 
 </div>
 </div>
@@ -2108,7 +2110,9 @@ Protected Attributes</h2></td></tr>
 <p>Clear the cached SQL statements </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00070">70</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00086">86</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00350">Oracle::dbAddField()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00337">Oracle::dbAlterField()</a>.</p>
 
 </div>
 </div>
@@ -2136,7 +2140,9 @@ Protected Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>boolean, true on success, false on the first error. When an error occurs, all other statements will be skipped </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00056">56</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00072">72</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00350">Oracle::dbAddField()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00337">Oracle::dbAlterField()</a>.</p>
 
 </div>
 </div>
@@ -2184,9 +2190,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#abf14f6d96125561b06631649d4a1985a">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00218">218</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00220">220</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00271">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -2227,9 +2233,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interfaceDbDriver.html#a76b1a0d819d13533ba9ff323fe3ca152">DbDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00239">239</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8mysql_8php_source.html#l00241">241</a> of file <a class="el" href="class_8mysql_8php_source.html">class.mysql.php</a>.</p>
 
-<p>References <a class="el" href="class_8mysql_8php_source.html#l00269">dbExec()</a>.</p>
+<p>References <a class="el" href="class_8mysql_8php_source.html#l00271">dbExec()</a>.</p>
 
 </div>
 </div>
@@ -2246,7 +2252,7 @@ Protected Attributes</h2></td></tr>
 <div class="memdoc">
 <p>char - Defines quotes or backtacks that will be used to enclose field- and tablesnames in </p>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00021">21</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00037">37</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -2273,7 +2279,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon Sep 26 2011 18:07:04 for OWL-PHP by
+    <li class="footer">Generated on Thu Oct 13 2011 11:57:57 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

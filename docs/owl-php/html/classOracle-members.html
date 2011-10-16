@@ -100,6 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 This is the complete list of members for <a class="el" href="classOracle.html">Oracle</a>, including all inherited members.<table>
   <tr class="memlist"><td><a class="el" href="classDbDefaults.html#a5efc5806d1fe1f2efd17809774e8289f">$quoting</a></td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classOracle.html#accce5f8dd0428e1d135279e7623bd574">$tablespace</a></td><td><a class="el" href="classOracle.html">Oracle</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classOracle.html#a7b0d3ee9022ac88ef60c3c42dc4dd12e">$typeMaps</a></td><td><a class="el" href="classOracle.html">Oracle</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classOracle.html#a2f1d2c78c40565b670ca7790559069a4">$uppercaseNames</a></td><td><a class="el" href="classOracle.html">Oracle</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classOracle.html#a08de4cfed9291760ab6585679549bf5f">__construct</a>()</td><td><a class="el" href="classOracle.html">Oracle</a></td><td></td></tr>
@@ -145,12 +146,16 @@ This is the complete list of members for <a class="el" href="classOracle.html">O
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#af488697aef28243a0d358c2800752217">DbDriver::functionMax</a>($_field, array $_arguments=array())</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbDefaults.html#acf910cf9cecb56a1396cf317664bfd1c">DbDefaults::functionMin</a>($_field, array $_arguments=array())</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a87433f8e6a93197b09d60a99e8dac3e1">DbDriver::functionMin</a>($_field, array $_arguments=array())</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classOracle.html#a2be5ee4116e6f635d7b50d81f9f342f2">isAutoIncrement</a>(&amp;$_dbHandler, $_column)</td><td><a class="el" href="classOracle.html">Oracle</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classOracle.html#abc913780bc91aa85515f529cd1f7408e">isEnum</a>(&amp;$_dbHandler, $_table, $_column)</td><td><a class="el" href="classOracle.html">Oracle</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbDefaults.html#a9cb29749650ea6a3b7a7181a5783f48f">DbDefaults::isRetryable</a>($_errorCode)</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="interfaceDbDriver.html#a0faed62206bfa6538e5093dfaa8b9653">DbDriver::isRetryable</a>($_errorCode)</td><td><a class="el" href="interfaceDbDriver.html">DbDriver</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classOracle.html#ad31e5b3e28231f54a41aff42ff5a9b42">mapType</a>($_type)</td><td><a class="el" href="classOracle.html">Oracle</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classOracle.html#a29f6014aedc77aaeb19af345f3407711">mapType</a>(array &amp;$_type)</td><td><a class="el" href="classOracle.html">Oracle</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a>($_qry)</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbDefaults.html#acae6e1f7f0ced6921724165e7a9b7290">queryCacheClear</a>()</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDbDefaults.html#a0817a1c69dcbf9791d985755485eefc7">queryCacheExec</a>(&amp;$_resource)</td><td><a class="el" href="classDbDefaults.html">DbDefaults</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classOracle.html#a1125253e735ac8aba016ec51a6a2f03f">setAutoIncrement</a>($_table, $_field, array $_type)</td><td><a class="el" href="classOracle.html">Oracle</a></td><td><code> [private, static]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classOracle.html#a4678458a77086cf981d08569bdaf1279">setEnumConstraint</a>($_table, $_field, array $_type)</td><td><a class="el" href="classOracle.html">Oracle</a></td><td><code> [private, static]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classOracle.html#a5a065b071962915ca375e10767fac355">tableLock</a>(&amp;$_resource, $_table, $_type=DBDRIVER_LOCKTYPE_READ)</td><td><a class="el" href="classOracle.html">Oracle</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classOracle.html#ab586f620767fb6bec93327f5965c6114">tableUnlock</a>(&amp;$_resource, $_table=array())</td><td><a class="el" href="classOracle.html">Oracle</a></td><td></td></tr>
 </table></div>
@@ -172,7 +177,7 @@ This is the complete list of members for <a class="el" href="classOracle.html">O
 </div>
 
 
-    <li class="footer">Generated on Mon Sep 26 2011 18:07:04 for OWL-PHP by
+    <li class="footer">Generated on Thu Oct 13 2011 11:57:57 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

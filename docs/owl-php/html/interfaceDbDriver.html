@@ -109,8 +109,8 @@ Inheritance diagram for DbDriver:</div>
  <div class="center">
   <img src="interfaceDbDriver.png" usemap="#DbDriver_map" alt=""/>
   <map id="DbDriver_map" name="DbDriver_map">
-<area href="classMySQL.html" title="Database driver." alt="MySQL" shape="rect" coords="0,56,64,80"/>
-<area href="classOracle.html" title="Database driver." alt="Oracle" shape="rect" coords="74,56,138,80"/>
+<area href="classMySQL.html" title="MySQL database driver." alt="MySQL" shape="rect" coords="0,56,64,80"/>
+<area href="classOracle.html" title="&lt; Suffix for OWL generated constraints" alt="Oracle" shape="rect" coords="74,56,138,80"/>
 </map>
  </div></div>
 
@@ -124,7 +124,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a5708a49a9fc36eb0071d053a8ae28d44">dbTableIndexes</a> (&amp;$_dbHandler, $_table)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ad529647ef747756008a3e4c8f450f42d">dbDefineField</a> ($_table, $_name, array $_desc)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a5f6189e421fcc332191af28715978c82">dbDefineIndex</a> ($_table, $_name, array $_desc)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a28cf92c9b5b9046ac2ebd2a2ade1fae7">mapType</a> ($_type)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ac9167229b1d270d340d7f6bf3a60e095">mapType</a> (array &amp;$_type)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#ae61edb4c74b215246d34ca11798df97d">dbDropTable</a> (&amp;$_resource, $_table)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#abce80b81950a4b45c68dcd75415b6a07">dbDropField</a> (&amp;$_resource, $_table, $_field)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDbDriver.html#a06f9ce42d704f358d61436d3561863e5">dbAlterField</a> (&amp;$_resource, $_table, $_field, array $_desc)</td></tr>
@@ -165,7 +165,7 @@ Public Member Functions</h2></td></tr>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>Apr 12, 2011 -- O van Eijk -- initial version </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdriver_8php_source.html#l00030">30</a> of file <a class="el" href="class_8dbdriver_8php_source.html">class.dbdriver.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdriver_8php_source.html#l00046">46</a> of file <a class="el" href="class_8dbdriver_8php_source.html">class.dbdriver.php</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a0f4423a9599ea3197d97b110f6a4e3ee"></a><!-- doxytag: member="DbDriver::__construct" ref="a0f4423a9599ea3197d97b110f6a4e3ee" args="()" -->
 <div class="memitem">
@@ -593,7 +593,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>string SQL code </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>string SQL code or NULL when a a seperate statement is used </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
 <p>Implemented in <a class="el" href="classMySQL.html#a23bf47e83fba2692188cc7567d4da1d8">MySQL</a>, and <a class="el" href="classOracle.html#aededf6b7edbce1a2eba024fea490ce60">Oracle</a>.</p>
@@ -1644,31 +1644,31 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a28cf92c9b5b9046ac2ebd2a2ade1fae7"></a><!-- doxytag: member="DbDriver::mapType" ref="a28cf92c9b5b9046ac2ebd2a2ade1fae7" args="($_type)" -->
+<a class="anchor" id="ac9167229b1d270d340d7f6bf3a60e095"></a><!-- doxytag: member="DbDriver::mapType" ref="ac9167229b1d270d340d7f6bf3a60e095" args="(array &amp;$_type)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">DbDriver::mapType </td>
           <td>(</td>
-          <td class="paramtype">$&#160;</td>
+          <td class="paramtype">array &amp;$&#160;</td>
           <td class="paramname"><em>_type</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Map a datatype as used by OWL-PHP (which is a <a class="el" href="classMySQL.html" title="Database driver.">MySQL</a> datatype) to the database specific type </p>
+<p>Map a datatype as used by OWL-PHP (which is mainly a <a class="el" href="classMySQL.html" title="MySQL database driver.">MySQL</a> datatype) to the database specific type </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">$_type</td><td><a class="el" href="classOWL.html">OWL</a> (=MySQL) datatype </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">$_type</td><td>Description of the datatype as accepted by the <a class="el" href="classSchemeHandler.html" title="Scheme handler.">SchemeHandler</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Database specific datatype </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classSchemeHandler.html#acadaf57e5f374f300501153056f227c5">SchemeHandler::defineScheme()</a> </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Implemented in <a class="el" href="classMySQL.html#ab49a086475f5858f0e459090d28366ed">MySQL</a>, and <a class="el" href="classOracle.html#ad31e5b3e28231f54a41aff42ff5a9b42">Oracle</a>.</p>
+<p>Implemented in <a class="el" href="classMySQL.html#afc1eadbd86890823826b59c1087d6c6b">MySQL</a>, and <a class="el" href="classOracle.html#a29f6014aedc77aaeb19af345f3407711">Oracle</a>.</p>
 
 </div>
 </div>
@@ -1780,7 +1780,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon Sep 26 2011 18:07:03 for OWL-PHP by
+    <li class="footer">Generated on Thu Oct 13 2011 11:57:56 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

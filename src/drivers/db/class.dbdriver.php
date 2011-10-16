@@ -3,7 +3,23 @@
  * \file
  * This file defines the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdriver.php,v 1.6 2011-09-26 16:04:37 oscar Exp $
+ * \version $Id: class.dbdriver.php,v 1.7 2011-10-16 11:11:46 oscar Exp $
+ * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OWL-PHP.
+ *
+ * OWL-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OWL-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -81,18 +97,18 @@ interface DbDriver
 	 * \param[in] $_table Table name for the index, with prefix but without quotes
 	 * \param[in] $_name Index name
 	 * \param[in] $_desc Indexed array with the index properties
-	 * \return string SQL code
+	 * \return string SQL code or NULL when a a seperate statement is used
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function dbDefineIndex ($_table, $_name, array $_desc);
 
 	/**
-	 * Map a datatype as used by OWL-PHP (which is a MySQL datatype) to the database specific type
-	 * \param[in] $_type OWL (=MySQL) datatype
-	 * \return Database specific datatype
+	 * Map a datatype as used by OWL-PHP (which is mainly a MySQL datatype) to the database specific type
+	 * \param[in,out] $_type Description of the datatype as accepted by the SchemeHandler
+	 * \see SchemeHandler::defineScheme()
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function mapType ($_type);
+	public function mapType (array &$_type);
 
 	/**
 	 * Remove a database table

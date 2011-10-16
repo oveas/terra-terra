@@ -3,14 +3,30 @@
  * \file
  * This file defines status object that's user for all objects
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.statushandler.php,v 1.10 2011-05-12 14:37:58 oscar Exp $
+ * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OWL-PHP.
+ *
+ * OWL-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OWL-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * \version $Id: class.statushandler.php,v 1.11 2011-10-16 11:11:43 oscar Exp $
  */
 
 /**
  * \ingroup OWL_SO_LAYER
  * Each object, when initialised, gets a status object which olds information
  * about the last action that was performed.
- * \brief Status object 
+ * \brief Status object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 11, 2008 -- O van Eijk -- Initial version
  */
@@ -34,7 +50,7 @@ class StatusHandler
 	/**
 	 * Constructor; should be called only by _OWL::init().
 	 * The default status is initially a (generic) warning status. It should be set to
-	 * any successfull status after object initialisation completed.  
+	 * any successfull status after object initialisation completed.
 	 * \param[in] $code The status code
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -99,7 +115,7 @@ class StatusHandler
 	public function getSeverity ($status = null)
 	{
 		$_stat = ($status === null ? $this->code : $status);
-		return ($_stat & OWL_SEVERITY_PATTERN); 
+		return ($_stat & OWL_SEVERITY_PATTERN);
 	}
 
 	/**
@@ -109,7 +125,7 @@ class StatusHandler
 	 */
 	public function getCode ()
 	{
-		return ($this->code); 
+		return ($this->code);
 	}
 
 	/**

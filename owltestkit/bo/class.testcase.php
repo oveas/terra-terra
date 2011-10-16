@@ -3,7 +3,23 @@
  * \file
  * This file defines the testcase interface
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.testcase.php,v 1.1 2011-05-23 17:56:18 oscar Exp $
+ * \version $Id: class.testcase.php,v 1.2 2011-10-16 11:11:45 oscar Exp $
+ * \copyright{2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OTK.
+ *
+ * OTK is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OTK is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OTK. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -12,7 +28,7 @@
  * in a file called 'case.&lt;casename&gt;.php'. The classname must be 'OTK&lt;Setname&gt;_&lt;Casename&gt;
  * where &lt;casename&gt; is the name of the testcase and &lt;setname&gt; the name of the testset it
  * belongs to.
- * 
+ *
  * Two special casenames are reserverd: <em>first</em> and <em>last</em>, which will be the first and
  * last testcases executed in a testset.
  * \brief Testcase
@@ -22,7 +38,7 @@
 interface TestCase {
 
 	/**
-	 * Class constuctor. All testcases must be implemented. 
+	 * Class constuctor. All testcases must be implemented.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct();

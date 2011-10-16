@@ -3,7 +3,23 @@
  * \file
  * This file defines the FileHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.imagehandler.php,v 1.4 2011-05-13 16:39:19 oscar Exp $
+ * \version $Id: class.imagehandler.php,v 1.5 2011-10-16 11:11:44 oscar Exp $
+ * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OWL-PHP.
+ *
+ * OWL-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OWL-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -28,7 +44,7 @@ define ('FILE_TRIM_C',	3);
 /**
  * \ingroup OWL_SO_LAYER
  * Handle all images
- * \brief Image handler 
+ * \brief Image handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 15, 2007 -- O van Eijk -- initial version for Terra-Terra (based on an old OFM module)
  * \version Jul 30, 2008 -- O van Eijk -- Modified version for OWL-PHP
@@ -38,8 +54,8 @@ class ImageHandler extends FileHandler
 
 	/**
 	 * Full filename as stored on the file system
-	 */	
-	private $name; 
+	 */
+	private $name;
 	var $original_name;	// Original filename
 //	var $location;		// the file's location on the file system
 //	var $file_ext;		// Original file type
@@ -53,12 +69,12 @@ class ImageHandler extends FileHandler
 
 	/**
 	 * Pointer to te file when opened
-	 */	
+	 */
 	private $fpointer;
 
 	/**
 	 * Boolean that's true when the file is opened
-	 */	
+	 */
 	private $opened;
 
 //	var $localfile;		// Boolean that indicates a local file when TRUE

@@ -4,7 +4,23 @@
  * \ingroup OTK_UI_LAYER
  * This file creates the area to show the testresults
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: testresults.php,v 1.3 2011-06-07 14:06:56 oscar Exp $
+ * \version $Id: testresults.php,v 1.4 2011-10-16 11:11:45 oscar Exp $
+ * \copyright{2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OTK.
+ *
+ * OTK is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OTK is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OTK. If not, see http://www.gnu.org/licenses/.
  */
 /**
  * \ingroup ICV_UI_LAYER

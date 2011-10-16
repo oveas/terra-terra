@@ -3,7 +3,23 @@
  * \file
  * This file defines the testcase that does all table alterings
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.alter.php,v 1.2 2011-09-26 16:04:36 oscar Exp $
+ * \version $Id: case.alter.php,v 1.3 2011-10-16 11:11:44 oscar Exp $
+ * \copyright{2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OTK.
+ *
+ * OTK is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OTK is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OTK. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -59,7 +75,7 @@ class OTKDbdriver_Alter implements TestCase
 		if ($data == $_expectedResult) { // Just 2 '=' signs since not all datatypes (int vs string) might match
 			$returnCodes[] = array(OTK_RESULT_SUCCESS, 'Table comparison succeeded');
 		} else {
-			$returnCodes[] = array(OTK_RESULT_FAIL, 'Table comparison failed');
+			$returnCodes[] = array(OTK_RESULT_WARNING, 'Table comparison failed');
 
 			$this->details .= "<p>The table definition differed from the exected structure: "
 				. OTKHelpers::compareTable($_expectedResult, $data);

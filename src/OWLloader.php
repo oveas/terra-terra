@@ -3,7 +3,23 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.36 2011-09-26 10:50:18 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.37 2011-10-16 11:11:45 oscar Exp $
+ * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OWL-PHP.
+ *
+ * OWL-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OWL-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */
 
 // Error handling used during development
@@ -400,5 +416,19 @@ OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after 
  * was abandoned when AJAX became popular from 2005 onwards.
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
- * \license Yet to be determined.....
+ * \license
+ * This file is part of OWL-PHP.
+ *
+ * OWL-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OWL-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */

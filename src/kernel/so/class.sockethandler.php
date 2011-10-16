@@ -4,7 +4,23 @@
  * \ingroup OWL_LIBRARY
  * This file defines the Socket handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.sockethandler.php,v 1.2 2011-05-13 16:39:19 oscar Exp $
+ * \version $Id: class.sockethandler.php,v 1.3 2011-10-16 11:11:44 oscar Exp $
+ * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OWL-PHP.
+ *
+ * OWL-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OWL-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -18,7 +34,7 @@ define ('SOCK_AVAIL',			'220');
 //! Response code indicating the socket accepted the last command
 define ('SOCK_ACCEPTED',		'250');
 
-//! Response code indicating the socket is ready to receive data 
+//! Response code indicating the socket is ready to receive data
 define ('SOCK_DATA_STARTED',	'354');
 
 //! Code to end a line

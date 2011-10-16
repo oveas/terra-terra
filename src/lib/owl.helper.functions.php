@@ -3,8 +3,24 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.13 2011-09-26 10:50:18 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.14 2011-10-16 11:11:44 oscar Exp $
  * \author Oscar van Eijk, Oveas Functionality Provider
+ * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OWL-PHP.
+ *
+ * OWL-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OWL-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */
 
 /**

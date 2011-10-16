@@ -3,13 +3,29 @@
  * \file
  * This file defines the MySQL drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.mysql.php,v 1.6 2011-09-26 16:04:37 oscar Exp $
+ * \version $Id: class.mysql.php,v 1.7 2011-10-16 11:11:46 oscar Exp $
+ * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OWL-PHP.
+ *
+ * OWL-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OWL-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
  * \ingroup OWL_DRIVERS
- * Abstract class that defines the database drivers
- * \brief Database driver
+ * Class that defines the MySQL database driver
+ * \brief MySQL database driver
  * \see class DbDriver
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 12, 2011 -- O van Eijk -- initial version
@@ -28,14 +44,16 @@ class MySQL extends DbDefaults implements DbDriver
 
 	public function dbCreateTable(&$_resource, $_table, array $_colDefs, array $_idxDefs)
 	{
-		$_fldList = implode(',', $_colDefs);
-		$_idxList = implode(',', $_idxDefs);
-		return $this->dbExec($_resource, 'CREATE TABLE ' . $_table . '(' . $_fldList . ',' . $_idxList . ')');
+		$_q = implode(',', $_colDefs);
+		if (count($_idxDefs) > 0) {
+			$_q .= (',' . implode(',', $_idxDefs));
+		}
+		return $this->dbExec($_resource, 'CREATE TABLE ' . $_table . '(' . $_q . ')');
 	}
 
 	public function dbDefineField($_table, $_name, array $_desc)
 	{
-		$_qry = $this->dbQuote($_name) . ' ' . $this->mapType($_desc['type']);
+		$_qry = $this->dbQuote($_name) . ' ' . $this->mapType($_desc);
 
 		if (array_key_exists('length', $_desc) && $_desc['length'] > 0) {
 			$_len = $_desc['length'];
@@ -93,14 +111,14 @@ class MySQL extends DbDefaults implements DbDriver
 		return $_qry;
 	}
 
-	public function mapType ($_type)
+	public function mapType (array &$_type)
 	{
-		return $_type;
+		return; // Nothing to do
 	}
 
 	public function dbDropTable (&$_resource, $_table)
 	{
-		return $this->dbExec($_resource, 'DROP TABLE ' . $_table);
+		return $this->dbExec($_resource, 'DROP TABLE ' . $this->dbQuote($_table));
 	}
 
 	public function dbDropField (&$_resource, $_table, $_field)
@@ -120,7 +138,7 @@ class MySQL extends DbDefaults implements DbDriver
 	{
 		$_qry = 'ALTER TABLE ' .$this->dbQuote($_table)
 			. ' ADD ' .$this->dbQuote($_field) . ' '
-			. $this->mapType($_desc['type']) . ' ' . $this->dbDefineField($_table, $_field, $_desc);
+			. $this->mapType($_desc) . ' ' . $this->dbDefineField($_table, $_field, $_desc);
 			return $this->dbExec($_resource, $_qry);
 	}
 

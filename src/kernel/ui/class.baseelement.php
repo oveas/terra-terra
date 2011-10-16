@@ -2,8 +2,24 @@
 /**
  * \file
  * This file defines the top-level BaseElement class
-	 * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.baseelement.php,v 1.12 2011-06-10 11:57:17 oscar Exp $
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version $Id: class.baseelement.php,v 1.13 2011-10-16 11:11:45 oscar Exp $
+ * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OWL-PHP.
+ *
+ * OWL-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OWL-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */
 
 /**

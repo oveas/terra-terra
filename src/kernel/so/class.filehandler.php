@@ -3,7 +3,23 @@
  * \file
  * This file defines the FileHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.filehandler.php,v 1.8 2011-05-13 16:39:19 oscar Exp $
+ * \version $Id: class.filehandler.php,v 1.9 2011-10-16 11:11:44 oscar Exp $
+ * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
+ * \license
+ * This file is part of OWL-PHP.
+ *
+ * OWL-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OWL-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -28,18 +44,18 @@ define ('FILE_TRIM_C',	3);
 /**
  * \ingroup OWL_SO_LAYER
  * Handle all files
- * \brief File handler 
+ * \brief File handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 15, 2007 -- O van Eijk -- initial version for Terra-Terra (based on an old OFM module)
  * \version Jul 30, 2008 -- O van Eijk -- Modified version for OWL-PHP
  */
-class FileHandler extends _OWL 
+class FileHandler extends _OWL
 {
 
 	/**
 	 * Full filename as stored on the file system
-	 */	
-	protected $name; 
+	 */
+	protected $name;
 	var $original_name;	// Original filename
 //	var $location;		// the file's location on the file system
 //	var $file_ext;		// Original file type
@@ -53,12 +69,12 @@ class FileHandler extends _OWL
 
 	/**
 	 * Pointer to te file when opened
-	 */	
+	 */
 	private $fpointer;
 
 	/**
 	 * Boolean that's true when the file is opened
-	 */	
+	 */
 	private $opened;
 
 //	var $localfile;		// Boolean that indicates a local file when TRUE
@@ -108,13 +124,13 @@ class FileHandler extends _OWL
 
 	/**
 	 * Open the file
-	 * \param[in] $mode Mode in which the file should be opened: 
+	 * \param[in] $mode Mode in which the file should be opened:
 	 *    - 'r'  	Open for reading only; place the file pointer at the beginning of the file.
 	 *    - 'r+' 	Open for reading and writing; place the file pointer at the beginning of the file.
 	 *    - 'w' 	Open for writing only; place the file pointer at the beginning of the file and truncate the file to zero length. If the file does not exist, attempt to create it.
 	 *    - 'w+' 	Open for reading and writing; place the file pointer at the beginning of the file and truncate the file to zero length. If the file does not exist, attempt to create it.
 	 *    - 'a' 	Open for writing only; place the file pointer at the end of the file. If the file does not exist, attempt to create it.
-	 *    - 'a+' 	Open for reading and writing; place the file pointer at the end of the file. If the file does not exist, attempt to create it. 
+	 *    - 'a+' 	Open for reading and writing; place the file pointer at the end of the file. If the file does not exist, attempt to create it.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function open ($mode = 'r')
@@ -337,7 +353,7 @@ function OFM_FileInfo ($Path, $File) {
   $FileInf["ext"] = strtolower ($nel[count($nel)-1]);
 
   $FileInf["ascii"] = -1;
-  
+
   /*
    * Graphics
    */
@@ -372,7 +388,7 @@ function OFM_FileInfo ($Path, $File) {
      }
      $FileInf["ascii"] = 0;
   }
-  
+
 
   /*
    * Webdocuments
@@ -399,14 +415,14 @@ function OFM_FileInfo ($Path, $File) {
    */
   if ($FileInf["ascii"] == -1) {
      $FileInf["ascii"] == @OFM_IsAscii ($f, $FileInf["ext"]);
-  }  
+  }
 
   /*
    * The file is ASCII, now see if it's DOS or UNIX
    */
   if ($FileInf["ascii"]) {
      $FileInf["asciitype"] = "unix";
-     if (($fp = @fopen ($f, "r"))) { 
+     if (($fp = @fopen ($f, "r"))) {
         $Line = fread ($fp, 4096);
         fclose ($fp);
         if (ereg("\r\n$", $Line)) { $FileInf["asciitype"] = "dos"; }
@@ -427,7 +443,7 @@ function OFM_IsAscii ($File, $Type) {
  */
    global $BinaryFileTypes;
    global $ASCIIFileTypes;
-   
+
    if (ereg("/" . $Type . "/", $BinaryFileTypes)) {  return (0); }
    if (ereg("/" . $Type . "/", $ASCIIFileTypes))  {  return (1); }
 
@@ -437,7 +453,7 @@ function OFM_IsAscii ($File, $Type) {
 
    // Unreadable; asume binary
    if (!($fp = fopen ($File, "r"))) { return (0); }
-   
+
    $Line = fread ($fp, 4096);
    fclose ($fp);
    if (ereg("\n", $Line)) { return (1); }
@@ -479,7 +495,7 @@ sub OFM_convert_file ($$) {
    OPL_unlock ($ftemp);
    OPL_delete($ftemp);
    my ($a1, $a2) = split (/2/, $ctype);
-   $predirect = OFM_predirect("/ofm.php?presp=" . 
+   $predirect = OFM_predirect("/ofm.php?presp=" .
       signal("2253", $fname . $OPLSteering{'FieldSep'} . $a1 . $OPLSteering{'FieldSep'} . $a2));
 }
 */
