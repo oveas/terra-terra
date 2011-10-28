@@ -3,7 +3,7 @@
  * \file
  * This file defines the Oracle drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.oracle.php,v 1.4 2011-10-16 11:11:46 oscar Exp $
+ * \version $Id: class.oracle.php,v 1.5 2011-10-28 09:32:48 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
@@ -37,6 +37,7 @@ define ('_OWL_ORADRV_suffixConstraint', '_cst'); //!< Suffix for OWL generated c
  * \version September 19, 2011 -- O van Eijk -- initial version
  * \todo This class creates triggers, sequence and constrains when required by type,
  * but there's no check to see when these need to be removed (e.g. on Drop or Alter field/table)
+ * \todo The BLOB type is not yet supported
  */
 class Oracle extends DbDefaults implements DbDriver
 {
@@ -44,6 +45,11 @@ class Oracle extends DbDefaults implements DbDriver
 	 * string - name of the tablespace
 	 */
 	private $tablespace;
+
+	/**
+	 * string - Oracle SID
+	 */
+	private $sid;
 
 	/**
 	 * boolean -  when no dbQuotes are used, Oracle translates all field- and table names to uppercase
@@ -55,10 +61,32 @@ class Oracle extends DbDefaults implements DbDriver
 	 */
 	private $typeMaps;
 
+	/**
+	 * string - Last SELECT query used for rowcount without fetching
+	 */
+	private $stored_query;
+
+	/**
+	 * resource - Connection used for last read
+	 */
+	private $stored_resource;
+
+	/**
+	 * array - Save the last error data
+	 */
+	private $lastError;
+
+	/**
+	 * boolean - Set to true when a transaction is opened
+	 */
+	private $transactionOpened;
+
 	public function __construct()
 	{
 		parent::__constructor();
 		$this->uppercaseNames = ($this->quoting == '');
+		$this->transactionOpened = false;
+		$this->lastError = null;
 		$this->typeMaps = array (
 			 'bigint' => 'NUMBER(19, 0)'
 			,'bit' => 'RAW'
@@ -99,21 +127,27 @@ class Oracle extends DbDefaults implements DbDriver
 		if (count($_idxDefs) > 0) {
 			$_q .= (',' . implode(',', $_idxDefs));
 		}
-		return $this->dbExec($_resource, 'CREATE TABLE ' . $_table . '(' . $_q . ') TABLESPACE ' . $this->tablespace);
+		$_stat = $this->dbExec($_resource, 'CREATE TABLE ' . $_table . '(' . $_q . ') TABLESPACE ' . $this->tablespace);
+		if ($_stat) {
+			$_stat = $this->queryCacheExec($_resource);
+			$this->queryCacheClear();
+		}
+
+		return $_stat;
 	}
 
 	public function dbDefineField($_table, $_name, array $_desc)
 	{
 		$this->mapType($_desc);
-		if (array(key_exists('__callback', $_desc))) {
-			self::$_desc['__callback']($_table, $_name, $_desc);
+		if (array_key_exists('__callback', $_desc)) {
+			$this->$_desc['__callback']($_table, $_name, $_desc);
 			unset ($_desc['__callback']);
 		}
 		$_qry = $this->dbQuote($_name) . ' ' . $_desc['type'];
 
 		if (array_key_exists('length', $_desc) && $_desc['length'] > 0) {
 			$_len = $_desc['length'];
-			if (array_key_exists('precision', $_desc) && $_desc['precision'] > 0) {
+			if (array_key_exists('precision', $_desc)) {
 				$_len .= (','. $_desc['precision']);
 			}
 			$_qry .= ('(' . $_len . ')');
@@ -124,11 +158,11 @@ class Oracle extends DbDefaults implements DbDriver
 		if (array_key_exists('zerofill', $_desc) && $_desc['zerofill']) {
 // Not supported
 		}
-		if (!array_key_exists('null', $_desc) || !$_desc['null']) {
-			$_qry .= ' NOT NULL';
-		}
 		if (array_key_exists('default', $_desc) && !empty($_desc['default'])) {
 			$_qry .= (' DEFAULT \'' . $_desc['default'] . "'");
+		}
+		if (!array_key_exists('null', $_desc) || !$_desc['null']) {
+			$_qry .= ' NOT NULL';
 		}
 		if (array_key_exists('comment', $_desc) && !empty($_desc['comment'])) {
 			$this->queryCacheAdd('COMMENT ON COLUMN '
@@ -149,40 +183,29 @@ class Oracle extends DbDefaults implements DbDriver
 		}
 		$_q = 'CREATE ';
 
+		$_indexType = '';
 		if (array_key_exists('unique', $_desc) && $_desc['unique']) {
 			$_q .= 'UNIQUE ';
 		} elseif (array_key_exists('type', $_desc) && $_desc['type'] != '') {
 			if ($_desc['type'] === 'BITMAP') {
 				$_q .= 'BITMAP ';
+			} elseif ($_desc['type'] === 'FULLTEXT') {
+				$_indexType = "INDEXTYPE IS CTXSYS.CONTEXT PARAMETERS ('DATASTORE CTXSYS.DEFAULT_DATASTORE')";
 			} else {
-				return '-- Unsupport key type'; // TODO Unsupported index type.... how do we handle this?
+				return null; // TODO Unsupported index type.... how do we handle this?
 			}
 		}
-		$_q .= 'INDEX ' . $this->dbQuote($_name) . ' ON ' . $this->dbQuote($_table) . ' (' . implode(',', $_cols) . ')';
+		$_q .= 'INDEX ' . $this->dbQuote($_name) . ' ON ' . $this->dbQuote($_table) . ' (' . implode(',', $_cols) . ') ' . $_indexType;
 		$this->queryCacheAdd($_q);
 		return null;
 	}
 
 	public function mapType (array &$_type)
 	{
-		if (array_key_exists($_type['type'], $this->typeMaps)) {
-			$_type['type'] = $this->typeMaps[$_type['type']];
-			if (preg_match_all("/[0-9]+/", $_type['type'], $_matches)) {
-				$_type['length'] = $_matches[0][0];
-				if (count($_matches[0]) >= 2) {
-					$_type['precision'] = $_matches[0][1];
-				} elseif (array_key_exists('precision', $_type)) {
-					unset ($_type['precision']);
-				}
-				$_type['type'] = preg_replace("/\([0-9,\s]\)/", '', $_type['type']);
-			}
-			if (array_key_exists('auto_inc', $_type) && $_type['auto_inc']) {
-				$_type['__callback'] = 'setAutoIncrement';
-			}
-		} elseif (preg_match_all("/^varbinary/", $_type['type'])) {
+		if (preg_match("/^varbinary/", $_type['type'])) {
 			$_type['type'] = 'BLOB';
 			unset ($_type['length']);
-		} elseif (preg_match_all("/^enum/", $_type['type'])) {
+		} elseif (preg_match("/^enum/", $_type['type'])) {
 			$_type['type'] = 'VARCHAR2';
 			$_type['length'] = 0;
 			foreach ($_type['options'] as $_opt) {
@@ -191,8 +214,49 @@ class Oracle extends DbDefaults implements DbDriver
 				}
 			}
 			$_type['__callback'] = 'setEnumConstraint';
+		} else {
+			foreach ($this->typeMaps as $_orig => $_repl) {
+				$_type['type'] = preg_replace("/$_orig/", $_repl, $_type['type'], 1, $_rc);
+				if ($_rc > 0) {
+					break;
+				}
+			}
+			if (preg_match_all("/[\(,\s]([0-9]+)/", $_type['type'], $_matches)) {
+				$_type['length'] = $_matches[1][0];
+				if (count($_matches[1]) >= 2) {
+					$_type['precision'] = $_matches[1][1];
+				} elseif (array_key_exists('precision', $_type)) {
+					unset ($_type['precision']);
+				}
+				$_type['type'] = preg_replace("/\([0-9,\s]+\)/", '', $_type['type']);
+			}
+		}
+//		if (array_key_exists($_type['type'], $this->typeMaps)) {
+//			$_type['type'] = $this->typeMaps[$_type['type']];
+//		}
+		if (array_key_exists('auto_inc', $_type) && $_type['auto_inc']) {
+			$_type['__callback'] = 'setAutoIncrement';
 		}
 		return;
+	}
+
+	/**
+	 * Generate Oracle object names for autogenerated Oracle objects based on the table and field
+	 * the object is generated for
+	 * \param[in] $_table Database table the object applies to
+	 * \param[in] $_field Table field the object applies to
+	 * \param[in] $_suffix Suffix identifying the object type
+	 * \return Object name, limited to the maximum size for Oracle names
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private function getOraObjectName ($_table, $_field, $_suffix)
+	{
+		$_objName = $_table . $_field . $_suffix;
+		if (strlen ($_objName) > _OWL_ORADRV_maxNames) {
+			$_sub = ((_OWL_ORADRV_maxNames - strlen($_suffix)) / 2);
+			$_objName = substr ($_table, 0, $_sub) . substr ($_field, 0, $_sub) . $_suffix;
+		}
+		return $_objName;
 	}
 
 	/**
@@ -204,55 +268,45 @@ class Oracle extends DbDefaults implements DbDriver
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 * \todo Implement a check to see if the sequence and/or trigger already exists
 	 */
-	private static function setAutoIncrement ($_table, $_field, array $_type)
+	private function setAutoIncrement ($_table, $_field, array $_type)
 	{
-		if (strlen($_field) + strlen(_OWL_ORADRV_suffixSequence) > _OWL_ORADRV_maxNames) {
-			$_seq = substr ($_field, 0, (strlen($_field) - strlen(_OWL_ORADRV_suffixSequence))) . _OWL_ORADRV_suffixSequence;
-		} else {
-			$_seq = $_field . _OWL_ORADRV_suffixSequence;
-		}
-		if (strlen($_field) + strlen(_OWL_ORADRV_suffixTrigger) > _OWL_ORADRV_maxNames) {
-			$_trg = substr ($_field, 0, (strlen($_field) - strlen(_OWL_ORADRV_suffixTrigger))) . _OWL_ORADRV_suffixTrigger;
-		} else {
-			$_trg = $_field . _OWL_ORADRV_suffixTrigger;
-		}
+		$_seq = $this->getOraObjectName($_table, $_field, _OWL_ORADRV_suffixSequence);
+		$_trg = $this->getOraObjectName($_table, $_field, _OWL_ORADRV_suffixTrigger);
 
 		$_q = 'CREATE SEQUENCE ' . $this->dbQuote($_seq) . ' '
 			. '    START WITH 1'
 			. '    INCREMENT BY 1'
 		;
 		$this->queryCacheAdd($_q);
-
-		$_q = 'CREATE TRIGGER ' . $this->dbQuote($_trg) . ' '
+		$_q = 'CREATE OR REPLACE TRIGGER ' . $this->dbQuote($_trg)
 			. '    BEFORE INSERT ON ' . $this->dbQuote($_table) . ' '
-			. 'FOR EACH ROW'
-			. 'DECLARE'
-			. '    max_id NUMBER;'
-			. '    cur_seq NUMBER;'
+			. 'FOR EACH ROW '
+			. 'DECLARE '
+			. '    max_id NUMBER; '
+			. '    cur_seq NUMBER; '
 			. 'BEGIN'
-			. '    IF :new.' . $this->dbQuote($_field) . ' IS NULL THEN'
-			. '        SELECT ' . $this->dbQuote($_seq) . '.NEXTVAL'
-			. '            INTO :new.' . $this->dbQuote($_field) . ' '
-			. '            FROM DUAL'
+			. '    IF :new.' . $this->dbQuote($_field) . ' IS NULL THEN '
+			. '        SELECT ' . $this->dbQuote($_seq) . '.NEXTVAL '
+			. '            INTO :new.' . $this->dbQuote($_field)
+			. '            FROM DUAL '
 			. '        ;'
-			. '    ELSE'
-			. '        SELECT GREATEST(NVL(MAX(' . $this->dbQuote($_field) . '),0), :new.' . $this->dbQuote($_field) . ')'
-			. '            INTO max_id FROM ' . $this->dbQuote($_table) . ' '
-			. '        ;'
-			. '        SELECT ' . $this->dbQuote($_seq) . '.NEXTVAL'
-			. '            INTO cur_seq'
-			. '            FROM DUAL'
-			. '        ;'
-			. '        WHILE cur_seq < max_id'
-			. '        LOOP'
-			. '            SELECT ' . $this->dbQuote($_seq) . '.NEXTVAL'
-			. '               INTO cur_seq'
-			. '               FROM DUAL'
-			. '            ;'
-			. '        END LOOP;'
-			. '    end if;'
-			. 'end;'
-			. '/'
+			. '    ELSE '
+			. '        SELECT GREATEST(NVL(MAX(' . $this->dbQuote($_field) . '),0), :new.' . $this->dbQuote($_field) . ') '
+			. '            INTO max_id FROM ' . $this->dbQuote($_table)
+			. '        ; '
+			. '        SELECT ' . $this->dbQuote($_seq) . '.NEXTVAL '
+			. '            INTO cur_seq '
+			. '            FROM DUAL '
+			. '        ; '
+			. '        WHILE cur_seq < max_id '
+			. '        LOOP '
+			. '            SELECT ' . $this->dbQuote($_seq) . '.NEXTVAL '
+			. '               INTO cur_seq '
+			. '               FROM DUAL '
+			. '            ; '
+			. '        END LOOP; '
+			. '    END IF; '
+			. 'END; '
 		;
 		$this->queryCacheAdd($_q);
 	}
@@ -266,24 +320,40 @@ class Oracle extends DbDefaults implements DbDriver
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 * \todo Implement a check to see if the constraint already exists
 	 */
-	private static function setEnumConstraint ($_table, $_field, array $_type)
+	private function setEnumConstraint ($_table, $_field, array $_type)
 	{
-		if (strlen($_field) + strlen(_OWL_ORADRV_suffixConstraint) > _OWL_ORADRV_maxNames) {
-			$_cst = substr ($_field, 0, (strlen($_field) - strlen(_OWL_ORADRV_suffixConstraint))) . _OWL_ORADRV_suffixConstraint;
-		} else {
-			$_cst = $_field . _OWL_ORADRV_suffixConstraint;
-		}
+		$_cst = $this->getOraObjectName($_table, $_field, _OWL_ORADRV_suffixConstraint);
 
-		$_validValues = array();
-		foreach ($_type['options'] as $_opt) {
-			$_validValues[] = "'$_opt'";
-		}
 		$_q = 'ALTER TABLE ' . $this->dbQuote($_table) . ' '
 			. '    ADD CONSTRAINT ' . $this->dbQuote($_cst) . ' '
-			. '    CHECK ' . $this->dbQuote($_field) . ' IN (' . implode(',', $_validValues) . ') ';
+			. '    CHECK (' . $this->dbQuote($_field) . ' IN (' . implode(',', $_type['options']) . ')) '
+			. '    ENABLE';
+//			. '    CHECK ' . $this->dbQuote($_field) . ' IN (' . implode(',', $_validValues) . ') ';
 		;
-		unset ($_type['options']);
 		$this->queryCacheAdd($_q);
+		unset ($_type['options']);
+	}
+
+	/**
+	 * Get the default value for a given column
+	 * \param[in] $_dbHandler Reference to the database handler
+	 * \param[in] $_table Table name the field belongs to
+	 * \param[in] $_column Name of the field to check
+	 * \return string; Default value or an empty string if not set
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private function getDefaultValue (&$_dbHandler, $_table, $_column)
+	{
+		$_qry = 'SELECT DATA_DEFAULT '
+				.'FROM cols ' . $this->dbQuote($_table) . ' '
+				."WHERE table_name = '$_table' "
+				."AND column_name = '$_column'"
+		;
+		$_dbHandler->read (DBHANDLE_SINGLEFIELD, $_data, $_qry, __LINE__, __FILE__);
+		if ($_dbHandler->getStatus() === 'DBHANDLE_NODATA') {
+			return '';
+		}
+		return $_data;
 	}
 
 	/**
@@ -293,20 +363,20 @@ class Oracle extends DbDefaults implements DbDriver
 	 * This implies, auto-increment simulation where the sequence has a different name will not be recognized,
 	 * and if this sequence name is used for other purposes, is will falsly be identified as an auto increment!
 	 * \param[in] $_dbHandler Reference to the database handler
+	 * \param[in] $_table Table name the field belongs to
 	 * \param[in] $_column Name of the field to check
 	 * \return Boolean; true if this is an auto increment field
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private function isAutoIncrement(&$_dbHandler, $_column)
+	private function isAutoIncrement(&$_dbHandler, $_table, $_column)
 	{
-		$_qry = 'SELECT COUNT(*) FROM user_sequence WHERE sequence_name = ';
-		if ($this->uppercase) {
-			$_qry .= "'" . strtoupper($_column) . strtoupper(_OWL_ORADRV_suffixSequence) . "'";
-		} else {
-			$_qry .= "'" . $_column . _OWL_ORADRV_suffixSequence . "'";
+		$_seq = $this->getOraObjectName($_table, $_column, _OWL_ORADRV_suffixSequence);
+		if ($this->uppercaseNames) {
+			$_seq = strtoupper($_seq);
 		}
+		$_qry = "SELECT COUNT(*) FROM user_sequences WHERE sequence_name = '$_seq'";
 		$_dbHandler->read (DBHANDLE_SINGLEFIELD, $_data, $_qry, __LINE__, __FILE__);
-		return ($_data === 1);
+		return ($_data == 1);
 	}
 
 	/**
@@ -319,16 +389,20 @@ class Oracle extends DbDefaults implements DbDriver
 	 */
 	private function isEnum(&$_dbHandler, $_table, $_column)
 	{
-		if ($this->uppercase) {
+		$_cst = $this->getOraObjectName($_table, $_column, _OWL_ORADRV_suffixConstraint);
+
+		if ($this->uppercaseNames) {
 			$_table = strtoupper($_table);
 			$_column = strtoupper($_column);
+			$_cst = strtoupper($_cst);
 		}
-		$_qry = "SELECT constraint_name FROM user_cons_columns WHERE table_name = '$_table' and COLUMN_NAME = '$_column'";
+		$_qry = "SELECT COUNT(*) FROM user_cons_columns WHERE constraint_name = '$_cst'";
+
 		$_dbHandler->read (DBHANDLE_SINGLEFIELD, $_data, $_qry, __LINE__, __FILE__);
-		if ($_dbHandler->getStatus() === 'DBHANDLE_NODATA') {
+		if ($_data == 0) {
 			return array();
 		}
-		$_qry = "SELECT search_condition FROM user_constraints WHERE constraint_name = '$_data'";
+		$_qry = "SELECT search_condition FROM user_constraints WHERE constraint_name = '$_cst'";
 		$_dbHandler->read (DBHANDLE_SINGLEFIELD, $_data, $_qry, __LINE__, __FILE__);
 		if (preg_match('/\sIN\s\((.+?)\)/', $_data, $_matches)) {
 			$_values = explode(',', $_matches[1]);
@@ -342,7 +416,44 @@ class Oracle extends DbDefaults implements DbDriver
 
 	public function dbDropTable (&$_resource, $_table)
 	{
+		$this->dropAutoIncrementSequence ($_resource, $_table);
 		return $this->dbExec($_resource, 'DROP TABLE ' . $this->dbQuote($_table));
+	}
+
+	/**
+	 * When dropping a table, check if it has autoincrement sequences. If so, drop them.
+	 * TThe autogenerated triggers will be dropped together with the table by Oracle.
+	 *
+	 * \param[in] $_resource Link to the database resource
+	 * \param[in] $_table Table being dropped
+	 * \todo We can't use isAutoIncrement() here, since that one requires a link to the DbHandler
+	 * That needs to be changed somehow
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private function dropAutoIncrementSequence (&$_resource, $_table)
+	{
+		$_qry = 'SELECT column_name "Name" '
+				.'FROM user_tab_columns '
+				."WHERE table_name='$_table'";
+		if ($this->dbRead($_data, $_resource, $_qry)) {
+			while ($_fld = $this->dbFetchNextRecord($_data)) {
+				$_seq = $this->getOraObjectName($_table, $_fld['Name'], _OWL_ORADRV_suffixSequence);
+				if ($this->uppercaseNames) {
+					$_seq = strtoupper($_seq);
+				}
+				$_qry = "SELECT COUNT(*) AS C FROM user_sequences WHERE sequence_name = '$_seq'";
+				$_cnt = oci_parse($_resource, $_qry);
+				oci_execute($_cnt);
+				$_c = $this->dbFetchNextRecord($_cnt);
+				$this->dbClear($_cnt);
+				if ($_c['C'] == 1) {
+					$this->dbExec($_resource, 'DROP SEQUENCE ' . $this->dbQuote($_seq));
+					$this->dbClear($_data);
+					return; //There can be only one
+				}
+			}
+		}
+		$this->dbClear($_data);
 	}
 
 	public function dbDropField (&$_resource, $_table, $_field)
@@ -353,11 +464,11 @@ class Oracle extends DbDefaults implements DbDriver
 	public function dbAlterField (&$_resource, $_table, $_field, array $_desc)
 	{
 		$_qry = 'ALTER TABLE ' .$this->dbQuote($_table)
-			. ' CHANGE ' . $this->dbQuote($_field) . ' '
+			. ' MODIFY ' //. $this->dbQuote($_field) . ' '
 			. $this->dbDefineField($_table, $_field, $_desc);
 		$_stat = $this->dbExec($_resource, $_qry);
 		if ($_stat) {
-			$this->queryCacheExec($_resource);
+			$_stat = $this->queryCacheExec($_resource);
 			$this->queryCacheClear();
 		}
 		return $_stat;
@@ -365,13 +476,11 @@ class Oracle extends DbDefaults implements DbDriver
 
 	public function dbAddField (&$_resource, $_table, $_field, array $_desc)
 	{
-		$_q = $this->dbDefineField($_table, $_field, $_desc); // Should be called first; it does the mapType
 		$_qry = 'ALTER TABLE ' .$this->dbQuote($_table)
-			. ' ADD ' .$this->dbQuote($_field) . ' '
-			. $_desc['type'] . ' ' . $_q;
+			. ' ADD ' . $this->dbDefineField($_table, $_field, $_desc);
 		$_stat = $this->dbExec($_resource, $_qry);
 		if ($_stat) {
-			$this->queryCacheExec($_resource);
+			$_stat = $this->queryCacheExec($_resource);
 			$this->queryCacheClear();
 		}
 		return $_stat;
@@ -381,7 +490,14 @@ class Oracle extends DbDefaults implements DbDriver
 	{
 		$_descr = array ();
 		$_data  = array ();
-		$_qry = 'DESCRIBE ' . $this->dbQuote($_table);
+//		$_qry = 'DESCRIBE ' . $this->dbQuote($_table);
+		// DESC is not available outside SQL*Plus emulate it
+		$_qry = 'SELECT column_name "Name" '
+				.',nullable "Null?" '
+				.',CONCAT(CONCAT(CONCAT(data_type,\'(\'),data_length),\')\') "Type" '
+				.'FROM user_tab_columns '
+				."WHERE table_name='$_table'";
+//TODO user_tab_columns.data_precision = length (for NUMBER)
 		$_dbHandler->read (DBHANDLE_DATA, $_data, $_qry, __LINE__, __FILE__);
 		if ($_dbHandler->getStatus() === 'DBHANDLE_NODATA') {
 			return null;
@@ -397,53 +513,107 @@ class Oracle extends DbDefaults implements DbDriver
 				$_descr[$_record['Name']]['type'] = $_record['Type'];
 			}
 			$_descr[$_record['Name']]['null']     = ($_record['Null?'] === '');
-			$_descr[$_record['Name']]['auto_inc'] = $this->isAutoIncrement($_dbHandler, $_record['Name']);
+			$_descr[$_record['Name']]['auto_inc'] = $this->isAutoIncrement($_dbHandler, $_table, $_record['Name']);
 
 			if (($_values = $this->isEnum($_dbHandler, $_table, $_record['Name'])) !== array()) {
 				$_descr[$_record['Name']]['type'] = 'enum';
 				$_descr[$_record['Name']]['options'] = $_values;
 			}
 
-			// TODO Default and comment
-			$_descr[$_record['Name']]['default'] = ($_record['Default'] == 'NULL') ? '' : $_record['Default'];
-			$_descr[$_record['Name']]['comment'] = $_record['Comment'];
+			$_descr[$_record['Name']]['default'] = $this->getDefaultValue($_dbHandler, $_table, $_record['Name']);
+
+			// TODO Comments
+//			$_descr[$_record['Name']]['comment'] = $_record['Comment'];
 		}
 		return $_descr;
 	}
 
 	public function dbTableIndexes(&$_dbHandler, $_table)
 	{
-		// TODO Make Oracle compatible
-		$_descr = array ();
 		$_data  = array ();
-		$_qry = 'SHOW INDEXES FROM ' . $this->dbQuote($_table);
+		$_index = array ();
+		$_qry = 'SELECT user_indexes.index_name          AS "nam" '
+				.',     user_indexes.uniqueness          AS "unq" '
+				.',     user_indexes.index_type          AS "typ" '
+				.',     user_ind_columns.column_position AS "pos" '
+				.',     user_ind_columns.column_name     AS "col" '
+				.'FROM  user_indexes '
+				.',     user_ind_columns '
+				."WHERE user_indexes.table_name = '$_table' "
+				."AND user_indexes.index_name = user_ind_columns.index_name "
+				.'ORDER BY user_indexes.index_name '
+				.',        user_ind_columns.column_position '
+		;
 
 		$_dbHandler->read (DBHANDLE_DATA, $_data, $_qry, __LINE__, __FILE__);
 		if ($_dbHandler->getStatus() === 'DBHANDLE_NODATA') {
 			return null;
 		}
 		foreach ($_data as $_record) {
-			$_index[$_record['Key_name']]['columns'][$_record['Seq_in_index']] = $_record['Column_name'];
-			$_index[$_record['Key_name']]['unique'] = (!$_record['Non_unique']);
-			$_index[$_record['Key_name']]['type'] = $_record['Index_type'];
-			$_index[$_record['Key_name']]['comment'] = $_record['Comment'];
+			if (preg_match('/^SYS/ ', $_record['nam'])) {
+				$_record['nam'] = 'PRIMARY';
+			}
+			if (array_key_exists($_record['nam'], $_index)) {
+				$_index[$_record['nam']]['columns'][] = $_record['col'];
+			} else {
+				$_index[$_record['nam']] = array(
+					  'columns' => array($_record['col'])
+					, 'unique'  => ($_record['unq'] == 'UNIQUE')
+					, 'type'    => $_record['typ']
+					, 'comment' => ''
+				);
+			}
 		}
 		return $_index;
 	}
 
 	public function dbError (&$_resource, &$_number, &$_text)
 	{
-		$_err = oci_error($_resource);
-		$_number = $_err['code'];
-		$_text = $_err['message'];
-//		$_offset = $_err['offset'];
+		if (!$this->lastError) {
+			$_number = 0;
+			$_text = 'Unknown error - please check the logs';
+		} else {
+			$_number = $this->lastError['code'];
+			$_text = $this->lastError['message'];
+//			$_offset = $this->lastError['offset'];
+			$this->lastError = null;
+		}
+	}
+
+	/**
+	 * Since cachedQueries might be executed even on previous failures, we must save the last
+	 * error for dbError() to return.
+	 * \param[in] $_resource Database link
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private function setError(&$_resource)
+	{
+		$_e = oci_error($_resource);
+		if (is_array($_e)) {
+			$this->lastError = $_e;
+		}
 	}
 
 	public function dbConnect (&$_resource, $_server, $_name, $_user, $_password, $_multiple = false)
 	{
 		$this->tablespace = $_name;
-		$_conn = "(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = $_server)(PORT = 1521)))(CONNECT_DATA=(SID=$_name)))";
-		if (!($_resource = oci_connect ( $_user , $_password, $_conn))) {
+		$this->sid =  ConfigHandler::get ('database', 'ora_sid');
+/*
+		$_conn = '(DESCRIPTION = '
+					.'(ADDRESS_LIST = '
+						.'(ADDRESS = '
+							.'(PROTOCOL = TCP)'
+							."(HOST = $_server)"
+							.'(PORT = 1521)'
+						.')'
+					.'(CONNECT_DATA = '
+						."(SID = $_name)"
+					.')'
+				. ')'
+			;
+*/
+//		$_conn = "$_server/$this->sid";
+		if (!($_resource = oci_connect ( $_user , $_password, $this->sid))) {
 			return (false);
 		}
 		return (true);
@@ -458,21 +628,28 @@ class Oracle extends DbDefaults implements DbDriver
 	public function dbTransactionCommit (&$_resource, $_name = null, $_new = false)
 	{
 		return oci_commit($_resource);
+		$this->transactionOpened = false;
 	}
 
 	public function dbTransactionRollback (&$_resource, $_name = null, $_new = false)
 	{
 		return oci_rollback($_resource);
+		$this->transactionOpened = false;
+	}
+
+	public function dbTransactionStart (&$_resource, $_name = null)
+	{
+		$this->transactionOpened = true;
 	}
 
 	public function tableLock(&$_resource, $_table, $_type = DBDRIVER_LOCKTYPE_READ)
 	{
 		switch ($_type) {
 			case (DBDRIVER_LOCKTYPE_READ) :
-				$_lockType = 'ROW EXCLUSIVE';
+				$_lockMode = 'ROW EXCLUSIVE';
 				break;
 			case (DBDRIVER_LOCKTYPE_WRITE) :
-				$_lockType = 'SHARE ROW EXCLUSIVE';
+				$_lockMode = 'SHARE ROW EXCLUSIVE';
 				break;
 			default:
 				return (false); // Nothing more implemented (yet?)
@@ -482,7 +659,7 @@ class Oracle extends DbDefaults implements DbDriver
 			$_table = array($_table);
 		}
 		foreach ($_table as $_t) {
-			$_q = 'LOCK TABLE ' . $_t . ' ' . $_lockType;
+			$_q = 'LOCK TABLE ' . $_t . ' IN ' . $_lockMode . ' MODE';
 			if (!$this->dbExec($_resource, $_q)) {
 				return false;
 			}
@@ -512,9 +689,9 @@ class Oracle extends DbDefaults implements DbDriver
 				. 'FROM USER_OBJECTS '
 		;
 		if ($_views) {
-			$_query .= "AND OBJECT_TYPE IN ('TABLE', 'VIEW') ";
+			$_query .= "WHERE OBJECT_TYPE IN ('TABLE', 'VIEW') ";
 		} else {
-			$_query .= "AND OBJECT_TYPE = 'TABLE' ";
+			$_query .= "WHERE OBJECT_TYPE = 'TABLE' ";
 		}
 		$_query .= "AND OBJECT_NAME LIKE '$_pattern' ";
 
@@ -523,7 +700,7 @@ class Oracle extends DbDefaults implements DbDriver
 		}
 		$_tables = array();
 		while ($_r = $this->dbFetchNextRecord($_data)) {
-			$_tables[$_r[0]] = null; // \todo Columns, attributes etc, see SchemeHandler
+			$_tables[$_r['OBJECT_NAME']] = null; // \todo Columns, attributes etc, see SchemeHandler
 		}
 		$this->dbClear($_data);
 		return ($_tables);
@@ -532,19 +709,46 @@ class Oracle extends DbDefaults implements DbDriver
 	public function dbExec (&$_resource, $_statement)
 	{
 		$_cmd = oci_parse($_resource, $_statement);
-		return oci_execute($_cmd);
+//echo "Exec $_statement<br>\n";
+		if ($_cmd === false) {
+			$this->setError($_resource);
+			return false;
+		}
+		$_ret = oci_execute($_cmd, ($this->transactionOpened ? OCI_NO_AUTO_COMMIT : OCI_COMMIT_ON_SUCCESS));
+		if (!$_ret) {
+			$this->setError($_resource);
+		}
+		return $_ret;
 	}
 
 	public function dbRead (&$_data, &$_resource, $_query)
 	{
+		$this->stored_query = $_query;
+		$this->stored_resource = $_resource;
 		$_data = oci_parse($_resource, $_query);
-		return oci_execute($_data);
+//echo $_query."<br>\n";
+		if ($_data === false) {
+			$this->setError($_resource);
+			return false;
+		}
+		$_ret = oci_execute($_data);
+		if (!$_ret) {
+			$this->setError($_resource);
+		}
+		return $_ret;
 	}
 
 	public function dbWrite (&$_resource, $_query)
 	{
 		$_statement = oci_parse($_resource, $_query);
-		if (!oci_execute($_statement)) {
+//echo $_query."<br>\n";
+		if ($_statement === false) {
+			$this->setError($_resource);
+			return (-1);
+		}
+		$_ret = oci_execute($_statement, ($this->transactionOpened ? OCI_NO_AUTO_COMMIT : OCI_COMMIT_ON_SUCCESS));
+		if (!$_ret) {
+			$this->setError($_resource);
 			return (-1);
 		}
 		return (oci_num_rows($_statement));
@@ -553,23 +757,36 @@ class Oracle extends DbDefaults implements DbDriver
 	public function dbInsertId (&$_resource, $_table, $_field)
 	{
 		$_data = null;
-		$_q = 'SELECT ' . $this->functionMax($_field) . ' AS id '
-			. 'FROM ' . OWLDB_QUOTES . $_table . OWLDB_QUOTES . ' ';
-		if (!$this->dbRead($_data, $_resource, $_qry)) {
+		$_q = 'SELECT ' . $this->functionMax($this->dbQuote($_field)) . ' AS "id" '
+			. 'FROM ' . $this->dbQuote($_table) . ' ';
+		if (!$this->dbRead($_data, $_resource, $_q)) {
 			return -1;
 		}
 		$_r = $this->dbFetchNextRecord($_data);
-		return $_r[0];
+		return $_r['id'];
 	}
 
 	public function dbRowCount (&$_data)
 	{
-		return oci_num_rows ($_data);
+		$_q = 'SELECT COUNT(*) AS rnum FROM (' . $this->stored_query . ')';
+		$__d = oci_parse($this->stored_resource, $_q);
+		oci_execute($__d);
+		$_rNum = oci_fetch($__d);
+		oci_free_statement($__d);
+		return $_rNum;
 	}
 
 	public function dbFetchNextRecord (&$_data)
 	{
-		return (oci_fetch_assoc ($_data));
+		$_r = oci_fetch_assoc ($_data);
+		if ($_r) {
+			foreach ($_r as $_k => $_v) {
+				if (is_object($_v)) {
+					$_r[$_k] = $_v->load();
+				}
+			}
+		}
+		return ($_r);
 	}
 
 	public function dbClear (&$_data)
@@ -584,7 +801,7 @@ class Oracle extends DbDefaults implements DbDriver
 
 	public function dbEscapeString ($_string)
 	{
-		return (addslashes($_string));
+		return ($_string);//(addslashes($_string));
 	}
 
 	public function functionIf($_field, array $_arguments = array())

@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
- * \version $Id: class.confighandler.php,v 1.17 2011-10-16 11:11:43 oscar Exp $
+ * \version $Id: class.confighandler.php,v 1.18 2011-10-28 09:32:47 oscar Exp $
  */
 
 /**
@@ -149,7 +149,6 @@ abstract class ConfigHandler
 		self::$dataset->prepare ();
 		$_cfg = null;
 		self::$dataset->db ($_cfg, __LINE__, __FILE__);
-
 		if (count($_cfg) > 0) {
 			foreach ($_cfg as $_item) {
 				self::parseItem($_item['section'], $_item['name'], $_item['value'], $_item['protect'], $_item['hide']);
@@ -384,11 +383,11 @@ Register::registerCode ('CONFIG_PROTECTED');
 Register::setSeverity (OWL_WARNING);
 Register::registerCode ('CONFIG_NOSUCHSECTION');
 Register::registerCode ('CONFIG_EMPTYSECTION');
+Register::registerCode ('CONFIG_NOVALUE');
 
 //Register::setSeverity (OWL_BUG);
 
 Register::setSeverity (OWL_ERROR);
-Register::registerCode ('CONFIG_NOVALUE');
 
 //Register::setSeverity (OWL_FATAL);
 //Register::setSeverity (OWL_CRITICAL);

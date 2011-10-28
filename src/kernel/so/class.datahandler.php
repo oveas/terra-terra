@@ -3,7 +3,7 @@
  * \file
  * This file defines the DataHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.datahandler.php,v 1.19 2011-10-16 11:11:43 oscar Exp $
+ * \version $Id: class.datahandler.php,v 1.20 2011-10-28 09:32:47 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
@@ -466,7 +466,7 @@ class DataHandler extends _OWL
 				$this->owl_database->write ($data, $line, $file);
 				break;
 		}
-		if ($this->owl_prepared === DATA_WRITE) {
+		if ($this->owl_prepared == DATA_WRITE) {
 			$this->last_id = $this->owl_database->lastInsertedId();
 		}
 		return ($this->setHighSeverity ($this->owl_database));

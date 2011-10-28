@@ -4,7 +4,7 @@
  * \ingroup OWL_LIBRARY
  * This file defines the message text for all status codes in the default language
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.messages.php,v 1.28 2011-10-16 11:11:44 oscar Exp $
+ * \version $Id: owl.messages.php,v 1.29 2011-10-28 09:32:47 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
@@ -82,6 +82,11 @@ $_messages = array (
 	, DATA_NODBLINK			=> 'A database query shoukld be prepared, but there is no database handler set yet'
 	, DATA_IVPREPARE		=> 'A database query was prepared with an invalid prepare flag'
 	, DATA_DBWARNING		=> 'Database handler signalled a warning: $p1$'
+	, HDATA_QUERY			=> 'Executing $p1$ query: $p2$'
+	, HDATA_RESULT			=> '$p1$ records retrieved or updated'
+	, HDATA_IVNODESPEC		=> 'Given parent not found'
+	, HDATA_NOXLINKID		=> 'Cannot ernable crosslinks - primary key not set'
+	, HDATA_XLINKDISA		=> 'No crosslink field set'
 	, SOCKET_CONNECTED		=> 'This socket is already connected'
 	, SOCKET_NOTCONNECTED	=> 'This socket is not connected'
 	, SOCKET_READ			=> 'Line "$p1$" was read from the socket'

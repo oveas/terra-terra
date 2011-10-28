@@ -546,6 +546,7 @@ var NAVTREE =
       [ "exa.datahandler-set.php", "exa_8datahandler-set_8php-example.html", null ],
       [ "exa.document.php", "exa_8document_8php-example.html", null ],
       [ "exa.form.php", "exa_8form_8php-example.html", null ],
+      [ "exa.hierarchical-data.php", "exa_8hierarchical-data_8php-example.html", null ],
       [ "exa.schemehandler.php", "exa_8schemehandler_8php-example.html", null ]
     ] ],
     [ "File Members", "globals.html", null ]

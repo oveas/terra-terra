@@ -15,7 +15,7 @@ CREATE  TABLE IF NOT EXISTS `owl_applications` (
   `version` VARCHAR(12) NOT NULL COMMENT 'Application version number' ,
   `description` TEXT NULL COMMENT 'Description of the application, can contain HTML code' ,
   `installed` TINYINT UNSIGNED NOT NULL DEFAULT 1 COMMENT 'Indicates if the application is installed on this server' ,
-  `enabled` TINYINT UNSIGNED NOT NULL COMMENT 'Indicated is the application has been enabled' ,
+  `enabled` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Indicated is the application has been enabled' ,
   `link` VARCHAR(45) NULL COMMENT 'Link to the applications homepage' ,
   `author` VARCHAR(45) NULL COMMENT 'Author or copyright holder of the application' ,
   `license` VARCHAR(45) NULL COMMENT 'Application license type if applicable' ,
@@ -23,7 +23,7 @@ CREATE  TABLE IF NOT EXISTS `owl_applications` (
 ENGINE = InnoDB, 
 COMMENT = 'All known applications' ;
 
-CREATE UNIQUE INDEX `appcode` ON `owl_applications` (`code` ASC) ;
+CREATE UNIQUE INDEX `app_appcode` ON `owl_applications` (`code` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -45,9 +45,9 @@ CREATE  TABLE IF NOT EXISTS `owl_group` (
 ENGINE = InnoDB, 
 COMMENT = 'Standard OWL and application groups' ;
 
-CREATE INDEX `group` ON `owl_group` (`groupname` ASC) ;
+CREATE INDEX `grp_group` ON `owl_group` (`groupname` ASC) ;
 
-CREATE UNIQUE INDEX `applicgroup` ON `owl_group` (`groupname` ASC, `aid` ASC) ;
+CREATE UNIQUE INDEX `grp_applicgroup` ON `owl_group` (`groupname` ASC, `aid` ASC) ;
 
 CREATE INDEX `fk_groupapplic` ON `owl_group` (`aid` ASC) ;
 
@@ -60,9 +60,9 @@ DROP TABLE IF EXISTS `owl_user` ;
 CREATE  TABLE IF NOT EXISTS `owl_user` (
   `uid` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Internally user user identification' ,
   `username` VARCHAR(32) NOT NULL COMMENT 'Username, must be unique' ,
-  `password` VARCHAR(128) NOT NULL COMMENT 'Encrypted password' ,
+  `password` VARCHAR(128) NULL COMMENT 'Encrypted password' ,
   `email` VARCHAR(45) NULL COMMENT 'Email address. Extra addresses must be handled by the apps' ,
-  `registered` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'First reghistration date and time' ,
+  `registered` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT 'First reghistration date and time' ,
   `verification` VARCHAR(45) NOT NULL DEFAULT '' COMMENT 'Verification code for new registrations' ,
   `gid` INT UNSIGNED NOT NULL COMMENT 'Primary group ID' ,
   `right` BIGINT UNSIGNED ZEROFILL NOT NULL DEFAULT 0 COMMENT 'Additional user specific rightbits' ,
@@ -75,7 +75,7 @@ CREATE  TABLE IF NOT EXISTS `owl_user` (
 ENGINE = InnoDB, 
 COMMENT = 'Basic userdata for all OWL based applications' ;
 
-CREATE UNIQUE INDEX `username` USING BTREE ON `owl_user` (`username` ASC) ;
+CREATE UNIQUE INDEX `usr_username` USING BTREE ON `owl_user` (`username` ASC) ;
 
 CREATE INDEX `fk_usergroup` ON `owl_user` (`gid` ASC) ;
 
@@ -102,14 +102,14 @@ DROP TABLE IF EXISTS `owl_sessionlog` ;
 CREATE  TABLE IF NOT EXISTS `owl_sessionlog` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `sid` VARCHAR(255) NOT NULL COMMENT 'Session ID being logged' ,
-  `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Timestamp of the log message' ,
+  `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT 'Timestamp of the log message' ,
   `uid` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Current user ID of 0 for anonymous' ,
   `step` INT UNSIGNED NOT NULL COMMENT 'Step count in the current session' ,
   `applic` VARCHAR(32) NOT NULL COMMENT 'Current application name' ,
   `ip` VARCHAR(32) NOT NULL COMMENT 'Client IP address' ,
   `referer` VARCHAR(255) NULL COMMENT 'Refering URL' ,
   `dispatcher` VARCHAR(255) NULL COMMENT 'Decoded dispatcher' ,
-  `formdata` LONGBLOB NULL COMMENT 'Full formdata' ,
+  `formdata` LONGTEXT NULL COMMENT 'Full formdata' ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -156,13 +156,13 @@ CREATE  TABLE IF NOT EXISTS `owl_config` (
 ENGINE = InnoDB, 
 COMMENT = 'Dynamic configuration for OWL and applications' ;
 
-CREATE UNIQUE INDEX `configitem` ON `owl_config` (`aid` ASC, `name` ASC) ;
+CREATE UNIQUE INDEX `cnf_configitem` ON `owl_config` (`aid` ASC, `name` ASC) ;
 
-CREATE INDEX `applic` ON `owl_config` (`aid` ASC) ;
+CREATE INDEX `cnf_applic` ON `owl_config` (`aid` ASC) ;
 
-CREATE INDEX `group` ON `owl_config` (`gid` ASC) ;
+CREATE INDEX `cnf_group` ON `owl_config` (`gid` ASC) ;
 
-CREATE INDEX `user` ON `owl_config` (`uid` ASC) ;
+CREATE INDEX `cnf_user` ON `owl_config` (`uid` ASC) ;
 
 CREATE INDEX `fk_configapp` ON `owl_config` (`aid` ASC) ;
 
@@ -188,7 +188,7 @@ CREATE  TABLE IF NOT EXISTS `owl_rights` (
 ENGINE = InnoDB, 
 COMMENT = 'Rights that can be granted within owl applications' ;
 
-CREATE UNIQUE INDEX `right` ON `owl_rights` (`name` ASC) ;
+CREATE UNIQUE INDEX `rgt_right` ON `owl_rights` (`name` ASC) ;
 
 CREATE INDEX `fk_rightsapp` ON `owl_rights` (`aid` ASC) ;
 
@@ -258,7 +258,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `owl_applications`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO owl_applications (`aid`, `code`, `name`, `version`, `description`, `installed`, `enabled`, `link`, `author`, `license`) VALUES (1, 'OWL', 'OWL-PHP', '0.1.0', 'Oveas Web Library for PHP', 1, 1, 'http://oveas.com', 'Oscar van Eijk', NULL);
+INSERT INTO owl_applications (`aid`, `code`, `name`, `version`, `description`, `installed`, `enabled`, `link`, `author`, `license`) VALUES (1, 'OWL', 'OWL-PHP', '0.1.0', 'Oveas Web Library for PHP', 1, 1, 'http://oveas.com', 'Oscar van Eijk', 'LGPL');
 
 COMMIT;
 
@@ -275,8 +275,8 @@ COMMIT;
 -- Data for table `owl_user`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (2, 'oscar', 'f5a1ee88f62cb3d1cc9d801b5f2910bbb0c3b525', 'oscar@oveas.com', 'NOW()', '', 2, 0);
-INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (1, 'anonymous', '', '', 'NOW()', '', 1, 0);
+INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (2, 'oscar', 'f5a1ee88f62cb3d1cc9d801b5f2910bbb0c3b525', 'oscar@oveas.com', NULL, NULL, 2, 0);
+INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (1, 'anonymous', '', '', NULL, NULL, 1, 0);
 
 COMMIT;
 

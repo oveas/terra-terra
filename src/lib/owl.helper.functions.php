@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file defines general helper functions
- * \version $Id: owl.helper.functions.php,v 1.14 2011-10-16 11:11:44 oscar Exp $
+ * \version $Id: owl.helper.functions.php,v 1.15 2011-10-28 09:32:47 oscar Exp $
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
@@ -203,6 +203,61 @@ function verifyMailAddress ($email, $extract = true)
 	} else {
 		return ($email); // Valid email address given; return it
 	}
+}
+
+/**
+ * Validate an IP address
+ * \param[in] $ip IPv4 address
+ * \return 0 if the address is invalid, 1 if it is valid, -1 if it's a valid reserved address.
+ * Reserved address are from the following ranges:
+ *  - 0.0.0.0 - 2.255.255.255
+ *  - 10.0.0.0 - 10.255.255.255
+ *  - 127.0.0.0 - 127.255.255.255
+ *  - 169.254.0.0 - 169.254.255.255
+ *  - 172.16.0.0 - 172.31.255.255
+ *  - 192.0.2.0 - 192.0.2.255
+ *  - 192.168.0.0 - 192.168.255.255
+ *  - 255.255.255.0 - 255.255.255.255
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ */
+function validV4Ip($ip)
+{
+	if (($_ipLong = ip2long($ip)) === false) {
+		return 0;
+	}
+	// 0.0.0.0 - 2.255.255.255
+	if ($_ipLong >= 0 && $_ipLong <= 50331647) {
+		return -1;
+	}
+	// 10.0.0.0 - 10.255.255.255
+	if ($_ipLong >= 167772160 && $_ipLong <= 184549375) {
+		return -1;
+	}
+	// 127.0.0.0 - 127.255.255.255
+	if ($_ipLong >= 2130706432 && $_ipLong <= 2147483647) {
+		return -1;
+	}
+	// 169.254.0.0 - 169.254.255.255
+	if ($_ipLong >= -1442971648 && $_ipLong <= -1442906113) {
+		return -1;
+	}
+	// 172.16.0.0 - 172.31.255.255
+	if ($_ipLong >= -1408237568 && $_ipLong <= -1407188993) {
+		return -1;
+	}
+	// 192.0.2.0 - 192.0.2.255
+	if ($_ipLong >= -1073741312 && $_ipLong <= -1073741057) {
+		return -1;
+	}
+	// 192.168.0.0 - 192.168.255.255
+	if ($_ipLong >= -1062731776 && $_ipLong <= -1062666241) {
+		return -1;
+	}
+	// 255.255.255.0 - 255.255.255.255
+	if ($_ipLong >= -256 && $_ipLong <= -1) {
+		return -1;
+	}
+	return 1;
 }
 
 /**

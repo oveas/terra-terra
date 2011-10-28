@@ -3,7 +3,7 @@
  * \file
  * This file defines the first testcase for the Hierarchical Dataset
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.first.php,v 1.6 2011-10-16 11:11:45 oscar Exp $
+ * \version $Id: case.first.php,v 1.7 2011-10-28 09:32:48 oscar Exp $
  * \copyright{2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OTK.
@@ -92,7 +92,6 @@ class OTKHdata_First implements TestCase
 		$_scheme->createScheme($this->tablename);
 		$_scheme->defineScheme($_table);
 		$_scheme->defineIndex($_index);
-		$_scheme->scheme();
 		if ($_scheme->scheme() <= OWL_SUCCESS) {
 			$_scheme->reset();
 			return OTK_RESULT_SUCCESS;

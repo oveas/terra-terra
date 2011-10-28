@@ -3,7 +3,7 @@
  * \file
  * This file defines the last testcase for the Hierarchical Dataset
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.last.php,v 1.6 2011-10-16 11:11:45 oscar Exp $
+ * \version $Id: case.last.php,v 1.7 2011-10-28 09:32:48 oscar Exp $
  * \copyright{2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OTK.
@@ -69,7 +69,7 @@ class OTKHdata_Last implements TestCase
 					break;
 				case true:
 					$returnCodes[] = array(OTK_RESULT_FAIL, 'The root node and its tree were not removed.');
-					$this->details .= '<p>The table should be emptiedm but still contains the following data:<br/><pre>'
+					$this->details .= '<p>The table should be emptied but still contains the following data:<br/><pre>'
 							. print_r($data, 1) . '</pre></p>';
 					break;
 			}
@@ -78,10 +78,10 @@ class OTKHdata_Last implements TestCase
 	}
 
 	public function cleanupTest ()
-	{
+	{//return 'Disbled the drop';
 		$db = OWL::factory('dbhandler');
 		$dbId = $db->getResource();
-		if ($db->getDriver()->dbDropTable($dbId, $db->tablename($this->tablename))) {
+		if ($db->getDriver()->dbDropTable($dbId, $db->tablename($this->tablename, true))) {
 			return OTK_RESULT_SUCCESS;
 		} else {
 			$db->getDriver()->dbError($dbId,$nr, $msg);

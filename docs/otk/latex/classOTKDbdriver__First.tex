@@ -1,0 +1,180 @@
+\section{OTKDbdriver\_\-First Class Reference}
+\label{classOTKDbdriver__First}\index{OTKDbdriver\_\-First@{OTKDbdriver\_\-First}}
+
+
+DbDriver testcase.  
+
+
+Inheritance diagram for OTKDbdriver\_\-First:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classOTKDbdriver__First}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \_\-\_\-construct} ()
+\item 
+{\bf prepareTest} ()
+\item 
+{\bf performTest} ()
+\item 
+{\bf cleanupTest} ()
+\item 
+{\bf getDetails} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf getExpected} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \$tablename}
+\item 
+{\bf \$details}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+DbDriver testcase. 
+
+This testcase creates a database table that will be used in all Dbdriver tests \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Sep 26, 2011 -\/-\/ O van Eijk -\/-\/ initial version 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{OTKDbdriver\_\-First@{OTKDbdriver\_\-First}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!OTKDbdriver_First@{OTKDbdriver\_\-First}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}OTKDbdriver\_\-First::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKDbdriver__First_a484746d0a22a3f94a0db2e55bf8c9bbe}
+Class constuctor. All testcases must be implemented. \begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a9aac459e4d579b75426c95718790e88f}.
+
+
+
+References OTKDbdriver\_\-tableName().
+
+
+
+\subsection{Member Function Documentation}
+\index{OTKDbdriver\_\-First@{OTKDbdriver\_\-First}!cleanupTest@{cleanupTest}}
+\index{cleanupTest@{cleanupTest}!OTKDbdriver_First@{OTKDbdriver\_\-First}}
+\subsubsection[{cleanupTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKDbdriver\_\-First::cleanupTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKDbdriver__First_a696654ed37e17d9c2a7a5f1678a5b2a8}
+Cleanup the testenvironment, e.g. drop temporary tables \begin{DoxyReturn}{Returns}
+OTK\_\-RESULT\_\-SUCCESS on success, OTK\_\-RESULT\_\-NONE when this testcase needs no cleanup or an error message when failed 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a71e9fd70c840ce0b535146f566e9b623}.
+
+\index{OTKDbdriver\_\-First@{OTKDbdriver\_\-First}!getDetails@{getDetails}}
+\index{getDetails@{getDetails}!OTKDbdriver_First@{OTKDbdriver\_\-First}}
+\subsubsection[{getDetails}]{\setlength{\rightskip}{0pt plus 5cm}OTKDbdriver\_\-First::getDetails (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKDbdriver__First_a0d2147f25ab91b9451dbfc3645dec720}
+Gather all testdetails. During the tests, the testcase can collect all additional information in an internal datastructure, e.g. further details or explanations concerning failed tests. After finishing the testcase (and after \doxyref{cleanupTest()}{p.}{classOTKDbdriver__First_a696654ed37e17d9c2a7a5f1678a5b2a8}), the information will be retrieved. \begin{DoxyReturn}{Returns}
+Tekstblock, can contain HTML. Null and an empty textstring are allowed if no details are available. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a1abfe816e79d30871ce314dedbdf5f9d}.
+
+\index{OTKDbdriver\_\-First@{OTKDbdriver\_\-First}!getExpected@{getExpected}}
+\index{getExpected@{getExpected}!OTKDbdriver_First@{OTKDbdriver\_\-First}}
+\subsubsection[{getExpected}]{\setlength{\rightskip}{0pt plus 5cm}OTKDbdriver\_\-First::getExpected (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKDbdriver__First_abb23953272883887e100fa3f403ab5eb}
+
+
+Referenced by performTest().
+
+\index{OTKDbdriver\_\-First@{OTKDbdriver\_\-First}!performTest@{performTest}}
+\index{performTest@{performTest}!OTKDbdriver_First@{OTKDbdriver\_\-First}}
+\subsubsection[{performTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKDbdriver\_\-First::performTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKDbdriver__First_a8e4971170bc40db4ec123f81059189a6}
+Perform the test(s) for this testcase. Multiple tests can be performed, each writing a single message in an internal array explaining what the result was ('step X completed succefully', an error message in case of failures etc). Additional (private) methods can be created for each step. \begin{DoxyReturn}{Returns}
+A 2 dimensional array with messages for all steps that were performed in this testcase. Each step in the testcase has exactly 1 element in the array, being an array with 2 elements: first is the code as defined in \doxyref{Test result code}{p.}{group__Test__Results}, the second is an human readable message. null when the step was skipped, e.g. 
+\begin{DoxyCode}
+        array(
+                 array(OTK_RESULT_SUCCESS, 'Step 1 completed successfully')
+                ,array(OTK_RESULT_SUCCESS, 'Step 2 completed successfully')
+                ,array(OTK_RESULT_FAIL, 'Step 3 failed with code XX')
+                ,array(OTK_RESULT_SKIPPED, 'Step 4 could not execute because step
+       3 failed')
+        )
+\end{DoxyCode}
+ 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_a5fcf5fd51066de41206fe02c67139c76}.
+
+
+
+References OTKHelpers::compareTable(), and getExpected().
+
+\index{OTKDbdriver\_\-First@{OTKDbdriver\_\-First}!prepareTest@{prepareTest}}
+\index{prepareTest@{prepareTest}!OTKDbdriver_First@{OTKDbdriver\_\-First}}
+\subsubsection[{prepareTest}]{\setlength{\rightskip}{0pt plus 5cm}OTKDbdriver\_\-First::prepareTest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classOTKDbdriver__First_a190b57fdaf6e35c32197da51784ae86f}
+Prepare a testcase, e.g. create some database tables that are required for this testcase. \begin{DoxyReturn}{Returns}
+OTK\_\-RESULT\_\-SUCCESS on success, OTK\_\-RESULT\_\-NONE when this testcase needs no preparation or an error message when failed 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Oscar van Eijk, Oveas Functionality Provider 
+\end{DoxyAuthor}
+
+
+Implements {\bf TestCase} \doxyref{}{p.}{interfaceTestCase_ae2fd5738550a83f15afe1cbc5365f3e8}.
+
+
+
+\subsection{Member Data Documentation}
+\index{OTKDbdriver\_\-First@{OTKDbdriver\_\-First}!\$details@{\$details}}
+\index{\$details@{\$details}!OTKDbdriver_First@{OTKDbdriver\_\-First}}
+\subsubsection[{\$details}]{\setlength{\rightskip}{0pt plus 5cm}OTKDbdriver\_\-First::\$details\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKDbdriver__First_ab211960f74c10131bfd44abff80b4b4c}
+\index{OTKDbdriver\_\-First@{OTKDbdriver\_\-First}!\$tablename@{\$tablename}}
+\index{\$tablename@{\$tablename}!OTKDbdriver_First@{OTKDbdriver\_\-First}}
+\subsubsection[{\$tablename}]{\setlength{\rightskip}{0pt plus 5cm}OTKDbdriver\_\-First::\$tablename\hspace{0.3cm}{\ttfamily  [private]}}\label{classOTKDbdriver__First_a83e1c6104f6ee10a0823ace058202251}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/home/oscar/projects/owl-\/php/owltestkit/testsets/dbdriver/{\bf case.first.php}\end{DoxyCompactItemize}

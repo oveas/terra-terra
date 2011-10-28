@@ -3,7 +3,7 @@
  * \file
  * This file defines the MySQL drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.mysql.php,v 1.7 2011-10-16 11:11:46 oscar Exp $
+ * \version $Id: class.mysql.php,v 1.8 2011-10-28 09:32:48 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
@@ -53,7 +53,8 @@ class MySQL extends DbDefaults implements DbDriver
 
 	public function dbDefineField($_table, $_name, array $_desc)
 	{
-		$_qry = $this->dbQuote($_name) . ' ' . $this->mapType($_desc);
+		$this->mapType($_desc);
+		$_qry = $this->dbQuote($_name) . ' ' . $_desc['type'];
 
 		if (array_key_exists('length', $_desc) && $_desc['length'] > 0) {
 			$_len = $_desc['length'];
@@ -137,8 +138,7 @@ class MySQL extends DbDefaults implements DbDriver
 	public function dbAddField (&$_resource, $_table, $_field, array $_desc)
 	{
 		$_qry = 'ALTER TABLE ' .$this->dbQuote($_table)
-			. ' ADD ' .$this->dbQuote($_field) . ' '
-			. $this->mapType($_desc) . ' ' . $this->dbDefineField($_table, $_field, $_desc);
+			. ' ADD ' . $this->dbDefineField($_table, $_field, $_desc);
 			return $this->dbExec($_resource, $_qry);
 	}
 
@@ -181,8 +181,8 @@ class MySQL extends DbDefaults implements DbDriver
 
 	public function dbTableIndexes(&$_dbHandler, $_table)
 	{
-		$_descr = array ();
 		$_data  = array ();
+		$_index = array ();
 		$_qry = 'SHOW INDEXES FROM ' . $this->dbQuote($_table);
 
 		$_dbHandler->read (DBHANDLE_DATA, $_data, $_qry, __LINE__, __FILE__);
@@ -190,7 +190,7 @@ class MySQL extends DbDefaults implements DbDriver
 			return null;
 		}
 		foreach ($_data as $_record) {
-			$_index[$_record['Key_name']]['columns'][$_record['Seq_in_index']] = $_record['Column_name'];
+			$_index[$_record['Key_name']]['columns'][$_record['Seq_in_index'] - 1] = $_record['Column_name'];
 			$_index[$_record['Key_name']]['unique'] = (!$_record['Non_unique']);
 			$_index[$_record['Key_name']]['type'] = $_record['Index_type'];
 			$_index[$_record['Key_name']]['comment'] = $_record['Comment'];
@@ -286,6 +286,7 @@ class MySQL extends DbDefaults implements DbDriver
 
 	public function dbExec (&$_resource, $_statement)
 	{
+//echo $_statement."<br/>\n";
 		return (mysql_query ($_statement, $_resource) !== false);
 	}
 
@@ -300,6 +301,7 @@ class MySQL extends DbDefaults implements DbDriver
 
 	public function dbWrite (&$_resource, $_query)
 	{
+//echo $_query."<br/>\n";
 		if (!mysql_query ($_query, $_resource)) {
 			return (-1);
 		}

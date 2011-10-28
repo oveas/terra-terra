@@ -30,7 +30,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OWL-PHP
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    
   </td>
@@ -98,49 +98,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <a href="class_8owl_8php.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
-<a name="l00014"></a><a class="code" href="classOWL.html">00014</a> <span class="keyword">class </span><a class="code" href="classOWL.html">OWL</a> <span class="keyword">extends</span> <a class="code" href="class__OWL.html">_OWL</a>
-<a name="l00015"></a>00015 {
-<a name="l00019"></a><a class="code" href="classOWL.html#a0cb39c7fa9a2bd2e7d5b8ef6d7e81fa4">00019</a>     <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="classOWL.html#a0cb39c7fa9a2bd2e7d5b8ef6d7e81fa4">$instance</a>;
-<a name="l00020"></a>00020 
-<a name="l00025"></a><a class="code" href="classOWL.html#a9240437570d0787f35b7a1102ee39cc6">00025</a>     <span class="keyword">private</span> function <a class="code" href="classOWL.html#a9240437570d0787f35b7a1102ee39cc6">__construct</a> ()
-<a name="l00026"></a>00026     { 
-<a name="l00027"></a>00027         <a class="code" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">parent::init</a>();
-<a name="l00028"></a>00028     }
-<a name="l00029"></a>00029 
-<a name="l00035"></a><a class="code" href="classOWL.html#a4ab99b467f8f388773f14dd37437bd11">00035</a>     <span class="keyword">public</span> function <a class="code" href="classOWL.html#a4ab99b467f8f388773f14dd37437bd11">__clone</a> ()
-<a name="l00036"></a>00036     {
-<a name="l00037"></a>00037         trigger_error(<span class="stringliteral">&#39;invalid object cloning&#39;</span>);
-<a name="l00038"></a>00038     }
-<a name="l00039"></a>00039 
-<a name="l00045"></a><a class="code" href="classOWL.html#a73f6a6e7bcba4935fc569ea4500f4bb2">00045</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWL.html#a73f6a6e7bcba4935fc569ea4500f4bb2">getInstance</a>()
-<a name="l00046"></a>00046     {
-<a name="l00047"></a>00047         <span class="keywordflow">if</span> (!<a class="code" href="classOWL.html#a0cb39c7fa9a2bd2e7d5b8ef6d7e81fa4">OWL::$instance</a> instanceof <span class="keyword">self</span>) {
-<a name="l00048"></a>00048             <a class="code" href="classOWL.html#a0cb39c7fa9a2bd2e7d5b8ef6d7e81fa4">OWL::$instance</a> = <span class="keyword">new</span> <span class="keyword">self</span>();
-<a name="l00049"></a>00049         }
-<a name="l00050"></a>00050         <span class="keywordflow">return</span> <a class="code" href="classOWL.html#a0cb39c7fa9a2bd2e7d5b8ef6d7e81fa4">OWL::$instance</a>;
-<a name="l00051"></a>00051     }
-<a name="l00052"></a>00052 
-<a name="l00059"></a><a class="code" href="classOWL.html#a5adc562bc79982a362e9b99a50e640f2">00059</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWL.html#a5adc562bc79982a362e9b99a50e640f2">stat</a> ($a, $b = array())
-<a name="l00060"></a>00060     {
-<a name="l00061"></a>00061         $me = <a class="code" href="classOWL.html#a73f6a6e7bcba4935fc569ea4500f4bb2">self::getInstance</a>(); <span class="comment">// Make sure I am instantiated</span>
-<a name="l00062"></a>00062         $me-&gt;setStatus ($a, $b);
-<a name="l00063"></a>00063     }
-<a name="l00064"></a>00064 
-<a name="l00072"></a><a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">00072</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">factory</a>($class, $layer = <span class="stringliteral">&#39;so&#39;</span>)
-<a name="l00073"></a>00073     {
-<a name="l00074"></a>00074         <span class="keywordflow">if</span> (!class_exists($class)) {
-<a name="l00075"></a>00075             $class_file = OWL_ROOT . <span class="stringliteral">&#39;/kernel/&#39;</span> . $layer . <span class="stringliteral">&#39;/class.&#39;</span> . strtolower($class) . <span class="stringliteral">&#39;.php&#39;</span>;
-<a name="l00076"></a>00076             <span class="keywordflow">if</span> (!file_exists($class_file)) {
-<a name="l00077"></a>00077                 trigger_error(<span class="stringliteral">&#39;Class file &#39;</span> . $class_file . <span class="stringliteral">&#39; not found&#39;</span>, E_USER_ERROR);
-<a name="l00078"></a>00078             }
-<a name="l00079"></a>00079             require ($class_file);
-<a name="l00080"></a>00080         }
-<a name="l00081"></a>00081         <span class="keywordflow">if</span> (!class_exists($class)) {
-<a name="l00082"></a>00082             trigger_error(<span class="stringliteral">&#39;Class &#39;</span> . $class . <span class="stringliteral">&#39; not found&#39;</span>, E_USER_ERROR);
-<a name="l00083"></a>00083         }
-<a name="l00084"></a>00084         <span class="keywordflow">return</span> call_user_func(array($class, <span class="stringliteral">&#39;getInstance&#39;</span>));
-<a name="l00085"></a>00085     }
-<a name="l00086"></a>00086 }
+<a name="l00030"></a><a class="code" href="classOWL.html">00030</a> <span class="keyword">class </span><a class="code" href="classOWL.html">OWL</a> <span class="keyword">extends</span> <a class="code" href="class__OWL.html">_OWL</a>
+<a name="l00031"></a>00031 {
+<a name="l00035"></a><a class="code" href="classOWL.html#a0cb39c7fa9a2bd2e7d5b8ef6d7e81fa4">00035</a>     <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="classOWL.html#a0cb39c7fa9a2bd2e7d5b8ef6d7e81fa4">$instance</a>;
+<a name="l00036"></a>00036 
+<a name="l00041"></a><a class="code" href="classOWL.html#a9240437570d0787f35b7a1102ee39cc6">00041</a>     <span class="keyword">private</span> function <a class="code" href="classOWL.html#a9240437570d0787f35b7a1102ee39cc6">__construct</a> ()
+<a name="l00042"></a>00042     {
+<a name="l00043"></a>00043         <a class="code" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">parent::init</a>();
+<a name="l00044"></a>00044     }
+<a name="l00045"></a>00045 
+<a name="l00051"></a><a class="code" href="classOWL.html#a4ab99b467f8f388773f14dd37437bd11">00051</a>     <span class="keyword">public</span> function <a class="code" href="classOWL.html#a4ab99b467f8f388773f14dd37437bd11">__clone</a> ()
+<a name="l00052"></a>00052     {
+<a name="l00053"></a>00053         trigger_error(<span class="stringliteral">&#39;invalid object cloning&#39;</span>);
+<a name="l00054"></a>00054     }
+<a name="l00055"></a>00055 
+<a name="l00061"></a><a class="code" href="classOWL.html#a73f6a6e7bcba4935fc569ea4500f4bb2">00061</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWL.html#a73f6a6e7bcba4935fc569ea4500f4bb2">getInstance</a>()
+<a name="l00062"></a>00062     {
+<a name="l00063"></a>00063         <span class="keywordflow">if</span> (!<a class="code" href="classOWL.html#a0cb39c7fa9a2bd2e7d5b8ef6d7e81fa4">OWL::$instance</a> instanceof <span class="keyword">self</span>) {
+<a name="l00064"></a>00064             <a class="code" href="classOWL.html#a0cb39c7fa9a2bd2e7d5b8ef6d7e81fa4">OWL::$instance</a> = <span class="keyword">new</span> <span class="keyword">self</span>();
+<a name="l00065"></a>00065         }
+<a name="l00066"></a>00066         <span class="keywordflow">return</span> <a class="code" href="classOWL.html#a0cb39c7fa9a2bd2e7d5b8ef6d7e81fa4">OWL::$instance</a>;
+<a name="l00067"></a>00067     }
+<a name="l00068"></a>00068 
+<a name="l00075"></a><a class="code" href="classOWL.html#a5adc562bc79982a362e9b99a50e640f2">00075</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWL.html#a5adc562bc79982a362e9b99a50e640f2">stat</a> ($a, $b = array())
+<a name="l00076"></a>00076     {
+<a name="l00077"></a>00077         $me = <a class="code" href="classOWL.html#a73f6a6e7bcba4935fc569ea4500f4bb2">self::getInstance</a>(); <span class="comment">// Make sure I am instantiated</span>
+<a name="l00078"></a>00078         $me-&gt;setStatus ($a, $b);
+<a name="l00079"></a>00079     }
+<a name="l00080"></a>00080 
+<a name="l00088"></a><a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">00088</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">factory</a>($class, $layer = <span class="stringliteral">&#39;so&#39;</span>)
+<a name="l00089"></a>00089     {
+<a name="l00090"></a>00090         <span class="keywordflow">if</span> (!class_exists($class)) {
+<a name="l00091"></a>00091             $class_file = OWL_ROOT . <span class="stringliteral">&#39;/kernel/&#39;</span> . $layer . <span class="stringliteral">&#39;/class.&#39;</span> . strtolower($class) . <span class="stringliteral">&#39;.php&#39;</span>;
+<a name="l00092"></a>00092             <span class="keywordflow">if</span> (!file_exists($class_file)) {
+<a name="l00093"></a>00093                 trigger_error(<span class="stringliteral">&#39;Class file &#39;</span> . $class_file . <span class="stringliteral">&#39; not found&#39;</span>, E_USER_ERROR);
+<a name="l00094"></a>00094             }
+<a name="l00095"></a>00095             require ($class_file);
+<a name="l00096"></a>00096         }
+<a name="l00097"></a>00097         <span class="keywordflow">if</span> (!class_exists($class)) {
+<a name="l00098"></a>00098             trigger_error(<span class="stringliteral">&#39;Class &#39;</span> . $class . <span class="stringliteral">&#39; not found&#39;</span>, E_USER_ERROR);
+<a name="l00099"></a>00099         }
+<a name="l00100"></a>00100         <span class="keywordflow">return</span> call_user_func(array($class, <span class="stringliteral">&#39;getInstance&#39;</span>));
+<a name="l00101"></a>00101     }
+<a name="l00102"></a>00102 }
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -161,7 +161,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Thu Oct 13 2011 11:57:54 for OWL-PHP by
+    <li class="footer">Generated on Fri Oct 28 2011 11:32:49 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

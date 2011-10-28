@@ -30,7 +30,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OWL-PHP
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    
   </td>
@@ -206,6 +206,7 @@ Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbHandler.html#aa547d4ff326eafb6b128820f4284ede4">$having</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbHandler.html#a3a05faa4d14c6c5117ed8b70fc37d778">$limit</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbHandler.html#afba491ae1a1f1b9343cb65c87ef1e2a9">$query_type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbHandler.html#a653b4df99edd8bc6b75197afd337a631">$last_insert_table</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbHandler.html#a4b95a0aa4fbae5d63d6f960984a276af">$transaction</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbHandler.html#a05f47a3d47e57349f05dec8c8a88b0c2">$locks</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbHandler.html#a6fc74f6785f349ab442f33ce31f46e63">$cloned</a></td></tr>
@@ -218,12 +219,12 @@ Static Private Attributes</h2></td></tr>
 <div class="textblock"><p>Database handler. </p>
 <p>Handler for all database I/O. This singleton class uses an (abstract) class for the actual storage. This class should not be called directly; it is implemented by class <a class="el" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a> </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Implement retries using the isRetryable() driver method, a max_retries and a max_retry_wait config settings </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>Implement retries using the isRetryable() driver method, a max_retries and a max_retry_wait config settings </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>May 15, 2007 -- O van Eijk -- initial version for Terra-Terra </dd>
 <dd>
 Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.html">OWL</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00096">96</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00112">112</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ae54e9d4643f41a9296167086f6a769fc"></a><!-- doxytag: member="DbHandler::__construct" ref="ae54e9d4643f41a9296167086f6a769fc" args="($srv= 'localhost', $db= '', $usr= '', $pwd= '', $dbtype= 'MySQL')" -->
 <div class="memitem">
@@ -280,9 +281,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00203">203</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00224">224</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>, <a class="el" href="class_8__owl_8php_source.html#l00045">_OWL::init()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00232">loadDriver()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00251">ConfigHandler::get()</a>, <a class="el" href="class_8__owl_8php_source.html#l00061">_OWL::init()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00253">loadDriver()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
 </div>
 </div>
@@ -304,9 +305,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 
 <p>Reimplemented from <a class="el" href="class__OWL.html#a44fd2222476a3109286cc82d92b6bbcc">_OWL</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00248">248</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00269">269</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01350">close()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00639">commitTransaction()</a>, <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00663">rollbackTransaction()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00739">unlockTable()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01387">close()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00660">commitTransaction()</a>, <a class="el" href="class_8confighandler_8php_source.html#l00251">ConfigHandler::get()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00684">rollbackTransaction()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00760">unlockTable()</a>.</p>
 
 </div>
 </div>
@@ -327,9 +328,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <p>Implementation of the <a class="el" href="classDbHandler.html#ada20e62b915bc87a1de28389a2ee81e1">__clone()</a> function. The current connection will be closed, and a property will be set to indicate this is a cloned object. After that, the <a class="el" href="classDbHandler.html#ac3a8e0bfe2491e17bc527715505f90a7">alt()</a> method can be used to change connection info. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00278">278</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00299">299</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00187">$instance</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01350">close()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00472">reset()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00208">$instance</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01387">close()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00493">reset()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
 </div>
 </div>
@@ -350,11 +351,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>String with additional clauses </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01082">1082</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01109">1109</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00941">expandField()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00968">expandField()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l01170">prepareDelete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01246">prepareInsert()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01128">prepareRead()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l01201">prepareUpdate()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l01197">prepareDelete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01273">prepareInsert()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01155">prepareRead()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l01228">prepareUpdate()</a>.</p>
 
 </div>
 </div>
@@ -389,9 +390,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00304">304</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00325">325</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00232">loadDriver()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00434">open()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00253">loadDriver()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00455">open()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
 </div>
 </div>
@@ -430,11 +431,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if the severity level was correct (below the max), otherwise false </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00159">159</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00175">175</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00104">_OWL::reset()</a>, <a class="el" href="class_8__owl_8php_source.html#l00271">_OWL::setHighSeverity()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00342">_OWL::traceback()</a>.</p>
+<p>References <a class="el" href="class_8__owl_8php_source.html#l00120">_OWL::reset()</a>, <a class="el" href="class_8__owl_8php_source.html#l00287">_OWL::setHighSeverity()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00358">_OWL::traceback()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8sessionhandler_8php_source.html#l00149">SessionHandler::write()</a>.</p>
+<p>Referenced by <a class="el" href="class_8sessionhandler_8php_source.html#l00165">SessionHandler::write()</a>.</p>
 
 </div>
 </div>
@@ -454,9 +455,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <p>Close the database and disconnect from the server. This function is called on program shutdown. Although the database will be closed already by PHP, this function might be called at any time manually; is also updates the 'opened' variable. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01350">1350</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01387">1387</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00278">__clone()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00248">__destruct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00376">create()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00358">forceReread()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00299">__clone()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00269">__destruct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00397">create()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00379">forceReread()</a>.</p>
 
 </div>
 </div>
@@ -495,11 +496,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object severity status </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00639">639</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00660">660</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00248">__destruct()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00269">__destruct()</a>.</p>
 
 </div>
 </div>
@@ -520,11 +521,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, otherwise False </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00399">399</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00420">420</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00251">ConfigHandler::get()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00376">create()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00434">open()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00397">create()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00455">open()</a>.</p>
 
 </div>
 </div>
@@ -545,9 +546,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00376">376</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00397">397</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01350">close()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00399">connect()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01387">close()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00420">connect()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
 </div>
 </div>
@@ -593,11 +594,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>A 2D array with all data, or false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00859">859</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00886">886</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="owl_8debug_8functions_8php_source.html#l00090">OWLdbg_add()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="owl_8debug_8functions_8php_source.html#l00106">OWLdbg_add()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00795">read()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00816">read()</a>.</p>
 
 </div>
 </div>
@@ -625,7 +626,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>The escaped string </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00917">917</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00944">944</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -663,11 +664,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00941">941</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00968">968</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00490">tablename()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00511">tablename()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l01082">additionalClauses()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01246">prepareInsert()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01128">prepareRead()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01041">updateList()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00993">whereClause()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l01109">additionalClauses()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01273">prepareInsert()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01155">prepareRead()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01068">updateList()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l01020">whereClause()</a>.</p>
 
 </div>
 </div>
@@ -695,9 +696,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Array with tablenames </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01064">1064</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01091">1091</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l01170">prepareDelete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01246">prepareInsert()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l01201">prepareUpdate()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l01197">prepareDelete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01273">prepareInsert()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l01228">prepareUpdate()</a>.</p>
 
 </div>
 </div>
@@ -717,9 +718,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <p>Hmmm.... we need this method as the result of a race condition (sort of... I think...); if an alternative database (clone) is opened first, that's the default connection, which is probably the case in most situation since the owl config table is read early in the init phase. I need to think about it... is this solution acceptable? So we need something smarter here? This method is allowed to be called only once by OWLLoader; maybe some checks? </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00358">358</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00379">379</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01350">close()</a>, <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00232">loadDriver()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00434">open()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01387">close()</a>, <a class="el" href="class_8confighandler_8php_source.html#l00251">ConfigHandler::get()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00253">loadDriver()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00455">open()</a>.</p>
 
 </div>
 </div>
@@ -742,9 +743,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 
 <p>Reimplemented in <a class="el" href="classDispatcher.html#a31c4bd4e4eaee7ef90b1ea364a901447">Dispatcher</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00093">93</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00109">109</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="class_8owl_8php_source.html#l00072">OWL::factory()</a>.</p>
+<p>References <a class="el" href="class_8owl_8php_source.html#l00088">OWL::factory()</a>.</p>
 
 </div>
 </div>
@@ -765,7 +766,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Reference to the driver </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00501">501</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00522">522</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -786,9 +787,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object instance ID </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00333">333</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00354">354</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00187">$instance</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00192">$original_instance</a>, and <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00208">$instance</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00213">$original_instance</a>, and <a class="el" href="class_8confighandler_8php_source.html#l00251">ConfigHandler::get()</a>.</p>
 
 </div>
 </div>
@@ -809,9 +810,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>null if there was no error (severity below OWL_WARNING), otherwise the error text. </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00174">174</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00190">190</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00293">_OWL::signal()</a>.</p>
+<p>References <a class="el" href="class_8__owl_8php_source.html#l00309">_OWL::signal()</a>.</p>
 
 </div>
 </div>
@@ -832,7 +833,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Reference to database resource </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00511">511</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00532">532</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -860,11 +861,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Status severity level </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00246">246</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00262">262</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00020">_OWL::$status</a>.</p>
+<p>References <a class="el" href="class_8__owl_8php_source.html#l00036">_OWL::$status</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8loghandler_8php_source.html#l00232">LogHandler::composeMessage()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00248">LogHandler::log()</a>, and <a class="el" href="class_8datahandler_8php_source.html#l00226">DataHandler::setKey()</a>.</p>
+<p>Referenced by <a class="el" href="class_8loghandler_8php_source.html#l00248">LogHandler::composeMessage()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00264">LogHandler::log()</a>, and <a class="el" href="class_8datahandler_8php_source.html#l00242">DataHandler::setKey()</a>.</p>
 
 </div>
 </div>
@@ -885,9 +886,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object's status code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00234">234</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00250">250</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8schemehandler_8php_source.html#l00288">SchemeHandler::compare()</a>.</p>
+<p>Referenced by <a class="el" href="class_8schemehandler_8php_source.html#l00304">SchemeHandler::compare()</a>.</p>
 
 </div>
 </div>
@@ -915,9 +916,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>True of the table exists </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00892">892</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00919">919</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00904">tableExists()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00931">tableExists()</a>.</p>
 
 </div>
 </div>
@@ -937,11 +938,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <p>This function should be called by all constuctors. It initializes the general characteristics. Status is 'warning' by default, it's up to the contructor to set a proper status; if it's still 'warning', this *might* indicate something went wrong. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00045">45</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00061">61</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="class_8owl_8php_source.html#l00072">OWL::factory()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8owl_8php_source.html#l00088">OWL::factory()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8sockethandler_8php_source.html#l00077">SocketHandler::__construct()</a>, <a class="el" href="class_8sessionhandler_8php_source.html#l00055">SessionHandler::__construct()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00053">SchemeHandler::__construct()</a>, <a class="el" href="class_8owl_8php_source.html#l00025">OWL::__construct()</a>, <a class="el" href="class_8mail_8php_source.html#l00032">Mail::__construct()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00052">LogHandler::__construct()</a>, <a class="el" href="class_8imagehandler_8php_source.html#l00074">ImageHandler::__construct()</a>, <a class="el" href="class_8group_8php_source.html#l00033">Group::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00059">FormHandler::__construct()</a>, <a class="el" href="class_8formfield_8php_source.html#l00043">FormFieldPlugin::__construct()</a>, <a class="el" href="class_8form_8php_source.html#l00047">Form::__construct()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00074">FileHandler::__construct()</a>, <a class="el" href="class_8document_8php_source.html#l00089">Document::__construct()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00034">Dispatcher::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00203">__construct()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00062">HDataHandler::__construct()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00107">DataHandler::__construct()</a>, <a class="el" href="plugins_2containers_2class_8container_8php_source.html#l00034">ContainerPlugin::__construct()</a>, <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00039">Container::__construct()</a>, and <a class="el" href="class_8user_8php_source.html#l00054">User::construct()</a>.</p>
+<p>Referenced by <a class="el" href="class_8sockethandler_8php_source.html#l00093">SocketHandler::__construct()</a>, <a class="el" href="class_8sessionhandler_8php_source.html#l00071">SessionHandler::__construct()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00069">SchemeHandler::__construct()</a>, <a class="el" href="class_8owl_8php_source.html#l00041">OWL::__construct()</a>, <a class="el" href="class_8mail_8php_source.html#l00048">Mail::__construct()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00068">LogHandler::__construct()</a>, <a class="el" href="class_8imagehandler_8php_source.html#l00090">ImageHandler::__construct()</a>, <a class="el" href="class_8group_8php_source.html#l00049">Group::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00075">FormHandler::__construct()</a>, <a class="el" href="class_8formfield_8php_source.html#l00059">FormFieldPlugin::__construct()</a>, <a class="el" href="class_8form_8php_source.html#l00063">Form::__construct()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00090">FileHandler::__construct()</a>, <a class="el" href="class_8document_8php_source.html#l00105">Document::__construct()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00050">Dispatcher::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00224">__construct()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00078">HDataHandler::__construct()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00123">DataHandler::__construct()</a>, <a class="el" href="plugins_2containers_2class_8container_8php_source.html#l00050">ContainerPlugin::__construct()</a>, <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00055">Container::__construct()</a>, and <a class="el" href="class_8user_8php_source.html#l00070">User::construct()</a>.</p>
 
 </div>
 </div>
@@ -962,7 +963,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>boolean, True when opened </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00424">424</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00445">445</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -998,11 +999,13 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>The number that was last inserted </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The number that was last inserted, -1 on errors or when there's no auto increment field </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>For databases not supporting auto_increment, this won't work if $table and $field are not set </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000013">Todo:</a></b></dt><dd>For databases not supporting auto_increment, this won't work if $table and $field are not set </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01337">1337</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01365">1365</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00511">tablename()</a>.</p>
 
 </div>
 </div>
@@ -1022,11 +1025,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <p>Create a new instance of the database driver </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00232">232</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00253">253</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 <p>References <a class="el" href="OWLloader_8php_source.html#l00156">OWLloader::getDriver()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00203">__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00304">alt()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00358">forceReread()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00224">__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00325">alt()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00379">forceReread()</a>.</p>
 
 </div>
 </div>
@@ -1065,11 +1068,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object severity status </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 <dl class="note"><dt><b>Note:</b></dt><dd>In <a class="el" href="classMySQL.html" title="MySQL database driver.">MySQL</a>, locks will be released implicetly when a new lock is requested. Also when a new transaction is started, all existing locks are released, so when table locking is required within a transaction, always call <a class="el" href="classDbHandler.html#a27c45a702ae53310ccc159a88bc4234f">lockTable()</a> <em>after</em> <a class="el" href="classDbHandler.html#a19f0cb54f362ab3f919cfc2b940800c0">startTransaction()</a> </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>This method currenly supports only 1 table and no aliases, must be changed! </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>This method currenly supports only 1 table and no aliases, must be changed! </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00706">706</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00727">727</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00251">ConfigHandler::get()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
 </div>
 </div>
@@ -1090,11 +1093,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00434">434</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00455">455</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00399">connect()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00420">connect()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00304">alt()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00358">forceReread()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00795">read()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00325">alt()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00379">forceReread()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00816">read()</a>.</p>
 
 </div>
 </div>
@@ -1122,9 +1125,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01170">1170</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01197">1197</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01082">additionalClauses()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01064">extractTablelist()</a>, <a class="el" href="owl_8debug_8functions_8php_source.html#l00090">OWLdbg_add()</a>, <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00972">tablelist()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00993">whereClause()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01109">additionalClauses()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01091">extractTablelist()</a>, <a class="el" href="owl_8debug_8functions_8php_source.html#l00106">OWLdbg_add()</a>, <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00999">tablelist()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l01020">whereClause()</a>.</p>
 
 </div>
 </div>
@@ -1153,9 +1156,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>An array with two elements: the fieldname in the format that will be handled by <a class="el" href="classDbHandler.html#ad8dac71adf4d540270b5b2c87da114a8">DbHandler::expandField()</a>, and the value which might be a normal value, an array of values of a value as set by a driver function (using database functions). On errors, null is returned. </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00538">538</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00559">559</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
 </div>
 </div>
@@ -1183,9 +1186,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01246">1246</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01273">1273</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01082">additionalClauses()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00941">expandField()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01064">extractTablelist()</a>, <a class="el" href="owl_8debug_8functions_8php_source.html#l00090">OWLdbg_add()</a>, <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00490">tablename()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01109">additionalClauses()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00968">expandField()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01091">extractTablelist()</a>, <a class="el" href="owl_8debug_8functions_8php_source.html#l00106">OWLdbg_add()</a>, <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00511">tablename()</a>.</p>
 
 </div>
 </div>
@@ -1238,9 +1241,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01128">1128</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01155">1155</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01082">additionalClauses()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00941">expandField()</a>, <a class="el" href="owl_8debug_8functions_8php_source.html#l00090">OWLdbg_add()</a>, <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00972">tablelist()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00993">whereClause()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01109">additionalClauses()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00968">expandField()</a>, <a class="el" href="owl_8debug_8functions_8php_source.html#l00106">OWLdbg_add()</a>, <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00999">tablelist()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l01020">whereClause()</a>.</p>
 
 </div>
 </div>
@@ -1286,9 +1289,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01201">1201</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01228">1228</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01082">additionalClauses()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01064">extractTablelist()</a>, <a class="el" href="owl_8debug_8functions_8php_source.html#l00090">OWLdbg_add()</a>, <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00972">tablelist()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01041">updateList()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00993">whereClause()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l01109">additionalClauses()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01091">extractTablelist()</a>, <a class="el" href="owl_8debug_8functions_8php_source.html#l00106">OWLdbg_add()</a>, <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00999">tablelist()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01068">updateList()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l01020">whereClause()</a>.</p>
 
 </div>
 </div>
@@ -1356,9 +1359,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00795">795</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00816">816</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00859">dbread()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00434">open()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00886">dbread()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00455">open()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
 </div>
 </div>
@@ -1380,9 +1383,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 
 <p>Reimplemented from <a class="el" href="class__OWL.html#a2f2a042bcf31965194c03033df0edc9b">_OWL</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00472">472</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00493">493</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00278">__clone()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00299">__clone()</a>.</p>
 
 </div>
 </div>
@@ -1410,9 +1413,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Objects severity level </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00686">686</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00707">707</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
 </div>
 </div>
@@ -1432,11 +1435,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <p>Restore the previously saved status object and destroy the copy </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00122">122</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00138">138</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8user_8php_source.html#l00201">User::logout()</a>.</p>
+<p>Referenced by <a class="el" href="class_8user_8php_source.html#l00217">User::logout()</a>.</p>
 
 </div>
 </div>
@@ -1475,11 +1478,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object severity status </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00663">663</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00684">684</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00248">__destruct()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00269">__destruct()</a>.</p>
 
 </div>
 </div>
@@ -1499,9 +1502,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <p>Create a copy of the status object </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00113">113</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00129">129</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8user_8php_source.html#l00201">User::logout()</a>.</p>
+<p>Referenced by <a class="el" href="class_8user_8php_source.html#l00217">User::logout()</a>.</p>
 
 </div>
 </div>
@@ -1530,9 +1533,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failure </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00067">67</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00083">83</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="class_8owl_8php_source.html#l00072">OWL::factory()</a>.</p>
+<p>References <a class="el" href="class_8owl_8php_source.html#l00088">OWL::factory()</a>.</p>
 
 </div>
 </div>
@@ -1560,11 +1563,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failure </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00082">82</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00098">98</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="class_8owl_8php_source.html#l00072">OWL::factory()</a>.</p>
+<p>References <a class="el" href="class_8owl_8php_source.html#l00088">OWL::factory()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8user_8php_source.html#l00313">User::register()</a>.</p>
+<p>Referenced by <a class="el" href="class_8user_8php_source.html#l00329">User::register()</a>.</p>
 
 </div>
 </div>
@@ -1585,9 +1588,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <p>Compare the severity level of the current object with a given one and set my statuspointer to the object with the highest level. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00271">271</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00287">287</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00159">_OWL::check()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00441">DataHandler::db()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00378">DataHandler::prepare()</a>, and <a class="el" href="class_8sessionhandler_8php_source.html#l00125">SessionHandler::read()</a>.</p>
+<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00175">_OWL::check()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00457">DataHandler::db()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00394">DataHandler::prepare()</a>, and <a class="el" href="class_8sessionhandler_8php_source.html#l00141">SessionHandler::read()</a>.</p>
 
 </div>
 </div>
@@ -1614,7 +1617,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00523">523</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00544">544</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -1652,11 +1655,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00190">190</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00206">206</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="config_8php_source.html#l00027">$GLOBALS</a>, <a class="el" href="class_8__owl_8php_source.html#l00020">_OWL::$status</a>, <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>, <a class="el" href="class_8register_8php_source.html#l00221">Register::getCode()</a>, <a class="el" href="class_8__owl_8php_source.html#l00104">_OWL::reset()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00293">_OWL::signal()</a>.</p>
+<p>References <a class="el" href="config_8php_source.html#l00027">$GLOBALS</a>, <a class="el" href="class_8__owl_8php_source.html#l00036">_OWL::$status</a>, <a class="el" href="class_8confighandler_8php_source.html#l00251">ConfigHandler::get()</a>, <a class="el" href="class_8register_8php_source.html#l00237">Register::getCode()</a>, <a class="el" href="class_8__owl_8php_source.html#l00120">_OWL::reset()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00309">_OWL::signal()</a>.</p>
 
-<p>Referenced by <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00067">Container::__call()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00278">__clone()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00077">SocketHandler::__construct()</a>, <a class="el" href="class_8session_8php_source.html#l00027">Session::__construct()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00053">SchemeHandler::__construct()</a>, <a class="el" href="class_8mail_8php_source.html#l00032">Mail::__construct()</a>, <a class="el" href="class_8imagehandler_8php_source.html#l00074">ImageHandler::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00059">FormHandler::__construct()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00074">FileHandler::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00203">__construct()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00107">DataHandler::__construct()</a>, <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00039">Container::__construct()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00194">BaseElement::_getContent()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00449">HDataHandler::_getNewLeft()</a>, <a class="el" href="class_8mail_8php_source.html#l00170">Mail::addBcc()</a>, <a class="el" href="class_8mail_8php_source.html#l00149">Mail::addCc()</a>, <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00106">Container::addContainer()</a>, <a class="el" href="class_8form_8php_source.html#l00106">Form::addField()</a>, <a class="el" href="class_8formfield_8radio_8php_source.html#l00059">FormFieldRadioPlugin::addOption()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00497">HDataHandler::addParent()</a>, <a class="el" href="class_8mail_8php_source.html#l00128">Mail::addTo()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00150">BaseElement::addToContent()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00304">alt()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00207">SchemeHandler::alterScheme()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00140">FileHandler::close()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00639">commitTransaction()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00078">Dispatcher::composeDispatcher()</a>, <a class="el" href="class_8user_8php_source.html#l00384">User::confirm()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00112">SocketHandler::connect()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00399">connect()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00376">create()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00099">SchemeHandler::createScheme()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00859">dbread()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00148">SchemeHandler::defineIndex()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00127">SchemeHandler::defineScheme()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00143">SocketHandler::disconnect()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00115">Dispatcher::dispatch()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00098">HDataHandler::enableCrossLink()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00147">FormHandler::get()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00290">DataHandler::get()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00280">HDataHandler::getDirectChildren()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00232">HDataHandler::getFullOffspring()</a>, <a class="el" href="class_8group_8php_source.html#l00068">Group::getGroupByName()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00385">SchemeHandler::getTableColumns()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00401">SchemeHandler::getTableIndexes()</a>, <a class="el" href="class_8__owl_8php_source.html#l00045">_OWL::init()</a>, <a class="el" href="class_8document_8php_source.html#l00266">Document::loadScript()</a>, <a class="el" href="class_8document_8php_source.html#l00217">Document::loadStyle()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00706">lockTable()</a>, <a class="el" href="class_8user_8php_source.html#l00157">User::login()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00658">HDataHandler::moveNode()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00120">FileHandler::open()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00434">open()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00195">LogHandler::openLogfile()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00378">DataHandler::prepare()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01170">prepareDelete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00538">prepareField()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01246">prepareInsert()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01128">prepareRead()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01201">prepareUpdate()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00192">SocketHandler::read()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00795">read()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00172">FileHandler::readLine()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00367">HDataHandler::readQuery()</a>, <a class="el" href="class_8user_8php_source.html#l00218">User::readUserdata()</a>, <a class="el" href="class_8user_8php_source.html#l00313">User::register()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00227">Dispatcher::registerArgument()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00207">Dispatcher::registerCallback()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00686">resetTable()</a>, <a class="el" href="class_8__owl_8php_source.html#l00122">_OWL::restoreStatus()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00663">rollbackTransaction()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00178">SchemeHandler::scheme()</a>, <a class="el" href="class_8mail_8php_source.html#l00231">Mail::send()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00108">FormHandler::set()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00255">BaseElement::setAttributes()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00132">BaseElement::setContent()</a>, <a class="el" href="class_8form_8php_source.html#l00085">Form::setEncoding()</a>, <a class="el" href="class_8document_8php_source.html#l00303">Document::setFavicon()</a>, <a class="el" href="class_8form_8php_source.html#l00158">Form::setFieldAttributes()</a>, <a class="el" href="class_8mail_8php_source.html#l00071">Mail::setFrom()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00322">DataHandler::setJoin()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00226">DataHandler::setKey()</a>, <a class="el" href="class_8formfield_8text_8php_source.html#l00059">FormFieldTextPlugin::setMaxsize()</a>, <a class="el" href="class_8document_8php_source.html#l00333">Document::setMeta()</a>, <a class="el" href="class_8form_8php_source.html#l00068">Form::setMethod()</a>, <a class="el" href="class_8formfield_8radio_8php_source.html#l00074">FormFieldRadioPlugin::setSelected()</a>, <a class="el" href="class_8mail_8php_source.html#l00053">Mail::setSender()</a>, <a class="el" href="class_8formfield_8text_8php_source.html#l00045">FormFieldTextPlugin::setSize()</a>, <a class="el" href="class_8formfield_8select_8php_source.html#l00104">FormFieldSelectPlugin::setSize()</a>, <a class="el" href="class_8formfield_8select_8php_source.html#l00062">FormFieldSelectPlugin::setValue()</a>, <a class="el" href="class_8form_8php_source.html#l00189">Form::showField()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00616">startTransaction()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00418">SchemeHandler::tableDescription()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00739">unlockTable()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00225">SchemeHandler::validateScheme()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00161">SocketHandler::write()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01288">write()</a>, and <a class="el" href="class_8datahandlerh_8php_source.html#l00767">HDataHandler::writeQuery()</a>.</p>
+<p>Referenced by <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00083">Container::__call()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00299">__clone()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00093">SocketHandler::__construct()</a>, <a class="el" href="class_8session_8php_source.html#l00043">Session::__construct()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00069">SchemeHandler::__construct()</a>, <a class="el" href="class_8mail_8php_source.html#l00048">Mail::__construct()</a>, <a class="el" href="class_8imagehandler_8php_source.html#l00090">ImageHandler::__construct()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00075">FormHandler::__construct()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00090">FileHandler::__construct()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00224">__construct()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00123">DataHandler::__construct()</a>, <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00055">Container::__construct()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00210">BaseElement::_getContent()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00566">HDataHandler::_getNewLeft()</a>, <a class="el" href="class_8mail_8php_source.html#l00186">Mail::addBcc()</a>, <a class="el" href="class_8mail_8php_source.html#l00165">Mail::addCc()</a>, <a class="el" href="kernel_2ui_2class_8container_8php_source.html#l00122">Container::addContainer()</a>, <a class="el" href="class_8form_8php_source.html#l00122">Form::addField()</a>, <a class="el" href="class_8formfield_8radio_8php_source.html#l00075">FormFieldRadioPlugin::addOption()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00614">HDataHandler::addParent()</a>, <a class="el" href="class_8mail_8php_source.html#l00144">Mail::addTo()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00166">BaseElement::addToContent()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00325">alt()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00223">SchemeHandler::alterScheme()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00156">FileHandler::close()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00660">commitTransaction()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00094">Dispatcher::composeDispatcher()</a>, <a class="el" href="class_8user_8php_source.html#l00400">User::confirm()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00128">SocketHandler::connect()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00420">connect()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00397">create()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00115">SchemeHandler::createScheme()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00886">dbread()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00164">SchemeHandler::defineIndex()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00143">SchemeHandler::defineScheme()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00159">SocketHandler::disconnect()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00131">Dispatcher::dispatch()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00123">HDataHandler::enableCrossLink()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00163">FormHandler::get()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00306">DataHandler::get()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00312">HDataHandler::getDirectChildren()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00262">HDataHandler::getFullOffspring()</a>, <a class="el" href="class_8group_8php_source.html#l00084">Group::getGroupByName()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00405">SchemeHandler::getTableColumns()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00421">SchemeHandler::getTableIndexes()</a>, <a class="el" href="class_8__owl_8php_source.html#l00061">_OWL::init()</a>, <a class="el" href="class_8document_8php_source.html#l00282">Document::loadScript()</a>, <a class="el" href="class_8document_8php_source.html#l00233">Document::loadStyle()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00727">lockTable()</a>, <a class="el" href="class_8user_8php_source.html#l00173">User::login()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00778">HDataHandler::moveNode()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00136">FileHandler::open()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00455">open()</a>, <a class="el" href="class_8loghandler_8php_source.html#l00211">LogHandler::openLogfile()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00394">DataHandler::prepare()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01197">prepareDelete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00559">prepareField()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01273">prepareInsert()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01155">prepareRead()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01228">prepareUpdate()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00208">SocketHandler::read()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00816">read()</a>, <a class="el" href="class_8filehandler_8php_source.html#l00188">FileHandler::readLine()</a>, <a class="el" href="class_8datahandlerh_8php_source.html#l00481">HDataHandler::readQuery()</a>, <a class="el" href="class_8user_8php_source.html#l00234">User::readUserdata()</a>, <a class="el" href="class_8user_8php_source.html#l00329">User::register()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00243">Dispatcher::registerArgument()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00223">Dispatcher::registerCallback()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00707">resetTable()</a>, <a class="el" href="class_8__owl_8php_source.html#l00138">_OWL::restoreStatus()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00684">rollbackTransaction()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00194">SchemeHandler::scheme()</a>, <a class="el" href="class_8mail_8php_source.html#l00247">Mail::send()</a>, <a class="el" href="class_8formhandler_8php_source.html#l00124">FormHandler::set()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00271">BaseElement::setAttributes()</a>, <a class="el" href="class_8baseelement_8php_source.html#l00148">BaseElement::setContent()</a>, <a class="el" href="class_8form_8php_source.html#l00101">Form::setEncoding()</a>, <a class="el" href="class_8document_8php_source.html#l00319">Document::setFavicon()</a>, <a class="el" href="class_8form_8php_source.html#l00174">Form::setFieldAttributes()</a>, <a class="el" href="class_8mail_8php_source.html#l00087">Mail::setFrom()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00338">DataHandler::setJoin()</a>, <a class="el" href="class_8datahandler_8php_source.html#l00242">DataHandler::setKey()</a>, <a class="el" href="class_8formfield_8text_8php_source.html#l00075">FormFieldTextPlugin::setMaxsize()</a>, <a class="el" href="class_8document_8php_source.html#l00349">Document::setMeta()</a>, <a class="el" href="class_8form_8php_source.html#l00084">Form::setMethod()</a>, <a class="el" href="class_8formfield_8radio_8php_source.html#l00090">FormFieldRadioPlugin::setSelected()</a>, <a class="el" href="class_8mail_8php_source.html#l00069">Mail::setSender()</a>, <a class="el" href="class_8formfield_8text_8php_source.html#l00061">FormFieldTextPlugin::setSize()</a>, <a class="el" href="class_8formfield_8select_8php_source.html#l00120">FormFieldSelectPlugin::setSize()</a>, <a class="el" href="class_8formfield_8select_8php_source.html#l00078">FormFieldSelectPlugin::setValue()</a>, <a class="el" href="class_8form_8php_source.html#l00205">Form::showField()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00637">startTransaction()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00438">SchemeHandler::tableDescription()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00760">unlockTable()</a>, <a class="el" href="class_8schemehandler_8php_source.html#l00241">SchemeHandler::validateScheme()</a>, <a class="el" href="class_8sockethandler_8php_source.html#l00177">SocketHandler::write()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01316">write()</a>, and <a class="el" href="class_8datahandlerh_8php_source.html#l00887">HDataHandler::writeQuery()</a>.</p>
 
 </div>
 </div>
@@ -1695,11 +1698,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>The severity level for this object </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00293">293</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00309">309</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>, <a class="el" href="class_8outputhandler_8php_source.html#l00132">OutputHandler::outputLine()</a>, and <a class="el" href="class_8outputhandler_8php_source.html#l00070">OutputHandler::outputRaw()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00251">ConfigHandler::get()</a>, <a class="el" href="class_8outputhandler_8php_source.html#l00148">OutputHandler::outputLine()</a>, and <a class="el" href="class_8outputhandler_8php_source.html#l00086">OutputHandler::outputRaw()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00174">_OWL::getLastWarning()</a>, <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>, <a class="el" href="class_8__owl_8php_source.html#l00319">_OWL::stackMessage()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00342">_OWL::traceback()</a>.</p>
+<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::getLastWarning()</a>, <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>, <a class="el" href="class_8__owl_8php_source.html#l00335">_OWL::stackMessage()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00358">_OWL::traceback()</a>.</p>
 
 </div>
 </div>
@@ -1727,9 +1730,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00319">319</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00335">335</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="OWLloader_8php_source.html#l00379">$_doc</a>, <a class="el" href="class_8__owl_8php_source.html#l00035">_OWL::$severity</a>, <a class="el" href="class_8owl_8php_source.html#l00072">OWL::factory()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00293">_OWL::signal()</a>.</p>
+<p>References <a class="el" href="OWLloader_8php_source.html#l00379">$_doc</a>, <a class="el" href="class_8__owl_8php_source.html#l00051">_OWL::$severity</a>, <a class="el" href="class_8owl_8php_source.html#l00088">OWL::factory()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00309">_OWL::signal()</a>.</p>
 
 </div>
 </div>
@@ -1757,9 +1760,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object severity status </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00616">616</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00637">637</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
 </div>
 </div>
@@ -1798,9 +1801,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean true when successfull </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00258">258</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00274">274</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8user_8php_source.html#l00054">User::construct()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00227">Dispatcher::registerArgument()</a>, and <a class="el" href="class_8dispatcher_8php_source.html#l00207">Dispatcher::registerCallback()</a>.</p>
+<p>Referenced by <a class="el" href="class_8user_8php_source.html#l00070">User::construct()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00243">Dispatcher::registerArgument()</a>, and <a class="el" href="class_8dispatcher_8php_source.html#l00223">Dispatcher::registerCallback()</a>.</p>
 
 </div>
 </div>
@@ -1828,9 +1831,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>True of the table exists </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00904">904</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00931">931</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00892">getTableList()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00490">tablename()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00919">getTableList()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00511">tablename()</a>.</p>
 
 </div>
 </div>
@@ -1858,11 +1861,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>The tablelist </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00972">972</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00999">999</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00490">tablename()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00511">tablename()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l01170">prepareDelete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01128">prepareRead()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l01201">prepareUpdate()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l01197">prepareDelete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01155">prepareRead()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l01228">prepareUpdate()</a>.</p>
 
 </div>
 </div>
@@ -1901,9 +1904,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Extended table name </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00490">490</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00511">511</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00941">expandField()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01246">prepareInsert()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00904">tableExists()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00972">tablelist()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00968">expandField()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01365">lastInsertedId()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01273">prepareInsert()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l00931">tableExists()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00999">tablelist()</a>.</p>
 
 </div>
 </div>
@@ -1942,11 +1945,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity code of the failing object </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00342">342</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00358">358</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00293">_OWL::signal()</a>.</p>
+<p>References <a class="el" href="class_8__owl_8php_source.html#l00309">_OWL::signal()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00159">_OWL::check()</a>, <a class="el" href="class_8user_8php_source.html#l00157">User::login()</a>, and <a class="el" href="class_8sessionhandler_8php_source.html#l00125">SessionHandler::read()</a>.</p>
+<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00175">_OWL::check()</a>, <a class="el" href="class_8user_8php_source.html#l00173">User::login()</a>, and <a class="el" href="class_8sessionhandler_8php_source.html#l00141">SessionHandler::read()</a>.</p>
 
 </div>
 </div>
@@ -1974,7 +1977,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>The unescaped string </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00928">928</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00955">955</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2002,11 +2005,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Object severity status </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00739">739</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00760">760</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00251">ConfigHandler::get()</a>, and <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00248">__destruct()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00269">__destruct()</a>.</p>
 
 </div>
 </div>
@@ -2034,11 +2037,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>The UPDATE statement </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01041">1041</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01068">1068</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00941">expandField()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00968">expandField()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l01201">prepareUpdate()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l01228">prepareUpdate()</a>.</p>
 
 </div>
 </div>
@@ -2077,11 +2080,11 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>The WHERE clause </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00993">993</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01020">1020</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00941">expandField()</a>.</p>
+<p>References <a class="el" href="class_8dbhandler_8php_source.html#l00968">expandField()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l01170">prepareDelete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01128">prepareRead()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l01201">prepareUpdate()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l01197">prepareDelete()</a>, <a class="el" href="class_8dbhandler_8php_source.html#l01155">prepareRead()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l01228">prepareUpdate()</a>.</p>
 
 </div>
 </div>
@@ -2127,9 +2130,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <dl class="return"><dt><b>Returns:</b></dt><dd>Severity level </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01288">1288</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l01316">1316</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>References <a class="el" href="class_8__owl_8php_source.html#l00190">_OWL::setStatus()</a>.</p>
+<p>References <a class="el" href="class_8__owl_8php_source.html#l00206">_OWL::setStatus()</a>.</p>
 
 </div>
 </div>
@@ -2146,7 +2149,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>boolean - true when the object has been cloned </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00182">182</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00203">203</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2162,7 +2165,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>array - Database location and authorization indo </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00116">116</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00132">132</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2178,7 +2181,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>string - database prefix </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00136">136</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00152">152</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2194,7 +2197,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>object - The database driver </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00121">121</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00137">137</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2210,7 +2213,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>integer - Error ID </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00106">106</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00122">122</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2226,7 +2229,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>string - Error text </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00111">111</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00127">127</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2242,7 +2245,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>array - list of fields for a GROUP BY clause </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00151">151</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00167">167</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2258,7 +2261,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>array - list of fields for a HAVING clause </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00156">156</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00172">172</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2274,7 +2277,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>integer - DB Handle ID </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00101">101</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00117">117</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2290,9 +2293,25 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>integer - self reference </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00187">187</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00208">208</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00278">__clone()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00333">getInstance()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00299">__clone()</a>, and <a class="el" href="class_8dbhandler_8php_source.html#l00354">getInstance()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a653b4df99edd8bc6b75197afd337a631"></a><!-- doxytag: member="DbHandler::$last_insert_table" ref="a653b4df99edd8bc6b75197afd337a631" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbHandler::$last_insert_table<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>string - Last table in which an insert was made </p>
+
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00188">188</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2307,9 +2326,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 <div class="memdoc">
 <p>array with 2 elements to limit the query </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>this ain't implemented yet </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>this ain't implemented yet </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00162">162</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00178">178</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2325,7 +2344,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>array - list of tables that are currently locked </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00177">177</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00198">198</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2341,7 +2360,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>boolean - True if the database is opened </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00131">131</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00147">147</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2357,7 +2376,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>array - list of fields for an ORDER BY clasue </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00146">146</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00162">162</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2373,9 +2392,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>integer - self reference to the original object before cloning </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00192">192</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00213">213</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00333">getInstance()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dbhandler_8php_source.html#l00354">getInstance()</a>.</p>
 
 </div>
 </div>
@@ -2391,7 +2410,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>string - Query string </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00141">141</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00157">157</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2407,7 +2426,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>string - Prepared query type </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00167">167</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00183">183</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2423,7 +2442,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>integer - Row counter </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00126">126</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00142">142</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2439,9 +2458,9 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>Severity level of the current object status </p>
 
-<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00035">35</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8__owl_8php_source.html#l00051">51</a> of file <a class="el" href="class_8__owl_8php_source.html">class._owl.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00319">_OWL::stackMessage()</a>.</p>
+<p>Referenced by <a class="el" href="class_8__owl_8php_source.html#l00335">_OWL::stackMessage()</a>.</p>
 
 </div>
 </div>
@@ -2457,7 +2476,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 <div class="memdoc">
 <p>string - name of the open transaction (currently just used as a boolean) </p>
 
-<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00172">172</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbhandler_8php_source.html#l00193">193</a> of file <a class="el" href="class_8dbhandler_8php_source.html">class.dbhandler.php</a>.</p>
 
 </div>
 </div>
@@ -2484,7 +2503,7 @@ Jul 29, 2008 -- O van Eijk -- Modified version for <a class="el" href="classOWL.
 </div>
 
 
-    <li class="footer">Generated on Thu Oct 13 2011 11:57:56 for OWL-PHP by
+    <li class="footer">Generated on Fri Oct 28 2011 11:32:53 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

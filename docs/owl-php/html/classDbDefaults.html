@@ -30,7 +30,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OWL-PHP
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    
   </td>
@@ -122,6 +122,7 @@ Inheritance diagram for DbDefaults:</div>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#afc607b5c0a8d2320cd21f5746dde027e">__constructor</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#aa434f9729da1e2bd36e07f3c2e75dca2">getPrimaryKey</a> (&amp;$_dbHandler, $_table)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a30ef8b1e115ed1dbdbd66b960c0e348d">dbTransactionStart</a> (&amp;$_resource, $_name=null)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a4519ed7e730dd5539ef54ca4fe766ef5">dbTransactionCommit</a> (&amp;$_resource, $_name=null, $_new=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#afd19d31d68daa9f87760d5b0902f8646">dbTransactionRollback</a> (&amp;$_resource, $_name=null, $_new=false)</td></tr>
@@ -136,7 +137,7 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a> ($_qry)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a0817a1c69dcbf9791d985755485eefc7">queryCacheExec</a> (&amp;$_resource)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#a3b6cb171d4922256892b3391efbb5c3e">queryCacheExec</a> (&amp;$_resource, $_ignoreFailures=true)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDbDefaults.html#acae6e1f7f0ced6921724165e7a9b7290">queryCacheClear</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -171,9 +172,9 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00049">49</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00251">ConfigHandler::get()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00042">Oracle::__construct()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00019">MySQL::__construct()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00084">Oracle::__construct()</a>, and <a class="el" href="class_8mysql_8php_source.html#l00035">MySQL::__construct()</a>.</p>
 
 </div>
 </div>
@@ -203,7 +204,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classMySQL.html#a7f4b581ad71a3ee8922d51c9ef28a18c">MySQL</a>, and <a class="el" href="classOracle.html#aa6192ea7d8c581bd12bfd9f6abc4aa16">Oracle</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00135">135</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00163">163</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -231,9 +232,9 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Quoted textstring </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00158">158</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00186">186</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00337">Oracle::dbAlterField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00113">MySQL::dbAlterField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00089">Oracle::dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00038">MySQL::dbDefineField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00125">Oracle::dbDefineIndex()</a>, <a class="el" href="class_8mysql_8php_source.html#l00073">MySQL::dbDefineIndex()</a>, <a class="el" href="class_8oracle_8php_source.html#l00332">Oracle::dbDropField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00108">MySQL::dbDropField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00327">Oracle::dbDropTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00103">MySQL::dbDropTable()</a>, <a class="el" href="class_8oracle_8php_source.html#l00364">Oracle::dbTableColumns()</a>, <a class="el" href="class_8mysql_8php_source.html#l00129">MySQL::dbTableColumns()</a>, <a class="el" href="class_8oracle_8php_source.html#l00398">Oracle::dbTableIndexes()</a>, <a class="el" href="class_8mysql_8php_source.html#l00166">MySQL::dbTableIndexes()</a>, <a class="el" href="class_8oracle_8php_source.html#l00191">Oracle::setAutoIncrement()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00253">Oracle::setEnumConstraint()</a>.</p>
+<p>Referenced by <a class="el" href="class_8mysql_8php_source.html#l00130">MySQL::dbAlterField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00139">Oracle::dbDefineField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00054">MySQL::dbDefineField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00175">Oracle::dbDefineIndex()</a>, <a class="el" href="class_8mysql_8php_source.html#l00090">MySQL::dbDefineIndex()</a>, <a class="el" href="class_8oracle_8php_source.html#l00459">Oracle::dbDropField()</a>, <a class="el" href="class_8mysql_8php_source.html#l00125">MySQL::dbDropField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00417">Oracle::dbDropTable()</a>, <a class="el" href="class_8mysql_8php_source.html#l00120">MySQL::dbDropTable()</a>, <a class="el" href="class_8oracle_8php_source.html#l00757">Oracle::dbInsertId()</a>, <a class="el" href="class_8mysql_8php_source.html#l00145">MySQL::dbTableColumns()</a>, <a class="el" href="class_8mysql_8php_source.html#l00182">MySQL::dbTableIndexes()</a>, <a class="el" href="class_8oracle_8php_source.html#l00433">Oracle::dropAutoIncrementSequence()</a>, <a class="el" href="class_8oracle_8php_source.html#l00345">Oracle::getDefaultValue()</a>, <a class="el" href="class_8oracle_8php_source.html#l00271">Oracle::setAutoIncrement()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00323">Oracle::setEnumConstraint()</a>.</p>
 
 </div>
 </div>
@@ -281,7 +282,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classMySQL.html#ad639e6c42d1ad72ef55244b38b2c32ca">MySQL</a>, and <a class="el" href="classOracle.html#af4ca1e7907ea34baf442aa55f9da909d">Oracle</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00111">111</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00139">139</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -329,7 +330,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classMySQL.html#a94ca8ff0d1a4072f80c14e598274fdca">MySQL</a>, and <a class="el" href="classOracle.html#a4b28587042e6451e05b11dd0b143bf4e">Oracle</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00124">124</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00152">152</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -368,7 +369,9 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True on success, false on failures </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00098">98</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Reimplemented in <a class="el" href="classOracle.html#a788bb3baa63620bf18021f1e476ab504">Oracle</a>.</p>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00126">126</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -396,7 +399,7 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>String without SQL formatting </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00146">146</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00174">174</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -437,7 +440,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classMySQL.html#a310c8c88ce3d36a23d51f66ec5b0f9d2">MySQL</a>, and <a class="el" href="classOracle.html#a45dd64f96e2b765c8de618812c371142">Oracle</a>.</p>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00170">170</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00198">198</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -476,7 +479,7 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00195">195</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00223">223</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -515,9 +518,9 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00208">208</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00236">236</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00537">Oracle::dbInsertId()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00757">Oracle::dbInsertId()</a>.</p>
 
 </div>
 </div>
@@ -556,7 +559,46 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Complete SQL function code </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00221">221</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00249">249</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa434f9729da1e2bd36e07f3c2e75dca2"></a><!-- doxytag: member="DbDefaults::getPrimaryKey" ref="aa434f9729da1e2bd36e07f3c2e75dca2" args="(&amp;$_dbHandler, $_table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DbDefaults::getPrimaryKey </td>
+          <td>(</td>
+          <td class="paramtype">&amp;$&#160;</td>
+          <td class="paramname"><em>_dbHandler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_table</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Find the primary key of the given database table</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_dbHandler</td><td>Refenence to the database handler </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_table</td><td>Table name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>mixed, an array with columns if the primary key is combined, a string with the fieldname is there is only 1 column in the keu, or null when no primary key is set. </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00106">106</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -584,7 +626,7 @@ Private Attributes</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Adviceable time to wait for a retry in milliseconds, or 0 if no retry is possible </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00183">183</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00211">211</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
 </div>
 </div>
@@ -613,7 +655,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00060">60</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00089">Oracle::dbDefineField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00125">Oracle::dbDefineIndex()</a>, <a class="el" href="class_8oracle_8php_source.html#l00191">Oracle::setAutoIncrement()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00253">Oracle::setEnumConstraint()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00139">Oracle::dbDefineField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00175">Oracle::dbDefineIndex()</a>, <a class="el" href="class_8oracle_8php_source.html#l00271">Oracle::setAutoIncrement()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00323">Oracle::setEnumConstraint()</a>.</p>
 
 </div>
 </div>
@@ -633,13 +675,13 @@ Private Attributes</h2></td></tr>
 <p>Clear the cached SQL statements </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00086">86</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00092">92</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00350">Oracle::dbAddField()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00337">Oracle::dbAlterField()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00477">Oracle::dbAddField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00464">Oracle::dbAlterField()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00124">Oracle::dbCreateTable()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a0817a1c69dcbf9791d985755485eefc7"></a><!-- doxytag: member="DbDefaults::queryCacheExec" ref="a0817a1c69dcbf9791d985755485eefc7" args="(&amp;$_resource)" -->
+<a class="anchor" id="a3b6cb171d4922256892b3391efbb5c3e"></a><!-- doxytag: member="DbDefaults::queryCacheExec" ref="a3b6cb171d4922256892b3391efbb5c3e" args="(&amp;$_resource, $_ignoreFailures=true)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -647,8 +689,18 @@ Private Attributes</h2></td></tr>
           <td class="memname">DbDefaults::queryCacheExec </td>
           <td>(</td>
           <td class="paramtype">&amp;$&#160;</td>
-          <td class="paramname"><em>_resource</em></td><td>)</td>
-          <td><code> [final, protected]</code></td>
+          <td class="paramname"><em>_resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>_ignoreFailures</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [final, protected]</code></td>
         </tr>
       </table>
 </div>
@@ -657,15 +709,16 @@ Private Attributes</h2></td></tr>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">$_resource</td><td>Link with the database server </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">$_ignoreFailures</td><td>When true (default), continue executing all cached queries, ignoring alle errors </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>boolean, true on success, false on the first error. When an error occurs, all other statements will be skipped </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>boolean, true on success, false when an error occured </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00072">72</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
+<p>Definition at line <a class="el" href="class_8dbdefaults_8php_source.html#l00073">73</a> of file <a class="el" href="class_8dbdefaults_8php_source.html">class.dbdefaults.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00350">Oracle::dbAddField()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00337">Oracle::dbAlterField()</a>.</p>
+<p>Referenced by <a class="el" href="class_8oracle_8php_source.html#l00477">Oracle::dbAddField()</a>, <a class="el" href="class_8oracle_8php_source.html#l00464">Oracle::dbAlterField()</a>, and <a class="el" href="class_8oracle_8php_source.html#l00124">Oracle::dbCreateTable()</a>.</p>
 
 </div>
 </div>
@@ -725,7 +778,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Oct 13 2011 11:57:56 for OWL-PHP by
+    <li class="footer">Generated on Fri Oct 28 2011 11:32:53 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

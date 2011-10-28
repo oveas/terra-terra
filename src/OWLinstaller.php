@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_SO_LAYER
  * This file defines the class to install applications
- * \version $Id: OWLinstaller.php,v 1.8 2011-10-16 11:11:44 oscar Exp $
+ * \version $Id: OWLinstaller.php,v 1.9 2011-10-28 09:32:48 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
@@ -88,6 +88,7 @@ abstract class OWLinstaller
 		$dataset->set('link', $link);
 		$dataset->set('author',$author);
 		$dataset->set('license', $license);
+		$dataset->set('enabled', '0');
 		$dataset->prepare(DATA_WRITE);
 		$dataset->db($_dummy, __LINE__, __FILE__);
 		return ($dataset->insertedId());

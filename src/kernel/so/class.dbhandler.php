@@ -3,7 +3,7 @@
  * \file
  * This file defines the Database Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbhandler.php,v 1.32 2011-10-16 11:11:44 oscar Exp $
+ * \version $Id: class.dbhandler.php,v 1.33 2011-10-28 09:32:47 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
@@ -181,6 +181,11 @@ class DbHandler extends _OWL
 	 * string - Prepared query type
 	 */
 	private $query_type;
+
+	/**
+	 * string - Last table in which an insert was made
+	 */
+	private $last_insert_table;
 
 	/**
 	 * string - name of the open transaction (currently just used as a boolean)
@@ -833,7 +838,7 @@ class DbHandler extends _OWL
 				));
 			return ($this->severity);
 		}
-//echo "ok ($this->rowcount)<br>";
+//echo "$_query,ok ($this->rowcount)<br>";
 		$this->setStatus (DBHANDLE_ROWSREAD, array (
 				  $_query
 				, $this->rowcount
@@ -855,9 +860,15 @@ class DbHandler extends _OWL
 		} elseif ($flag == DBHANDLE_TOTALFIELDCOUNT) {
 			$data = ($this->rowcount * $_fieldcnt);
 		} else if ($flag == DBHANDLE_SINGLEFIELD) {
-			$data = $_data[0][key($_data[0])];
+			if (is_array($_data)) { // TODO Find out why we need to make it so complicated with Oracle...
+				$_r = array_shift($_data);
+				if (is_array($_r)) {
+					$data = array_shift($_r);
+				}
+			}
+			//$data = $_data[0][key($_data[0])]; // Hmmm... doesn't work with Oracle ??
 		} elseif ($flag == DBHANDLE_SINGLEROW) {
-			$data = $_data[0];
+			$data = (is_array($_data)?array_shift($_data):null);
 		} else { // default: DBHANDLE_DATA
 			$data = $_data;
 		}
@@ -887,12 +898,12 @@ class DbHandler extends _OWL
 		if ($this->driver->dbRowCount($__result) == 0) {
 			return (array());
 		}
-
+		$data_set = array();
 		while ($__row = $this->driver->dbFetchNextRecord ($__result)) {
 			$data_set[$rows++] = $__row;
 		}
 		$this->driver->dbClear ($__result);
-		$fields = count($data_set[0]);
+		$fields = ($data_set === array() ? 0 : count($data_set[0]));
 		if (function_exists('OWLdbg_add')) {
 			OWLdbg_add(OWLDEBUG_OWL_RES, $data_set, 2);
 		}
@@ -975,7 +986,7 @@ class DbHandler extends _OWL
 			$field = $this->driver->$_method($field, $_f);
 		}
 		if ($_as !== null && $check_name === true) {
-			$field .= ' AS ' . $_as;
+			$field .= ' AS ' . $this->driver->dbQuote($_as);
 		}
 	}
 
@@ -1280,6 +1291,7 @@ class DbHandler extends _OWL
 		if (count ($_tables) > 1) {
 			// TODO: Make $this->query an array with a transaction (commit/rollback)
 		} else {
+			$this->last_insert_table = $_tables[0];
 			$this->query = 'INSERT INTO ' . $this->tablename ($_tables[0]) . ' '
 						 . ' (' . join (', ', $_fld) . ') '
 						 . ' VALUES (' . join (', ', $_val) . ') ';
@@ -1346,12 +1358,21 @@ class DbHandler extends _OWL
 	 * Return the last ID after a newly inserted record holding an AUTO_INCREMENT field
 	 * \param[in] $table Table name holding the auto increment field
 	 * \param[in] $field Name of the auto increment field
-	 * \return The number that was last inserted
+	 * \return The number that was last inserted, -1 on errors or when there's no auto increment field
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 * \todo For databases not supporting auto_increment, this won't work if $table and $field are not set
 	 */
 	public function lastInsertedId ($table = null, $field = null)
 	{
+		if ($table === null) {
+			$table = $this->tablename($this->last_insert_table, true);
+		}
+		if ($field === null) {
+			$field = $this->driver->getPrimaryKey($this, $table);
+		}
+		if (is_array($field) || $field === null) {
+			return -1;
+		}
 		return ($this->driver->dbInsertId($this->id, $table, $field));
 	}
 

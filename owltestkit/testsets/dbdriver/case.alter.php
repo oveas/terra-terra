@@ -3,7 +3,7 @@
  * \file
  * This file defines the testcase that does all table alterings
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.alter.php,v 1.3 2011-10-16 11:11:44 oscar Exp $
+ * \version $Id: case.alter.php,v 1.4 2011-10-28 09:32:44 oscar Exp $
  * \copyright{2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OTK.
@@ -182,7 +182,7 @@ class OTKDbdriver_Alter implements TestCase
 			,'indexes' => array(
 				  'PRIMARY' => array(
 					  'columns' => array(
-						  '1' => 'id'
+						  '0' => 'id'
 					)
 					, 'unique' => '1'
 					, 'type' => 'BTREE'
@@ -190,8 +190,8 @@ class OTKDbdriver_Alter implements TestCase
 				)
 				, 'name' => array(
 					  'columns' => array(
-						  '1' => 'firstname'
-						, '2' => 'lastname'
+						  '0' => 'firstname'
+						, '1' => 'lastname'
 						)
 					, 'unique' => ''
 					, 'type' => 'BTREE'
@@ -199,7 +199,7 @@ class OTKDbdriver_Alter implements TestCase
 				)
 				, 'address' => array(
 					  'columns' => array(
-						  '1' => 'address'
+						  '0' => 'address'
 					)
 					, 'unique' => ''
 					, 'type' => 'FULLTEXT'

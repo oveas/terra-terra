@@ -3,7 +3,7 @@
  * \file
  * This file defines default methods for the Database drivers
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dbdefaults.php,v 1.6 2011-10-16 11:11:46 oscar Exp $
+ * \version $Id: class.dbdefaults.php,v 1.7 2011-10-28 09:32:48 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
@@ -65,18 +65,24 @@ abstract class DbDefaults
 	/**
 	 * Execute all cached statements
 	 * \param[in] $_resource Link with the database server
-	 * \return boolean, true on success, false on the first error.
-	 * When an error occurs, all other statements will be skipped
+	 * \param[in] $_ignoreFailures When true (default), continue executing all cached queries,
+	 * ignoring alle errors
+	 * \return boolean, true on success, false when an error occured
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	final protected function queryCacheExec (&$_resource)
+	final protected function queryCacheExec (&$_resource, $_ignoreFailures = true)
 	{
+		$_ret = true;
 		foreach ($this->cachedSQL as $_qry) {
 			if (!$this->dbExec($_resource, $_qry)) {
-				return false;
+				if ($_ignoreFailures === false) {
+					return false;
+				} else {
+					$_ret = false;
+				}
 			}
 		}
-		return true;
+		return $_ret;
 	}
 
 	/**
@@ -86,6 +92,28 @@ abstract class DbDefaults
 	final protected function queryCacheClear ()
 	{
 		$this->cachedSQL = array();
+	}
+
+	/**
+	 * Find the primary key of the given database table
+	 *
+	 * \param[in] $_dbHandler Refenence to the database handler
+	 * \param[in] $_table Table name
+	 * \return mixed, an array with columns if the primary key is combined, a string with the
+	 * fieldname is there is only 1 column in the keu, or null when no primary key is set.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function getPrimaryKey(&$_dbHandler, $_table)
+	{
+		$_idx = $this->dbTableIndexes($_dbHandler, $_table);
+		if (!array_key_exists('PRIMARY', $_idx) || !array_key_exists('columns', $_idx['PRIMARY'])) {
+			return null;
+		}
+		if (count($_idx['PRIMARY']['columns']) == 1) {
+			return $_idx['PRIMARY']['columns'][0];
+		} else {
+			return $_idx['PRIMARY']['columns'];
+		}
 	}
 
 	/**
@@ -195,7 +223,7 @@ abstract class DbDefaults
 	public function functionCount($_field, array $_arguments = array())
 	{
 		// Arguments can be ignored here
-		return 'COUNT(' . $_field . ')';
+		return 'COUNT(' .$_field . ')';
 	}
 
 	/**

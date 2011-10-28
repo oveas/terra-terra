@@ -30,7 +30,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OWL-PHP
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    
   </td>
@@ -98,45 +98,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <a href="class_8container_8link_8php.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
-<a name="l00017"></a><a class="code" href="classContainerLinkPlugin.html">00017</a> <span class="keyword">class </span><a class="code" href="classContainerLinkPlugin.html" title="LinkContainer.">ContainerLinkPlugin</a> <span class="keyword">extends</span> <a class="code" href="classContainerPlugin.html" title="ContainerPlugins.">ContainerPlugin</a>
-<a name="l00018"></a>00018 {
-<a name="l00022"></a><a class="code" href="classContainerLinkPlugin.html#acd3a1db2da03b78ea0b1d035eb771a68">00022</a>     <span class="keyword">private</span> <a class="code" href="classContainerLinkPlugin.html#acd3a1db2da03b78ea0b1d035eb771a68">$href</a>;
-<a name="l00023"></a>00023 
-<a name="l00027"></a><a class="code" href="classContainerLinkPlugin.html#acb0deabfd2fdcc6cdc076ff7cca8a7f5">00027</a>     <span class="keyword">private</span> <a class="code" href="classContainerLinkPlugin.html#acb0deabfd2fdcc6cdc076ff7cca8a7f5">$target</a>;
-<a name="l00028"></a>00028 
-<a name="l00033"></a><a class="code" href="classContainerLinkPlugin.html#a8f6993ba02eb044075b704aee8e4e1d7">00033</a>     <span class="keyword">public</span> function <a class="code" href="classContainerLinkPlugin.html#a8f6993ba02eb044075b704aee8e4e1d7">__construct</a>()
-<a name="l00034"></a>00034     {
-<a name="l00035"></a>00035         <a class="code" href="classContainerLinkPlugin.html#a8f6993ba02eb044075b704aee8e4e1d7">parent::__construct</a>();
-<a name="l00036"></a>00036         $this-&gt;type = <span class="charliteral">&#39;a&#39;</span>;
-<a name="l00037"></a>00037         $this-&gt;href = <span class="charliteral">&#39;#&#39;</span>;
-<a name="l00038"></a>00038         $this-&gt;target = <span class="stringliteral">&#39;&#39;</span>;
-<a name="l00039"></a>00039     }
-<a name="l00040"></a>00040 
-<a name="l00046"></a><a class="code" href="classContainerLinkPlugin.html#af7bce8f0ea792e52b813b9d3c688be41">00046</a>     <span class="keyword">public</span> function <a class="code" href="classContainerLinkPlugin.html#af7bce8f0ea792e52b813b9d3c688be41">setHref</a>($_url)
-<a name="l00047"></a>00047     {
-<a name="l00048"></a>00048         $this-&gt;href = $_url;
-<a name="l00049"></a>00049     }
-<a name="l00050"></a>00050 
-<a name="l00056"></a><a class="code" href="classContainerLinkPlugin.html#a163b07c2649f475cb722aadd032ec1cf">00056</a>     <span class="keyword">public</span> function <a class="code" href="classContainerLinkPlugin.html#a163b07c2649f475cb722aadd032ec1cf">setTarget</a>($_window)
-<a name="l00057"></a>00057     {
-<a name="l00058"></a>00058         $this-&gt;target = $_window;
-<a name="l00059"></a>00059     }
-<a name="l00060"></a>00060 
-<a name="l00067"></a><a class="code" href="classContainerLinkPlugin.html#afa981880304670af9a2441d94850d8fc">00067</a>     <span class="keyword">public</span> function <a class="code" href="classContainerLinkPlugin.html#afa981880304670af9a2441d94850d8fc">setDispatcher</a>($_dispatcher)
-<a name="l00068"></a>00068     {
-<a name="l00069"></a>00069         $_disp = <a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory</a>(<span class="stringliteral">&#39;Dispatcher&#39;</span>, <span class="stringliteral">&#39;bo&#39;</span>);
-<a name="l00070"></a>00070         $this-&gt;href = <a class="code" href="group__OWL__Globals.html#ga852a175212533e96f5299c0d2c2262cf" title="Default URL used for all callbacks (like form actions, AJAX requests etc)">OWL_CALLBACK_URL</a> . <span class="charliteral">&#39;?&#39;</span> . <a class="code" href="class_8dispatcher_8php.html#ab8ccb013855305199a8f004a52f1d070">OWL_DISPATCHER_NAME</a> . <span class="charliteral">&#39;=&#39;</span> . $_disp-&gt;composeDispatcher($_dispatcher);
-<a name="l00071"></a>00071     }
-<a name="l00072"></a>00072 
-<a name="l00078"></a><a class="code" href="classContainerLinkPlugin.html#af1568be54815de36bb7f3909989f0309">00078</a>     <span class="keyword">public</span> function <a class="code" href="classContainerLinkPlugin.html#af1568be54815de36bb7f3909989f0309">showElement</a>()
-<a name="l00079"></a>00079     {
-<a name="l00080"></a>00080         $_htmlCode = <span class="stringliteral">&#39; href=&quot;&#39;</span> . $this-&gt;href . <span class="charliteral">&#39;&quot;&#39;</span>;
-<a name="l00081"></a>00081         <span class="keywordflow">if</span> ($this-&gt;target !== <span class="stringliteral">&#39;&#39;</span>) {
-<a name="l00082"></a>00082             $_htmlCode .= <span class="stringliteral">&#39; target=&quot;&#39;</span> . $this-&gt;target . <span class="charliteral">&#39;&quot;&#39;</span>;
-<a name="l00083"></a>00083         }
-<a name="l00084"></a>00084         <span class="keywordflow">return</span> $_htmlCode;
-<a name="l00085"></a>00085     }
-<a name="l00086"></a>00086 }
+<a name="l00033"></a><a class="code" href="classContainerLinkPlugin.html">00033</a> <span class="keyword">class </span><a class="code" href="classContainerLinkPlugin.html" title="LinkContainer.">ContainerLinkPlugin</a> <span class="keyword">extends</span> <a class="code" href="classContainerPlugin.html" title="ContainerPlugins.">ContainerPlugin</a>
+<a name="l00034"></a>00034 {
+<a name="l00038"></a><a class="code" href="classContainerLinkPlugin.html#acd3a1db2da03b78ea0b1d035eb771a68">00038</a>     <span class="keyword">private</span> <a class="code" href="classContainerLinkPlugin.html#acd3a1db2da03b78ea0b1d035eb771a68">$href</a>;
+<a name="l00039"></a>00039 
+<a name="l00043"></a><a class="code" href="classContainerLinkPlugin.html#acb0deabfd2fdcc6cdc076ff7cca8a7f5">00043</a>     <span class="keyword">private</span> <a class="code" href="classContainerLinkPlugin.html#acb0deabfd2fdcc6cdc076ff7cca8a7f5">$target</a>;
+<a name="l00044"></a>00044 
+<a name="l00049"></a><a class="code" href="classContainerLinkPlugin.html#a8f6993ba02eb044075b704aee8e4e1d7">00049</a>     <span class="keyword">public</span> function <a class="code" href="classContainerLinkPlugin.html#a8f6993ba02eb044075b704aee8e4e1d7">__construct</a>()
+<a name="l00050"></a>00050     {
+<a name="l00051"></a>00051         <a class="code" href="classContainerLinkPlugin.html#a8f6993ba02eb044075b704aee8e4e1d7">parent::__construct</a>();
+<a name="l00052"></a>00052         $this-&gt;type = <span class="charliteral">&#39;a&#39;</span>;
+<a name="l00053"></a>00053         $this-&gt;href = <span class="charliteral">&#39;#&#39;</span>;
+<a name="l00054"></a>00054         $this-&gt;target = <span class="stringliteral">&#39;&#39;</span>;
+<a name="l00055"></a>00055     }
+<a name="l00056"></a>00056 
+<a name="l00062"></a><a class="code" href="classContainerLinkPlugin.html#af7bce8f0ea792e52b813b9d3c688be41">00062</a>     <span class="keyword">public</span> function <a class="code" href="classContainerLinkPlugin.html#af7bce8f0ea792e52b813b9d3c688be41">setHref</a>($_url)
+<a name="l00063"></a>00063     {
+<a name="l00064"></a>00064         $this-&gt;href = $_url;
+<a name="l00065"></a>00065     }
+<a name="l00066"></a>00066 
+<a name="l00072"></a><a class="code" href="classContainerLinkPlugin.html#a163b07c2649f475cb722aadd032ec1cf">00072</a>     <span class="keyword">public</span> function <a class="code" href="classContainerLinkPlugin.html#a163b07c2649f475cb722aadd032ec1cf">setTarget</a>($_window)
+<a name="l00073"></a>00073     {
+<a name="l00074"></a>00074         $this-&gt;target = $_window;
+<a name="l00075"></a>00075     }
+<a name="l00076"></a>00076 
+<a name="l00083"></a><a class="code" href="classContainerLinkPlugin.html#afa981880304670af9a2441d94850d8fc">00083</a>     <span class="keyword">public</span> function <a class="code" href="classContainerLinkPlugin.html#afa981880304670af9a2441d94850d8fc">setDispatcher</a>($_dispatcher)
+<a name="l00084"></a>00084     {
+<a name="l00085"></a>00085         $_disp = <a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory</a>(<span class="stringliteral">&#39;Dispatcher&#39;</span>, <span class="stringliteral">&#39;bo&#39;</span>);
+<a name="l00086"></a>00086         $this-&gt;href = <a class="code" href="group__OWL__Globals.html#ga852a175212533e96f5299c0d2c2262cf" title="Default URL used for all callbacks (like form actions, AJAX requests etc)">OWL_CALLBACK_URL</a> . <span class="charliteral">&#39;?&#39;</span> . <a class="code" href="class_8dispatcher_8php.html#ab8ccb013855305199a8f004a52f1d070">OWL_DISPATCHER_NAME</a> . <span class="charliteral">&#39;=&#39;</span> . $_disp-&gt;composeDispatcher($_dispatcher);
+<a name="l00087"></a>00087     }
+<a name="l00088"></a>00088 
+<a name="l00094"></a><a class="code" href="classContainerLinkPlugin.html#af1568be54815de36bb7f3909989f0309">00094</a>     <span class="keyword">public</span> function <a class="code" href="classContainerLinkPlugin.html#af1568be54815de36bb7f3909989f0309">showElement</a>()
+<a name="l00095"></a>00095     {
+<a name="l00096"></a>00096         $_htmlCode = <span class="stringliteral">&#39; href=&quot;&#39;</span> . $this-&gt;href . <span class="charliteral">&#39;&quot;&#39;</span>;
+<a name="l00097"></a>00097         <span class="keywordflow">if</span> ($this-&gt;target !== <span class="stringliteral">&#39;&#39;</span>) {
+<a name="l00098"></a>00098             $_htmlCode .= <span class="stringliteral">&#39; target=&quot;&#39;</span> . $this-&gt;target . <span class="charliteral">&#39;&quot;&#39;</span>;
+<a name="l00099"></a>00099         }
+<a name="l00100"></a>00100         <span class="keywordflow">return</span> $_htmlCode;
+<a name="l00101"></a>00101     }
+<a name="l00102"></a>00102 }
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -157,7 +157,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Thu Oct 13 2011 11:57:54 for OWL-PHP by
+    <li class="footer">Generated on Fri Oct 28 2011 11:32:48 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

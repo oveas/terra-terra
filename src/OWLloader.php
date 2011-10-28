@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \version $Id: OWLloader.php,v 1.37 2011-10-16 11:11:45 oscar Exp $
+ * \version $Id: OWLloader.php,v 1.38 2011-10-28 09:32:47 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
@@ -45,7 +45,7 @@
 if (!defined('OWL_ROOT')) { trigger_error('OWL_ROOT must be defined by the application', E_USER_ERROR); }
 
 //! OWL version
-define ('OWL_VERSION', '0.1.0');
+define ('OWL_VERSION', '0.9.0');
 
 //! Toplevel for the OWL includes
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
@@ -409,8 +409,10 @@ OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after 
  * flexibility from Linux, robustness from OpenVMS and of course internet's platform and location independency.
  * The design principles of OWL-PHP ensure a 100% safe web development platform; since the library itself
  * is unhackable, so are the applications built with it!
+ * OWL comes with a testapplication (<a href="http://owl.oveas.com/docs/otk/index.html">OTK</a>) for automated
+ * testing.
  *
- * Together with the planned <a href="../../owl-js/html/index.html">OWL-JS</a>, you might consider the OWL family as the basis of what Web2.2 will look like ;)
+ * Together with the planned <a href="http://owl.oveas.com/docs/owl-js/index.html">OWL-JS</a>, you might consider the OWL family as the basis of what Web2.2 will look like ;)
  *
  * Much of this code started as the project Terra-Terra in 2001 (http://terra-terra.org), a project that
  * was abandoned when AJAX became popular from 2005 onwards.

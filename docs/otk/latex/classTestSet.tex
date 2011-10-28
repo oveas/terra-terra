@@ -66,7 +66,7 @@ The class collects all files belonging to a testset that contain testcases and h
 
 Files that contain testcases must have the name {\itshape case.$<$name$>$.php\/}. Refer to the interface \doxyref{TestCase}{p.}{interfaceTestCase} for more information.
 
-Optionally, testset directories can contain a file with the name {\itshape \doxyref{helper.php}{p.}{helper_8php}\/}. This can be a file containing one or more classes or functions. That file will be included but not called; it is up to the testcases to make the proper calls to these files. In order prevent duplicate class or function names, it is a good practice to include the name of the testset in in all names. \begin{DoxyAuthor}{Author}
+Optionally, testset directories can contain a file with the name {\itshape helper.php\/}. This can be a file containing one or more classes or functions. That file will be included but not called; it is up to the testcases to make the proper calls to these files. In order prevent duplicate class or function names, it is a good practice to include the name of the testset in in all names. \begin{DoxyAuthor}{Author}
 Oscar van Eijk, Oveas Functionality Provider 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
@@ -128,7 +128,7 @@ Oscar van Eijk, Oveas Functionality Provider
 \end{DoxyAuthor}
 
 
-Reimplemented in {\bf OTKHdata} \doxyref{}{p.}{classOTKHdata_a483426fa42c2f7c1718b207b03046a0f}, and {\bf OTKTranslations} \doxyref{}{p.}{classOTKTranslations_a79ba280f3d7cd932c872e80d87bb9d93}.
+Reimplemented in {\bf OTKDbdriver} \doxyref{}{p.}{classOTKDbdriver_aafd08a2669da0952fcc12738b54423b5}, {\bf OTKHdata} \doxyref{}{p.}{classOTKHdata_a483426fa42c2f7c1718b207b03046a0f}, and {\bf OTKTranslations} \doxyref{}{p.}{classOTKTranslations_a79ba280f3d7cd932c872e80d87bb9d93}.
 
 \index{TestSet@{TestSet}!loadTestcases@{loadTestcases}}
 \index{loadTestcases@{loadTestcases}!TestSet@{TestSet}}
@@ -137,7 +137,7 @@ Reimplemented in {\bf OTKHdata} \doxyref{}{p.}{classOTKHdata_a483426fa42c2f7c171
 \item[{\$}]{location}
 \end{DoxyParamCaption}
 )}\label{classTestSet_a81918b70986d21e7406d9dbec9e3d801}
-Scan the testset directory for all files holeing either testcases ({\itshape case.$<$name$>$.php\/}) or helper functions or class ({\itshape \doxyref{helper.php}{p.}{helper_8php}\/}). 
+Scan the testset directory for all files holeing either testcases ({\itshape case.$<$name$>$.php\/}) or helper functions or class ({\itshape helper.php\/}). 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em \$location} & Directory to scan \\
 \hline

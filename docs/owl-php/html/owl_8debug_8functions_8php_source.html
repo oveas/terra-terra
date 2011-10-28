@@ -30,7 +30,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OWL-PHP
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    
   </td>
@@ -98,120 +98,120 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <a href="owl_8debug_8functions_8php.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
-<a name="l00015"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga75d026ef83b1f2565d555725a8f9db5a">00015</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_VAR&#39;</span>,              1); 
-<a name="l00016"></a><a class="code" href="group__DEBUG__ApplicLevel.html#gae3518d29e239ab98416a13bfc4ef1aaa">00016</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_OBJ&#39;</span>,              2); 
-<a name="l00017"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga81c9d4abaa04ee71f2c34a1fcdfc10e4">00017</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_FUN&#39;</span>,              4); 
-<a name="l00018"></a><a class="code" href="group__DEBUG__ApplicLevel.html#gaff6093c4a9f8ad32c086f96efbc2d9b1">00018</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_BLK&#39;</span>,              8); 
-<a name="l00019"></a><a class="code" href="group__DEBUG__ApplicLevel.html#gaf0705b893839a5e5cebb7738e38ae1fb">00019</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_LOOP&#39;</span>,            16); 
-<a name="l00020"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga9c4bf7c52eaaccf4bf10d7883d999310">00020</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_SQL&#39;</span>,             32); 
-<a name="l00021"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga44d8a20f606d22d16261fa7a3372bdc5">00021</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_RET&#39;</span>,             64); 
-<a name="l00022"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga7db55854a0e2c40dab318c688ba7122d">00022</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_RES&#39;</span>,            128); 
-<a name="l00023"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga1ff5f0cdfa1d46b3ee17c7d3fe774fc0">00023</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S01&#39;</span>,            256); 
-<a name="l00024"></a><a class="code" href="group__DEBUG__ApplicLevel.html#gaf4ff10b6cd70fb5b15e7e209e8fc1deb">00024</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S02&#39;</span>,            512); 
-<a name="l00025"></a><a class="code" href="group__DEBUG__ApplicLevel.html#gabedbff8780239d03b96503ef77cb0e1f">00025</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S03&#39;</span>,           1024); 
-<a name="l00026"></a><a class="code" href="group__DEBUG__ApplicLevel.html#gafa71b962e432b8708a9a0703556600f0">00026</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S04&#39;</span>,           2048); 
-<a name="l00027"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga8ec8662785e74e276e061384e8ab7d66">00027</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S05&#39;</span>,           4096); 
-<a name="l00028"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga10bd9907133b6f454ca2944990e5426c">00028</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S06&#39;</span>,           8192); 
-<a name="l00029"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga4f6ce35defcd068788d73705a6a25a60">00029</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S07&#39;</span>,          16384); 
-<a name="l00030"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga7e2b5044e4535bc98c44a4096b40a1d5">00030</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S08&#39;</span>,          32768); 
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 
-<a name="l00038"></a><a class="code" href="group__DEBUG__OWLLevel.html#gab4f1e86d9189e634a8cffee50c15b517">00038</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_VAR&#39;</span>,          65536); 
-<a name="l00039"></a><a class="code" href="group__DEBUG__OWLLevel.html#gae53040cc8ceaf74050e8656e8b95293d">00039</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_OBJ&#39;</span>,         131072); 
-<a name="l00040"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga0fd2afc34585e557975688a5098ab437">00040</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_FUN&#39;</span>,         262144); 
-<a name="l00041"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga26513e36b7954d9a9fa27548c75a0e30">00041</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_BLK&#39;</span>,         524288); 
-<a name="l00042"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga033d1541f382c7935e788a3962d488df">00042</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_LOOP&#39;</span>,       1048576); 
-<a name="l00043"></a><a class="code" href="group__DEBUG__OWLLevel.html#gadb01d87fbe6f527ba8e279af9403b6d8">00043</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_SQL&#39;</span>,        2097152); 
-<a name="l00044"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga3304b9ea5815c06b79f11f17f81bc647">00044</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_RET&#39;</span>,        4194304); 
-<a name="l00045"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga7231a4666d953b558ecc47b5655e2bcf">00045</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_RES&#39;</span>,        8388608); 
-<a name="l00046"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga374d5b9eb7eca20f723580dffddcdbba">00046</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S01&#39;</span>,       16777216); 
-<a name="l00047"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga7c77ba938123a74af31ee57299bd4b35">00047</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S02&#39;</span>,       33554432); 
-<a name="l00048"></a><a class="code" href="group__DEBUG__OWLLevel.html#gadea8c55580fdc5a5009a68e0ba01a586">00048</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S03&#39;</span>,       67108864); 
-<a name="l00049"></a><a class="code" href="group__DEBUG__OWLLevel.html#gaf5ed1b1c454cb11289b6ce9f795c2621">00049</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S04&#39;</span>,      134217728); 
-<a name="l00050"></a><a class="code" href="group__DEBUG__OWLLevel.html#gae1081659c88bff9a5e8843ca0e60aa8e">00050</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S05&#39;</span>,      268435456); 
-<a name="l00051"></a><a class="code" href="group__DEBUG__OWLLevel.html#gab3405c1b1ee12a76901638c054ddd302">00051</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S06&#39;</span>,      536870912); 
-<a name="l00052"></a><a class="code" href="group__DEBUG__OWLLevel.html#gae2893ef4d040432a10755e621634b96c">00052</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S07&#39;</span>,     1073741824); 
-<a name="l00053"></a><a class="code" href="group__DEBUG__OWLLevel.html#gac8753dde543e82b18d844f3c0c42dd84">00053</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S08&#39;</span>,     2147483648); 
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056 
-<a name="l00060"></a><a class="code" href="owl_8debug_8functions_8php.html#a18db85744454c963d9d9bd963754ea73">00060</a> <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;OWLDebugData&#39;</span>] = array();
-<a name="l00061"></a>00061 
-<a name="l00068"></a><a class="code" href="owl_8debug_8functions_8php.html#ac5d3daa3d0997372129af1a59b8bc10e">00068</a> function <a class="code" href="owl_8debug_8functions_8php.html#ac5d3daa3d0997372129af1a59b8bc10e">OWLdbg_traceCall</a> ($shiftUp)
-<a name="l00069"></a>00069 {
-<a name="l00070"></a>00070     $_t = <span class="keyword">new</span> Exception();
-<a name="l00071"></a>00071     $_trc = $_t-&gt;getTrace();
-<a name="l00072"></a>00072 <span class="comment">//  if ($_trc[1][&#39;function&#39;] === &#39;OWLdbg_add&#39;) {</span>
-<a name="l00073"></a>00073 <span class="comment">//      unset ($_trc[1][&#39;function&#39;]);</span>
-<a name="l00074"></a>00074 <span class="comment">//  }</span>
-<a name="l00075"></a>00075     <span class="comment">// 0 is always OWLdbg_add(), so return 1, increased with the required shift</span>
-<a name="l00076"></a>00076     $_call = (1 + $shiftUp);
-<a name="l00077"></a>00077     <span class="keywordflow">return</span> ($_trc[$_call]);
-<a name="l00078"></a>00078 }
-<a name="l00079"></a>00079 
-<a name="l00090"></a><a class="code" href="owl_8debug_8functions_8php.html#a3db581b35179f5b85569d62488ca3a8c">00090</a> function <a class="code" href="owl_8debug_8functions_8php.html#a3db581b35179f5b85569d62488ca3a8c">OWLdbg_add</a> ($level, &amp;$var, $name = <span class="stringliteral">&#39;Unknown variable&#39;</span>, $shiftUp = 0)
-<a name="l00091"></a>00091 {
-<a name="l00092"></a>00092     <span class="keyword">static</span> $dbgRow = 1;
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094     <span class="keywordflow">if</span> (!($level &amp; <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a>(<span class="stringliteral">&#39;general&#39;</span>, <span class="stringliteral">&#39;debug&#39;</span>, 0, <span class="keyword">true</span>))) {
-<a name="l00095"></a>00095         <span class="keywordflow">return</span>;
-<a name="l00096"></a>00096     }
-<a name="l00097"></a>00097     $_caller = <a class="code" href="owl_8debug_8functions_8php.html#ac5d3daa3d0997372129af1a59b8bc10e">OWLdbg_traceCall</a>($shiftUp);
-<a name="l00098"></a>00098 
-<a name="l00099"></a>00099     $dbgRow = 1 - $dbgRow;
-<a name="l00100"></a>00100     $_dbg = <span class="stringliteral">&#39;&#39;</span>;
-<a name="l00101"></a>00101 <span class="comment">/*</span>
-<a name="l00102"></a>00102 <span class="comment">    $_dbg .= &#39;&lt;tr&gt;&#39;</span>
-<a name="l00103"></a>00103 <span class="comment">            . &#39;&lt;td&gt;Function:&lt;/td&gt;&#39;</span>
-<a name="l00104"></a>00104 <span class="comment">            . &#39;&lt;td valign=&quot;top&quot;&gt;&#39;</span>
-<a name="l00105"></a>00105 <span class="comment">            . (array_key_exists(&#39;function&#39;, $_caller) ? $_caller[&#39;function&#39;] : &#39;*main level*&#39;)</span>
-<a name="l00106"></a>00106 <span class="comment">            . &#39;&lt;/td&gt;&#39;</span>
-<a name="l00107"></a>00107 <span class="comment">            . &#39;&lt;/tr&gt;&#39;;</span>
-<a name="l00108"></a>00108 <span class="comment"> */</span>
-<a name="l00109"></a>00109     $_dbg .= <span class="stringliteral">&quot;&lt;tr class=&#39;OWLdbgr$dbgRow&#39;&gt;&quot;</span>
-<a name="l00110"></a>00110             . <span class="stringliteral">&#39;&lt;td valign=&quot;top&quot;&gt;File:&lt;/td&gt;&#39;</span>
-<a name="l00111"></a>00111             . <span class="stringliteral">&#39;&lt;td valign=&quot;top&quot;&gt;&#39;</span>
-<a name="l00112"></a>00112             . $_caller[<span class="stringliteral">&#39;file&#39;</span>]
-<a name="l00113"></a>00113             . <span class="stringliteral">&#39;&lt;/td&gt;&#39;</span>
-<a name="l00114"></a>00114             . <span class="stringliteral">&#39;&lt;/tr&gt;&#39;</span>;
-<a name="l00115"></a>00115 
-<a name="l00116"></a>00116     $_dbg .= <span class="stringliteral">&quot;&lt;tr class=&#39;OWLdbgr$dbgRow&#39;&gt;&quot;</span>
-<a name="l00117"></a>00117             . <span class="stringliteral">&#39;&lt;td valign=&quot;top&quot; valign=&quot;top&quot; style=&quot;width: 30%;&quot;&gt;Line:&lt;/td&gt;&#39;</span>
-<a name="l00118"></a>00118             . <span class="stringliteral">&#39;&lt;td valign=&quot;top&quot;&gt;&#39;</span>
-<a name="l00119"></a>00119             . $_caller[<span class="stringliteral">&#39;line&#39;</span>]
-<a name="l00120"></a>00120             . <span class="stringliteral">&#39;&lt;/td&gt;&#39;</span>
-<a name="l00121"></a>00121             . <span class="stringliteral">&#39;&lt;/tr&gt;&#39;</span>;
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123     <span class="comment">// Format the variable</span>
-<a name="l00124"></a>00124     <span class="keywordflow">if</span> (is_array($var) || is_object($var)) {
-<a name="l00125"></a>00125         $_vdata = (<span class="stringliteral">&#39;&lt;pre&gt;&#39;</span> . print_r($var, 1) . <span class="stringliteral">&#39;&lt;/pre&gt;&#39;</span>);
-<a name="l00126"></a>00126     } <span class="keywordflow">else</span> {
-<a name="l00127"></a>00127         $_vdata = $var;
-<a name="l00128"></a>00128     }
-<a name="l00129"></a>00129     $_dbg .= <span class="stringliteral">&quot;&lt;tr class=&#39;OWLdbgr$dbgRow&#39;&gt;&quot;</span>
-<a name="l00130"></a>00130             . <span class="stringliteral">&#39;&lt;td valign=&quot;top&quot;&gt;&#39;</span>.$name.<span class="stringliteral">&#39;&lt;/td&gt;&#39;</span>
-<a name="l00131"></a>00131             . <span class="stringliteral">&#39;&lt;td valign=&quot;top&quot;&gt;&#39;</span>
-<a name="l00132"></a>00132             . $_vdata
-<a name="l00133"></a>00133             . <span class="stringliteral">&#39;&lt;/td&gt;&#39;</span>
-<a name="l00134"></a>00134             . <span class="stringliteral">&#39;&lt;/tr&gt;&#39;</span>;
-<a name="l00135"></a>00135 
-<a name="l00136"></a>00136     <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;OWLDebugData&#39;</span>][] = $_dbg;
-<a name="l00137"></a>00137 }
+<a name="l00031"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga75d026ef83b1f2565d555725a8f9db5a">00031</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_VAR&#39;</span>,              1); 
+<a name="l00032"></a><a class="code" href="group__DEBUG__ApplicLevel.html#gae3518d29e239ab98416a13bfc4ef1aaa">00032</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_OBJ&#39;</span>,              2); 
+<a name="l00033"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga81c9d4abaa04ee71f2c34a1fcdfc10e4">00033</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_FUN&#39;</span>,              4); 
+<a name="l00034"></a><a class="code" href="group__DEBUG__ApplicLevel.html#gaff6093c4a9f8ad32c086f96efbc2d9b1">00034</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_BLK&#39;</span>,              8); 
+<a name="l00035"></a><a class="code" href="group__DEBUG__ApplicLevel.html#gaf0705b893839a5e5cebb7738e38ae1fb">00035</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_LOOP&#39;</span>,            16); 
+<a name="l00036"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga9c4bf7c52eaaccf4bf10d7883d999310">00036</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_SQL&#39;</span>,             32); 
+<a name="l00037"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga44d8a20f606d22d16261fa7a3372bdc5">00037</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_RET&#39;</span>,             64); 
+<a name="l00038"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga7db55854a0e2c40dab318c688ba7122d">00038</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_RES&#39;</span>,            128); 
+<a name="l00039"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga1ff5f0cdfa1d46b3ee17c7d3fe774fc0">00039</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S01&#39;</span>,            256); 
+<a name="l00040"></a><a class="code" href="group__DEBUG__ApplicLevel.html#gaf4ff10b6cd70fb5b15e7e209e8fc1deb">00040</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S02&#39;</span>,            512); 
+<a name="l00041"></a><a class="code" href="group__DEBUG__ApplicLevel.html#gabedbff8780239d03b96503ef77cb0e1f">00041</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S03&#39;</span>,           1024); 
+<a name="l00042"></a><a class="code" href="group__DEBUG__ApplicLevel.html#gafa71b962e432b8708a9a0703556600f0">00042</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S04&#39;</span>,           2048); 
+<a name="l00043"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga8ec8662785e74e276e061384e8ab7d66">00043</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S05&#39;</span>,           4096); 
+<a name="l00044"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga10bd9907133b6f454ca2944990e5426c">00044</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S06&#39;</span>,           8192); 
+<a name="l00045"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga4f6ce35defcd068788d73705a6a25a60">00045</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S07&#39;</span>,          16384); 
+<a name="l00046"></a><a class="code" href="group__DEBUG__ApplicLevel.html#ga7e2b5044e4535bc98c44a4096b40a1d5">00046</a> define (<span class="stringliteral">&#39;OWLDEBUG_APP_S08&#39;</span>,          32768); 
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 
+<a name="l00054"></a><a class="code" href="group__DEBUG__OWLLevel.html#gab4f1e86d9189e634a8cffee50c15b517">00054</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_VAR&#39;</span>,          65536); 
+<a name="l00055"></a><a class="code" href="group__DEBUG__OWLLevel.html#gae53040cc8ceaf74050e8656e8b95293d">00055</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_OBJ&#39;</span>,         131072); 
+<a name="l00056"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga0fd2afc34585e557975688a5098ab437">00056</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_FUN&#39;</span>,         262144); 
+<a name="l00057"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga26513e36b7954d9a9fa27548c75a0e30">00057</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_BLK&#39;</span>,         524288); 
+<a name="l00058"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga033d1541f382c7935e788a3962d488df">00058</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_LOOP&#39;</span>,       1048576); 
+<a name="l00059"></a><a class="code" href="group__DEBUG__OWLLevel.html#gadb01d87fbe6f527ba8e279af9403b6d8">00059</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_SQL&#39;</span>,        2097152); 
+<a name="l00060"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga3304b9ea5815c06b79f11f17f81bc647">00060</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_RET&#39;</span>,        4194304); 
+<a name="l00061"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga7231a4666d953b558ecc47b5655e2bcf">00061</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_RES&#39;</span>,        8388608); 
+<a name="l00062"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga374d5b9eb7eca20f723580dffddcdbba">00062</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S01&#39;</span>,       16777216); 
+<a name="l00063"></a><a class="code" href="group__DEBUG__OWLLevel.html#ga7c77ba938123a74af31ee57299bd4b35">00063</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S02&#39;</span>,       33554432); 
+<a name="l00064"></a><a class="code" href="group__DEBUG__OWLLevel.html#gadea8c55580fdc5a5009a68e0ba01a586">00064</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S03&#39;</span>,       67108864); 
+<a name="l00065"></a><a class="code" href="group__DEBUG__OWLLevel.html#gaf5ed1b1c454cb11289b6ce9f795c2621">00065</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S04&#39;</span>,      134217728); 
+<a name="l00066"></a><a class="code" href="group__DEBUG__OWLLevel.html#gae1081659c88bff9a5e8843ca0e60aa8e">00066</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S05&#39;</span>,      268435456); 
+<a name="l00067"></a><a class="code" href="group__DEBUG__OWLLevel.html#gab3405c1b1ee12a76901638c054ddd302">00067</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S06&#39;</span>,      536870912); 
+<a name="l00068"></a><a class="code" href="group__DEBUG__OWLLevel.html#gae2893ef4d040432a10755e621634b96c">00068</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S07&#39;</span>,     1073741824); 
+<a name="l00069"></a><a class="code" href="group__DEBUG__OWLLevel.html#gac8753dde543e82b18d844f3c0c42dd84">00069</a> define (<span class="stringliteral">&#39;OWLDEBUG_OWL_S08&#39;</span>,     2147483648); 
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 
+<a name="l00076"></a><a class="code" href="owl_8debug_8functions_8php.html#a18db85744454c963d9d9bd963754ea73">00076</a> <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;OWLDebugData&#39;</span>] = array();
+<a name="l00077"></a>00077 
+<a name="l00084"></a><a class="code" href="owl_8debug_8functions_8php.html#ac5d3daa3d0997372129af1a59b8bc10e">00084</a> function <a class="code" href="owl_8debug_8functions_8php.html#ac5d3daa3d0997372129af1a59b8bc10e">OWLdbg_traceCall</a> ($shiftUp)
+<a name="l00085"></a>00085 {
+<a name="l00086"></a>00086     $_t = <span class="keyword">new</span> Exception();
+<a name="l00087"></a>00087     $_trc = $_t-&gt;getTrace();
+<a name="l00088"></a>00088 <span class="comment">//  if ($_trc[1][&#39;function&#39;] === &#39;OWLdbg_add&#39;) {</span>
+<a name="l00089"></a>00089 <span class="comment">//      unset ($_trc[1][&#39;function&#39;]);</span>
+<a name="l00090"></a>00090 <span class="comment">//  }</span>
+<a name="l00091"></a>00091     <span class="comment">// 0 is always OWLdbg_add(), so return 1, increased with the required shift</span>
+<a name="l00092"></a>00092     $_call = (1 + $shiftUp);
+<a name="l00093"></a>00093     <span class="keywordflow">return</span> ($_trc[$_call]);
+<a name="l00094"></a>00094 }
+<a name="l00095"></a>00095 
+<a name="l00106"></a><a class="code" href="owl_8debug_8functions_8php.html#a3db581b35179f5b85569d62488ca3a8c">00106</a> function <a class="code" href="owl_8debug_8functions_8php.html#a3db581b35179f5b85569d62488ca3a8c">OWLdbg_add</a> ($level, &amp;$var, $name = <span class="stringliteral">&#39;Unknown variable&#39;</span>, $shiftUp = 0)
+<a name="l00107"></a>00107 {
+<a name="l00108"></a>00108     <span class="keyword">static</span> $dbgRow = 1;
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110     <span class="keywordflow">if</span> (!($level &amp; <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a>(<span class="stringliteral">&#39;general&#39;</span>, <span class="stringliteral">&#39;debug&#39;</span>, 0, <span class="keyword">true</span>))) {
+<a name="l00111"></a>00111         <span class="keywordflow">return</span>;
+<a name="l00112"></a>00112     }
+<a name="l00113"></a>00113     $_caller = <a class="code" href="owl_8debug_8functions_8php.html#ac5d3daa3d0997372129af1a59b8bc10e">OWLdbg_traceCall</a>($shiftUp);
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115     $dbgRow = 1 - $dbgRow;
+<a name="l00116"></a>00116     $_dbg = <span class="stringliteral">&#39;&#39;</span>;
+<a name="l00117"></a>00117 <span class="comment">/*</span>
+<a name="l00118"></a>00118 <span class="comment">    $_dbg .= &#39;&lt;tr&gt;&#39;</span>
+<a name="l00119"></a>00119 <span class="comment">            . &#39;&lt;td&gt;Function:&lt;/td&gt;&#39;</span>
+<a name="l00120"></a>00120 <span class="comment">            . &#39;&lt;td valign=&quot;top&quot;&gt;&#39;</span>
+<a name="l00121"></a>00121 <span class="comment">            . (array_key_exists(&#39;function&#39;, $_caller) ? $_caller[&#39;function&#39;] : &#39;*main level*&#39;)</span>
+<a name="l00122"></a>00122 <span class="comment">            . &#39;&lt;/td&gt;&#39;</span>
+<a name="l00123"></a>00123 <span class="comment">            . &#39;&lt;/tr&gt;&#39;;</span>
+<a name="l00124"></a>00124 <span class="comment"> */</span>
+<a name="l00125"></a>00125     $_dbg .= <span class="stringliteral">&quot;&lt;tr class=&#39;OWLdbgr$dbgRow&#39;&gt;&quot;</span>
+<a name="l00126"></a>00126             . <span class="stringliteral">&#39;&lt;td valign=&quot;top&quot;&gt;File:&lt;/td&gt;&#39;</span>
+<a name="l00127"></a>00127             . <span class="stringliteral">&#39;&lt;td valign=&quot;top&quot;&gt;&#39;</span>
+<a name="l00128"></a>00128             . $_caller[<span class="stringliteral">&#39;file&#39;</span>]
+<a name="l00129"></a>00129             . <span class="stringliteral">&#39;&lt;/td&gt;&#39;</span>
+<a name="l00130"></a>00130             . <span class="stringliteral">&#39;&lt;/tr&gt;&#39;</span>;
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132     $_dbg .= <span class="stringliteral">&quot;&lt;tr class=&#39;OWLdbgr$dbgRow&#39;&gt;&quot;</span>
+<a name="l00133"></a>00133             . <span class="stringliteral">&#39;&lt;td valign=&quot;top&quot; valign=&quot;top&quot; style=&quot;width: 30%;&quot;&gt;Line:&lt;/td&gt;&#39;</span>
+<a name="l00134"></a>00134             . <span class="stringliteral">&#39;&lt;td valign=&quot;top&quot;&gt;&#39;</span>
+<a name="l00135"></a>00135             . $_caller[<span class="stringliteral">&#39;line&#39;</span>]
+<a name="l00136"></a>00136             . <span class="stringliteral">&#39;&lt;/td&gt;&#39;</span>
+<a name="l00137"></a>00137             . <span class="stringliteral">&#39;&lt;/tr&gt;&#39;</span>;
 <a name="l00138"></a>00138 
-<a name="l00143"></a><a class="code" href="owl_8debug_8functions_8php.html#a8023866265541fcd3991cfd3c854cd18">00143</a> function <a class="code" href="owl_8debug_8functions_8php.html#a8023866265541fcd3991cfd3c854cd18">OWLdbg_show</a> ()
-<a name="l00144"></a>00144 {
-<a name="l00145"></a>00145     <span class="keywordflow">if</span> (count(<a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;OWLDebugData&#39;</span>]) == 0 || <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a>(<span class="stringliteral">&#39;general&#39;</span>, <span class="stringliteral">&#39;debug&#39;</span>, 0, <span class="keyword">true</span>) == 0) {
-<a name="l00146"></a>00146         <span class="keywordflow">return</span>;
-<a name="l00147"></a>00147     }
-<a name="l00148"></a>00148     <a class="code" href="classOutputHandler.html#afa5474f4d977c5b4c7a66b947b294ae5">OutputHandler::outputPar</a>(
-<a name="l00149"></a>00149               <span class="stringliteral">&#39;&lt;hr/&gt;&lt;em&gt;&lt;u&gt;&#39;</span> . <a class="code" href="classContentArea.html#a3e327b0c06a0cc9bf760e167b42f1a5e">ContentArea::translate</a>(<span class="stringliteral">&#39;Debug Data:&#39;</span>) . <span class="stringliteral">&#39;&lt;/u&gt;&lt;/em&gt;&lt;p&gt;&#39;</span>
-<a name="l00150"></a>00150             . <span class="stringliteral">&#39;&lt;table class=&quot;OWLdbg&quot;&gt;&#39;</span>
-<a name="l00151"></a>00151             . implode(<span class="stringliteral">&#39;&#39;</span>, <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;OWLDebugData&#39;</span>])
-<a name="l00152"></a>00152             . <span class="stringliteral">&#39;&lt;/table&gt;&#39;</span>
-<a name="l00153"></a>00153             . <span class="stringliteral">&#39;&lt;/p&gt;&#39;</span>
-<a name="l00154"></a>00154         , <span class="stringliteral">&#39;OWLdbg&#39;</span>
-<a name="l00155"></a>00155     );
-<a name="l00156"></a>00156 }
+<a name="l00139"></a>00139     <span class="comment">// Format the variable</span>
+<a name="l00140"></a>00140     <span class="keywordflow">if</span> (is_array($var) || is_object($var)) {
+<a name="l00141"></a>00141         $_vdata = (<span class="stringliteral">&#39;&lt;pre&gt;&#39;</span> . print_r($var, 1) . <span class="stringliteral">&#39;&lt;/pre&gt;&#39;</span>);
+<a name="l00142"></a>00142     } <span class="keywordflow">else</span> {
+<a name="l00143"></a>00143         $_vdata = $var;
+<a name="l00144"></a>00144     }
+<a name="l00145"></a>00145     $_dbg .= <span class="stringliteral">&quot;&lt;tr class=&#39;OWLdbgr$dbgRow&#39;&gt;&quot;</span>
+<a name="l00146"></a>00146             . <span class="stringliteral">&#39;&lt;td valign=&quot;top&quot;&gt;&#39;</span>.$name.<span class="stringliteral">&#39;&lt;/td&gt;&#39;</span>
+<a name="l00147"></a>00147             . <span class="stringliteral">&#39;&lt;td valign=&quot;top&quot;&gt;&#39;</span>
+<a name="l00148"></a>00148             . $_vdata
+<a name="l00149"></a>00149             . <span class="stringliteral">&#39;&lt;/td&gt;&#39;</span>
+<a name="l00150"></a>00150             . <span class="stringliteral">&#39;&lt;/tr&gt;&#39;</span>;
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152     <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;OWLDebugData&#39;</span>][] = $_dbg;
+<a name="l00153"></a>00153 }
+<a name="l00154"></a>00154 
+<a name="l00159"></a><a class="code" href="owl_8debug_8functions_8php.html#a8023866265541fcd3991cfd3c854cd18">00159</a> function <a class="code" href="owl_8debug_8functions_8php.html#a8023866265541fcd3991cfd3c854cd18">OWLdbg_show</a> ()
+<a name="l00160"></a>00160 {
+<a name="l00161"></a>00161     <span class="keywordflow">if</span> (count(<a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;OWLDebugData&#39;</span>]) == 0 || <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a>(<span class="stringliteral">&#39;general&#39;</span>, <span class="stringliteral">&#39;debug&#39;</span>, 0, <span class="keyword">true</span>) == 0) {
+<a name="l00162"></a>00162         <span class="keywordflow">return</span>;
+<a name="l00163"></a>00163     }
+<a name="l00164"></a>00164     <a class="code" href="classOutputHandler.html#afa5474f4d977c5b4c7a66b947b294ae5">OutputHandler::outputPar</a>(
+<a name="l00165"></a>00165               <span class="stringliteral">&#39;&lt;hr/&gt;&lt;em&gt;&lt;u&gt;&#39;</span> . <a class="code" href="classContentArea.html#a3e327b0c06a0cc9bf760e167b42f1a5e">ContentArea::translate</a>(<span class="stringliteral">&#39;Debug Data:&#39;</span>) . <span class="stringliteral">&#39;&lt;/u&gt;&lt;/em&gt;&lt;p&gt;&#39;</span>
+<a name="l00166"></a>00166             . <span class="stringliteral">&#39;&lt;table class=&quot;OWLdbg&quot;&gt;&#39;</span>
+<a name="l00167"></a>00167             . implode(<span class="stringliteral">&#39;&#39;</span>, <a class="code" href="config_8php.html#a6cc1ef3a8c20d69988531d27f931855b">$GLOBALS</a>[<span class="stringliteral">&#39;OWLDebugData&#39;</span>])
+<a name="l00168"></a>00168             . <span class="stringliteral">&#39;&lt;/table&gt;&#39;</span>
+<a name="l00169"></a>00169             . <span class="stringliteral">&#39;&lt;/p&gt;&#39;</span>
+<a name="l00170"></a>00170         , <span class="stringliteral">&#39;OWLdbg&#39;</span>
+<a name="l00171"></a>00171     );
+<a name="l00172"></a>00172 }
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -232,7 +232,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Thu Oct 13 2011 11:57:54 for OWL-PHP by
+    <li class="footer">Generated on Fri Oct 28 2011 11:32:49 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

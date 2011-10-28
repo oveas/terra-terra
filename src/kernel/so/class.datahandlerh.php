@@ -3,7 +3,7 @@
  * \file
  * This file defines the Hierarchical DataHandler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.datahandlerh.php,v 1.8 2011-10-16 11:11:43 oscar Exp $
+ * \version $Id: class.datahandlerh.php,v 1.9 2011-10-28 09:32:47 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
@@ -83,6 +83,13 @@ class HDataHandler extends DataHandler
 		$this->right = 'rgt';
 		$this->xlink = null;
 		$this->xlinkID = null;
+
+		// Quote if necessary
+//		$this->left = $this->owl_database->getDriver()->dbQuote($this->left);
+//		$this->right = $this->owl_database->getDriver()->dbQuote($this->right);
+//		if ($this->xlink !== null) {
+//			$this->xlink = $this->owl_database->getDriver()->dbQuote($this->xlink);
+//		}
 	}
 
 	/**
@@ -92,6 +99,7 @@ class HDataHandler extends DataHandler
 	 */
 	public function setLeft ($fieldname)
 	{
+//		$this->left = $this->owl_database->getDriver()->dbQuote($fieldname);
 		$this->left = $fieldname;
 	}
 
@@ -102,6 +110,7 @@ class HDataHandler extends DataHandler
 	 */
 	public function setRight ($fieldname)
 	{
+//		$this->right = $this->owl_database->getDriver()->dbQuote($fieldname);
 		$this->right = $fieldname;
 	}
 
@@ -117,6 +126,7 @@ class HDataHandler extends DataHandler
 			$this->setStatus(HDATA_NOXLINKID);
 			return (false);
 		}
+//		$this->xlink = $this->owl_database->getDriver()->dbQuote($fieldname);
 		$this->xlink = $fieldname;
 		return (true);
 	}
@@ -141,8 +151,8 @@ class HDataHandler extends DataHandler
 		$table = $this->owl_database->tablename($this->owl_tablename);
 		$query = 'SELECT * '
 				. "FROM $table "
-				. "WHERE $this->right = $this->left + 1 "
-				. "ORDER $this->left"
+				. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->right) . " = ". $this->owl_database->getDriver()->dbQuote($this->right) . " + 1 "
+				. "ORDER ". $this->owl_database->getDriver()->dbQuote($this->left)
 		;
 		return ($this->readQuery($query, __LINE__));
 	}
@@ -157,6 +167,7 @@ class HDataHandler extends DataHandler
 	public function getNode ($field, $value)
 	{
 		$table = $this->owl_database->tablename($this->owl_tablename);
+		$field = $this->owl_database->getDriver()->dbQuote($field);
 		$query = 'SELECT * '
 				. "FROM $table "
 				. "WHERE $field = '$value' "
@@ -178,12 +189,13 @@ class HDataHandler extends DataHandler
 	public function getPathByChild ($field, $value)
 	{
 		$table = $this->owl_database->tablename($this->owl_tablename);
+		$field = $this->owl_database->getDriver()->dbQuote($field);
 		$query = 'SELECT parent.* '
-				. "FROM $table AS node "
-				. ",    $table AS parent "
-				. "WHERE node.$this->left BETWEEN parent.$this->left AND parent.$this->right "
+				. "FROM $table node "
+				. ",    $table parent "
+				. "WHERE node.". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN parent.". $this->owl_database->getDriver()->dbQuote($this->left) . " AND parent.". $this->owl_database->getDriver()->dbQuote($this->right) . " "
 				. "AND   node.$field = '$value' "
-				. "ORDER BY parent.$this->left"
+				. "ORDER BY parent.". $this->owl_database->getDriver()->dbQuote($this->left)
 		;
 		return ($this->readQuery($query, __LINE__));
 	}
@@ -198,12 +210,13 @@ class HDataHandler extends DataHandler
 	public function getPathByParent ($field, $value)
 	{
 		$table = $this->owl_database->tablename($this->owl_tablename);
+		$field = $this->owl_database->getDriver()->dbQuote($field);
 		$query = 'SELECT node.* '
-				. "FROM $table AS node "
-				. ",    $table AS parent "
-				. "WHERE node.$this->left BETWEEN parent.$this->left AND parent.$this->right "
+				. "FROM $table node "
+				. ",    $table parent "
+				. "WHERE node.". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN parent.". $this->owl_database->getDriver()->dbQuote($this->left) . " AND parent.". $this->owl_database->getDriver()->dbQuote($this->right) . " "
 				. "AND   parent.$field = '$value' "
-				. "ORDER BY node.$this->left"
+				. "ORDER BY node.". $this->owl_database->getDriver()->dbQuote($this->left)
 		;
 		return ($this->readQuery($query, __LINE__));
 	}
@@ -218,17 +231,18 @@ class HDataHandler extends DataHandler
 	public function getNodeDepth ($field, $value = null)
 	{
 		$table = $this->owl_database->tablename($this->owl_tablename);
+		$field = $this->owl_database->getDriver()->dbQuote($field);
 		$query = "SELECT node.* "
 				. ",     (COUNT(parent.$field) - 1) AS depth"
-				. "FROM $table AS node "
-				. ",    $table AS parent "
-				. "WHERE node.$this->left BETWEEN parent.$this->left AND parent.$this->right "
+				. "FROM $table node "
+				. ",    $table parent "
+				. "WHERE node.". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN parent.". $this->owl_database->getDriver()->dbQuote($this->left) . " AND parent.". $this->owl_database->getDriver()->dbQuote($this->right)
 		;
 		if ($value !== null) {
 			$query .= "AND node.$field = '$value' ";
 		}
 		$query .= "GROUP BY node.$field "
-				. "ORDER BY parent.$this->left"
+				. "ORDER BY parent.". $this->owl_database->getDriver()->dbQuote($this->left)
 		;
 		return ($this->readQuery($query, __LINE__));
 	}
@@ -248,13 +262,14 @@ class HDataHandler extends DataHandler
 	public function getFullOffspring ($field, $value, $follow = HDATA_XLINK_FOLLOW_NO)
 	{
 		$table = $this->owl_database->tablename($this->owl_tablename);
+		$field = $this->owl_database->getDriver()->dbQuote($field);
 		$query = 'SELECT node.* '
-				. "FROM $table AS node "
-				. ",    $table AS parent "
-				. "WHERE node.$this->left BETWEEN parent.$this->left AND parent.$this->right "
+				. "FROM $table node "
+				. ",    $table parent "
+				. "WHERE node.". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN parent.". $this->owl_database->getDriver()->dbQuote($this->left) . " AND parent.". $this->owl_database->getDriver()->dbQuote($this->right)
 				. "AND   parent.$field = '$value' "
-				. "ORDER BY node.$this->left "
-		;
+				. "ORDER BY parent.". $this->owl_database->getDriver()->dbQuote($this->left)
+				;
 		if (($data = $this->readQuery($query, __LINE__)) === false) {
 			return (false);
 		}
@@ -264,7 +279,7 @@ class HDataHandler extends DataHandler
 			}
 			foreach ($data as $node) {
 				if ($this->owl_database->read(DBHANDLE_DATA, $idList
-							, "SELECT $this->xlinkID FROM $table WHERE $this->xlink = '" . $node[$this->xlinkID] . "' "
+							, 'SELECT ' .$this->owl_database->getDriver()->dbQuote($this->xlink) . " FROM $table WHERE ". $this->owl_database->getDriver()->dbQuote($this->xlink) . " = '" . $node[$this->xlinkID] . "' "
 							, __LINE__, __FILE__)  >= OWL_WARNING) {
 					$this->setStatus(DATA_DBWARNING, array($this->owl_database->getLastWarning()));
 					return (false);
@@ -274,7 +289,7 @@ class HDataHandler extends DataHandler
 				}
 				foreach ($idList as $xlinkNode) {
 					// Call myself recursively
-					$xlinkTree = $this->getFullOffspring($field, $xlinkNode[$field], $follow);
+					$xlinkTree = $this->getFullOffspring($this->xlink, $xlinkNode[$this->xlink], $follow);
 					if ($xlinkTree === false) {
 						return (false);
 					}
@@ -292,45 +307,95 @@ class HDataHandler extends DataHandler
 	 * \param[in] $xlink True (default) of crosslinked childnodes should be included
 	 * \return Array with all matched records including the depth (always 1, but required for the match)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \todo This method contains some exceptions special for Oracle drivers; try to get rid of them!
 	 */
 	public function getDirectChildren ($field, $value, $xlink = true)
 	{
 		$table = $this->owl_database->tablename($this->owl_tablename);
-		$query = "(SELECT node.* "
-				. ",    (COUNT(parent.$field) - (dtree.depth + 1)) AS depth "
-				. "FROM $table AS node "
-				. ",    $table AS parent "
-				. ",    $table AS subparent "
-				. ', ('
-				. "     SELECT node.$field, (COUNT(parent.$field) - 1) AS depth "
-				. "     FROM $table AS node "
-				. "     ,    $table AS parent "
-				. "     WHERE node.$this->left BETWEEN parent.$this->left AND parent.$this->right "
-				. "     AND   node.$field = '$value' "
-				. "     GROUP BY node.$field "
-				. "     ORDER BY node.$this->left "
-				. ') AS dtree '
-				. "WHERE node.$this->left BETWEEN parent.$this->left AND parent.$this->right "
-				. "AND   node.$this->left BETWEEN subparent.$this->left AND subparent.$this->right "
-				. "AND   subparent.$field = dtree.$field "
-				. "GROUP BY node.$field "
-				. "HAVING depth = 1)"
-			;
+		$field = $this->owl_database->getDriver()->dbQuote($field);
+
+		if (ConfigHandler::get ('database', 'driver') == 'Oracle') {
+			// FIXME Create some smart solution for this.... or wait until Oracle understands SQL :-(
+			// Problem is, we can't do a group by in combination with select *, even if we group by
+			// a primary key, and in the having clause we can't use an alias
+			// Also... the BETWEEN statemant in Oracle is inclusive ?!?!? (they seem to thing 1 is between 1 and 2...)
+			$query = "(SELECT node.$field "
+					. ",      node.". $this->owl_database->getDriver()->dbQuote($this->left) . " "
+					. ",      node.". $this->owl_database->getDriver()->dbQuote($this->right) . " "
+					. "FROM $table node "
+					. ",    $table parent "
+					. ",    $table subparent "
+					. ', ('
+					. "     SELECT node.$field, (COUNT(parent.$field) - 1) AS depth "
+					. "     FROM $table node "
+					. "     ,    $table parent "
+					. "     WHERE node.". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN (parent.". $this->owl_database->getDriver()->dbQuote($this->left) . "+1) AND (parent.". $this->owl_database->getDriver()->dbQuote($this->right) . "-1) "
+					. "     AND   node.$field = '$value' "
+					. "     GROUP BY node.$field "
+					. "     ORDER BY node.". $this->owl_database->getDriver()->dbQuote($this->left) . " "
+					. ') dtree '
+					. "WHERE node.". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN (parent.". $this->owl_database->getDriver()->dbQuote($this->left) . "+1) AND (parent.". $this->owl_database->getDriver()->dbQuote($this->right) . "-1) "
+					. "AND   node.". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN (subparent.". $this->owl_database->getDriver()->dbQuote($this->left) . "+1) AND (subparent.". $this->owl_database->getDriver()->dbQuote($this->right) . "-1) "
+					. "AND   subparent.$field = dtree.$field "
+					. "GROUP BY node.$field "
+					. ",        node.". $this->owl_database->getDriver()->dbQuote($this->left) . " "
+					. ",        node.". $this->owl_database->getDriver()->dbQuote($this->right) . " "
+					. ',        dtree.depth '
+					. "HAVING (COUNT(parent.$field) = (dtree.depth + 1))) "
+				;
+		} else {
+			// And now for normal people....
+			$query = "(SELECT node.* "
+					. ",    (COUNT(parent.$field) - (dtree.depth + 1)) AS depth "
+					. "FROM $table AS node "
+					. ",    $table AS parent "
+					. ",    $table AS subparent "
+					. ', ('
+					. "     SELECT node.$field, (COUNT(parent.$field) - 1) AS depth "
+					. "     FROM $table AS node "
+					. "     ,    $table AS parent "
+					. "     WHERE node.". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN parent.". $this->owl_database->getDriver()->dbQuote($this->left) . " AND parent.". $this->owl_database->getDriver()->dbQuote($this->right) . " "
+					. "     AND   node.$field = '$value' "
+					. "     GROUP BY node.$field "
+					. "     ORDER BY node.". $this->owl_database->getDriver()->dbQuote($this->left) . " "
+					. ') dtree '
+					. "WHERE node.". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN parent.". $this->owl_database->getDriver()->dbQuote($this->left) . " AND parent.". $this->owl_database->getDriver()->dbQuote($this->right) . " "
+					. "AND   node.". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN subparent.". $this->owl_database->getDriver()->dbQuote($this->left) . " AND subparent.". $this->owl_database->getDriver()->dbQuote($this->right) . " "
+					. "AND   subparent.$field = dtree.$field "
+					. "GROUP BY node.$field "
+					. "HAVING depth = 1) "
+				;
+		}
 		if ($this->xlink !== null && $xlink === true) {
 			if ($this->owl_database->read(DBHANDLE_SINGLEFIELD, $id
-						, "SELECT $this->xlinkID FROM $table WHERE $field = '$value' "
+						, "SELECT ". $this->owl_database->getDriver()->dbQuote($this->xlink) . " FROM $table WHERE $field = '$value' "
 						, __LINE__, __FILE__)  >= OWL_WARNING) {
 				$this->setStatus(DATA_DBWARNING, array($this->owl_database->getLastWarning()));
 				return (false);
 			}
-			$query .= 'UNION '
-					. "(SELECT node.* "
-					. ',      1 AS depth ' // TODO Do we need the depth here??
-					. "FROM $table AS node "
-					. "WHERE node.$this->xlink = $id)"
-			;
+			if (ConfigHandler::get ('database', 'driver') == 'Oracle') {
+				// FIXME Try to get rid of Oracle exceptions!!
+				$query .= 'UNION '
+						. "(SELECT node.$field "
+						. ",       node.". $this->owl_database->getDriver()->dbQuote($this->left) . " "
+						. ",       node.". $this->owl_database->getDriver()->dbQuote($this->right) . " "
+						. "FROM $table node "
+						. "WHERE node.". $this->owl_database->getDriver()->dbQuote($this->xlink) . " = $id) "
+				;
+			} else {
+				$query .= 'UNION '
+						. "(SELECT node.* "
+						. ',      1 AS depth '
+						. "FROM $table AS node "
+						. "WHERE node.". $this->owl_database->getDriver()->dbQuote($this->xlink) . " = $id) "
+				;
+			}
 		}
-		$query .= "ORDER BY $this->left ";
+		if (ConfigHandler::get ('database', 'driver') == 'Oracle') {
+			$query .= "ORDER BY node.". $this->owl_database->getDriver()->dbQuote($this->left) . " ";
+		} else {
+			$query .= 'ORDER BY '. $this->owl_database->getDriver()->dbQuote($this->left);
+		}
 		return ($this->readQuery($query, __LINE__));
 	}
 
@@ -347,29 +412,62 @@ class HDataHandler extends DataHandler
 	public function getNodesByDepth($depth, $field, $value = null)
 	{
 		$table = $this->owl_database->tablename($this->owl_tablename);
-		$query = "SELECT node.* "
-				. ",     COUNT(ancestor.$field) - 1 AS ancestors "
-				. "FROM $table AS node "
-				. ",    $table AS ancestor "
-		;
-		if ($value !== null && $depth > 0) {
-			$query .= ", $table AS parents ";
+		$field = $this->owl_database->getDriver()->dbQuote($field);
+		if (ConfigHandler::get ('database', 'driver') == 'Oracle') {
+			// FIXME Create some smart solution for this.... or wait until Oracle understands SQL :-(
+			// Problem is, we can't do a group by in combination with select *, even if we group by
+			// a primary key, and in the having clause we can't use an alias
+				$query = "SELECT node.$field "
+					. ",      node.". $this->owl_database->getDriver()->dbQuote($this->left) . " "
+					. ",      node.". $this->owl_database->getDriver()->dbQuote($this->right) . " "
+					. ",     COUNT(ancestor.$field) - 1 AS ancestors "
+					. "FROM $table node "
+					. ",    $table ancestor "
+			;
+		} else {
+				$query = "SELECT node.* "
+					. ",     COUNT(ancestor.$field) - 1 AS ancestors "
+					. "FROM $table node "
+					. ",    $table ancestor "
+			;
 		}
-		$query.= "WHERE node.$this->left BETWEEN ancestor.$this->left AND ancestor.$this->right ";
 		if ($value !== null && $depth > 0) {
-				$query .= "AND node.$this->left  BETWEEN parents.$this->left AND parents.$this->right "
-						. "AND parents.$field = '$value' "
-				;
+			$query .= ", $table parents ";
 		}
-		// TODO for Oracle compatibility
-		// - Group By requires all fields, also the ones in ORDER BY.
-		//   Check how this works in Oracle with the SELECT *
-		$query .= "GROUP BY node.$field "
-				// Oracle doesn't understand aliases here :-(
-				. "HAVING COUNT(ancestor.$field) - 1 = $depth "
-//				. "HAVING ancestors = $depth "
-				. "ORDER BY node.$this->left "
-		;
+		// FIXME Try to get rid of that braindead Oracle stuff
+		if (ConfigHandler::get ('database', 'driver') == 'Oracle') {
+			$query.= "WHERE node.". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN (ancestor.". $this->owl_database->getDriver()->dbQuote($this->left) . "+1) AND (ancestor.". $this->owl_database->getDriver()->dbQuote($this->right) . "-1) ";
+		} else {
+			$query.= "WHERE node.". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN ancestor.". $this->owl_database->getDriver()->dbQuote($this->left) . " AND ancestor.". $this->owl_database->getDriver()->dbQuote($this->right) . " ";
+		}
+		if ($value !== null && $depth > 0) {
+			// FIXME Try to get rid of that braindead Oracle stuff
+			if (ConfigHandler::get ('database', 'driver') == 'Oracle') {
+				$query .= "AND node.". $this->owl_database->getDriver()->dbQuote($this->left) . "  BETWEEN (parents.". $this->owl_database->getDriver()->dbQuote($this->left) . "+1) AND (parents.". $this->owl_database->getDriver()->dbQuote($this->right) . "-1) "
+							. "AND parents.$field = '$value' "
+					;
+			} else {
+				$query .= "AND node.". $this->owl_database->getDriver()->dbQuote($this->left) . "  BETWEEN parents.". $this->owl_database->getDriver()->dbQuote($this->left) . " AND parents.". $this->owl_database->getDriver()->dbQuote($this->right) . " "
+							. "AND parents.$field = '$value' "
+					;
+			}
+		}
+
+		// FIXME Try to get rid of that braindead Oracle stuff
+		if (ConfigHandler::get ('database', 'driver') == 'Oracle') {
+			$query .= "GROUP BY node.$field "
+					. ",      node.". $this->owl_database->getDriver()->dbQuote($this->left) . " "
+					. ",      node.". $this->owl_database->getDriver()->dbQuote($this->right) . " "
+					// Oracle doesn't understand aliases here :-(
+					. "HAVING COUNT(ancestor.$field) - 1 = $depth "
+					. "ORDER BY node.". $this->owl_database->getDriver()->dbQuote($this->left)
+			;
+		} else {
+			$query .= "GROUP BY node.$field "
+					. "HAVING ancestors = $depth "
+					. "ORDER BY node.". $this->owl_database->getDriver()->dbQuote($this->left)
+			;
+		}
 		return ($this->readQuery($query, __LINE__));
 	}
 
@@ -382,10 +480,13 @@ class HDataHandler extends DataHandler
 	 */
 	private function readQuery ($query, $line)
 	{
+		OWLdbg_add(OWLDEBUG_OWL_SQL, $query, 'Read from database', 1);
+		$this->setStatus (HDATA_QUERY, array('read', $query));
 		if ($this->owl_database->read (DBHANDLE_DATA, $data, $query, $line, __FILE__) >= OWL_WARNING) {
 			$this->setStatus(DATA_DBWARNING, array($this->owl_database->getLastWarning()));
 			return (false);
 		}
+		$this->setStatus (HDATA_RESULT, array(count($data)));
 		return ($data);
 	}
 
@@ -417,13 +518,13 @@ class HDataHandler extends DataHandler
 
 		$_stat = true;
 		$_stat = $this->writeQuery("UPDATE $table "
-							. "SET $this->right = $this->right + 2 "
-							. "WHERE $this->right >= $newLeft"
+							. "SET ". $this->owl_database->getDriver()->dbQuote($this->right) . " = ". $this->owl_database->getDriver()->dbQuote($this->right) . " + 2 "
+							. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->right) . " >= $newLeft"
 							, __LINE__);
 		if ($_stat !== false) {
 			$_stat = $this->writeQuery("UPDATE $table "
-								. "SET $this->left = $this->left + 2 "
-								. "WHERE $this->left >= $newLeft"
+								. "SET ". $this->owl_database->getDriver()->dbQuote($this->left) . " = ". $this->owl_database->getDriver()->dbQuote($this->left) . " + 2 "
+								. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " >= $newLeft"
 								, __LINE__);
 		}
 
@@ -435,7 +536,7 @@ class HDataHandler extends DataHandler
 			$_fields = array();
 			$_values = array();
 			foreach ($data as $_f => $_v) {
-				$_fields[] = $_f;
+				$_fields[] = $this->owl_database->getDriver()->dbQuote($_f);
 				$_values[] = "'$_v'";
 			}
 			$_stat = $this->writeQuery("INSERT INTO $table ("
@@ -524,8 +625,8 @@ class HDataHandler extends DataHandler
 		$table = $this->owl_database->tablename($this->owl_tablename);
 		$parentNode = $this->getNode($parent['field'], $parent['value']);
 		return ($this->writeQuery("UPDATE $table "
-							. "SET $this->xlink = " . $parentNode[$this->xlinkID] . ' '
-							. 'WHERE ' . $node['field'] . " = '" . $node['value'] . "'"
+							. "SET ". $this->owl_database->getDriver()->dbQuote($this->xlink) . " = " . $parentNode[$this->xlinkID] . ' '
+							. 'WHERE ' . $this->owl_database->getDriver()->dbQuote($node['field']) . " = '" . $node['value'] . "'"
 							, __LINE__));
 	}
 
@@ -545,40 +646,40 @@ class HDataHandler extends DataHandler
 		$this->owl_database->startTransaction('insertNode');
 		$this->owl_database->lockTable($table, DBDRIVER_LOCKTYPE_WRITE);
 		$_stat = $this->writeQuery("DELETE FROM $table "
-								. "WHERE $this->left = " . $node[$this->left] . ' '
+								. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " = " . $node[$this->left] . ' '
 								, __LINE__);
 		if (($node[$this->right] - $node[$this->left]) > 2) {
 			// Not a leafnode, add the children to the parent
 			if ($_stat !== false) {
 				$_stat = $this->writeQuery("UPDATE $table "
-										. "SET $this->right = $this->right - 1 "
-										. "WHERE $this->right BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
+										. "SET ". $this->owl_database->getDriver()->dbQuote($this->right) . " = ". $this->owl_database->getDriver()->dbQuote($this->right) . " - 1 "
+										. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->right) . " BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
 										, __LINE__);
 			}
 			if ($_stat !== false) {
 				$_stat = $this->writeQuery("UPDATE $table "
-										. "SET $this->left = $this->left - 1 "
-										. "WHERE $this->left BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
+										. "SET ". $this->owl_database->getDriver()->dbQuote($this->left) . " = ". $this->owl_database->getDriver()->dbQuote($this->left) . " - 1 "
+										. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
 										, __LINE__);
 			}
 		}
 		if ($_stat !== false) {
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->right = $this->right - 2 "
-									. "WHERE $this->right > " . $node[$this->right] . ' '
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->right) . " = ". $this->owl_database->getDriver()->dbQuote($this->right) . " - 2 "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->right) . " > " .$node[$this->right] . ' '
 									, __LINE__);
 		}
 		if ($_stat !== false) {
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->left = $this->left - 2 "
-									. "WHERE $this->left > " . $node[$this->right] . ' '
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->left) . " = ". $this->owl_database->getDriver()->dbQuote($this->left) . " - 2 "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " > " . $node[$this->right] . ' '
 									, __LINE__);
 		}
 		if ($_stat !== false && $this->xlink !== null) {
 			// Remove crosslinks
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->xlink = NULL "
-									. "WHERE $this->xlink > " . $node[$this->xlinkID] . ' '
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->xlink) . " = NULL "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->xlink) . " > " . $node[$this->xlinkID] . ' '
 									, __LINE__);
 		}
 
@@ -605,51 +706,54 @@ class HDataHandler extends DataHandler
 	{
 		$table = $this->owl_database->tablename($this->owl_tablename);
 		$node = $this->getNode($field, $value);
-		$this->owl_database->startTransaction('insertNode');
+		$this->owl_database->startTransaction('removeTree');
 		$_stat = true;
 		if ($this->xlink !== null) {
 			// First, set all crosslinks to this tree to NULL.
 			// TODO This must be done before locking the table, since we can't lock for read and write yet. Fix the locking mechanism first!
 
 			// Use an extra select; the same table cannot be an update target and used in subselects
-			$_ids = $this->readQuery("SELECT $this->xlinkID "
+			$_ids = $this->readQuery("SELECT ". $this->owl_database->getDriver()->dbQuote($this->xlink) . " "
 							. "FROM $table "
-							. "WHERE $this->left BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
+							. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
+							. "AND ". $this->owl_database->getDriver()->dbQuote($this->xlink) . ' IS NOT NULL '
 							, __LINE__);
-			$_idList = array();
-			foreach ($_ids as $_id) {
-				$_idList[] = $_id[$this->xlinkID];
-			}
-			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->xlink = NULL "
-									. "WHERE $this->xlink IN (" . implode(',',$_idList) . ') '
+			if (count($_ids) > 0) {
+				$_idList = array();
+				foreach ($_ids as $_id) {
+					$_idList[] = $_id[$this->xlink];
+				}
+				$_stat = $this->writeQuery("UPDATE $table "
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->xlink) . " = NULL "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->xlink) . " IN (" . implode(',',$_idList) . ') '
 									, __LINE__);
+			}
 		}
 		$this->owl_database->lockTable($table, DBDRIVER_LOCKTYPE_WRITE);
 		if ($_stat !== false) {
 			$_stat = $this->writeQuery("DELETE FROM $table "
-								. "WHERE $this->left BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
+								. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
 								, __LINE__);
 		}
 		$width = $node[$this->right] - $node[$this->left] + 1;
 		if ($_stat !== false) {
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->right = $this->right - $width "
-									. "WHERE $this->right > " . $node[$this->right] . ' '
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->right) . " = ". $this->owl_database->getDriver()->dbQuote($this->right) . " - $width "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->right) . " > " . $node[$this->right] . ' '
 									, __LINE__);
 		}
 		if ($_stat !== false) {
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->left = $this->left - $width "
-									. "WHERE $this->left > " . $node[$this->right] . ' '
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->left) . " = ". $this->owl_database->getDriver()->dbQuote($this->left) . " - $width "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " > " . $node[$this->right] . ' '
 									, __LINE__);
 		}
 		$this->owl_database->unlockTable($table);
 		if ($_stat === false) {
-			$this->owl_database->rollbackTransaction('insertNode');
+			$this->owl_database->rollbackTransaction('removeTree');
 			return (false);
 		} else {
-			$this->owl_database->commitTransaction('insertNode');
+			$this->owl_database->commitTransaction('removeTree');
 			return (true);
 		}
 	}
@@ -685,17 +789,17 @@ class HDataHandler extends DataHandler
 
 		if ($_stat !== false) {
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->left = 0 "
-									. ",   $this->right = 0 "
-									. "WHERE $this->left = " . $node[$this->left] . ' '
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->left) . " = 0 "
+									. ",   ". $this->owl_database->getDriver()->dbQuote($this->right) . " = 0 "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " = " . $node[$this->left] . ' '
 									, __LINE__);
 		}
 		if ($_stat !== false) {
 			// Set all left and right values in the tree being moved to their negative values
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->left = 0 - $this->left "
-									. ",   $this->right = 0 - $this->right "
-									. "WHERE $this->left BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->left) . " = 0 - ". $this->owl_database->getDriver()->dbQuote($this->left) . " "
+									. ",   ". $this->owl_database->getDriver()->dbQuote($this->right) . " = 0 -". $this->owl_database->getDriver()->dbQuote($this->right) . " "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " BETWEEN " . $node[$this->left] . ' AND ' . $node[$this->right] . ' '
 									, __LINE__);
 		}
 
@@ -703,18 +807,18 @@ class HDataHandler extends DataHandler
 		$_width = ($node[$this->right] - $node[$this->left] + 1);
 
 		if ($_stat !== false) {
-			// Now the original truee is parked, shrink the total tree by decreasing everything
+			// Now the original tree is parked, shrink the total tree by decreasing everything
 			// right from the original object (in 2 steps to make sure the direct parents right- only
 			// is decreased!)
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->right = $this->right - $_width "
-									. "WHERE $this->right > " . $node[$this->right] . ' '
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->right) . " = ". $this->owl_database->getDriver()->dbQuote($this->right) . " - $_width "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->right) . " > " . $node[$this->right] . ' '
 									, __LINE__);
 		}
 		if ($_stat !== false) {
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->left = $this->left - $_width "
-									. "WHERE $this->left > " . $node[$this->right] . ' '
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->left) . " = ". $this->owl_database->getDriver()->dbQuote($this->left) . " - $_width "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " > " . $node[$this->right] . ' '
 									, __LINE__);
 		}
 
@@ -733,33 +837,33 @@ class HDataHandler extends DataHandler
 		if ($_stat !== false) {
 			// Make room for the tree at the new position
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->right = $this->right + $_width "
-									. "WHERE $this->right >= $_newLeft "
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->right) . " = ". $this->owl_database->getDriver()->dbQuote($this->right) . " + $_width "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->right) . " >= $_newLeft "
 									, __LINE__);
 		}
 		if ($_stat !== false) {
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->left = $this->left + $_width "
-									. "WHERE $this->left >= $_newLeft "
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->left) . " = ". $this->owl_database->getDriver()->dbQuote($this->left) . " + $_width "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " >= $_newLeft "
 									, __LINE__);
 		}
 
 		if ($_stat !== false) {
 			// Ok, now put the root node of this tree back in place
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->left = $_newLeft "
-									. ",   $this->right = $_newRight "
-									. "WHERE $this->left = 0 "
-									. "AND   $this->right = 0 "
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->left) . " = $_newLeft "
+									. ",   ". $this->owl_database->getDriver()->dbQuote($this->right) . " = $_newRight "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " = 0 "
+									. "AND   ". $this->owl_database->getDriver()->dbQuote($this->right) . " = 0 "
 									, __LINE__);
 		}
 
 		if ($_stat !== false) {
 			// And finally move the tree to the correct position
 			$_stat = $this->writeQuery("UPDATE $table "
-									. "SET $this->left = ABS($this->left) - $_move "
-									. ",   $this->right = ABS($this->right) - $_move "
-									. "WHERE $this->left < 0 "
+									. "SET ". $this->owl_database->getDriver()->dbQuote($this->left) . " = ABS(". $this->owl_database->getDriver()->dbQuote($this->left) . ") - $_move "
+									. ",   ". $this->owl_database->getDriver()->dbQuote($this->right) . " = ABS(". $this->owl_database->getDriver()->dbQuote($this->right) . ") - $_move "
+									. "WHERE ". $this->owl_database->getDriver()->dbQuote($this->left) . " < 0 "
 									, __LINE__);
 		}
 
@@ -782,14 +886,22 @@ class HDataHandler extends DataHandler
 	 */
 	private function writeQuery ($query, $line)
 	{
+		OWLdbg_add(OWLDEBUG_OWL_SQL, $query, 'Write to database', 1);
+		$this->setStatus (HDATA_QUERY, array('write', $query));
 		$this->owl_database->setQuery($query);
 		if ($this->owl_database->write ($rowCount, $line, __FILE__) >= OWL_WARNING) {
 			$this->setStatus(DATA_DBWARNING, array($this->owl_database->getLastWarning()));
 			return (false);
 		}
+		$this->setStatus (HDATA_RESULT, array($rowCount));
 		return ($rowCount);
 	}
 }
+/**
+ * \example exa.hierarchical-data.php
+ * This example shows how to work with hierarchical database tables using the HDataHandler class.
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ */
 
 /*
  * Register this class and all status codes
@@ -797,7 +909,10 @@ class HDataHandler extends DataHandler
 
 Register::registerClass ('HDataHandler');
 
-//Register::setSeverity (OWL_DEBUG);
+Register::setSeverity (OWL_DEBUG);
+Register::registerCode ('HDATA_QUERY');
+Register::registerCode ('HDATA_RESULT');
+
 //Register::setSeverity (OWL_INFO);
 //Register::setSeverity (OWL_OK);
 //Register::setSeverity (OWL_SUCCESS);

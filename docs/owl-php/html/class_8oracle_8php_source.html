@@ -30,7 +30,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OWL-PHP
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    
   </td>
@@ -98,531 +98,698 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <a href="class_8oracle_8php.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
-<a name="l00010"></a><a class="code" href="class_8oracle_8php.html#ac0abe0c029e5f3a8057b568d04f24c7f">00010</a> define (<span class="stringliteral">&#39;_OWL_ORADRV_maxNames&#39;</span>, 30); 
-<a name="l00011"></a><a class="code" href="class_8oracle_8php.html#a3e8646bb26d8aed9fdcfb0645856d7d1">00011</a> define (<span class="stringliteral">&#39;_OWL_ORADRV_suffixSequence&#39;</span>, <span class="stringliteral">&#39;_seq&#39;</span>); 
-<a name="l00012"></a><a class="code" href="class_8oracle_8php.html#a2ca9d8447f41a483316c9bbbc8c1d8f6">00012</a> define (<span class="stringliteral">&#39;_OWL_ORADRV_suffixTrigger&#39;</span>, <span class="stringliteral">&#39;_trg&#39;</span>); 
-<a name="l00013"></a><a class="code" href="class_8oracle_8php.html#adfaeb793260ef60aafe0dbf5fdc9a671">00013</a> define (<span class="stringliteral">&#39;_OWL_ORADRV_suffixConstraint&#39;</span>, <span class="stringliteral">&#39;_cst&#39;</span>); 
-<a name="l00014"></a>00014 
-<a name="l00025"></a><a class="code" href="classOracle.html">00025</a> <span class="keyword">class </span><a class="code" href="classOracle.html" title="&lt; Suffix for OWL generated constraints">Oracle</a> <span class="keyword">extends</span> <a class="code" href="classDbDefaults.html" title="Database driver defauls.">DbDefaults</a> implements <a class="code" href="interfaceDbDriver.html" title="Database driver interface.">DbDriver</a>
-<a name="l00026"></a>00026 {
-<a name="l00030"></a><a class="code" href="classOracle.html#accce5f8dd0428e1d135279e7623bd574">00030</a>     <span class="keyword">private</span> <a class="code" href="classOracle.html#accce5f8dd0428e1d135279e7623bd574">$tablespace</a>;
-<a name="l00031"></a>00031 
-<a name="l00035"></a><a class="code" href="classOracle.html#a2f1d2c78c40565b670ca7790559069a4">00035</a>     <span class="keyword">private</span> <a class="code" href="classOracle.html#a2f1d2c78c40565b670ca7790559069a4">$uppercaseNames</a>;
-<a name="l00036"></a>00036 
-<a name="l00040"></a><a class="code" href="classOracle.html#a7b0d3ee9022ac88ef60c3c42dc4dd12e">00040</a>     <span class="keyword">private</span> <a class="code" href="classOracle.html#a7b0d3ee9022ac88ef60c3c42dc4dd12e">$typeMaps</a>;
-<a name="l00041"></a>00041 
-<a name="l00042"></a><a class="code" href="classOracle.html#a08de4cfed9291760ab6585679549bf5f">00042</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a08de4cfed9291760ab6585679549bf5f">__construct</a>()
-<a name="l00043"></a>00043     {
-<a name="l00044"></a>00044         <a class="code" href="classDbDefaults.html#afc607b5c0a8d2320cd21f5746dde027e">parent::__constructor</a>();
-<a name="l00045"></a>00045         $this-&gt;uppercaseNames = ($this-&gt;quoting == <span class="stringliteral">&#39;&#39;</span>);
-<a name="l00046"></a>00046         $this-&gt;typeMaps = array (
-<a name="l00047"></a>00047              <span class="stringliteral">&#39;bigint&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER(19, 0)&#39;</span>
-<a name="l00048"></a>00048             ,<span class="stringliteral">&#39;bit&#39;</span> =&gt; <span class="stringliteral">&#39;RAW&#39;</span>
-<a name="l00049"></a>00049             ,<span class="stringliteral">&#39;datetime&#39;</span> =&gt; <span class="stringliteral">&#39;DATE&#39;</span>
-<a name="l00050"></a>00050             ,<span class="stringliteral">&#39;decimal&#39;</span> =&gt; <span class="stringliteral">&#39;FLOAT(24)&#39;</span>
-<a name="l00051"></a>00051             ,<span class="stringliteral">&#39;double&#39;</span> =&gt; <span class="stringliteral">&#39;FLOAT(24)&#39;</span>
-<a name="l00052"></a>00052             ,<span class="stringliteral">&#39;double precision&#39;</span> =&gt; <span class="stringliteral">&#39;FLOAT(24)&#39;</span>
-<a name="l00053"></a>00053             ,<span class="stringliteral">&#39;int&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER(10, 0)&#39;</span>
-<a name="l00054"></a>00054             ,<span class="stringliteral">&#39;integer&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER(10, 0)&#39;</span>
-<a name="l00055"></a>00055             ,<span class="stringliteral">&#39;longblob&#39;</span> =&gt; <span class="stringliteral">&#39;BLOB&#39;</span>
-<a name="l00056"></a>00056             ,<span class="stringliteral">&#39;longtext&#39;</span> =&gt; <span class="stringliteral">&#39;CLOB&#39;</span>
-<a name="l00057"></a>00057             ,<span class="stringliteral">&#39;mediumblob&#39;</span> =&gt; <span class="stringliteral">&#39;BLOB&#39;</span>
-<a name="l00058"></a>00058             ,<span class="stringliteral">&#39;mediumint&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER(7, 0)&#39;</span>
-<a name="l00059"></a>00059             ,<span class="stringliteral">&#39;mediumtexT&#39;</span> =&gt; <span class="stringliteral">&#39;CLOB&#39;</span>
-<a name="l00060"></a>00060             ,<span class="stringliteral">&#39;numeric&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER&#39;</span>
-<a name="l00061"></a>00061             ,<span class="stringliteral">&#39;real&#39;</span> =&gt; <span class="stringliteral">&#39;FLOAT(24)&#39;</span>
-<a name="l00062"></a>00062             ,<span class="stringliteral">&#39;smallint&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER(5, 0)&#39;</span>
-<a name="l00063"></a>00063             ,<span class="stringliteral">&#39;text&#39;</span> =&gt; <span class="stringliteral">&#39;CLOB&#39;</span>
-<a name="l00064"></a>00064             ,<span class="stringliteral">&#39;time&#39;</span> =&gt; <span class="stringliteral">&#39;DATE&#39;</span>
-<a name="l00065"></a>00065             ,<span class="stringliteral">&#39;timestamp&#39;</span> =&gt; <span class="stringliteral">&#39;DATE&#39;</span>
-<a name="l00066"></a>00066             ,<span class="stringliteral">&#39;tinyblob&#39;</span> =&gt; <span class="stringliteral">&#39;RAW&#39;</span>
-<a name="l00067"></a>00067             ,<span class="stringliteral">&#39;tinyint&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER(3, 0)&#39;</span>
-<a name="l00068"></a>00068             ,<span class="stringliteral">&#39;tinytext&#39;</span> =&gt; <span class="stringliteral">&#39;VARCHAR2(255)&#39;</span>
-<a name="l00069"></a>00069             ,<span class="stringliteral">&#39;varchar&#39;</span> =&gt; <span class="stringliteral">&#39;VARCHAR2&#39;</span>
-<a name="l00070"></a>00070 <span class="comment">//          ,&#39;varbinary(\d*?)&#39; =&gt; &#39;BLOB&#39;</span>
-<a name="l00071"></a>00071             ,<span class="stringliteral">&#39;year&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER&#39;</span>
-<a name="l00072"></a>00072         );
-<a name="l00073"></a>00073     }
-<a name="l00074"></a>00074 
-<a name="l00075"></a><a class="code" href="classOracle.html#a88f9a34cc1e26e60a4afa0002b8a4367">00075</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a88f9a34cc1e26e60a4afa0002b8a4367">dbCreate</a> (&amp;$_resource, $_name)
-<a name="l00076"></a>00076     {
-<a name="l00077"></a>00077         <span class="keywordflow">return</span> ($this-&gt;<a class="code" href="classOracle.html#a70c2dcc12160ed465c8018ea87398cf4">dbWrite</a>($_resource, <span class="stringliteral">&#39;CREATE TABLESPACE &#39;</span> . $_name));
-<a name="l00078"></a>00078     }
-<a name="l00079"></a>00079 
-<a name="l00080"></a><a class="code" href="classOracle.html#a5d799ab80f502841c7db3a9dc70c1b82">00080</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a5d799ab80f502841c7db3a9dc70c1b82">dbCreateTable</a>(&amp;$_resource, $_table, array $_colDefs, array $_idxDefs)
-<a name="l00081"></a>00081     {
-<a name="l00082"></a>00082         $_q = implode(<span class="charliteral">&#39;,&#39;</span>, $_colDefs);
-<a name="l00083"></a>00083         <span class="keywordflow">if</span> (count($_idxDefs) &gt; 0) {
-<a name="l00084"></a>00084             $_q .= (<span class="charliteral">&#39;,&#39;</span> . implode(<span class="charliteral">&#39;,&#39;</span>, $_idxDefs));
-<a name="l00085"></a>00085         }
-<a name="l00086"></a>00086         <span class="keywordflow">return</span> $this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, <span class="stringliteral">&#39;CREATE TABLE &#39;</span> . $_table . <span class="charliteral">&#39;(&#39;</span> . $_q . <span class="stringliteral">&#39;) TABLESPACE &#39;</span> . $this-&gt;tablespace);
-<a name="l00087"></a>00087     }
-<a name="l00088"></a>00088 
-<a name="l00089"></a><a class="code" href="classOracle.html#a8e931693518cc2ad22ed53cd49932596">00089</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a8e931693518cc2ad22ed53cd49932596">dbDefineField</a>($_table, $_name, array $_desc)
-<a name="l00090"></a>00090     {
-<a name="l00091"></a>00091         $this-&gt;<a class="code" href="classOracle.html#a29f6014aedc77aaeb19af345f3407711">mapType</a>($_desc);
-<a name="l00092"></a>00092         <span class="keywordflow">if</span> (array(key_exists(<span class="stringliteral">&#39;__callback&#39;</span>, $_desc))) {
-<a name="l00093"></a>00093             self::$_desc[<span class="stringliteral">&#39;__callback&#39;</span>]($_table, $_name, $_desc);
-<a name="l00094"></a>00094             unset ($_desc[<span class="stringliteral">&#39;__callback&#39;</span>]);
-<a name="l00095"></a>00095         }
-<a name="l00096"></a>00096         $_qry = $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_name) . <span class="charliteral">&#39; &#39;</span> . $_desc[<span class="stringliteral">&#39;type&#39;</span>];
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;length&#39;</span>, $_desc) &amp;&amp; $_desc[<span class="stringliteral">&#39;length&#39;</span>] &gt; 0) {
-<a name="l00099"></a>00099             $_len = $_desc[<span class="stringliteral">&#39;length&#39;</span>];
-<a name="l00100"></a>00100             <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;precision&#39;</span>, $_desc) &amp;&amp; $_desc[<span class="stringliteral">&#39;precision&#39;</span>] &gt; 0) {
-<a name="l00101"></a>00101                 $_len .= (<span class="charliteral">&#39;,&#39;</span>. $_desc[<span class="stringliteral">&#39;precision&#39;</span>]);
-<a name="l00102"></a>00102             }
-<a name="l00103"></a>00103             $_qry .= (<span class="charliteral">&#39;(&#39;</span> . $_len . <span class="charliteral">&#39;)&#39;</span>);
-<a name="l00104"></a>00104         }
-<a name="l00105"></a>00105         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;unsigned&#39;</span>, $_desc) &amp;&amp; $_desc[<span class="stringliteral">&#39;unsigned&#39;</span>]) {
-<a name="l00106"></a>00106 <span class="comment">// Not supported</span>
-<a name="l00107"></a>00107         }
-<a name="l00108"></a>00108         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;zerofill&#39;</span>, $_desc) &amp;&amp; $_desc[<span class="stringliteral">&#39;zerofill&#39;</span>]) {
-<a name="l00109"></a>00109 <span class="comment">// Not supported</span>
-<a name="l00110"></a>00110         }
-<a name="l00111"></a>00111         <span class="keywordflow">if</span> (!array_key_exists(<span class="stringliteral">&#39;null&#39;</span>, $_desc) || !$_desc[<span class="stringliteral">&#39;null&#39;</span>]) {
-<a name="l00112"></a>00112             $_qry .= <span class="stringliteral">&#39; NOT NULL&#39;</span>;
-<a name="l00113"></a>00113         }
-<a name="l00114"></a>00114         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;default&#39;</span>, $_desc) &amp;&amp; !empty($_desc[<span class="stringliteral">&#39;default&#39;</span>])) {
-<a name="l00115"></a>00115             $_qry .= (<span class="stringliteral">&#39; DEFAULT \&#39;&#39;</span> . $_desc[<span class="stringliteral">&#39;default&#39;</span>] . <span class="stringliteral">&quot;&#39;&quot;</span>);
-<a name="l00116"></a>00116         }
-<a name="l00117"></a>00117         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;comment&#39;</span>, $_desc) &amp;&amp; !empty($_desc[<span class="stringliteral">&#39;comment&#39;</span>])) {
-<a name="l00118"></a>00118             $this-&gt;<a class="code" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a>(<span class="stringliteral">&#39;COMMENT ON COLUMN &#39;</span>
-<a name="l00119"></a>00119                 . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="charliteral">&#39;.&#39;</span> , $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_name)
-<a name="l00120"></a>00120                 . <span class="stringliteral">&#39; IS \&#39;&#39;</span> . $_desc[<span class="stringliteral">&#39;comment&#39;</span>] . <span class="stringliteral">&quot;&#39;&quot;</span>);
-<a name="l00121"></a>00121         }
-<a name="l00122"></a>00122         <span class="keywordflow">return</span> $_qry;
-<a name="l00123"></a>00123     }
-<a name="l00124"></a>00124 
-<a name="l00125"></a><a class="code" href="classOracle.html#aededf6b7edbce1a2eba024fea490ce60">00125</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#aededf6b7edbce1a2eba024fea490ce60">dbDefineIndex</a>($_table, $_name, array $_desc)
-<a name="l00126"></a>00126     {
-<a name="l00127"></a>00127         $_cols = array();
-<a name="l00128"></a>00128         <span class="keywordflow">foreach</span> ($_desc[<span class="stringliteral">&#39;columns&#39;</span>] as $_col) {
-<a name="l00129"></a>00129             $_cols[] = $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_col);
-<a name="l00130"></a>00130         }
-<a name="l00131"></a>00131         <span class="keywordflow">if</span> ($_name === <span class="stringliteral">&#39;PRIMARY&#39;</span>) {
-<a name="l00132"></a>00132             <span class="keywordflow">return</span> <span class="stringliteral">&#39;PRIMARY KEY (&#39;</span> . implode(<span class="charliteral">&#39;,&#39;</span>, $_cols) . <span class="charliteral">&#39;)&#39;</span>;
-<a name="l00133"></a>00133         }
-<a name="l00134"></a>00134         $_q = <span class="stringliteral">&#39;CREATE &#39;</span>;
+<a name="l00026"></a><a class="code" href="class_8oracle_8php.html#ac0abe0c029e5f3a8057b568d04f24c7f">00026</a> define (<span class="stringliteral">&#39;_OWL_ORADRV_maxNames&#39;</span>, 30); 
+<a name="l00027"></a><a class="code" href="class_8oracle_8php.html#a3e8646bb26d8aed9fdcfb0645856d7d1">00027</a> define (<span class="stringliteral">&#39;_OWL_ORADRV_suffixSequence&#39;</span>, <span class="stringliteral">&#39;_seq&#39;</span>); 
+<a name="l00028"></a><a class="code" href="class_8oracle_8php.html#a2ca9d8447f41a483316c9bbbc8c1d8f6">00028</a> define (<span class="stringliteral">&#39;_OWL_ORADRV_suffixTrigger&#39;</span>, <span class="stringliteral">&#39;_trg&#39;</span>); 
+<a name="l00029"></a><a class="code" href="class_8oracle_8php.html#adfaeb793260ef60aafe0dbf5fdc9a671">00029</a> define (<span class="stringliteral">&#39;_OWL_ORADRV_suffixConstraint&#39;</span>, <span class="stringliteral">&#39;_cst&#39;</span>); 
+<a name="l00030"></a>00030 
+<a name="l00042"></a><a class="code" href="classOracle.html">00042</a> <span class="keyword">class </span><a class="code" href="classOracle.html" title="&lt; Suffix for OWL generated constraints">Oracle</a> <span class="keyword">extends</span> <a class="code" href="classDbDefaults.html" title="Database driver defauls.">DbDefaults</a> implements <a class="code" href="interfaceDbDriver.html" title="Database driver interface.">DbDriver</a>
+<a name="l00043"></a>00043 {
+<a name="l00047"></a><a class="code" href="classOracle.html#accce5f8dd0428e1d135279e7623bd574">00047</a>     <span class="keyword">private</span> <a class="code" href="classOracle.html#accce5f8dd0428e1d135279e7623bd574">$tablespace</a>;
+<a name="l00048"></a>00048 
+<a name="l00052"></a><a class="code" href="classOracle.html#a723bc0b23b69e6a14f1cd13e11494fd8">00052</a>     <span class="keyword">private</span> <a class="code" href="classOracle.html#a723bc0b23b69e6a14f1cd13e11494fd8">$sid</a>;
+<a name="l00053"></a>00053 
+<a name="l00057"></a><a class="code" href="classOracle.html#a2f1d2c78c40565b670ca7790559069a4">00057</a>     <span class="keyword">private</span> <a class="code" href="classOracle.html#a2f1d2c78c40565b670ca7790559069a4">$uppercaseNames</a>;
+<a name="l00058"></a>00058 
+<a name="l00062"></a><a class="code" href="classOracle.html#a7b0d3ee9022ac88ef60c3c42dc4dd12e">00062</a>     <span class="keyword">private</span> <a class="code" href="classOracle.html#a7b0d3ee9022ac88ef60c3c42dc4dd12e">$typeMaps</a>;
+<a name="l00063"></a>00063 
+<a name="l00067"></a><a class="code" href="classOracle.html#a083e12c59265411768cdeca639f75ed8">00067</a>     <span class="keyword">private</span> <a class="code" href="classOracle.html#a083e12c59265411768cdeca639f75ed8">$stored_query</a>;
+<a name="l00068"></a>00068 
+<a name="l00072"></a><a class="code" href="classOracle.html#ac37cf2dd82a10a1d6df4f2e7c5707a18">00072</a>     <span class="keyword">private</span> <a class="code" href="classOracle.html#ac37cf2dd82a10a1d6df4f2e7c5707a18">$stored_resource</a>;
+<a name="l00073"></a>00073 
+<a name="l00077"></a><a class="code" href="classOracle.html#acee72c01dba2c56aa46d298fd99ac583">00077</a>     <span class="keyword">private</span> <a class="code" href="classOracle.html#acee72c01dba2c56aa46d298fd99ac583">$lastError</a>;
+<a name="l00078"></a>00078 
+<a name="l00082"></a><a class="code" href="classOracle.html#a233b40ec66849f8a9c245a17db49453b">00082</a>     <span class="keyword">private</span> <a class="code" href="classOracle.html#a233b40ec66849f8a9c245a17db49453b">$transactionOpened</a>;
+<a name="l00083"></a>00083 
+<a name="l00084"></a><a class="code" href="classOracle.html#a08de4cfed9291760ab6585679549bf5f">00084</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a08de4cfed9291760ab6585679549bf5f">__construct</a>()
+<a name="l00085"></a>00085     {
+<a name="l00086"></a>00086         <a class="code" href="classDbDefaults.html#afc607b5c0a8d2320cd21f5746dde027e">parent::__constructor</a>();
+<a name="l00087"></a>00087         $this-&gt;uppercaseNames = ($this-&gt;quoting == <span class="stringliteral">&#39;&#39;</span>);
+<a name="l00088"></a>00088         $this-&gt;transactionOpened = <span class="keyword">false</span>;
+<a name="l00089"></a>00089         $this-&gt;lastError = null;
+<a name="l00090"></a>00090         $this-&gt;typeMaps = array (
+<a name="l00091"></a>00091              <span class="stringliteral">&#39;bigint&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER(19, 0)&#39;</span>
+<a name="l00092"></a>00092             ,<span class="stringliteral">&#39;bit&#39;</span> =&gt; <span class="stringliteral">&#39;RAW&#39;</span>
+<a name="l00093"></a>00093             ,<span class="stringliteral">&#39;datetime&#39;</span> =&gt; <span class="stringliteral">&#39;DATE&#39;</span>
+<a name="l00094"></a>00094             ,<span class="stringliteral">&#39;decimal&#39;</span> =&gt; <span class="stringliteral">&#39;FLOAT(24)&#39;</span>
+<a name="l00095"></a>00095             ,<span class="stringliteral">&#39;double&#39;</span> =&gt; <span class="stringliteral">&#39;FLOAT(24)&#39;</span>
+<a name="l00096"></a>00096             ,<span class="stringliteral">&#39;double precision&#39;</span> =&gt; <span class="stringliteral">&#39;FLOAT(24)&#39;</span>
+<a name="l00097"></a>00097             ,<span class="stringliteral">&#39;int&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER(10, 0)&#39;</span>
+<a name="l00098"></a>00098             ,<span class="stringliteral">&#39;integer&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER(10, 0)&#39;</span>
+<a name="l00099"></a>00099             ,<span class="stringliteral">&#39;longblob&#39;</span> =&gt; <span class="stringliteral">&#39;BLOB&#39;</span>
+<a name="l00100"></a>00100             ,<span class="stringliteral">&#39;longtext&#39;</span> =&gt; <span class="stringliteral">&#39;CLOB&#39;</span>
+<a name="l00101"></a>00101             ,<span class="stringliteral">&#39;mediumblob&#39;</span> =&gt; <span class="stringliteral">&#39;BLOB&#39;</span>
+<a name="l00102"></a>00102             ,<span class="stringliteral">&#39;mediumint&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER(7, 0)&#39;</span>
+<a name="l00103"></a>00103             ,<span class="stringliteral">&#39;mediumtexT&#39;</span> =&gt; <span class="stringliteral">&#39;CLOB&#39;</span>
+<a name="l00104"></a>00104             ,<span class="stringliteral">&#39;numeric&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER&#39;</span>
+<a name="l00105"></a>00105             ,<span class="stringliteral">&#39;real&#39;</span> =&gt; <span class="stringliteral">&#39;FLOAT(24)&#39;</span>
+<a name="l00106"></a>00106             ,<span class="stringliteral">&#39;smallint&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER(5, 0)&#39;</span>
+<a name="l00107"></a>00107             ,<span class="stringliteral">&#39;text&#39;</span> =&gt; <span class="stringliteral">&#39;CLOB&#39;</span>
+<a name="l00108"></a>00108             ,<span class="stringliteral">&#39;time&#39;</span> =&gt; <span class="stringliteral">&#39;DATE&#39;</span>
+<a name="l00109"></a>00109             ,<span class="stringliteral">&#39;timestamp&#39;</span> =&gt; <span class="stringliteral">&#39;DATE&#39;</span>
+<a name="l00110"></a>00110             ,<span class="stringliteral">&#39;tinyblob&#39;</span> =&gt; <span class="stringliteral">&#39;RAW&#39;</span>
+<a name="l00111"></a>00111             ,<span class="stringliteral">&#39;tinyint&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER(3, 0)&#39;</span>
+<a name="l00112"></a>00112             ,<span class="stringliteral">&#39;tinytext&#39;</span> =&gt; <span class="stringliteral">&#39;VARCHAR2(255)&#39;</span>
+<a name="l00113"></a>00113             ,<span class="stringliteral">&#39;varchar&#39;</span> =&gt; <span class="stringliteral">&#39;VARCHAR2&#39;</span>
+<a name="l00114"></a>00114 <span class="comment">//          ,&#39;varbinary(\d*?)&#39; =&gt; &#39;BLOB&#39;</span>
+<a name="l00115"></a>00115             ,<span class="stringliteral">&#39;year&#39;</span> =&gt; <span class="stringliteral">&#39;NUMBER&#39;</span>
+<a name="l00116"></a>00116         );
+<a name="l00117"></a>00117     }
+<a name="l00118"></a>00118 
+<a name="l00119"></a><a class="code" href="classOracle.html#a88f9a34cc1e26e60a4afa0002b8a4367">00119</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a88f9a34cc1e26e60a4afa0002b8a4367">dbCreate</a> (&amp;$_resource, $_name)
+<a name="l00120"></a>00120     {
+<a name="l00121"></a>00121         <span class="keywordflow">return</span> ($this-&gt;<a class="code" href="classOracle.html#a70c2dcc12160ed465c8018ea87398cf4">dbWrite</a>($_resource, <span class="stringliteral">&#39;CREATE TABLESPACE &#39;</span> . $_name));
+<a name="l00122"></a>00122     }
+<a name="l00123"></a>00123 
+<a name="l00124"></a><a class="code" href="classOracle.html#a5d799ab80f502841c7db3a9dc70c1b82">00124</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a5d799ab80f502841c7db3a9dc70c1b82">dbCreateTable</a>(&amp;$_resource, $_table, array $_colDefs, array $_idxDefs)
+<a name="l00125"></a>00125     {
+<a name="l00126"></a>00126         $_q = implode(<span class="charliteral">&#39;,&#39;</span>, $_colDefs);
+<a name="l00127"></a>00127         <span class="keywordflow">if</span> (count($_idxDefs) &gt; 0) {
+<a name="l00128"></a>00128             $_q .= (<span class="charliteral">&#39;,&#39;</span> . implode(<span class="charliteral">&#39;,&#39;</span>, $_idxDefs));
+<a name="l00129"></a>00129         }
+<a name="l00130"></a>00130         $_stat = $this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, <span class="stringliteral">&#39;CREATE TABLE &#39;</span> . $_table . <span class="charliteral">&#39;(&#39;</span> . $_q . <span class="stringliteral">&#39;) TABLESPACE &#39;</span> . $this-&gt;tablespace);
+<a name="l00131"></a>00131         <span class="keywordflow">if</span> ($_stat) {
+<a name="l00132"></a>00132             $_stat = $this-&gt;<a class="code" href="classDbDefaults.html#a3b6cb171d4922256892b3391efbb5c3e">queryCacheExec</a>($_resource);
+<a name="l00133"></a>00133             $this-&gt;<a class="code" href="classDbDefaults.html#acae6e1f7f0ced6921724165e7a9b7290">queryCacheClear</a>();
+<a name="l00134"></a>00134         }
 <a name="l00135"></a>00135 
-<a name="l00136"></a>00136         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;unique&#39;</span>, $_desc) &amp;&amp; $_desc[<span class="stringliteral">&#39;unique&#39;</span>]) {
-<a name="l00137"></a>00137             $_q .= <span class="stringliteral">&#39;UNIQUE &#39;</span>;
-<a name="l00138"></a>00138         } elseif (array_key_exists(<span class="stringliteral">&#39;type&#39;</span>, $_desc) &amp;&amp; $_desc[<span class="stringliteral">&#39;type&#39;</span>] != <span class="stringliteral">&#39;&#39;</span>) {
-<a name="l00139"></a>00139             <span class="keywordflow">if</span> ($_desc[<span class="stringliteral">&#39;type&#39;</span>] === <span class="stringliteral">&#39;BITMAP&#39;</span>) {
-<a name="l00140"></a>00140                 $_q .= <span class="stringliteral">&#39;BITMAP &#39;</span>;
-<a name="l00141"></a>00141             } <span class="keywordflow">else</span> {
-<a name="l00142"></a>00142                 <span class="keywordflow">return</span> <span class="stringliteral">&#39;-- Unsupport key type&#39;</span>; <span class="comment">// TODO Unsupported index type.... how do we handle this?</span>
-<a name="l00143"></a>00143             }
-<a name="l00144"></a>00144         }
-<a name="l00145"></a>00145         $_q .= <span class="stringliteral">&#39;INDEX &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_name) . <span class="stringliteral">&#39; ON &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="stringliteral">&#39; (&#39;</span> . implode(<span class="charliteral">&#39;,&#39;</span>, $_cols) . <span class="charliteral">&#39;)&#39;</span>;
-<a name="l00146"></a>00146         $this-&gt;<a class="code" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a>($_q);
-<a name="l00147"></a>00147         <span class="keywordflow">return</span> null;
-<a name="l00148"></a>00148     }
-<a name="l00149"></a>00149 
-<a name="l00150"></a><a class="code" href="classOracle.html#a29f6014aedc77aaeb19af345f3407711">00150</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a29f6014aedc77aaeb19af345f3407711">mapType</a> (array &amp;$_type)
-<a name="l00151"></a>00151     {
-<a name="l00152"></a>00152         <span class="keywordflow">if</span> (array_key_exists($_type[<span class="stringliteral">&#39;type&#39;</span>], $this-&gt;typeMaps)) {
-<a name="l00153"></a>00153             $_type[<span class="stringliteral">&#39;type&#39;</span>] = $this-&gt;typeMaps[$_type[<span class="stringliteral">&#39;type&#39;</span>]];
-<a name="l00154"></a>00154             <span class="keywordflow">if</span> (preg_match_all(<span class="stringliteral">&quot;/[0-9]+/&quot;</span>, $_type[<span class="stringliteral">&#39;type&#39;</span>], $_matches)) {
-<a name="l00155"></a>00155                 $_type[<span class="stringliteral">&#39;length&#39;</span>] = $_matches[0][0];
-<a name="l00156"></a>00156                 <span class="keywordflow">if</span> (count($_matches[0]) &gt;= 2) {
-<a name="l00157"></a>00157                     $_type[<span class="stringliteral">&#39;precision&#39;</span>] = $_matches[0][1];
-<a name="l00158"></a>00158                 } elseif (array_key_exists(<span class="stringliteral">&#39;precision&#39;</span>, $_type)) {
-<a name="l00159"></a>00159                     unset ($_type[<span class="stringliteral">&#39;precision&#39;</span>]);
-<a name="l00160"></a>00160                 }
-<a name="l00161"></a>00161                 $_type[<span class="stringliteral">&#39;type&#39;</span>] = preg_replace(<span class="stringliteral">&quot;/\([0-9,\s]\)/&quot;</span>, <span class="stringliteral">&#39;&#39;</span>, $_type[<span class="stringliteral">&#39;type&#39;</span>]);
-<a name="l00162"></a>00162             }
-<a name="l00163"></a>00163             <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;auto_inc&#39;</span>, $_type) &amp;&amp; $_type[<span class="stringliteral">&#39;auto_inc&#39;</span>]) {
-<a name="l00164"></a>00164                 $_type[<span class="stringliteral">&#39;__callback&#39;</span>] = <span class="stringliteral">&#39;setAutoIncrement&#39;</span>;
-<a name="l00165"></a>00165             }
-<a name="l00166"></a>00166         } elseif (preg_match_all(<span class="stringliteral">&quot;/^varbinary/&quot;</span>, $_type[<span class="stringliteral">&#39;type&#39;</span>])) {
-<a name="l00167"></a>00167             $_type[<span class="stringliteral">&#39;type&#39;</span>] = <span class="stringliteral">&#39;BLOB&#39;</span>;
-<a name="l00168"></a>00168             unset ($_type[<span class="stringliteral">&#39;length&#39;</span>]);
-<a name="l00169"></a>00169         } elseif (preg_match_all(<span class="stringliteral">&quot;/^enum/&quot;</span>, $_type[<span class="stringliteral">&#39;type&#39;</span>])) {
-<a name="l00170"></a>00170             $_type[<span class="stringliteral">&#39;type&#39;</span>] = <span class="stringliteral">&#39;VARCHAR2&#39;</span>;
-<a name="l00171"></a>00171             $_type[<span class="stringliteral">&#39;length&#39;</span>] = 0;
-<a name="l00172"></a>00172             <span class="keywordflow">foreach</span> ($_type[<span class="stringliteral">&#39;options&#39;</span>] as $_opt) {
-<a name="l00173"></a>00173                 <span class="keywordflow">if</span> (strlen($_opt) &gt; $_type[<span class="stringliteral">&#39;length&#39;</span>]) {
-<a name="l00174"></a>00174                     $_type[<span class="stringliteral">&#39;length&#39;</span>] = strlen($_opt);
-<a name="l00175"></a>00175                 }
-<a name="l00176"></a>00176             }
-<a name="l00177"></a>00177             $_type[<span class="stringliteral">&#39;__callback&#39;</span>] = <span class="stringliteral">&#39;setEnumConstraint&#39;</span>;
-<a name="l00178"></a>00178         }
-<a name="l00179"></a>00179         <span class="keywordflow">return</span>;
-<a name="l00180"></a>00180     }
-<a name="l00181"></a>00181 
-<a name="l00191"></a><a class="code" href="classOracle.html#a1125253e735ac8aba016ec51a6a2f03f">00191</a>     <span class="keyword">private</span> <span class="keyword">static</span> function <a class="code" href="classOracle.html#a1125253e735ac8aba016ec51a6a2f03f">setAutoIncrement</a> ($_table, $_field, array $_type)
-<a name="l00192"></a>00192     {
-<a name="l00193"></a>00193         <span class="keywordflow">if</span> (strlen($_field) + strlen(<a class="code" href="class_8oracle_8php.html#a3e8646bb26d8aed9fdcfb0645856d7d1" title="&lt; Maximum size in characters for names in Oracle">_OWL_ORADRV_suffixSequence</a>) &gt; <a class="code" href="class_8oracle_8php.html#ac0abe0c029e5f3a8057b568d04f24c7f">_OWL_ORADRV_maxNames</a>) {
-<a name="l00194"></a>00194             $_seq = substr ($_field, 0, (strlen($_field) - strlen(<a class="code" href="class_8oracle_8php.html#a3e8646bb26d8aed9fdcfb0645856d7d1" title="&lt; Maximum size in characters for names in Oracle">_OWL_ORADRV_suffixSequence</a>))) . <a class="code" href="class_8oracle_8php.html#a3e8646bb26d8aed9fdcfb0645856d7d1" title="&lt; Maximum size in characters for names in Oracle">_OWL_ORADRV_suffixSequence</a>;
-<a name="l00195"></a>00195         } <span class="keywordflow">else</span> {
-<a name="l00196"></a>00196             $_seq = $_field . <a class="code" href="class_8oracle_8php.html#a3e8646bb26d8aed9fdcfb0645856d7d1" title="&lt; Maximum size in characters for names in Oracle">_OWL_ORADRV_suffixSequence</a>;
+<a name="l00136"></a>00136         <span class="keywordflow">return</span> $_stat;
+<a name="l00137"></a>00137     }
+<a name="l00138"></a>00138 
+<a name="l00139"></a><a class="code" href="classOracle.html#a8e931693518cc2ad22ed53cd49932596">00139</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a8e931693518cc2ad22ed53cd49932596">dbDefineField</a>($_table, $_name, array $_desc)
+<a name="l00140"></a>00140     {
+<a name="l00141"></a>00141         $this-&gt;<a class="code" href="classOracle.html#a29f6014aedc77aaeb19af345f3407711">mapType</a>($_desc);
+<a name="l00142"></a>00142         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;__callback&#39;</span>, $_desc)) {
+<a name="l00143"></a>00143             $this-&gt;$_desc[<span class="stringliteral">&#39;__callback&#39;</span>]($_table, $_name, $_desc);
+<a name="l00144"></a>00144             unset ($_desc[<span class="stringliteral">&#39;__callback&#39;</span>]);
+<a name="l00145"></a>00145         }
+<a name="l00146"></a>00146         $_qry = $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_name) . <span class="charliteral">&#39; &#39;</span> . $_desc[<span class="stringliteral">&#39;type&#39;</span>];
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;length&#39;</span>, $_desc) &amp;&amp; $_desc[<span class="stringliteral">&#39;length&#39;</span>] &gt; 0) {
+<a name="l00149"></a>00149             $_len = $_desc[<span class="stringliteral">&#39;length&#39;</span>];
+<a name="l00150"></a>00150             <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;precision&#39;</span>, $_desc)) {
+<a name="l00151"></a>00151                 $_len .= (<span class="charliteral">&#39;,&#39;</span>. $_desc[<span class="stringliteral">&#39;precision&#39;</span>]);
+<a name="l00152"></a>00152             }
+<a name="l00153"></a>00153             $_qry .= (<span class="charliteral">&#39;(&#39;</span> . $_len . <span class="charliteral">&#39;)&#39;</span>);
+<a name="l00154"></a>00154         }
+<a name="l00155"></a>00155         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;unsigned&#39;</span>, $_desc) &amp;&amp; $_desc[<span class="stringliteral">&#39;unsigned&#39;</span>]) {
+<a name="l00156"></a>00156 <span class="comment">// Not supported</span>
+<a name="l00157"></a>00157         }
+<a name="l00158"></a>00158         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;zerofill&#39;</span>, $_desc) &amp;&amp; $_desc[<span class="stringliteral">&#39;zerofill&#39;</span>]) {
+<a name="l00159"></a>00159 <span class="comment">// Not supported</span>
+<a name="l00160"></a>00160         }
+<a name="l00161"></a>00161         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;default&#39;</span>, $_desc) &amp;&amp; !empty($_desc[<span class="stringliteral">&#39;default&#39;</span>])) {
+<a name="l00162"></a>00162             $_qry .= (<span class="stringliteral">&#39; DEFAULT \&#39;&#39;</span> . $_desc[<span class="stringliteral">&#39;default&#39;</span>] . <span class="stringliteral">&quot;&#39;&quot;</span>);
+<a name="l00163"></a>00163         }
+<a name="l00164"></a>00164         <span class="keywordflow">if</span> (!array_key_exists(<span class="stringliteral">&#39;null&#39;</span>, $_desc) || !$_desc[<span class="stringliteral">&#39;null&#39;</span>]) {
+<a name="l00165"></a>00165             $_qry .= <span class="stringliteral">&#39; NOT NULL&#39;</span>;
+<a name="l00166"></a>00166         }
+<a name="l00167"></a>00167         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;comment&#39;</span>, $_desc) &amp;&amp; !empty($_desc[<span class="stringliteral">&#39;comment&#39;</span>])) {
+<a name="l00168"></a>00168             $this-&gt;<a class="code" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a>(<span class="stringliteral">&#39;COMMENT ON COLUMN &#39;</span>
+<a name="l00169"></a>00169                 . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="charliteral">&#39;.&#39;</span> , $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_name)
+<a name="l00170"></a>00170                 . <span class="stringliteral">&#39; IS \&#39;&#39;</span> . $_desc[<span class="stringliteral">&#39;comment&#39;</span>] . <span class="stringliteral">&quot;&#39;&quot;</span>);
+<a name="l00171"></a>00171         }
+<a name="l00172"></a>00172         <span class="keywordflow">return</span> $_qry;
+<a name="l00173"></a>00173     }
+<a name="l00174"></a>00174 
+<a name="l00175"></a><a class="code" href="classOracle.html#aededf6b7edbce1a2eba024fea490ce60">00175</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#aededf6b7edbce1a2eba024fea490ce60">dbDefineIndex</a>($_table, $_name, array $_desc)
+<a name="l00176"></a>00176     {
+<a name="l00177"></a>00177         $_cols = array();
+<a name="l00178"></a>00178         <span class="keywordflow">foreach</span> ($_desc[<span class="stringliteral">&#39;columns&#39;</span>] as $_col) {
+<a name="l00179"></a>00179             $_cols[] = $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_col);
+<a name="l00180"></a>00180         }
+<a name="l00181"></a>00181         <span class="keywordflow">if</span> ($_name === <span class="stringliteral">&#39;PRIMARY&#39;</span>) {
+<a name="l00182"></a>00182             <span class="keywordflow">return</span> <span class="stringliteral">&#39;PRIMARY KEY (&#39;</span> . implode(<span class="charliteral">&#39;,&#39;</span>, $_cols) . <span class="charliteral">&#39;)&#39;</span>;
+<a name="l00183"></a>00183         }
+<a name="l00184"></a>00184         $_q = <span class="stringliteral">&#39;CREATE &#39;</span>;
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186         $_indexType = <span class="stringliteral">&#39;&#39;</span>;
+<a name="l00187"></a>00187         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;unique&#39;</span>, $_desc) &amp;&amp; $_desc[<span class="stringliteral">&#39;unique&#39;</span>]) {
+<a name="l00188"></a>00188             $_q .= <span class="stringliteral">&#39;UNIQUE &#39;</span>;
+<a name="l00189"></a>00189         } elseif (array_key_exists(<span class="stringliteral">&#39;type&#39;</span>, $_desc) &amp;&amp; $_desc[<span class="stringliteral">&#39;type&#39;</span>] != <span class="stringliteral">&#39;&#39;</span>) {
+<a name="l00190"></a>00190             <span class="keywordflow">if</span> ($_desc[<span class="stringliteral">&#39;type&#39;</span>] === <span class="stringliteral">&#39;BITMAP&#39;</span>) {
+<a name="l00191"></a>00191                 $_q .= <span class="stringliteral">&#39;BITMAP &#39;</span>;
+<a name="l00192"></a>00192             } elseif ($_desc[<span class="stringliteral">&#39;type&#39;</span>] === <span class="stringliteral">&#39;FULLTEXT&#39;</span>) {
+<a name="l00193"></a>00193                 $_indexType = <span class="stringliteral">&quot;INDEXTYPE IS CTXSYS.CONTEXT PARAMETERS (&#39;DATASTORE CTXSYS.DEFAULT_DATASTORE&#39;)&quot;</span>;
+<a name="l00194"></a>00194             } <span class="keywordflow">else</span> {
+<a name="l00195"></a>00195                 <span class="keywordflow">return</span> null; <span class="comment">// TODO Unsupported index type.... how do we handle this?</span>
+<a name="l00196"></a>00196             }
 <a name="l00197"></a>00197         }
-<a name="l00198"></a>00198         <span class="keywordflow">if</span> (strlen($_field) + strlen(<a class="code" href="class_8oracle_8php.html#a2ca9d8447f41a483316c9bbbc8c1d8f6" title="&lt; Suffix for OWL generated sequences, to be used ONLY for auto increment simulation!">_OWL_ORADRV_suffixTrigger</a>) &gt; <a class="code" href="class_8oracle_8php.html#ac0abe0c029e5f3a8057b568d04f24c7f">_OWL_ORADRV_maxNames</a>) {
-<a name="l00199"></a>00199             $_trg = substr ($_field, 0, (strlen($_field) - strlen(<a class="code" href="class_8oracle_8php.html#a2ca9d8447f41a483316c9bbbc8c1d8f6" title="&lt; Suffix for OWL generated sequences, to be used ONLY for auto increment simulation!">_OWL_ORADRV_suffixTrigger</a>))) . <a class="code" href="class_8oracle_8php.html#a2ca9d8447f41a483316c9bbbc8c1d8f6" title="&lt; Suffix for OWL generated sequences, to be used ONLY for auto increment simulation!">_OWL_ORADRV_suffixTrigger</a>;
-<a name="l00200"></a>00200         } <span class="keywordflow">else</span> {
-<a name="l00201"></a>00201             $_trg = $_field . <a class="code" href="class_8oracle_8php.html#a2ca9d8447f41a483316c9bbbc8c1d8f6" title="&lt; Suffix for OWL generated sequences, to be used ONLY for auto increment simulation!">_OWL_ORADRV_suffixTrigger</a>;
-<a name="l00202"></a>00202         }
-<a name="l00203"></a>00203 
-<a name="l00204"></a>00204         $_q = <span class="stringliteral">&#39;CREATE SEQUENCE &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_seq) . <span class="charliteral">&#39; &#39;</span>
-<a name="l00205"></a>00205             . <span class="stringliteral">&#39;    START WITH 1&#39;</span>
-<a name="l00206"></a>00206             . <span class="stringliteral">&#39;    INCREMENT BY 1&#39;</span>
-<a name="l00207"></a>00207         ;
-<a name="l00208"></a>00208         $this-&gt;<a class="code" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a>($_q);
-<a name="l00209"></a>00209 
-<a name="l00210"></a>00210         $_q = <span class="stringliteral">&#39;CREATE TRIGGER &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_trg) . <span class="charliteral">&#39; &#39;</span>
-<a name="l00211"></a>00211             . <span class="stringliteral">&#39;    BEFORE INSERT ON &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="charliteral">&#39; &#39;</span>
-<a name="l00212"></a>00212             . <span class="stringliteral">&#39;FOR EACH ROW&#39;</span>
-<a name="l00213"></a>00213             . <span class="stringliteral">&#39;DECLARE&#39;</span>
-<a name="l00214"></a>00214             . <span class="stringliteral">&#39;    max_id NUMBER;&#39;</span>
-<a name="l00215"></a>00215             . <span class="stringliteral">&#39;    cur_seq NUMBER;&#39;</span>
-<a name="l00216"></a>00216             . <span class="stringliteral">&#39;BEGIN&#39;</span>
-<a name="l00217"></a>00217             . <span class="stringliteral">&#39;    IF :new.&#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_field) . <span class="stringliteral">&#39; IS NULL THEN&#39;</span>
-<a name="l00218"></a>00218             . <span class="stringliteral">&#39;        SELECT &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_seq) . <span class="stringliteral">&#39;.NEXTVAL&#39;</span>
-<a name="l00219"></a>00219             . <span class="stringliteral">&#39;            INTO :new.&#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_field) . <span class="charliteral">&#39; &#39;</span>
-<a name="l00220"></a>00220             . <span class="stringliteral">&#39;            FROM DUAL&#39;</span>
-<a name="l00221"></a>00221             . <span class="stringliteral">&#39;        ;&#39;</span>
-<a name="l00222"></a>00222             . <span class="stringliteral">&#39;    ELSE&#39;</span>
-<a name="l00223"></a>00223             . <span class="stringliteral">&#39;        SELECT GREATEST(NVL(MAX(&#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_field) . <span class="stringliteral">&#39;),0), :new.&#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_field) . <span class="charliteral">&#39;)&#39;</span>
-<a name="l00224"></a>00224             . <span class="stringliteral">&#39;            INTO max_id FROM &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="charliteral">&#39; &#39;</span>
-<a name="l00225"></a>00225             . <span class="stringliteral">&#39;        ;&#39;</span>
-<a name="l00226"></a>00226             . <span class="stringliteral">&#39;        SELECT &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_seq) . <span class="stringliteral">&#39;.NEXTVAL&#39;</span>
-<a name="l00227"></a>00227             . <span class="stringliteral">&#39;            INTO cur_seq&#39;</span>
-<a name="l00228"></a>00228             . <span class="stringliteral">&#39;            FROM DUAL&#39;</span>
-<a name="l00229"></a>00229             . <span class="stringliteral">&#39;        ;&#39;</span>
-<a name="l00230"></a>00230             . <span class="stringliteral">&#39;        WHILE cur_seq &lt; max_id&#39;</span>
-<a name="l00231"></a>00231             . <span class="stringliteral">&#39;        LOOP&#39;</span>
-<a name="l00232"></a>00232             . <span class="stringliteral">&#39;            SELECT &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_seq) . <span class="stringliteral">&#39;.NEXTVAL&#39;</span>
-<a name="l00233"></a>00233             . <span class="stringliteral">&#39;               INTO cur_seq&#39;</span>
-<a name="l00234"></a>00234             . <span class="stringliteral">&#39;               FROM DUAL&#39;</span>
-<a name="l00235"></a>00235             . <span class="stringliteral">&#39;            ;&#39;</span>
-<a name="l00236"></a>00236             . <span class="stringliteral">&#39;        END LOOP;&#39;</span>
-<a name="l00237"></a>00237             . <span class="stringliteral">&#39;    end if;&#39;</span>
-<a name="l00238"></a>00238             . <span class="stringliteral">&#39;end;&#39;</span>
-<a name="l00239"></a>00239             . <span class="charliteral">&#39;/&#39;</span>
-<a name="l00240"></a>00240         ;
-<a name="l00241"></a>00241         $this-&gt;<a class="code" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a>($_q);
-<a name="l00242"></a>00242     }
-<a name="l00243"></a>00243 
-<a name="l00253"></a><a class="code" href="classOracle.html#a4678458a77086cf981d08569bdaf1279">00253</a>     <span class="keyword">private</span> <span class="keyword">static</span> function <a class="code" href="classOracle.html#a4678458a77086cf981d08569bdaf1279">setEnumConstraint</a> ($_table, $_field, array $_type)
-<a name="l00254"></a>00254     {
-<a name="l00255"></a>00255         <span class="keywordflow">if</span> (strlen($_field) + strlen(<a class="code" href="class_8oracle_8php.html#adfaeb793260ef60aafe0dbf5fdc9a671" title="&lt; Suffix for OWL generated triggers">_OWL_ORADRV_suffixConstraint</a>) &gt; <a class="code" href="class_8oracle_8php.html#ac0abe0c029e5f3a8057b568d04f24c7f">_OWL_ORADRV_maxNames</a>) {
-<a name="l00256"></a>00256             $_cst = substr ($_field, 0, (strlen($_field) - strlen(<a class="code" href="class_8oracle_8php.html#adfaeb793260ef60aafe0dbf5fdc9a671" title="&lt; Suffix for OWL generated triggers">_OWL_ORADRV_suffixConstraint</a>))) . <a class="code" href="class_8oracle_8php.html#adfaeb793260ef60aafe0dbf5fdc9a671" title="&lt; Suffix for OWL generated triggers">_OWL_ORADRV_suffixConstraint</a>;
-<a name="l00257"></a>00257         } <span class="keywordflow">else</span> {
-<a name="l00258"></a>00258             $_cst = $_field . <a class="code" href="class_8oracle_8php.html#adfaeb793260ef60aafe0dbf5fdc9a671" title="&lt; Suffix for OWL generated triggers">_OWL_ORADRV_suffixConstraint</a>;
-<a name="l00259"></a>00259         }
-<a name="l00260"></a>00260 
-<a name="l00261"></a>00261         $_validValues = array();
-<a name="l00262"></a>00262         <span class="keywordflow">foreach</span> ($_type[<span class="stringliteral">&#39;options&#39;</span>] as $_opt) {
-<a name="l00263"></a>00263             $_validValues[] = <span class="stringliteral">&quot;&#39;$_opt&#39;&quot;</span>;
-<a name="l00264"></a>00264         }
-<a name="l00265"></a>00265         $_q = <span class="stringliteral">&#39;ALTER TABLE &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="charliteral">&#39; &#39;</span>
-<a name="l00266"></a>00266             . <span class="stringliteral">&#39;    ADD CONSTRAINT &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_cst) . <span class="charliteral">&#39; &#39;</span>
-<a name="l00267"></a>00267             . <span class="stringliteral">&#39;    CHECK &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_field) . <span class="stringliteral">&#39; IN (&#39;</span> . implode(<span class="charliteral">&#39;,&#39;</span>, $_validValues) . <span class="stringliteral">&#39;) &#39;</span>;
-<a name="l00268"></a>00268         ;
-<a name="l00269"></a>00269         unset ($_type[<span class="stringliteral">&#39;options&#39;</span>]);
-<a name="l00270"></a>00270         $this-&gt;<a class="code" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a>($_q);
-<a name="l00271"></a>00271     }
-<a name="l00272"></a>00272 
-<a name="l00284"></a><a class="code" href="classOracle.html#a2be5ee4116e6f635d7b50d81f9f342f2">00284</a>     <span class="keyword">private</span> function <a class="code" href="classOracle.html#a2be5ee4116e6f635d7b50d81f9f342f2">isAutoIncrement</a>(&amp;$_dbHandler, $_column)
-<a name="l00285"></a>00285     {
-<a name="l00286"></a>00286         $_qry = <span class="stringliteral">&#39;SELECT COUNT(*) FROM user_sequence WHERE sequence_name = &#39;</span>;
-<a name="l00287"></a>00287         <span class="keywordflow">if</span> ($this-&gt;uppercase) {
-<a name="l00288"></a>00288             $_qry .= <span class="stringliteral">&quot;&#39;&quot;</span> . strtoupper($_column) . strtoupper(<a class="code" href="class_8oracle_8php.html#a3e8646bb26d8aed9fdcfb0645856d7d1" title="&lt; Maximum size in characters for names in Oracle">_OWL_ORADRV_suffixSequence</a>) . <span class="stringliteral">&quot;&#39;&quot;</span>;
-<a name="l00289"></a>00289         } <span class="keywordflow">else</span> {
-<a name="l00290"></a>00290             $_qry .= <span class="stringliteral">&quot;&#39;&quot;</span> . $_column . <a class="code" href="class_8oracle_8php.html#a3e8646bb26d8aed9fdcfb0645856d7d1" title="&lt; Maximum size in characters for names in Oracle">_OWL_ORADRV_suffixSequence</a> . <span class="stringliteral">&quot;&#39;&quot;</span>;
-<a name="l00291"></a>00291         }
-<a name="l00292"></a>00292         $_dbHandler-&gt;read (<a class="code" href="group__DBHANDLE__ReturnFlags.html#ga4752b0fc86256fd568adf6ef216418c7" title="Return the read value as a single field (i.s.o. a 2D array)">DBHANDLE_SINGLEFIELD</a>, $_data, $_qry, __LINE__, __FILE__);
-<a name="l00293"></a>00293         <span class="keywordflow">return</span> ($_data === 1);
-<a name="l00294"></a>00294     }
-<a name="l00295"></a>00295 
-<a name="l00304"></a><a class="code" href="classOracle.html#abc913780bc91aa85515f529cd1f7408e">00304</a>     <span class="keyword">private</span> function <a class="code" href="classOracle.html#abc913780bc91aa85515f529cd1f7408e">isEnum</a>(&amp;$_dbHandler, $_table, $_column)
-<a name="l00305"></a>00305     {
-<a name="l00306"></a>00306         <span class="keywordflow">if</span> ($this-&gt;uppercase) {
-<a name="l00307"></a>00307             $_table = strtoupper($_table);
-<a name="l00308"></a>00308             $_column = strtoupper($_column);
-<a name="l00309"></a>00309         }
-<a name="l00310"></a>00310         $_qry = <span class="stringliteral">&quot;SELECT constraint_name FROM user_cons_columns WHERE table_name = &#39;$_table&#39; and COLUMN_NAME = &#39;$_column&#39;&quot;</span>;
-<a name="l00311"></a>00311         $_dbHandler-&gt;read (<a class="code" href="group__DBHANDLE__ReturnFlags.html#ga4752b0fc86256fd568adf6ef216418c7" title="Return the read value as a single field (i.s.o. a 2D array)">DBHANDLE_SINGLEFIELD</a>, $_data, $_qry, __LINE__, __FILE__);
-<a name="l00312"></a>00312         <span class="keywordflow">if</span> ($_dbHandler-&gt;getStatus() === <span class="stringliteral">&#39;DBHANDLE_NODATA&#39;</span>) {
-<a name="l00313"></a>00313             <span class="keywordflow">return</span> array();
-<a name="l00314"></a>00314         }
-<a name="l00315"></a>00315         $_qry = <span class="stringliteral">&quot;SELECT search_condition FROM user_constraints WHERE constraint_name = &#39;$_data&#39;&quot;</span>;
-<a name="l00316"></a>00316         $_dbHandler-&gt;read (<a class="code" href="group__DBHANDLE__ReturnFlags.html#ga4752b0fc86256fd568adf6ef216418c7" title="Return the read value as a single field (i.s.o. a 2D array)">DBHANDLE_SINGLEFIELD</a>, $_data, $_qry, __LINE__, __FILE__);
-<a name="l00317"></a>00317         <span class="keywordflow">if</span> (preg_match(<span class="stringliteral">&#39;/\sIN\s\((.+?)\)/&#39;</span>, $_data, $_matches)) {
-<a name="l00318"></a>00318             $_values = explode(<span class="charliteral">&#39;,&#39;</span>, $_matches[1]);
-<a name="l00319"></a>00319             <span class="keywordflow">for</span> ($_i = 0; $_i &lt; count($_values); $_i++) {
-<a name="l00320"></a>00320                 $_values[$_i] = preg_replace(<span class="stringliteral">&quot;/^\s*&#39;(.*?)&#39;\s*$/&quot;</span>, <span class="stringliteral">&#39;$1&#39;</span>, $_values[$_i]);
-<a name="l00321"></a>00321             }
-<a name="l00322"></a>00322             <span class="keywordflow">return</span> $_values;
-<a name="l00323"></a>00323         }
-<a name="l00324"></a>00324         <span class="keywordflow">return</span> array();
-<a name="l00325"></a>00325     }
+<a name="l00198"></a>00198         $_q .= <span class="stringliteral">&#39;INDEX &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_name) . <span class="stringliteral">&#39; ON &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="stringliteral">&#39; (&#39;</span> . implode(<span class="charliteral">&#39;,&#39;</span>, $_cols) . <span class="stringliteral">&#39;) &#39;</span> . $_indexType;
+<a name="l00199"></a>00199         $this-&gt;<a class="code" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a>($_q);
+<a name="l00200"></a>00200         <span class="keywordflow">return</span> null;
+<a name="l00201"></a>00201     }
+<a name="l00202"></a>00202 
+<a name="l00203"></a><a class="code" href="classOracle.html#a29f6014aedc77aaeb19af345f3407711">00203</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a29f6014aedc77aaeb19af345f3407711">mapType</a> (array &amp;$_type)
+<a name="l00204"></a>00204     {
+<a name="l00205"></a>00205         <span class="keywordflow">if</span> (preg_match(<span class="stringliteral">&quot;/^varbinary/&quot;</span>, $_type[<span class="stringliteral">&#39;type&#39;</span>])) {
+<a name="l00206"></a>00206             $_type[<span class="stringliteral">&#39;type&#39;</span>] = <span class="stringliteral">&#39;BLOB&#39;</span>;
+<a name="l00207"></a>00207             unset ($_type[<span class="stringliteral">&#39;length&#39;</span>]);
+<a name="l00208"></a>00208         } elseif (preg_match(<span class="stringliteral">&quot;/^enum/&quot;</span>, $_type[<span class="stringliteral">&#39;type&#39;</span>])) {
+<a name="l00209"></a>00209             $_type[<span class="stringliteral">&#39;type&#39;</span>] = <span class="stringliteral">&#39;VARCHAR2&#39;</span>;
+<a name="l00210"></a>00210             $_type[<span class="stringliteral">&#39;length&#39;</span>] = 0;
+<a name="l00211"></a>00211             <span class="keywordflow">foreach</span> ($_type[<span class="stringliteral">&#39;options&#39;</span>] as $_opt) {
+<a name="l00212"></a>00212                 <span class="keywordflow">if</span> (strlen($_opt) &gt; $_type[<span class="stringliteral">&#39;length&#39;</span>]) {
+<a name="l00213"></a>00213                     $_type[<span class="stringliteral">&#39;length&#39;</span>] = strlen($_opt);
+<a name="l00214"></a>00214                 }
+<a name="l00215"></a>00215             }
+<a name="l00216"></a>00216             $_type[<span class="stringliteral">&#39;__callback&#39;</span>] = <span class="stringliteral">&#39;setEnumConstraint&#39;</span>;
+<a name="l00217"></a>00217         } <span class="keywordflow">else</span> {
+<a name="l00218"></a>00218             <span class="keywordflow">foreach</span> ($this-&gt;typeMaps as $_orig =&gt; $_repl) {
+<a name="l00219"></a>00219                 $_type[<span class="stringliteral">&#39;type&#39;</span>] = preg_replace(<span class="stringliteral">&quot;/$_orig/&quot;</span>, $_repl, $_type[<span class="stringliteral">&#39;type&#39;</span>], 1, $_rc);
+<a name="l00220"></a>00220                 <span class="keywordflow">if</span> ($_rc &gt; 0) {
+<a name="l00221"></a>00221                     <span class="keywordflow">break</span>;
+<a name="l00222"></a>00222                 }
+<a name="l00223"></a>00223             }
+<a name="l00224"></a>00224             <span class="keywordflow">if</span> (preg_match_all(<span class="stringliteral">&quot;/[\(,\s]([0-9]+)/&quot;</span>, $_type[<span class="stringliteral">&#39;type&#39;</span>], $_matches)) {
+<a name="l00225"></a>00225                 $_type[<span class="stringliteral">&#39;length&#39;</span>] = $_matches[1][0];
+<a name="l00226"></a>00226                 <span class="keywordflow">if</span> (count($_matches[1]) &gt;= 2) {
+<a name="l00227"></a>00227                     $_type[<span class="stringliteral">&#39;precision&#39;</span>] = $_matches[1][1];
+<a name="l00228"></a>00228                 } elseif (array_key_exists(<span class="stringliteral">&#39;precision&#39;</span>, $_type)) {
+<a name="l00229"></a>00229                     unset ($_type[<span class="stringliteral">&#39;precision&#39;</span>]);
+<a name="l00230"></a>00230                 }
+<a name="l00231"></a>00231                 $_type[<span class="stringliteral">&#39;type&#39;</span>] = preg_replace(<span class="stringliteral">&quot;/\([0-9,\s]+\)/&quot;</span>, <span class="stringliteral">&#39;&#39;</span>, $_type[<span class="stringliteral">&#39;type&#39;</span>]);
+<a name="l00232"></a>00232             }
+<a name="l00233"></a>00233         }
+<a name="l00234"></a>00234 <span class="comment">//      if (array_key_exists($_type[&#39;type&#39;], $this-&gt;typeMaps)) {</span>
+<a name="l00235"></a>00235 <span class="comment">//          $_type[&#39;type&#39;] = $this-&gt;typeMaps[$_type[&#39;type&#39;]];</span>
+<a name="l00236"></a>00236 <span class="comment">//      }</span>
+<a name="l00237"></a>00237         <span class="keywordflow">if</span> (array_key_exists(<span class="stringliteral">&#39;auto_inc&#39;</span>, $_type) &amp;&amp; $_type[<span class="stringliteral">&#39;auto_inc&#39;</span>]) {
+<a name="l00238"></a>00238             $_type[<span class="stringliteral">&#39;__callback&#39;</span>] = <span class="stringliteral">&#39;setAutoIncrement&#39;</span>;
+<a name="l00239"></a>00239         }
+<a name="l00240"></a>00240         <span class="keywordflow">return</span>;
+<a name="l00241"></a>00241     }
+<a name="l00242"></a>00242 
+<a name="l00252"></a><a class="code" href="classOracle.html#a5b5714be8b33f821a925d1e24ed45193">00252</a>     <span class="keyword">private</span> function <a class="code" href="classOracle.html#a5b5714be8b33f821a925d1e24ed45193">getOraObjectName</a> ($_table, $_field, $_suffix)
+<a name="l00253"></a>00253     {
+<a name="l00254"></a>00254         $_objName = $_table . $_field . $_suffix;
+<a name="l00255"></a>00255         <span class="keywordflow">if</span> (strlen ($_objName) &gt; <a class="code" href="class_8oracle_8php.html#ac0abe0c029e5f3a8057b568d04f24c7f">_OWL_ORADRV_maxNames</a>) {
+<a name="l00256"></a>00256             $_sub = ((<a class="code" href="class_8oracle_8php.html#ac0abe0c029e5f3a8057b568d04f24c7f">_OWL_ORADRV_maxNames</a> - strlen($_suffix)) / 2);
+<a name="l00257"></a>00257             $_objName = substr ($_table, 0, $_sub) . substr ($_field, 0, $_sub) . $_suffix;
+<a name="l00258"></a>00258         }
+<a name="l00259"></a>00259         <span class="keywordflow">return</span> $_objName;
+<a name="l00260"></a>00260     }
+<a name="l00261"></a>00261 
+<a name="l00271"></a><a class="code" href="classOracle.html#a1cb38d309b966a5a26f5f116151b3dc8">00271</a>     <span class="keyword">private</span> function <a class="code" href="classOracle.html#a1cb38d309b966a5a26f5f116151b3dc8">setAutoIncrement</a> ($_table, $_field, array $_type)
+<a name="l00272"></a>00272     {
+<a name="l00273"></a>00273         $_seq = $this-&gt;<a class="code" href="classOracle.html#a5b5714be8b33f821a925d1e24ed45193">getOraObjectName</a>($_table, $_field, <a class="code" href="class_8oracle_8php.html#a3e8646bb26d8aed9fdcfb0645856d7d1" title="&lt; Maximum size in characters for names in Oracle">_OWL_ORADRV_suffixSequence</a>);
+<a name="l00274"></a>00274         $_trg = $this-&gt;<a class="code" href="classOracle.html#a5b5714be8b33f821a925d1e24ed45193">getOraObjectName</a>($_table, $_field, <a class="code" href="class_8oracle_8php.html#a2ca9d8447f41a483316c9bbbc8c1d8f6" title="&lt; Suffix for OWL generated sequences, to be used ONLY for auto increment simulation!">_OWL_ORADRV_suffixTrigger</a>);
+<a name="l00275"></a>00275 
+<a name="l00276"></a>00276         $_q = <span class="stringliteral">&#39;CREATE SEQUENCE &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_seq) . <span class="charliteral">&#39; &#39;</span>
+<a name="l00277"></a>00277             . <span class="stringliteral">&#39;    START WITH 1&#39;</span>
+<a name="l00278"></a>00278             . <span class="stringliteral">&#39;    INCREMENT BY 1&#39;</span>
+<a name="l00279"></a>00279         ;
+<a name="l00280"></a>00280         $this-&gt;<a class="code" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a>($_q);
+<a name="l00281"></a>00281         $_q = <span class="stringliteral">&#39;CREATE OR REPLACE TRIGGER &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_trg)
+<a name="l00282"></a>00282             . <span class="stringliteral">&#39;    BEFORE INSERT ON &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="charliteral">&#39; &#39;</span>
+<a name="l00283"></a>00283             . <span class="stringliteral">&#39;FOR EACH ROW &#39;</span>
+<a name="l00284"></a>00284             . <span class="stringliteral">&#39;DECLARE &#39;</span>
+<a name="l00285"></a>00285             . <span class="stringliteral">&#39;    max_id NUMBER; &#39;</span>
+<a name="l00286"></a>00286             . <span class="stringliteral">&#39;    cur_seq NUMBER; &#39;</span>
+<a name="l00287"></a>00287             . <span class="stringliteral">&#39;BEGIN&#39;</span>
+<a name="l00288"></a>00288             . <span class="stringliteral">&#39;    IF :new.&#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_field) . <span class="stringliteral">&#39; IS NULL THEN &#39;</span>
+<a name="l00289"></a>00289             . <span class="stringliteral">&#39;        SELECT &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_seq) . <span class="stringliteral">&#39;.NEXTVAL &#39;</span>
+<a name="l00290"></a>00290             . <span class="stringliteral">&#39;            INTO :new.&#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_field)
+<a name="l00291"></a>00291             . <span class="stringliteral">&#39;            FROM DUAL &#39;</span>
+<a name="l00292"></a>00292             . <span class="stringliteral">&#39;        ;&#39;</span>
+<a name="l00293"></a>00293             . <span class="stringliteral">&#39;    ELSE &#39;</span>
+<a name="l00294"></a>00294             . <span class="stringliteral">&#39;        SELECT GREATEST(NVL(MAX(&#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_field) . <span class="stringliteral">&#39;),0), :new.&#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_field) . <span class="stringliteral">&#39;) &#39;</span>
+<a name="l00295"></a>00295             . <span class="stringliteral">&#39;            INTO max_id FROM &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table)
+<a name="l00296"></a>00296             . <span class="stringliteral">&#39;        ; &#39;</span>
+<a name="l00297"></a>00297             . <span class="stringliteral">&#39;        SELECT &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_seq) . <span class="stringliteral">&#39;.NEXTVAL &#39;</span>
+<a name="l00298"></a>00298             . <span class="stringliteral">&#39;            INTO cur_seq &#39;</span>
+<a name="l00299"></a>00299             . <span class="stringliteral">&#39;            FROM DUAL &#39;</span>
+<a name="l00300"></a>00300             . <span class="stringliteral">&#39;        ; &#39;</span>
+<a name="l00301"></a>00301             . <span class="stringliteral">&#39;        WHILE cur_seq &lt; max_id &#39;</span>
+<a name="l00302"></a>00302             . <span class="stringliteral">&#39;        LOOP &#39;</span>
+<a name="l00303"></a>00303             . <span class="stringliteral">&#39;            SELECT &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_seq) . <span class="stringliteral">&#39;.NEXTVAL &#39;</span>
+<a name="l00304"></a>00304             . <span class="stringliteral">&#39;               INTO cur_seq &#39;</span>
+<a name="l00305"></a>00305             . <span class="stringliteral">&#39;               FROM DUAL &#39;</span>
+<a name="l00306"></a>00306             . <span class="stringliteral">&#39;            ; &#39;</span>
+<a name="l00307"></a>00307             . <span class="stringliteral">&#39;        END LOOP; &#39;</span>
+<a name="l00308"></a>00308             . <span class="stringliteral">&#39;    END IF; &#39;</span>
+<a name="l00309"></a>00309             . <span class="stringliteral">&#39;END; &#39;</span>
+<a name="l00310"></a>00310         ;
+<a name="l00311"></a>00311         $this-&gt;<a class="code" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a>($_q);
+<a name="l00312"></a>00312     }
+<a name="l00313"></a>00313 
+<a name="l00323"></a><a class="code" href="classOracle.html#a91588562d9c140156845e544cd3dd984">00323</a>     <span class="keyword">private</span> function <a class="code" href="classOracle.html#a91588562d9c140156845e544cd3dd984">setEnumConstraint</a> ($_table, $_field, array $_type)
+<a name="l00324"></a>00324     {
+<a name="l00325"></a>00325         $_cst = $this-&gt;<a class="code" href="classOracle.html#a5b5714be8b33f821a925d1e24ed45193">getOraObjectName</a>($_table, $_field, <a class="code" href="class_8oracle_8php.html#adfaeb793260ef60aafe0dbf5fdc9a671" title="&lt; Suffix for OWL generated triggers">_OWL_ORADRV_suffixConstraint</a>);
 <a name="l00326"></a>00326 
-<a name="l00327"></a><a class="code" href="classOracle.html#a8d88166426bb44950bfe16202b4a72c4">00327</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a8d88166426bb44950bfe16202b4a72c4">dbDropTable</a> (&amp;$_resource, $_table)
-<a name="l00328"></a>00328     {
-<a name="l00329"></a>00329         <span class="keywordflow">return</span> $this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, <span class="stringliteral">&#39;DROP TABLE &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table));
-<a name="l00330"></a>00330     }
-<a name="l00331"></a>00331 
-<a name="l00332"></a><a class="code" href="classOracle.html#abbebb40c407c77879d5e9bcf564d7df7">00332</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#abbebb40c407c77879d5e9bcf564d7df7">dbDropField</a> (&amp;$_resource, $_table, $_field)
-<a name="l00333"></a>00333     {
-<a name="l00334"></a>00334         <span class="keywordflow">return</span> $this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, <span class="stringliteral">&#39;ALTER TABLE &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="stringliteral">&#39; DROP &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_fld));
+<a name="l00327"></a>00327         $_q = <span class="stringliteral">&#39;ALTER TABLE &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="charliteral">&#39; &#39;</span>
+<a name="l00328"></a>00328             . <span class="stringliteral">&#39;    ADD CONSTRAINT &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_cst) . <span class="charliteral">&#39; &#39;</span>
+<a name="l00329"></a>00329             . <span class="stringliteral">&#39;    CHECK (&#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_field) . <span class="stringliteral">&#39; IN (&#39;</span> . implode(<span class="charliteral">&#39;,&#39;</span>, $_type[<span class="stringliteral">&#39;options&#39;</span>]) . <span class="stringliteral">&#39;)) &#39;</span>
+<a name="l00330"></a>00330             . <span class="stringliteral">&#39;    ENABLE&#39;</span>;
+<a name="l00331"></a>00331 <span class="comment">//          . &#39;    CHECK &#39; . $this-&gt;dbQuote($_field) . &#39; IN (&#39; . implode(&#39;,&#39;, $_validValues) . &#39;) &#39;;</span>
+<a name="l00332"></a>00332         ;
+<a name="l00333"></a>00333         $this-&gt;<a class="code" href="classDbDefaults.html#a56d190343880c73c40dcf0a9b93824b1">queryCacheAdd</a>($_q);
+<a name="l00334"></a>00334         unset ($_type[<span class="stringliteral">&#39;options&#39;</span>]);
 <a name="l00335"></a>00335     }
 <a name="l00336"></a>00336 
-<a name="l00337"></a><a class="code" href="classOracle.html#a94772dce83d1354a292aa2b52ab5d730">00337</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a94772dce83d1354a292aa2b52ab5d730">dbAlterField</a> (&amp;$_resource, $_table, $_field, array $_desc)
-<a name="l00338"></a>00338     {
-<a name="l00339"></a>00339         $_qry = <span class="stringliteral">&#39;ALTER TABLE &#39;</span> .$this-&gt;dbQuote($_table)
-<a name="l00340"></a>00340             . <span class="stringliteral">&#39; CHANGE &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_field) . <span class="charliteral">&#39; &#39;</span>
-<a name="l00341"></a>00341             . $this-&gt;<a class="code" href="classOracle.html#a8e931693518cc2ad22ed53cd49932596">dbDefineField</a>($_table, $_field, $_desc);
-<a name="l00342"></a>00342         $_stat = $this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, $_qry);
-<a name="l00343"></a>00343         <span class="keywordflow">if</span> ($_stat) {
-<a name="l00344"></a>00344             $this-&gt;<a class="code" href="classDbDefaults.html#a0817a1c69dcbf9791d985755485eefc7">queryCacheExec</a>($_resource);
-<a name="l00345"></a>00345             $this-&gt;<a class="code" href="classDbDefaults.html#acae6e1f7f0ced6921724165e7a9b7290">queryCacheClear</a>();
-<a name="l00346"></a>00346         }
-<a name="l00347"></a>00347         <span class="keywordflow">return</span> $_stat;
-<a name="l00348"></a>00348     }
-<a name="l00349"></a>00349 
-<a name="l00350"></a><a class="code" href="classOracle.html#a2800da3cbbdbe99987a81e543660ab52">00350</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a2800da3cbbdbe99987a81e543660ab52">dbAddField</a> (&amp;$_resource, $_table, $_field, array $_desc)
-<a name="l00351"></a>00351     {
-<a name="l00352"></a>00352         $_q = $this-&gt;<a class="code" href="classOracle.html#a8e931693518cc2ad22ed53cd49932596">dbDefineField</a>($_table, $_field, $_desc); <span class="comment">// Should be called first; it does the mapType</span>
-<a name="l00353"></a>00353         $_qry = <span class="stringliteral">&#39;ALTER TABLE &#39;</span> .$this-&gt;dbQuote($_table)
-<a name="l00354"></a>00354             . <span class="stringliteral">&#39; ADD &#39;</span> .$this-&gt;dbQuote($_field) . <span class="charliteral">&#39; &#39;</span>
-<a name="l00355"></a>00355             . $_desc[<span class="stringliteral">&#39;type&#39;</span>] . <span class="charliteral">&#39; &#39;</span> . $_q;
-<a name="l00356"></a>00356         $_stat = $this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, $_qry);
-<a name="l00357"></a>00357         <span class="keywordflow">if</span> ($_stat) {
-<a name="l00358"></a>00358             $this-&gt;<a class="code" href="classDbDefaults.html#a0817a1c69dcbf9791d985755485eefc7">queryCacheExec</a>($_resource);
-<a name="l00359"></a>00359             $this-&gt;<a class="code" href="classDbDefaults.html#acae6e1f7f0ced6921724165e7a9b7290">queryCacheClear</a>();
-<a name="l00360"></a>00360         }
-<a name="l00361"></a>00361         <span class="keywordflow">return</span> $_stat;
-<a name="l00362"></a>00362     }
-<a name="l00363"></a>00363 
-<a name="l00364"></a><a class="code" href="classOracle.html#a92ee852520a3330c50b86ddaddced4bb">00364</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a92ee852520a3330c50b86ddaddced4bb">dbTableColumns</a>(&amp;$_dbHandler, $_table)
-<a name="l00365"></a>00365     {
-<a name="l00366"></a>00366         $_descr = array ();
-<a name="l00367"></a>00367         $_data  = array ();
-<a name="l00368"></a>00368         $_qry = <span class="stringliteral">&#39;DESCRIBE &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table);
-<a name="l00369"></a>00369         $_dbHandler-&gt;read (<a class="code" href="group__DBHANDLE__ReturnFlags.html#gacc5178c2a582eafa4ef488ed3394b725" title="Return the read values (default)">DBHANDLE_DATA</a>, $_data, $_qry, __LINE__, __FILE__);
-<a name="l00370"></a>00370         <span class="keywordflow">if</span> ($_dbHandler-&gt;getStatus() === <span class="stringliteral">&#39;DBHANDLE_NODATA&#39;</span>) {
-<a name="l00371"></a>00371             <span class="keywordflow">return</span> null;
-<a name="l00372"></a>00372         }
-<a name="l00373"></a>00373         <span class="comment">// Returns: $_data[row] as array(&#39;Name&#39;, &#39;Null?&#39;, &#39;Type&#39;)</span>
-<a name="l00374"></a>00374         <span class="keywordflow">foreach</span> ($_data as $_record) {
-<a name="l00375"></a>00375             <span class="keywordflow">if</span> (preg_match(<span class="stringliteral">&quot;/(.+)\((\d+,?\d*)\)\s?(unsigned)?\s?(zerofill)?/i&quot;</span>, $_record[<span class="stringliteral">&#39;Type&#39;</span>], $_matches)) {
-<a name="l00376"></a>00376                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;type&#39;</span>] = $_matches[1];
-<a name="l00377"></a>00377                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;length&#39;</span>] = $_matches[2];
-<a name="l00378"></a>00378                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;unsigned&#39;</span>] = (@$_matches[3] == <span class="stringliteral">&#39;unsigned&#39;</span>); <span class="comment">// Not supported!</span>
-<a name="l00379"></a>00379                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;zerofill&#39;</span>] = (@$_matches[4] == <span class="stringliteral">&#39;zerofill&#39;</span>); <span class="comment">// Not supported!</span>
-<a name="l00380"></a>00380             } <span class="keywordflow">else</span> {
-<a name="l00381"></a>00381                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;type&#39;</span>] = $_record[<span class="stringliteral">&#39;Type&#39;</span>];
-<a name="l00382"></a>00382             }
-<a name="l00383"></a>00383             $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;null&#39;</span>]     = ($_record[<span class="stringliteral">&#39;Null?&#39;</span>] === <span class="stringliteral">&#39;&#39;</span>);
-<a name="l00384"></a>00384             $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;auto_inc&#39;</span>] = $this-&gt;<a class="code" href="classOracle.html#a2be5ee4116e6f635d7b50d81f9f342f2">isAutoIncrement</a>($_dbHandler, $_record[<span class="stringliteral">&#39;Name&#39;</span>]);
-<a name="l00385"></a>00385 
-<a name="l00386"></a>00386             <span class="keywordflow">if</span> (($_values = $this-&gt;<a class="code" href="classOracle.html#abc913780bc91aa85515f529cd1f7408e">isEnum</a>($_dbHandler, $_table, $_record[<span class="stringliteral">&#39;Name&#39;</span>])) !== array()) {
-<a name="l00387"></a>00387                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;type&#39;</span>] = <span class="stringliteral">&#39;enum&#39;</span>;
-<a name="l00388"></a>00388                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;options&#39;</span>] = $_values;
-<a name="l00389"></a>00389             }
-<a name="l00390"></a>00390 
-<a name="l00391"></a>00391             <span class="comment">// TODO Default and comment</span>
-<a name="l00392"></a>00392             $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;default&#39;</span>] = ($_record[<span class="stringliteral">&#39;Default&#39;</span>] == <span class="stringliteral">&#39;NULL&#39;</span>) ? <span class="stringliteral">&#39;&#39;</span> : $_record[<span class="stringliteral">&#39;Default&#39;</span>];
-<a name="l00393"></a>00393             $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;comment&#39;</span>] = $_record[<span class="stringliteral">&#39;Comment&#39;</span>];
-<a name="l00394"></a>00394         }
-<a name="l00395"></a>00395         <span class="keywordflow">return</span> $_descr;
-<a name="l00396"></a>00396     }
-<a name="l00397"></a>00397 
-<a name="l00398"></a><a class="code" href="classOracle.html#af4055093a49deb297b2ab2312911a7f4">00398</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#af4055093a49deb297b2ab2312911a7f4">dbTableIndexes</a>(&amp;$_dbHandler, $_table)
-<a name="l00399"></a>00399     {
-<a name="l00400"></a>00400         <span class="comment">// TODO Make Oracle compatible</span>
-<a name="l00401"></a>00401         $_descr = array ();
-<a name="l00402"></a>00402         $_data  = array ();
-<a name="l00403"></a>00403         $_qry = <span class="stringliteral">&#39;SHOW INDEXES FROM &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table);
-<a name="l00404"></a>00404 
-<a name="l00405"></a>00405         $_dbHandler-&gt;read (<a class="code" href="group__DBHANDLE__ReturnFlags.html#gacc5178c2a582eafa4ef488ed3394b725" title="Return the read values (default)">DBHANDLE_DATA</a>, $_data, $_qry, __LINE__, __FILE__);
-<a name="l00406"></a>00406         <span class="keywordflow">if</span> ($_dbHandler-&gt;getStatus() === <span class="stringliteral">&#39;DBHANDLE_NODATA&#39;</span>) {
-<a name="l00407"></a>00407             <span class="keywordflow">return</span> null;
-<a name="l00408"></a>00408         }
-<a name="l00409"></a>00409         <span class="keywordflow">foreach</span> ($_data as $_record) {
-<a name="l00410"></a>00410             $_index[$_record[<span class="stringliteral">&#39;Key_name&#39;</span>]][<span class="stringliteral">&#39;columns&#39;</span>][$_record[<span class="stringliteral">&#39;Seq_in_index&#39;</span>]] = $_record[<span class="stringliteral">&#39;Column_name&#39;</span>];
-<a name="l00411"></a>00411             $_index[$_record[<span class="stringliteral">&#39;Key_name&#39;</span>]][<span class="stringliteral">&#39;unique&#39;</span>] = (!$_record[<span class="stringliteral">&#39;Non_unique&#39;</span>]);
-<a name="l00412"></a>00412             $_index[$_record[<span class="stringliteral">&#39;Key_name&#39;</span>]][<span class="stringliteral">&#39;type&#39;</span>] = $_record[<span class="stringliteral">&#39;Index_type&#39;</span>];
-<a name="l00413"></a>00413             $_index[$_record[<span class="stringliteral">&#39;Key_name&#39;</span>]][<span class="stringliteral">&#39;comment&#39;</span>] = $_record[<span class="stringliteral">&#39;Comment&#39;</span>];
-<a name="l00414"></a>00414         }
-<a name="l00415"></a>00415         <span class="keywordflow">return</span> $_index;
-<a name="l00416"></a>00416     }
-<a name="l00417"></a>00417 
-<a name="l00418"></a><a class="code" href="classOracle.html#af71661159866cdc729164205143d0f06">00418</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#af71661159866cdc729164205143d0f06">dbError</a> (&amp;$_resource, &amp;$_number, &amp;$_text)
-<a name="l00419"></a>00419     {
-<a name="l00420"></a>00420         $_err = oci_error($_resource);
-<a name="l00421"></a>00421         $_number = $_err[<span class="stringliteral">&#39;code&#39;</span>];
-<a name="l00422"></a>00422         $_text = $_err[<span class="stringliteral">&#39;message&#39;</span>];
-<a name="l00423"></a>00423 <span class="comment">//      $_offset = $_err[&#39;offset&#39;];</span>
-<a name="l00424"></a>00424     }
-<a name="l00425"></a>00425 
-<a name="l00426"></a><a class="code" href="classOracle.html#a0b4f126b50cfb8ababb094a2778a2ed6">00426</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a0b4f126b50cfb8ababb094a2778a2ed6">dbConnect</a> (&amp;$_resource, $_server, $_name, $_user, $_password, $_multiple = <span class="keyword">false</span>)
-<a name="l00427"></a>00427     {
-<a name="l00428"></a>00428         $this-&gt;tablespace = $_name;
-<a name="l00429"></a>00429         $_conn = <span class="stringliteral">&quot;(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = $_server)(PORT = 1521)))(CONNECT_DATA=(SID=$_name)))&quot;</span>;
-<a name="l00430"></a>00430         <span class="keywordflow">if</span> (!($_resource = oci_connect ( $_user , $_password, $_conn))) {
-<a name="l00431"></a>00431             <span class="keywordflow">return</span> (<span class="keyword">false</span>);
-<a name="l00432"></a>00432         }
-<a name="l00433"></a>00433         <span class="keywordflow">return</span> (<span class="keyword">true</span>);
-<a name="l00434"></a>00434     }
-<a name="l00435"></a>00435 
-<a name="l00436"></a><a class="code" href="classOracle.html#ae155b3602c3e7c41d40206f959f75a8f">00436</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#ae155b3602c3e7c41d40206f959f75a8f">dbOpen</a> (&amp;$_resource, $_server, $_name, $_user, $_password)
-<a name="l00437"></a>00437     {
-<a name="l00438"></a>00438         $this-&gt;tablespace = $_name;
-<a name="l00439"></a>00439         <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00440"></a>00440     }
-<a name="l00441"></a>00441 
-<a name="l00442"></a><a class="code" href="classOracle.html#af4ca1e7907ea34baf442aa55f9da909d">00442</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#af4ca1e7907ea34baf442aa55f9da909d">dbTransactionCommit</a> (&amp;$_resource, $_name = null, $_new = <span class="keyword">false</span>)
-<a name="l00443"></a>00443     {
-<a name="l00444"></a>00444         <span class="keywordflow">return</span> oci_commit($_resource);
-<a name="l00445"></a>00445     }
-<a name="l00446"></a>00446 
-<a name="l00447"></a><a class="code" href="classOracle.html#a4b28587042e6451e05b11dd0b143bf4e">00447</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a4b28587042e6451e05b11dd0b143bf4e">dbTransactionRollback</a> (&amp;$_resource, $_name = null, $_new = <span class="keyword">false</span>)
-<a name="l00448"></a>00448     {
-<a name="l00449"></a>00449         <span class="keywordflow">return</span> oci_rollback($_resource);
-<a name="l00450"></a>00450     }
-<a name="l00451"></a>00451 
-<a name="l00452"></a><a class="code" href="classOracle.html#a5a065b071962915ca375e10767fac355">00452</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a5a065b071962915ca375e10767fac355">tableLock</a>(&amp;$_resource, $_table, $_type = <a class="code" href="group__DBDRIVER__TableLock.html#ga5c56b5f9057593dbaa31052f7c7fc08f" title="Lock table for read.">DBDRIVER_LOCKTYPE_READ</a>)
-<a name="l00453"></a>00453     {
-<a name="l00454"></a>00454         <span class="keywordflow">switch</span> ($_type) {
-<a name="l00455"></a>00455             <span class="keywordflow">case</span> (<a class="code" href="group__DBDRIVER__TableLock.html#ga5c56b5f9057593dbaa31052f7c7fc08f" title="Lock table for read.">DBDRIVER_LOCKTYPE_READ</a>) :
-<a name="l00456"></a>00456                 $_lockType = <span class="stringliteral">&#39;ROW EXCLUSIVE&#39;</span>;
-<a name="l00457"></a>00457                 <span class="keywordflow">break</span>;
-<a name="l00458"></a>00458             <span class="keywordflow">case</span> (<a class="code" href="group__DBDRIVER__TableLock.html#ga17757dbe21de27501af94e33738598bf" title="Lock table for write.">DBDRIVER_LOCKTYPE_WRITE</a>) :
-<a name="l00459"></a>00459                 $_lockType = <span class="stringliteral">&#39;SHARE ROW EXCLUSIVE&#39;</span>;
-<a name="l00460"></a>00460                 <span class="keywordflow">break</span>;
-<a name="l00461"></a>00461             <span class="keywordflow">default</span>:
-<a name="l00462"></a>00462                 <span class="keywordflow">return</span> (<span class="keyword">false</span>); <span class="comment">// Nothing more implemented (yet?)</span>
-<a name="l00463"></a>00463         }
-<a name="l00464"></a>00464 <span class="comment">// ROW SHARE, ROW EXCLUSIVE, SHARE UPDATE, SHARE, SHARE ROW EXCLUSIVE, or EXCLUSIVE.</span>
-<a name="l00465"></a>00465         <span class="keywordflow">if</span> (!is_array($_table)) {
-<a name="l00466"></a>00466             $_table = array($_table);
-<a name="l00467"></a>00467         }
-<a name="l00468"></a>00468         <span class="keywordflow">foreach</span> ($_table as $_t) {
-<a name="l00469"></a>00469             $_q = <span class="stringliteral">&#39;LOCK TABLE &#39;</span> . $_t . <span class="charliteral">&#39; &#39;</span> . $_lockType;
-<a name="l00470"></a>00470             <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, $_q)) {
-<a name="l00471"></a>00471                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00472"></a>00472             }
+<a name="l00345"></a><a class="code" href="classOracle.html#ab096259a741c646370401ce7cfbe429d">00345</a>     <span class="keyword">private</span> function <a class="code" href="classOracle.html#ab096259a741c646370401ce7cfbe429d">getDefaultValue</a> (&amp;$_dbHandler, $_table, $_column)
+<a name="l00346"></a>00346     {
+<a name="l00347"></a>00347         $_qry = <span class="stringliteral">&#39;SELECT DATA_DEFAULT &#39;</span>
+<a name="l00348"></a>00348                 .<span class="stringliteral">&#39;FROM cols &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="charliteral">&#39; &#39;</span>
+<a name="l00349"></a>00349                 .<span class="stringliteral">&quot;WHERE table_name = &#39;$_table&#39; &quot;</span>
+<a name="l00350"></a>00350                 .<span class="stringliteral">&quot;AND column_name = &#39;$_column&#39;&quot;</span>
+<a name="l00351"></a>00351         ;
+<a name="l00352"></a>00352         $_dbHandler-&gt;read (<a class="code" href="group__DBHANDLE__ReturnFlags.html#ga4752b0fc86256fd568adf6ef216418c7" title="Return the read value as a single field (i.s.o. a 2D array)">DBHANDLE_SINGLEFIELD</a>, $_data, $_qry, __LINE__, __FILE__);
+<a name="l00353"></a>00353         <span class="keywordflow">if</span> ($_dbHandler-&gt;getStatus() === <span class="stringliteral">&#39;DBHANDLE_NODATA&#39;</span>) {
+<a name="l00354"></a>00354             <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>;
+<a name="l00355"></a>00355         }
+<a name="l00356"></a>00356         <span class="keywordflow">return</span> $_data;
+<a name="l00357"></a>00357     }
+<a name="l00358"></a>00358 
+<a name="l00371"></a><a class="code" href="classOracle.html#abd3ddc99711116fcdfee48f2a4645401">00371</a>     <span class="keyword">private</span> function <a class="code" href="classOracle.html#abd3ddc99711116fcdfee48f2a4645401">isAutoIncrement</a>(&amp;$_dbHandler, $_table, $_column)
+<a name="l00372"></a>00372     {
+<a name="l00373"></a>00373         $_seq = $this-&gt;<a class="code" href="classOracle.html#a5b5714be8b33f821a925d1e24ed45193">getOraObjectName</a>($_table, $_column, <a class="code" href="class_8oracle_8php.html#a3e8646bb26d8aed9fdcfb0645856d7d1" title="&lt; Maximum size in characters for names in Oracle">_OWL_ORADRV_suffixSequence</a>);
+<a name="l00374"></a>00374         <span class="keywordflow">if</span> ($this-&gt;uppercaseNames) {
+<a name="l00375"></a>00375             $_seq = strtoupper($_seq);
+<a name="l00376"></a>00376         }
+<a name="l00377"></a>00377         $_qry = <span class="stringliteral">&quot;SELECT COUNT(*) FROM user_sequences WHERE sequence_name = &#39;$_seq&#39;&quot;</span>;
+<a name="l00378"></a>00378         $_dbHandler-&gt;read (<a class="code" href="group__DBHANDLE__ReturnFlags.html#ga4752b0fc86256fd568adf6ef216418c7" title="Return the read value as a single field (i.s.o. a 2D array)">DBHANDLE_SINGLEFIELD</a>, $_data, $_qry, __LINE__, __FILE__);
+<a name="l00379"></a>00379         <span class="keywordflow">return</span> ($_data == 1);
+<a name="l00380"></a>00380     }
+<a name="l00381"></a>00381 
+<a name="l00390"></a><a class="code" href="classOracle.html#abc913780bc91aa85515f529cd1f7408e">00390</a>     <span class="keyword">private</span> function <a class="code" href="classOracle.html#abc913780bc91aa85515f529cd1f7408e">isEnum</a>(&amp;$_dbHandler, $_table, $_column)
+<a name="l00391"></a>00391     {
+<a name="l00392"></a>00392         $_cst = $this-&gt;<a class="code" href="classOracle.html#a5b5714be8b33f821a925d1e24ed45193">getOraObjectName</a>($_table, $_column, <a class="code" href="class_8oracle_8php.html#adfaeb793260ef60aafe0dbf5fdc9a671" title="&lt; Suffix for OWL generated triggers">_OWL_ORADRV_suffixConstraint</a>);
+<a name="l00393"></a>00393 
+<a name="l00394"></a>00394         <span class="keywordflow">if</span> ($this-&gt;uppercaseNames) {
+<a name="l00395"></a>00395             $_table = strtoupper($_table);
+<a name="l00396"></a>00396             $_column = strtoupper($_column);
+<a name="l00397"></a>00397             $_cst = strtoupper($_cst);
+<a name="l00398"></a>00398         }
+<a name="l00399"></a>00399         $_qry = <span class="stringliteral">&quot;SELECT COUNT(*) FROM user_cons_columns WHERE constraint_name = &#39;$_cst&#39;&quot;</span>;
+<a name="l00400"></a>00400 
+<a name="l00401"></a>00401         $_dbHandler-&gt;read (<a class="code" href="group__DBHANDLE__ReturnFlags.html#ga4752b0fc86256fd568adf6ef216418c7" title="Return the read value as a single field (i.s.o. a 2D array)">DBHANDLE_SINGLEFIELD</a>, $_data, $_qry, __LINE__, __FILE__);
+<a name="l00402"></a>00402         <span class="keywordflow">if</span> ($_data == 0) {
+<a name="l00403"></a>00403             <span class="keywordflow">return</span> array();
+<a name="l00404"></a>00404         }
+<a name="l00405"></a>00405         $_qry = <span class="stringliteral">&quot;SELECT search_condition FROM user_constraints WHERE constraint_name = &#39;$_cst&#39;&quot;</span>;
+<a name="l00406"></a>00406         $_dbHandler-&gt;read (<a class="code" href="group__DBHANDLE__ReturnFlags.html#ga4752b0fc86256fd568adf6ef216418c7" title="Return the read value as a single field (i.s.o. a 2D array)">DBHANDLE_SINGLEFIELD</a>, $_data, $_qry, __LINE__, __FILE__);
+<a name="l00407"></a>00407         <span class="keywordflow">if</span> (preg_match(<span class="stringliteral">&#39;/\sIN\s\((.+?)\)/&#39;</span>, $_data, $_matches)) {
+<a name="l00408"></a>00408             $_values = explode(<span class="charliteral">&#39;,&#39;</span>, $_matches[1]);
+<a name="l00409"></a>00409             <span class="keywordflow">for</span> ($_i = 0; $_i &lt; count($_values); $_i++) {
+<a name="l00410"></a>00410                 $_values[$_i] = preg_replace(<span class="stringliteral">&quot;/^\s*&#39;(.*?)&#39;\s*$/&quot;</span>, <span class="stringliteral">&#39;$1&#39;</span>, $_values[$_i]);
+<a name="l00411"></a>00411             }
+<a name="l00412"></a>00412             <span class="keywordflow">return</span> $_values;
+<a name="l00413"></a>00413         }
+<a name="l00414"></a>00414         <span class="keywordflow">return</span> array();
+<a name="l00415"></a>00415     }
+<a name="l00416"></a>00416 
+<a name="l00417"></a><a class="code" href="classOracle.html#a8d88166426bb44950bfe16202b4a72c4">00417</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a8d88166426bb44950bfe16202b4a72c4">dbDropTable</a> (&amp;$_resource, $_table)
+<a name="l00418"></a>00418     {
+<a name="l00419"></a>00419         $this-&gt;<a class="code" href="classOracle.html#a6918ca86afe443a9f95477682afb734f">dropAutoIncrementSequence</a> ($_resource, $_table);
+<a name="l00420"></a>00420         <span class="keywordflow">return</span> $this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, <span class="stringliteral">&#39;DROP TABLE &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table));
+<a name="l00421"></a>00421     }
+<a name="l00422"></a>00422 
+<a name="l00433"></a><a class="code" href="classOracle.html#a6918ca86afe443a9f95477682afb734f">00433</a>     <span class="keyword">private</span> function <a class="code" href="classOracle.html#a6918ca86afe443a9f95477682afb734f">dropAutoIncrementSequence</a> (&amp;$_resource, $_table)
+<a name="l00434"></a>00434     {
+<a name="l00435"></a>00435         $_qry = <span class="stringliteral">&#39;SELECT column_name &quot;Name&quot; &#39;</span>
+<a name="l00436"></a>00436                 .<span class="stringliteral">&#39;FROM user_tab_columns &#39;</span>
+<a name="l00437"></a>00437                 .<span class="stringliteral">&quot;WHERE table_name=&#39;$_table&#39;&quot;</span>;
+<a name="l00438"></a>00438         <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classOracle.html#ae6d88fa762cd297d6d372dc36257e3ac">dbRead</a>($_data, $_resource, $_qry)) {
+<a name="l00439"></a>00439             <span class="keywordflow">while</span> ($_fld = $this-&gt;<a class="code" href="classOracle.html#a38d4f6c016eddfadfe88c490c9d48800">dbFetchNextRecord</a>($_data)) {
+<a name="l00440"></a>00440                 $_seq = $this-&gt;<a class="code" href="classOracle.html#a5b5714be8b33f821a925d1e24ed45193">getOraObjectName</a>($_table, $_fld[<span class="stringliteral">&#39;Name&#39;</span>], <a class="code" href="class_8oracle_8php.html#a3e8646bb26d8aed9fdcfb0645856d7d1" title="&lt; Maximum size in characters for names in Oracle">_OWL_ORADRV_suffixSequence</a>);
+<a name="l00441"></a>00441                 <span class="keywordflow">if</span> ($this-&gt;uppercaseNames) {
+<a name="l00442"></a>00442                     $_seq = strtoupper($_seq);
+<a name="l00443"></a>00443                 }
+<a name="l00444"></a>00444                 $_qry = <span class="stringliteral">&quot;SELECT COUNT(*) AS C FROM user_sequences WHERE sequence_name = &#39;$_seq&#39;&quot;</span>;
+<a name="l00445"></a>00445                 $_cnt = oci_parse($_resource, $_qry);
+<a name="l00446"></a>00446                 oci_execute($_cnt);
+<a name="l00447"></a>00447                 $_c = $this-&gt;<a class="code" href="classOracle.html#a38d4f6c016eddfadfe88c490c9d48800">dbFetchNextRecord</a>($_cnt);
+<a name="l00448"></a>00448                 $this-&gt;<a class="code" href="classOracle.html#a20607648430ff35b66d3cfc4e1e315e4">dbClear</a>($_cnt);
+<a name="l00449"></a>00449                 <span class="keywordflow">if</span> ($_c[<span class="charliteral">&#39;C&#39;</span>] == 1) {
+<a name="l00450"></a>00450                     $this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, <span class="stringliteral">&#39;DROP SEQUENCE &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_seq));
+<a name="l00451"></a>00451                     $this-&gt;<a class="code" href="classOracle.html#a20607648430ff35b66d3cfc4e1e315e4">dbClear</a>($_data);
+<a name="l00452"></a>00452                     <span class="keywordflow">return</span>; <span class="comment">//There can be only one</span>
+<a name="l00453"></a>00453                 }
+<a name="l00454"></a>00454             }
+<a name="l00455"></a>00455         }
+<a name="l00456"></a>00456         $this-&gt;<a class="code" href="classOracle.html#a20607648430ff35b66d3cfc4e1e315e4">dbClear</a>($_data);
+<a name="l00457"></a>00457     }
+<a name="l00458"></a>00458 
+<a name="l00459"></a><a class="code" href="classOracle.html#abbebb40c407c77879d5e9bcf564d7df7">00459</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#abbebb40c407c77879d5e9bcf564d7df7">dbDropField</a> (&amp;$_resource, $_table, $_field)
+<a name="l00460"></a>00460     {
+<a name="l00461"></a>00461         <span class="keywordflow">return</span> $this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, <span class="stringliteral">&#39;ALTER TABLE &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="stringliteral">&#39; DROP &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_fld));
+<a name="l00462"></a>00462     }
+<a name="l00463"></a>00463 
+<a name="l00464"></a><a class="code" href="classOracle.html#a94772dce83d1354a292aa2b52ab5d730">00464</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a94772dce83d1354a292aa2b52ab5d730">dbAlterField</a> (&amp;$_resource, $_table, $_field, array $_desc)
+<a name="l00465"></a>00465     {
+<a name="l00466"></a>00466         $_qry = <span class="stringliteral">&#39;ALTER TABLE &#39;</span> .$this-&gt;dbQuote($_table)
+<a name="l00467"></a>00467             . <span class="stringliteral">&#39; MODIFY &#39;</span> <span class="comment">//. $this-&gt;dbQuote($_field) . &#39; &#39;</span>
+<a name="l00468"></a>00468             . $this-&gt;<a class="code" href="classOracle.html#a8e931693518cc2ad22ed53cd49932596">dbDefineField</a>($_table, $_field, $_desc);
+<a name="l00469"></a>00469         $_stat = $this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, $_qry);
+<a name="l00470"></a>00470         <span class="keywordflow">if</span> ($_stat) {
+<a name="l00471"></a>00471             $_stat = $this-&gt;<a class="code" href="classDbDefaults.html#a3b6cb171d4922256892b3391efbb5c3e">queryCacheExec</a>($_resource);
+<a name="l00472"></a>00472             $this-&gt;<a class="code" href="classDbDefaults.html#acae6e1f7f0ced6921724165e7a9b7290">queryCacheClear</a>();
 <a name="l00473"></a>00473         }
-<a name="l00474"></a>00474         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00474"></a>00474         <span class="keywordflow">return</span> $_stat;
 <a name="l00475"></a>00475     }
 <a name="l00476"></a>00476 
-<a name="l00477"></a><a class="code" href="classOracle.html#ab586f620767fb6bec93327f5965c6114">00477</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#ab586f620767fb6bec93327f5965c6114">tableUnlock</a>(&amp;$_resource, $_table = array())
+<a name="l00477"></a><a class="code" href="classOracle.html#a2800da3cbbdbe99987a81e543660ab52">00477</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a2800da3cbbdbe99987a81e543660ab52">dbAddField</a> (&amp;$_resource, $_table, $_field, array $_desc)
 <a name="l00478"></a>00478     {
-<a name="l00479"></a>00479         <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00480"></a>00480     }
-<a name="l00481"></a>00481 
-<a name="l00482"></a>00482 
-<a name="l00483"></a><a class="code" href="classOracle.html#a45dd64f96e2b765c8de618812c371142">00483</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a45dd64f96e2b765c8de618812c371142">emptyTable</a> (&amp;$_resource, $_table)
-<a name="l00484"></a>00484     {
-<a name="l00485"></a>00485         <span class="keywordflow">return</span> ($this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, <span class="stringliteral">&#39;TRUNCATE &#39;</span> . $_table));
-<a name="l00486"></a>00486     }
-<a name="l00487"></a>00487 
-<a name="l00488"></a><a class="code" href="classOracle.html#a7ca6440a70108e32a3e4df6beebabe0e">00488</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a7ca6440a70108e32a3e4df6beebabe0e">dbTableList</a> (&amp;$_resource, $_pattern, $_views = <span class="keyword">false</span>)
-<a name="l00489"></a>00489     {
-<a name="l00490"></a>00490         $_data = null;
-<a name="l00491"></a>00491 
-<a name="l00492"></a>00492         <span class="keywordflow">if</span> ($this-&gt;uppercaseNames) {
-<a name="l00493"></a>00493             $_pattern = strtoupper($_pattern);
-<a name="l00494"></a>00494         }
-<a name="l00495"></a>00495         $_query = <span class="stringliteral">&#39;SELECT * &#39;</span>
-<a name="l00496"></a>00496                 . <span class="stringliteral">&#39;FROM USER_OBJECTS &#39;</span>
-<a name="l00497"></a>00497         ;
-<a name="l00498"></a>00498         <span class="keywordflow">if</span> ($_views) {
-<a name="l00499"></a>00499             $_query .= <span class="stringliteral">&quot;AND OBJECT_TYPE IN (&#39;TABLE&#39;, &#39;VIEW&#39;) &quot;</span>;
-<a name="l00500"></a>00500         } <span class="keywordflow">else</span> {
-<a name="l00501"></a>00501             $_query .= <span class="stringliteral">&quot;AND OBJECT_TYPE = &#39;TABLE&#39; &quot;</span>;
-<a name="l00502"></a>00502         }
-<a name="l00503"></a>00503         $_query .= <span class="stringliteral">&quot;AND OBJECT_NAME LIKE &#39;$_pattern&#39; &quot;</span>;
-<a name="l00504"></a>00504 
-<a name="l00505"></a>00505         <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classOracle.html#ae6d88fa762cd297d6d372dc36257e3ac">dbRead</a>($_data, $_resource, $_query)) {
-<a name="l00506"></a>00506             <span class="keywordflow">return</span> array();
-<a name="l00507"></a>00507         }
-<a name="l00508"></a>00508         $_tables = array();
-<a name="l00509"></a>00509         <span class="keywordflow">while</span> ($_r = $this-&gt;<a class="code" href="classOracle.html#a38d4f6c016eddfadfe88c490c9d48800">dbFetchNextRecord</a>($_data)) {
-<a name="l00510"></a>00510             $_tables[$_r[0]] = null; <span class="comment">// \todo Columns, attributes etc, see SchemeHandler</span>
-<a name="l00511"></a>00511         }
-<a name="l00512"></a>00512         $this-&gt;<a class="code" href="classOracle.html#a20607648430ff35b66d3cfc4e1e315e4">dbClear</a>($_data);
-<a name="l00513"></a>00513         <span class="keywordflow">return</span> ($_tables);
-<a name="l00514"></a>00514     }
-<a name="l00515"></a>00515 
-<a name="l00516"></a><a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">00516</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a> (&amp;$_resource, $_statement)
-<a name="l00517"></a>00517     {
-<a name="l00518"></a>00518         $_cmd = oci_parse($_resource, $_statement);
-<a name="l00519"></a>00519         <span class="keywordflow">return</span> oci_execute($_cmd);
-<a name="l00520"></a>00520     }
-<a name="l00521"></a>00521 
-<a name="l00522"></a><a class="code" href="classOracle.html#ae6d88fa762cd297d6d372dc36257e3ac">00522</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#ae6d88fa762cd297d6d372dc36257e3ac">dbRead</a> (&amp;$_data, &amp;$_resource, $_query)
-<a name="l00523"></a>00523     {
-<a name="l00524"></a>00524         $_data = oci_parse($_resource, $_query);
-<a name="l00525"></a>00525         <span class="keywordflow">return</span> oci_execute($_data);
-<a name="l00526"></a>00526     }
-<a name="l00527"></a>00527 
-<a name="l00528"></a><a class="code" href="classOracle.html#a70c2dcc12160ed465c8018ea87398cf4">00528</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a70c2dcc12160ed465c8018ea87398cf4">dbWrite</a> (&amp;$_resource, $_query)
-<a name="l00529"></a>00529     {
-<a name="l00530"></a>00530         $_statement = oci_parse($_resource, $_query);
-<a name="l00531"></a>00531         <span class="keywordflow">if</span> (!oci_execute($_statement)) {
-<a name="l00532"></a>00532             <span class="keywordflow">return</span> (-1);
-<a name="l00533"></a>00533         }
-<a name="l00534"></a>00534         <span class="keywordflow">return</span> (oci_num_rows($_statement));
-<a name="l00535"></a>00535     }
-<a name="l00536"></a>00536 
-<a name="l00537"></a><a class="code" href="classOracle.html#a94f735e71cb88ab2a7178e739f989b3b">00537</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a94f735e71cb88ab2a7178e739f989b3b">dbInsertId</a> (&amp;$_resource, $_table, $_field)
-<a name="l00538"></a>00538     {
-<a name="l00539"></a>00539         $_data = null;
-<a name="l00540"></a>00540         $_q = <span class="stringliteral">&#39;SELECT &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#a2f125c1875530f1055845e36bd4799d3">functionMax</a>($_field) . <span class="stringliteral">&#39; AS id &#39;</span>
-<a name="l00541"></a>00541             . <span class="stringliteral">&#39;FROM &#39;</span> . OWLDB_QUOTES . $_table . OWLDB_QUOTES . <span class="charliteral">&#39; &#39;</span>;
-<a name="l00542"></a>00542         <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classOracle.html#ae6d88fa762cd297d6d372dc36257e3ac">dbRead</a>($_data, $_resource, $_qry)) {
-<a name="l00543"></a>00543             <span class="keywordflow">return</span> -1;
-<a name="l00544"></a>00544         }
-<a name="l00545"></a>00545         $_r = $this-&gt;<a class="code" href="classOracle.html#a38d4f6c016eddfadfe88c490c9d48800">dbFetchNextRecord</a>($_data);
-<a name="l00546"></a>00546         <span class="keywordflow">return</span> $_r[0];
-<a name="l00547"></a>00547     }
-<a name="l00548"></a>00548 
-<a name="l00549"></a><a class="code" href="classOracle.html#a8da17edc19ebc4351cef03e99e7113f5">00549</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a8da17edc19ebc4351cef03e99e7113f5">dbRowCount</a> (&amp;$_data)
-<a name="l00550"></a>00550     {
-<a name="l00551"></a>00551         <span class="keywordflow">return</span> oci_num_rows ($_data);
-<a name="l00552"></a>00552     }
-<a name="l00553"></a>00553 
-<a name="l00554"></a><a class="code" href="classOracle.html#a38d4f6c016eddfadfe88c490c9d48800">00554</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a38d4f6c016eddfadfe88c490c9d48800">dbFetchNextRecord</a> (&amp;$_data)
-<a name="l00555"></a>00555     {
-<a name="l00556"></a>00556         <span class="keywordflow">return</span> (oci_fetch_assoc ($_data));
-<a name="l00557"></a>00557     }
-<a name="l00558"></a>00558 
-<a name="l00559"></a><a class="code" href="classOracle.html#a20607648430ff35b66d3cfc4e1e315e4">00559</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a20607648430ff35b66d3cfc4e1e315e4">dbClear</a> (&amp;$_data)
-<a name="l00560"></a>00560     {
-<a name="l00561"></a>00561         oci_free_statement ($_data);
-<a name="l00562"></a>00562     }
-<a name="l00563"></a>00563 
-<a name="l00564"></a><a class="code" href="classOracle.html#a39c79959f8c750638a103a6799fd2fdb">00564</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a39c79959f8c750638a103a6799fd2fdb">dbClose</a> (&amp;$_resource)
-<a name="l00565"></a>00565     {
-<a name="l00566"></a>00566         <span class="keywordflow">return</span> (oci_close ($_resource));
-<a name="l00567"></a>00567     }
-<a name="l00568"></a>00568 
-<a name="l00569"></a><a class="code" href="classOracle.html#aa6192ea7d8c581bd12bfd9f6abc4aa16">00569</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#aa6192ea7d8c581bd12bfd9f6abc4aa16">dbEscapeString</a> ($_string)
-<a name="l00570"></a>00570     {
-<a name="l00571"></a>00571         <span class="keywordflow">return</span> (addslashes($_string));
-<a name="l00572"></a>00572     }
-<a name="l00573"></a>00573 
-<a name="l00574"></a><a class="code" href="classOracle.html#a70193ef9d60499297f50124b6d92dadb">00574</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a70193ef9d60499297f50124b6d92dadb">functionIf</a>($_field, array $_arguments = array())
-<a name="l00575"></a>00575     {
-<a name="l00576"></a>00576         <span class="keywordflow">return</span> <span class="stringliteral">&#39;IF(&#39;</span> . $_field . <span class="charliteral">&#39; &#39;</span> . $_arguments[0] . <span class="charliteral">&#39; &#39;</span> . $_arguments[1]
-<a name="l00577"></a>00577                 . <span class="stringliteral">&#39;, &#39;</span> . $_arguments[2] . <span class="stringliteral">&#39;, &#39;</span> <span class="comment">// then</span>
-<a name="l00578"></a>00578                 . <span class="stringliteral">&#39;, &#39;</span> . $_arguments[3] . <span class="charliteral">&#39;)&#39;</span>; <span class="comment">// else</span>
-<a name="l00579"></a>00579     }
-<a name="l00580"></a>00580 
-<a name="l00581"></a><a class="code" href="classOracle.html#a65427bd6446ae039eefb1dc6762fea26">00581</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a65427bd6446ae039eefb1dc6762fea26">functionIfnull</a>($_field, array $_arguments = array())
-<a name="l00582"></a>00582     {
-<a name="l00583"></a>00583         <span class="keywordflow">return</span> <span class="stringliteral">&#39;NVL(&#39;</span> . $_field . <span class="stringliteral">&#39;, &#39;</span> . $_arguments[0] . <span class="charliteral">&#39;)&#39;</span>;
-<a name="l00584"></a>00584     }
-<a name="l00585"></a>00585 
-<a name="l00586"></a><a class="code" href="classOracle.html#aeea528c9fd8004d8da45405e5c2b815e">00586</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#aeea528c9fd8004d8da45405e5c2b815e">functionConcat</a>($_field, array $_arguments = array())
-<a name="l00587"></a>00587     {
-<a name="l00588"></a>00588         <span class="keywordflow">return</span> <span class="stringliteral">&#39;CONCAT(&#39;</span> . $_field . <span class="stringliteral">&#39;, &#39;</span> . $_arguments[0] . <span class="charliteral">&#39;)&#39;</span>;
-<a name="l00589"></a>00589     }
-<a name="l00590"></a>00590 }
+<a name="l00479"></a>00479         $_qry = <span class="stringliteral">&#39;ALTER TABLE &#39;</span> .$this-&gt;dbQuote($_table)
+<a name="l00480"></a>00480             . <span class="stringliteral">&#39; ADD &#39;</span> . $this-&gt;<a class="code" href="classOracle.html#a8e931693518cc2ad22ed53cd49932596">dbDefineField</a>($_table, $_field, $_desc);
+<a name="l00481"></a>00481         $_stat = $this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, $_qry);
+<a name="l00482"></a>00482         <span class="keywordflow">if</span> ($_stat) {
+<a name="l00483"></a>00483             $_stat = $this-&gt;<a class="code" href="classDbDefaults.html#a3b6cb171d4922256892b3391efbb5c3e">queryCacheExec</a>($_resource);
+<a name="l00484"></a>00484             $this-&gt;<a class="code" href="classDbDefaults.html#acae6e1f7f0ced6921724165e7a9b7290">queryCacheClear</a>();
+<a name="l00485"></a>00485         }
+<a name="l00486"></a>00486         <span class="keywordflow">return</span> $_stat;
+<a name="l00487"></a>00487     }
+<a name="l00488"></a>00488 
+<a name="l00489"></a><a class="code" href="classOracle.html#a92ee852520a3330c50b86ddaddced4bb">00489</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a92ee852520a3330c50b86ddaddced4bb">dbTableColumns</a>(&amp;$_dbHandler, $_table)
+<a name="l00490"></a>00490     {
+<a name="l00491"></a>00491         $_descr = array ();
+<a name="l00492"></a>00492         $_data  = array ();
+<a name="l00493"></a>00493 <span class="comment">//      $_qry = &#39;DESCRIBE &#39; . $this-&gt;dbQuote($_table);</span>
+<a name="l00494"></a>00494         <span class="comment">// DESC is not available outside SQL*Plus emulate it</span>
+<a name="l00495"></a>00495         $_qry = <span class="stringliteral">&#39;SELECT column_name &quot;Name&quot; &#39;</span>
+<a name="l00496"></a>00496                 .<span class="stringliteral">&#39;,nullable &quot;Null?&quot; &#39;</span>
+<a name="l00497"></a>00497                 .<span class="stringliteral">&#39;,CONCAT(CONCAT(CONCAT(data_type,\&#39;(\&#39;),data_length),\&#39;)\&#39;) &quot;Type&quot; &#39;</span>
+<a name="l00498"></a>00498                 .<span class="stringliteral">&#39;FROM user_tab_columns &#39;</span>
+<a name="l00499"></a>00499                 .<span class="stringliteral">&quot;WHERE table_name=&#39;$_table&#39;&quot;</span>;
+<a name="l00500"></a>00500 <span class="comment">//TODO user_tab_columns.data_precision = length (for NUMBER)</span>
+<a name="l00501"></a>00501         $_dbHandler-&gt;read (<a class="code" href="group__DBHANDLE__ReturnFlags.html#gacc5178c2a582eafa4ef488ed3394b725" title="Return the read values (default)">DBHANDLE_DATA</a>, $_data, $_qry, __LINE__, __FILE__);
+<a name="l00502"></a>00502         <span class="keywordflow">if</span> ($_dbHandler-&gt;getStatus() === <span class="stringliteral">&#39;DBHANDLE_NODATA&#39;</span>) {
+<a name="l00503"></a>00503             <span class="keywordflow">return</span> null;
+<a name="l00504"></a>00504         }
+<a name="l00505"></a>00505         <span class="comment">// Returns: $_data[row] as array(&#39;Name&#39;, &#39;Null?&#39;, &#39;Type&#39;)</span>
+<a name="l00506"></a>00506         <span class="keywordflow">foreach</span> ($_data as $_record) {
+<a name="l00507"></a>00507             <span class="keywordflow">if</span> (preg_match(<span class="stringliteral">&quot;/(.+)\((\d+,?\d*)\)\s?(unsigned)?\s?(zerofill)?/i&quot;</span>, $_record[<span class="stringliteral">&#39;Type&#39;</span>], $_matches)) {
+<a name="l00508"></a>00508                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;type&#39;</span>] = $_matches[1];
+<a name="l00509"></a>00509                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;length&#39;</span>] = $_matches[2];
+<a name="l00510"></a>00510                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;unsigned&#39;</span>] = (@$_matches[3] == <span class="stringliteral">&#39;unsigned&#39;</span>); <span class="comment">// Not supported!</span>
+<a name="l00511"></a>00511                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;zerofill&#39;</span>] = (@$_matches[4] == <span class="stringliteral">&#39;zerofill&#39;</span>); <span class="comment">// Not supported!</span>
+<a name="l00512"></a>00512             } <span class="keywordflow">else</span> {
+<a name="l00513"></a>00513                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;type&#39;</span>] = $_record[<span class="stringliteral">&#39;Type&#39;</span>];
+<a name="l00514"></a>00514             }
+<a name="l00515"></a>00515             $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;null&#39;</span>]     = ($_record[<span class="stringliteral">&#39;Null?&#39;</span>] === <span class="stringliteral">&#39;&#39;</span>);
+<a name="l00516"></a>00516             $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;auto_inc&#39;</span>] = $this-&gt;<a class="code" href="classOracle.html#abd3ddc99711116fcdfee48f2a4645401">isAutoIncrement</a>($_dbHandler, $_table, $_record[<span class="stringliteral">&#39;Name&#39;</span>]);
+<a name="l00517"></a>00517 
+<a name="l00518"></a>00518             <span class="keywordflow">if</span> (($_values = $this-&gt;<a class="code" href="classOracle.html#abc913780bc91aa85515f529cd1f7408e">isEnum</a>($_dbHandler, $_table, $_record[<span class="stringliteral">&#39;Name&#39;</span>])) !== array()) {
+<a name="l00519"></a>00519                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;type&#39;</span>] = <span class="stringliteral">&#39;enum&#39;</span>;
+<a name="l00520"></a>00520                 $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;options&#39;</span>] = $_values;
+<a name="l00521"></a>00521             }
+<a name="l00522"></a>00522 
+<a name="l00523"></a>00523             $_descr[$_record[<span class="stringliteral">&#39;Name&#39;</span>]][<span class="stringliteral">&#39;default&#39;</span>] = $this-&gt;<a class="code" href="classOracle.html#ab096259a741c646370401ce7cfbe429d">getDefaultValue</a>($_dbHandler, $_table, $_record[<span class="stringliteral">&#39;Name&#39;</span>]);
+<a name="l00524"></a>00524 
+<a name="l00525"></a>00525             <span class="comment">// TODO Comments</span>
+<a name="l00526"></a>00526 <span class="comment">//          $_descr[$_record[&#39;Name&#39;]][&#39;comment&#39;] = $_record[&#39;Comment&#39;];</span>
+<a name="l00527"></a>00527         }
+<a name="l00528"></a>00528         <span class="keywordflow">return</span> $_descr;
+<a name="l00529"></a>00529     }
+<a name="l00530"></a>00530 
+<a name="l00531"></a><a class="code" href="classOracle.html#af4055093a49deb297b2ab2312911a7f4">00531</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#af4055093a49deb297b2ab2312911a7f4">dbTableIndexes</a>(&amp;$_dbHandler, $_table)
+<a name="l00532"></a>00532     {
+<a name="l00533"></a>00533         $_data  = array ();
+<a name="l00534"></a>00534         $_index = array ();
+<a name="l00535"></a>00535         $_qry = <span class="stringliteral">&#39;SELECT user_indexes.index_name          AS &quot;nam&quot; &#39;</span>
+<a name="l00536"></a>00536                 .<span class="stringliteral">&#39;,     user_indexes.uniqueness          AS &quot;unq&quot; &#39;</span>
+<a name="l00537"></a>00537                 .<span class="stringliteral">&#39;,     user_indexes.index_type          AS &quot;typ&quot; &#39;</span>
+<a name="l00538"></a>00538                 .<span class="stringliteral">&#39;,     user_ind_columns.column_position AS &quot;pos&quot; &#39;</span>
+<a name="l00539"></a>00539                 .<span class="stringliteral">&#39;,     user_ind_columns.column_name     AS &quot;col&quot; &#39;</span>
+<a name="l00540"></a>00540                 .<span class="stringliteral">&#39;FROM  user_indexes &#39;</span>
+<a name="l00541"></a>00541                 .<span class="stringliteral">&#39;,     user_ind_columns &#39;</span>
+<a name="l00542"></a>00542                 .<span class="stringliteral">&quot;WHERE user_indexes.table_name = &#39;$_table&#39; &quot;</span>
+<a name="l00543"></a>00543                 .<span class="stringliteral">&quot;AND user_indexes.index_name = user_ind_columns.index_name &quot;</span>
+<a name="l00544"></a>00544                 .<span class="stringliteral">&#39;ORDER BY user_indexes.index_name &#39;</span>
+<a name="l00545"></a>00545                 .<span class="stringliteral">&#39;,        user_ind_columns.column_position &#39;</span>
+<a name="l00546"></a>00546         ;
+<a name="l00547"></a>00547 
+<a name="l00548"></a>00548         $_dbHandler-&gt;read (<a class="code" href="group__DBHANDLE__ReturnFlags.html#gacc5178c2a582eafa4ef488ed3394b725" title="Return the read values (default)">DBHANDLE_DATA</a>, $_data, $_qry, __LINE__, __FILE__);
+<a name="l00549"></a>00549         <span class="keywordflow">if</span> ($_dbHandler-&gt;getStatus() === <span class="stringliteral">&#39;DBHANDLE_NODATA&#39;</span>) {
+<a name="l00550"></a>00550             <span class="keywordflow">return</span> null;
+<a name="l00551"></a>00551         }
+<a name="l00552"></a>00552         <span class="keywordflow">foreach</span> ($_data as $_record) {
+<a name="l00553"></a>00553             <span class="keywordflow">if</span> (preg_match(<span class="stringliteral">&#39;/^SYS/ &#39;</span>, $_record[<span class="stringliteral">&#39;nam&#39;</span>])) {
+<a name="l00554"></a>00554                 $_record[<span class="stringliteral">&#39;nam&#39;</span>] = <span class="stringliteral">&#39;PRIMARY&#39;</span>;
+<a name="l00555"></a>00555             }
+<a name="l00556"></a>00556             <span class="keywordflow">if</span> (array_key_exists($_record[<span class="stringliteral">&#39;nam&#39;</span>], $_index)) {
+<a name="l00557"></a>00557                 $_index[$_record[<span class="stringliteral">&#39;nam&#39;</span>]][<span class="stringliteral">&#39;columns&#39;</span>][] = $_record[<span class="stringliteral">&#39;col&#39;</span>];
+<a name="l00558"></a>00558             } <span class="keywordflow">else</span> {
+<a name="l00559"></a>00559                 $_index[$_record[<span class="stringliteral">&#39;nam&#39;</span>]] = array(
+<a name="l00560"></a>00560                       <span class="stringliteral">&#39;columns&#39;</span> =&gt; array($_record[<span class="stringliteral">&#39;col&#39;</span>])
+<a name="l00561"></a>00561                     , <span class="stringliteral">&#39;unique&#39;</span>  =&gt; ($_record[<span class="stringliteral">&#39;unq&#39;</span>] == <span class="stringliteral">&#39;UNIQUE&#39;</span>)
+<a name="l00562"></a>00562                     , <span class="stringliteral">&#39;type&#39;</span>    =&gt; $_record[<span class="stringliteral">&#39;typ&#39;</span>]
+<a name="l00563"></a>00563                     , <span class="stringliteral">&#39;comment&#39;</span> =&gt; <span class="stringliteral">&#39;&#39;</span>
+<a name="l00564"></a>00564                 );
+<a name="l00565"></a>00565             }
+<a name="l00566"></a>00566         }
+<a name="l00567"></a>00567         <span class="keywordflow">return</span> $_index;
+<a name="l00568"></a>00568     }
+<a name="l00569"></a>00569 
+<a name="l00570"></a><a class="code" href="classOracle.html#af71661159866cdc729164205143d0f06">00570</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#af71661159866cdc729164205143d0f06">dbError</a> (&amp;$_resource, &amp;$_number, &amp;$_text)
+<a name="l00571"></a>00571     {
+<a name="l00572"></a>00572         <span class="keywordflow">if</span> (!$this-&gt;lastError) {
+<a name="l00573"></a>00573             $_number = 0;
+<a name="l00574"></a>00574             $_text = <span class="stringliteral">&#39;Unknown error - please check the logs&#39;</span>;
+<a name="l00575"></a>00575         } <span class="keywordflow">else</span> {
+<a name="l00576"></a>00576             $_number = $this-&gt;lastError[<span class="stringliteral">&#39;code&#39;</span>];
+<a name="l00577"></a>00577             $_text = $this-&gt;lastError[<span class="stringliteral">&#39;message&#39;</span>];
+<a name="l00578"></a>00578 <span class="comment">//          $_offset = $this-&gt;lastError[&#39;offset&#39;];</span>
+<a name="l00579"></a>00579             $this-&gt;lastError = null;
+<a name="l00580"></a>00580         }
+<a name="l00581"></a>00581     }
+<a name="l00582"></a>00582 
+<a name="l00589"></a><a class="code" href="classOracle.html#a8b6fed7d27fd2b73015c812d94e44190">00589</a>     <span class="keyword">private</span> function <a class="code" href="classOracle.html#a8b6fed7d27fd2b73015c812d94e44190">setError</a>(&amp;$_resource)
+<a name="l00590"></a>00590     {
+<a name="l00591"></a>00591         $_e = oci_error($_resource);
+<a name="l00592"></a>00592         <span class="keywordflow">if</span> (is_array($_e)) {
+<a name="l00593"></a>00593             $this-&gt;lastError = $_e;
+<a name="l00594"></a>00594         }
+<a name="l00595"></a>00595     }
+<a name="l00596"></a>00596 
+<a name="l00597"></a><a class="code" href="classOracle.html#a0b4f126b50cfb8ababb094a2778a2ed6">00597</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a0b4f126b50cfb8ababb094a2778a2ed6">dbConnect</a> (&amp;$_resource, $_server, $_name, $_user, $_password, $_multiple = <span class="keyword">false</span>)
+<a name="l00598"></a>00598     {
+<a name="l00599"></a>00599         $this-&gt;tablespace = $_name;
+<a name="l00600"></a>00600         $this-&gt;sid =  <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;ora_sid&#39;</span>);
+<a name="l00601"></a>00601 <span class="comment">/*</span>
+<a name="l00602"></a>00602 <span class="comment">        $_conn = &#39;(DESCRIPTION = &#39;</span>
+<a name="l00603"></a>00603 <span class="comment">                    .&#39;(ADDRESS_LIST = &#39;</span>
+<a name="l00604"></a>00604 <span class="comment">                        .&#39;(ADDRESS = &#39;</span>
+<a name="l00605"></a>00605 <span class="comment">                            .&#39;(PROTOCOL = TCP)&#39;</span>
+<a name="l00606"></a>00606 <span class="comment">                            .&quot;(HOST = $_server)&quot;</span>
+<a name="l00607"></a>00607 <span class="comment">                            .&#39;(PORT = 1521)&#39;</span>
+<a name="l00608"></a>00608 <span class="comment">                        .&#39;)&#39;</span>
+<a name="l00609"></a>00609 <span class="comment">                    .&#39;(CONNECT_DATA = &#39;</span>
+<a name="l00610"></a>00610 <span class="comment">                        .&quot;(SID = $_name)&quot;</span>
+<a name="l00611"></a>00611 <span class="comment">                    .&#39;)&#39;</span>
+<a name="l00612"></a>00612 <span class="comment">                . &#39;)&#39;</span>
+<a name="l00613"></a>00613 <span class="comment">            ;</span>
+<a name="l00614"></a>00614 <span class="comment">*/</span>
+<a name="l00615"></a>00615 <span class="comment">//      $_conn = &quot;$_server/$this-&gt;sid&quot;;</span>
+<a name="l00616"></a>00616         <span class="keywordflow">if</span> (!($_resource = oci_connect ( $_user , $_password, $this-&gt;sid))) {
+<a name="l00617"></a>00617             <span class="keywordflow">return</span> (<span class="keyword">false</span>);
+<a name="l00618"></a>00618         }
+<a name="l00619"></a>00619         <span class="keywordflow">return</span> (<span class="keyword">true</span>);
+<a name="l00620"></a>00620     }
+<a name="l00621"></a>00621 
+<a name="l00622"></a><a class="code" href="classOracle.html#ae155b3602c3e7c41d40206f959f75a8f">00622</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#ae155b3602c3e7c41d40206f959f75a8f">dbOpen</a> (&amp;$_resource, $_server, $_name, $_user, $_password)
+<a name="l00623"></a>00623     {
+<a name="l00624"></a>00624         $this-&gt;tablespace = $_name;
+<a name="l00625"></a>00625         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00626"></a>00626     }
+<a name="l00627"></a>00627 
+<a name="l00628"></a><a class="code" href="classOracle.html#af4ca1e7907ea34baf442aa55f9da909d">00628</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#af4ca1e7907ea34baf442aa55f9da909d">dbTransactionCommit</a> (&amp;$_resource, $_name = null, $_new = <span class="keyword">false</span>)
+<a name="l00629"></a>00629     {
+<a name="l00630"></a>00630         <span class="keywordflow">return</span> oci_commit($_resource);
+<a name="l00631"></a>00631         $this-&gt;transactionOpened = <span class="keyword">false</span>;
+<a name="l00632"></a>00632     }
+<a name="l00633"></a>00633 
+<a name="l00634"></a><a class="code" href="classOracle.html#a4b28587042e6451e05b11dd0b143bf4e">00634</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a4b28587042e6451e05b11dd0b143bf4e">dbTransactionRollback</a> (&amp;$_resource, $_name = null, $_new = <span class="keyword">false</span>)
+<a name="l00635"></a>00635     {
+<a name="l00636"></a>00636         <span class="keywordflow">return</span> oci_rollback($_resource);
+<a name="l00637"></a>00637         $this-&gt;transactionOpened = <span class="keyword">false</span>;
+<a name="l00638"></a>00638     }
+<a name="l00639"></a>00639 
+<a name="l00640"></a><a class="code" href="classOracle.html#a788bb3baa63620bf18021f1e476ab504">00640</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a788bb3baa63620bf18021f1e476ab504">dbTransactionStart</a> (&amp;$_resource, $_name = null)
+<a name="l00641"></a>00641     {
+<a name="l00642"></a>00642         $this-&gt;transactionOpened = <span class="keyword">true</span>;
+<a name="l00643"></a>00643     }
+<a name="l00644"></a>00644 
+<a name="l00645"></a><a class="code" href="classOracle.html#a5a065b071962915ca375e10767fac355">00645</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a5a065b071962915ca375e10767fac355">tableLock</a>(&amp;$_resource, $_table, $_type = <a class="code" href="group__DBDRIVER__TableLock.html#ga5c56b5f9057593dbaa31052f7c7fc08f" title="Lock table for read.">DBDRIVER_LOCKTYPE_READ</a>)
+<a name="l00646"></a>00646     {
+<a name="l00647"></a>00647         <span class="keywordflow">switch</span> ($_type) {
+<a name="l00648"></a>00648             <span class="keywordflow">case</span> (<a class="code" href="group__DBDRIVER__TableLock.html#ga5c56b5f9057593dbaa31052f7c7fc08f" title="Lock table for read.">DBDRIVER_LOCKTYPE_READ</a>) :
+<a name="l00649"></a>00649                 $_lockMode = <span class="stringliteral">&#39;ROW EXCLUSIVE&#39;</span>;
+<a name="l00650"></a>00650                 <span class="keywordflow">break</span>;
+<a name="l00651"></a>00651             <span class="keywordflow">case</span> (<a class="code" href="group__DBDRIVER__TableLock.html#ga17757dbe21de27501af94e33738598bf" title="Lock table for write.">DBDRIVER_LOCKTYPE_WRITE</a>) :
+<a name="l00652"></a>00652                 $_lockMode = <span class="stringliteral">&#39;SHARE ROW EXCLUSIVE&#39;</span>;
+<a name="l00653"></a>00653                 <span class="keywordflow">break</span>;
+<a name="l00654"></a>00654             <span class="keywordflow">default</span>:
+<a name="l00655"></a>00655                 <span class="keywordflow">return</span> (<span class="keyword">false</span>); <span class="comment">// Nothing more implemented (yet?)</span>
+<a name="l00656"></a>00656         }
+<a name="l00657"></a>00657 <span class="comment">// ROW SHARE, ROW EXCLUSIVE, SHARE UPDATE, SHARE, SHARE ROW EXCLUSIVE, or EXCLUSIVE.</span>
+<a name="l00658"></a>00658         <span class="keywordflow">if</span> (!is_array($_table)) {
+<a name="l00659"></a>00659             $_table = array($_table);
+<a name="l00660"></a>00660         }
+<a name="l00661"></a>00661         <span class="keywordflow">foreach</span> ($_table as $_t) {
+<a name="l00662"></a>00662             $_q = <span class="stringliteral">&#39;LOCK TABLE &#39;</span> . $_t . <span class="stringliteral">&#39; IN &#39;</span> . $_lockMode . <span class="stringliteral">&#39; MODE&#39;</span>;
+<a name="l00663"></a>00663             <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, $_q)) {
+<a name="l00664"></a>00664                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00665"></a>00665             }
+<a name="l00666"></a>00666         }
+<a name="l00667"></a>00667         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00668"></a>00668     }
+<a name="l00669"></a>00669 
+<a name="l00670"></a><a class="code" href="classOracle.html#ab586f620767fb6bec93327f5965c6114">00670</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#ab586f620767fb6bec93327f5965c6114">tableUnlock</a>(&amp;$_resource, $_table = array())
+<a name="l00671"></a>00671     {
+<a name="l00672"></a>00672         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00673"></a>00673     }
+<a name="l00674"></a>00674 
+<a name="l00675"></a>00675 
+<a name="l00676"></a><a class="code" href="classOracle.html#a45dd64f96e2b765c8de618812c371142">00676</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a45dd64f96e2b765c8de618812c371142">emptyTable</a> (&amp;$_resource, $_table)
+<a name="l00677"></a>00677     {
+<a name="l00678"></a>00678         <span class="keywordflow">return</span> ($this-&gt;<a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a>($_resource, <span class="stringliteral">&#39;TRUNCATE &#39;</span> . $_table));
+<a name="l00679"></a>00679     }
+<a name="l00680"></a>00680 
+<a name="l00681"></a><a class="code" href="classOracle.html#a7ca6440a70108e32a3e4df6beebabe0e">00681</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a7ca6440a70108e32a3e4df6beebabe0e">dbTableList</a> (&amp;$_resource, $_pattern, $_views = <span class="keyword">false</span>)
+<a name="l00682"></a>00682     {
+<a name="l00683"></a>00683         $_data = null;
+<a name="l00684"></a>00684 
+<a name="l00685"></a>00685         <span class="keywordflow">if</span> ($this-&gt;uppercaseNames) {
+<a name="l00686"></a>00686             $_pattern = strtoupper($_pattern);
+<a name="l00687"></a>00687         }
+<a name="l00688"></a>00688         $_query = <span class="stringliteral">&#39;SELECT * &#39;</span>
+<a name="l00689"></a>00689                 . <span class="stringliteral">&#39;FROM USER_OBJECTS &#39;</span>
+<a name="l00690"></a>00690         ;
+<a name="l00691"></a>00691         <span class="keywordflow">if</span> ($_views) {
+<a name="l00692"></a>00692             $_query .= <span class="stringliteral">&quot;WHERE OBJECT_TYPE IN (&#39;TABLE&#39;, &#39;VIEW&#39;) &quot;</span>;
+<a name="l00693"></a>00693         } <span class="keywordflow">else</span> {
+<a name="l00694"></a>00694             $_query .= <span class="stringliteral">&quot;WHERE OBJECT_TYPE = &#39;TABLE&#39; &quot;</span>;
+<a name="l00695"></a>00695         }
+<a name="l00696"></a>00696         $_query .= <span class="stringliteral">&quot;AND OBJECT_NAME LIKE &#39;$_pattern&#39; &quot;</span>;
+<a name="l00697"></a>00697 
+<a name="l00698"></a>00698         <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classOracle.html#ae6d88fa762cd297d6d372dc36257e3ac">dbRead</a>($_data, $_resource, $_query)) {
+<a name="l00699"></a>00699             <span class="keywordflow">return</span> array();
+<a name="l00700"></a>00700         }
+<a name="l00701"></a>00701         $_tables = array();
+<a name="l00702"></a>00702         <span class="keywordflow">while</span> ($_r = $this-&gt;<a class="code" href="classOracle.html#a38d4f6c016eddfadfe88c490c9d48800">dbFetchNextRecord</a>($_data)) {
+<a name="l00703"></a>00703             $_tables[$_r[<span class="stringliteral">&#39;OBJECT_NAME&#39;</span>]] = null; <span class="comment">// \todo Columns, attributes etc, see SchemeHandler</span>
+<a name="l00704"></a>00704         }
+<a name="l00705"></a>00705         $this-&gt;<a class="code" href="classOracle.html#a20607648430ff35b66d3cfc4e1e315e4">dbClear</a>($_data);
+<a name="l00706"></a>00706         <span class="keywordflow">return</span> ($_tables);
+<a name="l00707"></a>00707     }
+<a name="l00708"></a>00708 
+<a name="l00709"></a><a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">00709</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a4d7e05386e179b0548eace4f53b70b56">dbExec</a> (&amp;$_resource, $_statement)
+<a name="l00710"></a>00710     {
+<a name="l00711"></a>00711         $_cmd = oci_parse($_resource, $_statement);
+<a name="l00712"></a>00712 <span class="comment">//echo &quot;Exec $_statement&lt;br&gt;\n&quot;;</span>
+<a name="l00713"></a>00713         <span class="keywordflow">if</span> ($_cmd === <span class="keyword">false</span>) {
+<a name="l00714"></a>00714             $this-&gt;<a class="code" href="classOracle.html#a8b6fed7d27fd2b73015c812d94e44190">setError</a>($_resource);
+<a name="l00715"></a>00715             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00716"></a>00716         }
+<a name="l00717"></a>00717         $_ret = oci_execute($_cmd, ($this-&gt;transactionOpened ? OCI_NO_AUTO_COMMIT : OCI_COMMIT_ON_SUCCESS));
+<a name="l00718"></a>00718         <span class="keywordflow">if</span> (!$_ret) {
+<a name="l00719"></a>00719             $this-&gt;<a class="code" href="classOracle.html#a8b6fed7d27fd2b73015c812d94e44190">setError</a>($_resource);
+<a name="l00720"></a>00720         }
+<a name="l00721"></a>00721         <span class="keywordflow">return</span> $_ret;
+<a name="l00722"></a>00722     }
+<a name="l00723"></a>00723 
+<a name="l00724"></a><a class="code" href="classOracle.html#ae6d88fa762cd297d6d372dc36257e3ac">00724</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#ae6d88fa762cd297d6d372dc36257e3ac">dbRead</a> (&amp;$_data, &amp;$_resource, $_query)
+<a name="l00725"></a>00725     {
+<a name="l00726"></a>00726         $this-&gt;stored_query = $_query;
+<a name="l00727"></a>00727         $this-&gt;stored_resource = $_resource;
+<a name="l00728"></a>00728         $_data = oci_parse($_resource, $_query);
+<a name="l00729"></a>00729 <span class="comment">//echo $_query.&quot;&lt;br&gt;\n&quot;;</span>
+<a name="l00730"></a>00730         <span class="keywordflow">if</span> ($_data === <span class="keyword">false</span>) {
+<a name="l00731"></a>00731             $this-&gt;<a class="code" href="classOracle.html#a8b6fed7d27fd2b73015c812d94e44190">setError</a>($_resource);
+<a name="l00732"></a>00732             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00733"></a>00733         }
+<a name="l00734"></a>00734         $_ret = oci_execute($_data);
+<a name="l00735"></a>00735         <span class="keywordflow">if</span> (!$_ret) {
+<a name="l00736"></a>00736             $this-&gt;<a class="code" href="classOracle.html#a8b6fed7d27fd2b73015c812d94e44190">setError</a>($_resource);
+<a name="l00737"></a>00737         }
+<a name="l00738"></a>00738         <span class="keywordflow">return</span> $_ret;
+<a name="l00739"></a>00739     }
+<a name="l00740"></a>00740 
+<a name="l00741"></a><a class="code" href="classOracle.html#a70c2dcc12160ed465c8018ea87398cf4">00741</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a70c2dcc12160ed465c8018ea87398cf4">dbWrite</a> (&amp;$_resource, $_query)
+<a name="l00742"></a>00742     {
+<a name="l00743"></a>00743         $_statement = oci_parse($_resource, $_query);
+<a name="l00744"></a>00744 <span class="comment">//echo $_query.&quot;&lt;br&gt;\n&quot;;</span>
+<a name="l00745"></a>00745         <span class="keywordflow">if</span> ($_statement === <span class="keyword">false</span>) {
+<a name="l00746"></a>00746             $this-&gt;<a class="code" href="classOracle.html#a8b6fed7d27fd2b73015c812d94e44190">setError</a>($_resource);
+<a name="l00747"></a>00747             <span class="keywordflow">return</span> (-1);
+<a name="l00748"></a>00748         }
+<a name="l00749"></a>00749         $_ret = oci_execute($_statement, ($this-&gt;transactionOpened ? OCI_NO_AUTO_COMMIT : OCI_COMMIT_ON_SUCCESS));
+<a name="l00750"></a>00750         <span class="keywordflow">if</span> (!$_ret) {
+<a name="l00751"></a>00751             $this-&gt;<a class="code" href="classOracle.html#a8b6fed7d27fd2b73015c812d94e44190">setError</a>($_resource);
+<a name="l00752"></a>00752             <span class="keywordflow">return</span> (-1);
+<a name="l00753"></a>00753         }
+<a name="l00754"></a>00754         <span class="keywordflow">return</span> (oci_num_rows($_statement));
+<a name="l00755"></a>00755     }
+<a name="l00756"></a>00756 
+<a name="l00757"></a><a class="code" href="classOracle.html#a94f735e71cb88ab2a7178e739f989b3b">00757</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a94f735e71cb88ab2a7178e739f989b3b">dbInsertId</a> (&amp;$_resource, $_table, $_field)
+<a name="l00758"></a>00758     {
+<a name="l00759"></a>00759         $_data = null;
+<a name="l00760"></a>00760         $_q = <span class="stringliteral">&#39;SELECT &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#a2f125c1875530f1055845e36bd4799d3">functionMax</a>($this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_field)) . <span class="stringliteral">&#39; AS &quot;id&quot; &#39;</span>
+<a name="l00761"></a>00761             . <span class="stringliteral">&#39;FROM &#39;</span> . $this-&gt;<a class="code" href="classDbDefaults.html#ab5bff49be9d962b0a75fb40437d92c34">dbQuote</a>($_table) . <span class="charliteral">&#39; &#39;</span>;
+<a name="l00762"></a>00762         <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classOracle.html#ae6d88fa762cd297d6d372dc36257e3ac">dbRead</a>($_data, $_resource, $_q)) {
+<a name="l00763"></a>00763             <span class="keywordflow">return</span> -1;
+<a name="l00764"></a>00764         }
+<a name="l00765"></a>00765         $_r = $this-&gt;<a class="code" href="classOracle.html#a38d4f6c016eddfadfe88c490c9d48800">dbFetchNextRecord</a>($_data);
+<a name="l00766"></a>00766         <span class="keywordflow">return</span> $_r[<span class="stringliteral">&#39;id&#39;</span>];
+<a name="l00767"></a>00767     }
+<a name="l00768"></a>00768 
+<a name="l00769"></a><a class="code" href="classOracle.html#a8da17edc19ebc4351cef03e99e7113f5">00769</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a8da17edc19ebc4351cef03e99e7113f5">dbRowCount</a> (&amp;$_data)
+<a name="l00770"></a>00770     {
+<a name="l00771"></a>00771         $_q = <span class="stringliteral">&#39;SELECT COUNT(*) AS rnum FROM (&#39;</span> . $this-&gt;stored_query . <span class="charliteral">&#39;)&#39;</span>;
+<a name="l00772"></a>00772         $__d = oci_parse($this-&gt;stored_resource, $_q);
+<a name="l00773"></a>00773         oci_execute($__d);
+<a name="l00774"></a>00774         $_rNum = oci_fetch($__d);
+<a name="l00775"></a>00775         oci_free_statement($__d);
+<a name="l00776"></a>00776         <span class="keywordflow">return</span> $_rNum;
+<a name="l00777"></a>00777     }
+<a name="l00778"></a>00778 
+<a name="l00779"></a><a class="code" href="classOracle.html#a38d4f6c016eddfadfe88c490c9d48800">00779</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a38d4f6c016eddfadfe88c490c9d48800">dbFetchNextRecord</a> (&amp;$_data)
+<a name="l00780"></a>00780     {
+<a name="l00781"></a>00781         $_r = oci_fetch_assoc ($_data);
+<a name="l00782"></a>00782         <span class="keywordflow">if</span> ($_r) {
+<a name="l00783"></a>00783             <span class="keywordflow">foreach</span> ($_r as $_k =&gt; $_v) {
+<a name="l00784"></a>00784                 <span class="keywordflow">if</span> (is_object($_v)) {
+<a name="l00785"></a>00785                     $_r[$_k] = $_v-&gt;load();
+<a name="l00786"></a>00786                 }
+<a name="l00787"></a>00787             }
+<a name="l00788"></a>00788         }
+<a name="l00789"></a>00789         <span class="keywordflow">return</span> ($_r);
+<a name="l00790"></a>00790     }
+<a name="l00791"></a>00791 
+<a name="l00792"></a><a class="code" href="classOracle.html#a20607648430ff35b66d3cfc4e1e315e4">00792</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a20607648430ff35b66d3cfc4e1e315e4">dbClear</a> (&amp;$_data)
+<a name="l00793"></a>00793     {
+<a name="l00794"></a>00794         oci_free_statement ($_data);
+<a name="l00795"></a>00795     }
+<a name="l00796"></a>00796 
+<a name="l00797"></a><a class="code" href="classOracle.html#a39c79959f8c750638a103a6799fd2fdb">00797</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a39c79959f8c750638a103a6799fd2fdb">dbClose</a> (&amp;$_resource)
+<a name="l00798"></a>00798     {
+<a name="l00799"></a>00799         <span class="keywordflow">return</span> (oci_close ($_resource));
+<a name="l00800"></a>00800     }
+<a name="l00801"></a>00801 
+<a name="l00802"></a><a class="code" href="classOracle.html#aa6192ea7d8c581bd12bfd9f6abc4aa16">00802</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#aa6192ea7d8c581bd12bfd9f6abc4aa16">dbEscapeString</a> ($_string)
+<a name="l00803"></a>00803     {
+<a name="l00804"></a>00804         <span class="keywordflow">return</span> ($_string);<span class="comment">//(addslashes($_string));</span>
+<a name="l00805"></a>00805     }
+<a name="l00806"></a>00806 
+<a name="l00807"></a><a class="code" href="classOracle.html#a70193ef9d60499297f50124b6d92dadb">00807</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a70193ef9d60499297f50124b6d92dadb">functionIf</a>($_field, array $_arguments = array())
+<a name="l00808"></a>00808     {
+<a name="l00809"></a>00809         <span class="keywordflow">return</span> <span class="stringliteral">&#39;IF(&#39;</span> . $_field . <span class="charliteral">&#39; &#39;</span> . $_arguments[0] . <span class="charliteral">&#39; &#39;</span> . $_arguments[1]
+<a name="l00810"></a>00810                 . <span class="stringliteral">&#39;, &#39;</span> . $_arguments[2] . <span class="stringliteral">&#39;, &#39;</span> <span class="comment">// then</span>
+<a name="l00811"></a>00811                 . <span class="stringliteral">&#39;, &#39;</span> . $_arguments[3] . <span class="charliteral">&#39;)&#39;</span>; <span class="comment">// else</span>
+<a name="l00812"></a>00812     }
+<a name="l00813"></a>00813 
+<a name="l00814"></a><a class="code" href="classOracle.html#a65427bd6446ae039eefb1dc6762fea26">00814</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#a65427bd6446ae039eefb1dc6762fea26">functionIfnull</a>($_field, array $_arguments = array())
+<a name="l00815"></a>00815     {
+<a name="l00816"></a>00816         <span class="keywordflow">return</span> <span class="stringliteral">&#39;NVL(&#39;</span> . $_field . <span class="stringliteral">&#39;, &#39;</span> . $_arguments[0] . <span class="charliteral">&#39;)&#39;</span>;
+<a name="l00817"></a>00817     }
+<a name="l00818"></a>00818 
+<a name="l00819"></a><a class="code" href="classOracle.html#aeea528c9fd8004d8da45405e5c2b815e">00819</a>     <span class="keyword">public</span> function <a class="code" href="classOracle.html#aeea528c9fd8004d8da45405e5c2b815e">functionConcat</a>($_field, array $_arguments = array())
+<a name="l00820"></a>00820     {
+<a name="l00821"></a>00821         <span class="keywordflow">return</span> <span class="stringliteral">&#39;CONCAT(&#39;</span> . $_field . <span class="stringliteral">&#39;, &#39;</span> . $_arguments[0] . <span class="charliteral">&#39;)&#39;</span>;
+<a name="l00822"></a>00822     }
+<a name="l00823"></a>00823 }
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -643,7 +810,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Thu Oct 13 2011 11:57:54 for OWL-PHP by
+    <li class="footer">Generated on Fri Oct 28 2011 11:32:49 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

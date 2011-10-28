@@ -3,7 +3,7 @@
  * \file
  * This file defines the last testcase for the Hierarchical Dataset
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: case.last.php,v 1.3 2011-10-16 11:11:44 oscar Exp $
+ * \version $Id: case.last.php,v 1.4 2011-10-28 09:32:44 oscar Exp $
  * \copyright{2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OTK.
@@ -53,7 +53,7 @@ class OTKDbdriver_Last implements TestCase
 		$returnCodes = array();
 		$db = OWL::factory('dbhandler');
 		$dbId = $db->getResource();
-		if ($db->getDriver()->dbDropTable($dbId, $db->tablename($this->tablename))) {
+		if ($db->getDriver()->dbDropTable($dbId, $db->tablename($this->tablename, true))) {
 			$returnCodes[] = array(OTK_RESULT_SUCCESS, 'Successfully removed the table "' . $this->tablename . '"');
 		} else {
 			$returnCodes[] = array(OTK_RESULT_FAIL, 'Table "' . $this->tablename . '" could not be removed');

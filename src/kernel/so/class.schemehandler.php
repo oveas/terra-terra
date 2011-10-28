@@ -3,7 +3,7 @@
  * \file
  * This file defines the Scheme Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.schemehandler.php,v 1.9 2011-10-16 11:11:44 oscar Exp $
+ * \version $Id: class.schemehandler.php,v 1.10 2011-10-28 09:32:47 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
@@ -363,6 +363,10 @@ class SchemeHandler extends _OWL
 	 * \param[in] $_drops True if existing fields should be dropped
 	 * \return True on success
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \todo When altering a field, Oracle complains when an item is already as requested
+	 * (eg, VARCHAR2(24) NOT NULL -> VARCHAR2(48) NOT NULL results in a warning).
+	 * Items that should be changed are changes, but to suppress the warning, a check must be made
+	 * to make sure onl;y actual changes are in the ALTER statement.
 	 */
 	private function alterTable($_diffs, $_drops)
 	{

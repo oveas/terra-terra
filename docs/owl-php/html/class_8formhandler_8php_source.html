@@ -30,7 +30,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OWL-PHP
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    
   </td>
@@ -98,229 +98,229 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <a href="class_8formhandler_8php.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
-<a name="l00014"></a>00014 
-<a name="l00015"></a><a class="code" href="group__FORM__ParseFlags.html#gaf5de9385d7f7fc802eaa8e7090d8e0f5">00015</a> define (<span class="stringliteral">&#39;FORMDATA_STRICT&#39;</span>,          0);
-<a name="l00016"></a>00016 
-<a name="l00018"></a><a class="code" href="group__FORM__ParseFlags.html#ga274bb2c8e23d075b189f143adbb6746e">00018</a> define (<span class="stringliteral">&#39;FORMDATA_BASIC_HTML&#39;</span>,      1);
-<a name="l00019"></a>00019 
-<a name="l00021"></a><a class="code" href="group__FORM__ParseFlags.html#gac2f81495783870a3c4a63ab0164aa412">00021</a> define (<span class="stringliteral">&#39;FORMDATA_EXTENDED_HTML&#39;</span>,   2);
-<a name="l00022"></a>00022 
-<a name="l00024"></a><a class="code" href="group__FORM__ParseFlags.html#gac1497f65ec29dadf9d39c5da41e17fc3">00024</a> define (<span class="stringliteral">&#39;FORMDATA_FULL_HTML&#39;</span>,       3);
-<a name="l00025"></a>00025 
-<a name="l00027"></a><a class="code" href="group__FORM__ParseFlags.html#gae5bb66ec27c03f3b03796f3bd80ba2ff">00027</a> define (<span class="stringliteral">&#39;FORMDATA_CUSTOM&#39;</span>,          4);
-<a name="l00028"></a>00028 
-<a name="l00030"></a><a class="code" href="group__FORM__ParseFlags.html#ga73c85f0f80e1060e1adf1efb73639845">00030</a> define (<span class="stringliteral">&#39;FORMDATA_HTML_CODE&#39;</span>,       5);
-<a name="l00031"></a>00031 
-<a name="l00033"></a><a class="code" href="group__FORM__ParseFlags.html#ga982c2cfab5717a3b68087a346cd4addd">00033</a> define (<span class="stringliteral">&#39;FORMDATA_RAW&#39;</span>,             6);
+<a name="l00030"></a>00030 
+<a name="l00031"></a><a class="code" href="group__FORM__ParseFlags.html#gaf5de9385d7f7fc802eaa8e7090d8e0f5">00031</a> define (<span class="stringliteral">&#39;FORMDATA_STRICT&#39;</span>,          0);
+<a name="l00032"></a>00032 
+<a name="l00034"></a><a class="code" href="group__FORM__ParseFlags.html#ga274bb2c8e23d075b189f143adbb6746e">00034</a> define (<span class="stringliteral">&#39;FORMDATA_BASIC_HTML&#39;</span>,      1);
 <a name="l00035"></a>00035 
-<a name="l00043"></a><a class="code" href="classFormHandler.html">00043</a> <span class="keyword">class </span><a class="code" href="classFormHandler.html" title="Formhandler.">FormHandler</a> <span class="keyword">extends</span> <a class="code" href="class__OWL.html">_OWL</a>
-<a name="l00044"></a>00044 {
-<a name="l00048"></a><a class="code" href="classFormHandler.html#a2caca98eec368ff030f07f8024253527">00048</a>     <span class="keyword">private</span> <a class="code" href="classFormHandler.html#a2caca98eec368ff030f07f8024253527">$owl_formvalues</a>;
-<a name="l00049"></a>00049 
-<a name="l00053"></a><a class="code" href="classFormHandler.html#a54efe3849e4065053f0eb0313356d072">00053</a>     <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="classFormHandler.html#a54efe3849e4065053f0eb0313356d072">$instance</a>;
-<a name="l00054"></a>00054 
-<a name="l00059"></a><a class="code" href="classFormHandler.html#a1ef7ad4fe143dd8339c8ab66423a1934">00059</a>     <span class="keyword">private</span> function <a class="code" href="classFormHandler.html#a1ef7ad4fe143dd8339c8ab66423a1934">__construct</a> ()
-<a name="l00060"></a>00060     {
-<a name="l00061"></a>00061         <a class="code" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">_OWL::init</a>();
-<a name="l00062"></a>00062         $this-&gt;owl_formvalues = array();
-<a name="l00063"></a>00063         $this-&gt;<a class="code" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus</a> (FORM_PARSE);
-<a name="l00064"></a>00064         $this-&gt;<a class="code" href="classFormHandler.html#a49690c831e0655a07d31192f944c7127">parseFormdata</a> ($_GET);
-<a name="l00065"></a>00065         $this-&gt;<a class="code" href="classFormHandler.html#a49690c831e0655a07d31192f944c7127">parseFormdata</a> ($_POST);
-<a name="l00066"></a>00066         $this-&gt;<a class="code" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus</a> (OWL_STATUS_OK);
-<a name="l00067"></a>00067     }
-<a name="l00068"></a>00068 
-<a name="l00074"></a><a class="code" href="classFormHandler.html#aea12382e8db336461ca3fa509dee7755">00074</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classFormHandler.html#aea12382e8db336461ca3fa509dee7755">getInstance</a>()
-<a name="l00075"></a>00075     {
-<a name="l00076"></a>00076         <span class="keywordflow">if</span> (!<a class="code" href="classFormHandler.html#a54efe3849e4065053f0eb0313356d072">FormHandler::$instance</a> instanceof <span class="keyword">self</span>) {
-<a name="l00077"></a>00077             <a class="code" href="classFormHandler.html#a54efe3849e4065053f0eb0313356d072">FormHandler::$instance</a> = <span class="keyword">new</span> <span class="keyword">self</span>();
-<a name="l00078"></a>00078         }
-<a name="l00079"></a>00079         <span class="keywordflow">return</span> <a class="code" href="classFormHandler.html#a54efe3849e4065053f0eb0313356d072">FormHandler::$instance</a>;
-<a name="l00080"></a>00080     }
-<a name="l00081"></a>00081 
-<a name="l00088"></a><a class="code" href="classFormHandler.html#a49690c831e0655a07d31192f944c7127">00088</a>     <span class="keyword">private</span> function <a class="code" href="classFormHandler.html#a49690c831e0655a07d31192f944c7127">parseFormdata</a> ($data = null)
-<a name="l00089"></a>00089     {
-<a name="l00090"></a>00090         <span class="keywordflow">if</span> ($data === null || empty($data)) {
-<a name="l00091"></a>00091             <span class="keywordflow">return</span>;
-<a name="l00092"></a>00092         }
-<a name="l00093"></a>00093         <span class="keywordflow">foreach</span> ($data as $_k =&gt; $_v) {
-<a name="l00094"></a>00094 
-<a name="l00095"></a>00095             $this-&gt;<span class="keyword">set</span>($_k, $_v);
-<a name="l00096"></a>00096         }
+<a name="l00037"></a><a class="code" href="group__FORM__ParseFlags.html#gac2f81495783870a3c4a63ab0164aa412">00037</a> define (<span class="stringliteral">&#39;FORMDATA_EXTENDED_HTML&#39;</span>,   2);
+<a name="l00038"></a>00038 
+<a name="l00040"></a><a class="code" href="group__FORM__ParseFlags.html#gac1497f65ec29dadf9d39c5da41e17fc3">00040</a> define (<span class="stringliteral">&#39;FORMDATA_FULL_HTML&#39;</span>,       3);
+<a name="l00041"></a>00041 
+<a name="l00043"></a><a class="code" href="group__FORM__ParseFlags.html#gae5bb66ec27c03f3b03796f3bd80ba2ff">00043</a> define (<span class="stringliteral">&#39;FORMDATA_CUSTOM&#39;</span>,          4);
+<a name="l00044"></a>00044 
+<a name="l00046"></a><a class="code" href="group__FORM__ParseFlags.html#ga73c85f0f80e1060e1adf1efb73639845">00046</a> define (<span class="stringliteral">&#39;FORMDATA_HTML_CODE&#39;</span>,       5);
+<a name="l00047"></a>00047 
+<a name="l00049"></a><a class="code" href="group__FORM__ParseFlags.html#ga982c2cfab5717a3b68087a346cd4addd">00049</a> define (<span class="stringliteral">&#39;FORMDATA_RAW&#39;</span>,             6);
+<a name="l00051"></a>00051 
+<a name="l00059"></a><a class="code" href="classFormHandler.html">00059</a> <span class="keyword">class </span><a class="code" href="classFormHandler.html" title="Formhandler.">FormHandler</a> <span class="keyword">extends</span> <a class="code" href="class__OWL.html">_OWL</a>
+<a name="l00060"></a>00060 {
+<a name="l00064"></a><a class="code" href="classFormHandler.html#a2caca98eec368ff030f07f8024253527">00064</a>     <span class="keyword">private</span> <a class="code" href="classFormHandler.html#a2caca98eec368ff030f07f8024253527">$owl_formvalues</a>;
+<a name="l00065"></a>00065 
+<a name="l00069"></a><a class="code" href="classFormHandler.html#a54efe3849e4065053f0eb0313356d072">00069</a>     <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="classFormHandler.html#a54efe3849e4065053f0eb0313356d072">$instance</a>;
+<a name="l00070"></a>00070 
+<a name="l00075"></a><a class="code" href="classFormHandler.html#a1ef7ad4fe143dd8339c8ab66423a1934">00075</a>     <span class="keyword">private</span> function <a class="code" href="classFormHandler.html#a1ef7ad4fe143dd8339c8ab66423a1934">__construct</a> ()
+<a name="l00076"></a>00076     {
+<a name="l00077"></a>00077         <a class="code" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">_OWL::init</a>();
+<a name="l00078"></a>00078         $this-&gt;owl_formvalues = array();
+<a name="l00079"></a>00079         $this-&gt;<a class="code" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus</a> (FORM_PARSE);
+<a name="l00080"></a>00080         $this-&gt;<a class="code" href="classFormHandler.html#a49690c831e0655a07d31192f944c7127">parseFormdata</a> ($_GET);
+<a name="l00081"></a>00081         $this-&gt;<a class="code" href="classFormHandler.html#a49690c831e0655a07d31192f944c7127">parseFormdata</a> ($_POST);
+<a name="l00082"></a>00082         $this-&gt;<a class="code" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus</a> (OWL_STATUS_OK);
+<a name="l00083"></a>00083     }
+<a name="l00084"></a>00084 
+<a name="l00090"></a><a class="code" href="classFormHandler.html#aea12382e8db336461ca3fa509dee7755">00090</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="classFormHandler.html#aea12382e8db336461ca3fa509dee7755">getInstance</a>()
+<a name="l00091"></a>00091     {
+<a name="l00092"></a>00092         <span class="keywordflow">if</span> (!<a class="code" href="classFormHandler.html#a54efe3849e4065053f0eb0313356d072">FormHandler::$instance</a> instanceof <span class="keyword">self</span>) {
+<a name="l00093"></a>00093             <a class="code" href="classFormHandler.html#a54efe3849e4065053f0eb0313356d072">FormHandler::$instance</a> = <span class="keyword">new</span> <span class="keyword">self</span>();
+<a name="l00094"></a>00094         }
+<a name="l00095"></a>00095         <span class="keywordflow">return</span> <a class="code" href="classFormHandler.html#a54efe3849e4065053f0eb0313356d072">FormHandler::$instance</a>;
+<a name="l00096"></a>00096     }
 <a name="l00097"></a>00097 
-<a name="l00098"></a>00098     }
-<a name="l00099"></a>00099 
-<a name="l00108"></a><a class="code" href="classFormHandler.html#a5fcc8aef0de87e31ceee65ad1eadb96c">00108</a>     <span class="keyword">public</span> function <span class="keyword">set</span> ($variable, $value)
-<a name="l00109"></a>00109     {
-<a name="l00110"></a>00110         <span class="keywordflow">if</span> (array_key_exists ($variable, $this-&gt;owl_formvalues)) {
-<a name="l00111"></a>00111             <span class="comment">// This field already exists (multi select); make sure it&#39;s</span>
-<a name="l00112"></a>00112             <span class="comment">// not overwritten, but written in an array</span>
-<a name="l00113"></a>00113             <span class="keywordflow">if</span> (!is_array($this-&gt;owl_formvalues[$variable])) {
-<a name="l00114"></a>00114                 <span class="comment">// This is the first one, copy the previously stored value to the</span>
-<a name="l00115"></a>00115                 <span class="comment">// multivalue array and add the new value.</span>
-<a name="l00116"></a>00116                 $_val = $this-&gt;owl_formvalues[$variable];
-<a name="l00117"></a>00117                 $this-&gt;owl_formvalues[$variable] = array ($_val, $value);
-<a name="l00118"></a>00118             } <span class="keywordflow">else</span> {
-<a name="l00119"></a>00119                 $this-&gt;owl_formvalues[$variable][] = $value;
-<a name="l00120"></a>00120             }
-<a name="l00121"></a>00121         } <span class="keywordflow">else</span> {
-<a name="l00122"></a>00122             $this-&gt;owl_formvalues[$variable] = $value;
-<a name="l00123"></a>00123         }
-<a name="l00124"></a>00124 
-<a name="l00125"></a>00125         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;general&#39;</span>, <span class="stringliteral">&#39;debug&#39;</span>) &gt; 0) {
-<a name="l00126"></a>00126             $this-&gt;<a class="code" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus</a> (FORM_STORVALUE,
-<a name="l00127"></a>00127                 array ($variable
-<a name="l00128"></a>00128                         , (
-<a name="l00129"></a>00129                             is_array($this-&gt;owl_formvalues[$variable])
-<a name="l00130"></a>00130                                 ? (<span class="stringliteral">&#39;array(&#39;</span>.implode (<span class="charliteral">&#39;,&#39;</span>, $this-&gt;owl_formvalues[$variable]) . <span class="charliteral">&#39;)&#39;</span>)
-<a name="l00131"></a>00131                                 : $this-&gt;owl_formvalues[$variable]
-<a name="l00132"></a>00132                         )
-<a name="l00133"></a>00133                 )
-<a name="l00134"></a>00134             );
-<a name="l00135"></a>00135         }
-<a name="l00136"></a>00136     }
-<a name="l00137"></a>00137 
-<a name="l00147"></a><a class="code" href="classFormHandler.html#a4dbeaa44aa51a795b16379ae703d893a">00147</a>     <span class="keyword">public</span> function <span class="keyword">get</span> ($variable, $format = <a class="code" href="group__FORM__ParseFlags.html#gaf5de9385d7f7fc802eaa8e7090d8e0f5" title="Remove all HTML tags before returning anything.">FORMDATA_STRICT</a>, $allows = null, $content = array(<span class="stringliteral">&#39;script&#39;</span>))
-<a name="l00148"></a>00148     {
-<a name="l00149"></a>00149         <span class="keywordflow">switch</span> ($format) {
-<a name="l00150"></a>00150             <span class="keywordflow">case</span> <a class="code" href="group__FORM__ParseFlags.html#ga274bb2c8e23d075b189f143adbb6746e" title="Remove all tags except bold, underline etc, lists, line breaks, headers and such.">FORMDATA_BASIC_HTML</a>:
-<a name="l00151"></a>00151                 $_allow = array(<span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;i&#39;</span>, <span class="stringliteral">&#39;strong&#39;</span>, <span class="stringliteral">&#39;em&#39;</span>, <span class="charliteral">&#39;u&#39;</span>, <span class="stringliteral">&#39;pre&#39;</span>, <span class="stringliteral">&#39;tt&#39;</span>, <span class="charliteral">&#39;p&#39;</span>, <span class="stringliteral">&#39;(o|u)l&#39;</span>, <span class="stringliteral">&#39;li&#39;</span>, <span class="stringliteral">&#39;h[1-6]&#39;</span>, <span class="stringliteral">&#39;(b|h)r&#39;</span>, <span class="stringliteral">&#39;center&#39;</span>, <span class="stringliteral">&#39;small&#39;</span>, <span class="stringliteral">&#39;big&#39;</span>);
-<a name="l00152"></a>00152                 $_content = array(<span class="stringliteral">&#39;noframes&#39;</span>, <span class="stringliteral">&#39;option&#39;</span>, <span class="stringliteral">&#39;select&#39;</span>, <span class="stringliteral">&#39;script&#39;</span>, <span class="stringliteral">&#39;style&#39;</span>);
-<a name="l00153"></a>00153                 <span class="keywordflow">break</span>;
-<a name="l00154"></a>00154             <span class="keywordflow">case</span> <a class="code" href="group__FORM__ParseFlags.html#gac2f81495783870a3c4a63ab0164aa412" title="Remove all tags except the basic HTML tags, font and table tags, divs, spans, images and anchors...">FORMDATA_EXTENDED_HTML</a>:
-<a name="l00155"></a>00155                 $_allow = array(<span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;i&#39;</span>, <span class="stringliteral">&#39;strong&#39;</span>, <span class="stringliteral">&#39;em&#39;</span>, <span class="charliteral">&#39;u&#39;</span>, <span class="stringliteral">&#39;pre&#39;</span>, <span class="stringliteral">&#39;tt&#39;</span>, <span class="charliteral">&#39;p&#39;</span>, <span class="stringliteral">&#39;(o|u)l&#39;</span>, <span class="stringliteral">&#39;li&#39;</span>, <span class="stringliteral">&#39;h[1-6]&#39;</span>, <span class="stringliteral">&#39;(b|h)r&#39;</span>, <span class="stringliteral">&#39;center&#39;</span>, <span class="stringliteral">&#39;small&#39;</span>, <span class="stringliteral">&#39;big&#39;</span>
-<a name="l00156"></a>00156                     , <span class="stringliteral">&#39;font&#39;</span>, <span class="stringliteral">&#39;table&#39;</span>, <span class="stringliteral">&#39;t(h|r|d)&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="stringliteral">&#39;img&#39;</span>, <span class="stringliteral">&#39;div&#39;</span>, <span class="stringliteral">&#39;span&#39;</span>);
-<a name="l00157"></a>00157                 $_content = array(<span class="stringliteral">&#39;noframes&#39;</span>, <span class="stringliteral">&#39;option&#39;</span>, <span class="stringliteral">&#39;select&#39;</span>, <span class="stringliteral">&#39;script&#39;</span>, <span class="stringliteral">&#39;style&#39;</span>);
-<a name="l00158"></a>00158                 <span class="keywordflow">break</span>;
-<a name="l00159"></a>00159             <span class="keywordflow">case</span> <a class="code" href="group__FORM__ParseFlags.html#gac1497f65ec29dadf9d39c5da41e17fc3" title="Remove all tags except extended HTML tags, frame, style and form (input) tags.">FORMDATA_FULL_HTML</a>:
-<a name="l00160"></a>00160                 $_allow = array(<span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;i&#39;</span>, <span class="stringliteral">&#39;strong&#39;</span>, <span class="stringliteral">&#39;em&#39;</span>, <span class="charliteral">&#39;u&#39;</span>, <span class="stringliteral">&#39;pre&#39;</span>, <span class="stringliteral">&#39;tt&#39;</span>, <span class="charliteral">&#39;p&#39;</span>, <span class="stringliteral">&#39;(o|u)l&#39;</span>, <span class="stringliteral">&#39;li&#39;</span>, <span class="stringliteral">&#39;h[1-6]&#39;</span>, <span class="stringliteral">&#39;(b|h)r&#39;</span>, <span class="stringliteral">&#39;center&#39;</span>, <span class="stringliteral">&#39;small&#39;</span>, <span class="stringliteral">&#39;big&#39;</span>
-<a name="l00161"></a>00161                     , <span class="stringliteral">&#39;font&#39;</span>, <span class="stringliteral">&#39;table&#39;</span>, <span class="stringliteral">&#39;t(h|r|d)&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="stringliteral">&#39;img&#39;</span>
-<a name="l00162"></a>00162                     , <span class="stringliteral">&#39;fieldset&#39;</span>, <span class="stringliteral">&#39;form&#39;</span>, <span class="stringliteral">&#39;frame(set)?&#39;</span>, <span class="stringliteral">&#39;input&#39;</span>, <span class="stringliteral">&#39;label&#39;</span>, <span class="stringliteral">&#39;legend&#39;</span>, <span class="stringliteral">&#39;noframes&#39;</span>, <span class="stringliteral">&#39;optgroup&#39;</span>, <span class="stringliteral">&#39;option&#39;</span>, <span class="stringliteral">&#39;select&#39;</span>, <span class="stringliteral">&#39;style&#39;</span>, <span class="stringliteral">&#39;textarea&#39;</span>);
-<a name="l00163"></a>00163                 $_content = array(<span class="stringliteral">&#39;script&#39;</span>);
-<a name="l00164"></a>00164                 <span class="keywordflow">break</span>;
-<a name="l00165"></a>00165             <span class="keywordflow">case</span> <a class="code" href="group__FORM__ParseFlags.html#gae5bb66ec27c03f3b03796f3bd80ba2ff" title="Provide custom arrays for formatting,.">FORMDATA_CUSTOM</a>:
-<a name="l00166"></a>00166                 $_allow = $allows;
-<a name="l00167"></a>00167                 $_content = $content;
-<a name="l00168"></a>00168                 <span class="keywordflow">break</span>;
-<a name="l00169"></a>00169             <span class="keywordflow">case</span> <a class="code" href="group__FORM__ParseFlags.html#ga73c85f0f80e1060e1adf1efb73639845" title="Return all data, formatted as HTML code.">FORMDATA_HTML_CODE</a>:
-<a name="l00170"></a>00170                 <span class="keywordflow">break</span>; <span class="comment">// Will be handled later</span>
-<a name="l00171"></a>00171             <span class="keywordflow">default</span>:
-<a name="l00172"></a>00172             <span class="keywordflow">case</span> <a class="code" href="group__FORM__ParseFlags.html#gaf5de9385d7f7fc802eaa8e7090d8e0f5" title="Remove all HTML tags before returning anything.">FORMDATA_STRICT</a>:
-<a name="l00173"></a>00173                 $_allow = array();
-<a name="l00174"></a>00174                 $_content = array(<span class="stringliteral">&#39;noframes&#39;</span>, <span class="stringliteral">&#39;option&#39;</span>, <span class="stringliteral">&#39;select&#39;</span>, <span class="stringliteral">&#39;script&#39;</span>, <span class="stringliteral">&#39;style&#39;</span>);
-<a name="l00175"></a>00175                 <span class="keywordflow">break</span>;
-<a name="l00176"></a>00176         }
-<a name="l00177"></a>00177 
-<a name="l00178"></a>00178         <span class="keywordflow">if</span> (array_key_exists ($variable, $this-&gt;owl_formvalues)) {
-<a name="l00179"></a>00179             $_val = $this-&gt;owl_formvalues[$variable];
-<a name="l00180"></a>00180             <span class="keywordflow">if</span> ($format !== <a class="code" href="group__FORM__ParseFlags.html#ga982c2cfab5717a3b68087a346cd4addd" title="Return the data unformatted.">FORMDATA_RAW</a>) {
-<a name="l00181"></a>00181                 <span class="keywordflow">if</span> (is_array($_val)) {
-<a name="l00182"></a>00182 <span class="comment">//                  $_cnt = count($_val);</span>
-<a name="l00183"></a>00183                     <span class="keywordflow">foreach</span> ($_val as $_HTMLfld =&gt; $_HTMLval) {
-<a name="l00184"></a>00184                         <span class="keywordflow">if</span> ($format === <a class="code" href="group__FORM__ParseFlags.html#ga73c85f0f80e1060e1adf1efb73639845" title="Return all data, formatted as HTML code.">FORMDATA_HTML_CODE</a>) {
-<a name="l00185"></a>00185                             $_val[$_HTMLfld] = htmlentities($_HTMLval, ENT_COMPAT, <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a>(<span class="stringliteral">&#39;general&#39;</span>, <span class="stringliteral">&#39;charset&#39;</span>, <span class="stringliteral">&#39;ISO-8859-1&#39;</span>));
-<a name="l00186"></a>00186                         } <span class="keywordflow">else</span> {
-<a name="l00187"></a>00187                             $_val[$_HTMLfld] = $this-&gt;<a class="code" href="classFormHandler.html#a5ee0cda14dcbe0b6e12226db4bd951a0">cleanString</a>($_HTMLval, $_allow, $_content);
-<a name="l00188"></a>00188                         }
-<a name="l00189"></a>00189                     }
-<a name="l00190"></a>00190 <span class="comment">/*</span>
-<a name="l00191"></a>00191 <span class="comment">                    for ($_i = 0; $_i &lt; $_cnt; $_i++) {</span>
-<a name="l00192"></a>00192 <span class="comment">                        if ($format === FORMDATA_HTML_CODE) {</span>
-<a name="l00193"></a>00193 <span class="comment">                            $_val[$_i] = htmlentities($_val[$_i], ENT_COMPAT, ConfigHandler::get(&#39;general&#39;, &#39;charset&#39;, &#39;ISO-8859-1&#39;));</span>
-<a name="l00194"></a>00194 <span class="comment">                        } else {</span>
-<a name="l00195"></a>00195 <span class="comment">                            $_val[$_i] = $this-&gt;cleanString($_val[$_i], $_allow, $_content);</span>
-<a name="l00196"></a>00196 <span class="comment">                        }</span>
-<a name="l00197"></a>00197 <span class="comment">                    }</span>
-<a name="l00198"></a>00198 <span class="comment"> */</span>
-<a name="l00199"></a>00199                 } <span class="keywordflow">else</span> {
-<a name="l00200"></a>00200                     <span class="keywordflow">if</span> ($format === <a class="code" href="group__FORM__ParseFlags.html#ga73c85f0f80e1060e1adf1efb73639845" title="Return all data, formatted as HTML code.">FORMDATA_HTML_CODE</a>) {
-<a name="l00201"></a>00201                         $_val = htmlentities($_val, ENT_COMPAT, <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a>(<span class="stringliteral">&#39;general&#39;</span>, <span class="stringliteral">&#39;charset&#39;</span>, <span class="stringliteral">&#39;ISO-8859-1&#39;</span>));
-<a name="l00202"></a>00202                     } <span class="keywordflow">else</span> {
-<a name="l00203"></a>00203                         $_val = $this-&gt;<a class="code" href="classFormHandler.html#a5ee0cda14dcbe0b6e12226db4bd951a0">cleanString</a>($_val, $_allow, $_content);
-<a name="l00204"></a>00204                     }
-<a name="l00205"></a>00205                 }
-<a name="l00206"></a>00206             }
-<a name="l00207"></a>00207         } <span class="keywordflow">else</span> {
-<a name="l00208"></a>00208             $_val = null;
-<a name="l00209"></a>00209             $this-&gt;<a class="code" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus</a> (FORM_NOVALUE, $variable);
-<a name="l00210"></a>00210         }
-<a name="l00211"></a>00211 
-<a name="l00212"></a>00212         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;general&#39;</span>, <span class="stringliteral">&#39;debug&#39;</span>) &gt; 0) {
-<a name="l00213"></a>00213             $this-&gt;<a class="code" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus</a> (FORM_RETVALUE, array ($variable, (is_array($_val)?print_r($_val, 1):$_val)));
-<a name="l00214"></a>00214         }
-<a name="l00215"></a>00215         <span class="keywordflow">return</span> ($_val);
-<a name="l00216"></a>00216     }
-<a name="l00217"></a>00217 
-<a name="l00230"></a><a class="code" href="classFormHandler.html#a5ee0cda14dcbe0b6e12226db4bd951a0">00230</a>     function <a class="code" href="classFormHandler.html#a5ee0cda14dcbe0b6e12226db4bd951a0">cleanString</a> ($input , $allow = null , $content = null,  $remove_comment = <span class="keyword">true</span>)
-<a name="l00231"></a>00231     {
-<a name="l00232"></a>00232         <span class="keywordflow">if</span> (!is_string($input)) {
-<a name="l00233"></a>00233             <span class="keywordflow">return</span> $input;
-<a name="l00234"></a>00234         }
-<a name="l00235"></a>00235 
-<a name="l00236"></a>00236         <span class="keywordflow">if</span> ($allow == null) {
-<a name="l00237"></a>00237             $allow = array();
-<a name="l00238"></a>00238         }
-<a name="l00239"></a>00239         <span class="keywordflow">if</span> ($content == null) {
-<a name="l00240"></a>00240             $content = array(<span class="stringliteral">&#39;script&#39;</span>,<span class="stringliteral">&#39;style&#39;</span>);
-<a name="l00241"></a>00241         }
-<a name="l00242"></a>00242 
-<a name="l00243"></a>00243         <span class="keywordflow">if</span> (count ($allow) &gt; 0) {
-<a name="l00244"></a>00244             <span class="keywordflow">foreach</span> ($allow as $_tag) {
-<a name="l00245"></a>00245                 $_regexp = array(
-<a name="l00246"></a>00246                      <span class="stringliteral">&quot;/&lt;($_tag)/i&quot;</span>
-<a name="l00247"></a>00247                     ,<span class="stringliteral">&quot;/&lt;\/($_tag)/i&quot;</span>
-<a name="l00248"></a>00248                 );
-<a name="l00249"></a>00249                 $_replace = array(
-<a name="l00250"></a>00250                      <span class="stringliteral">&quot;#_#_#$1&quot;</span>
-<a name="l00251"></a>00251                     ,<span class="stringliteral">&quot;#_#_#/$1&quot;</span>
-<a name="l00252"></a>00252                 );
-<a name="l00253"></a>00253                 $input = preg_replace($_regexp, $_replace, $input);
-<a name="l00254"></a>00254             }
-<a name="l00255"></a>00255         }
-<a name="l00256"></a>00256 
-<a name="l00257"></a>00257         <span class="keywordflow">if</span> (!$remove_comment) {
-<a name="l00258"></a>00258             $input = preg_replace(array(<span class="stringliteral">&#39;/&lt;!--/&#39;</span>,<span class="stringliteral">&#39;/--&gt;/&#39;</span>), array(<span class="stringliteral">&#39;&#39;</span>,<span class="stringliteral">&#39;&#39;</span>), $input);
-<a name="l00259"></a>00259         }
-<a name="l00260"></a>00260 
-<a name="l00261"></a>00261         <span class="keywordflow">if</span> (count($content) &gt; 0) {
-<a name="l00262"></a>00262             <span class="keywordflow">foreach</span> ($content as $_tag) {
-<a name="l00263"></a>00263                 $input = preg_replace(<span class="stringliteral">&quot;/&lt;\s*$_tag.*?\/??&gt;?.*?&lt;??\/??\s*?($_tag)??.*?&gt;/i&quot;</span>, <span class="stringliteral">&#39;&#39;</span>, $input);
-<a name="l00264"></a>00264             }
-<a name="l00265"></a>00265         }
-<a name="l00266"></a>00266 
-<a name="l00267"></a>00267         $input = preg_replace(<span class="stringliteral">&quot;/&lt;.*?&gt;/&quot;</span>, <span class="stringliteral">&#39;&#39;</span>, $input);
-<a name="l00268"></a>00268         $input = preg_replace(<span class="stringliteral">&quot;/#_#_#/&quot;</span>, <span class="charliteral">&#39;&lt;&#39;</span>, $input);
-<a name="l00269"></a>00269         $input = preg_replace(<span class="stringliteral">&quot;/\s+/&quot;</span>, <span class="charliteral">&#39; &#39;</span>, $input);
-<a name="l00270"></a>00270         <span class="keywordflow">return</span> $input;
-<a name="l00271"></a>00271     }
+<a name="l00104"></a><a class="code" href="classFormHandler.html#a49690c831e0655a07d31192f944c7127">00104</a>     <span class="keyword">private</span> function <a class="code" href="classFormHandler.html#a49690c831e0655a07d31192f944c7127">parseFormdata</a> ($data = null)
+<a name="l00105"></a>00105     {
+<a name="l00106"></a>00106         <span class="keywordflow">if</span> ($data === null || empty($data)) {
+<a name="l00107"></a>00107             <span class="keywordflow">return</span>;
+<a name="l00108"></a>00108         }
+<a name="l00109"></a>00109         <span class="keywordflow">foreach</span> ($data as $_k =&gt; $_v) {
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111             $this-&gt;<span class="keyword">set</span>($_k, $_v);
+<a name="l00112"></a>00112         }
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114     }
+<a name="l00115"></a>00115 
+<a name="l00124"></a><a class="code" href="classFormHandler.html#a5fcc8aef0de87e31ceee65ad1eadb96c">00124</a>     <span class="keyword">public</span> function <span class="keyword">set</span> ($variable, $value)
+<a name="l00125"></a>00125     {
+<a name="l00126"></a>00126         <span class="keywordflow">if</span> (array_key_exists ($variable, $this-&gt;owl_formvalues)) {
+<a name="l00127"></a>00127             <span class="comment">// This field already exists (multi select); make sure it&#39;s</span>
+<a name="l00128"></a>00128             <span class="comment">// not overwritten, but written in an array</span>
+<a name="l00129"></a>00129             <span class="keywordflow">if</span> (!is_array($this-&gt;owl_formvalues[$variable])) {
+<a name="l00130"></a>00130                 <span class="comment">// This is the first one, copy the previously stored value to the</span>
+<a name="l00131"></a>00131                 <span class="comment">// multivalue array and add the new value.</span>
+<a name="l00132"></a>00132                 $_val = $this-&gt;owl_formvalues[$variable];
+<a name="l00133"></a>00133                 $this-&gt;owl_formvalues[$variable] = array ($_val, $value);
+<a name="l00134"></a>00134             } <span class="keywordflow">else</span> {
+<a name="l00135"></a>00135                 $this-&gt;owl_formvalues[$variable][] = $value;
+<a name="l00136"></a>00136             }
+<a name="l00137"></a>00137         } <span class="keywordflow">else</span> {
+<a name="l00138"></a>00138             $this-&gt;owl_formvalues[$variable] = $value;
+<a name="l00139"></a>00139         }
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;general&#39;</span>, <span class="stringliteral">&#39;debug&#39;</span>) &gt; 0) {
+<a name="l00142"></a>00142             $this-&gt;<a class="code" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus</a> (FORM_STORVALUE,
+<a name="l00143"></a>00143                 array ($variable
+<a name="l00144"></a>00144                         , (
+<a name="l00145"></a>00145                             is_array($this-&gt;owl_formvalues[$variable])
+<a name="l00146"></a>00146                                 ? (<span class="stringliteral">&#39;array(&#39;</span>.implode (<span class="charliteral">&#39;,&#39;</span>, $this-&gt;owl_formvalues[$variable]) . <span class="charliteral">&#39;)&#39;</span>)
+<a name="l00147"></a>00147                                 : $this-&gt;owl_formvalues[$variable]
+<a name="l00148"></a>00148                         )
+<a name="l00149"></a>00149                 )
+<a name="l00150"></a>00150             );
+<a name="l00151"></a>00151         }
+<a name="l00152"></a>00152     }
+<a name="l00153"></a>00153 
+<a name="l00163"></a><a class="code" href="classFormHandler.html#a4dbeaa44aa51a795b16379ae703d893a">00163</a>     <span class="keyword">public</span> function <span class="keyword">get</span> ($variable, $format = <a class="code" href="group__FORM__ParseFlags.html#gaf5de9385d7f7fc802eaa8e7090d8e0f5" title="Remove all HTML tags before returning anything.">FORMDATA_STRICT</a>, $allows = null, $content = array(<span class="stringliteral">&#39;script&#39;</span>))
+<a name="l00164"></a>00164     {
+<a name="l00165"></a>00165         <span class="keywordflow">switch</span> ($format) {
+<a name="l00166"></a>00166             <span class="keywordflow">case</span> <a class="code" href="group__FORM__ParseFlags.html#ga274bb2c8e23d075b189f143adbb6746e" title="Remove all tags except bold, underline etc, lists, line breaks, headers and such.">FORMDATA_BASIC_HTML</a>:
+<a name="l00167"></a>00167                 $_allow = array(<span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;i&#39;</span>, <span class="stringliteral">&#39;strong&#39;</span>, <span class="stringliteral">&#39;em&#39;</span>, <span class="charliteral">&#39;u&#39;</span>, <span class="stringliteral">&#39;pre&#39;</span>, <span class="stringliteral">&#39;tt&#39;</span>, <span class="charliteral">&#39;p&#39;</span>, <span class="stringliteral">&#39;(o|u)l&#39;</span>, <span class="stringliteral">&#39;li&#39;</span>, <span class="stringliteral">&#39;h[1-6]&#39;</span>, <span class="stringliteral">&#39;(b|h)r&#39;</span>, <span class="stringliteral">&#39;center&#39;</span>, <span class="stringliteral">&#39;small&#39;</span>, <span class="stringliteral">&#39;big&#39;</span>);
+<a name="l00168"></a>00168                 $_content = array(<span class="stringliteral">&#39;noframes&#39;</span>, <span class="stringliteral">&#39;option&#39;</span>, <span class="stringliteral">&#39;select&#39;</span>, <span class="stringliteral">&#39;script&#39;</span>, <span class="stringliteral">&#39;style&#39;</span>);
+<a name="l00169"></a>00169                 <span class="keywordflow">break</span>;
+<a name="l00170"></a>00170             <span class="keywordflow">case</span> <a class="code" href="group__FORM__ParseFlags.html#gac2f81495783870a3c4a63ab0164aa412" title="Remove all tags except the basic HTML tags, font and table tags, divs, spans, images and anchors...">FORMDATA_EXTENDED_HTML</a>:
+<a name="l00171"></a>00171                 $_allow = array(<span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;i&#39;</span>, <span class="stringliteral">&#39;strong&#39;</span>, <span class="stringliteral">&#39;em&#39;</span>, <span class="charliteral">&#39;u&#39;</span>, <span class="stringliteral">&#39;pre&#39;</span>, <span class="stringliteral">&#39;tt&#39;</span>, <span class="charliteral">&#39;p&#39;</span>, <span class="stringliteral">&#39;(o|u)l&#39;</span>, <span class="stringliteral">&#39;li&#39;</span>, <span class="stringliteral">&#39;h[1-6]&#39;</span>, <span class="stringliteral">&#39;(b|h)r&#39;</span>, <span class="stringliteral">&#39;center&#39;</span>, <span class="stringliteral">&#39;small&#39;</span>, <span class="stringliteral">&#39;big&#39;</span>
+<a name="l00172"></a>00172                     , <span class="stringliteral">&#39;font&#39;</span>, <span class="stringliteral">&#39;table&#39;</span>, <span class="stringliteral">&#39;t(h|r|d)&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="stringliteral">&#39;img&#39;</span>, <span class="stringliteral">&#39;div&#39;</span>, <span class="stringliteral">&#39;span&#39;</span>);
+<a name="l00173"></a>00173                 $_content = array(<span class="stringliteral">&#39;noframes&#39;</span>, <span class="stringliteral">&#39;option&#39;</span>, <span class="stringliteral">&#39;select&#39;</span>, <span class="stringliteral">&#39;script&#39;</span>, <span class="stringliteral">&#39;style&#39;</span>);
+<a name="l00174"></a>00174                 <span class="keywordflow">break</span>;
+<a name="l00175"></a>00175             <span class="keywordflow">case</span> <a class="code" href="group__FORM__ParseFlags.html#gac1497f65ec29dadf9d39c5da41e17fc3" title="Remove all tags except extended HTML tags, frame, style and form (input) tags.">FORMDATA_FULL_HTML</a>:
+<a name="l00176"></a>00176                 $_allow = array(<span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;i&#39;</span>, <span class="stringliteral">&#39;strong&#39;</span>, <span class="stringliteral">&#39;em&#39;</span>, <span class="charliteral">&#39;u&#39;</span>, <span class="stringliteral">&#39;pre&#39;</span>, <span class="stringliteral">&#39;tt&#39;</span>, <span class="charliteral">&#39;p&#39;</span>, <span class="stringliteral">&#39;(o|u)l&#39;</span>, <span class="stringliteral">&#39;li&#39;</span>, <span class="stringliteral">&#39;h[1-6]&#39;</span>, <span class="stringliteral">&#39;(b|h)r&#39;</span>, <span class="stringliteral">&#39;center&#39;</span>, <span class="stringliteral">&#39;small&#39;</span>, <span class="stringliteral">&#39;big&#39;</span>
+<a name="l00177"></a>00177                     , <span class="stringliteral">&#39;font&#39;</span>, <span class="stringliteral">&#39;table&#39;</span>, <span class="stringliteral">&#39;t(h|r|d)&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="stringliteral">&#39;img&#39;</span>
+<a name="l00178"></a>00178                     , <span class="stringliteral">&#39;fieldset&#39;</span>, <span class="stringliteral">&#39;form&#39;</span>, <span class="stringliteral">&#39;frame(set)?&#39;</span>, <span class="stringliteral">&#39;input&#39;</span>, <span class="stringliteral">&#39;label&#39;</span>, <span class="stringliteral">&#39;legend&#39;</span>, <span class="stringliteral">&#39;noframes&#39;</span>, <span class="stringliteral">&#39;optgroup&#39;</span>, <span class="stringliteral">&#39;option&#39;</span>, <span class="stringliteral">&#39;select&#39;</span>, <span class="stringliteral">&#39;style&#39;</span>, <span class="stringliteral">&#39;textarea&#39;</span>);
+<a name="l00179"></a>00179                 $_content = array(<span class="stringliteral">&#39;script&#39;</span>);
+<a name="l00180"></a>00180                 <span class="keywordflow">break</span>;
+<a name="l00181"></a>00181             <span class="keywordflow">case</span> <a class="code" href="group__FORM__ParseFlags.html#gae5bb66ec27c03f3b03796f3bd80ba2ff" title="Provide custom arrays for formatting,.">FORMDATA_CUSTOM</a>:
+<a name="l00182"></a>00182                 $_allow = $allows;
+<a name="l00183"></a>00183                 $_content = $content;
+<a name="l00184"></a>00184                 <span class="keywordflow">break</span>;
+<a name="l00185"></a>00185             <span class="keywordflow">case</span> <a class="code" href="group__FORM__ParseFlags.html#ga73c85f0f80e1060e1adf1efb73639845" title="Return all data, formatted as HTML code.">FORMDATA_HTML_CODE</a>:
+<a name="l00186"></a>00186                 <span class="keywordflow">break</span>; <span class="comment">// Will be handled later</span>
+<a name="l00187"></a>00187             <span class="keywordflow">default</span>:
+<a name="l00188"></a>00188             <span class="keywordflow">case</span> <a class="code" href="group__FORM__ParseFlags.html#gaf5de9385d7f7fc802eaa8e7090d8e0f5" title="Remove all HTML tags before returning anything.">FORMDATA_STRICT</a>:
+<a name="l00189"></a>00189                 $_allow = array();
+<a name="l00190"></a>00190                 $_content = array(<span class="stringliteral">&#39;noframes&#39;</span>, <span class="stringliteral">&#39;option&#39;</span>, <span class="stringliteral">&#39;select&#39;</span>, <span class="stringliteral">&#39;script&#39;</span>, <span class="stringliteral">&#39;style&#39;</span>);
+<a name="l00191"></a>00191                 <span class="keywordflow">break</span>;
+<a name="l00192"></a>00192         }
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194         <span class="keywordflow">if</span> (array_key_exists ($variable, $this-&gt;owl_formvalues)) {
+<a name="l00195"></a>00195             $_val = $this-&gt;owl_formvalues[$variable];
+<a name="l00196"></a>00196             <span class="keywordflow">if</span> ($format !== <a class="code" href="group__FORM__ParseFlags.html#ga982c2cfab5717a3b68087a346cd4addd" title="Return the data unformatted.">FORMDATA_RAW</a>) {
+<a name="l00197"></a>00197                 <span class="keywordflow">if</span> (is_array($_val)) {
+<a name="l00198"></a>00198 <span class="comment">//                  $_cnt = count($_val);</span>
+<a name="l00199"></a>00199                     <span class="keywordflow">foreach</span> ($_val as $_HTMLfld =&gt; $_HTMLval) {
+<a name="l00200"></a>00200                         <span class="keywordflow">if</span> ($format === <a class="code" href="group__FORM__ParseFlags.html#ga73c85f0f80e1060e1adf1efb73639845" title="Return all data, formatted as HTML code.">FORMDATA_HTML_CODE</a>) {
+<a name="l00201"></a>00201                             $_val[$_HTMLfld] = htmlentities($_HTMLval, ENT_COMPAT, <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a>(<span class="stringliteral">&#39;general&#39;</span>, <span class="stringliteral">&#39;charset&#39;</span>, <span class="stringliteral">&#39;ISO-8859-1&#39;</span>));
+<a name="l00202"></a>00202                         } <span class="keywordflow">else</span> {
+<a name="l00203"></a>00203                             $_val[$_HTMLfld] = $this-&gt;<a class="code" href="classFormHandler.html#a5ee0cda14dcbe0b6e12226db4bd951a0">cleanString</a>($_HTMLval, $_allow, $_content);
+<a name="l00204"></a>00204                         }
+<a name="l00205"></a>00205                     }
+<a name="l00206"></a>00206 <span class="comment">/*</span>
+<a name="l00207"></a>00207 <span class="comment">                    for ($_i = 0; $_i &lt; $_cnt; $_i++) {</span>
+<a name="l00208"></a>00208 <span class="comment">                        if ($format === FORMDATA_HTML_CODE) {</span>
+<a name="l00209"></a>00209 <span class="comment">                            $_val[$_i] = htmlentities($_val[$_i], ENT_COMPAT, ConfigHandler::get(&#39;general&#39;, &#39;charset&#39;, &#39;ISO-8859-1&#39;));</span>
+<a name="l00210"></a>00210 <span class="comment">                        } else {</span>
+<a name="l00211"></a>00211 <span class="comment">                            $_val[$_i] = $this-&gt;cleanString($_val[$_i], $_allow, $_content);</span>
+<a name="l00212"></a>00212 <span class="comment">                        }</span>
+<a name="l00213"></a>00213 <span class="comment">                    }</span>
+<a name="l00214"></a>00214 <span class="comment"> */</span>
+<a name="l00215"></a>00215                 } <span class="keywordflow">else</span> {
+<a name="l00216"></a>00216                     <span class="keywordflow">if</span> ($format === <a class="code" href="group__FORM__ParseFlags.html#ga73c85f0f80e1060e1adf1efb73639845" title="Return all data, formatted as HTML code.">FORMDATA_HTML_CODE</a>) {
+<a name="l00217"></a>00217                         $_val = htmlentities($_val, ENT_COMPAT, <a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a>(<span class="stringliteral">&#39;general&#39;</span>, <span class="stringliteral">&#39;charset&#39;</span>, <span class="stringliteral">&#39;ISO-8859-1&#39;</span>));
+<a name="l00218"></a>00218                     } <span class="keywordflow">else</span> {
+<a name="l00219"></a>00219                         $_val = $this-&gt;<a class="code" href="classFormHandler.html#a5ee0cda14dcbe0b6e12226db4bd951a0">cleanString</a>($_val, $_allow, $_content);
+<a name="l00220"></a>00220                     }
+<a name="l00221"></a>00221                 }
+<a name="l00222"></a>00222             }
+<a name="l00223"></a>00223         } <span class="keywordflow">else</span> {
+<a name="l00224"></a>00224             $_val = null;
+<a name="l00225"></a>00225             $this-&gt;<a class="code" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus</a> (FORM_NOVALUE, $variable);
+<a name="l00226"></a>00226         }
+<a name="l00227"></a>00227 
+<a name="l00228"></a>00228         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;general&#39;</span>, <span class="stringliteral">&#39;debug&#39;</span>) &gt; 0) {
+<a name="l00229"></a>00229             $this-&gt;<a class="code" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus</a> (FORM_RETVALUE, array ($variable, (is_array($_val)?print_r($_val, 1):$_val)));
+<a name="l00230"></a>00230         }
+<a name="l00231"></a>00231         <span class="keywordflow">return</span> ($_val);
+<a name="l00232"></a>00232     }
+<a name="l00233"></a>00233 
+<a name="l00246"></a><a class="code" href="classFormHandler.html#a5ee0cda14dcbe0b6e12226db4bd951a0">00246</a>     function <a class="code" href="classFormHandler.html#a5ee0cda14dcbe0b6e12226db4bd951a0">cleanString</a> ($input , $allow = null , $content = null,  $remove_comment = <span class="keyword">true</span>)
+<a name="l00247"></a>00247     {
+<a name="l00248"></a>00248         <span class="keywordflow">if</span> (!is_string($input)) {
+<a name="l00249"></a>00249             <span class="keywordflow">return</span> $input;
+<a name="l00250"></a>00250         }
+<a name="l00251"></a>00251 
+<a name="l00252"></a>00252         <span class="keywordflow">if</span> ($allow == null) {
+<a name="l00253"></a>00253             $allow = array();
+<a name="l00254"></a>00254         }
+<a name="l00255"></a>00255         <span class="keywordflow">if</span> ($content == null) {
+<a name="l00256"></a>00256             $content = array(<span class="stringliteral">&#39;script&#39;</span>,<span class="stringliteral">&#39;style&#39;</span>);
+<a name="l00257"></a>00257         }
+<a name="l00258"></a>00258 
+<a name="l00259"></a>00259         <span class="keywordflow">if</span> (count ($allow) &gt; 0) {
+<a name="l00260"></a>00260             <span class="keywordflow">foreach</span> ($allow as $_tag) {
+<a name="l00261"></a>00261                 $_regexp = array(
+<a name="l00262"></a>00262                      <span class="stringliteral">&quot;/&lt;($_tag)/i&quot;</span>
+<a name="l00263"></a>00263                     ,<span class="stringliteral">&quot;/&lt;\/($_tag)/i&quot;</span>
+<a name="l00264"></a>00264                 );
+<a name="l00265"></a>00265                 $_replace = array(
+<a name="l00266"></a>00266                      <span class="stringliteral">&quot;#_#_#$1&quot;</span>
+<a name="l00267"></a>00267                     ,<span class="stringliteral">&quot;#_#_#/$1&quot;</span>
+<a name="l00268"></a>00268                 );
+<a name="l00269"></a>00269                 $input = preg_replace($_regexp, $_replace, $input);
+<a name="l00270"></a>00270             }
+<a name="l00271"></a>00271         }
 <a name="l00272"></a>00272 
-<a name="l00278"></a><a class="code" href="classFormHandler.html#abfb705d9e06fc9436dffa63bfbbe9b24">00278</a>     <span class="keyword">public</span> function <a class="code" href="classFormHandler.html#abfb705d9e06fc9436dffa63bfbbe9b24">getFormData</a>()
-<a name="l00279"></a>00279     {
-<a name="l00280"></a>00280         <span class="keywordflow">return</span> ($this-&gt;owl_formvalues);
-<a name="l00281"></a>00281     }
-<a name="l00282"></a>00282 }
-<a name="l00283"></a>00283 
-<a name="l00284"></a>00284 <span class="comment">/*</span>
-<a name="l00285"></a>00285 <span class="comment"> * Register this class and all status codes</span>
-<a name="l00286"></a>00286 <span class="comment"> */</span>
-<a name="l00287"></a>00287 <a class="code" href="classRegister.html#a7f8f9dd6364815e162fe098327177943">Register::registerClass</a> (<span class="stringliteral">&#39;FormHandler&#39;</span>);
+<a name="l00273"></a>00273         <span class="keywordflow">if</span> (!$remove_comment) {
+<a name="l00274"></a>00274             $input = preg_replace(array(<span class="stringliteral">&#39;/&lt;!--/&#39;</span>,<span class="stringliteral">&#39;/--&gt;/&#39;</span>), array(<span class="stringliteral">&#39;&#39;</span>,<span class="stringliteral">&#39;&#39;</span>), $input);
+<a name="l00275"></a>00275         }
+<a name="l00276"></a>00276 
+<a name="l00277"></a>00277         <span class="keywordflow">if</span> (count($content) &gt; 0) {
+<a name="l00278"></a>00278             <span class="keywordflow">foreach</span> ($content as $_tag) {
+<a name="l00279"></a>00279                 $input = preg_replace(<span class="stringliteral">&quot;/&lt;\s*$_tag.*?\/??&gt;?.*?&lt;??\/??\s*?($_tag)??.*?&gt;/i&quot;</span>, <span class="stringliteral">&#39;&#39;</span>, $input);
+<a name="l00280"></a>00280             }
+<a name="l00281"></a>00281         }
+<a name="l00282"></a>00282 
+<a name="l00283"></a>00283         $input = preg_replace(<span class="stringliteral">&quot;/&lt;.*?&gt;/&quot;</span>, <span class="stringliteral">&#39;&#39;</span>, $input);
+<a name="l00284"></a>00284         $input = preg_replace(<span class="stringliteral">&quot;/#_#_#/&quot;</span>, <span class="charliteral">&#39;&lt;&#39;</span>, $input);
+<a name="l00285"></a>00285         $input = preg_replace(<span class="stringliteral">&quot;/\s+/&quot;</span>, <span class="charliteral">&#39; &#39;</span>, $input);
+<a name="l00286"></a>00286         <span class="keywordflow">return</span> $input;
+<a name="l00287"></a>00287     }
 <a name="l00288"></a>00288 
-<a name="l00289"></a>00289 <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">Register::setSeverity</a> (<a class="code" href="group__OWL__SeverityCodes.html#gadf6a439e74801dd83160f085e9af5546">OWL_DEBUG</a>);
-<a name="l00290"></a>00290 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;FORM_STORVALUE&#39;</span>);
-<a name="l00291"></a>00291 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;FORM_PARSE&#39;</span>);
-<a name="l00292"></a>00292 
-<a name="l00293"></a>00293 <span class="comment">//Register::setSeverity (OWL_INFO);</span>
-<a name="l00294"></a>00294 <span class="comment">//Register::setSeverity (OWL_OK);</span>
-<a name="l00295"></a>00295 <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">Register::setSeverity</a> (<a class="code" href="group__OWL__SeverityCodes.html#ga96223f06ba27bf5cbefa6e9d702897c2">OWL_SUCCESS</a>);
-<a name="l00296"></a>00296 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;FORM_RETVALUE&#39;</span>);
-<a name="l00297"></a>00297 
-<a name="l00298"></a>00298 <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">Register::setSeverity</a> (<a class="code" href="group__OWL__SeverityCodes.html#gace886152e2e86cd2e91cb833fd495adb">OWL_WARNING</a>);
-<a name="l00299"></a>00299 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;FORM_NOVALUE&#39;</span>);
-<a name="l00300"></a>00300 
-<a name="l00301"></a>00301 <span class="comment">//Register::setSeverity (OWL_BUG);</span>
-<a name="l00302"></a>00302 
-<a name="l00303"></a>00303 <span class="comment">//Register::setSeverity (OWL_ERROR);</span>
-<a name="l00304"></a>00304 <span class="comment">//Register::setSeverity (OWL_FATAL);</span>
-<a name="l00305"></a>00305 <span class="comment">//Register::setSeverity (OWL_CRITICAL);</span>
+<a name="l00294"></a><a class="code" href="classFormHandler.html#abfb705d9e06fc9436dffa63bfbbe9b24">00294</a>     <span class="keyword">public</span> function <a class="code" href="classFormHandler.html#abfb705d9e06fc9436dffa63bfbbe9b24">getFormData</a>()
+<a name="l00295"></a>00295     {
+<a name="l00296"></a>00296         <span class="keywordflow">return</span> ($this-&gt;owl_formvalues);
+<a name="l00297"></a>00297     }
+<a name="l00298"></a>00298 }
+<a name="l00299"></a>00299 
+<a name="l00300"></a>00300 <span class="comment">/*</span>
+<a name="l00301"></a>00301 <span class="comment"> * Register this class and all status codes</span>
+<a name="l00302"></a>00302 <span class="comment"> */</span>
+<a name="l00303"></a>00303 <a class="code" href="classRegister.html#a7f8f9dd6364815e162fe098327177943">Register::registerClass</a> (<span class="stringliteral">&#39;FormHandler&#39;</span>);
+<a name="l00304"></a>00304 
+<a name="l00305"></a>00305 <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">Register::setSeverity</a> (<a class="code" href="group__OWL__SeverityCodes.html#gadf6a439e74801dd83160f085e9af5546">OWL_DEBUG</a>);
+<a name="l00306"></a>00306 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;FORM_STORVALUE&#39;</span>);
+<a name="l00307"></a>00307 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;FORM_PARSE&#39;</span>);
+<a name="l00308"></a>00308 
+<a name="l00309"></a>00309 <span class="comment">//Register::setSeverity (OWL_INFO);</span>
+<a name="l00310"></a>00310 <span class="comment">//Register::setSeverity (OWL_OK);</span>
+<a name="l00311"></a>00311 <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">Register::setSeverity</a> (<a class="code" href="group__OWL__SeverityCodes.html#ga96223f06ba27bf5cbefa6e9d702897c2">OWL_SUCCESS</a>);
+<a name="l00312"></a>00312 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;FORM_RETVALUE&#39;</span>);
+<a name="l00313"></a>00313 
+<a name="l00314"></a>00314 <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">Register::setSeverity</a> (<a class="code" href="group__OWL__SeverityCodes.html#gace886152e2e86cd2e91cb833fd495adb">OWL_WARNING</a>);
+<a name="l00315"></a>00315 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;FORM_NOVALUE&#39;</span>);
+<a name="l00316"></a>00316 
+<a name="l00317"></a>00317 <span class="comment">//Register::setSeverity (OWL_BUG);</span>
+<a name="l00318"></a>00318 
+<a name="l00319"></a>00319 <span class="comment">//Register::setSeverity (OWL_ERROR);</span>
+<a name="l00320"></a>00320 <span class="comment">//Register::setSeverity (OWL_FATAL);</span>
+<a name="l00321"></a>00321 <span class="comment">//Register::setSeverity (OWL_CRITICAL);</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -341,7 +341,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Thu Oct 13 2011 11:57:54 for OWL-PHP by
+    <li class="footer">Generated on Fri Oct 28 2011 11:32:49 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

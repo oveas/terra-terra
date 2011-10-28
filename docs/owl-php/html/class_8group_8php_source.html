@@ -30,7 +30,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OWL-PHP
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    
   </td>
@@ -98,95 +98,95 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <a href="class_8group_8php.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
-<a name="l00016"></a><a class="code" href="classGroup.html">00016</a> <span class="keyword">class </span><a class="code" href="classGroup.html" title="the group object">Group</a> <span class="keyword">extends</span> <a class="code" href="class__OWL.html">_OWL</a>
-<a name="l00017"></a>00017 {
-<a name="l00021"></a><a class="code" href="classGroup.html#af97dff6eda8fffaa14b0aa644b3147ec">00021</a>     <span class="keyword">private</span> <a class="code" href="classGroup.html#af97dff6eda8fffaa14b0aa644b3147ec">$rights</a>;
-<a name="l00022"></a>00022 
-<a name="l00026"></a><a class="code" href="classGroup.html#ac63f8adf9c9c19686fee49593fc8b5cb">00026</a>     <span class="keyword">private</span> <a class="code" href="classGroup.html#ac63f8adf9c9c19686fee49593fc8b5cb">$id</a>;
-<a name="l00027"></a>00027 
-<a name="l00033"></a><a class="code" href="classGroup.html#abff26c617def5ef2edd2091ddf9a8cfe">00033</a>     <span class="keyword">public</span> function <a class="code" href="classGroup.html#abff26c617def5ef2edd2091ddf9a8cfe">__construct</a> (<a class="code" href="classGroup.html#ac63f8adf9c9c19686fee49593fc8b5cb">$id</a> = 0)
-<a name="l00034"></a>00034     {
-<a name="l00035"></a>00035         <a class="code" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">_OWL::init</a>();
-<a name="l00036"></a>00036         $this-&gt;dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a> ();
-<a name="l00037"></a>00037         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
-<a name="l00038"></a>00038             $this-&gt;dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
-<a name="l00039"></a>00039         }
-<a name="l00040"></a>00040         $this-&gt;dataset-&gt;setTablename(<span class="stringliteral">&#39;group&#39;</span>);
-<a name="l00041"></a>00041         $this-&gt;<span class="keywordtype">id</span> = <a class="code" href="classGroup.html#ac63f8adf9c9c19686fee49593fc8b5cb">$id</a>;
-<a name="l00042"></a>00042         $this-&gt;rights = array();
-<a name="l00043"></a>00043         <span class="keywordflow">if</span> ($this-&gt;<span class="keywordtype">id</span> !== 0) {
-<a name="l00044"></a>00044             $this-&gt;<a class="code" href="classGroup.html#a79a4e6c3de0c3b9bd6e28461fd98a95d">getGroupData</a>();
-<a name="l00045"></a>00045             $this-&gt;<a class="code" href="classGroup.html#af1327539a4b4ecabefab6ab23c2d210f">getGroupRights</a>();
-<a name="l00046"></a>00046         }
-<a name="l00047"></a>00047     }
-<a name="l00048"></a>00048 
-<a name="l00053"></a><a class="code" href="classGroup.html#a79a4e6c3de0c3b9bd6e28461fd98a95d">00053</a>     <span class="keyword">private</span> function <a class="code" href="classGroup.html#a79a4e6c3de0c3b9bd6e28461fd98a95d">getGroupData</a>()
-<a name="l00054"></a>00054     {
-<a name="l00055"></a>00055         $this-&gt;dataset-&gt;set(<span class="stringliteral">&#39;gid&#39;</span>, $this-&gt;<span class="keywordtype">id</span>);
-<a name="l00056"></a>00056         $this-&gt;dataset-&gt;prepare();
-<a name="l00057"></a>00057         $this-&gt;dataset-&gt;db($_data, __LINE__, __FILE__);
-<a name="l00058"></a>00058         $this-&gt;group_data = $_data[0];
-<a name="l00059"></a>00059     }
-<a name="l00060"></a>00060 
-<a name="l00068"></a><a class="code" href="classGroup.html#a6e17a1781036917e7eebee1f96aac657">00068</a>     <span class="keyword">public</span> function <a class="code" href="classGroup.html#a6e17a1781036917e7eebee1f96aac657">getGroupByName</a>($name, $aid = <a class="code" href="OWLloader_8php.html#a507991b99af2ce469bf269f05aa90126">OWL_ID</a>)
-<a name="l00069"></a>00069     {
-<a name="l00070"></a>00070         $this-&gt;dataset-&gt;set(<span class="stringliteral">&#39;groupname&#39;</span>, $name);
-<a name="l00071"></a>00071         $this-&gt;dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $aid);
+<a name="l00032"></a><a class="code" href="classGroup.html">00032</a> <span class="keyword">class </span><a class="code" href="classGroup.html" title="the group object">Group</a> <span class="keyword">extends</span> <a class="code" href="class__OWL.html">_OWL</a>
+<a name="l00033"></a>00033 {
+<a name="l00037"></a><a class="code" href="classGroup.html#af97dff6eda8fffaa14b0aa644b3147ec">00037</a>     <span class="keyword">private</span> <a class="code" href="classGroup.html#af97dff6eda8fffaa14b0aa644b3147ec">$rights</a>;
+<a name="l00038"></a>00038 
+<a name="l00042"></a><a class="code" href="classGroup.html#ac63f8adf9c9c19686fee49593fc8b5cb">00042</a>     <span class="keyword">private</span> <a class="code" href="classGroup.html#ac63f8adf9c9c19686fee49593fc8b5cb">$id</a>;
+<a name="l00043"></a>00043 
+<a name="l00049"></a><a class="code" href="classGroup.html#abff26c617def5ef2edd2091ddf9a8cfe">00049</a>     <span class="keyword">public</span> function <a class="code" href="classGroup.html#abff26c617def5ef2edd2091ddf9a8cfe">__construct</a> (<a class="code" href="classGroup.html#ac63f8adf9c9c19686fee49593fc8b5cb">$id</a> = 0)
+<a name="l00050"></a>00050     {
+<a name="l00051"></a>00051         <a class="code" href="class__OWL.html#ae0ef3ded56e8a6b34b6461e5a721cd3e">_OWL::init</a>();
+<a name="l00052"></a>00052         $this-&gt;dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a> ();
+<a name="l00053"></a>00053         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
+<a name="l00054"></a>00054             $this-&gt;dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00055"></a>00055         }
+<a name="l00056"></a>00056         $this-&gt;dataset-&gt;setTablename(<span class="stringliteral">&#39;group&#39;</span>);
+<a name="l00057"></a>00057         $this-&gt;<span class="keywordtype">id</span> = <a class="code" href="classGroup.html#ac63f8adf9c9c19686fee49593fc8b5cb">$id</a>;
+<a name="l00058"></a>00058         $this-&gt;rights = array();
+<a name="l00059"></a>00059         <span class="keywordflow">if</span> ($this-&gt;<span class="keywordtype">id</span> !== 0) {
+<a name="l00060"></a>00060             $this-&gt;<a class="code" href="classGroup.html#a79a4e6c3de0c3b9bd6e28461fd98a95d">getGroupData</a>();
+<a name="l00061"></a>00061             $this-&gt;<a class="code" href="classGroup.html#af1327539a4b4ecabefab6ab23c2d210f">getGroupRights</a>();
+<a name="l00062"></a>00062         }
+<a name="l00063"></a>00063     }
+<a name="l00064"></a>00064 
+<a name="l00069"></a><a class="code" href="classGroup.html#a79a4e6c3de0c3b9bd6e28461fd98a95d">00069</a>     <span class="keyword">private</span> function <a class="code" href="classGroup.html#a79a4e6c3de0c3b9bd6e28461fd98a95d">getGroupData</a>()
+<a name="l00070"></a>00070     {
+<a name="l00071"></a>00071         $this-&gt;dataset-&gt;set(<span class="stringliteral">&#39;gid&#39;</span>, $this-&gt;<span class="keywordtype">id</span>);
 <a name="l00072"></a>00072         $this-&gt;dataset-&gt;prepare();
 <a name="l00073"></a>00073         $this-&gt;dataset-&gt;db($_data, __LINE__, __FILE__);
-<a name="l00074"></a>00074         <span class="keywordflow">if</span> (count($_data) == 0) {
-<a name="l00075"></a>00075             $this-&gt;<a class="code" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus</a>(GROUP_NOSUCHNAME, array($name));
-<a name="l00076"></a>00076             <span class="keywordflow">return</span> (<span class="keyword">false</span>);
-<a name="l00077"></a>00077         }
-<a name="l00078"></a>00078         $this-&gt;group_data = $_data[0];
-<a name="l00079"></a>00079         $this-&gt;<span class="keywordtype">id</span> = $this-&gt;group_data[<span class="stringliteral">&#39;gid&#39;</span>];
-<a name="l00080"></a>00080         $this-&gt;<a class="code" href="classGroup.html#af1327539a4b4ecabefab6ab23c2d210f">getGroupRights</a>();
-<a name="l00081"></a>00081         <span class="keywordflow">return</span> ($this-&gt;<span class="keywordtype">id</span>);
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083     }
-<a name="l00088"></a><a class="code" href="classGroup.html#af1327539a4b4ecabefab6ab23c2d210f">00088</a>     <span class="keyword">private</span> function <a class="code" href="classGroup.html#af1327539a4b4ecabefab6ab23c2d210f">getGroupRights</a>()
-<a name="l00089"></a>00089     {
-<a name="l00090"></a>00090         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a> ();
-<a name="l00091"></a>00091         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
-<a name="l00092"></a>00092             $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00074"></a>00074         $this-&gt;group_data = $_data[0];
+<a name="l00075"></a>00075     }
+<a name="l00076"></a>00076 
+<a name="l00084"></a><a class="code" href="classGroup.html#a6e17a1781036917e7eebee1f96aac657">00084</a>     <span class="keyword">public</span> function <a class="code" href="classGroup.html#a6e17a1781036917e7eebee1f96aac657">getGroupByName</a>($name, $aid = <a class="code" href="OWLloader_8php.html#a507991b99af2ce469bf269f05aa90126">OWL_ID</a>)
+<a name="l00085"></a>00085     {
+<a name="l00086"></a>00086         $this-&gt;dataset-&gt;set(<span class="stringliteral">&#39;groupname&#39;</span>, $name);
+<a name="l00087"></a>00087         $this-&gt;dataset-&gt;set(<span class="stringliteral">&#39;aid&#39;</span>, $aid);
+<a name="l00088"></a>00088         $this-&gt;dataset-&gt;prepare();
+<a name="l00089"></a>00089         $this-&gt;dataset-&gt;db($_data, __LINE__, __FILE__);
+<a name="l00090"></a>00090         <span class="keywordflow">if</span> (count($_data) == 0) {
+<a name="l00091"></a>00091             $this-&gt;<a class="code" href="class__OWL.html#a80e2fe01c3663dbb0ab685eebe33fd1e">setStatus</a>(GROUP_NOSUCHNAME, array($name));
+<a name="l00092"></a>00092             <span class="keywordflow">return</span> (<span class="keyword">false</span>);
 <a name="l00093"></a>00093         }
-<a name="l00094"></a>00094         $dataset-&gt;setTablename(<span class="stringliteral">&#39;grouprights&#39;</span>);
-<a name="l00095"></a>00095         $dataset-&gt;set(<span class="stringliteral">&#39;gid&#39;</span>, $this-&gt;<span class="keywordtype">id</span>);
-<a name="l00096"></a>00096         $dataset-&gt;prepare();
-<a name="l00097"></a>00097         $dataset-&gt;db($_data, __LINE__, __FILE__);
-<a name="l00098"></a>00098         <span class="keywordflow">foreach</span> ($_data as $_r) {
-<a name="l00099"></a>00099             $this-&gt;rights[<span class="charliteral">&#39;a&#39;</span>.$_r[<span class="stringliteral">&#39;aid&#39;</span>]] = $_r[<span class="stringliteral">&#39;right&#39;</span>];
-<a name="l00100"></a>00100         }
-<a name="l00101"></a>00101     }
-<a name="l00102"></a>00102 
-<a name="l00109"></a><a class="code" href="classGroup.html#aa1f710571575b8d41741d46661c3d314">00109</a>     <span class="keyword">public</span> function <a class="code" href="classGroup.html#aa1f710571575b8d41741d46661c3d314">getRights</a>($aid)
-<a name="l00110"></a>00110     {
-<a name="l00111"></a>00111         <span class="keywordflow">if</span> (!array_key_exists(<span class="charliteral">&#39;a&#39;</span>.$aid, $this-&gt;rights)) {
-<a name="l00112"></a>00112             <span class="keywordflow">return</span> (0);
-<a name="l00113"></a>00113         }
-<a name="l00114"></a>00114         <span class="keywordflow">return</span> ($this-&gt;rights[<span class="charliteral">&#39;a&#39;</span>.$aid]);
-<a name="l00115"></a>00115     }
-<a name="l00116"></a>00116 
-<a name="l00124"></a><a class="code" href="classGroup.html#ac8b4123c5a94e4f61936b740e0befd78">00124</a>     <span class="keyword">public</span> function <span class="keyword">get</span>($item, $default = null)
-<a name="l00125"></a>00125     {
-<a name="l00126"></a>00126         <span class="keywordflow">return</span> (
-<a name="l00127"></a>00127             (array_key_exists($item, $this-&gt;group_data))
-<a name="l00128"></a>00128                 ? $this-&gt;group_data[$item]
-<a name="l00129"></a>00129                 : $default
-<a name="l00130"></a>00130         );
+<a name="l00094"></a>00094         $this-&gt;group_data = $_data[0];
+<a name="l00095"></a>00095         $this-&gt;<span class="keywordtype">id</span> = $this-&gt;group_data[<span class="stringliteral">&#39;gid&#39;</span>];
+<a name="l00096"></a>00096         $this-&gt;<a class="code" href="classGroup.html#af1327539a4b4ecabefab6ab23c2d210f">getGroupRights</a>();
+<a name="l00097"></a>00097         <span class="keywordflow">return</span> ($this-&gt;<span class="keywordtype">id</span>);
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099     }
+<a name="l00104"></a><a class="code" href="classGroup.html#af1327539a4b4ecabefab6ab23c2d210f">00104</a>     <span class="keyword">private</span> function <a class="code" href="classGroup.html#af1327539a4b4ecabefab6ab23c2d210f">getGroupRights</a>()
+<a name="l00105"></a>00105     {
+<a name="l00106"></a>00106         $dataset = <span class="keyword">new</span> <a class="code" href="classDataHandler.html" title="The OWL Data object.">DataHandler</a> ();
+<a name="l00107"></a>00107         <span class="keywordflow">if</span> (<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owltables&#39;</span>, <span class="keyword">true</span>)) {
+<a name="l00108"></a>00108             $dataset-&gt;setPrefix(<a class="code" href="classConfigHandler.html#a93b2a6922430f8aefafa0468eb35b110">ConfigHandler::get</a> (<span class="stringliteral">&#39;database&#39;</span>, <span class="stringliteral">&#39;owlprefix&#39;</span>));
+<a name="l00109"></a>00109         }
+<a name="l00110"></a>00110         $dataset-&gt;setTablename(<span class="stringliteral">&#39;grouprights&#39;</span>);
+<a name="l00111"></a>00111         $dataset-&gt;set(<span class="stringliteral">&#39;gid&#39;</span>, $this-&gt;<span class="keywordtype">id</span>);
+<a name="l00112"></a>00112         $dataset-&gt;prepare();
+<a name="l00113"></a>00113         $dataset-&gt;db($_data, __LINE__, __FILE__);
+<a name="l00114"></a>00114         <span class="keywordflow">foreach</span> ($_data as $_r) {
+<a name="l00115"></a>00115             $this-&gt;rights[<span class="charliteral">&#39;a&#39;</span>.$_r[<span class="stringliteral">&#39;aid&#39;</span>]] = $_r[<span class="stringliteral">&#39;right&#39;</span>];
+<a name="l00116"></a>00116         }
+<a name="l00117"></a>00117     }
+<a name="l00118"></a>00118 
+<a name="l00125"></a><a class="code" href="classGroup.html#aa1f710571575b8d41741d46661c3d314">00125</a>     <span class="keyword">public</span> function <a class="code" href="classGroup.html#aa1f710571575b8d41741d46661c3d314">getRights</a>($aid)
+<a name="l00126"></a>00126     {
+<a name="l00127"></a>00127         <span class="keywordflow">if</span> (!array_key_exists(<span class="charliteral">&#39;a&#39;</span>.$aid, $this-&gt;rights)) {
+<a name="l00128"></a>00128             <span class="keywordflow">return</span> (0);
+<a name="l00129"></a>00129         }
+<a name="l00130"></a>00130         <span class="keywordflow">return</span> ($this-&gt;rights[<span class="charliteral">&#39;a&#39;</span>.$aid]);
 <a name="l00131"></a>00131     }
-<a name="l00132"></a>00132 }
-<a name="l00133"></a>00133 <a class="code" href="classRegister.html#a7f8f9dd6364815e162fe098327177943">Register::registerClass</a>(<span class="stringliteral">&#39;Group&#39;</span>);
-<a name="l00134"></a>00134 <span class="comment">//Register::setSeverity (OWL_DEBUG);</span>
-<a name="l00135"></a>00135 <span class="comment">//Register::setSeverity (OWL_INFO);</span>
-<a name="l00136"></a>00136 <span class="comment">//Register::setSeverity (OWL_OK);</span>
-<a name="l00137"></a>00137 <span class="comment">//Register::setSeverity (OWL_SUCCESS);</span>
-<a name="l00138"></a>00138 <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">Register::setSeverity</a> (<a class="code" href="group__OWL__SeverityCodes.html#gace886152e2e86cd2e91cb833fd495adb">OWL_WARNING</a>);
-<a name="l00139"></a>00139 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;GROUP_NOSUCHNAME&#39;</span>);
-<a name="l00140"></a>00140 <span class="comment">//Register::setSeverity (OWL_BUG);</span>
-<a name="l00141"></a>00141 <span class="comment">//Register::setSeverity (OWL_ERROR);</span>
-<a name="l00142"></a>00142 <span class="comment">//Register::setSeverity (OWL_FATAL);</span>
-<a name="l00143"></a>00143 <span class="comment">//Register::setSeverity (OWL_CRITICAL);</span>
+<a name="l00132"></a>00132 
+<a name="l00140"></a><a class="code" href="classGroup.html#ac8b4123c5a94e4f61936b740e0befd78">00140</a>     <span class="keyword">public</span> function <span class="keyword">get</span>($item, $default = null)
+<a name="l00141"></a>00141     {
+<a name="l00142"></a>00142         <span class="keywordflow">return</span> (
+<a name="l00143"></a>00143             (array_key_exists($item, $this-&gt;group_data))
+<a name="l00144"></a>00144                 ? $this-&gt;group_data[$item]
+<a name="l00145"></a>00145                 : $default
+<a name="l00146"></a>00146         );
+<a name="l00147"></a>00147     }
+<a name="l00148"></a>00148 }
+<a name="l00149"></a>00149 <a class="code" href="classRegister.html#a7f8f9dd6364815e162fe098327177943">Register::registerClass</a>(<span class="stringliteral">&#39;Group&#39;</span>);
+<a name="l00150"></a>00150 <span class="comment">//Register::setSeverity (OWL_DEBUG);</span>
+<a name="l00151"></a>00151 <span class="comment">//Register::setSeverity (OWL_INFO);</span>
+<a name="l00152"></a>00152 <span class="comment">//Register::setSeverity (OWL_OK);</span>
+<a name="l00153"></a>00153 <span class="comment">//Register::setSeverity (OWL_SUCCESS);</span>
+<a name="l00154"></a>00154 <a class="code" href="classRegister.html#a3aaeb77c15ce76576550505499cd7caa">Register::setSeverity</a> (<a class="code" href="group__OWL__SeverityCodes.html#gace886152e2e86cd2e91cb833fd495adb">OWL_WARNING</a>);
+<a name="l00155"></a>00155 <a class="code" href="classRegister.html#ace694afc76c4c61e6763f50a09adfa8a">Register::registerCode</a> (<span class="stringliteral">&#39;GROUP_NOSUCHNAME&#39;</span>);
+<a name="l00156"></a>00156 <span class="comment">//Register::setSeverity (OWL_BUG);</span>
+<a name="l00157"></a>00157 <span class="comment">//Register::setSeverity (OWL_ERROR);</span>
+<a name="l00158"></a>00158 <span class="comment">//Register::setSeverity (OWL_FATAL);</span>
+<a name="l00159"></a>00159 <span class="comment">//Register::setSeverity (OWL_CRITICAL);</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -207,7 +207,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Thu Oct 13 2011 11:57:54 for OWL-PHP by
+    <li class="footer">Generated on Fri Oct 28 2011 11:32:49 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

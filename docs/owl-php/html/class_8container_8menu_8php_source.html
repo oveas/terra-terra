@@ -30,7 +30,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OWL-PHP
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    
   </td>
@@ -98,77 +98,77 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <a href="class_8container_8menu_8php.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
-<a name="l00009"></a>00009 <span class="keywordflow">if</span> (!class_exists(<span class="stringliteral">&#39;ContainerListPlugin&#39;</span>) &amp;&amp; !<a class="code" href="classOWLloader.html#a271d6508b029b3989db57f4d9b9b7677">OWLloader::getClass</a>(<span class="stringliteral">&#39;container.list&#39;</span>, <a class="code" href="group__OWL__Globals.html#gacb1e6e914bd3c0c96fc20ae6bb3a8a99" title="OWL plugindirectory.">OWL_PLUGINS</a> . <span class="stringliteral">&#39;/containers&#39;</span>)) {
-<a name="l00010"></a>00010     trigger_error(<span class="stringliteral">&#39;Error loading the List container plugin - this class is required by the Menu container&#39;</span>, E_USER_ERROR);
-<a name="l00011"></a>00011 }
-<a name="l00012"></a>00012 
-<a name="l00022"></a><a class="code" href="classContainerMenuPlugin.html">00022</a> <span class="keyword">class </span><a class="code" href="classContainerMenuPlugin.html" title="Menu Container.">ContainerMenuPlugin</a> <span class="keyword">extends</span> <a class="code" href="classContainerListPlugin.html" title="List Container.">ContainerListPlugin</a>
-<a name="l00023"></a>00023 {
-<a name="l00024"></a>00024 
-<a name="l00028"></a><a class="code" href="classContainerMenuPlugin.html#ab8bb59d712eaa7e642a06d0903491f3c">00028</a>     <span class="keyword">private</span> <a class="code" href="classContainerMenuPlugin.html#ab8bb59d712eaa7e642a06d0903491f3c">$items</a>;
-<a name="l00029"></a>00029 
-<a name="l00033"></a><a class="code" href="classContainerMenuPlugin.html#a873ed5599f7379e6af91656176fbde93">00033</a>     <span class="keyword">static</span> <span class="keyword">private</span> <a class="code" href="classContainerMenuPlugin.html#a873ed5599f7379e6af91656176fbde93">$knownLists</a>;
-<a name="l00034"></a>00034 
-<a name="l00039"></a><a class="code" href="classContainerMenuPlugin.html#aff395de652f94f93ad844c01684246e9">00039</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#aff395de652f94f93ad844c01684246e9">__construct</a>()
-<a name="l00040"></a>00040     {
-<a name="l00041"></a>00041         <a class="code" href="classContainerMenuPlugin.html#aff395de652f94f93ad844c01684246e9">parent::__construct</a>();
-<a name="l00042"></a>00042         $this-&gt;type = <span class="stringliteral">&#39;div&#39;</span>;
-<a name="l00043"></a>00043         $this-&gt;nested_type = <span class="stringliteral">&#39;ul&#39;</span>; <span class="comment">// We want &lt;div [attribs...]&gt;&lt;ul&gt; (...) &lt;/ul&gt;&lt;/div&gt; here</span>
-<a name="l00044"></a>00044         $this-&gt;items = array();
-<a name="l00045"></a>00045         self::$knownLists = array();
-<a name="l00046"></a>00046     }
-<a name="l00047"></a>00047 
-<a name="l00054"></a><a class="code" href="classContainerMenuPlugin.html#ae241e25f7cd4adfee2f9dae122c788c0">00054</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#ae241e25f7cd4adfee2f9dae122c788c0">setOrdered</a>($_value = <span class="keyword">true</span>)
-<a name="l00055"></a>00055     {
-<a name="l00056"></a>00056         ;
-<a name="l00057"></a>00057     }
-<a name="l00058"></a>00058 
-<a name="l00067"></a><a class="code" href="classContainerMenuPlugin.html#aba54f871852812552aebbd595b9c5d37">00067</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#aba54f871852812552aebbd595b9c5d37">addItem</a>($_content = <span class="stringliteral">&#39;&#39;</span>, array $_attribs = array(), array $_type_attribs = array())
-<a name="l00068"></a>00068     {
-<a name="l00069"></a>00069         $_item = <span class="keyword">new</span> <a class="code" href="classContainer.html" title="Container.">Container</a>(<span class="stringliteral">&#39;item&#39;</span>, $_content, $_attribs, $_type_attribs);
-<a name="l00070"></a>00070         $this-&gt;items[] = $_item;
-<a name="l00071"></a>00071         <span class="keywordflow">return</span> $_item;
-<a name="l00072"></a>00072     }
-<a name="l00073"></a>00073 
-<a name="l00086"></a><a class="code" href="classContainerMenuPlugin.html#a9b049277a2fed9f41827a40f2ec218db">00086</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#a9b049277a2fed9f41827a40f2ec218db">menuType</a> (<a class="code" href="classContainerPlugin.html#a4322b57179b2fb28ab6c9587e393842f">$type</a>, $menuID)
-<a name="l00087"></a>00087     {
-<a name="l00088"></a>00088         $doc = <a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory</a>(<span class="stringliteral">&#39;Document&#39;</span>, <a class="code" href="group__OWL__Globals.html#ga2e11101c70f011a91d0d9c7f8e217738" title="Presentation layer includes.">OWL_UI_INC</a>);
-<a name="l00089"></a>00089         $doc-&gt;addJSPlugin(<span class="stringliteral">&#39;menu&#39;</span>, <a class="code" href="classContainerPlugin.html#a4322b57179b2fb28ab6c9587e393842f">$type</a>);
-<a name="l00090"></a>00090         $jsListname = <a class="code" href="classContainerPlugin.html#a4322b57179b2fb28ab6c9587e393842f">$type</a> . <span class="stringliteral">&#39;MenuList&#39;</span>;
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092         <span class="keywordflow">if</span> (!in_array($jsListname, self::$knownLists)) {
-<a name="l00093"></a>00093             $doc-&gt;addScript(<span class="stringliteral">&quot;if (typeof($jsListname) == &#39;undefined&#39;) $jsListname = new Array();&quot;</span>);
-<a name="l00094"></a>00094             self::$knownLists[] = $jsListname;
-<a name="l00095"></a>00095         }
-<a name="l00096"></a>00096         $doc-&gt;addScript(<span class="stringliteral">&quot;$jsListname.push(&#39;$menuID&#39;)&quot;</span>);
-<a name="l00097"></a>00097         $this-&gt;<a class="code" href="classBaseElement.html#a0c1ce3d1684ecb78960cf7a97278494e">setId</a>($menuID);
-<a name="l00098"></a>00098     }
-<a name="l00099"></a>00099 
-<a name="l00111"></a><a class="code" href="classContainerMenuPlugin.html#a88b2a59e38784c6a005abeeaef868bfa">00111</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#a88b2a59e38784c6a005abeeaef868bfa">addSubMenu</a>($_title = <span class="stringliteral">&#39;&#39;</span>, array $_attribs = array(), array $_type_attribs = array())
-<a name="l00112"></a>00112     {
-<a name="l00113"></a>00113         $_lnk = <span class="keyword">new</span> <a class="code" href="classContainer.html" title="Container.">Container</a>(<span class="stringliteral">&#39;link&#39;</span>, $_title);
-<a name="l00114"></a>00114         $_lnk-&gt;setHref(<span class="charliteral">&#39;#&#39;</span>);
-<a name="l00115"></a>00115         $_lnk-&gt;setEvent(<span class="stringliteral">&#39;onClick&#39;</span>, <span class="stringliteral">&#39;return false;&#39;</span>);
-<a name="l00116"></a>00116         $_newMenu = <span class="keyword">new</span> <a class="code" href="classContainer.html" title="Container.">Container</a>(<span class="stringliteral">&#39;menu&#39;</span>);
-<a name="l00117"></a>00117         $_subMenu = $this-&gt;<a class="code" href="classContainerMenuPlugin.html#aba54f871852812552aebbd595b9c5d37">addItem</a>($_lnk, $_attribs, $_type_attribs);
-<a name="l00118"></a>00118         $_subMenu-&gt;addToContent($_newMenu);
-<a name="l00119"></a>00119         <span class="keywordflow">return</span> $_newMenu;
-<a name="l00120"></a>00120     }
-<a name="l00121"></a>00121 
-<a name="l00127"></a><a class="code" href="classContainerMenuPlugin.html#a69cdc83b0bfdc370db69e103193d30db">00127</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#a69cdc83b0bfdc370db69e103193d30db">showElement</a>()
+<a name="l00025"></a>00025 <span class="keywordflow">if</span> (!class_exists(<span class="stringliteral">&#39;ContainerListPlugin&#39;</span>) &amp;&amp; !<a class="code" href="classOWLloader.html#a271d6508b029b3989db57f4d9b9b7677">OWLloader::getClass</a>(<span class="stringliteral">&#39;container.list&#39;</span>, <a class="code" href="group__OWL__Globals.html#gacb1e6e914bd3c0c96fc20ae6bb3a8a99" title="OWL plugindirectory.">OWL_PLUGINS</a> . <span class="stringliteral">&#39;/containers&#39;</span>)) {
+<a name="l00026"></a>00026     trigger_error(<span class="stringliteral">&#39;Error loading the List container plugin - this class is required by the Menu container&#39;</span>, E_USER_ERROR);
+<a name="l00027"></a>00027 }
+<a name="l00028"></a>00028 
+<a name="l00038"></a><a class="code" href="classContainerMenuPlugin.html">00038</a> <span class="keyword">class </span><a class="code" href="classContainerMenuPlugin.html" title="Menu Container.">ContainerMenuPlugin</a> <span class="keyword">extends</span> <a class="code" href="classContainerListPlugin.html" title="List Container.">ContainerListPlugin</a>
+<a name="l00039"></a>00039 {
+<a name="l00040"></a>00040 
+<a name="l00044"></a><a class="code" href="classContainerMenuPlugin.html#ab8bb59d712eaa7e642a06d0903491f3c">00044</a>     <span class="keyword">private</span> <a class="code" href="classContainerMenuPlugin.html#ab8bb59d712eaa7e642a06d0903491f3c">$items</a>;
+<a name="l00045"></a>00045 
+<a name="l00049"></a><a class="code" href="classContainerMenuPlugin.html#a873ed5599f7379e6af91656176fbde93">00049</a>     <span class="keyword">static</span> <span class="keyword">private</span> <a class="code" href="classContainerMenuPlugin.html#a873ed5599f7379e6af91656176fbde93">$knownLists</a>;
+<a name="l00050"></a>00050 
+<a name="l00055"></a><a class="code" href="classContainerMenuPlugin.html#aff395de652f94f93ad844c01684246e9">00055</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#aff395de652f94f93ad844c01684246e9">__construct</a>()
+<a name="l00056"></a>00056     {
+<a name="l00057"></a>00057         <a class="code" href="classContainerMenuPlugin.html#aff395de652f94f93ad844c01684246e9">parent::__construct</a>();
+<a name="l00058"></a>00058         $this-&gt;type = <span class="stringliteral">&#39;div&#39;</span>;
+<a name="l00059"></a>00059         $this-&gt;nested_type = <span class="stringliteral">&#39;ul&#39;</span>; <span class="comment">// We want &lt;div [attribs...]&gt;&lt;ul&gt; (...) &lt;/ul&gt;&lt;/div&gt; here</span>
+<a name="l00060"></a>00060         $this-&gt;items = array();
+<a name="l00061"></a>00061         self::$knownLists = array();
+<a name="l00062"></a>00062     }
+<a name="l00063"></a>00063 
+<a name="l00070"></a><a class="code" href="classContainerMenuPlugin.html#ae241e25f7cd4adfee2f9dae122c788c0">00070</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#ae241e25f7cd4adfee2f9dae122c788c0">setOrdered</a>($_value = <span class="keyword">true</span>)
+<a name="l00071"></a>00071     {
+<a name="l00072"></a>00072         ;
+<a name="l00073"></a>00073     }
+<a name="l00074"></a>00074 
+<a name="l00083"></a><a class="code" href="classContainerMenuPlugin.html#aba54f871852812552aebbd595b9c5d37">00083</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#aba54f871852812552aebbd595b9c5d37">addItem</a>($_content = <span class="stringliteral">&#39;&#39;</span>, array $_attribs = array(), array $_type_attribs = array())
+<a name="l00084"></a>00084     {
+<a name="l00085"></a>00085         $_item = <span class="keyword">new</span> <a class="code" href="classContainer.html" title="Container.">Container</a>(<span class="stringliteral">&#39;item&#39;</span>, $_content, $_attribs, $_type_attribs);
+<a name="l00086"></a>00086         $this-&gt;items[] = $_item;
+<a name="l00087"></a>00087         <span class="keywordflow">return</span> $_item;
+<a name="l00088"></a>00088     }
+<a name="l00089"></a>00089 
+<a name="l00102"></a><a class="code" href="classContainerMenuPlugin.html#a9b049277a2fed9f41827a40f2ec218db">00102</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#a9b049277a2fed9f41827a40f2ec218db">menuType</a> (<a class="code" href="classContainerPlugin.html#a4322b57179b2fb28ab6c9587e393842f">$type</a>, $menuID)
+<a name="l00103"></a>00103     {
+<a name="l00104"></a>00104         $doc = <a class="code" href="classOWL.html#aa6f4f99b9b0d6c77e7d49075d8a29d69">OWL::factory</a>(<span class="stringliteral">&#39;Document&#39;</span>, <a class="code" href="group__OWL__Globals.html#ga2e11101c70f011a91d0d9c7f8e217738" title="Presentation layer includes.">OWL_UI_INC</a>);
+<a name="l00105"></a>00105         $doc-&gt;addJSPlugin(<span class="stringliteral">&#39;menu&#39;</span>, <a class="code" href="classContainerPlugin.html#a4322b57179b2fb28ab6c9587e393842f">$type</a>);
+<a name="l00106"></a>00106         $jsListname = <a class="code" href="classContainerPlugin.html#a4322b57179b2fb28ab6c9587e393842f">$type</a> . <span class="stringliteral">&#39;MenuList&#39;</span>;
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108         <span class="keywordflow">if</span> (!in_array($jsListname, self::$knownLists)) {
+<a name="l00109"></a>00109             $doc-&gt;addScript(<span class="stringliteral">&quot;if (typeof($jsListname) == &#39;undefined&#39;) $jsListname = new Array();&quot;</span>);
+<a name="l00110"></a>00110             self::$knownLists[] = $jsListname;
+<a name="l00111"></a>00111         }
+<a name="l00112"></a>00112         $doc-&gt;addScript(<span class="stringliteral">&quot;$jsListname.push(&#39;$menuID&#39;)&quot;</span>);
+<a name="l00113"></a>00113         $this-&gt;<a class="code" href="classBaseElement.html#a0c1ce3d1684ecb78960cf7a97278494e">setId</a>($menuID);
+<a name="l00114"></a>00114     }
+<a name="l00115"></a>00115 
+<a name="l00127"></a><a class="code" href="classContainerMenuPlugin.html#a88b2a59e38784c6a005abeeaef868bfa">00127</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#a88b2a59e38784c6a005abeeaef868bfa">addSubMenu</a>($_title = <span class="stringliteral">&#39;&#39;</span>, array $_attribs = array(), array $_type_attribs = array())
 <a name="l00128"></a>00128     {
-<a name="l00129"></a>00129         <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>;
-<a name="l00130"></a>00130     }
-<a name="l00131"></a>00131 
-<a name="l00137"></a><a class="code" href="classContainerMenuPlugin.html#ad570379a4a963b0d36cf1b35590c8cce">00137</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#ad570379a4a963b0d36cf1b35590c8cce">getContent</a>()
-<a name="l00138"></a>00138     {
-<a name="l00139"></a>00139         $_html = <span class="stringliteral">&#39;&#39;</span>;
-<a name="l00140"></a>00140         <span class="keywordflow">foreach</span> ($this-&gt;items as $_item) {
-<a name="l00141"></a>00141             $_html .= $_item-&gt;showElement();
-<a name="l00142"></a>00142         }
-<a name="l00143"></a>00143         <span class="keywordflow">return</span> $_html;
-<a name="l00144"></a>00144     }
-<a name="l00145"></a>00145 }
+<a name="l00129"></a>00129         $_lnk = <span class="keyword">new</span> <a class="code" href="classContainer.html" title="Container.">Container</a>(<span class="stringliteral">&#39;link&#39;</span>, $_title);
+<a name="l00130"></a>00130         $_lnk-&gt;setHref(<span class="charliteral">&#39;#&#39;</span>);
+<a name="l00131"></a>00131         $_lnk-&gt;setEvent(<span class="stringliteral">&#39;onClick&#39;</span>, <span class="stringliteral">&#39;return false;&#39;</span>);
+<a name="l00132"></a>00132         $_newMenu = <span class="keyword">new</span> <a class="code" href="classContainer.html" title="Container.">Container</a>(<span class="stringliteral">&#39;menu&#39;</span>);
+<a name="l00133"></a>00133         $_subMenu = $this-&gt;<a class="code" href="classContainerMenuPlugin.html#aba54f871852812552aebbd595b9c5d37">addItem</a>($_lnk, $_attribs, $_type_attribs);
+<a name="l00134"></a>00134         $_subMenu-&gt;addToContent($_newMenu);
+<a name="l00135"></a>00135         <span class="keywordflow">return</span> $_newMenu;
+<a name="l00136"></a>00136     }
+<a name="l00137"></a>00137 
+<a name="l00143"></a><a class="code" href="classContainerMenuPlugin.html#a69cdc83b0bfdc370db69e103193d30db">00143</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#a69cdc83b0bfdc370db69e103193d30db">showElement</a>()
+<a name="l00144"></a>00144     {
+<a name="l00145"></a>00145         <span class="keywordflow">return</span> <span class="stringliteral">&#39;&#39;</span>;
+<a name="l00146"></a>00146     }
+<a name="l00147"></a>00147 
+<a name="l00153"></a><a class="code" href="classContainerMenuPlugin.html#ad570379a4a963b0d36cf1b35590c8cce">00153</a>     <span class="keyword">public</span> function <a class="code" href="classContainerMenuPlugin.html#ad570379a4a963b0d36cf1b35590c8cce">getContent</a>()
+<a name="l00154"></a>00154     {
+<a name="l00155"></a>00155         $_html = <span class="stringliteral">&#39;&#39;</span>;
+<a name="l00156"></a>00156         <span class="keywordflow">foreach</span> ($this-&gt;items as $_item) {
+<a name="l00157"></a>00157             $_html .= $_item-&gt;showElement();
+<a name="l00158"></a>00158         }
+<a name="l00159"></a>00159         <span class="keywordflow">return</span> $_html;
+<a name="l00160"></a>00160     }
+<a name="l00161"></a>00161 }
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -189,7 +189,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Thu Oct 13 2011 11:57:54 for OWL-PHP by
+    <li class="footer">Generated on Fri Oct 28 2011 11:32:48 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>

@@ -30,7 +30,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OWL-PHP
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    
   </td>
@@ -111,13 +111,20 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#ab709d759f5911560cc584496d423b569">urlExpand</a> ($_file)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a3cadca012ce78639bbe95d396acce409">getReferer</a> ($def= 'http://localhost/', $hostOnly=true)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#ae133bd84230ea3637a10a7d0fb2a73b0">verifyMailAddress</a> ($email, $extract=true)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#aaba541e97ad814e01d4c9a24c9835ab0">validV4Ip</a> ($ip)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="owl_8helper_8functions_8php.html#a4be3eb2fc55be16227d3e3666c6da1f7">isSerialized</a> ($value, &amp;$result=null)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This file defines general helper functions </p>
 <dl class="version"><dt><b>Version:</b></dt><dd></dd></dl>
-<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="owl_8helper_8functions_8php.html">owl.helper.functions.php</a>,v 1.13 2011-09-26 10:50:18 oscar Exp </dd></dl>
+<dl class="rcs"><dt><b>Id:</b></dt><dd><a class="el" href="owl_8helper_8functions_8php.html">owl.helper.functions.php</a>,v 1.14 2011-10-16 11:11:44 oscar Exp </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+<dl class="user"><dt><b>Copyright:</b></dt><dd>&copy; 2007-2011 -- Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+<dl class="user"><dt><b>License:</b></dt><dd></dd></dl>
+<p>This file is part of OWL-PHP.</p>
+<p>OWL-PHP is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.</p>
+<p>OWL-PHP is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with OWL-PHP. If not, see <a href="http://www.gnu.org/licenses/.">http://www.gnu.org/licenses/.</a> </p>
 
 <p>Definition in file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
 </div><hr/><h2>Function Documentation</h2>
@@ -155,9 +162,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The HTTP referer </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000018">Todo:</a></b></dt><dd>This function is based on the unreliable HTTP_REFERER... but what else can we use?? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000021">Todo:</a></b></dt><dd>This function is based on the unreliable HTTP_REFERER... but what else can we use?? </dd></dl>
 
-<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00139">139</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
+<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00155">155</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
 
 </div>
 </div>
@@ -216,9 +223,9 @@ null: <code>N;</code> </li>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>boolean True if $value is serialized data, otherwise false </dd></dl>
 
-<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00217">217</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
+<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00288">288</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8dispatcher_8php_source.html#l00175">Dispatcher::decodeDispatcher()</a>.</p>
+<p>Referenced by <a class="el" href="class_8dispatcher_8php_source.html#l00191">Dispatcher::decodeDispatcher()</a>.</p>
 
 </div>
 </div>
@@ -245,13 +252,13 @@ null: <code>N;</code> </li>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Encrypted or decrypted string </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000017">Todo:</a></b></dt><dd>Add a method to decrypt strings (dispatchers) that were crypted ad a remote server (using keyrings) </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000020">Todo:</a></b></dt><dd>Add a method to decrypt strings (dispatchers) that were crypted ad a remote server (using keyrings) </dd></dl>
 
-<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00041">41</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
+<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00057">57</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
 
-<p>References <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
+<p>References <a class="el" href="class_8confighandler_8php_source.html#l00251">ConfigHandler::get()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8confighandler_8php_source.html#l00304">ConfigHandler::_set()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00078">Dispatcher::composeDispatcher()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00175">Dispatcher::decodeDispatcher()</a>, and <a class="el" href="class_8confighandler_8php_source.html#l00236">ConfigHandler::get()</a>.</p>
+<p>Referenced by <a class="el" href="class_8confighandler_8php_source.html#l00319">ConfigHandler::_set()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00094">Dispatcher::composeDispatcher()</a>, <a class="el" href="class_8dispatcher_8php_source.html#l00191">Dispatcher::decodeDispatcher()</a>, and <a class="el" href="class_8confighandler_8php_source.html#l00251">ConfigHandler::get()</a>.</p>
 
 </div>
 </div>
@@ -289,9 +296,9 @@ null: <code>N;</code> </li>
 </dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00077">77</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
+<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00093">93</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8user_8php_source.html#l00313">User::register()</a>.</p>
+<p>Referenced by <a class="el" href="class_8user_8php_source.html#l00329">User::register()</a>.</p>
 
 </div>
 </div>
@@ -337,9 +344,9 @@ null: <code>N;</code> </li>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Strict boolean value </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00018">18</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
+<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00034">34</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8security_8php_source.html#l00119">Security::controlBitmap()</a>, <a class="el" href="class_8confighandler_8php_source.html#l00039">ConfigHandler::readConfig()</a>, <a class="el" href="class_8formfield_8checkbox_8php_source.html#l00039">FormFieldCheckboxPlugin::setChecked()</a>, <a class="el" href="class_8formfield_8php_source.html#l00065">FormFieldPlugin::setDisabled()</a>, <a class="el" href="class_8formfield_8select_8php_source.html#l00118">FormFieldSelectPlugin::setMultiple()</a>, <a class="el" href="class_8formfield_8php_source.html#l00075">FormFieldPlugin::setReadonly()</a>, and <a class="el" href="class_8formfield_8select_8php_source.html#l00062">FormFieldSelectPlugin::setValue()</a>.</p>
+<p>Referenced by <a class="el" href="class_8security_8php_source.html#l00135">Security::controlBitmap()</a>, <a class="el" href="class_8confighandler_8php_source.html#l00055">ConfigHandler::readConfig()</a>, <a class="el" href="class_8formfield_8checkbox_8php_source.html#l00055">FormFieldCheckboxPlugin::setChecked()</a>, <a class="el" href="class_8formfield_8php_source.html#l00081">FormFieldPlugin::setDisabled()</a>, <a class="el" href="class_8formfield_8select_8php_source.html#l00134">FormFieldSelectPlugin::setMultiple()</a>, <a class="el" href="class_8formfield_8php_source.html#l00091">FormFieldPlugin::setReadonly()</a>, and <a class="el" href="class_8formfield_8select_8php_source.html#l00078">FormFieldSelectPlugin::setValue()</a>.</p>
 
 </div>
 </div>
@@ -367,11 +374,11 @@ null: <code>N;</code> </li>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Fully qualified URL, or null when the input is invalid </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00115">115</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
+<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00131">131</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
 
-<p>References <a class="el" href="class_8owl_8php_source.html#l00072">OWL::factory()</a>.</p>
+<p>References <a class="el" href="class_8owl_8php_source.html#l00088">OWL::factory()</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00266">Document::loadScript()</a>, <a class="el" href="class_8document_8php_source.html#l00217">Document::loadStyle()</a>, and <a class="el" href="class_8document_8php_source.html#l00303">Document::setFavicon()</a>.</p>
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00282">Document::loadScript()</a>, <a class="el" href="class_8document_8php_source.html#l00233">Document::loadStyle()</a>, and <a class="el" href="class_8document_8php_source.html#l00319">Document::setFavicon()</a>.</p>
 
 </div>
 </div>
@@ -399,11 +406,49 @@ null: <code>N;</code> </li>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Path specification of the file, or null of the file is not on the local host </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00097">97</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
+<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00113">113</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
 
 <p>References <a class="el" href="config_8php_source.html#l00027">$GLOBALS</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00266">Document::loadScript()</a>, <a class="el" href="class_8document_8php_source.html#l00217">Document::loadStyle()</a>, and <a class="el" href="class_8document_8php_source.html#l00303">Document::setFavicon()</a>.</p>
+<p>Referenced by <a class="el" href="class_8document_8php_source.html#l00282">Document::loadScript()</a>, <a class="el" href="class_8document_8php_source.html#l00233">Document::loadStyle()</a>, and <a class="el" href="class_8document_8php_source.html#l00319">Document::setFavicon()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaba541e97ad814e01d4c9a24c9835ab0"></a><!-- doxytag: member="owl.helper.functions.php::validV4Ip" ref="aaba541e97ad814e01d4c9a24c9835ab0" args="($ip)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">validV4Ip </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>ip</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Validate an IP address </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">$ip</td><td>IPv4 address </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>0 if the address is invalid, 1 if it is valid, -1 if it's a valid reserved address. Reserved address are from the following ranges:<ul>
+<li>0.0.0.0 - 2.255.255.255</li>
+<li>10.0.0.0 - 10.255.255.255</li>
+<li>127.0.0.0 - 127.255.255.255</li>
+<li>169.254.0.0 - 169.254.255.255</li>
+<li>172.16.0.0 - 172.31.255.255</li>
+<li>192.0.2.0 - 192.0.2.255</li>
+<li>192.168.0.0 - 192.168.255.255</li>
+<li>255.255.255.0 - 255.255.255.255 </li>
+</ul>
+</dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
+
+<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00223">223</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
 
 </div>
 </div>
@@ -442,9 +487,9 @@ null: <code>N;</code> </li>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The valid mail address or an empty string when none was found </dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Oscar van Eijk, Oveas Functionality Provider </dd></dl>
 
-<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00164">164</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
+<p>Definition at line <a class="el" href="owl_8helper_8functions_8php_source.html#l00180">180</a> of file <a class="el" href="owl_8helper_8functions_8php_source.html">owl.helper.functions.php</a>.</p>
 
-<p>Referenced by <a class="el" href="class_8mail_8php_source.html#l00170">Mail::addBcc()</a>, <a class="el" href="class_8mail_8php_source.html#l00149">Mail::addCc()</a>, <a class="el" href="class_8mail_8php_source.html#l00128">Mail::addTo()</a>, <a class="el" href="class_8mail_8php_source.html#l00071">Mail::setFrom()</a>, and <a class="el" href="class_8mail_8php_source.html#l00053">Mail::setSender()</a>.</p>
+<p>Referenced by <a class="el" href="class_8mail_8php_source.html#l00186">Mail::addBcc()</a>, <a class="el" href="class_8mail_8php_source.html#l00165">Mail::addCc()</a>, <a class="el" href="class_8mail_8php_source.html#l00144">Mail::addTo()</a>, <a class="el" href="class_8mail_8php_source.html#l00087">Mail::setFrom()</a>, and <a class="el" href="class_8mail_8php_source.html#l00069">Mail::setSender()</a>.</p>
 
 </div>
 </div>
@@ -468,7 +513,7 @@ null: <code>N;</code> </li>
 </div>
 
 
-    <li class="footer">Generated on Thu Oct 13 2011 11:57:55 for OWL-PHP by
+    <li class="footer">Generated on Fri Oct 28 2011 11:32:50 for OWL-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
    </ul>
