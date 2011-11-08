@@ -1,0 +1,61 @@
+options:
+	--tell
+	--html
+	--multidoc
+	--toc
+	--syntaxcolors
+	--internal
+	--tabsize 4
+	--index
+	--sections
+	--nopre
+	--documenttitle "OWL-JS Oveas Web Library for JavaScript"
+	--doc "/home/oscar/projects/docs/owl-js/html"
+	--src "/home/oscar/projects/owl/owl-js/src"
+	--css "/home/oscar/projects/owl/owl-php/docs/owlstyle.css"
+
+items:
+	NAME
+	DESCRIPTION
+	INPUTS
+	OUTPUTS
+	RESULT
+	SYNOPSIS
+	SOURCE
+	EXAMPLE
+	AUTHOR
+	HISTORY
+	TODO
+	DERIVED FROM
+	DERIVED BY
+	NOTES
+	WARNINGS
+	SEE ALSO
+	COPYRIGHT
+	LICENSE
+
+preformatted items:
+	EXAMPLE
+	SOURCE
+
+source items:
+	SYNOPSIS
+
+item order:
+	NAME
+	DESCRIPTION
+	INPUTS
+	OUTPUTS
+	RESULT
+	SYNOPSIS
+	SOURCE
+	EXAMPLE
+	AUTHOR
+	HISTORY
+	TODO
+	COPYRIGHT
+	LICENSE
+
+headertypes:
+	p	"Plugins"		robo_plugins
+	I	"Introduction"	index			2

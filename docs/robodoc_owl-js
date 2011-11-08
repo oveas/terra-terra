@@ -1,0 +1,3 @@
+#!/bin/bash
+
+robodoc --rc /home/oscar/projects/owl-php/docs/srcdoc/owl-js.robodoc.rc
