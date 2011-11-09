@@ -10,7 +10,7 @@ options:
 	--sections
 	--nopre
 	--documenttitle "OWL-JS Oveas Web Library for JavaScript"
-	--doc "/home/oscar/projects/docs/owl-js/html"
+	--doc "/home/oscar/projects/owl/docs/owl-js/html"
 	--src "/home/oscar/projects/owl/owl-js/src"
 	--css "/home/oscar/projects/owl/owl-php/docs/owlstyle.css"
 

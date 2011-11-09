@@ -275,7 +275,7 @@ COMMIT;
 -- Data for table `owl_user`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (2, 'oscar', 'f5a1ee88f62cb3d1cc9d801b5f2910bbb0c3b525', 'oscar@oveas.com', NULL, NULL, 2, 0);
+INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (2, 'owl', 'c90722aca1011e147b21ad2c3bb0a205e1026497', 'owluser@localhost.local', NULL, NULL, 2, 0);
 INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (1, 'anonymous', '', '', NULL, NULL, 1, 0);
 
 COMMIT;

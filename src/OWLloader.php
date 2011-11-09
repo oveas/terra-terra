@@ -416,6 +416,9 @@ OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after 
  *
  * Much of this code started as the project Terra-Terra in 2001 (http://terra-terra.org), a project that
  * was abandoned when AJAX became popular from 2005 onwards.
+ *
+ * OWL-PHP can be downloaded from <a href="https://github.com/oveas/owl-php">GitHub</a>
+ *
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
