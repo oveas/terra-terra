@@ -182,7 +182,7 @@ abstract class User extends _OWL
 		$_dbstat = $this->dataset->dbStatus();
 		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
 			$this->setStatus (USER_LOGINFAIL, array (
-				  $_SESSION['username']
+				  $username
 				, (ConfigHandler::get ('logging', 'hide_passwords') ? '*****' : $this->dataset->get('password'))
 			));
 		} elseif ($_dbstat === DBHANDLE_ROWSREAD) {
