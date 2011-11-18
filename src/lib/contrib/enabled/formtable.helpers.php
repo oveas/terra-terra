@@ -3,7 +3,6 @@
  * \file
  * \ingroup OWL_CONTRIB
  * This file provides some helper functions for lazy developers like me setting up form tables
- * \version $Id: formtable.helpers.php,v 1.3 2011-10-16 11:11:46 oscar Exp $
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license

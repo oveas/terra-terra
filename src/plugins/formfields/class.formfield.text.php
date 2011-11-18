@@ -3,7 +3,6 @@
  * \file
  * This file defines a text-, password or hidden formfield element
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.formfield.text.php,v 1.5 2011-10-16 11:11:28 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.

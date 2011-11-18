@@ -3,7 +3,6 @@
  * \file
  * This file defines the Scheme Handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.schemehandler.php,v 1.10 2011-10-28 09:32:47 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.

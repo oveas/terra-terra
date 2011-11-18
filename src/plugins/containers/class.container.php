@@ -2,7 +2,6 @@
 /**
  * \file
  * This file defines the standard container plugin
- * \version $Id: class.container.php,v 1.5 2011-10-16 11:11:44 oscar Exp $
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license

@@ -3,7 +3,6 @@
  * \file
  * This file defines the Security base class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.security.php,v 1.12 2011-10-16 11:11:45 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.

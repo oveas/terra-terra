@@ -19,7 +19,6 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
- * \version $Id: class.statushandler.php,v 1.11 2011-10-16 11:11:43 oscar Exp $
  */
 
 /**

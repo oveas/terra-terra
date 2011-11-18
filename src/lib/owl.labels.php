@@ -4,7 +4,6 @@
  * \ingroup OWL_LIBRARY
  * This file defines the text for all labels in the default language
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.labels.php,v 1.5 2011-10-16 11:11:44 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.

@@ -5,7 +5,6 @@
  * This file defines the Severity codes that all objects can have. It must be the very first file
  * that is inluded, since these codes are used from step 1.
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.severitycodes.php,v 1.5 2011-10-16 11:11:44 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.

@@ -4,7 +4,6 @@
  * \ingroup OWL_LIBRARY
  * This file defines the Socket handler class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.sockethandler.php,v 1.3 2011-10-16 11:11:44 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.

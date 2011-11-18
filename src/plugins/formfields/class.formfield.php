@@ -3,7 +3,6 @@
  * \file
  * This file defines a formfield element plugin
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.formfield.php,v 1.6 2011-10-16 11:11:28 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.

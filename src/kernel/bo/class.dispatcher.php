@@ -3,7 +3,6 @@
  * \file
  * This file defines the Oveas Web Library Dispatcher class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.dispatcher.php,v 1.15 2011-10-16 11:11:45 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.

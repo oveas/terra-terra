@@ -3,7 +3,6 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads contributed plugins that have been enabled. It contains
- * \version $Id: owl.contrib.loader.php,v 1.2 2011-10-16 11:11:46 oscar Exp $
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license

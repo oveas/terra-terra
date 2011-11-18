@@ -3,7 +3,6 @@
  * \file
  * This file defines the top-level BaseElement class
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: class.baseelement.php,v 1.13 2011-10-16 11:11:45 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.

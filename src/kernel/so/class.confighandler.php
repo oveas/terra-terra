@@ -19,7 +19,6 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
- * \version $Id: class.confighandler.php,v 1.18 2011-10-28 09:32:47 oscar Exp $
  */
 
 /**

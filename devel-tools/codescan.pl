@@ -5,7 +5,6 @@
 #
 # Version 0.1 -- Initial version (2008-08-26)
 # (c) Oscar van Eijk, Oveas Functionality Provider
-# $Id: codescan.pl,v 1.4 2011-05-12 14:37:58 oscar Exp $
 #
 
 my $location = '/home/oscar/projects/owl-php/src';

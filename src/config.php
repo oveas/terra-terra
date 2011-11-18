@@ -4,7 +4,6 @@
  * Configuration basics file for OWL; it stores some fixed configuration in a global
  * data structure
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: config.php,v 1.9 2011-10-16 11:11:45 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.

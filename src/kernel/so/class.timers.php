@@ -3,7 +3,6 @@
  * \file
  * \ingroup OWL_SO_LAYER
  * This file loads the class to handle timers
- * \version $Id: class.timers.php,v 1.3 2011-10-16 11:11:44 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.

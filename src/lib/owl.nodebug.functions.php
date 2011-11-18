@@ -5,7 +5,6 @@
  * This file defines helper functions when not in debug mode. The functions are equal to the functions
  * that are defined in owl.debug.functions.php, only the function bodies are empty here.
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version $Id: owl.nodebug.functions.php,v 1.3 2011-10-16 11:11:44 oscar Exp $
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
