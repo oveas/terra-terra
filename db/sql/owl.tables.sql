@@ -62,7 +62,7 @@ CREATE  TABLE IF NOT EXISTS `owl_user` (
   `username` VARCHAR(32) NOT NULL COMMENT 'Username, must be unique' ,
   `password` VARCHAR(128) NULL COMMENT 'Encrypted password' ,
   `email` VARCHAR(45) NULL COMMENT 'Email address. Extra addresses must be handled by the apps' ,
-  `registered` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT 'First reghistration date and time' ,
+  `registered` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT 'First registration date and time' ,
   `verification` VARCHAR(45) NOT NULL DEFAULT '' COMMENT 'Verification code for new registrations' ,
   `gid` INT UNSIGNED NOT NULL COMMENT 'Primary group ID' ,
   `right` BIGINT UNSIGNED ZEROFILL NOT NULL DEFAULT 0 COMMENT 'Additional user specific rightbits' ,
@@ -102,7 +102,7 @@ DROP TABLE IF EXISTS `owl_sessionlog` ;
 CREATE  TABLE IF NOT EXISTS `owl_sessionlog` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `sid` VARCHAR(255) NOT NULL COMMENT 'Session ID being logged' ,
-  `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT 'Timestamp of the log message' ,
+  `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT 'Timestamp of the log message' ,
   `uid` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Current user ID of 0 for anonymous' ,
   `step` INT UNSIGNED NOT NULL COMMENT 'Step count in the current session' ,
   `applic` VARCHAR(32) NOT NULL COMMENT 'Current application name' ,
@@ -258,7 +258,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `owl_applications`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO owl_applications (`aid`, `code`, `name`, `version`, `description`, `installed`, `enabled`, `link`, `author`, `license`) VALUES (1, 'OWL', 'OWL-PHP', '0.1.0', 'Oveas Web Library for PHP', 1, 1, 'http://oveas.com', 'Oscar van Eijk', 'LGPL');
+INSERT INTO owl_applications (`aid`, `code`, `name`, `version`, `description`, `installed`, `enabled`, `link`, `author`, `license`) VALUES (1, 'OWL', 'OWL-PHP', '0.1.0', 'Oveas Web Library for PHP', 1, 1, 'https://github.com/oveas/owl-php', 'Oscar van Eijk', 'LGPL');
 
 COMMIT;
 
@@ -275,8 +275,8 @@ COMMIT;
 -- Data for table `owl_user`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (2, 'owl', 'c90722aca1011e147b21ad2c3bb0a205e1026497', 'owluser@localhost.local', NULL, NULL, 2, 0);
-INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (1, 'anonymous', '', '', NULL, NULL, 1, 0);
+INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (2, 'owl', 'c90722aca1011e147b21ad2c3bb0a205e1026497', 'owluser@localhost.local', NULL, '', 2, 0);
+INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (1, 'anonymous', '', '', NULL, '', 1, 0);
 
 COMMIT;
 

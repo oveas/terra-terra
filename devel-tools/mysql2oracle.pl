@@ -59,10 +59,11 @@
 #                                  - Support for missing database names in MySQL script
 #                                  - Remove UNSIGNED and ZEROFILL attributes
 #                                  - Optional index prefix
+# v0.0.0.0-000000005, Nov 18, 2011 - CURRENT_TIMESTAMP() -> CURRENT_TIMESTAMP(0)
 use strict;
 
 $main::thisScript = 'mysql2oracle.pl';
-$main::thisVersion = '0.0.0.0-000000004';
+$main::thisVersion = '0.0.0.0-000000005';
 
 $main::suffixSequence = '_seq';
 $main::suffixTrigger = '_trg';
@@ -349,6 +350,9 @@ while (my $line = <>) {
 		if ($line =~ /DEFAULT/) {
 			$line =~ s/NOT\s+NULL//;
 		}
+
+		# If the default is NOW() or CURRENT_TIMESTAMP(), replace with CURRENT_TIMESTAMP(0)
+		$line =~ s/(NOW\(\)|CURRENT_TIMESTAMP\(\))/CURRENT_TIMESTAMP(0)/g;
 
 		# Replace ENUM by VARCHAR2() and create a constraint
 		# with the values allowed
