@@ -256,23 +256,6 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `owl_applications`
--- -----------------------------------------------------
-START TRANSACTION;
-INSERT INTO owl_applications (`aid`, `code`, `url`, `name`, `version`, `description`, `installed`, `enabled`, `link`, `author`, `license`) VALUES (1, 'OWL', 'owladmin', 'OWL-PHP', '0.1.0', 'Oveas Web Library for PHP', 1, 1, 'https://github.com/oveas/owl-php', 'Oscar van Eijk', 'LGPL');
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `owl_group`
--- -----------------------------------------------------
-START TRANSACTION;
-INSERT INTO owl_group (`gid`, `groupname`, `description`, `aid`) VALUES (1, 'nogroup', 'Default group for anonymous users', 1);
-INSERT INTO owl_group (`gid`, `groupname`, `description`, `aid`) VALUES (2, 'standard', 'Default group for all registered users', 1);
-
-COMMIT;
-
--- -----------------------------------------------------
 -- Data for table `owl_user`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -292,65 +275,5 @@ INSERT INTO owl_config_sections (`sid`, `name`) VALUES (4, 'session');
 INSERT INTO owl_config_sections (`sid`, `name`) VALUES (5, 'user');
 INSERT INTO owl_config_sections (`sid`, `name`) VALUES (6, 'locale');
 INSERT INTO owl_config_sections (`sid`, `name`) VALUES (7, 'mail');
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `owl_config`
--- -----------------------------------------------------
-START TRANSACTION;
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 6, 'date', 'd-M-Y', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 6, 'time', 'H:i', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 6, 'datetime', 'd-M-Y H:i:s', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 6, 'log_date', 'd-m-Y', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 6, 'log_time', 'H:i:s.u', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 6, 'lang', 'en-UK', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 4, 'lifetime', '1440', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 4, 'pwd_minstrength', '2', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 4, 'check_ip', 'true', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 4, 'default_user', 'anonymous', 1, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 3, 'log_form_data', 'true', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 5, 'default_group', '2', 0, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 4, 'default_rights_all', '1', 1, 0);
-INSERT INTO owl_config (`cid`, `aid`, `gid`, `uid`, `sid`, `name`, `value`, `protect`, `hide`) VALUES (NULL, 1, 0, 0, 7, 'driver', 'RawSMTP', 0, 0);
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `owl_rights`
--- -----------------------------------------------------
-START TRANSACTION;
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (1, 'readpublic', 1, 'Allowed to see all content that has been either unmarked, or marked as public');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (2, 'readanonymous', 1, 'Allowed to see anonymous only content');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (3, 'readregistered', 1, 'Allowed to see all content that has been marked for registered users');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (4, 'modpassword', 1, 'Allowed to change own password');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (5, 'modemail', 1, 'Allowed to change own email address');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (6, 'modusername', 1, 'Allowed to change own username');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (7, 'moduserconfig', 1, 'Allowed to change own configuration settings');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (8, 'modgroupconfig', 1, 'Allowed to change configuration settings of the primary group');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (9, 'modapplconfig', 1, 'Allowed to change application config settings for OWL');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (10, 'addmembers', 1, 'Allowed to add members to the primary group');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (11, 'addgroups', 1, 'Allowed to add new groups to OWL');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (12, 'managegroupusers', 1, 'Allowed to manage users in the primary group');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (13, 'manageusers', 1, 'Allowed to manage all users in OWL');
-INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (14, 'installapps', 1, 'Allowed to install new applications');
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `owl_memberships`
--- -----------------------------------------------------
-START TRANSACTION;
-INSERT INTO owl_memberships (`mid`, `uid`, `gid`) VALUES (NULL, 1, 1);
-INSERT INTO owl_memberships (`mid`, `uid`, `gid`) VALUES (NULL, 2, 2);
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `owl_grouprights`
--- -----------------------------------------------------
-START TRANSACTION;
-INSERT INTO owl_grouprights (`gid`, `aid`, `right`) VALUES (1, 1, 3);
-INSERT INTO owl_grouprights (`gid`, `aid`, `right`) VALUES (2, 1, 93);
 
 COMMIT;
