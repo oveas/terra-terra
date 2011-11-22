@@ -238,6 +238,14 @@ abstract class OWLloader
 		$dataset->setKey('code');
 		$dataset->prepare();
 		$dataset->db($_id, __LINE__, __FILE__);
+		if (count($_id) == 0) {
+			if (defined('OWL___INSTALLER')) {
+				// OWL being installed
+				return 0;
+			} else {
+				trigger_error('OWL application not found in the database - has it been installed?', E_USER_ERROR);
+			}
+		}
 		return ($_id[0]['aid']);
 	}
 
@@ -273,11 +281,11 @@ abstract class OWLloader
 		//! Application ID
 		define ('APPL_ID', $app_data[0]['aid']);
 
-		//! The application. This must - in lowercase - also be used as top directory for the installation.
-		define ('APPL_NAME', $app_data[0]['name']);
-
 		//! Toplevel for the site
-		define ('APPL_SITE_TOP', OWL_SITE_TOP . '/' . strtolower(APPL_NAME));
+		define ('APPL_SITE_TOP', OWL_SITE_TOP . '/' . $app_data[0]['url']);
+
+		//! The application.
+		define ('APPL_NAME', $app_data[0]['name']);
 
 		//! Location of all configuration files. NOT, the application MUST provide this location!
 		define ('APPL_LIBRARY', APPL_SITE_TOP . '/lib');
@@ -364,10 +372,15 @@ require (OWL_LIBRARY . '/owl.helper.functions.php');
 
 // Get the static OWL configuration from file
 ConfigHandler::readConfig (array('file' => $GLOBALS['config']['configfiles']['owl']));
+
+
 // Now define the OWL Application ID; it is required by the next readConfig() call
-define('OWL_ID',OWLloader::getOWLId());
-// Get the dynamic OWL configuration from the database
-ConfigHandler::readConfig (array());
+define('OWL_ID', OWLloader::getOWLId());
+
+if (defined('OWL___INSTALLER') && OWL_ID == 0) {
+	// Get the dynamic OWL configuration from the database, except when installing OWL itself
+	ConfigHandler::readConfig (array());
+}
 
 // Load the contributed plugins
 require (OWL_CONTRIB . '/owl.contrib.loader.php');

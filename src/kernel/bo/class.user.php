@@ -78,6 +78,11 @@ abstract class User extends _OWL
 
 		$this->memberships = array();
 
+		// When called by the installer (for OWL itself), we don't wanna start a session
+		if (defined('OWL___INSTALLER')) {
+			return;
+		}
+
 		$this->session = new Session();
 		if ($this->succeeded(OWL_SUCCESS, $this->session) !== true) {
 			$this->session->signal();
@@ -322,17 +327,18 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	 * \param[in] $password Given password
 	 * \param[in] $vpassword Given password
 	 * \param[in] $group Default Group ID, defaults to the user|default_group config setting
+	 * \param[in] $online When true, a verification code will be added for this user the registration data will be added to a callback
 	 * \return New user ID or -1 on failure
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	protected function register($username, $email, $password, $vpassword, $group = 0)
+	protected function register($username, $email, $password, $vpassword, $group = 0, $online = true)
 	{
 		if ($this->usernameExists($username) === true) {
 			$this->setStatus (USER_DUPLUSERNAME, array ($username));
 			return -1;
 		}
 		$_minPwdStrength = ConfigHandler::get ('session', 'pwd_minstrength');
-		if ($_minPwdStrength > 0 && self::passwordStrength($password, array($username, $email)) < $_minPwdStrength) {
+		if ($online === true && $_minPwdStrength > 0 && self::passwordStrength($password, array($username, $email)) < $_minPwdStrength) {
 			$this->setStatus (USER_WEAKPASSWD);
 			return -1;
 		}
@@ -341,22 +347,29 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 			return -1;
 		}
 		if ($group === 0) {
-			$group = ConfigHandler::get('user', 'default_group');
+			$_grp = new Group();
+			if (($group = $_grp->getGroupByName(ConfigHandler::get('user', 'default_group'))) === false) {
+				return -1;
+			}
 		}
 
-		$_vstring = randomString(45);
 		$this->dataset->set('uid', null);
 		$this->dataset->set('username', $username);
 		$this->dataset->set('password', $this->hashPassword($password));
 		$this->dataset->set('email', $email);
 		$this->dataset->set('gid', $group);
-		$this->dataset->set('verification', $_vstring);
+		if ($online) {
+			$_vstring = randomString(45);
+			$this->dataset->set('verification', $_vstring);
+		}
 		$this->dataset->set('registered', date('Y-m-d H:i:s'));
 		$this->dataset->prepare(DATA_WRITE);
 		$_result = null;
 		$this->dataset->db ($_result, __LINE__, __FILE__);
 		$_uid = $this->dataset->insertedId();
-		$this->setCallbackArgument(array('uid' => $_uid, 'vcode' => $_vstring));
+		if ($online) {
+			$this->setCallbackArgument(array('uid' => $_uid, 'vcode' => $_vstring));
+		}
 		return ($_uid);
 	}
 
@@ -567,7 +580,9 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	 */
 	public function setSessionVar ($var, $val = 0, $flg = SESSIONVAR_SET)
 	{
-		$this->session->setSessionVar($var, $val, $flg);
+		if (is_object($this->session)) {
+			$this->session->setSessionVar($var, $val, $flg);
+		}
 	}
 
 	/**
@@ -579,6 +594,9 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	 */
 	public function getSessionVar ($var, $default = null)
 	{
+		if (!is_object($this->session)) {
+			return null;
+		}
 		return $this->session->getSessionVar($var, $default);
 	}
 }

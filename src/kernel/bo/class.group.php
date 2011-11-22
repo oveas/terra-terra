@@ -96,6 +96,7 @@ class Group extends _OWL
 		return ($this->id);
 
 	}
+
 	/**
 	 * Read the groupright bitmaps from the database and store them in the internal array
 	 * \author Oscar van Eijk, Oveas Functionality Provider

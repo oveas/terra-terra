@@ -288,6 +288,7 @@ Register::setSeverity (OWL_SUCCESS);
 
 //Register::setSeverity (OWL_WARNING);
 Register::registerCode ('DISP_INSARG');
+Register::registerCode ('DISP_NOTREGIST');
 
 Register::setSeverity (OWL_BUG);
 Register::registerCode ('DISP_ALREGIST');

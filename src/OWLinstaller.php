@@ -63,6 +63,7 @@ abstract class OWLinstaller
 	/**
 	 * Register an application in the database
 	 * \param[in] $code Application code
+	 * \param[in] $url URL (relative from the document root) where the application will be installed. When empty or null, defaults to the lowercase application name
 	 * \param[in] $name Name of the application
 	 * \param[in] $version Version number of the application
 	 * \param[in] $description Optional description
@@ -73,14 +74,18 @@ abstract class OWLinstaller
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 * \todo Error checking
 	 */
-	public static function installApplication ($code, $name, $version, $description = '', $link = '', $author = '', $license = '')
+	public static function installApplication ($code, $url, $name, $version, $description = '', $link = '', $author = '', $license = '')
 	{
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
 				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
+		if (!$url) {
+			$url = strtolower($name);
+		}
 		$dataset->setTablename('applications');
 		$dataset->set('code', $code);
+		$dataset->set('url', $url);
 		$dataset->set('name', $name);
 		$dataset->set('version', $version);
 		$dataset->set('description', $description);
@@ -381,6 +386,29 @@ abstract class OWLinstaller
 		ConfigHandler::set($section, $item, $value);
 		return (true);
 	}
+
+	/**
+	 *Add a user for this application
+	 * \param[in] $aid Application ID
+	 * \param[in] $username Given username
+	 * \param[in] $password Given password
+	 * \param[in] $email Given username
+	 * \param[in] $group Name of the primary group
+	 * \param[in] $memberships Array with groupnames for additional memberships
+	 * \return True on success
+	 * \note The default group and the additional memberships must be part of the application being installed
+	 * If no primary group is given, the new user will be member of the default group from the OWL configuration
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public static function addUser($aid, $username, $password, $email, $group, $memberships = null)
+	{
+		$grpObj = new Group();
+		$group = $grpObj->getGroupByName($group, $aid);
+		if (OWLInstallerUser::getReference()->register($aid, $username, $password, $email, $group, $memberships) < 0) {
+			return false;
+		}
+		return true;
+	}
 }
 
 //! OWL_ROOT must be defined by the application
@@ -389,5 +417,65 @@ if (!defined('OWL_ROOT')) { trigger_error('OWL_ROOT must be defined by the appli
 // Make sure the loader does not attempt to load the application
 define('OWL___INSTALLER', 1);
 require (OWL_ROOT . '/OWLloader.php');
+
+/**
+ * Helper class to add users during the installation process
+ * \brief OWLInstallerUser User
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ * \version Nov 22, 2011 -- O van Eijk -- initial version
+ */
+class OWLInstallerUser extends User
+{
+	/**
+	 * Self reference
+	 */
+	private static $instance;
+
+	/**
+	 * Object constructor
+	 */
+	private function __construct()
+	{
+		parent::construct();
+		OWLInstallerUser::$instance = $this;
+	}
+	/**
+	 * Instantiate the singleton or return its reference
+	 */
+	static public function getReference()
+	{
+		if (!OWLInstallerUser::$instance instanceof OWLInstallerUser) {
+			OWLInstallerUser::$instance = new self();
+		}
+		return OWLInstallerUser::$instance;
+	}
+
+
+	/**
+	 * Register a new username
+	 * \param[in] $aid Application ID
+	 * \param[in] $username Given username
+	 * \param[in] $password Given password
+	 * \param[in] $email Given username
+	 * \param[in] $group Primary Group
+	 * \param[in] $memberships Array with additional memberships
+	 * \return New user ID or -1 on failure
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function register($aid, $username, $password, $email, $group, $memberships)
+	{
+		if (($_uid = parent::register($username, $email, $password, $password, $group, false)) < 0) {
+			return -1;
+		}
+		if ($memberships !== null) {
+			foreach ($memberships as $_grp) {
+				if (parent::addMembership($_grp, $aid, $_uid) === false) {
+					; // Ignore failures here
+				}
+			}
+		}
+		return $_uid;
+	}
+}
 
 OWLinstaller::construct();
