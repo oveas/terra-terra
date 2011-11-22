@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS `owl_applications` ;
 CREATE  TABLE IF NOT EXISTS `owl_applications` (
   `aid` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique ID' ,
   `code` VARCHAR(12) NOT NULL COMMENT 'Application code' ,
+  `url` VARCHAR(45) NOT NULL ,
   `name` VARCHAR(45) NOT NULL COMMENT 'Application name' ,
   `version` VARCHAR(12) NOT NULL COMMENT 'Application version number' ,
   `description` TEXT NULL COMMENT 'Description of the application, can contain HTML code' ,
@@ -258,7 +259,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `owl_applications`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO owl_applications (`aid`, `code`, `name`, `version`, `description`, `installed`, `enabled`, `link`, `author`, `license`) VALUES (1, 'OWL', 'OWL-PHP', '0.1.0', 'Oveas Web Library for PHP', 1, 1, 'https://github.com/oveas/owl-php', 'Oscar van Eijk', 'LGPL');
+INSERT INTO owl_applications (`aid`, `code`, `url`, `name`, `version`, `description`, `installed`, `enabled`, `link`, `author`, `license`) VALUES (1, 'OWL', 'owladmin', 'OWL-PHP', '0.1.0', 'Oveas Web Library for PHP', 1, 1, 'https://github.com/oveas/owl-php', 'Oscar van Eijk', 'LGPL');
 
 COMMIT;
 
@@ -333,6 +334,15 @@ INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (11, 'addgro
 INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (12, 'managegroupusers', 1, 'Allowed to manage users in the primary group');
 INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (13, 'manageusers', 1, 'Allowed to manage all users in OWL');
 INSERT INTO owl_rights (`rid`, `name`, `aid`, `description`) VALUES (14, 'installapps', 1, 'Allowed to install new applications');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `owl_memberships`
+-- -----------------------------------------------------
+START TRANSACTION;
+INSERT INTO owl_memberships (`mid`, `uid`, `gid`) VALUES (NULL, 1, 1);
+INSERT INTO owl_memberships (`mid`, `uid`, `gid`) VALUES (NULL, 2, 2);
 
 COMMIT;
 
