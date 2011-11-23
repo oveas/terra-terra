@@ -377,7 +377,7 @@ ConfigHandler::readConfig (array('file' => $GLOBALS['config']['configfiles']['ow
 // Now define the OWL Application ID; it is required by the next readConfig() call
 define('OWL_ID', OWLloader::getOWLId());
 
-if (defined('OWL___INSTALLER') && OWL_ID == 0) {
+if (!defined('OWL___INSTALLER') && OWL_ID != 0) {
 	// Get the dynamic OWL configuration from the database, except when installing OWL itself
 	ConfigHandler::readConfig (array());
 }
