@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS `owl_applications` ;
 CREATE  TABLE IF NOT EXISTS `owl_applications` (
   `aid` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique ID' ,
   `code` VARCHAR(12) NOT NULL COMMENT 'Application code' ,
-  `url` VARCHAR(45) NOT NULL ,
+  `url` VARCHAR(45) NOT NULL COMMENT 'Application URL relative from DocumentRoot' ,
   `name` VARCHAR(45) NOT NULL COMMENT 'Application name' ,
   `version` VARCHAR(12) NOT NULL COMMENT 'Application version number' ,
   `description` TEXT NULL COMMENT 'Description of the application, can contain HTML code' ,
@@ -254,15 +254,6 @@ CREATE INDEX `fk_grouprights_group` ON `owl_grouprights` (`gid` ASC) ;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
--- -----------------------------------------------------
--- Data for table `owl_user`
--- -----------------------------------------------------
-START TRANSACTION;
-INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (2, 'owl', 'c90722aca1011e147b21ad2c3bb0a205e1026497', 'owluser@localhost.local', NULL, '', 2, 0);
-INSERT INTO owl_user (`uid`, `username`, `password`, `email`, `registered`, `verification`, `gid`, `right`) VALUES (1, 'anonymous', '', '', NULL, '', 1, 0);
-
-COMMIT;
 
 -- -----------------------------------------------------
 -- Data for table `owl_config_sections`
