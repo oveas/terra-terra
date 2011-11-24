@@ -160,4 +160,5 @@ $_messages = array (
 	, DOC_NOSUCHFILE		=> 'Cannot load $p1$ file $p2$ - file does not exist'
 	, DOC_PROTTAG			=> 'Attemt to overwrite the protected $p1$ tag $p2$'
 	, DOC_IVFILESPEC		=> 'Cannot load $p1$ file $p2$ is an invalid location specification'
+	, HEADER_LVLOORANGE		=> 'Header level can\'t be set to $p1$; HTML only specifies H1 - H6'
 );
