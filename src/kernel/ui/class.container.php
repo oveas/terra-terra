@@ -102,6 +102,7 @@ class Container extends BaseElement
 	 * Set container specific attributes
 	 * \param[in] $_attribs Indexed array with the type specific attributes.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \deprecated Use setAttributes() instead
 	 */
 	public function setContainer(array $_attribs = array())
 	{

@@ -105,8 +105,11 @@ function OWLdbg_traceCall ($shiftUp)
 function OWLdbg_add ($level, &$var, $name = 'Unknown variable', $shiftUp = 0)
 {
 	static $dbgRow = 1;
-
-	if (!($level & ConfigHandler::get('general', 'debug', 0, true))) {
+	$_dbgLevel = ConfigHandler::get('general', 'debug', 0, true);
+	if (!is_int($_dbgLevel)) {
+		$_dbgLevel = hexdec($_dbgLevel);
+	}
+	if (!($level & $_dbgLevel)) {
 		return;
 	}
 	$_caller = OWLdbg_traceCall($shiftUp);

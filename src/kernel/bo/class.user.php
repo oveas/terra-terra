@@ -63,10 +63,12 @@ abstract class User extends _OWL
 	/**
 	 * Class constructor; create a new user environment. This is not a regular constructor,
 	 * since it's up to the application to decide if this is a normal object or a singleton.
-	 * \param[in] $username Username when logged in. Default username is 'anonymous'
+	 * \param[in] $username Username when this object is used to get data for another user.
+	 * When this is null, an object will be instantiated for a new user. By default (false), user data\
+	 * will be taken from the session.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	protected function construct ($username = null)
+	protected function construct ($username = false)
 	{
 		_OWL::init();
 
@@ -83,17 +85,22 @@ abstract class User extends _OWL
 			return;
 		}
 
-		$this->session = new Session();
-		if ($this->succeeded(OWL_SUCCESS, $this->session) !== true) {
-			$this->session->signal();
-		}
+		if ($username === false) {
+			$this->session = new Session();
 
-		if ($this->getUserId() == 0) {
-			$this->newUser();
+			if ($this->succeeded(OWL_SUCCESS, $this->session) !== true) {
+				$this->session->signal();
+			}
+
+			if ($this->getUserId() == 0) {
+				$this->newUser();
+			} else {
+				$this->restoreUser();
+			}
+			OWLCache::set(OWLCACHE_OBJECTS, 'user', ($_ =& $this));
 		} else {
-			$this->restoreUser();
+			$this->getUser($username);
 		}
-		OWLCache::set(OWLCACHE_OBJECTS, 'user', ($_ =& $this));
 	}
 
 	/**
@@ -152,8 +159,12 @@ abstract class User extends _OWL
 	private function restoreUser()
 	{
 		$this->readUserdata();
-		$this->rights = unserialize($this->getSessionVar('authorizedrights'));
-		$this->memberships = unserialize($this->getSessionVar('memberships'));
+		if (($_v = $this->getSessionVar('authorizedrights')) !== null) {
+			$this->rights = unserialize($_v);
+		}
+		if (($_v = $this->getSessionVar('memberships')) !== null) {
+			$this->memberships = unserialize($_v);
+		}
 	}
 
 	/**
@@ -230,6 +241,7 @@ abstract class User extends _OWL
 		}
 		$this->newUser();
 	}
+
 	/**
 	 * When a new session starts for a use that was logged in before
 	 * retrieve the userdata back from the database
@@ -245,7 +257,7 @@ abstract class User extends _OWL
 			$this->dataset->setKey ('username');
 			$this->dataset->prepare ();
 			$this->dataset->db($_data, __LINE__, __FILE__);
-			$this->session->setSessionVar('uid', $_data[0]['uid']);
+			$this->setSessionVar('uid', $_data[0]['uid']);
 		}
 
 		$this->dataset->reset(DATA_RESET_META);
@@ -259,7 +271,34 @@ abstract class User extends _OWL
 		} else {
 			$this->user_data = $this->user_data[0]; // Shift up one level
 			$this->group = new Group($this->user_data['gid']);
-			$this->session->setSessionVar('username', $this->user_data['username']);
+			$this->setSessionVar('username', $this->user_data['username']);
+		}
+	}
+
+	/**
+	 * This object should hold information about another user than the current.
+	 * Retrieve its information now
+	 * \param[in] $username Username, null for an empty object
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	protected function getUser ($username)
+	{
+		if ($username === null) {
+			$this->user_data = array();
+			$this->group = new Group();
+		} else {
+			$this->dataset->reset(DATA_RESET_META);
+			$this->dataset->set('username', $username);
+			$this->dataset->setKey ('username');
+			$this->dataset->prepare ();
+			$this->dataset->db($this->user_data, __LINE__, __FILE__);
+			$_dbstat = $this->dataset->dbStatus();
+			if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
+				$this->setStatus (USER_NOSUCHUSER, array($username));
+			} else {
+				$this->user_data = $this->user_data[0]; // Shift up one level
+				$this->group = new Group($this->user_data['gid']);
+			}
 		}
 	}
 
@@ -307,7 +346,7 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	 * \return True when the username exists false otherwise
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private function usernameExists ($username)
+	protected function usernameExists ($username)
 	{
 		$this->dataset->set('username', $username);
 		$this->dataset->setKey ('username');
@@ -325,20 +364,22 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	 * \param[in] $username Given username
 	 * \param[in] $email Given username
 	 * \param[in] $password Given password
-	 * \param[in] $vpassword Given password
+	 * \param[in] $vpassword Given password verification
 	 * \param[in] $group Default Group ID, defaults to the user|default_group config setting
-	 * \param[in] $online When true, a verification code will be added for this user the registration data will be added to a callback
+	 * \param[in] $self_register When true, a verification code will be added for this user the registration data will be added to a callback,
+	 * and the password strength will be checked.
+	 * This is the default when a user registers online. When an administrator creates the new used, this can be set to false
 	 * \return New user ID or -1 on failure
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	protected function register($username, $email, $password, $vpassword, $group = 0, $online = true)
+	protected function register($username, $email, $password, $vpassword, $group = 0, $self_register = true)
 	{
 		if ($this->usernameExists($username) === true) {
 			$this->setStatus (USER_DUPLUSERNAME, array ($username));
 			return -1;
 		}
 		$_minPwdStrength = ConfigHandler::get ('session', 'pwd_minstrength');
-		if ($online === true && $_minPwdStrength > 0 && self::passwordStrength($password, array($username, $email)) < $_minPwdStrength) {
+		if ($self_register === true && $_minPwdStrength > 0 && self::passwordStrength($password, array($username, $email)) < $_minPwdStrength) {
 			$this->setStatus (USER_WEAKPASSWD);
 			return -1;
 		}
@@ -358,7 +399,7 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 		$this->dataset->set('password', $this->hashPassword($password));
 		$this->dataset->set('email', $email);
 		$this->dataset->set('gid', $group);
-		if ($online) {
+		if ($self_register) {
 			$_vstring = randomString(45);
 			$this->dataset->set('verification', $_vstring);
 		}
@@ -367,10 +408,37 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 		$_result = null;
 		$this->dataset->db ($_result, __LINE__, __FILE__);
 		$_uid = $this->dataset->insertedId();
-		if ($online) {
+		if ($self_register) {
 			$this->setCallbackArgument(array('uid' => $_uid, 'vcode' => $_vstring));
 		}
 		return ($_uid);
+	}
+
+	/**
+	 * Change a user's password
+	 * \param[in] $password Given password
+	 * \param[in] $vpassword Given password verification
+	 * \param[in] $chk_strength When true (default),  the password strength will be checked.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	protected function setPassword($password, $vpassword, $chk_strength = true)
+	{
+		$_minPwdStrength = ConfigHandler::get ('session', 'pwd_minstrength');
+		if ($chk_strength === true && $_minPwdStrength > 0 && self::passwordStrength($password, array($username, $email)) < $_minPwdStrength) {
+			$this->setStatus (USER_WEAKPASSWD);
+			return false;
+		}
+		if ($password !== $vpassword) {
+			$this->setStatus (USER_PWDVERFAILED);
+			return false;
+		}
+
+		$this->dataset->set('uid', $this->user_data['uid']);
+		$this->dataset->setKey('uid');
+		$this->dataset->set('password', $this->hashPassword($password));
+		$this->dataset->prepare(DATA_UPDATE);
+		$this->dataset->db ($_dummy, __LINE__, __FILE__);
+		return $this->check($this->dataset);
 	}
 
 	/**
@@ -545,6 +613,42 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	}
 
 	/**
+	 * Return an attribute value for the user
+	 * \param[in] $attr Attribute to return
+	 * \return Attribute value, of null when not found
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function getAttribute ($attr)
+	{
+		if (!array_key_exists($attr, $this->user_data)) {
+			return null;
+		}
+		return $this->user_data[$attr];
+	}
+
+	/**
+	 * Change an attribute for this user
+	 * \param[in] $password Given password
+	 * \param[in] $vpassword Given password verification
+	 * \param[in] $chk_strength When true (default),  the password strength will be checked.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	protected function setAttribute($attr, $value)
+	{
+		if (!array_key_exists($attr, $this->user_data)) {
+			$this->setStatus (USER_INVATTRIBUTE, array($attr));
+			return false;
+		}
+
+		$this->dataset->set('uid', $this->user_data['uid']);
+		$this->dataset->setKey('uid');
+		$this->dataset->set($attr, $value);
+		$this->dataset->prepare(DATA_UPDATE);
+		$this->dataset->db ($_dummy, __LINE__, __FILE__);
+		return $this->check($this->dataset);
+	}
+
+	/**
 	 * Get the list of all objects this user is member of
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -617,10 +721,12 @@ Register::setSeverity (OWL_WARNING);
 Register::registerCode ('USER_DUPLUSERNAME');
 Register::registerCode ('USER_PWDVERFAILED');
 Register::registerCode ('USER_WEAKPASSWD');
+Register::registerCode ('USER_INVATTRIBUTE');
 Register::registerCode ('USER_INVUSERNAME');
 Register::registerCode ('USER_INVPASSWORD');
 Register::registerCode ('USER_LOGINFAIL');
 Register::registerCode ('USER_NOTCONFIRMED');
+Register::registerCode ('USER_NOSUCHUSER');
 Register::registerCode ('USER_IVCONFARG');
 Register::registerCode ('USER_CONFERR');
 

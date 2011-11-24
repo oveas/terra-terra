@@ -87,6 +87,7 @@ class Dispatcher extends _OWL
 	 * 	- argument: An optional argument for the method called. The method which is called by the dispatcher must accept this argument type. If ommitted, no arguments will be passed by the dispatcher
 	 * For short, a string in the format "application#include_path-path#class_file#class_name#method_name[#argument]"
 	 * may also be given.
+	 * \note The argument cannot have the integer value '0'
 	 * \return URL encoded dispatcher
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -174,7 +175,7 @@ class Dispatcher extends _OWL
 			return ($this->severity);
 		}
 
-		if ($_destination['argument'] != 0) {
+		if ($_destination['argument'] !== 0) {
 			return $_handler->$_destination['method_name']($_destination['argument']);
 		} else {
 			return $_handler->$_destination['method_name']();

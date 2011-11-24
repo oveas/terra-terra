@@ -26,13 +26,14 @@
 
 // Doxygen setup
 /**
- * \defgroup OWL_UI_LAYER Presentation modules
- * \defgroup OWL_BO_LAYER Business Object modules
- * \defgroup OWL_SO_LAYER Storage Object modules
+ * \defgroup OWL_UI_LAYER Presentation Layer modules
+ * \defgroup OWL_BO_LAYER Business Layer modules
+ * \defgroup OWL_SO_LAYER Storage Layer modules
  * \defgroup OWL_LIBRARY Library (codes, messages files etc.)
  * \defgroup OWL_CONTRIB Contributed helper functions
  * \defgroup OWL_UI_PLUGINS Plugins for the presentation modules
  * \defgroup OWL_DRIVERS Drivers
+ * \defgroup OWL_OWLADMIN OWL administration site
  */
 
 /**
@@ -82,8 +83,8 @@ define ('OWL_OWL_URL', str_replace(OWL_SITE_TOP, '', OWL_ROOT));
 //! Default URL used for all callbacks (like form actions, AJAX requests etc)
 define ('OWL_CALLBACK_URL', $_SERVER['PHP_SELF']);
 
-//! OWL default stylesheets
-define ('OWL_STYLE',	OWL_ROOT . '/style');
+//! OWL default stylesheets. \todo This is the hardcoded OWLadmin default; must be variable using the OWL_ID url
+define ('OWL_STYLE', '/owladmin/style');
 
 //! Top location (URL) of OWL-JS
 //define ('OWL_JS_TOP', OWL_OWL_URL . '/owl-js');
