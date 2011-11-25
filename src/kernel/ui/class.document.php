@@ -90,6 +90,11 @@ class Document extends BaseElement
 	 * List of errors, warnings and other requested messages
 	 */
 	private $messages;
+	
+	/**
+	 * Container for messages; if null, messages will be added to the front of the document
+	 */
+	private $msgContainer;
 
 	/**
 	 * Switch that will be set to True when OWL-JS is enabled
@@ -511,11 +516,29 @@ class Document extends BaseElement
 					break;
 			}
 			$_msgList = implode('<br />', $stack['messages']);
-			$_msgContainer = new Container('div', $_msgList, array('class' => $class));
-			$this->addToContent($_msgContainer, true);
+			$_stackContainer = new Container('div', $_msgList, array('class' => $class));
+			if ($this->msgContainer instanceof Container) {
+				$this->msgContainer->addToContent($_stackContainer);
+			} else {
+				$this->addToContent($_stackContainer, true);
+			}
 		}
 	}
-
+	
+	/**
+	 * Set the container used to display messages. If not set, or set to null, messages will be 
+	 * added to the front of the document.
+	 * \param[in] $_container Message container
+	 * \author Daan Schulpen 
+	 */
+	public function setMessageContainer($_container) 
+	{
+		if ($_container !== null && !($_container instanceof Container)) {
+			$this->setStatus(DOC_IVMSGCONTAINER, $_container);
+		}
+		$this->msgContainer = $_container;
+	}
+	
 	/**
 	 * Get the HTML code to display the document
 	 * \return string with the HTML code
