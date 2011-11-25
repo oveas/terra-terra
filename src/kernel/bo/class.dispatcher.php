@@ -78,9 +78,9 @@ class Dispatcher extends _OWL
 	/**
 	 * Translate a given dispatcher to the URL encoded format
 	 * \param[in] $_dispatcher Dispatcher as an indexed array with the following keys:
-	 * 	- application: Name of the application. When the include path is no constant, it must be equal to
-	 * the name of the directory directly under the server's document root.
-	 * 	- include_path: A path relative from the application toplevel, or a constant
+	 * 	- application: Name of the application as it appears in the OWL application table
+	 * 	- include_path: A path relative from the application's toplevel URL as it appears in the OWL application table.
+	 * Alternatively, a constant specifying a complete URL can be given
 	 * 	- class_file: Filename, this can be the full file name ("class.myclass.php") or just the name ("myclass"). When omitted, it defaults to the classname (e.g. "MyClass") in lowercase.
 	 * 	- class_name Name of the class.
 	 * 	- method_name: Method that will be called when the form is submitted.
@@ -150,7 +150,7 @@ class Dispatcher extends _OWL
 		if (defined($_destination['include_path'])) {
 			$_inc_path = constant($_destination['include_path']);
 		} else {
-			$_inc_path = OWL_SITE_TOP . '/'.$_destination['application'].'/'.$_destination['include_path'];
+			$_inc_path = OWL_SITE_TOP . '/'.$this->getApplicationUrl($_destination['application']).'/'.$_destination['include_path'];
 		}
 
 		if (!OWLloader::getClass($_destination['class_file'], $_inc_path)) {
@@ -272,6 +272,28 @@ class Dispatcher extends _OWL
 		$this->dispatcher = null; // reset
 		return ($_dispatcher);
 	}
+
+	/**
+	 * Return the URL of an application, relative from OWL_SITE_TOP, based on the application name
+	 * \param[in] $_applicName Name of the application
+	 * \return Realative URL
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private function getApplicationUrl($_applicName)
+	{
+		$_dataset = new DataHandler();
+		$_dataset->set('name', $_applicName);
+		$_dataset->setKey ('name');
+		$_dataset->set('url', null, null, null, array('match' => array(DBMATCH_NONE)));
+		$_dataset->prepare ();
+		$_dataset->db($_data, __LINE__, __FILE__);
+		$_dbstat = $this->dataset->dbStatus();
+		if ($_dbstat === DBHANDLE_NODATA) {
+			$this->setStatus (DISP_NOSUCHAPPL, array($_applicName));
+			return null;
+		}
+		return $_data[0]['url'];
+	}
 }
 
 /*
@@ -293,6 +315,7 @@ Register::registerCode ('DISP_NOTREGIST');
 
 Register::setSeverity (OWL_BUG);
 Register::registerCode ('DISP_ALREGIST');
+Register::registerCode ('DISP_NOSUCHAPPL');
 
 Register::setSeverity (OWL_ERROR);
 Register::registerCode ('DISP_IVDISPATCH');
