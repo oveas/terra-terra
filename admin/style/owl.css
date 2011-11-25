@@ -1,0 +1,162 @@
+@CHARSET "UTF-8";
+/**
+ * \file
+ * Style sheet for OWL generated output
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ */
+
+body, .headerContainer, .bodyContainer, .footerContainer {
+	font-family			: "Times New Roman", Times, serif;
+}
+
+body, .headerContainer, .bodyContainer {
+	font-size			: 10pt;
+	clear				: left;
+}
+.footerContainer {
+	font-size			: 8pt;
+}
+
+.loginArea, .registerArea {
+	width				: 100px;
+}
+
+/*
+ * Menu layout
+ */
+
+.mainMenu, .userMenu {
+	float				: left;
+	padding-left		: 3px;
+	width				: 150px;
+}
+
+.mainMenu ul, .userMenu ul {
+	margin				: 0px;
+	padding				: 0px;
+}
+
+.mainMenu li, .userMenu li {
+	list-style-type		: none;
+}
+
+.mainMenu li a, .userMenu li a {
+	text-decoration		: none;	
+	height				: 20px;
+	line-height			: 20px;
+	vertical-align		: middle;
+	margin				: 1px;
+	padding				: 1px;
+	display				: block;
+}
+
+.userMenu li a:hover {
+	text-decoration		: underline;
+}
+
+/*
+ * Page footer
+ */
+.pageFooter {
+	text-align	: center;
+	font-style	: italic;
+	clear		: left;
+	color		: #666;
+}
+
+/*
+ * Sliding submenu layout. Currently, all menus have the same layout. Yet to be changed in the slider plugin
+ */
+.sliderSubMenu {
+	text-align			: left;
+
+}
+
+.sliderSubMenu ul {
+	margin				: 0px;
+	padding				: 0px;
+}
+
+.sliderSubMenu ul li {
+	margin				: 0px;
+	padding				: 1px;
+}
+
+.sliderSubMenu ul li a {
+	text-decoration		: none;
+	height				: 16px;
+	line-height			: 16px;
+	padding				: 1px;
+	display				: block;
+}
+
+.sliderSubMenu ul li a:hover {
+	text-decoration		: underline;
+}
+
+/*
+ * Exception handler
+ */
+.exception {
+	font-family : monospace;
+}
+
+.stackdump {
+	color : #990044;
+	font-style : italic;
+}
+
+/*
+ * Message handling (stacked messages)
+ */
+.debugMessages, .infoMessages, .successMessages, .warningMessages, .errorMessages {
+	width : 60%;
+	border : 1px;
+	background-color : #def3dd;
+	font-family : Helvetica, sans-serif, fantasy;
+	font-size : 10pt;
+}
+
+.debugMessages {
+	color : #86a985;
+	font-style : italic;
+}
+.infoMessages {
+	color : #275324;
+}
+	
+.successMessages {
+	color : #43903f;
+}
+	
+.warningMessages {
+	background-color : #d7df77;
+}
+	
+.errorMessages {
+	font-weight : bold;
+	background-color : #be533f;
+}
+
+/*
+ * Footer displaying the software and version
+ */
+.versioninfo {
+	font-family : Helvetica, sans-serif, fantasy;
+	color : black;
+	font-size : 8pt;
+}
+
+/*
+ * OWL Timers
+ */
+.OWLtimers, .OWLtimerWarnings {
+	font-family			: Arial, sans-serif;
+	font-size			: 8pt;
+}
+.OWLtimers {
+	color				: #86a985;
+}
+.OWLtimerWarnings {
+	color				: #be533f;
+}
