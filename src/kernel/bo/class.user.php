@@ -299,6 +299,8 @@ abstract class User extends _OWL
 				$this->user_data = $this->user_data[0]; // Shift up one level
 				$this->group = new Group($this->user_data['gid']);
 			}
+			$this->rights = new Rights(APPL_ID);
+			$this->getMemberships($this->user_data['uid']);
 		}
 	}
 
@@ -650,9 +652,10 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 
 	/**
 	 * Get the list of all objects this user is member of
+	 * \param[in] $uid Optional user ID when the user is not loaded from session
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private function getMemberships()
+	private function getMemberships($uid = 0)
 	{
 		$dataset = new DataHandler ();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
@@ -662,7 +665,7 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 		$this->rights->mergeBitmaps($this->group->getRights(OWL_ID), OWL_ID);
 		$this->rights->mergeBitmaps($this->group->getRights(APPL_ID), APPL_ID);
 		$dataset->setTablename('memberships');
-		$dataset->set('uid', $this->getUserId());
+		$dataset->set('uid', ($uid === 0) ? $this->getUserId() : $uid);
 		$dataset->prepare();
 		$dataset->db($_data, __LINE__, __FILE__);
 
@@ -673,6 +676,17 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 				$this->rights->mergeBitmaps($this->memberships['m'.$_mbrship['gid']]->getRights(APPL_ID), APPL_ID);
 			}
 		}
+	}
+
+	/**
+	 * Check if the current user is a member of the given group
+	 * \param[in] $gid Group ID
+	 * \return True when the user is a member
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function isMember ($gid)
+	{
+		return (array_key_exists('m'.$gid, $this->memberships));
 	}
 
 	/**

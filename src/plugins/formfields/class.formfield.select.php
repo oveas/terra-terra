@@ -92,22 +92,27 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 			}
 
 			if (array_key_exists('group', $_option)) {
-				$_valueArray = $this->options[$_option['group']];
+				if (!array_key_exists($_option['group'], $this->options)) {
+					$this->options[$_option['group']] = array();
+				}
+				$_valueArray =& $this->options[$_option['group']];
 			} else {
-				$_valueArray = $this->options[self::DefaultOptionGroup];
+				$_valueArray =& $this->options[self::DefaultOptionGroup];
 			}
 			if (in_array($_option['value'], $_valueArray)) { // TODO This will only check the current optgroup
 				$this->setStatus (FORMFIELD_VALEXISTS, $_option['value'], $this->name);
 				return;
 			}
-			$_valueArray['value'] = $_option['value'];
-			$_valueArray['text'] = (array_key_exists('text', $_option) ? $_option['text'] : $_option['value']);
+			$_nextOption = array();
+			$_nextOption['value'] = $_option['value'];
+			$_nextOption['text'] = (array_key_exists('text', $_option) ? $_option['text'] : $_option['value']);
 			if (array_key_exists('selected', $_option)) {
-				$_valueArray['selected'] = toBool($_option['selected'],array('yes', 'y', 'true', '1', 'checked', 'selected'));
+				$_nextOption['selected'] = toBool($_option['selected'],array('yes', 'y', 'true', '1', 'checked', 'selected'));
 			} else {
-				$_valueArray['selected'] = false;
+				$_nextOption['selected'] = false;
 			}
-			$_valueArray['class'] = (array_key_exists('class', $_option) ? $_option['class'] : '');
+			$_nextOption['class'] = (array_key_exists('class', $_option) ? $_option['class'] : '');
+			$_valueArray[] = $_nextOption;
 		}
 	}
 
@@ -149,7 +154,7 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 		if ($this->multiple) {
 			$_htmlCode .= " multiple='multiple'";
 		}
-		$_htmlCode .= '/>';
+		$_htmlCode .= '>';
 
 		foreach ($this->options as $_group => $_options) {
 			if ($_group != self::DefaultOptionGroup) {
@@ -163,7 +168,7 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 				if ($_opt['selected'] === true) {
 					$_htmlCode .= " selected='selected'";
 				}
-				$_htmlCode .= ">" . $_opt['text'] . '</select>';
+				$_htmlCode .= ">" . $_opt['text'] . '</option>';
 			}
 			if ($_group != self::DefaultOptionGroup) {
 				$_htmlCode .= "</optgroup>";
