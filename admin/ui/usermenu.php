@@ -58,8 +58,14 @@ class UsermenuArea extends ContentArea
 		if ($this->hasRight('manageusers', OWL_ID) === true) {
 			$this->userMaintOptions();
 		}
+		if ($this->hasRight('managegroups', OWL_ID) === true) {
+			$this->groupMaintOptions();
+		}
 	}
 
+	/**
+	 * Add a submenu with items for the user maintenance
+	 */
 	private function userMaintOptions ()
 	{
 		$_usrMaint = $this->contentObject->addSubMenu('User maintenance', array('class' => 'menuHeader'));
@@ -91,4 +97,40 @@ class UsermenuArea extends ContentArea
 		);
 		$_usrMaint->addContainer('item', $_lnk);
 	}
+
+	/**
+	 * Add a submenu with items for the group maintenance
+	 */
+	private function groupMaintOptions ()
+	{
+		$_usrMaint = $this->contentObject->addSubMenu('Group maintenance', array('class' => 'menuHeader'));
+		$_txt = $this->trn('List groups');
+		$_lnk = new Container('link', $_txt);
+		$_lnk->setContainer(array(
+				'dispatcher' => array(
+					 'application' => 'OWL'
+					,'include_path' => 'OWLADMIN_BO'
+					,'class_file' => 'owluser'
+					,'class_name' => 'OWLUser'
+					,'method_name' => 'listGroups'
+				)
+			)
+		);
+		$_usrMaint->addContainer('item', $_lnk);
+
+		$_txt = $this->trn('Add group');
+		$_lnk = new Container('link', $_txt);
+		$_lnk->setContainer(array(
+				'dispatcher' => array(
+					 'application' => 'OWL'
+					,'include_path' => 'OWLADMIN_BO'
+					,'class_file' => 'owluser'
+					,'class_name' => 'OWLUser'
+					,'method_name' => 'showEditGroupForm'
+				)
+			)
+		);
+		$_usrMaint->addContainer('item', $_lnk);
+	}
+
 }

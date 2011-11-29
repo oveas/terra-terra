@@ -62,6 +62,7 @@ class Usermaint extends User
 				,$_form->get('email')
 				,$_form->get('pwd')
 				,$_form->get('vpwd')
+				,$_form->get('group')
 				,false
 			);
 		} else {
@@ -72,6 +73,23 @@ class Usermaint extends User
 			if ($_form->get('email') != $this->getAttribute('email')) {
 				$this->setAttribute('email', $_form->get('email'));
 			}
+			if ($_form->get('group') != $this->getAttribute('gid')) {
+				$this->setAttribute('gid', $_form->get('group'));
+			}
+		}
+		$dataset = new DataHandler ();
+		$dataset->setTablename('memberships');
+		if ($_new === false) {
+			$dataset->set('uid', $_form->get('uid'));
+			$dataset->setKey('uid');
+			$dataset->prepare(DATA_DELETE);
+			$dataset->db ($_dummy, __LINE__, __FILE__);
+		}
+		foreach ($_form->get('memberships') as $_grpId) {
+			$dataset->set('uid', $_form->get('uid'));
+			$dataset->set('gid', $_grpId);
+			$dataset->prepare(DATA_WRITE);
+			$dataset->db ($_dummy, __LINE__, __FILE__);
 		}
 	}
 }

@@ -11,6 +11,9 @@ if (!OWLloader::getClass('form')) {
 if (!OWLloader::getClass('usermaint', OWLADMIN_BO)) {
 	trigger_error('Error loading the Usermaint class from ' . OWLADMIN_BO, E_USER_ERROR);
 }
+if (!OWLloader::getClass('listings', OWLADMIN_SO)) {
+	trigger_error('Error loading the Listings class from ' . OWLADMIN_SO, E_USER_ERROR);
+}
 
 /**
  * \ingroup OWL_OWLADMIN
@@ -47,7 +50,28 @@ class UsermaintArea extends ContentArea
 			)
 		);
 
+		$_lst = new Listings();
+		$_groups = $_lst->getGrouplist();
+
 		$_user = new Usermaint($arg);
+
+		// Create the Primary group- and memberships selectlists
+		$selPrigrp = array();
+		$selMbrshp = array();
+		foreach ($_groups as $_gid => $_gval) {
+			$selPrigrp[] = array(
+				 'value' => $_gid
+				,'text'  => $_gval[0] . '(' . $_gval[1] . ')'
+				,'selected' => ($_gid == $_user->getAttribute('gid'))
+			);
+			$selMbrshp[] = array(
+				 'value' => $_gid
+				,'text'  => $_gval[0]
+				,'group' => $_gval[1]
+				,'selected' => $_user->isMember($_gid)
+			);
+		}
+
 		$_table = new Container('table', '', array('style'=>'border: 0px; width: 100%;'));
 
 		$_r = $_table->addContainer('row');
@@ -78,13 +102,27 @@ class UsermaintArea extends ContentArea
 		$_r->addContainer('cell', $_c);
 		$_r->addContainer('cell', $_form->showField('email'));
 
+		$_r = $_table->addContainer('row');
+		$_f = $_form->addField('select', 'group', $selPrigrp);
+		$_l = $this->trn('Primary group');
+		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_r->addContainer('cell', $_c, array(), array('valign' => 'top'));
+		$_r->addContainer('cell', $_form->showField('group'));
+
+		$_r = $_table->addContainer('row');
+		$_f = $_form->addField('select', 'memberships', $selMbrshp, array('size' => 5));
+		$_f->setMultiple();
+		$_l = $this->trn('Memberships');
+		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_r->addContainer('cell', $_c, array(), array('valign' => 'top'));
+		$_r->addContainer('cell', $_form->showField('memberships'));
 
 		$_rs = $_table->addContainer('row');
 		$_form->addField('submit', 'act', $this->trn(($arg === null ? 'Add user' : 'Edit user')));
 		$_rs->addContainer('cell'
 			, $_form->showField('act')
-			, array('colspan'=>2
-			, 'style'=>'text-align:center;')
+			, array()
+			, array('colspan'=>2, 'style'=>'text-align:center;')
 		);
 
 		$_fSet = new Container(

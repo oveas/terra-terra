@@ -5,7 +5,7 @@ require (OWL_ROOT . '/OWLinstaller.php');
 
 //OWLinstaller::installTables('/var/owl-php/owl.tables.sql', false);
 
-$_id = OWLinstaller::installApplication('OWL', 'owladmin', OWL_VERSION, 'Oveas Web Library for PHP', 'https://github.com/oveas/owl-php', 'Oscar van Eijk', 'LGPL');
+$_id = OWLinstaller::installApplication('OWL', 'owladmin', 'Oveas Web Library for PHP', OWL_VERSION, 'https://github.com/oveas/owl-php', 'Oscar van Eijk', 'LGPL');
 
 OWLinstaller::addConfig($_id, 'locale', 'date', 'd-M-Y');
 OWLinstaller::addConfig($_id, 'locale', 'time', 'H:i');
@@ -34,8 +34,8 @@ OWLinstaller::addRights($_id
 		,'modgroupconfig'	=> 'Allowed to change configuration settings of the primary group'
 		,'modapplconfig'	=> 'Allowed to change application config settings for OWL'
 		,'addmembers'		=> 'Allowed to add members to the primary group'
-		,'addgroups'		=> 'Allowed to add new groups to OWL'
 		,'managegroupusers'	=> 'Allowed to manage users in the primary group'
+		,'managegroups'		=> 'Allowed to manage all groups in OWL'
 		,'manageusers'		=> 'Allowed to manage all users in OWL'
 		,'installapps'		=> 'Allowed to install new applications'
 	)
@@ -83,7 +83,7 @@ OWLinstaller::addGroupRights($_id
 	,array(
 		 'installapps'
 		,'manageusers'
-		,'addgroups'
+		,'managegroups'
 		,'modapplconfig'
 	)
 );

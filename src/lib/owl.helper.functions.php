@@ -45,6 +45,18 @@ function toBool ($_val, $_trueValues = array('yes', 'y', 'true', '1'), $_forceLo
 	}
 }
 
+
+/**
+ * Muldimensional implode()
+ * \todo Right now, this function just returns implode()... it's just a placeholder yet to be written.
+ * \param[in] $_glue Mixed, can be glue or an array of glues for each level.
+ * \param[in] $_pieces Array, can be multidimensional
+ * \return String holding the array values
+ */
+function implodeMDArray($_glue, array $_pieces)
+{
+	return implode($_glue, $_pieces);
+}
 /**
  * Very basic encryption/decryption routine. This is not meant for critical data, but should
  * be used only to hide non-critical info that must be transferred.

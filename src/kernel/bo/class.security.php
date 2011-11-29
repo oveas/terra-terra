@@ -153,7 +153,7 @@ abstract class Security
 		return (toBool($_curr));
 	}
 }
-Register::registerClass('Rights');
+Register::registerClass('Security');
 
 Register::setSeverity (OWL_WARNING);
 //Register::registerCode ('USER_DUPLUSERNAME');

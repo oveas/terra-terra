@@ -110,4 +110,25 @@ class OWLUser extends User
 			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
 		}
 	}
+
+	/**
+	 * Show the form to add or edit a group
+	 * \param[in] $usr Username, null (default) for new users
+	 */
+	public function showEditGroupForm($grp = null)
+	{
+		if (($_lnk = OWLloader::getArea('groupmaint', OWLADMIN_UI . '/groupmgt', $grp)) !== null) {
+			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+		}
+	}
+
+	/**
+	 * Show the group listing
+	 */
+	public function listGroups()
+	{
+		if (($_lnk = OWLloader::getArea('grouplist', OWLADMIN_UI . '/groupmgt')) !== null) {
+			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+		}
+	}
 }

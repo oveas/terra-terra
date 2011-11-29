@@ -142,7 +142,7 @@ class FormHandler extends _OWL
 				array ($variable
 						, (
 							is_array($this->owl_formvalues[$variable])
-								? ('array('.implode (',', $this->owl_formvalues[$variable]) . ')')
+								? ('array('.implodeMDArray (',', $this->owl_formvalues[$variable]) . ')')
 								: $this->owl_formvalues[$variable]
 						)
 				)

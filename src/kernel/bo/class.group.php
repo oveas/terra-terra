@@ -41,6 +41,11 @@ class Group extends _OWL
 	private $id;
 
 	/**
+	 * Array with group information
+	 */
+	private $group_data;
+
+	/**
 	 * Class constructor
 	 * \param[in] $id Optional Group ID. When ommittedm the group can be setup using the name with getGroupByName()
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -70,7 +75,11 @@ class Group extends _OWL
 		$this->dataset->set('gid', $this->id);
 		$this->dataset->prepare();
 		$this->dataset->db($_data, __LINE__, __FILE__);
-		$this->group_data = $_data[0];
+		if (count($_data) == 0) {
+			$this->group_data = array();
+		} else {
+			$this->group_data = $_data[0];
+		}
 	}
 
 	/**
@@ -131,6 +140,22 @@ class Group extends _OWL
 	}
 
 	/**
+	 * Check if this group has a certain right
+	 * \param[in] $rid Rights ID
+	 * \param[in] $aid Application ID
+	 * \return True when this group has the specified right
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \todo This method should use the Security::controlBitmap() method
+	 */
+	public function hasRight($rid, $aid)
+	{
+		if (!array_key_exists('a'.$aid, $this->rights)) {
+			return false;
+		}
+		return ($this->rights['a'.$aid] & pow(2, ($rid - 1)));
+	}
+
+	/**
 	 * Return a groupdata item, or the default value if it does not exist.
 	 * \param[in] $item The item of which the value should be returned
 	 * \param[in] $default Default value it the item does not exist (default is null)
@@ -145,6 +170,99 @@ class Group extends _OWL
 				: $default
 		);
 	}
+
+	/**
+	 * Update a groupdata item
+	 * \param[in] $item The item of which the value should be changed
+	 * \param[in] $value Value for the item
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function set($item, $value)
+	{
+		$this->group_data[$item] = $value;
+	}
+
+	/**
+	 * Remove all rightbits for this group
+	 * \param[in] $aid Optional application ID
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function clearRights($aid = 0)
+	{
+		if ($aid === 0) {
+			$this->rights = array();
+		} else {
+			if (array_key_exists('a'.$aid, $this->rights)) {
+				unset ($this->rights['a'.$aid]);
+			}
+		}
+	}
+
+	/**
+	 * Add rightbits for an aopplication to this group
+	 * \param[in] $aid Application ID
+	 * \param[in] $rid Rights ID
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function addRights($aid, $rid)
+	{
+		if (!array_key_exists('a'.$aid, $this->rights)) {
+			$this->rights['a'.$aid] = pow(2, $rid-1);
+		} else {
+			$this->rights['a'.$aid] = ($this->rights['a'.$aid] | pow(2, $rid-1));
+		}
+	}
+
+	/**
+	 * Update a groupdata item
+	 * \param[in] $item The item of which the value should be changed
+	 * \param[in] $value Value for the item
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \todo Error checking and handling
+	 */
+	public function save()
+	{
+		$dataset = new DataHandler ();
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		}
+		$dataset->setTablename('group');
+		$dataset->set('groupname', $this->group_data['groupname']);
+		$dataset->set('aid', $this->group_data['aid']);
+		$dataset->set('description', $this->group_data['description']);
+		$_new = ($this->id == 0);
+		if ($_new) {
+			$dataset->prepare(DATA_WRITE);
+		} else {
+			$dataset->set('gid', $this->id);
+			$dataset->setKey('gid');
+			$dataset->prepare(DATA_UPDATE);
+		}
+		$dataset->db ($_dummy, __LINE__, __FILE__);
+		if ($_new) {
+			$this->id = $dataset->insertedId();
+		}
+		$dataset->reset(DATA_RESET_FULL);
+		$dataset->setTablename('grouprights');
+
+		if (!$_new) {
+			$dataset->set('gid', $this->id);
+			$dataset->setKey('gid');
+			$dataset->prepare(DATA_DELETE);
+			$dataset->db ($_dummy, __LINE__, __FILE__);
+			$dataset->reset(DATA_RESET_DATA & DATA_RESET_META);
+		}
+
+		foreach ($this->rights as $_appId => $_bits) {
+			$_appId = str_replace('a', '', $_appId);
+			$dataset->set('gid', $this->id);
+			$dataset->set('aid', $_appId);
+			$dataset->set('right', $_bits);
+			$dataset->prepare(DATA_WRITE);
+			$dataset->db ($_dummy, __LINE__, __FILE__);
+		}
+	}
+
 }
 Register::registerClass('Group');
 //Register::setSeverity (OWL_DEBUG);

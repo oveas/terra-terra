@@ -147,6 +147,9 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 	 */
 	public function showElement ()
 	{
+		if ($this->multiple && !preg_match('/\[\]$/', $this->name)) {
+			$this->name .= '[]';
+		}
 		$_htmlCode = '<select ' . $this->getGenericFieldAttributes(array('value'));
 		if (!empty($this->size)) {
 			$_htmlCode .= " size='$this->size'";

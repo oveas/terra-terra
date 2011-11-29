@@ -32,11 +32,6 @@
 class FormFieldTextareaPlugin extends FormFieldPlugin
 {
 	/**
-	 * Field type; this class is used for 'text' and 'password' types
-	 */
-	private $type;
-
-	/**
 	 * Number of columns in the textarea
 	 */
 	public $rows;
