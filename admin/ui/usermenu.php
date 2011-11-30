@@ -58,7 +58,7 @@ class UsermenuArea extends ContentArea
 		if ($this->hasRight('manageusers', OWL_ID) === true) {
 			$this->userMaintOptions();
 		}
-		if ($this->hasRight('managegroups', OWL_ID) === true) {
+		if ($this->hasRight('managegroups', OWL_ID) === true || $this->hasRight('installapps', OWL_ID)) {
 			$this->groupMaintOptions();
 		}
 	}
@@ -104,33 +104,67 @@ class UsermenuArea extends ContentArea
 	private function groupMaintOptions ()
 	{
 		$_usrMaint = $this->contentObject->addSubMenu('Group maintenance', array('class' => 'menuHeader'));
-		$_txt = $this->trn('List groups');
-		$_lnk = new Container('link', $_txt);
-		$_lnk->setContainer(array(
-				'dispatcher' => array(
-					 'application' => 'OWL'
-					,'include_path' => 'OWLADMIN_BO'
-					,'class_file' => 'owluser'
-					,'class_name' => 'OWLUser'
-					,'method_name' => 'listGroups'
+		if ($this->hasRight('managegroups', OWL_ID) === true) {
+			$_txt = $this->trn('List groups');
+			$_lnk = new Container('link', $_txt);
+			$_lnk->setContainer(array(
+					'dispatcher' => array(
+						 'application' => 'OWL'
+						,'include_path' => 'OWLADMIN_BO'
+						,'class_file' => 'owluser'
+						,'class_name' => 'OWLUser'
+						,'method_name' => 'listGroups'
+					)
 				)
-			)
-		);
-		$_usrMaint->addContainer('item', $_lnk);
+			);
+			$_usrMaint->addContainer('item', $_lnk);
 
-		$_txt = $this->trn('Add group');
-		$_lnk = new Container('link', $_txt);
-		$_lnk->setContainer(array(
-				'dispatcher' => array(
-					 'application' => 'OWL'
-					,'include_path' => 'OWLADMIN_BO'
-					,'class_file' => 'owluser'
-					,'class_name' => 'OWLUser'
-					,'method_name' => 'showEditGroupForm'
+			$_txt = $this->trn('Add group');
+			$_lnk = new Container('link', $_txt);
+			$_lnk->setContainer(array(
+					'dispatcher' => array(
+						 'application' => 'OWL'
+						,'include_path' => 'OWLADMIN_BO'
+						,'class_file' => 'owluser'
+						,'class_name' => 'OWLUser'
+						,'method_name' => 'showEditGroupForm'
+					)
 				)
-			)
-		);
-		$_usrMaint->addContainer('item', $_lnk);
+			);
+			$_usrMaint->addContainer('item', $_lnk);
+		}
+		if ($this->hasRight('installapps', OWL_ID) === true) {
+			$_txt = $this->trn('List rights');
+			$_lnk = new Container('link', $_txt);
+			$_lnk->setContainer(array(
+					'dispatcher' => array(
+						 'application' => 'OWL'
+						,'include_path' => 'OWLADMIN_BO'
+						,'class_file' => 'owluser'
+						,'class_name' => 'OWLUser'
+						,'method_name' => 'appSelect'
+						,'argument' => 'listRights'
+					)
+				)
+			);
+			$_usrMaint->addContainer('item', $_lnk);
+
+			$_txt = $this->trn('Add rights');
+			$_lnk = new Container('link', $_txt);
+			$_lnk->setContainer(array(
+					'dispatcher' => array(
+						 'application' => 'OWL'
+						,'include_path' => 'OWLADMIN_BO'
+						,'class_file' => 'owluser'
+						,'class_name' => 'OWLUser'
+						,'method_name' => 'appSelect'
+						,'argument' => 'showEditRightsForm'
+						)
+				)
+			);
+			$_usrMaint->addContainer('item', $_lnk);
+		}
+
 	}
 
 }

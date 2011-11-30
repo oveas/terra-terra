@@ -120,7 +120,7 @@ class Listings extends _OWL
 		$this->dataset->db($_data, __LINE__, __FILE__);
 		$_rghts = array();
 		foreach ($_data as $_r) {
-			$_rghts[$_r['app_id']][$_r['rid']] = array($_r['description'], $_r['app_name']);
+			$_rghts[($app_id === NULL)?$_r['app_id']:$app_id][$_r['rid']] = array($_r['description'], $_r['app_name']);
 		}
 		$this->dataset->reset(DATA_RESET_FULL);
 		return $_rghts;

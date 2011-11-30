@@ -245,7 +245,7 @@ class Document extends BaseElement
 		}
 		if (($_styleUrl = urlExpand($_style)) === null) {
 			if ($_try !== true) {
-				$this->setStatus(DOC_IVFILESPEC, array('stylesheet', $_script));
+				$this->setStatus(DOC_IVFILESPEC, array('stylesheet', $_style));
 			}
 			return;
 		}

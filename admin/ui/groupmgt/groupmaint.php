@@ -1,7 +1,7 @@
 <?php
 /**
  * \file
- * This file creates the form to add or edit users
+ * This file creates the form to add or edit groups
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
@@ -27,7 +27,7 @@ class GroupmaintArea extends ContentArea
 	/**
 	 * Generate the Edit form and add it to the document
 	 * This area will only be visible to users holding the 'managegroups'
-	 * \param[in] $arg User ID to edit, or null to add a new user
+	 * \param[in] $arg User ID to edit, or null to add a new group
 	 */
 	public function loadArea($arg = null)
 	{

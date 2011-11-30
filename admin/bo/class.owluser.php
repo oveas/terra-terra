@@ -113,7 +113,7 @@ class OWLUser extends User
 
 	/**
 	 * Show the form to add or edit a group
-	 * \param[in] $usr Username, null (default) for new users
+	 * \param[in] $grp Groupname, null (default) for new groups
 	 */
 	public function showEditGroupForm($grp = null)
 	{
@@ -128,6 +128,43 @@ class OWLUser extends User
 	public function listGroups()
 	{
 		if (($_lnk = OWLloader::getArea('grouplist', OWLADMIN_UI . '/groupmgt')) !== null) {
+			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+		}
+	}
+
+	/**
+	 * Show the form to add or edit a right
+	 * \param[in] $rgt Array with application ID and rights ID
+	 */
+	public function showEditRightsForm($rgt = null)
+	{
+		if (!is_array($rgt)) {
+			// Just an applic ID to add a new right
+			$rgt = array('aid' => $rgt, 'rid' => 0);
+		}
+		if (($_lnk = OWLloader::getArea('rightsmaint', OWLADMIN_UI . '/rightmgt', $rgt)) !== null) {
+			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+		}
+	}
+
+	/**
+	 * Show the rights listing
+	 * \param[in] $app Application ID for which the rightslist should be created
+	 */
+	public function listRights($app = null)
+	{
+		if (($_lnk = OWLloader::getArea('rightslist', OWLADMIN_UI . '/rightmgt', $app)) !== null) {
+			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+		}
+	}
+
+	/**
+	 * Load the area to select an application for further maintenance
+	 * \param[in] $method Method to call after selection
+	 */
+	public function appSelect ($method)
+	{
+		if (($_lnk = OWLloader::getArea('appselect', OWLADMIN_UI, $method)) !== null) {
 			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
 		}
 	}
