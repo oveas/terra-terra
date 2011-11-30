@@ -389,8 +389,6 @@ require (OWL_CONTRIB . '/owl.contrib.loader.php');
 // Set up the logger
 $GLOBALS['logger'] = OWL::factory('LogHandler');
 
-$_doc  = OWL::factory('Document', 'ui');
-
 // Set up the label translations
 Register::registerLabels(true);
 
@@ -406,6 +404,7 @@ if (!defined('OWL___INSTALLER')) {
 // Select the (no)debug function libraries.
 if ($GLOBALS['config']['values']['general']['debug'] > 0) {
 	require (OWL_LIBRARY . '/owl.debug.functions.php');
+	$_doc  = OWL::factory('Document', 'ui');
 	$_doc->loadStyle(OWL_STYLE . '/owl_debug.css');
 } else {
 	require (OWL_LIBRARY . '/owl.nodebug.functions.php');
