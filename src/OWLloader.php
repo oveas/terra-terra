@@ -390,7 +390,6 @@ require (OWL_CONTRIB . '/owl.contrib.loader.php');
 $GLOBALS['logger'] = OWL::factory('LogHandler');
 
 $_doc  = OWL::factory('Document', 'ui');
-$_doc->loadStyle(OWL_STYLE . '/owl.css');
 
 // Set up the label translations
 Register::registerLabels(true);
