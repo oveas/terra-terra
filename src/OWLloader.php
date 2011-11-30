@@ -424,7 +424,7 @@ OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after 
  * OWL comes with a testapplication (<a href="http://owl.oveas.com/docs/otk/index.html">OTK</a>) for automated
  * testing.
  *
- * Together with the planned <a href="http://owl.oveas.com/docs/owl-js/index.html">OWL-JS</a>, you might consider the OWL family as the basis of what Web2.2 will look like ;)
+ * Together with <a href="http://owl.oveas.com/docs/owl-js/index.html">OWL-JS</a>, you might consider the OWL family as the basis of what Web2.2 will look like ;)
  *
  * Much of this code started as the project Terra-Terra in 2001 (http://terra-terra.org), a project that
  * was abandoned when AJAX became popular from 2005 onwards.
