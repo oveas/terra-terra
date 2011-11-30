@@ -28,7 +28,6 @@ body, .headerContainer, .bodyContainer {
 .mainMenu, .userMenu {
 	float				: left;
 	padding-left		: 3px;
-	width				: 150px;
 }
 
 .mainMenu ul, .userMenu ul {
@@ -36,10 +35,12 @@ body, .headerContainer, .bodyContainer {
 	padding				: 0px;
 }
 
-.mainMenu li, .userMenu li {
-	list-style-type		: none;
-}
 
+.mainMenu ul li, .userMenu ul li {
+	background			: #eee;
+	color				: #000;
+}
+/*
 .mainMenu li a, .userMenu li a {
 	text-decoration		: none;	
 	height				: 20px;
@@ -62,36 +63,6 @@ body, .headerContainer, .bodyContainer {
 	font-style	: italic;
 	clear		: left;
 	color		: #666;
-}
-
-/*
- * Sliding submenu layout. Currently, all menus have the same layout. Yet to be changed in the slider plugin
- */
-.sliderSubMenu {
-	text-align			: left;
-
-}
-
-.sliderSubMenu ul {
-	margin				: 0px;
-	padding				: 0px;
-}
-
-.sliderSubMenu ul li {
-	margin				: 0px;
-	padding				: 1px;
-}
-
-.sliderSubMenu ul li a {
-	text-decoration		: none;
-	height				: 16px;
-	line-height			: 16px;
-	padding				: 1px;
-	display				: block;
-}
-
-.sliderSubMenu ul li a:hover {
-	text-decoration		: underline;
 }
 
 /*

@@ -61,6 +61,16 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	}
 
 	/**
+	 * By default, menus are created inside a div. This method removes the div wrapper.
+	 * This is mainly useful for submenus
+	 */
+	public function noWrapper()
+	{
+		$this->type = 'ul';
+		$this->nested_type = null;
+	}
+
+	/**
 	 * Reimplement the parents option to make sure the type won't change for menu lists; just
 	 * ignore everything
 	 * \param[in] $_value True of False (ignored)
@@ -129,6 +139,7 @@ class ContainerMenuPlugin extends ContainerListPlugin
 		$_lnk->setHref('#');
 		$_lnk->setEvent('onClick', 'return false;');
 		$_newMenu = new Container('menu');
+		$_newMenu->noWrapper();
 		$_subMenu = $this->addItem($_lnk, $_attribs, $_type_attribs);
 		$_subMenu->addToContent($_newMenu);
 		return $_newMenu;

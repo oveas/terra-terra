@@ -31,4 +31,3 @@ $document->addToContent($GLOBALS['OWL']['BodyContainer']);
 $document->addToContent($GLOBALS['OWL']['FooterContainer']);
 
 OutputHandler::outputRaw($document->showElement());
-

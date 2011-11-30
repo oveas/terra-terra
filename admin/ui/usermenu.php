@@ -21,7 +21,7 @@ class UsermenuArea extends ContentArea
 	public function loadArea($arg = null)
 	{
 		$this->contentObject = new Container('menu', '', array('class' => 'userMenu'));
-		$this->contentObject->menuType('Slider', 'userMenu');
+		$this->contentObject->menuType('Dropdown', 'userMenu');
 
 		if ($this->hasRight('readanonymous', OWL_ID) === true) {
 			$_txt = $this->trn('Login');
