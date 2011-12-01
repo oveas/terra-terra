@@ -248,6 +248,77 @@ abstract class BaseElement extends _OWL
 	}
 
 	/**
+	 * Set a javascript trigger on the object to update the contents in another object.
+	 * This ID for both objects must be set
+	 * \param[in] $_jsEvent The javascript event that triggers the action
+	 * \param[in] $_object Reference to the container that will be modified by the action
+	 * \param[in] $_method Method in the goal container that handles the modification (any of the dynamic*() methods)
+	 * \param[in] $_dispatcher Dispatcher to generate the new content
+	 * \param[in] $_arg Name of the argument that will be passed to the request handler. The value
+	 * of the argument will be the current object's value
+	 * \return Severity code
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function setTrigger($_jsEvent, &$_object, $_method, $_dispatcher, $_arg)
+	{
+		if (!$this->id || !$_object->getId()) {
+			$this->status(DOM_NOID);
+			return $this->severity;
+		}
+		$_doc = OWL::factory('document', 'ui');
+		$_doc->enableOWL_JS();
+		$_doc->loadScript(OWL_JS_LIB . '/requesthandler.js');
+		$_eventTrigger = 'perform' . $_jsEvent . $this->id;
+		$_eventHandler = $_object->$_method();
+
+		$_disp = OWL::factory('Dispatcher', 'bo');
+		$_doc->addScript('function ' . $_eventTrigger . "() {\n"
+				. "\treqHandler = new requestHandler();\n"
+				. "\treqHandler.whenComplete($_eventHandler);\n"
+				. "\treqHandler.sendRequest(\"".OWL_CALLBACK_URL.'"'
+					.', OWL_DISPATCHER_NAME+"='.$_disp->composeDispatcher($_dispatcher)
+					. "&$_arg=\"+document.getElementById('$this->id').value);\n"
+				. "}\n"
+			);
+		$this->setEvent($_jsEvent, "$_eventTrigger()", true);
+		return $this->severity;
+	}
+
+	/**
+	 * Create the javascript code to replace the contents of this element with the result of
+	 * a javascript request
+	 * \return Name of the javascript function
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dynamicSetContent()
+	{
+		$_doc = OWL::factory('document', 'ui');
+		$_fName = 'handleSetContent'.$this->id;
+		$_doc->addScript("function $_fName() {\n"
+				. "\tdocument.getElementById('$this->id').innerHTML = reqHandler.getResponseText();\n"
+				. "}\n"
+		);
+		return $_fName;
+	}
+
+	/**
+	 * Create the javascript code add the result of a javascript request to the contents
+	 * of this element
+	 * \return Name of the javascript function
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dynamicAddContent()
+	{
+		$_doc = OWL::factory('document', 'ui');
+		$_fName = 'handleSetContent'.$this->id;
+		$_doc->addScript("function $_fName() {\n"
+				. "\tdocument.getElementById('$this->id').innerHTML += reqHandler.getResponseText();\n"
+				. "}\n"
+		);
+		return $_fName;
+	}
+
+	/**
 	 * Return the HTML attribute list for events that where set for this element.
 	 * \return string, HTML code
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -257,7 +328,7 @@ abstract class BaseElement extends _OWL
 		$_htmlCode = '';
 		foreach ($this->events as $_e => $_a) {
 			$_htmlCode .= " $_e='$_a'";
-		}
+		};
 		return $_htmlCode;
 	}
 
@@ -331,6 +402,7 @@ Register::setSeverity (OWL_SUCCESS);
 
 Register::setSeverity (OWL_WARNING);
 Register::registerCode('DOM_IVATTRIB');
+Register::registerCode('DOM_NOID');
 
 //Register::setSeverity (OWL_BUG);
 

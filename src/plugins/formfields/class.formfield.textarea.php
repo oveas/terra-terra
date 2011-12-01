@@ -53,6 +53,40 @@ class FormFieldTextareaPlugin extends FormFieldPlugin
 	}
 
 	/**
+	 * Create the javascript code to replace the contents of this element with the result of
+	 * a javascript request. Reimlemented from BaseElement to update the value i.s.o. innerHTML
+	 * \return Name of the javascript function
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dynamicSetContent()
+	{
+		$_doc = OWL::factory('document', OWL_UI);
+		$_fName = 'handleSetContent'.$this->id;
+		$_doc->addScript("function $_fName() {\n"
+				. "\tdocument.getElementById('$this->id').value = reqHandler.getResponseText();\n"
+				. "}\n"
+		);
+		return $_fName;
+	}
+
+	/**
+	 * Create the javascript code add the result of a javascript request to the contents
+	 * of this element. Reimlemented from BaseElement to update the value i.s.o. innerHTML
+	 * \return Name of the javascript function
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function dynamicAddContent()
+	{
+		$_doc = OWL::factory('document', OWL_UI);
+		$_fName = 'handleSetContent'.$this->id;
+		$_doc->addScript("function $_fName() {\n"
+				. "\tdocument.getElementById('$this->id').value += reqHandler.getResponseText();\n"
+				. "}\n"
+		);
+		return $_fName;
+	}
+
+	/**
 	 * Return the HTML code to display the form element
 	 * \return Textstring with the complete code for the form element
 	 * \author Oscar van Eijk, Oveas Functionality Provider

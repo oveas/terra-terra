@@ -129,12 +129,15 @@ abstract class OutputHandler
 	/**
 	 * Send the output unformatted to output channel for Ajax
 	 * \param[in] $text Text that should be send to the output channel. Can contain HTML
-	 * \todo Write this method....
+	 * \param[in] $terminate When true, further execution is terminated
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	static public function outputAjax($text)
+	static public function outputAjax($text, $terminate = false)
 	{
-		// Reserved... just a placeholder now
+		echo $text;
+		if ($terminate !== false) {
+			exit;
+		}
 	}
 
 	/**
