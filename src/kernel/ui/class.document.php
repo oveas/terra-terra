@@ -32,10 +32,15 @@
 class Document extends BaseElement
 {
 	/**
-	 * Base URL for the application, defaults to the server top
-	 */
+	* Base URL for the application, defaults to the server top
+	*/
 	private $base;
 
+	/**
+	* Base URL for the OWL installation, defaults to the server top
+	*/
+	private $owlBase;
+	
 	/**
 	 * Array for on-the-fly styles
 	 */
@@ -110,7 +115,10 @@ class Document extends BaseElement
 	{
 		_OWL::init();
 		$_proto = explode('/', $_SERVER['SERVER_PROTOCOL']);
-		$this->base = strtolower($_proto[0]) . '://' . $_SERVER['HTTP_HOST'];
+		$this->owlBase = $this->base = strtolower($_proto[0]) . '://' . $_SERVER['HTTP_HOST'];
+		if (defined('OWL_USER_LOCATION')) {
+			$this->base .= '/' . OWL_USER_LOCATION;
+		}
 		$this->styles = array();
 		$this->css = array('unconditional' => array());
 		$this->scripts = array();
@@ -165,7 +173,7 @@ class Document extends BaseElement
 
 		// Now load the language extentions.
 		// TODO This can be removed when I got languageExtentions() in owl.js working...
-		$lextDir = OWL_SITE_TOP . OWL_JS_LIB . '/lext/';
+		$lextDir = OWL_SERVER_TOP . OWL_JS_LIB . '/lext/';
 		if ($dH = opendir($lextDir)) {
 			while (($fName = readdir($dH)) !== false) {
 				if (is_file($lextDir . $fName)) {
@@ -241,6 +249,8 @@ class Document extends BaseElement
 		if ($_path !== null) {
 			if (file_exists(OWL_SITE_TOP . $_style)) {
 				$_style = OWL_SITE_TOP . $_style;
+			} elseif (OWL_SERVER_TOP != OWL_SITE_TOP && file_exists(OWL_SERVER_TOP . $_style)) {
+				$_style = OWL_SERVER_TOP . $_style;
 			} elseif (!file_exists($_style)) {
 				if ($_try !== true) {
 					$this->setStatus(DOC_NOSUCHFILE, array('stylesheet', $_style));
@@ -291,6 +301,8 @@ class Document extends BaseElement
 		if ($_path !== null) {
 			if (file_exists(OWL_SITE_TOP . $_script)) {
 				$_script = OWL_SITE_TOP . $_script;
+			} elseif (OWL_SERVER_TOP != OWL_SITE_TOP && file_exists(OWL_SERVER_TOP . $_script)) {
+				$_script = OWL_SERVER_TOP . $_script;
 			} elseif (!file_exists($_script)) {
 				$this->setStatus(DOC_NOSUCHFILE, array('javascript', $_script));
 				return;
@@ -388,12 +400,13 @@ class Document extends BaseElement
 
 	/**
 	 * Get the Base href
+	 * \param[in] $owlBase True when the serverwide OWL base should be returned
 	 * \return URL
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function getBase()
+	public function getBase($owlBase = false)
 	{
-		return $this->base;
+		return ($owlBase === true) ? $this->owlBase : $this->base;
 	}
 
 	/**
