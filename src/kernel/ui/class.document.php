@@ -566,7 +566,9 @@ class Document extends BaseElement
 				header("$_hdr: $_val");
 			}
 		}
-		$_htmlCode  = '<html xmlns="http://www.w3.org/1999/xhtml">'."\n";
+		$_htmlCode  = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
+		$_htmlCode .= '<html xmlns="http://www.w3.org/1999/xhtml">'."\n";
 		$_htmlCode .= "<head>\n";
 		$_htmlCode .= '<base href="'.$this->getBase().'" />'."\n";
 		$_htmlCode .= $this->_getMeta();
