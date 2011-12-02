@@ -95,6 +95,21 @@ class ContainerMenuPlugin extends ContainerListPlugin
 		$this->items[] = $_item;
 		return $_item;
 	}
+	
+	/**
+	 * Add a new menuitem
+	 * \param[in] $_content Content for the item container
+	 * \param[in] $_attribs An optional array with HTML attributes
+	 * \param[in] $_type_attribs Array with container type specific arguments
+	 * \return Pointer to the item object
+	 * \author Daan Schulpen
+	 */
+	public function addMenuitem($_content = '', array $_attribs = array(), array $_type_attribs = array())
+	{
+		$_item = new Container('menuitem', $_content, $_attribs, $_type_attribs);
+		$this->items[] = $_item;
+		return $_item;
+	}
 
 	/**
 	 * Set the menu type. The type must exist in the plugins/menu location of OWL-JS
@@ -135,12 +150,9 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	 */
 	public function addSubMenu($_title = '', array $_attribs = array(), array $_type_attribs = array())
 	{
-		$_lnk = new Container('link', $_title);
-		$_lnk->setHref('#');
-		$_lnk->setEvent('onClick', 'return false;');
 		$_newMenu = new Container('menu');
 		$_newMenu->noWrapper();
-		$_subMenu = $this->addItem($_lnk, $_attribs, $_type_attribs);
+		$_subMenu = $this->addMenuitem('', $_attribs, array_merge($_type_attribs, array('title' => $_title)));
 		$_subMenu->addToContent($_newMenu);
 		return $_newMenu;
 	}

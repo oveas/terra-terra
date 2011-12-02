@@ -52,6 +52,16 @@ class ContainerLinkPlugin extends ContainerPlugin
 		$this->href = '#';
 		$this->target = '';
 	}
+	
+	/**
+	 * Get the href attribute
+	 * \return The hypertext reference
+	 * \author Daan Schulpen
+	 */
+	public function getHref()
+	{
+		return $this->href;
+	}
 
 	/**
 	 * Set the href attribute
