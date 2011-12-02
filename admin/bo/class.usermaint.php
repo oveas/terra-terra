@@ -55,9 +55,9 @@ class Usermaint extends User
 	public function editUser ()
 	{
 		$_form = OWL::factory('FormHandler');
-		$_new = ($_form->get('uid') == 0);
+		$_new = (($_uid = $_form->get('uid')) == 0);
 		if ($_new === true) {
-			$this->register(
+			$_uid = $this->register(
 				 $_form->get('usr')
 				,$_form->get('email')
 				,$_form->get('pwd')
@@ -80,13 +80,13 @@ class Usermaint extends User
 		$dataset = new DataHandler ();
 		$dataset->setTablename('memberships');
 		if ($_new === false) {
-			$dataset->set('uid', $_form->get('uid'));
+			$dataset->set('uid', $_uid);
 			$dataset->setKey('uid');
 			$dataset->prepare(DATA_DELETE);
 			$dataset->db ($_dummy, __LINE__, __FILE__);
 		}
 		foreach ($_form->get('memberships') as $_grpId) {
-			$dataset->set('uid', $_form->get('uid'));
+			$dataset->set('uid', $_uid);
 			$dataset->set('gid', $_grpId);
 			$dataset->prepare(DATA_WRITE);
 			$dataset->db ($_dummy, __LINE__, __FILE__);

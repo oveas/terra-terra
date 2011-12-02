@@ -138,7 +138,7 @@ class OWLUser extends User
 	 */
 	public function showEditRightsForm($rgt = null)
 	{
-		if (!is_array($rgt)) {
+		if ($rgt !== null && !is_array($rgt)) {
 			// Just an applic ID to add a new right
 			$rgt = array('aid' => $rgt, 'rid' => 0);
 		}
@@ -149,12 +149,20 @@ class OWLUser extends User
 
 	/**
 	 * Show the rights listing
-	 * \param[in] $app Application ID for which the rightslist should be created
 	 */
-	public function listRights($app = null)
+	public function listRights()
 	{
-		if (($_lnk = OWLloader::getArea('rightslist', OWLADMIN_UI . '/rightmgt', $app)) !== null) {
+		if (($_lnk = OWLloader::getArea('rightslist', OWLADMIN_UI . '/rightmgt')) !== null) {
 			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+		}
+	}
+
+	public function getRightsListing()
+	{
+		$_form = OWL::factory('FormHandler');
+
+		if (($_content = OWLloader::getArea('getrightslist', OWLADMIN_UI . '/rightmgt', $_form->get('aid'))) !== null) {
+			OutputHandler::outputAjax($_content->getArea(), true);
 		}
 	}
 

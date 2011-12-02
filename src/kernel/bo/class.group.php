@@ -215,8 +215,6 @@ class Group extends _OWL
 
 	/**
 	 * Update a groupdata item
-	 * \param[in] $item The item of which the value should be changed
-	 * \param[in] $value Value for the item
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 * \todo Error checking and handling
 	 */
