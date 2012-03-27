@@ -163,6 +163,10 @@ abstract class ConfigHandler
 	 */
 	private static function convert ($val)
 	{
+		if (substr($val, 0, 7) == 'E_USER_') {
+			eval('$val = ' . $val . ';');
+			return ($val);
+		}
 		if (($_s = Register::getSeverityLevel($val)) > 0) {
 			return ($_s);
 		}

@@ -216,12 +216,15 @@ abstract class _OWL
 		} else {
 			$this->status->setParams (array ($params));
 		}
+
+		$msg = null;
 		if ($this->severity >= ConfigHandler::get ('logging', 'log_level')) {
 			$this->signal (0, $msg);
 			if (@is_object($GLOBALS['logger'])) {
 				$GLOBALS['logger']->log ($msg, $status);
 			}
 		}
+		$this->writePHPLog($msg);
 
 		if (ConfigHandler::get ('exception', 'throw_level') >= 0
 				&& $this->severity >= ConfigHandler::get ('exception', 'throw_level', OWL_BUG, true)) {
@@ -239,6 +242,47 @@ abstract class _OWL
 			}
 		}
 		$loopdetect = 0;
+	}
+
+	/**
+	 * Write a message to the PHP errorlog using the trigger_error() function.
+	 * Based on the write_phplog configuration setting, the following severity levels are logged:
+	 *   * E_USER_NOTICE: OWL_INFO
+	 *   * E_USER_WARNING: OWL_WARNING and OWL_BUG
+	 *   * E_USER_ERROR; OWL_ERROR and above (logged as warnings; see below)
+	 * \param[in] $message If the messages was logged in the OWL logfile, it is passed as
+	 * parameter. Otherwise it will be composed here.
+	 * \note When E_USER_ERROR is set, all error messages will be written to the php_errorlog
+	 * as warnings to prevent PHP from terminating immediately, skipping the OWL rundown
+	 * \note When display_errors is set to 'On' the the PHP ini file, messages will also be
+	 * shown in the browser.
+	 */
+	private function writePHPLog ($message = null)
+	{
+		// This function is included here to make sure is doesn't rely in any other class,
+		// like the LogHandler, and can always function as a fallback
+		if (($_level = ConfigHandler::get ('logging', 'write_phplog', E_USER_WARNING)) <= 0) {
+			return;
+		}
+
+		if ($this->severity === OWL_INFO && ($_level & E_USER_NOTICE)) {
+			if ($message === null) {
+				$this->signal(OWL_INFO, $message);
+			}
+			trigger_error($message, E_USER_NOTICE);
+		}
+		if ($this->severity >= OWL_WARNING && $this->severity <= OWL_BUG && ($_level & E_USER_NOTICE)) {
+			if ($message === null) {
+				$this->signal(OWL_WARNING, $message);
+			}
+			trigger_error($message, E_USER_WARNING);
+		}
+		if ($this->severity >= OWL_ERROR && ($_level & E_USER_ERROR)) {
+			if ($message === null) {
+				$this->signal(OWL_ERROR, $message);
+			}
+			trigger_error('(degraded error) ' . $message, E_USER_WARNING);
+		}
 	}
 
 	/**
