@@ -24,13 +24,15 @@
 
 /**
  * Convert a given value to a strict boolean.
- * \param[in] $_val Value to convert, can be any type
- * \param[in] $_trueValues Array with string values that should be considered 'true'. Defaults to 'yes', 'y', 'true' and '1'
+ * \param[in] $_val Value to convert, can be any type, but only strings are evaluated
+ * \param[in] $_trueValues Array with string values that should be considered 'true'. Defaults to 'yes', 'y' and 'true'
  * \param[in] $_forceLowercase Compare the input in lowercase only, defaults to true.
  * \return Strict boolean value
+ * \note When the input value is not a string, this function falls back on the PHP (boolean) cast,
+ * where -1 is evaluated as true
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
-function toBool ($_val, $_trueValues = array('yes', 'y', 'true', '1'), $_forceLowercase = true)
+function toBool ($_val, $_trueValues = array('yes', 'y', 'true'), $_forceLowercase = true)
 {
 	if (is_string($_val)) {
 		return (in_array(
