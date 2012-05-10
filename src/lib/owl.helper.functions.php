@@ -373,3 +373,112 @@ function isSerialized($value, &$result = null)
 	}
 	return true;
 }
+
+/**
+ * Break a textblock in lines with the given maximum length
+ * Linesbreaks will be made at the exact position, which might be
+ * in the middle of a word, without adding spaces.
+ * \param[in] $txt Textblock
+ * \param[in] $length Maximum size of the lines
+ * \param[in] $break String to insert at the end of a line
+ * \return Modified textblock
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ */
+function lineWrap ($txt, $length = 70, $break = "=\n")
+{
+	$retValue = '';
+	$lines = explode ("\n", $txt);
+	$length = $length - strlen($break);
+	foreach ($lines as $line) {
+		$pos = 0;
+		while (true) {
+			$retValue .= substr($line, $pos, $length);
+			$pos += $length;
+			if ($pos >= strlen($line)) {
+				break;
+			}
+			$retValue .= $break;
+		}
+		$retValue .= "\n";
+	}
+	return $retValue;
+}
+
+
+define('OWL_JPAD_LEFT', 1);     //!< More spaces are added on the left of the line
+define('OWL_JPAD_RIGHT', 2);    //!< More spaces are added on the right of the line
+define('OWL_JPAD_BOTH', 4);     //!< Tries to evenly distribute the padding
+define('OWL_JPAD_AVERAGE', 8);  //!< Tries to position based on a mix of the three algorithms
+
+/**
+ * Justification function that uses the wordwrap function and provides four justification modes:
+ *  - OWL_JPAD_LEFT; typically, the leftmost words receive the most padding
+ *  - OWL_JPAD_RIGHT; vice versa; the rightmost words receive the most padding
+ *  - OWL_JPAD_BOTH; tries to evenly distribute the padding among leftmost and rightmost words
+ *  - OWL_JPAD_AVERAGE; most complicated, uses an average of the three previous algorithms. I'd say this one produces the best result as it's more distributed in the center.
+ * Ths last line is not justified.
+ * \param[in] $input Input textblock
+ * \param[in] $width Width of the justified text
+ * \param[in] $mode Justification mode
+ * \return Justified textblock
+ * Example of output for the average algorithm using width 50::
+ * <pre>
+ * Lorem ipsum dolor            sit amet, consectetur
+ * adipisicing elit, sed do eiusmod tempor incididunt
+ * ut labore et dolore magna aliqua. Ut enim ad minim
+ * veniam, quis nostrud  exercitation ullamco laboris
+ * nisi ut aliquip ex ea commodo consequat. Duis aute
+ * irure dolor in    reprehenderit in voluptate velit
+ * esse cillum dolore       eu fugiat nulla pariatur.
+ * Excepteur sint occaecat    cupidatat non proident,
+ * sunt in culpa qui  officia deserunt mollit anim id
+ * est laborum.
+ * </pre>
+ * \author Tsomas (thomas@tgohome.com)
+ * \copyright{2009} Thomas, taken from http://be.php.net/manual/en/function.wordwrap.php
+ */
+function justify($input, $width, $mode = OWL_JPAD_AVERAGE)
+{
+	// We want to have n characters wide of text per line.
+	// Use PHP's wordwrap feature to give us a rough estimate.
+	$justified = wordwrap($input, $width, "\n", false);
+	$justified = explode("\n", $justified);
+
+	// Check each line is the required width. If not, pad
+	// it with spaces between words.
+	foreach ($justified as $line) {
+		if (strlen($line) != $width) {
+			// Split by word, then glue together
+			$words = explode (' ', $line);
+			$diff = $width - strlen ($line);
+
+			while ($diff > 0) {
+				// Process the word at this diff
+				if ($mode == OWL_JPAD_BOTH) {
+					$words[$diff / count($words)] .= ' ';
+				} else if ($mode == OWL_JPAD_AVERAGE) {
+					$words[(
+							($diff / count($words))
+							+ ($diff % count($words))
+							+ (count($words) - ($diff % count($words)))
+						) / 3] .= ' ';
+				} else if ($mode == OWL_JPAD_LEFT) {
+					$words[$diff % count($words)] .= ' ';
+				} else if($mode == OWL_JPAD_RIGHT) {
+					$words[count($words) - ($diff % count($words))] .= ' ';
+				}
+
+				// Next diff, please...
+				$diff--;
+			}
+		} else {
+			$words = explode(' ', $line);
+		}
+
+		$final .= implode(' ',  $words) . "\n";
+	}
+
+	// Return the final string
+	return $final;
+}
+
