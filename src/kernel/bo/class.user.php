@@ -630,9 +630,8 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 
 	/**
 	 * Change an attribute for this user
-	 * \param[in] $password Given password
-	 * \param[in] $vpassword Given password verification
-	 * \param[in] $chk_strength When true (default),  the password strength will be checked.
+	 * \param[in] $attr Attribute to change
+	 * \param[in] $value Attribute value
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	protected function setAttribute($attr, $value)

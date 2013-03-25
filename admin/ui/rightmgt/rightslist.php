@@ -5,6 +5,9 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
+if (!OWLloader::getClass('form')) {
+	trigger_error('Error loading the Form class', E_USER_ERROR);
+}
 if (!OWLloader::getClass('listings', OWLADMIN_SO)) {
 	trigger_error('Error loading the Listings class from ' . OWLADMIN_SO, E_USER_ERROR);
 }
@@ -30,24 +33,32 @@ class RightslistArea extends ContentArea
 		}
 
 		$_lst = new Listings();
-		$_rights = $_lst->getRightslist($arg);
-		$_list = new Container('list');
-		foreach ($_rights[$arg] as $_rid => $_info) {
-			$_lnk = new Container('link', $_info[0]);
-			$_lnk->setContainer(array(
-					'dispatcher' => array(
-						 'application' => 'OWL'
-						,'include_path' => 'OWLADMIN_BO'
-						,'class_file' => 'owluser'
-						,'class_name' => 'OWLUser'
-						,'method_name' => 'showEditRightsForm'
-						,'argument' => array('aid' => $arg, 'rid' => $_rid)
-					)
-				)
+		$_apps = $_lst->getAppliclist();
+		$appList = array();
+		foreach ($_apps as $_aid => $_aval) {
+			$appList[] = array(
+				 'value' => $_aid
+				,'text'  => $_aval[0]
 			);
-			$_item = $_list->addContainer('item', $_lnk->showElement());
 		}
-		$this->contentObject = new Container('div', $_info[0] . ' ' . $this->trn("Rights"), array('class' => 'listArea'));
-		$this->contentObject->setContent($_list);
+		$_form = new Form(null);
+		$_f = $_form->addField('select', 'aid', $appList);
+		$_f->setId('appSelect');
+
+		$_container = new Container('div');
+		$_container->setId('rightsContainer');
+
+		$_f->setTrigger(
+			 'onChange'
+			,$_container
+			,'dynamicSetContent'
+			,'OWL#OWLADMIN_BO#owluser#OWLUser#getRightsListing'
+			,'aid'
+		);
+
+		$_selector = new Container('div', $_form->showField('aid'));
+		$this->contentObject = new Container('div', $_selector, array('class' => 'listArea'));
+		$this->contentObject->addToContent($_form);
+		$this->contentObject->addToContent($_container);
 	}
 }

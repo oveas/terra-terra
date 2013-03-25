@@ -142,8 +142,7 @@ class UsermenuArea extends ContentArea
 						,'include_path' => 'OWLADMIN_BO'
 						,'class_file' => 'owluser'
 						,'class_name' => 'OWLUser'
-						,'method_name' => 'appSelect'
-						,'argument' => 'listRights'
+						,'method_name' => 'listRights'
 					)
 				)
 			);
@@ -157,8 +156,7 @@ class UsermenuArea extends ContentArea
 						,'include_path' => 'OWLADMIN_BO'
 						,'class_file' => 'owluser'
 						,'class_name' => 'OWLUser'
-						,'method_name' => 'appSelect'
-						,'argument' => 'showEditRightsForm'
+						,'method_name' => 'showEditRightsForm'
 						)
 				)
 			);

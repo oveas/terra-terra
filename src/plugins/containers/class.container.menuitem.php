@@ -1,0 +1,122 @@
+<?php
+/**
+ * \file
+ * This file defines the menu item plugin for containers
+ * \author Daan Schulpen
+ * \copyright{2011} Daan Schulpen
+ * \license
+ * This file is part of OWL-PHP.
+ *
+ * OWL-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OWL-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ */
+
+if (!class_exists('ContainerItemPlugin') && !OWLloader::getClass('container.item', OWL_PLUGINS . '/containers')) {
+	trigger_error('Error loading the Item container plugin - this class is required by the Menuitem container', E_USER_ERROR);
+}
+
+/**
+ * \ingroup OWL_UI_PLUGINS
+ * Class defining menu item container plugin
+ * \brief Menuitem Container
+ * \author Daan Schulpen
+ * \version Nov 29, 2011 -- D Schulpen -- initial version
+ */
+
+class ContainerMenuitemPlugin extends ContainerItemPlugin
+{
+
+	/**
+	 * String containing href attribute for generated link
+	 */
+	private $link;
+	
+	/**
+	 * Container constructor
+	 * \author Daan Schulpen
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->link = new Container('link');
+		$this->setHref('#');
+	}
+	
+	/**
+	 * Set the href attribute on the generated link
+	 * \param[in] $_url The hypertext reference
+	 * \author Daan Schulpen
+	 */
+	public function setHref($_url)
+	{
+		$this->link->setHref($_url);
+	}
+	
+	/**
+	* Set a dispatcher as href attribute
+	* \note This overwrites the href attribute
+	* \param[in] $_dispatcher OWL dispatcher as string or array, \see Dispatcher::composeDispatcher()
+	* \author Daan Schulpen
+	*/
+	public function setDispatcher($_dispatcher)
+	{
+		$_disp = OWL::factory('Dispatcher', 'bo');
+		$this->setHref(OWL_CALLBACK_URL . '?' . OWL_DISPATCHER_NAME . '=' . $_disp->composeDispatcher($_dispatcher));
+	}
+	
+	/**
+	 * Add an event to the generated link's events array
+	 * \param[in] $_event Javascript event name (onXxx)
+	 * \param[in] $_action Javascript function or code
+	 * \param[in] $_add Boolean; when true, the action will be added if the event name already exists.
+	 * Default is false; overwrite the action for this event.
+	 * \author Daan Schulpen
+	 */
+	public function setEvent($_event, $_action, $_add = false)
+	{
+		$this->link->setEvent($_event, $_action, $_add);
+	}
+	
+	/**
+	 * Set the title
+	 * \param[in] $_title The string to display as title
+	 * \author Daan Schulpen
+	 */
+	public function setTitle($_title)
+	{
+		$this->link->setContent($_title);
+	}
+
+	/**
+	 * Show the item specific arguments.
+	 * \return string with the HTML code
+	 * \author Daan Schulpen
+	 */
+	public function showElement()
+	{
+		if ($this->link->getHref() === '#') {
+			return ' onClick="return false;"';
+		} else {
+			return '';
+		}
+	}
+	
+	/**
+	 * Retrieve HTML text for generated link
+	 * \author Daan Schulpen
+	 */
+	public function getContent()
+	{
+		return $this->link->showElement();
+	}
+}
