@@ -74,8 +74,20 @@ define ('OWL_DRIVERS',	OWL_ROOT . '/drivers');
 //! Location for all contributed plugins
 define ('OWL_CONTRIB',	OWL_LIBRARY . '/contrib');
 
-//! Toplocation of this site (directory)
-define ('OWL_SITE_TOP', $_SERVER['DOCUMENT_ROOT']);
+//! Toplocation of this server, contains serverwide OWL installations
+define ('OWL_SERVER_TOP', $_SERVER['DOCUMENT_ROOT']);
+
+//! Toplocation of this site (directory), can be user specific
+if (strpos($_SERVER['SCRIPT_FILENAME'], $_SERVER['DOCUMENT_ROOT']) === 0) {
+	//! Toplocation of this site (directory), can be user specific
+	define ('OWL_SITE_TOP', $_SERVER['DOCUMENT_ROOT']);
+} else {
+	// Hack to support userdirs (http://server/~user)
+	$_pathElements = explode('/', $_SERVER['PHP_SELF']);
+	array_shift($_pathElements); // Remove leading /
+	define ('OWL_USER_LOCATION', array_shift($_pathElements));
+	define ('OWL_SITE_TOP', preg_replace('/\/' . implode ('\/', $_pathElements) . '$/', '', $_SERVER['SCRIPT_FILENAME']));
+}
 
 //! Toplocation of OWL-PHP (URL)
 define ('OWL_OWL_URL', str_replace(OWL_SITE_TOP, '', OWL_ROOT));

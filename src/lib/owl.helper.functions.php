@@ -129,7 +129,7 @@ function urlToPath ($_file)
 			return null;
 		}
 	}
-	return preg_replace($_rex, $_SERVER['DOCUMENT_ROOT'], $_file);
+	return preg_replace($_rex, OWL_SITE_TOP, $_file);
 }
 
 /**
@@ -148,9 +148,15 @@ function urlExpand($_file)
 		if (!preg_match('/^\//', $_file)) {
 			return null;
 		}
-		$_file = preg_replace('@' . $_SERVER['DOCUMENT_ROOT'] . '@', '', $_file);
+		$_fPart = preg_replace('@' . OWL_SITE_TOP . '@', '', $_file);
+		if ($_fPart == $_file) {
+			$_fPart = preg_replace('@' . OWL_SERVER_TOP . '@', '', $_file);
+			$_useOwlRoot = true;
+		} else {
+			$_useOwlRoot = false;
+		}
 		$_document = OWL::factory('Document', 'ui');
-		$_file = $_document->getBase() . $_file;
+		$_file = $_document->getBase($_useOwlRoot) . $_fPart;
 	}
 	return $_file;
 }
