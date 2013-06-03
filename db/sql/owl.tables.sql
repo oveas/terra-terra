@@ -21,8 +21,8 @@ CREATE  TABLE IF NOT EXISTS `owl_applications` (
   `author` VARCHAR(45) NULL COMMENT 'Author or copyright holder of the application' ,
   `license` VARCHAR(45) NULL COMMENT 'Application license type if applicable' ,
   PRIMARY KEY (`aid`) )
-ENGINE = InnoDB, 
-COMMENT = 'All known applications' ;
+ENGINE = InnoDB
+COMMENT = 'All known applications';
 
 CREATE UNIQUE INDEX `app_appcode` ON `owl_applications` (`code` ASC) ;
 
@@ -43,8 +43,8 @@ CREATE  TABLE IF NOT EXISTS `owl_group` (
     REFERENCES `owl_applications` (`aid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-ENGINE = InnoDB, 
-COMMENT = 'Standard OWL and application groups' ;
+ENGINE = InnoDB
+COMMENT = 'Standard OWL and application groups';
 
 CREATE INDEX `grp_group` ON `owl_group` (`groupname` ASC) ;
 
@@ -73,8 +73,8 @@ CREATE  TABLE IF NOT EXISTS `owl_user` (
     REFERENCES `owl_group` (`gid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-ENGINE = InnoDB, 
-COMMENT = 'Basic userdata for all OWL based applications' ;
+ENGINE = InnoDB
+COMMENT = 'Basic userdata for all OWL based applications';
 
 CREATE UNIQUE INDEX `usr_username` USING BTREE ON `owl_user` (`username` ASC) ;
 
@@ -91,8 +91,8 @@ CREATE  TABLE IF NOT EXISTS `owl_session` (
   `stimestamp` INT(10) NOT NULL COMMENT 'Timestamp of the sessions last activity' ,
   `sdata` TEXT NULL COMMENT 'Room to store the last session data' ,
   PRIMARY KEY (`sid`) )
-ENGINE = InnoDB, 
-COMMENT = 'This table is used to store all OWL session data' ;
+ENGINE = InnoDB
+COMMENT = 'This table is used to store all OWL session data';
 
 
 -- -----------------------------------------------------
@@ -124,8 +124,8 @@ CREATE  TABLE IF NOT EXISTS `owl_config_sections` (
   `sid` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`sid`) )
-ENGINE = InnoDB, 
-COMMENT = 'Configuration sections' ;
+ENGINE = InnoDB
+COMMENT = 'Configuration sections';
 
 
 -- -----------------------------------------------------
@@ -154,8 +154,8 @@ CREATE  TABLE IF NOT EXISTS `owl_config` (
     REFERENCES `owl_config_sections` (`sid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-ENGINE = InnoDB, 
-COMMENT = 'Dynamic configuration for OWL and applications' ;
+ENGINE = InnoDB
+COMMENT = 'Dynamic configuration for OWL and applications';
 
 CREATE UNIQUE INDEX `cnf_configitem` ON `owl_config` (`aid` ASC, `name` ASC) ;
 
@@ -186,8 +186,8 @@ CREATE  TABLE IF NOT EXISTS `owl_rights` (
     REFERENCES `owl_applications` (`aid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-ENGINE = InnoDB, 
-COMMENT = 'Rights that can be granted within owl applications' ;
+ENGINE = InnoDB
+COMMENT = 'Rights that can be granted within owl applications';
 
 CREATE UNIQUE INDEX `rgt_right` ON `owl_rights` (`name` ASC) ;
 
@@ -214,8 +214,8 @@ CREATE  TABLE IF NOT EXISTS `owl_memberships` (
     REFERENCES `owl_user` (`uid` )
     ON DELETE CASCADE
     ON UPDATE CASCADE)
-ENGINE = InnoDB, 
-COMMENT = 'Defenition of all memberships for a user' ;
+ENGINE = InnoDB
+COMMENT = 'Defenition of all memberships for a user';
 
 CREATE INDEX `fk_groupmember` ON `owl_memberships` (`gid` ASC) ;
 
@@ -242,8 +242,8 @@ CREATE  TABLE IF NOT EXISTS `owl_grouprights` (
     REFERENCES `owl_group` (`gid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-ENGINE = InnoDB, 
-COMMENT = 'All application specific rights for each group' ;
+ENGINE = InnoDB
+COMMENT = 'All application specific rights for each group';
 
 CREATE INDEX `fk_grouprights_applic` ON `owl_grouprights` (`aid` ASC) ;
 
@@ -259,12 +259,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `owl_config_sections`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO owl_config_sections (`sid`, `name`) VALUES (1, 'general');
-INSERT INTO owl_config_sections (`sid`, `name`) VALUES (2, 'database');
-INSERT INTO owl_config_sections (`sid`, `name`) VALUES (3, 'logging');
-INSERT INTO owl_config_sections (`sid`, `name`) VALUES (4, 'session');
-INSERT INTO owl_config_sections (`sid`, `name`) VALUES (5, 'user');
-INSERT INTO owl_config_sections (`sid`, `name`) VALUES (6, 'locale');
-INSERT INTO owl_config_sections (`sid`, `name`) VALUES (7, 'mail');
+INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (1, 'general');
+INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (2, 'database');
+INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (3, 'logging');
+INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (4, 'session');
+INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (5, 'user');
+INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (6, 'locale');
+INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (7, 'mail');
 
 COMMIT;

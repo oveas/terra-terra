@@ -50,7 +50,7 @@ define ('SESSIONVAR_ARRAY',		4);
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jul 29, 2008 -- O van Eijk -- initial version
  */
-class SessionHandler extends _OWL
+class OWLSessionHandler extends _OWL
 {
 
 	/**

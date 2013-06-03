@@ -52,6 +52,11 @@ class SchemeHandler extends _OWL
 	private $table = '';
 
 	/**
+	 * string - Optional engine name.
+	 */
+	private $engine = null;
+
+	/**
 	 * integer - self reference
 	 */
 	private static $instance;
@@ -122,6 +127,21 @@ class SchemeHandler extends _OWL
 		$this->inuse = true;
 	}
 
+	/**
+	 * Define the engine for this scheme.
+	 * \note The driver being used must support this
+	 * \param[in] $_engine Specification of the engine
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function setEngine ($_engine)
+	{
+		if (!$this->inuse) {
+			$this->setStatus (SCHEMEHANDLE_NOTUSE);
+			return ($this->severity);
+		}
+		$this->engine = $_engine;
+	}
+	
 	/**
 	 * Define the layout for a table
 	 * \param[in] $_scheme Array holding the table description. This is a 2 dimensional array where the
@@ -353,7 +373,7 @@ class SchemeHandler extends _OWL
 			}
 		}
 		$_db = $this->db->getResource(); // Create a variable since it's passed by reference
-		return ($this->db->getDriver()->dbCreateTable($_db, $this->db->tablename($this->table), $_colDefs, $_idxDefs));
+		return ($this->db->getDriver()->dbCreateTable($_db, $this->db->tablename($this->table), $_colDefs, $_idxDefs, $this->engine));
 	}
 
 	/**
@@ -438,7 +458,7 @@ class SchemeHandler extends _OWL
 	{
 		if (!$this->db->tableExists($tablename)) {
 			$data = array();
-			$this->setStatus (SCHEMEHANDLE_NOTABLE);
+			$this->setStatus (SCHEMEHANDLE_NOTABLE, $tablename);
 			return ($this->severity);
 		}
 		$data['columns'] = $this->getTableColumns($tablename);

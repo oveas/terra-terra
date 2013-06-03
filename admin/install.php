@@ -1,9 +1,18 @@
 <?php
+/**
+ * \file
+ * Installer script for OWL-PHP
+ * \todo This is just a first setup of what an OWL-PHP installer should do. What we need is some proper error checking,
+ * configuration settings, layout, generate .htaccess for the owladmin directory, logging to browser and a hell of a lot more....
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ */
 
-define ('OWL_ROOT', '/var/owl-php');
+define ('OWL__BASE__INSTALL', true);
+error_reporting(E_ALL | E_STRICT);
+define ('OWL_ROOT', '/var/www/owl-php');
 require (OWL_ROOT . '/OWLinstaller.php');
 
-//OWLinstaller::installTables('/var/owl-php/owl.tables.sql', false);
+OWLinstaller::installTables(OWL_ROOT . '/owl.tables.sql', false);
 
 $_id = OWLinstaller::installApplication('OWL', 'owladmin', 'Oveas Web Library for PHP', OWL_VERSION, 'https://github.com/oveas/owl-php', 'Oscar van Eijk', 'LGPL');
 

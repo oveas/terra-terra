@@ -41,14 +41,17 @@ abstract class OWLinstaller
 	private static $groups = array();
 
 	/**
-	 * Preload OWL data that can be used during the application install
+	 * Preload OWL data that can be used during the application install. Skip this when we're installing OWL itself
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function construct()
 	{
+		if (defined('OWL__BASE__INSTALL')) {
+			return;
+		}
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('group');
 		$dataset->set('aid', OWL_ID);
@@ -78,7 +81,7 @@ abstract class OWLinstaller
 	{
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		if (!$url) {
 			$url = strtolower($name);
@@ -107,7 +110,7 @@ abstract class OWLinstaller
 	{
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('applications');
 		$dataset->set('aid', $id);
@@ -222,10 +225,16 @@ abstract class OWLinstaller
 		}
 		$db = OWL::factory('DbHandler');
 		foreach ($q as $_qry) {
+			// Fix for the MySQL Workbench bug #63956 (http://bugs.mysql.com/bug.php?id=63956)
+			if (preg_match('/^\s*CREATE\s*(.*?)INDEX\s*.?fk\_/i', $_qry)) {
+				$_qry = preg_replace('/fk_/', 'fk', $_qry);
+			}
+			
 			if ($prefix !== false) {
 				$_qry = self::addTablePrefix($_qry, $prefix);
 			}
 			OWLdbg_add(OWLDEBUG_OWL_LOOP, $_qry, 'SQL statement');
+
 			$db->setQuery ($_qry);
 			$db->write($_dummy, __LINE__, __FILE__);
 		}
@@ -262,7 +271,7 @@ abstract class OWLinstaller
 		}
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('grouprights');
 		$dataset->set('aid', $aid);
@@ -284,7 +293,7 @@ abstract class OWLinstaller
 	{
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('group');
 		foreach ($grps as $_grp => $_desc) {
@@ -310,14 +319,14 @@ abstract class OWLinstaller
 	{
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('rights');
 		$dataset->set('aid', $aid);
 		$dataset->set('rid', null, null
-					,array('function' => array('max')
-							,'name' => array('rid'))
-					,array('match' => array(DBMATCH_NONE))
+				,array('function' => array('max')
+						,'name' => array('rid'))
+				,array('match' => array(DBMATCH_NONE))
 		);
 		$dataset->prepare();
 		$dataset->db($_rid, __LINE__, __FILE__);
@@ -368,7 +377,7 @@ abstract class OWLinstaller
 		}
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
-				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 
 		$_secId = ConfigHandler::configSection($section, true);
@@ -404,7 +413,7 @@ abstract class OWLinstaller
 	{
 		$grpObj = new Group();
 		$group = $grpObj->getGroupByName($group, $aid);
-		if (OWLInstallerUser::getReference()->register($aid, $username, $password, $email, $group, $memberships) < 0) {
+		if (OWLInstallerUser::getReference()->registerUser($aid, $username, $password, $email, $group, $memberships) < 0) {
 			return false;
 		}
 		return true;
@@ -412,7 +421,9 @@ abstract class OWLinstaller
 }
 
 //! OWL_ROOT must be defined by the application
-if (!defined('OWL_ROOT')) { trigger_error('OWL_ROOT must be defined by the application', E_USER_ERROR); }
+if (!defined('OWL_ROOT')) {
+	trigger_error('OWL_ROOT must be defined by the application', E_USER_ERROR);
+}
 
 // Make sure the loader does not attempt to load the application
 define('OWL___INSTALLER', 1);
@@ -462,7 +473,7 @@ class OWLInstallerUser extends User
 	 * \return New user ID or -1 on failure
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function register($aid, $username, $password, $email, $group, $memberships)
+	public function registerUser($aid, $username, $password, $email, $group, $memberships)
 	{
 		if (($_uid = parent::register($username, $email, $password, $password, $group, false)) < 0) {
 			return -1;

@@ -120,7 +120,7 @@ class Oracle extends DbDefaults implements DbDriver
 		return ($this->dbWrite($_resource, 'CREATE TABLESPACE ' . $_name));
 	}
 
-	public function dbCreateTable(&$_resource, $_table, array $_colDefs, array $_idxDefs)
+	public function dbCreateTable(&$_resource, $_table, array $_colDefs, array $_idxDefs, $_engine = null)
 	{
 		$_q = implode(',', $_colDefs);
 		if (count($_idxDefs) > 0) {

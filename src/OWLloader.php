@@ -22,7 +22,7 @@
  */
 
 // Error handling used during development
-// error_reporting(E_ALL | E_STRICT);
+error_reporting(E_ALL | E_STRICT);
 
 // Doxygen setup
 /**
@@ -45,7 +45,7 @@
 if (!defined('OWL_ROOT')) { trigger_error('OWL_ROOT must be defined by the application', E_USER_ERROR); }
 
 //! OWL version
-define ('OWL_VERSION', '0.9.0');
+define ('OWL_VERSION', '0.9.1');
 
 //! Toplevel for the OWL includes
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
@@ -388,7 +388,11 @@ ConfigHandler::readConfig (array('file' => $GLOBALS['config']['configfiles']['ow
 
 
 // Now define the OWL Application ID; it is required by the next readConfig() call
-define('OWL_ID', OWLloader::getOWLId());
+if (defined('OWL___INSTALLER')) {
+	define('OWL_ID', 0);
+} else {
+	define('OWL_ID', OWLloader::getOWLId());
+}
 
 if (!defined('OWL___INSTALLER') && OWL_ID != 0) {
 	// Get the dynamic OWL configuration from the database, except when installing OWL itself

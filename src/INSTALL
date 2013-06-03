@@ -1,0 +1,7 @@
+Quick install notes...
+
+- Unzip the OWL Distribution zipfile in your document root
+- Make sure your Apache user is the owner of all files
+- Point your browser to <documentRoot>/owladmin/install.php
+- Either protect the owladmin directory or delete install.php
+

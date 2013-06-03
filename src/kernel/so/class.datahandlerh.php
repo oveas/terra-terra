@@ -367,7 +367,7 @@ class HDataHandler extends DataHandler
 		}
 		if ($this->xlink !== null && $xlink === true) {
 			if ($this->owl_database->read(DBHANDLE_SINGLEFIELD, $id
-						, "SELECT ". $this->owl_database->getDriver()->dbQuote($this->xlink) . " FROM $table WHERE $field = '$value' "
+						, "SELECT ". $this->owl_database->getDriver()->dbQuote($this->xlinkID) . " FROM $table WHERE $field = '$value' "
 						, __LINE__, __FILE__)  >= OWL_WARNING) {
 				$this->setStatus(DATA_DBWARNING, array($this->owl_database->getLastWarning()));
 				return (false);

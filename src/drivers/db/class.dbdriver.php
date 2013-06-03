@@ -56,10 +56,11 @@ interface DbDriver
 	 * \param[in] $_table Quoted table name
 	 * \param[in] $_colDefs Array with the field definitions
 	 * \param[in] $_idxDefs Array with the index definitions
+	 * \param[in] $_engine If supported by the driver, an optional engine
 	 * \return True on success
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function dbCreateTable(&$_resource, $_table, array $_colDefs, array $_idxDefs);
+	public function dbCreateTable(&$_resource, $_table, array $_colDefs, array $_idxDefs, $_engine = null);
 
 	/**
 	 * Get a description of the table fields

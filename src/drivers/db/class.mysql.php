@@ -41,13 +41,13 @@ class MySQL extends DbDefaults implements DbDriver
 		return ($this->dbWrite($_resource, 'CREATE DATABASE ' . $_name));
 	}
 
-	public function dbCreateTable(&$_resource, $_table, array $_colDefs, array $_idxDefs)
+	public function dbCreateTable(&$_resource, $_table, array $_colDefs, array $_idxDefs, $_engine = null)
 	{
 		$_q = implode(',', $_colDefs);
 		if (count($_idxDefs) > 0) {
 			$_q .= (',' . implode(',', $_idxDefs));
 		}
-		return $this->dbExec($_resource, 'CREATE TABLE ' . $_table . '(' . $_q . ')');
+		return $this->dbExec($_resource, 'CREATE TABLE ' . $_table . '(' . $_q . ')' . ($_engine === null ? '' : ' ENGINE = ' . $_engine));
 	}
 
 	public function dbDefineField($_table, $_name, array $_desc)

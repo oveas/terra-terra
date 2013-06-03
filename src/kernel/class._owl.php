@@ -269,7 +269,9 @@ abstract class _OWL
 			if ($message === null) {
 				$this->signal(OWL_INFO, $message);
 			}
-			trigger_error($message, E_USER_NOTICE);
+			if ($message) {
+				trigger_error($message, E_USER_NOTICE);
+			}
 		}
 		if ($this->severity >= OWL_WARNING && $this->severity <= OWL_BUG && ($_level & E_USER_NOTICE)) {
 			if ($message === null) {

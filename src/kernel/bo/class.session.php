@@ -28,7 +28,7 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 13, 2008 -- O van Eijk -- initial version
  */
-class Session extends SessionHandler
+class Session extends OWLSessionHandler
 {
 	/**
 	 * Right object holding the currently active right for this session
