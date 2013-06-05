@@ -61,6 +61,16 @@ class ContainerMenuitemPlugin extends ContainerItemPlugin
 	{
 		$this->link->setHref($_url);
 	}
+
+	/**
+	 * Make sure class attributes are passed to the Link element
+	 * \param[in] $_value Class name
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function setClass($_value)
+	{
+		$this->link->addClass($_value);
+	}
 	
 	/**
 	* Set a dispatcher as href attribute

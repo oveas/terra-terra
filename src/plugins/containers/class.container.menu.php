@@ -101,12 +101,18 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	 * \param[in] $_content Content for the item container
 	 * \param[in] $_attribs An optional array with HTML attributes
 	 * \param[in] $_type_attribs Array with container type specific arguments
+	 * \param[in] $_isSubMenu Boolean which should be true when the menu item is a submenu, ensuring all attributes are
+	 * handled by the menu item class.
 	 * \return Pointer to the item object
 	 * \author Daan Schulpen
 	 */
-	public function addMenuitem($_content = '', array $_attribs = array(), array $_type_attribs = array())
+	public function addMenuitem($_content = '', array $_attribs = array(), array $_type_attribs = array(), $_isSubMenu = false)
 	{
-		$_item = new Container('menuitem', $_content, $_attribs, $_type_attribs);
+		if ($_isSubMenu === true) {
+			$_item = new Container('menuitem', $_content, array(), array_merge($_attribs, $_type_attribs));
+		} else {
+			$_item = new Container('menuitem', $_content, $_attribs, $_type_attribs);
+		}
 		$this->items[] = $_item;
 		return $_item;
 	}
@@ -152,7 +158,7 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	{
 		$_newMenu = new Container('menu');
 		$_newMenu->noWrapper();
-		$_subMenu = $this->addMenuitem('', $_attribs, array_merge($_type_attribs, array('title' => $_title)));
+		$_subMenu = $this->addMenuitem('', $_attribs, array_merge($_type_attribs, array('title' => $_title)), true);
 		$_subMenu->addToContent($_newMenu);
 		return $_newMenu;
 	}
