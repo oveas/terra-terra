@@ -153,7 +153,7 @@ abstract class OWLinstaller
 			if (preg_match('/;\s*$/', $_line)) {
 				$statement .= (' ' . $_line);
 				OWLdbg_add(OWLDEBUG_OWL_S04, $statement, 'SQL statement');
-				$queries[] = $statement;
+				$queries[] = self::setTablePrefix($statement);
 				$statement = '';
 			} elseif ($_line == '') {
 				continue;
@@ -165,6 +165,32 @@ abstract class OWLinstaller
 		return ($queries);
 	}
 
+	/**
+	 * This method adds the tableprefix to all tablenames in an SQL statement as read from the SQL file
+	 * \param $statement Complete SQL statements
+	 * \return Same SQL statement with tables prefix added
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private static function setTablePrefix ($statement)
+	{
+		$_tablePrefix = ConfigHandler::get ('database', 'owlprefix');
+		$_checkList = array(
+			 '/CREATE\s+(\w+\s+)?(INDEX)\s+(`?\w+`?)\s+([\s\w]+?)?\s*ON\s+(`)?(\w+)(`)?\s+/i' => "CREATE \${1} \${2} \${3} \${4} ON \${5}$_tablePrefix\${6}\${7} "
+			,'/DROP\s+TABLE\s+(IF\s+EXISTS\s+)?(`)?(\w+)(`)?/i' => "DROP TABLE \${1} \${2}$_tablePrefix\${3}\${4} "
+			,'/CREATE\s+TABLE\s+(IF\s+NOT\s+EXISTS\s+)?(`)?(\w+)(`)?/i' => "CREATE TABLE \${1} \${2}$_tablePrefix\${3}\${4} "
+			,'/REFERENCES\s+(`?)(\w+)(`?)\s+/i' => "REFERENCES \${1}$_tablePrefix\${2}\${3} "
+			,'/INSERT\s+INTO\s+(`?)(\w+)(`?)\s+/i' => "INSERT INTO \${1}$_tablePrefix\${2}\${3} "
+			,'/FROM\s+(`?)(\w+)(`?)\s+/i' => "FROM \${1}$_tablePrefix\${2}\${3} "
+		);
+		
+		foreach ($_checkList as $_pattern => $_replacement) {
+			if (preg_match($_pattern, $statement)) {
+				$statement = preg_replace($_pattern, $_replacement, $statement);
+			}
+		}
+		return $statement;
+	}
+	
 	/**
 	 * Check an SQL statement and lok for table names. When a tablename has been found, the
 	 * table prefix will be added.
