@@ -47,6 +47,9 @@ if (!defined('OWL_ROOT')) { trigger_error('OWL_ROOT must be defined by the appli
 //! OWL version
 define ('OWL_VERSION', '0.9.1');
 
+//! OWL Release date in format YYYY-MM-DD
+define ('OWL_DATE', '2013-06-05');
+
 //! Toplevel for the OWL includes
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
 
@@ -64,6 +67,9 @@ define ('OWL_LIBRARY',	OWL_ROOT . '/lib');
 
 //! Default log directory
 define ('OWL_LOG',		OWL_ROOT . '/log');
+
+//! OWL's temp directory. This directory must be writeable by the http user
+define ('OWL_TEMP',		OWL_ROOT . '/tmp');
 
 //! OWL plugindirectory
 define ('OWL_PLUGINS',	OWL_ROOT . '/plugins');
@@ -447,7 +453,7 @@ OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after 
  * OWL-PHP can be downloaded from <a href="https://github.com/oveas/owl-php">GitHub</a>
  *
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
+ * \copyright{2007-2013} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
  *
@@ -464,3 +470,5 @@ OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after 
  * You should have received a copy of the GNU General Public License
  * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */
+//
+

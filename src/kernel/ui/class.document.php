@@ -128,7 +128,7 @@ class Document extends BaseElement
 			  'robots'	=> 'index, follow'
 			, 'keywords'	=> array('OWL-PHP', 'Oveas', 'OWL')
 			, 'description'	=> 'OWL-PHP - Oveas Web Library for PHP'
-			, 'generator'	=> 'OWL-PHP v'.OWL_VERSION.' - Oveas Web Library for PHP, (c)2006-2011 Oveas Functionality Provider'
+			, 'generator'	=> 'OWL-PHP v'.OWL_VERSION.' - Oveas Web Library for PHP, (c)2006-'.substr(OWL_DATE, 0, 4).' Oveas Functionality Provider'
 		);
 		$this->header = array();
 		$this->messages = array();
