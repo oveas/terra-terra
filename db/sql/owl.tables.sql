@@ -4,11 +4,11 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 
 -- -----------------------------------------------------
--- Table `owl_applications`
+-- Table `applications`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `owl_applications` ;
+DROP TABLE IF EXISTS `applications` ;
 
-CREATE  TABLE IF NOT EXISTS `owl_applications` (
+CREATE  TABLE IF NOT EXISTS `applications` (
   `aid` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique ID' ,
   `code` VARCHAR(12) NOT NULL COMMENT 'Application code' ,
   `url` VARCHAR(45) NOT NULL COMMENT 'Application URL relative from DocumentRoot' ,
@@ -24,15 +24,15 @@ CREATE  TABLE IF NOT EXISTS `owl_applications` (
 ENGINE = InnoDB
 COMMENT = 'All known applications';
 
-CREATE UNIQUE INDEX `app_appcode` ON `owl_applications` (`code` ASC) ;
+CREATE UNIQUE INDEX `app_appcode` ON `applications` (`code` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `owl_group`
+-- Table `group`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `owl_group` ;
+DROP TABLE IF EXISTS `group` ;
 
-CREATE  TABLE IF NOT EXISTS `owl_group` (
+CREATE  TABLE IF NOT EXISTS `group` (
   `gid` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique identification' ,
   `groupname` VARCHAR(32) NOT NULL COMMENT 'Name of the group' ,
   `description` TEXT NULL COMMENT 'Optional description of the group' ,
@@ -40,25 +40,25 @@ CREATE  TABLE IF NOT EXISTS `owl_group` (
   PRIMARY KEY (`gid`) ,
   CONSTRAINT `fk_groupapplic`
     FOREIGN KEY (`aid` )
-    REFERENCES `owl_applications` (`aid` )
+    REFERENCES `applications` (`aid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
 COMMENT = 'Standard OWL and application groups';
 
-CREATE INDEX `grp_group` ON `owl_group` (`groupname` ASC) ;
+CREATE INDEX `grp_group` ON `group` (`groupname` ASC) ;
 
-CREATE UNIQUE INDEX `grp_applicgroup` ON `owl_group` (`groupname` ASC, `aid` ASC) ;
+CREATE UNIQUE INDEX `grp_applicgroup` ON `group` (`groupname` ASC, `aid` ASC) ;
 
-CREATE INDEX `fk_groupapplic` ON `owl_group` (`aid` ASC) ;
+CREATE INDEX `fk_groupapplic` ON `group` (`aid` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `owl_user`
+-- Table `user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `owl_user` ;
+DROP TABLE IF EXISTS `user` ;
 
-CREATE  TABLE IF NOT EXISTS `owl_user` (
+CREATE  TABLE IF NOT EXISTS `user` (
   `uid` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Internally user user identification' ,
   `username` VARCHAR(32) NOT NULL COMMENT 'Username, must be unique' ,
   `password` VARCHAR(128) NULL COMMENT 'Encrypted password' ,
@@ -70,23 +70,23 @@ CREATE  TABLE IF NOT EXISTS `owl_user` (
   PRIMARY KEY (`uid`) ,
   CONSTRAINT `fk_usergroup`
     FOREIGN KEY (`gid` )
-    REFERENCES `owl_group` (`gid` )
+    REFERENCES `group` (`gid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
 COMMENT = 'Basic userdata for all OWL based applications';
 
-CREATE UNIQUE INDEX `usr_username` USING BTREE ON `owl_user` (`username` ASC) ;
+CREATE UNIQUE INDEX `usr_username` USING BTREE ON `user` (`username` ASC) ;
 
-CREATE INDEX `fk_usergroup` ON `owl_user` (`gid` ASC) ;
+CREATE INDEX `fk_usergroup` ON `user` (`gid` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `owl_session`
+-- Table `session`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `owl_session` ;
+DROP TABLE IF EXISTS `session` ;
 
-CREATE  TABLE IF NOT EXISTS `owl_session` (
+CREATE  TABLE IF NOT EXISTS `session` (
   `sid` VARCHAR(255) NOT NULL COMMENT 'Unique session ID' ,
   `stimestamp` INT(10) NOT NULL COMMENT 'Timestamp of the sessions last activity' ,
   `sdata` TEXT NULL COMMENT 'Room to store the last session data' ,
@@ -96,11 +96,11 @@ COMMENT = 'This table is used to store all OWL session data';
 
 
 -- -----------------------------------------------------
--- Table `owl_sessionlog`
+-- Table `sessionlog`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `owl_sessionlog` ;
+DROP TABLE IF EXISTS `sessionlog` ;
 
-CREATE  TABLE IF NOT EXISTS `owl_sessionlog` (
+CREATE  TABLE IF NOT EXISTS `sessionlog` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `sid` VARCHAR(255) NOT NULL COMMENT 'Session ID being logged' ,
   `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT 'Timestamp of the log message' ,
@@ -116,11 +116,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `owl_config_sections`
+-- Table `config_sections`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `owl_config_sections` ;
+DROP TABLE IF EXISTS `config_sections` ;
 
-CREATE  TABLE IF NOT EXISTS `owl_config_sections` (
+CREATE  TABLE IF NOT EXISTS `config_sections` (
   `sid` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`sid`) )
@@ -129,11 +129,11 @@ COMMENT = 'Configuration sections';
 
 
 -- -----------------------------------------------------
--- Table `owl_config`
+-- Table `config`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `owl_config` ;
+DROP TABLE IF EXISTS `config` ;
 
-CREATE  TABLE IF NOT EXISTS `owl_config` (
+CREATE  TABLE IF NOT EXISTS `config` (
   `cid` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `aid` INT UNSIGNED NOT NULL COMMENT 'Application this item belongs to' ,
   `gid` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Group ID for group specific configuration' ,
@@ -146,36 +146,36 @@ CREATE  TABLE IF NOT EXISTS `owl_config` (
   PRIMARY KEY (`cid`) ,
   CONSTRAINT `fk_configapp`
     FOREIGN KEY (`aid` )
-    REFERENCES `owl_applications` (`aid` )
+    REFERENCES `applications` (`aid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `fk_configsect`
     FOREIGN KEY (`sid` )
-    REFERENCES `owl_config_sections` (`sid` )
+    REFERENCES `config_sections` (`sid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
 COMMENT = 'Dynamic configuration for OWL and applications';
 
-CREATE UNIQUE INDEX `cnf_configitem` ON `owl_config` (`aid` ASC, `name` ASC) ;
+CREATE UNIQUE INDEX `cnf_configitem` ON `config` (`aid` ASC, `name` ASC) ;
 
-CREATE INDEX `cnf_applic` ON `owl_config` (`aid` ASC) ;
+CREATE INDEX `cnf_applic` ON `config` (`aid` ASC) ;
 
-CREATE INDEX `cnf_group` ON `owl_config` (`gid` ASC) ;
+CREATE INDEX `cnf_group` ON `config` (`gid` ASC) ;
 
-CREATE INDEX `cnf_user` ON `owl_config` (`uid` ASC) ;
+CREATE INDEX `cnf_user` ON `config` (`uid` ASC) ;
 
-CREATE INDEX `fk_configapp` ON `owl_config` (`aid` ASC) ;
+CREATE INDEX `fk_configapp` ON `config` (`aid` ASC) ;
 
-CREATE INDEX `fk_configsect` ON `owl_config` (`sid` ASC) ;
+CREATE INDEX `fk_configsect` ON `config` (`sid` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `owl_rights`
+-- Table `rights`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `owl_rights` ;
+DROP TABLE IF EXISTS `rights` ;
 
-CREATE  TABLE IF NOT EXISTS `owl_rights` (
+CREATE  TABLE IF NOT EXISTS `rights` (
   `rid` TINYINT UNSIGNED NOT NULL COMMENT 'Bit identification for this right' ,
   `name` VARCHAR(32) NOT NULL COMMENT 'Name for this right' ,
   `aid` INT UNSIGNED NOT NULL COMMENT 'Application this right is used by or owl for general' ,
@@ -183,71 +183,71 @@ CREATE  TABLE IF NOT EXISTS `owl_rights` (
   PRIMARY KEY (`rid`, `aid`) ,
   CONSTRAINT `fk_rightsapp`
     FOREIGN KEY (`aid` )
-    REFERENCES `owl_applications` (`aid` )
+    REFERENCES `applications` (`aid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
 COMMENT = 'Rights that can be granted within owl applications';
 
-CREATE UNIQUE INDEX `rgt_right` ON `owl_rights` (`name` ASC) ;
+CREATE UNIQUE INDEX `rgt_right` ON `rights` (`name` ASC) ;
 
-CREATE INDEX `fk_rightsapp` ON `owl_rights` (`aid` ASC) ;
+CREATE INDEX `fk_rightsapp` ON `rights` (`aid` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `owl_memberships`
+-- Table `memberships`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `owl_memberships` ;
+DROP TABLE IF EXISTS `memberships` ;
 
-CREATE  TABLE IF NOT EXISTS `owl_memberships` (
+CREATE  TABLE IF NOT EXISTS `memberships` (
   `mid` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique identification' ,
   `uid` INT UNSIGNED NOT NULL COMMENT 'User ID' ,
   `gid` INT UNSIGNED NOT NULL COMMENT 'Group ID' ,
   PRIMARY KEY (`mid`) ,
   CONSTRAINT `fk_groupmember`
     FOREIGN KEY (`gid` )
-    REFERENCES `owl_group` (`gid` )
+    REFERENCES `group` (`gid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `fk_memberuser`
     FOREIGN KEY (`uid` )
-    REFERENCES `owl_user` (`uid` )
+    REFERENCES `user` (`uid` )
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
 COMMENT = 'Defenition of all memberships for a user';
 
-CREATE INDEX `fk_groupmember` ON `owl_memberships` (`gid` ASC) ;
+CREATE INDEX `fk_groupmember` ON `memberships` (`gid` ASC) ;
 
-CREATE INDEX `fk_memberuser` ON `owl_memberships` (`uid` ASC) ;
+CREATE INDEX `fk_memberuser` ON `memberships` (`uid` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `owl_grouprights`
+-- Table `grouprights`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `owl_grouprights` ;
+DROP TABLE IF EXISTS `grouprights` ;
 
-CREATE  TABLE IF NOT EXISTS `owl_grouprights` (
+CREATE  TABLE IF NOT EXISTS `grouprights` (
   `gid` INT UNSIGNED NOT NULL COMMENT 'Group ID\n' ,
   `aid` INT UNSIGNED NOT NULL COMMENT 'Application the rights bitmap belongs to' ,
   `right` BIGINT UNSIGNED ZEROFILL NOT NULL COMMENT '64 Right bits' ,
   PRIMARY KEY (`gid`, `aid`) ,
   CONSTRAINT `fk_grouprights_applic`
     FOREIGN KEY (`aid` )
-    REFERENCES `owl_applications` (`aid` )
+    REFERENCES `applications` (`aid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `fk_grouprights_group`
     FOREIGN KEY (`gid` )
-    REFERENCES `owl_group` (`gid` )
+    REFERENCES `group` (`gid` )
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
 COMMENT = 'All application specific rights for each group';
 
-CREATE INDEX `fk_grouprights_applic` ON `owl_grouprights` (`aid` ASC) ;
+CREATE INDEX `fk_grouprights_applic` ON `grouprights` (`aid` ASC) ;
 
-CREATE INDEX `fk_grouprights_group` ON `owl_grouprights` (`gid` ASC) ;
+CREATE INDEX `fk_grouprights_group` ON `grouprights` (`gid` ASC) ;
 
 
 
@@ -256,15 +256,15 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `owl_config_sections`
+-- Data for table `config_sections`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (1, 'general');
-INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (2, 'database');
-INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (3, 'logging');
-INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (4, 'session');
-INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (5, 'user');
-INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (6, 'locale');
-INSERT INTO `owl_config_sections` (`sid`, `name`) VALUES (7, 'mail');
+INSERT INTO `config_sections` (`sid`, `name`) VALUES (1, 'general');
+INSERT INTO `config_sections` (`sid`, `name`) VALUES (2, 'database');
+INSERT INTO `config_sections` (`sid`, `name`) VALUES (3, 'logging');
+INSERT INTO `config_sections` (`sid`, `name`) VALUES (4, 'session');
+INSERT INTO `config_sections` (`sid`, `name`) VALUES (5, 'user');
+INSERT INTO `config_sections` (`sid`, `name`) VALUES (6, 'locale');
+INSERT INTO `config_sections` (`sid`, `name`) VALUES (7, 'mail');
 
 COMMIT;
