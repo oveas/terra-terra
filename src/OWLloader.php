@@ -432,8 +432,6 @@ if ($GLOBALS['config']['values']['general']['debug'] > 0) {
 	require (OWL_LIBRARY . '/owl.nodebug.functions.php');
 }
 
-OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after loadApplication()');
-
 /**
  * \mainpage
  * Oveas Web Library for PHP is a development framework for webbased applications.
@@ -470,5 +468,6 @@ OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after 
  * You should have received a copy of the GNU General Public License
  * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */
-//
+
+OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after loadApplication()');
 

@@ -55,6 +55,7 @@ class StatusHandler
 	 */
 	private function __construct ($code = OWL_STATUS_WARNING)
 	{
+		$this->params = array();
 		$this->code = $code;
 	}
 
@@ -95,13 +96,22 @@ class StatusHandler
 
 	/**
 	 * If the status was set with optional parameters, they will be set in this subject
-	 * and substituted in the correct message
+	 * and substituted in the correct message.
+	 * Make sure all parameters are converted to printables
 	 * \param[in] $params An array with parameters
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function setParams ($params)
+	public function setParams (array $params)
 	{
-		$this->params = $params;
+		foreach ($params as $_p) {
+			if (is_array($_p)) {
+				$this->params[] = '['. implode('/', $_p) . ']';
+			} elseif (is_object($_p)) {
+				$this->params[] = '['. get_class($_p) . ' object]';
+			} else {
+				$this->params[] = $_p;
+			}
+		}
 	}
 
 	/**
