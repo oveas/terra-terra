@@ -97,7 +97,8 @@ abstract class Register
 	/**
 	 * Store the specified application in the register
 	 * \param[in] $name Name of the class
-	 * \param[in] $id Application ID
+	 * \param[in] $id Application ID. This is an 8 byte code: 0xaabbbbbb, where aa is a developer code and bbbbbb is
+	 * the developer's application index. Developer code 0xff is reserved for Oveas.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function registerApp ($name, $id)

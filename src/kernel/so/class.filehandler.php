@@ -105,7 +105,8 @@ class FileHandler extends _OWL
 			return;
 		}
 		$this->size = filesize($this->fullName);
-		$this->localfile = !eregi("^([a-z]+)://", $this->fullName);
+
+		$this->localfile = (preg_match('/^([a-z]+):\/\//i', $this->fullName) === 0);
 		$this->myfile = (fileowner($this->fullName) == getmyuid());
 
 		$this->setStatus (OWL_STATUS_OK);
