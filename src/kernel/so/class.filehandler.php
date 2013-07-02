@@ -55,23 +55,12 @@ class FileHandler extends _OWL
 	private $fullName;	//!< Full filename as stored on the file system
 	private $fileName;	//!< Filename without path
 
-	//	var $location;		// the file's location on the file system
-	//	var $file_ext;		// Original file type
-	//	var $file_type;		// File's MIME type
-	//	var $file_subtype;	// File's MIME subtype
-	//	var $ascii;			// True if this is an ascii file
-	//	var $ascii_type;	// Identifies the OS- type (Un*x/DOS/MAC)
 	private $size;		//!< File size
-	//	var $px_width;		// Width in pixels (for images)
-	//	var $px_heigth;		// Heigth in pixels (for images)
+	private $type;		//!< File type
 
 	private $fpointer;	//!< Pointer to the file when opened
 	private $opened;	//!< Boolean that's true when the file is opened
 	private $writable;	//!< Boolean that's true when the file is writeable
-
-	//	var $localfile;		// Boolean that indicates a local file when TRUE
-	//	var $myfile;		// Boolean that indicates a file owned by me when TRUE
-
 
 	/**
 	 * Object constructor; setup the file characteristics
@@ -88,8 +77,7 @@ class FileHandler extends _OWL
 		} else {
 			$this->fullName = $name;
 		}
-		$this->fileName = basename($this->fullName);
-
+		
 		$this->opened = false;
 
 		if (!file_exists($this->fullName)) {
@@ -104,10 +92,10 @@ class FileHandler extends _OWL
 			}
 			return;
 		}
-		$this->size = filesize($this->fullName);
+		$this->getFileInfo();
 
-		$this->localfile = (preg_match('/^([a-z]+):\/\//i', $this->fullName) === 0);
-		$this->myfile = (fileowner($this->fullName) == getmyuid());
+//		$this->localfile = (preg_match('/^([a-z]+):\/\//i', $this->fullName) === 0);
+//		$this->myfile = (fileowner($this->fullName) == getmyuid());
 
 		$this->setStatus (OWL_STATUS_OK);
 	}
@@ -125,6 +113,28 @@ class FileHandler extends _OWL
 		return true;
 	}
 
+	/**
+	 * Get the name of the file
+	 * \return Full pathname
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function getFileName()
+	{
+		return $this->fullName;
+	}
+	
+	/**
+	 * Get information about the file
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private function getFileInfo()
+	{
+		$this->size = filesize($this->fullName);
+		$_finfo = pathinfo($this->fullName);
+		$this->type = strtolower($_finfo['extension']);
+		$this->fileName = basename($_finfo['basename']);
+	}
+	
 	/**
 	 * Open the file
 	 * \param[in] $mode Mode in which the file should be opened:
@@ -216,9 +226,7 @@ class FileHandler extends _OWL
 	{
 		$__data = fgets ($this->fpointer, 4096);
 		if (feof($this->fpointer)) {
-			$this->setStatus (FILE_ENDOFFILE, array (
-					$this->fullName
-			));
+			$this->setStatus (FILE_ENDOFFILE, array ($this->fullName));
 		}
 		if ($trim & FILE_TRIM_L) {
 			$__data = rtrim ($__data);
@@ -240,306 +248,96 @@ class FileHandler extends _OWL
 	}
 
 	/**
-	 * Download a textfile
-	 * \todo Make something decent here (ASCII/Binary checks and such)
+	 * Very basic Mime Type getter based on the file type
+	 * \return Mime type
+	 * \todo Replace by something using magic.mime that'll work on Windows too
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function download ()
+	private function getMimeType()
 	{
-		header('Content-Type: OWL-PHP/CB-download; name="' . $this->$fileName . '"' . "\r\n"
-				. 'Content-Length: ' . filesize ($this->location . '/' . $this->fullName) . "\r\n");
-		header('Content-Disposition: attachment; filename="' . $this->$fileName . '"' . "\r\n");
-		$fp = fopen($this->location . '/' . $this->fullName, 'r');
-		fpassthru($fp);
+		switch ($this->type) {
+			case 'pdf':
+				return 'application/pdf';
+				break;
+			case 'exe':
+				return 'application/octet-stream';
+				break;
+			case 'zip':
+				return 'application/zip';
+				break;
+			case 'doc':
+				return 'application/msword';
+				break;
+			case 'xls':
+				return 'application/vnd.ms-excel';
+				break;
+			case 'ppt':
+				return 'application/vnd.ms-powerpoint';
+				break;
+			case 'gif':
+				return 'image/gif';
+				break;
+			case 'png':
+				return 'image/png';
+				break;
+			case 'jpeg':
+			case 'jpg':
+				return 'image/jpg';
+				break;
+			default:
+				return  'OWL-PHP/CB-download';
+		}
+	}
+	
+	/**
+	 * Delete the file
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function remove()
+	{
+		if (unlink($this->fullName)) {
+			$this->setStatus (FILE_DELETED, array ($this->fullName));
+		} else {
+			$this->setStatus (FILE_DELERR, array ($this->fullName));
+		}
+	}
+	
+	
+	/**
+	 * Download the file
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function downloadFile()
+	{
+		if (headers_sent()) {
+			$this->setStatus (OWL_HEADERSENT, array ($this->fullName));
+			return;
+		}
+		$this->getFileInfo();
+
+		// Required for some browsers
+		if (ini_get('zlib.output_compression')) {
+			ini_set('zlib.output_compression', 'Off');
+		}
+	
+		if (!file_exists($this->fullName)) {
+			$this->setStatus (FILE_NOSUCHFILE, array ($this->fullName));
+			return;
+		}
+
+		header('Pragma: public');
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+		header('Cache-Control: private',false); // required for certain browsers
+		header("Content-Type: " . $this->getMimeType());
+		header('Content-Disposition: attachment; filename="'.$this->fileName.'";' );
+		header('Content-Transfer-Encoding: binary');
+		header('Content-Length: ' . $this->size);
+		ob_clean();
+		flush();
+		readfile ($this->fullName);
 	}
 }
-
-// Ths class below is some old OFM stuff (http://oveas.com/freeware/internet/ofm) that might be usefull to get ported... I'l leave it
-// in here as a reference for the time being
-// class OldOFMStuff
-// {
-
-
-// 	function OFM_FileDetails ($Path, $File) {
-// /*
-//  * Get detailed information for the selected file and return it in
-//  * an indexed array.
-//  */
-//    global $DateFormat;
-//    global $FileSizes;
-//    global $TotalSize;
-//    global $TotalFiles;
-//    global $ShowHidden;
-
-//    $f = $Path . "/" . $File;
-
-//    $fdet["name"]   = $File;
-//    $fdet["path"]   = $Path;
-
-//    if ($File == "." || $File == "..") {
-//       // Never list 'Current' or 'Parent'
-//       //
-//       return ($fdet);
-//    }
-
-//    if (ereg("^\.", $File) && !$ShowHidden) {
-//       // If ShowHidden is set to 'false' skip files starting with a '.'
-//       //
-//       return ($fdet);
-//    }
-
-
-//    /*
-//     * Symbolic link? If so, we don't need to know the rest.
-//     */
-//    if (is_link($f)) {
-//       $fdet["link"] = readlink($f);
-//       $fdet["alink"] = OFM_TranslateLink ($fdet["path"], $fdet["link"]);
-//       return ($fdet);
-//    } else {
-//       $fdet["link"] = "";
-//    }
-
-//    /*
-//     * Some file characterisics
-//     */
-//    $fdet["dir"]     = is_dir($f);
-//    $fdet["exec"]    = is_executable($f);
-//    $fdet["file"]    = is_file($f);
-//    $fdet["read"]    = is_readable($f);
-//    $fdet["write"]   = is_writeable($f);
-//    $fdet["upload"]  = is_uploaded_file($f);
-
-//    /*
-//     * File date information
-//     */
-//    $fdet["access"]  = date($DateFormat, fileatime($f));
-//    $fdet["change"]  = date($DateFormat, filectime($f));
-//    $fdet["modify"]  = date($DateFormat, filemtime($f));
-
-
-//    /*
-//     * Owner and group
-//     */
-//    $tmpa = posix_getpwuid(fileowner($f));
-//    $fdet["owner"] = $tmpa["name"];
-
-//    $tmpa = posix_getgrgid(filegroup($f));
-//    $fdet["group"] = $tmpa["name"];
-
-//    /*
-//     * Permissions
-//     */
-//    $fperm = fileperms($f);
-//    // Create the privilege list in *reverse* order!
-//    //
-//    $perms = array("x", "w", "r"    // World
-		//                 , "x", "w", "r"    // Group
-		// 		, "x", "w", "r");  // User (owner)
-//    $fdet["perm"] = "";
-//    for ($i = 0; $i <= 8; $i++) {
-//       if ($fperm & 1) {
-//          $fdet["perm"] = $perms[$i] . $fdet["perm"];
-//       } else {
-//          $fdet["perm"] = "-" . $fdet["perm"];
-//       }
-//       $fperm = $fperm >> 1;
-//    }
-
-//    /*
-//     * File size (in human readable format).
-//     * The TotalSize is increased and formatted later
-//     */
-//    $fdet["size"] = filesize($f);
-//    $TotalSize += $fdet["size"];
-
-//    for ($i = 0; $fdet["size"] > 1024; $i++) {
-//       $fdet["size"] = $fdet["size"] / 1024;
-//    }
-//    $fdet["size"] = round($fdet["size"],2) . " " . $FileSizes[$i];
-
-//    /*
-//     * Get extra information about the file. This is returned
-//     * in an array, creating a second level here.
-//     */
-//    if (!$fdet["dir"]) {
-//       $fdet["info"] = OFM_FileInfo ($Path, $File);
-//    }
-
-//    /*
-//     * Increase the nr of files in this directory
-//     */
-//    $TotalFiles++;
-//    return ($fdet);
-// }
-
-// function OFM_FileInfo ($Path, $File) {
-// /*
-//  * Return the file type and additional information.
-//  * The info is returned in an array.
-//  * The type defines the type of the file, subtype is only filled if
-//  * OFM can actually do something with the file.
-//  */
-//   global $SupportedArchives;
-//   global $KnownArchives;
-//   global $KnownImages;
-//   global $KnownWebDocuments;
-//   global $KnownScriptSources;
-
-//   $f = $Path . "/" . $File;
-//   $nel = explode (".", $File);
-//   $FileInf["ext"] = strtolower ($nel[count($nel)-1]);
-
-//   $FileInf["ascii"] = -1;
-
-//   /*
-//    * Graphics
-//    */
-//   if (ereg("/" . $FileInf["ext"] . "/", $KnownImages)) {
-//      $FileInf["type"] = "image";
-//      $FileInf["subtype"] = $FileInf["ext"];
-//      // Exceptions:
-//      //
-//      if ($FileInf["ext"] == "jpeg")  { $FileInf["subtype"] = "jpg"; }
-
-//      if ($ImgInf = GetImageSize($f)) {
-//         $FileInf["imgwidth"]  = $ImgInf[0];
-//         $FileInf["imgheight"] = $ImgInf[1];
-//      } else {
-//         $FileInf["subtype"] = "";
-//      }
-//      $FileInf["ascii"] = 0;
-//    }
-
-//   /*
-//    * Archives
-//    */
-//   // Exceptions:
-//   //
-// //  if ($FileInf["ext"] == "gz")  { $FileInf["ext"] = "gzip"; }
-//   if (ereg("/" . $FileInf["ext"] . "/", $KnownArchives)) {
-//      $FileInf["type"] = "archive";
-//      $FileInf["subtype"] = $FileInf["ext"];
-
-//      if (!ereg("/" . $FileInf["subtype"] . ":", $SupportedArchives)) {
-//         $FileInf["subtype"] = "";
-//      }
-//      $FileInf["ascii"] = 0;
-//   }
-
-
-//   /*
-//    * Webdocuments
-//    */
-//   if (ereg("/" . $FileInf["ext"] . "/", $KnownWebDocuments)) {
-//      $FileInf["type"] = "webdoc";
-//      $FileInf["subtype"] = $FileInf["ext"];
-//      $FileInf["ascii"] = 1;
-//    }
-
-//   /*
-//    * WebScripts sources
-//    */
-//   if (ereg("/" . $FileInf["ext"] . "/", $KnownScriptSources)) {
-//      $FileInf["type"] = "webscript";
-//      $FileInf["subtype"] = $FileInf["ext"];
-//      $FileInf["ascii"] = 1;
-//    }
-
-
-
-//   /*
-//    * Not a predefined type; find out if it's Ascii or Binary
-//    */
-//   if ($FileInf["ascii"] == -1) {
-//      $FileInf["ascii"] == @OFM_IsAscii ($f, $FileInf["ext"]);
-//   }
-
-//   /*
-//    * The file is ASCII, now see if it's DOS or UNIX
-//    */
-//   if ($FileInf["ascii"]) {
-//      $FileInf["asciitype"] = "unix";
-//      if (($fp = @fopen ($f, "r"))) {
-//         $Line = fread ($fp, 4096);
-//         fclose ($fp);
-//         if (ereg("\r\n$", $Line)) { $FileInf["asciitype"] = "dos"; }
-//         if (ereg("\r$",   $Line)) { $FileInf["asciitype"] = "mac"; }
-//      }
-//   }
-
-//   return ($FileInf);
-// }
-
-
-// function OFM_IsAscii ($File, $Type) {
-// /*
-//  * Find out if the file if Ascii or Binary.
-//  * First we check known types from the config file. If the given type is not
-//  * listed, the first 4096 bytes are checked; if they contain a
-//  * newline character, the file is asumed to be Ascii.
-//  */
-//    global $BinaryFileTypes;
-//    global $ASCIIFileTypes;
-
-//    if (ereg("/" . $Type . "/", $BinaryFileTypes)) {  return (0); }
-//    if (ereg("/" . $Type . "/", $ASCIIFileTypes))  {  return (1); }
-
-//    /*
-//     * Unknown type; read a line to find out
-//     */
-
-//    // Unreadable; asume binary
-//    if (!($fp = fopen ($File, "r"))) { return (0); }
-
-//    $Line = fread ($fp, 4096);
-//    fclose ($fp);
-//    if (ereg("\n", $Line)) { return (1); }
-//    return (0);
-// }
-
-// /*
-// sub OFM_convert_file ($$) {
-//    my ($fname, $ctype) = @_;
-//    error ('flocked', $fname, $OPLSteering{'Lock_Timeout'}) if (&OPL_lock ($fname, $OPLSteering{'Lock_Timeout'}) == 0);
-//    my $ftemp = $fname . ".OFM.tmp";
-//    if (&OPL_lock ($ftemp, $OPLSteering{'Lock_Timeout'}) == 0) {
-//       OPL_unlock  ($fname);
-//       error ('flocked', $ftemp, $OPLSteering{'Lock_Timeout'})
-//    }
-//    rename ($fname, $ftemp);
-//    open (FILE, $ftemp);
-//    open (CONV, ">$fname");
-//    while (my $line = <FILE>) {
-//       if ($ctype eq "mac2unix") {
-//          $line =~ s/\r/\n/g;
-// 	 print CONV $line;
-//       } else {
-//          $line =~ s/\n$//;
-//          $line =~ s/\r$//;
-//          if ($ctype eq "dos2unix") {
-//             $line .= "\n";
-//          } elsif ($ctype eq "unix2dos") {
-//             $line .= "\r\n";
-//          } elsif ($ctype eq "unix2mac") {
-//             $line .= "\r";
-//          }
-// 	 print CONV $line;
-//       }
-//    }
-//    close FILE;
-//    close CONF;
-//    OPL_unlock ($fname);
-//    OPL_unlock ($ftemp);
-//    OPL_delete($ftemp);
-//    my ($a1, $a2) = split (/2/, $ctype);
-//    $predirect = OFM_predirect("/ofm.php?presp=" .
-		//       signal("2253", $fname . $OPLSteering{'FieldSep'} . $a1 . $OPLSteering{'FieldSep'} . $a2));
-// }
-// */
-
-// }
-
 
 /*
  * Register this class and all status codes
@@ -556,12 +354,14 @@ Register::setSeverity (OWL_SUCCESS);
 Register::registerCode ('FILE_CREATED');
 Register::registerCode ('FILE_OPENED');
 Register::registerCode ('FILE_CLOSED');
+Register::registerCode ('FILE_DELETED');
 
 Register::setSeverity (OWL_WARNING);
 Register::registerCode ('FILE_NOSUCHFILE');
 Register::registerCode ('FILE_ENDOFFILE');
 Register::registerCode ('FILE_READONLY');
 Register::registerCode ('FILE_NOTOPENED');
+Register::registerCode ('FILE_DELERR');
 
 
 //Register::setSeverity (OWL_BUG);

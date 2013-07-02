@@ -440,6 +440,7 @@ Register::registerCode ('OWL_STATUS_ERROR');
 //Register::registerCode ('OWL_STATUS_NOKEY');
 //Register::registerCode ('OWL_STATUS_IVKEY');
 Register::registerCode ('OWL_STATUS_NOSAVSTAT');
+Register::registerCode('OWL_HEADERSENT');
 Register::registerCode('OWL_LOADERR');
 Register::registerCode('OWL_INSTERR');
 
