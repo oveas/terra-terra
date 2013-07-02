@@ -21,7 +21,9 @@ class UsermenuArea extends ContentArea
 	public function loadArea($arg = null)
 	{
 		$this->contentObject = new Container('menu', '', array('class' => 'userMenu'));
-		$this->contentObject->menuType('Dropdown', 'userMenu');
+		if (($_menuType = ConfigHandler::get ('layout', 'menutype')) !== null) {
+			$this->contentObject->menuType($_menuType, 'userMenu');
+		}
 
 		if ($this->hasRight('readanonymous', OWL_ID) === true) {
 			$_txt = $this->trn('Login');
@@ -55,6 +57,22 @@ class UsermenuArea extends ContentArea
 			$this->contentObject->addContainer('item', $_lnk);
 		}
 
+		if ($this->hasRight('owldeveloper', OWL_ID) === true) {
+			$_txt = $this->trn('Developer tools');
+			$_lnk = new Container('link', $_txt);
+			$_lnk->setContainer(array(
+					'dispatcher' => array(
+							'application' => 'OWL'
+							,'include_path' => 'OWLADMIN_BO'
+							,'class_file' => 'developer'
+							,'class_name' => 'Developer'
+							,'method_name' => 'showCreateAppForm'
+					)
+			)
+			);
+			$this->contentObject->addContainer('item', $_lnk);
+		}
+		
 		if ($this->hasRight('manageusers', OWL_ID) === true) {
 			$this->userMaintOptions();
 		}

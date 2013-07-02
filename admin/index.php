@@ -9,8 +9,9 @@
 
 error_reporting (E_ALL | E_STRICT);
 
-define ('OWL_ROOT', '/var/owl-php');
+define ('OWL_ROOT', '/var/www/owl-php');
 define ('APPL_CODE', 'OWL');
+define ('APP_CONFIG_FILE', '/var/www/owladmin/owladmin.cfg');
 define ('OWL_TIMERS_ENABLED', true);
 
 require (OWL_ROOT . '/OWLloader.php');

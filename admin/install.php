@@ -14,7 +14,7 @@ require (OWL_ROOT . '/OWLinstaller.php');
 
 OWLinstaller::installTables(OWL_ROOT . '/owl.tables.sql', false);
 
-$_id = OWLinstaller::installApplication('OWL', 'owladmin', 'Oveas Web Library for PHP', OWL_VERSION, 'https://github.com/oveas/owl-php', 'Oscar van Eijk', 'LGPL');
+$_id = OWLinstaller::installApplication('OWL', 'owladmin', 'OWL-PHP', OWL_VERSION, 'Oveas Web Library for PHP', 'https://github.com/oveas/owl-php', 'Oscar van Eijk', 'LGPL');
 
 OWLinstaller::addConfig($_id, 'locale', 'date', 'd-M-Y');
 OWLinstaller::addConfig($_id, 'locale', 'time', 'H:i');
@@ -47,6 +47,7 @@ OWLinstaller::addRights($_id
 		,'managegroups'		=> 'Allowed to manage all groups in OWL'
 		,'manageusers'		=> 'Allowed to manage all users in OWL'
 		,'installapps'		=> 'Allowed to install new applications'
+		,'owldeveloper'		=> 'Allowed to use the OWL Developer tools'
 	)
 );
 
@@ -54,6 +55,7 @@ OWLinstaller::addGroups($_id
 	,array(
 		 'nogroup'		=> 'Default group for anonymous users'
 		,'standard'		=> 'Default group for all registered users'
+		,'developer'	=> 'Group for OWL developers'
 		,'groupadmin'	=> 'Group administrators for the primary group'
 		,'superadmin'	=> 'OWL super administrators'
 	)
@@ -79,6 +81,13 @@ OWLinstaller::addGroupRights($_id
 );
 
 OWLinstaller::addGroupRights($_id
+		,'developer'
+		,array(
+			 'owldeveloper'
+		)
+);
+
+OWLinstaller::addGroupRights($_id
 	,'groupadmin'
 	,array(
 		 'addmembers'
@@ -98,7 +107,7 @@ OWLinstaller::addGroupRights($_id
 );
 
 OWLinstaller::addUser($_id, 'anonymous', '', '', 'nogroup');
-OWLinstaller::addUser($_id, 'owl', 'owluser', 'owl@localhost.default', 'standard');
+OWLinstaller::addUser($_id, 'owl', 'owluser', 'owl@localhost.default', 'standard', array('developer'));
 OWLinstaller::addUser($_id, 'root', 'owladmin', 'root@localhost.default', 'superadmin', array('groupadmin', 'standard'));
 
 OWLinstaller::enableApplication($_id);

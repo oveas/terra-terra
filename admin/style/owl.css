@@ -24,23 +24,23 @@ body, .headerContainer, .bodyContainer {
 /*
  * Menu layout
  */
-
 .mainMenu, .userMenu {
 	float				: left;
 	padding-left		: 3px;
+	
 }
 
 .mainMenu ul, .userMenu ul {
 	margin				: 0px;
 	padding				: 0px;
+	list-style-type		: none;
 }
-
 
 .mainMenu ul li, .userMenu ul li {
-	background			: #eee;
+	background-color	: #eee;
 	color				: #000;
 }
-/*
+
 .mainMenu li a, .userMenu li a {
 	text-decoration		: none;	
 	height				: 20px;
@@ -49,10 +49,19 @@ body, .headerContainer, .bodyContainer {
 	margin				: 1px;
 	padding				: 1px;
 	display				: block;
+	cursor				: pointer;
+	background-color	: #eee;
 }
 
 .userMenu li a:hover {
 	text-decoration		: underline;
+}
+
+a.menuHeader, a.menuHeader:hover {
+	text-decoration		: none;
+	font-weight			: bold;
+	font-style			: italic;
+	cursor				: text;
 }
 
 /*

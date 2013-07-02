@@ -21,7 +21,7 @@ class UserlistArea extends ContentArea
 	/**
 	 * Generate the list and add it to the document
 	 * This area will only be visible to users holding the 'manageusers'
-	 * \param[in] $arg Not used here but required by sybtax
+	 * \param[in] $arg Not used here but required by syntax
 	 */
 	public function loadArea($arg = null)
 	{
