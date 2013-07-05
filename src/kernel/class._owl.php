@@ -204,11 +204,6 @@ abstract class _OWL
 	 */
 	protected final function setStatus ($status, $params = array ())
 	{
-		static $loopdetect = 0;
-//		$loopdetect++;
-		if ($loopdetect > 1) {
-			trigger_error ('Fatal error - loop detected while handling the status: ' . Register::getCode($status), E_USER_ERROR);
-		}
 		self::reset();
 		$this->severity = $this->status->setCode($status);
 		if (is_array ($params)) {
@@ -218,11 +213,10 @@ abstract class _OWL
 		}
 
 		$msg = null;
-		if ($this->severity >= ConfigHandler::get ('logging', 'log_level')) {
-			$this->signal (0, $msg);
-			if (@is_object($GLOBALS['logger'])) {
-				$GLOBALS['logger']->log ($msg, $status);
-			}
+		$this->signal (0, $msg);
+		// Need this check since we can be called before the logger wat setup
+		if (array_key_exists('logger', $GLOBALS) && is_object($GLOBALS['logger'])) {
+			$GLOBALS['logger']->log ($msg, $status);
 		}
 		$this->writePHPLog($msg);
 
@@ -443,6 +437,7 @@ Register::registerCode ('OWL_STATUS_NOSAVSTAT');
 Register::registerCode('OWL_HEADERSENT');
 Register::registerCode('OWL_LOADERR');
 Register::registerCode('OWL_INSTERR');
+Register::registerCode('OWL_ILLINSTANCE');
 
 Register::setSeverity (OWL_FATAL);
 Register::registerCode ('OWL_STATUS_THROWERR');

@@ -105,6 +105,11 @@ class Document extends BaseElement
 	 * Switch that will be set to True when OWL-JS is enabled
 	 */
 	private $owl_jsEnabled;
+	
+	/**
+	 * Boolean indicating if the document has been retrieved for display
+	 */
+	private $open;
 
 	/**
 	 * Class constructor;
@@ -135,6 +140,7 @@ class Document extends BaseElement
 		$this->favicon = '';
 		$this->contentType = 'text/html; charset=utf-8';
 		$this->owl_jsEnabled = false;
+		$this->open = false;
 	}
 
 	/**
@@ -566,9 +572,8 @@ class Document extends BaseElement
 				header("$_hdr: $_val");
 			}
 		}
-		$_htmlCode  = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-		   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
-		$_htmlCode .= '<html xmlns="http://www.w3.org/1999/xhtml">'."\n";
+		$_htmlCode  = "<!DOCTYPE html>\n";
+		$_htmlCode .= '<html lang="'.ConfigHandler::get('locale', 'lang', 'en-US').'">' . "\n";
 		$_htmlCode .= "<head>\n";
 		$_htmlCode .= '<base href="'.$this->getBase().'" />'."\n";
 		$_htmlCode .= $this->_getMeta();
@@ -586,9 +591,24 @@ class Document extends BaseElement
 		$_htmlCode .= ">\n";
 		$_htmlCode .= $this->_getStyles();
 		$_htmlCode .= $this->getContent() . "\n";
-		$_htmlCode .= "</body>\n";
-		$_htmlCode .= "</html>\n";
+		$this->open = true;
 		return $_htmlCode;
+	}
+
+	/**
+	 * Send the code that closes the document
+	 * \return string with the HTML code, or null when the document was not yet opened
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function close()
+	{
+		if ($this->open) {
+			$this->open = false;
+			return "</body>\n</html>\n";
+		} else {
+			$this->setStatus(DOC_NOTOPENED);
+			return null;
+		}
 	}
 }
 /**
@@ -610,6 +630,7 @@ Register::registerCode('DOC_PROTTAG');
 //Register::setSeverity (OWL_OK);
 //Register::setSeverity (OWL_SUCCESS);
 Register::setSeverity (OWL_WARNING);
+Register::registerCode('DOC_NOTOPENED');
 Register::registerCode('DOC_NOSUCHFILE');
 Register::registerCode('DOC_IVFILESPEC');
 

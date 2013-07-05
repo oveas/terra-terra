@@ -11,6 +11,9 @@
 
 $dispatcher = OWL::factory('Dispatcher');
 $document   = OWL::factory('Document', OWL_UI_INC);
+//$console = new Container('div');
+//$document->setMessageContainer($console);
+
 $document->enableOWL_JS();
 
 $GLOBALS['OWL']['HeaderContainer'] = new Container('div', '', array('class' => 'headerContainer'));

@@ -48,6 +48,7 @@ OWLinstaller::addRights($_id
 		,'manageusers'		=> 'Allowed to manage all users in OWL'
 		,'installapps'		=> 'Allowed to install new applications'
 		,'owldeveloper'		=> 'Allowed to use the OWL Developer tools'
+		,'showconsole'		=> 'Allowed to see the console'
 	)
 );
 
@@ -84,6 +85,7 @@ OWLinstaller::addGroupRights($_id
 		,'developer'
 		,array(
 			 'owldeveloper'
+			,'showconsole'
 		)
 );
 
@@ -103,6 +105,7 @@ OWLinstaller::addGroupRights($_id
 		,'manageusers'
 		,'managegroups'
 		,'modapplconfig'
+		,'showconsole'
 	)
 );
 

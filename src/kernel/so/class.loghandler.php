@@ -262,6 +262,24 @@ class LogHandler extends _OWL
 	 */
 	public function log ($msg, $code)
 	{
+		$_severity = $this->getSeverity($code);
+		if ($_severity >= ConfigHandler::get ('logging', 'log_level')) {
+			$this->logLogFile($msg, $code, $_severity);
+		}
+		if ($_severity >= ConfigHandler::get ('logging', 'log_console')) {
+			$this->logConsole($msg, $code);
+		}
+	}
+	
+	/**
+	 * Log an event to the logfile
+	 * \param[in] $msg Message text
+	 * \param[in] $code Status code of the message
+	 * \param[in] $severity Severity of the message
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private function logLogFile($msg, $code, $severity)
+	{
 		if (!$this->opened) {
 			$this->openLogfile ();
 		}
@@ -274,9 +292,8 @@ class LogHandler extends _OWL
 
 		$this->writeLogfile ($msg);
 
-		$_severity = $this->getSeverity($code);
-		if ($_severity >= ConfigHandler::get ('logging', 'trace_level', 0xf)
-			&& $_severity < ConfigHandler::get ('exception', 'throw_level', 0x0) ) { // Will already be logged
+		if ($severity >= ConfigHandler::get ('logging', 'trace_level', 0xf)
+			&& $severity < ConfigHandler::get ('exception', 'throw_level', 0x0) ) { // Will already be logged
 			$_trace = $this->backtrace();
 			$this->writeLogfile ($_trace);
 		}
@@ -286,6 +303,18 @@ class LogHandler extends _OWL
 		}
 	}
 
+	/**
+	 * Log an event to the console
+	 * \param[in] $msg Message text
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private function logConsole ($msg)
+	{
+		if (array_key_exists('console', $GLOBALS) && is_object($GLOBALS['console'])) {
+			$GLOBALS['console']->addToContent($msg);
+		}
+	}
+	
 	/**
 	 * Create a backtrace of the current log item
 	 * \param[in] $_browser_dump Just for OWL development (early days...); when true, the

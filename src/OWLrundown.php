@@ -25,15 +25,26 @@
 OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['messages'], 'Messages during rundown');
 
 // Make sure no exceptions are thrown anymore from this point!
-ConfigHandler::set('exception', 'block_throws', true);
+//ConfigHandler::set('exception', 'block_throws', true);
 
 //echo "Start rundown<br/>";
 
 // Write data to the cache
 OWLCache::saveCache();
 
+// Display the console, if set
+if (array_key_exists('console', $GLOBALS) && is_object($GLOBALS['console'])) {
+ 	OutputHandler::outputRaw($GLOBALS['console']->showElement());
+}
+
 // Show collected debug data
 OWLdbg_show ();
 
 OWLTimers::showTimer();
+
+// Close the document
+if (($_htmlCode = OWL::factory('Document', OWL_UI_INC)->close())!== null) {
+	OutputHandler::outputRaw($_htmlCode);
+}
+
 //echo "rundown complete<br/>";

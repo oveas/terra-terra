@@ -352,7 +352,6 @@ OWLloader::getClass('register', OWL_SO_INC);
 // Base class
 OWLloader::getClass('_owl', OWL_INCLUDE);
 
-
 // SO Layer
 OWLloader::getClass('confighandler', OWL_SO_INC);
 OWLloader::getClass('loghandler', OWL_SO_INC);
@@ -377,8 +376,8 @@ OWLloader::getClass('user', OWL_BO_INC);
 // UI Layer
 OWLloader::getClass('baseelement', OWL_UI_INC);
 OWLloader::getClass('container', OWL_UI_INC);
+OWLloader::getClass('console', OWL_UI_INC);
 OWLloader::getClass('contentarea', OWL_UI_INC);
-
 
 $GLOBALS['messages'] = array ();
 $GLOBALS['labels'] = array ();
@@ -408,7 +407,8 @@ if (!defined('OWL___INSTALLER') && OWL_ID != 0) {
 // Load the contributed plugins
 require (OWL_CONTRIB . '/owl.contrib.loader.php');
 
-// Set up the logger
+// Set up the logger and the console
+$GLOBALS['console'] = OWL::factory('Console');
 $GLOBALS['logger'] = OWL::factory('LogHandler');
 
 // Set up the label translations

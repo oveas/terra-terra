@@ -37,6 +37,7 @@ $_messages = array (
 	, OWL_APP_NOTFOUND		=> 'Application code $p1$ could not be found - is it installed already?'
 	, OWL_LOADERR			=> 'Error loading $p1$ file $p2$ from location $p3$'
 	, OWL_INSTERR			=> 'Error instantiating class $p1$'
+	, OWL_ILLINSTANCE		=> 'Illegal object construct of the singleton $p1$ class'
 	, CONFIG_NOVALUE		=> 'Nonexising config value <i>$p1$</i> requested'
 	, CONFIG_PROTECTED		=> 'Attempt to overwrite the protected configuration item <i>$p1$</i>'
 	, LOGGING_OPENERR		=> 'Cannot open logfile <i>$p1$</i> for write'
@@ -171,5 +172,6 @@ $_messages = array (
 	, DOC_PROTTAG			=> 'Attemt to overwrite the protected $p1$ tag $p2$'
 	, DOC_IVFILESPEC		=> 'Cannot load $p1$ file $p2$ is an invalid location specification'
 	, DOC_IVMSGCONTAINER	=> 'Invalid argument $p1$; Message container must be set to null or an instance of Container'
+	, DOC_NOTOPENED			=> 'An attempt was made to close a document that was not yet opened'
 	, HEADER_LVLOORANGE		=> 'Header level can\'t be set to $p1$; HTML only specifies H1 - H6'
 );
