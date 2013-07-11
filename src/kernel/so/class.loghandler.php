@@ -310,8 +310,8 @@ class LogHandler extends _OWL
 	 */
 	private function logConsole ($msg)
 	{
-		if (array_key_exists('console', $GLOBALS) && is_object($GLOBALS['console'])) {
-			$GLOBALS['console']->addToContent($msg);
+		if (($_console = OWLCache::get(OWLCACHE_OBJECTS, 'Console')) !== null) {
+			$_console->addToContent($msg);
 		}
 	}
 	

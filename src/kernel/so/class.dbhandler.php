@@ -22,7 +22,7 @@
  */
 
 /**
- * \defgroup DBHANDLE_ReturnFlags Return values
+ * \name Return values
  * These flags that define what value should be returned by read()
  * @{
  */
@@ -47,7 +47,7 @@ define ('DBHANDLE_TOTALFIELDCOUNT', 5);
 //! @}
 
 /**
- * \defgroup DBHANDLE_ActionTypes Database handler action types
+ * \name Database handler action types
  * These flags define what type of queries is prepared or the last execution state
  * @{
  */
@@ -72,7 +72,7 @@ define ('DBHANDLE_COMPLETED',	11);
 //! @}
 
 /**
- * \defgroup DBHANDLE_MatchType Database handler match types
+ * \name Database handler match types
  * These defines are used create WHERE clauses
  * @{
  */

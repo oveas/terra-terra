@@ -49,6 +49,7 @@ OWLinstaller::addRights($_id
 		,'installapps'		=> 'Allowed to install new applications'
 		,'owldeveloper'		=> 'Allowed to use the OWL Developer tools'
 		,'showconsole'		=> 'Allowed to see the console'
+		,'showtrace'		=> 'Allowed to see tracebacks in messages'
 	)
 );
 
@@ -86,6 +87,7 @@ OWLinstaller::addGroupRights($_id
 		,array(
 			 'owldeveloper'
 			,'showconsole'
+			,'showtraces'
 		)
 );
 
@@ -106,6 +108,7 @@ OWLinstaller::addGroupRights($_id
 		,'managegroups'
 		,'modapplconfig'
 		,'showconsole'
+		,'showtraces'
 	)
 );
 

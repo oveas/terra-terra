@@ -23,7 +23,8 @@ define ('OWLADMIN_UI', APPL_SITE_TOP . '/ui');
 if (!OWLloader::getClass('owluser', OWLADMIN_BO)) {
 	trigger_error('Error loading classfile OWLUser from ' . OWLADMIN_BO, E_USER_ERROR);
 }
-$GLOBALS['OWL']['user']  = OWLUser::getReference();
+
+OWLUser::getReference();
 
 require (OWLADMIN_UI . '/mainpage.php');
 

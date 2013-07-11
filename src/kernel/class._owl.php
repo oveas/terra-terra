@@ -215,8 +215,8 @@ abstract class _OWL
 		$msg = null;
 		$this->signal (0, $msg);
 		// Need this check since we can be called before the logger wat setup
-		if (array_key_exists('logger', $GLOBALS) && is_object($GLOBALS['logger'])) {
-			$GLOBALS['logger']->log ($msg, $status);
+		if (($_logger = OWLCache::get(OWLCACHE_OBJECTS, 'Logger')) !== null) {
+			$_logger->log ($msg, $status);
 		}
 		$this->writePHPLog($msg);
 
@@ -350,16 +350,16 @@ abstract class _OWL
 		if (($_severity = $this->status->getSeverity()) >= $level) {
 			if ($text === false) {
 				if (ConfigHandler::get ('general', 'js_signal') === true) {
-					$_msg = $this->status->getMessage ($level);
+					$_msg = $this->status->getMessage ();
 					$_msg = str_replace('"', '\"', $_msg);
 					OutputHandler::outputRaw ('<script language="javascript">'
 						. 'alert("' . $_msg . '");'
 						. '</script>');
 				} else {
-					OutputHandler::outputLine ('<strong>OWL Message</strong>: ' . $this->status->getMessage ($level));
+					OutputHandler::outputLine ('<strong>OWL Message</strong>: ' . $this->status->getMessage ());
 				}
 			} else {
-				$text = $this->status->getMessage ($level);
+				$text = $this->status->getMessage ();
 			}
 		}
 		return ($_severity);

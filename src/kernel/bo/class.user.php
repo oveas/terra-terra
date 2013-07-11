@@ -573,6 +573,10 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	 */
 	public function hasRight ($bit, $appl)
 	{
+		if (!isset($this->session)) {
+			// We can e called in an intermediate situation (during logout). Then, by default, all privs aar off
+			return false;
+		}
 		return ($this->session->hasRight($bit, $appl));
 	}
 

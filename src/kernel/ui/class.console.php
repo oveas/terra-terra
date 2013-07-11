@@ -38,7 +38,6 @@ class Console extends Container
 
 	/**
 	 * Class constructor;
-	 * \param[in] $_attribs Indexed array with the HTML attributes
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ()

@@ -175,8 +175,55 @@ class StatusHandler
 		if ($_i > 0) {
 			$_msg = str_replace ($_search, $this->params, $_msg);
 		}
-
+		if ($this->getSeverity() >= ConfigHandler::get ('logging', 'log_caller_level')
+				&& ($_depth = ConfigHandler::get ('logging', 'log_caller_depth')) != 0) {
+			$_u = OWLCache::get(OWLCACHE_OBJECTS, 'user');
+			if (is_object($_u) && $_u->hasRight('showtraces', OWL_ID) === true) {
+				$_traces = $this->getBackTrace($_depth);
+				if (count($_traces) > 0) {
+					$_msg .= ' (' . implode(', ', $_traces) . ')';
+				}
+			}
+		}
 		return ($_msg);
+	}
+	
+	/**
+	 * Traceback the calls that lead to this message
+	 * \param[in] $depth Maximum depth taken from the configuration
+	 * \return Array with a filename and linenr in each element
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private function getBackTrace($depth)
+	{
+		
+		if (version_compare(PHP_VERSION, '5.3.6,') < 0) {
+			$_trace = debug_backtrace(false);
+		} elseif (version_compare(PHP_VERSION, '5.4.0,') >= 0) {
+			if ($depth < 0) {
+				$depth = 0;
+			}
+			$_trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, $depth);
+		} else {
+			$_trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+		}
+		
+		if ($depth <= 0) {
+			$depth = count($_trace);
+		}
+		$_calls = array();
+		// Ignore the 1st traces; the're always _OWL::signal() and self::getMessage()
+		for (--$depth; $depth >= 2; $depth--) {
+			if (array_key_exists('file',$_trace[$depth])) {
+				$_calls[] = (str_replace(OWL_ROOT, '', $_trace[$depth]['file']) . ':' . $_trace[$depth]['line']);
+			} elseif (array_key_exists('class',$_trace[$depth])) {
+				// Called via OWL::stat()
+				$_calls[] = ($_trace[$depth]['class'] . '::' . $_trace[$depth]['function']);
+			} else {
+				$_calls[] = '(untraceable)';
+			}
+		}
+		return $_calls;
 	}
 
 }

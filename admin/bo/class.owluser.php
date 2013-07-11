@@ -65,7 +65,7 @@ class OWLUser extends User
 	public function showLoginForm()
 	{
 		if (($_lgi = OWLloader::getArea('login', OWLADMIN_UI)) !== null) {
-			$_lgi->addToDocument($GLOBALS['OWL']['BodyContainer']);
+			$_lgi->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -75,7 +75,7 @@ class OWLUser extends User
 	public function showMainMenu()
 	{
 		if (($_mnu = OWLloader::getArea('mainmenu', OWLADMIN_UI)) !== null) {
-			$_mnu->addToDocument($GLOBALS['OWL']['HeaderContainer']);
+			$_mnu->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'HeaderContainer'));
 		}
 
 	}
@@ -86,7 +86,7 @@ class OWLUser extends User
 	public function showUserMenu()
 	{
 		if (($_mnu = OWLloader::getArea('usermenu', OWLADMIN_UI)) !== null) {
-			$_mnu->addToDocument($GLOBALS['OWL']['HeaderContainer']);
+			$_mnu->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'HeaderContainer'));
 		}
 	}
 
@@ -97,7 +97,7 @@ class OWLUser extends User
 	public function showEditUserForm($usr = null)
 	{
 		if (($_lnk = OWLloader::getArea('usermaint', OWLADMIN_UI . '/usermgt', $usr)) !== null) {
-			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -107,7 +107,7 @@ class OWLUser extends User
 	public function listUsers()
 	{
 		if (($_lnk = OWLloader::getArea('userlist', OWLADMIN_UI . '/usermgt')) !== null) {
-			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -118,7 +118,7 @@ class OWLUser extends User
 	public function showEditGroupForm($grp = null)
 	{
 		if (($_lnk = OWLloader::getArea('groupmaint', OWLADMIN_UI . '/groupmgt', $grp)) !== null) {
-			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -128,7 +128,7 @@ class OWLUser extends User
 	public function listGroups()
 	{
 		if (($_lnk = OWLloader::getArea('grouplist', OWLADMIN_UI . '/groupmgt')) !== null) {
-			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -143,7 +143,7 @@ class OWLUser extends User
 			$rgt = array('aid' => $rgt, 'rid' => 0);
 		}
 		if (($_lnk = OWLloader::getArea('rightsmaint', OWLADMIN_UI . '/rightmgt', $rgt)) !== null) {
-			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -153,7 +153,7 @@ class OWLUser extends User
 	public function listRights()
 	{
 		if (($_lnk = OWLloader::getArea('rightslist', OWLADMIN_UI . '/rightmgt')) !== null) {
-			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -173,7 +173,7 @@ class OWLUser extends User
 	public function appSelect ($method)
 	{
 		if (($_lnk = OWLloader::getArea('appselect', OWLADMIN_UI, $method)) !== null) {
-			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 }

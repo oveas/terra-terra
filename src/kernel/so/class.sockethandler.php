@@ -23,7 +23,7 @@
  */
 
 /**
- * \defgroup SOCKET_Codes Socket codes
+ * \name Socket codes
  * Definition of standard socket commands and returncodes
  * @{
  */

@@ -24,7 +24,7 @@
  */
 
 /**
- * \defgroup OWL_SeverityCodes Severity codes
+ * \name Severity codes
  * Define the Severity values for all status codes as returned by _OWL::severity().
  * @{
  */

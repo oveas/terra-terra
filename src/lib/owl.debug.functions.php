@@ -23,7 +23,7 @@
  */
 
 /**
- * \defgroup DEBUG_ApplicLevel Application debug level
+ * \name Application debug level
  * These constants define the debug bits that can be used by the application
  * @{
  */

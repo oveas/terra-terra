@@ -22,7 +22,7 @@
  */
 
 /**
- * \defgroup SECURITY_BitConrol Security bit control actions
+ * \name Security bit control actions
  * These constants define the possible actions that can be performed on a bitmap
  * @{
  */

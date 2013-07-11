@@ -23,22 +23,22 @@
  */
 
 /**
- * \defgroup CACHE_Areas Cache areas
+ * \defgroup CacheAreas Cache areas
  * These are the predefined cache areas. New areas can be added dynamically by the application
  * @{
  */
 
 //! List of all classfiles that have been loaded
-define ('OWLCACHE_CLASSES',	 'classesLoaded');
+define ('OWLCACHE_CLASSES',		'classesLoaded');
 
 //! List of all language specific messagesfiles that have been loaded
-define ('OWLCACHE_MESSAGE',	 'messageLoaded');
+define ('OWLCACHE_MSGFILES',	'messageLoaded');
 
 //! List of all language specific labelfiles that have been loaded
-define ('OWLCACHE_LABELS',	 'labelsLoaded');
+define ('OWLCACHE_LBLFILES',	'labelsLoaded');
 
-//! Globally available objects. This area is mainly used for application objects that need to be known in OWL as well
-define ('OWLCACHE_OBJECTS',	 'registeredObjects');
+//! Globally available objects, mainly singletons (user, logger etc)
+define ('OWLCACHE_OBJECTS',		'registeredObjects');
 //! @}
 
 /**
@@ -63,8 +63,8 @@ abstract class OWLCache
 	{
 		self::$cache = array (
 			 OWLCACHE_CLASSES => array()
-			,OWLCACHE_MESSAGE => array()
-			,OWLCACHE_LABELS  => array()
+			,OWLCACHE_MSGFILES => array()
+			,OWLCACHE_LBLFILES  => array()
 			,OWLCACHE_OBJECTS => array()
 		);
 	}

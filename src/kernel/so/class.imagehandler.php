@@ -22,7 +22,7 @@
  */
 
 /**
- * \defgroup FILR_TrimFlags Dataline trim flags
+ * \name Dataline trim flags
  * These flags define how datalines should be trimmed when read from a file
  * @{
  */

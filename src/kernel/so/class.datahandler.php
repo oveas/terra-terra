@@ -22,7 +22,7 @@
  */
 
 /**
- * \defgroup DATA_PrepareType Query preparation types
+ * \name Query preparation types
  * These flags define what type of queries can be prepared
  * @{
  */
@@ -44,7 +44,7 @@ define ('DATA_DELETE',		3);
 //! @}
 
 /**
- * \defgroup DATA_ResetFlags Dataset Reset flags
+ * \name Dataset Reset flags
  * These flags how an object should be performed. All values includes all lower values as well!
  * @{
  */

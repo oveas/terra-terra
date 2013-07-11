@@ -332,21 +332,16 @@ class OWLExceptionHandler
 	 */
 	public static function logException(OWLException $exception)
 	{
-		$_tmp_logger = false;
-		if (!array_key_exists('logger', $GLOBALS) || !is_object($GLOBALS['logger'])) {
-			$GLOBALS['logger'] = OWL::factory('LogHandler');
-			$_tmp_logger = true;
+		if (($_logger = OWLCache::get(OWLCACHE_OBJECTS, 'Logger')) === null) {
+			$_logger = OWL::factory('LogHandler');
 		}
-		$GLOBALS['logger']->log ($exception->stackDump(true), $exception->thrown_code);
+		$_logger->log ($exception->stackDump(true), $exception->thrown_code);
 
 		if (ConfigHandler::get ('exception', 'show_in_browser')) {
 			OutputHandler::outputRaw ($exception->stackDump(false));
 		} else {
 			OutputHandler::outputRaw ('<p class="exception"><b>An exception was thrown</b><br/>'
 				. 'Check the logfile for details</p>');
-		}
-		if ($_tmp_logger === true) {
-			unset ($GLOBALS['logger']);
 		}
 		// Define a constants to let destructors know we're not in a clean shutdown
 		define ('OWL_EMERGENCY_SHUTDOWN', 1);

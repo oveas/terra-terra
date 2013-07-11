@@ -36,7 +36,7 @@ class Developer extends _OWL
 	public function showCreateAppForm()
 	{
 		if (($_lnk = OWLloader::getArea('developer', OWLADMIN_UI . '/developer', null)) !== null) {
-			$_lnk->addToDocument($GLOBALS['OWL']['BodyContainer']);
+			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 

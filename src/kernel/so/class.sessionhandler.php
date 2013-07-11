@@ -22,7 +22,7 @@
  */
 
 /**
- * \defgroup SESSION_VariableFlags Session variable Flags
+ * \name Session variable Flags
  * These flags that define how to treat values when setting session variables
  * @{
  */

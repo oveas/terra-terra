@@ -37,11 +37,11 @@ error_reporting(E_ALL | E_STRICT);
  */
 
 /**
- * \defgroup OWL_Globals Global constants
+ * \defgroup GlobalConstants Global constants
  * These constants define all paths for OWL
  * @{
  */
-//! OWL_ROOT must be defined by the application
+// OWL_ROOT must be defined by the application
 if (!defined('OWL_ROOT')) { trigger_error('OWL_ROOT must be defined by the application', E_USER_ERROR); }
 
 //! OWL version
@@ -83,15 +83,16 @@ define ('OWL_CONTRIB',	OWL_LIBRARY . '/contrib');
 //! Toplocation of this server, contains serverwide OWL installations
 define ('OWL_SERVER_TOP', $_SERVER['DOCUMENT_ROOT']);
 
-//! Toplocation of this site (directory), can be user specific
 if (strpos($_SERVER['SCRIPT_FILENAME'], $_SERVER['DOCUMENT_ROOT']) === 0) {
-	//! Toplocation of this site (directory), can be user specific
+	//! Toplocation of this site (directory)
 	define ('OWL_SITE_TOP', $_SERVER['DOCUMENT_ROOT']);
 } else {
-	// Hack to support userdirs (http://server/~user)
+	// Hack to support userdirs
 	$_pathElements = explode('/', $_SERVER['PHP_SELF']);
 	array_shift($_pathElements); // Remove leading /
+	//! Home location when running in an Apache user environment  (http://server/~user)
 	define ('OWL_USER_LOCATION', array_shift($_pathElements));
+	//! Toplocation of this site (directory) in a user specific environment
 	define ('OWL_SITE_TOP', preg_replace('/\/' . implode ('\/', $_pathElements) . '$/', '', $_SERVER['SCRIPT_FILENAME']));
 }
 
@@ -105,7 +106,6 @@ define ('OWL_CALLBACK_URL', $_SERVER['PHP_SELF']);
 define ('OWL_STYLE', '/owladmin/style');
 
 //! Top location (URL) of OWL-JS
-//define ('OWL_JS_TOP', OWL_OWL_URL . '/owl-js');
 define ('OWL_JS_TOP', '/owl-js');
 
 //! Location of the OWL-JS library files
@@ -113,6 +113,11 @@ define ('OWL_JS_LIB', OWL_JS_TOP . '/lib');
 
 //! Location of the OWL-JS plugins
 define ('OWL_JS_PLUGINS', OWL_JS_TOP . '/plugins');
+
+if (!defined ('OWL_TIMERS_ENABLED')) {
+	//! When true, times are shown at the bottom of the page. Can be set by the application
+	define ('OWL_TIMERS_ENABLED', false);
+}
 //! @}
 
 /**
@@ -292,22 +297,19 @@ abstract class OWLloader
 		}
 
 		/**
-		 * \defgroup OWL_Application_Globals Global constants for the application
+		 * \name OWL_Application_Globals Global constants for the application
 		 * These constants define sime paths for the application that are also required by OWL
 		 * @{
 		 */
 
-		//! Application ID
+		/**
+		 * Application ID
+		 */
 		define ('APPL_ID', $app_data[0]['aid']);
-
-		//! Toplevel for the site
-		define ('APPL_SITE_TOP', OWL_SITE_TOP . '/' . $app_data[0]['url']);
-
-		//! The application.
-		define ('APPL_NAME', $app_data[0]['name']);
-
-		//! Location of all configuration files. NOT, the application MUST provide this location!
-		define ('APPL_LIBRARY', APPL_SITE_TOP . '/lib');
+		
+		define ('APPL_SITE_TOP', OWL_SITE_TOP . '/' . $app_data[0]['url']); //!< Toplevel for the site
+		define ('APPL_NAME', $app_data[0]['name']); //!< Name of the application.
+		define ('APPL_LIBRARY', APPL_SITE_TOP . '/lib'); //!< Location of all configuration files. NOT, the application MUST provide this location!
 		//! @}
 
 		// If an APP_CONFIG file has been defined, add it to the config files array
@@ -338,10 +340,6 @@ OWLloader::getClass('cache', OWL_SO_INC);
 OWLloader::getClass('owl.severitycodes.php', OWL_LIBRARY);
 OWLloader::getClass('config.php', OWL_ROOT);
 
-if (!defined ('OWL_TIMERS_ENABLED')) {
-	// If timers aren't enabled, default to false (make sure the constant exists)
-	define ('OWL_TIMERS_ENABLED', false);
-}
 OWLloader::getClass('timers', OWL_SO_INC);
 OWLTimers::startTimer(OWL_MAIN_TIMER);
 
@@ -379,7 +377,9 @@ OWLloader::getClass('container', OWL_UI_INC);
 OWLloader::getClass('console', OWL_UI_INC);
 OWLloader::getClass('contentarea', OWL_UI_INC);
 
+//! Array with messages in the selected language
 $GLOBALS['messages'] = array ();
+//! Array with labels in the selected language
 $GLOBALS['labels'] = array ();
 
 // Load data from the cache
@@ -394,8 +394,10 @@ ConfigHandler::readConfig (array('file' => $GLOBALS['config']['configfiles']['ow
 
 // Now define the OWL Application ID; it is required by the next readConfig() call
 if (defined('OWL___INSTALLER')) {
+	//! OWL-PHP's own application ID used during the installation process
 	define('OWL_ID', 0);
 } else {
+	//! OWL-PHP's own application ID
 	define('OWL_ID', OWLloader::getOWLId());
 }
 
@@ -407,15 +409,16 @@ if (!defined('OWL___INSTALLER') && OWL_ID != 0) {
 // Load the contributed plugins
 require (OWL_CONTRIB . '/owl.contrib.loader.php');
 
-// Set up the logger and the console
-$GLOBALS['console'] = OWL::factory('Console');
-$GLOBALS['logger'] = OWL::factory('LogHandler');
+//! Console object
+OWLCache::set(OWLCACHE_OBJECTS, 'Console', OWL::factory('Console'));
+//! Logger object
+OWLCache::set(OWLCACHE_OBJECTS, 'Logger', OWL::factory('LogHandler'));
 
 // Set up the label translations
 Register::registerLabels(true);
 
 if (!defined('OWL___INSTALLER')) {
-	//! APPL_CODE must be defined by the application. It must be an acronym that will be used by OWL to locate resources, like files in the library.
+	// APPL_CODE must be defined by the application. It must be an acronym that will be used by OWL to locate resources, like files in the library.
 	if (!defined('APPL_CODE')) {
 		trigger_error('APPL_CODE must be defined by the application', E_USER_ERROR);
 	} else {
@@ -432,42 +435,4 @@ if ($GLOBALS['config']['values']['general']['debug'] > 0) {
 	require (OWL_LIBRARY . '/owl.nodebug.functions.php');
 }
 
-/**
- * \mainpage
- * Oveas Web Library for PHP is a development framework for webbased applications.
- *
- * The aim is an environment that combines the best of several worlds; ease of use from Windows,
- * flexibility from Linux, robustness from OpenVMS and of course internet's platform and location independency.
- * The design principles of OWL-PHP ensure a 100% safe web development platform; since the library itself
- * is unhackable, so are the applications built with it!
- * OWL comes with a testapplication (<a href="http://owl.oveas.com/docs/otk/index.html">OTK</a>) for automated
- * testing.
- *
- * Together with the planned <a href="http://owl.oveas.com/docs/owl-js/index.html">OWL-JS</a>, you might consider the OWL family as the basis of what Web2.2 will look like ;)
- *
- * Much of this code started as the project Terra-Terra in 2001 (http://terra-terra.org), a project that
- * was abandoned when AJAX became popular from 2005 onwards.
- *
- * OWL-PHP can be downloaded from <a href="https://github.com/oveas/owl-php">GitHub</a>
- *
- * \author Oscar van Eijk, Oveas Functionality Provider
- * \copyright{2007-2013} Oscar van Eijk, Oveas Functionality Provider
- * \license
- * This file is part of OWL-PHP.
- *
- * OWL-PHP is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * OWL-PHP is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
- */
-
 OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after loadApplication()');
-

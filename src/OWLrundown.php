@@ -33,8 +33,8 @@ OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['messages'], 'Messages during rundown');
 OWLCache::saveCache();
 
 // Display the console, if set
-if (array_key_exists('console', $GLOBALS) && is_object($GLOBALS['console'])) {
- 	OutputHandler::outputRaw($GLOBALS['console']->showElement());
+if (($_console = OWLCache::get(OWLCACHE_OBJECTS, 'Console')) !== null) {
+	OutputHandler::outputRaw($_console->showElement());
 }
 
 // Show collected debug data

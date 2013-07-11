@@ -22,7 +22,7 @@
  */
 
 /**
- * \defgroup FORM_ParseFlags Form parse format flags
+ * \name Form parse format flags
  * These flags define how formdata should be returned
  * @{
  */

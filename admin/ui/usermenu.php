@@ -42,7 +42,7 @@ class UsermenuArea extends ContentArea
 		}
 
 		if ($this->hasRight('readregistered', OWL_ID) === true) {
-			$_txt = $this->trn('Logout') . ' ' . $GLOBALS['OWL']['user']->getUsername();
+			$_txt = $this->trn('Logout') . ' ' . OWLCache::get(OWLCACHE_OBJECTS, 'user')->getUsername();
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(

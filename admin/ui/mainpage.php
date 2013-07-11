@@ -16,9 +16,13 @@ $document   = OWL::factory('Document', OWL_UI_INC);
 
 $document->enableOWL_JS();
 
-$GLOBALS['OWL']['HeaderContainer'] = new Container('div', '', array('class' => 'headerContainer'));
-$GLOBALS['OWL']['BodyContainer'] = new Container('div', '', array('class' => 'bodyContainer'));
-$GLOBALS['OWL']['FooterContainer'] = new Container('div', '', array('class' => 'footerContainer'));
+$_hdr = new Container('div', '', array('class' => 'headerContainer'));
+$_bdy = new Container('div', '', array('class' => 'bodyContainer'));
+$_ftr = new Container('div', '', array('class' => 'footerContainer'));
+
+OWLCache::set(OWLCACHE_OBJECTS, 'HeaderContainer', $_hdr);
+OWLCache::set(OWLCACHE_OBJECTS, 'BodyContainer', $_bdy);
+OWLCache::set(OWLCACHE_OBJECTS, 'FooterContainer', $_ftr);
 
 $dispatcher->dispatch();
 
@@ -27,10 +31,10 @@ $dispatcher->dispatch('OWL#OWLADMIN_BO#owluser#OWLUser#showUserMenu');
 
 $document->loadStyle(OWL_STYLE . '/owl.css');
 
-OWLloader::getArea('pagefooter', OWLADMIN_UI)->addToDocument($GLOBALS['OWL']['FooterContainer']);
+OWLloader::getArea('pagefooter', OWLADMIN_UI)->addToDocument($_ftr);
 
-$document->addToContent($GLOBALS['OWL']['HeaderContainer']);
-$document->addToContent($GLOBALS['OWL']['BodyContainer']);
-$document->addToContent($GLOBALS['OWL']['FooterContainer']);
+$document->addToContent($_hdr);
+$document->addToContent($_bdy);
+$document->addToContent($_ftr);
 
 OutputHandler::outputRaw($document->showElement());
