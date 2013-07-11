@@ -429,10 +429,10 @@ if (!defined('OWL___INSTALLER')) {
 // Select the (no)debug function libraries.
 if ($GLOBALS['config']['values']['general']['debug'] > 0) {
 	require (OWL_LIBRARY . '/owl.debug.functions.php');
-	$_doc  = OWL::factory('Document', 'ui');
-	$_doc->loadStyle(OWL_STYLE . '/owl_debug.css');
 } else {
 	require (OWL_LIBRARY . '/owl.nodebug.functions.php');
 }
+$_doc  = OWL::factory('Document', 'ui');
+$_doc->loadStyle(OWL_STYLE . '/owl_debug.css');
 
 OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after loadApplication()');
