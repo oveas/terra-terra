@@ -221,7 +221,9 @@ class FormHandler extends _OWL
 			}
 		} else {
 			$_val = null;
-			$this->setStatus (FORM_NOVALUE, $variable);
+			if ($variable != OWL_DISPATCHER_NAME) { // 'Home'
+				$this->setStatus (FORM_NOVALUE, $variable);
+			}
 		}
 
 		if (ConfigHandler::get ('general', 'debug') > 0) {

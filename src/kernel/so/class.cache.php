@@ -29,16 +29,25 @@
  */
 
 //! List of all classfiles that have been loaded
-define ('OWLCACHE_CLASSES',		'classesLoaded');
+define ('OWLCACHE_CLASSES',		0);
 
 //! List of all language specific messagesfiles that have been loaded
-define ('OWLCACHE_MSGFILES',	'messageLoaded');
+define ('OWLCACHE_MSGFILES',	1);
 
 //! List of all language specific labelfiles that have been loaded
-define ('OWLCACHE_LBLFILES',	'labelsLoaded');
+define ('OWLCACHE_LBLFILES',	2);
+
+//! List of all language specific labels and messages
+define ('OWLCACHE_LOCALE',	3);
 
 //! Globally available objects, mainly singletons (user, logger etc)
-define ('OWLCACHE_OBJECTS',		'registeredObjects');
+define ('OWLCACHE_OBJECTS',		4);
+
+//! Current configuration
+define ('OWLCACHE_CONFIG',		5);
+
+//! Register data
+define ('OWLCACHE_REGISTER',	6);
 //! @}
 
 /**
@@ -78,18 +87,31 @@ abstract class OWLCache
 	 */
 	public static function get ($cache, $key)
 	{
-		if (self::$cache === null) {
-			return null;
-		}
-		if (!array_key_exists($cache, self::$cache)) {
-			return null;
-		}
-		if (!array_key_exists($key, self::$cache[$cache])) {
-			return null;
-		}
-		return (self::$cache[$cache][$key]);
+		return self::getRef($cache, $key);
 	}
 
+	/**
+	 * Get a reference to a value from cache. This allows clients to write directly to cache
+	 * \param[in] $cache Name of the cache array
+	 * \param[in] $key Key in the cache array
+	 * \return Reference to the value that was found, of null when nothing was found
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public static function &getRef ($cache, $key)
+	{
+		$_null = null; // Must be a variable to return as reference
+		if (self::$cache === null) {
+			return $_null;
+		}
+		if (!array_key_exists($cache, self::$cache)) {
+			return $_null;
+		}
+		if (!array_key_exists($key, self::$cache[$cache])) {
+			return $_null;
+		}
+		return self::$cache[$cache][$key];
+	}
+	
 	/**
 	 * Store a value in cache. Non existing cache arrays will dynamically be created
 	 * \param[in] $cache Name of the cache array

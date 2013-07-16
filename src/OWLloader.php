@@ -45,10 +45,10 @@ error_reporting(E_ALL | E_STRICT);
 if (!defined('OWL_ROOT')) { trigger_error('OWL_ROOT must be defined by the application', E_USER_ERROR); }
 
 //! OWL version
-define ('OWL_VERSION', '0.9.1');
+define ('OWL_VERSION', '0.9.2');
 
 //! OWL Release date in format YYYY-MM-DD
-define ('OWL_DATE', '2013-06-05');
+define ('OWL_DATE', '2013-07-15');
 
 //! Toplevel for the OWL includes
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
@@ -312,13 +312,14 @@ abstract class OWLloader
 		define ('APPL_LIBRARY', APPL_SITE_TOP . '/lib'); //!< Location of all configuration files. NOT, the application MUST provide this location!
 		//! @}
 
+		$_cfgFiles = &OWLCache::getRef(OWLCACHE_CONFIG, 'files');
 		// If an APP_CONFIG file has been defined, add it to the config files array
 		// Values in this config file will overwrite the OWL defaults.
 		if (defined('APP_CONFIG_FILE')) {
-			$GLOBALS['config']['configfiles']['app'][] = APP_CONFIG_FILE;
+			$_cfgFiles['app'][] = APP_CONFIG_FILE;
 		}
-		if (count ($GLOBALS['config']['configfiles']['app']) > 0) {
-			foreach ($GLOBALS['config']['configfiles']['app'] as $_cfgfile) {
+		if (count ($_cfgFiles['app']) > 0) {
+			foreach ($_cfgFiles['app'] as $_cfgfile) {
 				ConfigHandler::readConfig (array('file' => $_cfgfile));
 			}
 		}
@@ -336,6 +337,8 @@ abstract class OWLloader
 }
 // The very first class being loaded must be OWLCache; it's used by getClass()
 OWLloader::getClass('cache', OWL_SO_INC);
+// Load data from the cache
+OWLCache::loadCache();
 
 OWLloader::getClass('owl.severitycodes.php', OWL_LIBRARY);
 OWLloader::getClass('config.php', OWL_ROOT);
@@ -377,20 +380,17 @@ OWLloader::getClass('container', OWL_UI_INC);
 OWLloader::getClass('console', OWL_UI_INC);
 OWLloader::getClass('contentarea', OWL_UI_INC);
 
-//! Array with messages in the selected language
-$GLOBALS['messages'] = array ();
-//! Array with labels in the selected language
-$GLOBALS['labels'] = array ();
-
-// Load data from the cache
-OWLCache::loadCache();
+// Setup the cache for labels and messages
+OWLCache::set(OWLCACHE_LOCALE, 'labels', array());
+OWLCache::set(OWLCACHE_LOCALE, 'messages', array());
 
 // General helper functions.
 require (OWL_LIBRARY . '/owl.helper.functions.php');
 
 // Get the static OWL configuration from file
-ConfigHandler::readConfig (array('file' => $GLOBALS['config']['configfiles']['owl']));
-
+$_cfgFile = OWLCache::get(OWLCACHE_CONFIG, 'files');
+ConfigHandler::readConfig (array('file' => $_cfgFile['owl']));
+unset ($_cfgFile);
 
 // Now define the OWL Application ID; it is required by the next readConfig() call
 if (defined('OWL___INSTALLER')) {
@@ -427,7 +427,7 @@ if (!defined('OWL___INSTALLER')) {
 }
 
 // Select the (no)debug function libraries.
-if ($GLOBALS['config']['values']['general']['debug'] > 0) {
+if (ConfigHandler::get('general', 'debug', 0) > 0) {
 	require (OWL_LIBRARY . '/owl.debug.functions.php');
 } else {
 	require (OWL_LIBRARY . '/owl.nodebug.functions.php');
@@ -435,4 +435,6 @@ if ($GLOBALS['config']['values']['general']['debug'] > 0) {
 $_doc  = OWL::factory('Document', 'ui');
 $_doc->loadStyle(OWL_STYLE . '/owl_debug.css');
 
-OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['config']['values'], 'Configuration after loadApplication()');
+$_confData = OWLCache::get(OWLCACHE_CONFIG, 'values');
+OWLdbg_add(OWLDEBUG_OWL_S01, $_confData, 'Configuration after loadApplication()');
+unset ($_confData);

@@ -29,7 +29,7 @@ OWLinstaller::addConfig($_id, 'session', 'default_user', 'anonymous', true);
 OWLinstaller::addConfig($_id, 'logging', 'log_form_data', 'true');
 OWLinstaller::addConfig($_id, 'user', 'default_group', 'standard');
 OWLinstaller::addConfig($_id, 'session', 'default_rights_all', '1', true);
-OWLinstaller::addConfig($_id, 'mail', 'driver', 'RawSMTP');
+OWLinstaller::addConfig($_id, 'mailsend', 'driver', 'RawSMTP');
 
 OWLinstaller::addRights($_id
 	,array(

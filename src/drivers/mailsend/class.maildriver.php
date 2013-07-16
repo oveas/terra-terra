@@ -22,6 +22,16 @@
  */
 
 /**
+ * \defgroup MAILDRIVER_HeaderTypes Mail header types
+ * These flags specify the available headertypes that can be added by the MailDefaults driver
+ * @{
+ */
+//! HTML headers
+define ('MAILDRIVER_HEADERTYPE_HTML',	0);
+
+//! @}
+
+/**
  * \ingroup OWL_DRIVERS
  * Interface that defines the mail drivers.
  * \brief Mail driver interface
@@ -45,6 +55,7 @@ interface MailDriver
 	 * 	- sender: Displayable email address of the sender
 	 * 	- to: Array with displayable addresses as they appear in the To header (optional)
 	 * 	- cc: Array with displayable addresses as they appear in the CC header (optional)
+	 * 	- bcc: Array with displayable addresses as they appear in the BCC header (optional)
 	 * 	- date: Date of the email (optional)
 	 * 	- subject: Subject of the email (optional)
 	 * 	- headers: Additional headers (optional)

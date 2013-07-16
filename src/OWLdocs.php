@@ -112,10 +112,11 @@
  * 13. if (!OWLloader::getClass('abcuser', ABC_BO)) {
  * 14.     trigger_error('Error loading classfile ABCUser from ' . ABC_BO, E_USER_ERROR);
  * 15. }
- * 16. 
- * 17. require (ABC_UI . '/mainpage.php');
- * 18. 
- * 19. OWLloader::getClass('OWLrundown.php', OWL_ROOT);
+ * 16. ABCUser::getReference();
+ * 17. 
+ * 18. require (ABC_UI . '/mainpage.php');
+ * 19. 
+ * 20. OWLloader::getClass('OWLrundown.php', OWL_ROOT);
  * \endcode
  * 
  * \subsection defines Required defines
@@ -152,16 +153,19 @@
  * Every application must reimplement the user class. In this example, it is called  abcuser and located in the applications
  * ABC_BO directory. Setting up a user class will be described elsewhere.
  * 
- * The class is loaded at line 13. The error check is optional.
+ * The class is loaded at line 13. The error check is optional. After loading, the user object must be instantiated; this will
+ * start or restore the user's session.
+ * OWL-PHP's User baseclass is a singleton, so a call to getReference() will instantiate the object and add it to OWLCache,
+ * from where it can be retrieved at any time with OWLCache::get(OWLCACHE_OBJECTS, 'user').
  * 
  * \subsection load Load the application
  * 
  * Here, a seperate php file is created in the ABC_UI directory, called mainpage.php. This file is loaded
- * at line 17 and will design the page that's gonna be displayed.
+ * at line 18 and will design the page that's gonna be displayed.
  * 
  * \subsection rundown Close the session
  * 
- * The call at line 19 is important. The OWLRundown class closes the page and makes sure all information is stored if a next
+ * The call at line 20 is important. The OWLRundown class closes the page and makes sure all information is stored if a next
  * page will be displayed in the same session.
  * 
  */

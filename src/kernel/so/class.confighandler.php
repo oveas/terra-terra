@@ -23,8 +23,8 @@
 
 /**
  * \ingroup OWL_SO_LAYER
- * This abstract class reads configution from file ort database, and fills and
- * reads the global datastructure with config items
+ * This abstract class reads configution from file or database, and fills and
+ * reads the datastructures with config items
  * \brief Configuration handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 20, 2008 -- O van Eijk -- initial version
@@ -36,6 +36,76 @@ abstract class ConfigHandler
 	 * Datahandler object for database access
 	 */
 	private static $dataset = null;
+	
+	/**
+	 * Configuration of the configuration itself
+	 */
+	private static $cfgConfig = null;
+
+	/**
+	 * Array with all configuration values
+	 */
+	private static $cfgValues = null;
+
+	/**
+	 * Local cache reference
+	 */
+	private static $cfgCache = null;
+
+	/**
+	 * Array with all protected values
+	 */
+	private static $cfgProtected = null;
+
+	/**
+	 * \internal
+	 * Array with all hidden values
+	 * \endinternal
+	 */
+	private static $cfgHidden = null;
+	
+	/**
+	 * Check if the static variables have been initialised. If not, so dp
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private static function initialise ()
+	{
+		if (self::$cfgConfig === null)   {
+			self::$cfgConfig = OWLCache::get(OWLCACHE_CONFIG, 'config');
+		}
+
+		if (self::$cfgValues === null)   {
+			self::$cfgValues = &OWLCache::getRef(OWLCACHE_CONFIG, 'values');
+			if (self::$cfgValues === null) {
+				OWLCache::set(OWLCACHE_CONFIG, 'values', array());
+				self::$cfgValues = &OWLCache::getRef(OWLCACHE_CONFIG, 'values');
+			}
+		}
+
+		if (self::$cfgCache === null)   {
+			self::$cfgCache = &OWLCache::getRef(OWLCACHE_CONFIG, 'cache');
+			if (self::$cfgCache === null) {
+				OWLCache::set(OWLCACHE_CONFIG, 'cache', array('cget' => array()));
+				self::$cfgCache = &OWLCache::getRef(OWLCACHE_CONFIG, 'cache');
+			}
+		}
+
+		if (self::$cfgProtected === null) {
+			self::$cfgProtected = &OWLCache::getRef(OWLCACHE_CONFIG, 'protected_values');
+			if (self::$cfgProtected === null) {
+				OWLCache::set(OWLCACHE_CONFIG, 'protected_values', array());
+				self::$cfgProtected = &OWLCache::getRef(OWLCACHE_CONFIG, 'protected_values');
+			}
+		}
+		
+		if (self::$cfgHidden === null) {
+			self::$cfgHidden = &OWLCache::getRef(OWLCACHE_CONFIG, 'hidden_values');
+			if (self::$cfgHidden === null) {
+				OWLCache::set(OWLCACHE_CONFIG, 'hidden_values', array());
+				self::$cfgHidden = &OWLCache::getRef(OWLCACHE_CONFIG, 'hidden_values');
+			}
+		}
+	}
 
 	/**
 	 * Parse the given configuration source
@@ -53,6 +123,9 @@ abstract class ConfigHandler
 	 */
 	public static function readConfig (array $_source)
 	{
+		
+		self::initialise();
+		
 		if (array_key_exists('file', $_source)) {
 			self::configFile($_source['file']);
 		} else {
@@ -100,10 +173,10 @@ abstract class ConfigHandler
 			}
 			$_value = trim ($_value);
 
-			$_protect = strpos ($_item, $GLOBALS['config']['config']['protect_tag']);
+			$_protect = strpos ($_item, self::$cfgConfig['protect_tag']);
 			$_protect = ($_protect !== false);
 
-			$_hide = strpos ($_item, $GLOBALS['config']['config']['hide_tag']);
+			$_hide = strpos ($_item, self::$cfgConfig['hide_tag']);
 			$_hide = ($_hide !== false);
 
 			self::parseItem($_section, $_item, $_value, $_protect, $_hide);
@@ -193,17 +266,17 @@ abstract class ConfigHandler
 	{
 		$_item = "$_section|$_item";
 		if ($_protect === true) {
-			$_item = str_replace($GLOBALS['config']['config']['protect_tag'], '', $_item);
-			$GLOBALS['config']['protected_values'][] = $_item;
+			$_item = str_replace(self::$cfgConfig['protect_tag'], '', $_item);
+			self::$cfgProtected[] = $_item;
 		}
-		if (in_array($_item, $GLOBALS['config']['protected_values'])
-			&& array_key_exists($_item, $GLOBALS['config']['values'])) {
+		if (in_array($_item, self::$cfgProtected)
+			&& array_key_exists($_item, self::$cfgValues)) {
 			OWL::stat(CONFIG_PROTECTED, $_item);
 			return;
 		}
 
 		if ($_hide === true) {
-			$_item = str_replace($GLOBALS['config']['config']['hide_tag'], '', $_item);
+			$_item = str_replace(self::$cfgConfig['hide_tag'], '', $_item);
 		}
 		$_value = self::convert ($_value);
 		self::_set($_item, $_value, $_hide);
@@ -254,13 +327,13 @@ abstract class ConfigHandler
 	public static function get ($section, $item, $default = null, $force = false)
 	{
 		$item = "$section|$item";
-		if ($force === false && isset ($GLOBALS['owl_cache']['cget'][$item])) {
-			return ($GLOBALS['owl_cache']['cget'][$item]);
+		if ($force === false && isset (self::$cfgCache['cget'][$item])) {
+			return (self::$cfgCache['cget'][$item]);
 		}
 
-		$_cache =& $GLOBALS['owl_cache']['cget'][$item];
-		$_c =& $GLOBALS['config']['values'];
-		$_h =& $GLOBALS['config']['hidden_values'];
+		$_cache =& self::$cfgCache['cget'][$item];
+		$_c =& self::$cfgValues;
+		$_h =& self::$cfgHidden;
 
 		if (strpos ($item, '|') !== false) {
 			$item = explode ('|', $item);
@@ -285,7 +358,7 @@ abstract class ConfigHandler
 				return $default;
 			}
 		}
-		if ($_c === $GLOBALS['config']['config']['hide_value']) {
+		if ($_c === self::$cfgConfig['hide_value']) {
 			$_cache = owlCrypt($_h);
 		} else {
 			$_cache = $_c;
@@ -304,11 +377,11 @@ abstract class ConfigHandler
 	public static function set ($_section, $_item, $_value)
 	{
 		$_item = "$_section|$_item";
-		if (in_array($_item, $GLOBALS['config']['protected_values'])) {
+		if (in_array($_item, self::$cfgProtected)) {
 			OWL::stat(CONFIG_PROTECTED, $_item);
 			return;
 		}
-		self::_set($_item, $_value, array_key_exists($_item, $GLOBALS['config']['hidden_values']));
+		self::_set($_item, $_value, array_key_exists($_item, self::$cfgHidden));
 
 	}
 
@@ -326,24 +399,22 @@ abstract class ConfigHandler
 		}
 
 		// Make sure the cache is cleaned
-		if (array_key_exists('owl_cache', $GLOBALS)
-			&& array_key_exists('cget', $GLOBALS['owl_cache'])
-			&& array_key_exists($_item, $GLOBALS['owl_cache']['cget'])) {
-				unset ($GLOBALS['owl_cache']['cget'][$_item]);
+		if (array_key_exists($_item, self::$cfgCache['cget'])) {
+				unset (self::$cfgCache['cget'][$_item]);
 		}
 
 		$_resetItem = $_item; // Used for the quick'n'dirty overwrite at the end of this method....
 		if (strpos ($_item, '|') !== false) {
 			$_item = explode ('|', $_item);
-			$_pointer =& $GLOBALS['config']['values'];
+			$_pointer =& self::$cfgValues;
 			if ($_hide) {
-				$_hidden =& $GLOBALS['config']['hidden_values'];
+				$_hidden =& self::$cfgHidden;
 			}
 			foreach ($_item as $_k => $_v) {
 				if ($_k == (count ($_item)-1)) {
 					if ($_hide) {
 						$_hidden[$_v] = $_value;
-						$_pointer[$_v] = $GLOBALS['config']['config']['hide_value'];
+						$_pointer[$_v] = self::$cfgConfig['hide_value'];
 					} else {
 						$_pointer[$_v] = $_value;
 					}
@@ -362,10 +433,10 @@ abstract class ConfigHandler
 			}
 		} else {
 			if ($_hide) {
-				$GLOBALS['config']['hidden_values'][$_item] = $_value;
-				$GLOBALS['config']['values'][$_item] = $GLOBALS['config']['config']['hide_value'];
+				self::$cfgHidden[$_item] = $_value;
+				self::$cfgValues[$_item] = self::$cfgConfig['hide_value'];
 			} else {
-				$GLOBALS['config']['values'][$_item] = $_value;
+				self::$cfgValues[$_item] = $_value;
 			}
 		}
 	}

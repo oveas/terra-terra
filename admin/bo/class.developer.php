@@ -270,7 +270,7 @@ define ('$this->appCode"."_UI', APPL_SITE_TOP . '/ui');
 if (!OWLloader::getClass('" . strtolower($this->appCode) . "user', $this->appCode"."_BO)) {
 	trigger_error('Error loading classfile $this->appCode"."User from' . $this->appCode"."_BO, E_USER_ERROR);
 }
-\$GLOBALS['$this->appCode']['user']  = $this->appCode"."User::getReference();
+$this->appCode"."User::getReference();
 ";
 		$this->createNewFile('/lib/' .strtolower($this->appCode) . '.loader.php', $_fileContent);
 	}
@@ -559,9 +559,14 @@ th {
 \$document   = OWL::factory('Document', OWL_UI_INC);
 //\$document->enableOWL_JS();
 
-\$GLOBALS['$this->appCode']['HeaderContainer'] = new Container('div', '', array('class' => 'headerContainer'));
-\$GLOBALS['$this->appCode']['BodyContainer'] = new Container('div', '', array('class' => 'bodyContainer'));
-\$GLOBALS['$this->appCode']['FooterContainer'] = new Container('div', '', array('class' => 'footerContainer'));
+\$_hdr = new Container('div', '', array('class' => 'headerContainer'));
+\$_bdy = new Container('div', '', array('class' => 'bodyContainer'));
+\$_ftr = new Container('div', '', array('class' => 'footerContainer'));
+
+OWLCache::set(OWLCACHE_OBJECTS, 'HeaderContainer', \$_hdr);
+OWLCache::set(OWLCACHE_OBJECTS, 'BodyContainer', \$_bdy);
+OWLCache::set(OWLCACHE_OBJECTS, 'FooterContainer', \$_ftr);
+
 
 \$dispatcher->dispatch();
 
@@ -570,9 +575,9 @@ th {
 
 \$document->loadStyle(APPL_SITE_TOP . '/style/".strtolower($this->appCode).".css');
 
-\$document->addToContent(\$GLOBALS['$this->appCode']['HeaderContainer']);
-\$document->addToContent(\$GLOBALS['$this->appCode']['BodyContainer']);
-\$document->addToContent(\$GLOBALS['$this->appCode']['FooterContainer']);
+\$document->addToContent(\$_hdr);
+\$document->addToContent(\$_bdy);
+\$document->addToContent(\$_ftr);
 
 OutputHandler::outputRaw(\$document->showElement());
 ";
@@ -684,7 +689,7 @@ class UsermenuArea extends ContentArea
 		}
 
 		if (\$this->hasRight('readregistered', OWL_ID) === true) {
-			\$_txt = \$this->trn('Logout') . ' ' . \$GLOBALS['$this->appCode']['user']->getUsername();
+			\$_txt = \$this->trn('Logout') . ' ' . OWLCache::get(OWLCACHE_OBJECTS, 'user')->getUsername();
 			\$_lnk = new Container('link', \$_txt);
 			\$_lnk->setContainer(array(
 					'dispatcher' => array(
@@ -769,14 +774,14 @@ class ".$this->appCode."User extends User
 	public function showLoginForm()
 	{
 		if ((\$_lgi = OWLloader::getArea('login', ".$this->appCode."_UI)) !== null) {
-			\$_lgi->addToDocument(\$GLOBALS['$this->appCode']['BodyContainer']);
+			\$_lgi->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
 	public function showMainMenu()
 	{
 		if ((\$_mnu = OWLloader::getArea('mainmenu', ".$this->appCode."_UI)) !== null) {
-			\$_mnu->addToDocument(\$GLOBALS['$this->appCode']['HeaderContainer']);
+			\$_mnu->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'HeaderContainer'));
 		}
 
 	}
@@ -784,7 +789,7 @@ class ".$this->appCode."User extends User
 	public function showUserMenu()
 	{
 		if ((\$_mnu = OWLloader::getArea('usermenu', ".$this->appCode."_UI)) !== null) {
-			\$_mnu->addToDocument(\$GLOBALS['$this->appCode']['HeaderContainer']);
+			\$_mnu->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'HeaderContainer'));
 		}
 	}
 }

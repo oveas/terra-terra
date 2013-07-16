@@ -25,6 +25,7 @@
  * \ingroup OWL_BO_LAYER
  * Define an email for sending.
  * \brief Mail class
+ * \todo This one must be rewritten and based upon OPL's mailer module
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 11, 2011 -- O van Eijk -- initial version
  */
@@ -47,8 +48,8 @@ class Mail extends _OWL
 	public function __construct ()
 	{
 		_OWL::init();
-		$_driver = ConfigHandler::get('mail', 'driver');
-		if (OWLloader::getDriver($_driver, 'mail') === true) {
+		$_driver = ConfigHandler::get('mailsend', 'driver');
+		if (OWLloader::getDriver($_driver, 'mailsend') === true) {
 			$this->driver = new $_driver;
 		} else {
 			$this->setStatus(MAIL_NODRIVER, array($_driver));
@@ -184,11 +185,15 @@ class Mail extends _OWL
 	 */
 	public function addBcc ($addr)
 	{
+		if (!array_key_exists('bcc', $this->mail)) {
+			$this->mail['bcc'] = array();
+		}
 		if (($_addr = verifyMailAddress($addr)) === '') {
 			$this->setStatus(MAIL_IVMAILADDR, array($addr));
 			return (false);
 		} else {
 			$this->addRecipient($_addr);
+			$this->mail['bcc'][] = $addr;
 			return (true);
 		}
 	}

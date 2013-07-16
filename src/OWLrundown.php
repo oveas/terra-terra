@@ -22,7 +22,9 @@
  * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */
 
-OWLdbg_add(OWLDEBUG_OWL_S01, $GLOBALS['messages'], 'Messages during rundown');
+$_messages = OWLCache::get(OWLCACHE_REGISTER, 'messages');
+OWLdbg_add(OWLDEBUG_OWL_S01, $_messages, 'Messages during rundown');
+unset ($_messages);
 
 // Make sure no exceptions are thrown anymore from this point!
 //ConfigHandler::set('exception', 'block_throws', true);

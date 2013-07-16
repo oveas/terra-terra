@@ -79,21 +79,17 @@ abstract class Register
 		list ($_s, $_m) = explode ('.', $_mtime);
 		$_s = sprintf ('%X', $_s);
 		$_m = sprintf ('%X', $_m);
-
-		$GLOBALS['register'] = array(
-				  'run'				=> array(
-				  							  'id'	=> "$_s$_m"
-				  							, 'tcp' => ''
-				  						)
-				, 'applications'	=> array()
-				, 'classes'			=> array()
-				, 'severity'		=> array()
-				, 'codes'			=> array()
-				, 'code_symbols'	=> array()
-				, 'stack'			=> array()
-				);
-
+		// Set the applications run ID
+		OWLCache::set(OWLCACHE_REGISTER, 'run', array('id'	=> "$_s$_m", 'tcp' => ''));
+		
+		OWLCache::set(OWLCACHE_REGISTER, 'applications', array());
+		OWLCache::set(OWLCACHE_REGISTER, 'classes', array());
+		OWLCache::set(OWLCACHE_REGISTER, 'severity', array());
+		OWLCache::set(OWLCACHE_REGISTER, 'codes', array());
+		OWLCache::set(OWLCACHE_REGISTER, 'code_symbols', array());
+		OWLCache::set(OWLCACHE_REGISTER, 'stack', array());
 	}
+
 	/**
 	 * Store the specified application in the register
 	 * \param[in] $name Name of the class
@@ -112,9 +108,11 @@ abstract class Register
 		// use isset() here, since array_key_exists() gives a warning if the hex $id
 		// has a negative integer value.
 		// To make sure the ID is not interpreted as an index, cast it as a string
-		if (!isset ($GLOBALS['register']['applications']["$id"])) {
-			$GLOBALS['register']['applications']["$id"] = $name;
-			$GLOBALS['register']['stack']['class'] = $id;
+		$_apps =& OWLCache::getRef(OWLCACHE_REGISTER, 'applications');
+		if (!isset ($_apps["$id"])) {
+			$_apps["$id"] = $name;
+			$_stack =& OWLCache::getRef(OWLCACHE_REGISTER, 'stack');
+			$_stack['class'] = $id;
 		}
 		self::setApplication ($id);
 	}
@@ -127,15 +125,18 @@ abstract class Register
 	 */
 	static public function registerClass ($name)
 	{
-		$GLOBALS['register']['stack']['class'] += 0x00001000;
-		$id = $GLOBALS['register']['stack']['class'];
+		$_stack =& OWLCache::getRef(OWLCACHE_REGISTER, 'stack');
+		$_stack['class'] += 0x00001000;
+		$id = $_stack['class'];
 
 		// use isset() here, since array_key_exists() gives a warning if the hex $id
 		// has a negative integer value.
 		// To make sure the ID is not interpreted as an index, cast it as a string
-		if (!isset ($GLOBALS['register']['classes']["$id"])) {
-			$GLOBALS['register']['classes']["$id"] = $name;
-			$GLOBALS['register']['codes']["$id"] = array();
+		$_classes =& OWLCache::getRef(OWLCACHE_REGISTER, 'classes');
+		if (!isset ($_classes["$id"])) {
+			$_classes["$id"] = $name;
+			$_codes =& OWLCache::getRef(OWLCACHE_REGISTER, 'codes');
+			$_codes["$id"] = array();
 		} else {
 			// TODO; should we generate a warning here?
 		}
@@ -152,16 +153,19 @@ abstract class Register
 			// TODO; should we generate a warning here?
 		}
 
-		if (!array_key_exists ('severity', $GLOBALS['register']['stack'])) {
+		$_stack =& OWLCache::getRef(OWLCACHE_REGISTER, 'stack');		
+		if (!array_key_exists ('severity', $_stack)) {
 			die ("Fatal error - Register::registerCode() called without a current severity; call Register::setSeverity() first");
 		}
 
 		// Some pointers for readability and initialise non-existing arrays
-		$_class = $GLOBALS['register']['stack']['class'];
+		$_class = $_stack['class'];
 
 		// Cast the $_class ID below to a string to make sure it's not interpreted as an index
-		$_codes =& $GLOBALS['register']['codes']["$_class"];
-		$_sev = $GLOBALS['register']['stack']['severity'];
+		$_codeReg =& OWLCache::getRef(OWLCACHE_REGISTER, 'codes');
+		
+		$_codes =& $_codeReg["$_class"];
+		$_sev = $_stack['severity'];
 
 		if (!isset($_codes[$_sev])) {
 			$_codes[$_sev] = 0x00000000;
@@ -172,7 +176,8 @@ abstract class Register
 
 		$_value = $_class | $_codes[$_sev] | $_sev;
 		define ($code, $_value);
-		$GLOBALS['register']['code_symbols']["$_value"] = $code;
+		$_symbols =& OWLCache::getRef(OWLCACHE_REGISTER, 'code_symbols');
+		$_symbols["$_value"] = $code;
 	}
 
 	/**
@@ -183,8 +188,9 @@ abstract class Register
 	 */
 	static public function registerSeverity ($level, $name)
 	{
-		$GLOBALS['register']['severity']['name']["$level"] = $name; // Cast as a string!
-		$GLOBALS['register']['severity']['value']['OWL_' . $name] = $level;
+		$_severity =& OWLCache::getRef(OWLCACHE_REGISTER, 'severity');
+		$_severity['name']["$level"] = $name; // Cast as a string!
+		$_severity['value']['OWL_' . $name] = $level;
 	}
 
 	/**
@@ -195,10 +201,11 @@ abstract class Register
 	 */
 	static public function getSeverity ($level)
 	{
-		if (!array_key_exists ("$level", $GLOBALS['register']['severity']['name'])) {
+		$_severity = OWLCache::get(OWLCACHE_REGISTER, 'severity');
+		if (!array_key_exists ("$level", $_severity['name'])) {
 			return ('(unspecified)');
 		} else {
-			return ($GLOBALS['register']['severity']['name']["$level"]);
+			return ($_severity['name']["$level"]);
 		}
 	}
 
@@ -211,10 +218,11 @@ abstract class Register
 	 */
 	static public function getSeverityLevel ($name)
 	{
-		if (!array_key_exists ("$name", $GLOBALS['register']['severity']['value'])) {
+		$_severity = OWLCache::get(OWLCACHE_REGISTER, 'severity');
+		if (!array_key_exists ("$name", $_severity['value'])) {
 			return (-1);
 		} else {
-			return ($GLOBALS['register']['severity']['value'][$name]);
+			return ($_severity['value'][$name]);
 		}
 	}
 
@@ -224,7 +232,8 @@ abstract class Register
 	 */
 	static public function getRunId ()
 	{
-		return ($GLOBALS['register']['run']['id']);
+		$_id = OWLCache::get(OWLCACHE_REGISTER, 'run');
+		return ($_id['id']);
 	}
 
 	/**
@@ -236,10 +245,11 @@ abstract class Register
 	 */
 	static public function getCode ($value, $unknown = '*unknown*')
 	{
-		if (!array_key_exists ("$value", $GLOBALS['register']['code_symbols'])) {
+		$_symbols = OWLCache::get(OWLCACHE_REGISTER, 'code_symbols');
+		if (!array_key_exists ("$value", $_symbols)) {
 			return ($unknown);
 		} else {
-			return ($GLOBALS['register']['code_symbols']["$value"]);
+			return ($_symbols["$value"]);
 		}
 	}
 
@@ -251,7 +261,8 @@ abstract class Register
 	 */
 	static public function setApplication ($app_id)
 	{
-		$GLOBALS['register']['stack']['app'] = $app_id;
+		$_stack =& OWLCache::getRef(OWLCACHE_REGISTER, 'stack');
+		$_stack['app'] = $app_id;
 	}
 
 	/**
@@ -261,7 +272,8 @@ abstract class Register
 	 */
 	static public function setClass ($class_id)
 	{
-		$GLOBALS['register']['stack']['class'] = $class_id;
+		$_stack =& OWLCache::getRef(OWLCACHE_REGISTER, 'stack');
+		$_stack['class'] = $class_id;
 	}
 
 	/**
@@ -271,7 +283,8 @@ abstract class Register
 	 */
 	static public function setSeverity ($severity_level)
 	{
-		$GLOBALS['register']['stack']['severity'] = $severity_level;
+		$_stack =& OWLCache::getRef(OWLCACHE_REGISTER, 'stack');
+		$_stack['severity'] = $severity_level;
 	}
 
 	/**
@@ -282,6 +295,7 @@ abstract class Register
 	static public function registerMessages ($_force = false)
 	{
 		$_lang = ConfigHandler::get ('locale', 'lang');
+		$_messages =& OWLCache::getRef(OWLCACHE_LOCALE, 'messages');
 		// Suppress 'Undefined constants' notices for codes not (yet) registered
 		$_er = error_reporting(~E_NOTICE);
 		if (OWLCache::get(OWLCACHE_MSGFILES, 'owlMessages') === null) {
@@ -295,7 +309,7 @@ abstract class Register
 				$_found = OWLCache::set(OWLCACHE_MSGFILES, 'owlMessages', false);
 			}
 			if ($_found === true) {
-				$GLOBALS['messages'] = $_messages + $GLOBALS['messages'];
+				$_messages = $_messages + $_messages;
 			}
 		}
 
@@ -310,7 +324,7 @@ abstract class Register
 				$_found = OWLCache::set(OWLCACHE_MSGFILES, strtolower(APPL_CODE) . 'Messages', false);
 			}
 			if ($_found === true) {
-				$GLOBALS['messages'] = $_messages + $GLOBALS['messages'];
+				$_messages = $_messages + $_messages;
 			}
 		}
 		error_reporting($_er);
@@ -324,6 +338,7 @@ abstract class Register
 	static public function registerLabels ($_owl = false)
 	{
 		$_lang = ConfigHandler::get ('locale', 'lang');
+		$_labels =& OWLCache::getRef(OWLCACHE_LOCALE, 'labels');
 		// Suppress 'Undefined constants' notices for codes not (yet) registered
 		if ($_owl) {
 			if (OWLCache::get(OWLCACHE_LBLFILES, 'owlLabels') === null) {
@@ -337,7 +352,7 @@ abstract class Register
 					$_found = OWLCache::set(OWLCACHE_LBLFILES, 'owlLabels', false);
 				}
 				if ($_found === true) {
-					$GLOBALS['labels'] = $_labels + $GLOBALS['labels'];
+					$_labels = $_labels + $_labels;
 				}
 			}
 		} else {
@@ -352,7 +367,7 @@ abstract class Register
 					$_found = OWLCache::set(OWLCACHE_LBLFILES, strtolower(APPL_CODE) . 'Labels', false);
 				}
 				if ($_found === true) {
-					$GLOBALS['labels'] = $_labels + $GLOBALS['labels'];
+					$_labels = $_labels + $_labels;
 				}
 			}
 		}

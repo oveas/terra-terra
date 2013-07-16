@@ -104,8 +104,9 @@ abstract class ContentArea extends _OWL
 	 */
 	static public function translate ($_string, $_params = array())
 	{
-		if (array_key_exists($_string, $GLOBALS['labels'])) {
-			$translation = $GLOBALS['labels'][$_string];
+		$_lbl = OWLCache::get(OWLCACHE_LOCALE, 'labels');
+		if (array_key_exists($_string, $_lbl)) {
+			$translation = $_lbl[$_string];
 		} else {
 			$translation = ((ConfigHandler::get ('general', 'debug') > 0?'(!)':'').$_string);
 		}

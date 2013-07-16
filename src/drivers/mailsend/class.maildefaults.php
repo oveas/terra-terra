@@ -39,4 +39,20 @@ abstract class MailDefaults
 	public function __constructor()
 	{
 	}
+
+	/**
+	 * Add one or more headers to this mail. Headers that already exist will be overwritten.
+	 * \param[out] $headers Indexed array with the header info in the format (header => value) to which the headers will be added
+	 * \param[in] $headerType Identification of the headertype, see \ref MAILDRIVER_HeaderTypes
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function addHeader (array &$headers, $headerType)
+	{
+		switch ($headerType) {
+			case MAILDRIVER_HEADERTYPE_HTML:
+				$headers[] = 'MIME-Version: 1.0';
+				$headers[] = 'Content-type: text/html; charset=iso-8859-1';
+				break;
+		}
+	}
 }

@@ -22,25 +22,21 @@
  * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
  */
 
-
-$GLOBALS['register'] = array (
-	  'applications'	=> array()
-	, 'classes'			=> array()
+OWLCache::set(
+		OWLCACHE_CONFIG
+		, 'files'
+		, array(
+				'owl'	=> OWL_ROOT . '/owl_config.cfg'
+				,'app'	=> array()
+		)
 );
-
-
-$GLOBALS['config'] = array(
-	  'configfiles'			=> array(
-				  'owl'	=> OWL_ROOT . '/owl_config.cfg'
-				, 'app'	=> array()
-	)
-	, 'values'				=> array()
-	, 'hidden_values'		=> array()
-	, 'protected_values'	=> array()
 //	Configure the configuration ;)
-	, 'config'				=> array(
-				  'protect_tag'	=> '(!)'
-				, 'hide_tag'	=> '(hide)'
-				, 'hide_value'	=> '(hidden)'
-	)
+OWLCache::set(
+		OWLCACHE_CONFIG
+		, 'config'
+		, array(
+				'protect_tag'	=> '(!)'
+				,'hide_tag'	=> '(hide)'
+				,'hide_value'	=> '(hidden)'
+		)
 );

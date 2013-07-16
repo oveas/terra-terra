@@ -40,6 +40,11 @@ class StatusHandler
 	 * Array with parameters that will be substituted in message text
 	 */
 	private $params;
+	
+	/**
+	 * Reference to the message cache
+	 */
+	private $msgCache;
 
 	/**
 	 * integer - self reference
@@ -57,6 +62,7 @@ class StatusHandler
 	{
 		$this->params = array();
 		$this->code = $code;
+		$this->msgCache =& OWLCache::getRef(OWLCACHE_LOCALE, 'messages');
 	}
 
 	/**
@@ -150,21 +156,21 @@ class StatusHandler
 		$_search = array();
 
 		// Check if the messages have already been loaded
-		if (!array_key_exists ($this->code, $GLOBALS['messages'])) {
+		if (!array_key_exists ($this->code, $this->msgCache)) {
 			Register::registerMessages();
 
 			// Check if the messages code exists. If not, it might belong to a class
 			// that was loaded later; translate the code
-			if (!array_key_exists ($this->code, $GLOBALS['messages'])) {
+			if (!array_key_exists ($this->code, $this->msgCache)) {
 				if (($_mcode = Register::getCode($this->code, null)) !== null) {
-					$GLOBALS['messages'][$this->code] = $GLOBALS['messages'][$_mcode];
-					unset($GLOBALS['messages'][$_mcode]);
+					$this->msgCache[$this->code] = $this->msgCache[$_mcode];
+					unset($this->msgCache[$_mcode]);
 				}
 			}
 		}
 
-		if (array_key_exists ($this->code, $GLOBALS['messages'])) {
-			$_msg = $GLOBALS['messages'][$this->code];
+		if (array_key_exists ($this->code, $this->msgCache)) {
+			$_msg = $this->msgCache[$this->code];
 		} else {
 			$_msg = sprintf ('No message found for code %%X%08X (%d) (%s)', $this->code, $this->code, Register::getCode($this->code));
 		}
