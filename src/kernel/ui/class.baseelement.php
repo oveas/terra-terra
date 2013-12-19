@@ -147,7 +147,7 @@ abstract class BaseElement extends _OWL
 	public function setContent(&$_content)
 	{
 		if (is_object($_content) && ($_content === $this)) {
-			$this->setStatus (DOM_SELFREF, $this->name);
+			$this->setStatus (__FILE__, __LINE__, DOM_SELFREF, $this->name);
 			return '&nbsp;'; // Probably fatal, but for completeness...
 		}
 		$this->content = $_content;
@@ -165,7 +165,7 @@ abstract class BaseElement extends _OWL
 	public function addToContent(&$_content, $_front = false)
 	{
 		if (is_object($_content) && ($_content === $this)) {
-			$this->setStatus (DOM_SELFREF, get_class($this));
+			$this->setStatus (__FILE__, __LINE__, DOM_SELFREF, get_class($this));
 			return '&nbsp;'; // Probably fatal, but for completeness...
 		}
 		if (!is_array($this->content)) {
@@ -212,7 +212,7 @@ abstract class BaseElement extends _OWL
 			if ($this->shown === true) {
 				OWLdbg_add(OWLDEBUG_OWL_OBJ, $this, 'ContentElement');
 				OWLdbg_add(OWLDEBUG_OWL_VAR, $_contentItem, 'ContentItem');
-				$this->setStatus (DOM_LOOPDETECT, array(
+				$this->setStatus (__FILE__, __LINE__, DOM_LOOPDETECT, array(
 					  get_class($_contentItem) . ' (' . $_contentItem->getId() . ')'
 					, get_class($this) . ' (' . $this->getId() . ')'
 					)
@@ -345,7 +345,7 @@ abstract class BaseElement extends _OWL
 			if (method_exists($this, $_method)) {
 				$this->$_method($_v);
 			} else {
-				$this->setStatus (DOM_IVATTRIB, array($_k));
+				$this->setStatus (__FILE__, __LINE__, DOM_IVATTRIB, array($_k));
 				return $this->severity;
 			}
 		}

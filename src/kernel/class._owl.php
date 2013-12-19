@@ -55,14 +55,16 @@ abstract class _OWL
 	 * Status is 'warning' by default, it's up to the contructor to set
 	 * a proper status; if it's still 'warning', this *might* indicate
 	 * something went wrong.
+	 * \param[in] $callerFile Filename from where this method is called
+	 * \param[in] $callerLine Linenumber from where this method is called
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	protected function init ()
+	protected function init ($callerFile, $callerLine)
 	{
 		$this->status = OWL::factory('StatusHandler');
 		$this->saved_status = null;
 		$this->pstatus =& $this;
-		$this->setStatus (OWL_STATUS_OK); // Be an optimist ;)
+		$this->setStatus ($callerFile, $callerLine, OWL_STATUS_OK); // Be an optimist ;)
 	}
 
 	/**
@@ -198,11 +200,13 @@ abstract class _OWL
 
 	/**
 	 * Set the current object status to the specified value.
+	 * \param[in] $callerFile Filename from where this method is called
+	 * \param[in] $callerLine Linenumber from where this method is called
 	 * \param[in] $status OWL status code
 	 * \param[in] $params
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	protected final function setStatus ($status, $params = array ())
+	protected final function setStatus ($callerFile, $callerLine, $status, $params = array ())
 	{
 		self::reset();
 		$this->severity = $this->status->setCode($status);
@@ -216,7 +220,7 @@ abstract class _OWL
 		$this->signal (0, $msg);
 		// Need this check since we can be called before the logger wat setup
 		if (($_logger = OWLCache::get(OWLCACHE_OBJECTS, 'Logger')) !== null) {
-			$_logger->log ($msg, $status);
+			$_logger->log ($msg, $status, $callerFile, $callerLine);
 		}
 		$this->writePHPLog($msg);
 
@@ -421,12 +425,14 @@ Register::registerCode ('OWL_STATUS_OK');
 
 Register::setSeverity (OWL_WARNING);
 Register::registerCode ('OWL_STATUS_WARNING');
+Register::registerCode ('OWL_NOTIMEZONE');
 //Register::registerCode ('OWL_STATUS_FNF');
 //Register::registerCode ('OWL_STATUS_ROPENERR');
 //Register::registerCode ('OWL_STATUS_WOPENERR');
 
 Register::setSeverity (OWL_BUG);
 Register::registerCode ('OWL_STATUS_BUG');
+Register::registerCode ('OWL_APP_NOTLOADED');
 
 Register::setSeverity (OWL_ERROR);
 Register::registerCode ('OWL_STATUS_ERROR');

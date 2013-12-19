@@ -118,7 +118,7 @@ class Document extends BaseElement
 	 */
 	protected function __construct (array $_attribs = array())
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		$_proto = explode('/', $_SERVER['SERVER_PROTOCOL']);
 		$this->owlBase = $this->base = strtolower($_proto[0]) . '://' . $_SERVER['HTTP_HOST'];
 		if (defined('OWL_USER_LOCATION')) {
@@ -259,14 +259,14 @@ class Document extends BaseElement
 				$_style = OWL_SERVER_TOP . $_style;
 			} elseif (!file_exists($_style)) {
 				if ($_try !== true) {
-					$this->setStatus(DOC_NOSUCHFILE, array('stylesheet', $_style));
+					$this->setStatus(__FILE__, __LINE__, DOC_NOSUCHFILE, array('stylesheet', $_style));
 				}
 				return;
 			}
 		}
 		if (($_styleUrl = urlExpand($_style)) === null) {
 			if ($_try !== true) {
-				$this->setStatus(DOC_IVFILESPEC, array('stylesheet', $_style));
+				$this->setStatus(__FILE__, __LINE__, DOC_IVFILESPEC, array('stylesheet', $_style));
 			}
 			return;
 		}
@@ -310,12 +310,12 @@ class Document extends BaseElement
 			} elseif (OWL_SERVER_TOP != OWL_SITE_TOP && file_exists(OWL_SERVER_TOP . $_script)) {
 				$_script = OWL_SERVER_TOP . $_script;
 			} elseif (!file_exists($_script)) {
-				$this->setStatus(DOC_NOSUCHFILE, array('javascript', $_script));
+				$this->setStatus(__FILE__, __LINE__, DOC_NOSUCHFILE, array('javascript', $_script));
 				return;
 			}
 		}
 		if (($_scriptUrl = urlExpand($_script)) === null) {
-			$this->setStatus(DOC_IVFILESPEC, array('javascript', $_script));
+			$this->setStatus(__FILE__, __LINE__, DOC_IVFILESPEC, array('javascript', $_script));
 			return;
 		}
 		if (!in_array($_scriptUrl, $this->js)) {
@@ -342,11 +342,11 @@ class Document extends BaseElement
 	{
 		$_path = urlToPath($_icon);
 		if ($_path === null || !file_exists($_path)) {
-			$this->setStatus(DOC_NOSUCHFILE, array('favicon', $_icon));
+			$this->setStatus(__FILE__, __LINE__, DOC_NOSUCHFILE, array('favicon', $_icon));
 			return;
 		}
 		if (($_iconURL = urlExpand($_icon)) === null) {
-			$this->setStatus(DOC_IVFILESPEC, array('favicon', $_icon));
+			$this->setStatus(__FILE__, __LINE__, DOC_IVFILESPEC, array('favicon', $_icon));
 			return;
 		}
 		$this->favicon = $_iconURL;
@@ -375,7 +375,7 @@ class Document extends BaseElement
 				$this->meta[$_name][] = $_content;
 			} elseif ($_name == 'generator') {
 				// Not allowed to overwrite this meta tag
-				$this->setStatus(DOC_PROTTAG, arra('meta', 'generator'));
+				$this->setStatus(__FILE__, __LINE__, DOC_PROTTAG, arra('meta', 'generator'));
 			} else {
 				$this->meta[$_name] = $_content;
 			}
@@ -553,7 +553,7 @@ class Document extends BaseElement
 	public function setMessageContainer($_container) 
 	{
 		if ($_container !== null && !($_container instanceof Container)) {
-			$this->setStatus(DOC_IVMSGCONTAINER, $_container);
+			$this->setStatus(__FILE__, __LINE__, DOC_IVMSGCONTAINER, $_container);
 		}
 		$this->msgContainer = $_container;
 	}
@@ -606,7 +606,7 @@ class Document extends BaseElement
 			$this->open = false;
 			return "</body>\n</html>\n";
 		} else {
-			$this->setStatus(DOC_NOTOPENED);
+			$this->setStatus(__FILE__, __LINE__, DOC_NOTOPENED);
 			return null;
 		}
 	}

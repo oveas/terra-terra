@@ -88,18 +88,18 @@ class ImageHandler extends FileHandler
 	 */
 	public function __construct ($name, $req = false)
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 
 		$this->name = realpath($name);
 		$this->opened = false;
 
 		if (!file_exists($this->name)) {
 			if ($req) {
-				$this->setStatus (FILE_NEWFILE, array (
+				$this->setStatus (__FILE__, __LINE__, FILE_NEWFILE, array (
 					$this->name
 				));
 			} else {
-				$this->setStatus (FILE_NOSUCHFILE, array (
+				$this->setStatus (__FILE__, __LINE__, FILE_NOSUCHFILE, array (
 					$this->name
 				));
 			}
@@ -109,7 +109,7 @@ class ImageHandler extends FileHandler
 		$this->localfile = !eregi("^([a-z]+)://", $this->name);
 		$this->myfile = (fileowner($this->name) == getmyuid());
 
-		$this->setStatus (OWL_STATUS_OK);
+		$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
 	}
 }
 

@@ -24,7 +24,7 @@ class Listings extends _OWL
 	 */
 	public function __construct()
 	{
-		$this->init();
+		$this->init(__FILE__, __LINE__);
 		$this->dataset = new DataHandler ();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
 			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));

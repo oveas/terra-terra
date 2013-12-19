@@ -130,12 +130,12 @@ $comment
 error_reporting (E_ALL | E_STRICT);
 
 define ('OWL_ROOT', '" . OWL_ROOT . "');
-define ('APPL_CODE', '$this->appCode');
 define ('APP_CONFIG_FILE', '" . OWL_SITE_TOP . "/owl-" . strtolower($this->appCode) . "/" .strtolower($this->appCode) . ".cfg');
 
 require (OWL_ROOT . '/OWLloader.php');
+OWLloader::loadApplication('$this->appCode');
 
-require (APPL_LIBRARY . '/" .strtolower($this->appCode) . ".loader.php');
+require (OWLloader::getCurrentAppLib() . '/" .strtolower($this->appCode) . ".loader.php');
 require (".$this->appCode."_UI . '/mainpage.php');
 
 OWLloader::getClass('OWLrundown.php', OWL_ROOT);
@@ -260,12 +260,12 @@ OWLloader::getClass('OWLrundown.php', OWL_ROOT);
 	{
 		$_fileContent = "<?php
 		" . $this->createFileHeader() . "
-Register::registerApp(APPL_NAME, 0x02000001);
+Register::registerApp(OWLloader::getCurrentAppName(), 0x02000001);
 Register::registerLabels();
 
-define ('$this->appCode"."_SO', APPL_SITE_TOP . '/so');
-define ('$this->appCode"."_BO', APPL_SITE_TOP . '/bo');
-define ('$this->appCode"."_UI', APPL_SITE_TOP . '/ui');
+define ('$this->appCode"."_SO', OWLloader::getCurrentAppUrl() . '/so');
+define ('$this->appCode"."_BO', OWLloader::getCurrentAppUrl() . '/bo');
+define ('$this->appCode"."_UI', OWLloader::getCurrentAppUrl() . '/ui');
 
 if (!OWLloader::getClass('" . strtolower($this->appCode) . "user', $this->appCode"."_BO)) {
 	trigger_error('Error loading classfile $this->appCode"."User from' . $this->appCode"."_BO, E_USER_ERROR);
@@ -573,7 +573,7 @@ OWLCache::set(OWLCACHE_OBJECTS, 'FooterContainer', \$_ftr);
 \$dispatcher->dispatch('$this->appName#".$this->appCode."_BO#".strtolower($this->appCode)."user#".$this->appCode."User#showMainMenu');
 \$dispatcher->dispatch('$this->appName#".$this->appCode."_BO#".strtolower($this->appCode)."user#".$this->appCode."User#showUserMenu');
 
-\$document->loadStyle(APPL_SITE_TOP . '/style/".strtolower($this->appCode).".css');
+\$document->loadStyle(OWLloader::getCurrentAppUrl() . '/style/".strtolower($this->appCode).".css');
 
 \$document->addToContent(\$_hdr);
 \$document->addToContent(\$_bdy);

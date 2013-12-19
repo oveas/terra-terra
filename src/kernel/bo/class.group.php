@@ -52,7 +52,7 @@ class Group extends _OWL
 	 */
 	public function __construct ($id = 0)
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		$this->dataset = new DataHandler ();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
 			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
@@ -96,7 +96,7 @@ class Group extends _OWL
 		$this->dataset->prepare();
 		$this->dataset->db($_data, __LINE__, __FILE__);
 		if (count($_data) == 0) {
-			$this->setStatus(GROUP_NOSUCHNAME, array($name));
+			$this->setStatus(__FILE__, __LINE__, GROUP_NOSUCHNAME, array($name));
 			return (false);
 		}
 		$this->group_data = $_data[0];

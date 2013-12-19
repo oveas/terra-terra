@@ -39,7 +39,7 @@ class OWL extends _OWL
 	 */
 	private function __construct ()
 	{
-		parent::init();
+		parent::init(__FILE__, __LINE__);
 	}
 
 	/**
@@ -67,14 +67,16 @@ class OWL extends _OWL
 
 	/**
 	 * Call to setStatus()
+	 * \param[in] $callerFile Filename from where this method is called
+	 * \param[in] $callerLine Linenumber from where this method is called
 	 * \param[in] $a First parameter for passthrough
 	 * \param[in] $b Second parameter for passthrough
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function stat ($a, $b = array())
+	public static function stat ($callerFile, $callerLine, $a, $b = array())
 	{
 		$me = self::getInstance(); // Make sure I am instantiated
-		$me->setStatus ($a, $b);
+		$me->setStatus ($callerFile, $callerLine, $a, $b);
 	}
 
 	/**

@@ -189,6 +189,23 @@ function getReferer ($def = 'http://localhost/', $hostOnly = true)
 }
 
 /**
+ * Check if the timezone was set in the PHP inifile. If not set, the OWL configuration is checked as well for a timezone setting.
+ * If no value is found in the ini file or the OWL configuration, timezone is set to UTC and a warning is given.
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ */
+function owlTimeZone ()
+{
+	if (!ini_get('date.timezone')) {
+		$_tmZone = ConfigHandler::get('locale', 'timezone');
+		if ($_tmZone === null) {
+			$_tmZone = 'UTC';
+			OWL::stat(__FILE__, __LINE__, OWL_NOTIMEZONE, $_tmZone);
+		}
+		date_default_timezone_set($_tmZone);
+	}
+}
+
+/**
  * See if the given string contants a valid email address. Refer to MailDriver::mailSend() for an
  * explanation what I mean with 'displayable'.
  * \param[in] $email String that contains the (displayable) mail address

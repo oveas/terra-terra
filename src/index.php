@@ -1,7 +1,7 @@
 <?php
-define ('APPL_CODE', 'OWL');
 define ('OWL_ROOT', '/home/oscar/projects/owl-php/src');
 require (OWL_ROOT . '/OWLloader.php');
+OWLloader::loadApplication('OWL');
 ?>
 <html>
 <head>

@@ -10,7 +10,8 @@
 
 
 $dispatcher = OWL::factory('Dispatcher');
-$document   = OWL::factory('Document', OWL_UI_INC);
+
+$document   = OWL::factory('Document', 'ui');
 //$console = new Container('div');
 //$document->setMessageContainer($console);
 

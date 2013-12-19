@@ -226,7 +226,7 @@ class DbHandler extends _OWL
 			,  $pwd = ''
 			,  $dbtype = 'MySQL')
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		$this->cloned = false;
 		$this->database['server']   = $srv;
 		$this->database['name']     = $db;
@@ -242,7 +242,7 @@ class DbHandler extends _OWL
 		$this->db_prefix = ConfigHandler::get ('database', 'prefix');
 		$this->query_type = DBHANDLE_COMPLETED;
 		$this->locks = array();
-		$this->setStatus (OWL_STATUS_OK);
+		$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
 	}
 
 	/**
@@ -298,9 +298,9 @@ class DbHandler extends _OWL
 	public function __clone ()
 	{
 		if ($this->cloned) {
-			$this->setStatus (DBHANDLE_CLONEACLONE);
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_CLONEACLONE);
 		} elseif ($this->transaction !== '') {
-			$this->setStatus (DBHANDLE_CLONEWHILETRANS);
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_CLONEWHILETRANS);
 		} else {
 			$this->close();
 			self::$instance = ++self::$instance;
@@ -324,7 +324,7 @@ class DbHandler extends _OWL
 	public function alt(array $properties)
 	{
 		if (!$this->cloned) {
-			$this->setStatus (DBHANDLE_NOTACLONE);
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_NOTACLONE);
 		} else {
 			foreach ($properties as $k => $v) {
 				if ($k == 'prefix') {
@@ -399,7 +399,7 @@ class DbHandler extends _OWL
 			if (!$this->driver->dbCreate ($this->database['name'])) {
 				$_errNo = $_errTxt = null;
 				$this->driver->dbError ($this->id, $_errNo, $_errTxt);
-				$this->setStatus (DBHANDLE_CREATERR, array (
+				$this->setStatus (__FILE__, __LINE__, DBHANDLE_CREATERR, array (
 								  $this->database['name']
 								, $_errNo
 								, $_errTxt
@@ -426,7 +426,7 @@ class DbHandler extends _OWL
 				,$this->database['password']
 				,true // Allow more databases on the same server to be opened
 		)) {
-			$this->setStatus (DBHANDLE_CONNECTERR, array (
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_CONNECTERR, array (
 					  $this->database['server']
 					, $this->database['username']
 					, (ConfigHandler::get ('logging', 'hide_passwords') ? '*****' : $this->database['password'])
@@ -470,7 +470,7 @@ class DbHandler extends _OWL
 		)) {
 			$_errNo = $_errTxt = null;
 			$this->driver->dbError ($this->id, $_errNo, $_errTxt);
-			$this->setStatus (DBHANDLE_OPENERR, array (
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_OPENERR, array (
 							  $this->database['name']
 							, $_errNo
 							, $_errTxt
@@ -478,7 +478,7 @@ class DbHandler extends _OWL
 		}
 		$this->opened = true;
 
-		$this->setStatus (DBHANDLE_OPENED, array (
+		$this->setStatus (__FILE__, __LINE__, DBHANDLE_OPENED, array (
 						  $this->database['name']
 						, $this->id
 					));
@@ -558,7 +558,7 @@ class DbHandler extends _OWL
 	public function prepareField (array $fielddata)
 	{
 		if (!array_key_exists('field', $fielddata) || !array_key_exists('value', $fielddata)) {
-			$this->setStatus(DBHANDLE_IVFLDFORMAT, implode(',', $fielddata));
+			$this->setStatus(__FILE__, __LINE__, DBHANDLE_IVFLDFORMAT, implode(',', $fielddata));
 			return null;
 		}
 
@@ -579,7 +579,7 @@ class DbHandler extends _OWL
 				$_functionArguments = array();
 			}
 			if (!method_exists($this->driver, $_driverMethod)) {
-				$this->setStatus(DBHANDLE_IVFUNCTION, $fielddata['fieldfunction']);
+				$this->setStatus(__FILE__, __LINE__, DBHANDLE_IVFUNCTION, $fielddata['fieldfunction']);
 				return null;
 			}
 			$fieldname .= '#' . $_driverMethod . '#' . implode('#', $_functionArguments);
@@ -597,7 +597,7 @@ class DbHandler extends _OWL
 		if (array_key_exists('having', $fielddata)) {
 			if (count($fielddata['having']) !== 2) {
 				// Todo, maybe better to create an own errormessage for this
-				$this->setStatus(DBHANDLE_IVFLDFORMAT, 'invalid argumentcount for HAVING in ' . implode(',', $fielddata));
+				$this->setStatus(__FILE__, __LINE__, DBHANDLE_IVFLDFORMAT, 'invalid argumentcount for HAVING in ' . implode(',', $fielddata));
 				return null;
 			}
 			$this->having[] = array($fieldname, $fielddata['having'][0] . ' ' . $fielddata['having'][1]);
@@ -608,7 +608,7 @@ class DbHandler extends _OWL
 			// by calling the proper driver function
 			$_driverMethod = 'function' . ucfirst(array_shift($fielddata['valuefunction']));
 			if (!method_exists($this->driver, $_driverMethod)) {
-				$this->setStatus(DBHANDLE_IVFUNCTION, $_driverMethod);
+				$this->setStatus(__FILE__, __LINE__, DBHANDLE_IVFUNCTION, $_driverMethod);
 				return null;
 			}
 			if (!is_array($fielddata['value'])) {
@@ -636,12 +636,12 @@ class DbHandler extends _OWL
 	public function startTransaction ($name)
 	{
 		if ($this->transaction !== '') {
-			$this->setStatus(DBHANDLE_TRANSOPEN);
+			$this->setStatus(__FILE__, __LINE__, DBHANDLE_TRANSOPEN);
 			return ($this->severity);
 		} else {
 			if ($this->driver->dbTransactionStart ($this->id, $name) === false) {
 				$this->driver->dbError ($this->id, $this->errno, $this->error);
-				$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+				$this->setStatus (__FILE__, __LINE__, DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
 			} else {
 				$this->transaction = $name;
 			}
@@ -659,11 +659,11 @@ class DbHandler extends _OWL
 	public function commitTransaction ($name, $openNew = false)
 	{
 		if ($this->transaction === '') {
-			$this->setStatus(DBHANDLE_NOTRANSOPEN, array('COMMIT'));
+			$this->setStatus(__FILE__, __LINE__, DBHANDLE_NOTRANSOPEN, array('COMMIT'));
 		} else {
 			if ($this->driver->dbTransactionCommit ($this->id, $name, $openNew) === false) {
 				$this->driver->dbError ($this->id, $this->errno, $this->error);
-				$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+				$this->setStatus (__FILE__, __LINE__, DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
 			} else {
 				if ($openNew === false) {
 					$this->transaction = '';
@@ -683,11 +683,11 @@ class DbHandler extends _OWL
 	public function rollbackTransaction($name, $openNew = false)
 	{
 		if ($this->transaction === '') {
-			$this->setStatus(DBHANDLE_NOTRANSOPEN, array('ROLLBACK'));
+			$this->setStatus(__FILE__, __LINE__, DBHANDLE_NOTRANSOPEN, array('ROLLBACK'));
 		} else {
 			if ($this->driver->dbTransactionRollback ($this->id, $name, $openNew) === false) {
 				$this->driver->dbError ($this->id, $this->errno, $this->error);
-				$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+				$this->setStatus (__FILE__, __LINE__, DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
 			} else {
 				if ($openNew === false) {
 					$this->transaction = '';
@@ -707,7 +707,7 @@ class DbHandler extends _OWL
 	{
 		if ($this->driver->emptyTable ($this->id, $table) === false) {
 			$this->driver->dbError ($this->id, $this->errno, $this->error);
-			$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
 		}
 		return ($this->severity);
 	}
@@ -726,7 +726,7 @@ class DbHandler extends _OWL
 	public function lockTable ($tablename, $locktype)
 	{
 		if (ConfigHandler::get('database', 'locking_enabled', true) === false) {
-			$this->setStatus(DBHANDLE_LOCKDISABLED);
+			$this->setStatus(__FILE__, __LINE__, DBHANDLE_LOCKDISABLED);
 			return ($this->severity);
 		}
 		if (!is_array($tablename)) {
@@ -734,14 +734,14 @@ class DbHandler extends _OWL
 		}
 		foreach ($tablename as $tbl) {
 			if (array_key_exists($tbl, $this->locks)) {
-				$this->setStatus(DBHANDLE_TBLLOCKED, array($tbl, $this->locks[$tbl]));
+				$this->setStatus(__FILE__, __LINE__, DBHANDLE_TBLLOCKED, array($tbl, $this->locks[$tbl]));
 				return ($this->severity);
 			}
 			$this->locks[$tbl] = $locktype;
 		}
 		if ($this->driver->tableLock ($this->id, $tablename, $locktype) === false) {
 			$this->driver->dbError ($this->id, $this->errno, $this->error);
-			$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
 			// Okey... remove the list again :-S
 			foreach ($tablename as $tbl) {
 				unset($this->locks[$tbl]);
@@ -759,7 +759,7 @@ class DbHandler extends _OWL
 	public function unlockTable ($tablename = array())
 	{
 		if (ConfigHandler::get('database', 'locking_enabled', true) === false) {
-			$this->setStatus(DBHANDLE_LOCKDISABLED);
+			$this->setStatus(__FILE__, __LINE__, DBHANDLE_LOCKDISABLED);
 			return ($this->severity);
 		}
 		$_skipCheck = false;
@@ -779,14 +779,14 @@ class DbHandler extends _OWL
 		if ($_skipCheck === false) {
 			foreach ($tablename as $tbl) {
 				if (!array_key_exists($tbl, $this->locks)) {
-					$this->setStatus(DBHANDLE_TBLNOTLOCKED, array($tbl));
+					$this->setStatus(__FILE__, __LINE__, DBHANDLE_TBLNOTLOCKED, array($tbl));
 				}
 			}
 		}
 
 		if ($this->driver->tableUnlock ($this->id, $tablename) === false) {
 			$this->driver->dbError ($this->id, $this->errno, $this->error);
-			$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
 		} else {
 			foreach ($tablename as $tbl) {
 				unset($this->locks[$tbl]);
@@ -818,7 +818,7 @@ class DbHandler extends _OWL
 		$this->open();
 
 		if (!$this->opened) {
-			$this->setStatus (DBHANDLE_DBCLOSED);
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_DBCLOSED);
 			return ($this->severity);
 		}
 
@@ -828,8 +828,8 @@ class DbHandler extends _OWL
 			$_query = $quick_query;
 		}
 
-		if (($_data = $this->dbread ($_query, $this->rowcount, $_fieldcnt)) === false) {
-			$this->setStatus (DBHANDLE_QUERYERR, array (
+		if (($_data = $this->dbread ($_query, $this->rowcount, $_fieldcnt, $line, $file)) === false) {
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_QUERYERR, array (
 					  $_query
 					, $this->error
 					, $line
@@ -838,7 +838,7 @@ class DbHandler extends _OWL
 			return ($this->severity);
 		}
 //echo "$_query,ok ($this->rowcount)<br>";
-		$this->setStatus (DBHANDLE_ROWSREAD, array (
+		$this->setStatus (__FILE__, __LINE__, DBHANDLE_ROWSREAD, array (
 				  $_query
 				, $this->rowcount
 				, $line
@@ -846,7 +846,7 @@ class DbHandler extends _OWL
 			));
 
 		if ($this->rowcount == 0) {
-			$this->setStatus (DBHANDLE_NODATA, array (
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_NODATA, array (
 					  $line
 					, $file
 				));
@@ -879,10 +879,12 @@ class DbHandler extends _OWL
 	 * \param[in] $qry Database query string.
 	 * \param[out] $rows Number of rows matched
 	 * \param[out] $fields Number of fields per row
+	 * \param[in] $line Line number of the originating caller
+	 * \param[in] $file File of the originating caller
 	 * \return A 2D array with all data, or false on failures
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private function dbread ($qry, &$rows, &$fields)
+	private function dbread ($qry, &$rows, &$fields, $line, $file)
 	{
 		$this->query_type = DBHANDLE_COMPLETED; // Mark the action as completed now
 		$__result = null;
@@ -890,7 +892,7 @@ class DbHandler extends _OWL
 		$fields = 0;
 		if ($this->driver->dbRead($__result, $this->id, $qry) === false) {
 			$this->driver->dbError ($this->id, $this->errno, $this->error);
-			$this->setStatus (DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+			$this->setStatus ($file, $line, DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
 			return (false);
 		}
 
@@ -1169,14 +1171,14 @@ class DbHandler extends _OWL
 
 		if (count($tables) == 0) {
 			$this->query_type = DBHANDLE_FAILED;
-			$this->setStatus (DBHANDLE_NOTABLES);
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_NOTABLES);
 		} else {
 			$this->query .= 'FROM ' . $this->tablelist ($tables);
 			if (($_where = $this->whereClause ($searches, $joins)) != '') {
 				$this->query .= 'WHERE ' . $_where;
 			}
 			$this->query_type = DBHANDLE_READ;
-			$this->setStatus (DBHANDLE_QPREPARED, array('read', $this->query));
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_QPREPARED, array('read', $this->query));
 		}
 
 		$this->query .= $this->additionalClauses();
@@ -1198,7 +1200,7 @@ class DbHandler extends _OWL
 		$_tables = $this->extractTablelist ($searches);
 		if (count($_tables) == 0) {
 			$this->query_type = DBHANDLE_FAILED;
-			$this->setStatus (DBHANDLE_NOTABLES);
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_NOTABLES);
 		} else {
 			$this->query = 'DELETE FROM ' . $this->tablelist ($_tables);
 			if (($_where = $this->whereClause ($searches, array())) != '') {
@@ -1206,7 +1208,7 @@ class DbHandler extends _OWL
 			}
 			$this->query .= $this->additionalClauses();
 			$this->query_type = DBHANDLE_DELETE;
-			$this->setStatus (DBHANDLE_QPREPARED, array('delete', $this->query));
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_QPREPARED, array('delete', $this->query));
 		}
 		if (function_exists('OWLdbg_add')) { // Skip during init phase
 			OWLdbg_add(OWLDEBUG_OWL_SQL, $this->query, 'Query prepared', 2);
@@ -1231,7 +1233,7 @@ class DbHandler extends _OWL
 		$_tables = $this->extractTablelist ($values);
 		if (count($_tables) == 0) {
 			$this->query_type = DBHANDLE_FAILED;
-			$this->setStatus (DBHANDLE_NOTABLES);
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_NOTABLES);
 			return ($this->severity);
 		}
 		foreach ($values as $_fld => $_val) {
@@ -1243,7 +1245,7 @@ class DbHandler extends _OWL
 		}
 		if (count($_updates) === 0) {
 			$this->query_type = DBHANDLE_FAILED;
-			$this->setStatus (DBHANDLE_NOVALUES);
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_NOVALUES);
 			return ($this->severity);
 		}
 
@@ -1255,7 +1257,7 @@ class DbHandler extends _OWL
 		$this->query_type = DBHANDLE_UPDATE;
 		$this->query .= $this->additionalClauses();
 
-		$this->setStatus (DBHANDLE_QPREPARED, array('update', $this->query));
+		$this->setStatus (__FILE__, __LINE__, DBHANDLE_QPREPARED, array('update', $this->query));
 		if (function_exists('OWLdbg_add')) { // Skip during init phase
 			OWLdbg_add(OWLDEBUG_OWL_SQL, $this->query, 'Query prepared', 2);
 		}
@@ -1276,7 +1278,7 @@ class DbHandler extends _OWL
 		$_tables = $this->extractTablelist ($values);
 		if (count($_tables) == 0) {
 			$this->query_type = DBHANDLE_FAILED;
-			$this->setStatus (DBHANDLE_NOTABLES);
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_NOTABLES);
 			return ($this->severity);
 		}
 
@@ -1297,7 +1299,7 @@ class DbHandler extends _OWL
 		}
 		$this->query .= $this->additionalClauses();
 		$this->query_type = DBHANDLE_INSERT;
-		$this->setStatus (DBHANDLE_QPREPARED, array('write', $this->query));
+		$this->setStatus (__FILE__, __LINE__, DBHANDLE_QPREPARED, array('write', $this->query));
 		if (function_exists('OWLdbg_add')) { // Skip during init phase
 			OWLdbg_add(OWLDEBUG_OWL_SQL, $this->query, 'Query prepared', 2);
 		}
@@ -1315,13 +1317,13 @@ class DbHandler extends _OWL
 	public function write (&$rows = null, $line = 0, $file = '[unknown]')
 	{
 		if (!$this->opened) {
-			$this->setStatus (DBHANDLE_DBCLOSED);
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_DBCLOSED);
 			return ($this->severity);
 		}
 
 		if (($_cnt = $this->driver->dbWrite($this->id, $this->query)) < 0) {
 			$this->driver->dbError ($this->id, $this->errno, $this->error);
-			$this->setStatus (DBHANDLE_QUERYERR, array (
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_QUERYERR, array (
 					  $this->query
 					, $this->error
 					, $line
@@ -1345,7 +1347,7 @@ class DbHandler extends _OWL
 		}
 		$this->query_type = DBHANDLE_COMPLETED;
 
-		$this->setStatus (DBHANDLE_WRITTEN, array ($this->query, $_msgP1, $_cnt));
+		$this->setStatus (__FILE__, __LINE__, DBHANDLE_WRITTEN, array ($this->query, $_msgP1, $_cnt));
 		if ($rows !== null) {
 			$rows = $_cnt;
 		}

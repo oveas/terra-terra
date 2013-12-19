@@ -91,19 +91,19 @@ class SocketHandler extends _OWL
 	 */
 	public function __construct ($port, $host = 'localhost', $udp = false)
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 
 		$this->id = 0;
 		$this->host = $host;
 		$service_port = getservbyname('www', 'tcp');
 		if (is_int($port)) {
 			$this->port = $port;
-			$this->setStatus (OWL_STATUS_OK);
+			$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
 		} else {
 			if (($this->port = getservbyname($port, ($udp === true ? 'udp' : 'tcp'))) === false) {
-				$this->setStatus (SOCKET_NOPORT, array($port, ($udp === true ? 'udp' : 'tcp')));
+				$this->setStatus (__FILE__, __LINE__, SOCKET_NOPORT, array($port, ($udp === true ? 'udp' : 'tcp')));
 			} else {
-				$this->setStatus (OWL_STATUS_OK);
+				$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
 			}
 		}
 		return ($this->severity);
@@ -127,22 +127,22 @@ class SocketHandler extends _OWL
 	public function connect ()
 	{
 		if ($this->connected() === true) {
-			$this->setStatus (SOCKET_CONNECTED);
+			$this->setStatus (__FILE__, __LINE__, SOCKET_CONNECTED);
 		} else {
 			if (($this->id = fsockopen ($this->host,
 							$this->port,
 							$_errno,
 							$_errmsg,
 							SOCK_TIMEOUT)) === false) {
-				$this->setStatus (SOCKET_CONNERROR, array($_errno, $_errmsg, $this->host, $this->port));
+				$this->setStatus (__FILE__, __LINE__, SOCKET_CONNERROR, array($_errno, $_errmsg, $this->host, $this->port));
 			} else {
 				if (($response = $this->read()) === null) {
 					return ($this->severity);
 				}
 				if (strncmp($response, SOCK_AVAIL, strlen(SOCK_AVAIL)) !== 0) {
-					$this->setStatus (SOCKET_CONNERROR, array(0, rtrim($response), $this->host, $this->port));
+					$this->setStatus (__FILE__, __LINE__, SOCKET_CONNERROR, array(0, rtrim($response), $this->host, $this->port));
 				} else {
-					$this->setStatus (SOCKET_CONNECTOK, array($this->host, $this->port));
+					$this->setStatus (__FILE__, __LINE__, SOCKET_CONNECTOK, array($this->host, $this->port));
 				}
 				return ($this->severity);
 			}
@@ -158,7 +158,7 @@ class SocketHandler extends _OWL
 	public function disconnect ()
 	{
 		if ($this->connected() === false) {
-			$this->setStatus (SOCKET_NOTCONNECTED);
+			$this->setStatus (__FILE__, __LINE__, SOCKET_NOTCONNECTED);
 		} else {
 			fclose ($this->id);
 			$this->id = 0;
@@ -176,11 +176,11 @@ class SocketHandler extends _OWL
 	public function write ($line, $expect = '')
 	{
 		if (!$this->connected()) {
-			$this->setStatus(SOCKET_NOTCONNECTED);
+			$this->setStatus(__FILE__, __LINE__, SOCKET_NOTCONNECTED);
 			return ($this->severity);
 		}
 		if (fwrite ($this->id, $line . SOCK_LINE_END) === false) {
-			$this->setStatus(SOCKET_WRITEERROR);
+			$this->setStatus(__FILE__, __LINE__, SOCKET_WRITEERROR);
 			return ($this->severity);
 		}
 
@@ -189,12 +189,12 @@ class SocketHandler extends _OWL
 				return ($this->severity);
 			}
 			if (strncmp($response, $expect, strlen($expect)) !== 0) {
-				$this->setStatus(SOCKET_UNEXPECTED, array(rtrim($response), $expect));
+				$this->setStatus(__FILE__, __LINE__, SOCKET_UNEXPECTED, array(rtrim($response), $expect));
 			} else {
-				$this->setStatus (SOCKET_EXPECTED, array(rtrim($response)));
+				$this->setStatus (__FILE__, __LINE__, SOCKET_EXPECTED, array(rtrim($response)));
 			}
 		} else {
-			$this->setStatus (OWL_STATUS_OK);
+			$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
 		}
 		return ($this->severity);
 	}
@@ -207,14 +207,14 @@ class SocketHandler extends _OWL
 	public function read ()
 	{
 		if (!$this->connected()) {
-			$this->setStatus(SOCKET_NOTCONNECTED);
+			$this->setStatus(__FILE__, __LINE__, SOCKET_NOTCONNECTED);
 			return (null);
 		}
 		if (($response = fgets ($this->id, SOCK_BUFFER_SIZE)) === false) {
-			$this->setStatus(SOCKET_READERROR);
+			$this->setStatus(__FILE__, __LINE__, SOCKET_READERROR);
 			return (null);
 		}
-		$this->setStatus(SOCKET_READ, array(rtrim($response)));
+		$this->setStatus(__FILE__, __LINE__, SOCKET_READ, array(rtrim($response)));
 		return ($response);
 	}
 }

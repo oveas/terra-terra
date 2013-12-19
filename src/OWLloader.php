@@ -3,7 +3,7 @@
  * \file
  * \ingroup OWL_LIBRARY
  * This file loads the OWL environment and initialises some singletons
- * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
+ * \copyright{2007-2013} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of OWL-PHP.
  *
@@ -45,10 +45,10 @@ error_reporting(E_ALL | E_STRICT);
 if (!defined('OWL_ROOT')) { trigger_error('OWL_ROOT must be defined by the application', E_USER_ERROR); }
 
 //! OWL version
-define ('OWL_VERSION', '0.9.2');
+define ('OWL_VERSION', '0.9.3');
 
 //! OWL Release date in format YYYY-MM-DD
-define ('OWL_DATE', '2013-07-15');
+define ('OWL_DATE', '2013-12-17');
 
 //! Toplevel for the OWL includes
 define ('OWL_INCLUDE',	OWL_ROOT . '/kernel');
@@ -118,6 +118,18 @@ if (!defined ('OWL_TIMERS_ENABLED')) {
 	//! When true, times are shown at the bottom of the page. Can be set by the application
 	define ('OWL_TIMERS_ENABLED', false);
 }
+
+//! Key for the application ID as stored in cache
+define ('OWL_APPITM_ID', 'id');
+
+//! Key for the application's site top as stored in cache
+define ('OWL_APPITM_TOP', 'top');
+
+//! Key for the application name as stored in cache
+define ('OWL_APPITM_NAME', 'name');
+
+//! Key for the application's library as stored in cache
+define ('OWL_APPITM_LIBRARY', 'lib');
 //! @}
 
 /**
@@ -129,6 +141,15 @@ if (!defined ('OWL_TIMERS_ENABLED')) {
  */
 abstract class OWLloader
 {
+	//! Code of the primary application we're running
+	private static $primaryApp;
+	
+	//! Code of the active application instantiated by the dispatcher
+	private static $currentApp;
+
+	//! Boolean set to true when the configuration files have been loaded
+	private static $configLoaded = false;
+
 	/**
 	 * Load a contentarea. This is done by calling the loadArea() method of the given class.
 	 * \param[in] $_classFile Name of the classfile. This must the full filename without '.php'
@@ -146,12 +167,12 @@ abstract class OWLloader
 	public static function getArea ($_classFile, $_classLocation, $_argument = null)
 	{
 		if (!self::_tryLoad($_classFile . '.php', $_classLocation)) {
-			OWL::stat(OWL_LOADERR, array('Area class', $_classFile, $_classLocation));
+			OWL::stat(__FILE__, __LINE__, OWL_LOADERR, array('Area class', $_classFile, $_classLocation));
 			return null;
 		}
 		$_className = ucfirst($_classFile . 'Area');
 		if (!class_exists($_className)) {
-			OWL::stat(OWL_LOADERR, array($_className));
+			OWL::stat(__FILE__, __LINE__, OWL_LOADERR, array($_className));
 			return null;
 		}
 		$_cArea = new $_className();
@@ -276,65 +297,180 @@ abstract class OWLloader
 	/**
 	 * Load the application environment
 	 * \param[in] $applic_code Application code
+	 * \param[in] $primary True (default) for a primary application, false when loaded by the dispatcher (for an external contentarea).
+	 * When called from the entry-point of an application, this must always be true.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function loadApplication ($applic_code)
+	public static function loadApplication ($applic_code, $primary = true)
 	{
-		$dataset = new DataHandler();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix', 'owl'));
+
+		if (OWLCache::getApplic($applic_code) === null) {
+			$dataset = new DataHandler();
+			if (ConfigHandler::get ('database', 'owltables', true)) {
+				$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix', 'owl'));
+			}
+			$dataset->setTablename('applications');
+
+			$dataset->set('code', $applic_code);
+			$dataset->setKey('code');
+			$dataset->prepare();
+			$dataset->db($app_data, __LINE__, __FILE__);
+
+			if ($dataset->dbStatus() === DBHANDLE_NODATA) {
+				OWL::stat(__FILE__, __LINE__, OWL_APP_NOTFOUND, array($applic_code));
+				return;
+			}
+
+			OWLCache::addApplic(
+					  $applic_code
+					, array(
+						 OWL_APPITM_ID => $app_data[0]['aid']
+						,OWL_APPITM_NAME => $app_data[0]['name']
+						,OWL_APPITM_TOP => OWL_SITE_TOP . '/' . $app_data[0]['url']
+						,OWL_APPITM_LIBRARY => OWL_SITE_TOP . '/' . $app_data[0]['url'] . '/lib'
+					)
+			);
 		}
-		$dataset->setTablename('applications');
 
-		$dataset->set('code', $applic_code);
-		$dataset->setKey('code');
-		$dataset->prepare();
-		$dataset->db($app_data, __LINE__, __FILE__);
-
-		if ($dataset->dbStatus() === DBHANDLE_NODATA) {
-			OWL::stat(OWL_APP_NOTFOUND, array($applic_code));
-			return;
+		if ($primary === true) {
+			self::$primaryApp = $applic_code;
 		}
-
-		/**
-		 * \name OWL_Application_Globals Global constants for the application
-		 * These constants define sime paths for the application that are also required by OWL
-		 * @{
-		 */
-
-		/**
-		 * Application ID
-		 */
-		define ('APPL_ID', $app_data[0]['aid']);
+		self::$currentApp = $applic_code;
 		
-		define ('APPL_SITE_TOP', OWL_SITE_TOP . '/' . $app_data[0]['url']); //!< Toplevel for the site
-		define ('APPL_NAME', $app_data[0]['name']); //!< Name of the application.
-		define ('APPL_LIBRARY', APPL_SITE_TOP . '/lib'); //!< Location of all configuration files. NOT, the application MUST provide this location!
-		//! @}
-
-		$_cfgFiles = &OWLCache::getRef(OWLCACHE_CONFIG, 'files');
-		// If an APP_CONFIG file has been defined, add it to the config files array
-		// Values in this config file will overwrite the OWL defaults.
-		if (defined('APP_CONFIG_FILE')) {
-			$_cfgFiles['app'][] = APP_CONFIG_FILE;
+		/**
+		 * \todo FIXME This is messy... we need a decent solution here. Should configurations for other applics be loaded as well?
+		 * I suppose so... we might need DBHandler clones...
+		 * */
+		if (self::$configLoaded === false || $primary === true) {
+			$_cfgFiles = &OWLCache::getRef(OWLCACHE_CONFIG, 'files');
+			// If an APP_CONFIG file has been defined, add it to the config files array
+			// Values in this config file will overwrite the OWL default if the primaty application is loaded
+			if (defined('APP_CONFIG_FILE')) {
+				$_cfgFiles['app'][] = APP_CONFIG_FILE;
+			}
+			if (count ($_cfgFiles['app']) > 0) {
+				foreach ($_cfgFiles['app'] as $_cfgfile) {
+					ConfigHandler::readConfig (array('file' => $_cfgfile), ($applic_code === self::$primaryApp));
+				}
+			}
+			// Get the dynamic configuration from the database for the calling application
+			ConfigHandler::readConfig (array('aid' => self::getCurrentAppID()), ($applic_code === self::$primaryApp));
+			self::$configLoaded = true;
 		}
-		if (count ($_cfgFiles['app']) > 0) {
-			foreach ($_cfgFiles['app'] as $_cfgfile) {
-				ConfigHandler::readConfig (array('file' => $_cfgfile));
+
+		if ($applic_code === self::$primaryApp) {
+			// Now make sure the primary DB handle connects with the database as defined in the
+			// application config.
+			// FIXME This blocks external contentareas from being loaded!
+			$_db = OWL::factory('dbhandler');
+			$_db->forceReread();
+
+			$_logger = OWL::factory('loghandler', 'so');
+			$_logger->setApplicLogfile();
+		}
+		
+		if ($primary === true) {
+			// FIXME - External applications vcan't be fully loaded - that would give a duplicate session start!!! 
+
+			// Load the application and register with the OWL framework
+			if (!file_exists(OWL_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php')) {
+				trigger_error('The file ' . OWL_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php does not exist', E_USER_ERROR);
+			} else {
+				require (OWL_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php');
 			}
 		}
-		// Get the dynamic configuration from the database for the calling application
-		ConfigHandler::readConfig (array('aid' => APPL_ID));
+	}
+	
+	/**
+	 * Getter for the primary application's code
+	 * \return Application code
+	 */
+	public static function getPrimaryAppCode()
+	{
+		return self::$primaryApp;
+	}
+	
+	/**
+	 * Getter for the current application's ID
+	 * \return Application ID
+	 */
+	public static function getCurrentAppCode()
+	{
+		return self::$currentApp;
+	}
+	/**
+	 * Getter for the primary application's ID
+	 * \return Application ID
+	 */
+	public static function getPrimaryAppID()
+	{
+		return OWLCache::getApplic(self::$primaryApp, OWL_APPITM_ID);
+	}
+	
+	/**
+	 * Getter for the current application's ID
+	 * \return Application ID
+	 */
+	public static function getCurrentAppID()
+	{
+		return OWLCache::getApplic(self::$currentApp, OWL_APPITM_ID);
+	}
+	
+	/**
+	 * Getter for the primary application's library URL
+	 * \return Application library URL
+	 */
+	public static function getPrimaryAppLib()
+	{
+		return OWLCache::getApplic(self::$primaryApp, OWL_APPITM_LIBRARY);
+	}
 
-		// Now make sure the primary DB handle connects with the database as defined in the
-		// application config.
-		$_db = OWL::factory('dbhandler');
-		$_db->forceReread();
+	/**
+	 * Getter for the current application's library URL
+	 * \return Application library URL
+	 */
+	public static function getCurrentAppLib()
+	{
+		return OWLCache::getApplic(self::$currentApp, OWL_APPITM_LIBRARY);
+	}
 
-		$_logger = OWL::factory('loghandler', 'so');
-		$_logger->setApplicLogfile();
+	/**
+	 * Getter for the primary application's name
+	 * \return Application name
+	 */
+	public static function getPrimaryAppName()
+	{
+		return OWLCache::getApplic(self::$primaryApp, OWL_APPITM_NAME);
+	}
+
+	/**
+	 * Getter for the current application's name
+	 * \return Application name
+	 */
+	public static function getCurrentAppName()
+	{
+		return OWLCache::getApplic(self::$currentApp, OWL_APPITM_NAME);
+	}
+
+	/**
+	 * Getter for the primary application's top URL
+	 * \return Application top URL
+	 */
+	public static function getPrimaryAppUrl()
+	{
+		return OWLCache::getApplic(self::$primaryApp, OWL_APPITM_TOP);
+	}
+
+	/**
+	 * Getter for the current application's top URL
+	 * \return Application top URL
+	 */
+	public static function getCurrentAppUrl()
+	{
+		return OWLCache::getApplic(self::$currentApp, OWL_APPITM_TOP);
 	}
 }
+
 // The very first class being loaded must be OWLCache; it's used by getClass()
 OWLloader::getClass('cache', OWL_SO_INC);
 // Load data from the cache
@@ -406,6 +542,9 @@ if (!defined('OWL___INSTALLER') && OWL_ID != 0) {
 	ConfigHandler::readConfig (array());
 }
 
+// By now, the timezone should be known. Relevant since PHP v5.1.0
+owlTimeZone();
+
 // Load the contributed plugins
 require (OWL_CONTRIB . '/owl.contrib.loader.php');
 
@@ -417,24 +556,14 @@ OWLCache::set(OWLCACHE_OBJECTS, 'Logger', OWL::factory('LogHandler'));
 // Set up the label translations
 Register::registerLabels(true);
 
-if (!defined('OWL___INSTALLER')) {
-	// APPL_CODE must be defined by the application. It must be an acronym that will be used by OWL to locate resources, like files in the library.
-	if (!defined('APPL_CODE')) {
-		trigger_error('APPL_CODE must be defined by the application', E_USER_ERROR);
-	} else {
-		OWLloader::loadApplication(APPL_CODE);
-	}
-}
-
 // Select the (no)debug function libraries.
 if (ConfigHandler::get('general', 'debug', 0) > 0) {
 	require (OWL_LIBRARY . '/owl.debug.functions.php');
+	$_doc  = OWL::factory('Document', 'ui');
+	$_doc->loadStyle(OWL_STYLE . '/owl_debug.css');
+	$_confData = OWLCache::get(OWLCACHE_CONFIG, 'values');
+	OWLdbg_add(OWLDEBUG_OWL_S01, $_confData, 'Configuration after loadApplication()');
+	unset ($_confData);
 } else {
 	require (OWL_LIBRARY . '/owl.nodebug.functions.php');
 }
-$_doc  = OWL::factory('Document', 'ui');
-$_doc->loadStyle(OWL_STYLE . '/owl_debug.css');
-
-$_confData = OWLCache::get(OWLCACHE_CONFIG, 'values');
-OWLdbg_add(OWLDEBUG_OWL_S01, $_confData, 'Configuration after loadApplication()');
-unset ($_confData);

@@ -61,7 +61,7 @@ class Form extends BaseElement
 	 */
 	public function __construct ($_dispatcher, $_attribs = array())
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		$this->fields = array();
 		$this->method = 'POST';
 		$this->enctype = 'application/x-www-form-urlencoded';
@@ -83,7 +83,7 @@ class Form extends BaseElement
 	public function setMethod ($method)
 	{
 		if ($method != 'GET' && $method != 'POST') {
-			$this->setStatus (FORM_IVMETHOD, $method);
+			$this->setStatus (__FILE__, __LINE__, FORM_IVMETHOD, $method);
 			return ($this->severity);
 		}
 		$this->method = $method;
@@ -101,7 +101,7 @@ class Form extends BaseElement
 	{
 		$enctype = strtolower($enctype);
 		if ($enctype != 'multipart/form-data' && $enctype != 'application/x-www-form-urlencoded') {
-			$this->setStatus (FORM_IVENCODING, $enctype);
+			$this->setStatus (__FILE__, __LINE__, FORM_IVENCODING, $enctype);
 			return ($this->severity);
 		}
 		$this->enctype = $enctype;
@@ -127,7 +127,7 @@ class Form extends BaseElement
 //				if (in_array(''))
 //				$this->fields[$name]->addValue($value);
 //			} else {
-//				$this->setStatus (FORM_NOMULTIVAL, array($name, $this->fields[$name]->getType()));
+//				$this->setStatus (__FILE__, __LINE__, FORM_NOMULTIVAL, array($name, $this->fields[$name]->getType()));
 //				return $this->severity;
 //			}
 		} else {
@@ -144,13 +144,13 @@ class Form extends BaseElement
 			}
 
 			if (!OWLloader::getClass('formfield.'.$type, OWL_PLUGINS . '/formfields')) {
-				$this->setStatus (FORM_NOCLASS, $type);
+				$this->setStatus (__FILE__, __LINE__, FORM_NOCLASS, $type);
 				return ($this->severity);
 			}
 			$_className = 'FormField' . ucfirst($type) . 'Plugin';
 
 			if (!($this->fields[$name] = new $_className($_subtype))) {
-				$this->setStatus (FORM_IVCLASSNAME, array($type, $_className));
+				$this->setStatus (__FILE__, __LINE__, FORM_IVCLASSNAME, array($type, $_className));
 				return ($this->severity);
 			}
 
@@ -177,7 +177,7 @@ class Form extends BaseElement
 			if (method_exists($this->fields[$index], $_method)) {
 				$this->fields[$index]->$_method($_v);
 			} else {
-				$this->setStatus (FORM_NOATTRIB, array($_k, $this->fields[$index]->getType()));
+				$this->setStatus (__FILE__, __LINE__, FORM_NOATTRIB, array($_k, $this->fields[$index]->getType()));
 			}
 		}
 	}
@@ -204,7 +204,7 @@ class Form extends BaseElement
 	public function showField($name)
 	{
 		if (in_array($name, $this->fields)) {
-			$this->setStatus (FORM_NOSUCHFIELD, array($name));
+			$this->setStatus (__FILE__, __LINE__, FORM_NOSUCHFIELD, array($name));
 			return null;
 		}
 		return $this->fields[$name]->showElement();

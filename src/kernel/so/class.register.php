@@ -313,15 +313,15 @@ abstract class Register
 			}
 		}
 
-		if (OWLCache::get(OWLCACHE_MSGFILES, strtolower(APPL_CODE) . 'Messages') === null) {
-			if (file_exists (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.messages.' . $_lang . '.php')) {
-				require (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.messages.' . $_lang . '.php');
-				$_found = OWLCache::set(OWLCACHE_MSGFILES, strtolower(APPL_CODE) . 'Messages', true);
-			} elseif (file_exists (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.messages.php')){
-				require (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.messages.php');
-				$_found = OWLCache::set(OWLCACHE_MSGFILES, strtolower(APPL_CODE) . 'Messages', true);
+		if (OWLCache::get(OWLCACHE_MSGFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Messages') === null) {
+			if (file_exists (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.messages.' . $_lang . '.php')) {
+				require (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.messages.' . $_lang . '.php');
+				$_found = OWLCache::set(OWLCACHE_MSGFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Messages', true);
+			} elseif (file_exists (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.messages.php')){
+				require (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.messages.php');
+				$_found = OWLCache::set(OWLCACHE_MSGFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Messages', true);
 			} else {
-				$_found = OWLCache::set(OWLCACHE_MSGFILES, strtolower(APPL_CODE) . 'Messages', false);
+				$_found = OWLCache::set(OWLCACHE_MSGFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Messages', false);
 			}
 			if ($_found === true) {
 				$_messages = $_messages + $_messages;
@@ -356,15 +356,15 @@ abstract class Register
 				}
 			}
 		} else {
-			if (OWLCache::get(OWLCACHE_LBLFILES, strtolower(APPL_CODE) . 'Labels') === null) {
-				if (file_exists (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.labels.' . $_lang . '.php')) {
-					require (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.labels.' . $_lang . '.php');
-					$_found = OWLCache::set(OWLCACHE_LBLFILES, strtolower(APPL_CODE) . 'Labels', true);
-				} elseif (file_exists (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.labels.php')) {
-					require (APPL_LIBRARY . '/' . strtolower(APPL_CODE) . '.labels.php');
-					$_found = OWLCache::set(OWLCACHE_LBLFILES, strtolower(APPL_CODE) . 'Labels', true);
+			if (OWLCache::get(OWLCACHE_LBLFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Labels') === null) {
+				if (file_exists (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.labels.' . $_lang . '.php')) {
+					require (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.labels.' . $_lang . '.php');
+					$_found = OWLCache::set(OWLCACHE_LBLFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Labels', true);
+				} elseif (file_exists (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.labels.php')) {
+					require (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.labels.php');
+					$_found = OWLCache::set(OWLCACHE_LBLFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Labels', true);
 				} else {
-					$_found = OWLCache::set(OWLCACHE_LBLFILES, strtolower(APPL_CODE) . 'Labels', false);
+					$_found = OWLCache::set(OWLCACHE_LBLFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Labels', false);
 				}
 				if ($_found === true) {
 					$_labels = $_labels + $_labels;

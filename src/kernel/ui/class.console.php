@@ -44,7 +44,7 @@ class Console extends Container
 	{
 		if (Console::$instance !== -42) {
 			// Workaround to protect an illegal instantation (constructor must be public)
-			OWL::stat(OWL_ILLINSTANCE, 'Console');
+			OWL::stat(__FILE__, __LINE__, OWL_ILLINSTANCE, 'Console');
 			return null;
 		}
 		parent::__construct('div', '', array('class' => 'owlConsole '));

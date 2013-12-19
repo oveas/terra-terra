@@ -69,7 +69,7 @@ class OWLSessionHandler extends _OWL
 	 */
 	protected function __construct ()
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 
 		if (ConfigHandler::get ('database', 'owltables', true) === true) {
 			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
@@ -87,7 +87,7 @@ class OWLSessionHandler extends _OWL
 
 //		ini_set ('session.gc_maxlifetime', ConfigHandler::get ('session', 'lifetime'));
 
-		if (!ini_set ('session.save_handler', 'user'));
+		if (!ini_set ('session.save_handler', 'user')) print_r(debug_backtrace());
 		ini_set ('session.use_trans_sid', true);
 		if (($_sessName = ConfigHandler::get('session', 'name')) != null) {
 			session_name($_sessName);

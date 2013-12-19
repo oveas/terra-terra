@@ -47,12 +47,12 @@ class Mail extends _OWL
 	 */
 	public function __construct ()
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		$_driver = ConfigHandler::get('mailsend', 'driver');
 		if (OWLloader::getDriver($_driver, 'mailsend') === true) {
 			$this->driver = new $_driver;
 		} else {
-			$this->setStatus(MAIL_NODRIVER, array($_driver));
+			$this->setStatus(__FILE__, __LINE__, MAIL_NODRIVER, array($_driver));
 		}
 		$this->mail = array();
 		// Identify the mailer
@@ -69,7 +69,7 @@ class Mail extends _OWL
 	public function setSender ($addr)
 	{
 		if (($_addr = verifyMailAddress($addr)) === '') {
-			$this->setStatus(MAIL_IVMAILADDR, array($addr));
+			$this->setStatus(__FILE__, __LINE__, MAIL_IVMAILADDR, array($addr));
 			return (false);
 		} else {
 			$this->mail['sender'] = $addr;
@@ -87,7 +87,7 @@ class Mail extends _OWL
 	public function setFrom ($addr)
 	{
 		if (($_addr = verifyMailAddress($addr)) === '') {
-			$this->setStatus(MAIL_IVMAILADDR, array($addr));
+			$this->setStatus(__FILE__, __LINE__, MAIL_IVMAILADDR, array($addr));
 			return (false);
 		} else {
 			$this->mail['from'] = $_addr;
@@ -147,7 +147,7 @@ class Mail extends _OWL
 			$this->mail['to'] = array();
 		}
 		if (($_addr = verifyMailAddress($addr)) === '') {
-			$this->setStatus(MAIL_IVMAILADDR, array($addr));
+			$this->setStatus(__FILE__, __LINE__, MAIL_IVMAILADDR, array($addr));
 			return (false);
 		} else {
 			$this->addRecipient($_addr);
@@ -168,7 +168,7 @@ class Mail extends _OWL
 			$this->mail['cc'] = array();
 		}
 		if (($_addr = verifyMailAddress($addr)) === '') {
-			$this->setStatus(MAIL_IVMAILADDR, array($addr));
+			$this->setStatus(__FILE__, __LINE__, MAIL_IVMAILADDR, array($addr));
 			return (false);
 		} else {
 			$this->addRecipient($_addr);
@@ -189,7 +189,7 @@ class Mail extends _OWL
 			$this->mail['bcc'] = array();
 		}
 		if (($_addr = verifyMailAddress($addr)) === '') {
-			$this->setStatus(MAIL_IVMAILADDR, array($addr));
+			$this->setStatus(__FILE__, __LINE__, MAIL_IVMAILADDR, array($addr));
 			return (false);
 		} else {
 			$this->addRecipient($_addr);
@@ -252,9 +252,9 @@ class Mail extends _OWL
 	{
 		if ($this->driver->mailSend($this->mail) === false) {
 			$_err = $this->driver->getLastWarning();
-			$this->setStatus(MAIL_SENDERR, array($this->mail['subject'], $_err));
+			$this->setStatus(__FILE__, __LINE__, MAIL_SENDERR, array($this->mail['subject'], $_err));
 		} else {
-			$this->setStatus(MAIL_SEND, array($this->mail['subject'], implode(',', $this->mail['recipients'])));
+			$this->setStatus(__FILE__, __LINE__, MAIL_SEND, array($this->mail['subject'], implode(',', $this->mail['recipients'])));
 		}
 		return ($this->severity);
 	}

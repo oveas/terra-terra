@@ -48,7 +48,7 @@ class Dispatcher extends _OWL
 	 */
 	private function __construct ()
 	{
-		parent::init();
+		parent::init(__FILE__, __LINE__);
 		$this->dispatcher = null;
 	}
 
@@ -96,7 +96,7 @@ class Dispatcher extends _OWL
 		if (is_array($_dispatcher)) {
 			foreach (array('application', 'include_path','class_name','method_name') as $_req) {
 				if (!array_key_exists($_req, $_dispatcher)) {
-					$this->setStatus (DISP_IVDISPATCH, $_req);
+					$this->setStatus (__FILE__, __LINE__, DISP_IVDISPATCH, $_req);
 					return ($this->severity);
 				}
 			}
@@ -136,7 +136,7 @@ class Dispatcher extends _OWL
 
 			$_dispatcher = $_form->get(OWL_DISPATCHER_NAME);
 			if ($_form->getStatus() === FORM_NOVALUE || !$_dispatcher) {
-				$this->setStatus(DISP_NOARG);
+				$this->setStatus(__FILE__, __LINE__, DISP_NOARG);
 				return DISP_NOARG;
 			}
 			$_destination = $this->decodeDispatcher($_dispatcher);
@@ -150,16 +150,16 @@ class Dispatcher extends _OWL
 		if (defined($_destination['include_path'])) {
 			$_inc_path = constant($_destination['include_path']);
 		} else {
-			$_inc_path = OWL_SITE_TOP . '/'.$this->getApplicationUrl($_destination['application']).'/'.$_destination['include_path'];
+			$_inc_path = OWL_SITE_TOP . '/'.$this->getExternalApplication($_destination['application']).'/'.$_destination['include_path'];
 		}
 
 		if (!OWLloader::getClass($_destination['class_file'], $_inc_path)) {
-			$this->setStatus (DISP_NOCLASSF, array($_destination['class_file'], "$_inc_path/".$_destination['class_file']));
+			$this->setStatus (__FILE__, __LINE__, DISP_NOCLASSF, array($_destination['class_file'], "$_inc_path/".$_destination['class_file']));
 			return ($this->severity);
 		}
 
 		if (!class_exists($_destination['class_name'])) {
-			$this->setStatus (DISP_NOCLASS, $_destination['class_name']);
+			$this->setStatus (__FILE__, __LINE__, DISP_NOCLASS, $_destination['class_name']);
 			return ($this->severity);
 		}
 
@@ -171,7 +171,7 @@ class Dispatcher extends _OWL
 		}
 
 		if (!method_exists($_handler, $_destination['method_name'])) {
-			$this->setStatus (DISP_NOMETHOD, array($_destination['method_name'], $_destination['class_name']));
+			$this->setStatus (__FILE__, __LINE__, DISP_NOMETHOD, array($_destination['method_name'], $_destination['class_name']));
 			return ($this->severity);
 		}
 
@@ -223,7 +223,7 @@ class Dispatcher extends _OWL
 	public function registerCallback($_dispatcher)
 	{
 		if ($this->dispatcher !== null) {
-			$this->setStatus (DISP_ALREGIST);
+			$this->setStatus (__FILE__, __LINE__, DISP_ALREGIST);
 			return (false);
 		}
 		$this->dispatcher = $this->composeDispatcher($_dispatcher);
@@ -243,7 +243,7 @@ class Dispatcher extends _OWL
 	public function registerArgument(array $_argument)
 	{
 		if ($this->dispatcher === null) {
-			$this->setStatus (DISP_NOTREGIST);
+			$this->setStatus (__FILE__, __LINE__, DISP_NOTREGIST);
 			return (false);
 		}
 		$_dispatcher = $this->decodeDispatcher($this->dispatcher);
@@ -252,7 +252,7 @@ class Dispatcher extends _OWL
 			$_dispatcher['argument'] = $_argument;
 		} else {
 			if (!is_array($_dispatcher['argument'])) {
-				$this->setStatus (DISP_INCOMPAT);
+				$this->setStatus (__FILE__, __LINE__, DISP_INCOMPAT);
 				return (false);
 			}
 			$_dispatcher['argument'] = $_argument + $_dispatcher['argument'];
@@ -274,24 +274,32 @@ class Dispatcher extends _OWL
 	}
 
 	/**
-	 * Return the URL of an application, relative from OWL_SITE_TOP, based on the application name
-	 * \param[in] $_applicName Name of the application
-	 * \return Realative URL
+	 * Initialise an external application for which a contentarea is dispatched
+	 * \param[in] $_applicCode Code of the application
+	 * \return URL of the application, relative from OWL_SITE_TOP, based on the application name
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private function getApplicationUrl($_applicName)
+	private function getExternalApplication($_applicCode)
 	{
-		$_dataset = new DataHandler();
-		$_dataset->set('name', $_applicName);
-		$_dataset->setKey ('name');
+		if (($_top = OWLCache::getApplic($_applicCode, OWL_APPITM_TOP)) !== null) {
+			return $_top;
+		}
+		$_dataset = new DataHandler('applications');
+		if (ConfigHandler::get ('database', 'owltables', true)) {
+			$_dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		}
+		$_dataset->set('code', $_applicCode);
+		$_dataset->setKey ('code');
 		$_dataset->set('url', null, null, null, array('match' => array(DBMATCH_NONE)));
 		$_dataset->prepare ();
 		$_dataset->db($_data, __LINE__, __FILE__);
-		$_dbstat = $this->dataset->dbStatus();
+		$_dbstat = $_dataset->dbStatus();
 		if ($_dbstat === DBHANDLE_NODATA) {
-			$this->setStatus (DISP_NOSUCHAPPL, array($_applicName));
+			$this->setStatus (__FILE__, __LINE__, DISP_NOSUCHAPPL, array($_applicCode));
 			return null;
 		}
+		// New application, so load it now
+		OWLloader::loadApplication($_applicCode, false);
 		return $_data[0]['url'];
 	}
 }

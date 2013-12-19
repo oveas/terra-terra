@@ -61,7 +61,7 @@ class UsermaintArea extends ContentArea
 		foreach ($_groups as $_gid => $_gval) {
 			$selPrigrp[] = array(
 				 'value' => $_gid
-				,'text'  => $_gval[0] . '(' . $_gval[1] . ')'
+				,'text'  => $_gval[0] . ' (' . $_gval[1] . ')'
 				,'selected' => ($_gid == $_user->getAttribute('gid'))
 			);
 			$selMbrshp[] = array(

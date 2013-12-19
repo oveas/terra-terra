@@ -121,14 +121,14 @@ class DataHandler extends _OWL
 	 */
 	public function __construct ($tablename = '')
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		$this->owl_data = array();
 		$this->owl_joins = array();
 		$this->owl_keys = array();
 		$this->owl_tablename = $tablename;
 		$this->owl_database = OWL::factory('DbHandler');
 		$this->owl_prepared = DATA_UNPREPARED;
-		$this->setStatus (OWL_STATUS_OK);
+		$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
 	}
 
 	/**
@@ -242,7 +242,7 @@ class DataHandler extends _OWL
 	{
 		if (is_array ($variable)) {
 			if (count ($variable, 0) != 2) {
-				$this->setStatus (DATA_IVARRAY);
+				$this->setStatus (__FILE__, __LINE__, DATA_IVARRAY);
 				return ($this->severity);
 			}
 			$_var = $variable[0] . '#' . $variable[1];
@@ -252,7 +252,7 @@ class DataHandler extends _OWL
 		if (!in_array ($_var, $this->owl_keys)) {
 			$this->owl_keys[] = $_var;
 		}
-		$this->setStatus (DATA_KEYSET, $variable);
+		$this->setStatus (__FILE__, __LINE__, DATA_KEYSET, $variable);
 		return ($this->getSeverity());
 	}
 
@@ -309,14 +309,14 @@ class DataHandler extends _OWL
 		} else {
 			switch ($this->findField($variable, $_k)) {
 				case 0:
-					$this->setStatus (DATA_NOTFOUND, $variable);
+					$this->setStatus (__FILE__, __LINE__, DATA_NOTFOUND, $variable);
 					return (null);
 					break;
 				case 1:
 					return ($this->owl_data[$_k[0]][1]);
 					break;
 				default:
-					$this->setStatus (DATA_AMBFIELD, $variable);
+					$this->setStatus (__FILE__, __LINE__, DATA_AMBFIELD, $variable);
 					return (null);
 					break;
 			}
@@ -338,7 +338,7 @@ class DataHandler extends _OWL
 	{
 		if (is_array ($lvalue)) {
 			if (count ($lvalue, 0) != 2) {
-				$this->setStatus (DATA_IVARRAY, 'lvalue');
+				$this->setStatus (__FILE__, __LINE__, DATA_IVARRAY, 'lvalue');
 				return ($this->severity);
 			}
 			$lvalue = $lvalue[0] . '#' . $lvalue[1];
@@ -348,7 +348,7 @@ class DataHandler extends _OWL
 
 		if (is_array ($rvalue)) {
 			if (count ($rvalue, 0) != 2) {
-				$this->setStatus (DATA_IVARRAY, 'rvalue');
+				$this->setStatus (__FILE__, __LINE__, DATA_IVARRAY, 'rvalue');
 				return ($this->severity);
 			}
 			$rvalue = $rvalue[0] . '#' . $rvalue[1];
@@ -357,16 +357,16 @@ class DataHandler extends _OWL
 		}
 /*
 		if (!array_key_exists ($lvalue, $this->owl_data)) {
-			$this->setStatus (DATA_NOSUCHFLD, $lvalue);
+			$this->setStatus (__FILE__, __LINE__, DATA_NOSUCHFLD, $lvalue);
 			return ($this->severity);
 		}
 		if (!array_key_exists ($rvalue, $this->owl_data)) {
-			$this->setStatus (DATA_NOSUCHFLD, $rvalue);
+			$this->setStatus (__FILE__, __LINE__, DATA_NOSUCHFLD, $rvalue);
 			return ($this->severity);
 		}
 */
 		$this->owl_joins[] = array ($lvalue, $linktype, $rvalue);
-		$this->setStatus (DATA_JOINSET, array($linktype, $lvalue, $rvalue));
+		$this->setStatus (__FILE__, __LINE__, DATA_JOINSET, array($linktype, $lvalue, $rvalue));
 		return ($this->severity);
 	}
 
@@ -393,11 +393,11 @@ class DataHandler extends _OWL
 	public function prepare ($type = DATA_READ)
 	{
 		if ($this->owl_database == null) {
-			$this->setStatus (DATA_NODBLINK);
+			$this->setStatus (__FILE__, __LINE__, DATA_NODBLINK);
 			return ($this->severity);
 		}
 		if (count ($this->owl_data) == 0){
-			$this->setStatus (DATA_NOSELECT);
+			$this->setStatus (__FILE__, __LINE__, DATA_NOSELECT);
 			return ($this->severity);
 		}
 
@@ -434,12 +434,12 @@ class DataHandler extends _OWL
 				break;
 			case DATA_UNPREPARED:
 			default:
-				$this->setStatus (DATA_IVPREPARE, $type);
+				$this->setStatus (__FILE__, __LINE__, DATA_IVPREPARE, $type);
 				return ($this->severity);
 				break;
 		}
 		if ($_stat <= OWL_SUCCESS) {
-			$this->setStatus (DATA_PREPARED, $_type);
+			$this->setStatus (__FILE__, __LINE__, DATA_PREPARED, $_type);
 			$this->owl_prepared = $type;
 		}
 		return ($this->setHighSeverity ($this->owl_database));

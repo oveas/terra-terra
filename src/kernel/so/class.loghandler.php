@@ -66,7 +66,7 @@ class LogHandler extends _OWL
 	 */
 	private function __construct ()
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		$this->opened = false;
 		$this->created = false;
 		$this->setFilename();
@@ -170,7 +170,7 @@ class LogHandler extends _OWL
 		$this->dataset->set('sid', $_u['sid']);
 		$this->dataset->set('step', $_u['step']);
 		$this->dataset->set('uid', $_u['uid']);
-		$this->dataset->set('applic', APPL_NAME);
+		$this->dataset->set('applic', OWLloader::getCurrentAppName());
 		$this->dataset->set('ip', $_u['ip']);
 		$this->dataset->set('referer', (array_key_exists('HTTP_REFERER', $_SERVER) ? $_SERVER['HTTP_REFERER'] : ''));
 		$this->dataset->set('dispatcher', serialize($dispatcher));
@@ -210,7 +210,7 @@ class LogHandler extends _OWL
 	private function openLogfile ()
 	{
 		if (($this->fpointer = fopen ($this->filename, 'a')) === false) {
-			$this->setStatus (LOGGING_OPENERR, $this->filename);
+			$this->setStatus (__FILE__, __LINE__, LOGGING_OPENERR, $this->filename);
 		}
 		$this->opened = true;
 	}
@@ -258,13 +258,15 @@ class LogHandler extends _OWL
 	 * Log an event signalled by OWL
 	 * \param[in] $msg Message text
 	 * \param[in] $code Status code of the message
+	 * \param[in] $callerFile Filename from where this call originates
+	 * \param[in] $callerLine Linenumber from where this call originates
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function log ($msg, $code)
+	public function log ($msg, $code, $callerFile, $callerLine)
 	{
 		$_severity = $this->getSeverity($code);
 		if ($_severity >= ConfigHandler::get ('logging', 'log_level')) {
-			$this->logLogFile($msg, $code, $_severity);
+			$this->logLogFile($msg, $code, $_severity, $callerFile, $callerLine);
 		}
 		if ($_severity >= ConfigHandler::get ('logging', 'log_console')) {
 			$this->logConsole($msg, $code);
@@ -276,9 +278,11 @@ class LogHandler extends _OWL
 	 * \param[in] $msg Message text
 	 * \param[in] $code Status code of the message
 	 * \param[in] $severity Severity of the message
+	 * \param[in] $callerFile Filename from where this call originates
+	 * \param[in] $callerLine Linenumber from where this call originates
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private function logLogFile($msg, $code, $severity)
+	private function logLogFile($msg, $code, $severity, $callerFile, $callerLine)
 	{
 		if (!$this->opened) {
 			$this->openLogfile ();
@@ -290,7 +294,7 @@ class LogHandler extends _OWL
 
 		$this->composeMessage ($msg, $code);
 
-		$this->writeLogfile ($msg);
+		$this->writeLogfile ($msg . " (File: $callerFile, Line: $callerLine)");
 
 		if ($severity >= ConfigHandler::get ('logging', 'trace_level', 0xf)
 			&& $severity < ConfigHandler::get ('exception', 'throw_level', 0x0) ) { // Will already be logged

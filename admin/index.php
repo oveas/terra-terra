@@ -10,22 +10,12 @@
 error_reporting (E_ALL | E_STRICT);
 
 define ('OWL_ROOT', '/var/www/owl-php');
-define ('APPL_CODE', 'OWL');
+
 define ('APP_CONFIG_FILE', '/var/www/owladmin/owladmin.cfg');
 define ('OWL_TIMERS_ENABLED', true);
 
 require (OWL_ROOT . '/OWLloader.php');
-
-define ('OWLADMIN_SO', APPL_SITE_TOP . '/so');
-define ('OWLADMIN_BO', APPL_SITE_TOP . '/bo');
-define ('OWLADMIN_UI', APPL_SITE_TOP . '/ui');
-
-if (!OWLloader::getClass('owluser', OWLADMIN_BO)) {
-	trigger_error('Error loading classfile OWLUser from ' . OWLADMIN_BO, E_USER_ERROR);
-}
-
-OWLUser::getReference();
-
+OWLloader::loadApplication('OWL');
 require (OWLADMIN_UI . '/mainpage.php');
 
 OWLloader::getClass('OWLrundown.php', OWL_ROOT);

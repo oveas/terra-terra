@@ -30,7 +30,7 @@ class Rightsmaint extends _OWL
 	 */
 	public function __construct($aid = 0, $rid = 0)
 	{
-		parent::init();
+		parent::init(__FILE__, __LINE__);
 		$this->dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
 			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));

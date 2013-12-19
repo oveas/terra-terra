@@ -119,15 +119,16 @@ abstract class ConfigHandler
 	 *
 	 * The first call must always read from a file. On subsequent calls, if no filename is given,
 	 * the configuration is taken from the (owl_)config table
+	 * \param[in] $_overwrite True if existing values may be overwritten
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function readConfig (array $_source)
+	public static function readConfig (array $_source, $_overwrite = true)
 	{
 		
 		self::initialise();
 		
 		if (array_key_exists('file', $_source)) {
-			self::configFile($_source['file']);
+			self::configFile($_source['file'], $_overwrite);
 		} else {
 			self::configTable(
 				 (array_key_exists('table', $_source) ? $_source['table'] : 'config')
@@ -135,6 +136,7 @@ abstract class ConfigHandler
 				,(array_key_exists('group', $_source) ? $_source['group'] : 0)
 				,(array_key_exists('user', $_source) ? $_source['user'] : 0)
 				,(array_key_exists('force', $_source) ? toBool($_source['force']) : false)
+				,$_overwrite
 			);
 		}
 	}
@@ -142,9 +144,10 @@ abstract class ConfigHandler
 	/**
 	 * Parse a configuration file
 	 * \param[in] $_file Filename
+	 * \param[in] $_overwrite True if existing values may be overwritten
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private static function configFile ($_file)
+	private static function configFile ($_file, $_overwrite)
 	{
 		if (($fpointer = fopen ($_file, 'r')) === false) {
 			die ('Fatal error reading configuration file: ' . $_file);
@@ -163,7 +166,7 @@ abstract class ConfigHandler
 				continue;
 			}
 			if ($_section == '') {
-				OWL::stat(CONFIG_EMPTYSECTION, array($_item));
+				OWL::stat(__FILE__, __LINE__, CONFIG_EMPTYSECTION, array($_item));
 				continue;
 			}
 			list ($_item, $_value) = explode ('=', $_line, 2);
@@ -179,7 +182,7 @@ abstract class ConfigHandler
 			$_hide = strpos ($_item, self::$cfgConfig['hide_tag']);
 			$_hide = ($_hide !== false);
 
-			self::parseItem($_section, $_item, $_value, $_protect, $_hide);
+			self::parseItem($_section, $_item, $_value, $_protect, $_hide, $_overwrite);
 		}
 		fclose ($fpointer);
 	}
@@ -191,9 +194,10 @@ abstract class ConfigHandler
 	 * \param[in] $_group Group ID for which the config should be read
 	 * \param[in] $_user User ID for which the config should be read
 	 * \param[in] $_force Boolean that can force overwrite of protected values
+	 * \param[in] $_overwrite True if existing values may be overwritten
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private static function configTable ($_table, $_applic, $_group, $_user, $_force)
+	private static function configTable ($_table, $_applic, $_group, $_user, $_force, $_overwrite)
 	{
 		if (self::$dataset === null) {
 			self::$dataset = new DataHandler();
@@ -223,7 +227,7 @@ abstract class ConfigHandler
 		self::$dataset->db ($_cfg, __LINE__, __FILE__);
 		if (count($_cfg) > 0) {
 			foreach ($_cfg as $_item) {
-				self::parseItem($_item['section'], $_item['name'], $_item['value'], $_item['protect'], $_item['hide']);
+				self::parseItem($_item['section'], $_item['name'], $_item['value'], $_item['protect'], $_item['hide'], $_overwrite);
 			}
 		}
 	}
@@ -260,9 +264,10 @@ abstract class ConfigHandler
 	 * \param[in] $_value Value of the config item
 	 * \param[in] $_protect Boolean indicating a protected value
 	 * \param[in] $_hide Boolean indicated a hidden value
+	 * \param[in] $_overwrite True if existing values may be overwritten
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private static function parseItem ($_section, $_item, $_value, $_protect, $_hide)
+	private static function parseItem ($_section, $_item, $_value, $_protect, $_hide, $_overwrite)
 	{
 		$_item = "$_section|$_item";
 		if ($_protect === true) {
@@ -271,7 +276,7 @@ abstract class ConfigHandler
 		}
 		if (in_array($_item, self::$cfgProtected)
 			&& array_key_exists($_item, self::$cfgValues)) {
-			OWL::stat(CONFIG_PROTECTED, $_item);
+			OWL::stat(__FILE__, __LINE__, CONFIG_PROTECTED, $_item);
 			return;
 		}
 
@@ -279,7 +284,7 @@ abstract class ConfigHandler
 			$_item = str_replace(self::$cfgConfig['hide_tag'], '', $_item);
 		}
 		$_value = self::convert ($_value);
-		self::_set($_item, $_value, $_hide);
+		self::_set($_item, $_value, $_hide, $_overwrite);
 	}
 
 	/**
@@ -304,7 +309,7 @@ abstract class ConfigHandler
 				$_dataset->db($_secID, __LINE__, __FILE__);
 				return ($_dataset->insertedId());
 			} else {
-				OWL::stat(CONFIG_NOSUCHSECTION, $_item);
+				OWL::stat(__FILE__, __LINE__, CONFIG_NOSUCHSECTION, $_item);
 				return -1;
 			}
 		} else {
@@ -352,7 +357,7 @@ abstract class ConfigHandler
 
 		if (!isset ($_c)) {
 			if ($default === null) {
-				OWL::stat (CONFIG_NOVALUE, (is_array($item)?implode('|', $item):$item));
+				OWL::stat (__FILE__, __LINE__, CONFIG_NOVALUE, (is_array($item)?implode('|', $item):$item));
 				return (null);
 			} else {
 				return $default;
@@ -378,7 +383,7 @@ abstract class ConfigHandler
 	{
 		$_item = "$_section|$_item";
 		if (in_array($_item, self::$cfgProtected)) {
-			OWL::stat(CONFIG_PROTECTED, $_item);
+			OWL::stat(__FILE__, __LINE__, CONFIG_PROTECTED, $_item);
 			return;
 		}
 		self::_set($_item, $_value, array_key_exists($_item, self::$cfgHidden));
@@ -390,9 +395,10 @@ abstract class ConfigHandler
 	 * \param[in] $_item Item name or path (seperated with '|')
 	 * \param[in] $_value The calue to be set
 	 * \param[in] $_hide Boolean which it true when this is a hidden item
+	 * \param[in] $_overwrite True if existing values may be overwritten
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private static function _set ($_item, $_value, $_hide)
+	private static function _set ($_item, $_value, $_hide, $_overwrite)
 	{
 		if ($_hide) {
 			$_value = owlCrypt($_value);
@@ -403,7 +409,7 @@ abstract class ConfigHandler
 				unset (self::$cfgCache['cget'][$_item]);
 		}
 
-		$_resetItem = $_item; // Used for the quick'n'dirty overwrite at the end of this method....
+//		$_resetItem = $_item; // Used for the quick'n'dirty overwrite at the end of this method....
 		if (strpos ($_item, '|') !== false) {
 			$_item = explode ('|', $_item);
 			$_pointer =& self::$cfgValues;
@@ -411,6 +417,9 @@ abstract class ConfigHandler
 				$_hidden =& self::$cfgHidden;
 			}
 			foreach ($_item as $_k => $_v) {
+				if ($_overwrite === false && array_key_exists($_v, $_pointer)) {
+					continue;
+				}
 				if ($_k == (count ($_item)-1)) {
 					if ($_hide) {
 						$_hidden[$_v] = $_value;
@@ -432,6 +441,9 @@ abstract class ConfigHandler
 				}
 			}
 		} else {
+			if ($_overwrite === false && array_key_exists($_item, $_value)) {
+					continue;
+			}
 			if ($_hide) {
 				self::$cfgHidden[$_item] = $_value;
 				self::$cfgValues[$_item] = self::$cfgConfig['hide_value'];

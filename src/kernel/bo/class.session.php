@@ -52,7 +52,7 @@ class Session extends OWLSessionHandler
 			$this->restoreSession();
 			if (ConfigHandler::get('session', 'check_ip') === true) {
 				if ($this->getSessionVar('ip') != $this->ipAddress()) {
-					$this->setStatus (SESSION_IPCHKFAIL);
+					$this->setStatus (__FILE__, __LINE__, SESSION_IPCHKFAIL);
 				}
 			}
 		}
@@ -79,7 +79,7 @@ class Session extends OWLSessionHandler
 		$this->setSessionVar('ip', $this->ipAddress());
 		$this->setSessionVar('step', 0, SESSIONVAR_INCR);
 		$this->setSessionVar('uid', 0); // Must be filled by the User class, 0 causes fatals on restore
-		$this->rights = new Rights(APPL_ID);
+		$this->rights = new Rights(OWLloader::getCurrentAppID());
 	}
 
 	/**
@@ -118,6 +118,8 @@ class Session extends OWLSessionHandler
 	 * \param[in] $appl ID of the application the bit belongs to
 	 * \return Boolean; true when the bit is set
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \todo If a previous session crashed for some reason, we won't have a rights object here and the session cookie
+	 * must be removed; implement some check.
 	 */
 	public function hasRight ($bit, $appl)
 	{

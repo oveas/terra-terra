@@ -72,9 +72,9 @@ class SchemeHandler extends _OWL
 	 */
 	private function __construct ()
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		$this->db = DbHandler::getInstance();
-		$this->setStatus (OWL_STATUS_OK);
+		$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
 	}
 
 	/**
@@ -119,7 +119,7 @@ class SchemeHandler extends _OWL
 	public function createScheme ($_tblname)
 	{
 		if ($this->inuse) {
-			$this->setStatus (SCHEMEHANDLE_INUSE, $this->table);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_INUSE, $this->table);
 			return ($this->severity);
 		}
 		self::reset();
@@ -136,7 +136,7 @@ class SchemeHandler extends _OWL
 	public function setEngine ($_engine)
 	{
 		if (!$this->inuse) {
-			$this->setStatus (SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTUSE);
 			return ($this->severity);
 		}
 		$this->engine = $_engine;
@@ -162,7 +162,7 @@ class SchemeHandler extends _OWL
 	public function defineScheme($_scheme)
 	{
 		if (!$this->inuse) {
-			$this->setStatus (SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTUSE);
 			return ($this->severity);
 		}
 		$this->scheme['columns'] = $_scheme;
@@ -183,14 +183,14 @@ class SchemeHandler extends _OWL
 	public function defineIndex($_index)
 	{
 		if (!$this->inuse) {
-			$this->setStatus (SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTUSE);
 			return ($this->severity);
 		}
 		$_primary = false;
 		foreach ($_index as $_name => $_descr) {
 			if (array_key_exists('primary', $_descr) && $_descr['primary']) {
 				if ($_primary) {
-					$this->setStatus (SCHEMEHANDLE_DUPLPRKEY, $this->table);
+					$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_DUPLPRKEY, $this->table);
 					return false;
 				}
 				$_name = 'PRIMARY';
@@ -213,7 +213,7 @@ class SchemeHandler extends _OWL
 	function scheme($_drops = false)
 	{
 		if (!$this->inuse) {
-			$this->setStatus (SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTUSE);
 			return ($this->severity);
 		}
 		$_return = $this->compare();
@@ -227,7 +227,7 @@ class SchemeHandler extends _OWL
 		if (!$_stat) {
 			$_db = $this->db->getResource(); // Create a variable since it's passed by reference
 			$this->db->getDriver()->dbError($_db, $_nr, $_msg);
-			$this->setStatus (SCHEMEHANDLE_DBERROR, $_msg);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_DBERROR, $_msg);
 		}
 		return ($this->severity);
 	}
@@ -242,7 +242,7 @@ class SchemeHandler extends _OWL
 	public function alterScheme($_field)
 	{
 		if (!$this->inuse) {
-			$this->setStatus (SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTUSE);
 			return ($this->severity);
 		}
 		foreach ($_field as $_fieldname => $_attributes) {
@@ -263,7 +263,7 @@ class SchemeHandler extends _OWL
 			 'auto_inc' => 0
 		);
 		if (!array_key_exists('columns', $this->scheme) || count($this->scheme['columns']) == 0) {
-			$this->setStatus (SCHEMEHANDLE_NOCOLS, $this->table);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOCOLS, $this->table);
 			return false;
 		}
 		foreach ($this->scheme['columns'] as $_fld => $_desc) {
@@ -276,7 +276,7 @@ class SchemeHandler extends _OWL
 							,'type' => null
 				);
 				if ($_counters['auto_inc'] > 0) {
-				$this->setStatus (SCHEMEHANDLE_MULAUTOINC, $this->table);
+				$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_MULAUTOINC, $this->table);
 					return false;
 				}
 				$_counters['auto_inc']++;
@@ -294,19 +294,19 @@ class SchemeHandler extends _OWL
 
 		}
 		if (!array_key_exists('indexes', $this->scheme) || count($this->scheme['indexes']) == 0) {
-			$this->setStatus (SCHEMEHANDLE_NOINDEX, $this->table);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOINDEX, $this->table);
 			return true;
 		}
 		foreach ($this->scheme['indexes'] as $_idx => $_desc) {
 			if (!array_key_exists('columns', $_desc)
 				|| !is_array($_desc['columns'])
 				|| count($_desc['columns']) == 0) {
-					$this->setStatus (SCHEMEHANDLE_NOCOLIDX, $this->table, $_idx);
+					$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOCOLIDX, $this->table, $_idx);
 					return false;
 			}
 			foreach ($_desc['columns'] as $_fld) {
 				if (!array_key_exists($_fld, $this->scheme['columns'])) {
-					$this->setStatus (SCHEMEHANDLE_IVCOLIDX, $this->table, $_idx, $_fld);
+					$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_IVCOLIDX, $this->table, $_idx, $_fld);
 					return false;
 				}
 			}
@@ -425,7 +425,7 @@ class SchemeHandler extends _OWL
 	{
 		$_columns = $this->db->getDriver()->dbTableColumns($this->db, $this->db->tablename($_tablename, true));
 		if ($_columns === null) {
-			$this->setStatus (SCHEMEHANDLE_EMPTYTABLE, $_tablename);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_EMPTYTABLE, $_tablename);
 			return null;
 		}
 		return $_columns;
@@ -441,7 +441,7 @@ class SchemeHandler extends _OWL
 	{
 		$_indexes = $this->db->getDriver()->dbTableIndexes($this->db, $this->db->tablename($_tablename, true));
 		if ($_indexes === null) {
-			$this->setStatus (SCHEMEHANDLE_NOINDEX, $_tablename);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOINDEX, $_tablename);
 			return null;
 		}
 		return $_indexes;
@@ -458,7 +458,7 @@ class SchemeHandler extends _OWL
 	{
 		if (!$this->db->tableExists($tablename)) {
 			$data = array();
-			$this->setStatus (SCHEMEHANDLE_NOTABLE, $tablename);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTABLE, $tablename);
 			return ($this->severity);
 		}
 		$data['columns'] = $this->getTableColumns($tablename);

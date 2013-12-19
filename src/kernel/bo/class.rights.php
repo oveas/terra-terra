@@ -83,7 +83,7 @@ class Rights extends Security
 			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
 		}
 		$dataset->setTablename('rights');
-		$dataset->set('aid', array(OWL_ID, APPL_ID));
+		$dataset->set('aid', array(OWL_ID, OWLloader::getCurrentAppID()));
 		$dataset->setKey('appl');
 		$dataset->prepare();
 		$dataset->db($data, __FILE__, __CLASS__);

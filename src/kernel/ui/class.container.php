@@ -53,15 +53,15 @@ class Container extends BaseElement
 	 */
 	public function __construct ($_type, $_content = '', array $_attribs = array(), array $_type_attribs = array())
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 
 		if (!OWLloader::getClass('container.'.$_type, OWL_PLUGINS . '/containers')) {
-			$this->setStatus(CONTAINER_IVTYPE, array($_type));
+			$this->setStatus(__FILE__, __LINE__, CONTAINER_IVTYPE, array($_type));
 			return null;
 		}
 		$_className = 'Container' . ucfirst($_type) . 'Plugin';
 		if (!($this->containerObject = new $_className)) {
-			$this->setStatus (CONTAINER_IVCLASSNAME, array($_type, $_className));
+			$this->setStatus (__FILE__, __LINE__, CONTAINER_IVCLASSNAME, array($_type, $_className));
 			return ($this->severity);
 		}
 		if (count($_attribs) > 0) {
@@ -82,7 +82,7 @@ class Container extends BaseElement
 	public function __call ($method, $arguments = null)
 	{
 		if (!method_exists($this->containerObject, $method)) {
-			$this->setStatus(CONTAINER_IVMETHOD, array($this->containerType));
+			$this->setStatus(__FILE__, __LINE__, CONTAINER_IVMETHOD, array($this->containerType));
 			return $this->severity;
 		}
 		return call_user_func_array(array($this->containerObject, $method), $arguments);
@@ -123,7 +123,7 @@ class Container extends BaseElement
 	{
 		$addContainer = 'add' . ucfirst($type);
 		if (!method_exists($this->containerObject, $addContainer)) {
-			$this->setStatus (CONTAINER_IVSUBCONTNR, array($type, get_class($this->containerObject)));
+			$this->setStatus (__FILE__, __LINE__, CONTAINER_IVSUBCONTNR, array($type, get_class($this->containerObject)));
 			return ($this->severity);
 		}
 		return $this->containerObject->$addContainer ($_content, $_attribs, $_type_attribs);

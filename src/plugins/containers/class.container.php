@@ -48,7 +48,7 @@ abstract class ContainerPlugin extends BaseElement
 	 */
 	protected function __construct ()
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		$this->nested_type = null;
 	}
 

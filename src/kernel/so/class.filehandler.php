@@ -70,7 +70,7 @@ class FileHandler extends _OWL
 	 */
 	public function __construct ($name, $req = true)
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 
 		if ($req === true) {
 			$this->fullName = realpath($name);
@@ -82,11 +82,11 @@ class FileHandler extends _OWL
 
 		if (!file_exists($this->fullName)) {
 			if ($req === false) {
-				$this->setStatus (FILE_NEWFILE, array (
+				$this->setStatus (__FILE__, __LINE__, FILE_NEWFILE, array (
 						$this->fullName
 				));
 			} else {
-				$this->setStatus (FILE_NOSUCHFILE, array (
+				$this->setStatus (__FILE__, __LINE__, FILE_NOSUCHFILE, array (
 						$this->fullName
 				));
 			}
@@ -97,7 +97,7 @@ class FileHandler extends _OWL
 //		$this->localfile = (preg_match('/^([a-z]+):\/\//i', $this->fullName) === 0);
 //		$this->myfile = (fileowner($this->fullName) == getmyuid());
 
-		$this->setStatus (OWL_STATUS_OK);
+		$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
 	}
 
 	/**
@@ -150,11 +150,11 @@ class FileHandler extends _OWL
 	{
 		if (!$this->opened) {
 			if (!($this->fpointer = fopen ($this->fullName, $mode))) {
-				$this->setStatus (FILE_OPENERR, array (
+				$this->setStatus (__FILE__, __LINE__, FILE_OPENERR, array (
 						$this->fullName
 				));
 			} else {
-				$this->setStatus (FILE_OPENED, array (
+				$this->setStatus (__FILE__, __LINE__, FILE_OPENED, array (
 						$this->fullName
 				));
 				$this->opened = true;
@@ -172,16 +172,16 @@ class FileHandler extends _OWL
 	public function write ($text, $addEOL = true)
 	{
 		if (!$this->opened) {
-			$this->setStatus (FILE_NOTOPENED, array (
+			$this->setStatus (__FILE__, __LINE__, FILE_NOTOPENED, array (
 					$this->fullName
 			));
 		} else if (!$this->writable) {
-			$this->setStatus (FILE_READONLY, array (
+			$this->setStatus (__FILE__, __LINE__, FILE_READONLY, array (
 					$this->fullName
 			));
 		} else {
 			fwrite($this->fpointer, $text . ($addEOL ? "\n" : ''));
-			$this->setStatus (OWL_STATUS_OK);
+			$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
 		}
 	}
 	/**
@@ -193,7 +193,7 @@ class FileHandler extends _OWL
 		if ($this->opened) {
 			fclose($this->fpointer);
 			$this->opened = false;
-			$this->setStatus (FILE_CLOSED, array (
+			$this->setStatus (__FILE__, __LINE__, FILE_CLOSED, array (
 					$this->fullName
 			));
 		}
@@ -226,7 +226,7 @@ class FileHandler extends _OWL
 	{
 		$__data = fgets ($this->fpointer, 4096);
 		if (feof($this->fpointer)) {
-			$this->setStatus (FILE_ENDOFFILE, array ($this->fullName));
+			$this->setStatus (__FILE__, __LINE__, FILE_ENDOFFILE, array ($this->fullName));
 		}
 		if ($trim & FILE_TRIM_L) {
 			$__data = rtrim ($__data);
@@ -296,9 +296,9 @@ class FileHandler extends _OWL
 	public function remove()
 	{
 		if (unlink($this->fullName)) {
-			$this->setStatus (FILE_DELETED, array ($this->fullName));
+			$this->setStatus (__FILE__, __LINE__, FILE_DELETED, array ($this->fullName));
 		} else {
-			$this->setStatus (FILE_DELERR, array ($this->fullName));
+			$this->setStatus (__FILE__, __LINE__, FILE_DELERR, array ($this->fullName));
 		}
 	}
 	
@@ -310,7 +310,7 @@ class FileHandler extends _OWL
 	public function downloadFile()
 	{
 		if (headers_sent()) {
-			$this->setStatus (OWL_HEADERSENT, array ($this->fullName));
+			$this->setStatus (__FILE__, __LINE__, OWL_HEADERSENT, array ($this->fullName));
 			return;
 		}
 		$this->getFileInfo();
@@ -321,7 +321,7 @@ class FileHandler extends _OWL
 		}
 	
 		if (!file_exists($this->fullName)) {
-			$this->setStatus (FILE_NOSUCHFILE, array ($this->fullName));
+			$this->setStatus (__FILE__, __LINE__, FILE_NOSUCHFILE, array ($this->fullName));
 			return;
 		}
 

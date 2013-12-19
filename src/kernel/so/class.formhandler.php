@@ -73,12 +73,12 @@ class FormHandler extends _OWL
 	 */
 	private function __construct ()
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		$this->owl_formvalues = array();
-		$this->setStatus (FORM_PARSE);
+		$this->setStatus (__FILE__, __LINE__, FORM_PARSE);
 		$this->parseFormdata ($_GET);
 		$this->parseFormdata ($_POST);
-		$this->setStatus (OWL_STATUS_OK);
+		$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
 	}
 
 	/**
@@ -138,7 +138,7 @@ class FormHandler extends _OWL
 		}
 
 		if (ConfigHandler::get ('general', 'debug') > 0) {
-			$this->setStatus (FORM_STORVALUE,
+			$this->setStatus (__FILE__, __LINE__, FORM_STORVALUE,
 				array ($variable
 						, (
 							is_array($this->owl_formvalues[$variable])
@@ -222,12 +222,12 @@ class FormHandler extends _OWL
 		} else {
 			$_val = null;
 			if ($variable != OWL_DISPATCHER_NAME) { // 'Home'
-				$this->setStatus (FORM_NOVALUE, $variable);
+				$this->setStatus (__FILE__, __LINE__, FORM_NOVALUE, $variable);
 			}
 		}
 
 		if (ConfigHandler::get ('general', 'debug') > 0) {
-			$this->setStatus (FORM_RETVALUE, array ($variable, (is_array($_val)?print_r($_val, 1):$_val)));
+			$this->setStatus (__FILE__, __LINE__, FORM_RETVALUE, array ($variable, (is_array($_val)?print_r($_val, 1):$_val)));
 		}
 		return ($_val);
 	}

@@ -22,6 +22,7 @@ OWLinstaller::addConfig($_id, 'locale', 'datetime', 'd-M-Y H:i:s');
 OWLinstaller::addConfig($_id, 'locale', 'log_date', 'd-m-Y');
 OWLinstaller::addConfig($_id, 'locale', 'log_time', 'H:i:s.u');
 OWLinstaller::addConfig($_id, 'locale', 'lang', 'en-UK');
+//OWLinstaller::addConfig($_id, 'locale', 'timezone', 'Europe/Brussels'); //!< \todo Add timezone as a required config item
 OWLinstaller::addConfig($_id, 'session', 'lifetime', '1440');
 OWLinstaller::addConfig($_id, 'session', 'pwd_minstrength', '2');
 OWLinstaller::addConfig($_id, 'session', 'check_ip', 'true');

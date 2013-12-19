@@ -49,7 +49,7 @@ class DirHandler extends _OWL
 	 */
 	public function __construct ($name, $req = true)
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		$this->objList = null;
 		if ($req === true) {
 			$this->fullName = realpath($name);

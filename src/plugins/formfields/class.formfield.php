@@ -57,7 +57,7 @@ abstract class FormFieldPlugin extends BaseElement
 	 */
 	public function __construct ()
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		$this->disabled = false;
 		$this->readonly = false;
 	}

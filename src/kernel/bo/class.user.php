@@ -70,7 +70,7 @@ abstract class User extends _OWL
 	 */
 	protected function construct ($username = false)
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 
 		$this->dataset = new DataHandler ();
 		if (ConfigHandler::get ('database', 'owltables', true)) {
@@ -131,14 +131,14 @@ abstract class User extends _OWL
 	private function newUser()
 	{
 		$this->readUserdata();
-		$this->rights = new Rights(APPL_ID);
+		$this->rights = new Rights(OWLloader::getCurrentAppID());
 		$this->getMemberships();
 		if (ConfigHandler::get('session', 'default_rights_all', false) === true) {
 			$this->session->setRights($this->rights->getBitmap(OWL_ID), OWL_ID);
-			$this->session->setRights($this->rights->getBitmap(APPL_ID), APPL_ID);
+			$this->session->setRights($this->rights->getBitmap(OWLloader::getCurrentAppID()), OWLloader::getCurrentAppID());
 		} else {
 			$this->session->setRights($this->group->getRights(OWL_ID), OWL_ID);
-			$this->session->setRights($this->group->getRights(APPL_ID), APPL_ID);
+			$this->session->setRights($this->group->getRights(OWLloader::getCurrentAppID()), OWLloader::getCurrentAppID());
 		}
 	}
 
@@ -196,19 +196,19 @@ abstract class User extends _OWL
 		$this->dataset->db($this->user_data, __LINE__, __FILE__);
 		$_dbstat = $this->dataset->dbStatus();
 		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
-			$this->setStatus (USER_LOGINFAIL, array (
+			$this->setStatus (__FILE__, __LINE__, USER_LOGINFAIL, array (
 				  $username
 				, (ConfigHandler::get ('logging', 'hide_passwords') ? '*****' : $this->dataset->get('password'))
 			));
 		} elseif ($_dbstat === DBHANDLE_ROWSREAD) {
 			$this->user_data = $this->user_data[0]; // Shift up one level
 			if ($this->user_data['verification'] !== '') {
-				$this->setStatus (USER_NOTCONFIRMED, array($username));
+				$this->setStatus (__FILE__, __LINE__, USER_NOTCONFIRMED, array($username));
 			} else {
 				$this->clearUser();
 				$this->session->setSessionVar('uid', $this->user_data['uid']);
 				$this->newUser();
-				$this->setStatus (USER_LOGGEDIN, array (
+				$this->setStatus (__FILE__, __LINE__, USER_LOGGEDIN, array (
 					  $this->session->getSessionVar('username')
 					, (ConfigHandler::get ('logging', 'hide_passwords') ? '*****' : $this->dataset->get('password'))
 				));
@@ -267,7 +267,7 @@ abstract class User extends _OWL
 		$this->dataset->db($this->user_data, __LINE__, __FILE__);
 		$_dbstat = $this->dataset->dbStatus();
 		if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
-			$this->setStatus (USER_RESTORERR, $this->getUserId());
+			$this->setStatus (__FILE__, __LINE__, USER_RESTORERR, $this->getUserId());
 		} else {
 			$this->user_data = $this->user_data[0]; // Shift up one level
 			$this->group = new Group($this->user_data['gid']);
@@ -294,12 +294,12 @@ abstract class User extends _OWL
 			$this->dataset->db($this->user_data, __LINE__, __FILE__);
 			$_dbstat = $this->dataset->dbStatus();
 			if ($_dbstat === DBHANDLE_NODATA || count ($this->user_data) !== 1) {
-				$this->setStatus (USER_NOSUCHUSER, array($username));
+				$this->setStatus (__FILE__, __LINE__, USER_NOSUCHUSER, array($username));
 			} else {
 				$this->user_data = $this->user_data[0]; // Shift up one level
 				$this->group = new Group($this->user_data['gid']);
 			}
-			$this->rights = new Rights(APPL_ID);
+			$this->rights = new Rights(OWLloader::getCurrentAppID());
 			$this->getMemberships($this->user_data['uid']);
 		}
 	}
@@ -377,16 +377,16 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	protected function register($username, $email, $password, $vpassword, $group = 0, $self_register = true)
 	{
 		if ($this->usernameExists($username) === true) {
-			$this->setStatus (USER_DUPLUSERNAME, array ($username));
+			$this->setStatus (__FILE__, __LINE__, USER_DUPLUSERNAME, array ($username));
 			return -1;
 		}
 		$_minPwdStrength = ConfigHandler::get ('session', 'pwd_minstrength');
 		if ($self_register === true && $_minPwdStrength > 0 && self::passwordStrength($password, array($username, $email)) < $_minPwdStrength) {
-			$this->setStatus (USER_WEAKPASSWD);
+			$this->setStatus (__FILE__, __LINE__, USER_WEAKPASSWD);
 			return -1;
 		}
 		if ($password !== $vpassword) {
-			$this->setStatus (USER_PWDVERFAILED);
+			$this->setStatus (__FILE__, __LINE__, USER_PWDVERFAILED);
 			return -1;
 		}
 		if ($group === 0) {
@@ -427,11 +427,11 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	{
 		$_minPwdStrength = ConfigHandler::get ('session', 'pwd_minstrength');
 		if ($chk_strength === true && $_minPwdStrength > 0 && self::passwordStrength($password, array($username, $email)) < $_minPwdStrength) {
-			$this->setStatus (USER_WEAKPASSWD);
+			$this->setStatus (__FILE__, __LINE__, USER_WEAKPASSWD);
 			return false;
 		}
 		if ($password !== $vpassword) {
-			$this->setStatus (USER_PWDVERFAILED);
+			$this->setStatus (__FILE__, __LINE__, USER_PWDVERFAILED);
 			return false;
 		}
 
@@ -482,7 +482,7 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	protected function confirm(array $_confirmation)
 	{
 		if (!array_key_exists('uid', $_confirmation) || !array_key_exists('vcode', $_confirmation)) {
-			$this->setStatus (USER_IVCONFARG);
+			$this->setStatus (__FILE__, __LINE__, USER_IVCONFARG);
 			return (false);
 		}
 
@@ -492,17 +492,17 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 		$_result = null;
 		$this->dataset->db ($_result, __LINE__, __FILE__);
 		if ($this->dataset->dbStatus() === DBHANDLE_NODATA) {
-			$this->setStatus (USER_IVCONFARG);
+			$this->setStatus (__FILE__, __LINE__, USER_IVCONFARG);
 			return (false);
 		}
 		$this->dataset->setKey('uid');
 		$this->dataset->set('verification', '');
 		$this->dataset->prepare(DATA_UPDATE);
 		if ($this->dataset->db ($_result, __LINE__, __FILE__) <= OWL_SUCCESS) {
-			$this->setStatus(USER_CONFIRMED);
+			$this->setStatus(__FILE__, __LINE__, USER_CONFIRMED);
 			return (true);
 		} else {
-			$this->setStatus(USER_CONFERR);
+			$this->setStatus(__FILE__, __LINE__, USER_CONFERR);
 			return (false);
 		}
 	}
@@ -641,7 +641,7 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	protected function setAttribute($attr, $value)
 	{
 		if (!array_key_exists($attr, $this->user_data)) {
-			$this->setStatus (USER_INVATTRIBUTE, array($attr));
+			$this->setStatus (__FILE__, __LINE__, USER_INVATTRIBUTE, array($attr));
 			return false;
 		}
 
@@ -666,7 +666,7 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 		}
 		// Initialize with the values for the primary group
 		$this->rights->mergeBitmaps($this->group->getRights(OWL_ID), OWL_ID);
-		$this->rights->mergeBitmaps($this->group->getRights(APPL_ID), APPL_ID);
+		$this->rights->mergeBitmaps($this->group->getRights(OWLloader::getCurrentAppID()), OWLloader::getCurrentAppID());
 		$dataset->setTablename('memberships');
 		$dataset->set('uid', ($uid === 0) ? $this->getUserId() : $uid);
 		$dataset->prepare();
@@ -676,7 +676,7 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 			foreach ($_data as $_mbrship) {
 				$this->memberships['m'.$_mbrship['gid']] = new Group($_mbrship['gid']);
 				$this->rights->mergeBitmaps($this->memberships['m'.$_mbrship['gid']]->getRights(OWL_ID), OWL_ID);
-				$this->rights->mergeBitmaps($this->memberships['m'.$_mbrship['gid']]->getRights(APPL_ID), APPL_ID);
+				$this->rights->mergeBitmaps($this->memberships['m'.$_mbrship['gid']]->getRights(OWLloader::getCurrentAppID()), OWLloader::getCurrentAppID());
 			}
 		}
 	}

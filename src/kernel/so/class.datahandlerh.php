@@ -76,7 +76,7 @@ class HDataHandler extends DataHandler
 	 */
 	public function __construct ($tablename = '')
 	{
-		_OWL::init();
+		_OWL::init(__FILE__, __LINE__);
 		parent::__construct($tablename);
 		$this->left = 'lft';
 		$this->right = 'rgt';
@@ -122,7 +122,7 @@ class HDataHandler extends DataHandler
 	public function enableCrossLink($fieldname)
 	{
 		if ($this->xlinkID === null) {
-			$this->setStatus(HDATA_NOXLINKID);
+			$this->setStatus(__FILE__, __LINE__, HDATA_NOXLINKID);
 			return (false);
 		}
 //		$this->xlink = $this->owl_database->getDriver()->dbQuote($fieldname);
@@ -280,7 +280,7 @@ class HDataHandler extends DataHandler
 				if ($this->owl_database->read(DBHANDLE_DATA, $idList
 							, 'SELECT ' .$this->owl_database->getDriver()->dbQuote($this->xlink) . " FROM $table WHERE ". $this->owl_database->getDriver()->dbQuote($this->xlink) . " = '" . $node[$this->xlinkID] . "' "
 							, __LINE__, __FILE__)  >= OWL_WARNING) {
-					$this->setStatus(DATA_DBWARNING, array($this->owl_database->getLastWarning()));
+					$this->setStatus(__FILE__, __LINE__, DATA_DBWARNING, array($this->owl_database->getLastWarning()));
 					return (false);
 				}
 				if ($this->dbStatus() === DBHANDLE_NODATA) {
@@ -369,7 +369,7 @@ class HDataHandler extends DataHandler
 			if ($this->owl_database->read(DBHANDLE_SINGLEFIELD, $id
 						, "SELECT ". $this->owl_database->getDriver()->dbQuote($this->xlinkID) . " FROM $table WHERE $field = '$value' "
 						, __LINE__, __FILE__)  >= OWL_WARNING) {
-				$this->setStatus(DATA_DBWARNING, array($this->owl_database->getLastWarning()));
+				$this->setStatus(__FILE__, __LINE__, DATA_DBWARNING, array($this->owl_database->getLastWarning()));
 				return (false);
 			}
 			if (ConfigHandler::get ('database', 'driver') == 'Oracle') {
@@ -480,12 +480,12 @@ class HDataHandler extends DataHandler
 	private function readQuery ($query, $line)
 	{
 		OWLdbg_add(OWLDEBUG_OWL_SQL, $query, 'Read from database', 1);
-		$this->setStatus (HDATA_QUERY, array('read', $query));
+		$this->setStatus (__FILE__, __LINE__, HDATA_QUERY, array('read', $query));
 		if ($this->owl_database->read (DBHANDLE_DATA, $data, $query, $line, __FILE__) >= OWL_WARNING) {
-			$this->setStatus(DATA_DBWARNING, array($this->owl_database->getLastWarning()));
+			$this->setStatus(__FILE__, __LINE__, DATA_DBWARNING, array($this->owl_database->getLastWarning()));
 			return (false);
 		}
-		$this->setStatus (HDATA_RESULT, array(count($data)));
+		$this->setStatus (__FILE__, __LINE__, HDATA_RESULT, array(count($data)));
 		return ($data);
 	}
 
@@ -570,7 +570,7 @@ class HDataHandler extends DataHandler
 			$topLevel = false;
 		}
 		if (!array_key_exists('field', $parent) || ($topLevel === false && !array_key_exists('value', $parent))) {
-			$this->setStatus(HDATA_IVNODESPEC);
+			$this->setStatus(__FILE__, __LINE__, HDATA_IVNODESPEC);
 			return (false);
 		}
 		if ($topLevel) {
@@ -613,12 +613,12 @@ class HDataHandler extends DataHandler
 	public function addParent (array $node, array $parent)
 	{
 		if ($this->xlink === null) {
-			$this->setStatus(HDATA_XLINKDISA);
+			$this->setStatus(__FILE__, __LINE__, HDATA_XLINKDISA);
 			return (false);
 		}
 		if (!array_key_exists('field', $node) || !array_key_exists('value', $node)
 			|| !array_key_exists('field', $parent) || !array_key_exists('value', $parent)) {
-			$this->setStatus(HDATA_IVNODESPEC);
+			$this->setStatus(__FILE__, __LINE__, HDATA_IVNODESPEC);
 			return (false);
 		}
 		$table = $this->owl_database->tablename($this->owl_tablename);
@@ -777,7 +777,7 @@ class HDataHandler extends DataHandler
 	public function moveNode ($field, $value, array $newParent, $position = -1)
 	{
 		if (!array_key_exists('field', $newParent) || !array_key_exists('value', $newParent)) {
-			$this->setStatus(HDATA_IVNODESPEC);
+			$this->setStatus(__FILE__, __LINE__, HDATA_IVNODESPEC);
 			return (false);
 		}
 		$table = $this->owl_database->tablename($this->owl_tablename);
@@ -886,13 +886,13 @@ class HDataHandler extends DataHandler
 	private function writeQuery ($query, $line)
 	{
 		OWLdbg_add(OWLDEBUG_OWL_SQL, $query, 'Write to database', 1);
-		$this->setStatus (HDATA_QUERY, array('write', $query));
+		$this->setStatus (__FILE__, __LINE__, HDATA_QUERY, array('write', $query));
 		$this->owl_database->setQuery($query);
 		if ($this->owl_database->write ($rowCount, $line, __FILE__) >= OWL_WARNING) {
-			$this->setStatus(DATA_DBWARNING, array($this->owl_database->getLastWarning()));
+			$this->setStatus(__FILE__, __LINE__, DATA_DBWARNING, array($this->owl_database->getLastWarning()));
 			return (false);
 		}
-		$this->setStatus (HDATA_RESULT, array($rowCount));
+		$this->setStatus (__FILE__, __LINE__, HDATA_RESULT, array($rowCount));
 		return ($rowCount);
 	}
 }

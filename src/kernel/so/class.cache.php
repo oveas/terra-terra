@@ -29,26 +29,30 @@
  */
 
 //! List of all classfiles that have been loaded
-define ('OWLCACHE_CLASSES',		0);
+define ('OWLCACHE_CLASSES',			0);
 
 //! List of all language specific messagesfiles that have been loaded
-define ('OWLCACHE_MSGFILES',	1);
+define ('OWLCACHE_MSGFILES',		1);
 
 //! List of all language specific labelfiles that have been loaded
-define ('OWLCACHE_LBLFILES',	2);
+define ('OWLCACHE_LBLFILES',		2);
 
 //! List of all language specific labels and messages
-define ('OWLCACHE_LOCALE',	3);
+define ('OWLCACHE_LOCALE',			3);
 
 //! Globally available objects, mainly singletons (user, logger etc)
-define ('OWLCACHE_OBJECTS',		4);
+define ('OWLCACHE_OBJECTS',			4);
 
 //! Current configuration
-define ('OWLCACHE_CONFIG',		5);
+define ('OWLCACHE_CONFIG',			5);
 
 //! Register data
-define ('OWLCACHE_REGISTER',	6);
+define ('OWLCACHE_REGISTER',		6);
+
+//! List of all applications that have been loaded
+define ('OWLCACHE_APPLICATIONS',	7);
 //! @}
+
 
 /**
  * \ingroup OWL_SO_LAYER
@@ -75,6 +79,7 @@ abstract class OWLCache
 			,OWLCACHE_MSGFILES => array()
 			,OWLCACHE_LBLFILES  => array()
 			,OWLCACHE_OBJECTS => array()
+			,OWLCACHE_APPLICATIONS => array()
 		);
 	}
 
@@ -82,7 +87,7 @@ abstract class OWLCache
 	 * Get a value from cache
 	 * \param[in] $cache Name of the cache array
 	 * \param[in] $key Key in the cache array
-	 * \return Value that was found, of null when nothing was found
+	 * \return Value that was found, or null when nothing was found
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function get ($cache, $key)
@@ -132,6 +137,22 @@ abstract class OWLCache
 		return ($value);
 	}
 
+	public static function addApplic ($applCode, array $applData)
+	{
+		self::set (OWLCACHE_APPLICATIONS, $applCode, $applData);
+	}
+
+	public static function getApplic ($applCode, $item = null)
+	{
+		if (($_app = self::get(OWLCACHE_APPLICATIONS, $applCode)) === null) {
+			return null;
+		}
+		if ($item === null) {
+			return $_app;
+		}
+		return $_app[$item];
+	}
+	
 	/**
 	 * Load cached data
 	 * \todo Data caching is not yet implemented - this is a placeholder for future use

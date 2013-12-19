@@ -98,15 +98,15 @@
  * 
  * \code
  *  1. define ('OWL_ROOT', '/var/www/owl-php');
- *  2. define ('APPL_CODE', 'ABC');
- *  3. define ('APP_CONFIG_FILE', '/var/www/owladmin/abc.cfg');
- *  4. 
- *  5. require (OWL_ROOT . '/OWLloader.php');
- *  6. 
- *  7. define ('ABC_SO', APPL_SITE_TOP . '/so');
- *  8. define ('ABC_BO', APPL_SITE_TOP . '/bo');
- *  9. define ('ABC_UI', APPL_SITE_TOP . '/ui');
- * 10. Register::registerApp(APPL_NAME, 0x02000001);
+ *  2. define ('APP_CONFIG_FILE', '/var/www/owladmin/abc.cfg');
+ *  3. 
+ *  4. require (OWL_ROOT . '/OWLloader.php');
+ *  5. OWLloader::loadApplication('ABC');
+ *  6.
+ *  7. define ('ABC_SO', OWLloader::getCurrentAppUrl() . '/so');
+ *  8. define ('ABC_BO', OWLloader::getCurrentAppUrl() . '/bo');
+ *  9. define ('ABC_UI', OWLloader::getCurrentAppUrl() . '/ui');
+ * 10. Register::registerApp(OWLloader::getCurrentAppName(), 0x02000001);
  * 11. Register::registerLabels();
  * 12.
  * 13. if (!OWLloader::getClass('abcuser', ABC_BO)) {
@@ -121,27 +121,28 @@
  * 
  * \subsection defines Required defines
  * 
- * First, your application must define itself and the environment. Therefore, 2 constants are required:
+ * First, your application must define the environment:
  *   * OWL_ROOT: (line 1) Full path at the server to the OWL-PHP installation directory
- *   * APPL_CODE: (line 2) This is the code by which OWL-PHP identifies the application. The applicatino must be installed using this code (installation will
- *   be described elsewhere)
  * 
- * Optionally, a configuration file can be defined (line 3). If set, the configfile can override most settings that are in the OWL-PHP default configuration.
+ * Optionally, a configuration file can be defined (line 2). If set, the configfile can override most settings that are in the OWL-PHP default configuration.
  * Most of the settings can also be stored in the database and changed dynamically.
  * 
  * For more constants thet can be defined by the application, see \ref GlobalConstants.
  * 
  * \subsection owlloader The OWL-Loader
  * 
- * Next step is loading the OWL-PHP library (line 5).
+ * Next step is loading the OWL-PHP library (line 4). After this call, the OWL-Loader is used to load your own application (line 5).
+ * The loadApplication() method accepts an optional second parameter the boolean $primary). This parameter is for internal use by OWL-PHP: the default here is 'true'
+ * and when called from the entry point of your application is must always be true!
  * 
  * \subsection structure Application structure
  * 
  * OWL-PHP is built using a 3-tier architecture, and although it is good practice to stick to the same architecture, you're free to use
  * your own favorite like MVC.
  * 
- * The defines at lines 7-9 use the constant APPL_SITE_TIO that is provided by OWL-PHP. The constants created here are used by the
- * applicatino only, so they can be freely choosen (or even completely omitted).
+ * The defines at lines 7-9 use the getter method OWLloader::getCurrentAppUrl() to get application data of your own application that is
+ * stored in cache by the OWL-Loader.
+ * The constants created here are used by the applicatino only, so they can be freely choosen (or even completely omitted).
  * 
  * On line 10, a unique code is defined that is used by the message handling - to be explained later (but this will probably change).
  * 
