@@ -5,29 +5,29 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 
-if (!OWLloader::getClass('sockethandler', OWL_SO_INC)) {
-	trigger_error('Error loading classfile sockethandler from '. OWL_SO_INC, E_USER_ERROR);
+if (!TTloader::getClass('sockethandler', TT_SO_INC)) {
+	trigger_error('Error loading classfile sockethandler from '. TT_SO_INC, E_USER_ERROR);
 }
 
 /**
- * \ingroup OWL_DRIVERS
+ * \ingroup TT_DRIVERS
  * Class that defines the raw SMTP mail drivers
  * \brief Mail driver
  * \see class MailDriver
@@ -46,15 +46,15 @@ class RawSMTP extends MailDefaults implements MailDriver
 	}
 
 	/**
-	 * Reimplement _OWL::getLastWarning() to get the last error message either of the socket object or my own
-	 * \return null if there was no error (no severity OWL_WARNING or higher), otherwise the error text.
+	 * Reimplement _TT::getLastWarning() to get the last error message either of the socket object or my own
+	 * \return null if there was no error (no severity TT_WARNING or higher), otherwise the error text.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getLastWarning()
 	{
-		$this->mailSocket->signal(OWL_WARNING, $_err);
+		$this->mailSocket->signal(TT_WARNING, $_err);
 		if ($_err === false) {
-			$this->signal(OWL_WARNING, $_err);
+			$this->signal(TT_WARNING, $_err);
 		}
 		return (($_err === false) ? null : $_err);
 	}
@@ -70,26 +70,26 @@ class RawSMTP extends MailDefaults implements MailDriver
 	{
 		$_server = ConfigHandler::get('mail', 'smtp_server', 'localhost');
 		$this->mailSocket = new SocketHandler('smtp', $_server);
-		if ($this->mailSocket->connect() >= OWL_WARNING) {
+		if ($this->mailSocket->connect() >= TT_WARNING) {
 			return (false);
 		}
 		$_myhost = ConfigHandler::get('mail', 'my_hostname', gethostname());
 
-		if ($this->mailSocket->write ('HELO ' .$_myhost, SOCK_ACCEPTED) >= OWL_WARNING) {
+		if ($this->mailSocket->write ('HELO ' .$_myhost, SOCK_ACCEPTED) >= TT_WARNING) {
 			return (false);
 		}
-		if ($this->mailSocket->write ('mail from: <' . $mail['from'] . '>', SOCK_ACCEPTED) >= OWL_WARNING) {
+		if ($this->mailSocket->write ('mail from: <' . $mail['from'] . '>', SOCK_ACCEPTED) >= TT_WARNING) {
 			return (false);
 		}
 
 		foreach ($mail['recipients'] as $_rcpt) {
-			if ($this->mailSocket->write ("rcpt to: <$_rcpt>", SOCK_ACCEPTED) >= OWL_WARNING) {
+			if ($this->mailSocket->write ("rcpt to: <$_rcpt>", SOCK_ACCEPTED) >= TT_WARNING) {
 				return (false);
 			}
 		}
 
 		// Okay, start sending the data
-		if ($this->mailSocket->write (SOCK_DATA_START, SOCK_DATA_STARTED) >= OWL_WARNING) {
+		if ($this->mailSocket->write (SOCK_DATA_START, SOCK_DATA_STARTED) >= TT_WARNING) {
 			return (false);
 		}
 
@@ -130,7 +130,7 @@ class RawSMTP extends MailDefaults implements MailDriver
 		// So far the header, now send the message body
 		$this->mailSocket->write ($mail['body']);
 
-		if ($this->mailSocket->write (SOCK_DATA_END, SOCK_ACCEPTED) >= OWL_WARNING) {
+		if ($this->mailSocket->write (SOCK_DATA_END, SOCK_ACCEPTED) >= TT_WARNING) {
 			return (false);
 		}
 		$this->mailSocket->write (SOCK_SESSION_END);

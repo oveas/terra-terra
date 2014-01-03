@@ -5,24 +5,24 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_UI_PLUGINS
+ * \ingroup TT_UI_PLUGINS
  * Class defining Div container plugin
  * \brief LinkContainer
  * \author Oscar van Eijk, Oveas Functionality Provider
@@ -86,13 +86,13 @@ class ContainerLinkPlugin extends ContainerPlugin
 	/**
 	 * Set a dispatcher as href attribute
 	 * \note This overwrites the href attribute
-	 * \param[in] $_dispatcher OWL dispatcher as string or array, \see Dispatcher::composeDispatcher()
+	 * \param[in] $_dispatcher TT dispatcher as string or array, \see Dispatcher::composeDispatcher()
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setDispatcher($_dispatcher)
 	{
-		$_disp = OWL::factory('Dispatcher', 'bo');
-		$this->href = OWL_CALLBACK_URL . '?' . OWL_DISPATCHER_NAME . '=' . $_disp->composeDispatcher($_dispatcher);
+		$_disp = TT::factory('Dispatcher', 'bo');
+		$this->href = TT_CALLBACK_URL . '?' . TT_DISPATCHER_NAME . '=' . $_disp->composeDispatcher($_dispatcher);
 	}
 
 	/**

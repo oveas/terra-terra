@@ -5,31 +5,31 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * Handler for all database schemes. This singleton class handles all updates to db tables
  * \brief Scheme handler
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \version Oct 7, 2010 -- O van Eijk -- initial version for OWL
+ * \version Oct 7, 2010 -- O van Eijk -- initial version for TT
  * \note A port of this class has been created for VirtueMart
  */
-class SchemeHandler extends _OWL
+class SchemeHandler extends _TT
 {
 	/**
 	 * integer - Scheme Handle ID
@@ -72,9 +72,9 @@ class SchemeHandler extends _OWL
 	 */
 	private function __construct ()
 	{
-		_OWL::init(__FILE__, __LINE__);
+		_TT::init(__FILE__, __LINE__);
 		$this->db = DbHandler::getInstance();
-		$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
+		$this->setStatus (__FILE__, __LINE__, TT_STATUS_OK);
 	}
 
 	/**
@@ -489,24 +489,24 @@ class SchemeHandler extends _OWL
  */
 Register::registerClass ('SchemeHandler');
 
-//Register::setSeverity (OWL_DEBUG);
+//Register::setSeverity (TT_DEBUG);
 
-Register::setSeverity (OWL_INFO);
+Register::setSeverity (TT_INFO);
 Register::registerCode ('SCHEMEHANDLE_NOTABLE');
 Register::registerCode ('SCHEMEHANDLE_NOINDEX');
 
-//Register::setSeverity (OWL_OK);
-//Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (TT_OK);
+//Register::setSeverity (TT_SUCCESS);
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('SCHEMEHANDLE_IVTABLE');
 
-Register::setSeverity (OWL_BUG);
+Register::setSeverity (TT_BUG);
 Register::registerCode ('SCHEMEHANDLE_INUSE');
 Register::registerCode ('SCHEMEHANDLE_NOUSE');
 Register::registerCode ('SCHEMEHANDLE_EMPTYTABLE');
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 Register::registerCode ('SCHEMEHANDLE_DBERROR');
 Register::registerCode ('SCHEMEHANDLE_DUPLPRKEY');
 Register::registerCode ('SCHEMEHANDLE_MULAUTOINC');
@@ -514,5 +514,5 @@ Register::registerCode ('SCHEMEHANDLE_NOCOLIDX');
 Register::registerCode ('SCHEMEHANDLE_IVCOLIDX');
 Register::registerCode ('SCHEMEHANDLE_NOCOLS');
 
-Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

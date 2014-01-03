@@ -5,24 +5,24 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2013} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_DRIVERS
+ * \ingroup TT_DRIVERS
  * Class that defines the PHP mail drivers
  * \brief Mail driver
  * \see class MailDriver
@@ -37,15 +37,15 @@ class PHPMail extends MailDefaults implements MailDriver
 	}
 
 	/**
-	 * Reimplement _OWL::getLastWarning() to get the last error message either of the socket object or my own
-	 * \return null if there was no error (no severity OWL_WARNING or higher), otherwise the error text.
+	 * Reimplement _TT::getLastWarning() to get the last error message either of the socket object or my own
+	 * \return null if there was no error (no severity TT_WARNING or higher), otherwise the error text.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getLastWarning()
 	{
-		$this->mailSocket->signal(OWL_WARNING, $_err);
+		$this->mailSocket->signal(TT_WARNING, $_err);
 		if ($_err === false) {
-			$this->signal(OWL_WARNING, $_err);
+			$this->signal(TT_WARNING, $_err);
 		}
 		return (($_err === false) ? null : $_err);
 	}

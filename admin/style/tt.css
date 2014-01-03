@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 /**
  * \file
- * Style sheet for OWL generated output
+ * Style sheet for TT generated output
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
@@ -128,15 +128,15 @@ a.menuHeader, a.menuHeader:hover {
 }
 
 /*
- * OWL Timers
+ * TT Timers
  */
-.OWLtimers, .OWLtimerWarnings {
+.TTtimers, .TTtimerWarnings {
 	font-family			: Arial, sans-serif;
 	font-size			: 8pt;
 }
-.OWLtimers {
+.TTtimers {
 	color				: #86a985;
 }
-.OWLtimerWarnings {
+.TTtimerWarnings {
 	color				: #be533f;
 }

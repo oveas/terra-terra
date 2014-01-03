@@ -5,20 +5,20 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -26,17 +26,17 @@
  * @{
  */
 //! Raw output - text will be echoed as is
-define ('OWL_OUTPUT_RAW',	1);
+define ('TT_OUTPUT_RAW',	1);
 //! Format the text for use with AJAX (reserved)
-define ('OWL_OUTPUT_AJAX',	2);
+define ('TT_OUTPUT_AJAX',	2);
 //! Format the text as a line
-define ('OWL_OUTPUT_LINE',	3);
+define ('TT_OUTPUT_LINE',	3);
 //! Format the text as a paragraph (div)
-define ('OWL_OUTPUT_PAR',	4);
+define ('TT_OUTPUT_PAR',	4);
 // @}
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * This abstract class contains all methods to send output to different channels. Although
  * the normal echo statement can be used, it is adviseable to use the methods from this class.
  * \brief Output handler
@@ -55,20 +55,20 @@ abstract class OutputHandler
 	 * although these output methods can also be called directly.
 	 * \param[in] $text Text that should be send to the output channel. Can contain HTML
 	 * \param[in] $method Format method, must be a method as defined in \ref OutputMethods. If anything
-	 * else is given, OWL_OUTPUT_RAW is assumed.
-	 * \param[in] $class Optional CSS class (ignored for OWL_OUTPUT_RAW and OWL_OUTPUT_AJAX)
+	 * else is given, TT_OUTPUT_RAW is assumed.
+	 * \param[in] $class Optional CSS class (ignored for TT_OUTPUT_RAW and TT_OUTPUT_AJAX)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	static public function output ($text, $method = OWL_OUTPUT_RAW, $class = null)
+	static public function output ($text, $method = TT_OUTPUT_RAW, $class = null)
 	{
 		switch ($method) {
-			case OWL_OUTPUT_AJAX :
+			case TT_OUTPUT_AJAX :
 				self::outputAjax($text);
 				break;
-			case OWL_OUTPUT_LINE :
+			case TT_OUTPUT_LINE :
 				self::outputLine($text, $class);
 				break;
-			case OWL_OUTPUT_PAR :
+			case TT_OUTPUT_PAR :
 				self::outputPar($text, $class);
 				break;
 			default :

@@ -10,7 +10,7 @@
  */
 
 // First we must load the required Form class
-if (!OWLloader::getClass('form')) {
+if (!TTloader::getClass('form')) {
 	trigger_error('Error loading the Form class', E_USER_ERROR);
 }
 
@@ -22,8 +22,8 @@ class LoginArea extends ContentArea
 	public function loadArea()
 	{
 		// Check if the current user can see this form
-		if ($this->hasRight('readanonymous', OWL_ID) === false) {
-			return false; // Note; 'false' here causes OWLloader::getArea() to return false!
+		if ($this->hasRight('readanonymous', TT_ID) === false) {
+			return false; // Note; 'false' here causes TTloader::getArea() to return false!
 		}
 
 		// Create a new form. The first argument defines the dispatcher, second is the form name

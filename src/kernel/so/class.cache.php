@@ -1,25 +1,25 @@
 <?php
 /**
  * \file
- * \ingroup OWL_LIBRARY
+ * \ingroup TT_LIBRARY
  * This file defines the cache class
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -29,39 +29,39 @@
  */
 
 //! List of all classfiles that have been loaded
-define ('OWLCACHE_CLASSES',			0);
+define ('TTCACHE_CLASSES',			0);
 
 //! List of all language specific messagesfiles that have been loaded
-define ('OWLCACHE_MSGFILES',		1);
+define ('TTCACHE_MSGFILES',		1);
 
 //! List of all language specific labelfiles that have been loaded
-define ('OWLCACHE_LBLFILES',		2);
+define ('TTCACHE_LBLFILES',		2);
 
 //! List of all language specific labels and messages
-define ('OWLCACHE_LOCALE',			3);
+define ('TTCACHE_LOCALE',			3);
 
 //! Globally available objects, mainly singletons (user, logger etc)
-define ('OWLCACHE_OBJECTS',			4);
+define ('TTCACHE_OBJECTS',			4);
 
 //! Current configuration
-define ('OWLCACHE_CONFIG',			5);
+define ('TTCACHE_CONFIG',			5);
 
 //! Register data
-define ('OWLCACHE_REGISTER',		6);
+define ('TTCACHE_REGISTER',		6);
 
 //! List of all applications that have been loaded
-define ('OWLCACHE_APPLICATIONS',	7);
+define ('TTCACHE_APPLICATIONS',	7);
 //! @}
 
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * Abstract class to handle all caching
  * \brief Cache handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 14, 2011 -- O van Eijk -- Initial version for OWL-PHP
  */
-abstract class OWLCache
+abstract class TTCache
 {
 	/**
 	 * Array in which the cache data is stored
@@ -75,11 +75,11 @@ abstract class OWLCache
 	private static function init()
 	{
 		self::$cache = array (
-			 OWLCACHE_CLASSES => array()
-			,OWLCACHE_MSGFILES => array()
-			,OWLCACHE_LBLFILES  => array()
-			,OWLCACHE_OBJECTS => array()
-			,OWLCACHE_APPLICATIONS => array()
+			 TTCACHE_CLASSES => array()
+			,TTCACHE_MSGFILES => array()
+			,TTCACHE_LBLFILES  => array()
+			,TTCACHE_OBJECTS => array()
+			,TTCACHE_APPLICATIONS => array()
 		);
 	}
 
@@ -139,12 +139,12 @@ abstract class OWLCache
 
 	public static function addApplic ($applCode, array $applData)
 	{
-		self::set (OWLCACHE_APPLICATIONS, $applCode, $applData);
+		self::set (TTCACHE_APPLICATIONS, $applCode, $applData);
 	}
 
 	public static function getApplic ($applCode, $item = null)
 	{
-		if (($_app = self::get(OWLCACHE_APPLICATIONS, $applCode)) === null) {
+		if (($_app = self::get(TTCACHE_APPLICATIONS, $applCode)) === null) {
 			return null;
 		}
 		if ($item === null) {

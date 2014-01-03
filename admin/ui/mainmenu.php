@@ -6,7 +6,7 @@
  */
 
 /**
- * \ingroup OWL_OWLADMIN
+ * \ingroup TT_TTADMIN
  * Setup the contentarea holding the main menu
  * \brief Main menu
  * \author Oscar van Eijk, Oveas Functionality Provider

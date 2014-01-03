@@ -5,26 +5,26 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_BO_LAYER
+ * \ingroup TT_BO_LAYER
  * This class handles the Rights bitmaps
- * \brief the OWL-PHP rights object
+ * \brief the Terra-Terra rights object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 14, 2011 -- O van Eijk -- initial version
  */
@@ -38,13 +38,13 @@ class Rights extends Security
 	/**
 	 * Class constructor
 	 * \param[in] $app code for which the bitmap array must be setup
-	 * \param[in] $owl By default, the owl bitmap will be setup as well. Set this to false to suppress this
+	 * \param[in] $tt By default, the tt bitmap will be setup as well. Set this to false to suppress this
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function __construct ($app, $owl = true)
+	public function __construct ($app, $tt = true)
 	{
-		parent::__construct($app, $owl);
-		if (($this->rightslist = OWLCache::get('rights', 'list')) === null) {
+		parent::__construct($app, $tt);
+		if (($this->rightslist = TTCache::get('rights', 'list')) === null) {
 			$this->registerRights();
 		}
 	}
@@ -56,7 +56,7 @@ class Rights extends Security
 	 */
 	public function __wakeup()
 	{
-		if (($this->rightslist = OWLCache::get('rights', 'list')) === null) {
+		if (($this->rightslist = TTCache::get('rights', 'list')) === null) {
 			$this->registerRights();
 		}
 	}
@@ -79,21 +79,21 @@ class Rights extends Security
 	private function registerRights ()
 	{
 		$dataset = new DataHandler ();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$dataset->setTablename('rights');
-		$dataset->set('aid', array(OWL_ID, OWLloader::getCurrentAppID()));
+		$dataset->set('aid', array(TT_ID, TTloader::getCurrentAppID()));
 		$dataset->setKey('appl');
 		$dataset->prepare();
 		$dataset->db($data, __FILE__, __CLASS__);
 		foreach ($data as $_r) {
 			$this->rightslist[$_r['name']] = pow(2, $_r['rid']-1);
 		}
-		OWLCache::set('rights', 'list', $this->rightslist);
+		TTCache::set('rights', 'list', $this->rightslist);
 	}
 }
 Register::registerClass('Rights');
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 //Register::registerCode ('USER_DUPLUSERNAME');

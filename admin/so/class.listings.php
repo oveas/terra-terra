@@ -5,13 +5,13 @@
  */
 
 /**
- * \ingroup OWL_OWLADMIN
- * OWL listings for administrative purposes
+ * \ingroup TT_TTADMIN
+ * TT listings for administrative purposes
  * \brief Listings
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Nov 23, 2011 -- O van Eijk -- initial version
  */
-class Listings extends _OWL
+class Listings extends _TT
 {
 
 	/**
@@ -26,8 +26,8 @@ class Listings extends _OWL
 	{
 		$this->init(__FILE__, __LINE__);
 		$this->dataset = new DataHandler ();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$this->dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 	}
 

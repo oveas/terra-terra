@@ -5,31 +5,31 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2013} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * Handle all directories
  * \brief Directory handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version June 25, 2013 -- O van Eijk -- Initial version
  */
-class DirHandler extends _OWL
+class DirHandler extends _TT
 {
 
 	private $fullName;	//!< Full filename as stored on the file system
@@ -49,7 +49,7 @@ class DirHandler extends _OWL
 	 */
 	public function __construct ($name, $req = true)
 	{
-		_OWL::init(__FILE__, __LINE__);
+		_TT::init(__FILE__, __LINE__);
 		$this->objList = null;
 		if ($req === true) {
 			$this->fullName = realpath($name);
@@ -74,7 +74,7 @@ class DirHandler extends _OWL
 			}
 		}
 
-		$this->setStatus (OWL_STATUS_OK);
+		$this->setStatus (TT_STATUS_OK);
 	}
 
 	/**
@@ -206,26 +206,26 @@ class DirHandler extends _OWL
 
 	/**
 	 * Create a new zip archive for this folder
-	 * \param[in] $zipFile Name of the file. The file will be created in OWL_TEMP
+	 * \param[in] $zipFile Name of the file. The file will be created in TT_TEMP
 	 * \return File object for the zipfile
 	 */
 	public function zipFolder ($zipFile)
 	{
-		if (!OWLloader::getClass('filehandler')) {
+		if (!TTloader::getClass('filehandler')) {
 			trigger_error('Error loading the Filehandler class', E_USER_ERROR);
 		}
 		if (!preg_match('/\.zip$/i', $zipFile)) {
 			$zipFile .= '.zip';
 		}
 
-		$_zipHandler = new FileHandler(OWL_TEMP . '/' . $zipFile, false);
+		$_zipHandler = new FileHandler(TT_TEMP . '/' . $zipFile, false);
 		$_zip = new ZipArchive;
 		if (!$_zip->open($_zipHandler->getFileName(), ZipArchive::CREATE)) {
 			$this->setStatus (DIR_ZIPERR, array ($_zipHandler->getFileName()));
 			return;
 		}
 		while (($_file = $this->scanDir()) !== null) {
-			$_localFile = substr($_file, strlen(OWL_TEMP)+1);
+			$_localFile = substr($_file, strlen(TT_TEMP)+1);
 			if (is_dir($_file)) {
 				$_localFile .= '/'; // Make sure empty dirs won't be stored as a file
 			}
@@ -243,17 +243,17 @@ class DirHandler extends _OWL
 */
 Register::registerClass('DirHandler');
 
-//Register::setSeverity (OWL_DEBUG);
-Register::setSeverity (OWL_INFO);
+//Register::setSeverity (TT_DEBUG);
+Register::setSeverity (TT_INFO);
 Register::registerCode ('DIR_NEWDIR');
 
-//Register::setSeverity (OWL_OK);
+//Register::setSeverity (TT_OK);
 
-Register::setSeverity (OWL_SUCCESS);
+Register::setSeverity (TT_SUCCESS);
 Register::registerCode ('DIR_CREATED');
 Register::registerCode ('DIR_DELETED');
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('DIR_ADDZIPERR');
 Register::registerCode ('DIR_NOSUCHDIR');
 Register::registerCode ('DIR_NOTADIR');
@@ -262,10 +262,10 @@ Register::registerCode ('DIR_RMFILERR');
 
 
 
-//Register::setSeverity (OWL_BUG);
+//Register::setSeverity (TT_BUG);
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 Register::registerCode ('DIR_ZIPERR');
 
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

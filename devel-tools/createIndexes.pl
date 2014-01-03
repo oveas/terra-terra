@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# Quick hack to check if all directories in an OWL release environment an index.html.
+# Quick hack to check if all directories in an TT release environment an index.html.
 # If not, one is created.
 #
 # Usage:

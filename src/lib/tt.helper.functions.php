@@ -1,25 +1,25 @@
 <?php
 /**
  * \file
- * \ingroup OWL_LIBRARY
+ * \ingroup TT_LIBRARY
  * This file defines general helper functions
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -67,7 +67,7 @@ function implodeMDArray($_glue, array $_pieces)
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \todo Add a method to decrypt strings (dispatchers) that were crypted ad a remote server (using keyrings)
  */
-function owlCrypt ($_string)
+function ttCrypt ($_string)
 {
 //	$_locker = getReferer();
 
@@ -131,7 +131,7 @@ function urlToPath ($_file)
 			return null;
 		}
 	}
-	return preg_replace($_rex, OWL_SITE_TOP, $_file);
+	return preg_replace($_rex, TT_SITE_TOP, $_file);
 }
 
 /**
@@ -150,14 +150,14 @@ function urlExpand($_file)
 		if (!preg_match('/^\//', $_file)) {
 			return null;
 		}
-		$_fPart = preg_replace('@' . OWL_SITE_TOP . '@', '', $_file);
+		$_fPart = preg_replace('@' . TT_SITE_TOP . '@', '', $_file);
 		if ($_fPart == $_file) {
-			$_fPart = preg_replace('@' . OWL_SERVER_TOP . '@', '', $_file);
+			$_fPart = preg_replace('@' . TT_SERVER_TOP . '@', '', $_file);
 			$_useOwlRoot = true;
 		} else {
 			$_useOwlRoot = false;
 		}
-		$_document = OWL::factory('Document', 'ui');
+		$_document = TT::factory('Document', 'ui');
 		$_file = $_document->getBase($_useOwlRoot) . $_fPart;
 	}
 	return $_file;
@@ -189,17 +189,17 @@ function getReferer ($def = 'http://localhost/', $hostOnly = true)
 }
 
 /**
- * Check if the timezone was set in the PHP inifile. If not set, the OWL configuration is checked as well for a timezone setting.
- * If no value is found in the ini file or the OWL configuration, timezone is set to UTC and a warning is given.
+ * Check if the timezone was set in the PHP inifile. If not set, the TT configuration is checked as well for a timezone setting.
+ * If no value is found in the ini file or the TT configuration, timezone is set to UTC and a warning is given.
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
-function owlTimeZone ()
+function ttTimeZone ()
 {
 	if (!ini_get('date.timezone')) {
 		$_tmZone = ConfigHandler::get('locale', 'timezone');
 		if ($_tmZone === null) {
 			$_tmZone = 'UTC';
-			OWL::stat(__FILE__, __LINE__, OWL_NOTIMEZONE, $_tmZone);
+			TT::stat(__FILE__, __LINE__, TT_NOTIMEZONE, $_tmZone);
 		}
 		date_default_timezone_set($_tmZone);
 	}
@@ -422,17 +422,17 @@ function lineWrap ($txt, $length = 70, $break = "=\n")
 }
 
 
-define('OWL_JPAD_LEFT', 1);     //!< More spaces are added on the left of the line
-define('OWL_JPAD_RIGHT', 2);    //!< More spaces are added on the right of the line
-define('OWL_JPAD_BOTH', 4);     //!< Tries to evenly distribute the padding
-define('OWL_JPAD_AVERAGE', 8);  //!< Tries to position based on a mix of the three algorithms
+define('TT_JPAD_LEFT', 1);     //!< More spaces are added on the left of the line
+define('TT_JPAD_RIGHT', 2);    //!< More spaces are added on the right of the line
+define('TT_JPAD_BOTH', 4);     //!< Tries to evenly distribute the padding
+define('TT_JPAD_AVERAGE', 8);  //!< Tries to position based on a mix of the three algorithms
 
 /**
  * Justification function that uses the wordwrap function and provides four justification modes:
- *  - OWL_JPAD_LEFT; typically, the leftmost words receive the most padding
- *  - OWL_JPAD_RIGHT; vice versa; the rightmost words receive the most padding
- *  - OWL_JPAD_BOTH; tries to evenly distribute the padding among leftmost and rightmost words
- *  - OWL_JPAD_AVERAGE; most complicated, uses an average of the three previous algorithms. I'd say this one produces the best result as it's more distributed in the center.
+ *  - TT_JPAD_LEFT; typically, the leftmost words receive the most padding
+ *  - TT_JPAD_RIGHT; vice versa; the rightmost words receive the most padding
+ *  - TT_JPAD_BOTH; tries to evenly distribute the padding among leftmost and rightmost words
+ *  - TT_JPAD_AVERAGE; most complicated, uses an average of the three previous algorithms. I'd say this one produces the best result as it's more distributed in the center.
  * Ths last line is not justified.
  * \param[in] $input Input textblock
  * \param[in] $width Width of the justified text
@@ -454,7 +454,7 @@ define('OWL_JPAD_AVERAGE', 8);  //!< Tries to position based on a mix of the thr
  * \author Tsomas (thomas@tgohome.com)
  * \copyright{2009} Thomas, taken from http://be.php.net/manual/en/function.wordwrap.php
  */
-function justify($input, $width, $mode = OWL_JPAD_AVERAGE)
+function justify($input, $width, $mode = TT_JPAD_AVERAGE)
 {
 	// We want to have n characters wide of text per line.
 	// Use PHP's wordwrap feature to give us a rough estimate.
@@ -471,17 +471,17 @@ function justify($input, $width, $mode = OWL_JPAD_AVERAGE)
 
 			while ($diff > 0) {
 				// Process the word at this diff
-				if ($mode == OWL_JPAD_BOTH) {
+				if ($mode == TT_JPAD_BOTH) {
 					$words[$diff / count($words)] .= ' ';
-				} else if ($mode == OWL_JPAD_AVERAGE) {
+				} else if ($mode == TT_JPAD_AVERAGE) {
 					$words[(
 					($diff / count($words))
 					+ ($diff % count($words))
 					+ (count($words) - ($diff % count($words)))
 					) / 3] .= ' ';
-				} else if ($mode == OWL_JPAD_LEFT) {
+				} else if ($mode == TT_JPAD_LEFT) {
 					$words[$diff % count($words)] .= ' ';
-				} else if($mode == OWL_JPAD_RIGHT) {
+				} else if($mode == TT_JPAD_RIGHT) {
 					$words[count($words) - ($diff % count($words))] .= ' ';
 				}
 

@@ -5,20 +5,20 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -36,7 +36,7 @@ define ('DBDRIVER_LOCKTYPE_WRITE',	1);
 
 
 /**
- * \ingroup OWL_DRIVERS
+ * \ingroup TT_DRIVERS
  * Interface that defines the database drivers. Some of the methods are implemented in class DbDefaults
  * \brief Database driver interface
  * \author Oscar van Eijk, Oveas Functionality Provider
@@ -103,7 +103,7 @@ interface DbDriver
 	public function dbDefineIndex ($_table, $_name, array $_desc);
 
 	/**
-	 * Map a datatype as used by OWL-PHP (which is mainly a MySQL datatype) to the database specific type
+	 * Map a datatype as used by Terra-Terra (which is mainly a MySQL datatype) to the database specific type
 	 * \param[in,out] $_type Description of the datatype as accepted by the SchemeHandler
 	 * \see SchemeHandler::defineScheme()
 	 * \author Oscar van Eijk, Oveas Functionality Provider

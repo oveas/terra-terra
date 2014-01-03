@@ -5,24 +5,24 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * This abstract class reads configution from file or database, and fills and
  * reads the datastructures with config items
  * \brief Configuration handler
@@ -71,38 +71,38 @@ abstract class ConfigHandler
 	private static function initialise ()
 	{
 		if (self::$cfgConfig === null)   {
-			self::$cfgConfig = OWLCache::get(OWLCACHE_CONFIG, 'config');
+			self::$cfgConfig = TTCache::get(TTCACHE_CONFIG, 'config');
 		}
 
 		if (self::$cfgValues === null)   {
-			self::$cfgValues = &OWLCache::getRef(OWLCACHE_CONFIG, 'values');
+			self::$cfgValues = &TTCache::getRef(TTCACHE_CONFIG, 'values');
 			if (self::$cfgValues === null) {
-				OWLCache::set(OWLCACHE_CONFIG, 'values', array());
-				self::$cfgValues = &OWLCache::getRef(OWLCACHE_CONFIG, 'values');
+				TTCache::set(TTCACHE_CONFIG, 'values', array());
+				self::$cfgValues = &TTCache::getRef(TTCACHE_CONFIG, 'values');
 			}
 		}
 
 		if (self::$cfgCache === null)   {
-			self::$cfgCache = &OWLCache::getRef(OWLCACHE_CONFIG, 'cache');
+			self::$cfgCache = &TTCache::getRef(TTCACHE_CONFIG, 'cache');
 			if (self::$cfgCache === null) {
-				OWLCache::set(OWLCACHE_CONFIG, 'cache', array('cget' => array()));
-				self::$cfgCache = &OWLCache::getRef(OWLCACHE_CONFIG, 'cache');
+				TTCache::set(TTCACHE_CONFIG, 'cache', array('cget' => array()));
+				self::$cfgCache = &TTCache::getRef(TTCACHE_CONFIG, 'cache');
 			}
 		}
 
 		if (self::$cfgProtected === null) {
-			self::$cfgProtected = &OWLCache::getRef(OWLCACHE_CONFIG, 'protected_values');
+			self::$cfgProtected = &TTCache::getRef(TTCACHE_CONFIG, 'protected_values');
 			if (self::$cfgProtected === null) {
-				OWLCache::set(OWLCACHE_CONFIG, 'protected_values', array());
-				self::$cfgProtected = &OWLCache::getRef(OWLCACHE_CONFIG, 'protected_values');
+				TTCache::set(TTCACHE_CONFIG, 'protected_values', array());
+				self::$cfgProtected = &TTCache::getRef(TTCACHE_CONFIG, 'protected_values');
 			}
 		}
 		
 		if (self::$cfgHidden === null) {
-			self::$cfgHidden = &OWLCache::getRef(OWLCACHE_CONFIG, 'hidden_values');
+			self::$cfgHidden = &TTCache::getRef(TTCACHE_CONFIG, 'hidden_values');
 			if (self::$cfgHidden === null) {
-				OWLCache::set(OWLCACHE_CONFIG, 'hidden_values', array());
-				self::$cfgHidden = &OWLCache::getRef(OWLCACHE_CONFIG, 'hidden_values');
+				TTCache::set(TTCACHE_CONFIG, 'hidden_values', array());
+				self::$cfgHidden = &TTCache::getRef(TTCACHE_CONFIG, 'hidden_values');
 			}
 		}
 	}
@@ -112,13 +112,13 @@ abstract class ConfigHandler
 	 * \param[in] $_source Array describing the configuration source. It can have the following keys:
 	 *  - file: Full path to the configuration file
 	 *  - table: Config tablename without prefix. Default 'config', MUST be given with the first call
-	 *  - applic: Application name for which the config should be read, default 'owl'
+	 *  - applic: Application name for which the config should be read, default 'tt'
 	 *  - group: Application name for which the config should be read, default 0
 	 *  - user: Application name for which the config should be read, default 0
 	 *  - force: Boolean that can force overwrite of protected values, default false
 	 *
 	 * The first call must always read from a file. On subsequent calls, if no filename is given,
-	 * the configuration is taken from the (owl_)config table
+	 * the configuration is taken from the (tt_)config table
 	 * \param[in] $_overwrite True if existing values may be overwritten
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -132,7 +132,7 @@ abstract class ConfigHandler
 		} else {
 			self::configTable(
 				 (array_key_exists('table', $_source) ? $_source['table'] : 'config')
-				,(array_key_exists('aid', $_source) ? $_source['aid'] : OWL_ID)
+				,(array_key_exists('aid', $_source) ? $_source['aid'] : TT_ID)
 				,(array_key_exists('group', $_source) ? $_source['group'] : 0)
 				,(array_key_exists('user', $_source) ? $_source['user'] : 0)
 				,(array_key_exists('force', $_source) ? toBool($_source['force']) : false)
@@ -166,7 +166,7 @@ abstract class ConfigHandler
 				continue;
 			}
 			if ($_section == '') {
-				OWL::stat(__FILE__, __LINE__, CONFIG_EMPTYSECTION, array($_item));
+				TT::stat(__FILE__, __LINE__, CONFIG_EMPTYSECTION, array($_item));
 				continue;
 			}
 			list ($_item, $_value) = explode ('=', $_line, 2);
@@ -201,8 +201,8 @@ abstract class ConfigHandler
 	{
 		if (self::$dataset === null) {
 			self::$dataset = new DataHandler();
-			if (self::get ('database', 'owltables', true)) {
-				self::$dataset->setPrefix(self::get ('database', 'owlprefix'));
+			if (self::get ('database', 'tttables', true)) {
+				self::$dataset->setPrefix(self::get ('database', 'ttprefix'));
 			}
 			self::$dataset->setTablename($_table);
 		}
@@ -276,7 +276,7 @@ abstract class ConfigHandler
 		}
 		if (in_array($_item, self::$cfgProtected)
 			&& array_key_exists($_item, self::$cfgValues)) {
-			OWL::stat(__FILE__, __LINE__, CONFIG_PROTECTED, $_item);
+			TT::stat(__FILE__, __LINE__, CONFIG_PROTECTED, $_item);
 			return;
 		}
 
@@ -290,7 +290,7 @@ abstract class ConfigHandler
 	/**
 	 * Get of create a config section ID
 	 * \param[in] $section The configuration section the item should be taken from
-	 * \param[in] $create Boolean set to true (e.g. by the OWLinstaller) when a non-existing
+	 * \param[in] $create Boolean set to true (e.g. by the TTinstaller) when a non-existing
 	 * section must be created.
 	 * \return Section id or -1 when not found and not created
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -309,7 +309,7 @@ abstract class ConfigHandler
 				$_dataset->db($_secID, __LINE__, __FILE__);
 				return ($_dataset->insertedId());
 			} else {
-				OWL::stat(__FILE__, __LINE__, CONFIG_NOSUCHSECTION, $_item);
+				TT::stat(__FILE__, __LINE__, CONFIG_NOSUCHSECTION, $_item);
 				return -1;
 			}
 		} else {
@@ -357,14 +357,14 @@ abstract class ConfigHandler
 
 		if (!isset ($_c)) {
 			if ($default === null) {
-				OWL::stat (__FILE__, __LINE__, CONFIG_NOVALUE, (is_array($item)?implode('|', $item):$item));
+				TT::stat (__FILE__, __LINE__, CONFIG_NOVALUE, (is_array($item)?implode('|', $item):$item));
 				return (null);
 			} else {
 				return $default;
 			}
 		}
 		if ($_c === self::$cfgConfig['hide_value']) {
-			$_cache = owlCrypt($_h);
+			$_cache = ttCrypt($_h);
 		} else {
 			$_cache = $_c;
 		}
@@ -383,7 +383,7 @@ abstract class ConfigHandler
 	{
 		$_item = "$_section|$_item";
 		if (in_array($_item, self::$cfgProtected)) {
-			OWL::stat(__FILE__, __LINE__, CONFIG_PROTECTED, $_item);
+			TT::stat(__FILE__, __LINE__, CONFIG_PROTECTED, $_item);
 			return;
 		}
 		self::_set($_item, $_value, array_key_exists($_item, self::$cfgHidden));
@@ -401,7 +401,7 @@ abstract class ConfigHandler
 	private static function _set ($_item, $_value, $_hide, $_overwrite)
 	{
 		if ($_hide) {
-			$_value = owlCrypt($_value);
+			$_value = ttCrypt($_value);
 		}
 
 		// Make sure the cache is cleaned
@@ -460,20 +460,20 @@ abstract class ConfigHandler
 
 Register::registerClass ('ConfigHandler');
 
-//Register::setSeverity (OWL_DEBUG);
-Register::setSeverity (OWL_INFO);
+//Register::setSeverity (TT_DEBUG);
+Register::setSeverity (TT_INFO);
 Register::registerCode ('CONFIG_PROTECTED');
 
-//Register::setSeverity (OWL_OK);
-//Register::setSeverity (OWL_SUCCESS);
-Register::setSeverity (OWL_WARNING);
+//Register::setSeverity (TT_OK);
+//Register::setSeverity (TT_SUCCESS);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('CONFIG_NOSUCHSECTION');
 Register::registerCode ('CONFIG_EMPTYSECTION');
 Register::registerCode ('CONFIG_NOVALUE');
 
-//Register::setSeverity (OWL_BUG);
+//Register::setSeverity (TT_BUG);
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

@@ -5,15 +5,15 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
-if (!OWLloader::getClass('form')) {
+if (!TTloader::getClass('form')) {
 	trigger_error('Error loading the Form class', E_USER_ERROR);
 }
-if (!OWLloader::getClass('listings', OWLADMIN_SO)) {
-	trigger_error('Error loading the Listings class from ' . OWLADMIN_SO, E_USER_ERROR);
+if (!TTloader::getClass('listings', TTADMIN_SO)) {
+	trigger_error('Error loading the Listings class from ' . TTADMIN_SO, E_USER_ERROR);
 }
 
 /**
- * \ingroup OWL_OWLADMIN
+ * \ingroup TT_TTADMIN
  * Setup the contentarea holding the rightslist
  * \brief Group listing
  * \author Oscar van Eijk, Oveas Functionality Provider
@@ -28,7 +28,7 @@ class RightslistArea extends ContentArea
 	 */
 	public function loadArea($arg = null)
 	{
-		if ($this->hasRight('installapps', OWL_ID) === false) {
+		if ($this->hasRight('installapps', TT_ID) === false) {
 			return false;
 		}
 
@@ -52,7 +52,7 @@ class RightslistArea extends ContentArea
 			 'onChange'
 			,$_container
 			,'dynamicSetContent'
-			,'OWL#OWLADMIN_BO#owluser#OWLUser#getRightsListing'
+			,'TT#TTADMIN_BO#ttuser#TTUser#getRightsListing'
 			,'aid'
 		);
 

@@ -3,21 +3,21 @@
  * Debug info
  */
 
-.OWLdbg {
+.TTdbg {
 	font-family			: Arial, sans-serif;
 	font-size			: 6pt;
 	clear				: left;
 }
-table.OWLdbg {
+table.TTdbg {
 	padding				: 3px 3px 3px 3px;
 	border				: 1px solid #666666;
 	width				: 80%;
 }
-tr.OWLdbgr0 {
+tr.TTdbgr0 {
 	background-color	: #cccccc;
 	color				: #333333;
 }
-tr.OWLdbgr1 {
+tr.TTdbgr1 {
 	background-color	: #aaaaaa;
 	color				: #111111;
 }

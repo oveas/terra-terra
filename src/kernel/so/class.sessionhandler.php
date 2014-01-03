@@ -5,20 +5,20 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -44,13 +44,13 @@ define ('SESSIONVAR_ARRAY',		4);
 //! @}
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * This class saves and (re)stores the user sessions
  * \brief the PHP session object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jul 29, 2008 -- O van Eijk -- initial version
  */
-class OWLSessionHandler extends _OWL
+class TTSessionHandler extends _TT
 {
 
 	/**
@@ -69,16 +69,16 @@ class OWLSessionHandler extends _OWL
 	 */
 	protected function __construct ()
 	{
-		_OWL::init(__FILE__, __LINE__);
+		_TT::init(__FILE__, __LINE__);
 
-		if (ConfigHandler::get ('database', 'owltables', true) === true) {
-			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true) === true) {
+			$this->dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$this->dataset->setTablename('session');
 
 		// We need a reference to DbHandler here to make sure the object
 		// can't go out of scope before the session data is written during rundown.
-		$this->db = OWL::factory('DbHandler');
+		$this->db = TT::factory('DbHandler');
 
 		// TODO; Tune the settings below depending on server load.
 		// The outcommented values are the system default (1%)
@@ -144,7 +144,7 @@ class OWLSessionHandler extends _OWL
 
 		$this->dataset->prepare (DATA_READ);
 		$this->dataset->db ($_data, __LINE__, __FILE__);
-		if ($this->setHighSeverity($this->dataset) > OWL_WARNING) {
+		if ($this->setHighSeverity($this->dataset) > TT_WARNING) {
 			$this->traceback();
 		}
 		$this->reset();
@@ -181,11 +181,11 @@ class OWLSessionHandler extends _OWL
 			$this->dataset->prepare (DATA_WRITE);
 		} else {
 			$this->dataset->setKey ('sid');
-			if (!$this->check ($this->dataset, OWL_WARNING)) {
+			if (!$this->check ($this->dataset, TT_WARNING)) {
 				return (false);
 			}
 			$this->dataset->prepare (DATA_UPDATE);
-			if (!$this->check ($this->dataset, OWL_WARNING)) {
+			if (!$this->check ($this->dataset, TT_WARNING)) {
 				return (false);
 			}
 		}
@@ -238,12 +238,12 @@ class OWLSessionHandler extends _OWL
  */
 Register::registerClass('SessionHandler');
 
-//Register::setSeverity (OWL_DEBUG);
-//Register::setSeverity (OWL_INFO);
-//Register::setSeverity (OWL_OK);
-//Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (TT_DEBUG);
+//Register::setSeverity (TT_INFO);
+//Register::setSeverity (TT_OK);
+//Register::setSeverity (TT_SUCCESS);
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('SESSION_INVUSERNAME');
 Register::registerCode ('SESSION_INVPASSWORD');
 Register::registerCode ('SESSION_TIMEOUT');
@@ -251,11 +251,11 @@ Register::registerCode ('SESSION_NOACCESS');
 Register::registerCode ('SESSION_DISABLED');
 Register::registerCode ('SESSION_IVSESSION');
 
-//Register::setSeverity (OWL_BUG);
+//Register::setSeverity (TT_BUG);
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 Register::registerCode ('SESSION_NODATASET');
 Register::registerCode ('SESSION_WRITEERR');
 
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

@@ -5,30 +5,30 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_BO_LAYER
- * This class handles the OWL session
- * \brief the OWL-PHP session object
+ * \ingroup TT_BO_LAYER
+ * This class handles the TT session
+ * \brief the Terra-Terra session object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 13, 2008 -- O van Eijk -- initial version
  */
-class Session extends OWLSessionHandler
+class Session extends TTSessionHandler
 {
 	/**
 	 * Right object holding the currently active right for this session
@@ -79,7 +79,7 @@ class Session extends OWLSessionHandler
 		$this->setSessionVar('ip', $this->ipAddress());
 		$this->setSessionVar('step', 0, SESSIONVAR_INCR);
 		$this->setSessionVar('uid', 0); // Must be filled by the User class, 0 causes fatals on restore
-		$this->rights = new Rights(OWLloader::getCurrentAppID());
+		$this->rights = new Rights(TTloader::getCurrentAppID());
 	}
 
 	/**
@@ -107,7 +107,7 @@ class Session extends OWLSessionHandler
 	 * \param[in] $app Application ID
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function setRights($bitmap, $app = OWL_ID)
+	public function setRights($bitmap, $app = TT_ID)
 	{
 		$this->rights->initBitmap($bitmap,$app);
 	}
@@ -210,5 +210,5 @@ class Session extends OWLSessionHandler
 
 Register::registerClass('Session');
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('SESSION_IPCHKFAIL');

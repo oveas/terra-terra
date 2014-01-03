@@ -4,12 +4,12 @@
  * This file creates the login form
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
-if (!OWLloader::getClass('form')) {
+if (!TTloader::getClass('form')) {
 	trigger_error('Error loading the Form class', E_USER_ERROR);
 }
 
 /**
- * \ingroup OWL_OWLADMIN
+ * \ingroup TT_TTADMIN
  * Setup the contentarea holding the login form
  * \brief Login forum
  * \author Oscar van Eijk, Oveas Functionality Provider
@@ -19,21 +19,21 @@ class LoginArea extends ContentArea
 {
 	/**
 	 * Generate the Login form and add it to the document
-	 * This area will only be visible to users holding the 'readanonymous' right (standard OWL)
+	 * This area will only be visible to users holding the 'readanonymous' right (standard TT)
 	 * \param[in] $arg Not used here but required by ContentArea
 	 */
 	public function loadArea($arg = null)
 	{
-		if ($this->hasRight('readanonymous', OWL_ID) === false) {
+		if ($this->hasRight('readanonymous', TT_ID) === false) {
 			return false;
 		}
 
 		$_form = new Form(
 			  array(
-				 'application' => 'OWL'
-				,'include_path' => 'OWLADMIN_BO'
-				,'class_file' => 'owluser'
-				,'class_name' => 'OWLUser'
+				 'application' => 'TT'
+				,'include_path' => 'TTADMIN_BO'
+				,'class_file' => 'ttuser'
+				,'class_name' => 'TTUser'
 				,'method_name' => 'doLogin'
 			)
 			, array(

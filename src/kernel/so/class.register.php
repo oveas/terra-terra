@@ -5,20 +5,20 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 
@@ -31,34 +31,34 @@
 /**
  * Bits 1-8 define the application.
  * Application identifiers with the first bit set (0x40 - 0xff) are reserved for Oveas.
- * 0xff is the OWL Identifier.
+ * 0xff is the TT Identifier.
  */
-define ('OWL_APPLICATION_PATTERN',	0xff000000);
+define ('TT_APPLICATION_PATTERN',	0xff000000);
 
 /**
  * Bits 9-20 define the object type of an application
  */
-define ('OWL_OBJECT_PATTERN',		0x00fff000);
+define ('TT_OBJECT_PATTERN',		0x00fff000);
 
 /**
  * Bits 21-28 defines the (object specific) status code
  */
-define ('OWL_STATUS_PATTERN',		0x00000ff0);
+define ('TT_STATUS_PATTERN',		0x00000ff0);
 
 /**
  * Bits 29-32 define the severity
  */
-define ('OWL_SEVERITY_PATTERN',		0x0000000f);
+define ('TT_SEVERITY_PATTERN',		0x0000000f);
 
 /**
  * @}
  */
 
 /**
- * OWL keeps track of all running applications, their class and all status codes
+ * TT keeps track of all running applications, their class and all status codes
  * their instances (objects) can have.
  * This is done in a global Register, which is maintained by this class.
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 15, 2007 -- O van Eijk -- initial version
  */
@@ -80,14 +80,14 @@ abstract class Register
 		$_s = sprintf ('%X', $_s);
 		$_m = sprintf ('%X', $_m);
 		// Set the applications run ID
-		OWLCache::set(OWLCACHE_REGISTER, 'run', array('id'	=> "$_s$_m", 'tcp' => ''));
+		TTCache::set(TTCACHE_REGISTER, 'run', array('id'	=> "$_s$_m", 'tcp' => ''));
 		
-		OWLCache::set(OWLCACHE_REGISTER, 'applications', array());
-		OWLCache::set(OWLCACHE_REGISTER, 'classes', array());
-		OWLCache::set(OWLCACHE_REGISTER, 'severity', array());
-		OWLCache::set(OWLCACHE_REGISTER, 'codes', array());
-		OWLCache::set(OWLCACHE_REGISTER, 'code_symbols', array());
-		OWLCache::set(OWLCACHE_REGISTER, 'stack', array());
+		TTCache::set(TTCACHE_REGISTER, 'applications', array());
+		TTCache::set(TTCACHE_REGISTER, 'classes', array());
+		TTCache::set(TTCACHE_REGISTER, 'severity', array());
+		TTCache::set(TTCACHE_REGISTER, 'codes', array());
+		TTCache::set(TTCACHE_REGISTER, 'code_symbols', array());
+		TTCache::set(TTCACHE_REGISTER, 'stack', array());
 	}
 
 	/**
@@ -108,10 +108,10 @@ abstract class Register
 		// use isset() here, since array_key_exists() gives a warning if the hex $id
 		// has a negative integer value.
 		// To make sure the ID is not interpreted as an index, cast it as a string
-		$_apps =& OWLCache::getRef(OWLCACHE_REGISTER, 'applications');
+		$_apps =& TTCache::getRef(TTCACHE_REGISTER, 'applications');
 		if (!isset ($_apps["$id"])) {
 			$_apps["$id"] = $name;
-			$_stack =& OWLCache::getRef(OWLCACHE_REGISTER, 'stack');
+			$_stack =& TTCache::getRef(TTCACHE_REGISTER, 'stack');
 			$_stack['class'] = $id;
 		}
 		self::setApplication ($id);
@@ -125,17 +125,17 @@ abstract class Register
 	 */
 	static public function registerClass ($name)
 	{
-		$_stack =& OWLCache::getRef(OWLCACHE_REGISTER, 'stack');
+		$_stack =& TTCache::getRef(TTCACHE_REGISTER, 'stack');
 		$_stack['class'] += 0x00001000;
 		$id = $_stack['class'];
 
 		// use isset() here, since array_key_exists() gives a warning if the hex $id
 		// has a negative integer value.
 		// To make sure the ID is not interpreted as an index, cast it as a string
-		$_classes =& OWLCache::getRef(OWLCACHE_REGISTER, 'classes');
+		$_classes =& TTCache::getRef(TTCACHE_REGISTER, 'classes');
 		if (!isset ($_classes["$id"])) {
 			$_classes["$id"] = $name;
-			$_codes =& OWLCache::getRef(OWLCACHE_REGISTER, 'codes');
+			$_codes =& TTCache::getRef(TTCACHE_REGISTER, 'codes');
 			$_codes["$id"] = array();
 		} else {
 			// TODO; should we generate a warning here?
@@ -153,7 +153,7 @@ abstract class Register
 			// TODO; should we generate a warning here?
 		}
 
-		$_stack =& OWLCache::getRef(OWLCACHE_REGISTER, 'stack');		
+		$_stack =& TTCache::getRef(TTCACHE_REGISTER, 'stack');		
 		if (!array_key_exists ('severity', $_stack)) {
 			die ("Fatal error - Register::registerCode() called without a current severity; call Register::setSeverity() first");
 		}
@@ -162,7 +162,7 @@ abstract class Register
 		$_class = $_stack['class'];
 
 		// Cast the $_class ID below to a string to make sure it's not interpreted as an index
-		$_codeReg =& OWLCache::getRef(OWLCACHE_REGISTER, 'codes');
+		$_codeReg =& TTCache::getRef(TTCACHE_REGISTER, 'codes');
 		
 		$_codes =& $_codeReg["$_class"];
 		$_sev = $_stack['severity'];
@@ -176,7 +176,7 @@ abstract class Register
 
 		$_value = $_class | $_codes[$_sev] | $_sev;
 		define ($code, $_value);
-		$_symbols =& OWLCache::getRef(OWLCACHE_REGISTER, 'code_symbols');
+		$_symbols =& TTCache::getRef(TTCACHE_REGISTER, 'code_symbols');
 		$_symbols["$_value"] = $code;
 	}
 
@@ -188,9 +188,9 @@ abstract class Register
 	 */
 	static public function registerSeverity ($level, $name)
 	{
-		$_severity =& OWLCache::getRef(OWLCACHE_REGISTER, 'severity');
+		$_severity =& TTCache::getRef(TTCACHE_REGISTER, 'severity');
 		$_severity['name']["$level"] = $name; // Cast as a string!
-		$_severity['value']['OWL_' . $name] = $level;
+		$_severity['value']['TT_' . $name] = $level;
 	}
 
 	/**
@@ -201,7 +201,7 @@ abstract class Register
 	 */
 	static public function getSeverity ($level)
 	{
-		$_severity = OWLCache::get(OWLCACHE_REGISTER, 'severity');
+		$_severity = TTCache::get(TTCACHE_REGISTER, 'severity');
 		if (!array_key_exists ("$level", $_severity['name'])) {
 			return ('(unspecified)');
 		} else {
@@ -218,7 +218,7 @@ abstract class Register
 	 */
 	static public function getSeverityLevel ($name)
 	{
-		$_severity = OWLCache::get(OWLCACHE_REGISTER, 'severity');
+		$_severity = TTCache::get(TTCACHE_REGISTER, 'severity');
 		if (!array_key_exists ("$name", $_severity['value'])) {
 			return (-1);
 		} else {
@@ -232,7 +232,7 @@ abstract class Register
 	 */
 	static public function getRunId ()
 	{
-		$_id = OWLCache::get(OWLCACHE_REGISTER, 'run');
+		$_id = TTCache::get(TTCACHE_REGISTER, 'run');
 		return ($_id['id']);
 	}
 
@@ -245,7 +245,7 @@ abstract class Register
 	 */
 	static public function getCode ($value, $unknown = '*unknown*')
 	{
-		$_symbols = OWLCache::get(OWLCACHE_REGISTER, 'code_symbols');
+		$_symbols = TTCache::get(TTCACHE_REGISTER, 'code_symbols');
 		if (!array_key_exists ("$value", $_symbols)) {
 			return ($unknown);
 		} else {
@@ -261,7 +261,7 @@ abstract class Register
 	 */
 	static public function setApplication ($app_id)
 	{
-		$_stack =& OWLCache::getRef(OWLCACHE_REGISTER, 'stack');
+		$_stack =& TTCache::getRef(TTCACHE_REGISTER, 'stack');
 		$_stack['app'] = $app_id;
 	}
 
@@ -272,7 +272,7 @@ abstract class Register
 	 */
 	static public function setClass ($class_id)
 	{
-		$_stack =& OWLCache::getRef(OWLCACHE_REGISTER, 'stack');
+		$_stack =& TTCache::getRef(TTCACHE_REGISTER, 'stack');
 		$_stack['class'] = $class_id;
 	}
 
@@ -283,45 +283,45 @@ abstract class Register
 	 */
 	static public function setSeverity ($severity_level)
 	{
-		$_stack =& OWLCache::getRef(OWLCACHE_REGISTER, 'stack');
+		$_stack =& TTCache::getRef(TTCACHE_REGISTER, 'stack');
 		$_stack['severity'] = $severity_level;
 	}
 
 	/**
-	 * Load the message file for OWL and the application
+	 * Load the message file for TT and the application
 	 * \param[in] $_force Boolean to force a reload with (different) translations, defaults to false
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function registerMessages ($_force = false)
 	{
 		$_lang = ConfigHandler::get ('locale', 'lang');
-		$_messages =& OWLCache::getRef(OWLCACHE_LOCALE, 'messages');
+		$_messages =& TTCache::getRef(TTCACHE_LOCALE, 'messages');
 		// Suppress 'Undefined constants' notices for codes not (yet) registered
 		$_er = error_reporting(~E_NOTICE);
-		if (OWLCache::get(OWLCACHE_MSGFILES, 'owlMessages') === null) {
-			if (file_exists (OWL_LIBRARY . '/owl.messages.' . $_lang . '.php')) {
-				require (OWL_LIBRARY . '/owl.messages.' . $_lang . '.php');
-				$_found = OWLCache::set(OWLCACHE_MSGFILES, 'owlMessages', true);
-			} elseif (file_exists (OWL_LIBRARY . '/owl.messages.php')) {
-				require (OWL_LIBRARY . '/owl.messages.php');
-				$_found = OWLCache::set(OWLCACHE_MSGFILES, 'owlMessages', true);
+		if (TTCache::get(TTCACHE_MSGFILES, 'ttMessages') === null) {
+			if (file_exists (TT_LIBRARY . '/tt.messages.' . $_lang . '.php')) {
+				require (TT_LIBRARY . '/tt.messages.' . $_lang . '.php');
+				$_found = TTCache::set(TTCACHE_MSGFILES, 'ttMessages', true);
+			} elseif (file_exists (TT_LIBRARY . '/tt.messages.php')) {
+				require (TT_LIBRARY . '/tt.messages.php');
+				$_found = TTCache::set(TTCACHE_MSGFILES, 'ttMessages', true);
 			} else {
-				$_found = OWLCache::set(OWLCACHE_MSGFILES, 'owlMessages', false);
+				$_found = TTCache::set(TTCACHE_MSGFILES, 'ttMessages', false);
 			}
 			if ($_found === true) {
 				$_messages = $_messages + $_messages;
 			}
 		}
 
-		if (OWLCache::get(OWLCACHE_MSGFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Messages') === null) {
-			if (file_exists (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.messages.' . $_lang . '.php')) {
-				require (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.messages.' . $_lang . '.php');
-				$_found = OWLCache::set(OWLCACHE_MSGFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Messages', true);
-			} elseif (file_exists (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.messages.php')){
-				require (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.messages.php');
-				$_found = OWLCache::set(OWLCACHE_MSGFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Messages', true);
+		if (TTCache::get(TTCACHE_MSGFILES, strtolower(TTloader::getCurrentAppCode()) . 'Messages') === null) {
+			if (file_exists (TTloader::getCurrentAppLib() . '/' . strtolower(TTloader::getCurrentAppCode()) . '.messages.' . $_lang . '.php')) {
+				require (TTloader::getCurrentAppLib() . '/' . strtolower(TTloader::getCurrentAppCode()) . '.messages.' . $_lang . '.php');
+				$_found = TTCache::set(TTCACHE_MSGFILES, strtolower(TTloader::getCurrentAppCode()) . 'Messages', true);
+			} elseif (file_exists (TTloader::getCurrentAppLib() . '/' . strtolower(TTloader::getCurrentAppCode()) . '.messages.php')){
+				require (TTloader::getCurrentAppLib() . '/' . strtolower(TTloader::getCurrentAppCode()) . '.messages.php');
+				$_found = TTCache::set(TTCACHE_MSGFILES, strtolower(TTloader::getCurrentAppCode()) . 'Messages', true);
 			} else {
-				$_found = OWLCache::set(OWLCACHE_MSGFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Messages', false);
+				$_found = TTCache::set(TTCACHE_MSGFILES, strtolower(TTloader::getCurrentAppCode()) . 'Messages', false);
 			}
 			if ($_found === true) {
 				$_messages = $_messages + $_messages;
@@ -331,40 +331,40 @@ abstract class Register
 	}
 
 	/**
-	 * Load the labels file for OWL or the application
-	 * \param[in] $_owl When true, the OWL file(s) will be loaded, by default only the application's
+	 * Load the labels file for TT or the application
+	 * \param[in] $_tt When true, the TT file(s) will be loaded, by default only the application's
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	static public function registerLabels ($_owl = false)
+	static public function registerLabels ($_tt = false)
 	{
 		$_lang = ConfigHandler::get ('locale', 'lang');
-		$_labels =& OWLCache::getRef(OWLCACHE_LOCALE, 'labels');
+		$_labels =& TTCache::getRef(TTCACHE_LOCALE, 'labels');
 		// Suppress 'Undefined constants' notices for codes not (yet) registered
-		if ($_owl) {
-			if (OWLCache::get(OWLCACHE_LBLFILES, 'owlLabels') === null) {
-				if (file_exists (OWL_LIBRARY . '/owl.labels.' . $_lang . '.php')) {
-					require (OWL_LIBRARY . '/owl.labels.' . $_lang . '.php');
-					$_found = OWLCache::set(OWLCACHE_LBLFILES, 'owlLabels', true);
-				} elseif (file_exists (OWL_LIBRARY . '/owl.labels.php')) {
-					require (OWL_LIBRARY . '/owl.labels.php');
-					$_found = OWLCache::set(OWLCACHE_LBLFILES, 'owlLabels', true);
+		if ($_tt) {
+			if (TTCache::get(TTCACHE_LBLFILES, 'ttLabels') === null) {
+				if (file_exists (TT_LIBRARY . '/tt.labels.' . $_lang . '.php')) {
+					require (TT_LIBRARY . '/tt.labels.' . $_lang . '.php');
+					$_found = TTCache::set(TTCACHE_LBLFILES, 'ttLabels', true);
+				} elseif (file_exists (TT_LIBRARY . '/tt.labels.php')) {
+					require (TT_LIBRARY . '/tt.labels.php');
+					$_found = TTCache::set(TTCACHE_LBLFILES, 'ttLabels', true);
 				} else {
-					$_found = OWLCache::set(OWLCACHE_LBLFILES, 'owlLabels', false);
+					$_found = TTCache::set(TTCACHE_LBLFILES, 'ttLabels', false);
 				}
 				if ($_found === true) {
 					$_labels = $_labels + $_labels;
 				}
 			}
 		} else {
-			if (OWLCache::get(OWLCACHE_LBLFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Labels') === null) {
-				if (file_exists (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.labels.' . $_lang . '.php')) {
-					require (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.labels.' . $_lang . '.php');
-					$_found = OWLCache::set(OWLCACHE_LBLFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Labels', true);
-				} elseif (file_exists (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.labels.php')) {
-					require (OWLloader::getCurrentAppLib() . '/' . strtolower(OWLloader::getCurrentAppCode()) . '.labels.php');
-					$_found = OWLCache::set(OWLCACHE_LBLFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Labels', true);
+			if (TTCache::get(TTCACHE_LBLFILES, strtolower(TTloader::getCurrentAppCode()) . 'Labels') === null) {
+				if (file_exists (TTloader::getCurrentAppLib() . '/' . strtolower(TTloader::getCurrentAppCode()) . '.labels.' . $_lang . '.php')) {
+					require (TTloader::getCurrentAppLib() . '/' . strtolower(TTloader::getCurrentAppCode()) . '.labels.' . $_lang . '.php');
+					$_found = TTCache::set(TTCACHE_LBLFILES, strtolower(TTloader::getCurrentAppCode()) . 'Labels', true);
+				} elseif (file_exists (TTloader::getCurrentAppLib() . '/' . strtolower(TTloader::getCurrentAppCode()) . '.labels.php')) {
+					require (TTloader::getCurrentAppLib() . '/' . strtolower(TTloader::getCurrentAppCode()) . '.labels.php');
+					$_found = TTCache::set(TTCACHE_LBLFILES, strtolower(TTloader::getCurrentAppCode()) . 'Labels', true);
 				} else {
-					$_found = OWLCache::set(OWLCACHE_LBLFILES, strtolower(OWLloader::getCurrentAppCode()) . 'Labels', false);
+					$_found = TTCache::set(TTCACHE_LBLFILES, strtolower(TTloader::getCurrentAppCode()) . 'Labels', false);
 				}
 				if ($_found === true) {
 					$_labels = $_labels + $_labels;

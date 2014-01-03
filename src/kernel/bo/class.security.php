@@ -5,20 +5,20 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -41,9 +41,9 @@ define ('BIT_TOGGLE',	4);
 //! @}
 
 /**
- * \ingroup OWL_BO_LAYER
- * This class handles OWL security
- * \brief the OWL-PHP security objects
+ * \ingroup TT_BO_LAYER
+ * This class handles TT security
+ * \brief the Terra-Terra security objects
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 16, 2011 -- O van Eijk -- initial version
  */
@@ -58,14 +58,14 @@ abstract class Security
 	/**
 	 * Class constructor
 	 * \param[in] $app code for which the bitmap array must be setup
-	 * \param[in] $owl By default, the owl bitmap will be setup as well. Set this to false to suppress this
+	 * \param[in] $tt By default, the tt bitmap will be setup as well. Set this to false to suppress this
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function __construct ($app, $owl = true)
+	public function __construct ($app, $tt = true)
 	{
 		$this->bitmap = array('a'.$app => 0);
-		if ($owl === true) {
-			$this->bitmap['a'.OWL_ID] = 0;
+		if ($tt === true) {
+			$this->bitmap['a'.TT_ID] = 0;
 		}
 	}
 
@@ -155,5 +155,5 @@ abstract class Security
 }
 Register::registerClass('Security');
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 //Register::registerCode ('USER_DUPLUSERNAME');

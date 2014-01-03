@@ -5,30 +5,30 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_BO_LAYER
- * This class handles the OWL users
- * \brief the OWL-PHP user object
+ * \ingroup TT_BO_LAYER
+ * This class handles the TT users
+ * \brief the Terra-Terra user object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 27, 2008 -- O van Eijk -- initial version
  */
-abstract class User extends _OWL
+abstract class User extends _TT
 {
 	/**
 	 * The PHP session object
@@ -70,25 +70,25 @@ abstract class User extends _OWL
 	 */
 	protected function construct ($username = false)
 	{
-		_OWL::init(__FILE__, __LINE__);
+		_TT::init(__FILE__, __LINE__);
 
 		$this->dataset = new DataHandler ();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$this->dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$this->dataset->setTablename('user');
 
 		$this->memberships = array();
 
-		// When called by the installer (for OWL itself), we don't wanna start a session
-		if (defined('OWL___INSTALLER')) {
+		// When called by the installer (for TT itself), we don't wanna start a session
+		if (defined('TT___INSTALLER')) {
 			return;
 		}
 
 		if ($username === false) {
 			$this->session = new Session();
 
-			if ($this->succeeded(OWL_SUCCESS, $this->session) !== true) {
+			if ($this->succeeded(TT_SUCCESS, $this->session) !== true) {
 				$this->session->signal();
 			}
 
@@ -97,7 +97,7 @@ abstract class User extends _OWL
 			} else {
 				$this->restoreUser();
 			}
-			OWLCache::set(OWLCACHE_OBJECTS, 'user', ($_ =& $this));
+			TTCache::set(TTCACHE_OBJECTS, 'user', ($_ =& $this));
 		} else {
 			$this->getUser($username);
 		}
@@ -131,14 +131,14 @@ abstract class User extends _OWL
 	private function newUser()
 	{
 		$this->readUserdata();
-		$this->rights = new Rights(OWLloader::getCurrentAppID());
+		$this->rights = new Rights(TTloader::getCurrentAppID());
 		$this->getMemberships();
 		if (ConfigHandler::get('session', 'default_rights_all', false) === true) {
-			$this->session->setRights($this->rights->getBitmap(OWL_ID), OWL_ID);
-			$this->session->setRights($this->rights->getBitmap(OWLloader::getCurrentAppID()), OWLloader::getCurrentAppID());
+			$this->session->setRights($this->rights->getBitmap(TT_ID), TT_ID);
+			$this->session->setRights($this->rights->getBitmap(TTloader::getCurrentAppID()), TTloader::getCurrentAppID());
 		} else {
-			$this->session->setRights($this->group->getRights(OWL_ID), OWL_ID);
-			$this->session->setRights($this->group->getRights(OWLloader::getCurrentAppID()), OWLloader::getCurrentAppID());
+			$this->session->setRights($this->group->getRights(TT_ID), TT_ID);
+			$this->session->setRights($this->group->getRights(TTloader::getCurrentAppID()), TTloader::getCurrentAppID());
 		}
 	}
 
@@ -299,7 +299,7 @@ abstract class User extends _OWL
 				$this->user_data = $this->user_data[0]; // Shift up one level
 				$this->group = new Group($this->user_data['gid']);
 			}
-			$this->rights = new Rights(OWLloader::getCurrentAppID());
+			$this->rights = new Rights(TTloader::getCurrentAppID());
 			$this->getMemberships($this->user_data['uid']);
 		}
 	}
@@ -446,12 +446,12 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	/**
 	 * Add a new membership for the given user
 	 * \param[in] $groupName Name of the new group
-	 * \param[in] $aid Application ID the group belongs to, defaults to OWL_ID
+	 * \param[in] $aid Application ID the group belongs to, defaults to TT_ID
 	 * \param[in] $uid Given userID
 	 * \return True on success
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	protected function addMembership($groupName, $aid = OWL_ID, $uid = 0)
+	protected function addMembership($groupName, $aid = TT_ID, $uid = 0)
 	{
 		if ($uid == 0) {
 			$uid = $this->getUserId();
@@ -462,8 +462,8 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 		}
 
 		$dataset = new DataHandler ();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$dataset->setTablename('memberships');
 		$dataset->set('uid', $uid);
@@ -498,7 +498,7 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 		$this->dataset->setKey('uid');
 		$this->dataset->set('verification', '');
 		$this->dataset->prepare(DATA_UPDATE);
-		if ($this->dataset->db ($_result, __LINE__, __FILE__) <= OWL_SUCCESS) {
+		if ($this->dataset->db ($_result, __LINE__, __FILE__) <= TT_SUCCESS) {
 			$this->setStatus(__FILE__, __LINE__, USER_CONFIRMED);
 			return (true);
 		} else {
@@ -661,12 +661,12 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	private function getMemberships($uid = 0)
 	{
 		$dataset = new DataHandler ();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		// Initialize with the values for the primary group
-		$this->rights->mergeBitmaps($this->group->getRights(OWL_ID), OWL_ID);
-		$this->rights->mergeBitmaps($this->group->getRights(OWLloader::getCurrentAppID()), OWLloader::getCurrentAppID());
+		$this->rights->mergeBitmaps($this->group->getRights(TT_ID), TT_ID);
+		$this->rights->mergeBitmaps($this->group->getRights(TTloader::getCurrentAppID()), TTloader::getCurrentAppID());
 		$dataset->setTablename('memberships');
 		$dataset->set('uid', ($uid === 0) ? $this->getUserId() : $uid);
 		$dataset->prepare();
@@ -675,8 +675,8 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 		if ($dataset->dbStatus() !== DBHANDLE_NODATA) {
 			foreach ($_data as $_mbrship) {
 				$this->memberships['m'.$_mbrship['gid']] = new Group($_mbrship['gid']);
-				$this->rights->mergeBitmaps($this->memberships['m'.$_mbrship['gid']]->getRights(OWL_ID), OWL_ID);
-				$this->rights->mergeBitmaps($this->memberships['m'.$_mbrship['gid']]->getRights(OWLloader::getCurrentAppID()), OWLloader::getCurrentAppID());
+				$this->rights->mergeBitmaps($this->memberships['m'.$_mbrship['gid']]->getRights(TT_ID), TT_ID);
+				$this->rights->mergeBitmaps($this->memberships['m'.$_mbrship['gid']]->getRights(TTloader::getCurrentAppID()), TTloader::getCurrentAppID());
 			}
 		}
 	}
@@ -727,14 +727,14 @@ Register::registerClass('User');
 
 
 
-//Register::setSeverity (OWL_DEBUG);
-//Register::setSeverity (OWL_INFO);
-//Register::setSeverity (OWL_OK);
-Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (TT_DEBUG);
+//Register::setSeverity (TT_INFO);
+//Register::setSeverity (TT_OK);
+Register::setSeverity (TT_SUCCESS);
 Register::registerCode ('USER_LOGGEDIN');
 Register::registerCode ('USER_CONFIRMED');
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('USER_DUPLUSERNAME');
 Register::registerCode ('USER_PWDVERFAILED');
 Register::registerCode ('USER_WEAKPASSWD');
@@ -747,12 +747,12 @@ Register::registerCode ('USER_NOSUCHUSER');
 Register::registerCode ('USER_IVCONFARG');
 Register::registerCode ('USER_CONFERR');
 
-Register::setSeverity (OWL_BUG);
+Register::setSeverity (TT_BUG);
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 Register::registerCode ('USER_NODATASET');
 Register::registerCode ('USER_RESTORERR');
 
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);
 

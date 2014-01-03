@@ -5,12 +5,12 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
-if (!OWLloader::getClass('listings', OWLADMIN_SO)) {
-	trigger_error('Error loading the Listings class from ' . OWLADMIN_SO, E_USER_ERROR);
+if (!TTloader::getClass('listings', TTADMIN_SO)) {
+	trigger_error('Error loading the Listings class from ' . TTADMIN_SO, E_USER_ERROR);
 }
 
 /**
- * \ingroup OWL_OWLADMIN
+ * \ingroup TT_TTADMIN
  * Setup the contentarea holding the userlist
  * \brief User listing
  * \author Oscar van Eijk, Oveas Functionality Provider
@@ -25,7 +25,7 @@ class UserlistArea extends ContentArea
 	 */
 	public function loadArea($arg = null)
 	{
-		if ($this->hasRight('manageusers', OWL_ID) === false) {
+		if ($this->hasRight('manageusers', TT_ID) === false) {
 			return false;
 		}
 
@@ -37,10 +37,10 @@ class UserlistArea extends ContentArea
 			$_lnk = new Container('link', $_name);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'OWL'
-						,'include_path' => 'OWLADMIN_BO'
-						,'class_file' => 'owluser'
-						,'class_name' => 'OWLUser'
+						 'application' => 'TT'
+						,'include_path' => 'TTADMIN_BO'
+						,'class_file' => 'ttuser'
+						,'class_name' => 'TTUser'
 						,'method_name' => 'showEditUserForm'
 						,'argument' => $_name
 					)

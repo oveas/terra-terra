@@ -5,20 +5,20 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -41,15 +41,15 @@ define ('FILE_TRIM_C',	3);
 //! @}
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * Handle all files
  * \brief File handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 15, 2007 -- O van Eijk -- initial version for Terra-Terra (based on an old OFM module)
- * \version Jul 30, 2008 -- O van Eijk -- Modified version for OWL-PHP
+ * \version Jul 30, 2008 -- O van Eijk -- Modified version for Terra-Terra
  * \todo This one contains a lot of old OFM stuff... porting (or erasing...) of old code in progress...
  */
-class FileHandler extends _OWL
+class FileHandler extends _TT
 {
 
 	private $fullName;	//!< Full filename as stored on the file system
@@ -70,7 +70,7 @@ class FileHandler extends _OWL
 	 */
 	public function __construct ($name, $req = true)
 	{
-		_OWL::init(__FILE__, __LINE__);
+		_TT::init(__FILE__, __LINE__);
 
 		if ($req === true) {
 			$this->fullName = realpath($name);
@@ -97,7 +97,7 @@ class FileHandler extends _OWL
 //		$this->localfile = (preg_match('/^([a-z]+):\/\//i', $this->fullName) === 0);
 //		$this->myfile = (fileowner($this->fullName) == getmyuid());
 
-		$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
+		$this->setStatus (__FILE__, __LINE__, TT_STATUS_OK);
 	}
 
 	/**
@@ -181,7 +181,7 @@ class FileHandler extends _OWL
 			));
 		} else {
 			fwrite($this->fpointer, $text . ($addEOL ? "\n" : ''));
-			$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
+			$this->setStatus (__FILE__, __LINE__, TT_STATUS_OK);
 		}
 	}
 	/**
@@ -285,7 +285,7 @@ class FileHandler extends _OWL
 				return 'image/jpg';
 				break;
 			default:
-				return  'OWL-PHP/CB-download';
+				return  'Terra-Terra/CB-download';
 		}
 	}
 	
@@ -310,7 +310,7 @@ class FileHandler extends _OWL
 	public function downloadFile()
 	{
 		if (headers_sent()) {
-			$this->setStatus (__FILE__, __LINE__, OWL_HEADERSENT, array ($this->fullName));
+			$this->setStatus (__FILE__, __LINE__, TT_HEADERSENT, array ($this->fullName));
 			return;
 		}
 		$this->getFileInfo();
@@ -344,19 +344,19 @@ class FileHandler extends _OWL
 */
 Register::registerClass('FileHandler');
 
-//Register::setSeverity (OWL_DEBUG);
-Register::setSeverity (OWL_INFO);
+//Register::setSeverity (TT_DEBUG);
+Register::setSeverity (TT_INFO);
 Register::registerCode ('FILE_NEWFILE');
 
-//Register::setSeverity (OWL_OK);
+//Register::setSeverity (TT_OK);
 
-Register::setSeverity (OWL_SUCCESS);
+Register::setSeverity (TT_SUCCESS);
 Register::registerCode ('FILE_CREATED');
 Register::registerCode ('FILE_OPENED');
 Register::registerCode ('FILE_CLOSED');
 Register::registerCode ('FILE_DELETED');
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('FILE_NOSUCHFILE');
 Register::registerCode ('FILE_ENDOFFILE');
 Register::registerCode ('FILE_READONLY');
@@ -364,10 +364,10 @@ Register::registerCode ('FILE_NOTOPENED');
 Register::registerCode ('FILE_DELERR');
 
 
-//Register::setSeverity (OWL_BUG);
+//Register::setSeverity (TT_BUG);
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 Register::registerCode ('FILE_OPENERR');
 
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

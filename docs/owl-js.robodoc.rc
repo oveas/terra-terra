@@ -9,10 +9,10 @@ options:
 	--index
 	--sections
 	--nopre
-	--documenttitle "OWL-JS Oveas Web Library for JavaScript"
-	--doc "/home/oscar/projects/owl/docs/owl-js/html"
-	--src "/home/oscar/projects/owl/owl-js/src"
-	--css "/home/oscar/projects/owl/owl-php/docs/owlstyle.css"
+	--documenttitle "TT-JS Oveas Web Library for JavaScript"
+	--doc "/home/oscar/projects/tt/docs/tt-js/html"
+	--src "/home/oscar/projects/tt/tt-js/src"
+	--css "/home/oscar/projects/tt/terra-terra/docs/ttstyle.css"
 
 items:
 	NAME

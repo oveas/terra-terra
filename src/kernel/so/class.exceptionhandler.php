@@ -1,39 +1,39 @@
 <?php
 /**
  * \file
- * This file defines the OWL Exception handler class and a default exception handler, for
+ * This file defines the TT Exception handler class and a default exception handler, for
  * which a special class is created.
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * Extend the default PHP Exception handler .
  * \brief Exception handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jul 29, 2008 -- O van Eijk -- Initial version
- * \todo The oldest code in OWL dates back to 2001; by now PHP4 support is dropped anyway,
+ * \todo The oldest code in TT dates back to 2001; by now PHP4 support is dropped anyway,
  * so implementing the errorhandling using try/catch would be an improvemt! Especially the class DbHandler in combination with the class DataHandler
  * should be changed that way.
  */
-class OWLException extends Exception
+class TTException extends Exception
 {
 	/**
 	 * Backlink to the calling object
@@ -57,7 +57,7 @@ class OWLException extends Exception
 	 * \param[in] $caller Backlink to the calling object
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	function __construct($msg = null, $code = 0, OWLException $caller = null)
+	function __construct($msg = null, $code = 0, TTException $caller = null)
 	{
 		parent::__construct($msg, $code);
 		$this->caller = $caller;
@@ -93,7 +93,7 @@ class OWLException extends Exception
 
 			unset ($_trace);
 
-			if (get_class ($this->caller) == 'OWLException') {
+			if (get_class ($this->caller) == 'TTException') {
 				foreach ($this->caller->_getTrace () as $_key => $_trace) {
 					array_push ($_arr, $_trace);
 				}
@@ -122,15 +122,15 @@ class OWLException extends Exception
 			$_text = sprintf('%sException code : %%X%08X (%s)%s',
 					$_text, $this->code, Register::getCode ($this->code), "\n");
 
-			$_text .= 'Severity level: ' . Register::getSeverity ($this->code & OWL_SEVERITY_PATTERN) . "\n";
+			$_text .= 'Severity level: ' . Register::getSeverity ($this->code & TT_SEVERITY_PATTERN) . "\n";
 			$_text .= 'Exception message : ' . $this->message . "\n";
 		} else {
 			$_text = '<p class="exception"><b>An exception was thrown :</b><br/>';
 			$_text = sprintf('%sException code : %%X%08X (%s)<br />',
 					$_text, $this->code, Register::getCode ($this->code));
 
-			// There's no instance here, so we need to duplicate _OWL::getSeverity():
-			$_text .= 'Severity level: ' . Register::getSeverity ($this->code & OWL_SEVERITY_PATTERN) . '<br />';
+			// There's no instance here, so we need to duplicate _TT::getSeverity():
+			$_text .= 'Severity level: ' . Register::getSeverity ($this->code & TT_SEVERITY_PATTERN) . '<br />';
 			$_text .= 'Exception message : ' . $this->message . '<br/>';
 			$_text .= '<span class="stackdump">';
 		}
@@ -315,14 +315,14 @@ class OWLException extends Exception
 }
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * Establish a default exception handler. En exception is thrown whenever a status is set
  * above a specified severity level. These exceptions are caught only by this default handler
  * \brief Default exception handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jul 29, 2008 -- O van Eijk -- Initial version
  */
-class OWLExceptionHandler
+class TTExceptionHandler
 {
 
 	/**
@@ -330,10 +330,10 @@ class OWLExceptionHandler
 	 * \param[in] $exception The exception
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function logException(OWLException $exception)
+	public static function logException(TTException $exception)
 	{
-		if (($_logger = OWLCache::get(OWLCACHE_OBJECTS, 'Logger')) === null) {
-			$_logger = OWL::factory('LogHandler');
+		if (($_logger = TTCache::get(TTCACHE_OBJECTS, 'Logger')) === null) {
+			$_logger = TT::factory('LogHandler');
 		}
 		$_logger->log ($exception->stackDump(true), $exception->thrown_code);
 
@@ -344,7 +344,7 @@ class OWLExceptionHandler
 				. 'Check the logfile for details</p>');
 		}
 		// Define a constants to let destructors know we're not in a clean shutdown
-		define ('OWL_EMERGENCY_SHUTDOWN', 1);
+		define ('TT_EMERGENCY_SHUTDOWN', 1);
 	}
 
 	/**
@@ -352,11 +352,11 @@ class OWLExceptionHandler
 	 * \param[in] $exception The exception
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function handleException (OWLException $exception)
+	public static function handleException (TTException $exception)
 	{
 		self::logException($exception);
-		OWLdbg_show();
+		TTdbg_show();
 	}
 }
 
-set_exception_handler(array('OWLExceptionHandler', 'handleException'));
+set_exception_handler(array('TTExceptionHandler', 'handleException'));

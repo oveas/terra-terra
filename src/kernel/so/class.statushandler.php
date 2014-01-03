@@ -5,24 +5,24 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * Each object, when initialised, gets a status object which olds information
  * about the last action that was performed.
  * \brief Status object
@@ -52,17 +52,17 @@ class StatusHandler
 	private static $instance;
 
 	/**
-	 * Constructor; should be called only by _OWL::init().
+	 * Constructor; should be called only by _TT::init().
 	 * The default status is initially a (generic) warning status. It should be set to
 	 * any successfull status after object initialisation completed.
 	 * \param[in] $code The status code
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private function __construct ($code = OWL_STATUS_WARNING)
+	private function __construct ($code = TT_STATUS_WARNING)
 	{
 		$this->params = array();
 		$this->code = $code;
-		$this->msgCache =& OWLCache::getRef(OWLCACHE_LOCALE, 'messages');
+		$this->msgCache =& TTCache::getRef(TTCACHE_LOCALE, 'messages');
 	}
 
 	/**
@@ -84,7 +84,7 @@ class StatusHandler
 	 * \return The severity level of the code
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function setCode ($code = OWL_STATUS_BUG)
+	public function setCode ($code = TT_STATUS_BUG)
 	{
 		$this->code = $code;
 		return (self::getSeverity());
@@ -96,7 +96,7 @@ class StatusHandler
 	 */
 	public function reset ()
 	{
-		$this->code = OWL_STATUS_OK;
+		$this->code = TT_STATUS_OK;
 		$this->params = array();
 	}
 
@@ -130,7 +130,7 @@ class StatusHandler
 	public function getSeverity ($status = null)
 	{
 		$_stat = ($status === null ? $this->code : $status);
-		return ($_stat & OWL_SEVERITY_PATTERN);
+		return ($_stat & TT_SEVERITY_PATTERN);
 	}
 
 	/**
@@ -183,8 +183,8 @@ class StatusHandler
 		}
 		if ($this->getSeverity() >= ConfigHandler::get ('logging', 'log_caller_level')
 				&& ($_depth = ConfigHandler::get ('logging', 'log_caller_depth')) != 0) {
-			$_u = OWLCache::get(OWLCACHE_OBJECTS, 'user');
-			if (is_object($_u) && $_u->hasRight('showtraces', OWL_ID) === true) {
+			$_u = TTCache::get(TTCACHE_OBJECTS, 'user');
+			if (is_object($_u) && $_u->hasRight('showtraces', TT_ID) === true) {
 				$_traces = $this->getBackTrace($_depth);
 				if (count($_traces) > 0) {
 					$_msg .= ' (' . implode(', ', $_traces) . ')';
@@ -218,12 +218,12 @@ class StatusHandler
 			$depth = count($_trace);
 		}
 		$_calls = array();
-		// Ignore the 1st traces; the're always _OWL::signal() and self::getMessage()
+		// Ignore the 1st traces; the're always _TT::signal() and self::getMessage()
 		for (--$depth; $depth >= 2; $depth--) {
 			if (array_key_exists('file',$_trace[$depth])) {
-				$_calls[] = (str_replace(OWL_ROOT, '', $_trace[$depth]['file']) . ':' . $_trace[$depth]['line']);
+				$_calls[] = (str_replace(TT_ROOT, '', $_trace[$depth]['file']) . ':' . $_trace[$depth]['line']);
 			} elseif (array_key_exists('class',$_trace[$depth])) {
-				// Called via OWL::stat()
+				// Called via TT::stat()
 				$_calls[] = ($_trace[$depth]['class'] . '::' . $_trace[$depth]['function']);
 			} else {
 				$_calls[] = '(untraceable)';

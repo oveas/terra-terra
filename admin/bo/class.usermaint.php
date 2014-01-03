@@ -1,11 +1,11 @@
 <?php
 /**
  * \file
- * This file defines the OWL user class for user maintenantce
+ * This file defines the TT user class for user maintenantce
  */
 
 /**
- * \ingroup OWL_OWLADMIN
+ * \ingroup TT_TTADMIN
  * User maintenance class.
  * \brief User ,maintenance
  * \author Oscar van Eijk, Oveas Functionality Provider
@@ -49,12 +49,12 @@ class Usermaint extends User
 	}
 
 	/**
-	 * Add or edit an OWL user. The data is taken from the form
+	 * Add or edit an TT user. The data is taken from the form
 	 * \return True on success
 	 */
 	public function editUser ()
 	{
-		$_form = OWL::factory('FormHandler');
+		$_form = TT::factory('FormHandler');
 		$_new = (($_uid = $_form->get('uid')) == 0);
 		if ($_new === true) {
 			$_uid = $this->register(

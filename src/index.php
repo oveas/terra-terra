@@ -1,18 +1,18 @@
 <?php
-define ('OWL_ROOT', '/home/oscar/projects/owl-php/src');
-require (OWL_ROOT . '/OWLloader.php');
-OWLloader::loadApplication('OWL');
+define ('TT_ROOT', '/home/oscar/projects/terra-terra/src');
+require (TT_ROOT . '/TTloader.php');
+TTloader::loadApplication('TT');
 ?>
 <html>
 <head>
-<title>OWL-PHP</title>
+<title>Terra-Terra</title>
 </head>
 <body>
-Welcome at the OWL-PHP mainpage.<br/>
-OWL-PHP itself won't do much; this is all there is. For more information refer to the OWL-PHP documentation and to the OWL applications installed on this server.
+Welcome at the Terra-Terra mainpage.<br/>
+Terra-Terra itself won't do much; this is all there is. For more information refer to the Terra-Terra documentation and to the TT applications installed on this server.
 </body>
 </html>
 <?php
 //phpinfo();
-OWLloader::getClass('OWLrundown.php', OWL_ROOT);
+TTloader::getClass('TTrundown.php', TT_ROOT);
 ?>

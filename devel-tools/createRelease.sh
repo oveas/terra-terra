@@ -1,77 +1,77 @@
 #!/bin/bash
 #
-# Hack to package OWL-PHP
+# Hack to package Terra-Terra
 
 
 show_usage ()
 {
 	ME=`basename $0`
 	cat << ___USAGE_NOTES___
-Usage: $ME <owl-php location>
+Usage: $ME <terra-terra location>
 ___USAGE_NOTES___
 	exit
 }
 
 if [ "$1" == "" ]
 then
-	OWLLOCATION=.
+	TTLOCATION=.
 else
-	OWLLOCATION=$1
+	TTLOCATION=$1
 fi 
 
-if [ ! -e $OWLLOCATION/src/OWLloader.php ]
+if [ ! -e $TTLOCATION/src/TTloader.php ]
 then
 	show_usage
 	exit
 fi 
 
-if [ ! -e $OWLLOCATION/../owl-js/src/lib/owl.js ]
+if [ ! -e $TTLOCATION/../tt-js/src/lib/tt.js ]
 then
-	echo Cannot find OWL-JS --- please set the correct path in $0
+	echo Cannot find TT-JS --- please set the correct path in $0
 	exit
 fi 
 
 CLOC=`pwd`
-cd $OWLLOCATION
+cd $TTLOCATION
 
-OWLVERSION=`grep OWL_VERSION src/OWLloader.php | sed -r "s#(^\s*d.*,\s*'|'\s*\)\s*;\s*$)##g"`
+TTVERSION=`grep TT_VERSION src/TTloader.php | sed -r "s#(^\s*d.*,\s*'|'\s*\)\s*;\s*$)##g"`
 
-if [ -e __OWLPHPdist.$OWLVERSION.tmp ]
+if [ -e __TTdist.$TTVERSION.tmp ]
 then
-	rm -rf __OWLPHPdist.$OWLVERSION.tmp
+	rm -rf __TTdist.$TTVERSION.tmp
 fi
 
-if [ -e owlphp_$OWLVERSION.zip ]
+if [ -e terra-terra_$TTVERSION.zip ]
 then
-	rm owlphp_$OWLVERSION.zip
+	rm terra-terra_$TTVERSION.zip
 fi
 
 
-mkdir __OWLPHPdist.$OWLVERSION.tmp
-cd __OWLPHPdist.$OWLVERSION.tmp
+mkdir __TTPHPdist.$TTVERSION.tmp
+cd __TTPHPdist.$TTVERSION.tmp
 
 # Kernel sources
-mkdir owl-php
-cp -Rupv ../src/* ./owl-php
-cp -p ../db/sql/owl.tables.sql ./owl-php
+mkdir terra-terra
+cp -Rupv ../src/* ./terra-terra
+cp -p ../db/sql/tt.tables.sql ./terra-terra
 
-# OWL-JS
-mkdir owl-js
-cp -Rupv ../../owl-js/src/* ./owl-js
+# TT-JS
+mkdir tt-js
+cp -Rupv ../../tt-js/src/* ./tt-js
 
-# OWL Admin app
-mkdir owladmin
-cp -Rupv ../admin/* ./owladmin
+# TT Admin app
+mkdir ttadmin
+cp -Rupv ../admin/* ./ttadmin
 
-../devel-tools/createIndexes.pl ./owl-php
-../devel-tools/createIndexes.pl ./owl-js
-../devel-tools/createIndexes.pl ./owlAdmin
+../devel-tools/createIndexes.pl ./terra-terra
+../devel-tools/createIndexes.pl ./tt-js
+../devel-tools/createIndexes.pl ./ttAdmin
 
-zip -r ../owlphp_$OWLVERSION.zip *
+zip -r ../terra-terra_$TTVERSION.zip *
 
 cd ..
-rm -rf __OWLPHPdist.$OWLVERSION.tmp
+rm -rf __TTdist.$TTVERSION.tmp
 cd $CLOC
 
-echo Succesfully created owlphp_$OWLVERSION.zip
+echo Succesfully created terra-terra_$TTVERSION.zip
 

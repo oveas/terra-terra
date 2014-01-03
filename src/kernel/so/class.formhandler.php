@@ -5,20 +5,20 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -49,18 +49,18 @@ define ('FORMDATA_RAW',				6);
 //! @}
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * Handler for all incoming formdata.
  * \brief Formhandler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 28, 2008 -- O van Eijk -- initial version
  */
-class FormHandler extends _OWL
+class FormHandler extends _TT
 {
 	/**
 	 * Create an array which will hold all (formatted) formvalues
 	 */
-	private $owl_formvalues;
+	private $tt_formvalues;
 
 	/**
 	 * integer - self reference
@@ -73,12 +73,12 @@ class FormHandler extends _OWL
 	 */
 	private function __construct ()
 	{
-		_OWL::init(__FILE__, __LINE__);
-		$this->owl_formvalues = array();
+		_TT::init(__FILE__, __LINE__);
+		$this->tt_formvalues = array();
 		$this->setStatus (__FILE__, __LINE__, FORM_PARSE);
 		$this->parseFormdata ($_GET);
 		$this->parseFormdata ($_POST);
-		$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
+		$this->setStatus (__FILE__, __LINE__, TT_STATUS_OK);
 	}
 
 	/**
@@ -122,28 +122,28 @@ class FormHandler extends _OWL
 	 */
 	public function set ($variable, $value)
 	{
-		if (array_key_exists ($variable, $this->owl_formvalues)) {
+		if (array_key_exists ($variable, $this->tt_formvalues)) {
 			// This field already exists (multi select); make sure it's
 			// not overwritten, but written in an array
-			if (!is_array($this->owl_formvalues[$variable])) {
+			if (!is_array($this->tt_formvalues[$variable])) {
 				// This is the first one, copy the previously stored value to the
 				// multivalue array and add the new value.
-				$_val = $this->owl_formvalues[$variable];
-				$this->owl_formvalues[$variable] = array ($_val, $value);
+				$_val = $this->tt_formvalues[$variable];
+				$this->tt_formvalues[$variable] = array ($_val, $value);
 			} else {
-				$this->owl_formvalues[$variable][] = $value;
+				$this->tt_formvalues[$variable][] = $value;
 			}
 		} else {
-			$this->owl_formvalues[$variable] = $value;
+			$this->tt_formvalues[$variable] = $value;
 		}
 
 		if (ConfigHandler::get ('general', 'debug') > 0) {
 			$this->setStatus (__FILE__, __LINE__, FORM_STORVALUE,
 				array ($variable
 						, (
-							is_array($this->owl_formvalues[$variable])
-								? ('array('.implodeMDArray (',', $this->owl_formvalues[$variable]) . ')')
-								: $this->owl_formvalues[$variable]
+							is_array($this->tt_formvalues[$variable])
+								? ('array('.implodeMDArray (',', $this->tt_formvalues[$variable]) . ')')
+								: $this->tt_formvalues[$variable]
 						)
 				)
 			);
@@ -190,8 +190,8 @@ class FormHandler extends _OWL
 				break;
 		}
 
-		if (array_key_exists ($variable, $this->owl_formvalues)) {
-			$_val = $this->owl_formvalues[$variable];
+		if (array_key_exists ($variable, $this->tt_formvalues)) {
+			$_val = $this->tt_formvalues[$variable];
 			if ($format !== FORMDATA_RAW) {
 				if (is_array($_val)) {
 //					$_cnt = count($_val);
@@ -221,7 +221,7 @@ class FormHandler extends _OWL
 			}
 		} else {
 			$_val = null;
-			if ($variable != OWL_DISPATCHER_NAME) { // 'Home'
+			if ($variable != TT_DISPATCHER_NAME) { // 'Home'
 				$this->setStatus (__FILE__, __LINE__, FORM_NOVALUE, $variable);
 			}
 		}
@@ -294,7 +294,7 @@ class FormHandler extends _OWL
 	 */
 	public function getFormData()
 	{
-		return ($this->owl_formvalues);
+		return ($this->tt_formvalues);
 	}
 }
 
@@ -303,20 +303,20 @@ class FormHandler extends _OWL
  */
 Register::registerClass ('FormHandler');
 
-Register::setSeverity (OWL_DEBUG);
+Register::setSeverity (TT_DEBUG);
 Register::registerCode ('FORM_STORVALUE');
 Register::registerCode ('FORM_PARSE');
 
-//Register::setSeverity (OWL_INFO);
-//Register::setSeverity (OWL_OK);
-Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (TT_INFO);
+//Register::setSeverity (TT_OK);
+Register::setSeverity (TT_SUCCESS);
 Register::registerCode ('FORM_RETVALUE');
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('FORM_NOVALUE');
 
-//Register::setSeverity (OWL_BUG);
+//Register::setSeverity (TT_BUG);
 
-//Register::setSeverity (OWL_ERROR);
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_ERROR);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

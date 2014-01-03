@@ -5,24 +5,24 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_UI_LAYER
+ * \ingroup TT_UI_LAYER
  * Class for Document singletons.
  * This class can be extended defining other document types
  * \brief Document
@@ -37,9 +37,9 @@ class Document extends BaseElement
 	private $base;
 
 	/**
-	* Base URL for the OWL installation, defaults to the server top
+	* Base URL for the TT installation, defaults to the server top
 	*/
-	private $owlBase;
+	private $ttBase;
 	
 	/**
 	 * Array for on-the-fly styles
@@ -102,9 +102,9 @@ class Document extends BaseElement
 	private $msgContainer;
 
 	/**
-	 * Switch that will be set to True when OWL-JS is enabled
+	 * Switch that will be set to True when TT-JS is enabled
 	 */
-	private $owl_jsEnabled;
+	private $tt_jsEnabled;
 	
 	/**
 	 * Boolean indicating if the document has been retrieved for display
@@ -118,28 +118,28 @@ class Document extends BaseElement
 	 */
 	protected function __construct (array $_attribs = array())
 	{
-		_OWL::init(__FILE__, __LINE__);
+		_TT::init(__FILE__, __LINE__);
 		$_proto = explode('/', $_SERVER['SERVER_PROTOCOL']);
-		$this->owlBase = $this->base = strtolower($_proto[0]) . '://' . $_SERVER['HTTP_HOST'];
-		if (defined('OWL_USER_LOCATION')) {
-			$this->base .= '/' . OWL_USER_LOCATION;
+		$this->ttBase = $this->base = strtolower($_proto[0]) . '://' . $_SERVER['HTTP_HOST'];
+		if (defined('TT_USER_LOCATION')) {
+			$this->base .= '/' . TT_USER_LOCATION;
 		}
 		$this->styles = array();
 		$this->css = array('unconditional' => array());
 		$this->scripts = array();
 		$this->js = array();
-		$this->title = 'OWL Generated document';
+		$this->title = 'TT Generated document';
 		$this->meta = array(
 			  'robots'	=> 'index, follow'
-			, 'keywords'	=> array('OWL-PHP', 'Oveas', 'OWL')
-			, 'description'	=> 'OWL-PHP - Oveas Web Library for PHP'
-			, 'generator'	=> 'OWL-PHP v'.OWL_VERSION.' - Oveas Web Library for PHP, (c)2006-'.substr(OWL_DATE, 0, 4).' Oveas Functionality Provider'
+			, 'keywords'	=> array('Terra-Terra', 'Oveas', 'TT')
+			, 'description'	=> 'Terra-Terra - Oveas Web Library for PHP'
+			, 'generator'	=> 'Terra-Terra v'.TT_VERSION.' - Oveas Web Library for PHP, (c)2006-'.substr(TT_DATE, 0, 4).' Oveas Functionality Provider'
 		);
 		$this->header = array();
 		$this->messages = array();
 		$this->favicon = '';
 		$this->contentType = 'text/html; charset=utf-8';
-		$this->owl_jsEnabled = false;
+		$this->tt_jsEnabled = false;
 		$this->open = false;
 	}
 
@@ -157,35 +157,35 @@ class Document extends BaseElement
 	}
 
 	/**
-	 * This method can be called at any time to enable OWL-JS. It writes some global variables
+	 * This method can be called at any time to enable TT-JS. It writes some global variables
 	 * to the document for use by JavaScript, and loads the library file with the core functionality.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function enableOWL_JS()
+	public function enableTT_JS()
 	{
-		if ($this->owl_jsEnabled === true) {
+		if ($this->tt_jsEnabled === true) {
 			return;
 		}
-		$this->owl_jsEnabled = true;
-		$this->addScript("// These variables are written here by OWL-PHP. If any of them need to change,\n"
-						. "// you should change them in OWLloader.php (will affect both OWL-PHP and OWL-JS), section OWL_Globals.\n"
-						. "// The defines in OWL-PHP have the same name as the variables here.");
-		$this->addScript("\n// Top URL of OWL-JS\n" . 'var OWL_JS_TOP = "' . OWL_JS_TOP . '";');
-		$this->addScript("\n// Location of the OWL-JS standard libfiles\n" . 'var OWL_JS_LIB = "' . OWL_JS_LIB . '";');
-		$this->addScript("\n// Top location of the OWL-JS plugins\n" . 'var OWL_JS_PLUGINS = "' . OWL_JS_PLUGINS . '";');
-		$this->addScript("\n// Name of the OWL dispatcher as it should appear in requests\n" . 'var OWL_DISPATCHER_NAME = "' . OWL_DISPATCHER_NAME . '";');
-		$this->addScript("\n// Callback URL for requests (AJAX, Form, links etc).\n" . 'var OWL_CALLBACK_URL = "' . OWL_CALLBACK_URL . '";');
-		$this->loadScript(OWL_JS_LIB . '/owl.js');
+		$this->tt_jsEnabled = true;
+		$this->addScript("// These variables are written here by Terra-Terra. If any of them need to change,\n"
+						. "// you should change them in TTloader.php (will affect both Terra-Terra and TT-JS), section TT_Globals.\n"
+						. "// The defines in Terra-Terra have the same name as the variables here.");
+		$this->addScript("\n// Top URL of TT-JS\n" . 'var TT_JS_TOP = "' . TT_JS_TOP . '";');
+		$this->addScript("\n// Location of the TT-JS standard libfiles\n" . 'var TT_JS_LIB = "' . TT_JS_LIB . '";');
+		$this->addScript("\n// Top location of the TT-JS plugins\n" . 'var TT_JS_PLUGINS = "' . TT_JS_PLUGINS . '";');
+		$this->addScript("\n// Name of the TT dispatcher as it should appear in requests\n" . 'var TT_DISPATCHER_NAME = "' . TT_DISPATCHER_NAME . '";');
+		$this->addScript("\n// Callback URL for requests (AJAX, Form, links etc).\n" . 'var TT_CALLBACK_URL = "' . TT_CALLBACK_URL . '";');
+		$this->loadScript(TT_JS_LIB . '/tt.js');
 
 		// Now load the language extentions.
-		// TODO This can be removed when I got languageExtentions() in owl.js working...
-		$lextDir = OWL_SERVER_TOP . OWL_JS_LIB . '/lext/';
+		// TODO This can be removed when I got languageExtentions() in tt.js working...
+		$lextDir = TT_SERVER_TOP . TT_JS_LIB . '/lext/';
 		if ($dH = opendir($lextDir)) {
 			while (($fName = readdir($dH)) !== false) {
 				if (is_file($lextDir . $fName)) {
 					$fElements = explode('.', $fName);
 					if (array_pop($fElements) == 'js') {
-						$this->loadScript(OWL_JS_LIB . '/lext/' . $fName);
+						$this->loadScript(TT_JS_LIB . '/lext/' . $fName);
 					}
 				}
 			}
@@ -194,9 +194,9 @@ class Document extends BaseElement
 	}
 
 	/**
-	 * Add an OWL-JD plugin to the document. If necessary, OWL-JS is enabled first.
+	 * Add an TT-JD plugin to the document. If necessary, TT-JS is enabled first.
 	 * Also, an attempt will be made to load a style sheet in case the plugin requires one.
-	 * \param[in] $type The plugin type, must be a directory name in the OWL-JS plugin directory
+	 * \param[in] $type The plugin type, must be a directory name in the TT-JS plugin directory
 	 * \param[in] $name Name of the plugin which must match (in lowercase) the filename of the plugin
 	 * without '.js'. If the plugin requires a special style sheet, it must be in the same location with
 	 * the same name and extension '.css'.
@@ -204,9 +204,9 @@ class Document extends BaseElement
 	 */
 	public function addJSPlugin($type, $name)
 	{
-		$this->enableOWL_JS();
-		$this->loadScript(OWL_JS_PLUGINS . '/' . $type  . '/' . strtolower($name) . '.js');
-		$this->loadStyle(OWL_JS_PLUGINS . '/' . $type  . '/' . strtolower($name) . '.css', '', true);
+		$this->enableTT_JS();
+		$this->loadScript(TT_JS_PLUGINS . '/' . $type  . '/' . strtolower($name) . '.js');
+		$this->loadStyle(TT_JS_PLUGINS . '/' . $type  . '/' . strtolower($name) . '.css', '', true);
 	}
 
 	/**
@@ -245,7 +245,7 @@ class Document extends BaseElement
 	 * will be loaded only for Internet Explorer up and including version 6. See
 	 * http://www.thesitewizard.com/css/excludecss.shtml for the full syntax of conditions
 	 * \param[in] $_try When true, just try to load the stylesheet, ignoring (not logging) any errors. This is used for
-	 * loading OWL-JS plugins and defaults to false.
+	 * loading TT-JS plugins and defaults to false.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function loadStyle($_style, $_condition = '', $_try = false)
@@ -253,10 +253,10 @@ class Document extends BaseElement
 		$_path = urlToPath($_style);
 		// If not null the file is on the local host; check if it's there
 		if ($_path !== null) {
-			if (file_exists(OWL_SITE_TOP . $_style)) {
-				$_style = OWL_SITE_TOP . $_style;
-			} elseif (OWL_SERVER_TOP != OWL_SITE_TOP && file_exists(OWL_SERVER_TOP . $_style)) {
-				$_style = OWL_SERVER_TOP . $_style;
+			if (file_exists(TT_SITE_TOP . $_style)) {
+				$_style = TT_SITE_TOP . $_style;
+			} elseif (TT_SERVER_TOP != TT_SITE_TOP && file_exists(TT_SERVER_TOP . $_style)) {
+				$_style = TT_SERVER_TOP . $_style;
 			} elseif (!file_exists($_style)) {
 				if ($_try !== true) {
 					$this->setStatus(__FILE__, __LINE__, DOC_NOSUCHFILE, array('stylesheet', $_style));
@@ -305,10 +305,10 @@ class Document extends BaseElement
 
 		// If not null the file is on the local host; check if it's there
 		if ($_path !== null) {
-			if (file_exists(OWL_SITE_TOP . $_script)) {
-				$_script = OWL_SITE_TOP . $_script;
-			} elseif (OWL_SERVER_TOP != OWL_SITE_TOP && file_exists(OWL_SERVER_TOP . $_script)) {
-				$_script = OWL_SERVER_TOP . $_script;
+			if (file_exists(TT_SITE_TOP . $_script)) {
+				$_script = TT_SITE_TOP . $_script;
+			} elseif (TT_SERVER_TOP != TT_SITE_TOP && file_exists(TT_SERVER_TOP . $_script)) {
+				$_script = TT_SERVER_TOP . $_script;
 			} elseif (!file_exists($_script)) {
 				$this->setStatus(__FILE__, __LINE__, DOC_NOSUCHFILE, array('javascript', $_script));
 				return;
@@ -406,13 +406,13 @@ class Document extends BaseElement
 
 	/**
 	 * Get the Base href
-	 * \param[in] $owlBase True when the serverwide OWL base should be returned
+	 * \param[in] $ttBase True when the serverwide TT base should be returned
 	 * \return URL
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function getBase($owlBase = false)
+	public function getBase($ttBase = false)
 	{
-		return ($owlBase === true) ? $this->owlBase : $this->base;
+		return ($ttBase === true) ? $this->ttBase : $this->base;
 	}
 
 	/**
@@ -514,23 +514,23 @@ class Document extends BaseElement
 	{
 		foreach ($this->messages as $stack) {
 			switch ($stack['stack']) {
-				case OWL_DEBUG :
+				case TT_DEBUG :
 					$class = 'debugMessages';
 					break;
-				case OWL_INFO :
-				case OWL_OK :
+				case TT_INFO :
+				case TT_OK :
 					$class = 'infoMessages';
 					break;
-				case OWL_SUCCESS :
+				case TT_SUCCESS :
 					$class = 'successMessages';
 					break;
-				case OWL_WARNING :
+				case TT_WARNING :
 					$class = 'warningMessages';
 					break;
-				case OWL_BUG :
-				case OWL_ERROR :
-				case OWL_FATAL :
-				case OWL_CRITICAL :
+				case TT_BUG :
+				case TT_ERROR :
+				case TT_FATAL :
+				case TT_CRITICAL :
 					$class = 'errorMessages';
 					break;
 			}
@@ -622,20 +622,20 @@ class Document extends BaseElement
  */
 Register::registerClass ('Document');
 
-//Register::setSeverity (OWL_DEBUG);
+//Register::setSeverity (TT_DEBUG);
 
-Register::setSeverity (OWL_INFO);
+Register::setSeverity (TT_INFO);
 Register::registerCode('DOC_PROTTAG');
 
-//Register::setSeverity (OWL_OK);
-//Register::setSeverity (OWL_SUCCESS);
-Register::setSeverity (OWL_WARNING);
+//Register::setSeverity (TT_OK);
+//Register::setSeverity (TT_SUCCESS);
+Register::setSeverity (TT_WARNING);
 Register::registerCode('DOC_NOTOPENED');
 Register::registerCode('DOC_NOSUCHFILE');
 Register::registerCode('DOC_IVFILESPEC');
 
 
-//Register::setSeverity (OWL_BUG);
-//Register::setSeverity (OWL_ERROR);
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_BUG);
+//Register::setSeverity (TT_ERROR);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

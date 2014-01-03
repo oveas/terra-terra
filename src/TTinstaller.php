@@ -1,34 +1,34 @@
 <?php
 /**
  * \file
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * This file defines the class to install applications
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * Abstract class to install applications
  * \brief Application installer
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 19, 2011 -- O van Eijk -- Initial version for OWL-PHP
  */
-abstract class OWLinstaller
+abstract class TTinstaller
 {
 	/**
 	 * Array with registered rights and their bitvalues
@@ -41,25 +41,25 @@ abstract class OWLinstaller
 	private static $groups = array();
 
 	/**
-	 * Preload OWL data that can be used during the application install. Skip this when we're installing OWL itself
+	 * Preload TT data that can be used during the application install. Skip this when we're installing TT itself
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function construct()
 	{
-		if (defined('OWL__BASE__INSTALL')) {
+		if (defined('TT__BASE__INSTALL')) {
 			return;
 		}
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$dataset->setTablename('group');
-		$dataset->set('aid', OWL_ID);
+		$dataset->set('aid', TT_ID);
 		$dataset->setKey('aid');
 		$dataset->prepare();
 		$dataset->db($_data, __LINE__, __FILE__);
 		foreach ($_data as $_grp) {
-			self::$groups[$_grp['groupname'] . '__AID__' . OWL_ID] = $_grp['gid'];
+			self::$groups[$_grp['groupname'] . '__AID__' . TT_ID] = $_grp['gid'];
 		}
 	}
 
@@ -80,8 +80,8 @@ abstract class OWLinstaller
 	public static function installApplication ($code, $url, $name, $version, $description = '', $link = '', $author = '', $license = '')
 	{
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		if (!$url) {
 			$url = strtolower($name);
@@ -109,8 +109,8 @@ abstract class OWLinstaller
 	public static function enableApplication ($id)
 	{
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$dataset->setTablename('applications');
 		$dataset->set('aid', $id);
@@ -152,7 +152,7 @@ abstract class OWLinstaller
 			$_line = self::uncommentSQL($_line);
 			if (preg_match('/;\s*$/', $_line)) {
 				$statement .= (' ' . $_line);
-				OWLdbg_add(OWLDEBUG_OWL_S04, $statement, 'SQL statement');
+				TTdbg_add(TTDEBUG_TT_S04, $statement, 'SQL statement');
 				$queries[] = self::setTablePrefix($statement);
 				$statement = '';
 			} elseif ($_line == '') {
@@ -173,7 +173,7 @@ abstract class OWLinstaller
 	 */
 	private static function setTablePrefix ($statement)
 	{
-		$_tablePrefix = ConfigHandler::get ('database', 'owlprefix');
+		$_tablePrefix = ConfigHandler::get ('database', 'ttprefix');
 		$_checkList = array(
 			 '/CREATE\s+(\w+\s+)?(INDEX)\s+(`?\w+`?)\s+([\s\w]+?)?\s*ON\s+(`)?(\w+)(`)?\s+/i' => "CREATE \${1} \${2} \${3} \${4} ON \${5}$_tablePrefix\${6}\${7} "
 			,'/DROP\s+TABLE\s+(IF\s+EXISTS\s+)?(`)?(\w+)(`)?/i' => "DROP TABLE \${1} \${2}$_tablePrefix\${3}\${4} "
@@ -249,7 +249,7 @@ abstract class OWLinstaller
 		if (count($q) == 0) {
 			return true; // Noting to do
 		}
-		$db = OWL::factory('DbHandler');
+		$db = TT::factory('DbHandler');
 		foreach ($q as $_qry) {
 			// Fix for the MySQL Workbench bug #63956 (http://bugs.mysql.com/bug.php?id=63956)
 			if (preg_match('/^\s*CREATE\s*(.*?)INDEX\s*.?fk\_/i', $_qry)) {
@@ -259,7 +259,7 @@ abstract class OWLinstaller
 			if ($prefix !== false) {
 				$_qry = self::addTablePrefix($_qry, $prefix);
 			}
-			OWLdbg_add(OWLDEBUG_OWL_LOOP, $_qry, 'SQL statement');
+			TTdbg_add(TTDEBUG_TT_LOOP, $_qry, 'SQL statement');
 
 			$db->setQuery ($_qry);
 			$db->write($_dummy, __LINE__, __FILE__);
@@ -270,7 +270,7 @@ abstract class OWLinstaller
 	/**
 	 * Set the rights bitvalue for a given group
 	 * \param[in] $aid Application ID.
-	 * \param[in] $grp Group name. This can be an existing OWL group
+	 * \param[in] $grp Group name. This can be an existing TT group
 	 * \param[in] $rights Array with right identifiers
 	 * \return Boolean indicating success (true) or any failure (false)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -280,8 +280,8 @@ abstract class OWLinstaller
 		if (array_key_exists($grp . '__AID__' . $aid, self::$groups)) {
 			$_grpID = self::$groups[$grp . '__AID__' . $aid];
 		} else {
-			if (array_key_exists($grp . '__AID__' . OWL_ID, self::$groups)) {
-				$_grpID = self::$groups[$grp . '__AID__' . OWL_ID];
+			if (array_key_exists($grp . '__AID__' . TT_ID, self::$groups)) {
+				$_grpID = self::$groups[$grp . '__AID__' . TT_ID];
 			} else {
 				trigger_error('Group ' . $grp . ' has not been registered yet', E_USER_ERROR);
 				return false;
@@ -296,8 +296,8 @@ abstract class OWLinstaller
 			$_val += self::$rights[$_r];
 		}
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$dataset->setTablename('grouprights');
 		$dataset->set('aid', $aid);
@@ -318,8 +318,8 @@ abstract class OWLinstaller
 	public static function addGroups($aid, array $grps)
 	{
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$dataset->setTablename('group');
 		foreach ($grps as $_grp => $_desc) {
@@ -344,8 +344,8 @@ abstract class OWLinstaller
 	public static function addRights($aid, array $rights)
 	{
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$dataset->setTablename('rights');
 		$dataset->set('aid', $aid);
@@ -402,8 +402,8 @@ abstract class OWLinstaller
 			}
 		}
 		$dataset = new DataHandler();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 
 		$_secId = ConfigHandler::configSection($section, true);
@@ -432,36 +432,36 @@ abstract class OWLinstaller
 	 * \param[in] $memberships Array with groupnames for additional memberships
 	 * \return True on success
 	 * \note The default group and the additional memberships must be part of the application being installed
-	 * If no primary group is given, the new user will be member of the default group from the OWL configuration
+	 * If no primary group is given, the new user will be member of the default group from the TT configuration
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function addUser($aid, $username, $password, $email, $group, $memberships = null)
 	{
 		$grpObj = new Group();
 		$group = $grpObj->getGroupByName($group, $aid);
-		if (OWLInstallerUser::getReference()->registerUser($aid, $username, $password, $email, $group, $memberships) < 0) {
+		if (TTInstallerUser::getReference()->registerUser($aid, $username, $password, $email, $group, $memberships) < 0) {
 			return false;
 		}
 		return true;
 	}
 }
 
-//! OWL_ROOT must be defined by the application
-if (!defined('OWL_ROOT')) {
-	trigger_error('OWL_ROOT must be defined by the application', E_USER_ERROR);
+//! TT_ROOT must be defined by the application
+if (!defined('TT_ROOT')) {
+	trigger_error('TT_ROOT must be defined by the application', E_USER_ERROR);
 }
 
 // Make sure the loader does not attempt to load the application
-define('OWL___INSTALLER', 1);
-require (OWL_ROOT . '/OWLloader.php');
+define('TT___INSTALLER', 1);
+require (TT_ROOT . '/TTloader.php');
 
 /**
  * Helper class to add users during the installation process
- * \brief OWLInstallerUser User
+ * \brief TTInstallerUser User
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Nov 22, 2011 -- O van Eijk -- initial version
  */
-class OWLInstallerUser extends User
+class TTInstallerUser extends User
 {
 	/**
 	 * Self reference
@@ -474,17 +474,17 @@ class OWLInstallerUser extends User
 	private function __construct()
 	{
 		parent::construct();
-		OWLInstallerUser::$instance = $this;
+		TTInstallerUser::$instance = $this;
 	}
 	/**
 	 * Instantiate the singleton or return its reference
 	 */
 	static public function getReference()
 	{
-		if (!OWLInstallerUser::$instance instanceof OWLInstallerUser) {
-			OWLInstallerUser::$instance = new self();
+		if (!TTInstallerUser::$instance instanceof TTInstallerUser) {
+			TTInstallerUser::$instance = new self();
 		}
-		return OWLInstallerUser::$instance;
+		return TTInstallerUser::$instance;
 	}
 
 
@@ -515,4 +515,4 @@ class OWLInstallerUser extends User
 	}
 }
 
-OWLinstaller::construct();
+TTinstaller::construct();

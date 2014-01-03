@@ -5,28 +5,28 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
-if (!class_exists('ContainerListPlugin') && !OWLloader::getClass('container.list', OWL_PLUGINS . '/containers')) {
+if (!class_exists('ContainerListPlugin') && !TTloader::getClass('container.list', TT_PLUGINS . '/containers')) {
 	trigger_error('Error loading the List container plugin - this class is required by the Menu container', E_USER_ERROR);
 }
 
 /**
- * \ingroup OWL_UI_PLUGINS
+ * \ingroup TT_UI_PLUGINS
  * Class defining menu container plugin, which is basically an unorderd list in a div with
  * some additional methods (like addSubMenu()
  * \brief Menu Container
@@ -118,20 +118,20 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	}
 
 	/**
-	 * Set the menu type. The type must exist in the plugins/menu location of OWL-JS
+	 * Set the menu type. The type must exist in the plugins/menu location of TT-JS
 	 * as lowercase&lt;typename&gt;.js; that file is loaded from here.
 	 *
 	 * At the same time, a JavaScript array is created with the name &lt;type&gt;List that
-	 * holds all ID's of the menus of this type. The OWL-JS plugin can use this array for handling
+	 * holds all ID's of the menus of this type. The TT-JS plugin can use this array for handling
 	 * and/or initialising the menus.
-	 * \param[in] $type The menu type, must exist as an OWL-JS menu plugin
+	 * \param[in] $type The menu type, must exist as an TT-JS menu plugin
 	 * \param[in] $menuID ID to set the div element to that holds this menu. This can be used
-	 * by the OWL-JS plugin
+	 * by the TT-JS plugin
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function menuType ($type, $menuID)
 	{
-		$doc = OWL::factory('Document', OWL_UI_INC);
+		$doc = TT::factory('Document', TT_UI_INC);
 		$doc->addJSPlugin('menu', $type);
 		$jsListname = $type . 'MenuList';
 

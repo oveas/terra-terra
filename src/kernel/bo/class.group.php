@@ -5,30 +5,30 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_BO_LAYER
- * This class handles the OWL groups
+ * \ingroup TT_BO_LAYER
+ * This class handles the TT groups
  * \brief the group object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 14, 2011 -- O van Eijk -- initial version
  */
-class Group extends _OWL
+class Group extends _TT
 {
 	/**
 	 * Array with rights bitmaps for all applications
@@ -52,10 +52,10 @@ class Group extends _OWL
 	 */
 	public function __construct ($id = 0)
 	{
-		_OWL::init(__FILE__, __LINE__);
+		_TT::init(__FILE__, __LINE__);
 		$this->dataset = new DataHandler ();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$this->dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$this->dataset->setTablename('group');
 		$this->id = $id;
@@ -85,11 +85,11 @@ class Group extends _OWL
 	/**
 	 * Initialize the group object based on the groupname
 	 * \param[in] $name Name of the group
-	 * \param[in] $aid Application ID the group belongs to, defaults to OWL
+	 * \param[in] $aid Application ID the group belongs to, defaults to TT
 	 * \return The group ID, or false when not found
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function getGroupByName($name, $aid = OWL_ID)
+	public function getGroupByName($name, $aid = TT_ID)
 	{
 		$this->dataset->set('groupname', $name);
 		$this->dataset->set('aid', $aid);
@@ -113,8 +113,8 @@ class Group extends _OWL
 	private function getGroupRights()
 	{
 		$dataset = new DataHandler ();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$dataset->setTablename('grouprights');
 		$dataset->set('gid', $this->id);
@@ -221,8 +221,8 @@ class Group extends _OWL
 	public function save()
 	{
 		$dataset = new DataHandler ();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$dataset->setTablename('group');
 		$dataset->set('groupname', $this->group_data['groupname']);
@@ -263,13 +263,13 @@ class Group extends _OWL
 
 }
 Register::registerClass('Group');
-//Register::setSeverity (OWL_DEBUG);
-//Register::setSeverity (OWL_INFO);
-//Register::setSeverity (OWL_OK);
-//Register::setSeverity (OWL_SUCCESS);
-Register::setSeverity (OWL_WARNING);
+//Register::setSeverity (TT_DEBUG);
+//Register::setSeverity (TT_INFO);
+//Register::setSeverity (TT_OK);
+//Register::setSeverity (TT_SUCCESS);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('GROUP_NOSUCHNAME');
-//Register::setSeverity (OWL_BUG);
-//Register::setSeverity (OWL_ERROR);
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_BUG);
+//Register::setSeverity (TT_ERROR);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

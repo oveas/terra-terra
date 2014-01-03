@@ -1,29 +1,29 @@
 <?php
 /**
  * \file
- * \ingroup OWL_LIBRARY
+ * \ingroup TT_LIBRARY
  * Make sure all objects are destroyed in the proper order
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
-$_messages = OWLCache::get(OWLCACHE_REGISTER, 'messages');
-OWLdbg_add(OWLDEBUG_OWL_S01, $_messages, 'Messages during rundown');
+$_messages = TTCache::get(TTCACHE_REGISTER, 'messages');
+TTdbg_add(TTDEBUG_TT_S01, $_messages, 'Messages during rundown');
 unset ($_messages);
 
 // Make sure no exceptions are thrown anymore from this point!
@@ -32,20 +32,20 @@ unset ($_messages);
 //echo "Start rundown<br/>";
 
 // Write data to the cache
-OWLCache::saveCache();
+TTCache::saveCache();
 
 // Display the console, if set
-if (($_console = OWLCache::get(OWLCACHE_OBJECTS, 'Console')) !== null) {
+if (($_console = TTCache::get(TTCACHE_OBJECTS, 'Console')) !== null) {
 	OutputHandler::outputRaw($_console->showElement());
 }
 
 // Show collected debug data
-OWLdbg_show ();
+TTdbg_show ();
 
-OWLTimers::showTimer();
+TTTimers::showTimer();
 
 // Close the document
-if (($_htmlCode = OWL::factory('Document', OWL_UI_INC)->close())!== null) {
+if (($_htmlCode = TT::factory('Document', TT_UI_INC)->close())!== null) {
 	OutputHandler::outputRaw($_htmlCode);
 }
 

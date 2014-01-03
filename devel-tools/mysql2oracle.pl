@@ -54,7 +54,7 @@
 # --------
 # v0.0.0.0-000000001, Sep 12, 2011 - Initial version
 # v0.0.0.0-000000002, Sep 22, 2011 - Added the $main::oracleQuotes config option
-# v0.0.0.0-000000003, Sep 28, 2011 - Made trigger- sequence and constraint names OWL compatible
+# v0.0.0.0-000000003, Sep 28, 2011 - Made trigger- sequence and constraint names TT compatible
 # v0.0.0.0-000000004, Oct 18, 2011 - Support for INSERT statements
 #                                  - Support for missing database names in MySQL script
 #                                  - Remove UNSIGNED and ZEROFILL attributes
@@ -69,8 +69,8 @@ $main::suffixSequence = '_seq';
 $main::suffixTrigger = '_trg';
 $main::suffixConstraint = '_cst';
 
-$main::tblSpace = 'owl'; # Tablespace name in Oracle
-$main::mysqlScheme = 'owl'; # MySQL scheme name
+$main::tblSpace = 'tt'; # Tablespace name in Oracle
+$main::mysqlScheme = 'tt'; # MySQL scheme name
 $main::oracleQuotes = '"'; # Replacement for the MySQL backticks
 $main::idxPrefix = ''; # Prefix for index names in case the match table names
 

@@ -5,20 +5,20 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -26,7 +26,7 @@
  * some standard methods
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
-class OWL extends _OWL
+class TT extends _TT
 {
 	/**
 	 * integer - self reference
@@ -59,10 +59,10 @@ class OWL extends _OWL
 	 */
 	public static function getInstance()
 	{
-		if (!OWL::$instance instanceof self) {
-			OWL::$instance = new self();
+		if (!TT::$instance instanceof self) {
+			TT::$instance = new self();
 		}
-		return OWL::$instance;
+		return TT::$instance;
 	}
 
 	/**
@@ -89,7 +89,7 @@ class OWL extends _OWL
 	public static function factory($class, $layer = 'so')
 	{
 		if (!class_exists($class)) {
-			$class_file = OWL_ROOT . '/kernel/' . $layer . '/class.' . strtolower($class) . '.php';
+			$class_file = TT_ROOT . '/kernel/' . $layer . '/class.' . strtolower($class) . '.php';
 			if (!file_exists($class_file)) {
 				trigger_error('Class file ' . $class_file . ' not found', E_USER_ERROR);
 			}

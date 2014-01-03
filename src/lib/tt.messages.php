@@ -1,45 +1,45 @@
 <?php
 /**
  * \file
- * \ingroup OWL_LIBRARY
+ * \ingroup TT_LIBRARY
  * This file defines the message text for all status codes in the default language
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 $_messages = array (
-	  OWL_STATUS_OK			=> 'Normal successfull completion'
-	, OWL_STATUS_WARNING	=> 'An unknown warning occured'
-	, OWL_STATUS_ERROR		=> 'An unknown error occured'
-	, OWL_STATUS_BUG		=> 'A programming bug was found in $p1$ on line $p2$'
-//	, OWL_STATUS_FNF		=> 'File $p1$ not found'
-//	, OWL_STATUS_ROPENERR	=> 'Error openening $p1$ for read'
-//	, OWL_STATUS_WOPENERR	=> 'Error openening $p1$ for write'
-//	, OWL_STATUS_NOKEY		=> 'No security key could be found'
-//	, OWL_STATUS_IVKEY		=> 'Given security key does not match with this server'
-	, OWL_STATUS_NOSAVSTAT	=> 'Trying to restore a status that was not previously saved'
-	, OWL_STATUS_THROWERR	=> 'No context to throw an exception'
-	, OWL_APP_NOTFOUND		=> 'Application code $p1$ could not be found - is it installed already?'
-	, OWL_APP_NOTLOADED		=> 'Requested application $p1$ was not loaded yet'
-	, OWL_LOADERR			=> 'Error loading $p1$ file $p2$ from location $p3$'
-	, OWL_NOTIMEZONE		=> 'No timezone specified in the php ini file on your server or in the OWL configuration - set to <i>$p1$</i>'
-	, OWL_INSTERR			=> 'Error instantiating class $p1$'
-	, OWL_ILLINSTANCE		=> 'Illegal object construct of the singleton $p1$ class'
+	  TT_STATUS_OK			=> 'Normal successfull completion'
+	, TT_STATUS_WARNING	=> 'An unknown warning occured'
+	, TT_STATUS_ERROR		=> 'An unknown error occured'
+	, TT_STATUS_BUG		=> 'A programming bug was found in $p1$ on line $p2$'
+//	, TT_STATUS_FNF		=> 'File $p1$ not found'
+//	, TT_STATUS_ROPENERR	=> 'Error openening $p1$ for read'
+//	, TT_STATUS_WOPENERR	=> 'Error openening $p1$ for write'
+//	, TT_STATUS_NOKEY		=> 'No security key could be found'
+//	, TT_STATUS_IVKEY		=> 'Given security key does not match with this server'
+	, TT_STATUS_NOSAVSTAT	=> 'Trying to restore a status that was not previously saved'
+	, TT_STATUS_THROWERR	=> 'No context to throw an exception'
+	, TT_APP_NOTFOUND		=> 'Application code $p1$ could not be found - is it installed already?'
+	, TT_APP_NOTLOADED		=> 'Requested application $p1$ was not loaded yet'
+	, TT_LOADERR			=> 'Error loading $p1$ file $p2$ from location $p3$'
+	, TT_NOTIMEZONE		=> 'No timezone specified in the php ini file on your server or in the TT configuration - set to <i>$p1$</i>'
+	, TT_INSTERR			=> 'Error instantiating class $p1$'
+	, TT_ILLINSTANCE		=> 'Illegal object construct of the singleton $p1$ class'
 	, CONFIG_NOVALUE		=> 'Nonexising config value <i>$p1$</i> requested'
 	, CONFIG_PROTECTED		=> 'Attempt to overwrite the protected configuration item <i>$p1$</i>'
 	, LOGGING_OPENERR		=> 'Cannot open logfile <i>$p1$</i> for write'

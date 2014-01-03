@@ -1,14 +1,14 @@
 #!/usr/bin/perl
 #
 # Scan the OWP-PHP source directory for codes that are registered but that
-# don't have an entry in owl.messages.php yet.
+# don't have an entry in tt.messages.php yet.
 #
 # Version 0.1 -- Initial version (2008-08-26)
 # (c) Oscar van Eijk, Oveas Functionality Provider
 #
 
-my $location = '/home/oscar/projects/owl-php/src';
-my $app = 'owl';
+my $location = '/home/oscar/projects/terra-terra/src';
+my $app = 'tt';
 
 if ($#ARGV >= 0) {
 	$location = $ARGV[0];

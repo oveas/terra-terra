@@ -1,17 +1,17 @@
 <?php
 /**
  * \file
- * This file creates the form to create a new OWL application
+ * This file creates the form to create a new TT application
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
-if (!OWLloader::getClass('form')) {
+if (!TTloader::getClass('form')) {
 	trigger_error('Error loading the Form class', E_USER_ERROR);
 }
 /**
- * \ingroup OWL_OWLADMIN
+ * \ingroup TT_TTADMIN
  * Setup the contentarea holding the form
- * \brief Generate a new OWL application
+ * \brief Generate a new TT application
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jun 10, 2013 -- O van Eijk -- initial version
  */
@@ -19,21 +19,21 @@ class DeveloperArea extends ContentArea
 {
 	/**
 	 * Generate the Edit form and add it to the document
-	 * This area will only be visible to users holding the 'owldeveloper' right
+	 * This area will only be visible to users holding the 'ttdeveloper' right
 	 * \param[in] $arg Not used here but required by syntax
 	 */
 	public function loadArea($arg = null)
 	{
 		// Check if the user can see this form
-		if ($this->hasRight('owldeveloper', OWL_ID) === false) {
+		if ($this->hasRight('ttdeveloper', TT_ID) === false) {
 			return false;
 		}
 
 		// Create a new form
 		$_form = new Form(
 			  array(
-				 'application' => 'OWL'
-				,'include_path' => 'OWLADMIN_BO'
+				 'application' => 'TT'
+				,'include_path' => 'TTADMIN_BO'
 				,'class_file' => 'developer'
 				,'class_name' => 'Developer'
 				,'method_name' => 'generateApplic'

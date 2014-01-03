@@ -25,7 +25,7 @@ DOXYFILE_ENCODING = UTF-8
 # The PROJECT_NAME tag is a single word (or a sequence of words surrounded
 # by quotes) that should identify the project.
 
-PROJECT_NAME = OWL TestKit
+PROJECT_NAME = TT TestKit
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number.
 # This could be handy for archiving the generated documentation or
@@ -38,7 +38,7 @@ PROJECT_NUMBER = 0.9.0
 # If a relative path is entered, it will be relative to the location
 # where doxygen was started. If left blank the current directory will be used.
 
-OUTPUT_DIRECTORY = /home/oscar/projects/owl/docs/otk
+OUTPUT_DIRECTORY = /home/oscar/projects/tt/docs/otk
 
 # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create
 # 4096 sub-directories (in 2 levels) under the output directory of each output
@@ -574,7 +574,7 @@ WARN_LOGFILE =
 # directories like "/usr/src/myproject". Separate the files or directories
 # with spaces.
 
-INPUT = /home/oscar/projects/owl/otk 
+INPUT = /home/oscar/projects/tt/otk 
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding, which is
@@ -603,7 +603,7 @@ RECURSIVE = YES
 # excluded from the INPUT source files. This way you can easily exclude a
 # subdirectory from a directory tree whose root is specified with the INPUT tag.
 
-EXCLUDE = /home/oscar/projects/owl-php/src/index.php
+EXCLUDE = /home/oscar/projects/terra-terra/src/index.php
 
 # The EXCLUDE_SYMLINKS tag can be used select whether or not files or
 # directories that are symbolic links (a Unix filesystem feature) are excluded
@@ -631,7 +631,7 @@ EXCLUDE_SYMBOLS =
 # directories that contain example code fragments that are included (see
 # the \include command).
 
-EXAMPLE_PATH = /home/oscar/projects/owl-php/docs/srcdoc/examples
+EXAMPLE_PATH = /home/oscar/projects/terra-terra/docs/srcdoc/examples
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp
@@ -785,13 +785,13 @@ HTML_FILE_EXTENSION = .html
 # each generated HTML page. If it is left blank doxygen will generate a
 # standard header.
 
-HTML_HEADER = owlheader.html
+HTML_HEADER = ttheader.html
 
 # The HTML_FOOTER tag can be used to specify a personal HTML footer for
 # each generated HTML page. If it is left blank doxygen will generate a
 # standard footer.
 
-HTML_FOOTER = owlfooter.html
+HTML_FOOTER = ttfooter.html
 
 # The HTML_STYLESHEET tag can be used to specify a user-defined cascading
 # style sheet that is used by each HTML page. It can be used to
@@ -800,7 +800,7 @@ HTML_FOOTER = owlfooter.html
 # the style sheet file to the HTML output directory, so don't put your own
 # stylesheet in the HTML output directory as well, or it will be erased!
 
-HTML_STYLESHEET = owlstyle.css
+HTML_STYLESHEET = ttstyle.css
 
 # If the HTML_TIMESTAMP tag is set to YES then the footer of each generated HTML
 # page will contain the date and time when the page was generated. Setting
@@ -955,7 +955,7 @@ GENERATE_ECLIPSEHELP = NO
 # the directory name containing the HTML and XML files should also have
 # this name.
 
-ECLIPSE_DOC_ID = com.oveas.owl-php
+ECLIPSE_DOC_ID = com.oveas.terra-terra
 
 # The DISABLE_INDEX tag can be used to turn on/off the condensed index at
 # top of each HTML page. The value NO (the default) enables the index and

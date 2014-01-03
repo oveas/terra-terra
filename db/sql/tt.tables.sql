@@ -36,7 +36,7 @@ CREATE  TABLE IF NOT EXISTS `group` (
   `gid` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique identification' ,
   `groupname` VARCHAR(32) NOT NULL COMMENT 'Name of the group' ,
   `description` TEXT NULL COMMENT 'Optional description of the group' ,
-  `aid` INT UNSIGNED NOT NULL COMMENT 'Application the group belongs tor, owl for standard' ,
+  `aid` INT UNSIGNED NOT NULL COMMENT 'Application the group belongs tor, tt for standard' ,
   PRIMARY KEY (`gid`) ,
   CONSTRAINT `fk_groupapplic`
     FOREIGN KEY (`aid` )
@@ -44,7 +44,7 @@ CREATE  TABLE IF NOT EXISTS `group` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-COMMENT = 'Standard OWL and application groups';
+COMMENT = 'Standard TT and application groups';
 
 CREATE INDEX `grp_group` ON `group` (`groupname` ASC) ;
 
@@ -74,7 +74,7 @@ CREATE  TABLE IF NOT EXISTS `user` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-COMMENT = 'Basic userdata for all OWL based applications';
+COMMENT = 'Basic userdata for all TT based applications';
 
 CREATE UNIQUE INDEX `usr_username` USING BTREE ON `user` (`username` ASC) ;
 
@@ -92,7 +92,7 @@ CREATE  TABLE IF NOT EXISTS `session` (
   `sdata` TEXT NULL COMMENT 'Room to store the last session data' ,
   PRIMARY KEY (`sid`) )
 ENGINE = InnoDB
-COMMENT = 'This table is used to store all OWL session data';
+COMMENT = 'This table is used to store all TT session data';
 
 
 -- -----------------------------------------------------
@@ -155,7 +155,7 @@ CREATE  TABLE IF NOT EXISTS `config` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-COMMENT = 'Dynamic configuration for OWL and applications';
+COMMENT = 'Dynamic configuration for TT and applications';
 
 CREATE UNIQUE INDEX `cnf_configitem` ON `config` (`aid` ASC, `name` ASC) ;
 
@@ -178,7 +178,7 @@ DROP TABLE IF EXISTS `rights` ;
 CREATE  TABLE IF NOT EXISTS `rights` (
   `rid` TINYINT UNSIGNED NOT NULL COMMENT 'Bit identification for this right' ,
   `name` VARCHAR(32) NOT NULL COMMENT 'Name for this right' ,
-  `aid` INT UNSIGNED NOT NULL COMMENT 'Application this right is used by or owl for general' ,
+  `aid` INT UNSIGNED NOT NULL COMMENT 'Application this right is used by or tt for general' ,
   `description` TEXT NULL COMMENT 'An optional description how the rightbit is used' ,
   PRIMARY KEY (`rid`, `aid`) ,
   CONSTRAINT `fk_rightsapp`
@@ -187,7 +187,7 @@ CREATE  TABLE IF NOT EXISTS `rights` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-COMMENT = 'Rights that can be granted within owl applications';
+COMMENT = 'Rights that can be granted within tt applications';
 
 CREATE UNIQUE INDEX `rgt_right` ON `rights` (`name` ASC) ;
 

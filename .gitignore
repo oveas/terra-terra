@@ -1,9 +1,8 @@
-db/owl.tables.mwb.bak
+db/tt.tables.mwb.bak
 .project
 .settings
 .buildpath
-devel-tools/app_framework/
-docs/owl-php/
-owlphp_*.zip
+docs/terra-terra/
+terra-terra_*.zip
 updateTestEnv.sh
 

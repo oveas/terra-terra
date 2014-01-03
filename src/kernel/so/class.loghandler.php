@@ -5,30 +5,30 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_SO_LAYER
- * This singleton class handles all OWL logging
+ * \ingroup TT_SO_LAYER
+ * This singleton class handles all TT logging
  * \brief Log handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 13, 2008 -- O van Eijk -- initial version
  */
-class LogHandler extends _OWL
+class LogHandler extends _TT
 {
 	/**
 	 * Boolean to keep track of the logfile status
@@ -66,7 +66,7 @@ class LogHandler extends _OWL
 	 */
 	private function __construct ()
 	{
-		_OWL::init(__FILE__, __LINE__);
+		_TT::init(__FILE__, __LINE__);
 		$this->opened = false;
 		$this->created = false;
 		$this->setFilename();
@@ -75,8 +75,8 @@ class LogHandler extends _OWL
 			$this->openLogfile();
 		}
 		$this->dataset = new DataHandler ();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$this->dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$this->dataset->setTablename('sessionlog');
 	}
@@ -147,7 +147,7 @@ class LogHandler extends _OWL
 		if ($this->session_logged === true) {
 			return;
 		}
-		if (($user = OWLCache::get(OWLCACHE_OBJECTS, 'user')) === null) {
+		if (($user = TTCache::get(TTCACHE_OBJECTS, 'user')) === null) {
 			$_u = array(
 				 'sid' => '*unknown*'
 				,'step' => 0
@@ -170,7 +170,7 @@ class LogHandler extends _OWL
 		$this->dataset->set('sid', $_u['sid']);
 		$this->dataset->set('step', $_u['step']);
 		$this->dataset->set('uid', $_u['uid']);
-		$this->dataset->set('applic', OWLloader::getCurrentAppName());
+		$this->dataset->set('applic', TTloader::getCurrentAppName());
 		$this->dataset->set('ip', $_u['ip']);
 		$this->dataset->set('referer', (array_key_exists('HTTP_REFERER', $_SERVER) ? $_SERVER['HTTP_REFERER'] : ''));
 		$this->dataset->set('dispatcher', serialize($dispatcher));
@@ -187,7 +187,7 @@ class LogHandler extends _OWL
 	 */
 	private function setFilename ()
 	{
-		$_file = ConfigHandler::get ('logging', 'filename', OWL_LOG . '/owl.startup.log', true);
+		$_file = ConfigHandler::get ('logging', 'filename', TT_LOG . '/tt.startup.log', true);
 		$_segments = explode('/', $_file);
 		$_first = array_shift($_segments);
 		if (defined($_first)) {
@@ -255,7 +255,7 @@ class LogHandler extends _OWL
 	}
 
 	/**
-	 * Log an event signalled by OWL
+	 * Log an event signalled by TT
 	 * \param[in] $msg Message text
 	 * \param[in] $code Status code of the message
 	 * \param[in] $callerFile Filename from where this call originates
@@ -314,14 +314,14 @@ class LogHandler extends _OWL
 	 */
 	private function logConsole ($msg)
 	{
-		if (($_console = OWLCache::get(OWLCACHE_OBJECTS, 'Console')) !== null) {
+		if (($_console = TTCache::get(TTCACHE_OBJECTS, 'Console')) !== null) {
 			$_console->addToContent($msg);
 		}
 	}
 	
 	/**
 	 * Create a backtrace of the current log item
-	 * \param[in] $_browser_dump Just for OWL development (early days...); when true, the
+	 * \param[in] $_browser_dump Just for TT development (early days...); when true, the
 	 * trace is dumped to the browser.
 	 * \return Trace information of this call.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -342,15 +342,15 @@ class LogHandler extends _OWL
 
 Register::registerClass ('LogHandler');
 
-//Register::setSeverity (OWL_DEBUG);
-//Register::setSeverity (OWL_INFO);
-//Register::setSeverity (OWL_OK);
-//Register::setSeverity (OWL_SUCCESS);
-//Register::setSeverity (OWL_WARNING);
-//Register::setSeverity (OWL_BUG);
-//Register::setSeverity (OWL_ERROR);
+//Register::setSeverity (TT_DEBUG);
+//Register::setSeverity (TT_INFO);
+//Register::setSeverity (TT_OK);
+//Register::setSeverity (TT_SUCCESS);
+//Register::setSeverity (TT_WARNING);
+//Register::setSeverity (TT_BUG);
+//Register::setSeverity (TT_ERROR);
 
-Register::setSeverity (OWL_FATAL);
+Register::setSeverity (TT_FATAL);
 Register::registerCode ('LOGGING_OPENERR');
 
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_CRITICAL);

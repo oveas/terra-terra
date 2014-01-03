@@ -5,18 +5,18 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
-if (!OWLloader::getClass('form')) {
+if (!TTloader::getClass('form')) {
 	trigger_error('Error loading the Form class', E_USER_ERROR);
 }
-if (!OWLloader::getClass('usermaint', OWLADMIN_BO)) {
-	trigger_error('Error loading the Usermaint class from ' . OWLADMIN_BO, E_USER_ERROR);
+if (!TTloader::getClass('usermaint', TTADMIN_BO)) {
+	trigger_error('Error loading the Usermaint class from ' . TTADMIN_BO, E_USER_ERROR);
 }
-if (!OWLloader::getClass('listings', OWLADMIN_SO)) {
-	trigger_error('Error loading the Listings class from ' . OWLADMIN_SO, E_USER_ERROR);
+if (!TTloader::getClass('listings', TTADMIN_SO)) {
+	trigger_error('Error loading the Listings class from ' . TTADMIN_SO, E_USER_ERROR);
 }
 
 /**
- * \ingroup OWL_OWLADMIN
+ * \ingroup TT_TTADMIN
  * Setup the contentarea holding the form
  * \brief Add user form
  * \author Oscar van Eijk, Oveas Functionality Provider
@@ -32,15 +32,15 @@ class UsermaintArea extends ContentArea
 	public function loadArea($arg = null)
 	{
 		// Check if the user can see this form
-		if ($this->hasRight('manageusers', OWL_ID) === false) {
+		if ($this->hasRight('manageusers', TT_ID) === false) {
 			return false;
 		}
 
 		// Create a new form
 		$_form = new Form(
 			  array(
-				 'application' => 'OWL'
-				,'include_path' => 'OWLADMIN_BO'
+				 'application' => 'TT'
+				,'include_path' => 'TTADMIN_BO'
 				,'class_file' => 'usermaint'
 				,'class_name' => 'Usermaint'
 				,'method_name' => 'editUser'

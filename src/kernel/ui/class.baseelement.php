@@ -5,30 +5,30 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * \ingroup OWL_UI_LAYER
+ * \ingroup TT_UI_LAYER
  * Abstract base class for all DOM elements
  * \brief DOM Element base class
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 29, 2008 -- O van Eijk -- initial version
  */
-abstract class BaseElement extends _OWL
+abstract class BaseElement extends _TT
 {
 	/**
 	 * Class specification
@@ -123,8 +123,8 @@ abstract class BaseElement extends _OWL
 
 	/**
 	 * Add a new value to the class element. This can either be used for chained CSS classes,
-	 * of as a selector by the OWL-JS
-	 * <a href="../../owl-js/html/lib/owl_js.html#library2fgetElementsByClass">getElementByClass()</a> function.
+	 * of as a selector by the TT-JS
+	 * <a href="../../tt-js/html/lib/tt_js.html#library2fgetElementsByClass">getElementByClass()</a> function.
 	 * \param[in] $_value Class name
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -210,8 +210,8 @@ abstract class BaseElement extends _OWL
 	{
 		if (is_object($_contentItem)) {
 			if ($this->shown === true) {
-				OWLdbg_add(OWLDEBUG_OWL_OBJ, $this, 'ContentElement');
-				OWLdbg_add(OWLDEBUG_OWL_VAR, $_contentItem, 'ContentItem');
+				TTdbg_add(TTDEBUG_TT_OBJ, $this, 'ContentElement');
+				TTdbg_add(TTDEBUG_TT_VAR, $_contentItem, 'ContentItem');
 				$this->setStatus (__FILE__, __LINE__, DOM_LOOPDETECT, array(
 					  get_class($_contentItem) . ' (' . $_contentItem->getId() . ')'
 					, get_class($this) . ' (' . $this->getId() . ')'
@@ -265,18 +265,18 @@ abstract class BaseElement extends _OWL
 			$this->status(DOM_NOID);
 			return $this->severity;
 		}
-		$_doc = OWL::factory('document', 'ui');
-		$_doc->enableOWL_JS();
-		$_doc->loadScript(OWL_JS_LIB . '/requesthandler.js');
+		$_doc = TT::factory('document', 'ui');
+		$_doc->enableTT_JS();
+		$_doc->loadScript(TT_JS_LIB . '/requesthandler.js');
 		$_eventTrigger = 'perform' . $_jsEvent . $this->id;
 		$_eventHandler = $_object->$_method();
 
-		$_disp = OWL::factory('Dispatcher', 'bo');
+		$_disp = TT::factory('Dispatcher', 'bo');
 		$_doc->addScript('function ' . $_eventTrigger . "() {\n"
 				. "\treqHandler = new requestHandler();\n"
 				. "\treqHandler.whenComplete($_eventHandler);\n"
-				. "\treqHandler.sendRequest(\"".OWL_CALLBACK_URL.'"'
-					.', OWL_DISPATCHER_NAME+"='.$_disp->composeDispatcher($_dispatcher)
+				. "\treqHandler.sendRequest(\"".TT_CALLBACK_URL.'"'
+					.', TT_DISPATCHER_NAME+"='.$_disp->composeDispatcher($_dispatcher)
 					. "&$_arg=\"+document.getElementById('$this->id').value);\n"
 				. "}\n"
 			);
@@ -292,7 +292,7 @@ abstract class BaseElement extends _OWL
 	 */
 	public function dynamicSetContent()
 	{
-		$_doc = OWL::factory('document', 'ui');
+		$_doc = TT::factory('document', 'ui');
 		$_fName = 'handleSetContent'.$this->id;
 		$_doc->addScript("function $_fName() {\n"
 				. "\tdocument.getElementById('$this->id').innerHTML = reqHandler.getResponseText();\n"
@@ -309,7 +309,7 @@ abstract class BaseElement extends _OWL
 	 */
 	public function dynamicAddContent()
 	{
-		$_doc = OWL::factory('document', 'ui');
+		$_doc = TT::factory('document', 'ui');
 		$_fName = 'handleSetContent'.$this->id;
 		$_doc->addScript("function $_fName() {\n"
 				. "\tdocument.getElementById('$this->id').innerHTML += reqHandler.getResponseText();\n"
@@ -393,22 +393,22 @@ abstract class BaseElement extends _OWL
  */
 Register::registerClass ('DOMElement');
 
-//Register::setSeverity (OWL_DEBUG);
+//Register::setSeverity (TT_DEBUG);
 
-//Register::setSeverity (OWL_INFO);
-//Register::setSeverity (OWL_OK);
-Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (TT_INFO);
+//Register::setSeverity (TT_OK);
+Register::setSeverity (TT_SUCCESS);
 //Register::registerCode ('FORM_RETVALUE');
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 Register::registerCode('DOM_IVATTRIB');
 Register::registerCode('DOM_NOID');
 
-//Register::setSeverity (OWL_BUG);
+//Register::setSeverity (TT_BUG);
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 Register::registerCode('DOM_SELFREF');
 Register::registerCode('DOM_LOOPDETECT');
 
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

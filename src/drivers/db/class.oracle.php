@@ -5,30 +5,30 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 
-define ('_OWL_ORADRV_maxNames', 30); //!< Maximum size in characters for names in Oracle
-define ('_OWL_ORADRV_suffixSequence', '_seq'); //!< Suffix for OWL generated sequences, to be used ONLY for auto increment simulation!
-define ('_OWL_ORADRV_suffixTrigger', '_trg'); //!< Suffix for OWL generated triggers
-define ('_OWL_ORADRV_suffixConstraint', '_cst'); //!< Suffix for OWL generated constraints
+define ('_TT_ORADRV_maxNames', 30); //!< Maximum size in characters for names in Oracle
+define ('_TT_ORADRV_suffixSequence', '_seq'); //!< Suffix for TT generated sequences, to be used ONLY for auto increment simulation!
+define ('_TT_ORADRV_suffixTrigger', '_trg'); //!< Suffix for TT generated triggers
+define ('_TT_ORADRV_suffixConstraint', '_cst'); //!< Suffix for TT generated constraints
 
 /**
- * \ingroup OWL_DRIVERS
+ * \ingroup TT_DRIVERS
  * Class that defines the Oracle database driver
  * \brief Oracle database driver
  * \see class DbDriver
@@ -56,7 +56,7 @@ class Oracle extends DbDefaults implements DbDriver
 	private $uppercaseNames;
 
 	/**
-	 * array - holds all OWL (MySQL based) datatypes and their Oracle translations
+	 * array - holds all TT (MySQL based) datatypes and their Oracle translations
 	 */
 	private $typeMaps;
 
@@ -251,8 +251,8 @@ class Oracle extends DbDefaults implements DbDriver
 	private function getOraObjectName ($_table, $_field, $_suffix)
 	{
 		$_objName = $_table . $_field . $_suffix;
-		if (strlen ($_objName) > _OWL_ORADRV_maxNames) {
-			$_sub = ((_OWL_ORADRV_maxNames - strlen($_suffix)) / 2);
+		if (strlen ($_objName) > _TT_ORADRV_maxNames) {
+			$_sub = ((_TT_ORADRV_maxNames - strlen($_suffix)) / 2);
 			$_objName = substr ($_table, 0, $_sub) . substr ($_field, 0, $_sub) . $_suffix;
 		}
 		return $_objName;
@@ -269,8 +269,8 @@ class Oracle extends DbDefaults implements DbDriver
 	 */
 	private function setAutoIncrement ($_table, $_field, array $_type)
 	{
-		$_seq = $this->getOraObjectName($_table, $_field, _OWL_ORADRV_suffixSequence);
-		$_trg = $this->getOraObjectName($_table, $_field, _OWL_ORADRV_suffixTrigger);
+		$_seq = $this->getOraObjectName($_table, $_field, _TT_ORADRV_suffixSequence);
+		$_trg = $this->getOraObjectName($_table, $_field, _TT_ORADRV_suffixTrigger);
 
 		$_q = 'CREATE SEQUENCE ' . $this->dbQuote($_seq) . ' '
 			. '    START WITH 1'
@@ -321,7 +321,7 @@ class Oracle extends DbDefaults implements DbDriver
 	 */
 	private function setEnumConstraint ($_table, $_field, array $_type)
 	{
-		$_cst = $this->getOraObjectName($_table, $_field, _OWL_ORADRV_suffixConstraint);
+		$_cst = $this->getOraObjectName($_table, $_field, _TT_ORADRV_suffixConstraint);
 
 		$_q = 'ALTER TABLE ' . $this->dbQuote($_table) . ' '
 			. '    ADD CONSTRAINT ' . $this->dbQuote($_cst) . ' '
@@ -358,7 +358,7 @@ class Oracle extends DbDefaults implements DbDriver
 	/**
 	 * Check if the given field is an auto-increment field.
 	 * \note This check is made by looking for a sequence with the same name as the field and the suffix
-	 * as used by this OWL driver to generate sequences for autoincrements.
+	 * as used by this TT driver to generate sequences for autoincrements.
 	 * This implies, auto-increment simulation where the sequence has a different name will not be recognized,
 	 * and if this sequence name is used for other purposes, is will falsly be identified as an auto increment!
 	 * \param[in] $_dbHandler Reference to the database handler
@@ -369,7 +369,7 @@ class Oracle extends DbDefaults implements DbDriver
 	 */
 	private function isAutoIncrement(&$_dbHandler, $_table, $_column)
 	{
-		$_seq = $this->getOraObjectName($_table, $_column, _OWL_ORADRV_suffixSequence);
+		$_seq = $this->getOraObjectName($_table, $_column, _TT_ORADRV_suffixSequence);
 		if ($this->uppercaseNames) {
 			$_seq = strtoupper($_seq);
 		}
@@ -388,7 +388,7 @@ class Oracle extends DbDefaults implements DbDriver
 	 */
 	private function isEnum(&$_dbHandler, $_table, $_column)
 	{
-		$_cst = $this->getOraObjectName($_table, $_column, _OWL_ORADRV_suffixConstraint);
+		$_cst = $this->getOraObjectName($_table, $_column, _TT_ORADRV_suffixConstraint);
 
 		if ($this->uppercaseNames) {
 			$_table = strtoupper($_table);
@@ -436,7 +436,7 @@ class Oracle extends DbDefaults implements DbDriver
 				."WHERE table_name='$_table'";
 		if ($this->dbRead($_data, $_resource, $_qry)) {
 			while ($_fld = $this->dbFetchNextRecord($_data)) {
-				$_seq = $this->getOraObjectName($_table, $_fld['Name'], _OWL_ORADRV_suffixSequence);
+				$_seq = $this->getOraObjectName($_table, $_fld['Name'], _TT_ORADRV_suffixSequence);
 				if ($this->uppercaseNames) {
 					$_seq = strtoupper($_seq);
 				}

@@ -5,29 +5,29 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
- * This is the main class for all OWL objects. It contains some methods that have to be available
+ * This is the main class for all TT objects. It contains some methods that have to be available
  * to all objects. Some of them can be reimplemented.
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 15, 2007 -- O van Eijk -- initial version
  */
-abstract class _OWL
+abstract class _TT
 {
 	/**
 	 * Current object status
@@ -40,7 +40,7 @@ abstract class _OWL
 	private $saved_status;
 
 	/**
-	 * Pointer to the object which holds the last nonsuccessfull (>= OWL_WARNING) status
+	 * Pointer to the object which holds the last nonsuccessfull (>= TT_WARNING) status
 	 */
 	private $pstatus;
 
@@ -61,10 +61,10 @@ abstract class _OWL
 	 */
 	protected function init ($callerFile, $callerLine)
 	{
-		$this->status = OWL::factory('StatusHandler');
+		$this->status = TT::factory('StatusHandler');
 		$this->saved_status = null;
 		$this->pstatus =& $this;
-		$this->setStatus ($callerFile, $callerLine, OWL_STATUS_OK); // Be an optimist ;)
+		$this->setStatus ($callerFile, $callerLine, TT_STATUS_OK); // Be an optimist ;)
 	}
 
 	/**
@@ -86,7 +86,7 @@ abstract class _OWL
 		if (!array_key_exists('class_name', $_dispatcher)) {
 			$_dispatcher['class_name'] = get_class($this);
 		}
-		$_disp = OWL::factory('Dispatcher', 'bo');
+		$_disp = TT::factory('Dispatcher', 'bo');
 		return ($_disp->registerCallback($_dispatcher));
 	}
 
@@ -98,7 +98,7 @@ abstract class _OWL
 	 */
 	protected function setCallbackArgument(array $_arg)
 	{
-		$_disp = OWL::factory('Dispatcher', 'bo');
+		$_disp = TT::factory('Dispatcher', 'bo');
 		return ($_disp->registerArgument($_arg));
 	}
 
@@ -109,7 +109,7 @@ abstract class _OWL
 	 */
 	protected function getCallback()
 	{
-		$_disp = OWL::factory('Dispatcher', 'bo');
+		$_disp = TT::factory('Dispatcher', 'bo');
 		return ($_disp->getCallback());
 	}
 
@@ -139,7 +139,7 @@ abstract class _OWL
 	protected function restoreStatus()
 	{
 		if ($this->saved_status === null) {
-			$this->setStatus(OWL_STATUS_NOSAVSTAT);
+			$this->setStatus(TT_STATUS_NOSAVSTAT);
 		}
 		$this->status = clone $this->saved_status;
 		$this->saved_status = null;
@@ -173,7 +173,7 @@ abstract class _OWL
 	 * \return True if the severity level was correct (below the max), otherwise false
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	protected function check (&$object, $level = OWL_WARNING)
+	protected function check (&$object, $level = TT_WARNING)
 	{
 		if ($this->setHighSeverity($object) > $level) {
 			$this->traceback();
@@ -185,13 +185,13 @@ abstract class _OWL
 
 	/**
 	 * Get the last warning or error message.
-	 * \return null if there was no error (severity below OWL_WARNING), otherwise the error text.
+	 * \return null if there was no error (severity below TT_WARNING), otherwise the error text.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function getLastWarning()
 	{
-		if ($this->severity >= OWL_WARNING) {
-			$this->signal(OWL_WARNING, $_err);
+		if ($this->severity >= TT_WARNING) {
+			$this->signal(TT_WARNING, $_err);
 			return ($_err);
 		} else {
 			return (null);
@@ -202,7 +202,7 @@ abstract class _OWL
 	 * Set the current object status to the specified value.
 	 * \param[in] $callerFile Filename from where this method is called
 	 * \param[in] $callerLine Linenumber from where this method is called
-	 * \param[in] $status OWL status code
+	 * \param[in] $status TT status code
 	 * \param[in] $params
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -219,24 +219,24 @@ abstract class _OWL
 		$msg = null;
 		$this->signal (0, $msg);
 		// Need this check since we can be called before the logger wat setup
-		if (($_logger = OWLCache::get(OWLCACHE_OBJECTS, 'Logger')) !== null) {
+		if (($_logger = TTCache::get(TTCACHE_OBJECTS, 'Logger')) !== null) {
 			$_logger->log ($msg, $status, $callerFile, $callerLine);
 		}
 		$this->writePHPLog($msg);
 
 		if (ConfigHandler::get ('exception', 'throw_level') >= 0
-				&& $this->severity >= ConfigHandler::get ('exception', 'throw_level', OWL_BUG, true)) {
+				&& $this->severity >= ConfigHandler::get ('exception', 'throw_level', TT_BUG, true)) {
 
 			$this->signal (0, $msg);
 			if (ConfigHandler::get('exception', 'block_throws', false)) {
 				// Can't call myself anymore but we wanna see this message.
 				$_msg = $msg; // Save the original
-				$this->severity = $this->status->setCode(OWL_STATUS_THROWERR);
+				$this->severity = $this->status->setCode(TT_STATUS_THROWERR);
 				$this->signal (0, $msg);
 				trigger_error($msg, E_USER_NOTICE);
 				trigger_error($_msg, E_USER_ERROR);
 			} else {
-				throw new OWLException ($msg, $status);
+				throw new TTException ($msg, $status);
 			}
 		}
 		$loopdetect = 0;
@@ -245,13 +245,13 @@ abstract class _OWL
 	/**
 	 * Write a message to the PHP errorlog using the trigger_error() function.
 	 * Based on the write_phplog configuration setting, the following severity levels are logged:
-	 *   * E_USER_NOTICE: OWL_INFO
-	 *   * E_USER_WARNING: OWL_WARNING and OWL_BUG
-	 *   * E_USER_ERROR; OWL_ERROR and above (logged as warnings; see below)
-	 * \param[in] $message If the messages was logged in the OWL logfile, it is passed as
+	 *   * E_USER_NOTICE: TT_INFO
+	 *   * E_USER_WARNING: TT_WARNING and TT_BUG
+	 *   * E_USER_ERROR; TT_ERROR and above (logged as warnings; see below)
+	 * \param[in] $message If the messages was logged in the TT logfile, it is passed as
 	 * parameter. Otherwise it will be composed here.
 	 * \note When E_USER_ERROR is set, all error messages will be written to the php_errorlog
-	 * as warnings to prevent PHP from terminating immediately, skipping the OWL rundown
+	 * as warnings to prevent PHP from terminating immediately, skipping the TT rundown
 	 * \note When display_errors is set to 'On' the the PHP ini file, messages will also be
 	 * shown in the browser.
 	 */
@@ -263,23 +263,23 @@ abstract class _OWL
 			return;
 		}
 
-		if ($this->severity === OWL_INFO && ($_level & E_USER_NOTICE)) {
+		if ($this->severity === TT_INFO && ($_level & E_USER_NOTICE)) {
 			if ($message === null) {
-				$this->signal(OWL_INFO, $message);
+				$this->signal(TT_INFO, $message);
 			}
 			if ($message) {
 				trigger_error($message, E_USER_NOTICE);
 			}
 		}
-		if ($this->severity >= OWL_WARNING && $this->severity <= OWL_BUG && ($_level & E_USER_NOTICE)) {
+		if ($this->severity >= TT_WARNING && $this->severity <= TT_BUG && ($_level & E_USER_NOTICE)) {
 			if ($message === null) {
-				$this->signal(OWL_WARNING, $message);
+				$this->signal(TT_WARNING, $message);
 			}
 			trigger_error($message, E_USER_WARNING);
 		}
-		if ($this->severity >= OWL_ERROR && ($_level & E_USER_ERROR)) {
+		if ($this->severity >= TT_ERROR && ($_level & E_USER_ERROR)) {
 			if ($message === null) {
-				$this->signal(OWL_ERROR, $message);
+				$this->signal(TT_ERROR, $message);
 			}
 			trigger_error('(degraded error) ' . $message, E_USER_WARNING);
 		}
@@ -309,12 +309,12 @@ abstract class _OWL
 
 	/**
 	 * Check if the object currenlty has a success state
-	 * \param[in] $_ok The highest severity that's considered successfull, default OWL_SUCCESS
+	 * \param[in] $_ok The highest severity that's considered successfull, default TT_SUCCESS
 	 * \param[in] $_object REference to the object to check, defaults to the current object
 	 * \return Boolean true when successfull
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function succeeded ($_ok = OWL_SUCCESS, &$_object = null)
+	public function succeeded ($_ok = TT_SUCCESS, &$_object = null)
 	{
 		if ($_object === null) {
 			$_object =& $this;
@@ -349,7 +349,7 @@ abstract class _OWL
 	 * \return The severity level for this object
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function signal ($level = OWL_INFO, &$text = false)
+	public function signal ($level = TT_INFO, &$text = false)
 	{
 		if (($_severity = $this->status->getSeverity()) >= $level) {
 			if ($text === false) {
@@ -360,7 +360,7 @@ abstract class _OWL
 						. 'alert("' . $_msg . '");'
 						. '</script>');
 				} else {
-					OutputHandler::outputLine ('<strong>OWL Message</strong>: ' . $this->status->getMessage ());
+					OutputHandler::outputLine ('<strong>TT Message</strong>: ' . $this->status->getMessage ());
 				}
 			} else {
 				$text = $this->status->getMessage ();
@@ -375,14 +375,14 @@ abstract class _OWL
 	 * \param[in] $level Minimum severity level
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	protected function stackMessage ($level = OWL_WARNING)
+	protected function stackMessage ($level = TT_WARNING)
 	{
 		$severity = $this->signal($level, $message);
 		if ($message !== false) {
 			if (get_class ($this) == 'Document') {
 				$_doc = $this;
 			} else {
-				$_doc = OWL::factory('Document', OWL_UI_INC);
+				$_doc = TT::factory('Document', TT_UI_INC);
 			}
 			$_doc->addMessage($severity, $message);
 		}
@@ -412,57 +412,57 @@ abstract class _OWL
 /*
  * Register this class and all status codes
  */
-Register::registerApp ('OWL-PHP', 0xff000000);
+Register::registerApp ('Terra-Terra', 0xff000000);
 
 
-//Register::setSeverity (OWL_DEBUG);
-//Register::setSeverity (OWL_INFO);
+//Register::setSeverity (TT_DEBUG);
+//Register::setSeverity (TT_INFO);
 
-Register::setSeverity (OWL_OK);
-Register::registerCode ('OWL_STATUS_OK');
+Register::setSeverity (TT_OK);
+Register::registerCode ('TT_STATUS_OK');
 
-//Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (TT_SUCCESS);
 
-Register::setSeverity (OWL_WARNING);
-Register::registerCode ('OWL_STATUS_WARNING');
-Register::registerCode ('OWL_NOTIMEZONE');
-//Register::registerCode ('OWL_STATUS_FNF');
-//Register::registerCode ('OWL_STATUS_ROPENERR');
-//Register::registerCode ('OWL_STATUS_WOPENERR');
+Register::setSeverity (TT_WARNING);
+Register::registerCode ('TT_STATUS_WARNING');
+Register::registerCode ('TT_NOTIMEZONE');
+//Register::registerCode ('TT_STATUS_FNF');
+//Register::registerCode ('TT_STATUS_ROPENERR');
+//Register::registerCode ('TT_STATUS_WOPENERR');
 
-Register::setSeverity (OWL_BUG);
-Register::registerCode ('OWL_STATUS_BUG');
-Register::registerCode ('OWL_APP_NOTLOADED');
+Register::setSeverity (TT_BUG);
+Register::registerCode ('TT_STATUS_BUG');
+Register::registerCode ('TT_APP_NOTLOADED');
 
-Register::setSeverity (OWL_ERROR);
-Register::registerCode ('OWL_STATUS_ERROR');
-//Register::registerCode ('OWL_STATUS_BUG');
-//Register::registerCode ('OWL_STATUS_NOKEY');
-//Register::registerCode ('OWL_STATUS_IVKEY');
-Register::registerCode ('OWL_STATUS_NOSAVSTAT');
-Register::registerCode('OWL_HEADERSENT');
-Register::registerCode('OWL_LOADERR');
-Register::registerCode('OWL_INSTERR');
-Register::registerCode('OWL_ILLINSTANCE');
+Register::setSeverity (TT_ERROR);
+Register::registerCode ('TT_STATUS_ERROR');
+//Register::registerCode ('TT_STATUS_BUG');
+//Register::registerCode ('TT_STATUS_NOKEY');
+//Register::registerCode ('TT_STATUS_IVKEY');
+Register::registerCode ('TT_STATUS_NOSAVSTAT');
+Register::registerCode('TT_HEADERSENT');
+Register::registerCode('TT_LOADERR');
+Register::registerCode('TT_INSTERR');
+Register::registerCode('TT_ILLINSTANCE');
 
-Register::setSeverity (OWL_FATAL);
-Register::registerCode ('OWL_STATUS_THROWERR');
-Register::registerCode ('OWL_APP_NOTFOUND');
+Register::setSeverity (TT_FATAL);
+Register::registerCode ('TT_STATUS_THROWERR');
+Register::registerCode ('TT_APP_NOTFOUND');
 
 
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_CRITICAL);
 
 /*
  * Register all severity levels.
- * NOTE; these must match the levels specified in owl.severitycodes.php!
+ * NOTE; these must match the levels specified in tt.severitycodes.php!
  */
-Register::registerSeverity (OWL_DEBUG,		'DEBUG');
-Register::registerSeverity (OWL_INFO,		'INFO');
-Register::registerSeverity (OWL_OK,			'OK');
-Register::registerSeverity (OWL_SUCCESS,	'SUCCESS');
-Register::registerSeverity (OWL_WARNING,	'WARNING');
-Register::registerSeverity (OWL_BUG,		'BUG');
-Register::registerSeverity (OWL_ERROR,		'ERROR');
-Register::registerSeverity (OWL_FATAL,		'FATAL');
-Register::registerSeverity (OWL_CRITICAL,	'CRITICAL');
+Register::registerSeverity (TT_DEBUG,		'DEBUG');
+Register::registerSeverity (TT_INFO,		'INFO');
+Register::registerSeverity (TT_OK,			'OK');
+Register::registerSeverity (TT_SUCCESS,	'SUCCESS');
+Register::registerSeverity (TT_WARNING,	'WARNING');
+Register::registerSeverity (TT_BUG,		'BUG');
+Register::registerSeverity (TT_ERROR,		'ERROR');
+Register::registerSeverity (TT_FATAL,		'FATAL');
+Register::registerSeverity (TT_CRITICAL,	'CRITICAL');
 

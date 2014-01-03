@@ -5,26 +5,26 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
-OWLloader::getClass('container', OWL_PLUGINS . '/containers');
+TTloader::getClass('container', TT_PLUGINS . '/containers');
 
 /**
- * \ingroup OWL_UI_LAYER
+ * \ingroup TT_UI_LAYER
  * Class for standard containers. It supports several container type, for each of them the methods
  * 'show&lt;Type&gt;Type()' must exist.
  * \brief Container
@@ -53,9 +53,9 @@ class Container extends BaseElement
 	 */
 	public function __construct ($_type, $_content = '', array $_attribs = array(), array $_type_attribs = array())
 	{
-		_OWL::init(__FILE__, __LINE__);
+		_TT::init(__FILE__, __LINE__);
 
-		if (!OWLloader::getClass('container.'.$_type, OWL_PLUGINS . '/containers')) {
+		if (!TTloader::getClass('container.'.$_type, TT_PLUGINS . '/containers')) {
 			$this->setStatus(__FILE__, __LINE__, CONTAINER_IVTYPE, array($_type));
 			return null;
 		}
@@ -155,19 +155,19 @@ class Container extends BaseElement
  */
 Register::registerClass ('Container');
 
-//Register::setSeverity (OWL_DEBUG);
+//Register::setSeverity (TT_DEBUG);
 
-//Register::setSeverity (OWL_INFO);
-//Register::setSeverity (OWL_OK);
-//Register::setSeverity (OWL_SUCCESS);
-//Register::setSeverity (OWL_WARNING);
-Register::setSeverity (OWL_BUG);
+//Register::setSeverity (TT_INFO);
+//Register::setSeverity (TT_OK);
+//Register::setSeverity (TT_SUCCESS);
+//Register::setSeverity (TT_WARNING);
+Register::setSeverity (TT_BUG);
 Register::registerCode ('CONTAINER_IVCLASSNAME');
 Register::registerCode ('CONTAINER_IVSUBCONTNR');
 Register::registerCode ('CONTAINER_IVMETHOD');
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 Register::registerCode ('CONTAINER_IVTYPE');
 
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

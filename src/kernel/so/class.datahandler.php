@@ -5,20 +5,20 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -66,28 +66,28 @@ define ('DATA_RESET_FULL',		15);
 //! @}
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * This class contains DB datasets
- * \brief The OWL Data object
+ * \brief The TT Data object
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Aug 4, 2008 -- O van Eijk -- initial version
  */
-class DataHandler extends _OWL
+class DataHandler extends _TT
 {
 	/**
 	 * Indexed array holding all data values.
 	 */
-	private $owl_data;
+	private $tt_data;
 
 	/**
 	 * 2D Array holding all relationships between the data.
 	 */
-	private $owl_joins;
+	private $tt_joins;
 
 	/**
 	 * Array with variable names that are used in WHERE clauses on updates
 	 */
-	private $owl_keys;
+	private $tt_keys;
 
 	/**
 	 * All variable names are expected to be fields in a database as well.
@@ -96,18 +96,18 @@ class DataHandler extends _OWL
 	 * For datasets that are not read from or written to a database, the
 	 * tablename can be null.
 	 */
-	protected $owl_tablename;
+	protected $tt_tablename;
 
 	/**
 	 * An optional link to a database object. This has to be specified if the data needs to
 	 * be written to or read from a dabatase.
 	 */
-	protected  $owl_database;
+	protected  $tt_database;
 
 	/**
 	 * Boolean that indicates of a query has been prepared
 	 */
-	private $owl_prepared;
+	private $tt_prepared;
 
 	/**
 	 * integer - Last inserted Auto Increment value. Set after all write actions, so can be 0.
@@ -121,14 +121,14 @@ class DataHandler extends _OWL
 	 */
 	public function __construct ($tablename = '')
 	{
-		_OWL::init(__FILE__, __LINE__);
-		$this->owl_data = array();
-		$this->owl_joins = array();
-		$this->owl_keys = array();
-		$this->owl_tablename = $tablename;
-		$this->owl_database = OWL::factory('DbHandler');
-		$this->owl_prepared = DATA_UNPREPARED;
-		$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
+		_TT::init(__FILE__, __LINE__);
+		$this->tt_data = array();
+		$this->tt_joins = array();
+		$this->tt_keys = array();
+		$this->tt_tablename = $tablename;
+		$this->tt_database = TT::factory('DbHandler');
+		$this->tt_prepared = DATA_UNPREPARED;
+		$this->setStatus (__FILE__, __LINE__, TT_STATUS_OK);
 	}
 
 	/**
@@ -139,15 +139,15 @@ class DataHandler extends _OWL
 	public function reset ($level = DATA_RESET_PREPARE)
 	{
 		if ($level & DATA_RESET_DATA) {
-			$this->owl_data = array();
+			$this->tt_data = array();
 		}
 		if ($level & DATA_RESET_META) {
-			$this->owl_joins = array();
-			$this->owl_keys = array();
+			$this->tt_joins = array();
+			$this->tt_keys = array();
 		}
 		if ($level & DATA_RESET_PREPARE) {
-			$this->owl_database->reset();
-			$this->owl_prepared = DATA_UNPREPARED;
+			$this->tt_database->reset();
+			$this->tt_prepared = DATA_UNPREPARED;
 		}
 		if ($level & DATA_RESET_STATUS) {
 			parent::reset();
@@ -161,7 +161,7 @@ class DataHandler extends _OWL
 	 */
 	public function getDbLink()
 	{
-		return ($this->owl_database);
+		return ($this->tt_database);
 	}
 
 	/**
@@ -171,7 +171,7 @@ class DataHandler extends _OWL
 	 * in which case the fieldname be will looked for matching all given values.
 	 * Values with unescaped percent signs will be searched using the SQL LIKE keyword.
 	 * If the matchtype is DBMATCH_NONE, the value is ignored and the field will be in the SELECT list.
-	 * \param[in] $table An optional tablename for this field. Defaults to $this->owl_tablename
+	 * \param[in] $table An optional tablename for this field. Defaults to $this->tt_tablename
 	 * \param[in] $fieldFunction An optional array with SQL functions and statements that apply to the fieldname. This is an indexed array, where all keys must have an array as value.
 	 * The following keys are supported:
 	 * 	- function: An array where the first element is an SQL function, which must exist in the database driver as 'functionFunction'
@@ -199,13 +199,13 @@ class DataHandler extends _OWL
 	public function set ($variable, $value, $table = null, array $fieldFunction = null, array $valueFunction = null)
 	{
 		if ($fieldFunction === null && $valueFunction === null) {
-			$this->owl_data[(($table === null) ? $this->owl_tablename : $table) . '#' . $variable] = array(DBMATCH_EQ, $value);
+			$this->tt_data[(($table === null) ? $this->tt_tablename : $table) . '#' . $variable] = array(DBMATCH_EQ, $value);
 			return;
 		}
 		// Prepare the array for DbHandler::prepareField()
 		$fieldData = array(
 			  'field' => $variable
-			, 'table' => ($table === null) ? $this->owl_tablename : $table
+			, 'table' => ($table === null) ? $this->tt_tablename : $table
 			, 'value' => $value
 		);
 
@@ -227,8 +227,8 @@ class DataHandler extends _OWL
 				}
 			}
 		}
-		list ($_f, $_v) = $this->owl_database->prepareField($fieldData);
-		$this->owl_data[$_f] = $_v;
+		list ($_f, $_v) = $this->tt_database->prepareField($fieldData);
+		$this->tt_data[$_f] = $_v;
 	}
 
 	/**
@@ -247,10 +247,10 @@ class DataHandler extends _OWL
 			}
 			$_var = $variable[0] . '#' . $variable[1];
 		} else {
-			$_var = $this->owl_tablename . '#' . $variable;
+			$_var = $this->tt_tablename . '#' . $variable;
 		}
-		if (!in_array ($_var, $this->owl_keys)) {
-			$this->owl_keys[] = $_var;
+		if (!in_array ($_var, $this->tt_keys)) {
+			$this->tt_keys[] = $_var;
 		}
 		$this->setStatus (__FILE__, __LINE__, DATA_KEYSET, $variable);
 		return ($this->getSeverity());
@@ -264,7 +264,7 @@ class DataHandler extends _OWL
 	 */
 	public function escapeString($string)
 	{
-		return $this->owl_database->escapeString($string);
+		return $this->tt_database->escapeString($string);
 	}
 
 	/**
@@ -279,7 +279,7 @@ class DataHandler extends _OWL
 		$_matches = 0;
 		$expanded = array();
 
-		foreach ($this->owl_data as $_k => $_v) {
+		foreach ($this->tt_data as $_k => $_v) {
 			list ($_tbl, $_fld) = explode ('#', $_k, 2);
 			if ($_fld == $fld) {
 				$expanded[] = $_k;
@@ -304,8 +304,8 @@ class DataHandler extends _OWL
 	 */
 	public function get ($variable)
 	{
-		if (array_key_exists ($variable, $this->owl_data)) {
-			return ($this->owl_data[$variable][1]);
+		if (array_key_exists ($variable, $this->tt_data)) {
+			return ($this->tt_data[$variable][1]);
 		} else {
 			switch ($this->findField($variable, $_k)) {
 				case 0:
@@ -313,7 +313,7 @@ class DataHandler extends _OWL
 					return (null);
 					break;
 				case 1:
-					return ($this->owl_data[$_k[0]][1]);
+					return ($this->tt_data[$_k[0]][1]);
 					break;
 				default:
 					$this->setStatus (__FILE__, __LINE__, DATA_AMBFIELD, $variable);
@@ -343,7 +343,7 @@ class DataHandler extends _OWL
 			}
 			$lvalue = $lvalue[0] . '#' . $lvalue[1];
 		} else {
-			$lvalue = $this->owl_tablename . '#' . $lvalue;
+			$lvalue = $this->tt_tablename . '#' . $lvalue;
 		}
 
 		if (is_array ($rvalue)) {
@@ -353,19 +353,19 @@ class DataHandler extends _OWL
 			}
 			$rvalue = $rvalue[0] . '#' . $rvalue[1];
 		} else {
-			$rvalue = $this->owl_tablename . '#' . $rvalue;
+			$rvalue = $this->tt_tablename . '#' . $rvalue;
 		}
 /*
-		if (!array_key_exists ($lvalue, $this->owl_data)) {
+		if (!array_key_exists ($lvalue, $this->tt_data)) {
 			$this->setStatus (__FILE__, __LINE__, DATA_NOSUCHFLD, $lvalue);
 			return ($this->severity);
 		}
-		if (!array_key_exists ($rvalue, $this->owl_data)) {
+		if (!array_key_exists ($rvalue, $this->tt_data)) {
 			$this->setStatus (__FILE__, __LINE__, DATA_NOSUCHFLD, $rvalue);
 			return ($this->severity);
 		}
 */
-		$this->owl_joins[] = array ($lvalue, $linktype, $rvalue);
+		$this->tt_joins[] = array ($lvalue, $linktype, $rvalue);
 		$this->setStatus (__FILE__, __LINE__, DATA_JOINSET, array($linktype, $lvalue, $rvalue));
 		return ($this->severity);
 	}
@@ -377,7 +377,7 @@ class DataHandler extends _OWL
 	 */
 	public function setTablename ($tblname)
 	{
-		$this->owl_tablename = $tblname;
+		$this->tt_tablename = $tblname;
 	}
 
 	/**
@@ -392,11 +392,11 @@ class DataHandler extends _OWL
 	 */
 	public function prepare ($type = DATA_READ)
 	{
-		if ($this->owl_database == null) {
+		if ($this->tt_database == null) {
 			$this->setStatus (__FILE__, __LINE__, DATA_NODBLINK);
 			return ($this->severity);
 		}
-		if (count ($this->owl_data) == 0){
+		if (count ($this->tt_data) == 0){
 			$this->setStatus (__FILE__, __LINE__, DATA_NOSELECT);
 			return ($this->severity);
 		}
@@ -406,8 +406,8 @@ class DataHandler extends _OWL
 				$_set = array();
 				$_unset = array();
 				$_table = array();
-				foreach ($this->owl_data as $_field => $_value) {
-					if ($this->owl_data[$_field][0] === DBMATCH_NONE) {
+				foreach ($this->tt_data as $_field => $_value) {
+					if ($this->tt_data[$_field][0] === DBMATCH_NONE) {
 						$_unset[] = $_field;
 					} else {
 						$_set[$_field] = $_value;
@@ -417,19 +417,19 @@ class DataHandler extends _OWL
 						$_table[] = $_t;
 					}
 				}
-				$_stat = $this->owl_database->prepareRead ($_unset, $_table, $_set, $this->owl_joins);
+				$_stat = $this->tt_database->prepareRead ($_unset, $_table, $_set, $this->tt_joins);
 				$_type = 'read';
 				break;
 			case DATA_WRITE:
-				$_stat = $this->owl_database->prepareInsert ($this->owl_data);
+				$_stat = $this->tt_database->prepareInsert ($this->tt_data);
 				$_type = 'write';
 				break;
 			case DATA_UPDATE:
-				$_stat = $this->owl_database->prepareUpdate ($this->owl_data, $this->owl_keys, $this->owl_joins);
+				$_stat = $this->tt_database->prepareUpdate ($this->tt_data, $this->tt_keys, $this->tt_joins);
 				$_type = 'update';
 				break;
 			case DATA_DELETE:
-				$_stat = $this->owl_database->prepareDelete ($this->owl_data, $this->owl_keys, $this->owl_joins);
+				$_stat = $this->tt_database->prepareDelete ($this->tt_data, $this->tt_keys, $this->tt_joins);
 				$_type = 'delete';
 				break;
 			case DATA_UNPREPARED:
@@ -438,11 +438,11 @@ class DataHandler extends _OWL
 				return ($this->severity);
 				break;
 		}
-		if ($_stat <= OWL_SUCCESS) {
+		if ($_stat <= TT_SUCCESS) {
 			$this->setStatus (__FILE__, __LINE__, DATA_PREPARED, $_type);
-			$this->owl_prepared = $type;
+			$this->tt_prepared = $type;
 		}
-		return ($this->setHighSeverity ($this->owl_database));
+		return ($this->setHighSeverity ($this->tt_database));
 	}
 
 	/**
@@ -455,20 +455,20 @@ class DataHandler extends _OWL
 	 */
 	public function db (&$data = null, $line = 0, $file = '[unknown]')
 	{
-		switch ($this->owl_prepared) {
+		switch ($this->tt_prepared) {
 			case DATA_READ:
-				$this->owl_database->read (DBHANDLE_DATA, $data, '', $line, $file);
+				$this->tt_database->read (DBHANDLE_DATA, $data, '', $line, $file);
 				break;
 			case DATA_WRITE:
 			case DATA_DELETE:
 			case DATA_UPDATE:
-				$this->owl_database->write ($data, $line, $file);
+				$this->tt_database->write ($data, $line, $file);
 				break;
 		}
-		if ($this->owl_prepared == DATA_WRITE) {
-			$this->last_id = $this->owl_database->lastInsertedId();
+		if ($this->tt_prepared == DATA_WRITE) {
+			$this->last_id = $this->tt_database->lastInsertedId();
 		}
-		return ($this->setHighSeverity ($this->owl_database));
+		return ($this->setHighSeverity ($this->tt_database));
 	}
 
 	/**
@@ -479,15 +479,15 @@ class DataHandler extends _OWL
 	 */
 	public function setPrefix ($prefix)
 	{
-		if (($_clone = OWLCache::get(OWLCACHE_OBJECTS, $prefix . '_DB')) !== null) {
-			$this->owl_database = $_clone;
+		if (($_clone = TTCache::get(TTCACHE_OBJECTS, $prefix . '_DB')) !== null) {
+			$this->tt_database = $_clone;
 		} else {
-			$_saved = OWL::factory('DbHandler');
+			$_saved = TT::factory('DbHandler');
 			$_saved->close();
-			$this->owl_database = clone $this->owl_database;
-			$this->owl_database->alt(array('prefix'=>$prefix));
+			$this->tt_database = clone $this->tt_database;
+			$this->tt_database->alt(array('prefix'=>$prefix));
 			$_saved->open();
-			OWLCache::set(OWLCACHE_OBJECTS, $prefix . '_DB', $this->owl_database);
+			TTCache::set(TTCACHE_OBJECTS, $prefix . '_DB', $this->tt_database);
 		}
 	}
 
@@ -498,7 +498,7 @@ class DataHandler extends _OWL
 	 */
 	public function dbStatus ()
 	{
-		return ($this->owl_database->getStatus());
+		return ($this->tt_database->getStatus());
 	}
 
 	/**
@@ -528,28 +528,28 @@ class DataHandler extends _OWL
 
 Register::registerClass ('DataHandler');
 
-Register::setSeverity (OWL_DEBUG);
+Register::setSeverity (TT_DEBUG);
 Register::registerCode ('DATA_KEYSET');
 Register::registerCode ('DATA_JOINSET');
 Register::registerCode ('DATA_PREPARED');
 
-//Register::setSeverity (OWL_INFO);
-//Register::setSeverity (OWL_OK);
-//Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (TT_INFO);
+//Register::setSeverity (TT_OK);
+//Register::setSeverity (TT_SUCCESS);
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('DATA_NOTFOUND');
 Register::registerCode ('DATA_NOSELECT');
 Register::registerCode ('DATA_AMBFIELD');
 Register::registerCode ('DATA_DBWARNING');
 
-Register::setSeverity (OWL_BUG);
+Register::setSeverity (TT_BUG);
 Register::registerCode ('DATA_IVARRAY');
 Register::registerCode ('DATA_NOSUCHFLD');
 Register::registerCode ('DATA_IVPREPARE');
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 Register::registerCode ('DATA_NODBLINK');
 
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

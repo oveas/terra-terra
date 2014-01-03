@@ -1,38 +1,38 @@
 <?php
 /**
  * \file
- * Main layout page for OWL administration Here, all containers and content areas
+ * Main layout page for TT administration Here, all containers and content areas
  * are filled and the actual page is displayed.
- * \ingroup OWL_OWLADMIN
+ * \ingroup TT_TTADMIN
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Nov 22, 2011 -- O van Eijk -- initial version
  */
 
 
-$dispatcher = OWL::factory('Dispatcher');
+$dispatcher = TT::factory('Dispatcher');
 
-$document   = OWL::factory('Document', 'ui');
+$document   = TT::factory('Document', 'ui');
 //$console = new Container('div');
 //$document->setMessageContainer($console);
 
-$document->enableOWL_JS();
+$document->enableTT_JS();
 
 $_hdr = new Container('div', '', array('class' => 'headerContainer'));
 $_bdy = new Container('div', '', array('class' => 'bodyContainer'));
 $_ftr = new Container('div', '', array('class' => 'footerContainer'));
 
-OWLCache::set(OWLCACHE_OBJECTS, 'HeaderContainer', $_hdr);
-OWLCache::set(OWLCACHE_OBJECTS, 'BodyContainer', $_bdy);
-OWLCache::set(OWLCACHE_OBJECTS, 'FooterContainer', $_ftr);
+TTCache::set(TTCACHE_OBJECTS, 'HeaderContainer', $_hdr);
+TTCache::set(TTCACHE_OBJECTS, 'BodyContainer', $_bdy);
+TTCache::set(TTCACHE_OBJECTS, 'FooterContainer', $_ftr);
 
 $dispatcher->dispatch();
 
-$dispatcher->dispatch('OWL#OWLADMIN_BO#owluser#OWLUser#showMainMenu');
-$dispatcher->dispatch('OWL#OWLADMIN_BO#owluser#OWLUser#showUserMenu');
+$dispatcher->dispatch('TT#TTADMIN_BO#ttuser#TTUser#showMainMenu');
+$dispatcher->dispatch('TT#TTADMIN_BO#ttuser#TTUser#showUserMenu');
 
-$document->loadStyle(OWL_STYLE . '/owl.css');
+$document->loadStyle(TT_STYLE . '/tt.css');
 
-OWLloader::getArea('pagefooter', OWLADMIN_UI)->addToDocument($_ftr);
+TTloader::getArea('pagefooter', TTADMIN_UI)->addToDocument($_ftr);
 
 $document->addToContent($_hdr);
 $document->addToContent($_bdy);

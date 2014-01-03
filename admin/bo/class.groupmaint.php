@@ -1,11 +1,11 @@
 <?php
 /**
  * \file
- * This file defines the OWL group class for user maintenantce
+ * This file defines the TT group class for user maintenantce
  */
 
 /**
- * \ingroup OWL_OWLADMIN
+ * \ingroup TT_TTADMIN
  * Group maintenance class.
  * \brief Group maintenance
  * \author Oscar van Eijk, Oveas Functionality Provider
@@ -29,7 +29,7 @@ class Groupmaint extends Group
 	 */
 	public function editGroup ()
 	{
-		$_form = OWL::factory('FormHandler');
+		$_form = TT::factory('FormHandler');
 		$_new = ($_form->get('gid') == 0);
 		$_rights = $_form->get('r');
 		$_group = new Group($_form->get('gid'));

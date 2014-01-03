@@ -5,20 +5,20 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -98,7 +98,7 @@ define ('DBMATCH_NONE',			'!');
 
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * Handler for all database I/O.  This singleton class uses an (abstract) class for the
  * actual storage.
  * This class should not be called directly; it is implemented by class DataHandler
@@ -106,9 +106,9 @@ define ('DBMATCH_NONE',			'!');
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \todo Implement retries using the isRetryable() driver method, a max_retries and a max_retry_wait config settings
  * \version May 15, 2007 -- O van Eijk -- initial version for Terra-Terra
- * \version Jul 29, 2008 -- O van Eijk -- Modified version for OWL
+ * \version Jul 29, 2008 -- O van Eijk -- Modified version for TT
  */
-class DbHandler extends _OWL
+class DbHandler extends _TT
 {
 	/**
 	 * integer - DB Handle ID
@@ -226,7 +226,7 @@ class DbHandler extends _OWL
 			,  $pwd = ''
 			,  $dbtype = 'MySQL')
 	{
-		_OWL::init(__FILE__, __LINE__);
+		_TT::init(__FILE__, __LINE__);
 		$this->cloned = false;
 		$this->database['server']   = $srv;
 		$this->database['name']     = $db;
@@ -242,7 +242,7 @@ class DbHandler extends _OWL
 		$this->db_prefix = ConfigHandler::get ('database', 'prefix');
 		$this->query_type = DBHANDLE_COMPLETED;
 		$this->locks = array();
-		$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
+		$this->setStatus (__FILE__, __LINE__, TT_STATUS_OK);
 	}
 
 	/**
@@ -252,7 +252,7 @@ class DbHandler extends _OWL
 	private function loadDriver()
 	{
 		if (!class_exists($this->database['engine'])) {
-			if (OWLloader::getDriver($this->database['engine'], 'db') === true) {
+			if (TTloader::getDriver($this->database['engine'], 'db') === true) {
 				$this->driver = new $this->database['engine'];
 			} else {
 				// User trigger_error now, since we're probably at the very start of out boot
@@ -268,7 +268,7 @@ class DbHandler extends _OWL
 	public function __destruct ()
 	{
 		if ($this->transaction != '') {
-			if (defined('OWL_EMERGENCY_SHUTDOWN')) {
+			if (defined('TT_EMERGENCY_SHUTDOWN')) {
 				// The application crashed, tollback all changes
 				$this->rollbackTransaction($this->transaction);
 			} else {
@@ -369,10 +369,10 @@ class DbHandler extends _OWL
 	/**
 	 * Hmmm.... we need this method as the result of a race condition (sort of... I think...);
 	 * if an alternative database (clone) is opened first, that's the default connection, which
-	 * is probably the case in most situation since the owl config table is read early in the
+	 * is probably the case in most situation since the tt config table is read early in the
 	 * init phase.
 	 * I need to think about it... is this solution acceptable? So we need something smarter here?
-	 * This method is allowed to be called only once by OWLLoader; maybe some checks?
+	 * This method is allowed to be called only once by TTLoader; maybe some checks?
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function forceReread ()
@@ -454,7 +454,7 @@ class DbHandler extends _OWL
 	public function open ()
 	{
 		if ($this->opened) {
-			return (OWL_OK); // This is not an error
+			return (TT_OK); // This is not an error
 		}
 
 		if (!$this->connect ()) {
@@ -905,8 +905,8 @@ class DbHandler extends _OWL
 		}
 		$this->driver->dbClear ($__result);
 		$fields = ($data_set === array() ? 0 : count($data_set[0]));
-		if (function_exists('OWLdbg_add')) {
-			OWLdbg_add(OWLDEBUG_OWL_RES, $data_set, 2);
+		if (function_exists('TTdbg_add')) {
+			TTdbg_add(TTDEBUG_TT_RES, $data_set, 2);
 		}
 		return ($data_set);
 	}
@@ -1182,8 +1182,8 @@ class DbHandler extends _OWL
 		}
 
 		$this->query .= $this->additionalClauses();
-		if (function_exists('OWLdbg_add')) { // Skip during init phase
-			OWLdbg_add(OWLDEBUG_OWL_SQL, $this->query, 'Query prepared', 2);
+		if (function_exists('TTdbg_add')) { // Skip during init phase
+			TTdbg_add(TTDEBUG_TT_SQL, $this->query, 'Query prepared', 2);
 		}
 		return ($this->severity);
 	}
@@ -1210,8 +1210,8 @@ class DbHandler extends _OWL
 			$this->query_type = DBHANDLE_DELETE;
 			$this->setStatus (__FILE__, __LINE__, DBHANDLE_QPREPARED, array('delete', $this->query));
 		}
-		if (function_exists('OWLdbg_add')) { // Skip during init phase
-			OWLdbg_add(OWLDEBUG_OWL_SQL, $this->query, 'Query prepared', 2);
+		if (function_exists('TTdbg_add')) { // Skip during init phase
+			TTdbg_add(TTDEBUG_TT_SQL, $this->query, 'Query prepared', 2);
 		}
 		return ($this->severity);
 	}
@@ -1258,8 +1258,8 @@ class DbHandler extends _OWL
 		$this->query .= $this->additionalClauses();
 
 		$this->setStatus (__FILE__, __LINE__, DBHANDLE_QPREPARED, array('update', $this->query));
-		if (function_exists('OWLdbg_add')) { // Skip during init phase
-			OWLdbg_add(OWLDEBUG_OWL_SQL, $this->query, 'Query prepared', 2);
+		if (function_exists('TTdbg_add')) { // Skip during init phase
+			TTdbg_add(TTDEBUG_TT_SQL, $this->query, 'Query prepared', 2);
 		}
 		return ($this->severity);
 	}
@@ -1300,8 +1300,8 @@ class DbHandler extends _OWL
 		$this->query .= $this->additionalClauses();
 		$this->query_type = DBHANDLE_INSERT;
 		$this->setStatus (__FILE__, __LINE__, DBHANDLE_QPREPARED, array('write', $this->query));
-		if (function_exists('OWLdbg_add')) { // Skip during init phase
-			OWLdbg_add(OWLDEBUG_OWL_SQL, $this->query, 'Query prepared', 2);
+		if (function_exists('TTdbg_add')) { // Skip during init phase
+			TTdbg_add(TTDEBUG_TT_SQL, $this->query, 'Query prepared', 2);
 		}
 		return ($this->severity);
 	}
@@ -1399,21 +1399,21 @@ class DbHandler extends _OWL
  */
 Register::registerClass ('DbHandler');
 
-Register::setSeverity (OWL_DEBUG);
+Register::setSeverity (TT_DEBUG);
 Register::registerCode ('DBHANDLE_QPREPARED');
 Register::registerCode ('DBHANDLE_ROWSREAD');
 
-Register::setSeverity (OWL_INFO);
+Register::setSeverity (TT_INFO);
 Register::registerCode ('DBHANDLE_LOCKDISABLED');
 Register::registerCode ('DBHANDLE_TBLNOTLOCKED');
 
-//Register::setSeverity (OWL_OK);
-Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (TT_OK);
+Register::setSeverity (TT_SUCCESS);
 Register::registerCode ('DBHANDLE_OPENED');
 Register::registerCode ('DBHANDLE_WRITTEN');
 Register::registerCode ('DBHANDLE_NODATA');
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('DBHANDLE_IVTABLE');
 Register::registerCode ('DBHANDLE_NOTABLES');
 Register::registerCode ('DBHANDLE_NOVALUES');
@@ -1422,9 +1422,9 @@ Register::registerCode ('DBHANDLE_TRANSOPEN');
 Register::registerCode ('DBHANDLE_NOTRANSOPEN');
 Register::registerCode ('DBHANDLE_TBLLOCKED');
 
-Register::setSeverity (OWL_BUG);
+Register::setSeverity (TT_BUG);
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 Register::registerCode ('DBHANDLE_IVFLDFORMAT');
 Register::registerCode ('DBHANDLE_CLONEACLONE');
 Register::registerCode ('DBHANDLE_CLONEWHILETRANS');
@@ -1436,5 +1436,5 @@ Register::registerCode ('DBHANDLE_QUERYERR');
 Register::registerCode ('DBHANDLE_CREATERR');
 Register::registerCode ('DBHANDLE_DRIVERERR');
 
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

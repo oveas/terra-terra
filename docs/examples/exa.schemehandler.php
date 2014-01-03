@@ -18,7 +18,7 @@
  *
  */
 // Het or instantiate the schemehandler
-$_scheme = OWL::factory('schemehandler');
+$_scheme = TT::factory('schemehandler');
 
 // Define the table layout
 $_table = array(

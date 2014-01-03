@@ -5,26 +5,26 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
-OWLloader::getClass('formfield', OWL_PLUGINS . '/formfields');
+TTloader::getClass('formfield', TT_PLUGINS . '/formfields');
 
 /**
- * \ingroup OWL_BO_LAYER
+ * \ingroup TT_BO_LAYER
  * Define an HTML Form.
  * \brief Form Element class
  * \author Oscar van Eijk, Oveas Functionality Provider
@@ -55,18 +55,18 @@ class Form extends BaseElement
 
 	/**
 	 * Class constructor
-	 * \param[in] $_dispatcher OWL dispatcher as string or array, \see Dispatcher::composeDispatcher()
+	 * \param[in] $_dispatcher TT dispatcher as string or array, \see Dispatcher::composeDispatcher()
 	 * \param[in] $_attribs Indexed array with the HTML attributes
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($_dispatcher, $_attribs = array())
 	{
-		_OWL::init(__FILE__, __LINE__);
+		_TT::init(__FILE__, __LINE__);
 		$this->fields = array();
 		$this->method = 'POST';
 		$this->enctype = 'application/x-www-form-urlencoded';
 
-		$_disp = OWL::factory('Dispatcher', 'bo');
+		$_disp = TT::factory('Dispatcher', 'bo');
 		$this->dispatcher = $_disp->composeDispatcher($_dispatcher);
 
 		if (count($_attribs) > 0) {
@@ -143,7 +143,7 @@ class Form extends BaseElement
 				$type = 'button';
 			}
 
-			if (!OWLloader::getClass('formfield.'.$type, OWL_PLUGINS . '/formfields')) {
+			if (!TTloader::getClass('formfield.'.$type, TT_PLUGINS . '/formfields')) {
 				$this->setStatus (__FILE__, __LINE__, FORM_NOCLASS, $type);
 				return ($this->severity);
 			}
@@ -217,7 +217,7 @@ class Form extends BaseElement
 	 */
 	private function openForm()
 	{
-		return '<form action="'.OWL_CALLBACK_URL.'" '
+		return '<form action="'.TT_CALLBACK_URL.'" '
 			. parent::getAttributes()
 			. ' enctype="'.$this->enctype.'"'
 			. ' method="'.$this->method.'">'."\n";
@@ -230,8 +230,8 @@ class Form extends BaseElement
 	 */
 	private function closeForm()
 	{
-		$this->addField('hidden', OWL_DISPATCHER_NAME, $this->dispatcher);
-		return $this->showField(OWL_DISPATCHER_NAME) . '</form>'."\n";
+		$this->addField('hidden', TT_DISPATCHER_NAME, $this->dispatcher);
+		return $this->showField(TT_DISPATCHER_NAME) . '</form>'."\n";
 	}
 
 	/**
@@ -256,25 +256,25 @@ class Form extends BaseElement
  */
 Register::registerClass ('Form');
 
-//Register::setSeverity (OWL_DEBUG);
+//Register::setSeverity (TT_DEBUG);
 
-//Register::setSeverity (OWL_INFO);
-//Register::setSeverity (OWL_OK);
-Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (TT_INFO);
+//Register::setSeverity (TT_OK);
+Register::setSeverity (TT_SUCCESS);
 //Register::registerCode ('FORM_RETVALUE');
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('FORM_NOMULTIVAL');
 Register::registerCode ('FORM_IVMETHOD');
 Register::registerCode ('FORM_IVENCODING');
 
-Register::setSeverity (OWL_BUG);
+Register::setSeverity (TT_BUG);
 Register::registerCode ('FORM_IVCLASSNAME');
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 Register::registerCode ('FORM_NOCLASS');
 Register::registerCode ('FORM_NOATTRIB');
 Register::registerCode ('FORM_NOSUCHFIELD');
 
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

@@ -6,7 +6,7 @@
  */
 
 /**
- * \ingroup OWL_OWLADMIN
+ * \ingroup TT_TTADMIN
  * Setup the contentarea holding the user menu
  * \brief User menu
  * \author Oscar van Eijk, Oveas Functionality Provider
@@ -25,15 +25,15 @@ class UsermenuArea extends ContentArea
 			$this->contentObject->menuType($_menuType, 'userMenu');
 		}
 
-		if ($this->hasRight('readanonymous', OWL_ID) === true) {
+		if ($this->hasRight('readanonymous', TT_ID) === true) {
 			$_txt = $this->trn('Login');
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'OWL'
-						,'include_path' => 'OWLADMIN_BO'
-						,'class_file' => 'owluser'
-						,'class_name' => 'OWLUser'
+						 'application' => 'TT'
+						,'include_path' => 'TTADMIN_BO'
+						,'class_file' => 'ttuser'
+						,'class_name' => 'TTUser'
 						,'method_name' => 'showLoginForm'
 					)
 				)
@@ -41,15 +41,15 @@ class UsermenuArea extends ContentArea
 			$this->contentObject->addContainer('item', $_lnk);
 		}
 
-		if ($this->hasRight('readregistered', OWL_ID) === true) {
-			$_txt = $this->trn('Logout') . ' ' . OWLCache::get(OWLCACHE_OBJECTS, 'user')->getUsername();
+		if ($this->hasRight('readregistered', TT_ID) === true) {
+			$_txt = $this->trn('Logout') . ' ' . TTCache::get(TTCACHE_OBJECTS, 'user')->getUsername();
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'OWL'
-						,'include_path' => 'OWLADMIN_BO'
-						,'class_file' => 'owluser'
-						,'class_name' => 'OWLUser'
+						 'application' => 'TT'
+						,'include_path' => 'TTADMIN_BO'
+						,'class_file' => 'ttuser'
+						,'class_name' => 'TTUser'
 						,'method_name' => 'logout'
 					)
 				)
@@ -57,13 +57,13 @@ class UsermenuArea extends ContentArea
 			$this->contentObject->addContainer('item', $_lnk);
 		}
 
-		if ($this->hasRight('owldeveloper', OWL_ID) === true) {
+		if ($this->hasRight('ttdeveloper', TT_ID) === true) {
 			$_txt = $this->trn('Developer tools');
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-							'application' => 'OWL'
-							,'include_path' => 'OWLADMIN_BO'
+							'application' => 'TT'
+							,'include_path' => 'TTADMIN_BO'
 							,'class_file' => 'developer'
 							,'class_name' => 'Developer'
 							,'method_name' => 'showCreateAppForm'
@@ -73,10 +73,10 @@ class UsermenuArea extends ContentArea
 			$this->contentObject->addContainer('item', $_lnk);
 		}
 		
-		if ($this->hasRight('manageusers', OWL_ID) === true) {
+		if ($this->hasRight('manageusers', TT_ID) === true) {
 			$this->userMaintOptions();
 		}
-		if ($this->hasRight('managegroups', OWL_ID) === true || $this->hasRight('installapps', OWL_ID)) {
+		if ($this->hasRight('managegroups', TT_ID) === true || $this->hasRight('installapps', TT_ID)) {
 			$this->groupMaintOptions();
 		}
 	}
@@ -91,10 +91,10 @@ class UsermenuArea extends ContentArea
 		$_lnk = new Container('link', $_txt);
 		$_lnk->setContainer(array(
 				'dispatcher' => array(
-					 'application' => 'OWL'
-					,'include_path' => 'OWLADMIN_BO'
-					,'class_file' => 'owluser'
-					,'class_name' => 'OWLUser'
+					 'application' => 'TT'
+					,'include_path' => 'TTADMIN_BO'
+					,'class_file' => 'ttuser'
+					,'class_name' => 'TTUser'
 					,'method_name' => 'listUsers'
 				)
 			)
@@ -105,10 +105,10 @@ class UsermenuArea extends ContentArea
 		$_lnk = new Container('link', $_txt);
 		$_lnk->setContainer(array(
 				'dispatcher' => array(
-					 'application' => 'OWL'
-					,'include_path' => 'OWLADMIN_BO'
-					,'class_file' => 'owluser'
-					,'class_name' => 'OWLUser'
+					 'application' => 'TT'
+					,'include_path' => 'TTADMIN_BO'
+					,'class_file' => 'ttuser'
+					,'class_name' => 'TTUser'
 					,'method_name' => 'showEditUserForm'
 				)
 			)
@@ -122,15 +122,15 @@ class UsermenuArea extends ContentArea
 	private function groupMaintOptions ()
 	{
 		$_usrMaint = $this->contentObject->addSubMenu('Group maintenance', array('class' => 'menuHeader'));
-		if ($this->hasRight('managegroups', OWL_ID) === true) {
+		if ($this->hasRight('managegroups', TT_ID) === true) {
 			$_txt = $this->trn('List groups');
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'OWL'
-						,'include_path' => 'OWLADMIN_BO'
-						,'class_file' => 'owluser'
-						,'class_name' => 'OWLUser'
+						 'application' => 'TT'
+						,'include_path' => 'TTADMIN_BO'
+						,'class_file' => 'ttuser'
+						,'class_name' => 'TTUser'
 						,'method_name' => 'listGroups'
 					)
 				)
@@ -141,25 +141,25 @@ class UsermenuArea extends ContentArea
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'OWL'
-						,'include_path' => 'OWLADMIN_BO'
-						,'class_file' => 'owluser'
-						,'class_name' => 'OWLUser'
+						 'application' => 'TT'
+						,'include_path' => 'TTADMIN_BO'
+						,'class_file' => 'ttuser'
+						,'class_name' => 'TTUser'
 						,'method_name' => 'showEditGroupForm'
 					)
 				)
 			);
 			$_usrMaint->addContainer('item', $_lnk);
 		}
-		if ($this->hasRight('installapps', OWL_ID) === true) {
+		if ($this->hasRight('installapps', TT_ID) === true) {
 			$_txt = $this->trn('List rights');
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'OWL'
-						,'include_path' => 'OWLADMIN_BO'
-						,'class_file' => 'owluser'
-						,'class_name' => 'OWLUser'
+						 'application' => 'TT'
+						,'include_path' => 'TTADMIN_BO'
+						,'class_file' => 'ttuser'
+						,'class_name' => 'TTUser'
 						,'method_name' => 'listRights'
 					)
 				)
@@ -170,10 +170,10 @@ class UsermenuArea extends ContentArea
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'OWL'
-						,'include_path' => 'OWLADMIN_BO'
-						,'class_file' => 'owluser'
-						,'class_name' => 'OWLUser'
+						 'application' => 'TT'
+						,'include_path' => 'TTADMIN_BO'
+						,'class_file' => 'ttuser'
+						,'class_name' => 'TTUser'
 						,'method_name' => 'showEditRightsForm'
 						)
 				)

@@ -10,13 +10,13 @@
  */
 
 // First, get all required instances
-$document = OWL::factory('Document', 'ui');
+$document = TT::factory('Document', 'ui');
 
 // Create the main containers
 $GLOBALS['MYAPP']['BodyContainer'] = new Container('div', '', array('class' => 'bodyContainer'));
 
 // Get the classfile that creates the login form (assuming the full path is '(MYAPP_UI)/user/login.php')
-if (($_lgi = OWLloader::getArea('login', MYAPP_UI . '/user')) !== null) {
+if (($_lgi = TTloader::getArea('login', MYAPP_UI . '/user')) !== null) {
 	// Add it to the body container
 	$_lgi->addToDocument($GLOBALS['MYAPP']['BodyContainer']);
 }

@@ -1,17 +1,17 @@
 <?php
 /**
  * \file
- * This file defines the OWL class for rights maintenantce
+ * This file defines the TT class for rights maintenantce
  */
 
 /**
- * \ingroup OWL_OWLADMIN
+ * \ingroup TT_TTADMIN
  * Rights maintenance class.
  * \brief Rights maintenance
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Nov 29, 2011 -- O van Eijk -- initial version
  */
-class Rightsmaint extends _OWL
+class Rightsmaint extends _TT
 {
 	/**
 	 * Array with the info for this rightbit as it appears in the database
@@ -32,8 +32,8 @@ class Rightsmaint extends _OWL
 	{
 		parent::init(__FILE__, __LINE__);
 		$this->dataset = new DataHandler();
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$this->dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$this->dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$this->dataset->setTablename('rights');
 
@@ -84,7 +84,7 @@ class Rightsmaint extends _OWL
 	 */
 	public function editRight ()
 	{
-		$_form = OWL::factory('FormHandler');
+		$_form = TT::factory('FormHandler');
 		$_new = (($_rid = $_form->get('rid')) == 0);
 		$this->dataset->set ('aid', $_form->get('aid'));
 		if ($_new) {

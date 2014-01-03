@@ -1,17 +1,17 @@
 <?php
 /**
  * \file
- * This file defines the OWL Admin user class
+ * This file defines the TT Admin user class
  */
 
 /**
- * \ingroup OWL_OWLADMIN
+ * \ingroup TT_TTADMIN
  * User class.
- * \brief OWLAdmin User
+ * \brief TTAdmin User
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Nov 22, 2011 -- O van Eijk -- initial version
  */
-class OWLUser extends User
+class TTUser extends User
 {
 	/**
 	 * Self reference
@@ -24,7 +24,7 @@ class OWLUser extends User
 	private function __construct()
 	{
 		parent::construct();
-		OWLUser::$instance = $this;
+		TTUser::$instance = $this;
 	}
 
 	/**
@@ -32,10 +32,10 @@ class OWLUser extends User
 	 */
 	static public function getReference()
 	{
-		if (!OWLUser::$instance instanceof OWLUser) {
-			OWLUser::$instance = new self();
+		if (!TTUser::$instance instanceof TTUser) {
+			TTUser::$instance = new self();
 		}
-		return OWLUser::$instance;
+		return TTUser::$instance;
 	}
 
 	/**
@@ -43,7 +43,7 @@ class OWLUser extends User
 	 */
 	public function doLogin()
 	{
-		$_form = OWL::factory('FormHandler');
+		$_form = TT::factory('FormHandler');
 
 		if (!$this->login($_form->get('usr'), $_form->get('pwd'))) {
 			$this->stackMessage();
@@ -64,8 +64,8 @@ class OWLUser extends User
 	 */
 	public function showLoginForm()
 	{
-		if (($_lgi = OWLloader::getArea('login', OWLADMIN_UI)) !== null) {
-			$_lgi->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
+		if (($_lgi = TTloader::getArea('login', TTADMIN_UI)) !== null) {
+			$_lgi->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -74,8 +74,8 @@ class OWLUser extends User
 	 */
 	public function showMainMenu()
 	{
-		if (($_mnu = OWLloader::getArea('mainmenu', OWLADMIN_UI)) !== null) {
-			$_mnu->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'HeaderContainer'));
+		if (($_mnu = TTloader::getArea('mainmenu', TTADMIN_UI)) !== null) {
+			$_mnu->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'HeaderContainer'));
 		}
 
 	}
@@ -85,8 +85,8 @@ class OWLUser extends User
 	 */
 	public function showUserMenu()
 	{
-		if (($_mnu = OWLloader::getArea('usermenu', OWLADMIN_UI)) !== null) {
-			$_mnu->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'HeaderContainer'));
+		if (($_mnu = TTloader::getArea('usermenu', TTADMIN_UI)) !== null) {
+			$_mnu->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'HeaderContainer'));
 		}
 	}
 
@@ -96,8 +96,8 @@ class OWLUser extends User
 	 */
 	public function showEditUserForm($usr = null)
 	{
-		if (($_lnk = OWLloader::getArea('usermaint', OWLADMIN_UI . '/usermgt', $usr)) !== null) {
-			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
+		if (($_lnk = TTloader::getArea('usermaint', TTADMIN_UI . '/usermgt', $usr)) !== null) {
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -106,8 +106,8 @@ class OWLUser extends User
 	 */
 	public function listUsers()
 	{
-		if (($_lnk = OWLloader::getArea('userlist', OWLADMIN_UI . '/usermgt')) !== null) {
-			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
+		if (($_lnk = TTloader::getArea('userlist', TTADMIN_UI . '/usermgt')) !== null) {
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -117,8 +117,8 @@ class OWLUser extends User
 	 */
 	public function showEditGroupForm($grp = null)
 	{
-		if (($_lnk = OWLloader::getArea('groupmaint', OWLADMIN_UI . '/groupmgt', $grp)) !== null) {
-			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
+		if (($_lnk = TTloader::getArea('groupmaint', TTADMIN_UI . '/groupmgt', $grp)) !== null) {
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -127,8 +127,8 @@ class OWLUser extends User
 	 */
 	public function listGroups()
 	{
-		if (($_lnk = OWLloader::getArea('grouplist', OWLADMIN_UI . '/groupmgt')) !== null) {
-			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
+		if (($_lnk = TTloader::getArea('grouplist', TTADMIN_UI . '/groupmgt')) !== null) {
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -142,8 +142,8 @@ class OWLUser extends User
 			// Just an applic ID to add a new right
 			$rgt = array('aid' => $rgt, 'rid' => 0);
 		}
-		if (($_lnk = OWLloader::getArea('rightsmaint', OWLADMIN_UI . '/rightmgt', $rgt)) !== null) {
-			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
+		if (($_lnk = TTloader::getArea('rightsmaint', TTADMIN_UI . '/rightmgt', $rgt)) !== null) {
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
@@ -152,16 +152,16 @@ class OWLUser extends User
 	 */
 	public function listRights()
 	{
-		if (($_lnk = OWLloader::getArea('rightslist', OWLADMIN_UI . '/rightmgt')) !== null) {
-			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
+		if (($_lnk = TTloader::getArea('rightslist', TTADMIN_UI . '/rightmgt')) !== null) {
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 
 	public function getRightsListing()
 	{
-		$_form = OWL::factory('FormHandler');
+		$_form = TT::factory('FormHandler');
 
-		if (($_content = OWLloader::getArea('getrightslist', OWLADMIN_UI . '/rightmgt', $_form->get('aid'))) !== null) {
+		if (($_content = TTloader::getArea('getrightslist', TTADMIN_UI . '/rightmgt', $_form->get('aid'))) !== null) {
 			OutputHandler::outputAjax($_content->getArea(), true);
 		}
 	}
@@ -172,8 +172,8 @@ class OWLUser extends User
 	 */
 	public function appSelect ($method)
 	{
-		if (($_lnk = OWLloader::getArea('appselect', OWLADMIN_UI, $method)) !== null) {
-			$_lnk->addToDocument(OWLCache::get(OWLCACHE_OBJECTS, 'BodyContainer'));
+		if (($_lnk = TTloader::getArea('appselect', TTADMIN_UI, $method)) !== null) {
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'BodyContainer'));
 		}
 	}
 }

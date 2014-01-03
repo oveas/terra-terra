@@ -5,32 +5,32 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
-define ('OWL_DISPATCHER_NAME', 'd'); //< Formfield/HTTP var name for the dispatcher
+define ('TT_DISPATCHER_NAME', 'd'); //< Formfield/HTTP var name for the dispatcher
 
 /**
- * \ingroup OWL_BO_LAYER
+ * \ingroup TT_BO_LAYER
  * Define the dispatcher. This class calls the proper method based in the request or form data
  * \brief Dispatcher singleton
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Nov 23, 2010 -- O van Eijk -- initial version
  */
-class Dispatcher extends _OWL
+class Dispatcher extends _TT
 {
 	/**
 	 * integer - self reference
@@ -78,8 +78,8 @@ class Dispatcher extends _OWL
 	/**
 	 * Translate a given dispatcher to the URL encoded format
 	 * \param[in] $_dispatcher Dispatcher as an indexed array with the following keys:
-	 * 	- application: Name of the application as it appears in the OWL application table
-	 * 	- include_path: A path relative from the application's toplevel URL as it appears in the OWL application table.
+	 * 	- application: Name of the application as it appears in the TT application table
+	 * 	- include_path: A path relative from the application's toplevel URL as it appears in the TT application table.
 	 * Alternatively, a constant specifying a complete URL can be given
 	 * 	- class_file: Filename, this can be the full file name ("class.myclass.php") or just the name ("myclass"). When omitted, it defaults to the classname (e.g. "MyClass") in lowercase.
 	 * 	- class_name Name of the class.
@@ -116,7 +116,7 @@ class Dispatcher extends _OWL
 				.'#'.$_dispatcher['method_name']
 				.'#'.$_argument;
 		}
-		return bin2hex(owlCrypt($_dispatcher));
+		return bin2hex(ttCrypt($_dispatcher));
 	}
 
 	/**
@@ -132,9 +132,9 @@ class Dispatcher extends _OWL
 	{
 		$_form = null;
 		if ($_dispatcher === null) {
-			$_form = OWL::factory('FormHandler');
+			$_form = TT::factory('FormHandler');
 
-			$_dispatcher = $_form->get(OWL_DISPATCHER_NAME);
+			$_dispatcher = $_form->get(TT_DISPATCHER_NAME);
 			if ($_form->getStatus() === FORM_NOVALUE || !$_dispatcher) {
 				$this->setStatus(__FILE__, __LINE__, DISP_NOARG);
 				return DISP_NOARG;
@@ -144,16 +144,16 @@ class Dispatcher extends _OWL
 			$_destination = $this->decodeDispatcher($_dispatcher);
 		}
 
-		$_logger = OWL::factory('LogHandler', 'so');
+		$_logger = TT::factory('LogHandler', 'so');
 		$_logger->logSession($_destination, $_form);
 
 		if (defined($_destination['include_path'])) {
 			$_inc_path = constant($_destination['include_path']);
 		} else {
-			$_inc_path = OWL_SITE_TOP . '/'.$this->getExternalApplication($_destination['application']).'/'.$_destination['include_path'];
+			$_inc_path = TT_SITE_TOP . '/'.$this->getExternalApplication($_destination['application']).'/'.$_destination['include_path'];
 		}
 
-		if (!OWLloader::getClass($_destination['class_file'], $_inc_path)) {
+		if (!TTloader::getClass($_destination['class_file'], $_inc_path)) {
 			$this->setStatus (__FILE__, __LINE__, DISP_NOCLASSF, array($_destination['class_file'], "$_inc_path/".$_destination['class_file']));
 			return ($this->severity);
 		}
@@ -195,7 +195,7 @@ class Dispatcher extends _OWL
 		}
 		$_dElements = explode('#', $_dispatcher);
 		if (!(count($_dElements) >= 5)) {
-			$_dispatcher = owlCrypt(pack ("H*", $_dispatcher));
+			$_dispatcher = ttCrypt(pack ("H*", $_dispatcher));
 			$_dElements = explode('#', $_dispatcher);
 		}
 		$_d['application'] = array_shift($_dElements);
@@ -276,17 +276,17 @@ class Dispatcher extends _OWL
 	/**
 	 * Initialise an external application for which a contentarea is dispatched
 	 * \param[in] $_applicCode Code of the application
-	 * \return URL of the application, relative from OWL_SITE_TOP, based on the application name
+	 * \return URL of the application, relative from TT_SITE_TOP, based on the application name
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function getExternalApplication($_applicCode)
 	{
-		if (($_top = OWLCache::getApplic($_applicCode, OWL_APPITM_TOP)) !== null) {
+		if (($_top = TTCache::getApplic($_applicCode, TT_APPITM_TOP)) !== null) {
 			return $_top;
 		}
 		$_dataset = new DataHandler('applications');
-		if (ConfigHandler::get ('database', 'owltables', true)) {
-			$_dataset->setPrefix(ConfigHandler::get ('database', 'owlprefix'));
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$_dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$_dataset->set('code', $_applicCode);
 		$_dataset->setKey ('code');
@@ -299,7 +299,7 @@ class Dispatcher extends _OWL
 			return null;
 		}
 		// New application, so load it now
-		OWLloader::loadApplication($_applicCode, false);
+		TTloader::loadApplication($_applicCode, false);
 		return $_data[0]['url'];
 	}
 }
@@ -309,28 +309,28 @@ class Dispatcher extends _OWL
  */
 Register::registerClass ('Dispatcher');
 
-//Register::setSeverity (OWL_DEBUG);
+//Register::setSeverity (TT_DEBUG);
 
-Register::setSeverity (OWL_INFO);
+Register::setSeverity (TT_INFO);
 Register::registerCode ('DISP_NOARG');
 
-//Register::setSeverity (OWL_OK);
-Register::setSeverity (OWL_SUCCESS);
+//Register::setSeverity (TT_OK);
+Register::setSeverity (TT_SUCCESS);
 
-//Register::setSeverity (OWL_WARNING);
+//Register::setSeverity (TT_WARNING);
 Register::registerCode ('DISP_INSARG');
 Register::registerCode ('DISP_NOTREGIST');
 
-Register::setSeverity (OWL_BUG);
+Register::setSeverity (TT_BUG);
 Register::registerCode ('DISP_ALREGIST');
 Register::registerCode ('DISP_NOSUCHAPPL');
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 Register::registerCode ('DISP_IVDISPATCH');
 Register::registerCode ('DISP_INCOMPAT');
 Register::registerCode ('DISP_NOCLASS');
 Register::registerCode ('DISP_NOCLASSF');
 Register::registerCode ('DISP_NOMETHOD');
 
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);

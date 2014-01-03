@@ -5,20 +5,20 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2011} Oscar van Eijk, Oveas Functionality Provider
  * \license
- * This file is part of OWL-PHP.
+ * This file is part of Terra-Terra.
  *
- * OWL-PHP is free software: you can redistribute it and/or modify
+ * Terra-Terra is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * OWL-PHP is distributed in the hope that it will be useful,
+ * Terra-Terra is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with OWL-PHP. If not, see http://www.gnu.org/licenses/.
+ * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
 /**
@@ -41,12 +41,12 @@ define ('FILE_TRIM_C',	3);
 //! @}
 
 /**
- * \ingroup OWL_SO_LAYER
+ * \ingroup TT_SO_LAYER
  * Handle all images
  * \brief Image handler
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 15, 2007 -- O van Eijk -- initial version for Terra-Terra (based on an old OFM module)
- * \version Jul 30, 2008 -- O van Eijk -- Modified version for OWL-PHP
+ * \version Jul 30, 2008 -- O van Eijk -- Modified version for Terra-Terra
  */
 class ImageHandler extends FileHandler
 {
@@ -88,7 +88,7 @@ class ImageHandler extends FileHandler
 	 */
 	public function __construct ($name, $req = false)
 	{
-		_OWL::init(__FILE__, __LINE__);
+		_TT::init(__FILE__, __LINE__);
 
 		$this->name = realpath($name);
 		$this->opened = false;
@@ -109,7 +109,7 @@ class ImageHandler extends FileHandler
 		$this->localfile = !eregi("^([a-z]+)://", $this->name);
 		$this->myfile = (fileowner($this->name) == getmyuid());
 
-		$this->setStatus (__FILE__, __LINE__, OWL_STATUS_OK);
+		$this->setStatus (__FILE__, __LINE__, TT_STATUS_OK);
 	}
 }
 
@@ -120,25 +120,25 @@ class ImageHandler extends FileHandler
  */
 Register::registerClass('ImageHandler');
 
-//Register::setSeverity (OWL_DEBUG);
-Register::setSeverity (OWL_INFO);
+//Register::setSeverity (TT_DEBUG);
+Register::setSeverity (TT_INFO);
 Register::registerCode ('FILE_NEWFILE');
 
-//Register::setSeverity (OWL_OK);
+//Register::setSeverity (TT_OK);
 
-Register::setSeverity (OWL_SUCCESS);
+Register::setSeverity (TT_SUCCESS);
 Register::registerCode ('FILE_CREATED');
 Register::registerCode ('FILE_OPENED');
 Register::registerCode ('FILE_CLOSED');
 
-Register::setSeverity (OWL_WARNING);
+Register::setSeverity (TT_WARNING);
 Register::registerCode ('FILE_NOSUCHFILE');
 Register::registerCode ('FILE_ENDOFFILE');
 
-//Register::setSeverity (OWL_BUG);
+//Register::setSeverity (TT_BUG);
 
-Register::setSeverity (OWL_ERROR);
+Register::setSeverity (TT_ERROR);
 Register::registerCode ('FILE_OPENERR');
 
-//Register::setSeverity (OWL_FATAL);
-//Register::setSeverity (OWL_CRITICAL);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);
