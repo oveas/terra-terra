@@ -377,16 +377,17 @@ abstract class ConfigHandler
 	 * \param[in] $_section The configuration section the item should be set in
 	 * \param[in] $_item The configuration item
 	 * \param[in] $_value The new value of the item
+	 * \param[in] $_overwrite True if existing values may be overwritten
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function set ($_section, $_item, $_value)
+	public static function set ($_section, $_item, $_value, $_overwrite = false)
 	{
 		$_item = "$_section|$_item";
 		if (in_array($_item, self::$cfgProtected)) {
 			TT::stat(__FILE__, __LINE__, CONFIG_PROTECTED, $_item);
 			return;
 		}
-		self::_set($_item, $_value, array_key_exists($_item, self::$cfgHidden));
+		self::_set($_item, $_value, array_key_exists($_item, self::$cfgHidden), $_overwrite);
 
 	}
 

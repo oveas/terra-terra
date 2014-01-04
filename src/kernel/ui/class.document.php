@@ -168,14 +168,14 @@ class Document extends BaseElement
 		}
 		$this->tt_jsEnabled = true;
 		$this->addScript("// These variables are written here by Terra-Terra. If any of them need to change,\n"
-						. "// you should change them in TTloader.php (will affect both Terra-Terra and TT-JS), section TT_Globals.\n"
+						. "// you should change them in TTloader.php, section TT_Globals.\n"
 						. "// The defines in Terra-Terra have the same name as the variables here.");
-		$this->addScript("\n// Top URL of TT-JS\n" . 'var TT_JS_TOP = "' . TT_JS_TOP . '";');
-		$this->addScript("\n// Location of the TT-JS standard libfiles\n" . 'var TT_JS_LIB = "' . TT_JS_LIB . '";');
-		$this->addScript("\n// Top location of the TT-JS plugins\n" . 'var TT_JS_PLUGINS = "' . TT_JS_PLUGINS . '";');
-		$this->addScript("\n// Name of the TT dispatcher as it should appear in requests\n" . 'var TT_DISPATCHER_NAME = "' . TT_DISPATCHER_NAME . '";');
+		$this->addScript("\n// Top URL of Terra-Terra/JS\n" . 'var TT_JS_TOP = "' . TT_JS_TOP . '";');
+		$this->addScript("\n// Location of the Terra-Terra/JS standard libfiles\n" . 'var TT_JS_LIB = "' . TT_JS_LIB . '";');
+		$this->addScript("\n// Top location of the Terra-Terra/JS plugins\n" . 'var TT_JS_PLUGINS = "' . TT_JS_PLUGINS . '";');
+		$this->addScript("\n// Name of the Terra-Terra dispatcher as it should appear in requests\n" . 'var TT_DISPATCHER_NAME = "' . TT_DISPATCHER_NAME . '";');
 		$this->addScript("\n// Callback URL for requests (AJAX, Form, links etc).\n" . 'var TT_CALLBACK_URL = "' . TT_CALLBACK_URL . '";');
-		$this->loadScript(TT_JS_LIB . '/tt.js');
+		$this->loadScript(TT_JS_LIB . '/terra-terra.js');
 
 		// Now load the language extentions.
 		// TODO This can be removed when I got languageExtentions() in tt.js working...

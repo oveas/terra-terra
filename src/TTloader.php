@@ -105,8 +105,8 @@ define ('TT_CALLBACK_URL', $_SERVER['PHP_SELF']);
 //! TT default stylesheets. \todo This is the hardcoded TTadmin default; must be variable using the TT_ID url
 define ('TT_STYLE', '/ttadmin/style');
 
-//! Top location (URL) of TT-JS
-define ('TT_JS_TOP', '/tt-js');
+//! Top location (URL) of Terra-Terra/JS
+define ('TT_JS_TOP', TT_TT_URL . '/js');
 
 //! Location of the TT-JS library files
 define ('TT_JS_LIB', TT_JS_TOP . '/lib');
@@ -267,8 +267,8 @@ abstract class TTloader
 	}
 
 	/**
-	 * Read TT's own ID from the database
-	 * \return Application code for TT
+	 * Read Terra-Terra's own ID from the database
+	 * \return Application code for Terra-Terra
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function getTTId ()

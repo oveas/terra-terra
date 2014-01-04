@@ -1,0 +1,60 @@
+/*
+ 
+/****p* SliderMenuCSS
+ * NAME
+ *  SliderCSS - Layout defaults for slider menus
+ *
+ * DESCRIPTION
+ *  Layout for slider mainmenus.
+ *  You can set your own class for slidermenus; this cclass will be added dynamically
+ *  during menu initialisation.
+ ****/
+
+.sliderMenu li
+{
+	list-style-type		: none;
+}
+
+.sliderMenu li a
+{
+	text-decoration		: none;
+	height				: 20px;
+	line-height			: 20px;
+	vertical-align		: middle;
+	display				: block;
+}
+
+.sliderSubMenu
+{
+	text-align			: left;
+	visibility			: hidden;
+	position			: absolute;
+	overflow			: hidden;
+
+}
+
+.sliderSubMenu ul {
+	margin				: 0px;
+	padding				: 0px;
+}
+
+.sliderSubMenu ul li
+{
+	margin				: 0px;
+	padding				: 1px;
+	list-style-type		: none;
+}
+
+.sliderSubMenu ul li a
+{
+	text-decoration		: none;
+	height				: 16px;
+	line-height			: 16px;
+	padding				: 1px;
+	white-space			: nowrap;
+	display				: block;
+}
+
+.sliderSubMenu ul li a:hover {
+	text-decoration		: underline;
+}

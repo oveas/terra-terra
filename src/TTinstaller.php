@@ -418,7 +418,7 @@ abstract class TTinstaller
 		$dataset->set('hide', ($hide === true)?1:0);
 		$dataset->prepare(DATA_WRITE);
 		$dataset->db($_dummy, __LINE__, __FILE__);
-		ConfigHandler::set($section, $item, $value);
+		ConfigHandler::set($section, $item, $value, true);
 		return (true);
 	}
 

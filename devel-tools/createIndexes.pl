@@ -29,7 +29,7 @@ sub checkDirs ($$)
 		open (IDX, ">$loc/index.html");
 		print IDX '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">'."\n"
 			.'<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">'
-			.'<title>Oveas Web Library for PHP</title></head><body>You do not have direct access to this directory</body></html>';
+			.'<title>Terra-Terra</title></head><body>You do not have direct access to this directory</body></html>';
 		close IDX;
 		print "-> New index.html created!\n";
 	}

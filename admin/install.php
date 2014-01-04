@@ -2,7 +2,7 @@
 /**
  * \file
  * Installer script for Terra-Terra
- * \todo This is just a first setup of what an Terra-Terra installer should do. What we need is some proper error checking,
+ * \todo This is just a first setup of what a Terra-Terra installer should do. What we need is some proper error checking,
  * configuration settings, layout, generate .htaccess for the ttadmin directory, logging to browser and a hell of a lot more....
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
@@ -14,7 +14,7 @@ require (TT_ROOT . '/TTinstaller.php');
 
 TTinstaller::installTables(TT_ROOT . '/tt.tables.sql', false);
 
-$_id = TTinstaller::installApplication('TT', 'ttadmin', 'Terra-Terra', TT_VERSION, 'Oveas Web Library for PHP', 'https://github.com/oveas/terra-terra', 'Oscar van Eijk', 'LGPL');
+$_id = TTinstaller::installApplication('TT', 'ttadmin', 'Terra-Terra', TT_VERSION, 'Terra-Terra Web2.2 platform', 'https://github.com/oveas/terra-terra', 'Oscar van Eijk', 'LGPL');
 
 TTinstaller::addConfig($_id, 'locale', 'date', 'd-M-Y');
 TTinstaller::addConfig($_id, 'locale', 'time', 'H:i');
@@ -42,15 +42,15 @@ TTinstaller::addRights($_id
 		,'modusername'		=> 'Allowed to change own username'
 		,'moduserconfig'	=> 'Allowed to change own configuration settings'
 		,'modgroupconfig'	=> 'Allowed to change configuration settings of the primary group'
-		,'modapplconfig'	=> 'Allowed to change application config settings for TT'
+		,'modapplconfig'	=> 'Allowed to change application config settings for Terra-Terra'
 		,'addmembers'		=> 'Allowed to add members to the primary group'
 		,'managegroupusers'	=> 'Allowed to manage users in the primary group'
-		,'managegroups'		=> 'Allowed to manage all groups in TT'
-		,'manageusers'		=> 'Allowed to manage all users in TT'
+		,'managegroups'		=> 'Allowed to manage all groups in Terra-Terra'
+		,'manageusers'		=> 'Allowed to manage all users in Terra-Terra'
 		,'installapps'		=> 'Allowed to install new applications'
-		,'ttdeveloper'		=> 'Allowed to use the TT Developer tools'
+		,'ttdeveloper'		=> 'Allowed to use the Terra-Terra Developer tools'
 		,'showconsole'		=> 'Allowed to see the console'
-		,'showtrace'		=> 'Allowed to see tracebacks in messages'
+		,'showtraces'		=> 'Allowed to see tracebacks in messages'
 	)
 );
 

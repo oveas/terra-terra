@@ -1,0 +1,17 @@
+.ddMenu a {float:left; text-decoration:none;}
+.ddMenu span {float:left; text-decoration:none; width:120px; height:28px; padding-top:8px}
+.ddMenu a:hover {text-decoration:underline;}
+.ddMenu {list-style:none; text-align:center; margin:0 auto}
+.ddMenu li {position:relative; float:left; width:120px; z-index:1000}
+.ddMenu ul {display:none; position:absolute; top:36px; left:0; display:none; list-style:none}
+.ddMenu ul li {float:none; border-top:1px solid #ccc; width:120px}
+.ddMenu ul li a, li.ddMenuhover li a, li.ddMenuhover li.ddMenuhover li a {float:none; display:block; background:none; height:22px; padding-top:5px}
+.ddMenu ul li a:hover, li.ddMenuhover li a:hover, li.ddMenuhover li.ddMenuhover li a:hover {}
+.ddMenu ul li span, li.ddMenuhover li span, li.ddMenuhover li.ddMenuhover li span {float:none; display:block; background:none; height:22px; padding-top:5px}
+.ddMenu ul ul {left:120px; top:0}
+.ddMenu li.ddSubmenu {font-weight:bold}
+.ddMenu li.ddNoborder {border-top:none}
+li.ddMenuhover a, li.ddMenuhover li.ddMenuhover a {}
+li.ddMenuhover span, li.ddMenuhover li.ddMenuhover span {}
+#ddInfo {width:180px;}
+#ddInfo li {width:160px; border-top:none; padding:8px 10px; color:#666; text-shadow:1px 1px #fff; text-align:left}

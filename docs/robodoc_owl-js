@@ -1,3 +1,0 @@
-#!/bin/bash
-
-robodoc --rc /home/oscar/projects/tt/terra-terra/docs/tt-js.robodoc.rc

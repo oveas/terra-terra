@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-# Scan the OWP-PHP source directory for codes that are registered but that
+# Scan the Terra-Terra source directory for codes that are registered but that
 # don't have an entry in tt.messages.php yet.
 #
 # Version 0.1 -- Initial version (2008-08-26)

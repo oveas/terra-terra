@@ -25,12 +25,6 @@ then
 	exit
 fi 
 
-if [ ! -e $TTLOCATION/../tt-js/src/lib/tt.js ]
-then
-	echo Cannot find TT-JS --- please set the correct path in $0
-	exit
-fi 
-
 CLOC=`pwd`
 cd $TTLOCATION
 
@@ -47,25 +41,21 @@ then
 fi
 
 
-mkdir __TTPHPdist.$TTVERSION.tmp
-cd __TTPHPdist.$TTVERSION.tmp
+mkdir __TTdist.$TTVERSION.tmp
+cd __TTdist.$TTVERSION.tmp
 
 # Kernel sources
 mkdir terra-terra
 cp -Rupv ../src/* ./terra-terra
 cp -p ../db/sql/tt.tables.sql ./terra-terra
 
-# TT-JS
-mkdir tt-js
-cp -Rupv ../../tt-js/src/* ./tt-js
-
 # TT Admin app
 mkdir ttadmin
 cp -Rupv ../admin/* ./ttadmin
 
 ../devel-tools/createIndexes.pl ./terra-terra
-../devel-tools/createIndexes.pl ./tt-js
-../devel-tools/createIndexes.pl ./ttAdmin
+../devel-tools/createIndexes.pl ./ttadmin
+rm ./ttadmin/index.html # Remove from the entry level
 
 zip -r ../terra-terra_$TTVERSION.zip *
 

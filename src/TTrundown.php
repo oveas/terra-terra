@@ -27,7 +27,7 @@ TTdbg_add(TTDEBUG_TT_S01, $_messages, 'Messages during rundown');
 unset ($_messages);
 
 // Make sure no exceptions are thrown anymore from this point!
-//ConfigHandler::set('exception', 'block_throws', true);
+//ConfigHandler::set('exception', 'block_throws', true, true);
 
 //echo "Start rundown<br/>";
 
