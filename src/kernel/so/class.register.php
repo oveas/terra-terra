@@ -295,7 +295,7 @@ abstract class Register
 	static public function registerMessages ($_force = false)
 	{
 		$_lang = ConfigHandler::get ('locale', 'lang');
-		$_messages =& TTCache::getRef(TTCACHE_LOCALE, 'messages');
+		$_msgs =& TTCache::getRef(TTCACHE_LOCALE, 'messages');
 		// Suppress 'Undefined constants' notices for codes not (yet) registered
 		$_er = error_reporting(~E_NOTICE);
 		if (TTCache::get(TTCACHE_MSGFILES, 'ttMessages') === null) {
@@ -309,7 +309,7 @@ abstract class Register
 				$_found = TTCache::set(TTCACHE_MSGFILES, 'ttMessages', false);
 			}
 			if ($_found === true) {
-				$_messages = $_messages + $_messages;
+				$_msgs = $_msgs + $_messages;
 			}
 		}
 
@@ -324,21 +324,22 @@ abstract class Register
 				$_found = TTCache::set(TTCACHE_MSGFILES, strtolower(TTloader::getCurrentAppCode()) . 'Messages', false);
 			}
 			if ($_found === true) {
-				$_messages = $_messages + $_messages;
+				$_msgs = $_msgs + $_messages;
 			}
 		}
 		error_reporting($_er);
 	}
 
 	/**
-	 * Load the labels file for TT or the application
-	 * \param[in] $_tt When true, the TT file(s) will be loaded, by default only the application's
+	 * Load the labels file for Terra-Terra or the application
+	 * \param[in] $_tt When true, the Terra-Terra file(s) will be loaded, by default only the application's
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	static public function registerLabels ($_tt = false)
 	{
 		$_lang = ConfigHandler::get ('locale', 'lang');
-		$_labels =& TTCache::getRef(TTCACHE_LOCALE, 'labels');
+		$_lbls =& TTCache::getRef(TTCACHE_LOCALE, 'labels');
+
 		// Suppress 'Undefined constants' notices for codes not (yet) registered
 		if ($_tt) {
 			if (TTCache::get(TTCACHE_LBLFILES, 'ttLabels') === null) {
@@ -352,7 +353,7 @@ abstract class Register
 					$_found = TTCache::set(TTCACHE_LBLFILES, 'ttLabels', false);
 				}
 				if ($_found === true) {
-					$_labels = $_labels + $_labels;
+					$_lbls = $_lbls + $_labels;
 				}
 			}
 		} else {
@@ -367,7 +368,7 @@ abstract class Register
 					$_found = TTCache::set(TTCACHE_LBLFILES, strtolower(TTloader::getCurrentAppCode()) . 'Labels', false);
 				}
 				if ($_found === true) {
-					$_labels = $_labels + $_labels;
+					$_lbls = $_lbls + $_labels;
 				}
 			}
 		}

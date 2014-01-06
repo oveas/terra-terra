@@ -248,8 +248,6 @@ Register::registerCode ('SESSION_INVUSERNAME');
 Register::registerCode ('SESSION_INVPASSWORD');
 Register::registerCode ('SESSION_TIMEOUT');
 Register::registerCode ('SESSION_NOACCESS');
-Register::registerCode ('SESSION_DISABLED');
-Register::registerCode ('SESSION_IVSESSION');
 
 //Register::setSeverity (TT_BUG);
 

@@ -29,7 +29,7 @@
  */
 
 //! List of all classfiles that have been loaded
-define ('TTCACHE_CLASSES',			0);
+define ('TTCACHE_CLASSES',		0);
 
 //! List of all language specific messagesfiles that have been loaded
 define ('TTCACHE_MSGFILES',		1);
@@ -38,13 +38,13 @@ define ('TTCACHE_MSGFILES',		1);
 define ('TTCACHE_LBLFILES',		2);
 
 //! List of all language specific labels and messages
-define ('TTCACHE_LOCALE',			3);
+define ('TTCACHE_LOCALE',		3);
 
 //! Globally available objects, mainly singletons (user, logger etc)
-define ('TTCACHE_OBJECTS',			4);
+define ('TTCACHE_OBJECTS',		4);
 
 //! Current configuration
-define ('TTCACHE_CONFIG',			5);
+define ('TTCACHE_CONFIG',		5);
 
 //! Register data
 define ('TTCACHE_REGISTER',		6);

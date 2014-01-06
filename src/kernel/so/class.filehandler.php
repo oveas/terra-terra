@@ -310,7 +310,8 @@ class FileHandler extends _TT
 	public function downloadFile()
 	{
 		if (headers_sent()) {
-			$this->setStatus (__FILE__, __LINE__, TT_HEADERSENT, array ($this->fullName));
+			$this->setStatus (__FILE__, __LINE__, TT_HEADERSENT);
+			$this->setStatus (__FILE__, __LINE__, FILE_DLERROR, array ($this->fullName));
 			return;
 		}
 		$this->getFileInfo();
@@ -362,6 +363,7 @@ Register::registerCode ('FILE_ENDOFFILE');
 Register::registerCode ('FILE_READONLY');
 Register::registerCode ('FILE_NOTOPENED');
 Register::registerCode ('FILE_DELERR');
+Register::registerCode ('FILE_DLERROR');
 
 
 //Register::setSeverity (TT_BUG);

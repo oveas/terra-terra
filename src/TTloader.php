@@ -45,10 +45,10 @@ error_reporting(E_ALL | E_STRICT);
 if (!defined('TT_ROOT')) { trigger_error('TT_ROOT must be defined by the application', E_USER_ERROR); }
 
 //! TT version
-define ('TT_VERSION', '0.9.3');
+define ('TT_VERSION', '0.9.4');
 
 //! TT Release date in format YYYY-MM-DD
-define ('TT_DATE', '2013-12-17');
+define ('TT_DATE', '2014-01-06');
 
 //! Toplevel for the TT includes
 define ('TT_INCLUDE',	TT_ROOT . '/kernel');

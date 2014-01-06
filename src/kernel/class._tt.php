@@ -348,6 +348,9 @@ abstract class _TT
 	 * instead of echood.
 	 * \return The severity level for this object
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \todo The JavaScript alerts don't work anymore since the console was implemented. The second
+	 * parameter is alwayd given now, so this method doesn't generate any output at all.
+	 * Does this make js_signal obsolete?
 	 */
 	public function signal ($level = TT_INFO, &$text = false)
 	{

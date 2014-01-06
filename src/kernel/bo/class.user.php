@@ -740,18 +740,15 @@ Register::registerCode ('USER_DUPLUSERNAME');
 Register::registerCode ('USER_PWDVERFAILED');
 Register::registerCode ('USER_WEAKPASSWD');
 Register::registerCode ('USER_INVATTRIBUTE');
-Register::registerCode ('USER_INVUSERNAME');
-Register::registerCode ('USER_INVPASSWORD');
 Register::registerCode ('USER_LOGINFAIL');
 Register::registerCode ('USER_NOTCONFIRMED');
 Register::registerCode ('USER_NOSUCHUSER');
 Register::registerCode ('USER_IVCONFARG');
-Register::registerCode ('USER_CONFERR');
 
 Register::setSeverity (TT_BUG);
 
 Register::setSeverity (TT_ERROR);
-Register::registerCode ('USER_NODATASET');
+Register::registerCode ('USER_CONFERR');
 Register::registerCode ('USER_RESTORERR');
 
 //Register::setSeverity (TT_FATAL);

@@ -3,6 +3,7 @@ db/tt.tables.mwb.bak
 .settings
 .buildpath
 docs/terra-terra/
+docs/tt-testkit/
 terra-terra_*.zip
 updateTestEnv.sh
 

@@ -23,14 +23,14 @@
  */
 
 $_labels = array (
-	 'TT Admin'		=> 'TT Administration'
+	 'TT Admin'			=> 'Terra-Terra Administration'
 	,'Home'				=> 'Home'
 	,'Username'			=> 'Username'
 	,'Password' 		=> 'Password'
 	,'Login'			=> 'Login'
 	,'Login Form'		=> 'Login Form'
 	,'Logout'			=> 'Logout'
-	,'TT timers'		=> 'TT timers'
+	,'TT timers'		=> 'Terra-Terra timers'
 	,'Timer value'		=> 'Timer $p1$: $p2$ seconds ($p3$ % of the total time)'
 	,'Timer total'		=> 'Total execution time: $p1$ sec. Total memory used: $p2$ KB.'
 	,'Timer warnings'	=> 'Timer warnings:'

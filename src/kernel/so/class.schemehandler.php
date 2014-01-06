@@ -136,7 +136,7 @@ class SchemeHandler extends _TT
 	public function setEngine ($_engine)
 	{
 		if (!$this->inuse) {
-			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTINUSE);
 			return ($this->severity);
 		}
 		$this->engine = $_engine;
@@ -162,7 +162,7 @@ class SchemeHandler extends _TT
 	public function defineScheme($_scheme)
 	{
 		if (!$this->inuse) {
-			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTINUSE);
 			return ($this->severity);
 		}
 		$this->scheme['columns'] = $_scheme;
@@ -183,7 +183,7 @@ class SchemeHandler extends _TT
 	public function defineIndex($_index)
 	{
 		if (!$this->inuse) {
-			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTINUSE);
 			return ($this->severity);
 		}
 		$_primary = false;
@@ -213,7 +213,7 @@ class SchemeHandler extends _TT
 	function scheme($_drops = false)
 	{
 		if (!$this->inuse) {
-			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTINUSE);
 			return ($this->severity);
 		}
 		$_return = $this->compare();
@@ -242,7 +242,7 @@ class SchemeHandler extends _TT
 	public function alterScheme($_field)
 	{
 		if (!$this->inuse) {
-			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTUSE);
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_NOTINUSE);
 			return ($this->severity);
 		}
 		foreach ($_field as $_fieldname => $_attributes) {
@@ -503,7 +503,7 @@ Register::registerCode ('SCHEMEHANDLE_IVTABLE');
 
 Register::setSeverity (TT_BUG);
 Register::registerCode ('SCHEMEHANDLE_INUSE');
-Register::registerCode ('SCHEMEHANDLE_NOUSE');
+Register::registerCode ('SCHEMEHANDLE_NOTINUSE');
 Register::registerCode ('SCHEMEHANDLE_EMPTYTABLE');
 
 Register::setSeverity (TT_ERROR);

@@ -634,8 +634,9 @@ Register::registerCode('DOC_NOTOPENED');
 Register::registerCode('DOC_NOSUCHFILE');
 Register::registerCode('DOC_IVFILESPEC');
 
+Register::setSeverity (TT_BUG);
+Register::registerCode('DOC_IVMSGCONTAINER');
 
-//Register::setSeverity (TT_BUG);
 //Register::setSeverity (TT_ERROR);
 //Register::setSeverity (TT_FATAL);
 //Register::setSeverity (TT_CRITICAL);

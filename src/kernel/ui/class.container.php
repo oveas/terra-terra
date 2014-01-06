@@ -82,7 +82,7 @@ class Container extends BaseElement
 	public function __call ($method, $arguments = null)
 	{
 		if (!method_exists($this->containerObject, $method)) {
-			$this->setStatus(__FILE__, __LINE__, CONTAINER_IVMETHOD, array($this->containerType));
+			$this->setStatus(__FILE__, __LINE__, CONTAINER_IVMETHOD, array($method, $this->containerType));
 			return $this->severity;
 		}
 		return call_user_func_array(array($this->containerObject, $method), $arguments);

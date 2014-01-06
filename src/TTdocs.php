@@ -30,11 +30,11 @@
  * flexibility from Linux, robustness from OpenVMS and of course internet's platform and location independency.
  * The design principles of Terra-Terra ensure a 100% safe web development platform; since the library itself
  * is unhackable, so are the applications built with it!
- * Terra-Terra comes with a testapplication (<a href="http://tt.oveas.com/docs/otk/index.html">OTK</a>) for automated
+ * Terra-Terra comes with a testapplication (<a href="http://docs.terra-terra.org/tt-testkit/index.html">TTK</a>) for automated
  * testing.
  *
  * Much of this code started in 2001, a project that was abandoned when AJAX became popular from 2005 onwards. Since 2007
- * the code was continues as OWL-PHP (Oveas Web Library for PHP), but renamed back to Terra-Terra in 2014.
+ * the code was continued as OWL-PHP (Oveas Web Library for PHP), but renamed back to Terra-Terra in 2014.
  *
  * Terra-Terra can be downloaded from <a href="https://github.com/oveas/terra-terra">GitHub</a>
  *
@@ -74,7 +74,7 @@
  * At that time, Ajax did not exist yet, and most libraries used today where not existing or in a very early stage... just like Terra-Terra.
  * When Ajax became popular after 2005, I abandoned my project and focussed on other projects, both open source (like eGroupWare and Virtuemart; I've been core developer
  * for both) and commercial. In evey project I kept on using and improving my old Terra-Terra-code. In 2007 I decided to create a library
- * for personal use and renamed it to TT. In 2011 this project was released in open source.
+ * for personal use and renamed it to OWL-PHP. In 2011 this project was released in open source.
  * 
  * Early 2014 the project was renamed back to Terra-Terra and used for some private sites and commercial projects, but if this code is helpful tro anyone out there: feel free.
  *
@@ -124,7 +124,7 @@
  * Optionally, a configuration file can be defined (line 2). If set, the configfile can override most settings that are in the Terra-Terra default configuration.
  * Most of the settings can also be stored in the database and changed dynamically.
  * 
- * For more constants thet can be defined by the application, see \ref GlobalConstants.
+ * For more constants that can be defined by the application, see \ref GlobalConstants.
  * 
  * \subsection ttloader The TT-Loader
  * 

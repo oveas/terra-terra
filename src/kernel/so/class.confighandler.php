@@ -309,7 +309,7 @@ abstract class ConfigHandler
 				$_dataset->db($_secID, __LINE__, __FILE__);
 				return ($_dataset->insertedId());
 			} else {
-				TT::stat(__FILE__, __LINE__, CONFIG_NOSUCHSECTION, $_item);
+				TT::stat(__FILE__, __LINE__, CONFIG_NOSUCHSECTION, array($section));
 				return -1;
 			}
 		} else {
