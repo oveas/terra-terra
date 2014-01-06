@@ -33,6 +33,8 @@ define ('TT_OUTPUT_AJAX',	2);
 define ('TT_OUTPUT_LINE',	3);
 //! Format the text as a paragraph (div)
 define ('TT_OUTPUT_PAR',	4);
+//! Send the output to the browser without buffering
+define ('TT_OUTPUT_NOW',	5);
 // @}
 
 /**
@@ -49,6 +51,11 @@ abstract class OutputHandler
 	 * Boolean to keep track if the brow
 	 */
 	static private $outputStarted = false;
+	
+	/**
+	 * Boolean set to false when output is not being buffered.
+	 */
+	static private $outputBuffering = true;
 
 	/**
 	 * Entry method for the output class which calls to correct method for the required output,
@@ -70,6 +77,9 @@ abstract class OutputHandler
 				break;
 			case TT_OUTPUT_PAR :
 				self::outputPar($text, $class);
+				break;
+			case TT_OUTPUT_NOW :
+				self::outputImmediatly($text, $class);
 				break;
 			default :
 				self::outputRaw($text);
@@ -183,5 +193,41 @@ abstract class OutputHandler
 	static public function outputStarted()
 	{
 		return self::$outputStarted;
+	}
+	
+	/**
+	 * Send text to the browser, immediatly flushing all output buffers.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	static public function outputImmediatly($text, $class = null)
+	{
+		self::outputDisableBuffering();
+		self::outputLine($text . "\n", $class);
+		@ob_flush();
+		@flush();
+	}
+
+	/**
+	 * Send all buffered output to the browser.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	static public function outputNow()
+	{
+		self::outputDisableBuffering();
+		@ob_flush();
+		@flush();
+	}
+
+	/**
+	 * Disable output buffering
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	static private function outputDisableBuffering()
+	{
+		if (self::$outputBuffering === true) {
+			ini_set('zlib.output_compression', '0');
+			ob_end_flush();
+			self::$outputBuffering = false;
+		}
 	}
 }

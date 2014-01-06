@@ -4,7 +4,7 @@
  * \ingroup TT_LIBRARY
  * This is a dummy PHP file that is never loaded. It's just here for the longer documentation blocks read
  * by Doxygen.
- * \copyright{2007-2013} Oscar van Eijk, Oveas Functionality Provider
+ * \copyright{2001-2014} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of Terra-Terra.
  *
@@ -24,24 +24,22 @@
 
 /**
  * \mainpage
- * Oveas Web Library for PHP is a development framework for webbased applications.
+ * Terra-Terra is a development framework for webbased applications.
  *
  * The aim is an environment that combines the best of several worlds; ease of use from Windows,
  * flexibility from Linux, robustness from OpenVMS and of course internet's platform and location independency.
  * The design principles of Terra-Terra ensure a 100% safe web development platform; since the library itself
  * is unhackable, so are the applications built with it!
- * TT comes with a testapplication (<a href="http://tt.oveas.com/docs/otk/index.html">OTK</a>) for automated
+ * Terra-Terra comes with a testapplication (<a href="http://tt.oveas.com/docs/otk/index.html">OTK</a>) for automated
  * testing.
  *
- * Together with the planned <a href="http://tt.oveas.com/docs/tt-js/index.html">TT-JS</a>, you might consider the TT family as the basis of what Web2.2 will look like ;)
- *
- * Much of this code started as the project Terra-Terra in 2001 (http://terra-terra.org), a project that
- * was abandoned when AJAX became popular from 2005 onwards.
+ * Much of this code started in 2001, a project that was abandoned when AJAX became popular from 2005 onwards. Since 2007
+ * the code was continues as OWL-PHP (Oveas Web Library for PHP), but renamed back to Terra-Terra in 2014.
  *
  * Terra-Terra can be downloaded from <a href="https://github.com/oveas/terra-terra">GitHub</a>
  *
  * \author Oscar van Eijk, Oveas Functionality Provider
- * \copyright{2007-2013} Oscar van Eijk, Oveas Functionality Provider
+ * \copyright{2001-2014} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of Terra-Terra.
  *
@@ -69,7 +67,7 @@
  *
  * Terra-Terra is a library for web based application development. It is not created because the world is desperately waiting for yet
  * another PHP library, but it is just a  continuation of the work I started back in 2001, a project that started as ORO (Oveas Roaming Office)
- * but was soon released in open source as Terra-Terra (probably still online at http://terra-terra.org).
+ * but was soon released in open source as Terra-Terra.
  * 
  * \section history A short history
  *
@@ -78,12 +76,11 @@
  * for both) and commercial. In evey project I kept on using and improving my old Terra-Terra-code. In 2007 I decided to create a library
  * for personal use and renamed it to TT. In 2011 this project was released in open source.
  * 
- * By now (2013) it's a hobby project, used for some private sites and commercial projects, but if this code is helpful tro anyone out there: feel free.
+ * Early 2014 the project was renamed back to Terra-Terra and used for some private sites and commercial projects, but if this code is helpful tro anyone out there: feel free.
  *
  * \section help Wanna help?
  * 
- * As with any open source project, help is always appreciated, especially for TT-JS. On paper, Terra-Terra works together with TT-JS, it's JavaScript
- * partner which is virtually non-existing at the moment.
+ * As with any open source project, help is always appreciated, especially for the JavaScript part.
  */
 
 /**

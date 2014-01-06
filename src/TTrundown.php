@@ -45,7 +45,7 @@ TTdbg_show ();
 TTTimers::showTimer();
 
 // Close the document
-if (($_htmlCode = TT::factory('Document', TT_UI_INC)->close())!== null) {
+if (($_htmlCode = TT::factory('Document', 'ui')->close())!== null) {
 	OutputHandler::outputRaw($_htmlCode);
 }
 

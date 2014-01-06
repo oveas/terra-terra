@@ -382,7 +382,7 @@ abstract class _TT
 			if (get_class ($this) == 'Document') {
 				$_doc = $this;
 			} else {
-				$_doc = TT::factory('Document', TT_UI_INC);
+				$_doc = TT::factory('Document', 'ui');
 			}
 			$_doc->addMessage($severity, $message);
 		}

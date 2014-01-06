@@ -88,7 +88,7 @@ class FormFieldTextPlugin extends FormFieldPlugin
 	 */
 	public function dynamicSetContent()
 	{
-		$_doc = TT::factory('document', TT_UI);
+		$_doc = TT::factory('document', 'ui');
 		$_fName = 'handleSetContent'.$this->id;
 		$_doc->addScript("function $_fName() {\n"
 				. "\tdocument.getElementById('$this->id').value = reqHandler.getResponseText();\n"
@@ -105,7 +105,7 @@ class FormFieldTextPlugin extends FormFieldPlugin
 	 */
 	public function dynamicAddContent()
 	{
-		$_doc = TT::factory('document', TT_UI);
+		$_doc = TT::factory('document', 'ui');
 		$_fName = 'handleSetContent'.$this->id;
 		$_doc->addScript("function $_fName() {\n"
 				. "\tdocument.getElementById('$this->id').value += reqHandler.getResponseText();\n"

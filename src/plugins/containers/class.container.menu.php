@@ -131,7 +131,7 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	 */
 	public function menuType ($type, $menuID)
 	{
-		$doc = TT::factory('Document', TT_UI_INC);
+		$doc = TT::factory('Document', 'ui');
 		$doc->addJSPlugin('menu', $type);
 		$jsListname = $type . 'MenuList';
 

@@ -128,12 +128,12 @@ class Document extends BaseElement
 		$this->css = array('unconditional' => array());
 		$this->scripts = array();
 		$this->js = array();
-		$this->title = 'TT Generated document';
+		$this->title = 'Terra-Terra Generated document';
 		$this->meta = array(
 			  'robots'	=> 'index, follow'
 			, 'keywords'	=> array('Terra-Terra', 'Oveas', 'TT')
-			, 'description'	=> 'Terra-Terra - Oveas Web Library for PHP'
-			, 'generator'	=> 'Terra-Terra v'.TT_VERSION.' - Oveas Web Library for PHP, (c)2006-'.substr(TT_DATE, 0, 4).' Oveas Functionality Provider'
+			, 'description'	=> 'Terra-Terra - Oveas Web 2.2 Platform'
+			, 'generator'	=> 'Terra-Terra v'.TT_VERSION.' - Oveas Web 2.2 Platform, (c)2001-'.substr(TT_DATE, 0, 4).' Oveas Functionality Provider'
 		);
 		$this->header = array();
 		$this->messages = array();

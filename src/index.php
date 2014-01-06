@@ -1,5 +1,5 @@
 <?php
-define ('TT_ROOT', '/home/oscar/projects/terra-terra/src');
+define ('TT_ROOT', '/var/www/terra-terra');
 require (TT_ROOT . '/TTloader.php');
 TTloader::loadApplication('TT');
 ?>
@@ -9,7 +9,7 @@ TTloader::loadApplication('TT');
 </head>
 <body>
 Welcome at the Terra-Terra mainpage.<br/>
-Terra-Terra itself won't do much; this is all there is. For more information refer to the Terra-Terra documentation and to the TT applications installed on this server.
+Terra-Terra itself won't do much; this is all there is. For more information refer to the Terra-Terra documentation and to the Terra-Terra applications installed on this server.
 </body>
 </html>
 <?php

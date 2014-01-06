@@ -79,6 +79,7 @@ abstract class TTinstaller
 	 */
 	public static function installApplication ($code, $url, $name, $version, $description = '', $link = '', $author = '', $license = '')
 	{
+		OutputHandler::output('Create application ' . $name . ' (' . $code . ')', TT_OUTPUT_NOW);
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'tttables', true)) {
 			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
@@ -192,7 +193,7 @@ abstract class TTinstaller
 	}
 	
 	/**
-	 * Check an SQL statement and lok for table names. When a tablename has been found, the
+	 * Check an SQL statement and look for table names. When a tablename has been found, the
 	 * table prefix will be added.
 	 *
 	 * The following SQL queries are supported by the regular expressions (with and without backticks):
@@ -208,6 +209,7 @@ abstract class TTinstaller
 	 * \todo Add support for other databases (e.g. Oracle, using quotes iso backticks)
 	 * \todo Handle constraints ([...] REFERENCES `tblname` (...))
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \deprecated setTablePrefix() is used now
 	 */
 	private static function addTablePrefix ($q, $prefix)
 	{
@@ -256,11 +258,17 @@ abstract class TTinstaller
 				$_qry = preg_replace('/fk_/', 'fk', $_qry);
 			}
 			
-			if ($prefix !== false) {
-				$_qry = self::addTablePrefix($_qry, $prefix);
-			}
+//			if ($prefix !== false) {
+//				$_qry = self::addTablePrefix($_qry, $prefix);
+//			}
 			TTdbg_add(TTDEBUG_TT_LOOP, $_qry, 'SQL statement');
+			
 
+			$_logPtrn = '/((create|drop|alter)\s+((temporary|ignore)\s+)?(table)(\s*if\s*(not\s*)?(exists))?)\s+(`)?(\w+)(`)/i';
+			if (preg_match($_logPtrn, $_qry, $_m)) {
+				OutputHandler::output(ucfirst(strtolower($_m[2])) . ' table ' . $_m[10], TT_OUTPUT_NOW);
+			}
+				
 			$db->setQuery ($_qry);
 			$db->write($_dummy, __LINE__, __FILE__);
 		}
@@ -293,6 +301,7 @@ abstract class TTinstaller
 				trigger_error('Rightsbit ' . $_r . ' has not been registered yet', E_USER_ERROR);
 				return false;
 			}
+			OutputHandler::output('Adding right ' . $_r . ' to group ' . $grp, TT_OUTPUT_NOW);
 			$_val += self::$rights[$_r];
 		}
 		$dataset = new DataHandler();
@@ -323,6 +332,7 @@ abstract class TTinstaller
 		}
 		$dataset->setTablename('group');
 		foreach ($grps as $_grp => $_desc) {
+			OutputHandler::output('Add group ' . $_grp, TT_OUTPUT_NOW);
 			$dataset->set('groupname', $_grp);
 			$dataset->set('description', $_desc);
 			$dataset->set('aid', $aid);
@@ -364,6 +374,7 @@ abstract class TTinstaller
 		$dataset->reset(DATA_RESET_FULL);
 
 		foreach ($rights as $_right => $_descr) {
+			OutputHandler::output('Create rightsbit ' . $_right, TT_OUTPUT_NOW);
 			$dataset->set('rid', $rid);
 			$dataset->set('name', $_right);
 			$dataset->set('aid', $aid);
@@ -406,6 +417,7 @@ abstract class TTinstaller
 			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 
+		OutputHandler::output('Set configuration item [' . $section . ']->' . $item . ' with value ' . $value, TT_OUTPUT_NOW);
 		$_secId = ConfigHandler::configSection($section, true);
 		$dataset->setTablename('config');
 		$dataset->set('aid', $aid);
@@ -442,11 +454,12 @@ abstract class TTinstaller
 		if (TTInstallerUser::getReference()->registerUser($aid, $username, $password, $email, $group, $memberships) < 0) {
 			return false;
 		}
+		OutputHandler::output('User ' . $username . ' added in group ' . $group, TT_OUTPUT_NOW);
 		return true;
 	}
 }
 
-//! TT_ROOT must be defined by the application
+// TT_ROOT must be defined by the application
 if (!defined('TT_ROOT')) {
 	trigger_error('TT_ROOT must be defined by the application', E_USER_ERROR);
 }
@@ -516,3 +529,6 @@ class TTInstallerUser extends User
 }
 
 TTinstaller::construct();
+if (TTCache::get(TTCACHE_OBJECTS, 'user') === null) {
+	TTInstallerUser::getReference(); // Force the user object to exist in cache
+}

@@ -82,6 +82,7 @@ abstract class User extends _TT
 
 		// When called by the installer (for TT itself), we don't wanna start a session
 		if (defined('TT___INSTALLER')) {
+			TTCache::set(TTCACHE_OBJECTS, 'user', ($_ =& $this));
 			return;
 		}
 

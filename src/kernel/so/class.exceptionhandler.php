@@ -335,7 +335,7 @@ class TTExceptionHandler
 		if (($_logger = TTCache::get(TTCACHE_OBJECTS, 'Logger')) === null) {
 			$_logger = TT::factory('LogHandler');
 		}
-		$_logger->log ($exception->stackDump(true), $exception->thrown_code);
+		$_logger->log ($exception->stackDump(true), $exception->thrown_code, __FILE__, __LINE__);
 
 		if (ConfigHandler::get ('exception', 'show_in_browser')) {
 			OutputHandler::outputRaw ($exception->stackDump(false));
