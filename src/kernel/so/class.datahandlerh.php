@@ -251,7 +251,7 @@ class HDataHandler extends DataHandler
 	 * \param[in] $field Name of the field on which the parent should be matched, must be a primary key or unique indexed field
 	 * \param[in] $value Value of the parent's field
 	 * \param[in] $follow When crosslinks are enabled, this identifies to what level crosslinks should be followed.
-	 * \warning User yje $follow parameter with care! Right now, only 3 options are implemented. HDATA_XLINK_FOLLOW_NO is the default value,
+	 * \warning Use tje $follow parameter with care! Right now, only 3 options are implemented. HDATA_XLINK_FOLLOW_NO is the default value,
 	 * but checks are made only for HDATA_XLINK_FOLLOW_NO and HDATA_XLINK_FOLLOW_ONCE. Any other value
 	 * will be interpreted as HDATA_XLINK_FOLLOW_UNLIMITED!
 	 * See \ref HDATA_FollowXLink for more info!

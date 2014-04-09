@@ -523,6 +523,9 @@ TTCache::set(TTCACHE_LOCALE, 'messages', array());
 // General helper functions.
 require (TT_LIBRARY . '/tt.helper.functions.php');
 
+// Load the contributed plugins
+require (TT_CONTRIB . '/tt.contrib.loader.php');
+
 // Get the static TT configuration from file
 $_cfgFile = TTCache::get(TTCACHE_CONFIG, 'files');
 ConfigHandler::readConfig (array('file' => $_cfgFile['tt']));
@@ -544,9 +547,6 @@ if (!defined('TT___INSTALLER') && TT_ID != 0) {
 
 // By now, the timezone should be known. Relevant since PHP v5.1.0
 ttTimeZone();
-
-// Load the contributed plugins
-require (TT_CONTRIB . '/tt.contrib.loader.php');
 
 //! Console object
 TTCache::set(TTCACHE_OBJECTS, 'Console', TT::factory('Console'));

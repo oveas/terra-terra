@@ -127,11 +127,11 @@ abstract class TTinstaller
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 * \return String with a (part of the) SQL statement
 	 */
-	private static function uncommentSQL($line)
-	{
-		$line = preg_replace('/^\s*--\s.*/', '', $line);
-		return (trim($line));
-	}
+// 	private static function uncommentSQL($line)
+//	{
+//		$line = preg_replace('/^\s*--\s.*/', '', $line);
+//		return (trim($line));
+//	}
 
 	/**
 	 * Parse a given SQL file
@@ -150,7 +150,8 @@ abstract class TTinstaller
 			return null;
 		}
 		while (($_line = fgets($_fh, 4096)) !== false) {
-			$_line = self::uncommentSQL($_line);
+			$_line = uncommentLine($line, TT_COMMENT_SQL);
+// 			$_line = self::uncommentSQL($_line);
 			if (preg_match('/;\s*$/', $_line)) {
 				$statement .= (' ' . $_line);
 				TTdbg_add(TTDEBUG_TT_S04, $statement, 'SQL statement');

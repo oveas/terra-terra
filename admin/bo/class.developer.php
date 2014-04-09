@@ -762,7 +762,7 @@ class ".$this->appCode."User extends User
 		\$_form = TT::factory('FormHandler');
 
 		if (!\$this->login(\$_form->get('usr'), \$_form->get('pwd'))) {
-			\$this->stackMessage();
+			\$this->signal();
 		}
 	}
 	

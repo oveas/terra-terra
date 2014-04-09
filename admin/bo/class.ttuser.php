@@ -46,7 +46,8 @@ class TTUser extends User
 		$_form = TT::factory('FormHandler');
 
 		if (!$this->login($_form->get('usr'), $_form->get('pwd'))) {
-			$this->stackMessage();
+//			$this->stackMessage(TT_INFO);
+			$this->signal();
 		}
 	}
 

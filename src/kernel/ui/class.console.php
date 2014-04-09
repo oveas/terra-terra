@@ -70,11 +70,11 @@ class Console extends Container
 	 * \param[in] $_front Not used here, required by syntax
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function addToContent(&$_content, $_front = false)
-	{
-		$_message = $_content . '<br/>';
-		parent::addToContent($_message, $_front);
-	}
+//	public function addToContent(&$_content, $_front = false)
+//	{
+//		$_message = $_content . '<br/>';
+//		parent::addToContent($_message, $_front);
+//	}
 
 	/**
 	 * Override Container::showElement() to make sure only users with the proper rights will see the console

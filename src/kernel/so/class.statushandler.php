@@ -223,7 +223,7 @@ class StatusHandler
 			if (array_key_exists('file',$_trace[$depth])) {
 				$_calls[] = (str_replace(TT_ROOT, '', $_trace[$depth]['file']) . ':' . $_trace[$depth]['line']);
 			} elseif (array_key_exists('class',$_trace[$depth])) {
-				// Called via TT::stat() (note: this commentline shows up the Messages testresult of TTK; that's a known TTK issue)
+				// Called via TT::stat()
 				$_calls[] = ($_trace[$depth]['class'] . '::' . $_trace[$depth]['function']);
 			} else {
 				$_calls[] = '(untraceable)';

@@ -202,7 +202,6 @@ class Mail extends _TT
 	 * Add an email address to the list of recipients. This list is for use by the SMTP
 	 * driver only and will not appear in the headers
 	 * \param[in] $addr A validated email address
-	 * \return Boolean; true on success. False indicates an invalid mail address
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function addRecipient ($addr)

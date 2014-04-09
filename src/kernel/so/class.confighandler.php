@@ -155,7 +155,7 @@ abstract class ConfigHandler
 		$_section = '';
 		while (!feof($fpointer)) {
 			$_line = fgets ($fpointer, 8192);
-			$_line = preg_replace ('/^\s*;.*/', '', $_line);
+			$_line = uncommentLine($_line, TT_COMMENT_CFG);
 			$_line = trim ($_line);
 			if ($_line == '') {
 				continue;

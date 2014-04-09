@@ -215,6 +215,7 @@ class Document extends BaseElement
 	 * and added the the documents output
 	 * \param[in] $stack Severity level, indicating the stack
 	 * \param[in] $message The complete message as composed by signal()
+	 * \deprecated Console should be used instead
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function addMessage($stack, $message)
@@ -509,6 +510,7 @@ class Document extends BaseElement
 	 * If messages have been generated during this run that have been added to the messages
 	 * stacks, generate the containers now and add them to the front of the content objectlist
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \deprecated Console should be used instead via the LogHandler
 	 */
 	private function addMessagesToContent()
 	{

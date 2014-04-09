@@ -27,22 +27,18 @@
  * These constants define the debug bits that can be used by the application
  * @{
  */
-define ('TTDEBUG_APP_VAR',		         1); /**< Show contents of variables */
-define ('TTDEBUG_APP_OBJ',		         2); /**< Dump object contents */
-define ('TTDEBUG_APP_FUN',		         4); /**< Debug at function level */
-define ('TTDEBUG_APP_BLK',		         8); /**< Debug at block leven within a function */
-define ('TTDEBUG_APP_LOOP',		    16); /**< Debug a loop (do/while/foreach etc) */
-define ('TTDEBUG_APP_SQL',		        32); /**< Show SQL statements */
-define ('TTDEBUG_APP_RET',		        64); /**< Show return value */
-define ('TTDEBUG_APP_RES',		       128); /**< Show results of a statement */
-define ('TTDEBUG_APP_S01',		       256); /**< Special 1, reserved for the application */
-define ('TTDEBUG_APP_S02',		       512); /**< Special 2, reserved for the application */
-define ('TTDEBUG_APP_S03',		      1024); /**< Special 3, reserved for the application */
-define ('TTDEBUG_APP_S04',		      2048); /**< Special 4, reserved for the application */
-define ('TTDEBUG_APP_S05',		      4096); /**< Special 5, reserved for the application */
-define ('TTDEBUG_APP_S06',		      8192); /**< Special 6, reserved for the application */
-define ('TTDEBUG_APP_S07',		     16384); /**< Special 7, reserved for the application */
-define ('TTDEBUG_APP_S08',		     32768); /**< Special 8, reserved for the application */
+define ('TTDEBUG_APP_VAR',		0x000001); /**< Show contents of variables */
+define ('TTDEBUG_APP_OBJ',		0x000002); /**< Dump object contents */
+define ('TTDEBUG_APP_FUN',		0x000004); /**< Debug at function level */
+define ('TTDEBUG_APP_BLK',		0x000008); /**< Debug at block leven within a function */
+define ('TTDEBUG_APP_LOOP',		0x000010); /**< Debug a loop (do/while/foreach etc) */
+define ('TTDEBUG_APP_SQL',		0x000020); /**< Show SQL statements */
+define ('TTDEBUG_APP_RET',		0x000040); /**< Show return value */
+define ('TTDEBUG_APP_RES',		0x000080); /**< Show results of a statement */
+define ('TTDEBUG_APP_S01',		0x000100); /**< Special 1, reserved for the application */
+define ('TTDEBUG_APP_S02',		0x000200); /**< Special 2, reserved for the application */
+define ('TTDEBUG_APP_S03',		0x000400); /**< Special 3, reserved for the application */
+define ('TTDEBUG_APP_S04',		0x000800); /**< Special 4, reserved for the application */
 //! @}
 
 /**
@@ -50,22 +46,18 @@ define ('TTDEBUG_APP_S08',		     32768); /**< Special 8, reserved for the applic
  * These constants define the debug bits that are used by TT
  * @{
  */
-define ('TTDEBUG_TT_VAR',		     65536); /**< Show contents of variables */
-define ('TTDEBUG_TT_OBJ',		    131072); /**< Dump object contents */
-define ('TTDEBUG_TT_FUN',		    262144); /**< Debug at function level */
-define ('TTDEBUG_TT_BLK',		    524288); /**< Debug at block leven within a function */
-define ('TTDEBUG_TT_LOOP',	   1048576); /**< Debug a loop (do/while/foreach etc) */
-define ('TTDEBUG_TT_SQL',		   2097152); /**< Show SQL statements */
-define ('TTDEBUG_TT_RET',		   4194304); /**< Show return value */
-define ('TTDEBUG_TT_RES',		   8388608); /**< Show results of a statement */
-define ('TTDEBUG_TT_S01',		  16777216); /**< Special 1 (reserved) */
-define ('TTDEBUG_TT_S02',		  33554432); /**< Special 2 (reserved) */
-define ('TTDEBUG_TT_S03',		  67108864); /**< Special 3 (reserved) */
-define ('TTDEBUG_TT_S04',		 134217728); /**< Special 4 (reserved) */
-define ('TTDEBUG_TT_S05',		 268435456); /**< Special 5 (reserved) */
-define ('TTDEBUG_TT_S06',		 536870912); /**< Special 6 (reserved) */
-define ('TTDEBUG_TT_S07',		1073741824); /**< Special 7 (reserved) */
-define ('TTDEBUG_TT_S08',		2147483648); /**< Special 8 (reserved) */
+define ('TTDEBUG_TT_VAR',		0x001000); /**< Show contents of variables */
+define ('TTDEBUG_TT_OBJ',		0x002000); /**< Dump object contents */
+define ('TTDEBUG_TT_FUN',		0x004000); /**< Debug at function level */
+define ('TTDEBUG_TT_BLK',		0x008000); /**< Debug at block leven within a function */
+define ('TTDEBUG_TT_LOOP',		0x010000); /**< Debug a loop (do/while/foreach etc) */
+define ('TTDEBUG_TT_SQL',		0x020000); /**< Show SQL statements */
+define ('TTDEBUG_TT_RET',		0x040000); /**< Show return value */
+define ('TTDEBUG_TT_RES',		0x080000); /**< Show results of a statement */
+define ('TTDEBUG_TT_S01',		0x100000); /**< Special 1 (reserved) */
+define ('TTDEBUG_TT_S02',		0x200000); /**< Special 2 (reserved) */
+define ('TTDEBUG_TT_S03',		0x400000); /**< Special 3 (reserved) */
+define ('TTDEBUG_TT_S04',		0x800000); /**< Special 4 (reserved) */
 //! @}
 
 

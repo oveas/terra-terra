@@ -242,6 +242,25 @@ function verifyMailAddress ($email, $extract = true)
 }
 
 /**
+ * Helper function to find out from where a method was called
+ * \param[in] $level Level that should be returned. Defaults to 1, since 0 is always the method calling this helper
+ * \return Array with the following keys:
+ *    * function	File name from where the call was made
+ *    * args		Array with the given functions arguments
+ *    * file		File name from where the call was made
+ *    * line		Line number from where the call was made
+ *    * class		Class name from where the call was made, if applicable
+ *    * object		Object from where the call was made, if applicable
+ *    * type		Emtpy when called in an object, '::' when called as a static method
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ */
+function ttGetCaller($level = 1)
+{
+	$_trace = debug_backtrace();
+	return ($_trace[$level]);
+}
+
+/**
  * Validate an IP address
  * \param[in] $ip IPv4 address
  * \return 0 if the address is invalid, 1 if it is valid, -1 if it's a valid reserved address.

@@ -147,7 +147,7 @@ abstract class _TT
 
 	/**
 	 * Reset the status in the complete calltree
-	 * \param[in] $depth Keep track of the depth in recusrive calls. Should be empty
+	 * \param[in] $depth Keep track of the depth in recursive calls. Should be empty
 	 * in the first call.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -215,15 +215,19 @@ abstract class _TT
 		} else {
 			$this->status->setParams (array ($params));
 		}
-
+				
 		$msg = null;
 		$this->signal (0, $msg);
 		// Need this check since we can be called before the logger wat setup
 		if (($_logger = TTCache::get(TTCACHE_OBJECTS, 'Logger')) !== null) {
+			// TODO Find out why the user's status is reset in the logHandlers logConsole() method;
+			// new Container() is responsible for that
+			$this->saveStatus();
 			$_logger->log ($msg, $status, $callerFile, $callerLine);
+			$this->restoreStatus();
 		}
 		$this->writePHPLog($msg);
-
+		
 		if (ConfigHandler::get ('exception', 'throw_level') >= 0
 				&& $this->severity >= ConfigHandler::get ('exception', 'throw_level', TT_BUG, true)) {
 
@@ -348,9 +352,6 @@ abstract class _TT
 	 * instead of echood.
 	 * \return The severity level for this object
 	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 * \todo The JavaScript alerts don't work anymore since the console was implemented. The second
-	 * parameter is alwayd given now, so this method doesn't generate any output at all.
-	 * Does this make js_signal obsolete?
 	 */
 	public function signal ($level = TT_INFO, &$text = false)
 	{
@@ -377,6 +378,7 @@ abstract class _TT
 	 * \see Document::addMessage()
 	 * \param[in] $level Minimum severity level
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \depricated Use a direct call to $this->signal() without parameters instead. Messages will be added to the console
 	 */
 	protected function stackMessage ($level = TT_WARNING)
 	{

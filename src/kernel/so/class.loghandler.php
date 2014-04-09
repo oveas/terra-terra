@@ -269,7 +269,7 @@ class LogHandler extends _TT
 			$this->logLogFile($msg, $code, $_severity, $callerFile, $callerLine);
 		}
 		if ($_severity >= ConfigHandler::get ('logging', 'log_console')) {
-			$this->logConsole($msg, $code);
+			$this->logConsole($msg, $code, $_severity);
 		}
 	}
 	
@@ -310,15 +310,39 @@ class LogHandler extends _TT
 	/**
 	 * Log an event to the console
 	 * \param[in] $msg Message text
+	 * \param[in] $code Message code
+	 * \param[in] $severity Severity level of the message
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private function logConsole ($msg)
+	private function logConsole ($msg, $code, $severity)
 	{
 		if (($_console = TTCache::get(TTCACHE_OBJECTS, 'Console')) !== null) {
-			$_console->addToContent($msg);
+			$_class = 'unknown';
+			switch ($severity) {
+				case TT_DEBUG :
+					$_class = 'debugMessages';
+					break;
+				case TT_INFO :
+				case TT_OK :
+					$_class = 'infoMessages';
+					break;
+				case TT_SUCCESS :
+					$_class = 'successMessages';
+					break;
+				case TT_WARNING :
+					$_class = 'warningMessages';
+					break;
+				case TT_BUG :
+				case TT_ERROR :
+				case TT_FATAL :
+				case TT_CRITICAL :
+					$_class = 'errorMessages';
+					break;
+			}
+			$_console->addToContent(new Container('div', $msg, array('class' => $_class)));
 		}
 	}
-	
+
 	/**
 	 * Create a backtrace of the current log item
 	 * \param[in] $_browser_dump Just for TT development (early days...); when true, the
