@@ -56,7 +56,7 @@ class Rights extends Security
 	 */
 	public function __wakeup()
 	{
-		if (($this->rightslist = TTCache::get('rights', 'list')) === null) {
+		if (($this->rightslist = TTCache::get('rights', 'list')) === null || $this->rightslist === array()) {
 			$this->registerRights();
 		}
 	}
@@ -64,31 +64,45 @@ class Rights extends Security
 	/**
 	 * Get the bitvalue for a given name
 	 * \param[in] $name Name of the rights bit
+	 * \param[in] $aid Application ID to which the bit belongs
 	 * \return Integer value
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function bitValue($name)
+	public function bitValue($name, $aid)
 	{
-		return ($this->rightslist[$name]);
+		if (!array_key_exists('a' . $aid, $this->rightslist) || !array_key_exists($name, $this->rightslist['a' . $aid])) {
+			return 0;
+		}
+		return ($this->rightslist['a' . $aid][$name]);
 	}
 
 	/**
 	 * If the rightlist is not yet filled, do so now and store the list in cache
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \todo Make sure only the rightbits for the loaded apps are registered (otoh... what if a new app gets loaded on the next click?
+	 * That would make a force reload required: a destroy of the cached list...)
+	 * 
 	 */
 	private function registerRights ()
 	{
+		$this->rightslist = array();
 		$dataset = new DataHandler ();
 		if (ConfigHandler::get ('database', 'tttables', true)) {
 			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix'));
 		}
 		$dataset->setTablename('rights');
-		$dataset->set('aid', array(TT_ID, TTloader::getCurrentAppID()));
-		$dataset->setKey('appl');
+		$dataset->set('aid', null, null, array('name' => array('aid')), array('match' => array(DBMATCH_NONE)));
+		$dataset->set('rid', null, null, array('name' => array('rid')), array('match' => array(DBMATCH_NONE)));
+		$dataset->set('name', null, null, array('name' => array('name')), array('match' => array(DBMATCH_NONE)));
+//		$dataset->set('aid', TTloader::getLoadedApps());//array(TT_ID, TTloader::getCurrentAppID()));
+//		$dataset->setKey('aid');
 		$dataset->prepare();
 		$dataset->db($data, __FILE__, __CLASS__);
 		foreach ($data as $_r) {
-			$this->rightslist[$_r['name']] = pow(2, $_r['rid']-1);
+			if (!array_key_exists('a' . $_r['aid'], $this->rightslist)) {
+				$this->rightslist['a' . $_r['aid']] = array();
+			}
+			$this->rightslist['a' . $_r['aid']][$_r['name']] = pow(2, $_r['rid']-1);
 		}
 		TTCache::set('rights', 'list', $this->rightslist);
 	}

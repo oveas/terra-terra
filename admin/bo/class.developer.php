@@ -36,7 +36,7 @@ class Developer extends _TT
 	public function showCreateAppForm()
 	{
 		if (($_lnk = TTloader::getArea('developer', TTADMIN_UI . '/developer', null)) !== null) {
-			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'BodyContainer'));
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainContentContainer'));
 		}
 	}
 
@@ -345,7 +345,7 @@ a {
 	padding-left: 1em;
 }
 
-.bodyContainer {
+.mainContentContainer {
 	margin-left: 10em;
 }
 
@@ -559,12 +559,12 @@ th {
 \$document   = TT::factory('Document', TT_UI_INC);
 //\$document->enableTT_JS();
 
-\$_hdr = new Container('div', '', array('class' => 'headerContainer'));
-\$_bdy = new Container('div', '', array('class' => 'bodyContainer'));
+\$_hdr = new Container('div', '', array('class' => 'mainMenuContainer'));
+\$_bdy = new Container('div', '', array('class' => 'mainContentContainer'));
 \$_ftr = new Container('div', '', array('class' => 'footerContainer'));
 
-TTCache::set(TTCACHE_OBJECTS, 'HeaderContainer', \$_hdr);
-TTCache::set(TTCACHE_OBJECTS, 'BodyContainer', \$_bdy);
+TTCache::set(TTCACHE_OBJECTS, 'mainMenuContainer', \$_hdr);
+TTCache::set(TTCACHE_OBJECTS, 'mainContentContainer', \$_bdy);
 TTCache::set(TTCACHE_OBJECTS, 'FooterContainer', \$_ftr);
 
 
@@ -774,14 +774,14 @@ class ".$this->appCode."User extends User
 	public function showLoginForm()
 	{
 		if ((\$_lgi = TTloader::getArea('login', ".$this->appCode."_UI)) !== null) {
-			\$_lgi->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'BodyContainer'));
+			\$_lgi->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainContentContainer'));
 		}
 	}
 
 	public function showMainMenu()
 	{
 		if ((\$_mnu = TTloader::getArea('mainmenu', ".$this->appCode."_UI)) !== null) {
-			\$_mnu->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'HeaderContainer'));
+			\$_mnu->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainMenuContainer'));
 		}
 
 	}
@@ -789,7 +789,7 @@ class ".$this->appCode."User extends User
 	public function showUserMenu()
 	{
 		if ((\$_mnu = TTloader::getArea('usermenu', ".$this->appCode."_UI)) !== null) {
-			\$_mnu->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'HeaderContainer'));
+			\$_mnu->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainMenuContainer'));
 		}
 	}
 }

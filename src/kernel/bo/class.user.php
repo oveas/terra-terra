@@ -59,7 +59,7 @@ abstract class User extends _TT
 	 * This users rightslist
 	 */
 	private $rights;
-
+	
 	/**
 	 * Class constructor; create a new user environment. This is not a regular constructor,
 	 * since it's up to the application to decide if this is a normal object or a singleton.
@@ -86,7 +86,13 @@ abstract class User extends _TT
 			return;
 		}
 
-		if ($username === false) {
+		if ($username !== false) {
+			$this->getUser($username);
+			return;
+		}
+		if (TTCache::get(TTCACHE_OBJECTS, 'user') !== null) {
+			$this->session = TTCache::getRef(TTCACHE_OBJECTS, 'user')->getSession();
+		} else {
 			$this->session = new Session();
 
 			if ($this->succeeded(TT_SUCCESS, $this->session) !== true) {
@@ -99,8 +105,6 @@ abstract class User extends _TT
 				$this->restoreUser();
 			}
 			TTCache::set(TTCACHE_OBJECTS, 'user', ($_ =& $this));
-		} else {
-			$this->getUser($username);
 		}
 	}
 
@@ -610,6 +614,16 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	}
 
 	/**
+	 * Return a reference to the session object
+	 * \return Object reference
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function &getSession ()
+	{
+		return $this->session;
+	}
+
+	/**
 	 * Return the current session ID
 	 * \return the session ID
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -618,7 +632,7 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	{
 		return session_id();
 	}
-
+	
 	/**
 	 * Return an attribute value for the user
 	 * \param[in] $attr Attribute to return
@@ -627,7 +641,7 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 	 */
 	public function getAttribute ($attr)
 	{
-		if (!array_key_exists($attr, $this->user_data)) {
+		if (!is_array($this->user_data) || !array_key_exists($attr, $this->user_data)) {
 			return null;
 		}
 		return $this->user_data[$attr];

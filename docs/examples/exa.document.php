@@ -5,7 +5,7 @@
  *
  * The Document the considered the main container of an HTML page. With the addToContent() method,
  * as many items can be added as desired.
- * Every container, like the BodyContainer created below, has the same options, so addToContent()
+ * Every container, like the mainContentContainer created below, has the same options, so addToContent()
  * can be called at any level.
  */
 
@@ -13,17 +13,17 @@
 $document = TT::factory('Document', 'ui');
 
 // Create the main containers
-$GLOBALS['MYAPP']['BodyContainer'] = new Container('div', '', array('class' => 'bodyContainer'));
+$GLOBALS['MYAPP']['mainContentContainer'] = new Container('div', '', array('class' => 'mainContentContainer'));
 
 // Get the classfile that creates the login form (assuming the full path is '(MYAPP_UI)/user/login.php')
 if (($_lgi = TTloader::getArea('login', MYAPP_UI . '/user')) !== null) {
 	// Add it to the body container
-	$_lgi->addToDocument($GLOBALS['MYAPP']['BodyContainer']);
+	$_lgi->addToDocument($GLOBALS['MYAPP']['mainContentContainer']);
 }
 
 // Load style and add content to the document
 $document->loadStyle(MYAPP_CSS . '/my-application.css');
-$document->addToContent($GLOBALS['MYAPP']['BodyContainer']);
+$document->addToContent($GLOBALS['MYAPP']['mainContentContainer']);
 
 // Now display the document
 OutputHandler::outputRaw($document->showElement());

@@ -81,10 +81,11 @@ abstract class Security
 	/**
 	 * Get the bitvalue for a given name. This method must be reimplemented
 	 * \param[in] $name Name of the bit
+	 * \param[in] $aid Application ID to which the bit belongs
 	 * \return Integer value
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	abstract public function bitValue($name);
+	abstract public function bitValue($name, $aid);
 
 	/**
 	 * (Re)initialise the bitmap for the given application
@@ -137,7 +138,7 @@ abstract class Security
 			$this->bitmap['a'.$app] = 0;
 			$_curr = 0;
 		} else {
-			$_curr = ($this->bitmap['a'.$app] & $bit);
+			$_curr = (($this->bitmap['a'.$app] & $bit) == $bit);
 		}
 		if ($controller == BIT_SET) {
 			if (!$_curr) {

@@ -3,7 +3,7 @@
  * \file
  * \ingroup TT_LIBRARY
  * This file loads the TT environment and initialises some singletons
- * \copyright{2007-2013} Oscar van Eijk, Oveas Functionality Provider
+ * \copyright{2007-2014} Oscar van Eijk, Oveas Functionality Provider
  * \license
  * This file is part of Terra-Terra.
  *
@@ -45,10 +45,10 @@ error_reporting(E_ALL | E_STRICT);
 if (!defined('TT_ROOT')) { trigger_error('TT_ROOT must be defined by the application', E_USER_ERROR); }
 
 //! TT version
-define ('TT_VERSION', '0.9.4');
+define ('TT_VERSION', '0.9.5');
 
 //! TT Release date in format YYYY-MM-DD
-define ('TT_DATE', '2014-01-06');
+define ('TT_DATE', '2014-04-15');
 
 //! Toplevel for the TT includes
 define ('TT_INCLUDE',	TT_ROOT . '/kernel');
@@ -102,9 +102,6 @@ define ('TT_TT_URL', str_replace(TT_SITE_TOP, '', TT_ROOT));
 //! Default URL used for all callbacks (like form actions, AJAX requests etc)
 define ('TT_CALLBACK_URL', $_SERVER['PHP_SELF']);
 
-//! TT default stylesheets. \todo This is the hardcoded TTadmin default; must be variable using the TT_ID url
-define ('TT_STYLE', '/ttadmin/style');
-
 //! Top location (URL) of Terra-Terra/JS
 define ('TT_JS_TOP', TT_TT_URL . '/js');
 
@@ -121,6 +118,9 @@ if (!defined ('TT_TIMERS_ENABLED')) {
 
 //! Key for the application ID as stored in cache
 define ('TT_APPITM_ID', 'id');
+
+//! Key for the application's top-url as stored in cache
+define ('TT_APPITM_URL', 'url');
 
 //! Key for the application's site top as stored in cache
 define ('TT_APPITM_TOP', 'top');
@@ -146,10 +146,15 @@ abstract class TTloader
 	
 	//! Code of the active application instantiated by the dispatcher
 	private static $currentApp;
+	
+	//! List of all application ID's that have been loaded
+	private static $appsLoaded;
 
 	//! Boolean set to true when the configuration files have been loaded
 	private static $configLoaded = false;
 
+	//! Array with all available applications that contain hooks for display in the menu
+	private static $externalAppList = array();
 	/**
 	 * Load a contentarea. This is done by calling the loadArea() method of the given class.
 	 * \param[in] $_classFile Name of the classfile. This must the full filename without '.php'
@@ -201,10 +206,30 @@ abstract class TTloader
 	{
 		// First load the interface and abstract default class, ignoring any errors, since they
 		// might not exist or have been loaded already.
-		self::getClass($_driverType . 'driver', TT_DRIVERS . '/' . $_driverType);
+		self::getInterface($_driverType . 'driver', TT_DRIVERS . '/' . $_driverType);
 		self::getClass($_driverType . 'defaults', TT_DRIVERS . '/' . $_driverType);
 
 		return (self::getClass(strtolower($_driverName), TT_DRIVERS . '/' . $_driverType));
+	}
+
+	/**
+	 * Load a PHP interfacefile. The interface must be described in a file called "interface.&lt;interfaceName&gt;.php.
+	 * \param[in] $_interfaceName Name of the interface (not the filename!)
+	 * \param[in] $_interfaceLocation Full path to thelocation of the interface
+	 * \return True on success
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public static function getInterface ($_interfaceName, $_interfaceLocation)
+	{
+		if (interface_exists($_interfaceName)) {
+			return true;
+		}
+		$_interfaceFile = $_interfaceLocation . '/interface.' . strtolower($_interfaceName) . '.php';
+		if (!file_exists($_interfaceFile)) {
+			return false;
+		}
+		require ($_interfaceFile);
+		return true;
 	}
 
 	/**
@@ -243,15 +268,21 @@ abstract class TTloader
 	 */
 	private static function _tryLoad ($_className, $_classLocation)
 	{
+		$_origClassName = $_className;
 		$_classPath = $_classLocation . '/' . $_className;
 		if (class_exists('TTCache') && ($_loaded = TTCache::get(TTCACHE_CLASSES, $_classPath)) !== null) {
 			return $_loaded;
 		}
 		if (!file_exists($_classLocation . '/' . $_className)) {
-			// Try the classname with prefix 'class' and suffix 'php
-			$_className = 'class.'.$_className.'.php';
+			// Try the classname with suffix 'php'
+			$_className = $_className.'.php';
 			if (!file_exists($_classLocation . '/' . $_className)) {
-				return TTCache::set(TTCACHE_CLASSES, $_classPath, false);
+				// Try the classname with prefix 'class'
+				$_className = 'class.'.$_className;
+				if (!file_exists($_classLocation . '/' . $_className)) {
+//					trigger_error('Classfile ' . $_classLocation . '/[class.]' . $_origClassName . '[.php] not found', E_USER_WARNING);
+					return TTCache::set(TTCACHE_CLASSES, $_classPath, false);
+				}
 			}
 		}
 		$_classPath = $_classLocation . '/' . $_className;
@@ -268,18 +299,24 @@ abstract class TTloader
 
 	/**
 	 * Read Terra-Terra's own ID from the database
-	 * \return Application code for Terra-Terra
+	 * \param[in] $app_code Application code, defaults to Terra-Terra's code
+	 * \return Application ID for the requested app
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function getTTId ()
+	public static function getTTId ($app_code = 'TT')
 	{
+		// First, try to read ffrom cache
+		if (($_id = TTCache::getApplic ($app_code, TT_APPITM_ID)) !== null) {
+			return $_id;
+		}
+		// Not yet set; get it from the db
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'tttables', true)) {
 			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix', 'tt'));
 		}
 		$dataset->setTablename('applications');
 
-		$dataset->set('code', 'TT');
+		$dataset->set('code', $app_code);
 		$dataset->setKey('code');
 		$dataset->prepare();
 		$dataset->db($_id, __LINE__, __FILE__);
@@ -326,6 +363,7 @@ abstract class TTloader
 					, array(
 						 TT_APPITM_ID => $app_data[0]['aid']
 						,TT_APPITM_NAME => $app_data[0]['name']
+						,TT_APPITM_URL => '/' . $app_data[0]['url']
 						,TT_APPITM_TOP => TT_SITE_TOP . '/' . $app_data[0]['url']
 						,TT_APPITM_LIBRARY => TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib'
 					)
@@ -345,8 +383,8 @@ abstract class TTloader
 			$_cfgFiles = &TTCache::getRef(TTCACHE_CONFIG, 'files');
 			// If an APP_CONFIG file has been defined, add it to the config files array
 			// Values in this config file will overwrite the TT default if the primaty application is loaded
-			if (defined('APP_CONFIG_FILE')) {
-				$_cfgFiles['app'][] = APP_CONFIG_FILE;
+			if (file_exists(TT_SITE_TOP . '/' . $app_data[0]['url'] . '/terra-terra.' . strtolower($applic_code) . '.cfg')) {
+				$_cfgFiles['app'][] = TT_SITE_TOP . '/' . $app_data[0]['url'] . '/terra-terra.' . strtolower($applic_code) . '.cfg';
 			}
 			if (count ($_cfgFiles['app']) > 0) {
 				foreach ($_cfgFiles['app'] as $_cfgfile) {
@@ -369,18 +407,83 @@ abstract class TTloader
 			$_logger->setApplicLogfile();
 		}
 		
-		if ($primary === true) {
-			// FIXME - External applications vcan't be fully loaded - that would give a duplicate session start!!! 
+		// Load the application and register with the TT framework
+		if (!file_exists(TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php')) {
+			trigger_error('The file ' . TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php does not exist', E_USER_ERROR);
+		} else {
+			require (TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php');
+		}
 
-			// Load the application and register with the TT framework
-			if (!file_exists(TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php')) {
-				trigger_error('The file ' . TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php does not exist', E_USER_ERROR);
+		if ($applic_code == 'TT') {
+			// When loading Terra-Terra, also load the layout
+			
+			//! Terra-Terra Layout location
+			define ('TT_LAYOUT', TTCache::getApplic ($applic_code, TT_APPITM_TOP) . '/layout/' . ConfigHandler::get('layout', 'layout'));
+			//! Terra-Terra Stylesheet URL
+			define ('TT_STYLE_URL', TTCache::getApplic ($applic_code, TT_APPITM_URL) . '/layout/' . ConfigHandler::get('layout', 'layout') . '/style');
+			if (!TTloader::getClass('layout', TT_LAYOUT)) {
+				trigger_error('Error loading Layout class from ' . TT_LAYOUT, E_USER_WARNING);
 			} else {
-				require (TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php');
+				Layout::createContainers();
 			}
 		}
+		if ($primary === true) {
+			// Load the list of other available applications
+			self::loadApps();
+		}
+		
+		if (!is_array(self::$appsLoaded)) {
+			self::$appsLoaded = array();
+		}
+		self::$appsLoaded[] = $app_data[0]['aid'];
+	}
+
+	/**
+	 * Return an array with all apps that have been loaded.
+	 * \return Array with all app ID's 
+	 */
+	public static function getLoadedApps()
+	{
+		return self::$appsLoaded;
+	}
+
+	/**
+	 * Method the load the application hooks for all available applications
+	 * This method is called after the primary application has been loaded.
+	 */
+	private static function loadApps ()
+	{
+		$dataset = new DataHandler();
+		if (ConfigHandler::get ('database', 'tttables', true)) {
+			$dataset->setPrefix(ConfigHandler::get ('database', 'ttprefix', 'tt'));
+		}
+		$dataset->setTablename('applications');
+		$dataset->set('enabled', 1);
+		$dataset->prepare();
+		$dataset->db($app_list, __LINE__, __FILE__);
+		
+		if ($dataset->dbStatus() === DBHANDLE_NODATA) {
+			return;
+		}
+
+		foreach ($app_list as $app_data) {
+			if ($app_data['code'] != self::getCurrentAppCode() && file_exists(TT_SITE_TOP . '/' . $app_data['url'] . '/lib/' . strtolower($app_data['code']) . '.applic.hook.php')) {
+				TTloader::loadApplication($app_data['code'], false);
+				self::$externalAppList[] = TT_SITE_TOP . '/' . $app_data['url'] . '/lib/' . strtolower($app_data['code']) . '.applic.hook.php';
+			}
+		}
+	
 	}
 	
+	/**
+	 * Method to display hooks for all applications that have been loaded. Must be called from the primaty application.
+	 */
+	public static function showApps()
+	{
+		foreach (self::$externalAppList as $_hook) {
+			require ($_hook);
+		}
+	}
 	/**
 	 * Getter for the primary application's code
 	 * \return Application code
@@ -515,6 +618,7 @@ TTloader::getClass('baseelement', TT_UI_INC);
 TTloader::getClass('container', TT_UI_INC);
 TTloader::getClass('console', TT_UI_INC);
 TTloader::getClass('contentarea', TT_UI_INC);
+TTloader::getInterface('ttLayout', TT_UI_INC);
 
 // Setup the cache for labels and messages
 TTCache::set(TTCACHE_LOCALE, 'labels', array());
@@ -533,11 +637,9 @@ unset ($_cfgFile);
 
 // Now define the TT Application ID; it is required by the next readConfig() call
 if (defined('TT___INSTALLER')) {
-	//! Terra-Terra's own application ID used during the installation process
-	define('TT_ID', 0);
+	define('TT_ID', 0); //!< Terra-Terra's own application ID used during the installation process
 } else {
-	//! Terra-Terra's own application ID
-	define('TT_ID', TTloader::getTTId());
+	define('TT_ID', TTloader::getTTId()); //!< Terra-Terra's own application ID
 }
 
 if (!defined('TT___INSTALLER') && TT_ID != 0) {
@@ -556,11 +658,13 @@ TTCache::set(TTCACHE_OBJECTS, 'Logger', TT::factory('LogHandler'));
 // Set up the label translations
 Register::registerLabels(true);
 
+// Load the Layout file
+
 // Select the (no)debug function libraries.
 if (ConfigHandler::get('general', 'debug', 0) > 0) {
 	require (TT_LIBRARY . '/tt.debug.functions.php');
 	$_doc  = TT::factory('Document', 'ui');
-	$_doc->loadStyle(TT_STYLE . '/tt_debug.css');
+	$_doc->loadStyle(TT_STYLE_URL . '/tt_debug.css');
 	$_confData = TTCache::get(TTCACHE_CONFIG, 'values');
 	TTdbg_add(TTDEBUG_TT_S01, $_confData, 'Configuration after loadApplication()');
 	unset ($_confData);

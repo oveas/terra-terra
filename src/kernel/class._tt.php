@@ -378,7 +378,7 @@ abstract class _TT
 	 * \see Document::addMessage()
 	 * \param[in] $level Minimum severity level
 	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 * \depricated Use a direct call to $this->signal() without parameters instead. Messages will be added to the console
+	 * \deprecated Use a direct call to $this->signal() without parameters instead. Messages will be added to the console
 	 */
 	protected function stackMessage ($level = TT_WARNING)
 	{

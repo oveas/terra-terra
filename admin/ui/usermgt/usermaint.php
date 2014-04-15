@@ -52,9 +52,7 @@ class UsermaintArea extends ContentArea
 
 		$_lst = new Listings();
 		$_groups = $_lst->getGrouplist();
-
 		$_user = new Usermaint($arg);
-
 		// Create the Primary group- and memberships selectlists
 		$selPrigrp = array();
 		$selMbrshp = array();

@@ -24,7 +24,7 @@
 /**
  * \ingroup TT_UI_LAYER
  * Class for the console window.
- * Thhe console can be loaded in an application container and will hold all messages
+ * The console can be loaded in an application container and will hold all messages
  * \brief Console
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jul 4, 2013 -- O van Eijk -- initial version
@@ -63,18 +63,6 @@ class Console extends Container
 		}
 		return Console::$instance;
 	}
-
-	/**
-	 * Add a messgage to the console. Make sure a newline is added
-	 * \param[in] $_content Reference to the message as composed by the LogHandler
-	 * \param[in] $_front Not used here, required by syntax
-	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 */
-//	public function addToContent(&$_content, $_front = false)
-//	{
-//		$_message = $_content . '<br/>';
-//		parent::addToContent($_message, $_front);
-//	}
 
 	/**
 	 * Override Container::showElement() to make sure only users with the proper rights will see the console

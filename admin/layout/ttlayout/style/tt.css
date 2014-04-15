@@ -5,11 +5,11 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  */
 
-body, .headerContainer, .bodyContainer, .footerContainer {
+body, .mainMenuContainer, .mainContentContainer, .footerContainer {
 	font-family			: "Times New Roman", Times, serif;
 }
 
-body, .headerContainer, .bodyContainer {
+body, .mainMenuContainer, .mainContentContainer {
 	font-size			: 10pt;
 	clear				: left;
 }
@@ -24,24 +24,24 @@ body, .headerContainer, .bodyContainer {
 /*
  * Menu layout
  */
-.mainMenu, .userMenu {
+.mainMenu {
 	float				: left;
 	padding-left		: 3px;
 	
 }
 
-.mainMenu ul, .userMenu ul {
+.mainMenu ul {
 	margin				: 0px;
 	padding				: 0px;
 	list-style-type		: none;
 }
 
-.mainMenu ul li, .userMenu ul li {
+.mainMenu ul li {
 	background-color	: #eee;
 	color				: #000;
 }
 
-.mainMenu li a, .userMenu li a {
+.mainMenu li a {
 	text-decoration		: none;	
 	height				: 20px;
 	line-height			: 20px;
@@ -53,7 +53,7 @@ body, .headerContainer, .bodyContainer {
 	background-color	: #eee;
 }
 
-.userMenu li a:hover {
+.mainMenu li a:hover {
 	text-decoration		: underline;
 }
 

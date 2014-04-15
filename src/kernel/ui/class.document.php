@@ -260,6 +260,7 @@ class Document extends BaseElement
 				$_style = TT_SERVER_TOP . $_style;
 			} elseif (!file_exists($_style)) {
 				if ($_try !== true) {
+					// TODO This one signals as "(WARNING:DOC_NOSUCHFILE) No section given for configuration item stylesheet (File: /var/www/terra-terra/kernel/ui/class.document.php, Line: 267)"
 					$this->setStatus(__FILE__, __LINE__, DOC_NOSUCHFILE, array('stylesheet', $_style));
 				}
 				return;

@@ -122,18 +122,6 @@ abstract class TTinstaller
 	}
 
 	/**
-	 * Parse a line from an SQL file, stripping all comments
-	 * \param[in] $line Line as read from the SQL file
-	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 * \return String with a (part of the) SQL statement
-	 */
-// 	private static function uncommentSQL($line)
-//	{
-//		$line = preg_replace('/^\s*--\s.*/', '', $line);
-//		return (trim($line));
-//	}
-
-	/**
 	 * Parse a given SQL file
 	 * \param[in] $fname Full path specification of the file containing SQL statements
 	 * \return An array with all SQL statements from the file, or null when an error occured
@@ -150,8 +138,7 @@ abstract class TTinstaller
 			return null;
 		}
 		while (($_line = fgets($_fh, 4096)) !== false) {
-			$_line = uncommentLine($line, TT_COMMENT_SQL);
-// 			$_line = self::uncommentSQL($_line);
+			$_line = uncommentLine($_line, TT_COMMENT_SQL);
 			if (preg_match('/;\s*$/', $_line)) {
 				$statement .= (' ' . $_line);
 				TTdbg_add(TTDEBUG_TT_S04, $statement, 'SQL statement');

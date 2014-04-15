@@ -8,7 +8,6 @@
  * \version Nov 22, 2011 -- O van Eijk -- initial version
  */
 
-
 $dispatcher = TT::factory('Dispatcher');
 
 $document   = TT::factory('Document', 'ui');
@@ -16,26 +15,15 @@ $document   = TT::factory('Document', 'ui');
 //$document->setMessageContainer($console);
 
 $document->enableTT_JS();
-
-$_hdr = new Container('div', '', array('class' => 'headerContainer'));
-$_bdy = new Container('div', '', array('class' => 'bodyContainer'));
-$_ftr = new Container('div', '', array('class' => 'footerContainer'));
-
-TTCache::set(TTCACHE_OBJECTS, 'HeaderContainer', $_hdr);
-TTCache::set(TTCACHE_OBJECTS, 'BodyContainer', $_bdy);
-TTCache::set(TTCACHE_OBJECTS, 'FooterContainer', $_ftr);
-
+Layout::loadContainers();
 $dispatcher->dispatch();
-
 $dispatcher->dispatch('TT#TTADMIN_BO#ttuser#TTUser#showMainMenu');
 $dispatcher->dispatch('TT#TTADMIN_BO#ttuser#TTUser#showUserMenu');
 
-$document->loadStyle(TT_STYLE . '/tt.css');
+$document->loadStyle(TT_STYLE_URL . '/tt.css');
 
-TTloader::getArea('pagefooter', TTADMIN_UI)->addToDocument($_ftr);
+TTloader::getArea('pagefooter', TTADMIN_UI)->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'FooterContainer'));
 
-$document->addToContent($_hdr);
-$document->addToContent($_bdy);
-$document->addToContent($_ftr);
+TTloader::showApps();
 
 OutputHandler::outputRaw($document->showElement());

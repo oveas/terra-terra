@@ -89,7 +89,13 @@ class TT extends _TT
 	public static function factory($class, $layer = 'so')
 	{
 		if (!class_exists($class)) {
-			$class_file = TT_ROOT . '/kernel/' . $layer . '/class.' . strtolower($class) . '.php';
+			if (strstr($layer, '/') === false) {
+				// Load a class from the Terra-Terra kernel
+				$class_file = TT_ROOT . '/kernel/' . $layer . '/class.' . strtolower($class) . '.php';
+			} else {
+				// Full path specified; load a class from the application
+				$class_file = $layer . '/class.' . strtolower($class) . '.php';
+			}
 			if (!file_exists($class_file)) {
 				trigger_error('Class file ' . $class_file . ' not found', E_USER_ERROR);
 			}

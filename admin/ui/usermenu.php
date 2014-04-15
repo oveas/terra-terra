@@ -20,7 +20,7 @@ class UsermenuArea extends ContentArea
 	 */
 	public function loadArea($arg = null)
 	{
-		$this->contentObject = new Container('menu', '', array('class' => 'userMenu'));
+		$this->contentObject = new Container('menu', '', array('class' => 'mainMenu'));
 		if (($_menuType = ConfigHandler::get ('layout', 'menutype')) !== null) {
 			$this->contentObject->menuType($_menuType, 'userMenu');
 		}

@@ -123,7 +123,7 @@ class Session extends TTSessionHandler
 	 */
 	public function hasRight ($bit, $appl)
 	{
-		return ($this->rights->controlBitmap($this->rights->bitValue($bit), $appl, BIT_CHECK));
+		return ($this->rights->controlBitmap($this->rights->bitValue($bit, $appl), $appl, BIT_CHECK));
 	}
 
 	/**

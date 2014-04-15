@@ -153,12 +153,12 @@ function urlExpand($_file)
 		$_fPart = preg_replace('@' . TT_SITE_TOP . '@', '', $_file);
 		if ($_fPart == $_file) {
 			$_fPart = preg_replace('@' . TT_SERVER_TOP . '@', '', $_file);
-			$_useOwlRoot = true;
+			$_usTTRoot = true;
 		} else {
-			$_useOwlRoot = false;
+			$_useTTRoot = false;
 		}
 		$_document = TT::factory('Document', 'ui');
-		$_file = $_document->getBase($_useOwlRoot) . $_fPart;
+		$_file = $_document->getBase($_useTTRoot) . $_fPart;
 	}
 	return $_file;
 }

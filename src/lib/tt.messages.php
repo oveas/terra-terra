@@ -41,6 +41,7 @@ $_messages = array (
 	, TT_INSTERR			=> 'Error instantiating class $p1$'
 	, TT_ILLINSTANCE		=> 'Illegal object construct of the singleton $p1$ class'
 	, TT_HEADERSENT			=> 'Headers have already been sent'
+	, TT_NOSUCHLAYOUT		=> 'Cannot load the Layout class for $p1$'
 	, CONFIG_NOVALUE		=> 'Nonexising config value <i>$p1$</i> requested'
 	, CONFIG_PROTECTED		=> 'Attempt to overwrite the protected configuration item <i>$p1$</i>'
 	, CONFIG_NOSUCHSECTION	=> 'Configuration section $p1$ does not exist'
