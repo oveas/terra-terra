@@ -45,10 +45,10 @@ error_reporting(E_ALL | E_STRICT);
 if (!defined('TT_ROOT')) { trigger_error('TT_ROOT must be defined by the application', E_USER_ERROR); }
 
 //! TT version
-define ('TT_VERSION', '0.9.5');
+define ('TT_VERSION', '0.9.6');
 
 //! TT Release date in format YYYY-MM-DD
-define ('TT_DATE', '2014-04-15');
+define ('TT_DATE', '2014-05-15');
 
 //! Toplevel for the TT includes
 define ('TT_INCLUDE',	TT_ROOT . '/kernel');
@@ -280,7 +280,7 @@ abstract class TTloader
 				// Try the classname with prefix 'class'
 				$_className = 'class.'.$_className;
 				if (!file_exists($_classLocation . '/' . $_className)) {
-//					trigger_error('Classfile ' . $_classLocation . '/[class.]' . $_origClassName . '[.php] not found', E_USER_WARNING);
+					trigger_error('Classfile ' . $_classLocation . '/[class.]' . $_origClassName . '[.php] not found', E_USER_WARNING);
 					return TTCache::set(TTCACHE_CLASSES, $_classPath, false);
 				}
 			}

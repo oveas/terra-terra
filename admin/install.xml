@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation='http://terra-terra.org/docs/xmlscheme/ttInstall.xsd'
+		code = "TT"
+		url = "ttadmin"
+		name = "Terra-Terra"
+		version = "TT_VERSION"
+		description = "Terra-Terra Web2.2 platform"
+		link = "https://github.com/oveas/terra-terra"
+		author = "Oscar van Eijk"
+		license = "LGPL"
+	>
+
+	<sqlfiles>
+		<script name="/tt.tables.sql"/>
+	</sqlfiles>
+
+	<configuration>
+		<items section = "locale">
+			<item id = "date">d-M-Y</item>
+			<item id = "time">H:i</item>
+			<item id = "datetime">d-M-Y H:i:s</item>
+			<item id = "log_date">d-m-Y</item>
+			<item id = "log_time">H:i:s.u</item>
+			<item id = "lang">en-UK</item>
+<!--		\todo Add timezone as a required config item
+ 			<item id = "timezone">Europe/Brussels</item>
+ -->
+		</items>
+		<items section = "session">
+ 			<item id = "lifetime">1440</item>
+			<item id = "pwd_minstrength">2</item>
+			<item id = "check_ip">true</item>
+			<item id = "default_user" protected = "true">anonymous</item>
+			<item id = "default_rights_all" protected = "true">1</item>
+		</items>
+
+		<items section = "logging">
+			<item id = "log_form_data">true</item>
+		</items>
+
+		<items section = "user">
+			<item id = "default_group">standard</item>
+		</items>
+
+		<items section = "mailsend">
+			<item id = "">RawSMTP</item>
+		</items>
+	</configuration>
+
+	<rights>
+		<right id = "readpublic">Allowed to see all content that has been either unmarked, or marked as public</right>
+		<right id = "readanonymous">Allowed to see anonymous only content</right>
+		<right id = "readregistered">Allowed to see all content that has been marked for registered users</right>
+		<right id = "modpassword">Allowed to change own password</right>
+		<right id = "modemail">Allowed to change own email address</right>
+		<right id = "modusername">Allowed to change own username</right>
+		<right id = "moduserconfig">Allowed to change own configuration settings</right>
+		<right id = "modgroupconfig">Allowed to change configuration settings of the primary group</right>
+		<right id = "modapplconfig">Allowed to change application config settings for Terra-Terra</right>
+		<right id = "addmembers">Allowed to add members to the primary group</right>
+		<right id = "managegroupusers">Allowed to manage users in the primary group</right>
+		<right id = "managegroups">Allowed to manage all groups in Terra-Terra</right>
+		<right id = "manageusers">Allowed to manage all users in Terra-Terra</right>
+		<right id = "installapps">Allowed to install new applications</right>
+		<right id = "ttdeveloper">Allowed to use the Terra-Terra Developer tools</right>
+		<right id = "showconsole">Allowed to see the console</right>
+		<right id = "showtraces">Allowed to see tracebacks in messages</right>
+	</rights>
+
+	<groups>
+		<group name = "nogroup" description = "Default group for anonymous users">
+			<right>readpublic</right>
+			<right>readanonymous</right>
+		</group>
+		<group name = "standard" description = "Default group for all registered users">
+			<right>readpublic</right>
+			<right>readanonymous</right>
+			<right>modpassword</right>
+			<right>modemail</right>
+			<right>moduserconfig</right>
+		</group>
+		<group name = "developer" description = "Group for Terra-Terra developers">
+			<right>ttdeveloper</right>
+			<right>showconsole</right>
+			<right>showtraces</right>
+		</group>
+		<group name = "groupadmin" description = "Group administrators for the primary group">
+			<right>addmembers</right>
+			<right>managegroupusers</right>
+			<right>modgroupconfig</right>
+		</group>
+		<group name = "superadmin" description = "Terra-Terra super administrators">
+			<right>installapps</right>
+			<right>manageusers</right>
+			<right>managegroups</right>
+			<right>modapplconfig</right>
+			<right>showconsole</right>
+			<right>showtraces</right>
+		</group>
+	</groups>
+
+	<users>
+		<user name = "anonymous" group = "nogroup" />
+		<user name = "tt" password = "ttuser" email = "tt@localhost.default" group = "standard">
+			<membership>developer</membership>
+		</user>
+		<user name = "root" password = "ttadmin" email = "root@localhost.default" group = "superadmin">
+			<membership>groupadmin</membership>
+			<membership>standard</membership>
+		</user>
+	</users>
+</application>

@@ -47,7 +47,6 @@ define ('FILE_TRIM_C',	3);
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 15, 2007 -- O van Eijk -- initial version for Terra-Terra (based on an old OFM module)
  * \version Jul 30, 2008 -- O van Eijk -- Modified version for Terra-Terra
- * \todo This one contains a lot of old OFM stuff... porting (or erasing...) of old code in progress...
  */
 class FileHandler extends _TT
 {
@@ -61,6 +60,7 @@ class FileHandler extends _TT
 	private $fpointer;	//!< Pointer to the file when opened
 	private $opened;	//!< Boolean that's true when the file is opened
 	private $writable;	//!< Boolean that's true when the file is writeable
+	private $exists;	//!< Boolean that's true when the file exists
 
 	/**
 	 * Object constructor; setup the file characteristics
@@ -90,8 +90,10 @@ class FileHandler extends _TT
 						$this->fullName
 				));
 			}
+			$this->exists = false;
 			return;
 		}
+		$this->exists = true;
 		$this->getFileInfo();
 
 //		$this->localfile = (preg_match('/^([a-z]+):\/\//i', $this->fullName) === 0);
@@ -111,6 +113,16 @@ class FileHandler extends _TT
 		}
 		$this->close();
 		return true;
+	}
+
+	/**
+	 * Method to find out if a file exists
+	 * \return True if the file exists, false otherwise
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function exists ()
+	{
+		return $this->exists;
 	}
 
 	/**

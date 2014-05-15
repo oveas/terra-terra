@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="application">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="configuration" />
+				<xs:element ref="rights" />
+				<xs:element ref="groups" />
+				<xs:element ref="users" />
+			</xs:sequence>
+			<xs:attribute name="author" use="optional" />
+			<xs:attribute name="code" use="required" type="xs:NCName" />
+			<xs:attribute name="description" use="optional" />
+			<xs:attribute name="license" use="optional" type="xs:NCName" />
+			<xs:attribute name="link" use="optional" type="xs:anyURI" />
+			<xs:attribute name="name" use="required" type="xs:NCName" />
+			<xs:attribute name="url" use="required" type="xs:NCName" />
+			<xs:attribute name="version" use="required" type="xs:NMTOKEN" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sqlfiles">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element  minOccurs="1" maxOccurs="unbounded"ref="script" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="script">
+		<xs:complexType>
+			<xs:attribute name="name" use="required" type="xs:NCName" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sqlfile"></xs:element>
+	<xs:element name="configuration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="items" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="items">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="item" />
+			</xs:sequence>
+			<xs:attribute name="section" use="required" type="xs:NCName" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="item">
+		<xs:complexType mixed="true">
+			<xs:attribute name="id" use="required" />
+			<xs:attribute name="protected" type="xs:boolean" use="optional"/>
+			<xs:attribute name="hidden" type="xs:boolean" use="optional"/>
+			<xs:attribute name="group" type="xs:NCName" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="rights">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="right" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="groups">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="group" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="group">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="right" />
+			</xs:sequence>
+			<xs:attribute name="description" use="required" />
+			<xs:attribute name="name" use="required" type="xs:NCName" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="users">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="user" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="user">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="membership" />
+			</xs:sequence>
+			<xs:attribute name="email" use="optional"/>
+			<xs:attribute name="group" use="required" type="xs:NCName" />
+			<xs:attribute name="name" use="required" type="xs:NCName" />
+			<xs:attribute name="password" use="optional" type="xs:NCName" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="membership" type="xs:NCName" />
+
+	<xs:element name="right">
+		<xs:complexType mixed="true">
+			<xs:attribute name="id" type="xs:NCName" />
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
+
