@@ -1,7 +1,7 @@
 <?php
 define ('TT_ROOT', '/var/www/terra-terra');
 require (TT_ROOT . '/TTloader.php');
-TTloader::loadApplication('TT');
+TTloader::loadApplication(TT_CODE);
 ?>
 <html>
 <head>

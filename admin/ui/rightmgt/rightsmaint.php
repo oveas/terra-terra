@@ -39,7 +39,7 @@ class RightsmaintArea extends ContentArea
 		// Create a new form
 		$_form = new Form(
 			  array(
-				 'application' => 'TT'
+				 'application' => TT_CODE
 				,'include_path' => 'TTADMIN_BO'
 				,'class_file' => 'rightsmaint'
 				,'class_name' => 'Rightsmaint'

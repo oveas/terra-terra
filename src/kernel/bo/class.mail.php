@@ -56,7 +56,7 @@ class Mail extends _TT
 		}
 		$this->mail = array();
 		// Identify the mailer
-		$this->addHeaders(array('X-Mailer' => 'Terra-Terra - Oveas Web 2.2 Platform v' . TT_VERSION));
+		$this->addHeaders(array('X-Mailer' => 'Terra-Terra - Oveas Web 2.2 Platform v' . TTCache::getApplic(TT_CODE, TT_APPITM_VERSION)));
 	}
 
 	/**

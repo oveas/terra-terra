@@ -14,6 +14,6 @@ define ('TT_ROOT', '/var/www/terra-terra');
 define ('TT_TIMERS_ENABLED', true);
 
 require (TT_ROOT . '/TTloader.php');
-TTloader::loadApplication('TT');
+TTloader::loadApplication(TT_CODE);
 require (TTADMIN_UI . '/mainpage.php');
 TTloader::getClass('TTrundown.php', TT_ROOT);

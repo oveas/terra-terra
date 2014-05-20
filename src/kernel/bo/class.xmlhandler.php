@@ -175,6 +175,20 @@ class XmlHandler extends _TT
 		eval ("\$_xmlObject = $_xmlPath;");
 		return $_xmlObject;
 	}
+
+	/**
+	 * Find out if a child with the given name exists in the given node
+	 * \param[in] $child Name of the child
+	 * \param[in] $node XML element object as returned by getNodeByPath()
+	 * \return True if the child exists, false if not
+	 */
+	public function childExists ($child, SimpleXMLElement $node = null)
+	{
+		if ($node === null) {
+			$node = $this->xmlData;
+		}
+		return (array_key_exists ($child, $node->children()));
+	}
 }
 
 /*

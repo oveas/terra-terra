@@ -39,7 +39,7 @@ class GroupmaintArea extends ContentArea
 		// Create a new form
 		$_form = new Form(
 			  array(
-				 'application' => 'TT'
+				 'application' => TT_CODE
 				,'include_path' => 'TTADMIN_BO'
 				,'class_file' => 'groupmaint'
 				,'class_name' => 'Groupmaint'

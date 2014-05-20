@@ -28,7 +28,7 @@ fi
 CLOC=`pwd`
 cd $TTLOCATION
 
-TTVERSION=`grep TT_VERSION src/TTloader.php | sed -r "s#(^\s*d.*,\s*'|'\s*\)\s*;\s*$)##g"`
+TTVERSION=`awk '/version/{i++}i==2{print; exit}' admin/install.xml | sed -r "s#(^\s*version\s*=\s*\"|\".*$)##ig"`
 
 if [ -e __TTdist.$TTVERSION.tmp ]
 then

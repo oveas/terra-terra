@@ -1,6 +1,6 @@
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 
 -- -----------------------------------------------------
@@ -14,6 +14,7 @@ CREATE  TABLE IF NOT EXISTS `applications` (
   `url` VARCHAR(45) NOT NULL COMMENT 'Application URL relative from DocumentRoot' ,
   `name` VARCHAR(45) NOT NULL COMMENT 'Application name' ,
   `version` VARCHAR(12) NOT NULL COMMENT 'Application version number' ,
+  `released` DATE NULL ,
   `description` TEXT NULL COMMENT 'Description of the application, can contain HTML code' ,
   `installed` TINYINT UNSIGNED NOT NULL DEFAULT 1 COMMENT 'Indicates if the application is installed on this server' ,
   `enabled` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Indicated is the application has been enabled' ,
@@ -36,7 +37,7 @@ CREATE  TABLE IF NOT EXISTS `group` (
   `gid` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique identification' ,
   `groupname` VARCHAR(32) NOT NULL COMMENT 'Name of the group' ,
   `description` TEXT NULL COMMENT 'Optional description of the group' ,
-  `aid` INT UNSIGNED NOT NULL COMMENT 'Application the group belongs tor, tt for standard' ,
+  `aid` INT UNSIGNED NOT NULL COMMENT 'Application the group belongs tor, owl for standard' ,
   PRIMARY KEY (`gid`) ,
   CONSTRAINT `fk_groupapplic`
     FOREIGN KEY (`aid` )
@@ -44,13 +45,13 @@ CREATE  TABLE IF NOT EXISTS `group` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-COMMENT = 'Standard TT and application groups';
+COMMENT = 'Standard Terra-Terra and application groups';
 
 CREATE INDEX `grp_group` ON `group` (`groupname` ASC) ;
 
 CREATE UNIQUE INDEX `grp_applicgroup` ON `group` (`groupname` ASC, `aid` ASC) ;
 
-CREATE INDEX `fk_groupapplic` ON `group` (`aid` ASC) ;
+CREATE INDEX `fk_groupapplic_idx` ON `group` (`aid` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -74,11 +75,11 @@ CREATE  TABLE IF NOT EXISTS `user` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-COMMENT = 'Basic userdata for all TT based applications';
+COMMENT = 'Basic userdata for all Terra-Terra based applications';
 
 CREATE UNIQUE INDEX `usr_username` USING BTREE ON `user` (`username` ASC) ;
 
-CREATE INDEX `fk_usergroup` ON `user` (`gid` ASC) ;
+CREATE INDEX `fk_usergroup_idx` ON `user` (`gid` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -92,7 +93,7 @@ CREATE  TABLE IF NOT EXISTS `session` (
   `sdata` TEXT NULL COMMENT 'Room to store the last session data' ,
   PRIMARY KEY (`sid`) )
 ENGINE = InnoDB
-COMMENT = 'This table is used to store all TT session data';
+COMMENT = 'This table is used to store all Terra-Terra session data';
 
 
 -- -----------------------------------------------------
@@ -155,7 +156,7 @@ CREATE  TABLE IF NOT EXISTS `config` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-COMMENT = 'Dynamic configuration for TT and applications';
+COMMENT = 'Dynamic configuration for Terra-Terra and applications';
 
 CREATE UNIQUE INDEX `cnf_configitem` ON `config` (`aid` ASC, `name` ASC) ;
 
@@ -165,9 +166,9 @@ CREATE INDEX `cnf_group` ON `config` (`gid` ASC) ;
 
 CREATE INDEX `cnf_user` ON `config` (`uid` ASC) ;
 
-CREATE INDEX `fk_configapp` ON `config` (`aid` ASC) ;
+CREATE INDEX `fk_configapp_idx` ON `config` (`aid` ASC) ;
 
-CREATE INDEX `fk_configsect` ON `config` (`sid` ASC) ;
+CREATE INDEX `fk_configsect_idx` ON `config` (`sid` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -178,7 +179,7 @@ DROP TABLE IF EXISTS `rights` ;
 CREATE  TABLE IF NOT EXISTS `rights` (
   `rid` TINYINT UNSIGNED NOT NULL COMMENT 'Bit identification for this right' ,
   `name` VARCHAR(32) NOT NULL COMMENT 'Name for this right' ,
-  `aid` INT UNSIGNED NOT NULL COMMENT 'Application this right is used by or tt for general' ,
+  `aid` INT UNSIGNED NOT NULL COMMENT 'Application this right is used by or owl for general' ,
   `description` TEXT NULL COMMENT 'An optional description how the rightbit is used' ,
   PRIMARY KEY (`rid`, `aid`) ,
   CONSTRAINT `fk_rightsapp`
@@ -187,11 +188,11 @@ CREATE  TABLE IF NOT EXISTS `rights` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-COMMENT = 'Rights that can be granted within tt applications';
+COMMENT = 'Rights that can be granted within owl applications';
 
 CREATE UNIQUE INDEX `rgt_right` ON `rights` (`name` ASC) ;
 
-CREATE INDEX `fk_rightsapp` ON `rights` (`aid` ASC) ;
+CREATE INDEX `fk_rightsapp_idx` ON `rights` (`aid` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -217,9 +218,9 @@ CREATE  TABLE IF NOT EXISTS `memberships` (
 ENGINE = InnoDB
 COMMENT = 'Defenition of all memberships for a user';
 
-CREATE INDEX `fk_groupmember` ON `memberships` (`gid` ASC) ;
+CREATE INDEX `fk_groupmember_idx` ON `memberships` (`gid` ASC) ;
 
-CREATE INDEX `fk_memberuser` ON `memberships` (`uid` ASC) ;
+CREATE INDEX `fk_memberuser_idx` ON `memberships` (`uid` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -245,9 +246,9 @@ CREATE  TABLE IF NOT EXISTS `grouprights` (
 ENGINE = InnoDB
 COMMENT = 'All application specific rights for each group';
 
-CREATE INDEX `fk_grouprights_applic` ON `grouprights` (`aid` ASC) ;
+CREATE INDEX `fk_grouprights_applic_idx` ON `grouprights` (`aid` ASC) ;
 
-CREATE INDEX `fk_grouprights_group` ON `grouprights` (`gid` ASC) ;
+CREATE INDEX `fk_grouprights_group_idx` ON `grouprights` (`gid` ASC) ;
 
 
 

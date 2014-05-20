@@ -30,7 +30,7 @@ class UsermenuArea extends ContentArea
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'TT'
+						 'application' => TT_CODE
 						,'include_path' => 'TTADMIN_BO'
 						,'class_file' => 'ttuser'
 						,'class_name' => 'TTUser'
@@ -46,7 +46,7 @@ class UsermenuArea extends ContentArea
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'TT'
+						 'application' => TT_CODE
 						,'include_path' => 'TTADMIN_BO'
 						,'class_file' => 'ttuser'
 						,'class_name' => 'TTUser'
@@ -62,7 +62,7 @@ class UsermenuArea extends ContentArea
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-							'application' => 'TT'
+							'application' => TT_CODE
 							,'include_path' => 'TTADMIN_BO'
 							,'class_file' => 'developer'
 							,'class_name' => 'Developer'
@@ -91,7 +91,7 @@ class UsermenuArea extends ContentArea
 		$_lnk = new Container('link', $_txt);
 		$_lnk->setContainer(array(
 				'dispatcher' => array(
-					 'application' => 'TT'
+					 'application' => TT_CODE
 					,'include_path' => 'TTADMIN_BO'
 					,'class_file' => 'ttuser'
 					,'class_name' => 'TTUser'
@@ -105,7 +105,7 @@ class UsermenuArea extends ContentArea
 		$_lnk = new Container('link', $_txt);
 		$_lnk->setContainer(array(
 				'dispatcher' => array(
-					 'application' => 'TT'
+					 'application' => TT_CODE
 					,'include_path' => 'TTADMIN_BO'
 					,'class_file' => 'ttuser'
 					,'class_name' => 'TTUser'
@@ -127,7 +127,7 @@ class UsermenuArea extends ContentArea
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'TT'
+						 'application' => TT_CODE
 						,'include_path' => 'TTADMIN_BO'
 						,'class_file' => 'ttuser'
 						,'class_name' => 'TTUser'
@@ -141,7 +141,7 @@ class UsermenuArea extends ContentArea
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'TT'
+						 'application' => TT_CODE
 						,'include_path' => 'TTADMIN_BO'
 						,'class_file' => 'ttuser'
 						,'class_name' => 'TTUser'
@@ -156,7 +156,7 @@ class UsermenuArea extends ContentArea
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'TT'
+						 'application' => TT_CODE
 						,'include_path' => 'TTADMIN_BO'
 						,'class_file' => 'ttuser'
 						,'class_name' => 'TTUser'
@@ -170,7 +170,7 @@ class UsermenuArea extends ContentArea
 			$_lnk = new Container('link', $_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'TT'
+						 'application' => TT_CODE
 						,'include_path' => 'TTADMIN_BO'
 						,'class_file' => 'ttuser'
 						,'class_name' => 'TTUser'

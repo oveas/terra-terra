@@ -69,6 +69,7 @@ abstract class TTinstaller
 	 * \param[in] $url URL (relative from the document root) where the application will be installed. When empty or null, defaults to the lowercase application name
 	 * \param[in] $name Name of the application
 	 * \param[in] $version Version number of the application
+	 * \param[in] $released Optional release date of the application
 	 * \param[in] $description Optional description
 	 * \param[in] $link Optional link to the applications homepage
 	 * \param[in] $author Optional name of the copyright holder
@@ -77,7 +78,7 @@ abstract class TTinstaller
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 * \todo Error checking
 	 */
-	public static function installApplication ($code, $url, $name, $version, $description = '', $link = '', $author = '', $license = '')
+	private static function installApplication ($code, $url, $name, $version, $released = null, $description = '', $link = '', $author = '', $license = '')
 	{
 		OutputHandler::output('Create application ' . $name . ' (' . $code . ')', TT_OUTPUT_NOW);
 		$dataset = new DataHandler();
@@ -92,6 +93,7 @@ abstract class TTinstaller
 		$dataset->set('url', $url);
 		$dataset->set('name', $name);
 		$dataset->set('version', $version);
+		$dataset->set('released', $released);
 		$dataset->set('description', $description);
 		$dataset->set('link', $link);
 		$dataset->set('author',$author);
@@ -271,7 +273,7 @@ abstract class TTinstaller
 	 * \return Boolean indicating success (true) or any failure (false)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function addGroupRights($aid, $grp, array $rights)
+	private static function addGroupRights($aid, $grp, array $rights)
 	{
 		if (array_key_exists($grp . '__AID__' . $aid, self::$groups)) {
 			$_grpID = self::$groups[$grp . '__AID__' . $aid];
@@ -312,7 +314,7 @@ abstract class TTinstaller
 	 * \return Boolean indicating success (true) or any failure (false)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function addGroups($aid, array $grps)
+	private static function addGroups($aid, array $grps)
 	{
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'tttables', true)) {
@@ -339,7 +341,7 @@ abstract class TTinstaller
 	 * \return Boolean indicating success (true) or any failure (false)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function addRights($aid, array $rights)
+	private static function addRights($aid, array $rights)
 	{
 		$dataset = new DataHandler();
 		if (ConfigHandler::get ('database', 'tttables', true)) {
@@ -388,7 +390,7 @@ abstract class TTinstaller
 	 * \return Boolean indicating success (true) or any failure (false)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function addConfig ($aid, $section, $item, $value, $protect = false, $hide = false, $group = null)
+	private static function addConfig ($aid, $section, $item, $value, $protect = false, $hide = false, $group = null)
 	{
 		if ($group === null) {
 			$_grpID = 0;
@@ -435,7 +437,7 @@ abstract class TTinstaller
 	 * If no primary group is given, the new user will be member of the default group from the TT configuration
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function addUser($aid, $username, $password, $email, $group, $memberships = null)
+	private static function addUser($aid, $username, $password, $email, $group, $memberships = null)
 	{
 		$grpObj = new Group();
 		$group = $grpObj->getGroupByName($group, $aid);
@@ -458,20 +460,21 @@ abstract class TTinstaller
 		
 		$xmlInstaller = new XmlHandler($xmlFile);
 		$xmlInstaller->parse();
-		
-		// Load the SQL installation script(s)
-		for ($_cnt = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("sqlfiles/script,$_cnt")) !== null; $_cnt++) {
-			$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
-			self::installTables(TT_ROOT . $_xmlData['name'], false);
+
+		if ($xmlInstaller->childExists('sqlfiles')) {
+			// Load the SQL installation script(s)
+			for ($_cnt = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("sqlfiles/script,$_cnt")) !== null; $_cnt++) {
+				$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
+				self::installTables(TT_ROOT . $_xmlData['name'], false);
+			}
 		}
-		
-		
+
 		// Get the application rootnode
 		if (($_xmlObj = $xmlInstaller->getNodeByPath()) === null) {
 			trigger_error('Error fetching the \'application\' rootnode', E_USER_ERROR);
 			return false;
 		}
-		
+
 		// Check for presence of all required attributes
 		$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
 		if (!array_key_exists('code', $_xmlData)) {
@@ -490,8 +493,6 @@ abstract class TTinstaller
 			trigger_error('application version not set', E_USER_ERROR);
 			return false;
 		}
-		
-		$_xmlData['version'] = TT_VERSION; // FIXME Now comes from TTLoader, change it to the XML file!
 
 		// Load the application
 		$_applicationID = self::installApplication(
@@ -499,122 +500,129 @@ abstract class TTinstaller
 				,$_xmlData['url']
 				,$_xmlData['name']
 				,$_xmlData['version']
+				,array_key_exists('released',$_xmlData) ? $_xmlData['released'] : null
 				,array_key_exists('description',$_xmlData) ? $_xmlData['description'] : ''
 				,array_key_exists('link',$_xmlData) ? $_xmlData['link'] : ''
 				,array_key_exists('author',$_xmlData) ? $_xmlData['author'] : ''
 				,array_key_exists('license',$_xmlData) ? $_xmlData['license'] : ''
 		);
 		
-		
-		// Load the configuration
-		for ($_cntC = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("configuration,$_cntC")) !== null; $_cntC++) {
-			// configuration itself has no data, continue with the sections
-			for ($_cntS = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("configuration,$_cntC/items,$_cntS")) !== null; $_cntS++) {
+		if ($xmlInstaller->childExists('configuration')) {
+			// Load the configuration
+			for ($_cntC = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("configuration,$_cntC")) !== null; $_cntC++) {
 				// configuration itself has no data, continue with the sections
-				$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
-				if (!array_key_exists('section', $_xmlData)) {
-					trigger_error("No section name in path 'configuration,$_cntC/items,$_cntS'", E_USER_ERROR);
-					return false;
-				}
-				$_sectionName = $_xmlData['section'];
-		
-				// Get all items for this section
-				for ($_cntI = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("configuration,$_cntC/items,$_cntS/item,$_cntI")) !== null; $_cntI++) {
+				for ($_cntS = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("configuration,$_cntC/items,$_cntS")) !== null; $_cntS++) {
+					// configuration itself has no data, continue with the sections
 					$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
-					if (!array_key_exists('id', $_xmlData)) {
-						trigger_error("No item id in path 'configuration,$_cntC/items,$_cntS'/item,$_cntI", E_USER_ERROR);
+					if (!array_key_exists('section', $_xmlData)) {
+						trigger_error("No section name in path 'configuration,$_cntC/items,$_cntS'", E_USER_ERROR);
 						return false;
 					}
-					// Store this configuration item
-					self::addConfig($_applicationID, $_sectionName, $_xmlData[ 'id'], $_xmlData['_TTnodeText']);
+					$_sectionName = $_xmlData['section'];
+
+					// Get all items for this section
+					for ($_cntI = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("configuration,$_cntC/items,$_cntS/item,$_cntI")) !== null; $_cntI++) {
+						$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
+						if (!array_key_exists('id', $_xmlData)) {
+							trigger_error("No item id in path 'configuration,$_cntC/items,$_cntS'/item,$_cntI", E_USER_ERROR);
+							return false;
+						}
+						// Store this configuration item
+						self::addConfig($_applicationID, $_sectionName, $_xmlData[ 'id'], $_xmlData['_TTnodeText']);
+					}
 				}
 			}
 		}
-		
-		// Get all application rights
-		$_rights = array();
-		for ($_cntR = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("rights,$_cntR")) !== null; $_cntR++) {
-			// rights element itself has no data
-			for ($_cntI = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("rights,$_cntR/right,$_cntI")) !== null; $_cntI++) {
-				$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
-				if (!array_key_exists('id', $_xmlData)) {
-					trigger_error("No rights id in path 'rights,$_cntR/right,$_cntI'", E_USER_ERROR);
-					return false;
-				}
-				$_rights[$_xmlData['id']] = $_xmlData['_TTnodeText'];
-			}
-		}
-		// Store the application rights
-		self::addRights($_applicationID, $_rights);
-		
-		// Create groups
-		$_groups = array();
-		$_groupRights = array();
-		for ($_cntG = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("groups,$_cntG")) !== null; $_cntG++) {
-			// group element itself has no data
-			for ($_cntN = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("groups,$_cntG/group,$_cntN")) !== null; $_cntN++) {
-				// Fetch group data
-				$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
-				if (!array_key_exists('name', $_xmlData)) {
-					trigger_error("No groupname in path 'groups,$_cntG/group,$_cntN'", E_USER_ERROR);
-					return false;
-				}
-				$_groupName = $_xmlData['name'];
-				$_groups[$_groupName] = (array_key_exists('description', $_xmlData) ? $_xmlData[ 'description'] : '');
-		
-				// Continue with the grouprights
-				$_grpRights = array();
-				for ($_cntI = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("groups,$_cntG/group,$_cntN/right,$_cntI")) !== null; $_cntI++) {
+
+		if ($xmlInstaller->childExists('rights')) {
+			// Get all application rights
+			$_rights = array();
+			for ($_cntR = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("rights,$_cntR")) !== null; $_cntR++) {
+				// rights element itself has no data
+				for ($_cntI = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("rights,$_cntR/right,$_cntI")) !== null; $_cntI++) {
 					$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
-					// TODO check if the right exists, might be from this XML or an already existing right ID
-					$_grpRights[] = $_xmlData['_TTnodeText'];
+					if (!array_key_exists('id', $_xmlData)) {
+						trigger_error("No rights id in path 'rights,$_cntR/right,$_cntI'", E_USER_ERROR);
+						return false;
+					}
+					$_rights[$_xmlData['id']] = $_xmlData['_TTnodeText'];
 				}
-				// Save the grouprights
-				$_groupRights[$_groupName] = $_grpRights;
 			}
-			self::addGroups($_applicationID, $_groups);
+			// Store the application rights
+			self::addRights($_applicationID, $_rights);
 		}
-		// Now store the grouprights
-		foreach ($_groupRights as $_groupName => $_grpRights) {
-			self::addGroupRights($_applicationID, $_groupName, $_grpRights);
-		}
-		
-		
-		// Store the users
-		for ($_cntU = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("users,$_cntU")) !== null; $_cntU++) {
-			// users element itself has no data
-			for ($_cntN = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("users,$_cntU/user,$_cntN")) !== null; $_cntN++) {
-				// Fetch user data
-				$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
-				if (!array_key_exists('name', $_xmlData)) {
-					trigger_error("No username in path 'users,$_cntU/user,$_cntN'", E_USER_ERROR);
-					return false;
-				}
-				if (!array_key_exists('group', $_xmlData)) {
-					trigger_error("No primary group in path 'groups,$_cntU/user,$_cntN'", E_USER_ERROR);
-					return false;
-				}
-				$_userName = $_xmlData['name'];
-				$_userGroup = $_xmlData['group'];
-				$_userPassword = (array_key_exists('password', $_xmlData) ? $_xmlData[ 'password'] : '');
-				$_userEmail = (array_key_exists('email', $_xmlData) ? $_xmlData[ 'email'] : '');
-		
-				// Continue with the memberships
-				$_memberShips = array();
-				for ($_cntM = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("users,$_cntU/user,$_cntN/membership,$_cntM")) !== null; $_cntM++) {
+
+		if ($xmlInstaller->childExists('groups')) {
+			// Create groups
+			$_groups = array();
+			$_groupRights = array();
+			for ($_cntG = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("groups,$_cntG")) !== null; $_cntG++) {
+				// group element itself has no data
+				for ($_cntN = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("groups,$_cntG/group,$_cntN")) !== null; $_cntN++) {
+					// Fetch group data
 					$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
-					// TODO check if the group exists, might be from this XML or an already existing right ID when this installer is generalised
-					$_memberShips[] = $_xmlData['_TTnodeText'];
+					if (!array_key_exists('name', $_xmlData)) {
+						trigger_error("No groupname in path 'groups,$_cntG/group,$_cntN'", E_USER_ERROR);
+						return false;
+					}
+					$_groupName = $_xmlData['name'];
+					$_groups[$_groupName] = (array_key_exists('description', $_xmlData) ? $_xmlData[ 'description'] : '');
+			
+					// Continue with the grouprights
+					$_grpRights = array();
+					for ($_cntI = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("groups,$_cntG/group,$_cntN/right,$_cntI")) !== null; $_cntI++) {
+						$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
+						// TODO check if the right exists, might be from this XML or an already existing right ID
+						$_grpRights[] = $_xmlData['_TTnodeText'];
+					}
+					// Save the grouprights
+					$_groupRights[$_groupName] = $_grpRights;
 				}
-				// Store the users
-				self::addUser(
-					 $_applicationID
-					,$_userName
-					,$_userPassword
-					,$_userEmail
-					,$_userGroup
-					,$_memberShips
-				);
+				self::addGroups($_applicationID, $_groups);
+			}
+			// Now store the grouprights
+			foreach ($_groupRights as $_groupName => $_grpRights) {
+				self::addGroupRights($_applicationID, $_groupName, $_grpRights);
+			}
+		}
+
+		if ($xmlInstaller->childExists('users')) {
+			// Store the users
+			for ($_cntU = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("users,$_cntU")) !== null; $_cntU++) {
+				// users element itself has no data
+				for ($_cntN = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("users,$_cntU/user,$_cntN")) !== null; $_cntN++) {
+					// Fetch user data
+					$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
+					if (!array_key_exists('name', $_xmlData)) {
+						trigger_error("No username in path 'users,$_cntU/user,$_cntN'", E_USER_ERROR);
+						return false;
+					}
+					if (!array_key_exists('group', $_xmlData)) {
+						trigger_error("No primary group in path 'groups,$_cntU/user,$_cntN'", E_USER_ERROR);
+						return false;
+					}
+					$_userName = $_xmlData['name'];
+					$_userGroup = $_xmlData['group'];
+					$_userPassword = (array_key_exists('password', $_xmlData) ? $_xmlData[ 'password'] : '');
+					$_userEmail = (array_key_exists('email', $_xmlData) ? $_xmlData[ 'email'] : '');
+			
+					// Continue with the memberships
+					$_memberShips = array();
+					for ($_cntM = 0; ($_xmlObj = $xmlInstaller->getNodeByPath("users,$_cntU/user,$_cntN/membership,$_cntM")) !== null; $_cntM++) {
+						$_xmlData = $xmlInstaller->getNodeData($_xmlObj);
+						// TODO check if the group exists, might be from this XML or an already existing right ID when this installer is generalised
+						$_memberShips[] = $_xmlData['_TTnodeText'];
+					}
+					// Store the users
+					self::addUser(
+						 $_applicationID
+						,$_userName
+						,$_userPassword
+						,$_userEmail
+						,$_userGroup
+						,$_memberShips
+					);
+				}
 			}
 		}
 

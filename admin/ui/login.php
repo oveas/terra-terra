@@ -30,7 +30,7 @@ class LoginArea extends ContentArea
 
 		$_form = new Form(
 			  array(
-				 'application' => 'TT'
+				 'application' => TT_CODE
 				,'include_path' => 'TTADMIN_BO'
 				,'class_file' => 'ttuser'
 				,'class_name' => 'TTUser'

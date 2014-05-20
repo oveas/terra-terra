@@ -39,7 +39,7 @@ class UsermaintArea extends ContentArea
 		// Create a new form
 		$_form = new Form(
 			  array(
-				 'application' => 'TT'
+				 'application' => TT_CODE
 				,'include_path' => 'TTADMIN_BO'
 				,'class_file' => 'usermaint'
 				,'class_name' => 'Usermaint'

@@ -44,11 +44,8 @@ error_reporting(E_ALL | E_STRICT);
 // TT_ROOT must be defined by the application
 if (!defined('TT_ROOT')) { trigger_error('TT_ROOT must be defined by the application', E_USER_ERROR); }
 
-//! TT version
-define ('TT_VERSION', '0.9.6');
-
-//! TT Release date in format YYYY-MM-DD
-define ('TT_DATE', '2014-05-15');
+//! Application code  for Terra-Terra
+define ('TT_CODE', 'TT');
 
 //! Toplevel for the TT includes
 define ('TT_INCLUDE',	TT_ROOT . '/kernel');
@@ -119,14 +116,20 @@ if (!defined ('TT_TIMERS_ENABLED')) {
 //! Key for the application ID as stored in cache
 define ('TT_APPITM_ID', 'id');
 
+//! Key for the application name as stored in cache
+define ('TT_APPITM_NAME', 'name');
+
+//! Key for the application's version as stored in cache
+define ('TT_APPITM_VERSION', 'version');
+
+//! Key for the application's release date as stored in cache
+define ('TT_APPITM_RELEASED', 'released');
+
 //! Key for the application's top-url as stored in cache
 define ('TT_APPITM_URL', 'url');
 
 //! Key for the application's site top as stored in cache
 define ('TT_APPITM_TOP', 'top');
-
-//! Key for the application name as stored in cache
-define ('TT_APPITM_NAME', 'name');
 
 //! Key for the application's library as stored in cache
 define ('TT_APPITM_LIBRARY', 'lib');
@@ -280,7 +283,7 @@ abstract class TTloader
 				// Try the classname with prefix 'class'
 				$_className = 'class.'.$_className;
 				if (!file_exists($_classLocation . '/' . $_className)) {
-					trigger_error('Classfile ' . $_classLocation . '/[class.]' . $_origClassName . '[.php] not found', E_USER_WARNING);
+//					trigger_error('Classfile ' . $_classLocation . '/[class.]' . $_origClassName . '[.php] not found', E_USER_WARNING);
 					return TTCache::set(TTCACHE_CLASSES, $_classPath, false);
 				}
 			}
@@ -303,7 +306,7 @@ abstract class TTloader
 	 * \return Application ID for the requested app
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function getTTId ($app_code = 'TT')
+	public static function getTTId ($app_code = TT_CODE)
 	{
 		// First, try to read ffrom cache
 		if (($_id = TTCache::getApplic ($app_code, TT_APPITM_ID)) !== null) {
@@ -363,6 +366,8 @@ abstract class TTloader
 					, array(
 						 TT_APPITM_ID => $app_data[0]['aid']
 						,TT_APPITM_NAME => $app_data[0]['name']
+						,TT_APPITM_VERSION => $app_data[0]['version']
+						,TT_APPITM_RELEASED => $app_data[0]['released']
 						,TT_APPITM_URL => '/' . $app_data[0]['url']
 						,TT_APPITM_TOP => TT_SITE_TOP . '/' . $app_data[0]['url']
 						,TT_APPITM_LIBRARY => TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib'
@@ -414,7 +419,7 @@ abstract class TTloader
 			require (TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php');
 		}
 
-		if ($applic_code == 'TT') {
+		if ($applic_code == TT_CODE) {
 			// When loading Terra-Terra, also load the layout
 			
 			//! Terra-Terra Layout location

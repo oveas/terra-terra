@@ -36,7 +36,7 @@ class GetrightslistArea extends ContentArea
 			$_lnk = new Container('link', $_info[0]);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
-						 'application' => 'TT'
+						 'application' => TT_CODE
 						,'include_path' => 'TTADMIN_BO'
 						,'class_file' => 'ttuser'
 						,'class_name' => 'TTUser'

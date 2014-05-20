@@ -32,7 +32,7 @@ class DeveloperArea extends ContentArea
 		// Create a new form
 		$_form = new Form(
 			  array(
-				 'application' => 'TT'
+				 'application' => TT_CODE
 				,'include_path' => 'TTADMIN_BO'
 				,'class_file' => 'developer'
 				,'class_name' => 'Developer'

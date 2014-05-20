@@ -5,7 +5,8 @@
 		code = "TT"
 		url = "ttadmin"
 		name = "Terra-Terra"
-		version = "TT_VERSION"
+		version = "0.9.7"
+		released = "2014-05-20"
 		description = "Terra-Terra Web2.2 platform"
 		link = "https://github.com/oveas/terra-terra"
 		author = "Oscar van Eijk"
@@ -76,7 +77,7 @@
 		</group>
 		<group name = "standard" description = "Default group for all registered users">
 			<right>readpublic</right>
-			<right>readanonymous</right>
+			<right>readregistered</right>
 			<right>modpassword</right>
 			<right>modemail</right>
 			<right>moduserconfig</right>

@@ -131,9 +131,11 @@ class Document extends BaseElement
 		$this->title = 'Terra-Terra Generated document';
 		$this->meta = array(
 			  'robots'	=> 'index, follow'
-			, 'keywords'	=> array('Terra-Terra', 'Oveas', 'TT')
+			, 'keywords'	=> array('Terra-Terra', 'Oveas', TT_CODE)
 			, 'description'	=> 'Terra-Terra - Oveas Web 2.2 Platform'
-			, 'generator'	=> 'Terra-Terra v'.TT_VERSION.' - Oveas Web 2.2 Platform, (c)2001-'.substr(TT_DATE, 0, 4).' Oveas Functionality Provider'
+			, 'generator'	=> 'Terra-Terra v' . TTCache::getApplic(TT_CODE, TT_APPITM_VERSION)
+				. ' - Oveas Web 2.2 Platform, (c)2001-'.substr(TTCache::getApplic(TT_CODE, TT_APPITM_RELEASED), 0, 4)
+				. ' Oveas Functionality Provider'
 		);
 		$this->header = array();
 		$this->messages = array();
