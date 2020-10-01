@@ -51,13 +51,28 @@ class TTException extends Exception implements Throwable
 	public $thrown_code;
 
 	/**
+	 * When an error is thrown, the stack is passed by TTExceptionHandler and stored here
+	 */
+	private $error_trace;
+
+	/**
+	 * When an error is thrown, the file is passed by TTExceptionHandler ans stored here
+	 */
+	private $error_file;
+
+	/**
+	 * When an error is thrown, the line nr is passed by TTExceptionHandler ans stored here
+	 */
+	private $error_line;
+
+	/**
 	 * Create the Exception handler object
 	 * \param[in] $msg Message text
 	 * \param[in] $code Code of the event
 	 * \param[in] $caller Backlink to the calling object
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	function __construct($msg = null, $code = 0, TTException $caller = null)
+	function __construct($msg = null, $code = 0, Throwable $caller = null)
 	{
 		parent::__construct($msg, $code);
 		$this->caller = $caller;
@@ -77,6 +92,60 @@ class TTException extends Exception implements Throwable
 					);
 			}
 		}
+		$this->error_trace = null;
+		$this->error_file  = null;
+		$this->error_line  = null;
+	}
+
+	/**
+	 * Copy the traceback from an error object.
+	 * \param[in] $errorObject The error object that was thrown
+	 */
+	public function setTrace(Error $errorObject)
+	{
+		$this->error_trace = $errorObject->getTrace();
+	}
+
+	/**
+	 * Copy the filename from an error object.
+	 * \param[in] $errorObject The error object that was thrown
+	 */
+	public function setFile(Error $errorObject)
+	{
+		$this->error_file = $errorObject->getFile();
+	}
+
+	/**
+	 * Copy the line number from an error object.
+	 * \param[in] $errorObject The error object that was thrown
+	 */
+	public function setLine(Error $errorObject)
+	{
+		$this->error_line = $errorObject->getLine();
+	}
+
+	/**
+	 * Return the filename where the error or exception was thrown.
+	 * \return Filename
+	 */
+	private function _getFile()
+	{
+		if ($this->error_file !== null) {
+			return $this->error_file;
+		}
+		return $this->getFile();
+	}
+
+	/**
+	 * Return the linenumber where the error or exception was thrown
+	 * \return Filename
+	 */
+	private function _getLine()
+	{
+		if ($this->error_line !== null) {
+			return $this->error_line;
+		}
+		return $this->getLine();
 	}
 
 	/**
@@ -85,6 +154,11 @@ class TTException extends Exception implements Throwable
 	 */
 	public function _getTrace()
 	{
+		if ($this->error_trace !== null) {
+			// We're handling a thrown error that gave us it's stack already, use it.
+			return $this->error_trace;
+		}
+
 		if ($this->caller !== null) {
 
 			$_arr = array();
@@ -117,21 +191,26 @@ class TTException extends Exception implements Throwable
 	 */
 	public function stackDump($textmode = true)
 	{
+		$_dumpingError = false;
+		if ($this->error_trace !== null) {
+			$_dumpingError = true;
+		}
 		if ($textmode) {
-			$_text = 'An exception was thrown :'. "\n";
-			$_text = sprintf('%sException code : %%X%08X (%s)%s',
-					$_text, $this->code, Register::getCode ($this->code), "\n");
-
+			$_text = 'An ' . ($_dumpingError ? 'Error' : 'Exception') . ' was thrown :'. "\n";
+			$_text = sprintf('%s%s code : %%X%08X (%s)%s'
+					, $_text, ($_dumpingError ? 'Error' : 'Exception'), $this->code, Register::getCode ($this->code), "\n");
+			$_text .= 'Filename: ' . $this->_getFile() . ' at line ' . $this->_getLine() . "\n";
 			$_text .= 'Severity level: ' . Register::getSeverity ($this->code & TT_SEVERITY_PATTERN) . "\n";
-			$_text .= 'Exception message : ' . $this->message . "\n";
+			$_text .= ($_dumpingError ? 'Error' : 'Exception') . ' message : ' . $this->message . "\n";
 		} else {
-			$_text = '<p class="exception"><b>An exception was thrown :</b><br/>';
-			$_text = sprintf('%sException code : %%X%08X (%s)<br />',
-					$_text, $this->code, Register::getCode ($this->code));
+			$_text = '<p class="exception"><b>An '. ($_dumpingError ? 'Error' : 'Exception') . ' was thrown :</b><br/>';
+			$_text = sprintf('%s%s code : %%X%08X (%s)<br />'
+					, $_text, ($_dumpingError ? 'Error' : 'Exception'), $this->code, Register::getCode ($this->code));
+			$_text .= 'Filename: ' . $this->_getFile() . ' at line ' . $this->_getLine() . '<br />';
 
 			// There's no instance here, so we need to duplicate _TT::getSeverity():
 			$_text .= 'Severity level: ' . Register::getSeverity ($this->code & TT_SEVERITY_PATTERN) . '<br />';
-			$_text .= 'Exception message : ' . $this->message . '<br/>';
+			$_text .= ($_dumpingError ? 'Error' : 'Exception') . ' message : ' . $this->message . '<br/>';
 			$_text .= '<span class="stackdump">';
 		}
 
@@ -330,19 +409,38 @@ class TTExceptionHandler
 	 * \param[in] $exception The exception
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function logException(Throwable $exception)
+	public static function logException($exception, $_message = '', $_file = '', $_line = '', $_context = '')
 	{
 		if (($_logger = TTCache::get(TTCACHE_OBJECTS, 'Logger')) === null) {
 			$_logger = TT::factory('LogHandler');
 		}
-		$_logger->log ($exception->stackDump(true), $exception->thrown_code, __FILE__, __LINE__);
 
-		if (ConfigHandler::get ('exception', 'show_in_browser')) {
-			OutputHandler::outputRaw ($exception->stackDump(false));
+		if (method_exists($exception, 'stackDump')) {
+			// We're handling an exception
+			$_logger->log ($exception->stackDump(true), $exception->thrown_code, __FILE__, __LINE__);
+
+			if (ConfigHandler::get ('exception', 'show_in_browser')) {
+				OutputHandler::outputRaw ($exception->stackDump(false));
+			} else {
+				OutputHandler::outputRaw ('<p class="exception"><b>An exception was thrown</b><br/>'
+					. 'Check the logfile for details</p>');
+			}
 		} else {
-			OutputHandler::outputRaw ('<p class="exception"><b>An exception was thrown</b><br/>'
-				. 'Check the logfile for details</p>');
+			// We'te handling a throwable error
+			$_errObj = new TTException($exception->getMessage(), $exception->getCode());
+			$_errObj->setTrace($exception);
+			$_errObj->setFile($exception);
+			$_errObj->setLine($exception);
+			$_logger->log ($_errObj->stackDump(true), $_errObj->thrown_code, __FILE__, __LINE__);
+
+			if (ConfigHandler::get ('exception', 'show_in_browser')) {
+				OutputHandler::outputRaw ($_errObj->stackDump(false));
+			} else {
+				OutputHandler::outputRaw ('<p class="exception"><b>An error was thrown</b><br/>'
+						. 'Check the logfile for details</p>');
+			}
 		}
+
 		// Define a constants to let destructors know we're not in a clean shutdown
 		define ('TT_EMERGENCY_SHUTDOWN', 1);
 	}
@@ -352,7 +450,7 @@ class TTExceptionHandler
 	 * \param[in] $exception The exception
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function handleException (Throwable $exception)
+	public static function handleException ($exception)
 	{
 		self::logException($exception);
 		TTdbg_show();
