@@ -705,7 +705,7 @@ class DbHandler extends _TT
 	 */
 	public function resetTable ($table)
 	{
-		if ($this->driver->emptyTable ($this->id, $table) === false) {
+		if ($this->driver->emptyTable ($this->id, $this->tablename($table)) === false) {
 			$this->driver->dbError ($this->id, $this->errno, $this->error);
 			$this->setStatus (__FILE__, __LINE__, DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
 		}
@@ -795,6 +795,27 @@ class DbHandler extends _TT
 		return ($this->severity);
 	}
 
+	/**
+	 * Execute a non-datarelated statement
+	 * \param[in] $statement The SQL statement
+	 * \return Severity level
+	 */
+	public function execute ($statement)
+	{
+		$this->open();
+		
+		if (!$this->opened) {
+			$this->setStatus (__FILE__, __LINE__, DBHANDLE_DBCLOSED);
+			return ($this->severity);
+		}
+
+		if ($this->driver->dbExec($this->id, $statement) === false) {
+			$this->driver->dbError ($this->id, $this->errno, $this->error);
+			$this->setStatus ($file, $line, DBHANDLE_DRIVERERR, array ($this->errno, $this->error));
+		}
+		return ($this->severity);
+	}
+	
 	/**
 	 * Read from the database. The return value depends on the flag. By default,
 	 * the selected rows(s) are returned in a 2d array.

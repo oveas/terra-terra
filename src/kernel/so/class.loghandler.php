@@ -339,7 +339,9 @@ class LogHandler extends _TT
 					$_class = 'errorMessages';
 					break;
 			}
-			$_console->addToContent(new Container('div', $msg, array('class' => $_class)));
+			// Create a variable to apply to stict standards: Only variables should be passed by reference
+			$_c = new Container('div', $msg, array('class' => $_class));
+			$_console->addToContent($_c);
 		}
 	}
 

@@ -113,6 +113,12 @@ if (!defined ('TT_TIMERS_ENABLED')) {
 	define ('TT_TIMERS_ENABLED', false);
 }
 
+//! Top location for all TT applications
+define ('TT_APPS_ROOT',	TT_ROOT . '/apps');
+
+//! Top URL for all TT applications
+define ('TT_APPS_URL',	TT_TT_URL . '/apps');
+
 //! Key for the application ID as stored in cache
 define ('TT_APPITM_ID', 'id');
 
@@ -211,7 +217,6 @@ abstract class TTloader
 		// might not exist or have been loaded already.
 		self::getInterface($_driverType . 'driver', TT_DRIVERS . '/' . $_driverType);
 		self::getClass($_driverType . 'defaults', TT_DRIVERS . '/' . $_driverType);
-
 		return (self::getClass(strtolower($_driverName), TT_DRIVERS . '/' . $_driverType));
 	}
 
@@ -368,9 +373,11 @@ abstract class TTloader
 						,TT_APPITM_NAME => $app_data[0]['name']
 						,TT_APPITM_VERSION => $app_data[0]['version']
 						,TT_APPITM_RELEASED => $app_data[0]['released']
-						,TT_APPITM_URL => '/' . $app_data[0]['url']
-						,TT_APPITM_TOP => TT_SITE_TOP . '/' . $app_data[0]['url']
-						,TT_APPITM_LIBRARY => TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib'
+						,TT_APPITM_URL => TT_APPS_URL . '/' . $app_data[0]['url']
+//						,TT_APPITM_TOP => TT_SITE_TOP . '/' . $app_data[0]['url']
+//						,TT_APPITM_LIBRARY => TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib'
+						,TT_APPITM_TOP => TT_APPS_ROOT . '/' . $app_data[0]['url']
+						,TT_APPITM_LIBRARY => TT_APPS_ROOT . '/' . $app_data[0]['url'] . '/lib'
 					)
 			);
 		}
@@ -388,8 +395,8 @@ abstract class TTloader
 			$_cfgFiles = &TTCache::getRef(TTCACHE_CONFIG, 'files');
 			// If an APP_CONFIG file has been defined, add it to the config files array
 			// Values in this config file will overwrite the TT default if the primaty application is loaded
-			if (file_exists(TT_SITE_TOP . '/' . $app_data[0]['url'] . '/terra-terra.' . strtolower($applic_code) . '.cfg')) {
-				$_cfgFiles['app'][] = TT_SITE_TOP . '/' . $app_data[0]['url'] . '/terra-terra.' . strtolower($applic_code) . '.cfg';
+			if (file_exists(TT_APPS_ROOT . '/' . $app_data[0]['url'] . '/terra-terra.' . strtolower($applic_code) . '.cfg')) {
+				$_cfgFiles['app'][] = TT_APPS_ROOT . '/' . $app_data[0]['url'] . '/terra-terra.' . strtolower($applic_code) . '.cfg';
 			}
 			if (count ($_cfgFiles['app']) > 0) {
 				foreach ($_cfgFiles['app'] as $_cfgfile) {
@@ -413,10 +420,10 @@ abstract class TTloader
 		}
 		
 		// Load the application and register with the TT framework
-		if (!file_exists(TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php')) {
-			trigger_error('The file ' . TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php does not exist', E_USER_ERROR);
+		if (!file_exists(TT_APPS_ROOT . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php')) {
+			trigger_error('The file ' . TT_APPS_ROOT . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php does not exist', E_USER_ERROR);
 		} else {
-			require (TT_SITE_TOP . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php');
+			require (TT_APPS_ROOT . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php');
 		}
 
 		if ($applic_code == TT_CODE) {
@@ -471,10 +478,10 @@ abstract class TTloader
 			return;
 		}
 
-		foreach ($app_list as $app_data) {
-			if ($app_data['code'] != self::getCurrentAppCode() && file_exists(TT_SITE_TOP . '/' . $app_data['url'] . '/lib/' . strtolower($app_data['code']) . '.applic.hook.php')) {
+		foreach ($app_list as $app_data) { 
+			if ($app_data['code'] != self::getCurrentAppCode() && file_exists(TT_APPS_ROOT . '/' . $app_data['url'] . '/lib/' . strtolower($app_data['code']) . '.applic.hook.php')) {
 				TTloader::loadApplication($app_data['code'], false);
-				self::$externalAppList[] = TT_SITE_TOP . '/' . $app_data['url'] . '/lib/' . strtolower($app_data['code']) . '.applic.hook.php';
+				self::$externalAppList[] = TT_APPS_ROOT . '/' . $app_data['url'] . '/lib/' . strtolower($app_data['code']) . '.applic.hook.php';
 			}
 		}
 	

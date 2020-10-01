@@ -150,7 +150,7 @@ class Dispatcher extends _TT
 		if (defined($_destination['include_path'])) {
 			$_inc_path = constant($_destination['include_path']);
 		} else {
-			$_inc_path = TT_SITE_TOP . '/'.$this->getExternalApplication($_destination['application']).'/'.$_destination['include_path'];
+			$_inc_path = TT_APPS_ROOT . '/'.$this->getExternalApplication($_destination['application']).'/'.$_destination['include_path'];
 		}
 
 		if (!TTloader::getClass($_destination['class_file'], $_inc_path)) {
@@ -174,11 +174,10 @@ class Dispatcher extends _TT
 			$this->setStatus (__FILE__, __LINE__, DISP_NOMETHOD, array($_destination['method_name'], $_destination['class_name']));
 			return ($this->severity);
 		}
-
 		if ($_destination['argument'] !== 0) {
-			return $_handler->$_destination['method_name']($_destination['argument']);
+			return $_handler->{$_destination['method_name']}($_destination['argument']);
 		} else {
-			return $_handler->$_destination['method_name']();
+			return $_handler->{$_destination['method_name']}();
 		}
 	}
 

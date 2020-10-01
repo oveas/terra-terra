@@ -46,7 +46,9 @@ class Session extends TTSessionHandler
 
 		session_start ();
 		header ('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"'); //Fix for IE6
-		if ($this->getSessionVar('uid', 0) == 0) {
+		// FIXME The ForceLogout check is temporary since while debugging, too manu throws
+		// might corrupt the session. Will be removed when the code is a bit more robust.
+		if ($this->getSessionVar('uid', 0) == 0 || array_key_exists('ForceLogout', $_GET)) {
 			$this->newSession();
 		} else {
 			$this->restoreSession();
@@ -87,7 +89,7 @@ class Session extends TTSessionHandler
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	private function restoreSession()
-	{
+	{		
 		$this->rights = unserialize($this->getSessionVar('activerights'));
 	}
 

@@ -24,7 +24,7 @@
 /**
  * \ingroup TT_UI_PLUGINS
  * Class defining header (e.g. h1) container plugin
- * \brief PContainer
+ * \brief Header Container
  * \author Daan Schulpen
  * \version Nov 23, 2011 -- D Schulpen -- initial version
  */

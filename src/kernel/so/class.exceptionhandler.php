@@ -33,7 +33,7 @@
  * so implementing the errorhandling using try/catch would be an improvemt! Especially the class DbHandler in combination with the class DataHandler
  * should be changed that way.
  */
-class TTException extends Exception
+class TTException extends Exception implements Throwable
 {
 	/**
 	 * Backlink to the calling object
@@ -330,7 +330,7 @@ class TTExceptionHandler
 	 * \param[in] $exception The exception
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function logException(TTException $exception)
+	public static function logException(Throwable $exception)
 	{
 		if (($_logger = TTCache::get(TTCACHE_OBJECTS, 'Logger')) === null) {
 			$_logger = TT::factory('LogHandler');
@@ -352,7 +352,7 @@ class TTExceptionHandler
 	 * \param[in] $exception The exception
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public static function handleException (TTException $exception)
+	public static function handleException (Throwable $exception)
 	{
 		self::logException($exception);
 		TTdbg_show();

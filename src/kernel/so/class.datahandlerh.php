@@ -82,8 +82,9 @@ class HDataHandler extends DataHandler
 		$this->right = 'rgt';
 		$this->xlink = null;
 		$this->xlinkID = null;
-
-		// Quote if necessary
+		// FIXME This is a quick workaround for MySQL - must be driver specific
+		$this->tt_database->execute("SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+// Quote if necessary
 //		$this->left = $this->tt_database->getDriver()->dbQuote($this->left);
 //		$this->right = $this->tt_database->getDriver()->dbQuote($this->right);
 //		if ($this->xlink !== null) {

@@ -159,8 +159,8 @@ class StatusHandler
 		if (!array_key_exists ($this->code, $this->msgCache)) {
 			Register::registerMessages();
 
-			// Check if the messages code exists. If not, it might belong to a class
-			// that was loaded later; translate the code
+			// Check if the messages code exists. If not, the message was not translated yet,
+			// do so now.
 			if (!array_key_exists ($this->code, $this->msgCache)) {
 				if (($_mcode = Register::getCode($this->code, null)) !== null) {
 					$this->msgCache[$this->code] = $this->msgCache[$_mcode];

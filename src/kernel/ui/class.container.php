@@ -66,6 +66,7 @@ class Container extends BaseElement
 		}
 		if (count($_attribs) > 0) {
 			parent::setAttributes($_attribs);
+//			$this->containerObject->setAttributes($_type_attribs);
 		}
 		$this->containerObject->setAttributes($_type_attribs);
 		$this->setContent($_content);

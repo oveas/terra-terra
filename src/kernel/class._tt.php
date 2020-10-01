@@ -230,7 +230,6 @@ abstract class _TT
 		
 		if (ConfigHandler::get ('exception', 'throw_level') >= 0
 				&& $this->severity >= ConfigHandler::get ('exception', 'throw_level', TT_BUG, true)) {
-
 			$this->signal (0, $msg);
 			if (ConfigHandler::get('exception', 'block_throws', false)) {
 				// Can't call myself anymore but we wanna see this message.

@@ -554,6 +554,7 @@ class Document extends BaseElement
 	 * added to the front of the document.
 	 * \param[in] $_container Message container
 	 * \author Daan Schulpen 
+	 * \deprecated Console should be used instead
 	 */
 	public function setMessageContainer($_container) 
 	{
@@ -640,7 +641,7 @@ Register::registerCode('DOC_NOSUCHFILE');
 Register::registerCode('DOC_IVFILESPEC');
 
 Register::setSeverity (TT_BUG);
-Register::registerCode('DOC_IVMSGCONTAINER');
+//Register::registerCode('DOC_IVMSGCONTAINER');
 
 //Register::setSeverity (TT_ERROR);
 //Register::setSeverity (TT_FATAL);

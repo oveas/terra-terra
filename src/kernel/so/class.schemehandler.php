@@ -218,7 +218,8 @@ class SchemeHandler extends _TT
 		}
 		$_return = $this->compare();
 		if ($_return === true) {
-			return true; // table exists and is equal
+			$this->setStatus (__FILE__, __LINE__, SCHEMEHANDLE_EXISTS, $this->table);
+			return ($this->severity);
 		} elseif ($_return === false) {
 			$_stat = $this->createTable(); // table does not exist
 		} else {
@@ -494,6 +495,7 @@ Register::registerClass ('SchemeHandler');
 Register::setSeverity (TT_INFO);
 Register::registerCode ('SCHEMEHANDLE_NOTABLE');
 Register::registerCode ('SCHEMEHANDLE_NOINDEX');
+Register::registerCode ('SCHEMEHANDLE_EXISTS');
 
 //Register::setSeverity (TT_OK);
 //Register::setSeverity (TT_SUCCESS);

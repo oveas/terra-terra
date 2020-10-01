@@ -296,8 +296,6 @@ abstract class Register
 	{
 		$_lang = ConfigHandler::get ('locale', 'lang');
 		$_msgs =& TTCache::getRef(TTCACHE_LOCALE, 'messages');
-		// Suppress 'Undefined constants' notices for codes not (yet) registered
-		$_er = error_reporting(~E_NOTICE);
 		if (TTCache::get(TTCACHE_MSGFILES, 'ttMessages') === null) {
 			if (file_exists (TT_LIBRARY . '/tt.messages.' . $_lang . '.php')) {
 				require (TT_LIBRARY . '/tt.messages.' . $_lang . '.php');
@@ -327,7 +325,6 @@ abstract class Register
 				$_msgs = $_msgs + $_messages;
 			}
 		}
-		error_reporting($_er);
 	}
 
 	/**

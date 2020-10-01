@@ -63,8 +63,8 @@ class LoginArea extends ContentArea
 		$_form->addField('submit', 'act', $this->trn('Login'));
 		$_rowS->addContainer('cell'
 			, $_form->showField('act')
-			, array('colspan'=>2
-			, 'style'=>'text-align:center;')
+			, array('style'=>'text-align:center;')
+			, array('colspan'=>2)
 		);
 
 		$_fldSet = new Container(

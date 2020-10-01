@@ -34,6 +34,8 @@
 class MySQL_i extends DbDefaults implements DbDriver
 {
 	private $dbResource;	//!< Local reference to the database handler
+	
+	private $lastInsertedId = 0;	//!< Save the last inserted ID in autoincrement columns
 
 	public function __construct()
 	{
@@ -309,12 +311,20 @@ class MySQL_i extends DbDefaults implements DbDriver
 		if (!mysqli_query( $_resource, $_query)) {
 			return (-1);
 		}
+
+		$_lastInsertedId = mysqli_insert_id($_resource);
+		if ($_lastInsertedId > 0) {
+			$this->lastInsertedId = $_lastInsertedId;
+		}
 		return (mysqli_affected_rows($_resource));
 	}
 
 	public function dbInsertId (&$_resource, $_table, $_field)
 	{
-		return (((is_null($_mysqliRes = mysqli_insert_id($_resource))) ? 0 : $_mysqliRes));
+		return ($this->lastInsertedId);
+		// Somehow, mysqli_insert_id() returns 0 when called from here, so I introduced
+		// $this->lastInsertedId which is returned here instead.
+//		return (((is_null($_mysqliRes = mysqli_insert_id($_resource))) ? 0 : $_mysqliRes));
 	}
 
 	public function dbRowCount (&$_data)

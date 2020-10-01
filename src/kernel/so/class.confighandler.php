@@ -169,6 +169,21 @@ abstract class ConfigHandler
 				TT::stat(__FILE__, __LINE__, CONFIG_EMPTYSECTION, array($_item));
 				continue;
 			}
+
+			if (preg_match('/\\\$/', $_line)) {
+				$_line = trim(preg_replace('/\\\$/', '', $_line));
+				if (isset($_line_part)) {
+					$_line_part .= $_line;
+				} else {
+					$_line_part = $_line;
+				}
+				continue;
+			}
+			if (isset($_line_part)) {
+				$_line = $_line_part;
+				unset ($_line_part);
+			}
+			
 			list ($_item, $_value) = explode ('=', $_line, 2);
 			$_item = trim ($_item);
 			if ($_item == '') {
@@ -443,7 +458,7 @@ abstract class ConfigHandler
 			}
 		} else {
 			if ($_overwrite === false && array_key_exists($_item, $_value)) {
-					continue;
+				// noop
 			}
 			if ($_hide) {
 				self::$cfgHidden[$_item] = $_value;

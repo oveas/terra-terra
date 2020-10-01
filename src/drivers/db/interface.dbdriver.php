@@ -247,6 +247,9 @@ interface DbDriver
 	 * \param[in] $_table Table to take the value from
 	 * \param[in] $_field Name of the Auto field
 	 * \return The last generated ID, or 0 when not found
+	 * \todo In the mysql_i driver, mysqli_insert_id() always returns 0 when called in this method.
+	 * As a workaround, the $lastInsertedId property is introduced, but now mysqli_insert_id() has
+	 * to be called in dbWrite(), after every write action.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function dbInsertId (&$_resource, $_table, $_field);
