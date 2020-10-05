@@ -7,4 +7,4 @@ docs/tt-testkit/
 terra-terra_*.zip
 updateTestEnv.sh
 syncTestEnv.sh
-
+ttArchive

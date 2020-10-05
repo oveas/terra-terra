@@ -106,7 +106,7 @@ class ImageHandler extends FileHandler
 			return;
 		}
 		$this->size = filesize($this->name);
-		$this->localfile = !eregi("^([a-z]+)://", $this->name);
+		$this->localfile = !preg_match('/^([a-z]+):\/\//i', $this->name);
 		$this->myfile = (fileowner($this->name) == getmyuid());
 
 		$this->setStatus (__FILE__, __LINE__, TT_STATUS_OK);
