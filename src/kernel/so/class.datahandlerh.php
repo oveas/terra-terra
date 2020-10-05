@@ -82,8 +82,10 @@ class HDataHandler extends DataHandler
 		$this->right = 'rgt';
 		$this->xlink = null;
 		$this->xlinkID = null;
-		// FIXME This is a quick workaround for MySQL - must be driver specific
-		$this->tt_database->execute("SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+
+		// Switch off the ONLY_FULL_GROUP_BY setting to prevent MySQL error 1055
+		$this->tt_database->setSession(array('OnlyFullGroupBy' => false));
+
 // Quote if necessary
 //		$this->left = $this->tt_database->getDriver()->dbQuote($this->left);
 //		$this->right = $this->tt_database->getDriver()->dbQuote($this->right);

@@ -624,6 +624,21 @@ class Oracle extends DbDefaults implements DbDriver
 		return true;
 	}
 
+	public function setSession (&$_resource, array $_settings)
+	{
+		foreach ($_settings as $_k => $_v) {
+			$_s = null;
+			switch ($_k) {
+				case 'OnlyFullGroupBy' :
+					// Nothing to do here
+					break;
+			}
+			if ($_s !== null) {
+				$this->dbExec($_resource, $_s);
+			}
+		}
+	}
+
 	public function dbTransactionCommit (&$_resource, $_name = null, $_new = false)
 	{
 		return oci_commit($_resource);

@@ -204,6 +204,15 @@ interface DbDriver
 	public function dbOpen (&$_resource, $_server, $_name, $_user, $_password);
 
 	/**
+	 * Update settings in the active database session.
+	 * \param[in] $_resource Link with the database server
+	 * \param[im] $_settings An array with 'key' => 'value' paires where key is the session item to be set
+	 * and 'value' the value. The driver class is responsible for translating the 'key'/'value' pairs
+	 * to database-specific commands.
+	 */
+	public function setSession (&$_resource, array $_settings);
+
+	/**
 	 * Get a list with tablenames
 	 * \param[in] $_resource Link with the database server
 	 * \param[in] $_pattern Search pattern

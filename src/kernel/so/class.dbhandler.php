@@ -486,6 +486,16 @@ class DbHandler extends _TT
 	}
 
 	/**
+	 * Update settings in the active database session.
+	 * \param[im] $settings An array with 'key' => 'value' paires where key is the session item to be set
+	 * and 'value' the value.
+	 */
+	public function setSession(array $settings)
+	{
+		$this->driver->setSession($this->id, $settings);
+	}
+
+	/**
 	 * Reset the object
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */

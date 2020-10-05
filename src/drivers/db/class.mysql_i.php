@@ -223,6 +223,25 @@ class MySQL_i extends DbDefaults implements DbDriver
 		return (((bool)mysqli_query( $_resource, "USE $_name")));
 	}
 
+	public function setSession (&$_resource, array $_settings)
+	{
+		foreach ($_settings as $_k => $_v) {
+			$_s = null;
+			switch ($_k) {
+				case 'OnlyFullGroupBy' :
+					if ($_v === false) {
+						$_s = "SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))";
+					} else {
+						$_s = "SET SESSION sql_mode = sys.list_add(@@session.sql_mode, 'ONLY_FULL_GROUP_BY')";
+					}
+					break;
+			}
+			if ($_s !== null) {
+				$this->dbExec($_resource, $_s);
+			}
+		}
+	}
+
 	public function dbTransactionCommit (&$_resource, $_name = null, $_new = false)
 	{
 		$_q = 'COMMIT WORK'
