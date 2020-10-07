@@ -24,7 +24,7 @@
 
 /**
  * \ingroup TT_UI_LAYER
- * Interface that defines the layout class. Some of the methods are implemented in class DbDefaults
+ * Interface that defines the layout class.
  * \brief Document layout interface interface
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Apr 14, 2014 -- O van Eijk -- initial version

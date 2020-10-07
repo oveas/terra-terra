@@ -34,7 +34,7 @@ if (!TTloader::getClass('sockethandler', TT_SO_INC)) {
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 11, 2011 -- O van Eijk -- initial version
  */
-class RawSMTP extends MailDefaults implements MailDriver
+class RawSMTP extends MailsendDefaults implements MailsendDriver
 {
 	/**
 	 * SMTP communication socket

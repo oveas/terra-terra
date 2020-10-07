@@ -29,7 +29,7 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 11, 2011 -- O van Eijk -- initial version
  */
-abstract class MailDefaults
+abstract class MailsendDefaults
 {
 
 	/**

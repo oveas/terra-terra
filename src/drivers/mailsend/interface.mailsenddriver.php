@@ -38,7 +38,7 @@ define ('MAILDRIVER_HEADERTYPE_HTML',	0);
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 11, 2011 -- O van Eijk -- initial version
  */
-interface MailDriver
+interface MailsendDriver
 {
 	/**
 	 * Constructor; must exist but can be empty

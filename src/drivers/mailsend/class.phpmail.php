@@ -29,7 +29,7 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version Jul 12, 2013 -- O van Eijk -- initial version
  */
-class PHPMail extends MailDefaults implements MailDriver
+class PHPMail extends MailsendDefaults implements MailsendDriver
 {
 
 	public function __construct()
