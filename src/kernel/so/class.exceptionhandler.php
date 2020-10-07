@@ -32,6 +32,8 @@
  * \todo The oldest code in TT dates back to 2001; by now PHP4 support is dropped anyway,
  * so implementing the errorhandling using try/catch would be an improvemt! Especially the class DbHandler in combination with the class DataHandler
  * should be changed that way.
+ * \todo Another PHP compatibility issues is the way exception handling changed in PHP7. To make sure all throwables can be handled, a dirty
+ * trick is implemented here. Still needs a better solutiuon (see alse https://stackoverflow.com/questions/64204234/establish-a-custom-default-exceptionhandler-in-php)
  */
 class TTException extends Exception implements Throwable
 {
