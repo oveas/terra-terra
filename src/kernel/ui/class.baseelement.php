@@ -150,7 +150,8 @@ abstract class BaseElement extends _TT
 			$this->setStatus (__FILE__, __LINE__, DOM_SELFREF, $this->name);
 			return '&nbsp;'; // Probably fatal, but for completeness...
 		}
-		$this->content = $_content;
+		$this->content = array();
+		$this->content[] = $_content;
 	}
 
 	/**
