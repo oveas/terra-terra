@@ -70,6 +70,8 @@ class RawSMTP extends MailsendDefaults implements MailsendDriver
 	{
 		$_server = ConfigHandler::get('mail', 'smtp_server', 'localhost');
 		$this->mailSocket = new SocketHandler('smtp', $_server);
+		$X=$this->mailSocket->connect();
+
 		if ($this->mailSocket->connect() >= TT_WARNING) {
 			return (false);
 		}
@@ -97,7 +99,7 @@ class RawSMTP extends MailsendDefaults implements MailsendDriver
 		if (array_key_exists('reply_to', $mail)) {
 			$this->mailSocket->write ('Reply-To: ' . $mail['reply_to']);
 		}
-		$this->mailSocket->write ('From: ' . $mail['sender']);
+		$this->mailSocket->write ('From: ' . $mail['from']);
 
 		// Recipients (except Bcc)
 		if (array_key_exists('to', $mail) && count($mail['to']) > 0) {

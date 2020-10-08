@@ -99,6 +99,7 @@ abstract class Register
 	 */
 	static public function registerApp ($name, $id)
 	{
+//		printf("Register %s, class now %%X%08X<br>", $name, $id);
 		if ($id == 0x00000000 || $id == 0xffffffff) {
 			$_msg = sprintf("Access violation - ID for application %s (%%08X) is out of range",
 					$name, $id);
@@ -128,7 +129,7 @@ abstract class Register
 		$_stack =& TTCache::getRef(TTCACHE_REGISTER, 'stack');
 		$_stack['class'] += 0x00001000;
 		$id = $_stack['class'];
-
+//		printf("Class %s gets %%X%08X (%d)<br>", $name, $_stack['class'], $_stack['class']);
 		// use isset() here, since array_key_exists() gives a warning if the hex $id
 		// has a negative integer value.
 		// To make sure the ID is not interpreted as an index, cast it as a string
@@ -169,12 +170,13 @@ abstract class Register
 
 		if (!isset($_codes[$_sev])) {
 			$_codes[$_sev] = 0x00000000;
-//			echo "----&gt; New code: $_codes[$_sev]<br>";
+//			echo "----&gt; New code for $code: $_codes[$_sev]<br>";
 		}
 		$_codes[$_sev] += 0x00000010;
 //			echo "----&gt; Increased code: $_codes[$_sev]<br>";
 
 		$_value = $_class | $_codes[$_sev] | $_sev;
+//		printf ("Code for %s: %d (%%X%08X) | %d (%%X%08X) | %d (%%X%08X) : %%X%08X<br>", $code, $_class,$_class, $_codes[$_sev],$_codes[$_sev], $_sev,$_sev, $_value);
 		define ($code, $_value);
 		$_symbols =& TTCache::getRef(TTCACHE_REGISTER, 'code_symbols');
 		$_symbols["$_value"] = $code;

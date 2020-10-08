@@ -183,11 +183,12 @@ class SocketHandler extends _TT
 			$this->setStatus(__FILE__, __LINE__, SOCKET_WRITEERROR);
 			return ($this->severity);
 		}
-
+//echo "Write: [$line] <br>";
 		if ($expect !== '') {
 			if (($response = $this->read()) === null) {
 				return ($this->severity);
 			}
+//echo "Read [$response]<br>";
 			if (strncmp($response, $expect, strlen($expect)) !== 0) {
 				$this->setStatus(__FILE__, __LINE__, SOCKET_UNEXPECTED, array(rtrim($response), $expect));
 			} else {

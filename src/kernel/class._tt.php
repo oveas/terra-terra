@@ -416,7 +416,7 @@ abstract class _TT
 /*
  * Register this class and all status codes
  */
-Register::registerApp ('Terra-Terra', 0xff000000);
+Register::registerApp ('Terra-Terra', 0x01000000);
 
 
 //Register::setSeverity (TT_DEBUG);

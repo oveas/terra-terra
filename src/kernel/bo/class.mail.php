@@ -111,8 +111,10 @@ class Mail extends _TT
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setDate ($date = null)
-	{	// Format: Date: Fri, 20 May 2011 18:05:06 +0200
-		// TODO write this function.... what checks do we need to make??
+	{
+		if (!array_key_exists('Date', $this->mail['headers'])) {
+			$this->addHeaders(array('Date' => Date('r')));
+		}
 	}
 
 	/**
@@ -249,6 +251,7 @@ class Mail extends _TT
 	 */
 	public function send()
 	{
+		$this->setDate();
 		if ($this->driver->mailSend($this->mail) === false) {
 			$_err = $this->driver->getLastWarning();
 			$this->setStatus(__FILE__, __LINE__, MAIL_SENDERR, array($this->mail['subject'], $_err));
