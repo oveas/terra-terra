@@ -223,7 +223,7 @@ class SocketHandler extends _TT
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('SocketHandler');
+Register::registerClass ('SocketHandler', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 //Register::setSeverity (TT_INFO);

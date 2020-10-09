@@ -366,7 +366,7 @@ class LogHandler extends _TT
  * Register this class and all status codes
  */
 
-Register::registerClass ('LogHandler');
+Register::registerClass ('LogHandler', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 //Register::setSeverity (TT_INFO);

@@ -254,7 +254,7 @@ class Form extends BaseElement
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('Form');
+Register::registerClass ('Form', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 

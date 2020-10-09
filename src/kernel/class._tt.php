@@ -27,6 +27,9 @@
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \version May 15, 2007 -- O van Eijk -- initial version
  */
+
+define ('TT_APPNAME', 'Terra-Terra'); //!< Terra-Terra application name
+
 abstract class _TT
 {
 	/**
@@ -412,12 +415,11 @@ abstract class _TT
 		}
 	}
 }
-
 /*
  * Register this class and all status codes
  */
-Register::registerApp ('Terra-Terra', 0x01000000);
-
+Register::registerApp (TT_APPNAME, 0x1ef, 0x1);
+Register::registerClass('TT', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 //Register::setSeverity (TT_INFO);

@@ -355,7 +355,7 @@ class FileHandler extends _TT
 /*
  * Register this class and all status codes
 */
-Register::registerClass('FileHandler');
+Register::registerClass('FileHandler', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 Register::setSeverity (TT_INFO);

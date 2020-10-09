@@ -526,7 +526,7 @@ class DataHandler extends _TT
  * Register this class and all status codes
  */
 
-Register::registerClass ('DataHandler');
+Register::registerClass ('DataHandler', TT_APPNAME);
 
 Register::setSeverity (TT_DEBUG);
 Register::registerCode ('DATA_KEYSET');

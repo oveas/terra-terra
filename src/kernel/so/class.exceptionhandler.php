@@ -199,14 +199,14 @@ class TTException extends Exception implements Throwable
 		}
 		if ($textmode) {
 			$_text = 'An ' . ($_dumpingError ? 'Error' : 'Exception') . ' was thrown :'. "\n";
-			$_text = sprintf('%s%s code : %%X%08X (%s)%s'
+			$_text = sprintf('%s%s code : %%X%016X (%s)%s'
 					, $_text, ($_dumpingError ? 'Error' : 'Exception'), $this->code, Register::getCode ($this->code), "\n");
 			$_text .= 'Filename: ' . $this->_getFile() . ' at line ' . $this->_getLine() . "\n";
 			$_text .= 'Severity level: ' . Register::getSeverity ($this->code & TT_SEVERITY_PATTERN) . "\n";
 			$_text .= ($_dumpingError ? 'Error' : 'Exception') . ' message : ' . $this->message . "\n";
 		} else {
 			$_text = '<p class="exception"><b>An '. ($_dumpingError ? 'Error' : 'Exception') . ' was thrown :</b><br/>';
-			$_text = sprintf('%s%s code : %%X%08X (%s)<br />'
+			$_text = sprintf('%s%s code : %%X%016X (%s)<br />'
 					, $_text, ($_dumpingError ? 'Error' : 'Exception'), $this->code, Register::getCode ($this->code));
 			$_text .= 'Filename: ' . $this->_getFile() . ' at line ' . $this->_getLine() . '<br />';
 

@@ -80,7 +80,7 @@ class Console extends Container
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('Console');
+Register::registerClass ('Console', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 //Register::setSeverity (TT_INFO);

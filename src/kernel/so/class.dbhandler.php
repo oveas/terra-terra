@@ -1428,7 +1428,7 @@ class DbHandler extends _TT
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('DbHandler');
+Register::registerClass ('DbHandler', TT_APPNAME);
 
 Register::setSeverity (TT_DEBUG);
 Register::registerCode ('DBHANDLE_QPREPARED');

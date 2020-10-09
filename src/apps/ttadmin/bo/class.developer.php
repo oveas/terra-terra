@@ -260,7 +260,7 @@ TTloader::getClass('TTrundown.php', TT_ROOT);
 	{
 		$_fileContent = "<?php
 		" . $this->createFileHeader() . "
-Register::registerApp(TTloader::getCurrentAppName(), 0x03000000);
+Register::registerApp(TTloader::getCurrentAppName(), 0x01, 0x03);
 Register::registerLabels();
 
 define ('$this->appCode"."_SO', TTloader::getCurrentAppUrl() . '/so');

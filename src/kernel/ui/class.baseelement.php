@@ -392,7 +392,7 @@ abstract class BaseElement extends _TT
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('DOMElement');
+Register::registerClass ('DOMElement', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 

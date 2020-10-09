@@ -139,7 +139,7 @@ abstract class FormFieldPlugin extends BaseElement
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('FormField');
+Register::registerClass ('FormField', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 

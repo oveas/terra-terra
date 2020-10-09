@@ -210,7 +210,7 @@ class Session extends TTSessionHandler
 	}
 }
 
-Register::registerClass('Session');
+Register::registerClass('Session', TT_APPNAME);
 
 Register::setSeverity (TT_WARNING);
 Register::registerCode ('SESSION_IPCHKFAIL');

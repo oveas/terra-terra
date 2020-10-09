@@ -909,7 +909,7 @@ class HDataHandler extends DataHandler
  * Register this class and all status codes
  */
 
-Register::registerClass ('HDataHandler');
+Register::registerClass ('HDataHandler', TT_APPNAME);
 
 Register::setSeverity (TT_DEBUG);
 Register::registerCode ('HDATA_QUERY');

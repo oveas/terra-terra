@@ -262,7 +262,7 @@ class Group extends _TT
 	}
 
 }
-Register::registerClass('Group');
+Register::registerClass('Group', TT_APPNAME);
 //Register::setSeverity (TT_DEBUG);
 //Register::setSeverity (TT_INFO);
 //Register::setSeverity (TT_OK);

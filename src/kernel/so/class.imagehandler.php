@@ -118,7 +118,7 @@ class ImageHandler extends FileHandler
 /*
  * Register this class and all status codes
  */
-Register::registerClass('ImageHandler');
+Register::registerClass('ImageHandler', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 Register::setSeverity (TT_INFO);

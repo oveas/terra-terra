@@ -154,7 +154,7 @@ abstract class Security
 		return (toBool($_curr));
 	}
 }
-Register::registerClass('Security');
+Register::registerClass('Security', TT_APPNAME);
 
 Register::setSeverity (TT_WARNING);
 //Register::registerCode ('USER_DUPLUSERNAME');

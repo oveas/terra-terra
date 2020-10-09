@@ -306,7 +306,7 @@ class Dispatcher extends _TT
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('Dispatcher');
+Register::registerClass ('Dispatcher', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 

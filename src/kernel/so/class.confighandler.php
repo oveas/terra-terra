@@ -474,7 +474,7 @@ abstract class ConfigHandler
  * Register this class and all status codes
  */
 
-Register::registerClass ('ConfigHandler');
+Register::registerClass ('ConfigHandler', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 Register::setSeverity (TT_INFO);

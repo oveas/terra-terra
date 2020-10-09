@@ -154,7 +154,7 @@ class Container extends BaseElement
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('Container');
+Register::registerClass ('Container', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 

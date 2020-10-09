@@ -488,7 +488,7 @@ class SchemeHandler extends _TT
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('SchemeHandler');
+Register::registerClass ('SchemeHandler', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 

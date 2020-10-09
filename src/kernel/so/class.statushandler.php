@@ -172,7 +172,7 @@ class StatusHandler
 		if (array_key_exists ($this->code, $this->msgCache)) {
 			$_msg = $this->msgCache[$this->code];
 		} else {
-			$_msg = sprintf ('No message found for code %%X%08X (%d) (%s)', $this->code, $this->code, Register::getCode($this->code));
+			$_msg = sprintf ('No message found for code %%X%016X (%d) (%s)', $this->code, $this->code, Register::getCode($this->code));
 		}
 		for ($_i = 0; $_i < count ($this->params); $_i++) {
 			$_search[] = '$p' . ($_i + 1) . '$';

@@ -736,7 +736,7 @@ return (hash (ConfigHandler::get ('session', 'password_crypt'), $password));
 		return $this->session->getSessionVar($var, $default);
 	}
 }
-Register::registerClass('User');
+Register::registerClass('User', TT_APPNAME);
 
 
 

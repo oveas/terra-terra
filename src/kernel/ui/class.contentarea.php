@@ -142,7 +142,7 @@ abstract class ContentArea extends _TT
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('ContentArea');
+Register::registerClass ('ContentArea', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 

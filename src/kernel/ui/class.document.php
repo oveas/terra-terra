@@ -131,9 +131,9 @@ class Document extends BaseElement
 		$this->title = 'Terra-Terra Generated document';
 		$this->meta = array(
 			  'robots'	=> 'index, follow'
-			, 'keywords'	=> array('Terra-Terra', 'Oveas', TT_CODE)
-			, 'description'	=> 'Terra-Terra - Oveas Web 2.2 Platform'
-			, 'generator'	=> 'Terra-Terra v' . TTCache::getApplic(TT_CODE, TT_APPITM_VERSION)
+			, 'keywords'	=> array(TT_APPNAME, 'Oveas', TT_CODE)
+			, 'description'	=> TT_APPNAME . ' - Oveas Web 2.2 Platform'
+			, 'generator'	=> TT_APPNAME . ' v' . TTCache::getApplic(TT_CODE, TT_APPITM_VERSION)
 				. ' - Oveas Web 2.2 Platform, (c)2001-'.substr(TTCache::getApplic(TT_CODE, TT_APPITM_RELEASED), 0, 4)
 				. ' Oveas Functionality Provider'
 		);
@@ -626,7 +626,7 @@ class Document extends BaseElement
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('Document');
+Register::registerClass ('Document', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 

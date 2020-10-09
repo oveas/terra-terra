@@ -107,7 +107,7 @@ class Rights extends Security
 		TTCache::set('rights', 'list', $this->rightslist);
 	}
 }
-Register::registerClass('Rights');
+Register::registerClass('Rights', TT_APPNAME);
 
 Register::setSeverity (TT_WARNING);
 //Register::registerCode ('USER_DUPLUSERNAME');

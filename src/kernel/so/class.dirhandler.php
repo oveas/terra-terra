@@ -241,7 +241,7 @@ class DirHandler extends _TT
 /*
  * Register this class and all status codes
 */
-Register::registerClass('DirHandler');
+Register::registerClass('DirHandler', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 Register::setSeverity (TT_INFO);

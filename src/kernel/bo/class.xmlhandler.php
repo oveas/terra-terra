@@ -194,7 +194,7 @@ class XmlHandler extends _TT
 /*
  * Register this class and all status codes
 */
-Register::registerClass('XmlHandler');
+Register::registerClass('XmlHandler', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 Register::setSeverity (TT_INFO);

@@ -296,7 +296,7 @@ class Mail extends _TT
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('Mail');
+Register::registerClass ('Mail', TT_APPNAME);
 
 //Register::setSeverity (TT_DEBUG);
 

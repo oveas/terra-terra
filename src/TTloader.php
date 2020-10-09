@@ -585,7 +585,6 @@ abstract class TTloader
 		return TTCache::getApplic(self::$currentApp, TT_APPITM_TOP);
 	}
 }
-
 // The very first class being loaded must be TTCache; it's used by getClass()
 TTloader::getClass('cache', TT_SO_INC);
 // Load data from the cache

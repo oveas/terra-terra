@@ -68,7 +68,7 @@ class ContainerHeaderPlugin extends ContainerPlugin
 
 }
 
-Register::registerClass('ContainerHeaderPlugin');
+Register::registerClass('ContainerHeaderPlugin', TT_APPNAME);
 
 Register::setSeverity(TT_BUG);
 Register::registerCode('HEADER_LVLOORANGE');

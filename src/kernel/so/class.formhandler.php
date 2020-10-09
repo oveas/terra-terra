@@ -301,7 +301,7 @@ class FormHandler extends _TT
 /*
  * Register this class and all status codes
  */
-Register::registerClass ('FormHandler');
+Register::registerClass ('FormHandler', TT_APPNAME);
 
 Register::setSeverity (TT_DEBUG);
 Register::registerCode ('FORM_STORVALUE');
