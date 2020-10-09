@@ -68,7 +68,7 @@ class PHPMail extends MailsendDefaults implements MailsendDriver
 			$_subj = $mail['subject'];
 		}
 		
-		$_hdr  = 'From: ' . $mail['sender'] . "\r\n";
+		$_hdr  = 'From: ' . $mail['from'] . "\r\n";
 
 		if (array_key_exists('to', $mail) && count($mail['to']) > 0) {
 			$_hdr .= 'To' . implode(',', $mail['to']) . "\r\n";
