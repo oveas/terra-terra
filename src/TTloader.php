@@ -24,18 +24,6 @@
 // Error handling used during development
 error_reporting(E_ALL | E_STRICT);
 
-// Doxygen setup
-/**
- * \defgroup TT_UI_LAYER Presentation Layer modules
- * \defgroup TT_BO_LAYER Business Layer modules
- * \defgroup TT_SO_LAYER Storage Layer modules
- * \defgroup TT_LIBRARY Library (codes, messages files etc.)
- * \defgroup TT_CONTRIB Contributed helper functions
- * \defgroup TT_UI_PLUGINS Plugins for the presentation modules
- * \defgroup TT_DRIVERS Drivers
- * \defgroup TT_TTADMIN TT administration site
- */
-
 /**
  * \defgroup GlobalConstants Global constants
  * These constants define all paths for TT
@@ -64,6 +52,9 @@ define ('TT_LIBRARY',	TT_ROOT . '/lib');
 
 //! Default log directory
 define ('TT_LOG',		TT_ROOT . '/log');
+
+//! TT's designs directory
+define ('TT_THEMES',	TT_ROOT . '/themes');
 
 //! TT's temp directory. This directory must be writeable by the http user
 define ('TT_TEMP',		TT_ROOT . '/tmp');
@@ -95,6 +86,9 @@ if (strpos($_SERVER['SCRIPT_FILENAME'], $_SERVER['DOCUMENT_ROOT']) === 0) {
 
 //! Toplocation of Terra-Terra (URL)
 define ('TT_TT_URL', str_replace(TT_SITE_TOP, '', TT_ROOT));
+
+//! URL of TT's themes directory
+define ('TT_THEMES_URL',	TT_TT_URL . '/themes');
 
 //! Default URL used for all callbacks (like form actions, AJAX requests etc)
 define ('TT_CALLBACK_URL', $_SERVER['PHP_SELF']);
@@ -151,6 +145,7 @@ define ('TT_APPITM_LIBRARY', 'lib');
 abstract class TTloader
 {
 	//! Code of the primary application we're running
+	//! \deprecated The concept of Primary dnd Current apps is not used anymore
 	private static $primaryApp;
 	
 	//! Code of the active application instantiated by the dispatcher
@@ -237,6 +232,9 @@ abstract class TTloader
 			return false;
 		}
 		require ($_interfaceFile);
+		if (class_exists('Register')) {
+			Register::resetCurrentApp();
+		}
 		return true;
 	}
 
@@ -299,6 +297,9 @@ abstract class TTloader
 		}
 
 		require ($_classPath);
+		if (class_exists('Register')) {
+			Register::resetCurrentApp();
+		}
 		if (!class_exists('TTCache')) {
 			trigger_error('TTCache is not loaded first', E_USER_ERROR);
 		}
@@ -551,6 +552,7 @@ abstract class TTloader
 
 	/**
 	 * Getter for the primary application's name
+	 * \deprecated The concept of Primary dnd Current apps is not used anymore
 	 * \return Application name
 	 */
 	public static function getPrimaryAppName()
@@ -569,6 +571,7 @@ abstract class TTloader
 
 	/**
 	 * Getter for the primary application's top URL
+	 * \deprecated The concept of Primary dnd Current apps is not used anymore
 	 * \return Application top URL
 	 */
 	public static function getPrimaryAppUrl()
@@ -625,6 +628,7 @@ TTloader::getClass('session', TT_BO_INC);
 TTloader::getClass('user', TT_BO_INC);
 
 // UI Layer
+TTloader::getClass('theme', TT_UI_INC);
 TTloader::getClass('baseelement', TT_UI_INC);
 TTloader::getClass('container', TT_UI_INC);
 TTloader::getClass('console', TT_UI_INC);

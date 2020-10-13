@@ -44,5 +44,7 @@ interface ttLayout
 	public static function loadContainers();
 }
 
+Register::registerInterface('ttLayout', TT_APPNAME);
+
 Register::setSeverity (TT_WARNING);
 Register::registerCode('TT_NOSUCHLAYOUT');

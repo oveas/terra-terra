@@ -141,6 +141,16 @@ abstract class Register
 		return self::$currentApp;
 
 	}
+
+	/**
+	 * Reset the current appname. Called by TTLoader after a class or interface is fully loaded.
+	 */
+	static public function resetCurrentApp()
+	{
+		self::$currentApp = '';
+		
+	}
+
 	/**
 	 * Store the specified application in the register
 	 * \param[in] $applicationName Name of the application
@@ -172,6 +182,18 @@ abstract class Register
 			$_apps[$applicationName] = array('class' => $_id);
 		}
 		self::setApplication ($_id);
+	}
+
+	/**
+	 * Register a new interface. Currently, this is only used to set the current appname.
+	 * This method /must/ be called when an interface defines statuscodes.
+	 * \param[in] $name Name of the interface --- currently ignored
+	 * \param[in] $appName Name of the application to which this interface belongs
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	static public function registerInterface ($name, $appName)
+	{
+		self::setCurrentApp($appName);
 	}
 
 	/**
