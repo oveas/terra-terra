@@ -22,6 +22,18 @@
  * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
+// Doxygen setup
+/**
+ * \defgroup TT_UI_LAYER Presentation Layer modules
+ * \defgroup TT_BO_LAYER Business Layer modules
+ * \defgroup TT_SO_LAYER Storage Layer modules
+ * \defgroup TT_LIBRARY Library (codes, messages files etc.)
+ * \defgroup TT_CONTRIB Contributed helper functions
+ * \defgroup TT_UI_PLUGINS Plugins for the presentation modules
+ * \defgroup TT_DRIVERS Drivers
+ * \defgroup TT_TTADMIN TT administration site
+ */
+
 /**
  * \mainpage
  * Terra-Terra is a development framework for webbased applications.
