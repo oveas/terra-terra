@@ -112,6 +112,11 @@ class Document extends BaseElement
 	private $open;
 
 	/**
+	 * Reference to the Theme object
+	 */
+	private $theme;
+
+	/**
 	 * Class constructor;
 	 * \param[in] $_attribs Indexed array with the HTML attributes
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -143,6 +148,7 @@ class Document extends BaseElement
 		$this->contentType = 'text/html; charset=utf-8';
 		$this->tt_jsEnabled = false;
 		$this->open = false;
+		$this->theme = null;
 	}
 
 	/**
@@ -417,6 +423,26 @@ class Document extends BaseElement
 	public function getBase($ttBase = false)
 	{
 		return ($ttBase === true) ? $this->ttBase : $this->base;
+	}
+
+	/**
+	 * Load the stylesheets from the active theme
+	 * \param[in] $theme An optional theme. If omitted, the theme will be taken from the configuration
+	 * \param[in] $variant An optional theme variane. If omitted, the variant will be taken from the configuration
+	 */
+	public function setTheme($theme = null, $variant = null)
+	{
+		$_theme = TT::factory('Theme', 'ui');
+		if ($theme !== null) {
+			$_theme->setTheme($theme);
+		}
+		if ($variant !== null) {
+			$_theme->setVariane($variant);
+		}
+		$_styles = $_theme->getStyleSheets();
+		foreach ($_styles as $_style) {
+			$this->loadStyle($_style);
+		}
 	}
 
 	/**

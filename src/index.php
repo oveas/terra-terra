@@ -15,10 +15,7 @@ require (TT_ROOT . '/TTloader.php');
 TTloader::loadApplication(TT_CODE);
 
 $dispatcher = TT::factory('Dispatcher');
-
 $document   = TT::factory('Document', 'ui');
-//$console = new Container('div');
-//$document->setMessageContainer($console);
 
 $document->enableTT_JS();
 Layout::loadContainers();
@@ -28,6 +25,7 @@ $dispatcher->dispatch('TT#TTADMIN_BO#ttuser#TTUser#showMainMenu');
 $dispatcher->dispatch('TT#TTADMIN_BO#ttuser#TTUser#showUserMenu');
 
 $document->loadStyle(TT_STYLE_URL . '/tt.css');
+$document->setTheme ();
 
 TTloader::getArea('pagefooter', TTADMIN_UI)->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'FooterContainer'));
 

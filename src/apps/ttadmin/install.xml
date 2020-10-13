@@ -29,6 +29,12 @@
  			<item id = "timezone">Europe/Brussels</item>
  -->
 		</items>
+
+		<items section = "layout">
+			<item id = "theme">terra-terra</item>
+			<item id = "variant">ttgreen</item>
+		</items>
+
 		<items section = "session">
  			<item id = "lifetime">1440</item>
 			<item id = "pwd_minstrength">2</item>
