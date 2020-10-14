@@ -104,6 +104,7 @@ abstract class BaseElement extends _TT
 	/**
 	 * Set the element style
 	 * \param[in] $_value Element style
+	 * \deprecated Use the Style class instead
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setStyle($_value)

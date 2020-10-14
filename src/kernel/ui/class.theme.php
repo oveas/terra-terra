@@ -1,7 +1,7 @@
 <?php
 /**
  * \file
- * This file defines default Theme class
+ * This file defines Theme class
  * \author Oscar van Eijk, Oveas Functionality Provider
  * \copyright{2007-2020} Oscar van Eijk, Oveas Functionality Provider
  * \license
@@ -117,6 +117,29 @@ class Theme extends _TT
 	}
 
 	/**
+	 * Get the full URL of an image. First, the variant is checked if this theme as a variant,
+	 * if not found there, the same location at theme level is checked.
+	 * \param $image Full name of the image.
+	 * \param $location Location of the image, which is an optional subdirectory of the variant or theme directory
+	 * \return Full URL of the image
+	 */
+	public function getImage($image, $location = '')
+	{
+		if ($location != '') {
+			$location = '/' . $location;
+		}
+		if ($this->variant != '') {
+			if (file_exists(TT_THEMES . '/' . $this->theme . '/variants/' . $variant . $location . '/' . $image)) {
+				return TT_THEMES_URL . '/' . $this->theme . '/variants/' . $variant . $location . '/' . $image;
+			}
+		}
+		if (file_exists(TT_THEMES . '/' . $this->theme . $location . '/' . $image)) {
+			return TT_THEMES_URL . '/' . $this->theme . $location . '/' . $image;
+		}
+		$this->setStatus(__FILE__, __LINE__, THEME_NOSUCHIMAGE, array($image, $location, $this->theme, $variant));
+	}
+
+	/**
 	 * Collect all stylesheets for this theme, including a selected variant if any.
 	 * \return Array with all stylesheets including the full URL.
 	 */
@@ -139,6 +162,7 @@ Register::registerClass('Theme', TT_APPNAME);
 
 Register::setSeverity (TT_WARNING);
 Register::registerCode('THEME_NOSUCHVARIANT');
+Register::registerCode('THEME_NOSUCHIMAGE');
 
 //Register::setSeverity (TT_BUG);
 

@@ -137,16 +137,26 @@ class Container extends BaseElement
 	 */
 	public function showElement()
 	{
-		$_htmlCode = '<' . $this->containerObject->getType();
-		$_htmlCode .= $this->containerObject->getAttributes() . $this->getAttributes();
-		$_htmlCode .= $this->containerObject->showElement();
-		$_htmlCode .= '>' . $this->containerObject->getNestedType() . "\n";
-		if (method_exists($this->containerObject, 'getContent')) {
-			$_htmlCode .= $this->containerObject->getContent();
+		$_ignoreAttribs = array();
+		$_css = $this->containerObject->getStyleElement();
+		if ($_css != '') {
+			$_ignoreAttribs = array('style'); // Style as a direct attribute is now deprecated
 		}
-		$_htmlCode .= $this->getContent();
-		$_htmlCode .= $this->containerObject->getNestedType(true);
-		$_htmlCode .= '</' . $this->containerObject->getType() . ">\n";
+		$_htmlCode = '<' . $this->containerObject->getType();
+		$_htmlCode .= $this->containerObject->getAttributes($_ignoreAttribs) . $this->getAttributes($_ignoreAttribs);
+		$_htmlCode .= $this->containerObject->showElement();
+		$_htmlCode .= $_css;
+		if ($this->containerObject->isSelfClosing()) {
+			$_htmlCode .= '>';
+		} else {
+			$_htmlCode .= '>' . $this->containerObject->getNestedType() . "\n";
+			if (method_exists($this->containerObject, 'getContent')) {
+				$_htmlCode .= $this->containerObject->getContent();
+			}
+			$_htmlCode .= $this->getContent();
+			$_htmlCode .= $this->containerObject->getNestedType(true);
+			$_htmlCode .= '</' . $this->containerObject->getType() . ">\n";
+		}
 		return $_htmlCode;
 	}
 }

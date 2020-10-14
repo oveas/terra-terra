@@ -43,6 +43,16 @@ abstract class ContainerPlugin extends BaseElement
 	protected $nested_type;
 
 	/**
+	 * True for self-closing containers that have no actual content. Defaults to false
+	 */
+	protected $self_closing;
+
+	/**
+	 * CSS style object
+	 */
+	protected $style;
+
+	/**
 	 * Class constructor;
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
@@ -50,8 +60,30 @@ abstract class ContainerPlugin extends BaseElement
 	{
 		_TT::init(__FILE__, __LINE__);
 		$this->nested_type = null;
+		$this->style = new Style();
+		$this->self_closing = false;
 	}
 
+	/**
+	 * Specify it this container is self closing.
+	 * \param[in] $value True (default) or false.
+	 */
+	protected function setSelfClosing($value = true)
+	{
+		$this->self_closing = $value;
+	}
+
+	/**
+	 * Return the self_closing property. This must be set to true for containers that have no actual content (as in:
+	 * &lt;tag&gtContent&lt;/tag&gt), like images (img), linebreaks (br), horizontal rules (hr) etc.
+	 * These containers will be rendered as &lt;tag/&gt
+	 * @return boolean|string
+	 */
+	public function isSelfClosing()
+	{
+		return $this->self_closing;
+	}
+	
 	/**
 	 * Return the container type, which is equal to the HTML tag name
 	 * \return container type
@@ -62,6 +94,24 @@ abstract class ContainerPlugin extends BaseElement
 		return $this->type;
 	}
 
+	/**
+	 * Add CSS style elements
+	 * \param[in] $_attributes CSS elements as an array in the format element => value
+	 */
+	public function addStyleAttributes(array $_attributes)
+	{
+		$this->style->setAttributes($_attributes);
+	}
+
+	/**
+	 * Return the style element
+	 * \return CSS style element in HTML format
+	 */
+	public function getStyleElement()
+	{
+		return $this->style->getStyleElement();
+	}
+	
 	/**
 	 * Return the complete HTML tag for a nested type, or an empty string if the current
 	 * container doesn't have one
