@@ -1,0 +1,11 @@
+Help wanted
+-----------
+Most of the JavaScript code in this directory dates back to the the early 2000's, before the Ajax was introduced.
+jQuery didn't exist yet, but now I'm re-implementing the WorkArea concept from the original pre-2006 Terra-Terra
+(now as the ContainerWindowPlugin), for the time being I just copy this JS code for quick reuse.
+
+There scripts must be completely rewritten, probably using jQuery.
+Any help is appreciated ;)
+
+Oscar van Eijk
+October 15, 2020

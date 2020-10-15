@@ -50,6 +50,9 @@ class Container extends BaseElement
 	 * \param[in] $_attribs Indexed array with the HTML attributes
 	 * \param[in] $_type_attribs Indexed array with the type specific attributes.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 * \todo Since the implementation of the Window plugin, the way contgent is handled is pretty dirty with even
+	 * a hardcoded check in this constructor.
+	 * This must be redesigned!
 	 */
 	public function __construct ($_type, $_content = '', array $_attribs = array(), array $_type_attribs = array())
 	{
@@ -69,11 +72,34 @@ class Container extends BaseElement
 //			$this->containerObject->setAttributes($_type_attribs);
 		}
 		$this->containerObject->setAttributes($_type_attribs);
-		$this->setContent($_content);
+		if ($_type == 'window') {
+			// FIXME: this is pretty dirty coding
+			$this->setContent($_content);
+		} else {
+			parent::setContent($_content);
+		}
 		$this->containerType = $_type;
 	}
 
 	/**
+	 * Make sure the container plugin can overwrite the setContent() method
+	 * \see BaseElement::setContent()
+	 */
+	public function setContent(&$_content)
+	{
+		$this->containerObject->setContent($_content);
+	}
+	
+	/**
+	 * Make sure the container plugin can overwrite the addToContent() method
+	 * \see BaseElement::addToContent()
+	 */
+	public function addToContent(&$_content, $_front = false)
+	{
+		$this->containerObject->addToContent($_content);
+	}
+
+/**
 	 * Magic method to call container specific methods
 	 * \param[in] $method Method name that should be called
 	 * \param[in] $arguments Arguments for the method
@@ -137,17 +163,17 @@ class Container extends BaseElement
 	 */
 	public function showElement()
 	{
+		$_htmlCode = '<' . $this->containerObject->getType();
+		$_htmlCode .= $this->containerObject->showElement(); // Must be called before getStyleElement()!
 		$_ignoreAttribs = array();
 		$_css = $this->containerObject->getStyleElement();
 		if ($_css != '') {
 			$_ignoreAttribs = array('style'); // Style as a direct attribute is now deprecated
 		}
-		$_htmlCode = '<' . $this->containerObject->getType();
 		$_htmlCode .= $this->containerObject->getAttributes($_ignoreAttribs) . $this->getAttributes($_ignoreAttribs);
-		$_htmlCode .= $this->containerObject->showElement();
 		$_htmlCode .= $_css;
 		if ($this->containerObject->isSelfClosing()) {
-			$_htmlCode .= '>';
+			$_htmlCode .= '/>';
 		} else {
 			$_htmlCode .= '>' . $this->containerObject->getNestedType() . "\n";
 			if (method_exists($this->containerObject, 'getContent')) {

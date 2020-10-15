@@ -69,14 +69,23 @@ class LoginArea extends ContentArea
 
 		$_fldSet = new Container(
 			  'fieldset'
-			, $_liTable->showElement()
+			, $_liTable
 			, array()
 		);
 		$_fldSet->addContainer('legend', $this->trn('Login Form'));
 
 		$_form->addToContent($_fldSet);
 
-		$this->contentObject = new Container('div', '', array('class' => 'loginArea'));
-		$this->contentObject->setContent($_form);
+		$this->contentObject = new Container(
+			 'window'
+			,$_form, array('class' => 'loginArea')
+			,array(
+				 'title' => $this->trn('Login Form')
+				,'width' => 300
+				,'height' => 150
+				,'hposition' => 400
+				,'vposition' => 30
+			)
+		);
 	}
 }

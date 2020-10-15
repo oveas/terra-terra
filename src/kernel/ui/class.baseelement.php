@@ -38,7 +38,7 @@ abstract class BaseElement extends _TT
 	/**
 	 * Element style
 	 */
-	protected $style = '';
+	private $depricated_style = '';
 
 	/**
 	 * Array with javascript events
@@ -109,7 +109,7 @@ abstract class BaseElement extends _TT
 	 */
 	public function setStyle($_value)
 	{
-		$this->style = $_value;
+		$this->depricated_style = $_value;
 	}
 
 	/**
@@ -119,7 +119,11 @@ abstract class BaseElement extends _TT
 	 */
 	public function setClass($_value)
 	{
-		$this->class = $_value;
+		if ($this->class == '') {
+			$this->class = $_value;
+		} else {
+			$this->class .= ' ' . $_value;
+		}
 	}
 
 	/**
@@ -370,7 +374,7 @@ abstract class BaseElement extends _TT
 			$_htmlCode .= " class='$this->class'";
 		}
 		if (!in_array('style', $_ignore) && !empty($this->style)) {
-			$_htmlCode .= " style='$this->style'";
+			$_htmlCode .= " style='$this->depricated_style'";
 		}
 		if (!in_array('name', $_ignore) && !empty($this->name)) {
 			$_htmlCode .= " name='$this->name'";
@@ -382,7 +386,8 @@ abstract class BaseElement extends _TT
 	}
 
 	/**
-	 * This function must be implemented by all elements.
+	 * This function must be implemented by all elements. It may be used to make the last justifications
+	 * to the internal attributes.
 	 * \return The implementation must return a textstring with the complete
 	 * HTML code to display the element
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -404,6 +409,7 @@ Register::setSeverity (TT_SUCCESS);
 
 Register::setSeverity (TT_WARNING);
 Register::registerCode('DOM_IVATTRIB');
+Register::registerCode('DOM_IVVALUE');
 Register::registerCode('DOM_NOID');
 
 //Register::setSeverity (TT_BUG);

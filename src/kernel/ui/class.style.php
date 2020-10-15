@@ -38,7 +38,7 @@ class Style extends _TT
 	/**
 	 * Constructor.
 	 */
-	protected function __construct()
+	public function __construct()
 	{
 		$this->attributes = array();
 	}
@@ -62,10 +62,10 @@ class Style extends _TT
 			return '';
 		}
 		$_style = ' style="';
-		foreach ($_attributes as $_k => $_v) {
+		foreach ($this->attributes as $_k => $_v) {
 			$_style .= "$_k: $_v;";
 		}
-		$_style = '"';
+		$_style .= '"';
 		return $_style;
 	}
 }

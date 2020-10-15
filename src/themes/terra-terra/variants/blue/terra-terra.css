@@ -1,0 +1,218 @@
+/****m*
+ * NAME
+ *  terra-terra.css --- Configurable layout defaults for TT
+ *
+ * DESCRIPTION
+ *  
+ *
+ * AUTHOR
+ *  Oscar van Eijk, Oveas Functionality Provider
+ *
+ * COPYRIGHT
+ *  (c) 2004-2005 by Oscar van Eijk/Oveas Functionality Provider 
+ ***/
+/*
+ * This module is part of Terra-Terra, the Virtual Operating System
+ * http://terra-terra.com
+ * ------------------------------------------------------------------------
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2.1 of the License,
+ * or any later version.
+ * This library is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * ------------------------------------------------------------------------
+ * $Id$ 
+ */
+
+/*
+ * The Body, also used as a class when layers are embedded
+ */
+BODY, .embedded, .iconarea {
+	font-family : Helvetica, sans-serif, fantasy;
+	color : Black;
+	font-size : 8pt;
+	scrollbar-face-color: #e0e0e0;
+	scrollbar-highlight-color: #d1d1d1;
+	scrollbar-shadow-color: #202020;
+	scrollbar-arrow-color:  #202020;
+	scrollbar-track-color: #c0c0c0;
+}
+
+/*
+ * Workarea, outer level
+ */
+.workspace {
+	border-color: #878787;
+	border: 1px;
+}
+
+BODY, .embedded {
+	background-color : #d1d1d1;
+}
+
+/*
+ * Embedded area that functions as or holds an icon.
+ */
+.iconarea {
+	background-color : transparent;
+	text-align : center;
+	width : 100%;
+	overflow : hidden;
+	padding-top : 0px;
+	padding-bottom : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+	margin-left : 0px;
+	margin-right : 0px;
+}
+
+/*
+ * Generally used items and font-styles
+ */
+HR {
+	color : #878787;
+}
+I, EM {
+	background-color : #b6b6b6;
+	font-style : italic;
+}
+B, STRONG {
+	background-color : #f4f4f4;
+	font-family : Arial, sans-serif;
+	font-weight : bold;
+}
+TT, CODE, PRE {
+	font-family: courier, fixed, monospace;
+}
+PRE {
+	color : #666666;
+}
+
+/*
+ * Lists
+ */
+DT {
+	background-color : #b6b6b6;
+}
+DD {
+	background-color : #f4f4f4;
+}
+
+/*
+ * Tables
+ */
+TABLE {
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	padding-bottom : 0px;
+	border: 0px;
+}
+TH {
+	background-color : #e0e0e0;
+	font-family : Arial, sans-serif;
+	font-size : 11pt;
+}
+TD.emphased {
+	background-color : #e0e0e0;
+	font-family : Helvetica, sans-serif, fantasy;
+	font-size : 10pt;
+}
+
+/*
+ * Headers
+ */
+H1, H2 {
+	color : #2f2f2f;
+	font-size : 14pt;
+}
+H3, H4 {
+	color : #2f2f2f;
+	font-size : 12pt;
+}
+H1, H3 {
+	background-color : #e0e0e0;
+	font-family : Arial, sans-serif;
+	font-weight : bold;
+}
+H2, H4 {
+	font-family : Helvetica, sans-serif, fantasy;
+	font-style : italic;
+	background-color : #c0c0c0;
+}
+
+/*
+ * Forms
+ */
+INPUT, TEXTAREA, SELECT {
+	color : Black;
+	background-color : #c0c0c0;
+	font-size : 10pt;
+	font-family : Helvetica, sans-serif, fantasy;
+	border-color : #e0e0e0;
+}
+
+
+/*
+ * Links
+ */
+A.icons, A.icons:link, A.icons:hover, A.icons:active, A.icons:visited:hover, A.icons:visited {
+	background-color : transparent;
+}
+A:link, A:hover, A:active, A:visited:hover, A:visited {
+	font-family : Helvetica, sans-serif, fantasy;
+}
+A:link, A:hover {
+	color : Black;
+}
+A:visited, A:visited:hover {
+	color : #9a9a9a;
+}
+A:link, A:visited {
+	background-color : #f4f4f4;
+	text-decoration : none;
+}
+A:hover, A:visited:hover {
+	background-color : #e0e0e0;
+	text-decoration : underline;
+}
+A:active {
+	background-color : #c0c0c0;
+	text-decoration : none;
+	color : #3f3f3f;
+}
+
+/*
+ * Images and Image-Hotspots
+ */
+IMG {
+	background : none;
+	font-family : Helvetica, sans-serif, fantasy;
+}
+
+
+.wa_titlebar {
+	font-family : Arial, sans-serif;
+	color: #bababa;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: center;
+}
+
+/*
+ * Footer displaying the software and version
+ */
+.versioninfo {
+	font-family : Helvetica, sans-serif, fantasy;
+	color : black;
+	font-size : 8pt;
+}
+

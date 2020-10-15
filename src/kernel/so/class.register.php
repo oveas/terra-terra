@@ -207,8 +207,8 @@ abstract class Register
 	{
 		$_apps =& TTCache::getRef(TTCACHE_REGISTER, 'applications');
 		$_apps[$appName]['class'] += self::valueShift(1, TT_OBJECT_PATTERN);
-		$id = $_stack[$appName]['class'];
-//		printf("Class %s gets %%X%016X (%d)<br>", $name, $_stack['class'], $_stack['class']);
+		$id = $_apps[$appName]['class'];
+//		printf("Class %s gets %%X%016X (%d)<br>", $name, $_apps['class'], $_apps['class']);
 		// use isset() here, since array_key_exists() gives a warning if the hex $id
 		// has a negative integer value.
 		// To make sure the ID is not interpreted as an index, cast it as a string

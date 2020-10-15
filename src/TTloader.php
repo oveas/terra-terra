@@ -633,6 +633,7 @@ TTloader::getClass('baseelement', TT_UI_INC);
 TTloader::getClass('container', TT_UI_INC);
 TTloader::getClass('console', TT_UI_INC);
 TTloader::getClass('contentarea', TT_UI_INC);
+TTloader::getClass('style', TT_UI_INC);
 TTloader::getInterface('ttLayout', TT_UI_INC);
 
 // Setup the cache for labels and messages

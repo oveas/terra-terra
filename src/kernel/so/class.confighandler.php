@@ -161,12 +161,12 @@ abstract class ConfigHandler
 				continue;
 			}
 
-			if (preg_match ('/^\[(\w+)\]$/', $_line, $_m)) {
+			if (preg_match ('/^\[([-\w]+)\]$/', $_line, $_m)) {
 				$_section = $_m[1];
 				continue;
 			}
 			if ($_section == '') {
-				TT::stat(__FILE__, __LINE__, CONFIG_EMPTYSECTION, array($_item));
+				TT::stat(__FILE__, __LINE__, CONFIG_EMPTYSECTION, array($_line));
 				continue;
 			}
 

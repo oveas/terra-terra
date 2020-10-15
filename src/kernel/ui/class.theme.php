@@ -52,6 +52,7 @@ class Theme extends _TT
 	{
 		$this->setTheme(ConfigHandler::get ('layout', 'theme'));
 		$this->setVariant(ConfigHandler::get ('layout', 'variant', ''));
+		ConfigHandler::readConfig(array('file' => TT_THEMES . '/' . $this->theme . '/tt_theme.cfg'));
 	}
 	
 	/**
@@ -129,14 +130,14 @@ class Theme extends _TT
 			$location = '/' . $location;
 		}
 		if ($this->variant != '') {
-			if (file_exists(TT_THEMES . '/' . $this->theme . '/variants/' . $variant . $location . '/' . $image)) {
-				return TT_THEMES_URL . '/' . $this->theme . '/variants/' . $variant . $location . '/' . $image;
+			if (file_exists(TT_THEMES . '/' . $this->theme . '/variants/' . $this->variant . $location . '/' . $image)) {
+				return TT_THEMES_URL . '/' . $this->theme . '/variants/' . $this->variant . $location . '/' . $image;
 			}
 		}
 		if (file_exists(TT_THEMES . '/' . $this->theme . $location . '/' . $image)) {
 			return TT_THEMES_URL . '/' . $this->theme . $location . '/' . $image;
 		}
-		$this->setStatus(__FILE__, __LINE__, THEME_NOSUCHIMAGE, array($image, $location, $this->theme, $variant));
+		$this->setStatus(__FILE__, __LINE__, THEME_NOSUCHIMAGE, array($image, $location, $this->theme, $this->variant));
 	}
 
 	/**
