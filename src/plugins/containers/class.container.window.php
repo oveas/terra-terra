@@ -138,15 +138,16 @@ class ContainerWindowPlugin extends ContainerPlugin
 		$this->barTop = new Container('table');
 		$this->barTop->addStyleAttributes(
 			array(
-				 ' width'			=> '100%'
+				 'width'			=> '100%'
 				,'border-spacing'	=> '0px'
 				,'vertical-align'	=> 'middle'
 			)
 		);
-
+		
 		// Create the row
 		$_r = $this->barTop->addContainer('row');
-
+		$_r->addStyleAttributes(array('height' => ConfigHandler::get('theme-backgrounds', 'top-bar-height') . 'px'));
+		
 		// Left part which holds the Move icon
 		$_c = $_r->addContainer('cell', '', array('id' => 'MoveMe'));
 		$_c->addStyleAttributes(
@@ -164,8 +165,8 @@ class ContainerWindowPlugin extends ContainerPlugin
 		$_i = new Container('img', '', array(), array('src' => $_theme->getImage('bar.left.png', 'backgrounds')));
 		$_i->addStyleAttributes(
 			array(
-				 'width'		=> ConfigHandler::get('theme-bars', 'top-border-width') . 'px'
-				,'height'		=> ConfigHandler::get('theme-bars', 'top-height') . 'px'
+				 'width'		=> ConfigHandler::get('theme-backgrounds', 'top-bar-border-width') . 'px'
+				,'height'		=> ConfigHandler::get('theme-backgrounds', 'top-bar-height') . 'px'
 				,'border'		=> '0px'
 				,'margin'		=> '0px'
 			)
@@ -205,7 +206,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 				,'background-repeat'	=> 'no-repeat'
 				,'margin'				=> 0
 				,'text-align'			=> 'right'
-				,'width'				=> ConfigHandler::get('theme-bars', 'top-border-width') . 'px'
+				,'width'				=> ConfigHandler::get('theme-backgrounds', 'top-bar-border-width') . 'px'
 			)
 		);
 
@@ -218,7 +219,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 				,'margin'				=> 0
 				,'text-align'			=> 'center'
 				,'width'				=> '40%'
-				,'height'				=> ConfigHandler::get('theme-bars', 'top-height') . 'px'
+				,'height'				=> ConfigHandler::get('theme-backgrounds', 'top-bar-height') . 'px'
 				,'vertical-align'		=> 'middle'
 			)
 		);
@@ -231,7 +232,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 				,'background-repeat'	=> 'no-repeat'
 				,'margin'				=> 0
 				,'text-align'			=> 'right'
-				,'width'				=> ConfigHandler::get('theme-bars', 'top-border-width') . 'px'
+				,'width'				=> ConfigHandler::get('theme-backgrounds', 'top-bar-border-width') . 'px'
 			)
 		);
 
@@ -313,11 +314,11 @@ class ContainerWindowPlugin extends ContainerPlugin
 				 'position'		=> 'absolute'
 				,'overflow'		=> 'auto'
 				,'left'			=> '0px'
-				,'top'			=> ConfigHandler::get('theme-bars', 'top-height') . 'px'
+				,'top'			=> ConfigHandler::get('theme-backgrounds', 'top-bar-height') . 'px'
 				,'width'		=> $this->width . 'px'
 				,'height'		=> ($this->height
-						- ConfigHandler::get('theme-bars', 'top-height')
-						- ConfigHandler::get('theme-bars', 'bottom-height')) . 'px'
+						- ConfigHandler::get('theme-backgrounds', 'top-bar-height')
+						- ConfigHandler::get('theme-backgrounds', 'bottom-bar-height')) . 'px'
 				,'visibility'	=> 'visible'
 				,'z-index'		=> $this->z_index
 			)
@@ -362,8 +363,8 @@ class ContainerWindowPlugin extends ContainerPlugin
 		$_i = new Container('img', '', array(), array('src' => $_theme->getImage('bar.bottom.left.png', 'backgrounds')));
 		$_i->addStyleAttributes(
 			array(
-				 'width'	=> ConfigHandler::get('theme-bars', 'bottom-border-width') . 'px'
-				,'height'	=> ConfigHandler::get('theme-bars', 'bottom-height') . 'px'
+				 'width'	=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-border-width') . 'px'
+				,'height'	=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-height') . 'px'
 				,'border'	=> '0px'
 				,'float'	=> 'left'
 				,'margin'	=> '0px'
@@ -389,8 +390,8 @@ class ContainerWindowPlugin extends ContainerPlugin
 		$_i = new Container('img', '', array(), array('src' => $_theme->getImage('bar.bottom.right.png', 'backgrounds')));
 		$_i->addStyleAttributes(
 			array(
-				 'width'	=> ConfigHandler::get('theme-bars', 'bottom-border-width') . 'px'
-				,'height'	=> ConfigHandler::get('theme-bars', 'bottom-height') . 'px'
+				 'width'	=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-border-width') . 'px'
+				,'height'	=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-height') . 'px'
 				,'border'	=> '0px'
 				,'float'	=> 'right'
 				,'margin'	=> '0px'
@@ -404,10 +405,10 @@ class ContainerWindowPlugin extends ContainerPlugin
 			array(
 				 'position'		=> 'absolute'
 				,'left'			=>'0px'
-				,'top'			=> ($this->height - ConfigHandler::get('theme-bars', 'bottom-height')) . 'px'
+				,'top'			=> ($this->height - ConfigHandler::get('theme-backgrounds', 'bottom-bar-height')) . 'px'
 				,'visibility'	=> 'visible'
 				,'width'		=> $this->width . 'px'
-				,'height'		=> ConfigHandler::get('theme-bars', 'bottom-height') . 'px'
+				,'height'		=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-height') . 'px'
 				,'z-index'		=> $this->z_index
 			)
 		);
