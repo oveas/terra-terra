@@ -39,9 +39,9 @@ abstract class Layout implements ttLayout
 	public static function createContainers()
 	{
 		if (self::$containersCreated === false) {
-			TTCache::set(TTCACHE_OBJECTS, 'mainMenuContainer', new Container('div', '', array('class' => 'mainMenuContainer')));
-			TTCache::set(TTCACHE_OBJECTS, 'mainContentContainer', new Container('div', '', array('class' => 'mainContentContainer')));
-			TTCache::set(TTCACHE_OBJECTS, 'FooterContainer', new Container('div', '', array('class' => 'footerContainer')));
+			TTCache::set(TTCACHE_OBJECTS, 'mainMenuContainer', new Container('div', array('class' => 'mainMenuContainer')));
+			TTCache::set(TTCACHE_OBJECTS, 'mainContentContainer', new Container('div', array('class' => 'mainContentContainer')));
+			TTCache::set(TTCACHE_OBJECTS, 'FooterContainer', new Container('div', array('class' => 'footerContainer')));
 			self::$containersCreated = true;
 		}
 	}

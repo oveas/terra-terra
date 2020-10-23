@@ -56,8 +56,11 @@ class RightslistArea extends ContentArea
 			,'aid'
 		);
 
-		$_selector = new Container('div', $_form->showField('aid'));
-		$this->contentObject = new Container('div', $_selector, array('class' => 'listArea'));
+		$_selector = new Container('div');
+		$_c = $_form->showField('aid');
+		$_selector->setContent($_c);
+		$this->contentObject = new Container('div', array('class' => 'listArea'));
+		$this->contentObject->setContent($_selector);
 		$this->contentObject->addToContent($_form);
 		$this->contentObject->addToContent($_container);
 	}

@@ -55,19 +55,21 @@ class RightsmaintArea extends ContentArea
 		}
 		$_right = new Rightsmaint($arg['aid'], $arg['rid']);
 
-		$_table = new Container('table', '', array('style'=>'border: 0px; width: 100%;'));
+		$_table = new Container('table', array('style'=>'border: 0px; width: 100%;'));
 
 		$_r = $_table->addContainer('row');
 		$_f = $_form->addField('text', 'rgt', $_right->get('name'), array('size' => 15));
 		$_l = $this->trn('Name');
-		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_c = new Container('label', array(), array('for' => &$_f));
+		$_c->setContent($_l);
 		$_r->addContainer('cell', $_c);
 		$_r->addContainer('cell', $_form->showField('rgt'));
 
 		$_r = $_table->addContainer('row');
 		$_f = $_form->addField('textarea', 'descr', $_right->get('description', ''));
 		$_l = $this->trn('Description');
-		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_c = new Container('label', array(), array('for' => &$_f));
+		$_c->setContent($_l);
 		$_r->addContainer('cell', $_c);
 		$_r->addContainer('cell', $_form->showField('descr'));
 
@@ -84,7 +86,8 @@ class RightsmaintArea extends ContentArea
 			$_r = $_table->addContainer('row');
 			$_f = $_form->addField('select', 'aid', $appList);
 			$_l = $this->trn('Application');
-			$_c = new Container('label', $_l, array(), array('for' => &$_f));
+			$_c = new Container('label', array(), array('for' => &$_f));
+			$_c->setContent($_l);
 			$_r->addContainer('cell', $_c);
 			$_r->addContainer('cell', $_form->showField('aid'));
 		}
@@ -96,11 +99,8 @@ class RightsmaintArea extends ContentArea
 			, array('colspan'=>2, 'style'=>'text-align:center;')
 		);
 
-		$_fSet = new Container(
-			  'fieldset'
-			, $_table->showElement()
-			, array()
-		);
+		$_fSet = new Container('fieldset');
+		$_fSet->setContent($_table);
 		$_fSet->addContainer('legend', $this->trn(($arg['rid'] == 0 ? 'Add a new right' : 'Edit right $p1$'), $_right->get('name')));
 
 		$_form->addToContent($_fSet);
@@ -111,7 +111,7 @@ class RightsmaintArea extends ContentArea
 			$_form->addToContent($_aidField);
 		}
 
-		$this->contentObject = new Container('div', '', array('class' => 'editArea'));
+		$this->contentObject = new Container('div', array('class' => 'editArea'));
 		$this->contentObject->setContent($_form);
 	}
 }

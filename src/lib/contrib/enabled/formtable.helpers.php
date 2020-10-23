@@ -54,7 +54,8 @@ function addFormRow (
 	$_fld = $form->addField($fieldType, $fieldName, $fieldValue, $fieldAttributes);
 
 	// Create a <label> container for the field with the translation as content
-	$_contnr = new Container('label', $label, $labelAttributes, array('for' => &$_fld));
+	$_contnr = new Container('label', $labelAttributes, array('for' => &$_fld));
+	$_contnr->setContent($label);
 
 	// Add a new cell to the tablerow
 	$_cell = $_row->addContainer('cell');

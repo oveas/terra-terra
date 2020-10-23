@@ -91,7 +91,8 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	 */
 	public function addItem($_content = '', array $_attribs = array(), array $_type_attribs = array())
 	{
-		$_item = new Container('item', $_content, $_attribs, $_type_attribs);
+		$_item = new Container('item', $_attribs, $_type_attribs);
+		$_item->setContent($_content);
 		$this->items[] = $_item;
 		return $_item;
 	}
@@ -109,10 +110,11 @@ class ContainerMenuPlugin extends ContainerListPlugin
 	public function addMenuitem($_content = '', array $_attribs = array(), array $_type_attribs = array(), $_isSubMenu = false)
 	{
 		if ($_isSubMenu === true) {
-			$_item = new Container('menuitem', $_content, array(), array_merge($_attribs, $_type_attribs));
+			$_item = new Container('menuitem', array(), array_merge($_attribs, $_type_attribs));
 		} else {
-			$_item = new Container('menuitem', $_content, $_attribs, $_type_attribs);
+			$_item = new Container('menuitem', $_attribs, $_type_attribs);
 		}
+		$_item->setContent($_content);
 		$this->items[] = $_item;
 		return $_item;
 	}

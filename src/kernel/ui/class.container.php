@@ -46,15 +46,11 @@ class Container extends BaseElement
 	/**
 	 * Class constructor;
 	 * \param[in] $_type The container type. Supported containertypes are located in plugins/containers
-	 * \param[in] $_content HTML that will be placed in the container
 	 * \param[in] $_attribs Indexed array with the HTML attributes
 	 * \param[in] $_type_attribs Indexed array with the type specific attributes.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 * \todo Since the implementation of the Window plugin, the way contgent is handled is pretty dirty with even
-	 * a hardcoded check in this constructor.
-	 * This must be redesigned!
 	 */
-	public function __construct ($_type, $_content = '', array $_attribs = array(), array $_type_attribs = array())
+	public function __construct ($_type, array $_attribs = array(), array $_type_attribs = array())
 	{
 		_TT::init(__FILE__, __LINE__);
 
@@ -63,43 +59,41 @@ class Container extends BaseElement
 			return null;
 		}
 		$_className = 'Container' . ucfirst($_type) . 'Plugin';
+
 		if (!($this->containerObject = new $_className)) {
 			$this->setStatus (__FILE__, __LINE__, CONTAINER_IVCLASSNAME, array($_type, $_className));
 			return ($this->severity);
 		}
+
 		if (count($_attribs) > 0) {
 			parent::setAttributes($_attribs);
 //			$this->containerObject->setAttributes($_type_attribs);
 		}
 		$this->containerObject->setAttributes($_type_attribs);
-		if ($_type == 'window') {
-			// FIXME: this is pretty dirty coding
-			$this->setContent($_content);
-		} else {
-			parent::setContent($_content);
-		}
 		$this->containerType = $_type;
 	}
 
 	/**
-	 * Make sure the container plugin can overwrite the setContent() method
-	 * \see BaseElement::setContent()
+	 * Redirect the call to the containerObject setContent() method
+	 * \param[in] $_content The content
 	 */
 	public function setContent(&$_content)
 	{
 		$this->containerObject->setContent($_content);
 	}
+
 	
 	/**
-	 * Make sure the container plugin can overwrite the addToContent() method
-	 * \see BaseElement::addToContent()
+	 * Redirect the call to the containerObject addToContent() method
+	 * \param[in] $_content The content
+	 * \param[in] $_front Position
 	 */
 	public function addToContent(&$_content, $_front = false)
 	{
-		$this->containerObject->addToContent($_content);
+		$this->containerObject->addToContent($_content, $_front);
 	}
 
-/**
+	/**
 	 * Magic method to call container specific methods
 	 * \param[in] $method Method name that should be called
 	 * \param[in] $arguments Arguments for the method

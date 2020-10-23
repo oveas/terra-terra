@@ -20,14 +20,15 @@ class UsermenuArea extends ContentArea
 	 */
 	public function loadArea($arg = null)
 	{
-		$this->contentObject = new Container('menu', '', array('class' => 'mainMenu'));
+		$this->contentObject = new Container('menu', array('class' => 'mainMenu'));
 		if (($_menuType = ConfigHandler::get ('layout', 'menutype')) !== null) {
 			$this->contentObject->menuType($_menuType, 'userMenu');
 		}
 
 		if ($this->hasRight('readanonymous', TT_ID) === true) {
 			$_txt = $this->trn('Login');
-			$_lnk = new Container('link', $_txt);
+			$_lnk = new Container('link');
+			$_lnk->setContent($_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
 						 'application' => TT_CODE
@@ -43,7 +44,8 @@ class UsermenuArea extends ContentArea
 
 		if ($this->hasRight('readregistered', TT_ID) === true) {
 			$_txt = $this->trn('Logout') . ' ' . TTCache::get(TTCACHE_OBJECTS, 'user')->getUsername();
-			$_lnk = new Container('link', $_txt);
+			$_lnk = new Container('link');
+			$_lnk->setContent($_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
 						 'application' => TT_CODE
@@ -59,7 +61,8 @@ class UsermenuArea extends ContentArea
 
 		if ($this->hasRight('ttdeveloper', TT_ID) === true) {
 			$_txt = $this->trn('Developer tools');
-			$_lnk = new Container('link', $_txt);
+			$_lnk = new Container('link');
+			$_lnk->setContent($_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
 							'application' => TT_CODE
@@ -88,7 +91,8 @@ class UsermenuArea extends ContentArea
 	{
 		$_usrMaint = $this->contentObject->addSubMenu('User maintenance', array('class' => 'menuHeader'));
 		$_txt = $this->trn('List users');
-		$_lnk = new Container('link', $_txt);
+		$_lnk = new Container('link');
+		$_lnk->setContent($_txt);
 		$_lnk->setContainer(array(
 				'dispatcher' => array(
 					 'application' => TT_CODE
@@ -102,7 +106,8 @@ class UsermenuArea extends ContentArea
 		$_usrMaint->addContainer('item', $_lnk);
 
 		$_txt = $this->trn('Add user');
-		$_lnk = new Container('link', $_txt);
+		$_lnk = new Container('link');
+		$_lnk->setContent($_txt);
 		$_lnk->setContainer(array(
 				'dispatcher' => array(
 					 'application' => TT_CODE
@@ -124,7 +129,8 @@ class UsermenuArea extends ContentArea
 		$_usrMaint = $this->contentObject->addSubMenu('Group maintenance', array('class' => 'menuHeader'));
 		if ($this->hasRight('managegroups', TT_ID) === true) {
 			$_txt = $this->trn('List groups');
-			$_lnk = new Container('link', $_txt);
+			$_lnk = new Container('link');
+			$_lnk->setContent($_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
 						 'application' => TT_CODE
@@ -138,7 +144,8 @@ class UsermenuArea extends ContentArea
 			$_usrMaint->addContainer('item', $_lnk);
 
 			$_txt = $this->trn('Add group');
-			$_lnk = new Container('link', $_txt);
+			$_lnk = new Container('link');
+			$_lnk->setContent($_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
 						 'application' => TT_CODE
@@ -153,7 +160,8 @@ class UsermenuArea extends ContentArea
 		}
 		if ($this->hasRight('installapps', TT_ID) === true) {
 			$_txt = $this->trn('List rights');
-			$_lnk = new Container('link', $_txt);
+			$_lnk = new Container('link');
+			$_lnk->setContent($_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
 						 'application' => TT_CODE
@@ -167,7 +175,8 @@ class UsermenuArea extends ContentArea
 			$_usrMaint->addContainer('item', $_lnk);
 
 			$_txt = $this->trn('Add rights');
-			$_lnk = new Container('link', $_txt);
+			$_lnk = new Container('link');
+			$_lnk->setContent($_txt);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
 						 'application' => TT_CODE

@@ -566,7 +566,8 @@ class Document extends BaseElement
 					break;
 			}
 			$_msgList = implode('<br />', $stack['messages']);
-			$_stackContainer = new Container('div', $_msgList, array('class' => $class));
+			$_stackContainer = new Container('div', array('class' => $class));
+			$_stackContainer->setContent($_msgList);
 			if ($this->msgContainer instanceof Container) {
 				$this->msgContainer->addToContent($_stackContainer);
 			} else {

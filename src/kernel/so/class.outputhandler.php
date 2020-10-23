@@ -164,7 +164,8 @@ abstract class OutputHandler
 		if ($class !== null) {
 			$_attr['class'] = $class;
 		}
-		$_output = new Container('span', $text, $_attr);
+		$_output = new Container('span', $_attr);
+		$_output->setContent($text);
 		echo $_output->showElement() . '<br/>';
 	}
 
@@ -181,7 +182,8 @@ abstract class OutputHandler
 		if ($class !== null) {
 			$_attr['class'] = $class;
 		}
-		$_output = new Container('div', $text, $_attr);
+		$_output = new Container('div', $_attr);
+		$_output->setContent($text);
 		echo $_output->showElement();
 	}
 

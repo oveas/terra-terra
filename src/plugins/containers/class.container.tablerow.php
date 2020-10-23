@@ -80,7 +80,8 @@ class ContainerTablerowPlugin extends ContainerPlugin
 	 */
 	public function addCell($_content = '&nbsp;', array $_attribs = array(), array $_type_attribs = array())
 	{
-		$_cell = new Container('tablecell', $_content, $_attribs, $_type_attribs);
+		$_cell = new Container('tablecell', $_attribs, $_type_attribs);
+		$_cell->setContent($_content);
 		if ($this->header) {
 			$_cell->setHeader();
 		}

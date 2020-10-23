@@ -559,9 +559,9 @@ th {
 \$document   = TT::factory('Document', TT_UI_INC);
 //\$document->enableTT_JS();
 
-\$_hdr = new Container('div', '', array('class' => 'mainMenuContainer'));
-\$_bdy = new Container('div', '', array('class' => 'mainContentContainer'));
-\$_ftr = new Container('div', '', array('class' => 'footerContainer'));
+\$_hdr = new Container('div', array('class' => 'mainMenuContainer'));
+\$_bdy = new Container('div', array('class' => 'mainContentContainer'));
+\$_ftr = new Container('div', array('class' => 'footerContainer'));
 
 TTCache::set(TTCACHE_OBJECTS, 'mainMenuContainer', \$_hdr);
 TTCache::set(TTCACHE_OBJECTS, 'mainContentContainer', \$_bdy);
@@ -616,12 +616,13 @@ class LoginArea extends ContentArea
 			)
 		);
 
-		\$_liTable = new Container('table', '', array('style'=>'border: 0px; width: 100%;'));
+		\$_liTable = new Container('table', array('style'=>'border: 0px; width: 100%;'));
 
 		\$_rowU = \$_liTable->addContainer('row');
 		\$_usrFld = \$_form->addField('text', 'usr', '', array('size' => 20));
 		\$_usrLabel = \$this->trn('Username');
-		\$_usrContnr = new Container('label', \$_usrLabel, array(), array('for' => &\$_usrFld));
+		\$_usrContnr = new Container('label', array(), array('for' => &\$_usrFld));
+		\$_usrContnr->setContent(\$_usrLabel);
 		\$_usrCell = \$_rowU->addContainer('cell');
 		\$_usrCell->setContent(\$_usrContnr);
 		\$_rowU->addContainer('cell', \$_form->showField('usr'));
@@ -629,7 +630,8 @@ class LoginArea extends ContentArea
 		\$_rowP = \$_liTable->addContainer('row');
 		\$_pwdFld = \$_form->addField('password', 'pwd', '', array('size' => 15));
 		\$_pwdLabel = \$this->trn('Password');
-		\$_pwdContnr = new Container('label', \$_pwdLabel, array(), array('for' => &\$_pwdFld));
+		\$_pwdContnr = new Container('label', array(), array('for' => &\$_pwdFld));
+		\$_pwdContnr->setContent(\$_pwdLabel);
 		\$_pwdCell = \$_rowP->addContainer('cell');
 		\$_pwdCell->setContent(\$_pwdContnr);
 		\$_rowP->addContainer('cell', \$_form->showField('pwd'));
@@ -642,16 +644,13 @@ class LoginArea extends ContentArea
 			, 'style'=>'text-align:center;')
 		);
 
-		\$_fldSet = new Container(
-			  'fieldset'
-			, \$_liTable->showElement()
-			, array()
-		);
+		\$_fldSet = new Container('fieldset', array());
+		\$_fldSet->setContent(\$_liTable->showElement());
 		\$_fldSet->addContainer('legend', \$this->trn('Login Form'));
 
 		\$_form->addToContent(\$_fldSet);
 
-		\$this->contentObject = new Container('div', '', array('class' => 'loginArea'));
+		\$this->contentObject = new Container('div', array('class' => 'loginArea'));
 		\$this->contentObject->setContent(\$_form);
 	}
 }
@@ -670,11 +669,12 @@ class UsermenuArea extends ContentArea
 {
 	public function loadArea(\$arg = null)
 	{
-		\$this->contentObject = new Container('menu', '', array('class' => 'userMenu'));
+		\$this->contentObject = new Container('menu', array('class' => 'userMenu'));
 
 		if (\$this->hasRight('readanonymous', TT_ID) === true) {
 			\$_txt = \$this->trn('Login');
-			\$_lnk = new Container('link', \$_txt);
+			\$_lnk = new Container('link');
+			\$_lnk->setContent(\$_txt);
 			\$_lnk->setContainer(array(
 					'dispatcher' => array(
 						 'application' => '$this->appName'
@@ -690,7 +690,8 @@ class UsermenuArea extends ContentArea
 
 		if (\$this->hasRight('readregistered', TT_ID) === true) {
 			\$_txt = \$this->trn('Logout') . ' ' . TTCache::get(TTCACHE_OBJECTS, 'user')->getUsername();
-			\$_lnk = new Container('link', \$_txt);
+			\$_lnk = new Container('link');
+			\$_lnk->setContent(\$_txt);
 			\$_lnk->setContainer(array(
 					'dispatcher' => array(
 						 'application' => '$this->appName'
@@ -720,10 +721,11 @@ class MainmenuArea extends ContentArea
 {
 	public function loadArea(\$arg = null)
 	{
-		\$this->contentObject = new Container('menu', '', array('class' => 'mainMenu'));
+		\$this->contentObject = new Container('menu', array('class' => 'mainMenu'));
 
 		\$_txt = \$this->trn('Home');
-		\$_lnk = new Container('link', \$_txt);
+		\$_lnk = new Container('link');
+		\$_lnk->setContent(\$_txt);
 		\$_lnk->setContainer(array('href' => \$_SERVER['PHP_SELF']));
 		\$this->contentObject->addContainer('item', \$_lnk);
 	}

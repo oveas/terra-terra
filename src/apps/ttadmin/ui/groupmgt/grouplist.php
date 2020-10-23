@@ -34,7 +34,9 @@ class GrouplistArea extends ContentArea
 		$_list = new Container('list');
 
 		foreach ($_groups as $_gid => $_info) {
-			$_lnk = new Container('link', "$_info[0] ($_info[1])");
+			$_lnk = new Container('link');
+			$_c = "$_info[0] ($_info[1])";
+			$_lnk->setContent($_c);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
 						 'application' => TT_CODE
@@ -48,7 +50,7 @@ class GrouplistArea extends ContentArea
 			);
 			$_item = $_list->addContainer('item', $_lnk->showElement());
 		}
-		$this->contentObject = new Container('div', '', array('class' => 'listArea'));
+		$this->contentObject = new Container('div', array('class' => 'listArea'));
 		$this->contentObject->setContent($_list);
 	}
 }

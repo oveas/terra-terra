@@ -33,7 +33,8 @@ class GetrightslistArea extends ContentArea
 		$_rights = $_lst->getRightslist($arg);
 		$_list = new Container('list');
 		foreach ($_rights[$arg] as $_rid => $_info) {
-			$_lnk = new Container('link', $_info[0]);
+			$_lnk = new Container('link');
+			$_lnk->setContent($_info[0]);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
 						 'application' => TT_CODE
@@ -47,7 +48,9 @@ class GetrightslistArea extends ContentArea
 			);
 			$_item = $_list->addContainer('item', $_lnk->showElement());
 		}
-		$this->contentObject = new Container('div', $_info[0] . ' ' . $this->trn("Rights"), array('class' => 'listArea'));
-		$this->contentObject->setContent($_list);
+		$this->contentObject = new Container('div', array('class' => 'listArea'));
+		$_c = $_info[0] . ' ' . $this->trn("Rights");
+		$this->contentObject->setContent($_c);
+		$this->contentObject->addToContent($_list);
 	}
 }

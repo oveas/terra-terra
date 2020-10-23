@@ -79,7 +79,8 @@ class ContainerTablePlugin extends ContainerPlugin
 		if (!array_key_exists('header', $_type_attribs)) {
 			$_type_attribs['header'] = false;
 		}
-		$_row = new Container('tablerow', '', $_attribs, $_type_attribs);
+		$_row = new Container('tablerow', $_attribs, $_type_attribs);
+		$_row->setContent($_content);
 		$this->rows[] = $_row;
 		return $_row;
 	}

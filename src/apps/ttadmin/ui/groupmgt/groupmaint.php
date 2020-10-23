@@ -66,26 +66,29 @@ class GroupmaintArea extends ContentArea
 			);
 		}
 
-		$_table = new Container('table', '', array('style'=>'border: 0px; width: 100%;'));
+		$_table = new Container('table', array('style'=>'border: 0px; width: 100%;'));
 
 		$_r = $_table->addContainer('row');
 		$_f = $_form->addField('text', 'grp', $_group->get('groupname'), array('size' => 15));
 		$_l = $this->trn('Groupname');
-		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_c = new Container('label', array(), array('for' => &$_f));
+		$_c->setContent($_l);
 		$_r->addContainer('cell', $_c);
 		$_r->addContainer('cell', $_form->showField('grp'));
 
 		$_r = $_table->addContainer('row');
 		$_f = $_form->addField('textarea', 'descr', $_group->get('description', ''));
 		$_l = $this->trn('Description');
-		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_c = new Container('label', array(), array('for' => &$_f));
+		$_c->setContent($_l);
 		$_r->addContainer('cell', $_c);
 		$_r->addContainer('cell', $_form->showField('descr'));
 
 		$_r = $_table->addContainer('row');
 		$_f = $_form->addField('select', 'aid', $appList);
 		$_l = $this->trn('Application');
-		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_c = new Container('label', array(), array('for' => &$_f));
+		$_c->setContent($_l);
 		$_r->addContainer('cell', $_c);
 		$_r->addContainer('cell', $_form->showField('aid'));
 
@@ -110,7 +113,9 @@ class GroupmaintArea extends ContentArea
 				if ($_group->hasRight($_rid, $_app)) {
 					$_f->setChecked();
 				}
-				$_c = new Container('label', $_rval[0] . " ($_rval[1])", array(), array('for' => &$_f));
+				$_c = new Container('label', array(), array('for' => &$_f));
+				$_e = $_rval[0] . " ($_rval[1])";
+				$_c->setContent($_e);
 				$_g = $_r->addContainer('cell', $_form->showField("r[$_app][$_rid]"));
 //				$_g->addToContent('&nbsp;');
 				$_g->addToContent($_c);
@@ -126,18 +131,15 @@ class GroupmaintArea extends ContentArea
 			, array('colspan'=>2, 'style'=>'text-align:center;')
 		);
 
-		$_fSet = new Container(
-			  'fieldset'
-			, $_table->showElement()
-			, array()
-		);
+		$_fSet = new Container('fieldset');
+		$_fSet->setContent($_table);
 		$_fSet->addContainer('legend', $this->trn(($arg === null ? 'Add a new group' : 'Edit group $p1$'), $_group->get('groupname')));
 
 		$_form->addToContent($_fSet);
 		$_gidField = $_form->addField('hidden', 'gid', ($arg === null)?0:$arg);
 		$_form->addToContent($_gidField);
 
-		$this->contentObject = new Container('div', '', array('class' => 'editArea'));
+		$this->contentObject = new Container('div', array('class' => 'editArea'));
 		$this->contentObject->setContent($_form);
 	}
 }

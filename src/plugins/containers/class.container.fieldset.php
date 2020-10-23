@@ -58,7 +58,8 @@ class ContainerFieldsetPlugin extends ContainerPlugin
 	 */
 	public function addLegend($_content = '&nbsp;', array $_attribs = array(), array $_type_attribs = array())
 	{
-		$this->legend = new Container('legend', $_content, $_attribs, $_type_attribs);
+		$this->legend = new Container('legend', $_attribs, $_type_attribs);
+		$this->legend->setContent($_content);
 		return $this->legend;
 	}
 
@@ -79,11 +80,11 @@ class ContainerFieldsetPlugin extends ContainerPlugin
 	 */
 	public function getContent()
 	{
+		$_content = parent::getContent();
 		if ($this->legend !== null) {
-			return $this->legend->showElement();
+			return $this->legend->showElement() . $_content;
 		} else {
-			return '';
+			return $_content;
 		}
 	}
-
 }

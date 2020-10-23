@@ -70,40 +70,45 @@ class UsermaintArea extends ContentArea
 			);
 		}
 
-		$_table = new Container('table', '', array('style'=>'border: 0px; width: 100%;'));
+		$_table = new Container('table', array('style'=>'border: 0px; width: 100%;'));
 
 		$_r = $_table->addContainer('row');
 		$_f = $_form->addField('text', 'usr', $_user->getUsername(), array('size' => 15));
 		$_l = $this->trn('Username');
-		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_c = new Container('label', array(), array('for' => &$_f));
+		$_c->setContent($_l);
 		$_r->addContainer('cell', $_c);
 		$_r->addContainer('cell', $_form->showField('usr'));
 
 		$_r = $_table->addContainer('row');
 		$_f = $_form->addField('password', 'pwd', '', array('size' => 15));
 		$_l = $this->trn('Password');
-		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_c = new Container('label', array(), array('for' => &$_f));
+		$_c->setContent($_l);
 		$_r->addContainer('cell', $_c);
 		$_r->addContainer('cell', $_form->showField('pwd'));
 
 		$_r = $_table->addContainer('row');
 		$_f = $_form->addField('password', 'vpwd', '', array('size' => 15));
 		$_l = $this->trn('Repeat password');
-		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_c = new Container('label', array(), array('for' => &$_f));
+		$_c->setContent($_l);
 		$_r->addContainer('cell', $_c);
 		$_r->addContainer('cell', $_form->showField('vpwd'));
 
 		$_r = $_table->addContainer('row');
 		$_f = $_form->addField('text', 'email', $_user->getAttribute('email'), array('size' => 15));
 		$_l = $this->trn('Email');
-		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_c = new Container('label', array(), array('for' => &$_f));
+		$_c->setContent($_l);
 		$_r->addContainer('cell', $_c);
 		$_r->addContainer('cell', $_form->showField('email'));
 
 		$_r = $_table->addContainer('row');
 		$_f = $_form->addField('select', 'group', $selPrigrp);
 		$_l = $this->trn('Primary group');
-		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_c = new Container('label', array(), array('for' => &$_f));
+		$_c->setContent($_l);
 		$_r->addContainer('cell', $_c, array(), array('valign' => 'top'));
 		$_r->addContainer('cell', $_form->showField('group'));
 
@@ -111,7 +116,8 @@ class UsermaintArea extends ContentArea
 		$_f = $_form->addField('select', 'memberships', $selMbrshp, array('size' => 5));
 		$_f->setMultiple();
 		$_l = $this->trn('Memberships');
-		$_c = new Container('label', $_l, array(), array('for' => &$_f));
+		$_c = new Container('label', array(), array('for' => &$_f));
+		$_c->setContent($_l);
 		$_r->addContainer('cell', $_c, array(), array('valign' => 'top'));
 		$_r->addContainer('cell', $_form->showField('memberships'));
 
@@ -123,18 +129,15 @@ class UsermaintArea extends ContentArea
 			, array('colspan'=>2, 'style'=>'text-align:center;')
 		);
 
-		$_fSet = new Container(
-			  'fieldset'
-			, $_table->showElement()
-			, array()
-		);
+		$_fSet = new Container('fieldset');
+		$_fSet->setContent($_table);
 		$_fSet->addContainer('legend', $this->trn(($arg === null ? 'Add a new user' : 'Edit user $p1$'), $arg));
 
 		$_form->addToContent($_fSet);
 		$_uidField = $_form->addField('hidden', 'uid', $_user->getUserId());
 		$_form->addToContent($_uidField);
 
-		$this->contentObject = new Container('div', '', array('class' => 'editArea'));
+		$this->contentObject = new Container('div',  array('class' => 'editArea'));
 		$this->contentObject->setContent($_form);
 	}
 }

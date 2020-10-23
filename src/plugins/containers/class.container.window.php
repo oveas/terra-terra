@@ -26,7 +26,7 @@
  * These constants are used by the ContainerWindowPlugin. They can be passed to the setVisibility() method
  * *after* the container is initialised with 
  * \code{.php}
- * $_window = new Container('window', '', array(), array('visible' => WINDOW_VISIBILITY_SHADED));
+ * $_window = new Container('window', array(), array('visible' => WINDOW_VISIBILITY_SHADED));
  * \endcode
  * It should *not* used during instantation of the window: if it's the first, the constants have not been defined yet.
  * @{
@@ -93,8 +93,8 @@ class ContainerWindowPlugin extends ContainerPlugin
 
 		$this->setClass('workarea');
 		$this->setId('TT_wa' . $this->wid . '_top');
-		$this->contentArea = new Container('div', '', array('class' => 'embedded', 'id' => 'TT_wa' . $this->wid . '_body'));
-		
+		$this->contentArea = new Container('div', array('class' => 'embedded', 'id' => 'TT_wa' . $this->wid . '_body'));
+
 		$document = TT::factory('Document', 'ui');
 		$document->addJSPlugin('window', 'terra-terra');
 		$document->addJSPlugin('window', 'terra-terra_wa');
@@ -119,6 +119,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 	 */
 	public function addToContent(&$_content, $_front = false)
 	{
+		print_r($this);
 		$this->contentArea->addToContent($_content, $_front);
 	}
 
@@ -162,7 +163,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 		);
 
 		// Left border
-		$_i = new Container('img', '', array(), array('src' => $_theme->getImage('bar.left.png', 'backgrounds')));
+		$_i = new Container('img', array(), array('src' => $_theme->getImage('bar.left.png', 'backgrounds')));
 		$_i->addStyleAttributes(
 			array(
 				 'width'		=> ConfigHandler::get('theme-backgrounds', 'top-bar-border-width') . 'px'
@@ -174,7 +175,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 		$_c->addToContent($_i);
 
 		// The Move icon
-		$_i = new Container('img', '', array(), array('src' => $_theme->getImage('move.png', 'icons'), 'alt' => 'Move Workarea'));
+		$_i = new Container('img', array(), array('src' => $_theme->getImage('move.png', 'icons'), 'alt' => 'Move Workarea'));
 		$_i->addStyleAttributes(
 			array(
 				 'width'			=> ConfigHandler::get('theme-icons', 'top-width') . 'px'
@@ -259,7 +260,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 		);
 
 		// Shade icon
-		$_i = new Container('img', '', array('id' => 'ShadeIcon_' . $this->wid), array('src' => $_theme->getImage('shade.png', 'icons'), 'alt' => 'Shade Workarea'));
+		$_i = new Container('img', array('id' => 'ShadeIcon_' . $this->wid), array('src' => $_theme->getImage('shade.png', 'icons'), 'alt' => 'Shade Workarea'));
 		$_i->addStyleAttributes(
 			array(
 				 'width'			=> ConfigHandler::get('theme-icons', 'top-width') . 'px'
@@ -270,11 +271,12 @@ class ContainerWindowPlugin extends ContainerPlugin
 				,'cursor'			=> 'default'
 			)
 		);
-		$_l = new Container('link', $_i, array('class' => 'icons', 'id' => 'ShadeLink_' . $this->wid), array('href' => "javascript:WAVisibility('$this->wid', 's')"));
+		$_l = new Container('link', array('class' => 'icons', 'id' => 'ShadeLink_' . $this->wid), array('href' => "javascript:WAVisibility('$this->wid', 's')"));
+		$_l->setContent($_i);
 		$_c->addToContent($_l);
 
 		// Maximize/Restore icon
-		$_i = new Container('img', '', array('id' => 'MaximizeIcon_' . $this->wid), array('src' => $_theme->getImage('maximize.png', 'icons'), 'alt' => 'Maximize Workarea'));
+		$_i = new Container('img', array('id' => 'MaximizeIcon_' . $this->wid), array('src' => $_theme->getImage('maximize.png', 'icons'), 'alt' => 'Maximize Workarea'));
 		$_i->addStyleAttributes(
 			array(
 				 'width'			=> ConfigHandler::get('theme-icons', 'top-width') . 'px'
@@ -285,11 +287,12 @@ class ContainerWindowPlugin extends ContainerPlugin
 				,'cursor'			=> 'default'
 			)
 		);
-		$_l = new Container('link', $_i, array('class' => 'icons', 'id' => 'MiniMaxLink_' . $this->wid), array('href' => "javascript:WAVisibility('$this->wid', 'm')"));
+		$_l = new Container('link', array('class' => 'icons', 'id' => 'MiniMaxLink_' . $this->wid), array('href' => "javascript:WAVisibility('$this->wid', 'm')"));
+		$_l->setContent($_i);
 		$_c->addToContent($_l);
 
 		// Close icon
-		$_i = new Container('img', '', array('id' => 'Close_' . $this->wid), array('src' => $_theme->getImage('close.png', 'icons'), 'alt' => 'Close Workarea'));
+		$_i = new Container('img', array('id' => 'Close_' . $this->wid), array('src' => $_theme->getImage('close.png', 'icons'), 'alt' => 'Close Workarea'));
 		$_i->addStyleAttributes(
 			array(
 				 'width'			=> ConfigHandler::get('theme-icons', 'top-width') . 'px'
@@ -300,7 +303,8 @@ class ContainerWindowPlugin extends ContainerPlugin
 				,'cursor'			=> 'default'
 			)
 		);
-		$_l = new Container('link', $_i, array('class' => 'icons', 'id' => 'CloseLink_' . $this->wid), array('href' => "javascript:WAVisibility('$this->wid', 'c')"));
+		$_l = new Container('link', array('class' => 'icons', 'id' => 'CloseLink_' . $this->wid), array('href' => "javascript:WAVisibility('$this->wid', 'c')"));
+		$_l->setContent($_i);
 		$_c->addToContent($_l);
 	}
 
@@ -360,7 +364,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 		);
 
 		// Filler
-		$_i = new Container('img', '', array(), array('src' => $_theme->getImage('bar.bottom.left.png', 'backgrounds')));
+		$_i = new Container('img', array(), array('src' => $_theme->getImage('bar.bottom.left.png', 'backgrounds')));
 		$_i->addStyleAttributes(
 			array(
 				 'width'	=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-border-width') . 'px'
@@ -373,7 +377,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 		$_c->addToContent($_i);
 
 		// Resize icon
-		$_i = new Container('img', '', array(), array('src' => $_theme->getImage('resize.png', 'icons'), 'alt' => 'Resize Workarea'));
+		$_i = new Container('img', array(), array('src' => $_theme->getImage('resize.png', 'icons'), 'alt' => 'Resize Workarea'));
 		$_i->addStyleAttributes(
 			array(
 				 'width'			=> ConfigHandler::get('theme-icons', 'bottom-width') . 'px'
@@ -387,7 +391,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 		$_c->addToContent($_i);
 
 		// Right border
-		$_i = new Container('img', '', array(), array('src' => $_theme->getImage('bar.bottom.right.png', 'backgrounds')));
+		$_i = new Container('img', array(), array('src' => $_theme->getImage('bar.bottom.right.png', 'backgrounds')));
 		$_i->addStyleAttributes(
 			array(
 				 'width'	=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-border-width') . 'px'
@@ -400,7 +404,8 @@ class ContainerWindowPlugin extends ContainerPlugin
 		$_c->addToContent($_i);
 
 		// Create the div for this table
-		$this->barBottom = new Container('div', $_t, array('id' => 'TT_wa' . $this->wid . '_bottom'));
+		$this->barBottom = new Container('div', array('id' => 'TT_wa' . $this->wid . '_bottom'));
+		$this->barBottom->setContent($_t);
 		$this->barBottom->addStyleAttributes(
 			array(
 				 'position'		=> 'absolute'
@@ -596,7 +601,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 				,'top'			=> $this->vposition . 'px'
 				,'width'		=> $this->width . 'px'
 				,'height'		=> $this->height . 'px'
-				,'z-index'		=> $this->z-index
+				,'z-index'		=> $this->z_index
 			)
 		);
 

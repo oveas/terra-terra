@@ -20,10 +20,11 @@ class MainmenuArea extends ContentArea
 	 */
 	public function loadArea($arg = null)
 	{
-		$this->contentObject = new Container('menu', '', array('class' => 'mainMenu'));
+		$this->contentObject = new Container('menu', array('class' => 'mainMenu'));
 
 		$_txt = $this->trn('Home');
-		$_lnk = new Container('link', $_txt);
+		$_lnk = new Container('link');
+		$_lnk->setContent($_txt);
 		$_lnk->setContainer(array('href' => $_SERVER['PHP_SELF']));
 		$this->contentObject->addContainer('item', $_lnk);
 	}

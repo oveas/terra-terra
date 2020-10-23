@@ -47,7 +47,7 @@ class Console extends Container
 			TT::stat(__FILE__, __LINE__, TT_ILLINSTANCE, 'Console');
 			return null;
 		}
-		parent::__construct('div', '', array('class' => 'ttConsole '));
+		parent::__construct('div', array('class' => 'ttConsole '));
 	}
 
 	/**

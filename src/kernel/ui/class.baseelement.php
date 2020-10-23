@@ -225,6 +225,7 @@ abstract class BaseElement extends _TT
 				);
 				return '&nbsp;'; // Probably fatal, but for completeness...
 			}
+
 			return $_contentItem->showElement();
 		} else {
 			return $_contentItem;

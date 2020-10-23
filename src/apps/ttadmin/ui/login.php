@@ -40,13 +40,13 @@ class LoginArea extends ContentArea
 				 'name' => 'loginForm'
 			)
 		);
-
-		$_liTable = new Container('table', '', array('style'=>'border: 0px; width: 100%;'));
+		$_liTable = new Container('table', array('style'=>'border: 0px; width: 100%;'));
 
 		$_rowU = $_liTable->addContainer('row');
 		$_usrFld = $_form->addField('text', 'usr', '', array('size' => 20));
 		$_usrLabel = $this->trn('Username');
-		$_usrContnr = new Container('label', $_usrLabel, array(), array('for' => &$_usrFld));
+		$_usrContnr = new Container('label', array(), array('for' => &$_usrFld));
+		$_usrContnr->setContent($_usrLabel);
 		$_usrCell = $_rowU->addContainer('cell');
 		$_usrCell->setContent($_usrContnr);
 		$_rowU->addContainer('cell', $_form->showField('usr'));
@@ -54,7 +54,8 @@ class LoginArea extends ContentArea
 		$_rowP = $_liTable->addContainer('row');
 		$_pwdFld = $_form->addField('password', 'pwd', '', array('size' => 15));
 		$_pwdLabel = $this->trn('Password');
-		$_pwdContnr = new Container('label', $_pwdLabel, array(), array('for' => &$_pwdFld));
+		$_pwdContnr = new Container('label', array(), array('for' => &$_pwdFld));
+		$_pwdContnr->addToContent($_pwdLabel);
 		$_pwdCell = $_rowP->addContainer('cell');
 		$_pwdCell->setContent($_pwdContnr);
 		$_rowP->addContainer('cell', $_form->showField('pwd'));
@@ -67,18 +68,14 @@ class LoginArea extends ContentArea
 			, array('colspan'=>2)
 		);
 
-		$_fldSet = new Container(
-			  'fieldset'
-			, $_liTable
-			, array()
-		);
+		$_fldSet = new Container('fieldset');
+		$_fldSet->setContent($_liTable);
 		$_fldSet->addContainer('legend', $this->trn('Login Form'));
 
 		$_form->addToContent($_fldSet);
-
 		$this->contentObject = new Container(
 			 'window'
-			,$_form, array('class' => 'loginArea')
+			,array('class' => 'loginArea')
 			,array(
 				 'title' => $this->trn('Login Form')
 				,'width' => 300
@@ -87,5 +84,11 @@ class LoginArea extends ContentArea
 				,'vposition' => 30
 			)
 		);
+
+//		$this->contentObject = new Container(
+//			 'div'
+//			,array('class' => 'loginArea')
+//		);
+		$this->contentObject->setContent($_form);
 	}
 }

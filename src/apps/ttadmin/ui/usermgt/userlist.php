@@ -34,7 +34,8 @@ class UserlistArea extends ContentArea
 		$_list = new Container('list');
 
 		foreach ($_users as $_uid => $_name) {
-			$_lnk = new Container('link', $_name);
+			$_lnk = new Container('link');
+			$_lnk->setContent($_name);
 			$_lnk->setContainer(array(
 					'dispatcher' => array(
 						 'application' => TT_CODE
@@ -48,7 +49,7 @@ class UserlistArea extends ContentArea
 			);
 			$_item = $_list->addContainer('item', $_lnk->showElement());
 		}
-		$this->contentObject = new Container('div', '', array('class' => 'listArea'));
+		$this->contentObject = new Container('div', array('class' => 'listArea'));
 		$this->contentObject->setContent($_list);
 	}
 }
