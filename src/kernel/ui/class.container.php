@@ -47,7 +47,9 @@ class Container extends BaseElement
 	 * Class constructor;
 	 * \param[in] $_type The container type. Supported containertypes are located in plugins/containers
 	 * \param[in] $_attribs Indexed array with the HTML attributes
-	 * \param[in] $_type_attribs Indexed array with the type specific attributes.
+	 * \param[in] $_type_attribs (deprecated) Indexed array with the type specific attributes.
+	 * \note The use of a seperated array with $_type_attribs is now deprecated: all attributes can be
+	 * given in one single array $_attribs
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function __construct ($_type, array $_attribs = array(), array $_type_attribs = array())
@@ -65,11 +67,13 @@ class Container extends BaseElement
 			return ($this->severity);
 		}
 
-		if (count($_attribs) > 0) {
-			parent::setAttributes($_attribs);
-//			$this->containerObject->setAttributes($_type_attribs);
+		if (!empty($_attribs)) {
+			$this->containerObject->setAttributes($_attribs);
 		}
-		$this->containerObject->setAttributes($_type_attribs);
+		if (!empty($_type_attribs)) {
+			// Support for the deprecated $_type_attribs argument
+			$this->containerObject->setAttributes($_type_attribs);
+		}
 		$this->containerType = $_type;
 	}
 
@@ -82,7 +86,7 @@ class Container extends BaseElement
 		$this->containerObject->setContent($_content);
 	}
 
-	
+
 	/**
 	 * Redirect the call to the containerObject addToContent() method
 	 * \param[in] $_content The content
