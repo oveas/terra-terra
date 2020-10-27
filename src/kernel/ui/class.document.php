@@ -40,7 +40,7 @@ class Document extends BaseElement
 	* Base URL for the TT installation, defaults to the server top
 	*/
 	private $ttBase;
-	
+
 	/**
 	 * Array for on-the-fly styles
 	 */
@@ -95,7 +95,7 @@ class Document extends BaseElement
 	 * List of errors, warnings and other requested messages
 	 */
 	private $messages;
-	
+
 	/**
 	 * Container for messages; if null, messages will be added to the front of the document
 	 */
@@ -105,7 +105,7 @@ class Document extends BaseElement
 	 * Switch that will be set to True when TT-JS is enabled
 	 */
 	private $tt_jsEnabled;
-	
+
 	/**
 	 * Boolean indicating if the document has been retrieved for display
 	 */
@@ -575,22 +575,22 @@ class Document extends BaseElement
 			}
 		}
 	}
-	
+
 	/**
-	 * Set the container used to display messages. If not set, or set to null, messages will be 
+	 * Set the container used to display messages. If not set, or set to null, messages will be
 	 * added to the front of the document.
 	 * \param[in] $_container Message container
-	 * \author Daan Schulpen 
+	 * \author Daan Schulpen
 	 * \deprecated Console should be used instead
 	 */
-	public function setMessageContainer($_container) 
+	public function setMessageContainer($_container)
 	{
 		if ($_container !== null && !($_container instanceof Container)) {
-			$this->setStatus(__FILE__, __LINE__, DOC_IVMSGCONTAINER, $_container);
+			$this->setStatus(__FILE__, __LINE__, DOC_IVMSGCONTAINER, array($_container));
 		}
 		$this->msgContainer = $_container;
 	}
-	
+
 	/**
 	 * Get the HTML code to display the document
 	 * \return string with the HTML code
@@ -668,7 +668,7 @@ Register::registerCode('DOC_NOSUCHFILE');
 Register::registerCode('DOC_IVFILESPEC');
 
 Register::setSeverity (TT_BUG);
-//Register::registerCode('DOC_IVMSGCONTAINER');
+Register::registerCode('DOC_IVMSGCONTAINER');
 
 //Register::setSeverity (TT_ERROR);
 //Register::setSeverity (TT_FATAL);

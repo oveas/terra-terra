@@ -518,3 +518,25 @@ function justify($input, $width, $mode = TT_JPAD_AVERAGE)
 	return $final;
 }
 
+/**
+ * Get a list of all applications
+ * \param[in] $selectEnabled True (default) or false to select only applications marked as enabled
+ * \param[in] $selectInstalled True (default) or false to select only applications marked as installed
+ * \return Array with all info from the applications
+ * \author Oscar van Eijk, Oveas Functionality Provider
+ */
+function getApplications ($selectEnabled = true, $selectInstalled = true)
+{
+	$dataset = new DataHandler ();
+	$dataset->setTablename('applications');
+	$dataset->set('aid', -1, null, null, array('match' => array(DBMATCH_GE))); // Dummy to force a where clause
+	if ($selectEnabled) {
+		$dataset->set('enabled', 1);
+	}
+	if ($selectInstalled) {
+		$dataset->set('installed', 1);
+	}
+	$dataset->prepare();
+	$dataset->db($_data, __LINE__, __FILE__);
+	return $_data;
+}

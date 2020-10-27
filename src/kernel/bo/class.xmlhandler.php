@@ -57,7 +57,7 @@ class XmlHandler extends _TT
 	{
 		$this->fileObject = new FileHandler($name, false);
 	}
-	
+
 
 	/**
 	 * Parse the XML file and store the data in a SimpleXMLElement object
@@ -108,7 +108,7 @@ class XmlHandler extends _TT
 	/**
 	 * Get a reference to an XML element object, specified by path
 	 * \param[in] $path Path from the first child level specified as a string seperated by slashes. Optional indexes can be given seperated by commas, e.g.:
-	 * 
+	 *
 	 *   XML file:
 	 *   <pre>
 	 *      &lt;person&gt;
@@ -138,7 +138,7 @@ class XmlHandler extends _TT
 	 *   </pre>
 	 *   In this XML, the path 'daughters/child,2/daughters/child' will return a reference to Julie. When an index is out of range (e.g. 'sons/child,2'),
 	 *   null will be returned.
-	 * 
+	 *
 	 * To get a reference to the 'person' rootnode, specify null (which is the default).
 	 * \param[in] $checkFullPath Boolean that can be set to true to make sure the full path is checked. If this is not done,
 	 * the eval() at the end of this method might throw an uncatchable fatal error exiting Terra-Terra immediatly if an elementname
@@ -204,8 +204,7 @@ Register::setSeverity (TT_INFO);
 Register::setSeverity (TT_SUCCESS);
 Register::registerCode ('XML_FPARSED');
 
-Register::setSeverity (TT_WARNING);
-Register::registerCode ('XML_BADPATH');
+//Register::setSeverity (TT_WARNING);
 
 //Register::setSeverity (TT_BUG);
 
