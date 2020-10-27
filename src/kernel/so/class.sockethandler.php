@@ -33,6 +33,12 @@ define ('SOCK_AVAIL',			'220');
 //! Response code indicating the socket accepted the last command
 define ('SOCK_ACCEPTED',		'250');
 
+//! Resonse to AUTH LOGIN, which can be 'VXNlcm5hbWU6' (base64('Username:')) or 'UGFzc3dvcmQ6' (base64('Password:'))
+define ('SOCK_AUTHENTICATE',	'334');
+
+// Response to a succesfull login
+define ('SOCK_AUTHENTICATED',	'235');
+
 //! Response code indicating the socket is ready to receive data
 define ('SOCK_DATA_STARTED',	'354');
 
@@ -40,19 +46,25 @@ define ('SOCK_DATA_STARTED',	'354');
 define ('SOCK_LINE_END',		"\r\n");
 
 //! Command to start sending data
-define ('SOCK_DATA_START',		"data\r\n");
+define ('SOCK_DATA_START',		"DATA");
 
 //! Commend to end datasend
-define ('SOCK_DATA_END',		"\r\n.\r\n");
+define ('SOCK_DATA_END',		".");
 
 //! Command to end a session
-define ('SOCK_SESSION_END',		"quit\r\n");
+define ('SOCK_SESSION_END',		"QUIT");
 
 //! Size of a netwwork buffer
 define ('SOCK_BUFFER_SIZE',		2048);
 
 //! Connect timeout in seconds
-define ('SOCK_TIMEOUT',			30);
+define ('SOCK_CONNECT_TIMEOUT',	30);
+
+//! Read timeout in seconds. After this timeout, the socket is considered EOF
+define ('SOCK_READ_TIMEOUT',	2);
+
+//! No data on the socket
+define ('SOCK_NODATA',			'TT sais: No Data to Read');
 //! @}
 
 /**
@@ -95,18 +107,21 @@ class SocketHandler extends _TT
 
 		$this->id = 0;
 		$this->host = $host;
-		$service_port = getservbyname('www', 'tcp');
-		if (is_int($port)) {
-			$this->port = $port;
-			$this->setStatus (__FILE__, __LINE__, TT_STATUS_OK);
+		if (($this->port = self::getPortNumber($port, $udp)) === false) {
+			$this->setStatus (__FILE__, __LINE__, SOCKET_NOPORT, array($port, ($udp === true ? 'udp' : 'tcp')));
 		} else {
-			if (($this->port = getservbyname($port, ($udp === true ? 'udp' : 'tcp'))) === false) {
-				$this->setStatus (__FILE__, __LINE__, SOCKET_NOPORT, array($port, ($udp === true ? 'udp' : 'tcp')));
-			} else {
-				$this->setStatus (__FILE__, __LINE__, TT_STATUS_OK);
-			}
+			$this->setStatus (__FILE__, __LINE__, TT_STATUS_OK);
 		}
 		return ($this->severity);
+	}
+
+	static public function getPortNumber($_service, $_udp = false)
+	{
+		if (preg_match('/^\d+$/', $_service)) {
+			return $_service;
+		} else {
+			return getservbyname($_service, ($_udp === true ? 'udp' : 'tcp'));
+		}
 	}
 
 	/**
@@ -117,6 +132,24 @@ class SocketHandler extends _TT
 	private function connected ()
 	{
 		return ($this->id !== 0);
+	}
+
+	/**
+	 * Return the server at which this socket is connected
+	 * \return Hostname or IP address
+	 */
+	public function getHost()
+	{
+		return $this->host;
+	}
+
+	/**
+	 * Return the port number at which this socket is connected
+	 * \return Portnumber
+	 */
+	public function getPort()
+	{
+		return $this->port;
 	}
 
 	/**
@@ -133,9 +166,10 @@ class SocketHandler extends _TT
 							$this->port,
 							$_errno,
 							$_errmsg,
-							SOCK_TIMEOUT)) === false) {
+							SOCK_CONNECT_TIMEOUT)) === false) {
 				$this->setStatus (__FILE__, __LINE__, SOCKET_CONNERROR, array($_errno, $_errmsg, $this->host, $this->port));
 			} else {
+				stream_set_timeout($this->id, SOCK_READ_TIMEOUT);
 				if (($response = $this->read()) === null) {
 					return ($this->severity);
 				}
@@ -183,7 +217,8 @@ class SocketHandler extends _TT
 			$this->setStatus(__FILE__, __LINE__, SOCKET_WRITEERROR);
 			return ($this->severity);
 		}
-//echo "Write: [$line] <br>";
+
+//$_ln = preg_replace(array('/</', '/>/'), array('&lt;', '&gt;'), $line); echo "Write: [$_ln] <br>";
 		if ($expect !== '') {
 			if (($response = $this->read()) === null) {
 				return ($this->severity);
@@ -202,7 +237,7 @@ class SocketHandler extends _TT
 
 	/**
 	 * Read a line from the socket
-	 * \return The data read, or null when an error occured
+	 * \return The data read, SOCK_NODATA when there is no (more) data, or null when an error occured
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function read ()
@@ -211,10 +246,17 @@ class SocketHandler extends _TT
 			$this->setStatus(__FILE__, __LINE__, SOCKET_NOTCONNECTED);
 			return (null);
 		}
+
 		if (($response = fgets ($this->id, SOCK_BUFFER_SIZE)) === false) {
+			$_sockInfo = stream_get_meta_data($this->id);
+			if ($_sockInfo['timed_out']) {
+				$this->setStatus(__FILE__, __LINE__, SOCKET_EOF);
+				return (SOCK_NODATA);
+			}
 			$this->setStatus(__FILE__, __LINE__, SOCKET_READERROR);
 			return (null);
 		}
+
 		$this->setStatus(__FILE__, __LINE__, SOCKET_READ, array(rtrim($response)));
 		return ($response);
 	}
@@ -236,6 +278,7 @@ Register::setSeverity (TT_SUCCESS);
 Register::registerCode ('SOCKET_CONNECTOK');
 Register::registerCode ('SOCKET_EXPECTED');
 Register::registerCode ('SOCKET_READ');
+Register::registerCode ('SOCKET_EOF');
 
 Register::setSeverity (TT_WARNING);
 Register::registerCode ('SOCKET_CONNERROR');
@@ -246,6 +289,7 @@ Register::registerCode ('SOCKET_WRITEERROR');
 //Register::setSeverity (TT_BUG);
 
 Register::setSeverity (TT_ERROR);
+Register::registerCode ('SOCKET_USRNOPWD');
 Register::registerCode ('SOCKET_NOPORT');
 
 //Register::setSeverity (TT_FATAL);

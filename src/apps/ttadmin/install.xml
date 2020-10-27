@@ -52,7 +52,11 @@
 		</items>
 
 		<items section = "mailsend">
-			<item id = "">RawSMTP</item>
+			<item id = "driver">RawSMTP</item>
+			<item id = "server">localhost</item>
+			<item id = "service">587</item>
+			<item id = "user"></item>
+			<item id = "password" hidden = "true"></item>
 		</items>
 	</configuration>
 

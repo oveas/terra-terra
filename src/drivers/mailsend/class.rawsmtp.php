@@ -60,6 +60,35 @@ class RawSMTP extends MailsendDefaults implements MailsendDriver
 	}
 
 	/**
+	 * Check is a username and password are specified for this SMTP server. If so, authenticate.
+	 * \return True when successfully authenticated or when no authentication is required, false otherwise.
+	 */
+	private function authenticate()
+	{
+		$_usr = ConfigHandler::get('mailsend', 'user', '');
+		$_pwd = ConfigHandler::get('mailsend', 'password', '');
+
+		if ($_usr == '') {
+			return (true);
+		}
+		if ($_pwd == '') {
+			$this->setStatus (__FILE__, __LINE__, SOCKET_USRNOPWD, array($_usr));
+			return ($this->severity <= TT_OK);
+		}
+
+		if ($this->mailSocket->write ('auth login', SOCK_AUTHENTICATE) >= TT_WARNING) {
+			return (false);
+		}
+		if ($this->mailSocket->write (base64_encode($_usr), SOCK_AUTHENTICATE) >= TT_WARNING) {
+			return (false);
+		}
+		if ($this->mailSocket->write (base64_encode($_pwd), SOCK_AUTHENTICATED) >= TT_WARNING) {
+			return (false);
+		}
+		return (true);
+	}
+
+	/**
 	 * Open a socket and write the raw mailtext to it.
 	 * \param[in] $mail Indexed array defining the mail
 	 * \return Boolean, true on success
@@ -68,22 +97,31 @@ class RawSMTP extends MailsendDefaults implements MailsendDriver
 	 */
 	public function mailSend (array $mail)
 	{
-		$_server = ConfigHandler::get('mail', 'smtp_server', 'localhost');
-		$this->mailSocket = new SocketHandler('smtp', $_server);
+		$_service = ConfigHandler::get('mailsend', 'service', 'smtp');
+		$_server = ConfigHandler::get('mailsend', 'server', 'localhost');
+
+		$this->mailSocket = new SocketHandler($_service, $_server);
 		$X=$this->mailSocket->connect();
 
 		if ($this->mailSocket->connect() >= TT_WARNING) {
 			return (false);
 		}
-		$_myhost = ConfigHandler::get('mail', 'my_hostname', gethostname());
+		$_myhost = ConfigHandler::get('mailsend', 'my_hostname', gethostname());
 
-		if ($this->mailSocket->write ('HELO ' .$_myhost, SOCK_ACCEPTED) >= TT_WARNING) {
+		if ($this->mailSocket->write ('EHLO ' .$_myhost, SOCK_ACCEPTED) >= TT_WARNING) {
+			return (false);
+		}
+
+		do {
+			$_l = $this->mailSocket->read();
+		} while ($_l != SOCK_NODATA);
+
+		if (!$this->authenticate()) {
 			return (false);
 		}
 		if ($this->mailSocket->write ('mail from: <' . $mail['from'] . '>', SOCK_ACCEPTED) >= TT_WARNING) {
 			return (false);
 		}
-
 		foreach ($mail['recipients'] as $_rcpt) {
 			if ($this->mailSocket->write ("rcpt to: <$_rcpt>", SOCK_ACCEPTED) >= TT_WARNING) {
 				return (false);
@@ -139,5 +177,18 @@ class RawSMTP extends MailsendDefaults implements MailsendDriver
 		$this->mailSocket->disconnect();
 		return (true);
 	}
-
 }
+
+Register::registerClass('RawSMTP', TT_APPNAME);
+
+//Register::setSeverity (TT_DEBUG);
+
+//Register::setSeverity (TT_INFO);
+//Register::setSeverity (TT_OK);
+//Register::setSeverity (TT_SUCCESS);
+//Register::setSeverity (TT_WARNING);
+//Register::setSeverity (TT_BUG);
+//Register::setSeverity (TT_ERROR);
+//Register::setSeverity (TT_FATAL);
+//Register::setSeverity (TT_CRITICAL);
+

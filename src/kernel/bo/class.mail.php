@@ -22,6 +22,18 @@
  */
 
 /**
+ * \defgroup MAIL_Options Mail options
+ * Definition available mail options
+ * @{
+ */
+//! Get a notification when the mail is delivered (supported by servers who have 250-DSN in their EHLO response)
+define ('MAIL_OPT_DELIVERYNOTIFICATION',	1);
+
+//! Request a confirmation from the recipient when the mail is read
+define ('MAIL_OPT_READNOTIFICATION',		2);
+//! @}
+
+ /**
  * \ingroup TT_BO_LAYER
  * Define an email for sending.
  * \brief Mail class
@@ -60,7 +72,53 @@ class Mail extends _TT
 	}
 
 	/**
-	 * Check and set the Sender address as it appears in the header. It no from address is
+	 *
+	 * \param[in] $addr A (displayable) mail address
+	 * \param[in] $type The address type, which can be any of the following:
+	 *   * sender    Actual sender of the mail.
+	 *   * from      From address
+	 *   * reply-to  Reply-To address
+	 *   * to        First recipient. Multiple recipients can be added
+	 *   * cc        Secondary recipient. Multiple recipients can be added
+	 *   * bcc       Hidden recipient. Multiple recipients can be added
+	 * \return True on succes, false when an invalid mail address was received
+	 */
+	private function setMailAddress ($addr, $type)
+	{
+		$_recipients = array('to', 'cc', 'bcc');
+		if (($_addr = verifyMailAddress($addr)) === '') {
+			$this->setStatus(__FILE__, __LINE__, MAIL_IVMAILADDR, array($addr));
+			return (false);
+		} else {
+			if (in_array($type, $_recipients)) {
+				if (!array_key_exists($type, $this->mail)) {
+					$this->mail[$type] = array();
+				}
+				$this->mail[$type][] = $_addr;
+				$this->addRecipient($addr);
+			} else {
+				$this->mail[$type] = $_addr;
+			}
+			return (true);
+		}
+	}
+
+	/**
+	 * Add an email address to the list of recipients. This list is for use by the SMTP
+	 * driver only and will not appear in the headers
+	 * \param[in] $addr A validated email address
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	private function addRecipient ($addr)
+	{
+		if (!array_key_exists('recipients', $this->mail)) {
+			$this->mail['recipients'] = array();
+		}
+		$this->mail['recipients'][] = $addr;
+	}
+
+	/**
+	 * Set the Sender address as it appears in the header. If no from address is
 	 * set yet, this method will also set the same address for the from SMTP command by calling setFrom()
 	 * \param[in] $addr A (displayable) email address
 	 * \return Boolean; true on success. False indicates an invalid mail address
@@ -68,31 +126,68 @@ class Mail extends _TT
 	 */
 	public function setSender ($addr)
 	{
-		if (($_addr = verifyMailAddress($addr)) === '') {
-			$this->setStatus(__FILE__, __LINE__, MAIL_IVMAILADDR, array($addr));
-			return (false);
-		} else {
-			$this->mail['sender'] = $addr;
-			$this->setFrom($_addr);
-			return (true);
+		if ($this->setMailAddress($addr, 'sender') === false) {
+			return false;
 		}
+		if (!array_key_exists('from', $this->mail)) {
+			return $this->setMailAddress($addr, 'from');
+		}
+		return true;
 	}
 
 	/**
-	 * Check and set the from address
+	 * Set the from address
 	 * \param[in] $addr A (displayable) email address
 	 * \return Boolean; true on success. False indicates an invalid mail address
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function setFrom ($addr)
 	{
-		if (($_addr = verifyMailAddress($addr)) === '') {
-			$this->setStatus(__FILE__, __LINE__, MAIL_IVMAILADDR, array($addr));
-			return (false);
-		} else {
-			$this->mail['from'] = $_addr;
-			return (true);
-		}
+		return $this->setMailAddress($addr, 'from');
+	}
+
+	/**
+	 * Set the reply-to address
+	 * \param[in] $addr A (displayable) email address
+	 * \return Boolean; true on success. False indicates an invalid mail address
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function setReplyTo ($addr)
+	{
+		return $this->setMailAddress($addr, 'reply-to');
+	}
+
+	/**
+	 * Add the given mail address to the recipients and the To- list
+	 * \param[in] $addr A (displayable) email address
+	 * \return Boolean; true on success. False indicates an invalid mail address
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function addTo ($addr)
+	{
+		return $this->setMailAddress($addr, 'to');
+	}
+
+	/**
+	 * Add the given mail address to the recipients and the CC- list
+	 * \param[in] $addr A (displayable) email address
+	 * \return Boolean; true on success. False indicates an invalid mail address
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function addCc ($addr)
+	{
+		return $this->setMailAddress($addr, 'cc');
+	}
+
+	/**
+	 * Add the given mail address to the hidden recipients list
+	 * \param[in] $addr A (displayable) email address
+	 * \return Boolean; true on success. False indicates an invalid mail address
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	public function addBcc ($addr)
+	{
+		return $this->setMailAddress($addr, 'bcc');
 	}
 
 	/**
@@ -138,83 +233,6 @@ class Mail extends _TT
 	}
 
 	/**
-	 * Check the given mail address  and add it to the recipients and the To- list
-	 * \param[in] $addr A (displayable) email address
-	 * \return Boolean; true on success. False indicates an invalid mail address
-	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 */
-	public function addTo ($addr)
-	{
-		if (!array_key_exists('to', $this->mail)) {
-			$this->mail['to'] = array();
-		}
-		if (($_addr = verifyMailAddress($addr)) === '') {
-			$this->setStatus(__FILE__, __LINE__, MAIL_IVMAILADDR, array($addr));
-			return (false);
-		} else {
-			$this->addRecipient($_addr);
-			$this->mail['to'][] = $addr;
-			return (true);
-		}
-	}
-
-	/**
-	 * Check the given mail address  and add it to the recipients and the CC- list
-	 * \param[in] $addr A (displayable) email address
-	 * \return Boolean; true on success. False indicates an invalid mail address
-	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 */
-	public function addCc ($addr)
-	{
-		if (!array_key_exists('cc', $this->mail)) {
-			$this->mail['cc'] = array();
-		}
-		if (($_addr = verifyMailAddress($addr)) === '') {
-			$this->setStatus(__FILE__, __LINE__, MAIL_IVMAILADDR, array($addr));
-			return (false);
-		} else {
-			$this->addRecipient($_addr);
-			$this->mail['cc'][] = $addr;
-			return (true);
-		}
-	}
-
-	/**
-	 * Check the given mail address  and add it to the recipients list
-	 * \param[in] $addr A (displayable) email address
-	 * \return Boolean; true on success. False indicates an invalid mail address
-	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 */
-	public function addBcc ($addr)
-	{
-		if (!array_key_exists('bcc', $this->mail)) {
-			$this->mail['bcc'] = array();
-		}
-		if (($_addr = verifyMailAddress($addr)) === '') {
-			$this->setStatus(__FILE__, __LINE__, MAIL_IVMAILADDR, array($addr));
-			return (false);
-		} else {
-			$this->addRecipient($_addr);
-			$this->mail['bcc'][] = $addr;
-			return (true);
-		}
-	}
-
-	/**
-	 * Add an email address to the list of recipients. This list is for use by the SMTP
-	 * driver only and will not appear in the headers
-	 * \param[in] $addr A validated email address
-	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 */
-	private function addRecipient ($addr)
-	{
-		if (!array_key_exists('recipients', $this->mail)) {
-			$this->mail['recipients'] = array();
-		}
-		$this->mail['recipients'][] = $addr;
-	}
-
-	/**
 	 * Add one or more headers to this mail. Headers that already exist will be overwritten.
 	 * \param[in] $headers Indexed array with the header info in the format (header => value)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -227,6 +245,77 @@ class Mail extends _TT
 		foreach ($headers as $hdr => $val) {
 			$this->mail['headers'][$hdr] = $val;
 		}
+	}
+
+	/**
+	 * Parse the mail options that where set and take required action (probably only setting the required headers)
+	 * \todo This method should probably be driver specific
+	 */
+	private function parseMailOptions()
+	{
+		$_addlHeaders = array();
+		foreach ($this->mail['options'] as $_k => $_v) {
+			switch ($_k) {
+				case MAIL_OPT_DELIVERYNOTIFICATION:
+					if ($_v === true) {
+						$_addlHeaders['Return-Receipt-To'] = (array_key_exists('reply-to', $this->mail) ? $this->mail['reply-to'] : $this->mail['from']);
+					}
+					break;
+				case MAIL_OPT_READNOTIFICATION:
+					if ($_v === true) {
+						$_addlHeaders['Disposition-Notification-To'] = (array_key_exists('reply-to', $this->mail) ? $this->mail['reply-to'] : $this->mail['from']);
+					}
+					break;
+			}
+		}
+		if (!empty($_addlHeaders)) {
+			$this->addHeaders($_addlHeaders);
+		}
+	}
+
+	/**
+	 * \todo Implement attachments - must be driver specific I suppose
+	 * \param[in] unknown $fileData
+	 */
+	public function addAttachment ($fileData)
+	{
+
+	}
+	/*
+	 * Options to implement (headers taken from the good old OPL):
+	 print MAIL "MIME-Version: $MailHeader{'Mime_Version'}\r\n" unless (!defined($MailHeader{'Mime_Version'}));
+	 print MAIL "Content-Type: $MailHeader{'Content_Type'}\r\n" unless (!defined($MailHeader{'Content_Type'}));
+	 print MAIL "X-Opl-flag: sent\r\n\r\n";
+
+	 if ($multipart) {
+	 print MAIL "\n$MailHeader{'Boundary'}\r\n";
+	 print MAIL "Content-Type: text/plain; charset=$OPLSteering{'CharSet'}\r\n";
+	 print MAIL "Content-Transfer-Encoding: quoted-printable\r\n";
+	 print MAIL "Content-Disposition: inline\r\n\r\n";
+	 }
+	 */
+
+	/**
+	 * Set mail options
+	 * \param[in] $_optionCode One of the option defined in \ref MAIL_Options
+	 * \param[in] $_optionValue An optional value for this options
+	 * \return Severity level
+	 */
+	public function setOption ($_optionCode, $_optionValue = null)
+	{
+		if (!array_key_exists('options', $this->mail)) {
+			$this->mail['options'] = array();
+		}
+		switch ($_optionCode) {
+			case MAIL_OPT_DELIVERYNOTIFICATION:
+			case MAIL_OPT_READNOTIFICATION:
+				$this->mail['options'][$_optionCode] = true;
+				break;
+			default:
+				$this->setStatus(__FILE__, __LINE__, MAIL_IVMAILOPT, array($_optionCode));
+				return $this->severity;
+		}
+		return TT_OK;
 	}
 
 	/**
@@ -251,7 +340,9 @@ class Mail extends _TT
 	 */
 	public function send()
 	{
+		$this->parseMailOptions();
 		$this->setDate();
+
 		if ($this->driver->mailSend($this->mail) === false) {
 			$_err = $this->driver->getLastWarning();
 			$this->setStatus(__FILE__, __LINE__, MAIL_SENDERR, array($this->mail['subject'], $_err));
@@ -309,7 +400,8 @@ Register::setSeverity (TT_WARNING);
 Register::registerCode ('MAIL_IVMAILADDR');
 Register::registerCode ('MAIL_SENDERR');
 
-//Register::setSeverity (TT_BUG);
+Register::setSeverity (TT_BUG);
+Register::registerCode ('MAIL_IVMAILOPT');
 
 Register::setSeverity (TT_ERROR);
 Register::registerCode ('MAIL_NODRIVER');

@@ -21,6 +21,11 @@
  * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
 
+// We need this here for some helper methods and status codes
+if (!TTloader::getClass('sockethandler', TT_SO_INC)) {
+	trigger_error('Error loading classfile sockethandler from '. TT_SO_INC, E_USER_ERROR);
+}
+
 /**
  * \ingroup TT_DRIVERS
  * Class that defines the PHP mail drivers
@@ -34,20 +39,28 @@ class PHPMail extends MailsendDefaults implements MailsendDriver
 
 	public function __construct()
 	{
-	}
 
-	/**
-	 * Reimplement _TT::getLastWarning() to get the last error message either of the socket object or my own
-	 * \return null if there was no error (no severity TT_WARNING or higher), otherwise the error text.
-	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 */
-	public function getLastWarning()
-	{
-		$this->mailSocket->signal(TT_WARNING, $_err);
-		if ($_err === false) {
-			$this->signal(TT_WARNING, $_err);
+		$_server = ConfigHandler::get('mailsend', 'server', 'localhost');
+		if (($_service = SocketHandler::getPortNumber(ConfigHandler::get('mailsend', 'service', 'smtp'))) === false) {
+			$this->setStatus (__FILE__, __LINE__, SOCKET_NOPORT, array($_service, 'tcp'));
 		}
-		return (($_err === false) ? null : $_err);
+
+		ini_set('SMTP', $_server);
+		ini_set('sendmail_port', $_service);
+
+		$_usr = ConfigHandler::get('mailsend', 'user', '');
+		$_pwd = ConfigHandler::get('mailsend', 'password', '');
+
+		if ($_usr !== '') {
+			return (true);
+			if ($_pwd === '') {
+				$this->setStatus (__FILE__, __LINE__, SOCKET_USRNOPWD, array($_usr));
+			} else {
+				ini_set('username', $_usr);
+				ini_set('password', $_pwd);
+			}
+		}
+
 	}
 
 	/**
@@ -59,6 +72,8 @@ class PHPMail extends MailsendDefaults implements MailsendDriver
 	 */
 	public function mailSend (array $mail)
 	{
+		ini_set('sendmail_from', $mail['from']);
+
 		$_to = '';
 		if (array_key_exists('to', $mail) && count($mail['to']) > 0) {
 			$_to = implode(',', $mail['to']);
@@ -67,7 +82,7 @@ class PHPMail extends MailsendDefaults implements MailsendDriver
 		if (array_key_exists('subject', $mail)) {
 			$_subj = $mail['subject'];
 		}
-		
+
 		$_hdr  = 'From: ' . $mail['from'] . "\r\n";
 
 		if (array_key_exists('to', $mail) && count($mail['to']) > 0) {
