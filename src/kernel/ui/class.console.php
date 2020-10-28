@@ -49,7 +49,7 @@ class Console extends Container
 		}
 		parent::__construct(
 			 'window'
-			,array('class' => 'ttConsole')
+			,array('class' => 'ttConsole', 'visibility' => 2)
 			,array(
 				 'title' => _TT::translate('Console')
 				,'width' => 600

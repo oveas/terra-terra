@@ -334,7 +334,7 @@ abstract class BaseElement extends _TT
 	{
 		$_htmlCode = '';
 		foreach ($this->events as $_e => $_a) {
-			$_htmlCode .= " $_e='$_a'";
+			$_htmlCode .= " on$_e='$_a'";
 		};
 		return $_htmlCode;
 	}

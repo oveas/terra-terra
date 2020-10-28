@@ -59,7 +59,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 	private $width;						//!< Area width in pixels
 	private $height;					//!< Area height in pixels
 	private $border			= 0;		//!< Border width in pixels (left and right side of the contentarea only)
-	private $visible;					//!< Initial status: 0: hidden, 1: shaded, 2: visible, 6: maximized
+	private $visibility;				//!< Initial status: 0: hidden, 1: shaded, 2: visible, 6: maximized
 	private $z_index		= 25;		//!< Display order (z-index)
 	private $title;						//!< Title as displayed in the titlebalr
 	private $display_bars	= true;		//!< Should the Title- and Bottom bars be displayed?
@@ -167,10 +167,11 @@ class ContainerWindowPlugin extends ContainerPlugin
 		$_i = new Container('img', array(), array('src' => $_theme->getImage('bar.left.png', 'backgrounds')));
 		$_i->addStyleAttributes(
 			array(
-				 'width'		=> ConfigHandler::get('theme-backgrounds', 'top-bar-border-width') . 'px'
-				,'height'		=> ConfigHandler::get('theme-backgrounds', 'top-bar-height') . 'px'
-				,'border'		=> '0px'
-				,'margin'		=> '0px'
+				 'width'			=> ConfigHandler::get('theme-backgrounds', 'top-bar-border-width') . 'px'
+				,'height'			=> ConfigHandler::get('theme-backgrounds', 'top-bar-height') . 'px'
+				,'border'			=> '0px'
+				,'margin'			=> '0px'
+				,'vertical-align'	=> 'top'
 			)
 		);
 		$_c->addToContent($_i);
@@ -182,8 +183,8 @@ class ContainerWindowPlugin extends ContainerPlugin
 				 'width'			=> ConfigHandler::get('theme-icons', 'top-width') . 'px'
 				,'height'			=> ConfigHandler::get('theme-icons', 'top-height') . 'px'
 				,'border'			=> '0px'
-				,'margin'			=> '3px 0px'
-				,'vertical-align'	=> 'top'
+				,'margin'			=> '0px 2px'
+				,'vertical-align'	=> 'middle'
 				,'cursor'			=> 'move'
 			)
 		);
@@ -267,8 +268,8 @@ class ContainerWindowPlugin extends ContainerPlugin
 				 'width'			=> ConfigHandler::get('theme-icons', 'top-width') . 'px'
 				,'height'			=> ConfigHandler::get('theme-icons', 'top-height') . 'px'
 				,'border'			=> '0px'
-				,'margin'			=> '3px 2px'
-				,'vertical-align'	=> 'top'
+				,'margin'			=> '0px 2px'
+				,'vertical-align'	=> 'middle'
 				,'cursor'			=> 'default'
 			)
 		);
@@ -283,8 +284,8 @@ class ContainerWindowPlugin extends ContainerPlugin
 				 'width'			=> ConfigHandler::get('theme-icons', 'top-width') . 'px'
 				,'height'			=> ConfigHandler::get('theme-icons', 'top-height') . 'px'
 				,'border'			=> '0px'
-				,'margin'			=> '3px 2px'
-				,'vertical-align'	=> 'top'
+				,'margin'			=> '0px 2px'
+				,'vertical-align'	=> 'middle'
 				,'cursor'			=> 'default'
 			)
 		);
@@ -299,14 +300,29 @@ class ContainerWindowPlugin extends ContainerPlugin
 				 'width'			=> ConfigHandler::get('theme-icons', 'top-width') . 'px'
 				,'height'			=> ConfigHandler::get('theme-icons', 'top-height') . 'px'
 				,'border'			=> '0px'
-				,'margin'			=> '3px 2px'
-				,'vertical-align'	=> 'top'
+				,'margin'			=> '0px 2px'
+				,'vertical-align'	=> 'middle'
 				,'cursor'			=> 'default'
 			)
 		);
+
 		$_l = new Container('link', array('class' => 'icons', 'id' => 'CloseLink_' . $this->wid), array('href' => "javascript:WAVisibility('$this->wid', 'c')"));
 		$_l->setContent($_i);
 		$_c->addToContent($_l);
+
+		// Right border
+		$_i = new Container('img', array(), array('src' => $_theme->getImage('bar.right.png', 'backgrounds')));
+		$_i->addStyleAttributes(
+			array(
+				 'width'			=> ConfigHandler::get('theme-backgrounds', 'top-bar-border-width') . 'px'
+				,'height'			=> ConfigHandler::get('theme-backgrounds', 'top-bar-height') . 'px'
+				,'border'			=> '0px'
+				,'margin'			=> '0px'
+				,'vertical-align'	=> 'top'
+			)
+		);
+		$_c->addToContent($_i);
+
 	}
 
 	/**
@@ -324,7 +340,6 @@ class ContainerWindowPlugin extends ContainerPlugin
 				,'height'		=> ($this->height
 						- ConfigHandler::get('theme-backgrounds', 'top-bar-height')
 						- ConfigHandler::get('theme-backgrounds', 'bottom-bar-height')) . 'px'
-				,'visibility'	=> 'visible'
 				,'border-style'	=> 'solid'
 				,'border-width'	=> '0px ' . $this->border . 'px'
 				,'z-index'		=> $this->z_index
@@ -347,7 +362,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 				' width'			=> '100%'
 				,'height'			=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-height') . 'px'
 				,'border-spacing'	=> '0px'
-				,'vertical-align'	=> 'middle'
+				,'vertical-align'	=> 'top'
 				,'border-width'		=> '0px'
 			)
 		);
@@ -381,6 +396,20 @@ class ContainerWindowPlugin extends ContainerPlugin
 		);
 		$_c->addToContent($_i);
 
+		// Right border
+		$_i = new Container('img', array(), array('src' => $_theme->getImage('bar.bottom.right.png', 'backgrounds')));
+		$_i->addStyleAttributes(
+			array(
+				 'width'			=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-border-width') . 'px'
+				,'height'			=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-height') . 'px'
+				,'border'			=> '0px'
+				,'float'			=> 'right'
+				,'vertical-align'	=> 'top'
+				,'margin'			=> '0px'
+			)
+		);
+		$_c->addToContent($_i);
+
 		// Resize icon
 		$_i = new Container('img', array(), array('src' => $_theme->getImage('resize.png', 'icons'), 'alt' => 'Resize Workarea'));
 		$_i->addStyleAttributes(
@@ -388,24 +417,12 @@ class ContainerWindowPlugin extends ContainerPlugin
 				 'width'			=> ConfigHandler::get('theme-icons', 'bottom-width') . 'px'
 				,'height'			=> ConfigHandler::get('theme-icons', 'bottom-height') . 'px'
 				,'border'			=> '0px'
-				,'margin'			=> '1px 0px'
+				,'margin'			=> '0px 1px'
 				,'vertical-align'	=> 'top'
 				,'cursor'			=> 'se-resize'
+				,'float'			=> 'right'
 			));
 		$_i->setEvent('mousedown', 'startAction (event, "' . $this->wid . '", "r")');
-		$_c->addToContent($_i);
-
-		// Right border
-		$_i = new Container('img', array(), array('src' => $_theme->getImage('bar.bottom.right.png', 'backgrounds')));
-		$_i->addStyleAttributes(
-			array(
-				 'width'	=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-border-width') . 'px'
-				,'height'	=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-height') . 'px'
-				,'border'	=> '0px'
-				,'float'	=> 'right'
-				,'margin'	=> '0px'
-			)
-		);
 		$_c->addToContent($_i);
 
 		// Create the div for this table
@@ -416,7 +433,6 @@ class ContainerWindowPlugin extends ContainerPlugin
 				 'position'		=> 'absolute'
 				,'left'			=>'0px'
 				,'top'			=> ($this->height - ConfigHandler::get('theme-backgrounds', 'bottom-bar-height')) . 'px'
-				,'visibility'	=> 'visible'
 				,'width'		=> $this->width . 'px'
 				,'height'		=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-height') . 'px'
 				,'z-index'		=> $this->z_index
@@ -488,16 +504,16 @@ class ContainerWindowPlugin extends ContainerPlugin
 
 	/**
 	 * Set the nitial visibility status
-	 * \param[in] $visible Visibility as an integer or as a constant:
+	 * \param[in] $visibility Visibility as an integer or as a constant:
 	 *   * 0: WINDOW_VISIBILITY_HIDDEN
 	 *   * 1: WINDOW_VISIBILITY_SHADED
 	 *   * 2: WINDOW_VISIBILITY_VISIBLE
 	 *   * 3: WINDOW_VISIBILITY_MAXIMIZED
-	 * \note When passing the parameter as a constant, check the note in the WindowVisibility group description!
+	 * \note When passing the parameter as a constant, check the note in the \ref WindowVisibility group description!
 	 */
-	public function setVisible ($visible)
+	public function setVisibility ($visibility)
 	{
-		$this->visible = $visible;
+		$this->visibility = $visibility;
 	}
 
 	/**
@@ -619,26 +635,26 @@ class ContainerWindowPlugin extends ContainerPlugin
 		parent::addToContent($this->contentArea);
 		parent::addToContent($this->barBottom);
 
-		switch ($this->visible) {
+		switch ($this->visibility) {
 			case WINDOW_VISIBILITY_HIDDEN:
-				$this->addStyleAttributes(array('visible' => 'hidden'));
-				$this->contentArea->addStyleAttributes(array('visible' => 'hidden'));
-				$this->barBottom->addStyleAttributes(array('visible' => 'hidden'));
+				$this->addStyleAttributes(array('visibility' => 'hidden'));
+				$this->contentArea->addStyleAttributes(array('visibility' => 'hidden'));
+				$this->barBottom->addStyleAttributes(array('visibility' => 'hidden'));
 				break;
 			case WINDOW_VISIBILITY_SHADED:
-				$this->addStyleAttributes(array('visible' => 'visible'));
-				$this->contentArea->addStyleAttributes(array('visible' => 'hidden'));
-				$this->barBottom->addStyleAttributes(array('visible' => 'hidden'));
+				$this->addStyleAttributes(array('visibility' => 'visible'));
+				$this->contentArea->addStyleAttributes(array('visibility' => 'hidden'));
+				$this->barBottom->addStyleAttributes(array('visibility' => 'hidden'));
 				break;
 			case WINDOW_VISIBILITY_VISIBLE:
-				$this->addStyleAttributes(array('visible' => 'visible'));
-				$this->contentArea->addStyleAttributes(array('visible' => 'visible'));
-				$this->barBottom->addStyleAttributes(array('visible' => 'visible'));
+				$this->addStyleAttributes(array('visibility' => 'visible'));
+				$this->contentArea->addStyleAttributes(array('visibility' => 'visible'));
+				$this->barBottom->addStyleAttributes(array('visibility' => 'visible'));
 				break;
 			case WINDOW_VISIBILITY_MAXIMIZED:
-				$this->addStyleAttributes(array('visible' => 'visible'));
-				$this->contentArea->addStyleAttributes(array('visible' => 'visible'));
-				$this->barBottom->addStyleAttributes(array('visible' => 'visible'));
+				$this->addStyleAttributes(array('visibility' => 'visible'));
+				$this->contentArea->addStyleAttributes(array('visibility' => 'visible'));
+				$this->barBottom->addStyleAttributes(array('visibility' => 'visible'));
 				break;
 		}
 		return '';
