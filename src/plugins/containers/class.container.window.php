@@ -24,7 +24,7 @@
 /**
  * \defgroup WindowVisibility Constants for window visibility
  * These constants are used by the ContainerWindowPlugin. They can be passed to the setVisibility() method
- * *after* the container is initialised with 
+ * *after* the container is initialised with
  * \code{.php}
  * $_window = new Container('window', array(), array('visible' => WINDOW_VISIBILITY_SHADED));
  * \endcode
@@ -34,7 +34,7 @@
 //! Window is hidden (Closed)
 define ('WINDOW_VISIBILITY_HIDDEN', 0);
 //! Window is shaded: only the top bar is visible
-define ('WINDOW_VISIBILITY_SHADED', 1); 
+define ('WINDOW_VISIBILITY_SHADED', 1);
 //! Window is visible
 define ('WINDOW_VISIBILITY_VISIBLE', 2);
 //! Window is maximized
@@ -88,7 +88,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 			$_stack['window-id'] = 0;
 		}
 		$this->wid = $_stack['window-id']++;
-		
+
 		$this->type = 'div';
 
 		$this->setClass('workarea');
@@ -101,7 +101,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 	}
 
 	/**
-	 * Overrule the BaseElement's setContent() to ensure the content of the correct container is set 
+	 * Overrule the BaseElement's setContent() to ensure the content of the correct container is set
 	 * \param[in] $_content Reference to the content, which can be HTML code or an object,
 	 * of which the showElement() method will be called to retrieve the HTML.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -112,14 +112,13 @@ class ContainerWindowPlugin extends ContainerPlugin
 	}
 
 	/**
-	 * Overrule the BaseElement's addToContent() to ensure the content is added to the correct container 
+	 * Overrule the BaseElement's addToContent() to ensure the content is added to the correct container
 	 * \param[in] $_content Reference to the content, which can be HTML code or an object,
 	 * of which the showElement() method will be called to retrieve the HTML.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public function addToContent(&$_content, $_front = false)
 	{
-		print_r($this);
 		$this->contentArea->addToContent($_content, $_front);
 	}
 
@@ -144,11 +143,11 @@ class ContainerWindowPlugin extends ContainerPlugin
 				,'vertical-align'	=> 'middle'
 			)
 		);
-		
+
 		// Create the row
 		$_r = $this->barTop->addContainer('row');
 		$_r->addStyleAttributes(array('height' => ConfigHandler::get('theme-backgrounds', 'top-bar-height') . 'px'));
-		
+
 		// Left part which holds the Move icon
 		$_c = $_r->addContainer('cell', '', array('id' => 'MoveMe'));
 		$_c->addStyleAttributes(
