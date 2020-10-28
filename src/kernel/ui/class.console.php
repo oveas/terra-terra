@@ -56,6 +56,7 @@ class Console extends Container
 				,'height' => 150
 				,'hposition' => 40
 				,'vposition' => 500
+				,'border' => 1
 			)
 		);
 	}

@@ -58,6 +58,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 	private $valignment		= 'top';	//!< Measure 'vposition' from top or bottom
 	private $width;						//!< Area width in pixels
 	private $height;					//!< Area height in pixels
+	private $border			= 0;		//!< Border width in pixels (left and right side of the contentarea only)
 	private $visible;					//!< Initial status: 0: hidden, 1: shaded, 2: visible, 6: maximized
 	private $z_index		= 25;		//!< Display order (z-index)
 	private $title;						//!< Title as displayed in the titlebalr
@@ -141,6 +142,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 				 'width'			=> '100%'
 				,'border-spacing'	=> '0px'
 				,'vertical-align'	=> 'middle'
+				,'border-width'		=> '0px'
 			)
 		);
 
@@ -318,11 +320,13 @@ class ContainerWindowPlugin extends ContainerPlugin
 				,'overflow'		=> 'auto'
 				,'left'			=> '0px'
 				,'top'			=> ConfigHandler::get('theme-backgrounds', 'top-bar-height') . 'px'
-				,'width'		=> $this->width . 'px'
+				,'width'		=> ($this->width - (2*$this->border)) . 'px'
 				,'height'		=> ($this->height
 						- ConfigHandler::get('theme-backgrounds', 'top-bar-height')
 						- ConfigHandler::get('theme-backgrounds', 'bottom-bar-height')) . 'px'
 				,'visibility'	=> 'visible'
+				,'border-style'	=> 'solid'
+				,'border-width'	=> '0px ' . $this->border . 'px'
 				,'z-index'		=> $this->z_index
 			)
 		);
@@ -341,8 +345,10 @@ class ContainerWindowPlugin extends ContainerPlugin
 		$_t->addStyleAttributes(
 			array(
 				' width'			=> '100%'
+				,'height'			=> ConfigHandler::get('theme-backgrounds', 'bottom-bar-height') . 'px'
 				,'border-spacing'	=> '0px'
 				,'vertical-align'	=> 'middle'
+				,'border-width'		=> '0px'
 			)
 		);
 
