@@ -91,38 +91,7 @@ abstract class ContentArea extends _TT
 	 */
 	public function trn ($_string, $_params = array())
 	{
-		return (self::translate($_string, $_params));
-	}
-
-	/**
-	 * Translate a textstring using the labels array
-	 * \param[in] $_string Text string to translate
-	 * \param[in] $_params An optional parameter or array with paramets that will by substituted in
-	 * the translated text.
-	 * \return The translation, or the input if none was found.
-	 * \author Oscar van Eijk, Oveas Functionality Provider
-	 */
-	static public function translate ($_string, $_params = array())
-	{
-		$_lbl = TTCache::get(TTCACHE_LOCALE, 'labels');
-		if (array_key_exists($_string, $_lbl)) {
-			$translation = $_lbl[$_string];
-		} else {
-			$translation = ((ConfigHandler::get ('general', 'debug') > 0?'(!)':'').$_string);
-		}
-		if ($_params === array()) {
-			return ($translation);
-		}
-		if (is_string($_params)) {
-			$_params = array($_params);
-		}
-		for ($_i = 0; $_i < count ($_params); $_i++) {
-			$_search[] = '$p' . ($_i + 1) . '$';
-		}
-		if ($_i > 0) {
-			$translation = str_replace ($_search, $_params, $translation);
-		}
-		return ($translation);
+		return (parent::translate($_string, $_params));
 	}
 
 	/**

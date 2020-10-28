@@ -218,7 +218,7 @@ abstract class _TT
 		} else {
 			$this->status->setParams (array ($params));
 		}
-				
+
 		$msg = null;
 		$this->signal (0, $msg);
 		// Need this check since we can be called before the logger wat setup
@@ -230,7 +230,7 @@ abstract class _TT
 			$this->restoreStatus();
 		}
 		$this->writePHPLog($msg);
-		
+
 		if (ConfigHandler::get ('exception', 'throw_level') >= 0
 				&& $this->severity >= ConfigHandler::get ('exception', 'throw_level', TT_BUG, true)) {
 			$this->signal (0, $msg);
@@ -413,6 +413,37 @@ abstract class _TT
 //echo "Depth is now: $depth<br/>";
 			return ($this->signal (0, $text));
 		}
+	}
+
+	/**
+	 * Translate a textstring using the labels array
+	 * \param[in] $_string Text string to translate
+	 * \param[in] $_params An optional parameter or array with paramets that will by substituted in
+	 * the translated text.
+	 * \return The translation, or the input if none was found.
+	 * \author Oscar van Eijk, Oveas Functionality Provider
+	 */
+	static public function translate ($_string, $_params = array())
+	{
+		$_lbl = TTCache::get(TTCACHE_LOCALE, 'labels');
+		if (array_key_exists($_string, $_lbl)) {
+			$translation = $_lbl[$_string];
+		} else {
+			$translation = ((ConfigHandler::get ('general', 'debug') > 0?'(!)':'').$_string);
+		}
+		if ($_params === array()) {
+			return ($translation);
+		}
+		if (is_string($_params)) {
+			$_params = array($_params);
+		}
+		for ($_i = 0; $_i < count ($_params); $_i++) {
+			$_search[] = '$p' . ($_i + 1) . '$';
+		}
+		if ($_i > 0) {
+			$translation = str_replace ($_search, $_params, $translation);
+		}
+		return ($translation);
 	}
 }
 /*
