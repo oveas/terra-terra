@@ -427,19 +427,6 @@ abstract class TTloader
 			require (TT_APPS_ROOT . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php');
 		}
 
-		if ($applic_code == TT_CODE) {
-			// When loading Terra-Terra, also load the layout
-
-			//! Terra-Terra Layout location
-//			define ('TT_LAYOUT', TTCache::getApplic ($applic_code, TT_APPITM_TOP) . '/layout/' . ConfigHandler::get('layout', 'layout'));
-			//! Terra-Terra Stylesheet URL
-//			define ('TT_STYLE_URL', TTCache::getApplic ($applic_code, TT_APPITM_URL) . '/layout/' . ConfigHandler::get('layout', 'layout') . '/style');
-//			if (!TTloader::getClass('layout', TT_LAYOUT)) {
-//				trigger_error('Error loading Layout class from ' . TT_LAYOUT, E_USER_WARNING);
-//			} else {
-//				Layout::createContainers();
-//			}
-		}
 		if ($primary === true) {
 			// Load the list of other available applications
 			self::loadApps();
@@ -680,7 +667,6 @@ Register::registerLabels(true);
 if (ConfigHandler::get('general', 'debug', 0) > 0) {
 	require (TT_LIBRARY . '/tt.debug.functions.php');
 	$_doc  = TT::factory('Document', 'ui');
-	$_doc->loadStyle(TT_STYLE_URL . '/tt_debug.css');
 	$_confData = TTCache::get(TTCACHE_CONFIG, 'values');
 	TTdbg_add(TTDEBUG_TT_S01, $_confData, 'Configuration after loadApplication()');
 	unset ($_confData);
