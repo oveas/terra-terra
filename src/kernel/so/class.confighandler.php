@@ -36,7 +36,7 @@ abstract class ConfigHandler
 	 * Datahandler object for database access
 	 */
 	private static $dataset = null;
-	
+
 	/**
 	 * Configuration of the configuration itself
 	 */
@@ -63,7 +63,7 @@ abstract class ConfigHandler
 	 * \endinternal
 	 */
 	private static $cfgHidden = null;
-	
+
 	/**
 	 * Check if the static variables have been initialised. If not, so dp
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -97,7 +97,7 @@ abstract class ConfigHandler
 				self::$cfgProtected = &TTCache::getRef(TTCACHE_CONFIG, 'protected_values');
 			}
 		}
-		
+
 		if (self::$cfgHidden === null) {
 			self::$cfgHidden = &TTCache::getRef(TTCACHE_CONFIG, 'hidden_values');
 			if (self::$cfgHidden === null) {
@@ -124,9 +124,9 @@ abstract class ConfigHandler
 	 */
 	public static function readConfig (array $_source, $_overwrite = true)
 	{
-		
+
 		self::initialise();
-		
+
 		if (array_key_exists('file', $_source)) {
 			self::configFile($_source['file'], $_overwrite);
 		} else {
@@ -183,7 +183,7 @@ abstract class ConfigHandler
 				$_line = $_line_part;
 				unset ($_line_part);
 			}
-			
+
 			list ($_item, $_value) = explode ('=', $_line, 2);
 			$_item = trim ($_item);
 			if ($_item == '') {
@@ -285,6 +285,9 @@ abstract class ConfigHandler
 	private static function parseItem ($_section, $_item, $_value, $_protect, $_hide, $_overwrite)
 	{
 		$_item = "$_section|$_item";
+		if (preg_match('/^0x/i', $_value)) {
+			$_value = hexdec($_value);
+		}
 		if ($_protect === true) {
 			$_item = str_replace(self::$cfgConfig['protect_tag'], '', $_item);
 			self::$cfgProtected[] = $_item;
