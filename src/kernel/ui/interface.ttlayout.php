@@ -20,10 +20,28 @@
  * You should have received a copy of the GNU General Public License
  * along with Terra-Terra. If not, see http://www.gnu.org/licenses/.
  */
+/**
+ * \defgroup LayoutContainers Container names
+ * These constants define the names for containers that will be added to the default document layout
+ * @{
+ */
+//! Container holding the main menu
+define ('CONTAINER_MENU',		'mainMenuContainer');
+
+//! Container for the main content of the document
+define ('CONTAINER_CONTENT',	'mainContentContainer');
+
+//! Container fort the footer
+define ('CONTAINER_FOOTER',		'FooterContainer');
+
+//! Invisible container that's used to pass data from PHP to JavaScript
+define ('CONTAINER_CONFIG',		'ConfigContainer');
+//! @}
+
 
 
 /**
- * \ingroup TT_UI_LAYER
+ * \ingroup TT_THEME
  * Interface that defines the layout class.
  * \brief Document layout interface interface
  * \author Oscar van Eijk, Oveas Functionality Provider

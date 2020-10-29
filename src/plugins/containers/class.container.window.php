@@ -59,7 +59,8 @@ class ContainerWindowPlugin extends ContainerPlugin
 	private $width;						//!< Area width in pixels
 	private $height;					//!< Area height in pixels
 	private $border			= 0;		//!< Border width in pixels (left and right side of the contentarea only)
-	private $visibility;				//!< Initial status: 0: hidden, 1: shaded, 2: visible, 6: maximized
+	private $visibility		= WINDOW_VISIBILITY_VISIBLE;
+										//!< Initial status: 0: hidden, 1: shaded, 2: visible, 6: maximized
 	private $z_index		= 25;		//!< Display order (z-index)
 	private $title;						//!< Title as displayed in the titlebalr
 	private $display_bars	= true;		//!< Should the Title- and Bottom bars be displayed?

@@ -437,12 +437,13 @@ class Document extends BaseElement
 			$_theme->setTheme($theme);
 		}
 		if ($variant !== null) {
-			$_theme->setVariane($variant);
+			$_theme->setVariant($variant);
 		}
 		$_styles = $_theme->getStyleSheets();
 		foreach ($_styles as $_style) {
 			$this->loadStyle($_style);
 		}
+		$_theme->loadLayout();
 	}
 
 	/**

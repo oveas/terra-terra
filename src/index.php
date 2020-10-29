@@ -16,19 +16,16 @@ TTloader::loadApplication(TT_CODE);
 
 $dispatcher = TT::factory('Dispatcher');
 $document   = TT::factory('Document', 'ui');
+$document->setTheme ();
 
 $document->enableTT_JS();
-Layout::loadContainers();
 $dispatcher->dispatch();
 
 $dispatcher->dispatch('TT#TTADMIN_BO#ttuser#TTUser#showMainMenu');
 $dispatcher->dispatch('TT#TTADMIN_BO#ttuser#TTUser#showUserMenu');
 
-$document->loadStyle(TT_STYLE_URL . '/tt.css');
-$document->setTheme ();
-
-TTloader::getArea('pagefooter', TTADMIN_UI)->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'FooterContainer'));
-
+TTloader::getArea('pagefooter', TTADMIN_UI)->addToDocument(TTCache::get(TTCACHE_OBJECTS, CONTAINER_FOOTER));
+Layout::loadContainers();
 TTloader::showApps();
 
 OutputHandler::outputRaw($document->showElement());

@@ -56,17 +56,20 @@ abstract class ContentArea extends _TT
 
 	/**
 	 * Add the newly created container object to the given container document
-	 * \param[in] $_contnr Reference to the container object, by default (when null) the content will
-	 * be added to the main document.
+	 * \param[in] $_contnr Either the reference to the container object, or a conatiner name (see \ref LayoutContainers)
+	 * that refers to a cached container added to the main document. By default, the content will
+	 * be added to CONTAINER_CONTENT in the main document.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function addToDocument(Container $_contnr = null)
+	public function addToDocument($_contnr = CONTAINER_CONTENT)
 	{
-		if ($_contnr === null) {
-			$_document = TT::factory('Document', 'ui');
-			$_document->addToContent($this->contentObject);
-		} else {
+		if (is_object($_contnr)) {
 			$_contnr->addToContent($this->contentObject);
+		} else {
+			if (($_c = TTCache::get(TTCACHE_OBJECTS, $_contnr)) === null) {
+				// ERROR
+			}
+			$_c->addToContent($this->contentObject, $_contnr);
 		}
 	}
 

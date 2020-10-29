@@ -54,7 +54,7 @@ class Theme extends _TT
 		$this->setVariant(ConfigHandler::get ('layout', 'variant', ''));
 		ConfigHandler::readConfig(array('file' => TT_THEMES . '/' . $this->theme . '/tt_theme.cfg'));
 	}
-	
+
 	/**
 	 * Return a reference to my implementation. If necessary, create that implementation first.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
@@ -151,6 +151,19 @@ class Theme extends _TT
 			$_styles = array_merge($_styles, $this->_getStyleSheets($this->theme . '/variants/' . $this->variant));
 		}
 		return $_styles;
+	}
+
+	/**
+	 * Load the layout for this theme
+	 */
+	public function loadLayout()
+	{
+		if (!TTloader::getClass('layout', TT_THEMES . '/' . $this->theme)) {
+			// We're too early in the process to signal() the error, fallback to PHP errorsignaling
+			trigger_error('Error loading the Layout class from ' . TT_THEMES  . '/' . $this->theme, E_USER_ERROR);
+		} else {
+			Layout::createContainers();
+		}
 	}
 }
 

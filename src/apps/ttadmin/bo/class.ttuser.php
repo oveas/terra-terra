@@ -66,7 +66,7 @@ class TTUser extends User
 	public function showLoginForm()
 	{
 		if (($_lgi = TTloader::getArea('login', TTADMIN_UI)) !== null) {
-			$_lgi->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainContentContainer'));
+			$_lgi->addToDocument(TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONTENT));
 		}
 	}
 
@@ -76,7 +76,7 @@ class TTUser extends User
 	public function showMainMenu()
 	{
 		if (($_mnu = TTloader::getArea('mainmenu', TTADMIN_UI)) !== null) {
-			$_mnu->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainMenuContainer'));
+			$_mnu->addToDocument(TTCache::get(TTCACHE_OBJECTS, CONTAINER_MENU));
 		}
 
 	}
@@ -87,7 +87,7 @@ class TTUser extends User
 	public function showUserMenu()
 	{
 		if (($_mnu = TTloader::getArea('usermenu', TTADMIN_UI)) !== null) {
-			$_mnu->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainMenuContainer'));
+			$_mnu->addToDocument(TTCache::get(TTCACHE_OBJECTS, CONTAINER_MENU));
 		}
 	}
 
@@ -98,7 +98,7 @@ class TTUser extends User
 	public function showEditUserForm($usr = null)
 	{
 		if (($_lnk = TTloader::getArea('usermaint', TTADMIN_UI . '/usermgt', $usr)) !== null) {
-			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainContentContainer'));
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONTENT));
 		}
 	}
 
@@ -108,7 +108,7 @@ class TTUser extends User
 	public function listUsers()
 	{
 		if (($_lnk = TTloader::getArea('userlist', TTADMIN_UI . '/usermgt')) !== null) {
-			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainContentContainer'));
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONTENT));
 		}
 	}
 
@@ -119,7 +119,7 @@ class TTUser extends User
 	public function showEditGroupForm($grp = null)
 	{
 		if (($_lnk = TTloader::getArea('groupmaint', TTADMIN_UI . '/groupmgt', $grp)) !== null) {
-			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainContentContainer'));
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONTENT));
 		}
 	}
 
@@ -129,7 +129,7 @@ class TTUser extends User
 	public function listGroups()
 	{
 		if (($_lnk = TTloader::getArea('grouplist', TTADMIN_UI . '/groupmgt')) !== null) {
-			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainContentContainer'));
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONTENT));
 		}
 	}
 
@@ -144,7 +144,7 @@ class TTUser extends User
 			$rgt = array('aid' => $rgt, 'rid' => 0);
 		}
 		if (($_lnk = TTloader::getArea('rightsmaint', TTADMIN_UI . '/rightmgt', $rgt)) !== null) {
-			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainContentContainer'));
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONTENT));
 		}
 	}
 
@@ -154,7 +154,7 @@ class TTUser extends User
 	public function listRights()
 	{
 		if (($_lnk = TTloader::getArea('rightslist', TTADMIN_UI . '/rightmgt')) !== null) {
-			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainContentContainer'));
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONTENT));
 		}
 	}
 
@@ -174,7 +174,7 @@ class TTUser extends User
 	public function appSelect ($method)
 	{
 		if (($_lnk = TTloader::getArea('appselect', TTADMIN_UI, $method)) !== null) {
-			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, 'mainContentContainer'));
+			$_lnk->addToDocument(TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONTENT));
 		}
 	}
 }

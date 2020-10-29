@@ -147,10 +147,10 @@ abstract class TTloader
 	//! Code of the primary application we're running
 	//! \deprecated The concept of Primary dnd Current apps is not used anymore
 	private static $primaryApp;
-	
+
 	//! Code of the active application instantiated by the dispatcher
 	private static $currentApp;
-	
+
 	//! List of all application ID's that have been loaded
 	private static $appsLoaded;
 
@@ -387,7 +387,7 @@ abstract class TTloader
 			self::$primaryApp = $applic_code;
 		}
 		self::$currentApp = $applic_code;
-		
+
 		/**
 		 * \todo FIXME This is messy... we need a decent solution here. Should configurations for other applics be loaded as well?
 		 * I suppose so... we might need DBHandler clones...
@@ -419,7 +419,7 @@ abstract class TTloader
 			$_logger = TT::factory('loghandler', 'so');
 			$_logger->setApplicLogfile();
 		}
-		
+
 		// Load the application and register with the TT framework
 		if (!file_exists(TT_APPS_ROOT . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php')) {
 			trigger_error('The file ' . TT_APPS_ROOT . '/' . $app_data[0]['url'] . '/lib/' . strtolower($applic_code) . '.applic.loader.php does not exist', E_USER_ERROR);
@@ -429,22 +429,22 @@ abstract class TTloader
 
 		if ($applic_code == TT_CODE) {
 			// When loading Terra-Terra, also load the layout
-			
+
 			//! Terra-Terra Layout location
-			define ('TT_LAYOUT', TTCache::getApplic ($applic_code, TT_APPITM_TOP) . '/layout/' . ConfigHandler::get('layout', 'layout'));
+//			define ('TT_LAYOUT', TTCache::getApplic ($applic_code, TT_APPITM_TOP) . '/layout/' . ConfigHandler::get('layout', 'layout'));
 			//! Terra-Terra Stylesheet URL
-			define ('TT_STYLE_URL', TTCache::getApplic ($applic_code, TT_APPITM_URL) . '/layout/' . ConfigHandler::get('layout', 'layout') . '/style');
-			if (!TTloader::getClass('layout', TT_LAYOUT)) {
-				trigger_error('Error loading Layout class from ' . TT_LAYOUT, E_USER_WARNING);
-			} else {
-				Layout::createContainers();
-			}
+//			define ('TT_STYLE_URL', TTCache::getApplic ($applic_code, TT_APPITM_URL) . '/layout/' . ConfigHandler::get('layout', 'layout') . '/style');
+//			if (!TTloader::getClass('layout', TT_LAYOUT)) {
+//				trigger_error('Error loading Layout class from ' . TT_LAYOUT, E_USER_WARNING);
+//			} else {
+//				Layout::createContainers();
+//			}
 		}
 		if ($primary === true) {
 			// Load the list of other available applications
 			self::loadApps();
 		}
-		
+
 		if (!is_array(self::$appsLoaded)) {
 			self::$appsLoaded = array();
 		}
@@ -453,7 +453,7 @@ abstract class TTloader
 
 	/**
 	 * Return an array with all apps that have been loaded.
-	 * \return Array with all app ID's 
+	 * \return Array with all app ID's
 	 */
 	public static function getLoadedApps()
 	{
@@ -474,20 +474,20 @@ abstract class TTloader
 		$dataset->set('enabled', 1);
 		$dataset->prepare();
 		$dataset->db($app_list, __LINE__, __FILE__);
-		
+
 		if ($dataset->dbStatus() === DBHANDLE_NODATA) {
 			return;
 		}
 
-		foreach ($app_list as $app_data) { 
+		foreach ($app_list as $app_data) {
 			if ($app_data['code'] != self::getCurrentAppCode() && file_exists(TT_APPS_ROOT . '/' . $app_data['url'] . '/lib/' . strtolower($app_data['code']) . '.applic.hook.php')) {
 				TTloader::loadApplication($app_data['code'], false);
 				self::$externalAppList[] = TT_APPS_ROOT . '/' . $app_data['url'] . '/lib/' . strtolower($app_data['code']) . '.applic.hook.php';
 			}
 		}
-	
+
 	}
-	
+
 	/**
 	 * Method to display hooks for all applications that have been loaded. Must be called from the primaty application.
 	 */
@@ -505,7 +505,7 @@ abstract class TTloader
 	{
 		return self::$primaryApp;
 	}
-	
+
 	/**
 	 * Getter for the current application's ID
 	 * \return Application ID
@@ -522,7 +522,7 @@ abstract class TTloader
 	{
 		return TTCache::getApplic(self::$primaryApp, TT_APPITM_ID);
 	}
-	
+
 	/**
 	 * Getter for the current application's ID
 	 * \return Application ID
@@ -531,7 +531,7 @@ abstract class TTloader
 	{
 		return TTCache::getApplic(self::$currentApp, TT_APPITM_ID);
 	}
-	
+
 	/**
 	 * Getter for the primary application's library URL
 	 * \return Application library URL
