@@ -62,7 +62,7 @@ class FormFieldTextPlugin extends FormFieldPlugin
 		if (is_int($size)) {
 			$this->size = $size;
 		} else {
-			$this->setStatus(FORMFIELD_IVVAL, array($size, 'size'));
+			$this->setStatus(__FILE__, __LINE__, FORMFIELD_IVVAL, array($size, 'size'));
 		}
 	}
 
@@ -76,7 +76,7 @@ class FormFieldTextPlugin extends FormFieldPlugin
 		if (is_int($maxsize)) {
 			$this->maxsize = $maxsize;
 		} else {
-			$this->setStatus(FORMFIELD_IVVAL, array($maxsize, 'maxsize'));
+			$this->setStatus(__FILE__, __LINE__, FORMFIELD_IVVAL, array($maxsize, 'maxsize'));
 		}
 	}
 

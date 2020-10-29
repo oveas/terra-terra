@@ -76,18 +76,22 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 	 */
 	public function setValue($_value)
 	{
+		if ($_value == '') {
+			// Possible during instantation - can be ignored
+			return;
+		}
 		if (!is_array($_value)) {
-			$this->setStatus(FORMFIELD_IVVALFORMAT, array($this->name));
+			$this->setStatus(__FILE__, __LINE__, FORMFIELD_IVVALFORMAT, array($this->name));
 			return;
 		}
 
 		foreach ($_value as $_option) {
 			if (!is_array($_option)) {
-				$this->setStatus(FORMFIELD_IVVALFORMAT, array($this->name));
+				$this->setStatus(__FILE__, __LINE__, FORMFIELD_IVVALFORMAT, array($this->name));
 				return;
 			}
 			if (!array_key_exists('value', $_option)) {
-				$this->setStatus(FORMFIELD_NOVAL, array($this->name));
+				$this->setStatus(__FILE__, __LINE__, FORMFIELD_NOVAL, array($this->name));
 				return;
 			}
 
@@ -100,7 +104,7 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 				$_valueArray =& $this->options[self::DefaultOptionGroup];
 			}
 			if (in_array($_option['value'], $_valueArray)) { // TODO This will only check the current optgroup
-				$this->setStatus (FORMFIELD_VALEXISTS, $_option['value'], $this->name);
+				$this->setStatus (__FILE__, __LINE__, FORMFIELD_VALEXISTS, $_option['value'], $this->name);
 				return;
 			}
 			$_nextOption = array();
@@ -126,7 +130,7 @@ class FormFieldSelectPlugin extends FormFieldPlugin
 		if (is_int($size)) {
 			$this->size = $size;
 		} else {
-			$this->setStatus(FORMFIELD_IVVAL, array($size, 'size'));
+			$this->setStatus(__FILE__, __LINE__, FORMFIELD_IVVAL, array($size, 'size'));
 		}
 	}
 

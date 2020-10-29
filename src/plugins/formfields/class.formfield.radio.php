@@ -74,7 +74,7 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	public function addOption($_value, $_id = '')
 	{
 		if (in_array($_value, $this->options)) {
-			$this->setStatus (FORMFIELD_VALEXISTS, $_value, $this->name);
+			$this->setStatus (__FILE__, __LINE__, FORMFIELD_VALEXISTS, $_value, $this->name);
 		} else {
 			$this->options[] = $_value;
 			$this->option_ids[$_value] = (($_id === '') ? ('option'.$_value) : $_id);
@@ -89,7 +89,7 @@ class FormFieldRadioPlugin extends FormFieldPlugin
 	public function setSelected($_value)
 	{
 		if (!in_array($_value, $this->value)) {
-			$this->setStatus (FORMFIELD_NOSUCHVAL, $_value, $this->name);
+			$this->setStatus (__FILE__, __LINE__, FORMFIELD_NOSUCHVAL, $_value, $this->name);
 		} else {
 			$this->selected = $_value;
 		}
