@@ -155,12 +155,19 @@ function TTdbg_show ()
 	if (count($GLOBALS['TTDebugData']) == 0 || ConfigHandler::get('general', 'debug', 0, true) == 0) {
 		return;
 	}
-	OutputHandler::outputPar(
-			  '<hr/><em><u>' . ContentArea::translate('Debug Data:') . '</u></em><p>'
-			. '<table class="TTdbg">'
-			. implode('', $GLOBALS['TTDebugData'])
-			. '</table>'
-			. '</p>'
-		, 'TTdbg'
+	$_dbgWindow = new Container(
+		'window'
+		,array('class' => 'debugArea')
+		,array(
+			 'title' => _TT::translate('Debug Data')
+			,'width' => 300
+			,'height' => 150
+			,'hposition' => 20
+			,'vposition' => 300
+			,'z_index' => 10
+		)
 	);
+	$_dbgData = '<table class="TTdbg">'. implode('', $GLOBALS['TTDebugData']). '</table>';
+	$_dbgWindow->setContent($_dbgData);
+	OutputHandler::outputPar($_dbgWindow->showElement(), 'TTdbg');
 }
