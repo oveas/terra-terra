@@ -57,6 +57,11 @@ class Document extends BaseElement
 	private	$scripts;
 
 	/**
+	 * Array for on-the-fly JS code that will be called on load and after resize
+	 */
+	private	$dynScripts;
+
+	/**
 	 * Array for javascript sources;
 	 */
 	private	$js;
@@ -132,6 +137,7 @@ class Document extends BaseElement
 		$this->styles = array();
 		$this->css = array('unconditional' => array());
 		$this->scripts = array();
+		$this->dynScripts = array();
 		$this->js = array();
 		$this->title = 'Terra-Terra Generated document';
 		$this->meta = array(
@@ -296,12 +302,17 @@ class Document extends BaseElement
 
 	/**
 	 * Add an on-the-fly javascript to the document
-	 * \param $_script Script code without the &lt;(/)script&gt; tags
+	 * \param[in] $_script Script code without the &lt;(/)script&gt; tags
+	 * \param[in] $_dynamic True when the code must be added to the DynamicJavaScriptTTCode() function
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	public function addScript($_script)
+	public function addScript($_script, $_dynamic =  false)
 	{
-		$this->scripts[] = $_script;
+		if ($_dynamic) {
+			$this->dynScripts[] = $_script;
+		} else {
+			$this->scripts[] = $_script;
+		}
 	}
 
 	/**
@@ -525,13 +536,21 @@ class Document extends BaseElement
 	 */
 	private function _getScripts()
 	{
-		$_htmlCode = '';
+		$_htmlCode = '<script language="javascript" type="text/javascript">//<![CDATA['."\n<!--\n";
+
+		if (count($this->dynScripts) > 0) {
+			$_htmlCode .= "function DynamicJavaScriptTTCode () {\n";
+			$_htmlCode .= implode("\n", $this->dynScripts) . "}\n";
+			$_htmlCode .= "execDynCode = true;\n";
+		} else {
+			$_htmlCode .= "execDynCode = false;\n";
+		}
+
+		$_htmlCode .= "\n// -->\n//]]></script>\n";
 		if (count($this->scripts) > 0) {
-			$_htmlCode .= '<script language="javascript" type="text/javascript">//<![CDATA['."\n";
-			$_htmlCode .= "<!--\n";
+			$_htmlCode .= '<script language="javascript" type="text/javascript">//<![CDATA['."\n<!--\n";
 			$_htmlCode .= implode("\n", $this->scripts);
-			$_htmlCode .= "\n// -->\n";
-			$_htmlCode .= "//]]></script>\n";
+			$_htmlCode .= "\n// -->\n//]]></script>\n";
 		}
 		return $_htmlCode;
 	}
@@ -616,9 +635,7 @@ class Document extends BaseElement
 			$_htmlCode .= '<link href="'.$this->favicon.'" rel="shortcut icon" type="image/x-icon" />'."\n";
 		}
 		$_htmlCode .= $this->_loadStyles();
-		$_htmlCode .= $this->_getScripts();
 		$_htmlCode .= $this->_loadScripts();
-
 		$_htmlCode .= "</head>\n";
 		$_htmlCode .= '<body';
 		$_htmlCode .= $this->getAttributes();
@@ -638,7 +655,7 @@ class Document extends BaseElement
 	{
 		if ($this->open) {
 			$this->open = false;
-			return "</body>\n</html>\n";
+			return $this->_getScripts() . "\n</body>\n</html>\n";
 		} else {
 			$this->setStatus(__FILE__, __LINE__, DOC_NOTOPENED);
 			return null;
