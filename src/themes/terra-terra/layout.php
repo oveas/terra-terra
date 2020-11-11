@@ -25,8 +25,13 @@ abstract class Layout implements ttLayout
 	{
 		if (self::$containersCreated === false) {
 			TTCache::set(TTCACHE_OBJECTS, CONTAINER_MENU, new Container('div', array('class' => 'mainMenuContainer')));
+			TTCache::get(TTCACHE_OBJECTS, CONTAINER_MENU)->addStyleAttributes(array('z-index'	=> '25','position'		=> 'absolute'));
+
 			TTCache::set(TTCACHE_OBJECTS, CONTAINER_CONTENT, new Container('div', array('class' => 'mainContentContainer')));
+			TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONTENT)->addStyleAttributes(array('z-index'	=> '25','position'		=> 'absolute'));
+
 			TTCache::set(TTCACHE_OBJECTS, CONTAINER_FOOTER, new Container('div', array('class' => 'footerContainer')));
+			TTCache::get(TTCACHE_OBJECTS, CONTAINER_FOOTER)->addStyleAttributes(array('z-index'	=> '25','position'		=> 'absolute'));
 
 			TTCache::set(TTCACHE_OBJECTS, CONTAINER_CONFIG, new Container('div', array('id' => 'TT_config')));
 			TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONFIG)->addStyleAttributes(
@@ -37,6 +42,30 @@ abstract class Layout implements ttLayout
 					,'z-index'		=> 0
 				)
 			);
+			TTCache::set(TTCACHE_OBJECTS, CONTAINER_BACKGROUND, new Container('div', array('id' => 'TT_background')));
+			TTCache::get(TTCACHE_OBJECTS, CONTAINER_BACKGROUND)->addStyleAttributes(
+				array(
+					 'top'			=> '0px'
+					,'left'			=> '0px'
+					,'width'		=> '100%'
+					,'height'		=> '100%'
+					,'visibility'	=> 'visible'
+					,'position'		=> 'absolute'
+					,'z-index'		=> 1
+				)
+			);
+
+			$_i = new Container('img', array('id' => 'TT_bgImage'), array('src' => TT::factory('Theme', 'ui')->getImage('wallpaper.png', 'backgrounds'), 'alt' => 'Move Workarea'));
+			$_i->addStyleAttributes(
+				array(
+					 'top'			=> '0px'
+					,'left'			=> '0px'
+					,'width'		=> '100%'
+					,'visibility'	=> 'visible'
+					,'position'		=> 'absolute'
+				)
+			);
+			TTCache::get(TTCACHE_OBJECTS, CONTAINER_BACKGROUND)->addToContent($_i);
 
 			self::$containersCreated = true;
 		}
@@ -52,13 +81,61 @@ abstract class Layout implements ttLayout
 			$_m = TTCache::get(TTCACHE_OBJECTS, CONTAINER_MENU);
 			$_c = TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONTENT);
 			$_f = TTCache::get(TTCACHE_OBJECTS, CONTAINER_FOOTER);
+			$_b = TTCache::get(TTCACHE_OBJECTS, CONTAINER_BACKGROUND);
 			$_d = TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONFIG);
+			self::areaConfig();
 
 			TT::factory('Document', 'ui')->addToContent($_m);
 			TT::factory('Document', 'ui')->addToContent($_c);
 			TT::factory('Document', 'ui')->addToContent($_f);
+			TT::factory('Document', 'ui')->addToContent($_b);
 			TT::factory('Document', 'ui')->addToContent($_d);
 			self::$containersLoaded = true;
 		}
 	}
+
+	/**
+	 * Make sure the document receives all configuration data for JavaScript code
+	 */
+	private static function areaConfig()
+	{
+		TT::factory('Document', 'ui')->setEvent('load',   'InitWorkSpace()');
+		TT::factory('Document', 'ui')->setEvent('unload', 'DestroyWorkSpace()');
+		TT::factory('Document', 'ui')->setEvent('resize', 'ResizeWorkSpace()');
+
+		self::sendConfig('workspacetop',  '0');
+		self::sendConfig('workspaceleft', '0');
+		self::sendConfig('docking_grid',  '8');
+
+		self::sendConfig('titlebarheight',  ConfigHandler::get('theme-backgrounds', 'top-bar-height'));
+		self::sendConfig('bottombarheight', ConfigHandler::get('theme-backgrounds', 'bottom-bar-height'));
+		self::sendConfig('areaborderwidth', '0');
+
+		self::sendConfig('prompt_maxiwa', _TT::translate('Maximize Workarea'));
+		self::sendConfig('prompt_resiwa', _TT::translate('Resore Workarea size'));
+		self::sendConfig('prompt_shadwa', _TT::translate('Shade Workarea'));
+		self::sendConfig('prompt_reviwa', _TT::translate('Restore Workarea visibility'));
+
+		self::sendConfig('theme', TT::factory('Theme', 'ui')->getFullTheme());
+		self::sendConfig('themeurl', TT_THEMES_URL);
+	}
+
+	/**
+	 * Send a configuration item to the HTML document for JavaScript
+	 * \param[in] $_name Name of the configuration item
+	 * \param[in] $_value Value of the configuration item
+	 */
+	public static function sendConfig($_name, $_value)
+	{
+		// We're bypassing the Form class here, so we must load the base class for formfields ourselves
+		TTloader::getClass('formfield', TT_PLUGINS . '/formfields');
+		TTloader::getClass('formfield.text', TT_PLUGINS . '/formfields');
+		$_field = new FormFieldTextPlugin('hidden');
+		$_field->setName($_name);
+		$_field->setValue($_value);
+
+		$_config = TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONFIG);
+		$_config->addToContent($_field);
+	}
+
 }

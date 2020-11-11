@@ -531,25 +531,32 @@ class Document extends BaseElement
 
 	/**
 	 * Get the on-the-fly javascript
-	 * \return HTML code
+	 * \param[in] $_static When true, the static code will be returned which is required in the header. Otherwise,
+	 * the dynamic code is returned just before closing the document.
+	 * \return HTML code containing the JavaScript.
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private function _getScripts()
+	private function _getScripts($_static)
 	{
-		$_htmlCode = '<script language="javascript" type="text/javascript">//<![CDATA['."\n<!--\n";
+		$_htmlCode = '';
 
-		if (count($this->dynScripts) > 0) {
-			$_htmlCode .= "function DynamicJavaScriptTTCode () {\n";
-			$_htmlCode .= implode("\n", $this->dynScripts) . "}\n";
-			$_htmlCode .= "execDynCode = true;\n";
+		if ($_static === true) {
+			if (count($this->scripts) > 0) {
+				$_htmlCode .= '<script language="javascript" type="text/javascript">//<![CDATA['."\n<!--\n";
+				$_htmlCode .= implode("\n", $this->scripts);
+				$_htmlCode .= "\n// -->\n//]]></script>\n";
+			}
 		} else {
-			$_htmlCode .= "execDynCode = false;\n";
-		}
-
-		$_htmlCode .= "\n// -->\n//]]></script>\n";
-		if (count($this->scripts) > 0) {
 			$_htmlCode .= '<script language="javascript" type="text/javascript">//<![CDATA['."\n<!--\n";
-			$_htmlCode .= implode("\n", $this->scripts);
+
+			if (count($this->dynScripts) > 0) {
+				$_htmlCode .= "function DynamicJavaScriptTTCode () {\n";
+				$_htmlCode .= implode("\n", $this->dynScripts) . "}\n";
+				$_htmlCode .= "execDynCode = true;\n";
+			} else {
+				$_htmlCode .= "execDynCode = false;\n";
+			}
+
 			$_htmlCode .= "\n// -->\n//]]></script>\n";
 		}
 		return $_htmlCode;
@@ -635,6 +642,7 @@ class Document extends BaseElement
 			$_htmlCode .= '<link href="'.$this->favicon.'" rel="shortcut icon" type="image/x-icon" />'."\n";
 		}
 		$_htmlCode .= $this->_loadStyles();
+		$_htmlCode .= $this->_getScripts(true);
 		$_htmlCode .= $this->_loadScripts();
 		$_htmlCode .= "</head>\n";
 		$_htmlCode .= '<body';
@@ -655,7 +663,7 @@ class Document extends BaseElement
 	{
 		if ($this->open) {
 			$this->open = false;
-			return $this->_getScripts() . "\n</body>\n</html>\n";
+			return $this->_getScripts(false) . "\n</body>\n</html>\n";
 		} else {
 			$this->setStatus(__FILE__, __LINE__, DOC_NOTOPENED);
 			return null;

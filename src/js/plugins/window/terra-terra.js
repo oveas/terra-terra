@@ -647,10 +647,9 @@ function GetConfig (elmName) {
 	}
 }
 
-
 function PreloadImages () {
-	imgShade.src   = 'themes/' + layoutScheme + '/areaborders/icons/shade.png';
-	imgRestore.src = 'themes/' + layoutScheme + '/areaborders/icons/restore.png';
+	imgShade.src   = GetConfig ('themeurl') + '/' + layoutScheme + '/icons/shade.png';
+	imgRestore.src = GetConfig ('themeurl') + '/' + layoutScheme + '/icons/restore.png';
 }
 
 function InitWorkSpace () {

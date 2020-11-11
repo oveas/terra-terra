@@ -165,6 +165,33 @@ class Theme extends _TT
 			Layout::createContainers();
 		}
 	}
+
+	/**
+	 * Get the full theme, including the variant
+	 * \return Theme and variant as a path-segment
+	 */
+	public function getFullTheme()
+	{
+		return $this->theme . '/variants/' . $this->variant;
+	}
+
+	/**
+	 * Get the theme name
+	 * \return Theme
+	 */
+	public function getTheme()
+	{
+		return $this->theme;
+	}
+
+	/**
+	 * Get the variant name
+	 * \return Variant
+	 */
+	public function getVariant()
+	{
+		return $this->variant;
+	}
 }
 
 Register::registerClass('Theme', TT_APPNAME);

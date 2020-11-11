@@ -36,6 +36,9 @@ define ('CONTAINER_FOOTER',		'FooterContainer');
 
 //! Invisible container that's used to pass data from PHP to JavaScript
 define ('CONTAINER_CONFIG',		'ConfigContainer');
+
+//! Optional container for a background image
+define ('CONTAINER_BACKGROUND',	'BackgroundContainer');
 //! @}
 
 
@@ -60,6 +63,13 @@ interface ttLayout
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
 	public static function loadContainers();
+
+	/**
+	 * Send a configuration item to the HTML document for JavaScript
+	 * \param[in] $_name Name of the configuration item
+	 * \param[in] $_value Value of the configuration item
+	 */
+	public static function sendConfig($_name, $_value);
 }
 
 Register::registerInterface('ttLayout', TT_APPNAME);
