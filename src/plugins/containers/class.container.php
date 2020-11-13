@@ -83,7 +83,7 @@ abstract class ContainerPlugin extends BaseElement
 	{
 		return $this->self_closing;
 	}
-	
+
 	/**
 	 * Return the container type, which is equal to the HTML tag name
 	 * \return container type
@@ -97,10 +97,11 @@ abstract class ContainerPlugin extends BaseElement
 	/**
 	 * Add CSS style elements
 	 * \param[in] $_attributes CSS elements as an array in the format element => value
+	 * \param[in] $_forceOverwrite Give true here if existing style elements must be overwritten
 	 */
-	public function addStyleAttributes(array $_attributes)
+	public function addStyleAttributes(array $_attributes, bool $_forceOverwrite = false)
 	{
-		$this->style->setAttributes($_attributes);
+		$this->style->setAttributes($_attributes, $_forceOverwrite);
 	}
 
 	/**
@@ -111,7 +112,7 @@ abstract class ContainerPlugin extends BaseElement
 	{
 		return $this->style->getStyleElement();
 	}
-	
+
 	/**
 	 * Return the complete HTML tag for a nested type, or an empty string if the current
 	 * container doesn't have one

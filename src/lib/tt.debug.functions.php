@@ -160,10 +160,12 @@ function TTdbg_show ()
 		,array('class' => 'debugArea')
 		,array(
 			 'title' => _TT::translate('Debug Data')
-			,'width' => 300
+			,'width' => 600
 			,'height' => 150
-			,'hposition' => 20
-			,'vposition' => 300
+			,'hposition' => 0
+			,'halignment' => 'right'
+			,'vposition' => 0
+			,'valignment' => 'bottom'
 			,'z_index' => 10
 		)
 	);

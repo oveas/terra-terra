@@ -24,14 +24,61 @@ abstract class Layout implements ttLayout
 	public static function createContainers()
 	{
 		if (self::$containersCreated === false) {
-			TTCache::set(TTCACHE_OBJECTS, CONTAINER_MENU, new Container('div', array('class' => 'mainMenuContainer')));
+			TTCache::set(
+				 TTCACHE_OBJECTS
+				,CONTAINER_MENU
+				,new Container(
+					 'window'
+					,array('class' => 'mainMenuContainer')
+					,array(
+						 'title'		=> _TT::translate('Menu')
+						,'height'		=> 150
+						,'width'		=> 300
+						,'hposition'	=> 10
+						,'halignment'	=> 'right'
+						,'vposition'	=> 10
+						,'border'		=> 1
+					)
+				)
+			);
 			TTCache::get(TTCACHE_OBJECTS, CONTAINER_MENU)->addStyleAttributes(array('z-index'	=> '25','position'		=> 'absolute'));
 
-			TTCache::set(TTCACHE_OBJECTS, CONTAINER_CONTENT, new Container('div', array('class' => 'mainContentContainer')));
-			TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONTENT)->addStyleAttributes(array('z-index'	=> '25','position'		=> 'absolute'));
+			TTCache::set(
+				 TTCACHE_OBJECTS
+				,CONTAINER_CONTENT
+				,new Container(
+					 'window'
+					,array('class' => 'mainContentContainer')
+					,array(
+						 'height'		=> 650
+						,'width'		=> 1600
+						,'hposition'	=> 50
+						,'vposition'	=> 25
+						,'border'		=> 1
+//						,'title'		=> _TT::translate('Console')
+					)
+				)
+			);
 
-			TTCache::set(TTCACHE_OBJECTS, CONTAINER_FOOTER, new Container('div', array('class' => 'footerContainer')));
-			TTCache::get(TTCACHE_OBJECTS, CONTAINER_FOOTER)->addStyleAttributes(array('z-index'	=> '25','position'		=> 'absolute'));
+			TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONTENT)->addStyleAttributes(array('z-index' => '30','position' => 'absolute'));
+
+			TTCache::set(
+				 TTCACHE_OBJECTS
+				,CONTAINER_FOOTER
+				,new Container(
+					 'window'
+					,array('class' => 'footerContainer')
+					,array(
+						 'height'		=> 50
+						,'width'		=> 1000
+						,'hposition'	=> 10
+						,'vposition'	=> 10
+						,'valignment'	=> 'bottom'
+						,'border'		=> 1
+					)
+				)
+			);
+			TTCache::get(TTCACHE_OBJECTS, CONTAINER_FOOTER)->addStyleAttributes(array('z-index' => 20, 'position' => 'absolute'));
 
 			TTCache::set(TTCACHE_OBJECTS, CONTAINER_CONFIG, new Container('div', array('id' => 'TT_config')));
 			TTCache::get(TTCACHE_OBJECTS, CONTAINER_CONFIG)->addStyleAttributes(
@@ -66,6 +113,21 @@ abstract class Layout implements ttLayout
 				)
 			);
 			TTCache::get(TTCACHE_OBJECTS, CONTAINER_BACKGROUND)->addToContent($_i);
+
+			// Console is created early in the proces already, position it here
+			TTCache::get(TTCACHE_OBJECTS, 'Console')->setAttributes(
+				array(
+					 'title'		=> _TT::translate('Console')
+					,'width'		=> 600
+					,'height'		=> 150
+					,'hposition'	=> 10
+					,'halignment'	=> 'left'
+					,'vposition'	=> 70
+					,'valignment'	=> 'bottom'
+					,'border'		=> 1
+					,'z_index'		=> 20
+				)
+			);
 
 			self::$containersCreated = true;
 		}

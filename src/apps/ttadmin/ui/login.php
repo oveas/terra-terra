@@ -79,16 +79,11 @@ class LoginArea extends ContentArea
 			,array(
 				 'title' => $this->trn('Login Form')
 				,'width' => 300
-				,'height' => 150
+				,'height' => 135
 				,'hposition' => 400
 				,'vposition' => 30
 			)
 		);
-
-//		$this->contentObject = new Container(
-//			 'div'
-//			,array('class' => 'loginArea')
-//		);
 		$this->contentObject->setContent($_form);
 	}
 }

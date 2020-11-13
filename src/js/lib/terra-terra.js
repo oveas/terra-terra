@@ -121,15 +121,15 @@ function importScript(src, initFunction)
  */
 function languageExtentions ()
 {
-	if (!Array.prototype.indexOf) importScript(TT_JS_LIB + 'lext/array_indexof.js');
-	if (!HTMLElement.prototype.addClass) importScript(TT_JS_LIB + 'lext/htmlelement_addclass.js');
+	if (!Array.prototype.indexOf) importScript(TT_JS_LIB + '/lext/array_indexof.js');
+	if (!HTMLElement.prototype.addClass) importScript(TT_JS_LIB + '/lext/htmlelement_addclass.js');
 }
 /****/
 
 //Load language extentions - disabled...
 //languageExtentions();
 
-importScript(TT_JS_LIB + 'lext/htmlelement_addclass.js');
+importScript(TT_JS_LIB + '/lext/htmlelement_addclass.js');
 /****f* library/initFunctions
  * NAME
  *  initFunctions - Execute all initialisation scripts

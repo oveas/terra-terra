@@ -202,43 +202,54 @@ class ContainerWindowPlugin extends ContainerPlugin
 			)
 		);
 
-		// Left side of the Title
-		$_c = $_r->addContainer('cell');
-		$_c->addStyleAttributes(
-			array(
-				 'background-image'		=> 'url('. $_theme->getImage('bar.text.left.png', 'backgrounds') . ')'
-				,'background-repeat'	=> 'no-repeat'
-				,'margin'				=> 0
-				,'text-align'			=> 'right'
-				,'width'				=> ConfigHandler::get('theme-backgrounds', 'top-bar-border-width') . 'px'
-			)
-		);
+		if ($this->title == '') {
+			// No title
+			$_c = $_r->addContainer('cell');
+			$_c->addStyleAttributes(
+				array(
+					 'background-image'		=> 'url('. $_theme->getImage('bar.png', 'backgrounds') . ')'
+					,'background-repeat'	=> 'repeat-x'
+					,'margin'				=> 0
+				)
+			);
+		} else {
+			// Left side of the Title
+			$_c = $_r->addContainer('cell');
+			$_c->addStyleAttributes(
+				array(
+					 'background-image'		=> 'url('. $_theme->getImage('bar.text.left.png', 'backgrounds') . ')'
+					,'background-repeat'	=> 'no-repeat'
+					,'margin'				=> 0
+					,'text-align'			=> 'right'
+					,'width'				=> ConfigHandler::get('theme-backgrounds', 'top-bar-border-width') . 'px'
+				)
+			);
 
-		// Title
-		$_c = $_r->addContainer('cell', $this->title, array('id' => 'TT_wa_ttfld_' . $this->wid, 'class' => 'wa_titlebar'));
-		$_c->addStyleAttributes(
-			array(
-				 'background-image'		=> 'url('. $_theme->getImage('bar.text.png', 'backgrounds') . ')'
-				,'background-repeat'	=> 'repeat-x'
-				,'margin'				=> 0
-				,'text-align'			=> 'center'
-				,'width'				=> '40%'
-				,'height'				=> ConfigHandler::get('theme-backgrounds', 'top-bar-height') . 'px'
-				,'vertical-align'		=> 'middle'
-			)
-		);
-
-		// Right side of the title
-		$_c = $_r->addContainer('cell');
-		$_c->addStyleAttributes(
-			array(
-				 'background-image'		=> 'url('. $_theme->getImage('bar.text.right.png', 'backgrounds') . ')'
-				,'background-repeat'	=> 'no-repeat'
-				,'margin'				=> 0
-				,'text-align'			=> 'right'
-				,'width'				=> ConfigHandler::get('theme-backgrounds', 'top-bar-border-width') . 'px'
-			)
-		);
+			// Title
+			$_c = $_r->addContainer('cell', $this->title, array('id' => 'TT_wa_ttfld_' . $this->wid, 'class' => 'wa_titlebar'));
+			$_c->addStyleAttributes(
+				array(
+					 'background-image'		=> 'url('. $_theme->getImage('bar.text.png', 'backgrounds') . ')'
+					,'background-repeat'	=> 'repeat-x'
+					,'margin'				=> 0
+					,'text-align'			=> 'center'
+					,'width'				=> '40%'
+					,'height'				=> ConfigHandler::get('theme-backgrounds', 'top-bar-height') . 'px'
+					,'vertical-align'		=> 'middle'
+				)
+			);
+			// Right side of the title
+			$_c = $_r->addContainer('cell');
+			$_c->addStyleAttributes(
+				array(
+					 'background-image'		=> 'url('. $_theme->getImage('bar.text.right.png', 'backgrounds') . ')'
+					,'background-repeat'	=> 'no-repeat'
+					,'margin'				=> 0
+					,'text-align'			=> 'right'
+					,'width'				=> ConfigHandler::get('theme-backgrounds', 'top-bar-border-width') . 'px'
+				)
+			);
+		}
 
 		// Right filler
 		$_c = $_r->addContainer('cell');
@@ -290,7 +301,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 				,'cursor'			=> 'default'
 			)
 		);
-		$_l = new Container('link', array('class' => 'icons', 'id' => 'MiniMaxLink_' . $this->wid), array('href' => "javascript:WAVisibility('$this->wid', 'm')"));
+		$_l = new Container('link', array('class' => 'icons', 'id' => 'MiniMaxiLink_' . $this->wid), array('href' => "javascript:WAVisibility('$this->wid', 'm')"));
 		$_l->setContent($_i);
 		$_c->addToContent($_l);
 
@@ -443,7 +454,7 @@ class ContainerWindowPlugin extends ContainerPlugin
 
 	/**
 	 * Set the horizontal position
-	 * \param[in] $hposition distance from left or right windowborder (in pixels)
+	 * \param[in] $hposition distance from left or right windowborder (in pixels).
 	 */
 	public function setHposition ($hposition)
 	{
@@ -618,12 +629,12 @@ class ContainerWindowPlugin extends ContainerPlugin
 	{
 		$this->addStyleAttributes(
 			array(
-				 'position'		=> 'absolute'
-				,'left'			=> $this->hposition . 'px'
-				,'top'			=> $this->vposition . 'px'
-				,'width'		=> $this->width . 'px'
-				,'height'		=> $this->height . 'px'
-				,'z-index'		=> $this->z_index
+				 'position'			=> 'absolute'
+				,$this->halignment	=> $this->hposition . 'px'
+				,$this->valignment	=> $this->vposition . 'px'
+				,'width'			=> $this->width . 'px'
+				,'height'			=> $this->height . 'px'
+				,'z-index'			=> $this->z_index
 			)
 		);
 

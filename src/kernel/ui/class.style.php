@@ -42,14 +42,23 @@ class Style extends _TT
 	{
 		$this->attributes = array();
 	}
-	
+
 	/**
 	 * Add CSS style elements to the array with attributes
 	 * \param[in] $_attributes CSS elements as an array in the format element => value
+	 * \param[in] $_forceOverwrite Give true here if existing style elements must be overwritten
 	 */
-	public function setAttributes(array $_attributes)
+	public function setAttributes(array $_attributes, bool $_forceOverwrite)
 	{
-		$this->attributes = array_merge($this->attributes, $_attributes);
+		if ($_forceOverwrite) {
+			$this->attributes = array_merge($this->attributes, $_attributes);
+		} else {
+			foreach ($_attributes as $_k => $_v) {
+				if (!array_key_exists($_k, $this->attributes)) {
+					$this->attributes[$_k] = $_v;
+				}
+			}
+		}
 	}
 
 	/**

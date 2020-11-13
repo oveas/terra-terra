@@ -27,7 +27,6 @@
  * along with this library; if not, write to the Free Software Foundation,
  * Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  * ------------------------------------------------------------------------
- * $Id$ 
  */
 
 /*
@@ -40,8 +39,8 @@
  *   4:	Original height
  */
 var waOrigDimensions = new Array (0, 0, 0, 0, 0);
-var nowOnTop = 0;		// Which area is now in the foreground?
-var nowActive = 0;		// Which area is now active.
+var nowOnTop = -1;		// Which area is now in the foreground?
+var nowActive = -1;		// Which area is now active.
 				// This is not the same as OnTop, to prevent
 				// confusion with AlwaysOnTop areas
 
@@ -168,18 +167,20 @@ function PlaceOnTop (areaNr) {
  */
 	layerObj = GetObjectByID ('TT_wa' + areaNr + '_top');
 	if (nowActive != 0) {
-		fieldTitleText = GetObjectByID ('TT_wa_ttfld_' + nowActive);
-		fieldTitleText.className = 'wa_titlebar';
+		if ((fieldTitleText = GetObjectByID ('TT_wa_ttfld_' + nowActive)) != null) {
+			fieldTitleText.className = 'wa_titlebar';
+		}
 	}
-	fieldTitleText = GetObjectByID ('TT_wa_ttfld_' + areaNr);
-	fieldTitleText.className = 'wa_active_titlebar';
+	if ((fieldTitleText = GetObjectByID ('TT_wa_ttfld_' + areaNr)) != null) {
+		fieldTitleText.className = 'wa_active_titlebar';
+	}
 	nowActive = areaNr;
 
 	if (layerObj.style.zIndex == 99) {
 		// Ignore 'Always on Top' areas
 		return;
 	}
-	if (nowOnTop != 0) {
+	if (nowOnTop >= 0) {
 		SetLayerValues ('TT_wa' + nowOnTop + '_top', 'z=22');
 		SetLayerValues ('TT_wa' + nowOnTop + '_border', 'z=21');
 	}
@@ -373,7 +374,6 @@ function WAMiniMaxi (layerSet) {
 		'top=' + (wsHeight - wsTop - bbHeight),
 		'width=' + wsWidth
 	);
-
 	mmLink = GetObjectByID ('MiniMaxiLink_' + layerSet);
 	mmLink.title = promptResiWA;
 }
@@ -602,8 +602,36 @@ function doAction (evt) {
 		mouseY = evt.clientY;
 	}
 
+
+	if ((layerObj = GetObjectByID ('TT_wa' + changeWA + '_top')) == null) {
+		return false;
+	}
+	if (layerObj.style) {
+		layerObj = layerObj.style;
+	}
+	if (layerObj.right) {
+		xposElement    = 'right';
+	} else {
+		xposElement    = 'left';
+	}
+	if (layerObj.bottom) {
+		yposElement    = 'bottom';
+	} else {
+		yposElement    = 'top';
+	}
+
 	if (currentActionType == 'd') {
-		SetLayerValues ('TT_wa' + changeWA + '_top', 'left=' + (changeXpos + (mouseX - changeXoffset)), 'top='+(changeYpos + (mouseY - changeYoffset)));
+		if (layerObj.right) {
+			newX = (changeXpos - (mouseX - changeXoffset));
+		} else {
+			newX = (changeXpos + (mouseX - changeXoffset));
+		}
+		if (layerObj.bottom) {
+			newY = (changeYpos - (mouseY - changeYoffset));
+		} else {
+			newY = (changeYpos + (mouseY - changeYoffset));
+		}
+		SetLayerValues ('TT_wa' + changeWA + '_top', xposElement + '=' + newX, yposElement + '='+ newY);
 	} else if (currentActionType == 'r') {
 		SetLayerValues ('TT_wa' + changeWA + '_top', 'size=' + (changeXpos + (mouseX - changeXoffset)) + 'x' + (changeYpos + (mouseY - changeYoffset)));
 		SetLayerValues ('TT_wa' + changeWA + '_body', 'size=' + (changeXbody + (mouseX - changeXoffset)) + 'x' + (changeYbody + (mouseY - changeYoffset)));
@@ -692,8 +720,16 @@ function startAction (evt, targetArea, actionType) {
 	changeYoffset = evt.clientY;
 
 	if (currentActionType == 'd') {
-		changeXpos    = parseInt(areaObj.left, 10);
-		changeYpos    = parseInt(areaObj.top, 10);
+		if (areaObj.right) {
+			changeXpos    = parseInt(areaObj.right, 10);
+		} else {
+			changeXpos    = parseInt(areaObj.left, 10);
+		}
+		if (areaObj.bottom) {
+			changeYpos    = parseInt(areaObj.bottom, 10);
+		} else {
+			changeYpos    = parseInt(areaObj.top, 10);
+		}
 	} else if (currentActionType == 'r') {
 		changeXpos    = parseInt(areaObj.width, 10);
 		changeYpos    = parseInt(areaObj.height, 10);

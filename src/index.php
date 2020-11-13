@@ -30,9 +30,5 @@ TTloader::showApps();
 
 OutputHandler::outputRaw($document->showElement());
 
-//if (($_console = TTCache::get(TTCACHE_OBJECTS, 'Console')) !== null) {
-//	print_r($_console);
-//}
-
 TTloader::getClass('TTrundown.php', TT_ROOT);
 

@@ -148,6 +148,8 @@ abstract class TTTimers
 				$txt .= $warn . "<br/>";
 			}
 			$txt .= '</p>';
+			// TODO Make sure timers are added to the Footer (but right now the fotter is already sent to the browser - we need decent JavScript code first)
+//			TTCache::get(TTCACHE_OBJECTS, CONTAINER_FOOTER)->addToContent($txt);
 			OutputHandler::outputPar($txt, 'TTtimerWarnings');
 		}
 

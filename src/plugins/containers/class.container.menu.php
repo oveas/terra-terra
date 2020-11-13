@@ -96,7 +96,7 @@ class ContainerMenuPlugin extends ContainerListPlugin
 		$this->items[] = $_item;
 		return $_item;
 	}
-	
+
 	/**
 	 * Add a new menuitem
 	 * \param[in] $_content Content for the item container

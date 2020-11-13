@@ -353,7 +353,6 @@ abstract class BaseElement extends _TT
 				$this->$_method($_v);
 			} else {
 				$this->setStatus (__FILE__, __LINE__, DOM_IVATTRIB, array($_k));
-				return $this->severity;
 			}
 		}
 		return $this->severity;
@@ -374,7 +373,7 @@ abstract class BaseElement extends _TT
 		if (!in_array('class', $_ignore) && !empty($this->class)) {
 			$_htmlCode .= " class='$this->class'";
 		}
-		if (!in_array('style', $_ignore) && !empty($this->style)) {
+		if (!in_array('style', $_ignore) && !empty($this->depricated_style)) {
 			$_htmlCode .= " style='$this->depricated_style'";
 		}
 		if (!in_array('name', $_ignore) && !empty($this->name)) {
