@@ -269,10 +269,10 @@ class LogHandler extends _TT
 			$this->logLogFile($msg, $code, $_severity, $callerFile, $callerLine);
 		}
 		if ($_severity >= ConfigHandler::get ('logging', 'log_console')) {
-			$this->logConsole($msg, $code, $_severity);
+			$this->logConsole($msg, $code, $_severity, $callerFile, $callerLine);
 		}
 	}
-	
+
 	/**
 	 * Log an event to the logfile
 	 * \param[in] $msg Message text
@@ -312,9 +312,11 @@ class LogHandler extends _TT
 	 * \param[in] $msg Message text
 	 * \param[in] $code Message code
 	 * \param[in] $severity Severity level of the message
+	 * \param[in] $callerFile Filename from where this call originates
+	 * \param[in] $callerLine Linenumber from where this call originates
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	private function logConsole ($msg, $code, $severity)
+	private function logConsole ($msg, $code, $severity, $callerFile, $callerLine)
 	{
 		if (($_console = TTCache::get(TTCACHE_OBJECTS, 'Console')) !== null) {
 			$_class = 'unknown';
@@ -338,6 +340,9 @@ class LogHandler extends _TT
 				case TT_CRITICAL :
 					$_class = 'errorMessages';
 					break;
+			}
+			if (ConfigHandler::get ('logging', 'log_source_on_concolse', true) === true) {
+				$msg = "$callerFile:$callerLine&nbsp;-&nbsp;$msg";
 			}
 			$_c = new Container('div', array('class' => $_class));
 			$_c->setContent($msg);
