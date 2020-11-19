@@ -33,7 +33,7 @@ abstract class ContentArea extends _TT
 	/**
 	 * The contentobject that must be filled by the derived class
 	 */
-	protected $contentObject;
+	protected $contentObject = null;
 
 	/**
 	 * This function must be reimplemented by all derived classes.
@@ -80,7 +80,11 @@ abstract class ContentArea extends _TT
 	 */
 	public function getArea ()
 	{
-		return $this->contentObject->showElement();
+		if ($this->contentObject === null) {
+			$this->setStatus(__FILE__, __LINE__, AREANOCONTENTOBJ, array(get_class($this)));
+		} else {
+			return $this->contentObject->showElement();
+		}
 	}
 
 	/**
@@ -109,6 +113,16 @@ abstract class ContentArea extends _TT
 		$_u = TTCache::get(TTCACHE_OBJECTS, 'user');
 		return ($_u->hasRight($bit, $appl));
 	}
+
+	/**
+	 * Add output to the existing contentObject
+	 * \param[in] $_html HTML code to add
+	 */
+	public function addContent($_html)
+	{
+		$this->contentObject->addToContent($_content);
+	}
+
 }
 
 /*
@@ -124,6 +138,8 @@ Register::registerClass ('ContentArea', TT_APPNAME);
 //Register::registerCode ('FORM_RETVALUE');
 //Register::setSeverity (TT_WARNING);
 //Register::setSeverity (TT_BUG);
-//Register::setSeverity (TT_ERROR);
+Register::setSeverity (TT_ERROR);
+Register::registerCode('AREA_NOCONTENTOBJ');
+
 //Register::setSeverity (TT_FATAL);
 //Register::setSeverity (TT_CRITICAL);
