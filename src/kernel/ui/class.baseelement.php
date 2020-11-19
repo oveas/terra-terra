@@ -201,6 +201,7 @@ abstract class BaseElement extends _TT
 		} else {
 			$_htmlCode .= $this->_getContent($this->content);
 		}
+
 		$this->shown = true;
 		return $_htmlCode;
 	}
@@ -225,7 +226,6 @@ abstract class BaseElement extends _TT
 				);
 				return '&nbsp;'; // Probably fatal, but for completeness...
 			}
-
 			return $_contentItem->showElement();
 		} else {
 			return $_contentItem;
@@ -364,7 +364,7 @@ abstract class BaseElement extends _TT
 	 * \return string attributes in HTML format (' fld="value"...)
 	 * \author Oscar van Eijk, Oveas Functionality Provider
 	 */
-	protected function getAttributes(array $_ignore = array())
+	public function getAttributes(array $_ignore = array())
 	{
 		$_htmlCode = '';
 		if (!in_array('id', $_ignore) && !empty($this->id)) {

@@ -160,6 +160,7 @@ function addInitFunction(func/*, arguments, ... */)
 	for (var i = 1; i < arguments.length; i++)
 		func += (i === 1 ? '' : ',') + arguments[i];
 	func += ')';
+	
 	if (TTinitF.indexOf(func) === -1)
 		TTinitF.push(func);
 }
@@ -213,5 +214,10 @@ function getElementsByClass (className, tagName, rootNode)
 	return (matchingElements);
 }
 
+// FIXME
+// The one below is moved to PHP's Document::_getScript() method since after introduction of
+// the window container init is called before initFunctions are added.
+// This is a workaround, but since JavaScript needs a complete redesign anyway, it's ok for now. 
+
 // Execute all initialisation functions
-window.onload = initFunctions;
+//window.onload = initFunctions();

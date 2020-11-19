@@ -40,7 +40,7 @@ class ContainerMenuitemPlugin extends ContainerItemPlugin
 	 * String containing href attribute for generated link
 	 */
 	private $link;
-	
+
 	/**
 	 * Container constructor
 	 * \author Daan Schulpen
@@ -51,7 +51,7 @@ class ContainerMenuitemPlugin extends ContainerItemPlugin
 		$this->link = new Container('link');
 		$this->setHref('#');
 	}
-	
+
 	/**
 	 * Set the href attribute on the generated link
 	 * \param[in] $_url The hypertext reference
@@ -71,7 +71,7 @@ class ContainerMenuitemPlugin extends ContainerItemPlugin
 	{
 		$this->link->addClass($_value);
 	}
-	
+
 	/**
 	* Set a dispatcher as href attribute
 	* \note This overwrites the href attribute
@@ -83,7 +83,7 @@ class ContainerMenuitemPlugin extends ContainerItemPlugin
 		$_disp = TT::factory('Dispatcher', 'bo');
 		$this->setHref(TT_CALLBACK_URL . '?' . TT_DISPATCHER_NAME . '=' . $_disp->composeDispatcher($_dispatcher));
 	}
-	
+
 	/**
 	 * Add an event to the generated link's events array
 	 * \param[in] $_event Javascript event name (onXxx)
@@ -96,7 +96,7 @@ class ContainerMenuitemPlugin extends ContainerItemPlugin
 	{
 		$this->link->setEvent($_event, $_action, $_add);
 	}
-	
+
 	/**
 	 * Set the title
 	 * \param[in] $_title The string to display as title
@@ -120,13 +120,14 @@ class ContainerMenuitemPlugin extends ContainerItemPlugin
 			return '';
 		}
 	}
-	
+
 	/**
 	 * Retrieve HTML text for generated link
 	 * \author Daan Schulpen
 	 */
 	public function getContent()
 	{
-		return $this->link->showElement();
+		// Make sure we get the nested items as will if this is a submenu!
+		return $this->link->showElement() . parent::getContent();
 	}
 }

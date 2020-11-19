@@ -79,6 +79,8 @@ class Container extends BaseElement
 
 	/**
 	 * Redirect the call to the containerObject setContent() method
+	 * This one must be added explicetly here since addToContent() wants a reference which won't
+	 * work with the magig __cal() method
 	 * \param[in] $_content The content
 	 */
 	public function setContent(&$_content)
@@ -86,9 +88,10 @@ class Container extends BaseElement
 		$this->containerObject->setContent($_content);
 	}
 
-
 	/**
 	 * Redirect the call to the containerObject addToContent() method
+	 * This one must be added explicetly here since addToContent() wants a reference which won't
+	 * work with the magig __cal() method
 	 * \param[in] $_content The content
 	 * \param[in] $_front Position
 	 */
@@ -177,7 +180,6 @@ class Container extends BaseElement
 			if (method_exists($this->containerObject, 'getContent')) {
 				$_htmlCode .= $this->containerObject->getContent();
 			}
-			$_htmlCode .= $this->getContent();
 			$_htmlCode .= $this->containerObject->getNestedType(true);
 			$_htmlCode .= '</' . $this->containerObject->getType() . ">\n";
 		}

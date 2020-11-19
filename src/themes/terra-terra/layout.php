@@ -51,7 +51,7 @@ abstract class Layout implements ttLayout
 					,array('class' => 'mainContentContainer')
 					,array(
 						 'height'		=> 650
-						,'width'		=> 1600
+						,'width'		=> 1000
 						,'hposition'	=> 50
 						,'vposition'	=> 25
 						,'border'		=> 1

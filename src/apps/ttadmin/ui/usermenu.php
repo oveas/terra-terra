@@ -75,7 +75,7 @@ class UsermenuArea extends ContentArea
 			);
 			$this->contentObject->addContainer('item', $_lnk);
 		}
-		
+
 		if ($this->hasRight('manageusers', TT_ID) === true) {
 			$this->userMaintOptions();
 		}

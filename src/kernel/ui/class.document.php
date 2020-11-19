@@ -556,6 +556,11 @@ class Document extends BaseElement
 			} else {
 				$_htmlCode .= "execDynCode = false;\n";
 			}
+			// FIXME
+			// This workaround is to make sure the initFunctions() is called in the end.
+			// Setting it as window.onload in js/lib/terra-terra.js doesn't seem to work well.
+			// But then, JavaScript needs a complete redesign anyway, so ok for now.
+			$_htmlCode .= "initFunctions();\n";
 
 			$_htmlCode .= "\n// -->\n//]]></script>\n";
 		}
