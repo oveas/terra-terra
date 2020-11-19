@@ -79,6 +79,9 @@ abstract class ConfigHandler
 			if (self::$cfgValues === null) {
 				TTCache::set(TTCACHE_CONFIG, 'values', array());
 				self::$cfgValues = &TTCache::getRef(TTCACHE_CONFIG, 'values');
+				if (self::$cfgValues === null) {
+					self::$cfgValues = array();
+				}
 			}
 		}
 
@@ -95,6 +98,9 @@ abstract class ConfigHandler
 			if (self::$cfgProtected === null) {
 				TTCache::set(TTCACHE_CONFIG, 'protected_values', array());
 				self::$cfgProtected = &TTCache::getRef(TTCACHE_CONFIG, 'protected_values');
+				if (self::$cfgProtected === null) {
+					self::$cfgProtected = array();
+				}
 			}
 		}
 
@@ -103,6 +109,9 @@ abstract class ConfigHandler
 			if (self::$cfgHidden === null) {
 				TTCache::set(TTCACHE_CONFIG, 'hidden_values', array());
 				self::$cfgHidden = &TTCache::getRef(TTCACHE_CONFIG, 'hidden_values');
+				if (self::$cfgHidden === null) {
+					self::$cfgHidden = array();
+				}
 			}
 		}
 	}
